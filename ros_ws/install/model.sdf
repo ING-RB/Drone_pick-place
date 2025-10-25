@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='x500_lidar_2d'>
+    <include merge='true'>
+      <uri>x500</uri>
+    </include>
+    <include merge='true'>
+      <uri>model://LW20</uri>
+      <pose relative_to="base_link">.15 0 .01 0 0 0</pose>
+    </include>
+    <joint name="lidar_model_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lw20_link</child>
+      <pose relative_to="base_link">-0 0 0 0 0 0</pose>
+    </joint>
+    <link name="lidar_sensor_link">
+      <pose relative_to="base_link">0.3 0 0.01 0 0 0</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.00001</ixx>
+          <iyy>0.00001</iyy>
+          <izz>0.00001</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+      <sensor type="gpu_lidar" name="sensor">
+        <always_on>true</always_on>
+        <update_rate>20</update_rate>
+        <pose relative_to="base_link">.15 0 .01 0 0 0</pose>
+        <visualize>true</visualize>
+        
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>1800</samples> <!-- risoluzione orizzontale (prima era 1800)-->
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle> <!-- -180° -->
+              <max_angle>3.14159</max_angle>  <!-- +180° -->
+            </horizontal>
+            <vertical>
+              <samples>32</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.4363</min_angle> <!-- -25° in radianti -->
+              <max_angle>0.2618</max_angle>  <!-- +15° in radianti -->
+            </vertical>
+          </scan>
+
+         <range>
+          <min>1.0</min>
+          <max>200.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <!-- Use gaussian noise -->
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.00</stddev>
+        </noise>
+      </ray>
+
+      </sensor>
+    </link>
+    <joint name="lidar_sensor_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_sensor_link</child>
+    </joint>
+
+    
+  </model>
+</sdf>

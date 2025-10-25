@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# @name Gazebo x500 lidar 2d
+#
+# @type Quadrotor
+#
+
+PX4_SIM_MODEL=${PX4_SIM_MODEL:=x500_lidar_2d}
+
+. ${R}etc/init.d-posix/airframes/4001_gz_x500
+
+param set EKF2_EV_CTRL 9        # enable horizontal position and yaw fusion
+#param set EKF2_EV_CTRL 11      # posizione orizzontale, vetricale e yaw preso dalla vision
+
+param set EKF2_HGT_REF 0        # height calculated from barometer data
+#param set EKF2_HGT_REF 3       # height calculated from external vision data
+
+param set EKF2_EV_DELAY 0.0     # sets external vision delay
+param set EKF2_BARO_CTRL 1      # enables barometer sensor
+param set EKF2_RNG_CTRL 0       # disables the range finder sensor
+param set EKF2_OF_CTRL 0        # disables the optical flow sensor
+param set EKF2_EV_NOISE_MD 0    # makes QGround Control use mesurement noise from vision messages 
+param set EKF2_MAG_TYPE 0       # makes QGround Control use magnetometer for pre-flight checks only
+param set SYS_HAS_MAG 1         # enables checks on the magnetometer existence
+param set COM_ARM_WO_GPS 2      # disables gps pre-flight check
+param set EKF2_GPS_CTRL 0       # disables gps sensor
+
+param set MPC_XY_VEL_MAX 1      # sets maximum horizontal velocity (m/s)
+param set MPC_Z_VEL_MAX_UP 1    # sets maximum ascend velocity(m/s)
+param set MPC_Z_VEL_MAX_DN 1    # sets maximum descend velocity (m/s)
