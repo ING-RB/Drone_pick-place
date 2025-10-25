@@ -1,0 +1,51 @@
+-----------
+ISTRUCTIONS
+-----------
+INSTALLATION (just the first time)
+cd docker_ws
+sudo ./build.sh
+
+
+TERMINAL 1:
+from the project folder:
+1) sudo ./run.sh
+
+2) Launch matlab (you need internet connection): /usr/local/MATLAB/R2025a/bin/matlab
+
+3) Log in
+
+4) From malab run the script /home/ros_workspace/MATLAB/Path_planning/Path_Planning_ss3dROS.m
+
+5) !!!Important: Wait until the "Ready to receive path requests" message appears on the console
+
+
+TERMINAL 2:
+from the project folder:
+
+1) sudo ./exec.sh
+
+2) source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
+
+3) ros2 launch scanmatcher lio.launch.py
+
+4) !!!Important: Wait until the "Ready for takeoff!" message appears on the terminal
+
+TERMINAL 3:
+from the project folder:
+
+1) sudo ./exec.sh
+
+2) source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
+
+3) ros2 run px4_ros_com offboard_control.py
+
+
+TROUBLESHOOTING:
+
+- the drone doesn't appear in gazebo -> ctrl + c and launch again the command ros2 launch scanmatcher lio.launch.py
+
+- "Ready for takeoff!" message doesn't appear -> ctrl + c and launch again the command ros2 launch scanmatcher lio.launch.py
+
+- after offboard_control.py seems stuck after "Path request sent" message   -> make sure matlab is running Path_Planning_ss3dROS.m
+                                                                            -> ctrl + c and launch again the command ros2 run px4_ros_com offboard_control.py
+
