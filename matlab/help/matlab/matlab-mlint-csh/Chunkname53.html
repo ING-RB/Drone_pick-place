@@ -1,0 +1,19 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>When an error occurs in a <code><a href="matlab:doc try" target="_blank">try</a></code> block, MATLAB transfers control to the
+                        <code>catch</code> block. If the <code>catch</code> block has
+                    an identifier, MATLAB enters the <code>catch</code> block with the
+                    identifier set to an <code>MException</code> object that contains the
+                    error message, the message ID, and the stack trace. You can use this object with
+                    functions such as <code>rethrow</code> to pass the error to the code
+                    that called it. Not only does the object always contain information about the
+                    correct error, there is no longer any need to save the
+                        <code>lasterr</code> around the <code>try/catch</code> block
+                    to avoid breaking old code. For more information, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'prog_capture_error_info')" target="_blank">“Capturing Information About the Error”</a>.</p><br/><strong>Suggested Action</strong><br/><p>Use an identifier on the <code>catch</code> block. If the
+                        <code>catch</code> block has an identifier, the state of
+                        <code>lasterr</code> and <code>lasterror</code> are
+                    unchanged. Typically, you can replace a call to <code><a href="matlab:doc lasterror" target="_blank">lasterror</a></code> with the
+                            <code><a href="matlab:doc catch" target="_blank">catch</a></code>
+                    block identifier, and you can replace a call to <code><a href="matlab:doc lasterr" target="_blank">lasterr</a></code> by referencing
+                    the message field of this identifier. You can probably remove any code that
+                    saves the previous state of <code>lasterr</code> and
+                        <code>lasterror</code>. The resulting code is typically smaller,
+                    clearer, and faster than the older code.</p></body></html>

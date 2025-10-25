@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!-- Copyright 2017-2023 The MathWorks, Inc.
+
+All definitions for the following CodeWarrior targets:
+- s12z (default)
+- powerpc
+-->
+
+<compiler name="codewarrior" default="s12z"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+<clients>
+  <client name="polyspace"/>
+</clients>
+
+<asms>
+  <asm name="__asm"/>
+</asms>
+
+
+<!-- options available in ALL CodeWarrior targets -->
+<options>
+  <option name="--lean_gnu_mode"/>
+  <option name="--gnu_version" value="40300"/>
+
+  <!-- in codewarrior .h file, __option() may be used by the preprocessor to know
+       whether an option is set or not
+       We define it as "set" by default -->
+  <option name="--polyspace_define_macro" value="__option(a)=(1)"/>
+
+  <!-- Polyspace does not understand intrinsics so claim that none are supported
+       to address the following idiom:
+
+#if __has_intrinsic(foo)
+// Optimized implementation not understood by Polyspace
+...
+#else
+// Standard C/C++ implementation amenable to Polyspace analysis
+...
+#endif
+  -->
+  <option name="--polyspace_define_macro" value="__has_intrinsic(i)=(0)"/>
+</options>
+
+<!-- defines available in ALL CodeWarrior targets -->
+<defines>
+  <!-- GNU compatibilities -->
+  <define name="__MW_GNU__" value="1"/>
+  <define name="PST_GNU" value="1"/>
+  <define name="_GNU_SOURCE" value="1"/>
+  <define name="POLYSPACE_LIBC_NO_THROW" value="1"/>
+  <if feoption="--c\+\+">
+    <!-- Macros for C++ Polyspace Libraries. -->
+    <define name="_LIBCPP_COMPILER_GENERIC_POLYSPACE" value="1"/>
+  </if>
+</defines>
+
+<!-- S12Z target -->
+<target name="s12z">
+  <options>
+    <!-- Intrinsic functions -->
+    <option name="--preinclude" value="codewarrior/tmw_builtins/s12z.h"/>
+  </options>
+
+  <!-- Macros from the compiler -->
+  <defines>
+    <define name="__CWBUILD__" value="0"/>
+    <define name="__S12LISA__" value="1"/>
+    <define name="__S12Z__"    value="1"/>
+    <define name="__HC12__"    value="1"/>
+    <define name="__CWCC__"    value="0x4306"/>
+    <define name="__MWERKS__"  value="0x4306"/>   <!-- same as __CWCC__-->
+    <define name="__HIWARE__"  value="1"/>
+  </defines>
+
+  <!-- type size and alignment -->
+  <options>
+    <option name="--max_alignment"      value="1"/>
+    <option name="--char_bit"           value="8"/>
+    <option name="--sizeof_short"       value="2"/>
+    <option name="--sizeof_int"         value="2"/>
+    <option name="--sizeof_long"        value="4"/>
+    <option name="--sizeof_long_long"   value="4"/>
+    <option name="--sizeof_pointer"     value="3"/>
+    <option name="--sizeof_float"       value="4"/>
+    <option name="--sizeof_double"      value="4"/>
+    <option name="--sizeof_long_double" value="4"/>
+    <option name="--size_t_is_unsigned_long"/>
+    <option name="--ptr_diff_is_long"/>
+    <option name="--wchar_t_is_unsigned_short"/>
+    <option name="--small_enums"/>
+    <option name="--unsigned_chars"/>
+    <option name="--big_endian"/>
+  </options>
+  <defines>
+    <define name="__CHAR_IS_8BIT__"           value="1"/>
+    <define name="__SHORT_IS_16BIT__"         value="1"/>
+    <define name="__INT_IS_16BIT__"           value="1"/>
+    <define name="__LONG_IS_32BIT__"          value="1"/>
+    <define name="__LONG_LONG_IS_32BIT__"     value="1"/>
+    <define name="__FLOAT_IS_IEEE32__"        value="1"/>
+    <define name="__DOUBLE_IS_IEEE32__"       value="1"/>
+    <define name="__LONG_DOUBLE_IS_IEEE32__"  value="1"/>
+    <define name="__CHAR_IS_UNSIGNED__"       value="1"/>
+    <define name="__SIZE_T_IS_ULONG__"        value="1"/>
+    <define name="__WCHAR_T_IS_USHORT__"      value="1"/>
+    <define name="__PTRDIFF_T_IS_LONG__"      value="1"/>
+  </defines>
+
+  <!-- attributes aligned is not working properly -->
+  <options>
+    <option name="--ignore_attribute_aligned"/>
+    <option name="--enable_at_keywords"/>
+  </options>
+
+  <attributes kind="data">
+    <attribute name="@" sig="@"/>
+  </attributes>
+
+  <attributes kind="function">
+    <attribute name="interrupt" sig="?ci"/>  <!-- support "interrupt 2 void g();" and "interrupt void f();" -->
+    <attribute name="__interrupt" sig="?ci"/>
+
+    <!-- Gnu-style attributes: __attribute__((...)) -->
+    <attribute name="aligned" family="gnu" sig="(ci)" attrkind="ak_align"/>
+    <attribute name="never_inline" family="gnu" attrkind="ak_noinline"/>
+  </attributes>
+
+</target>  <!-- end of s12z target description -->
+
+<!-- POWERPC target -->
+<target name="powerpc">
+  <options>
+    <!-- Intrinsic functions -->
+    <option name="--preinclude" value="codewarrior/tmw_builtins/powerpc.h"/>
+  </options>
+
+  <!-- Macros from the compiler -->
+  <defines>
+    <define name="__CWBUILD__"   value="285"/>
+    <define name="__CWCC__"      value="0x4305"/>
+    <define name="__MWERKS__"    value="0x4305"/>   <!-- same as __CWCC__-->
+    <define name="__PPC_EABI__"  value="1"/>
+    <define name="__POWERPC__"   value="1"/>
+  </defines>
+
+  <!-- type size and alignment -->
+  <options>
+    <option name="--max_alignment"      value="8"/>
+    <option name="--char_bit"           value="8"/>
+    <option name="--sizeof_short"       value="2"/>
+    <option name="--sizeof_int"         value="4"/>
+    <option name="--sizeof_long"        value="4"/>
+    <option name="--sizeof_long_long"   value="8"/>
+    <option name="--sizeof_pointer"     value="4"/>
+    <option name="--sizeof_float"       value="4"/>
+    <option name="--sizeof_double"      value="8"/>
+    <option name="--sizeof_long_double" value="8"/>
+    <option name="--size_t_is_unsigned_long"/>
+    <option name="--signed_chars"/>
+    <option name="--wchar_t_is_unsigned_short"/>
+    <option name="--ptr_diff_is_long"/>
+    <option name="--small_enums"/>
+    <option name="--altivec"/>
+    <option name="--altivec_donotforce_bool"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--big_endian"/>
+    <option name="--enable_has_feature"/>
+    <option name="--has_feature" value="C99_COMPLEX"/>
+    <option name="--enable_function_post_attributes"/>
+  </options>
+
+  <defines>
+    <define name="pixel" value="__pixel"/>
+    <define name="vector" value="__vector"/>
+  </defines>
+
+  <attributes>
+    <attribute name="section" sig="(*)"/>
+    <attribute name="__declspec" sig="(*)"/>
+  </attributes>
+
+</target> <!-- end of powerpc target description -->
+
+</compiler>

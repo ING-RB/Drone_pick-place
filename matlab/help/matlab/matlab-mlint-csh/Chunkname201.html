@@ -1,0 +1,11 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>When you load data from a file, there might be conflicts with functions on the
+                    path, which include MATLAB built-in functions. Consider the following function
+                    in which <code>myData.mat</code> contains the variable
+                        <code>theta</code>.</p><code>function&nbsp;z&nbsp;=&nbsp;myFun<br/>&nbsp;&nbsp;&nbsp;&nbsp;load&nbsp;myData.mat<br/>&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;=&nbsp;theta(1);<br/>end<br/></code><p>If there is a function <code>theta</code> on the MATLAB path, the
+                    variable <code>theta</code> conflicts with the function
+                        <code>theta</code>. To avoid possible conflict, specify the
+                        <code>theta</code> variable in the call to
+                    <code>load</code>.</p><code>function&nbsp;z&nbsp;=&nbsp;myFun<br/>&nbsp;&nbsp;&nbsp;&nbsp;load&nbsp;myData.mat&nbsp;theta<br/>&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;=&nbsp;theta(1);<br/>end<br/></code><br/><strong>Suggested Action</strong><br/><p>To avoid conflict with functions on the path, load data from a file using one
+                    of these syntaxes.<ul><li><p>Specify variables to load. For example,</p><code>load&nbsp;mydata.mat&nbsp;a&nbsp;b&nbsp;c<br/>load('mydata.mat','a','b','c')</code></li><li><p>Specify an output argument to load data into a structure or array.
+                                For example,</p><code>S&nbsp;=&nbsp;load('mydata.mat')</code></li></ul>Best practice is to load only the variables you will use or load
+                    the variables into a structure. For more information, see <code><a href="matlab:doc load" target="_blank">load</a></code>.</p></body></html>

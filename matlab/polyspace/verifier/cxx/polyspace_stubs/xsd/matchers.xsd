@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 The MathWorks, Inc. -->
+<!-- sub schema for matchers specifications -->
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+<xs:annotation>
+    <xs:documentation>
+        Polyspace program elements matcher specification.
+        A matcher is a set of constraints on program elements.
+
+        A program element is matched if and only if every constraints are met.
+    </xs:documentation>
+</xs:annotation>
+
+<xs:complexType name="MatchType">
+    <xs:annotation>
+        <xs:documentation>
+            Top level matcher.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice maxOccurs="unbounded">
+        <xs:element name="match-declaration" type="DeclarationConstraintsType"/>
+        <xs:element name="match-function" type="FunctionConstraintsType"/>
+    </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="DeclarationConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Matches the declarations of a program.
+
+            A declaration of the program matches if all the constraints are met.
+
+            A declaration may be one of:
+
+            - a function declaration,
+            - a variable declaration.
+
+            Functions and variables may have several declarations and at most one of them
+            is a definition.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice maxOccurs="unbounded">
+        <xs:element name="match-qualified-name" type="StringConstraintsType"/>
+        <xs:element name="match-global-scope" type="BooleanConstraintsType"/>
+        <xs:element name="match-file-path" type="PathConstraintsType"/>
+        <xs:element name="match-first-declaration" type="BooleanConstraintsType"/>
+        <xs:element name="match-definition" type="BooleanConstraintsType"/>
+        <xs:element name="match-type" type="TypeConstraintsType"/>
+    </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="FunctionConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Matches the functions of a program.
+
+            A function of the program matches if all the constraints are met.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice maxOccurs="unbounded">
+        <xs:element name="match-included-definition-header" type="IncludeStackConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraints the include stack at the location of the function definition (body).
+
+                    The definition (body) of the function is considered as a declaration and thus must also meet the constraints from `match-included-declaration-header`.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="match-included-declaration-header" type="IncludeStackConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraints the include stack at the location of the function declarations.
+
+                    The definition (body) of the function is considered as a declaration and thus must meet those constraints as well as the `match-included-definition-header` constraints.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="match-is-template" type="BooleanConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    If set to `true`, the matched function must be a template definition.
+
+                    If set to `false`, the matched function must not be a template definition.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+    </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="TypeConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraints on a progam type.
+
+            ### Matching of function types
+
+            The `match-return` and `match-parameter` constraints require that the matched type is a function type.
+
+            Each non-negated `match-return` constraint must hold for the return type of the matched function type.
+
+            Each negated `match-return` constraint must reject the return type of the matched function type.
+
+            Each non-negated `match-parameter` constraint must hold for at least one parameter of the
+            matched function type.
+
+            Each negated `match-parameter` constaint must reject every parameter of the matched function type.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="match-nbargs" type="IntegerConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraint on the number of parameters of the matched function type.
+
+                    This constraints cannot be met by non-function types.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="match-return" type="ReturnConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraint on the return type of the matched function type.
+
+                    This constraints cannot be met by non-function types.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="match-parameter" type="ParameterConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraint on the parameter types of this function type.
+
+                    Those constraints must be met by at least one of the parameters of this function type.
+
+                    Those constraints cannot be met by non-function types.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+    </xs:choice>
+
+    <xs:attribute name="value" type="xs:string" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                A well-formed C/C++ type declaration.
+
+                If set, the matched type must be compatible with this type declaration.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="is_of_integral_type" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set to `true`, the matched type must be an integral type as specified
+                by the active C or C++ standard. See `std::is_integral`.
+
+                If set to `false`, the matched type must be any type but an integral type.
+
+                This constraints cannot be met by non-fundamental types.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="is_autosar_rte_instance" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set to `true`, the matched type must the AUTOSAR `Rte_Instance` type.
+
+                If set to `false`, the matched type must be of any type but `Rte_Instance`.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="is_autosar_rte_transformer_error" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set to `true`, the matched type must the AUTOSAR `Rte_TransformerError` type.
+
+                If set to `false`, the matched type must be of any type but `Rte_TransformerError`.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="is_reference_to_scalar_type" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set to `true`, the matched type must be a C++ rvalue or lvalue reference to a scalar type as defined in
+                https://howardhinnant.github.io/TypeHiearchy.pdf.
+
+                If set to `false`, the matched type must be anything but a reference to a scalar.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="nb_args" type="xs:int" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set, the matched type must be a function type, and it must have
+                exactly the specified count of parameters.
+
+                This constraints cannot be met by non-function types.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="first_arg_is_of_integral_type" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation><![CDATA[
+                DEPRECATED. Use `<match-parameter>` in conjunction with `<match-type is_of_integral_type="true"/>`.
+            ]]></xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="return_type_is_double" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation><![CDATA[
+                DEPRECATED. Use `<match-return>` in conjunction with `<match-type value="double"/>`.
+            ]]></xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="IntegerConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraint on integer values.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="value" type="xs:int" use="optional"/>
+    <xs:attribute name="min" type="xs:int" use="optional"/>
+    <xs:attribute name="max" type="xs:int" use="optional"/>
+</xs:complexType>
+
+<xs:complexType name="BooleanConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraints on boolean values.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="value" type="xs:boolean" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set, the constraint is met if the actual value equals this value.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="StringConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraints on character strings.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="value" type="xs:string" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set, the constraint is met if the actual value equals this value.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="wildcard" type="xs:string" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set, the constraint is met if the actual value matches the wildcard pattern.
+
+                Wildcard patterns may contain any character. The star character `*` *(Unicode decimal 42)* is interpreted as a placeholder for zero or more characters.
+                Limitation: it is not possible to match explicitely the `*` character with a `wildcard` constraint, use the `regex` constraint instead.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="regex" type="xs:string" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+                If set, the constraint is met if the actual value matches the regular expression pattern.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="PathConstraintsType">
+    <xs:complexContent>
+        <xs:extension base="StringConstraintsType"/>
+    </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="IncludeStackConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraints on the state of the actual C/C++ include stack at some given point of the source program.
+                If set, the actual include stack must contain a file with a basename equal to this value.
+
+                The basename of a file is the last component of this file absolute path.
+                For instance the basename of `/source/path/to/the/filename.c` is `filename.c`.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+        <xs:extension base="StringConstraintsType"/>
+    </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ReturnConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraints on the return type of a function type.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="match-type" type="TypeConstraintsType"/>
+    </xs:choice>
+
+    <xs:attribute name="negated" type="xs:boolean" use="optional"/>
+</xs:complexType>
+
+<xs:complexType name="ParameterConstraintsType">
+    <xs:annotation>
+        <xs:documentation>
+            Constraints on the parameter types of a function type.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="match-index" type="IntegerConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraints on the parameter's position in the function parameters list.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="match-type" type="TypeConstraintsType">
+            <xs:annotation>
+                <xs:documentation>
+                    Constraints on the parameter's type.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+    </xs:choice>
+
+    <xs:attribute name="negated" type="xs:boolean" use="optional"/>
+</xs:complexType>
+
+</xs:schema>

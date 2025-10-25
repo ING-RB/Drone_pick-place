@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2020-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="polyspace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schema/msgcat.xsd">
+  <message>
+    <entry key="Description" translate="false">DESCRIPTION:</entry>
+    <entry key="SuggestedAction" translate="false">SUGGESTED ACTION:</entry>
+    <!-- All advisor messages -->
+    <entry key="NoAdvice" translate="false">No suggestions found.</entry>
+
+    <entry key="CauseOrangesAbsAddrDescription" translate="false">Absolute addresses are partly responsible for around '{0, number, integer}' non-justified orange checks.</entry>
+    <entry key="CauseOrangesAbsAddrSuggestion" translate="false">If you trust the absolute addresses, justify those orange checks.</entry>
+
+    <entry key="GlobalVariablesRespDescription" translate="false">Global variables are partly responsible for around '{0, number, integer}' non-justified orange checks. There are '{0, number, integer}' such variables.</entry>
+    <entry key="GlobalVariablesRespSuggestion" translate="false">When possible, constrain the range of these variables using the option -data-range-specifications.</entry>
+    <entry key="GlobalVariablesRespRestOfMsgSuggestion" translate="false">When possible, constrain the range of these variables using the option -data-range-specifications.</entry>
+
+    <entry key="CauseOrangesStaticFloatForFiltersDescription" translate="false">There are '{0, number, integer}' variables with ''static'' modifier and ''float'' type.\nCode generated with TargetLink uses those variables to store values from one model iteration to the other, for example, in filters.</entry>
+    <entry key="CauseOrangesStaticFloatForFiltersSuggestion" translate="false">When possible, constrain the range of these variables using the option -data-range-specifications (the filters have a mathematical guarantee of convergence and stay within a certain range).\nIf the constraints are difficult to compute, try using simple bounds such as -100000.0 .. 100000.0.</entry>
+
+    <entry key="CauseOrangesTargetLinkLookupTablesDescription" translate="false">There are '{0,number,integer}' lookup-table functions.\nThese functions are likely to lead to full-range values, and generate orange checks inside the functions and after the function calls.</entry>
+     <entry key="CauseOrangesTargetLinkLookupTablesSuggestion" translate="false">Specify these functions as lookup-table functions using the option -code-behavior-specifications.\nEnter your specifications in the following XML format:\n
+                &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;\n
+                &lt;specifications xmlns=&quot;http://www.mathworks.com/PolyspaceCodeBehaviorSpecifications&quot;&gt;\n
+                &lt;functions&gt;\n
+                &lt;function name=\"&lt;to replace by the lookup-table function name>&quot; std=&quot;__ps_lookup_table_clip&quot;&gt;\n
+                &lt;mapping std_arg=&quot;1&quot; arg=&quot;1&quot;>&lt;/mapping&gt; &lt;/function&gt;\n
+                &lt;/functions&gt;\n
+                &lt;/specifications&gt;
+    </entry>
+
+    <entry key="MainGeneratorCustomNeededDescription" translate="false">The generated main calls '{0, number, integer}' functions, which might be too many and lead to loss of performance and precision.\n '{1,number,integer}' functions are called both by the generated main and pointers to functions. Since the functions are called elsewhere, you do not need the calls from the generated main.</entry>
+    <entry key="MainGeneratorCustomNeededSuggestion" translate="false">Use '{2}'.</entry>
+    
+    <entry key="StdFunExternDescription" translate="false">Function '{0}' is not correctly stubbed. Its value is assumed to be full range, which may cause unnecessary orange checks.</entry>
+    <entry key="StdFunExternSuggestion" translate="false">Include math.h header.</entry>
+  </message>
+</rsccat>
+

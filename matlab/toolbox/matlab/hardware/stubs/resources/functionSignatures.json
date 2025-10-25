@@ -1,0 +1,29 @@
+{
+    "targetHardware":
+    {
+        "inputs":
+        [
+           {"name":"hardwareName", "kind":"required", "type":"choices=coder.internal.getHardwareNames"}
+        ],
+        "outputs":
+        [
+           {"name":"obj",  "type":"targethardware"}
+        ]
+     },
+
+     "readMobileSensorData":
+     {  
+         "inputs":
+         [
+             {"name":"fileNames", "kind":"required","type":"choices=mobilesensor.internal.Utility.sensorFilesList"}
+         ] 
+     },
+
+     "mobiledev":
+     {
+         "inputs":
+         [ 
+             {"name": "device", "kind": "optional", "type": ["char", "choices=mobilesensor.internal.MobileDevManager.getMobileDeviceNames"]} 
+         ] 
+     }
+}

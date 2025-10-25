@@ -1,0 +1,462 @@
+{
+    "matlab.io.internal.filesystem.mkfile":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["char"], ["string"], ["file"]]},
+            {"name":"ReplacementRule", "kind":"namevalue", "type":"choices={'preserve','overwrite'}"}
+        ]
+    },
+    "createSymbolicLink":
+    {
+        "inputs":
+        [
+            {"name":"link", "kind":"required", "type":[["char"], ["string"], ["file"]]},
+            {"name":"target", "kind":"required", "type":[["char"], ["string"], ["file"]]},
+            {"name":"ReplacementRule", "kind":"namevalue", "type":"choices={'preserve','overwrite'}"}
+        ]
+    },
+    "isSymbolicLink":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"required", "type":[["char"], ["string"], ["file"]]}
+        ]
+    },
+    "matlab.io.internal.filesystem.relativepath":
+    {
+        "inputs":
+        [
+            {"name":"src", "kind":"required", "type":[["char"], ["string"], ["file"]]},
+            {"name":"dest", "kind":"required", "type":[["char"], ["string"], ["cellstr"], ["file"]]}
+        ]
+    },
+    "copyfile":
+    {
+	    "inputs":
+	    [
+		    {"name":"source", "kind":"required", "type":[["file"], ["folder"], ["char"]]},
+		    {"name":"destination", "kind":"positional", "type":[["file"], ["folder"], ["char"]]},
+		    {"name":"'f'", "kind":"ordered", "type":["char", "choices={'f'}"]},
+                    {"name":"CopyLinkBehavior", "kind":"namevalue", "type":"choices={'osdefault','preserve','resolve'}"}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"status", "type":["numeric", "scalar"]},
+		    {"name":"message", "type":"char"},
+		    {"name":"messageId", "type":"identifier=messageid"}
+	    ]
+    },
+    "delete":
+    {
+		"inputs":
+	    [
+		    {"name":"filename", "kind":"required", "type":"file", "repeating":true},
+                    {"name":"ResolveSymbolicLinks", "kind":"namevalue", "type":["logical","scalar"],"default":"false"}
+	    ]
+    },
+    "dir":
+    {
+		"inputs":
+	    [
+		    {"name":"filename", "kind":"ordered", "type":[["file"], ["folder"], ["char"]]}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"listing", "type":"struct"}
+	    ]
+    },
+    "filePermissions":
+    {
+        "inputs":
+        [
+            {"name":"locations", "kind":"required", "type":[["file"], ["folder"]]}
+        ],
+        "outputs":
+        [
+            {"name":"perms", "type":"matlab.io.FileSystemEntryPermissions"}
+        ]
+    },
+    "fileattrib":
+    {
+		"inputs":
+	    [
+		    {"name":"name", "kind":"required", "type":[["file"], ["folder"]]},
+		    {"name":"attribs", "kind":"positional", "type":["char", "@(x) regexp(x, '^\\s*([+-][ahswx]\\s+)*[+-][ahswx]$')==1"]},
+		    {"mutuallyExclusiveGroup":
+			    [
+				    [
+					    {"name":"users", "kind":"positional", "type":["char", "choices={'a','g','o','u'}"], "platforms":"-win64"}
+				    ],
+				    [
+					    {"name":"''", "kind":"positional", "type":["char", "choices={''}"], "platforms":"win64"},
+					    {"name":"'s'", "kind":"positional", "type":["char", "choices={'s'}"], "platforms":"win64"}
+				    ]
+			    ]
+		    }
+	    ],
+	    "outputs":
+	    [
+		    {"name":"status", "type":["numeric", "scalar"]},
+		    {"name":"message", "type":[["char"], ["struct"]]},
+		    {"name":"messageId", "type":"identifier=messageid"}
+	    ]
+    },
+    "ls":
+    {
+		"inputs":
+	    [
+		    {"name":"flags", "kind":"ordered", "type":"char", "repeating":true, "platforms":"-win64"},
+		    {"name":"filename", "kind":"ordered", "type":[["file"], ["folder"], ["char"]]}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"list", "type":"char"}
+	    ]
+    },
+    "matlab.io.CloudPermissions":
+    {
+        "inputs":
+        [
+            {"name":"locations", "kind":"required", "type":["cellstr", "char", "string"]}
+        ],
+        "outputs":
+        [
+            {"name":"perms", "type":"matlab.io.CloudPermissions"}
+        ]
+    },
+	"matlab.io.FileSystemEntryPermissions":
+	{
+		"inputs":
+		[
+			{"name":"locations", "kind":"required", "type":["cellstr", "char", "string", "file", "folder"]}
+		],
+		"outputs":
+		[
+			{"name":"obj", "type":"matlab.io.FileSystemEntryPermissions"}
+		]
+	},
+    "matlab.io.FileSystemEntryPermissions.setPermissions":
+    {
+        "inputs":
+        [
+            {"name":"objArr", "kind":"required", "type":"matlab.io.FileSystemEntryPermissions"},
+            {"name":"permissionNames", "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["choices=matlab.io.FileSystemEntryPermissionsPropertyNamesAndTypes.getModifiablePermNames()"]]},
+            {"name":"permissionValues", "kind":"required", "type":["logical", "scalar"]},
+            {"name":"PermissionsTarget", "kind":"namevalue", "type":[["string"], ["char"], ["choices={'all', 'files', 'folders', 'symboliclinks', 'target'}"]]},
+            {"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"failures", "type":"struct"}
+        ]
+    },
+    "matlab.io.FileSystemEntryPermissions.getPermissions":
+    {
+        "inputs":
+        [
+            {"name":"objArr", "kind":"required", "type":"matlab.io.FileSystemEntryPermissions"},
+            {"name":"propNames", "kind":"positional", "type":[["cellstr"], ["char"], ["string"], ["choices=matlab.io.FileSystemEntryPermissionsPropertyNamesAndTypes.getModifiablePropNames()"]]}
+        ],
+        "outputs":
+        [
+            {"name":"propValues", "type":"table"}
+        ]
+    },
+    "matlab.io.UnixPermissions":
+    {
+        "inputs":
+        [
+            {"name":"locations", "kind":"required", "type":["cellstr", "char", "string", "file", "folder"]}
+        ],
+        "outputs":
+        [
+            {"name":"perms", "type":"matlab.io.UnixPermissions"}
+        ]
+    },
+    "matlab.io.WindowsPermissions":
+    {
+        "inputs":
+        [
+            {"name":"locations", "kind":"required", "type":["cellstr", "char", "string", "file", "folder"]}
+        ],
+        "outputs":
+        [
+            {"name":"perms", "type":"matlab.io.WindowsPermissions"}
+        ]
+    },
+    "mkdir":
+    {
+	    "inputs":
+	    [
+		    {"name":"folderName", "kind":"required", "type":[["folder"], ["char"]]}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"status", "type":["numeric", "scalar"]},
+		    {"name":"message", "type":"char"},
+		    {"name":"messageId", "type":"identifier=messageid"}
+	    ]
+    },
+    "mkdir":
+    {
+	    "inputs":
+	    [
+		    {"name":"parentFolder", "kind":"required", "type":[["folder"], ["char"]]},
+		    {"name":"folderName", "kind":"required", "type":"char"}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"status", "type":["numeric", "scalar"]},
+		    {"name":"message", "type":"char"},
+		    {"name":"messageId", "type":"identifier=messageid"}
+	    ]
+    },
+    "movefile":
+    {
+	    "inputs":
+	    [
+		    {"name":"source", "kind":"required", "type":[["file"], ["folder"], ["char"]]},
+		    {"name":"destination", "kind":"positional", "type":[["file"], ["folder"], ["char"]]},
+		    {"name":"'f'", "kind":"ordered", "type":["char", "choices={'f'}"]},
+                    {"name":"MoveLinkBehavior", "kind":"namevalue", "type":"choices={'preserve','resolve'}"}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"status", "type":["numeric", "scalar"]},
+		    {"name":"message", "type":"char"},
+		    {"name":"messageId", "type":"identifier=messageid"}
+	    ]
+    },
+    "rmdir":
+    {
+	    "inputs":
+	    [
+		    {"name":"folderName", "kind":"required", "type":"folder"},
+		    {"name":"'s'", "kind":"ordered", "type":"choices={'s'}"},
+                    {"name":"ResolveSymbolicLinks", "kind":"namevalue", "type":["logical","scalar"],"default":"false"}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"status", "type":["numeric", "scalar"]},
+		    {"name":"message", "type":"char"},
+		    {"name":"messageId", "type":"identifier=messageid"}
+	    ]
+    },
+    "what":
+    {
+		"inputs":
+	    [
+		    {"name":"folderName", "kind":"ordered", "type":[["folder"], ["identifier=classdef,package"]]}
+	    ]
+    },
+    "isfile":
+    {
+	    "inputs":
+	    [
+		    {"name":"path", "kind":"required", "type":[["file"],["char"], ["cellstr"], ["string"]]}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"TF", "type":"logical"}
+	    ]
+	    
+    },
+    "isfolder":
+    {
+	    "inputs":
+	    [
+		    {"name":"path", "kind":"required", "type":[["folder"],["char"], ["cellstr"], ["string"]]}
+	    ],
+	    "outputs":
+	    [
+		    {"name":"TF", "type":"logical"}
+	    ]
+	    
+    },
+    "recycle":
+    {
+        "inputs":
+        [
+            {"name":"state", "kind":"ordered", "type":"choices={'on','off'}"}
+        ]
+    },
+        "fileread":{
+        "inputs":[
+            {"name":"filename","kind":"required","type":"file"},
+            {"name":"Encoding","kind":"namevalue","type":[["char"],["char","choices=matlab.io.internal.shared.EncodingInput.encodingSuggestions()"]]}
+        ],
+        "outputs":[
+            {"name":"text","type":["char","vector"]}
+        ]
+    },
+        "fileparts":{
+        "inputs":[
+            {"name":"filename","kind":"required","type":"char"}
+        ],
+        "outputs":[
+            {"name":"filepath","type":["char","row"]},
+            {"name":"name","type":["char","row"]},
+            {"name":"ext","type":["char","row"]}
+        ]
+    },
+    "frewind":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]}
+        ]
+    },
+        "fullfile":{
+        "inputs":[
+            {"name":"filepart","kind":"required","type":[["char","string","cellstr"],["hierarchy=matlab.lang.internal.introspective.tabcompletion.fullfile_vfileparttail(filepart)"]],"repeating":true}
+        ],
+        "outputs":[
+            {"name":"f","type":"char"}
+        ]
+    },
+    "fclose":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]}
+        ],
+        "outputs":[
+            {"name":"status","type":["numeric","scalar"]}
+        ]
+    },
+    "fclose":{
+        "inputs":[
+            {"name":"'all'","kind":"required","type":["choices={'all'}"]}
+        ],
+        "outputs":[
+            {"name":"status","type":["numeric","scalar"]}
+        ]
+    },
+    "fopen":{
+        "inputs":[
+            {"name":"filename","kind":"required","type":[["char"],["file"]]},
+            {"name":"permission","kind":"positional","type":"choices={'r','w','a','r+','w+','a+','A','W','rt','wt','at','rt+','wt+','at+','At','Wt'}"},
+            {"name":"machinefmt","kind":"positional","type":"choices={'n','b','l','s','native','ieee-be','ieee-le','ieee-be.l64','ieee-le.l64'}"},
+            {"name":"encodingIn","kind":"positional","type":["char","choices=matlab.io.internal.shared.EncodingInput.encodingSuggestions()"]}
+        ],
+        "outputs":[
+            {"name":"fileID","type":["file_handle","scalar"]},
+            {"name":"errormsg","type":"char"}
+        ]
+    },
+    "fopen":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["double","scalar","integer","@(x) any(openedFiles()==x)"]}
+        ],
+        "outputs":[
+            {"name":"filename","type":"file"},
+            {"name":"permission","type":["choices={'r','w','a','r+','w+','a+','A','W','rt','wt','at','rt+','wt+','at+','At','Wt'}"]},
+            {"name":"machinefmt","type":["choices={'n','b','l','s','a','native','ieee-be','ieee-le','ieee-be.l64','ieee-le.l64'}"]},
+            {"name":"encodingIn","type":"char"}
+        ]
+    },
+    "feof":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]}
+        ],
+        "outputs":[
+            {"name":"status","type":["numeric"]}
+        ]
+    },
+    "ferror":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"'clear'","kind":"ordered","type":["choices={'clear'}"]}
+        ],
+        "outputs":[
+            {"name":"message","type":"char"},
+            {"name":"errnum","type":["numeric","scalar"]}
+
+        ]
+    },
+    "fgetl":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]}
+        ],
+        "outputs":[
+            {"name":"tline","type":[["char"],["numeric","scalar"]]}
+        ]
+    },
+    "fgets":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"nchar","kind":"ordered","type":["numeric","scalar"]}
+        ],
+        "outputs":[
+            {"name":"tline","type":[["char"],["numeric","scalar"]]}
+        ]
+    },
+    "fprintf":{
+        "inputs":[
+            {"name":"fileID","kind":"ordered","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"formatSpec","kind":"required","type":"char"},
+            {"name":"A","kind":"required","repeating":true}
+        ],
+        "outputs":[
+            {"name":"nbytes","type":["scalar","double"]}
+        ]
+    },
+    "fread":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"sizeA","kind":"positional","type":["numeric"]},
+            {"name":"precision","kind":"positional","type":[["char"],["choices={'uint','uint8','uint16','uint32','uint64','uchar','unsigned char','ushort','ulong','int','int8','int16','int32','int64','schar','signed char','short','long','single','double','float','float32','float64','char'}"]]},
+            {"name":"skip","kind":"positional","type":["numeric","scalar"]},
+            {"name":"machinefmt","kind":"positional","type":"choices={'n','b','l','s','a','native','ieee-be','ieee-le','ieee-be.l64','ieee-le.l64'}"}
+        ],
+        "outputs":[
+            {"name":"A"},
+            {"name":"count","type":["scalar","numeric"]}
+        ]
+    },
+    "fscanf":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"formatSpec","kind":"required","type":"char"},
+            {"name":"sizeA","kind":"ordered","type":[["numeric","scalar"],["numeric","row","numel=2"]]}
+        ],
+        "outputs":[
+            {"name":"A"},
+            {"name":"count","type":["numeric","scalar"]}
+
+        ]
+    },
+    "fseek":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"offset","kind":"required","type":"numeric"},
+            {"name":"origin","kind":"required","type":[["numeric"],["char","choices={'bof','cof','eof'}"]]}
+        ],
+        "outputs":[
+            {"name":"status","type":["numeric"]}
+        ]
+    },
+    "ftell":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]}
+        ],
+        "outputs":[
+            {"name":"position","type":"numeric"}
+        ]
+    },
+    "fwrite":{
+        "inputs":[
+            {"name":"fileID","kind":"required","type":["scalar","@(x) any(openedFiles()==x)"]},
+            {"name":"A","kind":"required","type":[["numeric"],["char"],["logical"]]},
+            {"name":"precision","kind":"positional","type":[["char"],["choices={'uint','uint8','uint16','uint32','uint64','uchar','unsigned char','ushort','ulong','int','int8','int16','int32','int64','schar','signed char','short','long','single','double','float','float32','float64','char'}"]]},
+            {"name":"skip","kind":"positional","type":["numeric","scalar"]},
+            {"name":"machinefmt","kind":"positional","type":"choices={'n','b','l','s','a','native','ieee-be','ieee-le','ieee-be.l64','ieee-le.l64'}"}
+        ],
+        "outputs":[
+            {"name":"count","type":["double","scalar","integer",">=0"]}
+        ]
+    },    
+    "openedFiles": {
+        "inputs":[],
+        "outputs":[
+            {"name":"fIDs","type":"file_handle"}
+        ]
+    }
+}

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020-2023 The MathWorks, Inc. -->
+<rsccat locale="en_US" product="MATLAB" version="1.0">
+   <message>
+      <!-- Messages used for input checking errors for customer-facing interface generation function-->
+      <entry key="NoInputList">At least one input list of namespaces, classes, or functions required.</entry>
+      <entry key="NamespaceNamesNotFound">Namespace name(s) not found: {0}. Namespaces must be on the MATLAB search path.</entry>
+      <entry key="ClassNamesNotFound">Class name(s) not found: {0}. Classes must be on the MATLAB search path.</entry>
+      <entry key="FunctionNamesNotFound">Function name(s) not found: {0}. Functions must be on the MATLAB search path.</entry>
+      
+      <!-- Should only be reached internally with legacy input checking API. Will be removed. -->
+      <entry key="WrongListType">Input list must be string array.</entry>
+      
+      <!-- Omitted MATLAB code-unit messages -->
+      <!-- new error message when user explicitly specifies specific MATLAB class(es) or function(s) to include in the interface, but they are omitted -->
+      <entry key="SpecifiedItemNotGeneratedCSharp">Specified input(s) not included in C# interface: {0}.</entry>
+	  <entry key="SpecifiedItemNotGenerated">Specified input(s) not included in C++ interface:{0}</entry>
+      <!-- new warning message when MATLAB code unit(s) are omitted form the interface, but were only implicitly specified by the user (e.g. method of a explicitly specified class is omitted)-->
+      <entry key="ImplicitItemNotGenerated">Unable to generate C++ interface to MATLAB item(s):{0}</entry>
+	  <entry key="ImplicitItemNotGeneratedCSharp">Unable to generate C# interface to MATLAB item(s): {0}.</entry>
+      
+      <!-- Missing class dependencies message -->
+      <entry key="GeneratorHasUnresolvedClassDependencies">Unresolved class dependencies. For code to build, generate or provide these classes: {0}</entry>
+      
+      <!-- Circular class dependencies error message -->
+      <entry key="CircularClassDependencies">The following classes form circular dependencies and must be excluded:{0}</entry>
+
+      
+      <!-- File writing errors -->
+      <entry key="FileWriteError">Unable to write C++ code to file {0}.</entry>
+      <entry key="ReportWriteError">Unable to write report to file {0}.</entry>
+      
+      <!-- Messages used for compatibility on parsed MATLAB methods and functions. Will rework so this is not necessary, and these messages removed.-->
+      <entry key="MethodDefinitionNotFound">File containing method {0} definition not found.</entry>
+      <entry key="FunctionDefinitionNotFound">File containing function {0} definition not found.</entry>
+      <entry key="CannotGetNumArguments">Input arguments for {0} not determined. The function or method must be compatible with nargin.</entry>
+      <entry key="BuiltinMethodNotSupported">Built-in method {0} not supported.</entry>
+      <entry key="BuiltinFunctionNotSupported">Built-in function {0} not supported.</entry>
+      <entry key="MethodVararginNotSupported">Variable number of input arguments in method {0} is not supported.</entry>
+      <entry key="FunctionVararginNotSupported">Variable number of input arguments in function {0} is not supported.</entry>
+	  <entry key="MethodVarargoutNotSupported">Variable number of output arguments in method {0} not supported.</entry>
+      <entry key="FunctionVarargoutNotSupported">Variable number of output arguments in function {0} not supported.</entry>
+      
+      <!-- The following messages should never be witnessed by user unless there is a bug. These may be removed later since code should not be reachable.-->
+      <entry key="ClassConstructorNotFound">No constructor found for MATLAB class {0}.</entry>
+      <entry key="InvalidArrayType">The array was not recognized as a Scalar, Vector, or higher dimensional array.</entry>
+      <entry key="InternalLogicError">Encountered internal logic error. Report this error to MathWorks technical support.</entry>
+      <entry key="ArgumentHasInvalidDimensions">Argument in "{0}" has invalid dimensions. Verify the arguments block for "{0}" is valid.</entry>
+      <entry key="CannotDetermineReadType">{0} cannot be read. The input must be a list of valid namespace names, class names, or function names on the path.</entry>
+      <entry key="RegularMethodHasNoInputArgs">Method {0} has no input arguments. Non-Static MATLAB methods require at least one input argument.</entry>
+      
+      <!-- old messages regarding partial or no meta data in properties/arguments blocks, these will get replaced by report output and warning is not necessary-->
+      <entry key="MethodNoInputArgMetaData">No meta-data found for the input arguments in method {0}. Verify the method has a valid arguments block.</entry>
+      <entry key="MethodHasPartialMetaData">Arguments for method {0} have missing meta-data. Verify the method has a valid arguments block.</entry>
+      <entry key="MethodArgHasNoType">Input argument in position {0} of method "{1}" does not have a MATLAB type specified. Consider adding type validation data to the method definition.</entry>
+      <entry key="MethodArgHasNoSize">Input argument in position {0} of method "{1}" does not have a size/dimension specified. Consider adding size validation data to the method definition.</entry>
+      <entry key="FunctionNoInputArgMetaData">No meta-data found for the input arguments in function {0}. Verify the function has a valid arguments block.</entry>
+      <entry key="FunctionHasPartialMetaData">Arguments for function {0} have missing meta-data. Verify the function has a valid arguments block.</entry>
+      <entry key="FunctionArgHasNoType">Input argument in position {0} of function "{1}" does not have a MATLAB type specified. Consider adding type validation data to the function definition.</entry>
+      <entry key="FunctionArgHasNoSize">Input argument in position {0} of function "{1}" does not have a size/dimension specified. Consider adding size validation data to the function definition.</entry>
+      <entry key="PropertyHasNoMetaData">No meta-data detected for property "{0}" in class "{1}". Verify the properties block for this class is valid.</entry>
+      <entry key="PropertyHasNoValidationData">No size or class meta-data detected for property "{0}" in class "{1}". Consider adding validation data to this property in its definition.</entry>
+      <entry key="PropertyHasNoSizeValidationData">No size meta-data detected for property "{0}" in class "{1}". Consider adding size validation data to this property in its definition.</entry>
+      <entry key="PropertyHasNoClassValidationData">No class/type meta-data detected for property "{0}" in class "{1}". Consider adding class/type validation data to this property in its definition.</entry>
+      
+      <!-- Need to fix this so we use MDA instead of parsing Enum for now, then we can delete this-->
+      <entry key="EnumsNotSupported">Enums are not supported for conversion.</entry>
+      
+      <!-- Old name conflict messages, will be retired -->
+      <entry key="MethodNameConflictWithPropertyAccessors">The following method(s) in MATLAB class {0} will not be generated: {1}. Method name conflicts with a property access method.</entry>
+      <entry key="ClassNameConflictWithPropertyAccessors">The following property access methods in class {0} will not be generated: {1}. The property access method name(s) conflict with the class name.</entry>
+      <entry key="NameConflictWithCPPKeyword">MATLAB token(s) will not be generated due to C++ keyword name conflict. Rename the following token(s) to prevent possible build or runtime errors in generated C++ code: {0}.</entry>
+      <entry key="MethodArgNameConflictWithCPPKeyword">To avoid C++ keyword conflicts, these MATLAB method argument name(s) will be modified in generated C++ code: {0}.</entry>
+      <entry key="FunctionArgNameConflictWithCPPKeyword">To avoid C++ keyword conflicts, these MATLAB function argument name(s) will be modified in generated C++ code: {0}.</entry>
+      
+      <!-- New name conflict reason messages -->
+      <entry key="CPPKeywordConflictClass">Class name conflicts with C++ keyword</entry>
+      <entry key="CPPKeywordConflictProperty">Property accessor name conflicts with C++ keyword</entry>
+      <entry key="CPPKeywordConflictMethod">Method name conflicts with C++ keyword</entry>
+      <entry key="CPPKeywordConflictFunction">Function name conflicts with C++ keyword</entry>
+      <entry key="CPPKeywordConflictEnumMember">Enum member name conflicts with C++ keyword</entry>
+      <entry key="MethodConflictsWithPropertyAccessor">Method name conflicts with property accessor</entry>
+      <entry key="PropertyAccessorConflictsWithClassName">Property accessor name conflicts with class name</entry>
+      
+      <!-- Reason message for omitting unsupported handle methods -->
+      <entry key="UnsupportedHandleMethod">This handle class method is not supported</entry>
+      
+      <!-- Stand-alone one-line message that shows the number of classes or functions written to interface file -->
+      <entry key="BriefGenerationReport">{0} class(es) and {1} function(s) written to {2}</entry>
+      
+      <!-- new TBD Generic messages used for reporting printouts to command window or to file-->
+      <entry key="PackagesHeader">Namespaces:</entry>
+      <entry key="ClassesHeader">Classes:</entry>
+      <entry key="PropertiesHeader">Properties:</entry>
+      <entry key="MethodsHeader">Methods:</entry>
+      <entry key="FunctionsHeader">Functions:</entry>
+      
+      <entry key="GeneralInfo">General Information:</entry>
+      <entry key="Date">Date:</entry>
+      <entry key="WorkingDir">Working Folder:</entry>
+      
+      <entry key="InputsHeader">Inputs:</entry>
+      <entry key="true">true</entry>
+      <entry key="false">false</entry>
+      <entry key="NoReportOutputFile">No output file for the report specified</entry>
+      
+      <entry key="GeneratedItemsHeader">Generated Items:</entry>
+      <entry key="OmittedItemsHeader">Omitted Items:</entry>
+      <entry key="MissingClassesHeader">Missing Class Dependencies:</entry>
+      <entry key="VacantValidationHeader">Items Without Size or Type Validation:</entry>
+      
+      <entry key="SummaryHeader">Summary:</entry>
+      <entry key="SummaryNumClass">Number of Generated Classes:</entry>
+      <entry key="SummaryNumFunc">Number of Generated Functions:</entry>
+      <entry key="SummaryNumOmittedClass">Number of Omitted Classes:</entry>
+      <entry key="SummaryNumOmittedProp">Number of Omitted Class Properties:</entry>
+      <entry key="SummaryNumOmittedMeth">Number of Omitted Class Methods:</entry>
+      <entry key="SummaryNumOmittedFunc">Number of Omitted Functions:</entry>
+      <entry key="SummaryNumMissingClass">Number of Unresolved Class Dependencies:</entry>
+      <entry key="SummaryNumVacantData">Number of Items Without Size or Type Validation:</entry>
+      
+      <entry key="HasDependants">is required by:</entry>
+      
+      <!-- Generic message, currently used for properties with missing metadata-->
+      <entry key="NoSize">No size validation</entry>
+      <entry key="NoSizeOrType">No size or type validation</entry>
+      <entry key="NoType">No type validation</entry>
+      
+      <!-- Messages for arguments (input/output, method/function)-->
+      <entry key="InputArgNoSize">Input argument has no size validation</entry>
+      <entry key="InputArgNoSizeOrType">Input argument has no size or type validation</entry>
+      <entry key="InputArgNoType">Input argument has no type validation</entry>
+      <entry key="OutputArgNoSize">Output argument has no size validation</entry>
+      <entry key="OutputArgNoSizeOrType">Output argument has no size or type validation</entry>
+      <entry key="OutputArgNoType">Output argument has no type validation</entry>
+      
+   </message>
+</rsccat>

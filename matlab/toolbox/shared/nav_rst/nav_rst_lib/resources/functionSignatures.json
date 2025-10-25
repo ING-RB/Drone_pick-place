@@ -1,0 +1,591 @@
+{
+    "binaryOccupancyMap":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"map", "kind":"required", "type":"binaryOccupancyMap"}
+                 ],
+                 [
+                     {"name":"M",        "kind":"required", "type":["numeric","positive","scalar"]},
+                     {"name":"N",        "kind":"required", "type":["numeric","positive","scalar"]},
+                     {"name":"res",  "kind":"required", "type":["numeric","positive","integer","scalar"]},
+                     {"name":"grid",     "kind":"ordered",  "type":["choices={'grid'}"]}
+                 ],
+                 [
+                     {"name":"M",        "kind":"required", "type":["numeric","positive","scalar"]},
+                     {"name":"N",        "kind":"required", "type":["numeric","positive","scalar"]},
+                     {"name":"res",  "kind":"ordered",  "type":["numeric","positive","integer","scalar"]}
+                 ],
+                 [
+                     {"name":"matrix",  "kind":"required",  "type":["numeric","logical","@(m)any(size(m,[1 2]) > 1) && numel(size(m))==2"]}
+                 ]
+             ]
+            },
+            {"name":"LayerName", "kind":"namevalue", "type":"string"}
+        ]
+    },
+    "binaryOccupancyMap.checkOccupancy":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"binaryOccupancyMap"},
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"XY",       "kind":"required", "type":"numeric"}
+                 ],
+                 [
+                     {"name":"botLeft",  "kind":"required", "type":"numeric"},
+                     {"name":"matSize",  "kind":"required", "type":"numeric"}
+                 ]
+             ]
+            },
+            {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+        ]
+    },
+    "binaryOccupancyMap.getOccupancy":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"binaryOccupancyMap"},
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"XY",      "kind":"required",       "type":["numeric","ncols=2","real"]}
+                 ],
+                 [
+                     {"name":"botLeft", "kind":"required",       "type":["numeric","row","numel=2","real"]},
+                     {"name":"matSize", "kind":"required",       "type":["numeric","row","numel=2","positive"]}
+                 ]
+             ]
+            },
+            {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+        ]
+    },
+    "binaryOccupancyMap.setOccupancy":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"binaryOccupancyMap"},
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"XY",           "kind":"required", "type":["numeric","ncols=2","real"]},
+                     {"name":"values",       "kind":"required", "type":[["logical","numeric","scalar"],["logical","numeric","column","@(x,XY)isequal(numel(x),size(XY,1))"]]}
+                 ],
+                 [
+                     {"name":"botLeft",      "kind":"required", "type":["numeric","row","numel=2","real"]},
+                     {"name":"inputMatrix",      "kind":"required", "type":["logical","numeric","@(x)numel(size(x)) < 3"]}
+                 ]
+             ]
+            },
+            {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+        ]
+    },
+    "binaryOccupancyMap.inflate":
+    {
+        "inputs":
+        [
+            {"name":"obj",    "kind":"required", "type":"binaryOccupancyMap"},
+            {"name":"Radius", "kind":"required", "type":"numeric"},
+            {"name":"Frame",  "kind":"ordered",  "type":"choices={'world','local','grid'}"}
+        ]
+    },
+    "binaryOccupancyMap.move":
+    {
+        "inputs":
+        [
+            {"name":"obj",       "kind":"required",  "type":"binaryOccupancyMap"},
+            {"name":"moveValue", "kind":"required",  "type":["numeric","row","numel=2","real"]},
+            {"name":"MoveType",  "kind":"namevalue", "type":"choices={'Absolute','Relative'}"},
+            {"name":"SyncWith",  "kind":"namevalue", "type":["binaryOccupancyMap","@(x,obj)all(x~=obj)"]},
+            {"name":"FillValue", "kind":"namevalue", "type":"choices={0,1}"}
+        ]
+    },
+    "binaryOccupancyMap.syncWith":
+    {
+        "inputs":
+        [
+            {"name":"obj",       "kind":"required", "type":"binaryOccupancyMap"},
+            {"name":"sourcemap", "kind":"required", "type":["binaryOccupancyMap","@(x,obj)all(x~=obj)"]}
+        ]
+    },
+    "binaryOccupancyMap.occupancyMatrix":
+    {
+        "inputs":
+        [
+            {"name":"obj",         "kind":"required",  "type":"binaryOccupancyMap"}
+        ]
+    },
+    "binaryOccupancyMap.show":
+    {
+        "inputs":
+        [
+            {"name":"obj",        "kind":"required",  "type":"binaryOccupancyMap"},
+            {"name":"Frame",      "kind":"ordered",   "type":"choices={'world','local','grid'}"},
+            {"name":"Parent",     "kind":"namevalue", "type":"matlab.graphics.axis.Axes"},
+            {"name":"FastUpdate", "kind":"namevalue", "type":"choices={0,1}"}
+        ]
+    },
+    "binaryOccupancyMap.insertRay":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"binaryOccupancyMap"}
+        ]
+    },
+    "binaryOccupancyMap.copy":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"binaryOccupancyMap"}
+        ]
+    },
+    "binaryOccupancyMap.raycast":
+    {
+        "inputs":
+        [
+            {"name":"obj",   "kind":"required", "type":"binaryOccupancyMap"}
+        ]
+    },
+    "occupancyMap.rayIntersection":
+    {
+        "inputs":
+        [
+            {"name":"obj",   "kind":"required", "type":"occupancyMap"}
+        ]
+    },
+    "binaryOccupancyMap.rayIntersection":
+    {
+        "inputs":
+        [
+            {"name":"obj",   "kind":"required", "type":"binaryOccupancyMap"}
+        ]
+    },
+    "bicycleKinematics":
+    {
+        "inputs":
+        [
+            {"name":"WheelBase", "kind":"namevalue", "type":["numeric", "scalar", "positive"]},
+            {"name":"VehicleSpeedRange", "kind":"namevalue", "type":["numeric", "vector", "positive"]},
+            {"name":"MaxSteeringAngle", "kind":"namevalue", "type":["numeric", "scalar", "positive"]},
+            {"name":"VehicleInputs", "kind":"namevalue", "type":"choices={'VehicleSpeedSteeringAngle','VehicleSpeedHeadingRate'}"}
+        ]
+    },
+    "bicycleKinematics.derivative":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"bicycleKinematics"},
+            {"name":"state", "kind":"required", "type":["numeric", "vector", "numel=3"]},
+            {"name":"cmds", "kind":"required", "type":["numeric", "vector", "numel=2"]}
+        ]
+    },
+    "collisionVHACD":
+    {
+        "inputs":
+        [
+            {"name":"sourceMesh", "kind":"required", "type":"triangulation"},
+            {"name":"options", "kind":"ordered", "type":"vhacdOptions"}
+        ],
+        "outputs":
+        [
+            {"name":"convexCollMesh", "type":"cell"},
+            {"name":"info", "type":"struct"}
+        ]
+    },
+    "lidarScan":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"ranges", "kind":"required", "type":[["numeric","@(x)isempty(x)"],["numeric","vector","real"]]},
+                     {"name":"angles", "kind":"required", "type":[["numeric","@(x)isempty(x)"],["numeric","vector","real"]]}
+                 ],
+                 [
+                     {"name":"cart", "kind":"required", "type":["numeric","ncols=2","real"]}
+                 ],
+                 [
+                     {"name":"scanMsg", "kind":"required", "type":"ros.msg.sensor_msgs.LaserScan"}
+                 ]
+             ]
+            }
+        ],
+        "outputs":
+        [
+            {"name":"scan", "type":"lidarScan"}
+        ]
+    },
+    "lidarScan.transformScan":
+    {
+        "inputs":
+        [
+            {"name":"scan", "kind":"required", "type":"lidarScan"},
+            {"name":"relPose", "kind":"required", "type":["numeric","vector","numel=3","real"]}
+        ],
+        "outputs":
+        [
+            {"name":"transScan", "type":"lidarScan"}
+        ]
+    },
+    "lidarScan.removeInvalidData":
+    {
+        "inputs":
+        [
+            {"name":"scan", "kind":"required", "type":"lidarScan"},
+            {"name":"RangeLimits", "kind":"namevalue", "type":["numeric","vector","numel=2","real"]},
+            {"name":"AngleLimits", "kind":"namevalue", "type":["numeric","vector","numel=2","real"]}
+
+        ],
+        "outputs":
+        [
+            {"name":"validScan", "type":"lidarScan"}
+        ]
+    },
+    "lidarScan.plot":
+    {
+        "inputs":
+        [
+            {"name":"scan", "kind":"required", "type":"lidarScan"},
+            {"name":"Parent", "kind":"namevalue", "type":"matlab.graphics.axis.Axes"},
+            {"name":"MaximumRange", "kind":"namevalue", "type":["numeric","scalar","real","positive"]}
+        ],
+        "outputs":
+        [
+            {"name":"linehandle", "type":"matlab.graphics.chart.primitive.Line"}
+        ]
+    },
+    "headingRateToSteeringAngle":
+    {
+        "inputs":
+        [
+            {"name":"VelocityCommands",    "kind":"required", "type":["numeric", "2d", "ncols=3", "real"]},
+            {"name":"Bicylcleskinematics", "kind":"required", "type":"bicycleKinematics"}
+        ],
+        "outputs":
+        [
+            {"name":"steeringAngle", "type":["numeric", "2d", "column", "real"]}
+        ]
+    },
+    "plannerLineSpec.start":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.goal":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.state":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.path":
+    {
+       "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.reversePath":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.tree":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.reverseTree":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.goalTree":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "plannerLineSpec.heading":
+    {
+        "inputs":
+        [
+            {"name":"Color",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<=1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineStyle",   "kind":"namevalue", "type":[["string","char","choices={'-','--',':','-.','none'}"],["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"LineWidth",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"Marker",   "kind":"namevalue", "type":[["string","char","choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"],
+                                                            ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerSize",   "kind":"namevalue", "type":["numeric","scalar","positive"]},
+            {"name":"MarkerEdgeColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"MarkerFaceColor",   "kind":"namevalue", "type":[["numeric","@(x)size(x,2)==3 && all(x<1) && all(x>=0)"],
+                                                           ["string","char","choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                                                           ["string","char","@(x)strlength(x)<=7&&strlength(x)>0"],
+                                                           ["string","char", "@matlab.graphics.internal.isColorSpec"]]},
+            {"name":"DisplayName",   "kind":"namevalue", "type":["string","char","@(x)strlength(x)>0"]}
+        ],
+        "outputs":
+        [
+            {"name":"cellData", "type":"cell"},
+            {"name":"structData", "type":"struct"}
+        ]
+    },
+    "rangeSensor":
+    {
+        "inputs":
+        [
+            {"name":"Range","kind":"namevalue","type":["numeric","real"]},
+            {"name":"HorizontalAngle", "kind":"namevalue", "type":["numeric","real"]},
+            {"name":"HorizontalAngleResolution", "kind":"namevalue", "type":["numeric","scalar","real","positive"]},
+            {"name":"RangeNoise", "kind":"namevalue", "type":["numeric","scalar","real"]},
+            {"name":"HorizontalAngleNoise", "kind":"namevalue", "type":["numeric","scalar","real"]}
+        ]
+    },
+    "showCollisionArray":
+    {
+        "inputs":
+        [
+            {"name":"collArray", "kind":"required", "type":"cell"},
+            {"name":"Parent", "kind":"namevalue", "type":"matlab.graphics.axis.Axes"},
+            {"name":"ColorOrder", "kind":"namevalue", "type":["numeric","real","ncols=3","<=1",">=0"]}
+        ],
+        "outputs":
+        [
+            {"name":"ax", "type":"matlab.graphics.axis.Axes"},
+            {"name":"patches", "type":"patch"}
+        ]
+    },
+    "vhacdOptions":
+    {
+        "inputs":
+        [
+            {
+                "mutuallyExclusiveGroup":
+                [
+                    [
+                        {"name":"type",   "kind":"required", "type":"choices={'IndividualMesh'}"},
+                        {"name":"VoxelResolution",      "kind":"namevalue",     "type":["numeric", "scalar", "integer", "positive"]},
+                        {"name":"MaxNumConvexHulls",    "kind":"namevalue",     "type":["numeric", "scalar", "integer", "positive"]},
+                        {"name":"MaxNumVerticesPerHull","kind":"namevalue",     "type":["numeric", "scalar", "integer", "positive"]},
+                        {"name":"FillMode",             "kind":"namevalue",     "type":"choices={'FLOOD_FILL','RAYCAST_FILL', 'SURFACE_ONLY'}"}
+                    ],
+                    [
+                        {"name":"type",   "kind":"required", "type":"choices={'RigidBodyTree'}"},
+                        {"name":"VoxelResolution",      "kind":"namevalue",     "type":[["numeric", "scalar", "integer", "positive"],["numeric","row","integer","positive"]]},
+                        {"name":"MaxNumConvexHulls",    "kind":"namevalue",     "type":[["numeric", "scalar", "integer", "positive"],["numeric","row","integer","positive"]]},
+                        {"name":"MaxNumVerticesPerHull","kind":"namevalue",     "type":[["numeric", "scalar", "integer", "positive"],["numeric","row","integer","positive"]]},
+                        {"name":"FillMode",             "kind":"namevalue",     "type":"choices={'FLOOD_FILL','RAYCAST_FILL', 'SURFACE_ONLY'}"},
+                        {"name":"SourceMesh",           "kind":"namevalue",     "type":"choices={'CollisionGeometry','VisualGeometry'}"}
+                    ]
+                ]
+            }
+        ],
+        "outputs":
+        [
+            {"name":"opts", "type":"vhacdOptions"}
+        ]
+    }
+}

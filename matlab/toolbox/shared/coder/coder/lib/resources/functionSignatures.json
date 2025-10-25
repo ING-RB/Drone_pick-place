@@ -1,0 +1,232 @@
+{
+    "coder.allowpcode":
+    {
+        "inputs":
+        [
+            {"name":"type", "kind":"required", "type":"choices={'plain'}"}
+        ]
+    },
+    "coder.ceval":
+    {
+        "inputs":
+        [
+            {"name":"flags", "kind":"ordered", "type":"choices={'-global','-gpudevicefcn','-layout:any','-layout:rowMajor','-row','-layout:columnMajor','-col'}", "repeating":true},
+            {"tuple":
+             [
+                 {"name":"-headerfile", "type":"choices={'-headerfile'}"},
+                 {"name":"headerfile", "type":[["char"], ["file=*.hpp,*.h,*.hh,*.cuh"]]}
+             ], "kind": "ordered", "repeating":false},
+            {"name":"flags", "kind":"ordered", "type":"choices={'-global','-gpudevicefcn','-layout:any','-layout:rowMajor','-row','-layout:columnMajor','-col'}", "repeating":true,
+             "comment":"The flags are repeated both before and after the 'name-value' argument -headerfile since these can appear in any order."},
+            {"name":"function_name", "kind":"required", "type":"char"},
+            {"name":"c_function_args", "kind":"ordered", "repeating":true}
+        ]
+    },
+    "coder.cinclude":
+    {
+        "inputs":
+        [
+            {"name":"headerfile", "kind":"required", "type":[["char"], ["file=*.hpp,*.h,*.hh,*.cuh"]]},
+            {"name":"InAllSourceFiles", "kind":"namevalue", "type":["logical", "scalar"]}
+        ]
+    },
+    "coder.cstructname":
+    {
+        "inputs":
+        [
+            {"name":"var", "kind":"required",
+             "type":[["coder.StructType"], ["coder.CellType"], ["struct"], ["cell"]]},
+            {"name":"structName", "kind":"required", "type":"char"},
+            {"name":"extern", "kind":"positional", "type":"choices={'extern'}"},
+            {"name":"HeaderFile", "kind":"namevalue", "type":[["char"], ["file=*.hpp,*.h,*.hh,*.cuh"]]},
+            {"name":"Alignment", "kind":"namevalue", "type":["<=128"]}
+        ]
+    },
+    "coder.extrinsic":
+    {
+        "inputs":
+        [
+            {"name":"function_name", "kind":"required", "type":"identifier=function", "repeating":true}
+        ]
+    },
+    "coder.inline":
+    {
+        "inputs":
+        [
+            {"name":"arg", "kind":"required", "type":"choices={'always', 'never', 'default'}"}
+        ]
+    },
+    "coder.load":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":"file"}
+        ]
+    },
+    "coder.loadDeepLearningNetwork":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"filename", "kind":"required", "type":"filepath=*.mat"}
+                 ],
+                 [
+                     {"name":"function", "kind":"required", "type":"identifier=function"}
+                 ]
+             ]
+            },
+            {"name":"network_name", "kind":"positional", "type":"char"}
+        ]
+    },
+    "coder.opaque":
+    {
+        "inputs":
+        [
+            {"name":"type", "kind":"required", "type":"char"},
+            {"name":"value", "kind":"ordered", "type":"char"},
+            {"name":"HeaderFile", "kind":"namevalue", "type":[["char"], ["file=*.hpp,*.h,*.hh,*.cuh"]]}
+        ]
+    },
+    "coder.storageClass":
+    {
+        "inputs":
+        [
+            {"name":"global_name", "kind":"required", "type":"identifier=variable"},
+            {"name":"storage_class", "kind":"required", "type":"choices={'ExportedGlobal', 'ExportedDefine', 'ImportedExtern', 'ImportedExternPointer'}"}
+        ]
+    },
+    "coder.target":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"required", "type":"choices={'MATLAB', 'MEX', 'Sfun', 'Rtw', 'HDL', 'Custom', 'C', 'C++', 'CUDA', 'HLS', 'Verilog', 'VHDL', 'SystemVerilog', 'LadderLogic', 'StructuredText'}"}
+        ]
+    },
+    "coder.unroll":
+    {
+        "inputs":
+        [
+            {"name":"flag", "kind":"ordered", "type":["logical", "scalar"]}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addLinkFlags'}",  "kind":"required"},
+            {"name":"link_flags", "kind":"required"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addCompileFlags'}",  "kind":"required"},
+            {"name":"compile_flags", "kind":"required"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addDefines'}",  "kind":"required"},
+            {"name":"defines", "kind":"required"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addLinkObjects'}",  "kind":"required"},
+            {"name":"filename", "kind":"required"},
+            {"name":"path", "kind":"required"},
+            {"name":"priority", "kind":"positional"},
+            {"name":"precompiled", "kind":"positional"},
+            {"name":"linkonly", "kind":"positional"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addNonBuildFiles'}",  "kind":"required"},
+            {"name":"filename", "kind":"required"},
+            {"name":"path", "kind":"positional"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addSourceFiles'}",  "kind":"required"},
+            {"name":"filename", "kind":"required"},
+            {"name":"path", "kind":"positional"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addIncludeFiles'}",  "kind":"required"},
+            {"name":"filename", "kind":"required"},
+            {"name":"path", "kind":"positional"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addSourcePaths'}",  "kind":"required"},
+            {"name":"path", "kind":"required"}
+        ]
+    },
+    "coder.updateBuildInfo":
+    {
+        "inputs":
+        [
+            {"name":"action", "type":"choices={'addIncludePaths'}",  "kind":"required"},
+            {"name":"path", "kind":"required"}
+        ]
+    },
+    "coder.varsize":
+    {
+        "inputs":
+        [
+            {"name":"varName", "kind":"required", "type":"identifier=variable", "repeating":true},
+            {"name":"ubounds", "kind":"positional", "type":[["double", "vector"]]},
+            {"name":"dims", "kind":"ordered", "type":[["logical", "vector"]]}
+        ]
+    },
+    "coder.internal.assert":
+    {
+        "inputs":
+        [
+            {"name":"condition", "kind":"required"},
+            {"name":"messageId", "kind":"required", "type":"identifier=messageid"},
+            {"name":"messageArg", "kind":"ordered", "repeating":true},
+            {"name":"CatalogId", "kind":"namevalue", "type":"identifier=messageid"},
+            {"name":"IfNotConst", "kind":"namevalue", "type":"choices={'Fail','checkAtRuntime'}"}
+        ]
+    },
+    "coder.internal.errorIf":
+    {
+        "inputs":
+        [
+            {"name":"condition", "kind":"required"},
+            {"name":"messageId", "kind":"required", "type":"identifier=messageid"},
+            {"name":"messageArg", "kind":"ordered", "repeating":true},
+            {"name":"CatalogId", "kind":"namevalue", "type":"identifier=messageid"},
+            {"name":"IfNotConst", "kind":"namevalue", "type":"choices={'Fail','checkAtRuntime'}"}
+        ]
+    },
+    "coder.internal.error":
+    {
+        "inputs":
+        [
+            {"name":"messageId", "kind":"required", "type":"identifier=messageid"},
+            {"name":"messageArg", "kind":"ordered", "repeating":true}
+        ]
+    }
+}

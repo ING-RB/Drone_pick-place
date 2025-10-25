@@ -1,0 +1,26 @@
+function assertNoVariableNameInputs(supplied)
+% Errors when passed NV pairs relating to VarNames
+
+%   Copyright 2021 The MathWorks, Inc.
+
+function validateVariableNVPair(name)
+    if isfield(supplied, name) && supplied.(name)
+        error(message("MATLAB:readtable:VariableNamesNotSupported", name));
+    end
+end
+
+unsupportedNVPairs = ["ReadVariableNames", ...
+                      "PreserveVariableNames", ...
+                      "VariableNamingRule", ...
+                      "VariableDescriptionsLine", ...
+                      "VariableUnitsLine", ...
+                      "VariableDescriptionsRange", ...
+                      "VariableUnitsRange", ...
+                      "VariableDescriptionsSelector", ...
+                      "VariableUnitsSelector"];
+                  
+for i = 1:length(unsupportedNVPairs)
+   validateVariableNVPair(unsupportedNVPairs(i));
+end
+
+end

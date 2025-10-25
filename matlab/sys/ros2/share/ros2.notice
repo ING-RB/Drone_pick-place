@@ -1,0 +1,243 @@
+This version of the ros2 library and underlying modules have been modified from their original source.
+This notice describes all changes, and lists the affected files.
+
+Removed all files within the docutils project that are not within the public domain
+    python/docutils/docs/user/docutils-05-compat.sty.txt
+    python/docutils/docutils/utils/error_reporting.py
+    python/docutils/docutils/utils/math/__init__.py
+    python/docutils/docutils/utils/math/latex2mathml.py
+    python/docutils/docutils/utils/math/math2html.py
+    python/docutils/docutils/utils/roman.py
+    python/docutils/docutils/utils/smartquotes.py
+    python/docutils/docutils/writers/html5_polyglot/math.css
+    python/docutils/docutils/writers/latex2e/docutils-05-compat.sty
+    python/docutils/docutils/writers/s5_html/themes/default/iepngfix.htc
+    python/docutils/docutils/writers/xetex/__init__.py
+    python/docutils/test/test_transforms/test_smartquotes.py
+    python/docutils/tools/editors/emacs/rst.el
+
+Changed tinyxml_vendor to use pre-downloaded tinyxml release by changing the file target
+    src/ros2/tinyxml_vendor/CMakeLists.txt
+
+Changed poco_vendor to use pre-downloaded Poco release by changing the file target
+    src/ros2/poco_vendor/CMakeLists.txt
+
+Created pcre_vendor package to wrap PCRE dependency, and changed poco_vendor dependency to pcre_vendor instead of pcre
+    src/ros2/poco_vendor/package.xml
+    src/ros2/pcre_vendor/*
+
+Changed libcurl_vendor to use pre-downloaded newer curl release by changing the file target and version
+    src/ros/resource_retriever/libcurl_vendor/CMakeLists.txt
+
+Removed trailing whitespace from ament_index resource return values
+    src/ament/ament_cmake/ament_cmake_core/cmake/index/ament_index_get_resource.cmake
+
+Skipped C++14 const optimization in testing on Windows
+    src/osrf/osrf_testing_tools_cpp/osrf_testing_tools_cpp/include/osrf_testing_tools_cpp/vendor/mpark/variant/variant.hpp
+
+Not building rcl_logging_log4cxx package to minimize dependencies
+    src/ros2/rcl_logging/rcl_logging_log4cxx/COLCON_IGNORE
+
+Passed additional build flags on from vendor packages to force use of earlier version of GLIBC library
+    src/ros/resource_retriever/libcurl_vendor/CMakeLists.txt
+    src/ros2/libyaml_vendor/CMakeLists.txt
+    src/ros2/pcre_vendor/CMakeLists.txt
+    src/ros2/rcutils/CMakeLists.txt
+
+Added reset_statement, reinitialize_iterator, increment_iterator functions for resetting and iterating through sqlite rows. Changed files:
+    src/ros2/rosbag2/rosbag2_storage_default_plugins/include/rosbag2_storage_default_plugins/sqlite/sqlite_statement_wrapper.hpp
+    src/ros2/rosbag2/rosbag2_storage_default_plugins/include/rosbag2_storage_default_plugins/sqlite/sqlite_storage.hpp
+    src/ros2/rosbag2/rosbag2_storage_default_plugins/src/rosbag2_storage_default_plugins/sqlite/sqlite_storage.cpp
+    src/ros2/rosbag2/rosbag2_storage/include/rosbag2_storage/storage_interfaces/read_only_interface.hpp
+    src/ros2/rosbag2/rosbag2_storage/include/rosbag2_storage/storage_interfaces/read_write_interface.hpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/test_plugin.cpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/testplugin.hpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/test_read_only_plugin.cpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/test_read_only_plugin.hpp
+    src/ros2/rosbag2/rosbag2/include/rosbag2/sequential_reader.hpp
+    src/ros2/rosbag2/rosbag2/src/rosbag2/sequential_reader.cpp
+    src/ros2/rosbag2/rosbag2/test/rosbag2/mock_storage.hpp
+
+Disabled OpenSSL to be picked from system path
+   src/eProsima/Fast-RTPS/CMakeLists.txt (workspace file)
+
+Use ZLIB imported target to improve portability. Avoid hard-coded absolute paths to zlib by using the imported target ZLIB::ZLIB set by FindZLIB.cmake instead of ZLIB_LIBRARIES.
+    https://github.com/pocoproject/poco/pull/2599/files
+    patch/Foundation/Fc.txt
+    patch/Foundation/PocoFoundationConfig.cmake
+
+Use ros2 class_loader in ros1 (using compile time switch ROS1_USES_ROS2_CLASS_LOADER) to avoid class_loader library conflicts when both rosbag and ros2bag objects are being loaded into memory in the same MATLAB session.
+    src/ros/class_loader/include/class_loader/class_loader_core.hpp
+    src/ros/class_loader/include/class_loader/class_loader.hpp
+    src/ros/class_loader/include/class_loader/exceptions.hpp
+    src/ros/class_loader/include/class_loader/meta_object.hpp
+    src/ros/class_loader/include/class_loader/multi_library_class_loader.hpp
+    src/ros/class_loader/include/class_loader/register_macro.hpp
+
+Set AbstractMetaObjectBase base class typeid of ros2 class_loader
+    https://github.com/ros/class_loader/pull/127/files
+    src/ros/class_loader/include/class_loader/meta_object.hpp
+
+Remove broken constructors
+    https://github.com/ros2/system_tests/pull/389/files
+    src/ros2/system_tests/test_quality_of_service/include/test_quality_of_service/qos_test_publisher.hpp
+    src/ros2/system_tests/test_quality_of_service/include/test_quality_of_service/qos_test_subscriber.hpp
+
+Add RPATH to all ros2 libraries in Linux and Darwin. 
+    Added RPATH as $ORIGIN in Linux
+    Added RPATH as @loader_path in Darwin.
+    This change is done to resolve the following errors while reading a ros2bag object:
+    1. [ERROR] [rosbag2]: Unable to load instance of converter interface: poco exception: library could not be found: <matlabroot>/sys/ros2/glnxa64/ros2/librmw_fastrtps_cpp.so
+    2. Something went wrong loading the typesupport library for message type <msgType>. Library could not be found.
+
+Added zip files for numpy and coverage, as the following errors occured due to python update from 3.7.0 to 3.7.11.
+    https://escalations.insidelabs.mathworks.com/escalations/detail-view.html?Record=2175098
+    1.ERROR: Could not find a version that satisfies the requirement numpy (from versions: none)
+      ERROR: No matching distribution found for numpy
+    2.ERROR: Could not find a version that satisfies the requirement coverage>=4.4 (from pytest-cov) (from versions: none)
+      ERROR: No matching distribution found for coverage>=4.4 (from pytest-cov)
+
+Added RMWImplementedConverter to search for the rmw implemented converter based on the encoding format of the ros2bag .
+Removed rosbag2_converter_default_plugins because this implementation is a slightly more generic version of the "CDR converter plugin"
+     https://github.com/ros2/rosbag2/pull/670
+
+Fix for thread state issue in eclipse-cyclonedds/cyclonedds due to which there are sporadic stalling issues on few linux machines during node destruction.
+    https://github.com/eclipse-cyclonedds/cyclonedds/pull/708/files
+    src/ros2/eclipse-cyclonedds/cyclonedds/src/core/ddsi/src/q_gc.c
+    src/ros2/eclipse-cyclonedds/cyclonedds/src/core/ddsi/src/q_thread.c
+
+Fix for UnicodeDecodeError for Wstrings message with bounded/unbounded/fixedsize arrays.
+    https://github.com/ros2/rosidl/pull/620/files
+    src/ros2/rosidl/rosidl_adapter/rosidl_adapter/action/__init__.py
+    src/ros2/rosidl/rosidl_adapter/rosidl_adapter/msg/__init__.py
+    src/ros2/rosidl/rosidl_adapter/rosidl_adapter/srv/__init__.py
+
+Upgrade eprosima Fast DDS version from 2.1.1 to 2.5.0
+   https://github.com/eProsima/Fast-DDS/releases/tag/v2.5.0
+   Disabled OpenSSL to be picked from system path
+   src/eProsima/Fast-DDS/CMakeLists.txt
+
+Enable Support for maca64 platform
+   src/eProsima/foonathan_memory_vendor/CMakeLists.txt
+   src/osrf/osrf_testing_tools_cpp/osrf_testing_tools_cpp/src/memory_tools/vendor/bombela/backward-cpp/backward.hpp
+   src/ros2/mimick_vendor/CMakeLists.txt
+   src/ros2/rosbag2/zstd_vendor/CMakeLists.txt
+
+rosbag2:
+   If cache data exists, it needs to flush the data into the storage before shutdown
+       https://github.com/ros2/rosbag2/commit/1daf83341d5dde4d3221e4c8cf84af75b7de91c9
+   SequentialWriter to cache by message size instead of message count
+       https://github.com/ros2/rosbag2/commit/8a917af4dfdd35b4a7e3a5a12bd33cc991d6a02c
+   src/ros2/rosbag2/rosbag2_cpp/include/rosbag2_cpp/writers/sequential_writer.hpp
+   src/ros2/rosbag2/rosbag2_cpp/src/rosbag2_cpp/writers/sequential_writer.cpp
+   src/ros2/rosbag2/rosbag2_cpp/test/rosbag2_cpp/test_sequential_writer.cpp
+
+Uncaught exception due to invalid mutex on macOS:
+   https://github.com/ros2/rmw_fastrtps/issues/491
+   src/ros2/src/rmw_fastrtps/rmw_fastrtps_cpp/src/rmw_init.cpp
+   src/ros2/src/rmw_fastrtps/rmw_fastrtps_cpp/src/init_rmw_context_impl.cpp
+   src/ros2/src/rmw_fastrtps/rmw_fastrtps_dynamic_cpp/src/rmw_init.cpp
+   src/ros2/src/rmw_fastrtps/rmw_fastrtps_dynamic_cpp/src/init_rmw_context_impl.cpp
+
+Added octomap_msgs package:
+   This is a message representing 3D Occupany map. This message is required when users want to pub/sub 3D occupancy map.
+   We have convenience functions using octomap message.
+   https://www.mathworks.com/help/ros/ref/rosreadoccupancymap3d.html?s_tid=doc_ta
+
+Fix rclpy build error on Apple when buying python39 from Bnativearm
+   src/ros2/python_cmake_module/cmake/Modules/FindPythonExtra.cmake
+   
+Add netifaces arm64 wheel file for python39
+   python/netifaces-0.11.0-cp39-cp39-macosx_11_0_arm64.whl
+
+Address following issue when getting info on larger files (ex: rosbag2 file) in windows
+ Open issue: https://github.com/ros2/rcpputils/issues/175
+ cannot get file size: The file pointer cannot be set on the specified device or file.
+ src/ros2/rcpputils/src/filesystem_helper.cpp
+ src/ros2/rcutils/src/filesystem.c
+
+Fix below class_loader severe warning when compressed bag file is opened and its destructor is called
+ Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+ Open issue: https://github.com/ros2/rosbag2/issues/986
+ src/ros2/rosbag2/rosbag2_compression/src/rosbag2_compression/sequential_compression_reader.cpp
+
+Disable false message about plugin not found on bag opening
+ https://github.com/ros2/rosbag2/pull/1219/files
+ src/ros2/rosbag2/rosbag2_storage/src/rosbag2_storage/impl/storage_factory_impl.hpp
+
+Add wheel files for python310 support
+ python/PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+ python/PyYAML-6.0-cp310-cp310-win_amd64.whl
+ python/PyYAML-6.0-cp310-cp310-macosx_10_9_x86_64.whl
+ python/PyYAML-6.0-cp310-cp310-macosx_11_0_arm64.whl
+ python/coverage-6.5.0-cp310-cp310-macosx_10_9_x86_64.whl
+ python/coverage-6.5.0-cp310-cp310-macosx_11_0_arm64.whl python/coverage-6.5.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+ python/coverage-6.5.0-cp310-cp310-win_amd64.whl
+ python/pywin32-305-cp310-cp310-win_amd64.whl
+ 
+Add ROS 2 Unity package for establishing the communication between Unity and ROS 2
+ src/ros2/ROS-TCP-Endpoint-ROS2
+
+Revert the following commits related to loading a library in ROS 2 humble - g2946726
+ Defer path resolution of rmw implementation libraries to dynamic linker. #169 - https://github.com/ros2/rmw_implementation/pull/169/files
+ Defer path resolution of rosidl typesupport libraries to dynamic linker. #98 - https://github.com/ros2/rosidl_typesupport/pull/98/files
+
+Fix ambiguous auto variable on gcc 7.5 that comes with Suse15 machine - g3014276
+ https://github.com/ros2/rclcpp/pull/1976/files
+
+Upgrade rosbag2 from 0.15.3 to 0.15.7 for MCAP Support in ROS 2 Humble
+ Requires Upgrade rclcpp from 16.0.3 to 16.0.5
+ Requires Upgrade rcl from 5.3.2 to 5.3.4
+
+Removed reset_statement, reinitialize_iterator, increment_iterator functions for resetting and iterating through sqlite rows.
+ These are now not being used as we have seek functionality from humble. Changed files:
+    src/ros2/rosbag2/rosbag2_storage_default_plugins/include/rosbag2_storage_default_plugins/sqlite/sqlite_statement_wrapper.hpp
+    src/ros2/rosbag2/rosbag2_storage_default_plugins/include/rosbag2_storage_default_plugins/sqlite/sqlite_storage.hpp
+    src/ros2/rosbag2/rosbag2_storage_default_plugins/src/rosbag2_storage_default_plugins/sqlite/sqlite_storage.cpp
+    src/ros2/rosbag2/rosbag2_storage/include/rosbag2_storage/storage_interfaces/read_only_interface.hpp
+    src/ros2/rosbag2/rosbag2_storage/include/rosbag2_storage/storage_interfaces/read_write_interface.hpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/test_plugin.cpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/testplugin.hpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/test_read_only_plugin.cpp
+    src/ros2/rosbag2/rosbag2_storage/test/rosbag2_storage/test_read_only_plugin.hpp
+    src/ros2/rosbag2/rosbag2/include/rosbag2/sequential_reader.hpp
+    src/ros2/rosbag2/rosbag2/src/rosbag2/sequential_reader.cpp
+    src/ros2/rosbag2/rosbag2/test/rosbag2/mock_storage.hpp
+
+Removed filtering by message types, as we are doing this filtering in MATLAB already.
+ If enableTimeFilter is on, then time filtering is considered between start time and end time. Messages will be whitelisted by timeStamp when reading a bag. Only messages within these
+ specified timeStamps will be returned. In this way, similar to ros1, where only topics, start time and end time are enough to do the filtering by topics, message types and timestamp. 
+ Mcap also does the filtering on the basis of topics, start time and end time. Changed files:
+    src/ros2/rosbag2/rosbag2_storage/include/rosbag2_storage/storage_filter.hpp
+	src/ros2/rosbag2/rosbag2_storage_default_plugins/src/rosbag2_storage_default_plugins/sqlite/sqlite_storage.cpp 
+    
+Replaced opt/<vendor_name> with CMAKE_INSTALL_PREFIX. So that the vendor packages will be installed to install path instead of install/opt/<vendor_name> path.
+    src/ament/ament_cmake/ament_cmake_vendor_package/cmake/ament_vendor.cmake
+
+Updated pytest_cov to latest version 5.0.0 from 4.0.0
+    python/pytest_cov-5.0.0-py3-none-any.whl
+    
+Added vcstool-0.3.0-py3-none-any.whl for ament_cmake_vendor_package
+    python/vcstool-0.3.0-py3-none-any.whl
+
+Used external project instead of amake cmake vendor for sqlite3 vendor package as the ament vendor was unable to recognize the local patch file path for applying the patch on Windows.
+    src/ros2/rosbag2/sqlite3_vendor/CMakeLists.txt
+
+Added below change for rpath issue on mac for lz4 package - lz4/build/cmake/CMakeLists.txt
+    BUILD_WITH_INSTALL_RPATH 1
+    
+Added this command - override MW_COMPILER_ROOT = /mathworks/hub/3rdparty/internal/gcc/ctng/glnxa64/gcc12.3.0-glibc2.28-mw00/x86_64-linux-gnu in makefile_3p.mk
+Through this command we are pointing to a newer build of the same GCC version. This is the fix for the below error,
+/mathworks/devel/bat/B3p0/build/3p/install/unknown/glnxa64/ros2/ros2/lib/libfastrtps.so.2.14.0 has the following problems:
+   found GLIBC 2.28++ reference(s)
+    183: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettid@GLIBC_2.30 (29)
+  24463: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettid@GLIBC_2.30
+ 
+Disabled Fast-DDS statistics tool in ros2-jazzy to avoid transport stopped issues
+    src/eProsima/Fast-DDS/CMakeLists.txt
+
+Reverted github commit - https://github.com/eProsima/Fast-DDS/commit/7832901d34c5fff09609411ce0d4b5b124919e76
+in Fast-DDS package version 2.14.3 as pub-sub communication test was failing on maca64 platform
+
+Upgrade pip version from 21.2.2 to 24.3.1
+   Replaced pip-21.2.2-py3-none-any.whl with pip-24.3.1-py3-none-any.whl

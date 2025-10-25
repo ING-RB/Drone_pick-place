@@ -1,0 +1,21 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code><a href="matlab: doc web" target="_blank">web</a></code> function currently
+                    opens external sites using your system browser by default, unless configured
+                    otherwise in the MATLAB Web Preferences. For a site that opens in the system
+                    browser, the returned handle or URL will be empty.</p><p>In a future release, the <code>web</code> function will open sites only
+                    in the system browser. Therefore, MATLAB will produce an error if your code
+                    contains a <code>web</code> syntax that returns a handle or URL.</p><br/><strong>Suggested Action</strong><br/><p>Remove the handle and URL output arguments of the <code>web</code>
+                    function. Consider using the <code>'-browser'</code> option to open all
+                    pages in your system browser. This table shows some examples of how you can
+                    update your code.</p><p>
+                    </p>
+<div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="33%" align="left"><col class="tcol2" width="33%" align="left"><col class="tcol3" width="33%" align="left"></colgroup><thead><tr><th>Before</th><th>&nbsp;</th><th>After</th></tr></thead><tbody><tr><td>
+                                        <code>[stat,h]&nbsp;=&nbsp;web('https://www.mathworks.com');</code>
+                                    </td><td>&nbsp;</td><td>
+                                        <code>stat&nbsp;=&nbsp;web('https://www.mathworks.com','-browser');</code>
+                                    </td></tr><tr><td>
+                                        <code>[stat,h,url]&nbsp;=&nbsp;web('https://www.mathworks.com');</code>
+                                    </td><td>&nbsp;</td><td>
+                                        <code>stat&nbsp;=&nbsp;web('https://www.mathworks.com','-browser');</code>
+                                    </td></tr></tbody></table></div><p>
+
+                </p></body></html>

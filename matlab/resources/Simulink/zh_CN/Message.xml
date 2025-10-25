@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="Capacity">容量</entry>
+    <entry key="Observer">任何 Observer</entry>
+    <entry key="SignalLogging">任何信号记录</entry>
+    <entry key="SignalStreaming">任何信号流式传输</entry>
+    <entry key="InputPort">输入端口</entry>
+    <entry key="OutputPort">输出端口</entry>
+    <entry key="InvalidOutportMixedVirtualBus">''{0}'' 模块不支持具有信号和消息元素的虚拟总线。</entry>
+    <entry key="InvalidBusAssignmentBlk">''{0}'' 模块不支持消息。</entry>
+    <entry key="InvalidVirtualBusDuplicateLabel">''{0}'' contains duplicate bus element names, which is not supported for virtual bus with message element. Use unique message element names.</entry>
+    <entry key="RootInportBlkOutputMsgInVirtualBus">''{0}'' 不支持具有消息元素的虚拟总线。请将其替换为 In Bus Element 模块或选中模块参数 ''以非虚拟总线输出''。</entry>
+    <entry key="RootOutportBlkOutputMsgInVirtualBus">''{0}'' 不支持具有消息元素的虚拟总线。请将其替换为 Out Bus Element 模块或选中模块参数 ''在父模型中以非虚拟总线输出''。</entry>
+    <entry key="NonvirtualBusInVirtualBusAtRootOutput">''{0}'' 输出的消息载有非虚拟总线数据，它们会变成虚拟总线元素。当它们跨模型边界时，这将不受支持。</entry>
+    <entry key="NonvirtualBusWithMsgElement">模块 ''{0}'' 在接受消息输入时不支持非虚拟总线创建。请用信号替换输入消息或为消息元素创建虚拟总线。</entry>
+    <entry key="InvalidSendMsgConnectionMutiple"> Invalid message connection at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of ''{1}''. Message connections may not be branched and provided to multiple destinations. </entry>
+    <entry key="MsgModePropError">消息端口和信号端口之间的连接无效。''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 与 ''{3}'' 的&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;输入端口 {2,number,integer}&lt;/sldiag&gt; 不兼容。</entry>
+    <entry key="InputPortDoesNotSupportMsg">''{1}'' 的输入端口 {0,number,integer} 不支持报文，或虚拟总线包含报文。</entry>
+    <entry key="InvalidGraphicalConnectionBadgeTip">混合了信号和消息的连接无效。\n此端口的源类型和目标类型不兼容。\n请点击以突出显示源和目标。</entry>
+    <entry key="BranchedLineCrossesNonVirtualSubsystem">The message line originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' is being branched and crosses the boundary of the non-virtual subsystem ''{2}''. Branched message lines cannot cross non-virtual subsystem boundaries.</entry>
+    <entry key="DuplicateQueuesWithSameName">Duplicate message queue regions named ''{0}'' found. The first reference is in ''{1}''. The second reference is in ''{2}''. Message queues in a given non-virtual hierarchy must have unique names.</entry>
+    <entry key="QueueAccessBlockWithoutQueue">Message queue block with name ''{0}'' was not found for the block ''{1}''.</entry>
+    <entry key="QueueWithNoReadersOrWriters">No reader or writer blocks found for message queue block ''{0}'' with name ''{1}''.</entry>
+    <entry key="InvalidMessageSelfLoop">Error in block ''{0}''. This block is in a message self loop. A message self loop is formed by directly connecting a message output port and a message input port of the same block.\n\nRemove the loop connections and model the message reception inside the block.</entry>
+    <entry key="InvalidDirectMessageConn">''{0}'' block cannot connect to an Outport block or Out Bus Element block because it outputs messages in a non-virtual subsystem.</entry>
+    <entry key="UnsupportedPriorityLocalQueueWithBusOrVectorOrComplex">为 ''{1}'' 模块的本地队列 {0,number,integer} 设置的数据属性无效。本地优先级队列需要双精度、单精度、int8、uint8、int16、uint16、int32、uint32 或布尔类型的实数标量报文数据。</entry>
+    <entry key="MultiInputMessageTriggeredSubsystem">消息触发子系统 ''{0}'' 必须有一个输入端口。</entry>
+    <entry key="MultiOutputMessageTriggeredSubsystem">消息触发子系统 ''{0}'' 不支持多个输出端口。</entry>
+    <entry key="MultiportObserverForMessage">观测报文的模块 ''{0}'' 不支持多个输入端口。</entry>
+    <entry key="MultiportObserverForDES">观测统计量的模块 ''{0}'' 不支持多个输入端口。</entry>
+    <entry key="MuxOrBusForDESNotSupported">Connecting the output port to a Bus Creator or Mux block ''{0}'' is not supported. To log or inspect these signals, consider streaming them to the Simulation Data Inspector or use one observation block per signal.</entry>
+    <entry key="MultiEventSignalsObserverForDES">当与 SimEvents 模块结合使用时，模块 ''{0}'' 不支持观测多个信号。请将这些信号流式传输到仿真数据检查器，或者对每个信号使用一个观测模块。</entry>
+    <entry key="ObserverMultipleSources">Using the block ''{0}'' to observe a virtual bus with message elements is not supported.</entry>
+    <entry key="SDIOnMessageVirtualBus">仿真数据检查器不支持观测带有消息的虚拟总线。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;右键点击模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt;，然后选择 '停止记录所选信号'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnmappedMsgSourceToSDI">模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 到模块 ''{3}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 的仿真数据检查器的消息连接无效。请在模块 ''{3}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 连接消息模块，或禁用仿真数据检查器。</entry>
+    <entry key="MessageLoopBreakBadgeTooltip">由于消息循环，接收发生延迟</entry>
+    <entry key="MessageQueueBadgeTooltip">队列容量为 1 且插入了上一个语义值。\n如需自定义，请放置一个 Queue 模块。</entry>
+    <entry key="MsgQueueBadgeTooltipForVBus">队列已扩展以为每个总线元素提供存储。</entry>
+    <entry key="MsgQueueBadgeTooltipForVBusRefMdl">每个队列都在组件 ''{0}'' 中配置。</entry>
+    <entry key="MsgQueueBadgeTooltipForRefMdl">队列在组件 ''{0}'' 中配置。</entry>
+    <entry key="ComponentQueueAttrMeetExplicitQueue">在 ''{1}'' 中由 ''{0}'' 指定的队列属性被存储模块 ''{2}'' 覆盖。要解决此警告，请删除存储模块；如果 ''{0}'' 是 In Bus Element 模块，请选中 "使用默认队列属性"。</entry>
+    <entry key="CannotLinearizeMessages">Message &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' cannot be configured as a linearization point.</entry>
+    <entry key="CannotSendMsgToRootOutport">Top model is not configured for Outport block ''{0}'' to receive messages. Set ''System target file'' to autosar.tlc, autosar_adaptive.tlc, ert.tlc, or a system target file based on one of these system target files.  If system target file is ert.tlc or based on ert.tlc, also set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotSendMsgToRootOutportCpp">Top model is not configured for Outport block ''{0}'' to receive messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotSendMsgToMsgCustomizedRootOutport">Top model is not configured for customized message Outport block ''{0}'' to receive messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and unselect ''Generate an example main program''.</entry>
+    <entry key="CannotReceiveMsgFromRootInport">Top model is not configured for Inport block ''{0}'' to send messages. Set ''System target file'' to autosar.tlc, autosar_adaptive.tlc, ert.tlc, or a system target file based on one of these system target files.  If system target file is ert.tlc or based on ert.tlc, also set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotReceiveMsgFromRootInportCpp">Top model is not configured for Inport block ''{0}'' to send messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotReceiveMsgFromMsgCustomizedRootInport">Top model is not configured for customized message Inport block ''{0}'' to send messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and unselect ''Generate an example main program''.</entry>
+    <entry key="CannotCGMsgFromTop">对于包含跨模型边界的消息的引用模型，不支持根级代码生成。仅符合 AUTOSAR 的建模才允许此操作。请切换到引用模型 ''{0}''，将系统目标文件设置为 autosar.tlc 或使用符合 AUTOSAR 的目标文件来生成组件代码。</entry>
+    <entry key="CannotCGMsgForReferencedAutosarModel">Code generation is not supported for referenced AUTOSAR compliant model ''{0}'', when messages cross model boundary. Open ''{0}'' as the top model to generate code for this model component.</entry>
+    <entry key="CannotCGExQueueRecv">从使用符合 AUTOSAR 建模的 Inport 模块接收消息的 ''{0}'' 不支持代码生成。请使用 Stateflow 图从 Inport 模块接收消息。</entry>
+    <entry key="CannotCGExQueueSend">将消息发送到使用符合 AUTOSAR 建模的 Outport 模块的 ''{0}'' 不支持代码生成。请使用 Stateflow 图向 Outport 模块发送消息。</entry>
+    <entry key="CannotRapidAccelMsgFromTop">对于引用模型 ''{0}''，不支持在根级使用快速加速模式。此引用模型包括跨模型边界的消息。请在根级切换到普通模式或加速模式。</entry>
+    <entry key="CannotRapidAccelExQueueRecv">从 Inport 模块接收消息的 ''{0}'' 不支持快速加速模式。请切换到普通模式或加速模式。</entry>
+    <entry key="CannotRapidAccelExQueueSend">向 Outport 模块发送消息的 ''{0}'' 不支持快速加速模式。请切换到普通模式或加速模式。</entry>
+    <entry key="CannotSILPILFromRootInport">Software-in-the-loop (SIL) or processor-in-the-loop (PIL) simulation is not supported when the Inport block ''{0}'' receives messages that cross model boundary. Change the simulation mode to 'Normal' or 'Accelerator' mode.</entry>
+    <entry key="CannotSILPILFromRootOutport">Software-in-the-loop (SIL) or processor-in-the-loop (PIL) simulation is not supported when the Outport block ''{0}'' outputs messages that cross model boundary. Change the simulation mode to 'Normal' or 'Accelerator' mode.</entry>
+    <entry key="CannotSILPILFromModelBlock">Software-in-the-loop (SIL) or processor-in-the-loop (PIL) simulation is not supported when the Model block ''{0}'' outputs or receives messages that cross model boundary. Change the simulation mode to 'Normal' or 'Accelerator' mode.</entry>
+    <entry key="CannotCreateSILPILBlockForRootIO">The 'SIL' or 'PIL' value for the configuration parameter 'CreateSILPILBlock' is not supported for code generation when messages cross model boundary. To resolve this issue, use 'set_param(model,'CreateSILPILBlock','none')'.</entry>
+    <entry key="InvalidMsgConnToModelReference">与引用模型 ''{2}'' 的 {0} {1,number,integer} 的消息连接无效。请将系统目标文件切换到 autosar.tlc 或使用符合 AUTOSAR 的目标文件。</entry>
+    <entry key="InvalidMsgConnToSubsystem">模块 ''{0}'' 和模块 ''{1}'' 之间的消息连接无效。模块 ''{1}'' 请求从模块 ''{0}'' 接收消息。但是，模块 ''{0}'' 位于子系统 ''{2}'' 中。不支持从条件执行子系统接收消息的请求。</entry>
+    <entry key="InvalidModelReference">引用模型 ''{0}'' 的使用无效。引用模型包括跨模型边界的消息。请将系统目标文件切换到 autosar.tlc 或使用符合 AUTOSAR 的目标文件。</entry>
+    <entry key="InvalidModelReferenceMultiLevel">引用模型 ''{0}'' 的使用无效。包含跨模型边界的消息的引用模型必须位于根级。</entry>
+    <entry key="InvalidSLObserverPortMsgToRootOutport">Observer Port 模块 ''{0}'' 不能连接到顶层 Outport 模块或 Out Bus Element 模块，因为它正在观测消息。</entry>
+    <entry key="UnsupportedConnRootInport">Unsupported message connection between root-level Inport block ''{0}'' and ''{1}''. When using messages, the Inport block can only be connected to a Receive block or a Stateflow chart with the 'Use internal queue' checkbox cleared.</entry>
+    <entry key="UnsupportedConnInport">Unsupported message connection between Inport block ''{0}'' and block ''{1}''. Move block ''{1}'' to outside of subsystem ''{2}''.</entry>
+    <entry key="UnsupportedConnRootOutport">Unsupported message connection between block ''{0}'' and root-level Outport block ''{1}''. Connect a Message Send block or a Stateflow Chart to this Outport block.</entry>
+    <entry key="UnsupportedConnOutport">Unsupported message connection between block ''{0}'' and Outport block ''{1}''. Move block ''{0}'' to outside of subsystem ''{2}''.</entry>
+    <entry key="UnsupportedConnExternalQueue">Invalid message connection between &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' and &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;input port {2,number,integer}&lt;/sldiag&gt; of block ''{3}''. Connect a block with message storage between these two blocks (such as a Message Queue block).</entry>
+    <entry key="UnsupportedVariantBlock">Simulink Message 和 SimEvents 模块不支持模块 ''{0}''。</entry>
+    <entry key="UnsupportedCodeVariantSubsystem">Variant block ''{0}'' with message is not supported for any variant activation other than ''update diagram''. This parameter requires that you connect time-based signals to the variant block. To fix, consider setting the variant activation to ''update diagram''</entry>
+    <entry key="UnsupportedDataflowSubsystem">Messages cannot be sent or received from the Dataflow Subsystem ''{0}''.</entry>
+    <entry key="UnsupportedDiscreteEventModelRef">无法从引用模型 ''{0}'' 发送或接收实体。请将该引用模型转换为子系统。</entry>
+    <entry key="UnSupportedDesignVerifierForMsgs">Simulink Message and SimEvents blocks do not support Simulink Design Verifier.</entry>
+    <entry key="SendMessageToFullQueue">Message queue connected to block ''{0}'' through port {1,number,integer} overflowed during the simulation.</entry>
+    <entry key="CannotObserveMessageOutOfAcceleratedModelReference">Messages output from port {0,number,integer} of block ''{1}'' cannot be observed because this Model block is configured for Accelerated mode simulation. Configure the Model block to simulate in Normal mode or remove the observer ''{2}'' from the message line.</entry>
+    <entry key="CannotObserveMessageCrossingModel">不支持观测跨模型边界的消息。请从模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 中删除或禁用 {2}。</entry>
+    <entry key="CannotObserveMessageArriveSSWithDifferentRate">Sample time changes through the subsystem boundary. Observing messages that cross the boundary of ''{0}'' and arrive at an Inport block is not supported when generating code. Remove or disable ''{1}'' block.</entry>
+    <entry key="LogEventRateMsgWithExplicitPartition">使用 ''{0}'' 在具有事件采样时间的模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{1}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 处记录消息时，不支持生成代码，因为该模块连接到显式分区。请考虑对信号源使用相同的分区或采样时间。</entry>
+    <entry key="LogEventRateMsgForMultiTaskCodeGen">
+    使用 ''{0}'' 在具有事件采样时间的模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{1}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 处记录消息时，不支持生成代码，因为该模块连接到具有不同采样时间的多个消息源。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix1"&gt; &lt;cmd&gt;set_param_action(bdroot(''{1}''), 'EnableMultiTasking', 'off');&lt;/cmd&gt; &lt;txt&gt;考虑将 &lt;sldiag objui="configset" objparam="EnableMultiTasking"&gt;EnableMultiTasking&lt;/sldiag&gt; 选项设置为 off。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="RootOutportWithEventRateCodeGen">模型 ''{0}'' 不支持模型引用目标编译，因为根级 Outport 模块 ''{1}'' 具有事件采样时间，并从多个具有不同采样时间的源接收消息。请考虑对消息源使用相同的采样时间。</entry>
+    <entry key="ObserveMessageReusableSubsystemCpp">Observing messages using block ''{0}'' in a code reuse subsystem does not support generating C++ code. Remove the block, or set ''Function packaging'' of subsystem ''{1}'' to ''Nonreusable function'' or ''Auto''.</entry>
+    <entry key="ObserveMessageNonInheritedSampleTime">模块 ''{0}'' 没有在与用于观察消息的 ''{1}'' 相同的采样时间下运行。要解除此警告，请将 ''{0}'' 的采样时间设置为 '-1'，或手动将采样时间设置为与 ''{1}'' 匹配。</entry>
+    <entry key="ScopeWithRapidAccel">During simulation in Rapid Accelerator mode, scope ''{0}'' connected to a SimEvents block displays incorrect data. However, the logged data on the scope is correct.</entry>
+    <entry key="MultirateQueueQueryingNumMsg">Querying the number of messages on block ''{0}'' in multitasking mode not supported. To switch to single-tasking mode, clear the checkbox in 'Configuration Parameters' &gt; 'Solver' &gt; 'Treat each discrete rate as a separate task'.</entry>
+    <entry key="MultirateQueueCanOnlyBeFIFO">The message queue block ''{0}'' is a multi-rate queue. Only FIFO type is supported for multi-rate queues when the 'Configuration Parameters' &gt; 'Solver' &gt; 'Treat each discrete rate as a separate task' option has been selected. Set all the readers and writers of the queue to have the same rate or change the queue into FIFO type or clear this option.</entry>
+    <entry key="InvalidImplicitPriorityQueueDataType">Invalid data type propagated to &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of block ''{1}''. Priority queues require real scalar message data of type double, single, int8, uint8, int16, uint16, int32, uint32, or boolean.</entry>
+    <entry key="InvalidPriorityQueueDataType">模块 ''{0}'' 中的优先级队列需要非总线实数标量。</entry>
+    <entry key="CannotAllocQueue">The total memory requested for one or more message queues is greater than {0,number,integer} bytes. Reduce queue capacities or message data sizes.</entry>
+    <entry key="QueueCapacityExceedsIntLimit">Message queue for block ''{0}'' in model ''{1}'' exceeds maximum size {2,number,integer} for code generation. The value of model parameter ''Largest atomic size: integer'' determines the maximum queue size and is set to {3,number,integer}.</entry>
+    <entry key="ExportedFcnMdlRootOutportLogging">Messages arriving at the top-level Outport block ''{1}'' can not be logged when the block ''{0}'' is in an export-function model. To resolve this issue, in Model Configuration Parameters, in 'Data Import/Export' category, disable 'Output'.</entry>
+    <entry key="ExportedSimulinkFunctionWithSFMsg">The model ''{0}'' includes exported Simulink Function block ''{1}'' that contains a Stateflow Chart with message ''{2}'', and is not supported for code generation. Consider setting ''Code interface packaging'' to ''Nonreusable function''. </entry>
+    <entry key="UnsupportedStringTypeModelSimAccelTgt">Messages crossing model boundary with string type data are not supported in model ''{0}'' for model reference simulation target build. To resolve this error, use 'Normal' as the simulation mode for both the top model and the referenced model.</entry>
+    <entry key="UnsupportedProtectedMessageModel">模型 ''{0}'' 是在旧版本的 Simulink 中创建的，不支持跨模型边界的消息。请确保受保护模型是在 R2022b 或更高版本中创建的。</entry>
+    <entry key="UnsupportedVirtualBusAtRootInport">Code generator does not support messages that cross model boundaries for virtual input buses. In model ''{0}'', configure block ''{1}'' as a nonvirtual bus by selecting block parameter ''Output as nonvirtual bus''.</entry>
+    <entry key="UnsupportedVirtualBusAtRootOutport">Code generator does not support messages that cross model boundaries for virtual output buses. In model ''{0}'', configure block ''{1}'' as a nonvirtual bus by selecting block parameter ''Output as nonvirtual bus in parent model''.</entry>
+    <entry key="UnsupportedSignalObjectCG">Messages do not support signal object ''{0}'' when generating code. Remove or disable signal object at ''{1}'' output port {2,number,integer}.</entry>
+    <entry key="UnsupportedTestPointCG">Messages do not support test point when generating code. Disable test point at ''{0}'' output port {1,number,integer} to resolve this warning.</entry>
+    <entry key="ReusableSubsystemConnectModelBoundary">Connecting a message line between an atomic subsystem, whose ''Function packaging'' parameter is set to ''Reusable function'', and a root-level Inport/Outport block, or a Model block is not supported when you generate multi-instance code. Set ''Function packaging'' of subsystem ''{0}'' to ''Auto'', or in the Configuration Parameters dialog box, set ''Code Interface packaging'' to ''Nonreusable function'' and ''Total number of instances allowed per top model'' to ''One''.</entry>
+    <entry key="FcnCallSubsystemConnectModelBoundary">Generating multi-instance code is not supported when a function-call subsystem sends or receives messages that cross model boundary and is called multiple times. Set the ''Function packaging'' of subsystem ''{0}'' to ''Inline'', or in the Configuration Parameters dialog box, set the ''Code Interface packaging'' to ''Nonreusable function'' and the ''Total number of instances allowed per top model'' to ''One''.</entry>
+    <entry key="UnsupportedBuildReusableSubsytem">Generating multi-instance code for messages with data type {0} and size {1} in a codereuse subsystem is not supported. Set ''Function packaging'' of subsystem ''{2}'' to ''Nonreusable function'' or ''Auto'', or in the Configuration Parameters of model ''{3}'', set ''Code Interface packaging'' to ''Nonreusable function'' and ''Total number of instances allowed per top model'' to ''One''.</entry>
+    <entry key="UnsupportedQueueInSSRequesterInMdl">Using a queue block inside a non-virtual subsystem is not supported for code generation when messages cross model boundary. Move ''{0}'' outside of the subsystem.</entry>
+    <entry key="UnsupportedInternalQueueInSSRequesterInMdl">Using an internal queue inside a non-virtual subsystem is not supported for code generation when messages cross model boundary. Clear the 'Use internal queue' checkbox for ''{0}'' to use a queue outside the subsystem.</entry>
+    <entry key="UnsupportedMultiWordTypeRowMajor">Row-major is not supported for messages with data type ''{0}'' in block ''{1}''. Change the message data type or set the model configuration parameter ''Array layout'' to ''Column-major''.</entry>
+    <entry key="RowMajorForBusWithMatrixField">模块 ''{1}'' 中总线类型为 ''{0}'' 的消息不支持行优先，因为总线类型包含矩阵或字符串类型字段。请更改消息数据类型或将模型配置参数 ''数组布局'' 设置为 ''列优先''。</entry>
+    <entry key="ModelRefHasMessageWithUnsupportedEvent">模型 ''{0}'' 中的 Model 模块 ''{1}'' 不支持生成代码，因为引用模型 ''{2}'' 包含具有消息端口的 Model 模块，这些消息端口与事件 ''{3}'' 不兼容。请删除 ''{2}'' 中模块的消息端口上的连接和信号记录，或删除在 ''{2}'' 的模型层次结构中创建 ''{3}'' 事件的模块。</entry>
+    <entry key="ModelRefHasMessageWithConstantRate">模型 ''{0}'' 中的 Model 模块 ''{1}'' 不支持生成代码，因为引用模型 ''{2}'' 包含具有消息端口和固定采样时间模块的 Model 模块。请删除 ''{2}'' 中 Model 模块的消息端口上的连接和信号记录，或对 ''{2}'' 的模型层次结构中的模块使用继承(-1)采样时间而不是固定(inf)采样时间。</entry>
+    <entry key="RowMajorVectorPayloadForConcurrent">模块 ''{0}'' 中具有非标量有效负载的消息不支持行优先。
+        
+        &lt;actions exclusiveFixIts="no"&gt;
+            &lt;action type="fixit" id="use_column_major"&gt;
+               &lt;cmd&gt;set_param(bdroot(''{0}''),''Array layout'',''Column-major'');&lt;/cmd&gt;
+               &lt;txt&gt;更改消息数据类型或将模型配置参数 ''数组布局'' 设置为 ''列优先''&lt;/txt&gt;
+            &lt;/action&gt;
+             &lt;action type="fixit" id="turn_off_concurrent"&gt;
+               &lt;cmd&gt;set_param(bdroot(''{0}''),'ConcurrentTasks','off');&lt;/cmd&gt;
+               &lt;txt&gt;清除 "配置参数 &amp;gt; 求解器 &amp;gt; 求解器详细信息 &amp;gt; 任务和采样时间" 选项中的 '允许任务在目标上并发执行' 参数。&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+        
+    </entry>
+    <entry key="UnsupportedBusSelectorOutputAsVirtualBus">Bus Selector 模块 ''{0}'' 不支持对消息元素使用 ''以虚拟总线输出''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="turn_off_OutputAsBus" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', ''OutputAsBus'', ''off'');&lt;/cmd&gt; &lt;txt&gt;清除 ''以虚拟总线输出''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+	</entry>
+    <entry key="NoStringPayloadForConcurrent">当模型 ''{0}'' 配置为并发执行时，仿真不支持字符串有效负载。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="turn_off_concurrent"&gt; &lt;cmd&gt;set_param(''{0}'','ConcurrentTasks','off');&lt;/cmd&gt; &lt;txt&gt;清除 "配置参数 &amp;gt; 求解器 &amp;gt; 求解器详细信息 &amp;gt; 任务和采样时间" 选项中的 '允许任务在目标上并发执行' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="NoTsInhDueToPreSetBlkTs">Messages only support 'Unconstrained' as 'Periodic sample time constraint' parameter in Configuration Parameters dialog box. In model ''{0}'', either set the 'Solver &gt; Solver details &gt; Periodic sample time constraint &gt; Unconstrained' or remove message blocks that output or receive messages that cross model boundary.</entry>
+    <entry key="ChartExternalQueueCannotUseLength">For &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of chart ''{0}'', the 'length' operator is not supported for input messages that use external queue. To use the 'length' operator, enable the 'Use internal queue' property for this message.</entry>
+    <entry key="ChartInvalidUseOverflowedAtInputPort">For &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of chart ''{0}'', the argument of the 'overflowed' operator is not supported. For its message-name argument, the 'overflowed' operator only takes input messages that use external queue outside of {2}, and the chart must be connected to a top-level Inport block.</entry>
+    <entry key="ChartInvalidUseOverflowedAtOutputPort">For &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of chart ''{0}'', the argument of the 'overflowed' operator is not supported. For its message-name argument, the 'overflowed' operator only takes output messages that use external queue outside of {2}, and the chart must be connected to a top-level Outport block.</entry>
+    <entry key="UnsupportedConnRootInportToReceive">Connecting the Receive block ''{1}'' with internal queue to a root-level Inport block ''{0}'' is not supported.
+        
+        &lt;actions exclusiveFixIts="no"&gt;
+            &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{1}'','UseInternalQueue','off');&lt;/cmd&gt;
+               &lt;txt&gt;Clear the 'Use internal queue' checkbox in the Receive block.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+        
+    </entry>
+    <entry key="UnsupportedConcurrentTaskModelInputSampleTime">接收消息的引用模型的采样时间不一致。驱动 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 的信号的采样时间({0})与此输入端口的预期采样时间({3})不同。这在为并发执行配置的模型中有限制。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{4}'','ConcurrentTasks','off');&lt;/cmd&gt; &lt;txt&gt;请清除 "配置参数 &amp;gt; 求解器 &amp;gt; 求解器详细信息 &amp;gt; 任务和采样时间" 选项中的 '允许任务在目标上并发执行' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnsupportedConcurrentTaskMultirateQueue">当模型配置为并发执行时，不支持以不同速率向队列 ''{0}'' 发送消息和从队列接收消息。
+        &lt;actions exclusiveFixIts="no"&gt;
+            &lt;action type="fixit" retvalue="false" &gt;
+               &lt;cmd&gt;set_param(bdroot(''{0}''),'ConcurrentTasks','off');&lt;/cmd&gt;
+               &lt;txt&gt;清除 "配置参数 &amp;gt; 求解器 &amp;gt; 求解器详细信息 &amp;gt; 任务和采样时间" 选项中的 '允许任务在目标上并发执行' 参数。&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+        </entry>
+    <entry key="UnsupportedConcurrentTaskMultirateSend">当模型配置为并发执行时，不支持以不同速率向队列 ''{0}'' 发送消息。
+        &lt;actions exclusiveFixIts="no"&gt;
+            &lt;action type="fixit" retvalue="false" &gt;
+               &lt;cmd&gt;set_param(bdroot(''{0}''),'ConcurrentTasks','off');&lt;/cmd&gt;
+               &lt;txt&gt;清除 "配置参数 &amp;gt; 求解器 &amp;gt; 求解器详细信息 &amp;gt; 任务和采样时间" 选项中的 '允许任务在目标上并发执行' 参数。&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+        </entry>
+    <entry key="UnsupportedConcurrentSubsystem">当针对并发执行配置模型 ''{1}'' 时，无法在子系统 ''{0}'' 内发送或接收消息。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'','ConcurrentTasks','off');&lt;/cmd&gt; &lt;txt&gt;请清除 "配置参数 &amp;gt; 求解器 &amp;gt; 求解器详细信息 &amp;gt; 任务和采样时间" 选项中的 '允许任务在目标上并发执行' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnsupportedSignalRangeCheck">来自 ''{0}'' 输出端口 {1,number,integer} 的消息不支持信号范围检查。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'','SignalRangeChecking','none');&lt;/cmd&gt; &lt;txt&gt;在 '配置参数 &gt; 诊断 &gt; 数据有效性' 中，将 ''仿真范围检查'' 设置为 ''无'' 以防止此消息。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        </entry>
+    <entry key="UnsupportedSignalInfNanCheck">来自 ''{0}'' 输出端口 {1,number,integer} 的消息不支持信号 Inf 或 Nan 检查。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'','SignalInfNanChecking','none');&lt;/cmd&gt; &lt;txt&gt;在 '配置参数 &gt; 诊断 &gt; 数据有效性' 中，将 ''模块输出为 Inf 或 NaN'' 设置为 ''无'' 以防止此消息。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        </entry>
+    <entry key="InvalidPayloadDataTypeAtOutput">传播到 ''{1}'' 模块的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 的数据类型无效。对于消息数据类型，请使用数值类型、枚举、字符串或总线类型。</entry>
+    <entry key="VirtualBusRootOutputLoggingNotSupported">For model ''{0}'', root level output logging is not supported for virtual bus with message element.
+        
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="fixit" id="turn_off_SaveOutput" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param_action(''{0}'', ''SaveOutput'', ''off'');&lt;/cmd&gt;
+                    &lt;txt&gt;Clear ''Output'' to disable logging root level output data.&lt;/txt&gt;
+                &lt;/action&gt;    
+            &lt;/actions&gt;
+        
+    </entry>
+    <entry key="MsgTrigSubsysPartitionNameNotUnique">用于消息触发子系统 ''{1}'' 的分区名称 ''{0}'' 必须唯一，但其他模块中也使用了同样名称。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''Name'',''__ARG1__'')&lt;/cmd&gt; &lt;cargs&gt; &lt;carg name="__ARG1__" type="text"&gt; &lt;txt_prompt&gt;新模块名称&lt;/txt_prompt&gt; &lt;def_cmd&gt;"{0} 1"&lt;/def_cmd&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;考虑更改分区名称所基于的 ''{1}'' 的模块名称。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_2" retvalue="false"&gt; &lt;cmd&gt;cellfun(@(x) set_param(x, ''PartitionName'', ''__ARG1__''), &amp;#123;{2}&amp;#125;)&lt;/cmd&gt; &lt;cargs&gt; &lt;carg name="__ARG1__" type="text"&gt; &lt;txt_prompt&gt;新模块名称&lt;/txt_prompt&gt; &lt;def_cmd&gt;"{0}_1"&lt;/def_cmd&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;考虑更改模块 {2} 中的分区名称 ''{0}'' (如果可配置)。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MsgTrigSubsysModeRootInport">
+    当 Trigger Port 模块中的 ''作为非周期性分区调度'' 关闭时，不支持将消息触发子系统 ''{0_SLObject}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}"&gt;触发端口&lt;/sldiag&gt;连接到根级 Inport 模块 ''{2_SLObject}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''ScheduleAsAperiodic'', ''on'');&lt;/cmd&gt; &lt;txt&gt;关闭模块 ''{3}'' 的参数 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{3}"&gt;''作为非周期性分区调度''&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigSubsysScheduledCodeGen">
+    ''作为非周期性分区调度'' 选项处于打开状态的消息触发子系统 ''{0_SLObject}'' 不支持代码生成，除非它位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;中，并且其&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}"&gt;触发端口&lt;/sldiag&gt;连接到根级 Inport 模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;关闭模块 ''{2}'' 的参数 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}"&gt;''作为非周期性分区调度''&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="fix_2"&gt; &lt;txt&gt;将&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}"&gt;触发端口&lt;/sldiag&gt;连接到一个根级 Inport 模块并将模型 ''{3}'' 转换为一个&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigSubsysScheduledModelRefCodeGen">
+    ''作为非周期性分区调度'' 选项处于打开状态的消息触发子系统 ''{0_SLObject}'' 不支持模型引用目标编译。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion" id="fix_1"&gt; &lt;txt&gt;作为顶层模型打开模型 ''{1}'' 并编译。按照文档中的说明将生成的代码与中间件集成。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigImmediateFromModelBlkCppBuild">
+    对于 C++ 类编译，关闭了 ''作为非周期性分区调度'' 选项的消息触发子系统 ''{0}'' 不支持将其&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;触发端口&lt;/sldiag&gt;连接到 Model 模块 ''{2}''。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="fix_1"&gt; &lt;txt&gt;在消息触发子系统 ''{0}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;触发端口&lt;/sldiag&gt;处插入消息 Merge 模块(具有单个输入)或 Queue 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigSubsysScheduledExpFcnMdlAccel">
+    ''作为非周期性分区调度'' 选项处于打开状态的消息触发子系统 ''{0_SLObject}'' 不支持快速加速或模型引用加速编译，除非其&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}"&gt;触发端口&lt;/sldiag&gt;连接到根级 Inport 模块，因为它位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{3}'' 中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;关闭模块 ''{2}'' 的 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}"&gt;''作为非周期性分区调度''&lt;/sldiag&gt; 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigInExpFcnMdlSimTarget">
+    模型 ''{0}'' 不支持模型引用仿真目标编译，因为它是&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;并且模块 ''{1}'' 的&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{1}"&gt;输入端口 {2,number,integer}&lt;/sldiag&gt; 是消息触发的。
+    </entry>
+    <entry key="OnMsgAvailableWithEnabled"> Block ''{0}'' is not supported inside an enabled subsystem when its ''Trigger type'' and ''Trigger time'' parameters are set to ''message'' and ''on message available'', respectively.
+    
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit" id="fix_1" retvalue="false"&gt;
+                &lt;cmd&gt;set_param_action(''{0}'', ''TriggerTime'', ''on sample time hit'');&lt;/cmd&gt;
+                &lt;txt&gt;Consider changing parameter &lt;sldiag objui="blockdlg" objparam="TriggerTime" objname="{0}"&gt;''trigger time''&lt;/sldiag&gt; to ''on sample time hit'' for block ''{0}''.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MessageTriggerAtRootLevel">当模块 ''{0}'' 位于模型的根级时，不支持将参数 ''触发器类型'' 设置为 ''消息''。</entry>
+    <entry key="StringTypeMsgTriggerNotSupport">
+    Message triggered subsystem ''{0_SLObject}'' does not support string data type on &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}"&gt;trigger port&lt;/sldiag&gt; when generating code.
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit" id="fix_1" retvalue="false"&gt;
+                &lt;cmd&gt;set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''on'');&lt;/cmd&gt;
+                &lt;txt&gt;For simulation target, consider turning on parameter &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}"&gt;''Schedule as aperiodic partition''&lt;/sldiag&gt; for block ''{2}''.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ConnectSimEventsStroageBlockToMsgTrig">
+    
+    模块 ''{0}'' 不支持连接到 '作为非周期性分区调度' 选项处于打开状态的消息触发子系统。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="fix_1" retvalue="false"&gt; &lt;txt&gt;考虑在模块 ''{0}'' 的&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 和模块 ''{2}'' 的&lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{2}"&gt;输入端口 {3,number,integer}&lt;/sldiag&gt; 之间连接一个 Queue 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="NestedMessageTriggeredSubsystem">
+    子系统 ''{2}'' 内部不支持 '作为非周期性分区调度' 选项处于打开状态的消息触发子系统 ''{0}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;txt&gt;考虑将消息触发子系统 ''{0}'' 移出子系统 ''{2}''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_2" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;考虑关闭模块 ''{1}'' 的 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{1}"&gt;''作为非周期性分区调度''&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigSubsysExpFcnMdlRootLevel">导出函数模型中 '作为非周期性分区调度' 选项处于打开状态的消息触发子系统 ''{0}'' 必须放在根级。</entry>
+    <entry key="MsgTrigSubsysWithExplicitPartition">
+    
+    将即时模式 ''{1}'' 下的消息触发子系统的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;触发端口&lt;/sldiag&gt;连接到显式分区时，不支持生成代码。请考虑对信号源使用相同的分区或采样时间。
+    
+    </entry>
+    <entry key="MsgTrigSubsysWithMultiTaskCodeGen">
+    
+    将即时模式 ''{1}'' 下的消息触发子系统的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;触发端口&lt;/sldiag&gt;连接到具有不同采样时间的源时，不支持生成多任务代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix1"&gt; &lt;cmd&gt;set_param_action(bdroot(''{1}''), 'EnableMultiTasking', 'off');&lt;/cmd&gt; &lt;txt&gt;考虑将 &lt;sldiag objui="configset" objparam="EnableMultiTasking"&gt;EnableMultiTasking&lt;/sldiag&gt; 选项设置为 off。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+  </message>
+</rsccat>

@@ -1,0 +1,574 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2016 The MathWorks, Inc.
+
+     All definitions for the following IAR targets:
+       - icc8051  (CPU family: 8051)
+       - iccavr   (CPU family: Atmel AVR)
+       - iccm16c  (CPU family: Renesas M16C/IX-3X, 5X-6X and R8C)
+       - iccr32c  (CPU family: Renesas R32C/100)
+       - icc78k,
+         icc78k0r (CPU family: Renesas 78K0/78K0S and 78K0R)
+       - iccrh850 (CPU family: Renesas RH850)
+       - iccrl78  (CPU family: Renesas RL78)
+       - iccrx    (CPU family: Renesas RX)
+       - iccsh    (CPU family: Renesas RH)
+       - iccv850  (CPU family: Renesas V850)
+       - icc430   (CPU family: Texas Instruments MSP430)
+       - iccstm8  (CPU family: STMicroelectronics STM8)
+
+     This file is intended for inclusion in a <compilers> node.
+-->
+<compiler name="iar" lang="c"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+  <!-- Modern IAR: IAR version >= 2.0 -->
+
+  <clients>
+    <client name="matlab"/>
+  </clients>
+
+  <options>
+    <option name="--c99"/>
+    <option name="--no_c99_generic"/> <!-- Some C99 implementations use __generic() in <tgmath.h>; clashes with IAR's __generic. -->
+    <option name="--allow_long_float"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--nonstd_anonymous_unions"/>
+    <option name="--enable_static_assert"/>
+    <option name="--extended_variadic_macros"/>
+  </options>
+
+  <asms>
+    <asm name="asm"/>
+  </asms>
+
+  <attributes kind="data">
+    <attribute name="@" sig="@"/>
+  </attributes>
+
+  <library>
+    <!--
+         All IAR attribute definitions
+    -->
+
+    <!-- IAR memory, type, and object attributes -->
+    <attributes kind="data">
+      <attribute id="iar.attr.bdata"           name="__bdata"/>
+      <attribute id="iar.attr.bit"             name="__bit"/>
+      <attribute id="iar.attr.bitvar"          name="__bitvar"/>
+      <attribute id="iar.attr.brel"            name="__brel"/>
+      <attribute id="iar.attr.brel23"          name="__brel23"/>
+      <attribute id="iar.attr.code"            name="__code"/>
+      <attribute id="iar.attr.data"            name="__data"/>
+      <attribute id="iar.attr.data13"          name="__data13"/>
+      <attribute id="iar.attr.data16"          name="__data16"/>
+      <attribute id="iar.attr.data20"          name="__data20"/>
+      <attribute id="iar.attr.data24"          name="__data24"/>
+      <attribute id="iar.attr.data28"          name="__data28"/>
+      <attribute id="iar.attr.data32"          name="__data32"/>
+      <attribute id="iar.attr.eeprom"          name="__eeprom"/>
+      <attribute id="iar.attr.ext_io"          name="__ext_io"/>
+      <attribute id="iar.attr.far"             name="__far"/>
+      <attribute id="iar.attr.far22"           name="__far22"/>
+      <attribute id="iar.attr.far22_code"      name="__far22_code"/>
+      <attribute id="iar.attr.far22_rom"       name="__far22_rom"/>
+      <attribute id="iar.attr.farflash"        name="__farflash"/>
+      <attribute id="iar.attr.far_code"        name="__far_code"/>
+      <attribute id="iar.attr.far_rom"         name="__far_rom"/>
+      <attribute id="iar.attr.flash"           name="__flash"/>
+      <attribute id="iar.attr.generic"         name="__generic"/>
+      <attribute id="iar.attr.huge"            name="__huge"/>
+      <attribute id="iar.attr.hugeflash"       name="__hugeflash"/>
+      <attribute id="iar.attr.huge_code"       name="__huge_code"/>
+      <attribute id="iar.attr.huge_rom"        name="__huge_rom"/>
+      <attribute id="iar.attr.idata"           name="__idata"/>
+      <attribute id="iar.attr.io"              name="__io"/>
+      <attribute id="iar.attr.ixdata"          name="__ixdata"/>
+      <attribute id="iar.attr.near"            name="__near"/>
+      <attribute id="iar.attr.no_bit_access"   name="__no_bit_access"/>
+      <attribute id="iar.attr.no_init"         name="__no_init"/>
+      <attribute id="iar.attr.no_runtime_init" name="__no_runtime_init"/>
+      <attribute id="iar.attr.packed"          name="__packed"/>
+      <attribute id="iar.attr.pdata"           name="__pdata"/>
+      <attribute id="iar.attr.persistent"      name="__persistent"/>
+      <attribute id="iar.attr.regvar"          name="__regvar"/>
+      <attribute id="iar.attr.ro_placement"    name="__ro_placement"/>
+      <attribute id="iar.attr.saddr"           name="__saddr"/>
+      <attribute id="iar.attr.sbdata16"        name="__sbdata16"/>
+      <attribute id="iar.attr.sbdata24"        name="__sbdata24"/>
+      <attribute id="iar.attr.sfr"             name="__sfr"/>
+      <attribute id="iar.attr.tiny"            name="__tiny"/>
+      <attribute id="iar.attr.tinyflash"       name="__tinyflash"/>
+      <attribute id="iar.attr.weak"            name="__weak"/>
+      <attribute id="iar.attr.xdata"           name="__xdata"/>
+      <attribute id="iar.attr.xdata_rom"       name="__xdata_rom"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute id="iar.attr.banked"              name="__banked"/>
+      <attribute id="iar.attr.banked_func"         name="__banked_func"/>
+      <attribute id="iar.attr.banked_func_ext2"    name="__banked_func_ext2"/>
+      <attribute id="iar.attr.callf"               name="__callf"/>
+      <attribute id="iar.attr.callt"               name="__callt"/>
+      <attribute id="iar.attr.cc_version1"         name="__cc_version1"/>
+      <attribute id="iar.attr.cc_version2"         name="__cc_version2"/>
+      <attribute id="iar.attr.code16"              name="__code16"/>
+      <attribute id="iar.attr.code20"              name="__code20"/>
+      <attribute id="iar.attr.code28"              name="__code28"/>
+      <attribute id="iar.attr.code24"              name="__code24"/>
+      <attribute id="iar.attr.code32"              name="__code32"/>
+      <attribute id="iar.attr.data_overlay"        name="__data_overlay"/>
+      <attribute id="iar.attr.db_int"              name="__db_int"/>
+      <attribute id="iar.attr.ei_int"              name="__ei_int"/>
+      <attribute id="iar.attr.ext_stack_reentrant" name="__ext_stack_reentrant"/>
+      <attribute id="iar.attr.farfunc"             name="__farfunc"/>
+      <attribute id="iar.attr.far_func"            name="__far_func"/>
+      <attribute id="iar.attr.fast_interrupt"      name="__fast_interrupt"/>
+      <attribute id="iar.attr.fetrap"              name="__fetrap"/>
+      <attribute id="iar.attr.fe_int"              name="__fe_int"/>
+      <attribute id="iar.attr.flat"                name="__flat"/>
+      <attribute id="iar.attr.huge_func"           name="__huge_func"/>
+      <attribute id="iar.attr.hvcall"              name="__hvcall"/>
+      <attribute id="iar.attr.hvtrap"              name="__hvtrap"/>
+      <attribute id="iar.attr.idata_overlay"       name="__idata_overlay"/>
+      <attribute id="iar.attr.idata_reentrant"     name="__idata_reentrant"/>
+      <attribute id="iar.attr.interrupt"           name="__interrupt"/>
+      <attribute id="iar.attr.intrinsic"           name="__intrinsic"/>
+      <attribute id="iar.attr.monitor"             name="__monitor"/>
+      <attribute id="iar.attr.nearfunc"            name="__nearfunc"/>
+      <attribute id="iar.attr.near_func"           name="__near_func"/>
+      <attribute id="iar.attr.nested"              name="__nested"/>
+      <attribute id="iar.attr.non_banked"          name="__non_banked"/>
+      <attribute id="iar.attr.noreturn"            name="__noreturn"/>
+      <attribute id="iar.attr.no_pic"              name="__no_pic"/>
+      <attribute id="iar.attr.no_save"             name="__no_save"/>
+      <attribute id="iar.attr.overlay_near_func"   name="__overlay_near_func"/>
+      <attribute id="iar.attr.pdata_reentrant"     name="__pdata_reentrant"/>
+      <attribute id="iar.attr.ramfunc"             name="__ramfunc"/>
+      <attribute id="iar.attr.raw"                 name="__raw"/>
+      <attribute id="iar.attr.regbank_interrupt"   name="__regbank_interrupt"/>
+      <attribute id="iar.attr.save_reg20"          name="__save_reg20"/>
+      <attribute id="iar.attr.simple"              name="__simple"/>
+      <attribute id="iar.attr.syscall"             name="__syscall"/>
+      <attribute id="iar.attr.task"                name="__task"/>
+      <attribute id="iar.attr.tbr"                 name="__tbr"/>
+      <attribute id="iar.attr.tiny_func"           name="__tiny_func"/>
+      <attribute id="iar.attr.trap"                name="__trap"/>
+      <attribute id="iar.attr.V2_call"             name="__V2_call"/>
+      <attribute id="iar.attr.V3_call"             name="__V3_call"/>
+      <attribute id="iar.attr.version_1"           name="__version_1"/>
+      <attribute id="iar.attr.version_2"           name="__version_2"/>
+      <attribute id="iar.attr.version_3"           name="__version_3"/>
+      <attribute id="iar.attr.version_4"           name="__version_4"/>
+      <attribute id="iar.attr.x"                   name="__x"/>
+      <attribute id="iar.attr.xdata_reentrant"     name="__xdata_reentrant"/>
+      <attribute id="iar.attr.x_z"                 name="__x_z"/>
+      <attribute id="iar.attr.z"                   name="__z"/>
+      <attribute id="iar.attr.z_x"                 name="__z_x"/>
+    </attributes>
+
+    <!-- To be used on data or function symbols. -->
+    <attributes>
+      <attribute id="iar.attr.root"                name="__root"/>
+    </attributes>
+
+  </library>
+
+  <!--
+       Definitions for 8051
+       No distinction is made here for the numerous variants (cores, data models,
+       code models, calling conventions, data pointers).
+  -->
+  <target name="icc8051">
+    <attributes kind="data">
+      <attribute idref="iar.attr.sfr"/>
+      <attribute idref="iar.attr.bit"/>
+      <attribute idref="iar.attr.code"/>
+      <attribute idref="iar.attr.data"/>
+      <attribute idref="iar.attr.bdata"/>
+      <attribute idref="iar.attr.idata"/>
+      <attribute idref="iar.attr.pdata"/>
+      <attribute idref="iar.attr.xdata"/>
+      <attribute idref="iar.attr.xdata_rom"/>
+      <attribute idref="iar.attr.ixdata"/>
+      <attribute idref="iar.attr.generic"/>
+      <attribute idref="iar.attr.far"/>
+      <attribute idref="iar.attr.far_code"/>
+      <attribute idref="iar.attr.far_rom"/>
+      <attribute idref="iar.attr.far22"/>
+      <attribute idref="iar.attr.far22_code"/>
+      <attribute idref="iar.attr.far22_rom"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.huge_code"/>
+      <attribute idref="iar.attr.huge_rom"/>
+      <attribute idref="iar.attr.no_init"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.nearfunc"/>
+      <attribute idref="iar.attr.overlay_near_func"/>
+      <attribute idref="iar.attr.banked_func"/>
+      <attribute idref="iar.attr.banked_func_ext2"/>
+      <attribute idref="iar.attr.farfunc"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+      <attribute idref="iar.attr.data_overlay"/>
+      <attribute idref="iar.attr.idata_overlay"/>
+      <attribute idref="iar.attr.idata_reentrant"/>
+      <attribute idref="iar.attr.pdata_reentrant"/>
+      <attribute idref="iar.attr.xdata_reentrant"/>
+      <attribute idref="iar.attr.ext_stack_reentrant"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+  
+  <!--
+       Definitions for Atmel AVR
+  -->
+  <target name="iccavr">
+    <attributes kind="data">
+      <attribute idref="iar.attr.io"/>
+      <attribute idref="iar.attr.ext_io"/>
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.tiny"/>
+      <attribute idref="iar.attr.tinyflash"/>
+      <attribute idref="iar.attr.eeprom"/>
+      <attribute idref="iar.attr.flash"/>
+      <attribute idref="iar.attr.far"/>
+      <attribute idref="iar.attr.farflash"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.hugeflash"/>
+      <attribute idref="iar.attr.generic"/>
+      <attribute idref="iar.attr.regvar"/>
+      <attribute idref="iar.attr.no_init"/>
+      <attribute idref="iar.attr.no_runtime_init"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.nearfunc"/>
+      <attribute idref="iar.attr.farfunc"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.nested"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+      <attribute idref="iar.attr.raw"/>
+      <attribute idref="iar.attr.version_1"/>
+      <attribute idref="iar.attr.version_2"/>
+      <attribute idref="iar.attr.version_4"/>
+      <attribute idref="iar.attr.x"/>
+      <attribute idref="iar.attr.x_z"/>
+      <attribute idref="iar.attr.z"/>
+      <attribute idref="iar.attr.z_x"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas M16C/IX-3X, 5X-6X, R8C
+  -->
+  <target name="iccm16c">
+    <attributes kind="data">
+      <attribute idref="iar.attr.bitvar"/>
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.far"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.data13"/>
+      <attribute idref="iar.attr.data16"/>
+      <attribute idref="iar.attr.data20"/>
+      <attribute idref="iar.attr.no_init"/>
+   </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.tiny_func"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.regbank_interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.simple"/>
+      <attribute idref="iar.attr.task"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas R32C/100
+  -->
+  <target name="iccr32c">
+    <attributes kind="data">
+      <attribute idref="iar.attr.data16"/>
+      <attribute idref="iar.attr.data24"/>
+      <attribute idref="iar.attr.data32"/>
+      <attribute idref="iar.attr.sbdata16"/>
+      <attribute idref="iar.attr.sbdata24"/>
+      <attribute idref="iar.attr.packed"/>
+      <attribute idref="iar.attr.no_init"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.code24"/>
+      <attribute idref="iar.attr.code32"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.fast_interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas 78K0/78K0S/78K0R
+       No distinction is made here between the 78K0/78k0S and the 78K0R.
+  -->
+  <target name="icc78k,icc78k0r">
+    <attributes kind="data">
+      <attribute idref="iar.attr.sfr"/>
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.far"/>
+      <attribute idref="iar.attr.saddr"/>
+      <attribute idref="iar.attr.no_bit_access"/>
+      <attribute idref="iar.attr.no_init"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.near_func"/>
+      <attribute idref="iar.attr.far_func"/>
+      <attribute idref="iar.attr.banked"/>
+      <attribute idref="iar.attr.non_banked"/>
+      <attribute idref="iar.attr.callf"/>
+      <attribute idref="iar.attr.callt"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.no_save"/>
+      <attribute idref="iar.attr.V2_call"/>
+      <attribute idref="iar.attr.V3_call"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas RH850
+  -->
+  <target name="iccrh850">
+    <attributes kind="data">
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.saddr"/>
+      <attribute idref="iar.attr.brel"/>
+      <attribute idref="iar.attr.brel23"/>
+      <attribute idref="iar.attr.code"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.no_bit_access"/>
+      <attribute idref="iar.attr.no_init"/>
+      <attribute idref="iar.attr.weak"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.callt"/>
+      <attribute idref="iar.attr.cc_version1"/>
+      <attribute idref="iar.attr.db_int"/>
+      <attribute idref="iar.attr.ei_int"/>
+      <attribute idref="iar.attr.fe_int"/>
+      <attribute idref="iar.attr.fetrap"/>
+      <attribute idref="iar.attr.flat"/>
+      <attribute idref="iar.attr.hvcall"/>
+      <attribute idref="iar.attr.hvtrap"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.syscall"/>
+      <attribute idref="iar.attr.trap"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas RL78
+  -->
+  <target name="iccrl78">
+    <attributes kind="data">
+      <attribute idref="iar.attr.sfr"/>
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.saddr"/>
+      <attribute idref="iar.attr.far"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.ro_placement"/>
+      <attribute idref="iar.attr.no_bit_access"/>
+      <attribute idref="iar.attr.no_init"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.near_func"/>
+      <attribute idref="iar.attr.far_func"/>
+      <attribute idref="iar.attr.callt"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.no_save"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas RX
+  -->
+  <target name="iccrx">
+    <attributes kind="data">
+      <attribute idref="iar.attr.sfr"/>
+      <attribute idref="iar.attr.data16"/>
+      <attribute idref="iar.attr.data24"/>
+      <attribute idref="iar.attr.data32"/>
+      <attribute idref="iar.attr.packed"/>
+      <attribute idref="iar.attr.no_init"/>
+      <attribute idref="iar.attr.weak"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.ramfunc"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.fast_interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.nested"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas SH
+  -->
+  <target name="iccsh">
+    <attributes kind="data">
+      <attribute idref="iar.attr.data16"/>
+      <attribute idref="iar.attr.data20"/>
+      <attribute idref="iar.attr.data28"/>
+      <attribute idref="iar.attr.data32"/>
+      <attribute idref="iar.attr.no_init"/>
+      <attribute idref="iar.attr.weak"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.code16"/>
+      <attribute idref="iar.attr.code20"/>
+      <attribute idref="iar.attr.code28"/>
+      <attribute idref="iar.attr.code32"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.fast_interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+      <attribute idref="iar.attr.tbr"/>
+      <attribute idref="iar.attr.trap"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Renesas V850
+  -->
+  <target name="iccv850">
+    <attributes kind="data">
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.saddr"/>
+      <attribute idref="iar.attr.brel"/>
+      <attribute idref="iar.attr.brel23"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.no_bit_access"/>
+      <attribute idref="iar.attr.no_init"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.callt"/>
+      <attribute idref="iar.attr.flat"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.syscall"/>
+      <attribute idref="iar.attr.task"/>
+      <attribute idref="iar.attr.trap"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for Texas Instruments MSP430
+  -->
+  <target name="icc430">
+    <attributes kind="data">
+      <attribute idref="iar.attr.data16"/>
+      <attribute idref="iar.attr.data20"/>
+      <attribute idref="iar.attr.regvar"/>
+      <attribute idref="iar.attr.ro_placement"/>
+      <attribute idref="iar.attr.no_init"/>
+      <attribute idref="iar.attr.persistent"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.ramfunc"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+      <attribute idref="iar.attr.cc_version1"/>
+      <attribute idref="iar.attr.cc_version2"/>
+      <attribute idref="iar.attr.save_reg20"/>
+      <attribute idref="iar.attr.raw"/>
+      <attribute idref="iar.attr.no_pic"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+  <!--
+       Definitions for STMicroelectronics STM8
+  -->
+  <target name="iccstm8">
+    <attributes kind="data">
+      <attribute idref="iar.attr.tiny"/>
+      <attribute idref="iar.attr.near"/>
+      <attribute idref="iar.attr.far"/>
+      <attribute idref="iar.attr.huge"/>
+      <attribute idref="iar.attr.eeprom"/>
+      <attribute idref="iar.attr.no_init"/>
+      <attribute idref="iar.attr.weak"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="iar.attr.near_func"/>
+      <attribute idref="iar.attr.far_func"/>
+      <attribute idref="iar.attr.huge_func"/>
+      <attribute idref="iar.attr.interrupt"/>
+      <attribute idref="iar.attr.intrinsic"/>
+      <attribute idref="iar.attr.monitor"/>
+      <attribute idref="iar.attr.noreturn"/>
+      <attribute idref="iar.attr.task"/>
+    </attributes>
+    <attributes>
+      <attribute idref="iar.attr.root"/>
+    </attributes>
+  </target>
+
+</compiler>

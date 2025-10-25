@@ -1,0 +1,2 @@
+classdef FunctionTypeDefinition < handle
+end

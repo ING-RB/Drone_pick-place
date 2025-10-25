@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="SimulinkBlocks" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="MatrixParameterError">
+ブロック ''{1}'' のパラメーター ''{0}'' が正しくありません。
+ </entry>
+    <entry key="MultipleMatrixParametersError">
+ブロック ''{2}'' のパラメーター ''{0}'' および ''{1}'' が正しくありません。
+ </entry>
+    <entry key="MatrixRuntimeParameterError">
+シミュレーションの実行中は、ブロック ''{1}'' のパラメーター ''{0}'' を変更できません。
+  </entry>
+    <entry key="PatternChangeAtRuntime">
+行列パラメーターでパターンの変更が検出されました。この行列のゼロ要素が、{0,number,integer} 行において非ゼロの数に変更されました。このパラメーターは内部的にスパース行列として表されるため、行列パターンを実行時に変更することはできません。
+  </entry>
+    <entry key="NumberOfNonZerosChangedAtRuntime">
+行列パラメーターにおいて非ゼロ要素の数が変更されました。このパラメーターは内部的にスパース行列として表されるため、行列パターンを実行時に変更することはできません。
+  </entry>
+    <entry key="NumberOfNonZerosInDChangedAtRuntime">
+D 行列が実行時にゼロから非ゼロに変更されました。この変更は実行時に許可されません。D 行列がゼロであり、出力はブロック入力に直接依存しないように暗黙的に示された状態でシミュレーションが開始されているためです。
+ </entry>
+    <entry key="NumberOfNonZerosInRowChangedAtRuntime">
+実行時に行 {0, number, integer} で行列パラメーターの非ゼロ要素の数が変更されました。ブロックではこのパラメーターをスパース行列として使用しているため、行列パターンを実行時に変更することはできません。
+  </entry>
+    <entry key="MatrixShapeChanged">
+更新された行列パラメーターの行と列の数が、行列の元の次元数と異なります。
+  </entry>
+    <entry key="MatrixIsNonFinite">
+パラメーターの 1 つまたは複数の要素が有限ではありません。 
+  </entry>
+    <entry key="MatrixIsNotReal">
+パラメーターが実数値の行列またはベクトルではありません。 
+  </entry>
+    <entry key="AIsNonSquare">
+    状態空間システムの A 行列は正方行列でなければなりません。
+  </entry>
+    <entry key="BIsNotConsistentWithA">
+    Matrix B of a state-space system must have the same number of rows as matrix
+    A.
+  </entry>
+    <entry key="CIsNotConsistentWithA">
+    Matrix C of a state-space system must have the same number of columns as
+    matrix A.
+  </entry>
+    <entry key="DIsNotConsistentWithBC">
+    Matrix D of a state-space system must have the same number of columns as
+    matrix B and the same number of rows as matrix C.
+  </entry>
+    <entry key="ZeroColumnsInBD">
+    行列 B および D の列数がいずれも 0 です。行列 B と D の少なくとも一方に 1 列以上の列が必要です。
+  </entry>
+    <entry key="ZeroRowsInCD">
+    Matrices C and D both have 0 rows. At least one of matrices C and D must
+    have 1 or more rows.
+  </entry>
+    <entry key="ICIsNotConsistent">
+    Initial condition must be either a scalar or a vector with a length that
+    matches the number of rows in matrix A.
+  </entry>
+    <entry key="AIsUndefined">
+A 行列がこのブロックに定義されていません。Simulink では有効な状態空間システムを完全には特定できません。
+  </entry>
+    <entry key="DimensionsHigherThanTwo">
+	ブロック ''{1}'' の行列 ''{0}'' の次元が 2 より大きくなっています。
+  </entry>
+    <entry key="DataFormatChanged">
+	シミュレーションの実行中、State-Space ブロック ''{0}'' では、スパース行列から密行列、またはその逆のパラメーター値の変更は許可されていません。
+  </entry>
+    <entry key="DIsNotTunable">
+ブロック ''{0}'' のパラメーター D は、非ゼロの値をもたないスパース行列に設定されており、パラメーター ''{1}'' は on です。実行時に、ゼロのスパース行列を非ゼロに変更することはできません。D をスパースなゼロ行列に設定する場合は、''{1}'' を off にしてください。
+  </entry>
+    <entry key="GeneralRealizationIgnored">
+ブロック ''{0}'' は、パラメーター ''{2}'' のパラメーター設定 ''{1}'' を無視します。これは、''{3}'' が ''{4}'' に設定されており、general の Realization 設定と競合するためです。general の Realization の動作が望ましい場合は、''{3}'' を ''{5}'' または ''{6}'' に、''{2}'' を ''{1}'' に設定してください。
+  </entry>
+    <entry key="AllowTunableDMatrixNotValid">ブロック ''{0}'' のパラメーター ''{1}'' が ''on'' に設定されているため、D 行列のゼロから非ゼロへの調整可能性が要求されています。しかし、''{2}'' が ''{3}'' に設定されており、D 行列の調整可能性の要求と矛盾します。D 行列のゼロから非ゼロへの調整可能性が望ましい場合は、''{2}'' を ''{4}'' または ''{5}'' に設定してください。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AutoTunability" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Auto'');&lt;/cmd&gt; &lt;txt&gt; ''{2}'' を ''{4}'' に設定する。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="UnconstrainedTunability" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt; ''{2}'' を ''{5}'' に設定する。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="TunabilityOptimizedCannotBeWritten">''{1}'' が ''{2}'' に設定されているため、Parameter Writer ブロックを使用してブロック ''{0}'' のパラメーター ''{1}'' に書き込めません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AutoTunability1" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Auto'');&lt;/cmd&gt; &lt;txt&gt; ''{1}'' を ''{3}'' に設定する。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="UnconstrainedTunability1" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt; ''{1}'' を ''{4}'' に設定する。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="ZeroToNonZeroNotAllowedDBeenWritten">''{1}'' に非ゼロ値がなく、''{2}'' が ''off'' に設定されているため、Parameter Writer ブロックを使用してブロック ''{0}'' のパラメーター ''{1}'' に書き込めません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="TunableD" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''AllowTunableDMatrix'',''on'');&lt;/cmd&gt; &lt;txt&gt; ''{2}'' を ''on'' に設定する。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="SparseMatrixParamCannotBeWritten">
+      ''{1}'' がスパース行列に設定されているため、Parameter Writer ブロックを使用してブロック ''{0}'' のパラメーター ''{1}'' に書き込めません。
+   </entry>
+    <entry key="AutoAbsoluteToleranceCannotBeWritten">
+       ''{1}'' が ''auto'' に設定されているため、Parameter Writer ブロックを使用してブロック ''{0}'' のパラメーター ''{1}'' に書き込めません。
+   </entry>
+  </message>
+</rsccat>

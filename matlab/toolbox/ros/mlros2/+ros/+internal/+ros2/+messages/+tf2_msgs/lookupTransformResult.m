@@ -1,0 +1,44 @@
+function [data, info] = lookupTransformResult
+%LookupTransformResult gives an empty data for tf2_msgs/LookupTransformResult
+
+% Copyright 2019-2021 The MathWorks, Inc.
+data = struct();
+data.MessageType = 'tf2_msgs/LookupTransformResult';
+[data.transform, info.transform] = ros.internal.ros2.messages.geometry_msgs.transformStamped;
+info.transform.MLdataType = 'struct';
+[data.error, info.error] = ros.internal.ros2.messages.tf2_msgs.tF2Error;
+info.error.MLdataType = 'struct';
+info.MessageType = 'tf2_msgs/LookupTransformResult';
+info.constant = 0;
+info.default = 0;
+info.maxstrlen = NaN;
+info.MaxLen = 1;
+info.MinLen = 1;
+info.MatPath = cell(1,27);
+info.MatPath{1} = 'transform';
+info.MatPath{2} = 'transform.header';
+info.MatPath{3} = 'transform.header.stamp';
+info.MatPath{4} = 'transform.header.stamp.sec';
+info.MatPath{5} = 'transform.header.stamp.nanosec';
+info.MatPath{6} = 'transform.header.frame_id';
+info.MatPath{7} = 'transform.child_frame_id';
+info.MatPath{8} = 'transform.transform';
+info.MatPath{9} = 'transform.transform.translation';
+info.MatPath{10} = 'transform.transform.translation.x';
+info.MatPath{11} = 'transform.transform.translation.y';
+info.MatPath{12} = 'transform.transform.translation.z';
+info.MatPath{13} = 'transform.transform.rotation';
+info.MatPath{14} = 'transform.transform.rotation.x';
+info.MatPath{15} = 'transform.transform.rotation.y';
+info.MatPath{16} = 'transform.transform.rotation.z';
+info.MatPath{17} = 'transform.transform.rotation.w';
+info.MatPath{18} = 'error';
+info.MatPath{19} = 'error.NO_ERROR';
+info.MatPath{20} = 'error.LOOKUP_ERROR';
+info.MatPath{21} = 'error.CONNECTIVITY_ERROR';
+info.MatPath{22} = 'error.EXTRAPOLATION_ERROR';
+info.MatPath{23} = 'error.INVALID_ARGUMENT_ERROR';
+info.MatPath{24} = 'error.TIMEOUT_ERROR';
+info.MatPath{25} = 'error.TRANSFORM_ERROR';
+info.MatPath{26} = 'error.error';
+info.MatPath{27} = 'error.error_string';

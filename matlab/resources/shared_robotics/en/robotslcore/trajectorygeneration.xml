@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!-- Copyright 2018-2020 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="shared_robotics">
+  <message>
+
+    <!-- Common to all blocks -->
+
+    <entry key="WaypointSourcePrompt">Waypoint source</entry>
+    <entry key="ParameterSourcePrompt">Parameter source</entry>
+    <entry key="WaypointsSectionTitle">Waypoints</entry>
+    <entry key="ParametersSectionTitle">Parameters</entry>
+    
+    <entry key="SourceInternalPopup" translate="false" note="Do not translate popup options.">
+        Internal
+    </entry>
+    <entry key="SourceExternalPopup" translate="false" note="Do not translate popup options.">
+        External
+    </entry>
+
+    <!-- Common to blocks with a time input -->
+
+    <entry key="TimePointsPrompt">Time points</entry>
+    <entry key="TimeIntervalPrompt">Time interval</entry>
+
+    <!-- Common to blocks with a waypoints input -->
+
+    <entry key="WaypointsPrompt">Waypoints</entry>
+
+    <!-- Polynomial Trajectory block -->
+
+    <entry key="PolynomialTitle">Polynomial Trajectory</entry>
+    <entry key="PolynomialDescription" note="This text references several drop-down values, which are not translated as they are part of the code base. These items should not be translated here either: 'Cubic polynomial', 'Quintic polynomial', and 'B-spline' (trajectories), and 'External' (Waypoint source parameter).">
+      Generate polynomial trajectories through multiple waypoints.
+      \n
+      \nSpecify an [NxP] matrix of P waypoints. Set the Waypoint source parameter to external to specify these parameters as block inputs.
+      \n
+      \nSet the Method parameter to Cubic Polynomial, Quintic Polynomial, or B-spline trajectories. For Cubic and Quintic Polynomial,
+      the block generates polynomial trajectories that pass through the waypoints at the times specified in Time points as a P-element vector.
+      The trajectory uses the specified boundary conditions, provided as [NxP] matrices. For B-spline Polynomial, the block generates B-spline
+      trajectories that pass through the first and last waypoints at the times specified in Time points as a 2-element vector. The generated
+      trajectories fall in the convex hull of the control polygon defined by the waypoints.
+      \n
+      \nThe initial and final values are held constant outside of the time period defined by Time points.
+    </entry>
+
+    <entry key="PolynomialMethodPrompt">Method</entry>
+    <entry key="PolynomialVelocityBCPrompt">Velocity boundary conditions</entry>
+    <entry key="PolynomialAccelerationBCPrompt">Acceleration boundary conditions</entry>
+    
+    <entry key="PolynomialCubicPopup" translate="false" note="Do not translate popup options.">
+        Cubic Polynomial
+    </entry>
+    <entry key="PolynomialQuinticPopup" translate="false" note="Do not translate popup options.">
+        Quintic Polynomial
+    </entry>
+    <entry key="PolynomialBSplinePopup" translate="false" note="Do not translate popup options.">
+        B-Spline
+    </entry>
+
+
+    <!-- Trapezoidal Velocity Profile Trajectory block -->
+
+    <entry key="TrapVelTrajTitle">Trapezoidal Velocity Profile Trajectory</entry>
+    <entry key="TrapVelTrajDescription" note="This text references the 'External' Waypoint source option. This is a drop-down item, which is not translated, as it is part of the code base. It should not be translated here either.">
+      Generate trajectories through multiple waypoints using trapezoidal velocity profiles.
+      \n
+      \nSpecify an [NxP] matrix of P waypoints with N axes to generate trajectories that pass through the P waypoints using trapezoidal velocity parameters. Set Waypoint source to External to accept them as a block input.
+      Use the Number of parameters popup to select the total number of parameters, then specify the parameters using the popups for Parameter 1 and Parameter 2.
+      The corresponding parameter values can be specified as scalars, an Nx1 vector, or an [Nx(P-1)] matrix. The scalar applies the same parameters to all N axes and P waypoints. The vector applies the N parameters to all N axes. The matrix applies the parameter set for each of the N axes and P-1 segments of the trajectory.
+      \n
+      \nAfter the trajectory is completed, the final values are held constant.
+    </entry>
+
+    <entry key="TrapVelTrajNumParamsPrompt">Number of parameters</entry>
+    <entry key="TrapVelTrajParameter1Prompt">Parameter 1</entry>
+    <entry key="TrapVelTrajParameter2Prompt">Parameter 2</entry>
+    <entry key="TrapVelTrajVelocityPrompt">Peak velocity</entry>
+    <entry key="TrapVelTrajAccelerationPrompt">Acceleration</entry>
+    <entry key="TrapVelTrajEndTimePrompt">End time</entry>
+    <entry key="TrapVelTrajAccelTimePrompt">Acceleration time</entry>
+    
+    <entry key="TrapVelTrajPeakVelocityPopup" translate="false" note="Do not translate popup options.">
+        Peak Velocity
+    </entry>
+    <entry key="TrapVelTrajAccelPopup" translate="false" note="Do not translate popup options.">
+        Acceleration
+    </entry>
+    <entry key="TrapVelTrajEndTimePopup" translate="false" note="Do not translate popup options.">
+        End Time
+    </entry>
+    <entry key="TrapVelTrajAccelTimePopup" translate="false" note="Do not translate popup options.">
+        Acceleration Time
+    </entry>
+
+    <!-- Rotation Trajectory -->
+
+    <entry key="RotTrajTitle">Rotation Trajectory</entry>
+    <entry key="RotTrajDescription">
+      Generate a trajectory between two orientations.
+      \n
+      \nThe block outputs the rotation at the times given by the Time input on the block, which can be either a scalar or vector. The initial and final values are held constant outside the Time interval.
+      \n
+      \nThe trajectory is computed using spherical linear interpolation (SLERP) and finds the shortest path between points. Select the Use custom time scaling checkbox to compute using a custom time
+      scaling. The custom time scaling is specified as a 3xP matrix for the time scaling vector and the first two derivatives. The block uses linear time scaling by default.
+    </entry>
+
+    <entry key="RotTrajFormatPrompt">Rotation format</entry>
+    <entry key="RotTrajR0Prompt">Initial rotation</entry>
+    <entry key="RotTrajRFPrompt">Final rotation</entry>
+    
+    <entry key="RotTrajFormatQuaternionPopup" translate="false" note="Do not translate popup options.">
+        Quaternion
+    </entry>
+    <entry key="RotTrajFormatRotMatPopup" translate="false" note="Do not translate popup options.">
+        Rotation Matrix
+    </entry>
+
+    <!-- Transform Trajectory -->
+
+    <entry key="TransformTrajTitle">Transform Trajectory</entry>
+    <entry key="TransformTrajDescription">
+      Generate a trajectory between two homogeneous transforms.
+      \n
+      \nSpecify two 4x4 homogeneous transformation matrices in Initial and Final transform. The block computes the trajectory between
+      these transformations over the time period specified by the Time interval parameter. The block outputs the transformation at
+      the times given by the Time input on the block, which can be either a scalar or vector. The initial and final values are held
+      constant outside the Time interval.
+      \n
+      \nThe trajectory is computed using linear interpolation for the positions, and spherical linear interpolation (SLERP) for
+      the rotations. Select the Use custom time scaling checkbox to compute using a custom time scaling. The custom time scaling
+      is specified as a 3xP matrix for the time scaling vector and the first two derivatives. The block uses linear time scaling by default.
+    </entry>
+
+    <entry key="TransformTrajT0Prompt">Initial transform</entry>
+    <entry key="TransformTrajTFPrompt">Final transform</entry>
+
+    <!-- Time Scalings (Common to Rotation and Transform Trajectory blocks) -->
+
+    <entry key="CustomTimeScalingPrompt">Use custom time scaling</entry>
+    <entry key="CustomTimeScalingTimePrompt">Time scaling time</entry>
+    <entry key="CustomTimeScalingValuesPrompt">Time scaling values</entry>
+
+    <!-- Error messages common to blocks with time scalings -->
+    <entry key="TimeScalingInputError">The provided time scaling is not valid. The first row of the time scaling matrix must be limited to values between zero and one.</entry>
+    <entry key="TimeScalingIntervalDimensionError">The dimensions of the time scaling time value do not match those of Time input or Time Interval values. The time scaling time can have two forms: (1) Single value to match the input Time signal, or (2) A vector with values that span the time interval.</entry>
+    <entry key="TimeScalingIntervalInterpError">The time scaling time value does not match the Time input or Time Interval values. The time scaling time can have two forms: (1) Single value to match the input Time signal, or (2) A vector with values that span the time interval.</entry>
+
+  </message>
+</rsccat>

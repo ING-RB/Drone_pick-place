@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ToWksBlockDescr">将输入写入工作区中的指定时间序列、数组或结构体。对于基于菜单的仿真，数据会写入 MATLAB 基础工作区。在仿真停止或暂停之前，数据不可用。\n\n要记录总线信号，请使用 "时间序列" 保存格式。</entry>
+    <entry key="ToWksBlkMultiExecInsNoSupportMsg">To Workspace blocks do not support data logging inside For Each subsystems. Consider using signal logging to log data inside the For Each subsystem. See &lt;a href="matlab:helpview(fullfile(docroot,'simulink','helptargets.map'),'logging_signals')"&gt;Mark a Signal for Signal Logging&lt;/a&gt; in Simulink documentation.</entry>
+    <entry key="SigLogMultiExecInsNoBusSupportMsg">Only non-bus signals can be logged inside For Each subsystems.</entry>
+    <entry key="ToWksInvalidName">在参数 ''{1}'' 的 ''{0}'' 中指定的 MATLAB 变量名称无效。</entry>
+    <entry key="ToWksMaxDataPointsIsVector">为 ''{0}'' 中的 "将数据点限制为最后" 参数输入了向量。这是为了向后兼容而允许的操作，但它应为标量。元素 2 覆盖了 "抽取" 参数，元素 3 覆盖了 "采样时间" 参数。</entry>
+    <entry key="ToWksInvPortDType">''{0}'' 的输入信号可能不是 ''{1}'' 类型，因为该类型没有注册类型转换函数。</entry>
+    <entry key="ToWksNonVirtualBusNonTimeseriesFormat">''{0}'' 的输入信号是非虚拟总线 ''{1}''。此模块的 ''保存格式'' 参数设置为 ''{2}''。指定的格式不支持记录非虚拟总线信号。要记录非虚拟总线信号，请将 ''保存格式'' 设置为 ''时间序列''。 </entry>
+    <entry key="SigLogInvPortDType">Unable to log &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' because this signal is of type ''{2}''. Signal logging is not supported for user-defined types.</entry>
+    <entry key="RootOutportInvDType">Unable to log root Outport block ''{0}'' because this signal is of type ''{1}''. Outport logging is not supported for user-defined types.</entry>
+    <entry key="ToWksNoLogFrameAsStructure">Cannot log frame-based data in StructureWithTime format in ''{0}''. Choose either Array or Structure logging format.</entry>
+    <entry key="ToWksArrayFormatVariableDims">Simulink 不支持使用数组格式记录可变大小信号。请将 ''{0}'' 的 ''保存格式'' 参数更改为 ''结构体'' 或 ''带时间的结构体''。</entry>
+    <entry key="ScopeArrayFormatVariableDims">Simulink 不支持使用数组格式记录可变大小信号。请从 "范围参数 -&gt; 历史记录" 将 ''{0}'' 的 ''格式'' 参数更改为 ''结构体'' 或 ''带时间的结构体''。</entry>
+    <entry key="SigLogOverriddenBusNotAllowedInMdlRefAccel">Unable to log data for the bus output on port {1,number,integer} of block ''{0}''. Simulate the referenced model that contains the bus using normal mode or change the 'Data type override' setting for the referenced model to 'Use local settings' or 'Off'.</entry>
+    <entry key="ToWksOverriddenBusNotAllowedInMdlRefAccel">Overridden bus object ''{0}'' detected for To Workspace block ''{1}''. Overridden bus objects are not supported for To Workspace in a referenced model in accelerated simulation mode. Either run the referenced model using normal mode simulation or set the Data type override setting of the referenced model to 'Use local settings' or 'Off'.</entry>
+    <entry key="SigLogInvDTypeID">Unable to log signal or state for model ''{0}'' because the data type is invalid. To log user-defined data types, set the "Configuration Parameters" &gt; "Data Import/Export" &gt; "Format" parameter to "Dataset".</entry>
+    <entry key="ToWksStringInput">
+      To Workspace 模块 ''{0}'' 的输入是字符串数据类型，不受支持。
+  </entry>
+    <entry key="UnSupportedStringLoggingToFile">
+      Block ''{0}'' logs a string data type signal. The model has the ''Configuration Parameters'' &gt; ''Data Import/Export'' &gt; ''Log Dataset data to file'' parameter selected. When that parameter is selected, logging string signal data is not supported. To log the string data type signals, turn off the ''Log Dataset data to file'' parameter.
+  </entry>
+    <entry key="ToWksSaveFormatVariableDims">To Workspace 模块 ''{0}'' 的 '保存格式' 参数必须为 '结构体'、'带时间的结构体' 或 '时间序列'，因为输入是可变大小信号。要使用 '结构体' 格式记录可变大小信号，请将 '将二维信号另存为' 参数设置为 '三维数组(沿第三个维度串联)'。</entry>
+    <entry key="ToFileNoAoBSupport">To File 模块 ''{0}'' 无法记录非虚拟总线数组或包含子总线数组的非虚拟总线。请考虑删除 To File 模块或使用 Selector 模块从总线数组中提取并记录特定总线。</entry>
+    <entry key="ToFileInvalidDimRankBus">To File 模块 ''{0}'' 输入端口的总线信号之一的维数为 {1,number,integer}。To File 模块不支持记录维数大于 {2,number,integer} 的信号。</entry>
+    <entry key="FromFileDataHierStructExtraField">The Bus data type specified by the From File block ''{0}'' does not match the structure of the variable ''{1}'' in file ''{2}''. Field ''{3}'' of the structure is not an element of the bus.</entry>
+    <entry key="FromFileStructDataTypeNotBus">The From File block ''{0}'' is configured to load a structure of MATLAB timeseries objects from variable ''{1}'' in file ''{2}'', but its data type ''{3}'' is not a bus data type. To load bus data in a From File block, set the "Output data type" to ''Bus: BusObjectName''.</entry>
+    <entry key="FromFileUnsupportedDataType">Variable ''{0}'' in file ''{1}'' contains unsupported data. For information about input data types and formats the From File block supports, see &lt;a href="matlab:helpview('simulink', 'fromfile')"&gt;From File&lt;/a&gt;.</entry>
+    <entry key="FromFileDataTypeMismatch">Inconsistent data type for From File block ''{0}''. The variable ''{1}'' in file ''{2}'' has data type ''{3}''. This data type does not agree with the data type, ''{4}'', which is set for this block. Change the data type of the input data in the file to ''{5}'', or change the "Output data type" of this block to ''Inherit: auto''.</entry>
+    <entry key="FromFileDataNonBusDataForBus">The From File block ''{0}'' specifies a bus object, but the variable ''{1}'' in file ''{2}'' is not compatible with buses. To load bus data with From File blocks, use a structure containing MATLAB timeseries objects.</entry>
+    <entry key="FromFileDataEmptyHierStructForBus">The data in the variable ''{0}'' in file ''{1}'' specified for From File block ''{2}'' contains a structure with no fields. To load bus data, you must specify at least 1 field.</entry>
+    <entry key="FromFileDataNonScalarTimeseriesLeaf">The From File block ''{0}'' specifies a bus object, but the field ''{1}'' of variable ''{2}'' in file ''{3}'' is not a scalar MATLAB timeseries object. The field ''{4}'' of variable ''{5}'' is either not a MATLAB timeseries object or not a scalar. To load bus data with From File blocks, use a structure whose leaves are scalar MATLAB timeseries objects. However, From File blocks can load data from MATLAB timeseries objects with non-scalar Data or Time properties.</entry>
+    <entry key="FromFileDataNon1x1DataForBus">The From File block ''{0}'' specifies a bus object, but the variable ''{1}'' in file ''{2}'' is not a 1x1 structure. To load bus data with From File blocks, use a 1x1 structure whose leaves are MATLAB timeseries objects.</entry>
+    <entry key="FromFileDataNon1x1FieldInStructure">The From File block ''{0}'' specifies a bus object, but the field ''{1}'' of variable ''{2}'' in file ''{3}'' is not a 1x1 structure. To load bus data with From File blocks, use a 1x1 structure whose leaves are MATLAB timeseries objects and each sub-structure is 1x1.</entry>
+    <entry key="FromFileBusStructDataTypeMismatch">Inconsistent data type for the data in the variable ''{0}'' in file ''{1}'' specified for From File block ''{2}''. Field ''{3}'' of the structure specified in this variable indicates that the data type is ''{4}''. This data type does not agree with the data type ''{5}'', which is set by the bus object specified for the From File block "Output data type" parameter.</entry>
+    <entry key="FromFileBusStructComplexityMismatch">Inconsistent signal type for the data in the variable ''{0}'' in file ''{1}'' specified for From File block ''{2}''. Field ''{3}'' of the structure specified in this variable indicates that the data is {4}. The corresponding element in the bus object specified for the From File block "Output data type" parameter is set to {5}.</entry>
+    <entry key="FromFileBusStructDimsMismatch">Inconsistent port dimensions for the data in the variable ''{0}'' in file ''{1}'' specified for From File block ''{2}''. Field ''{3}'' of the structure specified in this variable indicates that the dimensions are {4}. The element dimensions are set to {5} by the bus object specified for the From File block "Output data type" parameter.</entry>
+    <entry key="FromFileArrayOfSubBus">The From File block ''{0}'' specifies a bus object containing a nonscalar sub-bus. Loading external data for arrays of buses is not supported. To avoid this error, use a separate From File block for each scalar bus and use a Vector Concatenate block.</entry>
+    <entry key="FromFileNonVirtBusDimsModeMismatch">The bus object specified on ''{0}'' contains a variable-size bus element. From File blocks do not support loading data for variable-sized bus elements.</entry>
+    <entry key="FromFileVariableGeneralErr">Invalid data encountered in field ''{0}'' of the variable ''{1}'' in file ''{2}'' specified for From File block ''{3}''.</entry>
+    <entry key="FromFileSingleSampleRowVectorErr">The MATLAB timeseries object contains a single data sample in a form that From File blocks do not support. A possible workaround is to create a MATLAB timeseries object with at least two samples containing the same data value, save it into a file and load data from this file using the From File block. Consider adding one sample that contains the same data value to the MATLAB timeseries object using the addsample method.</entry>
+    <entry key="FromFileUnsupportedInt64Err">From File block does not support loading input data of type 'int64' or 'uint64'.</entry>
+    <entry key="FromFileUnsupportedHalfErr">From File 模块不支持加载 'half' 类型的输入数据。</entry>
+    <entry key="SigLogDatasetFormatVariableDims">Unable to log &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' because this contains a variable-size signal. Logging of non-virtual buses with elements of variable size is not supported.</entry>
+    <entry key="ToWksNoRTWSupportForDataset">The To Workspace block ''{0}'' has the ''SaveFormat'' parameter set to ''{1}''. This format is supported only for normal and accelerator mode simulations.
+    No data will be logged for this block. To log this signal in rapid accelerator mode, consider using signal logging. To log this signal in other simulation modes and code generation targets, consider changing the 'SaveFormat' parameter to 'Structure With Time'.</entry>
+    <entry key="ToWksMdlRefCustomType">The block ''{0}'' is configured to log a custom data type. For model reference simulation targets and for Rapid Accelerator mode, only builtin, enum, and fixed-point data types are supported.</entry>
+    <entry key="RootOutportDatasetFormatVariableDims">Unable to log root Outport block ''{0}'' because the input signal contains a variable-size signal. Logging of non-virtual buses with elements of variable size is not supported. Consider disabling logging of root Outport blocks by turning off the ''Configuration Parameters &gt; Data Import/Export &gt; Output'' option.</entry>
+    <entry key="RootOutportDatasetFormatUnboundedVariableDims">无法记录根 Outport 模块 ''{0}''，因为输入信号包含无界可变大小信号。不支持记录具有无界可变大小元素的非虚拟总线。请考虑通过关闭 ''配置参数 &gt; 数据导入/导出 &gt; 输出'' 选项来禁用根 Outport 模块的记录。</entry>
+    <entry key="SigLogExtModeOpenProtocolVariableDims">Unable to log &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' because the connected signal is variable-size, or contains a variable-size signal.</entry>
+    <entry key="XCPCannotLogDataset">不会为 To Workspace 模块 ''{0}'' 记录任何数据。在基于 XCP 的外部模式仿真中，仅当配置参数 ''StreamToWks'' 为 ''on'' 且配置参数 ''MATFileLogging'' 为 ''off'' 时，''SaveFormat'' 参数设置为 ''{1}'' 的 To Workspace 模块才能记录数据。</entry>
+    <entry key="SfuncLogInvalidHierIdx">The S-Function block ''{0}'' is using an invalid bus hierarchy index value of {1,number,integer} to create a Dataset element description.</entry>
+    <entry key="SfuncInvDType">The logged signal(s) of ''{0}'' may not be of type ''{1}''. This data type is not supported for logging.</entry>
+    <entry key="SfuncInvMaxPts">Invalid maximum points parameter of {0,number,integer} for S-function logging for block ''{1}''. Maximum points must be non-negative.</entry>
+    <entry key="SfuncInvDecimation">Invalid decimation parameter of {0,number,integer} for S-function logging for block ''{1}''. Decimation must be greater than zero.</entry>
+    <entry key="SfuncInvDimensions">Invalid dimensions specified for S-function logging for block ''{0}''. All dimension parameters must be greater than zero.</entry>
+    <entry key="SfuncInvAddTimeseries">The S-function block ''{0}'' is logging a signal with {1,number,integer} element(s) and must call ssLoggerAddTimeseriesDescription once for each element.</entry>
+    <entry key="UpAdvSave2dMode_SAVE_AS_2D_ReasonStr">将 Save2DSignal 参数从 '从输入中继承(此选择项将被删除 - 请参阅发行说明)' 更改为 '二维数组(沿第一个维度串联)'。 </entry>
+    <entry key="UpAdvSave2dMode_SAVE_AS_3D_ReasonStr">将 Save2DSignal 参数从 '从输入中继承(此选择项将被删除 - 请参阅发行说明)' 更改为 ''三维数组(沿第三个维度串联)'。 </entry>
+    <entry key="InvalidParam">参数 ''{1}'' 的 ''{0}'' 中的设置无效。</entry>
+    <entry key="SaveFormat_STRUCTURE_WITH_TIME_FORMAT">带时间的结构体</entry>
+    <entry key="SaveFormat_STRUCTURE_FORMAT">结构体</entry>
+    <entry key="SaveFormat_MATRIX_FORMAT">矩阵</entry>
+    <entry key="SaveFormat_ARRAY_FORMAT">数组</entry>
+    <entry key="SaveFormat_TIMESERIES_FORMAT">时间序列</entry>
+    <entry key="SaveFormat_DATASET_FORMAT">数据集</entry>
+    <entry key="Save2dMode_SAVE_AS_2D">二维数组(沿第一个维度串联)</entry>
+    <entry key="Save2dMode_SAVE_AS_3D">三维数组(沿第三个维度串联)</entry>
+    <entry key="Save2dMode_SAVE_AS_INHERITED">从输入中继承(此选择项将被删除 - 请参阅发行说明)</entry>
+    <entry key="FrameMode_SAVE_FRAME_AS_2D">串联帧(二维数组)</entry>
+    <entry key="FrameMode_SAVE_FRAME_AS_3D">分别记录帧(三维数组)</entry>
+    <entry key="UnifiedLoggingNotSupported">Simulink unified logging infrastructure does not support ''{0}'' yet.</entry>
+    <entry key="StateflowLoggingToFileNotSupported">模块 ''{0}'' 记录 Stateflow 信号。该模型选择了 ''配置参数'' &gt; ''数据导入/导出'' &gt; ''将数据集数据记录到文件'' 参数。如果选择了该参数，Simulink 将不会记录 Stateflow 信号数据。要记录 Stateflow 数据，请关闭 ''将数据集数据记录到文件'' 参数。</entry>
+    <entry key="SfuncLoggingToFileNotSupported">The S-Function block ''{0}'' is
+    configured for signal logging, but is not logging because the model has the
+    ''Configuration Parameters'' &gt; ''Data Import/Export'' &gt; ''Log Dataset data
+    to file'' parameter selected. To log the data, turn off the ''Log Dataset
+    data to file'' parameter.</entry>
+    <entry key="LoggingStringInNonVirtualBusNotSupported">在模块 ''{0}'' 中，不支持记录包含字符串数据类型的非虚拟总线信号。</entry>
+    <entry key="MaxLogElSizeSigLog">Unable to log the output of block ''{0}''. This signal has an element size of {1,number,integer} MB.  The maximum element size for logging is {2,number,integer} MB.</entry>
+    <entry key="MaxLogElSizeOutportLog">Unable to log the root-level outport ''{0}''. This signal has an element size of {1,number,integer} MB.  The maximum element size for logging is {2,number,integer} MB.</entry>
+    <entry key="MaxLogElSizeBlockLog">无法记录模块 ''{0}'' 的输入。此信号的元素大小为 {1,number,integer} MB。记录的最大元素大小为 {2,number,integer} MB。</entry>
+    <entry key="MaxLogElSizeStateLog">Unable to log a signal or state for variable ''{0}''. This signal has an element size of {1,number,integer} MB.  The maximum element size for logging is {2,number,integer} MB.</entry>
+    <entry key="MaxLogElSizeDSMLog">Unable to log the datastore ''{0}''. This signal has an element size of {1,number,integer} MB.  The maximum element size for logging is {2,number,integer} MB.</entry>
+    <entry key="UnhandledDatatype">由于存在未处理的异常，无法记录数据类型 ''{0}''。</entry>
+    <entry key="ForEachSubsystemDataType">To Workspace 模块 ''{0}'' 正在以 ''{2}'' 格式而不是指定的保存格式 ''{1}'' 记录数据，因为在 For Each 子系统中的记录仅支持时间序列格式。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''SaveFormat'',''{2}'')&lt;/cmd&gt; &lt;txt&gt;将模块 ''{0}'' 的数据格式化为 ''{2}''&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+		
+	</entry>
+    <entry key="InvSampleTimeLoggingBlockInExpFcnMdl">
+      
+	       Block ''{0}'' has an invalid sample time. ''{1}'' blocks in an export function model should have inherited (-1) sample time.
+               &lt;actions exclusiveFixIts="yes"&gt;
+	       &lt;action type="fixit"&gt;
+	       &lt;cmd&gt;set_param(''{0}'',''SampleTime'',''[-1]'')&lt;/cmd&gt;
+	       &lt;txt&gt;Set sample time for block ''{0}'' to '-1'&lt;/txt&gt;
+               &lt;/action&gt;
+	       &lt;/actions&gt;
+      
+    </entry>
+  </message>
+</rsccat>

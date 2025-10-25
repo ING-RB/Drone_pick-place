@@ -29,6 +29,8 @@ RUN apt install x11-xserver-utils -y
 
 # MATLAB
 RUN apt install libgtk2.0-0 -y
+RUN apt install p7zip-full -y
+
 
 # ENTRYPOINT
 COPY entrypoint.sh /entrypoint.sh

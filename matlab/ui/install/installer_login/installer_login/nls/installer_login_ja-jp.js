@@ -1,0 +1,3 @@
+define('installer_login/nls/installer_login_ja-jp',{
+'installer_login/l10n/nls/installer_login':{"connectionError":"接続エラー","connectionErrorMsg":"アプリケーションは MathWorks に接続できませんでした。この問題の解決方法の詳細については、こちらの<a target=\"_blank\" href=\"https://www.mathworks.com/mlf_err_${0}_${1}\">サポート記事</a>を参照してください。","cancel":"キャンセル","tryAgain":"再試行","unexpectedError":"予期せぬエラー","unexpectedErrorMsg":"予期しないエラーが発生しました。後で再試行してください。<br><br>問題が解決しない場合は、MATLAB を再起動してください。詳細なヘルプが必要な場合は、<a target=\"_blank\" href=\"https://www.mathworks.com/support/contact_us/?s_tid=sp_ban_cs\">サポートにお問い合わせください</a>。","_localized":{}}
+});

@@ -1,0 +1,340 @@
+{
+"box":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"", "kind":"flag", "type":["char", "choices={'on','off'}"]}
+    ]
+},
+"loglog":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"Y", "kind":"required", "type":"numeric"},
+                    {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                ],
+                {"repeating":true, "tuple":
+                    [
+                        {"name":"X1", "type":"numeric"},
+                        {"name":"Y1", "type":"numeric"},
+                        {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                    ]
+                }
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X1", "description":"X"},
+                {"name":"Y"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'none','o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram'}", "kind":"properties"},
+                {"name":"AlignVertexCenters", "description":"MATLAB:graphics:visualizedatatask:AlignVertexDesc", "type":"choices={'on','off'}", "kind":"properties"}
+            ],
+            "icon":"logLogPlot",
+            "description":"MATLAB:plots:Tool_loglog_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:LinePlotsLabel",
+            "supportsOverlay": true
+        }
+    }
+},
+"loglog":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"yvar", "kind":"flag", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ]
+},
+"plot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                    {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                ],
+                {"repeating":true, "tuple":
+                    [
+                        {"name":"X", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                        {"name":"Y", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                        {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                    ]
+                }
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "taskInfo":
+    {
+    "VisualizeTaskInfo": {
+            "params": [
+                {"name": "X"},
+                {"name": "Y"},
+                {
+                    "name": "LineStyle",
+                    "description": "MATLAB:graphics:visualizedatatask:LineStyleDesc",
+                    "type": {
+                        "choices": [
+                            {"dropdown": "-", "codegen": "-"},
+                            {"dropdown": "--", "codegen": "--"},
+                            {"dropdown": ":", "codegen": ":"},
+                            {"dropdown": "-.", "codegen": "-."},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:NoneChoice", "codegen": "none"}
+                        ]
+                    },
+                    "kind": "properties"
+                },
+                {
+                    "name": "Marker",
+                    "description": "MATLAB:graphics:visualizedatatask:MarkerDesc",
+                    "type": {
+                        "choices": [
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:NoneChoice", "codegen": "none"},
+                            {"dropdown": "o", "codegen": "o"},
+                            {"dropdown": "+", "codegen": "+"},
+                            {"dropdown": "*", "codegen": "*"},
+                            {"dropdown": ".", "codegen": "."},
+                            {"dropdown": "x", "codegen": "x"},
+                            {"dropdown": "_", "codegen": "_"},
+                            {"dropdown": "|", "codegen": "|"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:SquareChoice", "codegen": "square"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:DiamondChoice", "codegen": "diamond"},
+                            {"dropdown": "^", "codegen": "^"},
+                            {"dropdown": "v", "codegen": "v"},
+                            {"dropdown": ">", "codegen": ">"},
+                            {"dropdown": "<", "codegen": "<"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:PentagramChoice", "codegen": "pentagram"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:HexagramChoice", "codegen": "hexagram"}
+                        ]
+                    },
+                    "kind": "properties"
+                },
+                {
+                    "name": "AlignVertexCenters",
+                    "description": "MATLAB:graphics:visualizedatatask:AlignVertexDesc",
+                    "type": {
+                        "choices": [
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:OnChoice", "codegen": "on"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:OffChoice", "codegen": "off"}
+                        ]
+                    },
+                    "kind": "properties"
+                }
+            ],
+            "icon": "linePlot",
+            "description": "MATLAB:plots:Tool_plot_Description",
+            "categories": "MATLAB:graphics:visualizedatatask:LinePlotsLabel",
+            "supportsOverlay": true
+        }
+    }
+},
+"plot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"],["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"flag", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ]
+},
+"semilogx":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                    {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                ],
+                {"repeating":true, "tuple":
+                    [
+                        {"name":"X1", "type":"numeric"},
+                        {"name":"Y1", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                        {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                    ]
+                }
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo": {
+            "params": [
+                {"name":"X1", "description":"X"},
+                {"name": "Y"},
+                {
+                    "name": "LineStyle",
+                    "description": "MATLAB:graphics:visualizedatatask:LineStyleDesc",
+                    "type": {
+                        "choices": [
+                            {"dropdown": "-", "codegen": "-"},
+                            {"dropdown": "--", "codegen": "--"},
+                            {"dropdown": ":", "codegen": ":"},
+                            {"dropdown": "-.", "codegen": "-."},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:NoneChoice", "codegen": "none"}
+                        ]
+                    },
+                    "kind": "properties"
+                },
+                {
+                    "name": "Marker",
+                    "description": "MATLAB:graphics:visualizedatatask:MarkerDesc",
+                    "type": {
+                        "choices": [
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:NoneChoice", "codegen": "none"},
+                            {"dropdown": "o", "codegen": "o"},
+                            {"dropdown": "+", "codegen": "+"},
+                            {"dropdown": "*", "codegen": "*"},
+                            {"dropdown": ".", "codegen": "."},
+                            {"dropdown": "x", "codegen": "x"},
+                            {"dropdown": "_", "codegen": "_"},
+                            {"dropdown": "|", "codegen": "|"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:SquareChoice", "codegen": "square"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:DiamondChoice", "codegen": "diamond"},
+                            {"dropdown": "^", "codegen": "^"},
+                            {"dropdown": "v", "codegen": "v"},
+                            {"dropdown": ">", "codegen": ">"},
+                            {"dropdown": "<", "codegen": "<"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:PentagramChoice", "codegen": "pentagram"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:HexagramChoice", "codegen": "hexagram"}
+                        ]
+                    },
+                    "kind": "properties"
+                },
+                {
+                    "name": "AlignVertexCenters",
+                    "description": "MATLAB:graphics:visualizedatatask:AlignVertexDesc",
+                    "type": {
+                        "choices": [
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:OnChoice", "codegen": "on"},
+                            {"dropdown": "MATLAB:graphics:visualizedatatask:OffChoice", "codegen": "off"}
+                        ]
+                    },
+                    "kind": "properties"
+                }
+            ],
+            "icon":"semilogXPlot",
+            "description":"MATLAB:plots:Tool_semilogx_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:LinePlotsLabel",
+            "supportsOverlay": true
+        }
+    }
+},
+"semilogx":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"yvar", "kind":"flag", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ]
+},
+"semilogy":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"Y", "kind":"required", "type":"numeric"},
+                    {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                ],
+                {"repeating":true, "tuple":
+                    [
+                        {"name":"X1", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                        {"name":"Y1", "type":"numeric"},
+                        {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+                    ]
+                }
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X1", "description": "X"},
+                {"name":"Y"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'none','o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram'}", "kind":"properties"},
+                {"name":"AlignVertexCenters", "description":"MATLAB:graphics:visualizedatatask:AlignVertexDesc", "type":"choices={'on','off'}", "kind":"properties"}
+            ],
+            "icon":"semilogYPlot",
+            "description":"MATLAB:plots:Tool_semilogy_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:LinePlotsLabel",
+            "supportsOverlay": true
+        }
+    }
+},
+"semilogy":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"flag", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ]
+}
+}

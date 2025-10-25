@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021-2022 The MathWorks, Inc. -->
+
+<xs:schema targetNamespace="http://www.mathworks.com/PolyspaceImpactSpecifications"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://www.mathworks.com/PolyspaceImpactSpecifications"
+    elementFormDefault="qualified">
+
+<xs:include schemaLocation="matchers.xsd"/>
+<xs:include schemaLocation="impact.xsd"/>
+
+
+<xs:annotation>
+    <xs:documentation>Polyspace impact specifications.</xs:documentation>
+</xs:annotation>
+
+
+<xs:element name="impact-specifications">
+    <xs:complexType>
+        <xs:all>
+            <xs:element name="functions" type="tns:FunctionsType" minOccurs="0"/>
+            <xs:element name="variables" type="tns:VariablesType" minOccurs="0"/>
+            <xs:element name="expect" type="tns:ExpectType" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+</xs:element>
+
+
+<xs:complexType name="FunctionsType">
+    <xs:sequence>
+        <xs:element name="function" type="tns:FunctionType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<xs:complexType name="VariablesType">
+    <xs:sequence>
+        <xs:element name="variable" type="tns:VariableType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<xs:complexType name="ExpectType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:choice>
+            <xs:element name="impact" type="tns:ExpectImpactType"/>
+            <xs:element name="no-impact" type="tns:ExpectImpactType"/>
+        </xs:choice>
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- elements that can be found both in "function" and "variable"-->
+<xs:group name="CommonGroup">
+    <xs:choice>
+        <xs:element name="match" type="tns:MatchType">
+            <xs:annotation>
+                <xs:documentation>
+                    Specify additionnal constraints that the matching element must meet.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="impact-source" type="tns:ImpactSourceType">
+            <xs:annotation>
+                <xs:documentation>Mark the matched variable/function as a source of the Impact Analysis.</xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:element name="impact-sink" type="tns:ImpactSinkType">
+            <xs:annotation>
+                <xs:documentation>Mark the matched variable/function as an observable (i.e. sink) of the Impact Analysis.</xs:documentation>
+            </xs:annotation>
+        </xs:element>
+    </xs:choice>
+</xs:group>
+
+
+<xs:complexType name="FunctionType">
+    <xs:annotation>
+        <xs:documentation>
+            If both the `name` attribute and the `&lt;match&gt;` element specify a constraint on the function name, then the matched function must satisfy both requirements.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+
+        <xs:group ref="tns:CommonGroup"/>
+
+        <xs:element name="impact-flow" type="tns:ImpactFlowType">
+            <xs:annotation>
+                <xs:documentation>
+                    Specify an impact flow of the matched function in the Impact Analysis.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+    </xs:choice>
+
+    <xs:attribute name="name" type="tns:NonEmptyString">
+            <xs:annotation>
+                <xs:documentation>
+                    Specify the exact name of the matched function.
+                    If this attribute is not specified, the matched function name must be constrained by the `&lt;match&gt;` element.
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="follow_projection" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                Specify to use the projection name of the symbol instead of the real name.
+                Example:
+                 struct base { int foo();};
+                 struct derive : base { };
+                call to derive::foo() will be in fact a call to base::foo().
+                If set to true and derive::foo() has some specification then base::foo() will be matched
+                If set to `false` or unset, base::foo() will not be matched.
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="std" type="tns:NonEmptyString"/>
+
+    <xs:attribute name="ruleid" type="tns:NonEmptyString">
+        <xs:annotation>
+            <xs:documentation>
+                A custom identifier or description that may be used in
+                results for traceability or as a reference to this `function` element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+</xs:complexType>
+
+
+<xs:complexType name="VariableType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="tns:CommonGroup"/>
+    </xs:choice>
+
+    <xs:attribute name="ruleid" type="tns:NonEmptyString">
+        <xs:annotation>
+            <xs:documentation>
+                A custom identifier or description that may be used in
+                results for traceability or as a reference to this `variable` element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+
+<xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:string">
+        <xs:minLength value="1"/>
+    </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

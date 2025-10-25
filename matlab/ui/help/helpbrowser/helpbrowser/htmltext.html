@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html id="htmltag">
+    <head>
+        <script src="../release/helpbrowser/dojoConfig-release-global.js"></script>
+        <script type="text/javascript" src="../release/dojo/dojo.js"></script>
+
+        <script type="text/javascript">
+            // Require browser compatability check lib
+            require(["helpbrowser/browsercheck"], function () {
+                require(["mw-browser-utils/BrowserCheck!"], function () {
+                    // If the browser compatability check passes, require in the web widget lib
+                    require(["helpbrowser/helpbrowser"], function () {
+                        require([
+                        "helpbrowser/HelpBrowserMessageService",
+                        "mw-help-matlab-colon/js/MatlabColonEvalService",
+                        "dojo/domReady!"
+                        ], function (HelpBrowserMessageService, MatlabColonEvalService) {
+                            var matches = /(\?|&|^)id=([^&]*)/.exec(location.search);
+                            if (matches && matches.length > 2) {
+                                var id = matches[2];
+                            } else {
+                                var id = 1;
+                            }
+
+                            console.log("About to call requestHelpService");
+
+                            var hbms = new HelpBrowserMessageService();
+                            hbms.publishMessage("htmltext", {"id":id}).then(function(data) {
+                                document.open("text/html");
+                                document.write(data);
+                                document.close();
+                            });
+                        });
+                    });
+                });
+            });
+        </script>
+    </head>
+</html>
+

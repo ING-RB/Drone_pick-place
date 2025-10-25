@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="expires" content="-1">
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>Desktop Workspacebrowser Page</title>
+
+        <link rel="stylesheet" href="release/index-css.css"/>
+        <script src="release/desktop_workspacebrowser/dojoConfig-release-global.js"></script>
+
+        <!-- Include release build -->
+        <script src="release/bundle.index.js"></script>
+        <script type="text/javascript">
+            const init = () => {
+                let workspaceBrowser;
+                const urlParams = new URLSearchParams(window.location.search);
+                // If the browser compatability check passes, require in the web widget lib
+                require([
+                    "desktop_workspacebrowser/UIWorkspaceBrowser",
+                    "dojo/dom",
+                    "dojo/domReady!"
+                ], function (UIWorkspaceBrowser, dom) {
+
+                    workspaceBrowser = new UIWorkspaceBrowser();
+                    workspaceBrowser.createWorkspace({
+                        namespace: urlParams.get('channel') || '/UIWorkspaceBrowser',
+                        initContext: urlParams.get('initContext') || false,
+                        resizeBehaviour: 'window'
+                    }).then(function (domNode) {
+                        document.body.appendChild(domNode);
+                        workspaceBrowser.startup();
+                    });
+                });
+
+                window.onbeforeunload = function () {
+                    if (workspaceBrowser) {
+                        workspaceBrowser.destroy();
+                    }
+                }
+            };
+        </script>
+    </head>
+    <body class="tundra" onload="init()" />
+</html>

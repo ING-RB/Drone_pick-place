@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- Copyright 2014-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="shared_robotics">
+
+    <!-- Rotation Transformations -->
+    <message>
+        <entry key="EulerSequenceNotSupported">The given Euler sequence {0} is not supported. Try one of the supported sequences: {1}.</entry>
+
+        <!-- Trajectory Generation tools: General -->
+        <entry key="TimePointsTimeMismatch">The last entry in the time vector must be greater than or equal to the maximum value of timePoints.</entry>
+        <entry key="TimeVectorTooSmall">The time vector input must have a length that is greater than or equal to size(wayPoints, 2).</entry>
+        <entry key="WaypointsTooFew">The wayPoints input must include at least two columns.</entry>
+        <entry key="WayPointMismatch">The timePoints and wayPoints inputs must have the same number of columns.</entry>
+        <entry key="WaypointVelocityBCDimensionMismatch">The dimensions of wayPoints input and VelocityBoundaryCondition name-value pair must match.</entry>
+        <entry key="WaypointAccelerationBCDimensionMismatch">The dimensions of wayPoints input and AccelerationBoundaryCondition name-value pair must match.</entry>
+
+        <!-- Trajectory Generation tools: Trapezoidal velocity profile -->
+        <entry key="TrapVelLowerBoundCondition">The selected parameter combination for wayPoints({0},{1}:{2}) must satisfy the following constraint:\nPeakVelocity*EndTime must be greater than q(end)-q(0).</entry>
+        <entry key="TrapVelUpperBoundCondition">The selected parameter combination for wayPoints({0},{1}:{2}) must satisfy the following constraint:\nPeakVelocity*EndTime/2 must be less than or equal to q(end)-q(0).</entry>
+        <entry key="TrapVelOptInputSize">The dimensions of {0} do not match the provided Waypoints matrix. For an NxP Waypoints matrix, the Name-Value pair entries must be either a scalar, an Nx1 vector, or an Nx(P-1) matrix.</entry>
+
+        <!-- Trajectory Generation tools: Rotation Trajectory -->
+        <entry key="RotTrajTimeScalingLength">Dimension mismatch. The value of TimeScaling name-value pair must have the same number of columns as the time vector input, t.</entry>
+        <entry key="RotTrajInvalidInput">Invalid input type for {0}. The value provided for {0} must be either a scalar quaternion object, a scalar so3 object, a 1x4 quaternion vector, or a 3x3 rotation matrix.</entry>
+
+        <!-- Trajectory Generation tools: Transformation Trajectory -->
+        <entry key="TransformTrajInvalidInput">Invalid input type for {0}. The value provided for {0} must be either a scalar se3 object or a 4x4 transformation matrix.</entry>
+
+        <!-- Trajectory Generation tools: Time Scaling -->
+        <entry key="TimeScalingNonzeroFirstValue">The first value of the vector input for the TimeScaling name-value pair must be zero.</entry>
+        <entry key="TimeScalingNonzeroLastValue">The last value of the vector input for the TimeScaling name-value pair must be one.</entry>
+
+        <!-- Trajectory Generation tools: Bspline -->
+        <entry key="TimePointsSizeWarning">The timePoints input vector should only contain two elements. The B-spline trajectory uses a linear time scaling defined by the first and last element of the timePoints input. Only the first and last element of the input vector are used.</entry>
+        <entry key="TimePointsSizeError">The timePoints input vector must contain two values indicating the start and end time of the trajectory.</entry>
+        <entry key="TooFewControlPoints">The controlPoints matrix must contain at least 4 columns.</entry>
+        <entry key="CodegenNotSupported">The function {0} is not supported for code generation.</entry>
+
+    </message>
+</rsccat>

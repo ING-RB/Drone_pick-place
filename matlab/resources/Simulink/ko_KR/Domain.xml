@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="DomainMismatchAtInputPort">The &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of the block ''{1}'' requires ''{2}'' signal. However, the &lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{4}"&gt;output port {3,number,integer}&lt;/sldiag&gt; of the block ''{4}'' produces a time-based signal.\nInsert a block that converts this signal.</entry>
+    <entry key="DomainMismatchAtOutputPort">The &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of the block ''{1}'' produces ''{2}'' signal. However, the &lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{4}"&gt;input port {3,number,integer}&lt;/sldiag&gt; of the block ''{4}'' requires a time-based signal.\nInsert a block that converts this signal.</entry>
+    <entry key="DomainMismatchAtConnectionPort">The {0} connection port {1,number,integer} of the block ''{2}'' is of type ''{3}'', which does not match that of the {4} connection port {5,number,integer} of the block ''{6}''.</entry>
+    <entry key="DomainMismatchAtVirtualBlockInput">The transition between time-based signals and SimEvents block is not supported at the input port {0,number,integer} of the virtual block ''{1}''. Replace block ''{1}'' with a nonvirtual block or connect it to a SimEvents block.</entry>
+    <entry key="AlgLoopsDisabledWithNoCStateBlocks">Algebraic Loop: One or more signals originating from a discrete-event system in model ''{0}'' are being fed back to the same discrete-event system through a direct feedback path. This forms an algebraic loop, which cannot be solved due to the presence of SimEvents blocks.\n\nThis loop includes timed-to-event and event-to-timed transitions at input ports of the following blocks:\n{1}\nThe time-based blocks involved in the loop are:\n{2}\nTo resolve this error see '&lt;a href="matlab:helpview(fullfile(docroot,'mapfiles','simulink.map'),'how_sl_works_algebraic_loops')"&gt;Algebraic Loops in Simulink&lt;/a&gt;''</entry>
+    <entry key="AlgLoopsDisabledWithCStatesBlocks">Algebraic Loop: One or more signals originating from a discrete-event system in model ''{0}'' are being fed back to the same discrete-event system through a direct feedback path. This forms an algebraic loop, which cannot be solved due to the presence of SimEvents blocks.\n\nThis loop includes timed-to-event and event-to-timed transitions at input ports of the following blocks:\n{1}\nThe time-based blocks involved in the loop are:\n{2}\nTo resolve this error see '&lt;a href="matlab:helpview(fullfile(docroot,'mapfiles','simulink.map'),'how_sl_works_algebraic_loops')"&gt;Algebraic Loops in Simulink&lt;/a&gt;''</entry>
+    <entry key="AlgLoopsDisabledNoBlocks">Algebraic Loop: One or more signals originating from a discrete-event system in model ''{0}'' are being fed back to the same discrete-event system through a direct feedback path. This forms an algebraic loop, which cannot be solved due to the presence of SimEvents blocks.\n\nThis loop includes timed-to-event and event-to-timed transitions at input ports of the following blocks:\n{1}\nTo resolve this error see '&lt;a href="matlab:helpview(fullfile(docroot,'mapfiles','simulink.map'),'how_sl_works_algebraic_loops')"&gt;Algebraic Loops in Simulink&lt;/a&gt;''</entry>
+    <entry key="AlgLoopMsgIgnored">Note that the Algebraic loop option in the Diagnostics page of the Configuration Parameters Dialog is being ignored because the algebraic loop contains SimEvents blocks.</entry>
+    <entry key="FcnCallInputGatewayInvalidDst">블록 ''{0}''의 출력 포트가 유효하지 않은 대상 ''{1}''에 연결되어 있습니다. 다음 블록 중 단 하나의 함수 호출 입력 포트에 ''{2}'' 블록의 출력 포트를 연결할 수 있습니다.\n-- Entity Departure Counter\n-- Event-Based Entity Generator\n-- Instantaneous Event Counting Scope\n-- Release Gate\n-- Signal-Based Function-Call Generator\n\n''{3}'' 블록의 출력 포트를 Signal-Based Function-Call Generator 블록에 연결하는 경우 Signal-Based Function-Call Generator 블록 대화 상자의 시간 설정 탭에서 '이벤트 우선 순위에 따라 동시 신호 업데이트 확인' 체크박스를 선택하십시오. 또한 '함수 호출 지연 시작 위치' 파라미터의 값을 다음 중 하나로 선택하십시오.\n-- '신호 포트 t''\n-- '대화 상자'(단, '함수 호출 시간 지연' 값은 0보다 큼)</entry>
+    <entry key="FcnCallInputGatewayInvalidTerminated">Timed to Event Function-Call 블록 ''{0}''의 출력을 분리하거나 Terminator 블록에 연결할 수 없습니다.</entry>
+    <entry key="FcnCallInputGatewayInvalidMultiDsts">Timed to Event Function-Call 블록 ''{0}''의 출력을 여러 대상에 연결할 수 없습니다.</entry>
+    <entry key="FcnCallInputGatewayDstHasInvalidDataInputConn">''{0}''의 함수 호출 입력 포트가 Timed to Event Function-Call 블록 ''{1}''에 연결되어 있는 경우, 그 데이터 &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{1}"&gt;입력 포트 {2,number,integer}&lt;/sldiag&gt;은(는) ''{3}''이(가) 아니라 Timed to Event Signal 블록에 연결되어야 합니다.</entry>
+    <entry key="FcnCallInputGatewayDstHasInvalidSrcWithMultiDsts">''{0}''의 함수 호출 입력 포트가 Timed to Event Function-Call 블록 ''{1}''에 연결되어 있는 경우, 그 데이터 입력 포트 {2,number,integer}은(는) Timed to Event Signal 블록에 연결되어야 합니다. 이 블록 ''{3}''은(는) 여러 개의 대상을 가질 수 없습니다. </entry>
+    <entry key="AbsoluteTimeNotSupported">Block ''{0}'' requires to use simulation time. However, maintaining simulation time is not supported when both of the following are true:\n  - This block is in a discrete-event system\n  - The model is configured to use fixed-step solver\n\nTo resolve this issue, change Solver type to Variable-step in Solver pane of the Configuration Parameters dialog.</entry>
+    <entry key="ElaspeTimeNotSupported">Block ''{0}'' requires the atomic subsystem ''{1}'' to maintain the time elapsed since the previous block execution. However, maintaining elapsed time is not supported when the subsystem is connected to an event-based signal.</entry>
+    <entry key="IntegrationModeNotSupported">Block ''{0}'' is configured to run under integration mode. However, integration mode is not supported when this block is in an atomic subsystem block (''{1}'') and the subsystem is connected to an event-based signal. Reconfigure the block to use accumulation mode.</entry>
+    <entry key="UseEventPriorityInsteadOfBlockPriority">SimEvents 블록 ''{0}''의 이벤트 우선 순위는 {1,number,integer}이고 블록 우선 순위는 {2,number,integer}입니다. 이 블록의 경우, SimEvents는 이벤트 우선 순위를 사용하고 블록 우선 순위를 무시합니다.</entry>
+    <entry key="AsyncAcrossDomainBoundaryNotSupported">The ''{0}'' block does not accept asynchronous function-call at its input port 1. </entry>
+    <entry key="AsyncSFunctionNotSupportedInSEDomain">The ''{0}'' block is not supported in discrete-event systems.</entry>
+    <entry key="CrossedNonVirtualSubsystemBoundary">The line connecting the ''{0}'' block to the ''{1}'' block cannot cross a non-virtual subsystem boundary, since both blocks are part of the same discrete-event system.</entry>
+    <entry key="CrossedNonVirtualSubsystemBoundaryForDSM">The connection from the ''{0}'' block to the ''{1}'' block crosses a nonvirtual subsystem boundary. The connection is not supported because both blocks are not part of the same discrete-event system. Consider placing a Data Store Memory block in the nonvirtual subsystem.</entry>
+    <entry key="GatewaysInDifferentNonVirtualSubsystems">게이트웨이 블록 ''{0}'' 및 ''{1}''은(는) 모두 동일한 이산 이벤트 시스템의 일부이므로, 이 두 블록은 두 개의 서로 다른 비가상 서브시스템에 있을 수 없습니다.</entry>
+    <entry key="CannotUpdateBlock_InvalidReplacementBlock">어설션이 실패함: 대체 유형 ''{2}''을(를) 알 수 없으므로 유형 ''{1}''의 블록 ''{0}''을(를) 업데이트할 수 없습니다.</entry>
+    <entry key="UnableToFindSymbolInLibrary">공유 오브젝트 파일 ''{1}''에서 기호 ''{0}''을(를) 찾을 수 없음</entry>
+    <entry key="UnsupportedVariantAnalyzeAllChoices">Connecting the variant block ''{0}'' to SimEvents blocks is not supported for any variant activation other than ''update diagram''. To resolve this error, change the variant activation to ''update diagram''.</entry>
+    <entry key="InvalidSettingForLatency">Invalid setting in ''{0}'' for &lt;sldiag objui="blockdlg" objparam="Latency"&gt;&lt;/sldiag&gt; parameter. The Latency parameter must be a positive integer number.</entry>
+    <entry key="MultirateConcurrentTasks">Dataflow automatic frame size calculation is not supported for code generation with concurrent tasks. Disable automatic frame size calculation for the ''{0}'' subsystem to generate code with concurrent tasks for this model.
+    
+             &lt;actions&gt;
+             &lt;action type="fixit" retvalue="yes"&gt;
+             &lt;cmd&gt;dfs.disableMultirateForSubsystem(''{0}'');&lt;/cmd&gt;
+             &lt;txt&gt;Disable automatic frame-size calculation for the ''{0}'' subsystem.&lt;/txt&gt;
+             &lt;/action&gt;
+             &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MExplorerBlockEventDialogTitle">블록별로 스케줄링된 이벤트</entry>
+    <entry key="MExplorerBlockEventDialogCaption1">{0}(위치: {1})</entry>
+    <entry key="MExplorerBlockEventSection1Heading">이벤트 유형</entry>
+    <entry key="MExplorerBlockEventSection2Heading">이벤트 세부 정보</entry>
+    <entry key="MExplorerBlockEventTable1Heading1">스케줄링 블록</entry>
+    <entry key="MExplorerEntityRouteDialogTitle">종속 천이 그룹</entry>
+    <entry key="MExplorerEntityRouteDialogCaption">종속 천이 그룹 {0}</entry>
+    <entry key="MExplorerEntityRouteSection1Heading">소스</entry>
+    <entry key="MExplorerEntityRouteSection2Heading">대상</entry>
+    <entry key="MExplorerEntityRouteSection3Heading">경로</entry>
+    <entry key="MExplorerEntityRouteTable1Heading1">블록</entry>
+    <entry key="MExplorerEntityRouteTable1Heading2">출력 포트</entry>
+    <entry key="MExplorerEntityRouteTable2Heading1">블록</entry>
+    <entry key="MExplorerEntityRouteTable2Heading2">입력 포트</entry>
+    <entry key="MExplorerEntityRouteTable3Heading1">블록</entry>
+    <entry key="MExplorerEntityRouteTable3Heading2">입력 포트에서</entry>
+    <entry key="MExplorerEntityRouteTable3Heading3">출력 포트로</entry>
+    <entry key="MExplorerUnableToCreateEventInfoObj">모델에 대한 Simulink.EventInfo 클래스를 만들 수 없습니다.</entry>
+    <entry key="MExplorerToggleHighlight">강조 표시 전환</entry>
+    <entry key="MExplorerMultipleBlocks">여러 블록</entry>
+    <entry key="MExplorerContentEmpty">없음</entry>
+    <entry key="MExplorerSignalOutputSectionHeading">신호 출력</entry>
+    <entry key="MExplorerSignalOutputTableHeading1">블록</entry>
+    <entry key="MExplorerSignalOutputTableHeading2">포트</entry>
+    <entry key="MExplorerBlockEventDialogCaption2">{0}</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,1489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2015-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="MATLAB">
+    <!-- 
+      These are the command line messages or strings for all Visual Components.
+      
+      All messages and strings should go in here:
+      
+      - to enable sharing of common messages between command line components
+        that do not share an implementation.
+        
+      - to allow reviewers to easily survey the messages look and structure to 
+        ensure that when appropriate, things are consistent.       
+            
+      - to separate the command line aspect of Visual Components from anything
+        else, such as the HMI Property Editor.     
+        
+      -->    
+    
+    <message> 
+       
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Warning messages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <entry key="fixedWidth">            
+            <!-- 
+            obj.Position(3) = (value different than the fixed width of the 
+                component, e.g. vertical slider)
+            
+            -->               
+            The width of this component cannot be changed.
+        </entry>
+        
+        <entry key="fixedHeight">            
+            <!-- 
+            obj.Position(4) = (value different than the fixed height of the 
+                component, e.g. horizontal slider)
+            
+            -->               
+            The height of this component cannot be changed.
+        </entry>
+        
+        <entry key="noSizeChangeForRequestedHeight">            
+            <!-- 
+            obj.Position(4) = (value that does not result in a size changed
+                because of the aspect ratio constraints)
+            
+            -->               
+            Cannot apply the requested height due to aspect ratio constraints.\n
+            To increase size, set width and height using Position(3:4) = [width height]. 
+        </entry>
+        
+        <entry key="noSizeChangeForRequestedWidth">            
+            <!-- 
+            obj.Position(3) = (value that does not result in a size changed
+                because of the aspect ratio constraints)
+            
+            -->               
+            Cannot apply the requested width due to aspect ratio constraints.\n
+            To increase size, set width and height using Position(3:4) = [width height]. 
+        </entry>
+
+        <entry key="noPositionSetWhenInLayoutContainer">
+          <!-- 
+              obj.Position = (value that does not get stored because 
+                  the component is inside a layout container)
+            
+              {0} = Property name
+              {1} = Class name of the parent container (e.g. GridLayout)
+              -->
+          Unable to set ''{0}'', ''{1}'', or ''{2}'' for components in ''{3}''.
+        </entry>
+
+        <entry key="internalComponentRemoval">
+          <!-- 
+              {0} = Formal class (i.e. matlab.ui.container.internal.CheckBoxTree)
+              {1} = new replacement code (i.e. uitree('checkbox'))
+              -->
+          {0} has been removed. Use {1} instead.
+        </entry>
+
+        <entry key="NotFocusable">
+          <!-- 
+              {0} = Property (i.e. Enable or Visible)
+              {1} = Value (i.e. 'off' or 'inactive')
+              -->
+          Focusing this component is not supported when ''{0}'' is ''{1}''.
+        </entry>
+
+        <entry key="FigureNotFocusable">
+          <!-- 
+              Components in an invisible figure cannot be focused
+              -->
+          Focusing this component is not supported when the 'Visible' value of the figure is 'off'.
+        </entry>
+        
+        <entry key="ImageNotFocusable">
+          <!-- 
+              Image with empty ImageClickedFcn, URL, and AltText cannot be focused
+              -->
+          Focusing this component is not supported when the 'ImageClickedFcn', 'URL', and 'AltText' values are all empty.
+        </entry>
+        
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Error messages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <!-- Visual Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->          
+        <entry key="invalid1x2PositveArray">            
+            <!-- 
+            obj.Size = (a non [1x2] positive array)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' must be specified as 1-by-2 double with positive, finite elements.
+        </entry>  
+        
+        <entry key="invalidParent">            
+            <!-- 
+            obj.Parent = (a non valid value for Parent)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' must be a parent component, such as a uifigure object.
+        </entry>
+
+        <entry key="invalidSidePanelParent">            
+            <!-- 
+            obj.Parent = (a non valid value for Parent)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' must be a Figure object.
+        </entry>
+        
+        <entry key="invalidParentOfComponent">            
+            <!-- 
+            obj.Parent = (non valid parent for this obj)
+
+            {0} = class name of parent (e.g. AccordionPanel)
+            {1} = class name of invalid child (e.g. Button)        
+            -->               
+            {0} cannot be a parent of {1}.  
+        </entry>
+        
+        <entry key="invalidLayoutContainer">            
+            <!-- 
+            obj.Parent = (non valid parent for this obj)
+
+            {0} = class name of invalid parent (e.g. UIFlowContainer)
+            {1} = class name of invalid child (e.g. Button) 
+            {2} = class name of valid parent (e.g. GridLayout)
+            {3} = function that creates the valid parent (e.g. uigridlayout)
+            -->               
+            {0} is not a valid parent for {1}. Use {2} from the {3} function instead. 
+        </entry>
+        
+        <entry key="invalidObject">            
+            <!-- 
+            obj.Parent = (an object that has been deleted)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' cannot be set to a deleted object.
+        </entry>    
+        
+        <entry key="invalidTreeNodeParent">            
+            <!-- 
+            treeNode.Parent = (a non valid value for Parent)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' must be a valid Tree object or TreeNode object.
+        </entry>  
+        
+        <entry key="invalidTreeOrNodeChild">            
+            <!-- 
+            [invalid proposed child].Parent = [Tree | TreeNode]
+            
+            {0} = Property name (typically will be 'Parent')
+            {1} = class name of proposed child object
+            -->               
+            {1} objects do not support Tree as ''{0}''.
+        </entry>  
+        
+        <entry key="invalidClass">
+            <!-- 
+            obj.Parent = (a non valid class for Parent)
+            
+            {0} = Property name            
+            {1} = Class name of valid property value
+            -->               
+            ''{0}'' value must be specified as a {1} object.
+        </entry>   
+        
+        <entry key="invalidClassParentDependent">
+            <!-- 
+            obj.Layout = (a non valid class for Layout, depending on parent)
+            
+            {0} = Property name            
+            {1} = Valid class name for the property
+            {2} = Parent object
+            -->               
+            ''{0}'' must be a ''{1}'' object when the parent is ''{2}''.
+        </entry>
+
+        <entry key="invalidLayoutValueWithNonLayoutContainerParent">
+            <!-- 
+            obj.Layout = (a non valid class for Layout, depending on parent)
+            
+            {0} = Layout Property name 
+            -->
+            ''{0}'' must be empty when the parent object is not a layout container.
+        </entry>
+
+
+        <entry key="invalidButtonGroup">
+            A ''{0}'' can only contain mutually exclusive components of type ''{1}'' or ''{2}'', not both.
+        </entry>
+        
+        <!-- Tree and TreeNode Properties~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <entry key="invalidIndex">
+            <!-- 
+            treeNode.Index = 'stringvalue';
+            --> 
+            
+            Invalid tree node index.
+        </entry>
+        
+        <entry key="selectedNodesInvalidInputMultiSelectOn">
+            <!-- 
+            treeNode.SelectedNodes = 'not a  node';
+            --> 
+            
+            When ''{0}'' is ''{1}'', ''{2}'' must be an empty array or an array of TreeNode objects that are children in the Tree.
+        </entry>
+        
+        <entry key="selectedNodesInvalidInputMultiSelectOff">
+            <!-- 
+            tree.SelectedNodes = [node1, node2];
+            --> 
+            
+            When ''{0}'' is ''{1}'', ''{2}'' must be an empty array or a 1-by-1 TreeNode object that is a child in the Tree.
+        </entry>
+        
+        <entry key="selectedCheckBoxTreeNodes">
+            <!-- 
+            
+            checkBoxTree.SelectedNodes = [node1, node2];
+            --> 
+            
+            ''{0}'' must be an empty array or a 1-by-1 TreeNode object that is a child in the CheckBoxTree.
+        </entry>
+        
+        <entry key="checkedNodesInvalid">
+            <!-- 
+            treeNode.CheckedNodes = [node1, node2];
+            
+            {0} = Property name - 'CheckedNodes'
+            --> 
+            
+            ''{0}'' must be an empty array or an array of TreeNode objects that are children in the Tree.
+        </entry>
+        
+        <entry key="invalidTreeScrollTarget">   
+            <!-- 
+            tree.scroll(scrollTarget) (where scrollTarget is invalid)
+                 
+            {0} = Enum value - 'top'
+            {1} = Enum value - 'bottom'
+            -->
+           Scroll location must be ''{0}'', ''{1}'', or a TreeNode object.   
+        </entry>
+        <entry key="invalidTextAreaScrollTarget">   
+            <!-- 
+            tree.scroll(scrollTarget) (where scrollTarget is invalid)
+                 
+            {0} = Enum value - 'top'
+            {1} = Enum value - 'bottom'
+            -->
+           Scroll location must be ''{0}'' or ''{1}''.   
+        </entry>
+        <entry key="firstArgumentRequiresTreeNode">   
+            <!-- 
+            treeNode.move(target) (where target is not a treenode)
+  
+            -->
+           First argument must be a TreeNode object.   
+        </entry>
+        
+        <entry key="targetRequiresTreeNode">   
+            <!-- 
+                treeNode.move(target) (where target is not a treenode)
+            -->
+           Target node must be a TreeNode object.   
+        </entry>
+        
+        <entry key="targetIsNotParentedTreeNode">   
+            <!-- 
+            treeNode.move(target) (where target does not have a parent)
+            
+            -->
+           Target node must be a child of a valid Tree or TreeNode object.   
+        </entry>
+        
+        <entry key="targetParentConflictsWithConstructionTarget">   
+            <!-- 
+            % target node's parent is not the same as the constructed node's parent
+            uitreenode(tree, tree2.Children(1)) (where scrollTarget does not have a parent)
+            
+            -->
+           The parent of the target node must be the same as the parent specified.   
+        </entry>
+        
+        <entry key="requiresScalarTreeNode">   
+            <!-- 
+            move(treeNode, scrollTarget) (where treeNode is not scalar)
+            
+            -->
+           TreeNode object must be scalar.  
+        </entry>
+        
+        <entry key="requiresScalarTargetTreeNode">   
+            <!-- 
+            move(treeNode, target) (where treeNode is not scalar)
+            -->
+           Target node must be scalar.  
+        </entry>
+        
+        <!-- Label Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <entry key="invalidLabel">            
+            <!-- 
+            obj.Label = (not a matlab.ui.control.Label)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' must be a matlab.ui.control.Label;
+        </entry>            
+        
+        <entry key="alreadyHasComponent">            
+            <!-- 
+            obj.Label = (some other visual component's label)                        
+            -->               
+            The Label being set on this component is already another component's Label.
+        </entry>                                  
+        
+        <entry key="readOnlyParent">            
+            <!-- 
+            obj.Label = (some parent that is not the owning component's Parent)                        
+            -->               
+            The Label's Parent is read only when attached to a component.  To change the Parent, change the component's Parent instead.
+        </entry>      
+        
+        <!-- General Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <entry key="invalidTag" note="stringDatatypeUpdate">
+            <!-- 
+            Tag = (was not a character vector)
+            
+            {0} = Property name
+            --> 
+            ''{0}'' must be a character vector.
+        </entry>           
+        
+        <!-- Callbacks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="invalidCallback" note="stringDatatypeUpdate">            
+            <!-- 
+            obj.Property = (a value that does not match a callback data type)
+            
+            {0} = Property name            
+            -->               
+            ''{0}'' must be specified as a valid callback type, such as:\n
+            - a character vector: 'myCallback'  \n            
+            - a function handle: @myCallback  \n            
+            - a cell array: '{'@myCallback, arg1, arg2, ...'}'       
+        </entry>           
+        
+        <!-- Font Properties ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <entry key="invalidFontName" note="stringDatatypeUpdate">
+            <!-- 
+            FontName = (was not a character vector)
+            
+            {0} = Property name
+            --> 
+            ''{0}'' must be a non empty character vector or a string scalar.
+        </entry>           
+        
+        <entry key="invalidFontSize">
+            <!-- 
+            FontSize = (was not a number > 0
+            
+            {0} = Property name
+            --> 
+            ''{0}'' must be a positive double.
+        </entry>    
+        
+        <!-- List related --> 
+        <entry key="invalidListBoxValue">           
+           ''{0}'' must be set to a scalar type when ''{1}'' is false.        
+        </entry>
+        
+        <entry key="invalidScrollTarget">   
+            <!-- 
+            listBox.scroll(scrollTarget) (where scrollTarget is invalid)
+                       
+            -->
+           Input to scroll must be either ''top'', ''bottom'' or an entry in Items or ItemsData.   
+        </entry>
+        
+        <!-- State Related ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="notASubset">
+            <!-- 
+            multiselectListbox.Value = not a subset of the Items or ItemsData property
+            
+            {0} =  Property name (e.g. Value)
+            {1} = Property name (full set)
+            {2} = Property name (full set)
+            {3} = Property name 
+            -->
+           The ''{0}'' property must be a subset of the ''{1}'' property.\n
+           Note that elements in the ''{2}'' property with no corresponding element in the ''{3}'' property are ignored.\n
+           Use the empty cell to indicate no selection.
+        </entry>                                  
+        
+        <entry key="elementNotPresent">
+            <!-- 
+            knob.Value = (a value not in the 'Items' property)
+            
+            {0} = Property name 
+            {1} = Property name
+            -->
+            ''{0}'' must be an element defined in the ''{1}'' property.            
+        </entry>   
+        
+        <entry key="valueNotEmptyCell">
+            <!-- 
+            listbox.Value = not {} while Text is empty 
+            
+            {0} = Property name 
+            {1} = Property name
+            
+            -->
+            ''{0}'' must be the empty cell because the ''{1}'' property is empty.            
+        </entry>
+
+        <entry key="invalidValueIndexExactlyOne">
+            <!-- 
+            dropdown.ValueIndex = (an index out of range of Items)
+            
+            {0} = Property name - ValueIndex
+            {1} = Property name - Items
+            -->
+            ''{0}'' must be a positive integer representing an index in ''{1}''.            
+        </entry> 
+        
+        <entry key="invalidValueIndexZeroToOne">
+            <!-- 
+            listBox.ValueIndex = (an index out of range of Items)
+            
+            {0} = Property name - ValueIndex
+            {1} = Property name - Items
+            -->
+            ''{0}'' must be [] or a positive integer representing an index in ''{1}''.            
+        </entry>
+
+        <entry key="invalidValueIndexZeroToMany">
+            <!-- 
+            knob.ValueIndex = (an index out of range of Items)
+            
+            {0} = Property name - ValueIndex
+            {1} = Property name - Items
+            -->
+            ''{0}'' must be [] or a 1-D vector of positive integers each representing an index in ''{1}''.            
+        </entry> 
+
+        <entry key="scalarItemInSingleSelect">
+            <!-- 
+            listbox.Value = {'Multiple', 'Items'} 
+            
+            {0} = Property Name - Value 
+            {1} = Property Name - Multiselect
+            {2} = Property Value - of Property in {1}
+            
+            -->
+            ''{0}'' must be a character vector, string scalar or an empty cell array when component is single selection.           
+        </entry>
+        
+        <entry key="valueNotCellInText">
+            <!-- 
+            listbox.Value = (not a cell of elements in the 'Text' property)
+            
+            {0} = Property name 
+            {1} = Property name
+            -->
+            ''{0}'' must be a subset of the ''{1}'' property.\n 
+            Use the empty cell to indicate no selection.           
+        </entry>
+        
+        <entry key="valueDataNotWithinLengthOfText">
+            <!-- 
+            knob.ValueData = in TextData but beyond the length of Text
+            
+            {0} = Property name 
+            {1} = Property name
+            {2} = Property name
+            -->
+            ''{0}'' must be an element defined in the ''{1}'' property within the length of the ''{2}'' property.
+        </entry>
+        
+        <entry key="notACellWithElementsWithinAllowedLength">
+            <!-- 
+            knob.ValueData = in TextData but beyond the length of Text
+            
+            {0} = Property name 
+            {1} = Property name
+            {2} = Property name
+            -->
+            ''{0}'' must be a cell array where each element is defined in the ''{1}'' property within the length of the ''{2}'' property.
+        </entry>
+        
+        <entry key="valueNotInTextNorString" note="stringDatatypeUpdate">
+            <!-- 
+            comboBox.Value = (a value that is neither an element of 'TextData' nor a character vector)
+            
+            {0} = Property name             ]
+            {1} = Property name
+            -->
+            ''{0}'' must be either an element defined in the ''{1}'' property or a character vector.                 
+        </entry>   
+        
+        <entry key="valueNotInButtons">
+            <!-- 
+            buttonGroup.Value = (a value not in the Button Groups's Button's Values)
+            
+            {0} = Property name 
+            {1} = Property name
+            -->
+            A ButtonGroup's ''{0}'' must match the ''Value'' of one of its Button's values, which are: {1}
+            
+            
+        </entry>   
+        
+        <entry key="lessThanTwoButtons">
+            <!-- 
+           todo
+            -->
+            There must be at least two elements in Values.
+        </entry>  
+                        
+        <entry key="invalidCellOfStrings" note="stringDatatypeUpdate">
+            <!-- 
+            knob.Text = (non valid Text)
+            
+            {0} = Property name
+            -->
+            ''{0}'' must be a cell array of character vectors, such as '{''Text 1', 'Text 2''}'.
+        </entry>
+        
+        <entry key="InputNotAVector">
+            <!-- 
+            knob.ItemsData = (not a vector array)
+            
+            {0} = Property name
+            -->
+            ''{0}'' must be a vector, such as [1,2] or '{''Data 1', 'Data 2''}'.
+        </entry>
+        
+        
+        <!-- Ticks and Gauge Related ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->         
+            
+        <entry key="invalidTicksNotNumericVector">            
+            <!-- 
+            gauge.MajorTicks = (a non numeric value or not a vector)
+        
+            {0} = Property name            
+            --> 
+            ''{0}'' must be a 1-by-n numeric array.
+        </entry>
+            
+        <entry key="invalidTicksNotReal">            
+            <!-- 
+            gauge.MajorTicks = (a value containing a complex number)
+        
+            {0} = Property name            
+            --> 
+            ''{0}'' array cannot contain complex values.
+        </entry>
+            
+        <entry key="invalidTicksNotFinite">            
+            <!-- 
+            gauge.MajorTicks = (a value containing NaN or Inf)
+        
+            {0} = Property name            
+            --> 
+            ''{0}'' array cannot contain NaN or Inf.
+        </entry>
+                                                                               
+        
+        <entry key="invalidMajorTickLabels" note="stringDatatypeUpdate">
+            <!-- 
+            knob.StateLabels = (non valid Labels)
+            
+            {0} = Property name            
+            -->
+            ''{0}'' must be a 1-by-N array of the following type: cell array of character vectors, string, or categorical.
+        </entry>  
+        
+        <entry key="invalidValue">                        
+            <!-- 
+            gauge.Value = (a non valid value)
+            
+            {0} = Property name            
+            -->
+            ''{0}'' must be a finite numeric, such as 10.
+        </entry>                                                                                                                                   
+        
+        <entry key="invalidEmptyDoubleInput">                        
+            <!-- 
+            spinner.AllowEmpty = 'off';
+            spinner.Value = []
+            
+            {0} = Property name Value
+            {1} = Property name AllowEmpty
+            {2} = Property value on
+
+            -->
+            ''{0}'' cannot be [] when ''{1}'' is ''{2}''.
+        </entry> 
+
+        <entry key="invalidDoubleInput">                        
+            <!-- 
+            numericEditField.Value = (a non valid value)
+            
+            {0} = Property name            
+            -->
+            ''{0}'' must be a double scalar.
+        </entry> 
+        
+        <entry key="invalidDisplayFormat" note="stringDatatypeUpdate">
+            <!-- 
+            gauge.ValueDisplayFormat = (not a character vector)
+            
+            {0} = Property name
+            -->    
+            ''{0}'' value must be a character vector or a string scalar containing a valid formatting operator, such as '%d'.
+        </entry>                
+        
+        <entry key="sprintfDocLink" note="stringDatatypeUpdate">
+            <!--            
+            {0} = Link to helpPopup for sprintf or the char array 'sprintf'
+            -->           
+            For more information on formatting operators, see the documentation for {0}.
+        </entry> 
+        
+        <entry key="misformattedDisplayFormat" note="stringDatatypeUpdate">
+            <!-- 
+            gauge.NumericDisplayFormat = (a character vector, but not a valid sprintf-character vector)
+            
+            {0} = Property name
+            {1} = help link (embedding html is not supported in message catalog)
+            -->    
+            ''{0}'' must be a valid format character vector, such as '%d'.\n
+            \n
+            For more information see {1}.
+        </entry>                                                                                       
+        
+        <entry key="invalidTextValue" note="stringDatatypeUpdate">
+            <!-- 
+            gauge.Description = (was not a character vector)
+            gauge.Label.Text = (was not a character vector)
+            
+            button.Text = (was not a character vector)
+            
+            {0} = Property name
+            --> 
+            ''{0}'' must be a character vector or a string scalar.
+        </entry> 
+        
+        <entry key="invalidAnnotationTextValue" note="stringDatatypeUpdate">
+            <!-- 
+            accordionPanel.Title = (was not a character vector)
+            
+            {0} = Property name
+            --> 
+            ''{0}'' value must be a character vector, string scalar, or categorical scalar.
+        </entry> 
+        
+        <entry key="invalidMultilineTextValue" note="stringDatatypeUpdate">
+            <!-- 
+            label.Text = (was neither a character vector nor a vector cell array of character vectors)
+            
+            {0} = Property name
+            --> 
+            ''{0}'' must be a character vector, or a N-by-1 array of the following type: cell array of character vectors, string, or categorical.
+        </entry>                               
+        
+        <entry key="MATLABColon" note="stringDatatypeUpdate">
+            <!-- 
+            hyperlink.URL = 'matlab:someMATLABCommand'
+            
+            {0} = key - 'matlab:'
+            {1} = Property name - URL
+            --> 
+            ''{0}'' is not supported in ''{1}''. Use 'HyperlinkClickedFcn' to execute MATLAB code instead.
+        </entry>   
+        
+        <entry key="NotSupportedInURL" note="stringDatatypeUpdate">
+            <!-- 
+            hyperlink.URL = 'javascript:someJavaScriptCode'
+            
+            {0} = key - 'javascript:'
+            {1} = Property name - URL
+            --> 
+            ''{0}'' is not supported in ''{1}''.
+        </entry>   
+        
+        <entry key="MustHaveTopLevelDomain" note="stringDatatypeUpdate">
+            <!--
+            hyperlink.URL = 'URLWithNoTopLevelDomainLikeDotCom'
+            hyperlink.URL = 'URLWithNoTopLevelDomainLikeDotCom.'
+            hyperlink.URL = '.com'
+            {0} = Property name - URL
+            --> 
+            ''{0}'' must contain both domain and top level domain such as ''.com''.
+        </entry> 
+        
+        <entry key="errorInWeb" note="stringDatatypeUpdate">
+            <!-- 
+            The app author has specified a url
+            hyperlink.URL = 'www.mathworks.com'
+            
+            When the app user clicks, web throws an error and we are
+            repackaging that message in the form of a warning so that it
+            does not disrupt the app workflow.
+            
+            {0} = Property name - URL
+            {1} = char array containing error message from web:
+            --> 
+            Unable to open URL ''{0}'': {1}
+        </entry>
+        
+        <entry key="errorInWebEmpty">             
+            <!-- 
+            The user has clicked on a link that contained href = '#'.
+            Possible causes:
+            1. The user specified an empty or # url.
+            2. The user specified an invalid protocol.
+            -->   
+            Unable to open URL without a valid URL scheme.
+        </entry>
+        
+        <entry key="valueNotInRange">
+            <!-- 
+            knob.Value = (a non valid value)
+            -->
+           ''{0}'' must be a double scalar within the range of ''{1}''.
+        </entry>  
+
+        <entry key="invalidRangeValue">
+            <!-- 
+            rangeslider.Value = (a value outside the limits)
+            -->
+           ''{0}'' must be a 1-by-2 non-decreasing array of doubles within the range of ''{1}''.
+        </entry>   
+        
+        <entry key="valueNotInLimits">
+            <!-- 
+            numberField.Value = (a value not in the lower / upper limits)
+            -->
+           ''{0}'' must be numeric and fall within the range of ''{1}'' and ''{2}''.
+        </entry>  
+        
+        
+        
+        <entry key="invalidScaleLimits"> 
+            <!-- 
+            gauge.Limits = (a non increasing limit, like [100 0])
+            
+            {0} = Property name
+            -->   
+            ''{0}'' must be a 1-by-2 array of increasing double values, such as [0 100]. Use -Inf and/or Inf to indicate no bound for the lower and/or upper limit.
+        </entry>
+        
+        <entry key="invalidNonDecreasingScaleLimits"> 
+            <!-- 
+            gauge.Limits = (a non decreasing limit, like [100 0])
+            
+            {0} = Property name
+            -->   
+            ''{0}'' must be a 1-by-2 array of non-decreasing double values, such as [0 100]. Use -Inf and/or Inf to indicate no bound for the lower and/or upper limit.
+        </entry>
+
+        <entry key="invalidFiniteScaleLimits"> 
+            <!-- 
+            gauge.Limits = (an array containing -Inf or Inf limit, like [-Inf 100])
+            
+            {0} = Property name
+            -->   
+            ''{0}'' must be a 1-by-2 array of finite, increasing double values.
+        </entry>
+
+        <entry key="invalidLimitInclusivity"> 
+            <!-- 
+            spinner.Limits = [5, 5];
+            spinner.UpperLimitInclusive = 'off';
+            
+            {0} = Property name UpperLimitInclusive, LowerLimitInclusive
+            {1} = 'on';
+            {2} = Property name Limits
+            -->   
+            ''{0}'' must be ''{1}'' when ''{2}'' are not increasing.
+        </entry>
+        
+        <entry key="invalidColorArray">
+            <!--             
+            gauge.ScaleColors = (non valid colors)                        
+            
+            {0} = Property name - ScaleColors
+            -->            
+            ''{0}'' value must be an n-by-3 array of RGB triplets, or a 1-D array of color names or hexadecimal color codes.
+            
+        </entry>           
+        
+        <entry key="invalidScaleColorLimits"> 
+            <!-- 
+            gauge.ScaleColorLimits = (a bad value)
+            
+            {0} = Property name
+            -->   
+            ''{0}'' must be a n-by-2 array, such as [0 10; 80 90; 90 100];
+        </entry>  
+        
+        
+        <entry key="nonIncreasingScaleColorLimits"> 
+            <!-- 
+            gauge.ScaleColorLimits = (a non increasing limit, like [100 0])
+            
+            {0} = Property name
+            -->   
+            ''{0}'' must be a n-by-2 array, where each element in the first column is less than the corresponding element in the second column.
+        </entry>
+        
+        <!-- String Enums  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+        <entry key="invalidManyStringEnum" note="stringDatatypeUpdate">
+            <!--
+            Can be used to display an enum with an indeterminate number of members
+            
+            obj.Property = (a value that does not fall into the enum set)
+
+            {0} = Property name
+            {1} = Char containing all but the last enum value, should be comma-separated, wrapped with single-quotes, and terminated by a comma if 2 elements
+            {2} = The last valid enum value
+            -->
+            ''{0}'' value must be {1} or {2}.
+        </entry>
+        
+        <entry key="invalidTwoStringEnum" note="stringDatatypeUpdate">            
+            <!-- 
+            obj.Property = (a value that does not fall into the enum set)
+            
+            {0} = Property name
+            {1} = The first valid character vector enum
+            {2} = The second valid character vector enum
+            --> 
+            ''{0}'' value must be ''{1}'' or ''{2}''.
+        </entry>                
+        
+        <entry key="invalidThreeStringEnum" note="stringDatatypeUpdate">            
+            <!-- 
+            obj.Property = (a value that does not fall into the enum set)
+            
+            {0} = Property name
+            {1} = The first valid character vector enum
+            {2} = The second valid character vector enum
+            {3} = The third valid character vector enum            
+            --> 
+            ''{0}'' value must be ''{1}'', ''{2}'', or ''{3}''.
+        </entry>           
+        
+        <entry key="invalidFourStringEnum" note="stringDatatypeUpdate">            
+            <!-- 
+            obj.Property = (a value that does not fall into the enum set)
+            
+            {0} = Property name
+            {1} = The first valid character vector enum
+            {2} = The second valid character vector enum
+            {3} = The third valid character vector enum
+            {4} = The fourth valid character vector enum                                    
+            --> 
+            ''{0}'' value must be ''{1}'', ''{2}'', ''{3}'', or ''{4}''.
+        </entry>  
+        
+        <entry key="invalidFiveStringEnum" note="stringDatatypeUpdate">            
+            <!-- 
+            obj.Property = (a value that does not fall into the enum set)
+            
+            {0} = Property name
+            {1} = The first valid character vector enum
+            {2} = The second valid character vector enum
+            {3} = The third valid character vector enum
+            {4} = The fourth valid character vector enum                                    
+            --> 
+            ''{0}'' value must be ''{1}'', ''{2}'', ''{3}'', ''{4}'', or ''{5}''.
+        </entry>
+        
+        <entry key="invalidSixStringEnum" note="stringDatatypeUpdate">            
+            <!-- 
+            obj.Property = (a value that does not fall into the enum set)
+            
+            {0} = Property name
+            {1} = The first valid character vector enum
+            {2} = The second valid character vector enum
+            {3} = The third valid character vector enum
+            {4} = The fourth valid character vector enum 
+            {5} = The fifth valid character vector enum 
+            {6} = The sixth valid character vector enum 
+            --> 
+            ''{0}'' value must be ''{1}'', ''{2}'', ''{3}'', ''{4}'', ''{5}'', or ''{6}''.
+        </entry>
+
+        <entry key="invalidEnumProblemForm">            
+            <!-- 
+            obj.Property = (a value that does not fall into the enum set but the set is too large to put into an error message)
+       
+            {0} = Property name
+            --> 
+            Unrecognized value for the ''{0}'' property.
+        </entry>
+
+        <!-- Formal interface ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="invalidNameValuePairs">
+            <!-- 
+            matlab.ui.control.Button(2) 
+            
+            {0} = Class of the component            
+            -->   
+            Input must consist of name-value arguments. For a list of valid arguments, see the documentation for {0}.
+        </entry>
+
+        <!-- Convenience Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="invalidConvenienceSyntax"> 
+            <!-- 
+            uigauge( some invalid syntax ) 
+            
+            {0} = The name of the function
+            {1} = The help link (embedding html is not supported in message catalog)
+            -->   
+            The syntax you entered for {0} was not recognized.
+        </entry> 
+        
+        <entry key="invalidStyleString" note="stringDatatypeUpdate"> 
+            <!-- 
+            uigauge('some invalid style character vector' ) 
+            
+            {0} = The name of the function
+            {1} = The help link (embedding html is not supported in message catalog)
+            {2} = A list of valid styles 'style1', 'style2'
+            {3} = the last valid style 'stylelast'
+            {2} and {3} are keywords not to be translated.  Also, some
+            components will have more styles than others, but all will have 
+            a minimum of two. This added complexity is important because we
+            want the 'or' to be translated properly.
+            -->   
+            ''{0}'' is not a valid STYLE for {1}. STYLE must be {2} or {3}.
+        </entry>                   
+        
+        <entry key="invalidButtons">                        
+            <!-- 
+            buttonGroup.Buttons = (a non valid value for buttons)
+            
+            {0} = Property name            
+            -->
+            ''{0}'' must be an array of RadioButton objects.
+        </entry>           
+        
+        <entry key="invalidStateElement" note="stringDatatypeUpdate">
+            <!-- 
+            radioButton.Value = (non valid values for States)
+            
+            {0} = Property name            
+            -->
+           ''{0}'' must be a scalar numeric, scalar logical, or a character vector.        
+        </entry>      
+        
+        
+        <!-- Standard Components ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->                  
+        
+        <entry key="invalidIconFile"> 
+            <!-- 
+            button.Icon = (some invalid file that isn't even an image or can't be found)             
+            
+            -->               
+            You have specified a file that cannot be found or is not an image.\nSpecify a file name that is on the MATLAB path, or use a full or relative path.
+        </entry>  
+
+        <entry key="fileNotFoundOnMatlabPath"> 
+            <!-- 
+            button.Icon = (some file that isn't on MATLAB Path)             
+            {0} - Icon/ImageSource
+            -->               
+            Before specifying the {0} file, add it to the MATLAB path.
+        </entry> 
+        
+        <entry key="invalidIconFormat"> 
+            <!-- 
+            button.Icon = (some icon file not a png or gif)
+            {0} - valid file formats
+            -->
+            You have specified an invalid file format.\n\nValid file formats are one of the following: {0}.
+        </entry>                                       
+
+        <entry key="cannotReadIconFile"> 
+            <!-- 
+            button.Icon = (some icon file that is not readable)                       
+            -->   
+            File ''{0}'' is not readable.
+        </entry>
+        
+        <entry key="invalidIconNotInPath"> 
+            <!-- 
+            button.Icon = (some icon file that is not in path)                       
+            -->   
+            File ''{0}'' is not on the MATLAB or specified path.
+        </entry>
+
+         <entry key="invalidIconTooLarge">
+            <!-- 
+            button.Icon = (some invalid icon CData)
+            -->   
+            Image array is too large.
+         </entry>
+
+        <entry key="invalidIconCData">
+            <!-- 
+            button.Icon = (some invalid icon CData)
+            -->   
+            You have specified an invalid CData.\nSpecify an RGB image as an m-by-n-by-3 array of type double, single, uint8, or uint16.
+        </entry>
+
+         <entry key="unableToWriteCData">
+            <!-- 
+            button.Icon = (some invalid icon CData)
+            -->   
+            Image array is too large.
+            Unable to use image data because the temporary folder for the system does not allow write access.
+        </entry>
+        
+        <entry key="invalidCharacterLimits">
+            <!--
+            editField.CharacterLimits = (a non valid value for limit)
+  
+            {0} = Property name
+            -->
+            
+            ''{0}'' must be a non-decreasing 1-by-2 array of nonnegative integers that specifies the minimum and maximum number of entered characters. Use Inf to indicate no bound for the upper limit.
+        </entry>
+        
+        <entry key="valueLengthNotInRange">
+            <!-- 
+            editField.Value = (a value outside of the specified length)
+            
+            {0} = Property name - Value
+            {1} = Property name - CharacterLimits
+            -->
+            The number of characters in ''{0}'' must be within the range of ''{1}''.
+        </entry>  
+
+        <entry key="invalidValueText">
+            <!-- 
+            editField.Value = (a value that is invalid based on validation constraints)
+            
+            {0} = Property name - Value
+            {1} = Property name - InputType
+            -->
+            ''{0}'' must consist of valid text as specified by ''{1}''.
+        </entry>
+        
+        <entry key="invalidHTMLSourceURL"> 
+            <!-- 
+            html.HTMLSource = (a URL, which we don't support)
+            -->   
+            You have specified a URL, which is not supported.\nSpecify HTML markup, a file name that is on the MATLAB path, or use a full or relative path.
+        </entry>  
+        
+        <entry key="invalidHTMLSourceFile"> 
+            <!-- 
+            html.HTMLSource = (some invalid file that isn't even an image or can't be found)             
+            
+            -->               
+            You have specified a file that cannot be found.\nSpecify HTML markup, a file name that is on the MATLAB path, or use a full or relative path.
+        </entry>  
+        
+        <entry key="invalidBooleanProperty"> 
+            <!-- 
+            radioButton.Value = (true or false) 
+            
+            {0} = Property name - Value            
+            -->   
+            
+            ''{0}'' must be true or false.  
+        </entry> 
+        
+        <entry key="noIntegerInRange"> 
+            <!-- 
+            numberField.RoundFractionalValues = 'on' 
+            
+            {0} = Property name - RoundFractionalValues
+            {1} = Property value - 'on'
+            -->   
+            
+			There must be at least one integer in the range to set ''{0}'' to ''{1}''.
+             
+        </entry> 
+        <entry key="invalidStep"> 
+            <!-- 
+            spinner.Step = (an invalid value)
+            
+            {0} = Property name            
+            -->              
+            
+			''{0}'' must be a finite, positive number.
+            
+        </entry> 
+        
+        <entry key="invalidStepWhenRoundingIsTrue"> 
+            <!-- 
+            spinner.RoundFractionalValues = 'on'
+            spinner.Step = 1.5
+            
+            {0} = Property name - Step
+            {1} = Property name - RoundFractionalValues
+            {2} = Value name - 'on'
+            -->              
+            
+			''{0}'' cannot be fractional when ''{1}'' is ''{2}''.
+            
+        </entry> 
+
+        <entry key="invalidStepDataType">
+            <!--
+            scrollbarSlider.Step = (a non valid value or datatype for Step) - e.g. a sparse, non-numeric, or non-1x2 array
+
+            {0} = Property name - Step
+            -->
+            ''{0}'' must be an increasing 1-by-2 numeric array where both elements are between 1e-6 and 1.
+        </entry>
+        
+        
+        <entry key="invalidRoundFractionalValueWhenStepIsFloat"> 
+            <!-- 
+            spinner.Step = .5
+            spinner.RoundFractionalValues = 'on'
+            
+            {0} = Property name - RoundFractionalValues
+            {1} = Value name - 'on'
+            {2} = Property name - Step
+            -->              
+            
+			''{0}'' cannot be set to ''{1}'' when ''{2}'' is a fractional value.
+            
+        </entry>
+        
+        <entry key="invalidButtonGroupSelectedButton">
+            <!-- 
+            obj.SelectedButton = (a non valid object for SelectedButton)
+            
+            {0} = Property name            
+            {1} = First valid class name for the property
+            {2} = Second valid class name for the property
+            -->               
+            ''{0}'' must be one of the mutually exclusive components of the Button Group. 
+        </entry>   
+        
+        <entry key="noButtonSelected">
+            <!-- 
+            obj.Selected = false and the component is the only component in the button group
+            
+            {0} = Property name            
+            {1} = First valid class name for the property
+            {2} = Second valid class name for the property
+            -->
+            ''{0}'' cannot be set to false because it is the only component of class ''{1}'' or ''{2}'' in the container. \n            
+        </entry>         
+        
+        
+        <entry key="duplicateValue">
+            <!-- 
+            radiobutton.Value = (a value that is already present in button group
+            
+            {0} = Property name     
+            {1} = The value that is already present
+            {2} = First valid class name for the property
+            {3} = Second valid class name for the property            
+            -->
+            ''{0}'' must be unique among the parent's Children of class ''{2}'' or ''{3}''.\n
+            The value ''{1}'' is already defined on another component.            
+        </entry>
+        
+
+        <entry key="InvalidInputNotACellOfStrings" note="stringDatatypeUpdate">
+            <!-- 
+            listbox.Text = (not a cell array of character vectors)
+            
+            {0} = Property name            
+            -->  
+            ''{0}'' must be a 1-by-N cell array of character vectors or a string array.
+        </entry>
+        
+        <entry key="InputSizeWrong" note="stringDatatypeUpdate">
+            <!-- 
+            switch.Items = (cell array of character vectors that is not length 2)
+            
+            {0} = Property name      
+            {1} = Exact number of elements allowed
+            -->  
+            ''{0}'' must have {1} elements. 
+        </entry>
+        
+        <entry key="InputSizeTooSmall" note="stringDatatypeUpdate">
+            <!-- 
+            discreteKnob.Text = (too small of a cell array of character vectors)
+            
+            {0} = Property name      
+            {1} = Minimum number of elements allowed
+            -->  
+            ''{0}'' must have at least {1} elements. 
+        </entry>
+        
+        <entry key="InputSizeTooLarge" note="stringDatatypeUpdate">
+            <!-- 
+            discreteKnob.Text = (too large of a cell array of character vectors)
+            
+            {0} = Property name   
+            {1} = Maximum number of elements allowed
+            -->  
+            ''{0}'' must have at most {1} elements. 
+        </entry>
+        
+        <entry key="functionOrPropertyNotSupported">
+           <!-- 
+            uicomponent.reset()
+            
+            {0} = Property or function name   
+            {1} = full formal class name of component
+
+            -->  
+            No appropriate method, property, or field ''{0}'' for class ''{1}''.
+        </entry>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- DatePicker Errors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="valueNotValid">
+             <!-- 
+            {0} = Property or function - Value 
+            {1} = Property or function - Limits 
+            -->
+            ''{0}'' must be a finite datetime object within the range of ''{1}'' or NaT. 
+        </entry>
+        <entry key="valueConflictsWithDisabledDates">
+            <!-- 
+            {0} = Property or function - Value 
+            {1} = Property or function - DisabledDates  
+            -->
+                        
+            ''{0}'' must not be a date in ''{1}''.
+        </entry>
+        
+        <entry key="valueConflictsWithDisabledDaysOfWeek">
+            <!-- 
+            {0} = Property or function - Value 
+            {1} = Property or function - DisabledDaysOfWeek. 
+            -->
+                        
+            ''{0}'' must not be a day in ''{1}''.
+        </entry>
+        
+        <entry key="dateLimitsInvalid">
+            <!-- 
+            {0} = Property or function - Limits 
+            -->
+            ''{0}'' value must be a 1-by-2 datetime array that is increasing and within the years 0000 to 9999.
+        </entry>
+        <entry key="displayFormatInvalid">
+            <!-- 
+            {0} = Property or function - DisplayFormat
+            -->
+            ''{0}'' value must be a nonempty character vector or string scalar.
+        </entry>
+        
+        <entry key="displayFormatWithOnlyTime">
+            <!-- 
+            {0} = Property or function - DisplayFormat
+            -->
+            ''{0}'' value specifies a time instead of a date.
+        </entry>
+        
+        <entry key="datepickerDisplayFormatDocLink" note="stringDatatypeUpdate">
+            <!--            
+            {0} = Link to helpPopup for DatePicker.DisplayFormat
+            -->           
+            For more information on valid letter identifiers, see the documentation for {0}.
+        </entry> 
+        
+        <entry key="displayFormatUnsupported">
+            <!-- 
+            {0} = Property or function - DisplayFormat
+            -->
+            ''{0}'' contains an unsupported format symbol.
+        </entry>
+
+        <entry key="disabledDatesContainsNaT">
+            <!-- 
+            {0} = Property or function - DisabledDates
+            -->
+            ''{0}'' value must not contain NaT.
+        </entry>
+        <entry key="disabledDatesInvalid">
+            <!-- 
+            {0} = Property or function - DisabledDates
+            -->
+           ''{0}'' value must be an array of datetime objects or datetime.empty().
+        </entry>
+        <entry key="disabledDaysOfWeekInvalid">
+            <!-- 
+            {0} = Property or function - DisabledDaysOfWeek
+            -->
+            ''{0}'' value must be an array of numbers from 1 to 7, or an array of day names.
+        </entry>
+        <entry key="disabledDaysOfWeekDayNameInvalid">
+            <!-- 
+            {0} = Property or function - DisabledDaysOfWeek
+            -->
+            Unrecognized day name ''{0}''.
+        </entry>
+        <entry key="disabledDaysOfWeekDayNameAmbiguous">
+            <!-- 
+            {0} = Property or function - DisabledDaysOfWeek
+            -->
+            Value ''{0}'' is ambiguous because it matches multiple valid day names.
+        </entry>
+        
+        <entry key="displayFormatContainsmm">
+            <!-- 
+            {0} = Property or function - DisplayFormat
+            -->
+            Symbol ''m'' specifies minutes, but time values are not supported for ''{0}''. Use ''M'' to specify month.
+        </entry>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Image Component Errors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="InvalidImageSourceSpecified">
+            <!-- 
+            image.ImageSource = (invalid file path or color data matrix)             
+            
+            -->
+            ImageSource value must be a valid file path, or an m-by-n-by-3 color data matrix.
+        </entry>
+        
+        <entry key="UnexpectedErrorInImageSourceOrIcon">
+            <!-- 
+            {0} = ImageSource/Icon(parse error for property value)         
+            
+            -->
+            Error occurred when parsing the ''{0}'' value.
+        </entry>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Layout manager related ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->                
+        
+        <entry key="invalidIntegerOrIncreasingArrayOf2">
+            <!-- 
+            {0} = Property or function - e.g. Layout.Row
+            -->
+            ''{0}'' must be a positive integer or a 1x2 increasing array of positive integers.
+        </entry>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- HTML Component Errors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="DebugModeNotSupported">
+            <!-- 
+            uihtml('debug'); % when used in MO or Deployed web apps.            
+            -->
+            UIHTML(''debug'') is not supported in this environment.
+        </entry>
+
+        <entry key="DebugIsNotFirstArgument">
+            <!-- 
+            uihtml(f,'debug'); % when 'debug' not is specified as the first argument.            
+            -->
+            The argument ''debug'' must be provided as the first argument.
+        </entry>
+
+        <entry key="NoChildrenAllowed">
+            <!-- 
+            When children are added to the special debug figure            
+            -->
+            Adding children to the debugging figure is not allowed.
+        </entry>
+
+        <entry key="DebugHelpMessage">
+            <!-- 
+            shown on the top banner of the debug figure            
+            -->
+            Use DevTools window to inspect and debug your HTMLSource.
+        </entry>
+        
+        <entry key="TooltipForHelpButton">
+            <!-- 
+            shown on the help button in debug mode of UIHTML            
+            -->
+            Learn more about debugging UIHTML
+        </entry>
+
+        <entry key="TooltipForReloadButton">
+            <!-- 
+            shown on the help button in debug mode of UIHTML            
+            -->
+            Reload the HTMLSource
+        </entry>
+
+         <entry key="ErrorOccuredInHTMLSource">
+            <!-- 
+            uihtml.HTMLSource = (java script error in user code)             
+            -->
+            The HTMLSource may be referencing unsupported functionality or may have a JavaScript error. Refer to the &lt;a href=\"matlab:helpview(fullfile(docroot, 'matlab', 'ref', 'uihtml.html'))\"&gt;documentation&lt;/a&gt; for known limitations.
+        </entry>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Save Errors ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        
+
+        <entry key="SavingDisabled">
+            <!-- 
+            t = matlab.ui.container.internal.CheckBoxTree
+            save t
+            -->
+            Saving an object of class ''{0}'' is not supported.
+        </entry>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- UIContextMenu Component Errors ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <entry key="ContextMenuInvalidOpenLocation">
+            <!-- 
+            uicontextmenu.open() = (invalid open location)
+            -->
+            Location must be specified as pixel coordinates X,Y or as a 1-by-2 array [X Y].
+        </entry>
+
+        <entry key="ContextMenuOpenUnSupported">
+            Open is not supported for context menus in figures created with the figure function.
+        </entry>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Internal Errors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->                
+        
+        <entry key="InvalidInputOnlyPartialMatch" translate="false">
+            Input was only a partial match.
+        </entry>
+        
+        <entry key="InvalidColorString" translate="false" note="stringDatatypeUpdate">
+            The character vector or string scalar is not a valid color.
+        </entry>
+        
+        <entry key="InternalErrorInvalidValueType" translate="false">
+            Internal Error: value was not a valid type for ''Value'' property
+        </entry>
+        
+        <entry key="InvalidInputContainingInf" translate="false">
+            Input is invalid with containing -Inf or Inf.
+        </entry>
+    </message>
+</rsccat>
+

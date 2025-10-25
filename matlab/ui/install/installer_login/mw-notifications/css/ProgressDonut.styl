@@ -1,0 +1,64 @@
+.mwProgressDonut {
+    position: relative;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid var(--mw-borderColor-primary);
+    --progress-color: #0099FF;
+}
+
+.mwProgressDonutArt {
+    width: 100%;
+    height: 100%;
+    transform: rotateZ(-.25turn);
+}
+
+.mwProgressDonutGutter {
+    fill: transparent;
+    stroke: var(--mw-borderColor-primary);
+}
+
+.mwProgressDonut .mwProgressDonutProgress {
+    fill: transparent;
+    stroke-dashoffset: 0;
+    transition: stroke-dasharray .15s linear;
+}
+
+.mwProgressDonut.mwProgressDonutIndeterminate .mwProgressDonutProgress {
+    transition: none;
+}
+
+@keyframes mwProgressDonutIndeterminateAnimation {
+    from {
+        transform: rotateZ(-.25turn);
+    }
+    to {
+        transform: rotateZ(.75turn);
+    }
+}
+
+.mwProgressDonut.mwProgressDonutIndeterminate .mwProgressDonutArt {
+    animation: mwProgressDonutIndeterminateAnimation 2s linear infinite;
+}
+
+.mwProgressDonut .mwProgressDonutInvisible,
+.mwProgressDonut[data-value="100"] .mwProgressDonutText,
+.mwProgressDonutIndeterminate .mwProgressDonutText {
+    display: none;
+}
+
+.mwProgressDonutText {
+    color: var(--mw-color-primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: transparent;
+    font-weight: normal;
+}
+
+.mwProgressDonut .mwProgressDonutProgress {
+    /* progress color */
+    stroke: var(--progress-color);
+}

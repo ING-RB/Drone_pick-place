@@ -1,0 +1,31 @@
+<!--Copyright 2020-2021 The MathWorks, Inc. -->
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="release/index-css.css"  type="text/css" />
+</head>
+
+<body class="tundra">
+<script>
+    window.insideScriptTag = true;
+    document.body.style.backgroundColor = "#" + (new URLSearchParams(window.location.search)).get('bgcolor');
+</script>
+
+<div id="main" class="main"></div>
+<div id="testbrowsercontainer" class="testbrowserContainer"></div>
+
+<script src="release/testbrowser-ui/dojoConfig-release-global.js"></script>
+<script type="text/javascript">
+    dojoConfig.cometdProperties = {
+        maxNetworkDelay: 90000
+    };
+</script>
+
+<script src="release/bundle.index.js"></script>
+</body>
+</html>

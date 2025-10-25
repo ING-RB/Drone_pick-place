@@ -1,0 +1,12 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code><a href="matlab:doc sort" target="_blank">sort</a></code>
+                    function supports a <code>descend</code> argument that sorts in descending
+                    order. Code Analyzer is indicating a case where this might be useful. </p><p>Previously, if you wanted to sort an array in descending order, you had to
+                    call the <code>sort</code> function, and then reverse the result by
+                    calling the <code><a href="matlab:doc flipud" target="_blank">flipud</a></code> or <code><a href="matlab:doc fliplr" target="_blank">fliplr</a></code> function. Now MATLAB supports the
+                        <code>descend</code> argument.</p><br/><strong>Suggested Action</strong><br/><p>Rewrite the expression using the <code>descend</code> argument. For
+                    example, if your code currently looks like this, and <code>a</code> is a
+                    row vector:</p><p>
+                    <code>a&nbsp;=&nbsp;fliplr(sort(&nbsp;a&nbsp;));</code>
+                </p><p>consider rewriting it like this:</p><p>
+                    <code>a&nbsp;=&nbsp;sort(a,&nbsp;'descend');</code>
+                </p></body></html>

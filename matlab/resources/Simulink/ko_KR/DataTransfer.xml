@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ErrorCauseDifferentSampletimes">
+      ''{0}'' has a sample time of {1}.
+    </entry>
+    <entry key="ErrorCauseImplicitTask">
+      ''{0}''이(가) 묵시적 분할에 있습니다.
+    </entry>
+    <entry key="ErrorCauseExplicitTask" context="error">
+      ''{0}'' is in explicit partition {1}.
+    </entry>
+    <entry key="IllegalInsertedRtb" context="error">
+      
+               Data integrity issue between &lt;sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt;
+               of block ''{1}'' and &lt;sldiag objui="inport" objparam="{2,number,integer}"
+               objname="{3}"&gt;input port {2,number,integer}&lt;/sldiag&gt; of block ''{3}''.  Simulink
+               cannot insert the rate transition block automatically because the model does not
+               currently have sample time {4} needed for the inserted rate transition block.
+               &lt;actions&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions"
+               ids="InsertRTBManuallyPorts"&gt;&lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkInput" context="error">
+       
+                블록 ''{1}''의 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;에 데이터 무결성 문제가 있습니다. 하지만 다음 시나리오 중 하나가 존재하므로 Simulink가 Rate Transition 블록을 자동으로 삽입할 수 없습니다:\n - 지정되지 않은 레이트 변경을 수정하기 위해 블록을 다시 작성해야 합니다.\n – 여러 가지 가능성이 존재하므로 Simulink가 Rate Transition 블록에 대한 삽입 위치를 선택할 수 없습니다. \n – 지정되지 않은 레이트 변경으로 인해 가상 버스 신호에 Rate Transition 블록을 삽입해야 합니다. \n – 이 블록의 입력 신호가 기록되는 중입니다. \n – 소스 또는 대상이 상태 포트입니다. \n &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB"&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+       
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkOutput" context="error">
+      
+               블록 ''{1}''의 &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 출력 포트&lt;/sldiag&gt;에 데이터 무결성 문제가 있습니다. 하지만 다음 시나리오 중 하나가 존재하므로 Simulink가 Rate Transition 블록을 자동으로 삽입할 수 없습니다: \n - 지정되지 않은 레이트 변경을 수정하기 위해 블록을 다시 작성해야 합니다.\n – 여러 가지 가능성이 존재하므로 Simulink가 Rate Transition 블록에 대한 삽입 위치를 선택할 수 없습니다. \n – 지정되지 않은 레이트 변경으로 인해 가상 버스 신호에 Rate Transition 블록을 삽입해야 합니다. \n – 이 블록의 출력 신호가 기록되는 중입니다. \n – 소스 또는 대상이 상태 포트입니다. \n &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB"&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkEnablePort">
+      
+               Simulink가 Enable Port 블록 ''{0}''에서 지정되지 않은 레이트 변경을 감지했습니다. 하지만 다음 시나리오 중 하나가 존재하므로 Simulink가 Rate Transition 블록을 자동으로 삽입할 수 없습니다: \n - 지정되지 않은 레이트 변경을 수정하기 위해 블록을 다시 작성해야 합니다.\n – 여러 가지 가능성이 존재하므로 Simulink가 Rate Transition 블록에 대한 삽입 위치를 선택할 수 없습니다. \n – 지정되지 않은 레이트 변경으로 인해 가상 버스 신호에 Rate Transition 블록을 삽입해야 합니다. \n – 이 블록의 출력 신호가 기록되는 중입니다. \n – 소스 또는 대상이 상태 포트입니다. \n &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB"&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NeedToRewireManuallyDueToBranchToOutportBEPExpFcn">
+      
+               The model ''{3}'' is configured for export function and has modeling constraints due to the usage of Bus Element Port. 
+               An unsupported signal branch detected at &lt;sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block
+               ''{1}''. Consider connect to root outport block ''{2}'' through an outport of block ''{1}''.
+      
+    </entry>
+    <entry key="IllegalIPortRateTransSingleTasking" context="error">
+      
+               ''{0}''과(와) ''{1}'' 사이에서 데이터 무결성 문제가 발생했습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB,{2},SingleTaskRateTransMsgWarning"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransViewer" context="error">
+      
+               {1}에 있는 ''{0}''과(와) {3, number,integer}번 출력 포트에 있는 ''{2}'' 사이에 데이터 무결성 문제가 있습니다. {0}에 표시된 데이터가 샘플 주기만큼 벗어나 있을 수 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}, ChangeDiagnosticSettingToWarning"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransForFramedData" context="error">
+      
+               프레임 기반 신호에 대해서는 데이터 전송 보호가 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type = "suggestion"&gt; &lt;txt&gt;''{0}''의 {1}과(와) ''{2}''의 {3,number,integer}번 출력 포트에 동일한 샘플 시간을 사용하십시오. &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransVarDimsSignal">
+       
+                Simulink does not support rate transitions for variable-size signals. 
+                &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type = "suggestion"&gt;
+                &lt;txt&gt;Consider making the sample time of ''{0}'' at input port {1,number,integer} and ''{2}'' at
+                     output port {3,number,integer} equal.
+                &lt;/txt&gt;
+                &lt;/action&gt;
+                &lt;/actions&gt;
+       
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockPortNumErr">
+      ''{1}''에서 S-Function ''{0}''이(가) SS_OPTION_RATE_TRANSITION을 부적절하게 사용함. 입력 포트와 출력 포트가 한 개씩 있는 S-Function에서만 이 옵션을 사용할 수 있습니다.
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockTsNumErr">
+      ''{1}''에서 S-Function ''{0}''이(가) SS_OPTION_RATE_TRANSITION을 부적절하게 사용함. 함수 샘플 시간을 하나만 지정하는 S-Function에서만 이 옵션을 사용할 수 있습니다.
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockContTsErr">
+      ''{1}''에서 S-Function ''{0}''이(가) SS_OPTION_RATE_TRANSITION을 부적절하게 사용함. 이산 샘플 시간이 있는 S-Function에서만 이 옵션을 사용할 수 있습니다.
+    </entry>
+    <entry key="IllegalFCSSPortRateTrans" context="diagnostic">
+      Function call initiator with different rates or partitions found at {0} of ''{1}''.
+      To prevent inconsistent and unpredictable simulation and code generation outcomes,
+      all function calls must operate at the same rate and within the same partition.
+    </entry>
+    <entry key="IllegalRateTransAtStatePort">
+      The sample time {0} of ''{1}'' at {2} is different from the sample time {3} of ''{4}'' at
+      output port {5,number,integer}. A rate transition is not allowed at a state port.
+    </entry>
+    <entry key="IllegalIPortRateTrans" context="error">
+      
+               {1}에 있는 ''{0}''과(와) {3,number,integer}번 출력 포트에 있는 ''{2}'' 사이에 데이터 무결성 문제가 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action type="fixit" id="MultiTaskingOff"&gt; &lt;cmd&gt;set_param( bdroot(''{0}''), 'EnableMultiTasking', 'off');&lt;/cmd&gt; &lt;txt&gt;"각 이산 레이트를 별개의 태스크로 처리" 옵션의 선택을 해제해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="MultiTaskRTBMsgWarning" retvalue="false"&gt; &lt;cmd&gt;set_param( bdroot(''{0}''), 'MultiTaskRateTransMsg', 'warning');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 "멀티태스크 데이터 전송"을 경고로 설정하여 오류 메시지가 표시되지 않도록 하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransNoAutoInsert">
+      Data integrity issue between ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Insert a rate transition block to protect the data transfer.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransExplicitTask">
+      
+               {2}에 있는 ''{1}''의 샘플 시간 {0}은(는) &lt;sldiag objui="outport" objparam="{5,number,integer}" objname="{4}"&gt;{5,number,integer}번 출력 포트&lt;/sldiag&gt;에서 ''{4}''의 샘플 시간 {3}과(와)는 다른 분할에 속합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="CommentThrough" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{4}'','Commented','through');set_param_action(''{6}'','AutoInsertRateTranBlk','on');&lt;/cmd&gt; &lt;txt&gt;Simulink가 적절한 Rate Transition 블록을 삽입하여 데이터 전송을 자동으로 처리할 수 있도록 Rate Transition 블록 ''{4}''을(를) 통과형 주석 처리하십시오. 그 결과, 구성 파라미터 대화 상자에서 "데이터 전송을 위한 레이트 변경 자동 처리"가 활성화됩니다. &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalRateTransBlkInInputRegion" context="error">
+      
+               Rate transition block ''{0}'' next to a root inport is not supported because multiple tasks are reading from the inport.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                  &lt;action type="fixit" id="CommentThrough"  retvalue="false"&gt;
+                  &lt;cmd&gt;set_param_action(''{0}'','Commented','through');&lt;/cmd&gt;
+                  &lt;txt&gt;Comment through the Rate Transition block ''{0}''&lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="AllowMultipleTaskToAccessIOParamOFF"  retvalue="false"&gt;
+                  &lt;cmd&gt;set_param( bdroot(''{0}''), 'AllowMultiTaskInputOutput', 'off');&lt;/cmd&gt;
+                  &lt;txt&gt;Set the configuration parameter "Allow multiple tasks to access inputs and outputs" to "off".&lt;/txt&gt;
+                  &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransForConcurrentExecution" context="error">
+      
+               {2}에 있는 ''{1}''의 샘플 시간 {0}이(가) {5,number,integer}번 출력 포트에 있는 ''{4}''의 샘플 시간 {3}과(와) 다릅니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{6}"&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalRateTransAtMergeBlk">
+      
+               The sample time {0} of the Merge block ''{1}'' at {2} is different from the sample
+               time {3} of its source, ''{4}'', at &lt;sldiag objui="outport" objparam="{5,number,integer}"
+               objname="{1}"&gt;output port {5,number,integer}&lt;/sldiag&gt;.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action type="suggestion"&gt;
+                   &lt;txt&gt;Consider making two sample times equal.&lt;/txt&gt;
+                 &lt;/action&gt;
+                 &lt;action type="suggestion"&gt;
+                   &lt;txt&gt;Insert a Rate Transition block and a Signal Conversion block between ''{6}'' and the Merge block.&lt;/txt&gt;
+                 &lt;/action&gt;
+                 &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="ChangeDiagnosticSettingToWarning"&gt;
+                   &lt;arg&gt;{1}&lt;/arg&gt;
+                 &lt;/action_catalog&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalRateTransBlkInRightClickBuild">
+      서브시스템 오른쪽 클릭 빌드로 인해 레이트 변경 블록 {0}이(가) 잘못 구성되었습니다. 원래 모델에서 다음 사항을 확인하여 이 문제를 조사하십시오. \n - 원래 모델에 고정 스텝 솔버가 사용됨 \n - 서브시스템에서 Inport 블록과 Outport 블록의 샘플 시간 파라미터가 모두 -1로 설정됨 \n - 서브시스템 입력 신호에 상수 샘플 시간이 없음
+    </entry>
+    <entry key="IllegalRateTransInRightClickBuild">
+      The subsystem right-click build resulted in an unspecified rate transition between ({0}) and
+      ({1}). Investigate this issue in the original model, by verifying: \n
+      - The original model uses a fixed-step solver; \n
+      - The Sample Time parameters of the Inport and Outport blocks in the subsystem
+      are all set to -1; \n
+      - The subsystem input signals do not have a constant sample time.
+    </entry>
+    <entry key="IllegalRateTransDelay">
+      The configuration of the Delay ''{0}'' is incorrect for handling a rate transition. The sample
+      time {1} of its destination is not present on any blocks in the system containing the Delay
+      block. Consider using the Rate Transition block to handle the data transfer between rates.
+    </entry>
+    <entry key="IllegalRateTransUnitDelay">
+      The configuration of the Unit Delay ''{0}'' is incorrect for handling a rate transition. The
+      sample time {1} of its destination is not present on any blocks in the system containing the Unit
+      Delay block. Consider using the Rate Transition block to handle the data transfer between rates.
+    </entry>
+    <entry key="IllegalSampleTimeRateTransUnitDelay">
+      The sample time {0} is too small for the Unit Delay ''{1}'' to handle a rate
+      transition. Specify a value higher than 1e10 or choose 0 for continuous rate transition.
+    </entry>
+    <entry key="IllegalRateTransZOH">
+      
+               The configuration of the Zero Order Hold ''{0}'' is incorrect for handling a rate
+               transition. The sample time {1} of its source is not present on any blocks in the system containing
+               the Zero Order Hold block. 
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="InsertRTBManually"&gt;&lt;/action_catalog&gt;
+               &lt;/actions&gt;
+    
+    </entry>
+    <entry key="IllegalUnitDelayRateTrans">
+      
+               Unit Delay ''{0}''의 구성이 잘못되어 레이트 변경을 처리할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="InsertRTBManually"&gt;&lt;/action_catalog&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="ChangeDiagnosticSettingToWarning"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTrans" context="error">
+      
+               &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;{1,number,integer}번 출력 포트&lt;/sldiag&gt;에 있는 ''{0}''과(와) &lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{0}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt;에 있는 ''{2}'' 사이에 데이터 무결성 문제가 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTransOutHiddenToWksSigLog" context="diagnostic">
+      
+               The signal cannot be logged at &lt;sldiag objui="outport" objparam="{1,number,integer}"
+               objname="{0}"&gt;output port {1,number,integer}&lt;/sldiag&gt; because the block ''{0}'' is asynchronously
+               executed.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{2}"&gt;
+                   &lt;arg&gt;{0}&lt;/arg&gt;
+                 &lt;/action_catalog&gt;
+                 &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;set_param(bdroot(''{0}''),'SignalLogging','off');&lt;/cmd&gt;
+                   &lt;txt&gt;Disable signal logging.&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTransOutHiddenToWksOutLog" context="diagnostic">
+      
+               Because the block ''{0}'' is asynchronously executed, output cannot be logged at the
+               destination of &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;output port
+               {1,number,integer}&lt;/sldiag&gt; in Dataset format.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{2},ChangeSaveFormatConfig"&gt;
+                   &lt;arg&gt;{0}&lt;/arg&gt;
+                 &lt;/action_catalog&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTransBlkConn">
+      Invalid connection for asynchronous rate transition ''{0}''. It should only be used when the
+      source or destination is an asynchronously executed function-call block. In addition a direct
+      connection between the asynchronous rate transition and the function-call block must exist (i.e.,
+      the signal connecting them cannot be observed).
+    </entry>
+    <entry key="NoRateTransBlkInsertedForRateTransBlkInput">
+      
+               Simulink가 블록 ''{1}''의 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;에 Rate Transition 블록을 자동으로 삽입하지 않았습니다. Rate Transition 블록이 삽입 위치의 업스트림에 존재하기 때문입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;업스트림 Rate Transition 블록에서 '출력 포트 샘플 시간'을 '-1'로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{1}''의 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;에 Rate Transition 블록을 수동으로 삽입하십시오. &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NoRateTransBlkInsertedForRateTransBlkOutput">
+      
+               Rate Transition 블록이 삽입 위치의 다운스트림에 존재하기 때문에 Simulink가 블록 ''{1}''의 &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 출력 포트&lt;/sldiag&gt;에 Rate Transition 블록을 자동으로 삽입하지 않았습니다.  
+      
+    </entry>
+    <entry key="InvalidRateTransForSimulinkFunctionInMdlRef">
+      
+               Model 블록 ''{1}'' 내에서 비동기식으로 실행된 Simulink Function ''{0}''은(는) 블록 ''{2}''에 연결할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;Simulink Function ''{0}''의 호출자가 주기적인 레이트가 되도록 변경하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvalidUnsupportedRootOutportMultiWriteDataTransfer" context="diagnostic">
+        
+            여러 작업에서 루트 Outport 블록 ''{0}''에 데이터를 기록 중이므로 Outport 블록 ''{0}''에 대해서는 데이터 전송 보호가 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="MultiTaskRateTransMsgWarning"&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="AperiodicRateAbsoluteTimeDataTransferUnsupported" context="error">
+        
+            Absolute or elapsed time for Block ''{0}'' with aperiodic partition is not supported as it may lead to corrupted data because it accesses the base task tick counter.
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="MultiTaskRateTransMsgWarning"&gt;
+                   &lt;arg&gt;{1}&lt;/arg&gt;
+                &lt;/action_catalog&gt;
+            &lt;/actions&gt;
+        
+    </entry>
+    <entry key="RTBFixitsAndSuggestions" context="error">
+      
+               &lt;actions exclusiveFixIts="yes"&gt;
+                  &lt;action type="suggestion" id="RewireBlkDiagOrManuallyAddRTB" retvalue="false"&gt;
+                    &lt;txt&gt; Rewire the block diagram or manually insert a Rate Transition block to
+                    resolve the data integrity issue.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="AutoInsertRTBOn" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param(bdroot(''{0}''), 'AutoInsertRateTranBlk', 'on');&lt;/cmd&gt;
+                    &lt;txt&gt;Enable configuration parameter Automatically handle rate transition for data transfer.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="SingleTaskRateTransMsgWarning" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param( bdroot(''{0}''), 'SingleTaskRateTransMsg', 'warning');&lt;/cmd&gt;
+                    &lt;txt&gt;Set configuration parameter Single task data transfer to warning.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="MultiTaskRateTransMsgWarning" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param( bdroot(''{0}''), 'MultiTaskRateTransMsg', 'warning');&lt;/cmd&gt;
+                    &lt;txt&gt;Set configuration parameter Multi task data transfer to warning.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="ChangeDiagnosticSettingToWarning" retvalue="false"&gt;
+                    &lt;cmd&gt;
+                    slprivate(''changeDataTransDiagSettingToWarning'',bdroot(''{0}''));
+                    &lt;/cmd&gt;
+                    &lt;txt&gt;Set the Multitask data transfer or Single task data transfer configuration parameter to warning.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="suggestion" id="InsertRTBManually" retvalue="false"&gt;
+                    &lt;txt&gt;Insert a Rate Transition block to handle the data transfer between rates.&lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="suggestion" id="InsertRTBManuallyPorts" retvalue="false"&gt;
+                    &lt;txt&gt;Insert a Rate Transition block between these ports.&lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="ChangeSaveFormatConfig" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param(bdroot(''{0}''), 'SaveFormat', ''__ARG1__'');&lt;/cmd&gt;
+                    &lt;cargs&gt;
+                      &lt;carg translate="false" name="__ARG1__" type="menu"&gt;
+                      &lt;txt_prompt&gt;Format configuration&lt;/txt_prompt&gt;
+                      &lt;enum&gt;Array&lt;/enum&gt;
+                      &lt;enum&gt;Structure&lt;/enum&gt;
+                      &lt;enum&gt;StructureWithTime&lt;/enum&gt;
+                      &lt;/carg&gt;
+                    &lt;/cargs&gt;
+                    &lt;txt&gt;Log states and outputs using Array, Structure, or Structure with time format.&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+  </message>
+</rsccat>

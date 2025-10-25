@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Pre-processing App Variable Browser Client Only Showcase Page</title>
+    <!-- Load css -->
+    <link rel="stylesheet" href="../css/main.css"  type="text/css" />
+    <style>
+        #widgetContainer,
+        #dataTypeDropdown,
+        #openButton,
+        #closeButton{
+            display:inline-block
+        }
+        #widgetContainer{
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(224, 224, 224);
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.20);
+            padding: calc(30px - 12px);
+            height: 1000px;
+            width: 1200px;
+            display: flex;
+            flex: 1;
+            min-height: 0;
+            min-width: 0;
+        }
+    </style>
+</head>
+<body class="tundra">
+
+<!-- Load dojo -->
+<script src="/derived/ui/generated/datatools/preprocessing/preprocessing/generatedDojoConfig.js"></script>
+<script type="text/javascript" src="../../../../../../../derived/3p/ui/dojo/dojo.js"></script>
+
+<div class="pageControls">
+    <input type="submit" id="open1" value="Launch 1x1 grid" onclick="launch1x1Grid();"/>
+    <input type="submit" id="open12" value="Launch 1x2 grid" onclick="launch1x2Grid();"/>
+    <input type="submit" id="open-irregular" value="Launch irregular grid" onclick="launchIrregularGrid();"/>
+    <input type="submit" id="open-irregular2" value="Launch really irregular grid (no UIVariableEditor support)" onclick="launchIrregularGrid2();"/>
+    <br>
+    <p>Create UIVariableEditors in cells <input type="checkbox" id="toggle-uive" onclick="handleUIVECheckboxClick(this);"/></p>
+    <br>
+    <input type="button" disabled id="closeButton" value="Close current grid" onclick="closeGrid();"/>
+    <br>
+    <div id="widgetContainer" class="variableDashboard"/>
+</div>
+
+<script type="text/javascript">
+
+    var layoutWidgetInstance = null;
+    var currentUIVEUuid = 1;
+    var createUIVECheckboxValue = false;
+    var UIVEs = [];
+
+    var currentAsyncFn = null;
+
+    var handleUIVECheckboxClick = function (checkbox) {
+        createUIVECheckboxValue = checkbox.checked;
+    }
+
+    var closeGrid = function () {
+        const outerWrapper = document.getElementById("widgetContainer");
+        outerWrapper.replaceChildren(); // Empty out all child DOM nodes
+
+        document.getElementById('closeButton').disabled = true;
+
+        for (const UIVE of UIVEs) {
+            UIVE.destroy();
+        }
+        currentUIVEUuid = 1;
+    }
+
+    var createWidgetChild = function (widget, content, widgetName, backgroundColor) {
+        require([
+            'variableeditor_peer/UIVariableEditor',
+            'variableeditor_peer/VEFactory' // Used in the UIVariableEditor
+        ], function (UIVariableEditor, VEFactory) {
+            if (!createUIVECheckboxValue) {
+                const params = {
+                    content,
+                    title: widgetName,
+                    backgroundColor
+                };
+
+                widget.addWidget(params);
+            } else {
+                const createUIVE = (layoutWidget, UUID, title) => {
+                    const attachPointId = `UIVEWidgetAttachPoint_${UUID}`;
+                    const params = {
+                        content: null,
+                        title,
+                        backgroundColor,
+                        contentBodyId: attachPointId,
+                        contentBodyClass: 'UIVEAttachPoint'
+                    };
+                    
+                    const contentWidget = layoutWidget.addWidget(params);
+
+                    contentWidget.updateComplete.then(() => {
+                        const UIVEArguments = {
+                            UUID,
+                            WidgetContainerId: attachPointId,
+                            ResizeBehaviour: 'container'
+                        };
+
+                        const UIVE = new UIVariableEditor(UIVEArguments);
+                        UIVEs.push(UIVE);
+                    });
+                };
+
+                createUIVE(widget, currentUIVEUuid, widgetName);
+                currentUIVEUuid++;
+            }
+        });
+    }
+
+    /*
+     * -------
+     * |     |
+     * |     |
+     * |     |
+     * -------
+     */
+    var launch1x1Grid = function () {
+        require([
+            "preprocessing/dataExplorer/LayoutWidget",
+        ], function (LayoutWidget) {
+            var outerWrapper = document.getElementById("widgetContainer");
+            const l1 = LayoutWidget();
+            l1.setLayoutType('cols');
+            outerWrapper.appendChild(l1);
+
+            const content = null;
+            this.createWidgetChild(l1, content, 'Widget');
+
+            document.getElementById('closeButton').disabled = false;
+        });
+    }
+
+    /*
+     * -------
+     * |  |  |
+     * |  |  |
+     * |  |  |
+     * -------
+     */
+    var launch1x2Grid = function () {
+        require([
+            "preprocessing/dataExplorer/LayoutWidget",
+        ], function (LayoutWidget) {
+            var outerWrapper = document.getElementById("widgetContainer");
+            const l1 = LayoutWidget();
+            l1.setLayoutType('cols');
+            outerWrapper.appendChild(l1);
+
+            const content = null;
+            this.createWidgetChild(l1, content, 'Left widget');
+            this.createWidgetChild(l1, content, 'Right widget');
+
+            document.getElementById('closeButton').disabled = false;
+        });
+    };
+
+    /*
+     * -----
+     * | | |
+     * -----
+     * |   |
+     * -----
+     */
+    var launchIrregularGrid = function () {
+        require([
+            "preprocessing/dataExplorer/LayoutWidget",
+        ], function (LayoutWidget) {
+            document.getElementById('closeButton').disabled = false;
+
+            var outerWrapper = document.getElementById("widgetContainer");
+
+            const l1 = LayoutWidget();
+            l1.setLayoutType('rows');
+            outerWrapper.appendChild(l1);
+
+            const l11 = LayoutWidget();
+            l11.setLayoutType('cols');
+            l1.appendChild(l11);
+
+            const content = null;
+            this.createWidgetChild(l11, content, 'Widget 1');
+            this.createWidgetChild(l11, content, 'Widget 2');
+            this.createWidgetChild(l1, content, 'Widget 3');
+        });
+    }
+
+    var launchIrregularGrid2 = function () {
+        require([
+            "preprocessing/dataExplorer/LayoutWidget",
+        ], function (LayoutWidget) {
+            document.getElementById('closeButton').disabled = false;
+
+            const origUIVECheckboxValue = createUIVECheckboxValue;
+            createUIVECheckboxValue = false;
+
+            var outerWrapper = document.getElementById("widgetContainer");
+            const l1 = LayoutWidget();
+            l1.setLayoutType('cols');
+            outerWrapper.appendChild(l1);
+
+            l1.addWidget({title: 'Widget 1'});
+
+            const l12 = LayoutWidget();
+            l12.setLayoutType('rows');
+            l1.appendChild(l12);
+
+            l12.addWidget({title: 'Widget 2'});
+            l12.addWidget({title: 'Widget 3'});
+            l12.addWidget({title: 'Widget 4'});
+
+            const l124 = LayoutWidget();
+            l124.setLayoutType('cols');
+            l12.appendChild(l124);
+
+            l124.addWidget({title: 'Widget 5'});
+
+            const l1242 = LayoutWidget();
+            l1242.setLayoutType('rows');
+            l124.appendChild(l1242);
+
+            l1242.addWidget({title: 'Widget 6'});
+
+            const l12422 = LayoutWidget();
+            l12422.setLayoutType('cols');
+            l1242.appendChild(l12422);
+
+            l12422.addWidget({title: 'Widget 7'});
+            l12422.addWidget({title: 'Widget 8'});
+            l12422.addWidget({title: 'Widget 9'});
+
+            createUIVECheckboxValue = origUIVECheckboxValue;
+        });
+    }
+</script>
+</body>
+</html>

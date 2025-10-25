@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="InheritStatesNotAllowedInRoot">Trigger Port 블록 ''{0}''의 "활성화할 때의 상태" 파라미터에 대해 지정된 설정이 유효하지 않습니다. 해당 블록이 블록 다이어그램의 루트 수준에 있으므로 이 파라미터를 ''상속''으로 지정하면 안 됩니다</entry>
+    <entry key="InheritStatesNotAllowedFromRoot">Invalid setting specified for the "States when enabling" parameter of the trigger port block ''{0}''. The block must not specify this parameter as ''inherit'' because the function-call subsystem ''{1}'' is not allowed to derive "States when enabling" parameter from root system (directly or indirectly) when the model contains a root Inport block that outputs a function-call signal.</entry>
+    <entry key="SfInheritStatesNotAllowedFromRoot">Invalid setting specified for the "States when enabling" parameter of the Stateflow block ''{0}''. The block must not specify this parameter as ''inherit'' because it is not allowed to derive "States when enabling" parameter from root system (directly or indirectly) when the model contains a root Inport block that outputs a function-call signal.</entry>
+    <entry key="InvICForOutportWithFC">소스 요소 중 하나 이상을 함수 호출 출력 포트에서 가져오기 때문에 ''{0}''이(가) 초기 출력을 지정할 수 없습니다.</entry>
+    <entry key="InvInitialOutputForOutport">''{0}'' cannot specify a nonzero initial output for a grounded (0.0) or inactive variant signal, or an unconnected input port</entry>
+    <entry key="InvStaticConnToOutport">Outport ''{0}'' cannot be configured to have initial output when it is driven by a block with a static (unchangeable) output.  For this class of connections, the initial output of the outport must be specified as the empty matrix []</entry>
+    <entry key="UnsupportedCanPrmPassThrough">Function-Call Subsystem ''{0}''에 마스크 파라미터 인수가 있지만 재사용 가능한 서브시스템 ''{1}'' 내에서 호출됩니다. 이는 ''디폴트 파라미터 동작''이 ''조정 가능형''으로 설정된 경우 지원되지 않습니다. ''디폴트 파라미터 동작''을 ''인라인''으로 설정하거나 호출자를 ''{1}'' 밖으로 옮기십시오.</entry>
+    <entry key="MixedStateResetSemantics">Function-call subsystem ''{0}'' inherits its state reset semantics, yet its ancestors specifying ambiguous semantics. ''{1}'' indicates ''held'' while ''{2}'' indicates ''reset''. These ancestors need to consistently indicate that states are either held or reset upon enable</entry>
+    <entry key="MixedStateResetSemantics1">Function-call subsystem ''{0}'' inherits its state reset semantics, yet its ancestors specifying ambiguous semantics. The root model indicates ''held'' while ''{1}'' indicates ''reset''.  These ancestors need to consistently indicate that states are either held or reset upon enable</entry>
+    <entry key="NoEnabWithReset">A reset port already exists in subsystem ''{0}''.  Addition of an enable port is not allowed.</entry>
+    <entry key="NoEnabWithStEnab">서브시스템 ''{0}''에 상태 인에이블 포트가 이미 존재합니다. 인에이블 포트를 추가하는 것은 허용되지 않습니다.</entry>
+    <entry key="NoEnabWithTrigFcnCall">Enable ports are not allowed with function-call triggered ''{0}'' subsystem.</entry>
+    <entry key="NoEnabWithMsgTrig">Enable block inside a message triggered subsystem is not supported. Consider changing parameter ''Trigger time'' of block ''{0}'' to ''on sample time hit''.</entry>
+    <entry key="NoResetWithEnab">An enable port already exists in subsystem ''{0}''.  Addition of a reset port is not allowed.</entry>
+    <entry key="NoResetWithTrig">A trigger port already exists in subsystem ''{0}''.  Addition of a reset port is not allowed.</entry>
+    <entry key="NoRootIfactPorts">The only control ports allowed at the root level of a block diagram are trigger and enable ports.</entry>
+    <entry key="NoStEnabWithEnab">서브시스템 ''{0}''에 인에이블 포트가 이미 존재합니다. 상태 인에이블 포트를 추가하는 것은 허용되지 않습니다.</entry>
+    <entry key="NoStEnabWithTrigFcnCall">서브시스템 ''{0}''에 함수 호출 트리거 포트가 이미 존재합니다. 상태 인에이블 포트를 추가하는 것은 허용되지 않습니다.</entry>
+    <entry key="NoTrigFcnCallWithStEnab">Function-Call Triggered Subsystem ''{0}''에는 상태 인에이블 포트가 허용되지 않습니다.</entry>
+    <entry key="NoTrigWithReset">A reset port already exists in subsystem ''{0}''.  Addition of a trigger port is not allowed.</entry>
+    <entry key="NoElapseTimeInNonAtomicCondSubsys">블록 ''{0}''이(가) 경과 시간을 사용합니다. 이는 아토믹이 아닌 조건부 서브시스템 ''{1}''에서 허용되지 않습니다.</entry>
+    <entry key="InitTermResetSSOutputsFunctionCall">Invalid data type at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}''. An Initialize, Reinitialize, Reset, or Terminate Function block cannot output a function-call signal.</entry>
+    <entry key="InitTermResetSSHasInvalidBlock">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' contains an invalid block below. Consult the documentation for more detail on &lt;a href="matlab:helpview(fullfile(docroot,'toolbox','simulink','helptargets.map'),'irt_limitations')"&gt;Initialize, Reinitialize, Reset, and Terminate Function Limitations&lt;/a&gt;.</entry>
+    <entry key="InitTermResetSSCallsInvalidSimFcn">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' directly or indirectly calls the Simulink Function block ''{1}'' which is invalid.</entry>
+    <entry key="InitTermResetSSCannotHaveInportBlock">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' cannot have an input port because it is inside Simulink Function ''{1}''.</entry>
+    <entry key="InitRootInportCodeGenMustNotZeroInternalWhenStructured">루트 수준 Inport 블록 ''{0}''이(가) Initialize Function 블록에 연결되었습니다. ''{0}''에 연결된 스토리지 클래스의 저장공간 유형이 'Structured'로 지정되어 있습니다. 이로 인해 포함되어 있는 구조체가 초기화될 때 ''{0}''이(가) 영으로 초기화될 수 있습니다. 예를 들어 포함되어 있는 구조체에 내부 데이터가 들어 있고 'ZeroInternalMemoryAtStartup'이 'on'으로 설정된 경우 이 구조체는 초기화됩니다. ''{0}''에 연결된 스토리지 클래스에 대해 저장공간 유형을 'Unstructured'로 변경하거나 다음 구성 설정을 적용하십시오. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{1}'',''ZeroInternalMemoryAtStartup'',''off'')&lt;/cmd&gt; &lt;txt&gt;코드를 생성하려면 모델 구성 파라미터 &lt;sldiag objui="configset" objparam="ZeroInternalMemoryAtStartup"&gt;''내부 데이터 영(0) 초기화 제거''&lt;/sldiag&gt;를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InitTermResetSSCannotInVariantSSWithGpcOn">Initialize Function, Reset Function 또는 Terminate Function 블록 ''{0}''이(가) Variant Subsystem ''{1}'' 내에 있습니다. 그러나 입력 포트나 출력 포트가 있는 Initialize Function, Reset Function 또는 Terminate Function 블록은 전처리기 조건문을 지원하지 않습니다. 이 문제는 다음 MATLAB 명령을 사용하여 해결할 수 있습니다. \n set_param(''{2}'',''GeneratePreprocessorConditionals'',''off''); \n\n
+</entry>
+    <entry key="InitTermResetSSCannotInlineVariantWithGpcOn">Initialize Function, Reset Function 또는 Terminate Function 블록 ''{0}''이(가) Variant Sink 블록 또는 Variant Source 블록 ''{1}''에 연결되어 있습니다. 그러나 입력 포트나 출력 포트가 있는 Initialize Function, Reset Function 또는 Terminate Function 블록은 전처리기 조건문을 지원하지 않습니다. 이 문제는 다음 MATLAB 명령을 사용하여 해결할 수 있습니다. \n set_param(''{2}'',''GeneratePreprocessorConditionals'',''off''); \n\n
+</entry>
+    <entry key="InitTermResetSSWithSideIOCannotSupportVariant">Initialize Function, Reset Function 또는 Terminate Function 블록 ''{0}''에 Variant 블록에 연결된 입력 포트 또는 출력 포트가 있습니다. 이는 지원되지 않습니다.</entry>
+    <entry key="SimFcnUninitializedWhenCalled">Simulink Function ''{0}''은(는) t = {1}에서 호출될 때 초기화되지 않습니다. Simulink Function이 초기화된 후 호출되도록 하십시오.</entry>
+    <entry key="SimFcnWithWidthUninitializedWhenCalled">Simulink Function ''{0}''은(는) Width 블록을 포함하며 t = {1}에서 호출될 때 초기화되지 않습니다. Simulink Function이 초기화된 후 호출되도록 하십시오.</entry>
+    <entry key="SimFcnAcessUninitializedDSMWhenCalled">Simulink 함수 ''{0}''은(는) t = {2}에서 호출될 때 초기화되지 않은 Data Store Memory ''{1}''에 액세스합니다. Simulink Function이 호출되기 전에 Data Store Memory가 초기화되도록 하십시오.</entry>
+    <entry key="InitResetSSHasBlocksWithStates">블록 ''{0}''에 상태가 포함되어 있습니다. 이러한 블록은 Initialize Function, Terminate Function 또는 Reinitialize Function 블록 내에서 지원되지 않습니다.</entry>
+    <entry key="InitFcnCallSLFcnWithWidthBlkFixable">블록 ''{0}''은(는) Width 블록입니다. 이러한 블록은 Initialize Function 블록이나 Reinitialize Function 블록에 의해 호출되는 Simulink Function 내에서 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'')&lt;/cmd&gt; &lt;txt&gt;Simulink Function을 ''{1}''에 대한 외부 함수로 사용하는 경우, 블록 ''{1}''의 파라미터 ''모델 초기화 포트 표시''를 설정하여 이 메시지를 표시하지 않을 수 있습니다. 이것이 자신에게 적용되는 사용 사례인지 확인하려면 &lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;예제 모델&lt;/a&gt; 및 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 블록의 일반적인 용도&lt;/a&gt; 문서를 참조하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitFcnCallSLFcnWithOutOfScopeDataStoreFixable">블록 ''{0}''은(는) Simulink Function 내에 있으며 Simulink Function 외부의 Data Store Memory에 액세스하는 중입니다. 이러한 블록은 Initialize Function 블록이나 Reinitialize Function 블록에 의해 호출되는 Simulink Function 내에서 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'')&lt;/cmd&gt; &lt;txt&gt;Simulink Function을 ''{1}''에 대한 외부 함수로 사용하는 경우, 블록 ''{1}''의 파라미터 ''모델 초기화 포트 표시''를 설정하여 이 메시지를 표시하지 않을 수 있습니다. 이것이 자신에게 적용되는 사용 사례인지 확인하려면 &lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;예제 모델&lt;/a&gt; 및 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 블록의 일반적인 용도&lt;/a&gt; 문서를 참조하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitFcnCallSLFcnWithWidthBlk">블록 ''{0}''은(는) Width 블록입니다. 이러한 블록은 Initialize Function 블록이나 Reinitialize Function 블록에 의해 호출되는 Simulink Function 내에서 지원되지 않습니다.
+    </entry>
+    <entry key="InitFcnCallSLFcnWithOutOfScopeDataStore">블록 ''{0}''은(는) Simulink Function 내에 있으며 Simulink Function 외부의 Data Store Memory에 액세스하는 중입니다. 이러한 블록은 Initialize Function 블록이나 Reinitialize Function 블록에 의해 호출되는 Simulink Function 내에서 지원되지 않습니다.
+    </entry>
+    <entry key="ReinitFcnCallSLFcnWithWidthBlkFixable">블록 ''{0}''은(는) Width 블록입니다. 이러한 블록은 Initialize Function 블록이나 Reinitialize Function 블록에 의해 호출되는 Simulink Function 내에서 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitAndReinitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'',''ShowModelReinitializePorts'',''on'')&lt;/cmd&gt; &lt;txt&gt;Simulink Function을 ''{1}''에 대한 외부 함수로 사용하는 경우, 블록 ''{1}''의 파라미터 ''모델 초기화 포트 표시'' 및 ''모델 재초기화 포트 표시''를 설정하여 이 메시지를 표시하지 않을 수 있습니다. 이것이 자신에게 적용되는 사용 사례인지 확인하려면 &lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;예제 모델&lt;/a&gt; 및 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 블록의 일반적인 용도&lt;/a&gt; 문서를 참조하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ReinitFcnCallSLFcnWithOutOfScopeDataStoreFixable">블록 ''{0}''은(는) Simulink Function 내에 있으며 Simulink Function 외부의 Data Store Memory에 액세스하는 중입니다. 이러한 블록은 Initialize Function 블록이나 Reinitialize Function 블록에 의해 호출되는 Simulink Function 내에서 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitAndReinitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'',''ShowModelReinitializePorts'',''on'')&lt;/cmd&gt; &lt;txt&gt;Simulink Function을 ''{1}''에 대한 외부 함수로 사용하는 경우, 블록 ''{1}''의 파라미터 ''모델 초기화 포트 표시'' 및 ''모델 재초기화 포트 표시''를 설정하여 이 메시지를 표시하지 않을 수 있습니다. 이것이 자신에게 적용되는 사용 사례인지 확인하려면 &lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;예제 모델&lt;/a&gt; 및 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 블록의 일반적인 용도&lt;/a&gt; 문서를 참조하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitResetSSHasSimFcnWithStates">Simulink 함수 ''{0}''에 상태가 포함되어 있습니다. 이러한 함수는 Initialize Function, Terminate Function 또는 Reinitialize Function 블록 내에서 호출할 수 없습니다.</entry>
+    <entry key="InitResetSSHasSimFcnWithGeneralStates">Simulink Function ''{0}''이(가) Width 블록을 포함하거나 Simulink Function 외부의 Data Store Memory에 액세스하는 중입니다. 이러한 Simulink Function은 Initialize Function 블록 또는 Reinitialize Function 블록인 블록 ''{1}'' 내에서 호출할 수 없습니다.</entry>
+    <entry key="ModelRefBlockWithInitPortCannotSimulateRefMdlInILWithoutZeroInit">SIL/PIL 모드에서 참조된 모델 "{0}"을(를) 시뮬레이션할 때 '내부 데이터 영(0) 초기화 제거' 파라미터를 '끄기'로 설정해야 합니다. 또는 Model 블록 "{1}" 파라미터 '모델 초기화 포트 표시'를 '끄기'로 설정해도 됩니다. 그러나 배포 코드 생성의 경우 더욱 효율적인 코드를 얻기 위해 파라미터 '모델 초기화 포트 표시'를 켤 수 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="zeroInternalMem"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ZeroInternalMemoryAtStartup'', ''on'');&lt;/cmd&gt; &lt;txt&gt;참조된 모델에 대해 파라미터 ''ZeroInternalMemoryAtStartup''을 활성화하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="showInitPort"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''off'')&lt;/cmd&gt; &lt;txt&gt;이 메시지를 표시하지 않으려면 파라미터 ''모델 초기화 포트 표시''의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ModelRefBlockWithInitPortCannotHaveMachineData">참조된 모델에 머신이 부모로 지정된 데이터를 사용하는 Stateflow 차트가 포함되어 있으므로, Model 블록 ''{0}''에 대한 파라미터 '모델 초기화 포트 표시'를 꺼야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''off'')&lt;/cmd&gt; &lt;txt&gt;이 메시지를 표시하지 않으려면 파라미터 ''모델 초기화 포트 표시''의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InitResetSSHasBlocksWithAbsOrElapsedTime">블록 ''{0}''은(는) 절대 시간 또는 경과 시간을 사용합니다. 이러한 블록은 Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function 블록 내에서 지원되지 않습니다.</entry>
+    <entry key="ModelRefBlockWithInitPortCannotHaveAbsOrElapsedTime">The parameter 'Show model initialize port' for the Model block ''{0}'' must be off since the referenced model contains a block that uses absolute or elapsed time.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''off'')&lt;/cmd&gt;
+          &lt;txt&gt;Suppress this message by clearing the parameter ''Show model initialize port''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InitResetSSHasCallerWhichCallsInvalidFcnWithSideIO">The Simulink Function block ''{0}'' called by the Initialize, Terminate, Reinitialize, or Reset Function contains an input port or output port. Such Simulink functions cannot be called from Initialize, Reinitialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InitResetSSHasCallerWhichCallsInvalidFcnWithIRT">The Simulink Function block ''{0}'' called by the Initialize, Terminate, Reinitialize, or Reset Function contains an Initialize, Reinitialize, Reset, or Terminate Function block within itself. Such Simulink functions cannot be called from Initialize, Terminate, Reinitialize, or Reset Functions.</entry>
+    <entry key="InitResetSSCannotContainConditionalSS">Conditionally executed subsystem ''{0}'' has {1,number,integer} output port(s). Only conditional subsystems with no output port are allowed within Initialize, Reset, or Terminate Function block.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportAlgebraicLoop">블록 ''{0}''이(가) Reinitialize Function ''{1}''과(와) 호환되지 않는 대수 루프에 있습니다.</entry>
+    <entry key="DefaultReinitializeFunctionDoesNotSupportAlgebraicLoop">블록 ''{0}''이(가) 디폴트 재초기화 포트와 호환되지 않는 대수 루프에 있습니다.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportContPulseMode">Pulse Generator 블록 ''{0}''에 Reinitialize Function ''{1}''과(와) 호환되지 않는 연속 샘플 시간이 있습니다.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportMachineData">Stateflow 차트 ''{0}''이(가) Reinitialize Function ''{1}''과(와) 호환되지 않는, 머신이 부모로 지정된 데이터를 사용합니다.</entry>
+    <entry key="BlockNotCompatibleWithReinitializeFunction">블록 ''{0}''이(가) Reinitialize Function ''{1}''과(와) 호환되지 않습니다. 자세한 내용은 도움말 문서를 참조하십시오. </entry>
+    <entry key="BlockNotCompatibleWithDefaultReinitializePort">블록 ''{0}''이(가) 디폴트 재초기화 포트와 호환되지 않습니다. 자세한 내용은 도움말 문서를 참조하십시오. </entry>
+    <entry key="ReinitializeFunctionDoesNotSupportResettableSubsys">Resettable Subsystem ''{0}''은(는) 재초기화 함수와 호환되지 않습니다.</entry>
+    <entry key="SimulinkFunctionDoesNotSupportScopedEventPort">Simulink Function ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="ResettableSubsystemDoesNotSupportScopedEventPort">Resettable Subsystem ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="VirtualSubsystemDoesNotSupportScopedEventPort">Virtual Subsystem ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="StateflowSubsystemDoesNotSupportScopedEventPort">Stateflow 블록 ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="IRTSubsystemDoesNotSupportScopedEventPort">Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="VariantSubsystemDoesNotSupportScopedEventPort">Variant Subsystem ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="ChoiceSubsystemDoesNotSupportScopedEventPort">Variant 선택지 Subsystem ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="ForEachSubsystemDoesNotSupportScopedEventPort">For Each Subsystem ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="ConfigurableSubsystemDoesNotSupportScopedEventPort">Configurable Subsystem ''{0}''은(는) 범위가 설정된 이벤트 포트를 가질 수 없습니다.</entry>
+    <entry key="SpecifiedReinitializeFunctionIsNotDefined">서브시스템 ''{0}''이(가) '서브시스템 재초기화 포트 표시'를 활성화하기 때문에 Reinitialize Function ''{1}''을(를) 이 서브시스템 내에서 정의해야 합니다.</entry>
+    <entry key="ReinitializeFunctionIsNotDefined">서브시스템 ''{0}''이(가) '서브시스템 재초기화 포트 표시'를 활성화하기 때문에 Reinitialize Function을 이 서브시스템 내에서 정의해야 합니다.</entry>
+    <entry key="ReinitializeFunctionRequireAtomicSS">서브시스템 ''{0}''이(가) '서브시스템 재초기화 포트 표시'를 활성화하는 경우 아토믹이어야 합니다. &lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{0}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="EventFunctionRequireCommonInitiator">서브시스템 ''{0}''에 이벤트 포트가 있습니다. 이벤트 포트 ''{1}''이(가) ''{2}''에 연결되어 있지만 이벤트 포트 ''{3}''은(는) ''{4}''에 연결되어 있습니다. 이것은 허용되지 않습니다. 이벤트 포트는 공통 함수 호출 개시자에 연결되어야 합니다.</entry>
+    <entry key="EventFunctionNotSupportAsyncSFcnBlk">서브시스템 ''{0}''에 이벤트 포트가 있으며, 이 이벤트 포트는 서브시스템 재초기화 함수와 호환되지 않는 Async Interrupt 블록 ''{1}''에 연결되었습니다.</entry>
+    <entry key="EventFunctionSupportInlinedCallerBlk">서브시스템 ''{0}''에 Subsystem 블록 ''{1}''에 의해 호출되는 이벤트 포트가 있습니다. 함수 패키징이 '재사용 가능' 또는 '재사용 불가'로 설정되어 있는 Caller 블록은 서브시스템 재초기화 함수와 호환되지 않습니다. 블록 대화 상자의 코드 생성 탭에 있는 함수 패키징이 '인라인'으로 설정되어 있는지 확인하십시오.</entry>
+    <entry key="EventFunctionRequireSingleRate">서브시스템 ''{0}''에 이벤트 포트가 있습니다. 이벤트 포트가 있는 경우 서브시스템은 싱글태스크로 실행되어야 합니다.</entry>
+    <entry key="EventFunctionRequireRunTimeRate">서브시스템 ''{0}''에 이벤트 포트가 있습니다. 이벤트 포트가 있는 경우 서브시스템은 실행 시간 레이트를 가져야 합니다.</entry>
+    <entry key="ReinitializePortNotInsideForEachSS">서브시스템 ''{0}''은(는) '서브시스템 재초기화 포트 표시'를 활성화합니다. 이벤트 포트가 있는 서브시스템은 For Each 서브시스템 ''{1}'' 내부에 있을 수 없습니다.</entry>
+    <entry key="InitResetSSCannotContainResettableSS">Resettable Subsystem ''{0}''은(는) Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function 블록 내에서 지원되지 않습니다.</entry>
+    <entry key="InitResetSSCannotContainReusableOrNonReusableSS">모델이 액셀러레이터 모드에서 시뮬레이션되면, 함수 패키징이 '재사용 가능' 또는 '재사용 불가'로 설정되어 있는 서브시스템 ''{0}''은(는) Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function 블록 내에서 지원되지 않습니다. 블록 대화 상자의 코드 생성 탭에 있는 함수 패키징이 '인라인' 또는 '자동'으로 설정되어 있는지 확인하십시오.</entry>
+    <entry key="InitResetSSCannotContainSimulinkFunctions">Simulink Function 블록 ''{0}''은(는) Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function 블록 내에서 지원되지 않습니다.</entry>
+    <entry key="InitResetSSCannotCallSimFcnsDefinedInStateflow">Simulink Function ''{0}''은(는) S-Function 또는 Stateflow 차트에 정의되어 있습니다. 이러한 Simulink Function은 Initialize Function, Reset Function 또는 Terminate Function에서 호출할 수 없습니다.</entry>
+    <entry key="InitResetSSCannotContainModelBlock">Model block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainMergeBlock">Merge 블록 ''{0}''은(는) Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function 블록 내에서 지원되지 않습니다.</entry>
+    <entry key="InitResetSSCannotContainBlocksWhichLogData">Block ''{0}'' is invalid. To Workspace blocks, To File blocks and other blocks which log data are not supported within Initialize, Terminate, Reinitialize or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainBlock">Block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainCustomCodeBlock">사용자 지정 코드 블록 ''{0}''은(는) Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function 블록 내에서 지원되지 않습니다.</entry>
+    <entry key="OutportMustHoldOutputWhenDisabledInIRTSS">Outport
+    block ''{0}'' cannot have the parameter ''Output when disabled'' set to ''reset''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''OutputWhenDisabled'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''Output when disabled'' to ''held'' for Outport block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="EnablePortMustHoldStatesWhenEnablingInIRTSS">Enable Port
+    block ''{0}'' must have the parameter ''States when enabling'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''StatesWhenEnabling'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when enabling'' to ''held'' for Enable Port block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="FcnCallPortMustHoldStatesWhenEnablingInIRTSS">Trigger Port
+    block ''{0}'' must have the parameter ''States when enabling'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''StatesWhenEnabling'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when enabling'' to ''held'' for Trigger Port block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ActionPortMustHoldStatesWhenEnablingInIRTSS">Action Port
+    block ''{0}'' must have the parameter ''States when execution is resumed'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''InitializeStates'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when execution is resumed'' to ''held'' for Action Port block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ForIterMustHoldStatesWhenEnablingInIRTSS">For Iterator
+    block ''{0}'' must have the parameter ''States when starting'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''ResetStates'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when starting'' to ''held'' for For Iterator block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="WhileIterMustHoldStatesWhenEnablingInIRTSS">While Iterator
+    block ''{0}'' must have the parameter ''States when starting'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''ResetStates'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when starting'' to ''held'' for While Iterator block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidSimulinkFunctionHavingSideIOBeingCalledFromIRT">모델 ''{1}'' 또는 그 서브모델 내에 있는 Simulink Function ''{0}''이(가) Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록 내에서 호출되고 있습니다. ''{0}''에 입력 포트 또는 출력 포트가 없도록 하십시오. 또는 ''{0}''의 호출자가 Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록 내에 있지 않도록 하십시오.</entry>
+    <entry key="InvalidSimulinkFunctionContainingIRTBeingCalledFromIRT">모델 ''{1}'' 또는 그 서브모델 내에 있는 Simulink Function ''{0}''이(가) Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록 내에서 호출되고 있습니다. ''{0}'' 자체에 Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록이 포함되지 않도록 하십시오. 또는 ''{0}''의 호출자가 Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록 내에 있지 않도록 하십시오.</entry>
+    <entry key="InvalidSimulinkFunctionBeingCalledFromIRT">모델 ''{1}'' 또는 그 서브모델 내에 있는 Simulink Function ''{0}''이(가) Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록 내에서 호출되고 있습니다. ''{0}''이(가) 다음 조건을 모두 충족하도록 하십시오. \n\t1. 상태가 있는 블록이 포함되어 있지 않습니다. \n\t2. 절대 시간 또는 경과 시간이 있는 블록이 포함되어 있지 않습니다. \n\t3. 이러한 유효하지 않은 Simulink Function을 호출하는 Function Caller 블록이 포함되어 있지 않습니다.\n또는 ''{0}''의 호출자가 Initialize Function, Reinitialize Function, Reset Function 또는 Terminate Function 블록 내에 있지 않도록 하십시오.</entry>
+    <entry key="InitResetSSDoesNotSupportVarDimSignals">Block ''{0}'' has a variable-size input. Such blocks are not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InvalidTwoInitSubsysAtSameLevel">두 개의 Initialize Function 블록 ''{0}'' 및 ''{1}''이(가) 동일한 계층 수준에 있습니다. 이 두 블록을 단일 Initialize Function 블록으로 결합해 보십시오.</entry>
+    <entry key="InvalidTwoInitSubsysAtSameNonVirtualLevel">Two Initialize Function blocks ''{0}'' and ''{1}'' are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoInitSubsysOneInVirtualSS">Initialize Function 블록 ''{0}''이(가) 가상 서브시스템에 있습니다. 이 서브시스템을 비가상 서브시스템으로 만들어 보십시오. &lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{1}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvalidTwoInitSubsysBothInVirtualSS">두 Initialize Function 블록이 모두 가상 서브시스템에 있습니다. 이 서브시스템 중 적어도 하나를 비가상 서브시스템으로 만들어 보십시오. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{0}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{1}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvalidTwoTermSubsysAtSameLevel">두 개의 Terminate Function 블록 ''{0}'' 및 ''{1}''이(가) 동일한 계층 수준에 있습니다. 이 두 블록을 단일 Terminate Function 블록으로 결합해 보십시오.</entry>
+    <entry key="InvalidTwoTermSubsysAtSameNonVirtualLevel">두 개의 Terminate Function 블록 ''{0}'' 및 ''{1}''이(가) 동일한 비가상 계층 수준에 있습니다.</entry>
+    <entry key="InvalidTwoTermSubsysOneInVirtualSS">Terminate Function 블록 ''{0}''이(가) 가상 서브시스템에 있습니다. 이 서브시스템을 비가상 서브시스템으로 만들어 보십시오. &lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{1}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvalidTwoTermSubsysBothInVirtualSS">두 Terminate Function 블록이 모두 가상 서브시스템에 있습니다. 이 서브시스템 중 적어도 하나를 비가상 서브시스템으로 만들어 보십시오. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{0}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{1}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvalidTwoResetSubsysAtSameLevel">동일한 식별자를 갖는 두 개의 Event Function 블록 ''{0}'' 및 ''{1}''이(가) 동일한 계층 수준에 있습니다. 이 두 블록을 단일 Event Function 블록으로 결합해 보십시오.</entry>
+    <entry key="InvalidTwoResetSubsysAtSameNonVirtualLevel">Two Event Function blocks ''{0}'' and ''{1}'' with the same identifier are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoResetSubsysOneInVirtualSS">Event Function 블록 ''{0}''이(가) 가상 서브시스템에 있습니다. 이 서브시스템을 비가상 서브시스템으로 만들어 보십시오. &lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;서브시스템 ''{1}''에 대해 ''아토믹 단위로 처리''를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidTwoResetSubsysBothInVirtualSS">Both Event Function blocks are in virtual subsystems. Consider making at least one of the subsystems non-virtual.
+    
+       &lt;actions exclusiveFixIts="no"&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt;
+          &lt;txt&gt;Select ''Treat as atomic unit'' for subsystem ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt;
+          &lt;txt&gt;Select ''Treat as atomic unit'' for subsystem ''{1}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidRootOutportWithTermEventInAutosar">모델 ''{0}''에서 루트 아웃포트 ''{1}''이(가) Terminate Function 블록에 연결되어 있습니다. AUTOSAR 시스템 타깃 파일을 사용할 경우 코드 생성기는 이 모델링 패턴을 지원하지 않습니다.</entry>
+    <entry key="NoNonVirtualBlocksAlongWithIRT">The system ''{0}'' does not contain any non-virtual blocks apart from Initialize, Terminate, Reinitialize, or Reset Function blocks. This is not allowed for simulation and code generation. Ensure that there is at least one other non-virtual block in this system.</entry>
+    <entry key="NoRunTimeRateAlongWithIRT">서브시스템 ''{0}''에는 상수 샘플 시간과, 시스템이 인라인으로 설정되지 않은 경우 Initialize Function, Terminate Function, Reinitialize Function 또는 Reset Function을 제외하고 적어도 한 개의 런타임 레이트가 포함되어야 합니다.</entry>
+    <entry key="NoBlocksWithNonIRTSampleTime">The system ''{0}'' contains only blocks which are driven by, or called by, Initialize, Reinitialize, Reset or Terminate Function blocks. Ensure that there is at least one other block which is not driven by such Function blocks.</entry>
+    <entry key="InitTermResetSSWithinAnotherInitTermResetSS">The Initialize/Terminate/Reinitialize/Reset Function ''{0}'' is being placed within another Initialize/Terminate/Reinitialize/Reset Function ''{1}''. This is not allowed.</entry>
+    <entry key="ConflictingResetSpecificationsInTopAndSubModel">A Reinitialize/Reset Function with the Event name ''{0}'' exists in the system ''{1}'' and the model referenced by the block ''{2}'' with conflicting specifications. To fix this, ensure that the setting of the parameter 'Event type' is the same for all Reinitialize/Reset Functions with the Event name ''{0}'' in the model.</entry>
+    <entry key="RunFirstLastSubsystemWithCState">Run First 또는 Run Last Subsystem ''{0}''은(는) 연속 상태를 지원하지 않습니다.</entry>
+    <entry key="SubsystemWithoutSchedulingConstraintsHasInvalidBlock">The unconstrained partitioned subsystem ''{0}'' contains invalid block(s) below.</entry>
+    <entry key="SubsystemWithoutSchedulingConstraintsCannotContainBlock">Block ''{0}'' is not supported within unconstrained partitioned subsystems.</entry>
+    <entry key="SchedulingConstraintsForBlockWithTime">블록 ''{0}''이(가) 시간에 액세스하므로 스케줄링 제약 조건에는 지원되지 않습니다.</entry>
+    <entry key="RequireMdlTerminateFcn">모델 ''{0}''에 Terminate Function ''{1}''이(가) 포함되어 있으므로 종료 함수를 생성해야 합니다. &lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;matlab:configset.internal.fixIt(''{0}'',''IncludeMdlTerminateFcn'',''on'')&lt;/cmd&gt; &lt;txt&gt;코드를 생성하려면 구성 파라미터 &lt;sldiag objui="configset" objparam="IncludeMdlTerminateFcn"&gt;IncludeMdlTerminateFcn&lt;/sldiag&gt;을 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="OutportConnConflict">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; and ''{1}'' which are driven by the same signal must have the same setting for the "Output when disabled" parameter</entry>
+    <entry key="OutportConnConflictWithMdlRef">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; inside the Model block ''{1}'' and ''{2}'' must have the same setting for the "Output when disabled" parameter because they connect to the same signal.</entry>
+    <entry key="OutportInitOutConflict">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; and ''{1}'' which are driven by the same signal specify conflicting values for the "Initial output" parameter.  Only one should specify an initial output and the others should be the empty, [], matrix</entry>
+    <entry key="SfChartOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values.  To resolve this issue, make sure both blocks have the same initial output values  or ensure that the "Initial output" parameter of the Outport block is an empty matrix([]).</entry>
+    <entry key="SfChartDefaultICOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values. Because the 'Initial value' field of the output of the Stateflow chart has been left empty, a default initial value of zero is used. To resolve this conflict, specify a matching initial output value for the output of the Stateflow chart or specify the initial output value of the Outport Block to be '0' or the empty matrix([]). </entry>
+    <entry key="SfChartDefaultBusICOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values. Because the output of the Stateflow Chart is a bus, a default initial value of zero is used. To resolve this conflict, specify the initial output value of the Outport block to be '0' or the empty matrix ([]). </entry>
+    <entry key="PortBasedDrivingVirtualOutport">''{0}'' may not be wired directly to the subsystem outport because it has a constant sample time on &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;output port {1,number,integer}&lt;/sldiag&gt;</entry>
+    <entry key="TrigFcnCallNotAllowedInEnab">''{0}''의 트리거 유형 함수 호출은 활성화된 시스템에서 허용되지 않습니다.</entry>
+    <entry key="WarnDupOutportInitOutValues">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; and ''{1}'' which are driven by the same signal are specifying the same value for the "Initial output" parameter. Only one should specify an initial output for the signal and the others should be the empty, [], matrix</entry>
+    <entry key="ResettableSSLevelLevelHoldInvalidWithContST">The 'ResetTriggerType' parameter of the Reset port block ''{0}'' within the Resettable subsystem ''{1}'' is set to 'level' or 'level-hold'. Continuous sample-times are not supported within such resettable subsystems. To resolve the issue, use a different trigger type or use discrete sample-time.</entry>
+    <entry key="DupRunFirstLastSubsystem">우선 순위가 동일한 두 개의 Run First Subsystem 또는 두 개의 Run Last Subsystem ''{0}'' 및 ''{1}''은(는) 동일한 계층 구조에 존재할 수 없습니다.</entry>
+    <entry key="ContinuousStateReaderWriterInRunFirstLastSubsystems">State Reader 블록 또는 State Writer 블록 ''{0}''은(는) 블록 ''{1}''이(가) 소유한 연속 상태에 액세스하므로 Run First 또는 Run Last Subsystem 내에 있을 수 없습니다.
+</entry>
+    <entry key="ContinuousStateWriterInRunLastSubsystem">Run Last Subsystem이 연속 상태 소유자 블록 ''{2}''의 비가상 부모 서브시스템에 연결되어 있으므로, State Writer 블록 ''{0}''은(는) Run Last Subsystem ''{1}'' 내에 있는 연속 상태에 쓸 수 없습니다.
+    </entry>
+    <entry key="RunLastContinuousStateWriter">State Writer 블록과 연속 상태 소유자 블록 ''{1}''이(가) 동일한 비가상 부모 서브시스템에 포함되어 있으므로, '실행 순서' 값이 '마지막'으로 설정된 경우 State Writer 블록 ''{0}''은(는) 연속 상태에 쓸 수 없습니다.
+    </entry>
+    <entry key="messagePollingSubsysNotAllowedInAccelMode">
+    Message Polling Subsystem ''{0}''은(는) 액셀러레이터 모드 시뮬레이션을 지원하지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''normal'');&lt;/cmd&gt; &lt;txt&gt;시뮬레이션 모드를 표준으로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_2" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''rapid-accelerator'');&lt;/cmd&gt; &lt;txt&gt;시뮬레이션 모드를 고속 액셀러레이터로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigSubsysAccelNotSupport">
+    ''비주기적 분할로 스케줄링''이 선택된 Message Triggered Subsystem ''{0}''은(는) 액셀러레이터 모드 시뮬레이션을 지원하지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;블록 ''{1}''의 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{1}"&gt;''비주기적 분할로 스케줄링''&lt;/sldiag&gt;을 지우십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_2" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''normal'');&lt;/cmd&gt; &lt;txt&gt;시뮬레이션 모드를 표준으로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_3" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''rapid-accelerator'');&lt;/cmd&gt; &lt;txt&gt;시뮬레이션 모드를 고속 액셀러레이터로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ConvertToVSSDialogTitle">서브시스템을 Variant Subsystem으로 변환</entry>
+    <entry key="ConvertToVariantSubsystemLE">레이블 모드 또는 표현식 모드에서 단일 선택지 Variant Subsystem으로 변환합니다. 선택한 서브시스템이 새로 생성된 Variant Subsystem에 선택지로 추가됩니다.</entry>
+    <entry key="ConvertToVSSDialogTitleSystemComposer">컴포넌트를 Variant 컴포넌트로 변환</entry>
+    <entry key="ConvertToVariantSubsystemLESystemComposer">레이블 모드 또는 표현식 모드에서 단일 선택지 Variant 컴포넌트로 변환합니다. 선택한 컴포넌트가 새로 생성된 Variant 컴포넌트에 선택지로 추가됩니다.</entry>
+    <entry key="EmptyControlExpression">Variant 제어는 비어 있을 수 없습니다. 계속 진행하려면 제어 표현식을 추가하고 Variant 제어 변수를 정의하십시오.</entry>
+    <entry key="OptionalSubsystemDesc">이 Variant {0}이(가) 선택적으로 존재하도록 합니다</entry>
+    <entry key="ConversionOperationFailure">이 실패로 인해 {0}이(가) 디폴트 설정을 갖는 Variant {0}(으)로 변환되었습니다.</entry>
+  </message>
+</rsccat>

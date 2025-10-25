@@ -1,0 +1,66 @@
+{
+    "mw.fileTypes": {
+        "groups": {
+            "spreadsheetFiles": ["xls", "xlsx", "xlsm", "xltx", "xltm", "xlsb", "ods"],
+            "excelSpreadsheetFiles": ["xls", "xlsx", "xlsm", "xltx", "xltm", "xlsb"],
+            "textualDataFiles": ["csv","dat", "dlm", "tab", "asc"],
+            "audioFiles": ["aiff", "au", "flac", "m4a", "mp3", "oga", "ogg", "snd", "wav"],
+            "videoFiles": ["asf", "avi", "m4v", "mj2", "mov", "mp4", "mpg", "wmv"]
+        },
+        "open": {
+            "groups.spreadsheetFiles": [{
+                "callback": "uiimport",
+                "callbackType": "matlab"
+            }],
+            "groups.textualDataFiles": [{
+                "callback": "uiimport",
+                "callbackType": "matlab"
+            }],
+            "groups.audioFiles": [{
+                "callback": "uiimport",
+                "callbackType": "matlab"
+            }],
+            "groups.videoFiles": [{
+                "callback": "uiimport",
+                "callbackType": "matlab"
+            }],
+            "mat": [{
+                "callback": "load",
+                "callbackType": "matlab",
+                "callbackOptions": {
+                    "printToCommandWindow": true
+                }
+            }]
+        },
+        "icons": {
+            "groups.excelSpreadsheetFiles": "./excel.svg",
+            "groups.textualDataFiles": "genericDocumentFT",
+            "groups.audioFiles": "genericAudio_FT",
+            "groups.videoFiles": "genericVideo_FT"
+        },
+        "labels": {
+            "mat": "%MATLAB:datatools:fileType:MatFile%",
+            "csv": "%MATLAB:datatools:fileType:CSV%",
+            "dat": "%MATLAB:datatools:fileType:DAT%",
+            "ods": "%MATLAB:datatools:fileType:ODS%",
+            "tab": "%MATLAB:datatools:fileType:TAB%",
+            "xls": "%MATLAB:datatools:fileType:XLS%",
+            "xlsb": "%MATLAB:datatools:fileType:XLSB%",
+            "xlsm": "%MATLAB:datatools:fileType:XLSM%",
+            "xlsx": "%MATLAB:datatools:fileType:XLSX%",
+            "xltm": "%MATLAB:datatools:fileType:XLTM%",
+            "xltx": "%MATLAB:datatools:fileType:XLTX%"
+        },
+        "filters": {
+            "openFileTypeFilters": {
+                "mat": [
+                    "allMatlabFiles",
+                    "%MATLAB:datatools:fileType:MATFiles%"
+                ]
+            },
+            "saveFileTypeFilters": {
+                "mat": "%MATLAB:datatools:fileType:MatFile%"
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="SimulinkBlocks" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BlockDescription" context="uistring">
+        サンプリングした入力信号 (u) を、入力遅延信号 (dt) で指定されている時間分だけ遅延させます。
+
+       
+    </entry>
+    <entry key="InitialOutput" context="uistring">初期出力</entry>
+    <entry key="RunAtFixedTimeIntervals" context="uistring"> 固定の時間間隔で実行</entry>
+    <entry key="SampleTime" context="uistring">サンプル時間</entry>
+    <entry key="OutofBoundSamplingRate" context="error">
+      
+               Sample time for block ''{0}'' must be finite and greater than the smallest supported 
+               time resolution (128*eps).
+      
+    </entry>
+    <entry key="InvSamplingModeSetting" context="error">
+      
+               Block ''{0}'' is not configured to work with a fixed step solver.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                   &lt;action type="fixit" retvalue="false"&gt;
+                       &lt;cmd&gt;set_param(''{0}'',''RunAtFixedTimeIntervals'',''on'')&lt;/cmd&gt;
+                       &lt;txt&gt;Enable the Run at fixed time intervals parameter for the block.&lt;/txt&gt;
+                   &lt;/action&gt;
+                   &lt;action type="fixit" retvalue="false"&gt;
+                       &lt;cmd&gt;set_param(''{1}'',''SolverType'',''Variable-step'')&lt;/cmd&gt;
+                       &lt;txt&gt;Change the solver type to variable step.&lt;/txt&gt;
+                   &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InputDelayNotFinite" context="error">
+      At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is not finite. Delay
+      values must be finite, positive, and greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBePositive" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than or equal
+        to the smallest supported time resolution (128*eps). The delay input must be finite, positive, and
+        greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasing" context="error">
+        At time {0}, the delay input (dt) for Propagation Delay block ''{2}'' results in a delayed output
+        time (t + dt) {1} that occurs at the same time or before the output time for the previous sample
+        {3}. Delayed output times must increase monotonically.
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasingInDiscreteMode" context="error">
+        時間 {0} において、Propagation Delay ブロック ''{2}'' の遅延入力 (dt) の結果として、
+        遅延出力時間 (t + dt) {1} が前回のサンプル {3} の出力時間と同じ時間または
+        それ以前に発生します。遅延出力時間は単調増加しなければならず、ブロックが固定の時間間隔で実行されるように構成する場合、
+        遅延出力時間は指定したサンプル時間 ''{4}'' の整数倍でなければ
+        なりません。
+    </entry>
+    <entry key="InputDelayMustBeGreaterThanSampleTime" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than the
+        specified sample time ''{3}''. When you configure the block to run at fixed time intervals, the
+        delay input must be positive and an integer multiple of the specified sample time.
+    </entry>
+    <entry key="InvalidDataType" context="error">
+        Data type {1} not supported for Propagation Delay block ''{0}''.
+    </entry>
+    <entry key="InputDelayTooLarge" context="error">
+        Propagation Delay ブロック ''{2}'' の遅延入力 {1} は現在のシミュレーション時間 {0} に対し
+        大きすぎるため、浮動小数点の精度の問題が生じます。
+    </entry>
+    <entry key="InputDelayGreaterThanSizeTMax" context="error">
+        時間 {0} において、Propagation Delay ブロック ''{2}'' の遅延入力は {1} です。このブロックを、
+        サンプル時間 ''{3}'' による固定の時間間隔で実行されるように構成した場合、サポートされる最大遅延は {4} です。
+    </entry>
+  </message>
+</rsccat>

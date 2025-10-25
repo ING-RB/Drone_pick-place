@@ -1,0 +1,55 @@
+{
+
+    "externalImageContainer":
+    {
+        "inputs":
+        [
+            {
+                "mutuallyExclusiveGroup":
+                [
+                    [
+                        {"name":"IMDATA", "kind":"required", "type":[ ["logical", "~numeric", "3d"],
+                                                                      ["uint8", "3d"], ["int8", "3d"], 
+                                                                      ["uint16", "3d"], ["int16", "3d"], 
+                                                                      ["uint32", "3d"], ["int32", "3d"],
+                                                                      ["single", "3d"], ["double", "3d"] ]},
+                        {"name":"COLORFORMAT", "kind":"required", "type":"choices={'RGB', 'BGR', 'BGRA', 'Grayscale', 'Binary', 'Generic'}"},
+                        {"name":"LAYOUT", "kind":"required", "type":"choices={'ColumnMajor', 'RowMajor'}"},
+                        {"name":"InputRGBFormat", "kind":"namevalue", "type":"choices={'RGB', 'MatchesInputColorFormat'}"},
+                        {"name":"AlphaChannel", "kind":"namevalue", "type":[ ["uint8", "2d"], ["int8", "2d"], 
+                                                                             ["uint16", "2d"], ["int16", "2d"], 
+                                                                             ["uint32", "2d"], ["int32", "2d"],
+                                                                             ["single", "2d"], ["double", "2d"] ]}
+                    ],
+                    [
+                        {"name":"PIXELS", "kind":"required", "type":[ ["logical", "~numeric", "vector"],
+                                                                      ["uint8", "vector"], ["int8", "vector"],
+                                                                      ["uint16", "vector"], ["int16", "vector"],
+                                                                      ["uint32", "vector"], ["int32", "vector"],
+                                                                      ["single", "vector"], ["double", "vector"] ]},
+                        {"name":"'like'", "kind":"ordered", "type":"choices={'like'}"},
+                        {"name":"REFCONTAINER", "kind":"ordered", "type":["externalImageContainer", "scalar"]}
+                    ]
+                ]
+            }
+        ],
+        "outputs":
+        [
+            {"name":"CONTAINER", "type":["externalImageContainer", "scalar"]}
+        ]
+    },
+
+    "externalImageContainer.getImageArray":
+    {
+        "inputs":
+        [
+            {"name":"CONT", "kind":"required", "type":["externalImageContainer", "scalar"]},
+            {"name":"OutputRGBFormat", "kind":"namevalue", "type":"choices={'RGB','MatchesObjectColorFormat'}"}
+        ],
+        "outputs":
+        [
+            {"name":"ARRAY", "type":[ ["numeric", "3d"], ["logical", "3d"] ]},
+            {"name":"ALPHA", "type":[ ["numeric", "2d"], ["logical", "2d"] ]}
+        ]
+    }
+}

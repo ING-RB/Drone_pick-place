@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2012-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="polyspace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!-- entry key="customLabel"><![CDATA[Custom]]></entry-->
+
+  	<!-- ********** Command line user interface messages ********** -->  
+    <entry key="name">Name</entry>
+    <entry key="workingFolderNotFound">Working directory: {0} does not exist</entry>
+    <entry key="generatingReport">Generating Report</entry>
+    <entry key="template" translate="false">Template    : {0}</entry>
+    <entry key="resultsFolder" translate="false">Results-dir : {0}</entry>
+    <entry key="format" translate="false">Format      : {0}</entry>
+    <entry key="outputName" translate="false">Output-Name : {0}</entry>
+    <entry key="loadingReportTemplate">Loading report template</entry>
+    <entry key="errorLoadingReport">Loading report template: {0}\n       Check if the file is a valid report (.rpt) template.</entry>
+    <entry key="converting">    Converting to other formats</entry>	
+    <entry key="generatingFormat">      Generating {0} format</entry>	
+    <entry key="conversionComplete">    Conversion complete</entry>
+    <entry key="optionRequiredWith">The {0} option is required with option {1}</entry>
+    <entry key="optionParameter">Option {0} must be followed by a parameter</entry>	
+    <entry key="unknownParameter">Unknown parameter: {0}</entry>
+    <entry key="missingTamplate">Report template name not specified</entry>
+    <entry key="templateDoesNotExist">Report template: {0} does not exist</entry>
+    <entry key="optionResultFolderNotGiven">-results-dir option not given</entry>
+    <entry key="resultFolderNonExistant">Results directory {0} does not exist</entry>
+    <entry key="unrecognisedFormat">Un-recognised report format: {0}</entry>
+    <entry key="unrecognisedKeyScope">Un-recognised key mode: {0}</entry>
+    <entry key="resultDirCanNotBeGivenWithURL">Use one of -result-dir or -url</entry>
+    <entry key="projectIDRequired">Project ID must be followed by a parameter</entry>
+    <entry key="runIDRequired">Required parameter -run-id must be given</entry>
+    <entry key="serverRequired">Required parameter -host must be given</entry>
+    <entry key="passwordRequired">An encrypted password is required with the login option</entry>
+    <entry key="loginPasswordRequired">Login and encrypted password or API Key options are required with the host option</entry>
+    <entry key="portError">Error: Port must be followed by an integer parameter</entry>
+    <entry key="protocolError">Error: Protocol must be followed by either https or http</entry>
+    <entry key="runIDError">RunID option must be followed by an integer parameter</entry>
+    <entry key="certificateConfigurationFromMatlabError">Option -configure-keystore can be used only from the command line.</entry>
+    <entry key="certificateConfigurationMessage">Client keystore path not found. Either in the Polyspace user interface, go to Tools > Preferences and check the Server Configuration,\nor from the command line use polyspace-report-generator -configure-keystore and follow the instructions.</entry>
+    <entry key="enter_client_keystore_path">Enter the full path to the client keystore file:</entry>
+    <entry key="applicationNotFound">Error: Application {0} not found</entry>
+    <entry key="accessTokenNotFound">Error: Access token not found</entry>
+    <entry key="authenticationError">Error: Unable to authenticate connection to server</entry>
+    <entry key="warningOpeningResultsFolder"> ** Warning: Ignoring folder: {0} as it does not contain valid Polyspace results.</entry>
+    <entry key="errorOpeningWebResults"> ** Error: Unable to open results from server {0} run ID: {1}.</entry>    
+    <entry key="preDatabaseResults" note="Error given for pre 15a results">Report generation is not supported for pre-R2015a results.</entry>
+    <entry key="preDatabaseResultsAdvice" note="Information given for pre 15a results">To generate a report try one of the following:
+* Re-run the analysis using a R2015a or later version of Polyspace.
+* Generate the report with a R2021b or earlier version of Polyspace.</entry>
+    <entry key="usageShort">For more information, enter {0} -h.</entry>
+    <entry key="usage" translate="false"><![CDATA[ 
+NAME
+{0}
+
+SYNOPSIS
+{0} -template <template> [OPTIONS]
+{0} -generate-results-list-file [-results-dir <folder>] [OPTIONS]
+{0} -generate-variable-access-file [-results-dir <folder>] [OPTIONS]
+
+DESCRIPTION
+Use {0} to generate reports for Polyspace analysis results stored locally
+or in the Polyspace Access web interface. You can also use {0} to export the content
+of the Results List or the Variable Access table to a tab-delimited text file. 
+
+<template> is the path, or a comma-separated list of paths, to valid Polyspace Report 
+Generator (*.rpt) template files used to generate the reports.
+
+OPTIONS
+General options
+	-format <HTML|PDF|WORD>    Format of generated report. Default is WORD.
+
+	-output-name <OUTPUT_NAME> File name of generated report or folder name if you generate 
+                                   multiple reports. The command stores OUTPUT_NAME on the path 
+                                   from which you call the command. To store the generated files 
+                                   in a different folder, specify the full path of the folder.  
+
+	-results-dir <FOLDER>      List of analysis results folders to include in report 
+	                           "path1/dir1,path1/dir2,path2/dir3,...". By default, the command
+                                   generates reports for results in the current folder. This option
+                                   is not compatible with Polyspace Access results.
+
+        -set-language-english      Generate the report in English. Use this option if your display
+                                   language is set to another language.
+
+	-help -h                   Display this help
+
+Polyspace Access options
+	-host <HOSTNAME>                          Fully qualified host name of the machine hosting
+	                                          the Polyspace Access web interface.
+                                                  This option is required only when you generate
+                                                  reports for results stored in Polyspace Access.
+
+	-run-id <RUN_ID>                          Run ID of the analysis results stored in Polyspace
+                                                  Access. Polyspace assigns a unique run ID to each
+                                                  analysis run you upload to Polyspace Access.
+                                                  To get the run ID of analysis results, see
+                                                  polyspace-access -h. This option is
+                                                  required only when you generate reports for
+                                                  results stored in Polyspace Access.
+
+	-all-units                                Specify this option to generate a report for all
+	                                          units from a unit-by-unit Code Prover analysis.
+                                                  When you use this option specify the run ID of
+                                                  only one unit with -run-id. The command
+                                                  automatically includes the other units from the
+                                                  analysis in the report.			
+
+	-login <USERNAME>                         Username you use to log in to Polyspace Access
+
+	-encrypted-password <ENCRYPTED_PASSWORD>  Use polyspace-access -encrypt-password to
+                                                  generate an encrypted password using your
+                                                  Polyspace Access login credentials. See
+                                                  polyspace-access -h.
+
+        -credentials-file <file>                  Path to text file where you list your Polyspace 
+                                                  Access login credentials. File must contain 
+                                                  either the -login and -encrypted-password 
+                                                  options on separate lines, or the -api-key 
+                                                  option. Restrict read permissions on this file
+                                                  to increase security.
+
+        -api-key arg                              The API Key used to log into Polyspace Access.
+                                                  Not compatible with -login and 
+                                                  -encrypted-password.
+
+	-port <PORT_NUMBER>                       Port number of the server hosting the Polyspace
+                                                  Access web interface. Default value is 9443.
+
+	-protocol <http|https>                  HTTP protocol used for Polyspace Access. Default
+                                                  value is https.
+
+        -configure-keystore                       Configure the HTTPS keystore used to connect to
+                                                  the Polyspace Access server. Follow the given
+                                                  instructions.
+
+Export options
+	-generate-results-list-file               Export content of the Results List to a 
+                                                  tab-delimited text file. This option is not 
+                                                  compatible with -template or -format.
+
+        -key-mode <file-scope|function-scope>     Generate the location key using either the
+                                                  line number in the file or the line offset from
+                                                  the start of the containing function. Default
+                                                  value is file.
+
+	-generate-variable-access-file            Export content of the Variable Access table to a
+	                                          tab-delimited text file. This option is not
+                                                  compatible with -template or -format.]]></entry>
+
+    <entry key="deprecatedFormat">Information: {0} report format is deprecated</entry>
+	 <!-- ******** Report Content Keys  ********** -->  
+	<!-- Title Page -->  
+    <entry key="polyspaceCodeVerification">Polyspace Code Verification</entry>  
+    <entry key="polyspaceBugFinder" translate="false">Polyspace Bug Finder</entry>  
+    <entry key="codeMetricsReportFor">Code Metrics Report for Project: {0}</entry>  
+    <entry key="WYSIWYGcodeMetricsReportFor">Filtered Code Metrics Report for Project: {0}</entry>  
+    <entry key="developerReportFor">Developer Report for Project: {0}</entry>  
+    <entry key="WYSIWYGdeveloperReportFor">Filtered Developer Report for Project: {0}</entry>  
+    <entry key="detailedReportFor">Detailed Report for Project: {0}</entry>  
+    <entry key="WYSIWYGdetailedReportFor">Filtered Detailed Report for Project: {0}</entry>  
+    <entry key="qualityReportFor">Quality Report for Project: {0}</entry>  
+    <entry key="WYSIWYGqualityReportFor">Filtered Quality Report for Project: {0}</entry>  
+    <entry key="summaryReportFor">Summary Report for Project: {0}</entry>  
+    <entry key="WYSIWYGsummaryReportFor">Filtered Summary Report for Project: {0}</entry>  
+    <entry key="codingRulesReportFor">Coding Standards Report for Project: {0}</entry>
+    <entry key="WYSIWYGcodingRulesReportFor">Filtered Coding Standards Report for Project: {0}</entry>
+    <entry key="sqoReportFor">SQO Report for Project: {0}</entry> 
+    <entry key="sqoSummaryReportFor">SQO Report for Project: {0}</entry> 
+    <entry key="metricsReportFor">Metrics Report for Project: {0}</entry>
+    <entry key="deprecatedSecurityReportErrorMessage" note="parameter is the release">This template is for results generated before the {0} Polyspace release only.</entry>
+    <entry key="reportGenerationError">Error Generating Report</entry>
+
+    <!-- other title page entries-->
+    <entry key="reportAuthor">Report Author: {0}</entry> 
+    <entry key="verificationAuthor" note="Prover">Verification Author(s): {0}</entry> 
+    <entry key="analysisAuthor" note="Bug Finder">Analysis Author(s): {0}</entry> 
+    <entry key="polyspaceVersion">Polyspace Version(s): {0}</entry> 
+    <entry key="projectVersion">Project Version(s): {0}</entry> 
+    <entry key="wysiwygCheckCount">The report is generated from {0} of {1} available results.</entry> 
+    <entry key="checkCount">Report generated from {0} checks</entry>
+    <entry key="generatedFile">Generated: {0}</entry>
+    <entry key="reviewScope" note="wysiwyg report mode">This is a filtered report.
+    Review scope used: {0}
+    </entry>
+    <entry key="showNewResultsOnly" note="wysiwyg report mode">Showing new results only.</entry> 
+
+    <!-- General messages -->
+    <entry key="largeDataWarning1" note="">** For large data sets consider exporting the results to a CSV file.</entry>
+    <entry key="largeDataWarning2" note="">** Use the Reporting menu or type polyspace-report-generator -help.</entry>
+
+    <!-- Summary Page -->  
+    <entry key="developerName">Developer Name:</entry>  
+    <entry key="dateReviewed">Date Reviewed:</entry>  
+    <entry key="comments">Comments</entry>  
+    <entry key="approvedBy">Approved By:</entry>  
+    <entry key="approvedDate">Approved Date:</entry>  
+    <entry key="originalResultsFolder">Result Folder(s):</entry>  
+
+    <!-- Verification Summary --> 
+    <entry key="qualityStatus">Quality Status</entry>
+    <entry key="overallQualityStatus">Overall Quality Status</entry>
+    <entry key="project">Project</entry>
+    <entry key="sqoLevel">Software Quality Objectives Level</entry>
+    <entry key="sqoDefinition">Software Quality Objectives Definition</entry>
+    <entry key="sqoSummary">Software Quality Objectives Summary</entry>
+    <entry key="sqoFamily">SQO Family</entry>
+    <entry key="overallStatus">Overall Status</entry>
+    <entry key="runTimeChecks">Run-Time Checks</entry>
+    <entry key="polyspaceVerifier" translate="false">Polyspace Code Prover</entry>
+    <entry key="numberOfResultSets">Number of Result Sets</entry>
+    <entry key="numberOfRedChecks">Number of Red Checks</entry>
+    <entry key="numberOfGrayChecks">Number of Gray Checks</entry>
+    <entry key="numberOfOrangeChecks">Number of Orange Checks</entry>
+    <entry key="numberOfGreenChecks">Number of Green Checks</entry>
+    <entry key="runTimeReliability">Run-Time Reliability</entry>
+    <entry key="confirmedDefects">Confirmed Defects</entry>
+    <entry key="polyspaceCodeMetrics">Polyspace Code Metrics</entry>
+    <entry key="enabled">Enabled</entry>
+    <entry key="disabled">Disabled</entry>
+    <entry key="codingRules">Coding Standards</entry>
+    <entry key="summaryByFile">Summary By File</entry>
+    <entry key="filesWithCompilationError">Files with compilation errors (files partially analyzed)</entry>
+        <entry key="totalViolations">Total Violations</entry>   
+    <entry key="notApplicable">Not Applicable</entry>   
+    <entry key="bugFinderAnalysisSummary">Bug Finder Analysis Summary</entry>   
+    <entry key="numberOfDefects">Number of Defects</entry>   
+    <entry key="polyspaceMetricsSummary">Polyspace Metrics Summary</entry>
+    <entry key="passOrFail" note="Pass or fail status">Pass/Fail</entry>
+    <entry key="unexpectedResultsForFile" note="{0} is the filename containing unexpected results, this message corresponds to an internal error in polyspace">Unexpected results found for file: {0}</entry>
+    <entry key="contactTechnicalSupport" note="Given with unepectedResultsForFile message">Please contact technical support.</entry>
+
+    <entry key="warningIgnoringOutputNameOption">Warning: ignoring -output-name option as multiple -generate-* options have been given.</entry>
+    
+    
+    <!-- Code Coverage --> 
+    <entry key="resultSet">Result Set</entry>   
+    <entry key="codeCoverage">Percentage of code checked for run-time errors</entry>   
+    <entry key="codeCoverageColumnHeading">% Checked</entry>   
+    <entry key="notImpactedByFilters">This metric is not impacted by the applied filters.</entry>    
+
+
+  	<!-- Chapter Headings  -->
+    <entry key="polyspaceCodeVerificationSummary">Polyspace Code Verification Summary</entry>
+    <entry key="polyspaceBugFinderSummary" note="Polyspace Bug Finder is the product name">Polyspace Bug Finder Summary</entry>
+    <entry key="polyspaceProven">Polyspace Run-Time Checks Statistics</entry>  
+    <entry key="codeMetrics">Code Metrics</entry>
+    <entry key="codeMetricsSummary">Code Metrics Summary</entry>
+    
+    <!-- BEGIN Keys pending removal after deprecation period for old rptgen component -> 26a remove -->
+    <entry key="customCodingRules">Custom Coding Rules Results</entry>
+    <entry key="jsfAvCodingRules">JSF AV Results</entry>
+    <entry key="misraCCodingRules">MISRA C:2004 Results</entry>
+    <entry key="misraAcAgcCodingRules">MISRA AC AGC Results</entry>
+    <entry key="misraCppCodingRules">MISRA C++:2008 Results</entry>
+    <entry key="misra2012CodingRules">MISRA C:2012 Results</entry>
+    <entry key="misra2023CodingRules">MISRA C:2023 Results</entry>
+    <entry key="misraCpp2023CodingRules">MISRA C++:2023 Results</entry>
+    <entry key="certCCodingRules">SEI CERT C Results</entry>
+    <entry key="certCppCodingRules">SEI CERT C++ Results</entry>
+    <entry key="iso17961CodingRules">ISO/IEC TS 17961 Results</entry>
+    <entry key="cweCodingRules">Common Weakness Enumeration (CWE) Results</entry>
+    <entry key="autosarCpp14CodingRules">AUTOSAR C++14</entry>
+    <entry key="guidelinesCodingRules">Guidelines</entry>
+    <entry key="appendixCustomRulesDetails">Appendix {0} - Custom Coding Rules Results</entry>
+    <entry key="appendixJsfAvDetails">Appendix {0} - JSF AV Results</entry>
+    <entry key="appendixMisraCDetails">Appendix {0} - MISRA C:2004 Results</entry>
+    <entry key="appendixMisraAcAgcDetails">Appendix {0} - MISRA AC AGC Results</entry>
+    <entry key="appendixMisraCppDetails">Appendix {0} - MISRA C++:2008 Results</entry>
+    <entry key="appendixMisra2012Details">Appendix {0} - MISRA C:2012 Results</entry>
+    <entry key="appendixMisra2023Details">Appendix {0} - MISRA C:2023 Results</entry>
+    <entry key="appendixMisraCpp202xDetails">Appendix {0} - MISRA C++:2023 Results</entry>
+    <entry key="appendixCertCDetails">Appendix {0} - SEI CERT C Results</entry>
+    <entry key="appendixCertCppDetails">Appendix {0} - SEI CERT C++ Results</entry>
+    <entry key="appendixIso17961Details">Appendix {0} - ISO/IEC TS 17961 Results</entry>
+    <entry key="appendixCweDetails">Appendix {0} - CWE Results</entry>
+    <entry key="appendixAutosarCpp14Details">Appendix {0} - AUTOSAR C++14 Results</entry>
+    <entry key="appendixGuidelinesDetails">Appendix {0} - Guidelines Results</entry>
+    <!-- END Keys pending removal -->
+    
+    <entry key="defectResultsSummary">Defect Results Summary</entry>
+    <entry key="polyspaceRunTimeChecksResults">Polyspace Run-Time Checks Results</entry>
+    <entry key="appendixConfigurationSettings">Appendix {0} - Configuration Settings</entry>
+    <entry key="appendixCodeMetricsDetails">Appendix {0} - Code Metrics Details</entry>
+    <entry key="appendixRuntTimeCheckDetails">Appendix {0} - Run-Time Check Details</entry>
+    <entry key="appendixDefectDetails">Appendix {0} - Defect Results Details</entry>
+    <entry key="appendixBugFinderAnalysisDetails">Appendix {0} - Defect Details</entry>
+    <entry key="appendixDefinitions">Appendix {0} - Definitions</entry>   
+    <entry key="projectInformation">Project Information</entry>
+    <entry key="verificationCharacteristics" note="Prover product">Verification Characteristics</entry>
+    <entry key="analysisCharacteristics" note="Bug Finder product">Analysis Characteristics</entry>
+    <entry key="sqoReportGenerationError">Error Generating Report - "Software Quality Objectives"</entry>
+     
+  	<!-- Table Headings --> 
+    <entry key="rteSummary">Run-Time Checks Summary</entry>   
+    <entry key="codingRulesSummary">Coding Standard Summary</entry>   
+    <entry key="runtimeChecksSummaryFor">Run-Time Checks Summary for {0}</entry>
+    <entry key="globallyProven">Globally Proven: {0}</entry>
+    <entry key="selectivity">Selectivity (% non-orange)</entry>
+    <entry key="globalSelectivity">Total percentage non-orange for filtered results: {0}</entry>   
+
+    <entry key="provenRuntimeViolations">Proven Run-Time Errors</entry>
+    <entry key="unreachableFunctions">Unreachable Function Checks</entry>
+    <entry key="unprovenRuntimeChecks">Unproven Run-Time Errors</entry>
+    <entry key="provenUnreachableCodeBranches">Proven Unreachable Code Branches</entry>
+    <entry key="polyspaceSettings">Polyspace Settings</entry>
+    <entry key="abbreviations">Abbreviations</entry>
+   
+    <!-- Project Information -->
+    <entry key="projectName">Project Name</entry>   
+    <entry key="version">Version</entry>   
+    <entry key="projectLeader">Project Leader</entry>   
+    <entry key="qualityReviewer">Quality Reviewer</entry>   
+   
+    <!-- Summary Component Messages --> 
+    <entry key="verificationSummaryNotAvailable">Code Verification Summary not available {0}</entry>
+    <entry key="projectSummary">Project Summary</entry>
+    <entry key="codingRulesSummaryType">Coding Standard Summary - {0}</entry>
+    <entry key="rteChecksSummary">Run-Time Checks Summary</entry>
+    
+    <!-- Verification Characteristics Messages --> 
+    <entry key="verificationCharacteristicsFor" note="Prover">Verification Characteristics for: {0}</entry>
+    <entry key="analysisCharacteristicsFor" note="Bug Finder">Analysis Characteristics for: {0}</entry>
+    <entry key="time">Time</entry>
+    <entry key="product">Product</entry>
+    <entry key="verificationTimingTable" note="Prover">Verification Times</entry>
+    <entry key="analysisTimingTable" note="Bug Finder">Analysis Times</entry>
+    <entry key="noVerificationTimingTable">Verification times are not available.</entry>
+    <entry key="noAnalysisTimingTable">Analysis times are not available.</entry>
+    <entry key="codeInformation">Code Information</entry>
+    
+    <!-- Metrics Summary Messages --> 
+    <entry key="codeMetricsSummaryFor">Code Metrics Summary for: {0}</entry>
+    <entry key="projectMetrics">Project Metrics</entry>
+    <entry key="fileMetrics">File Metrics</entry>
+    <entry key="functionMetrics">Function Metrics</entry>
+    <entry key="codeMetricsNoteEnabled">The Code Metrics option was not enabled for this verification.</entry>
+    <entry key="codeMetricsNotAvailableForAda">Code Metrics are not available for the Ada Language.</entry>
+    <entry key="codeMetricsNotRequiredForSQO">Code Metrics are not required for this quality level.</entry>
+     
+    <!-- Coding Standard SQO Summary Messages --> 
+    <entry key="codingRulesSQOSummaryFor">Coding Standard SQO Summary for: {0}</entry>
+    <entry key="codingRulesInfoNotAvailable">Coding Standard information not available.</entry>
+    <entry key="codingRulesNotActivated">Coding standards were not checked in this verification.</entry>
+    <entry key="codingRulesNotAvailableForAda">Coding standard checks are not available for the Ada language.</entry>
+    <entry key="unknown">Unknown</entry>
+    <entry key="codingRule">Coding Standard</entry>
+    <entry key="checkType">Check Type</entry>
+    <entry key="branches">Branches</entry>
+    <entry key="on" translate="false" note="TranslateFalseBatch; coding rule enabled column">on</entry>
+    <entry key="off" translate="false" note="TranslateFalseBatch; coding rule enabled column">off</entry>
+
+
+    <!-- Configuration Table Messages --> 
+    <entry key="configurationFor">Configuration for: {0}</entry>
+    <entry key="drsConfigurationData">Specified Constraints</entry>
+    <entry key="drsGlobalVariables">Constraints - Global Variables</entry>
+    <entry key="drsUserFunctions">Constraints - User Functions</entry>
+    <entry key="drsStandardFunctions" note="stubbed fuctions">Constraints - Stubbed Functions</entry>
+    <entry key="drsUnknown">Constraints - Unknown</entry>
+    <entry key="noDrsVariablesToReport">No modified constraint variables to report.</entry>
+    <entry key="codingRulesConfiguration">Coding Standard Configuration</entry>
+    <entry key="codingStandardConfiguration" note="parameter is standard">{0} Configuration</entry>
+    <entry key="codeMetricsConfiguration">Code Metrics Configuration</entry>
+    <entry key="rteConfiguration">Run-time Checks Configuration</entry>
+    <entry key="defectConfiguration">Defect Configuration</entry>
+    <entry key="variableConfiguration">Global Variable Configuration</entry>
+    <entry key="sqoConfiguration">Software Quality Objectives Configuration</entry>
+    <entry key="configurationForSQOLevel">Configuration for Software Quality Objectives level {0}.</entry>
+    <entry key="misra2012numberDescription">Guidelines prefixed with a "D" are directives.</entry>
+    <entry key="rteRevewScopeConfiguration">The table below shows which types of orange checks are included in this report using review scopes. Note: Non-terminating Loop, Non-terminating Call and Unreachable Code checks cannot be filtered using review scopes. For details on review scopes, see the documentation.</entry>
+    <entry key="analysisAssumptions">Analysis Assumptions</entry>
+    <entry key="concurrencyModellingSummary">Concurrency Modelling Summary</entry>
+    <entry key="noRulesFound" note="parameter is the coding standard">No rules found for {0}</entry>
+    
+    <!-- General Message -->
+    <entry key="someResultsMayHaveBeenFiltered">Some results may have been filtered out before generating the report.</entry>
+    <entry key="filteredCodeMetricsMessage">Code Metrics are calculated for the entire project. Filtering only affects which metrics are displayed.</entry>
+
+
+    <!-- Code Metrics Details --> 
+    <entry key="codeMetricsDetailsFor">Code Metrics Details for: {0}</entry>
+    <entry key="greenIsUsedToIndicate">In this chapter, green (red) indicates PASS (FAIL) status for a metric.</entry>
+    <entry key="projectMetricsFor">Project Metrics for: {0}</entry>
+    <entry key="failedProjectMetrics">Project Metrics (FAIL)</entry>
+    <entry key="noFailedProjectMetrcs">There are no project metrics with quality status FAIL.</entry>
+    <entry key="noProjectMetrics">There are no project metrics available.</entry>
+    <entry key="projectMetricsComments">Project Metrics</entry>
+    <entry key="metric" note="Heading column 1 in comment table">Metric</entry>
+    <entry key="comment" note="Heading column 2 in comment table">Comment</entry>
+    <entry key="overThreshold" note="Heading column for over threshold results">Over Threshold</entry>
+    <entry key="key" note="Heading column csv file for hashcode">Key</entry>
+    <entry key="fileMetricsFor">File Metrics for: {0}</entry>
+    <entry key="failedFileMetrics">File Metrics (FAIL)</entry>
+    <entry key="noFailedFileMetrics">There are no file metrics with quality status FAIL.</entry>
+    <entry key="fileMetricsComments">File Metrics</entry>
+    <entry key="file" note="Heading column for comment table">File</entry>
+    <entry key="functionMetricsFor">Function Metrics for: {0}</entry>
+    <entry key="failedFunctionMetrics">Function Metrics (FAIL)</entry>
+    <entry key="noFailedFunctionMetrics">There are no function metrics with quality status FAIL.</entry>
+    <entry key="function">Function</entry>
+    <entry key="functionMetricsComments">Function Metrics</entry>
+    <entry key="codeMetricsNotEnabled">The Code Metrics option was not enabled for this verification.</entry>
+    <entry key="noCodeMetrics">No code metrics results were found.</entry>
+    <entry key="filteredColumnsTitle" note="wysiwyg report mode">Results List Filters</entry>
+    <entry key="filteredColumns" note="wysiwyg report mode">Columns with active filters: {0}</entry>
+    <entry key="noFilteredColumns" note="wysiwyg report mode">No columns were filtered.</entry>
+
+    <!-- Coding Standard Details -->
+    <entry key="summary" note="parameter is coding standard">{0} Summary</entry>
+    <entry key="results" note="parameter is coding standard">{0} Results</entry>
+    <entry key="codingStandard" note="parameter is coding standard">{0} Coding Standard</entry>
+    <entry key="noResultsFound" note="parameter is coding rules type MISRA JSF etc">No {0} results were found.</entry>
+    <entry key="noViolationsFound" note="message given when no coding rules violations found">No violations were found.</entry>
+    <entry key="codingRuleViolations">{0} Violations</entry>
+    <entry key="sqoAppendix" note="0 is number, 1 is standard">Appendix {0} - {1} Results</entry>
+<entry key="deprecatedReportComponent" note="warning given when using these now deprecated report components">Warning: This report component is deprecated and will be removed in a future release. Please update your report to use the "Coding Standard Results" component.</entry>
+   
+     <!-- Coding Standard Summary -->
+    <entry key="summaryForEnabledRules" note="parameter is the coding rules checker">{0} Summary for Enabled Rules</entry>
+    <entry key="summaryForEnabledGuidelines" note="parameter is the coding rules checker">{0} Summary for Enabled Guidelines</entry>
+    <entry key="summaryForAllFiles" note="parameter is the coding rules checker">{0} Summary for all Files</entry>
+    <entry key="summaryRulesBroken" note="parameter is the coding rules checker">{0} Summary - Rules Violations</entry>
+    <entry key="summaryViolationsByFile" note="parameter is the coding rules checker">{0} Summary - Violations by File</entry>
+    <entry key="summaryViolationsByRule" note="parameter is the coding rules checker">{0} Summary - Violations by Rule</entry>
+    <entry key="countWithReviewed" note="column heading, {0}=coding standard, example table row 375 (45)">{0} (Reviewed)</entry>
+    <entry key="total">Total</entry>
+     
+
+    
+    <!-- RTE Details -->
+    <entry key="provenUnreachableCode">Proven Unreachable Code</entry>
+    <entry key="provenRteErrorFree">Proven Absence of Run-Time Check</entry>
+    <entry key="inspectionPoints">Inspection Points</entry>
+    <entry key="componentGeneratedWithCustomFilters">Component generated using the following custom filters:</entry>
+    <entry key="noUnreachableBranches">No unreachable branch checks were found.</entry>
+    <entry key="unreachableFunctionsChecksNotEnabled">Option to check for unreachable functions was not enabled. To enable the checks, use the option -uncalled-function-checks.</entry>
+    <entry key="noColorChecksWereFound">No {0} checks were found.</entry>
+    <entry key="noUnprovenAbsenceChecksWereFound" note="green">No proven absence of run-time error checks were found.</entry>
+    <entry key="noProvenChecksWereFound">No proven run-time error checks were found.</entry>
+    <entry key="noUnProvenChecksWereFound" note="orange">No unproven run-time error checks were found.</entry>
+    <entry key="noDefectsWereFound">No defects were found.</entry>
+    <entry key="defects">Defects</entry>
+    <entry key="defectSummary">Defect Summary</entry>
+    <entry key="polyspaceDefects">Polyspace Defects</entry>
+    <entry key="url">URL</entry>
+
+    <!-- RTE Reported By review Details -->
+    <entry key="reviewedRunTimeChecks">Run-Time Checks by Review Status</entry>
+    <entry key="noReviewedChecksFound">No reviewed checks were found.</entry>
+    <entry key="unreviewedResults">Unreviewed Results</entry>
+
+        <!-- Variables Reported By review Details -->
+    <entry key="reviewedVariableChecks">Global Variable Checks by Review Status</entry>
+
+    <!-- RTE Summary -->
+    <entry key="unit" note="Compilation unit">Unit</entry>
+    <entry key="reason">Reason</entry>
+    <entry key="noRunTimeChecksForUnit">Results of run-time checks are not available for this unit</entry>
+    <entry key="runTimeChecksSummaryFor">Run-Time Checks Summary for {0}</entry>
+    <entry key="normalisedDistributionOfChecksChart">Normalised distribution of checks per file.</entry>
+    <entry key="normalisedDistributionOfChecksFile">Normalised distribution of checks per file for {0}</entry>
+    <entry key="distributionOfChecksChart">Distribution of checks per file.</entry>
+    <entry key="distributionOfChecksFile">Distribution of checks per file for {0}</entry>
+    
+    <!-- Global Variables -->
+    <entry key="globalVariables">Global Variables</entry>
+    <entry key="globalVariableSummary">Global Variable Summary</entry>
+    <entry key="category">Category</entry>
+    <entry key="count">Count</entry>
+    
+    <!-- Acronym Definition tables -->
+    <entry key="rteAcronymsFor" note="parameter is source code language">Run-Time Checks Acronyms for {0}</entry>
+    <entry key="abbreviation">Abbreviation</entry>
+    <entry key="definition">Definition</entry>
+    <entry key="acronym">Acronym</entry>
+   
+    <!-- Recursive Function Table -->
+    <entry key="recursiveFunctions">Recursive Functions</entry>
+    <entry key="recursiveFunctionsFor" note="parameter is result name">Recursive Functions for {0}</entry>
+    <entry key="noRecursiveFunctionFor">No recursive functions were found for: {0}.</entry>
+    <entry key="noRecursiveFunctionsFound">No recursive functions were found.</entry>
+    <entry key="calledBy">Called By</entry>
+
+    <!-- Unreachable Function Table -->
+    <entry key="componentGeneratedUsingCustomFilters">The following custom filters were used:: </entry>
+    <entry key="noUnreachableFunctionsWereFound">No unreachable functions checks were found.</entry>
+    
+    <!-- Column Definitions -->
+    <entry key="columnShort">Col</entry>
+    <entry key="column">Column</entry>
+    <entry key="justifiedShort">Jus</entry>
+    <entry key="justified">Justified</entry>
+    <entry key="nonComputable">Non Computable</entry>
+    <entry key="reviewed">Reviewed</entry>
+    <entry key="unreviewed">Unreviewed</entry>
+    <entry key="sqoShort" translate="false">SQO</entry>
+    <entry key="sqo">Software Quality Objectives</entry>
+    <entry key="required">Required</entry>
+    <entry key="obligatory">Obligatory</entry>
+    <entry key="readability">Readability</entry>
+    <entry key="notAvailable">Not Available</entry>
+    <entry key="UnitColumn">Unit</entry>
+    <entry key="proven">Proven</entry>
+    <entry key="green">Green</entry>
+    <entry key="red">Red</entry>
+    <entry key="grey">Gray</entry>
+    <entry key="orange">Orange</entry>
+    <entry key="tags">Tags</entry>
+    <entry key="location">Location</entry>
+    <entry key="color">Color</entry>
+    <entry key="check">Check</entry>
+    <entry key="line">Line</entry>
+    <entry key="detail" note="Detailed information about the check">Detail</entry>
+    <entry key="class">Severity</entry>
+    <entry key="status">Status</entry>
+    <entry key="code">Code</entry>
+    <entry key="value">Value</entry>
+    <entry key="sqoValue">SQO subset value</entry>
+    <entry key="option" note="configuration option">Option</entry>
+    <entry key="threshold">Threshold</entry>    
+    <entry key="valuesMinMax">Values (Min .. Max)</entry>
+    <entry key="minimumValue">Minimum Value</entry>
+    <entry key="maximumValue">Maximum Value</entry>
+    <entry key="mode">Mode</entry>
+    <entry key="property">Property</entry>
+
+    <!-- Log File Information-->
+    <entry key="passLevel">Pass</entry>
+    <entry key="real">Real</entry>
+    <entry key="user">User</entry>
+    <entry key="system">System</entry> 
+    
+    <!--Result Interface added messages-->
+    <entry key="codeCharacteristics">Code Characteristics</entry>
+    <entry key="unitMode">{0} (Unit Mode)</entry>
+     
+
+    <!-- DRS Configuration-->
+    <entry key="noDrsValuesAreDefined">Constraints are not defined.</entry>
+
+    <!-- Code Metrics message -->
+    <entry key="andNotComputable"> (and not computable)</entry>    
+    
+    <!-- **** SQO Report Messages **** -->
+    <!-- SQO Legal Notice -->
+    <entry key="sqoLegalNotice_p1_line1" note="Legal notice paragraph 1">The "PASS/FAIL" statuses in this report are based on Polyspace results. To see how you can use these statuses to</entry>
+    <entry key="sqoLegalNotice_p1_line2" note="Legal notice paragraph 1">satisfy requirements from the Software Quality Objectives (SQO) standard, see the following document in MATLAB Central:</entry>
+    <entry key="sqoLegalNotice_p1_line3" note="Legal notice paragraph 1">USING POLYSPACE® TO IMPLEMENT THE "SOFTWARE QUALITY OBJECTIVES FOR SOURCE CODE QUALITY" STANDARD.</entry>
+    
+    <entry key="sqoReportErrorMessage">Error: The Software Quality Objectives report is only compatible with results stored on a Polyspace Access server.</entry>
+    
+    <!-- SQO Messages -->
+    <entry key="yes">Yes</entry>
+    <entry key="no">No</entry>
+    <entry key="partially">Partially</entry>
+    <entry key="na" note="do not translate in other languages">NA</entry>
+    <entry key="pass">PASS</entry>
+    <entry key="fail">FAIL</entry>
+    <entry key="pass_incomplete">PASS (partially enabled)</entry>
+    <entry key="fail_incomplete">FAIL (partially enabled)</entry>
+    <entry key="incomplete">Incomplete</entry>
+    <entry key="incompleteDefinition">Incomplete: Evaluation of PASS/FAIL status is incomplete because some result families are not enabled or only partially enabled. For more details, see the Software Quality Objectives Summary table.</entry>
+    <entry key="sqoRTESummaryFor" note="Prover">Run-Time Checks SQO Summary for: {0}</entry>
+    <entry key="defectSummaryFor" note="Bug Finder">Defects Summary for: {0}</entry>
+    <entry key="sqoDefectsSummary">Defects Summary</entry>
+    <entry key="sqoSystematicRTEViolations">Systematic Run-Time Violations</entry>
+    <entry key="sqoNoSystematicRTEViolations" note="prover">The code does not contain systematic run-time violation checks.</entry>
+    <entry key="noDefects" note="bug finder">No defects were found in the code.</entry>
+    <entry key="sqoNoSystematicRTEViolationCategories">The code does not contain systematic run-time violation checks for the following SQO categories:</entry>
+    <entry key="sqoListOfChecksPerformed">See product documentation for complete list of Polyspace checks.</entry>
+    <entry key="sqoNonTerminatingCalls">Non Terminating Function Calls and Loops</entry>
+    <entry key="sqoNoNonTerminatingCalls">The code does not contain non terminating calls or loops.</entry>
+    <entry key="sqoUnreachableBranches">Unreachable Branches</entry>
+    <entry key="sqoNoUnreachableBranches">The code does not contain unreachable branches.</entry>
+    <entry key="sqoNoPotentialRTES">The code does not contain potential run-time violation checks.</entry>
+    <entry key="sqoPotetntialRTEViolations">Potential Run-Time Violations</entry>
+    <entry key="sqoReviewCoverage">Review Coverage = ((Green + Orange Justified)/(Green + Orange)) * 100</entry>
+    <entry key="sqoNoPotetntialRTEViolations">The code does not contain potential run-time errors for the following SQO categories:</entry>
+    <entry key="reviewCoverage">Review Coverage</entry>    
+    <entry key="violations">Violations</entry>    
+    <entry key="warningSQOLevelExhaustive">Warning: Evaluation of Exhaustive SQO level status ignores disabled checks. For a complete PASS/FAIL status evaluation, use SQO levels 1-6 instead.</entry>
+    
+     <!-- Chart Messages -->
+     <entry key="distributionOfChecksPerFile">Distribution of checks per file</entry>
+     <entry key="percentOfChecks">% of checks</entry>
+     <entry key="numberOfChecks">Number of checks</entry>
+     <entry key="numberOfRules">Number of coding rule violations</entry>
+     <entry key="chartXofN" note="chart 1 of 4">Chart {0} of {1}.</entry>
+
+     
+     <!-- Call Graph -->
+     <entry key="callGraph">Call Hierarchy</entry>
+     <entry key="callGraphFor">Call Hierarchy Report for Project: {0}</entry>
+     <entry key="noCallGraph">Warning: The call hierarchy is unavailable for these results.</entry>
+
+     <entry key="variableGraph">Variable Access</entry>
+     <entry key="variableChecks">Variable Checks</entry>
+     <entry key="variableGraphFor">Variable Access Report for Project: {0}</entry>
+     <entry key="variableChecksFor">Variable Checks for: {0}</entry>
+     <entry key="noVariableGraph">Warning: The variable access graph is unavailable for these results.</entry>
+     <entry key="noVariableChecks">No variable checks were found in the code.</entry>
+
+     <!-- Specification results -->
+     <entry key="specificationSummary">Specification Analysis Summary</entry>
+     <entry key="specificationChecks">Specification Analysis Results</entry>
+     <entry key="specificationChecksFor" note="parameter is results name">Specification Analysis Results for: {0}</entry>
+     <entry key="specificationChecksForColor" note="parameter is color">{0} Specification Analysis Results</entry>
+     <entry key="noSpecificationChecks">No Specification Analysis results were found in the code.</entry>
+
+     <entry key="filename">Filename</entry>
+     <entry key="fullFilename">Full filename</entry>
+
+     <!-- Center specific messages -->
+     <entry key="unableToDetectParentProject">Error: Unable to detect parent project for runID:  {0}</entry>
+     <entry key="unableToDetectProject">Error: Unable to detect project for runID:  {0}</entry>
+
+     <!-- Verification Characteristics messages (quality report) -->
+     <entry key="warningUnableToReadLogFile" note="parameter is verificationCharacteristics message">Warning: Unable to read log file, the {0} section may be incomplete.</entry>
+
+     <!-- Error messages -->
+     <entry key="missingJarInClassPath">Integration with Polyspace stopped working, possibly because of recent MATLAB updates. Remove existing integration and then integrate MATLAB and Polyspace again.</entry>
+     <entry key="badKey" note="feature off export with line/column data">Error: Badly formatted key.</entry>
+     <entry key="invalidKey" note="feature off export with line/column data">Error: Invalid key.</entry>
+     <entry key="unexpectedClientName" note="feature off export with line/column data">Error: Unexpected client name.</entry>
+     <entry key="invalidKeyForVersion" note="feature off export with line/column data">Error: This key is not valid for version {0}.</entry>
+     <entry key="keyExpired" note="feature off export with line/column data">Error: The key has expired.</entry>
+     <entry key="p4dResultsNotSupported" note="polyspace bugfinder for access results are not supported">Error: You cannot generate reports from Polyspace as You Code results.</entry>
+     <entry key="p4dRptgenResultsExportNotSupported" note="polyspace bugfinder for access result">Error: Use polyspace-results-export to export "Polyspace as You Code results".</entry>
+     <entry key="resultsNotFound">Error: results not found in {0}</entry>
+  </message>
+</rsccat>
+<!--Abhishek Kumar-->

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="fixed" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BurstEulerDescr">此模块使用共享 CORDIC 旋转核执行欧拉旋转。</entry>
+    <entry key="DivByConstDescr">将输入除以常量并舍入到整数。</entry>
+    <entry key="RealIdxCORDIC">此模块执行实数 CORDIC Givens 旋转，使得\n\n yOut(k) = 0\n\n前提是坐标 [x(k), y(k)] 位于右半平面中。\n
+    </entry>
+    <entry key="IterCounter">此模块实现 HDL 优化计数器，用于驱动迭代算法。计数器中的迭代次数由参数 "迭代次数" 设置。当 "validIn" 拉高时，开始计数。然后从 0 开始向上计数，输出在 "count" 输出端口。当 "count" 的值大于零时，输出端口 "countIsPositive" 升高。端口 "last" 在最后一次迭代时升高，表示循环的下一次迭代是最后一次迭代。这将在 "count" 等于 "迭代次数" 减 1 时发生。最后，"ready" 在所有迭代完成后升高，模块可以在 "validIn" 上接受另一个信号。
+    </entry>
+    <entry key="RealDivideFullDescription">给定实数输入 num 和 den，此模块使用 CORDIC 算法计算出 y，使得 y = num/den。</entry>
+    <entry key="ComplexDivideFullDescription">给定复数输入 num 和 den，此模块使用 CORDIC 算法计算出 y，使得 y = num/den。</entry>
+    <entry key="RealReciprocalFullDescription">给定实数输入，此模块使用 CORDIC 算法计算出 y，使得 y = 1/u。</entry>
+    <entry key="NormalizedReciprocalFullDescription">给定实数标量 u ~= 0，此模块使用 CORDIC 算法计算出 y，使得\n 0.5 &lt; |y| &lt;= 1，\n并计算出 e，使得\n (2^e)*y = 1/u。</entry>
+    <entry key="RealNormalizerFullDescription">给定实数标量 u ~= 0，此模块得出 x，使得\n 1 &lt;= x &lt; 2，\n并得出 e，使得\n x = (2^e)*|u|，\n且 isNegative = u&lt;0。</entry>
+    <entry key="RealCORDICReciprocalKernelFullDescription">给定实数标量 x，使得\n 1 &lt;= x &lt; 2\n此模块得出 y，使得\n y = 1/x (在 isNegative = false 的情况下)\n y = -1/x (在 isNegative = true 的情况下)\n并且 y 在\n 0.5 &lt; |y| &lt;= 1 范围内。</entry>
+    <entry key="PositiveNormalizedReciprocalFullDescription">给定实数标量 u &gt; 0，此模块得出 y，使得\n 0.5 &lt; y &lt;= 1\n并得出 e，使得\n (2^e)*y = 1/u。</entry>
+    <entry key="PositiveRealNormalizerFullDescription">给定实数标量 u &gt; 0，此模块得出 x，使得\n 1 &lt;= x &lt; 2\n并得出 e，使得\n x = (2^e)*u。</entry>
+    <entry key="PositiveRealCORDICReciprocalKernelFullDescription">给定实数标量 x，使得\n 1 &lt;= x &lt; 2\n此模块得出 y，使得\n y = 1/x\n且 y 在\n 0.5 &lt; y &lt;= 1 范围内。</entry>
+    <entry key="validInToReady"> 此模块检查 "validIn" 在 ready 的同一周期内是否不高，以确保使用此模块的计算输出有效。
+    </entry>
+    <entry key="MemoryControllerDescription">此模块管理 QR 算法的计算和 I/O 资源。它控制流入和流出计算资源的数据流，并指示模块何时为新数据做好准备，以及计算结果何时有效。
+    </entry>
+    <entry key="RowRotationsFullDescription">此模块对输入 x 和 y 执行 CORDIC Givens 旋转，使得 yOut(k) = 0。相同的 Givens 旋转应用于输入 u 和 v。
+    </entry>
+    <entry key="InverseCORDICGainDescription">此模块对 CORDIC 增长因子执行硬件高效校正。</entry>
+    <entry key="ComplexIdxCORDIC">此模块对复数值输入 x 和 y 执行 CORDIC Givens 旋转，使得 yOut(k) = 0。相同的 Givens 旋转应用于输入 u 和 v。 </entry>
+    <entry key="ComplexRowRotationsFullDescription">此模块执行必要的 Givens 旋转，以基于 x(k) 消除 y(k)。这分两步完成。第一步将 x(k) 和 y(k) 旋转至实轴。在下一步中，对向量 x 和 y 应用 Givens 旋转，使得 yOut(k) = 0。
+    </entry>
+    <entry key="RotateFirstElementToRealDescription">此模块对 x(k) 执行 CORDIC Givens 旋转，使得 xOut(k) 为实数。对 u 应用同样的 Givens 旋转。
+    </entry>
+    <entry key="FinalPivotActionDescription">必要时将主元元素与正轴对齐；否则，传递数据。</entry>
+    <entry key="SetElementToZeroDescription">此模块将 u(k) 设置为等于零。</entry>
+    <entry key="TanhDescription">计算输入 x 的双曲正切，其中 x 是有限实数值标量。</entry>
+    <entry key="ModByConstHDLDescription"> 使用 HDL 优化架构执行分母为常量的取模运算。
+    </entry>
+    <entry key="ModByConstDescription">用常量分母执行取模运算。</entry>
+    <entry key="DivByConstHDLDescription">将输入除以常量，并使用 HDL 优化架构舍入到整数。</entry>
+    <entry key="CORDICSquareRootHDLFullDescription">给定实数输入 u &gt;= 0，此模块使用 CORDIC 算法计算 u 的平方根。</entry>
+    <entry key="CORDICSigmoidFullDescription">给定实数输入，此模块使用 CORDIC 算法计算 u 的 sigmoid 激活。</entry>
+    <entry key="RowsInMatrices">矩阵 A 和 B 中的行数:</entry>
+    <entry key="RowsInA">矩阵 A 中的行数:</entry>
+    <entry key="ColumnsInARowsInB">矩阵 A 中的列数和矩阵 B 中的行数:</entry>
+    <entry key="ColumnsInA">矩阵 A 中的列数:</entry>
+    <entry key="ColumnsInB">矩阵 B 中的列数:</entry>
+    <entry key="Denominator">分母</entry>
+    <entry key="DenominatorMod">模数的分母: </entry>
+    <entry key="NumberOfCORDICIterations">CORDIC 迭代次数:</entry>
+    <entry key="OutputPrototype">输出数据类型:</entry>
+    <entry key="ForgettingFactor">遗忘因子:</entry>
+    <entry key="RegularizationParameter">正则化参数:</entry>
+    <entry key="DimensionOfA">矩阵 A 的维度:</entry>
+    <entry key="NumberOfJacobiIterations">雅可比迭代次数:</entry>
+    <entry key="RoundingMethodParam">舍入方法: </entry>
+    <entry key="SelectOutputs">选择输出:</entry>
+    <entry key="SignalType">信号类型:</entry>
+    <entry key="NumberOfIterationsPerReg">每个流水线寄存器的迭代次数:</entry>
+    <entry key="CORDICMaxShiftValue">CORDIC 最大移位值:</entry>
+    <entry key="AutoCORDICMaxShiftValue">根据输入字长自动选择 CORDIC 最大移位值</entry>
+    <entry key="DivideByZeroPort">显示除以零端口</entry>
+    <entry key="PipelineConfigurations">流水线配置</entry>
+    <entry key="TabMain">主要</entry>
+    <entry key="ArgMustBeCompileTimeConst">{0} 必须为 {1} 中的编译时常量。</entry>
+    <entry key="HDLCodegenUnsupportedForFloat">此函数不支持为浮点数据生成 {0} 的 HDL 代码。</entry>
+    <entry key="IncompatibleInterfaces">无法将类型为 {0} 的接口添加到类型为 {1} 的父接口。</entry>
+    <entry key="InvalidMatrices">Invalid matrices.</entry>
+    <entry key="InputsMustBeNumeric">Inputs to {0} must be numeric</entry>
+    <entry key="InputMustBeScalar">输入 {0} 必须为标量。</entry>
+    <entry key="InputMustBeNumeric">输入 {0} 必须为数值。</entry>
+    <entry key="InputMustBeBinaryPointScaled">Fixed-point input {0} must be binary-point scaled.</entry>
+    <entry key="InputMustBeReal">输入 {0} 必须为实数值。</entry>
+    <entry key="InputMustBeLogicalOrNumeric">输入 {0} 必须为逻辑值或数值。</entry>
+    <entry key="InputMustBeFixedScaledDoubleOrFloat">输入 {0} 必须为定点、定标双精度值或浮点值。</entry>
+    <entry key="InputMustBeZeroOrBetweenOneAndTwo">输入 {0} 必须为零或大于 1 且小于 2。</entry>
+    <entry key="InputMustNotBePow2">输入 {0} 不能正好为 2 的幂。</entry>
+    <entry key="MatrixDimsPositiveInteger"> 输入 {0} 必须为正整数。</entry>
+    <entry key="MustBeTallAndSkinny">Number of rows of input {0} must be greater than or equal to the number of columns.</entry>
+    <entry key="MustBeTallAndSkinnySizes">行数 {0} 必须大于或等于列数 {1}。</entry>
+    <entry key="MustHaveSameNumberOfSamples">Matrices {0} and {1} must have the same number of samples. This is given by the size of the third dimension of the matrix. If the matrix is two-dimensional, the number of samples is 1.</entry>
+    <entry key="NfpNotSupported">模块 {0} 不支持原生浮点代码生成。请考虑改用定点类型。</entry>
+    <entry key="NumColsGEOne">矩阵 {0} 中的列数必须为大于或等于 1 的整数。</entry>
+    <entry key="NumColsGTOne">The number of columns in matrix {0} must be an integer greater than 1.</entry>
+    <entry key="NumRowsGTOne">The number of rows in matrix {0} must be an integer greater than 1.</entry>
+    <entry key="MustBeVector">输入 {0} 必须为向量</entry>
+    <entry key="InputMustMatchSizeParameter">{1, number, integer} 的输入 {0} 的长度必须与 {3, number, integer} 的输入参数 {2} 匹配。</entry>
+    <entry key="NumColsAShouldMatchNumRowsB">The number of columns in matrix {0} should be the same as the number of rows in matrix {1}.</entry>
+    <entry key="SameNumberOfRows">Matrices {0} and {1} must have the same number of rows.</entry>
+    <entry key="UnknownMatrixOperation">Operation {0} is not a valid operation for diagram construction.</entry>
+    <entry key="ValueDoesNotSatisfyConstraint">输入 {0} 的值必须为 {1}</entry>
+    <entry key="ValueNotRepresentableInInputType">{0} 的值无法以输入类型 ''{1}'' 表示。</entry>
+    <entry key="XYSameDatatype">输入 {0} 和 {1} 必须具有相同的数据类型</entry>
+    <entry key="DivideDimensionsShouldMatch">在模块 ''{0}'' 中，分子和分母中的元素数必须相同。</entry>
+    <entry key="InputOutputMustBeAllFixedOrFloat">输入数据和输出数据类型必须全部为浮点类型或全部为定点类型。</entry>
+    <entry key="NonSquareSVDInputMustBeTallAndSkinny">输入矩阵的行数必须大于列数。对于方阵，使用 Square Jacobi SVD HDL Optimized 模块。</entry>
+    <entry key="CORDICMaxShiftValMustBeSmallerThanWordlength">CORDIC 最大移位值必须小于输入字长。</entry>
+    <entry key="PipelineMustBeZero">HDL 参数 {0} 必须等于 0。该参数将设置为 0。</entry>
+    <entry key="nIterPerRegMustBeSmallerThanNTotalIter">每个流水线寄存器的迭代次数超出计算的总迭代次数 {0}。系统会将每个时钟周期的迭代次数设置为总迭代次数。</entry>
+    <entry key="ModByConstLatencyChanged24a">在 R2024a 中，"Modulo by Constant HDL Optimized" 的延迟从 9 减少到 4。请注意，这可能会改变模型行为，而模型行为恰恰取决于此模块的延迟。</entry>
+    <entry key="SqrtOfNegativeNumber">发现求负数的平方根的情况，将计算其绝对值的平方根。</entry>
+    <entry key="ReciprocalAndDivideLatencyChanged24b">在 R2024b 中，"{0}" 的延迟更改为由流水线配置确定。请注意，这可能会改变模型行为，而模型行为恰恰取决于此模块的延迟。</entry>
+    <entry key="BurstEulerType">Burst Euler Transformation</entry>
+    <entry key="DivByConst">Divide by Constant and Round</entry>
+    <entry key="ModByConst">Modulo by Constant</entry>
+    <entry key="ModByConstHDL">Modulo by Constant HDL Optimized</entry>
+  </message>
+</rsccat>

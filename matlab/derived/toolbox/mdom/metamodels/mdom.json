@@ -1,0 +1,1223 @@
+{
+    "family" : "mdom",
+    "modelVersion" : "201802",
+    "packages" : {
+        "mdom" : {
+            "enumerations" : {
+                "Alignment" : {
+                    "literals": {
+                        "Auto" : { "value" : 1 },
+                        "Top" : { "value" : 2 },
+                        "TopLeft" : { "value" : 3 },
+                        "TopCenter" : { "value" : 4 },
+                        "TopRight" : { "value" : 5 },
+                        "Left" : { "value" : 6 },
+                        "Center" : { "value" : 7 },
+                        "Right" : { "value" : 8 },
+                        "Bottom" : { "value" : 9 },
+                        "BottomLeft" : { "value" : 10 },
+                        "BottomCenter" : { "value" : 11 },
+                        "BottomRight" : { "value" : 12 }
+                    }
+                },
+                "ArrowMode" : {
+                    "literals": {
+                        "Auto" : { "value" : 1 },
+                        "Inline" : { "value" : 2 },
+                        "Block" : { "value" : 3 }
+                    }
+                },
+                "CheckState" : {
+                    "literals": {
+                        "Unchecked" : { "value" : 1 },
+                        "Checked" : { "value" : 2 },
+                        "Partial" : { "value" : 3 }
+                    }
+                },
+                "DataWidgetContextMenuType" : {
+                    "literals": {
+                        "Table" : { "value" : 1 },
+                        "TableCell" : { "value" : 2 },
+                        "TreeCell" : { "value" : 3 },
+                        "ColumnHeader" : { "value" : 4 }
+                    }
+                },
+                "Direction" : {
+                    "literals": {
+                        "Horizontal" : { "value" : 1 },
+                        "Vertical" : { "value" : 2 }
+                    }
+                },
+                "EchoMode" : {
+                    "literals": {
+                        "Normal" : { "value" : 1 },
+                        "Password" : { "value" : 2 }
+                    }
+                },
+                "ElideMode" : {
+                    "literals": {
+                        "None" : { "value" : 1 },
+                        "Left" : { "value" : 2 },
+                        "Right" : { "value" : 3 },
+                        "Middle" : { "value" : 4 }
+                    }
+                },
+                "InsertPosition" : {
+                    "literals": {
+                        "On" : { "value" : 1 },
+                        "Before" : { "value" : 2 },
+                        "After" : { "value" : 3 }
+                    }
+                },
+                "LayoutGap" : {
+                    "literals": {
+                        "Small" : { "value" : 1 },
+                        "Normal" : { "value" : 2 },
+                        "Large" : { "value" : 3 }
+                    }
+                },
+                "NotificationType" : {
+                    "literals": {
+                        "Error" : { "value" : 1 },
+                        "Warning" : { "value" : 2 },
+                        "Info" : { "value" : 3 }
+                    }
+                },
+                "Orientation" : {
+                    "literals": {
+                        "Horizontal" : { "value" : 1 },
+                        "Vertical" : { "value" : 2 }
+                    }
+                },
+                "Placement" : {
+                    "literals": {
+                        "Auto" : { "value" : 1 },
+                        "Top" : { "value" : 2 },
+                        "Bottom" : { "value" : 3 },
+                        "Left" : { "value" : 4 },
+                        "Right" : { "value" : 5 }
+                    }
+                },
+                "RTCFeature" : {
+                    "literals": {
+                        "SyntaxHighlighter" : { "value" : 1 },
+                        "AutoCompletion" : { "value" : 2 },
+                        "CodeAnalyzer" : { "value" : 3 },
+                        "LineNumber" : { "value" : 4 },
+                        "AutoIndent" : { "value" : 5 },
+                        "BlockMatching" : { "value" : 6 },
+                        "CutCopyPaste" : { "value" : 7 },
+                        "All" : { "value" : 8 }
+                    }
+                },
+                "SelectionBehavior" : {
+                    "literals": {
+                        "Cell" : { "value" : 1 },
+                        "Row" : { "value" : 2 },
+                        "Column" : { "value" : 3 }
+                    }
+                },
+                "SelectionMode" : {
+                    "literals": {
+                        "None" : { "value" : 1 },
+                        "Single" : { "value" : 2 },
+                        "Multiple" : { "value" : 3 }
+                    }
+                },
+                "TreeTableGridStyle" : {
+                    "literals": {
+                        "Standard" : { "value" : 1 },
+                        "RowLines" : { "value" : 2 },
+                        "HeaderLine" : { "value" : 3 }
+                    }
+                },
+                "Trigger" : {
+                    "literals": {
+                        "Hover" : { "value" : 1 },
+                        "Click" : { "value" : 2 }
+                    }
+                },
+                "WindowMode" : {
+                    "literals": {
+                        "Embedded" : { "value" : 1 },
+                        "Standalone" : { "value" : 2 }
+                    }
+                },
+                "WindowState" : {
+                    "literals": {
+                        "Normal" : { "value" : 1 },
+                        "Minimized" : { "value" : 2 },
+                        "Maximized" : { "value" : 3 }
+                    }
+                }
+            },
+            "dataTypes" : {
+            "CellEditEvent" : {
+                "properties" : {
+                    "cell" : { "type" : "CellIndex","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "CellFocusEvent" : {
+                "properties" : {
+                    "cell" : { "type" : "CellIndex","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "CellIndex" : {
+                "properties" : {
+                    "row" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 },
+                    "col" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 },
+                    "rowID" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "CellRange" : {
+                "properties" : {
+                    "topLeft" : { "type" : "CellIndex","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "bottomRight" : { "type" : "CellIndex","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "ClickEvent" : {
+                "properties" : {
+                    "state" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "Color" : {
+                "properties" : {
+                    "red" : { "type" : "UnlimitedNatural","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "green" : { "type" : "UnlimitedNatural","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "blue" : { "type" : "UnlimitedNatural","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "alpha" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "ColorChangeEvent" : {
+                "properties" : {
+                    "oldColor" : { "type" : "Color","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "newColor" : { "type" : "Color","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "Configuration" : {
+                "properties" : {
+                    "trigger" : { "type" : "Trigger","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Hover" },
+                    "placement" : { "type" : "Placement","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Auto" }
+                }
+            },
+            "DataWidgetColumnReorderEvent" : {
+                "properties" : {
+                    "columns" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                    "index" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "DataWidgetContextMenuEvent" : {
+                "properties" : {
+                    "colid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "position" : { "type" : "CellIndex","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "isEditing" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "isWhitespace" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "menuType" : { "type" : "DataWidgetContextMenuType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Table" }
+                }
+            },
+            "DataWidgetRowDropEvent" : {
+                "properties" : {
+                    "source" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                    "referenceNode" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "place" : { "type" : "InsertPosition","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "On" }
+                }
+            },
+            "EditEvent" : {
+                "properties" : {
+                    "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "EditFinishEvent" : {
+                "properties" : {
+                    "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "Icon" : {
+                "properties" : {
+                    "id" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "path" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "width" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "height" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "NullEvent" : {
+                
+            },
+            "RangeSelectEvent" : {
+                "properties" : {
+                    "range" : { "type" : "CellIndex","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                }
+            },
+            "RowCollapseEvent" : {
+                "properties" : {
+                    "rowid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "RowDoubleClickEvent" : {
+                "properties" : {
+                    "rowid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "RowExpandEvent" : {
+                "properties" : {
+                    "rowid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "RowToggleEvent" : {
+                "properties" : {
+                    "rowid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "state" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "SelectionChangeEvent" : {
+                "properties" : {
+                    "index" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "SliderEvent" : {
+                "properties" : {
+                    "value" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "SpinnerEvent" : {
+                "properties" : {
+                    "value" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "ToggleEvent" : {
+                "properties" : {
+                    "state" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            }
+            },
+            "classes" : {
+                "Action" : {
+                    "properties" : {
+                        "label" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "icon" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "description" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Base",
+                    "events": {
+                          "onInvoke": {
+                              "parameters": []
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Base" : {
+                    "properties" : {
+                        "tag" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "BaseButton" : {
+                    "properties" : {
+                        "label" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "icon" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "checkable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "checked" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    
+                    "isAbstract":false
+                },
+                "BaseColorPicker" : {
+                    "properties" : {
+                        "color" : { "type" : "Color","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onColorChange": {
+                              "parameters": [              {
+                                      "name": "evt", 
+                                      "type": "ColorChangeEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":true
+                },
+                "BaseDataWidget" : {
+                    "properties" : {
+                        "dataModel" : { "type" : "UUID","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "selectedRange" : { "type" : "CellIndex","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "focusedCell" : { "type" : "CellIndex","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "showBusyOverlay" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "fixedWidth" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fixedHeight" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onCellFocused": {
+                              "parameters": [              {
+                                      "name": "focusEvent", 
+                                      "type": "CellFocusEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRangeSelected": {
+                              "parameters": [              {
+                                      "name": "selectEvent", 
+                                      "type": "RangeSelectEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onEditFinished": {
+                              "parameters": [              {
+                                      "name": "editEvent", 
+                                      "type": "CellEditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onEditStarted": {
+                              "parameters": [              {
+                                      "name": "editEvent", 
+                                      "type": "CellEditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":true
+                },
+                "BoxLayout" : {
+                    "properties" : {
+                        "gap" : { "type" : "LayoutGap","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Normal" },
+                        "direction" : { "type" : "Direction","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Vertical" },
+                        "items" : { "type" : "BoxLayoutItem","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "mdom.Layout",
+                    
+                    "isAbstract":false
+                },
+                "BoxLayoutItem" : {
+                    "properties" : {
+                        "element" : { "type" : "UUID","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "stretch" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "expandable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Button" : {
+                    "properties" : {
+                        "defaultbutton" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.BaseButton",
+                    "events": {
+                          "onClick": {
+                              "parameters": [              {
+                                      "name": "clickEvent", 
+                                      "type": "ClickEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onToggle": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "CheckBox" : {
+                    
+                    
+                    "superclass": "mdom.BaseButton",
+                    "events": {
+                          "onToggle": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "CheckableMenuItem" : {
+                    "properties" : {
+                        "checked" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "closeMenuOnClick" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.MenuItemBase",
+                    "events": {
+                          "onInvoke": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "ColorPicker" : {
+                    
+                    
+                    "superclass": "mdom.BaseColorPicker",
+                    
+                    "isAbstract":false
+                },
+                "ColorPickerDropDown" : {
+                    "properties" : {
+                        "icon" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.BaseColorPicker",
+                    
+                    "isAbstract":false
+                },
+                "ComboBox" : {
+                    "properties" : {
+                        "items" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "editable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "placeholder" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "currentindex" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 },
+                        "alignment" : { "type" : "Alignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Left" },
+                        "elidemode" : { "type" : "ElideMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "None" }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onEdit": {
+                              "parameters": [              {
+                                      "name": "editEvent", 
+                                      "type": "EditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onEditFinish": {
+                              "parameters": [              {
+                                      "name": "editfinishEvent", 
+                                      "type": "EditFinishEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onSelectionChange": {
+                              "parameters": [              {
+                                      "name": "scEvent", 
+                                      "type": "SelectionChangeEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Container" : {
+                    "properties" : {
+                        "children" : { "type" : "Element","lower" : "0","upper" : "*", "opposite" : "parent", "isComposite" : true, "isUnique" : true },
+                        "layout" : { "type" : "Layout","lower" : "0","upper" : "1", "opposite" : "cont", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    
+                    "isAbstract":true
+                },
+                "ContextMenu" : {
+                    
+                    
+                    "superclass": "mdom.Menu",
+                    
+                    "isAbstract":false
+                },
+                "Dialog" : {
+                    "properties" : {
+                        "title" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "icon" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "modal" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "mode" : { "type" : "WindowMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Standalone" },
+                        "windowstate" : { "type" : "WindowState","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Normal" }
+                    },
+                    
+                    "superclass": "mdom.Container",
+                    
+                    "isAbstract":false
+                },
+                "Edit" : {
+                    "properties" : {
+                        "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "placeholder" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "autoSelectOnFocus" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "clearable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "elidemode" : { "type" : "ElideMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "None" },
+                        "alignment" : { "type" : "Alignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Left" },
+                        "echomode" : { "type" : "EchoMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Normal" }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onEdit": {
+                              "parameters": [              {
+                                      "name": "editEvent", 
+                                      "type": "EditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onEditFinish": {
+                              "parameters": [              {
+                                      "name": "editfinishEvent", 
+                                      "type": "EditFinishEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "EditArea" : {
+                    "properties" : {
+                        "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "placeholder" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onEdit": {
+                              "parameters": [              {
+                                      "name": "editEvent", 
+                                      "type": "EditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onEditFinish": {
+                              "parameters": [              {
+                                      "name": "editfinishEvent", 
+                                      "type": "EditFinishEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "EditableMenuItem" : {
+                    "properties" : {
+                        "value" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "placeholder" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.MenuItemBase",
+                    "events": {
+                          "onInvoke": {
+                              "parameters": [              {
+                                      "name": "finishEvent", 
+                                      "type": "EditFinishEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onTyping": {
+                              "parameters": [              {
+                                      "name": "editMenuEvent", 
+                                      "type": "EditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Element" : {
+                    "properties" : {
+                        "parent" : { "type" : "Container","lower" : "0","upper" : "1", "opposite" : "children", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "visible" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "enabled" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "tooltip" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "scrollable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.Base",
+                    
+                    "isAbstract":true
+                },
+                "GridLayout" : {
+                    "properties" : {
+                        "numOfRows" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "numOfColumns" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "items" : { "type" : "GridLayoutItem","lower" : "0","upper" : "*", "qualifiedBy" : "element", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "rowGap" : { "type" : "LayoutGap","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Normal" },
+                        "columnGap" : { "type" : "LayoutGap","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Normal" },
+                        "defaultRowStretch" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "defaultColumnStretch" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "alignment" : { "type" : "Alignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Auto" },
+                        "rowStretches" : { "type" : "Integer","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "columnStretches" : { "type" : "Integer","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "mdom.Layout",
+                    
+                    "isAbstract":false
+                },
+                "GridLayoutItem" : {
+                    "properties" : {
+                        "element" : { "type" : "UUID","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "row" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "col" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "rowSpan" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 1 },
+                        "colSpan" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 1 },
+                        "expandable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Group" : {
+                    "properties" : {
+                        "title" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "flat" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.Container",
+                    
+                    "isAbstract":false
+                },
+                "Hyperlink" : {
+                    
+                    
+                    "superclass": "mdom.Text",
+                    "events": {
+                          "onClick": {
+                              "parameters": [              {
+                                      "name": "clickEvent", 
+                                      "type": "ClickEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Layout" : {
+                    "properties" : {
+                        "cont" : { "type" : "Container","lower" : "0","upper" : "1", "opposite" : "layout", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Base",
+                    
+                    "isAbstract":true
+                },
+                "MatlabEditor" : {
+                    "properties" : {
+                        "features" : { "type" : "RTCFeature","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "readOnly" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onEdit": {
+                              "parameters": [              {
+                                      "name": "editEvent", 
+                                      "type": "EditEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onEditFinish": {
+                              "parameters": [              {
+                                      "name": "editfinishEvent", 
+                                      "type": "EditFinishEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Menu" : {
+                    "properties" : {
+                        "children" : { "type" : "MenuBase","lower" : "0","upper" : "*", "opposite" : "parent", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "owningWidget" : { "type" : "SplitButton","lower" : "0","upper" : "1", "opposite" : "menu", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.MenuBase",
+                    
+                    "isAbstract":false
+                },
+                "MenuBase" : {
+                    "properties" : {
+                        "parent" : { "type" : "Menu","lower" : "0","upper" : "1", "opposite" : "children", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "label" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "icon" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "enabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "visible" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "description" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Base",
+                    
+                    "isAbstract":true
+                },
+                "MenuItem" : {
+                    
+                    
+                    "superclass": "mdom.MenuItemBase",
+                    "events": {
+                          "onInvoke": {
+                              "parameters": [              {
+                                      "name": "menuItemEvent", 
+                                      "type": "NullEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "MenuItemBase" : {
+                    
+                    
+                    "superclass": "mdom.MenuBase",
+                    
+                    "isAbstract":true
+                },
+                "MenuSeparator" : {
+                    
+                    
+                    "superclass": "mdom.MenuBase",
+                    
+                    "isAbstract":false
+                },
+                "Notification" : {
+                    "properties" : {
+                        "type" : { "type" : "NotificationType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Error" },
+                        "message" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "actions" : { "type" : "Action","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "mdom.Base",
+                    
+                    "isAbstract":false
+                },
+                "Panel" : {
+                    
+                    
+                    "superclass": "mdom.Container",
+                    
+                    "isAbstract":false
+                },
+                "ProgressBar" : {
+                    "properties" : {
+                        "value" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "indeterminate" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "showPercentage" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    
+                    "isAbstract":false
+                },
+                "RadioButton" : {
+                    
+                    
+                    "superclass": "mdom.BaseButton",
+                    "events": {
+                          "onToggle": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "RadioButtonGroup" : {
+                    "properties" : {
+                        "buttons" : { "type" : "RadioButton","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "index" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 }
+                    },
+                    
+                    "superclass": "mdom.Group",
+                    "events": {
+                          "onSelectionChange": {
+                              "parameters": [              {
+                                      "name": "scEvent", 
+                                      "type": "SelectionChangeEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "RadiobuttonMenuItem" : {
+                    "properties" : {
+                        "checked" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "closeMenuOnClick" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.MenuItemBase",
+                    "events": {
+                          "onInvoke": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Slider" : {
+                    "properties" : {
+                        "min" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "max" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 100 },
+                        "step" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 1 },
+                        "value" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "orientation" : { "type" : "Orientation","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Horizontal" },
+                        "readOnly" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "majorTicks" : { "type" : "Real","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "majorTickLabels" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "minorTicks" : { "type" : "Real","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onInput": {
+                              "parameters": [              {
+                                      "name": "inputEvent", 
+                                      "type": "SliderEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onChange": {
+                              "parameters": [              {
+                                      "name": "changeEvent", 
+                                      "type": "SliderEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Spinner" : {
+                    "properties" : {
+                        "min" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "max" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 },
+                        "horizontalAlignment" : { "type" : "Alignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Center" },
+                        "valuePrecision" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 4 },
+                        "placeholder" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "" },
+                        "step" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 1 },
+                        "value" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "editable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    "events": {
+                          "onChange": {
+                              "parameters": [              {
+                                      "name": "changeEvent", 
+                                      "type": "SpinnerEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "SplitButton" : {
+                    "properties" : {
+                        "menu" : { "type" : "Menu","lower" : "0","upper" : "1", "opposite" : "owningWidget", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "arrowMode" : { "type" : "ArrowMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Auto" },
+                        "iconAlignment" : { "type" : "Alignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Top" }
+                    },
+                    
+                    "superclass": "mdom.BaseButton",
+                    "events": {
+                          "onClick": {
+                              "parameters": [              {
+                                      "name": "clickEvent", 
+                                      "type": "ClickEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onToggle": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Tab" : {
+                    "properties" : {
+                        "title" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "mdom.Panel",
+                    
+                    "isAbstract":false
+                },
+                "TabContainer" : {
+                    "properties" : {
+                        "activeindex" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 },
+                        "tablist" : { "type" : "Tab","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "mdom.Container",
+                    "events": {
+                          "onSelectTab": {
+                              "parameters": [              {
+                                      "name": "scEvent", 
+                                      "type": "SelectionChangeEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Text" : {
+                    "properties" : {
+                        "text" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "buddy" : { "type" : "Element","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "icon" : { "type" : "Icon","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "wordwrap" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "elidemode" : { "type" : "ElideMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "None" },
+                        "alignment" : { "type" : "Alignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Left" }
+                    },
+                    
+                    "superclass": "mdom.Element",
+                    
+                    "isAbstract":false
+                },
+                "TogglePanel" : {
+                    "properties" : {
+                        "title" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "expand" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.Panel",
+                    "events": {
+                          "onToggle": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "ToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "Tree" : {
+                    "properties" : {
+                        "selectionMode" : { "type" : "SelectionMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "None" },
+                        "selectionBehavior" : { "type" : "SelectionBehavior","lower" : "1","upper" : "1", "isReadOnly" : true, "isTransient" : true, "isOrdered" : true, "isUnique" : true, "defaultValue" : "Cell" },
+                        "checkable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "mdom.BaseDataWidget",
+                    "events": {
+                          "onRowChecked": {
+                              "parameters": [              {
+                                      "name": "toggleEvent", 
+                                      "type": "RowToggleEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRowDoubleClicked": {
+                              "parameters": [              {
+                                      "name": "dblClickEvent", 
+                                      "type": "RowDoubleClickEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRowExpanded": {
+                              "parameters": [              {
+                                      "name": "expandEvent", 
+                                      "type": "RowExpandEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRowCollapsed": {
+                              "parameters": [              {
+                                      "name": "collapseEvent", 
+                                      "type": "RowCollapseEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onContextMenuRequested": {
+                              "parameters": [              {
+                                      "name": "contextMenuEvent", 
+                                      "type": "DataWidgetContextMenuEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRowDrop": {
+                              "parameters": [              {
+                                      "name": "rowDropEvent", 
+                                      "type": "DataWidgetRowDropEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                },
+                "TreeTable" : {
+                    "properties" : {
+                        "selectionMode" : { "type" : "SelectionMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "None" },
+                        "hideColumnHeader" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "sortEnabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "triStateSorting" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "supportDragAndDrop" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "supportColumnReordering" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "fitLastColumn" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "gridStyle" : { "type" : "TreeTableGridStyle","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Standard" },
+                        "treeColumnIndex" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 }
+                    },
+                    
+                    "superclass": "mdom.BaseDataWidget",
+                    "events": {
+                          "onRowExpanded": {
+                              "parameters": [              {
+                                      "name": "expandEvent", 
+                                      "type": "RowExpandEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRowCollapsed": {
+                              "parameters": [              {
+                                      "name": "collapseEvent", 
+                                      "type": "RowCollapseEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onContextMenuRequested": {
+                              "parameters": [              {
+                                      "name": "contextMenuEvent", 
+                                      "type": "DataWidgetContextMenuEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onRowDrop": {
+                              "parameters": [              {
+                                      "name": "rowDropEvent", 
+                                      "type": "DataWidgetRowDropEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                    ,       "onColumnReorder": {
+                              "parameters": [              {
+                                      "name": "columnReorderEvent", 
+                                      "type": "DataWidgetColumnReorderEvent", 
+                                      "lower": "1",
+                                      "upper" : "1"
+                                  }
+                    ]
+                          }
+                        },
+                    "isAbstract":false
+                }
+            },
+            "ownedEndpoints" : {
+                "ScrollTo" : {
+                    "millisecondTimeout": 60000,
+                    "parameters": [{
+                            "name": "targetWidget", 
+                            "type": "UUID", 
+                            "lower": "1",
+                            "upper" : "1"
+                        }, {
+                            "name": "scrollToNode", 
+                            "type": "mdom.CellIndex", 
+                            "lower": "1",
+                            "upper" : "1"
+                        }]
+                }
+            }
+        }
+    }
+}

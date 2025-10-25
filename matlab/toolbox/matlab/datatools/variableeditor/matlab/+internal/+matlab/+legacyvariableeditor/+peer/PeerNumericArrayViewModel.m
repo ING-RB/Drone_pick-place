@@ -1,0 +1,170 @@
+classdef PeerNumericArrayViewModel < internal.matlab.legacyvariableeditor.peer.PeerArrayViewModel & ...
+        internal.matlab.legacyvariableeditor.NumericArrayViewModel & ...
+        internal.matlab.legacyvariableeditor.VEColumnConstants
+    % PEERNUMERICARRAYVIEWMODEL Peer Model Numeric Array View Model
+
+    % Copyright 2013-2018 The MathWorks, Inc.
+
+    properties(GetAccess = protected)
+        widgets;
+    end
+
+    properties
+        perfSubscription;
+        usercontext;
+        scalingFactorString;
+    end
+
+    methods
+        function this = PeerNumericArrayViewModel(parentNode, variable, viewID, usercontext)
+            if nargin <= 3 
+                usercontext = '';
+            elseif nargin <= 2
+                viewID = '';            
+            end
+
+            this = this@internal.matlab.legacyvariableeditor.peer.PeerArrayViewModel(parentNode,variable, 'viewID', viewID);
+            this@internal.matlab.legacyvariableeditor.NumericArrayViewModel(variable.DataModel, viewID);
+            this.usercontext = usercontext;
+            fullData = this.DataModel.Data;
+            
+            w = internal.matlab.datatoolsservices.WidgetRegistry.getInstance();
+            widgets = w(1).getWidgets('', 'double');
+            
+            if ~isempty(fullData)
+                s = this.getSize();
+                this.StartRow = 1;
+                this.StartColumn = 1;
+                this.EndColumn = min(30, s(2));
+                this.EndRow = min(80,s(1));
+                
+                if ~internal.matlab.legacyvariableeditor.peer.PeerUtils.isLiveEditor(this.usercontext)
+                    w.registerWidgets('internal.matlab.legacyvariableeditor.peer.PeerNumericArrayViewModel','', 'variableeditor/views/NumericArrayView','','')
+                    this.perfSubscription = message.subscribe('/VELogChannel', @(es) internal.matlab.datatoolsservices.FormatDataUtils.loadPerformance(es));
+                else
+                    this.EndColumn = min(30, s(2));
+                    this.EndRow = 1;
+                    w.registerWidgets('internal.matlab.legacyvariableeditor.peer.PeerNumericArrayViewModel','', 'variableeditor_peer/PeerArrayViewModel','','')
+                end
+            end
+
+            % Set the renderer types on the table
+            this.setTableModelProperties(...
+                'renderer', widgets.CellRenderer,...
+                'editor', widgets.Editor,...
+                'inplaceeditor', widgets.InPlaceEditor,...
+                'ShowColumnHeaderLabels', false,...
+                'ShowRowHeaderLabels', false,...
+                'class','double');
+
+            this.updateColumnModelInformation(1, min(30,size(this.DataModel.getData,2)));
+            
+            if ~isempty(fullData)
+                this.scalingFactorString = internal.matlab.legacyvariableeditor.peer.PeerDataUtils.getScalingFactor(fullData);  
+                if ~isempty(this.scalingFactorString) 
+                    exponent = internal.matlab.legacyvariableeditor.peer.PeerDataUtils.getScalingFactorExponent(this.scalingFactorString);
+                    this.setProperty('ScalingFactor', num2str(exponent));
+                end
+            else
+                this.scalingFactorString = strings(0,0);
+            end            
+
+            % Build the ArrayEditorHandler for the new Document. Note: This
+            % is to be built only for mgg tables
+            if ~internal.matlab.legacyvariableeditor.peer.PeerUtils.isLiveEditor(this.usercontext)
+                import com.mathworks.datatools.variableeditor.web.*;
+                if ~isempty(variable.DataModel.Data)
+                    this.PagedDataHandler = ArrayEditorHandler(variable.Name,this.PeerNode.Peer,this,this.getRenderedData(this.StartRow,this.EndRow,this.StartColumn,this.EndColumn));
+                    if ~isreal(variable.DataModel.Data)
+                        % Set larger column widths by default for complex numbers
+                        this.setDefaultColumnWidths(variable.DataModel.Data, ...
+                            internal.matlab.legacyvariableeditor.VEColumnConstants.complexNumDefaultWidth);
+                    end
+                else
+                    this.PagedDataHandler = ArrayEditorHandler(variable.Name,this.PeerNode.Peer,this);
+                end
+            end            
+        end
+    end
+
+    methods(Access='public')
+        % getRenderedData
+        % returns a cell array of strings for the desired range of values
+        function [renderedData, renderedDims] = getRenderedData(this,startRow,endRow,startColumn,endColumn)
+            fullData = this.DataModel.Data;
+            if ~isreal(fullData)
+                % Set larger column widths by default for complex numbers
+                this.setDefaultColumnWidths(this.DataModel.Data, ...
+                    internal.matlab.legacyvariableeditor.VEColumnConstants.complexNumDefaultWidth);
+            end
+            
+            this.setCurrentPage(startRow, endRow, startColumn, endColumn, false);
+            dataSubset = this.getData(startRow,endRow,startColumn,endColumn);
+
+            [renderedData, renderedDims] = internal.matlab.legacyvariableeditor.peer.PeerNumericArrayViewModel.getJSONForNumericData(fullData, dataSubset, startRow, endRow, startColumn, endColumn, this.usercontext, this.scalingFactorString);
+        end
+        
+        function delete(this)
+            if ~internal.matlab.legacyvariableeditor.peer.PeerUtils.isLiveEditor(this.usercontext)
+                message.unsubscribe(this.perfSubscription);
+            end
+        end
+    end
+    
+    methods(Static)
+        function [renderedData, renderedDims, scalingFactorString] = getJSONForNumericData(fullData, dataSubset, startRow, endRow, startColumn, endColumn, usercontext, scalingFactorString)
+            longData = dataSubset;
+            [dataSubset, ~, scalingFactorString] = internal.matlab.legacyvariableeditor.peer.PeerDataUtils.getFormattedNumericData(fullData, dataSubset, usercontext, scalingFactorString);
+            
+            if ~internal.matlab.legacyvariableeditor.peer.PeerUtils.isLiveEditor(usercontext)
+                f=get(0,'format');
+                format('long');
+                [longData, ~, scalingFactorString] = internal.matlab.legacyvariableeditor.peer.PeerDataUtils.getFormattedNumericData(fullData, longData, usercontext, scalingFactorString);
+                format(f);
+            end
+            
+            rowStrs = strtrim(cellstr(num2str((startRow-1:endRow-1)'))');
+            colStrs = strtrim(cellstr(num2str((startColumn-1:endColumn-1)'))');
+            renderedData = cell(size(dataSubset));
+            
+            try
+                if ~internal.matlab.legacyvariableeditor.peer.PeerUtils.isLiveEditor(usercontext)
+                for row=1:min(size(renderedData,1),size(dataSubset,1))
+                    for col=1:min(size(renderedData,2),size(dataSubset,2))
+                            jsonData = internal.matlab.legacyvariableeditor.peer.PeerUtils.toJSON(false, struct('value',dataSubset{row,col},...
+                                'editValue',longData{row,col},'row',rowStrs{row},'col',colStrs{col}));
+
+                       renderedData{row,col} = jsonData;
+                    end
+                end
+                else
+                renderedData = cellstr("{""value"":""" + dataSubset + """}");
+                end
+            catch
+            end
+            
+            renderedDims = size(renderedData);
+        end
+
+    end
+
+    methods(Access='protected')
+        function result = evaluateClientSetData(~, data, ~, ~)
+            % In case of numerics, if the user types a single character in
+            % single quotes, it is converted to its equivalent ascii value
+            result = [];
+            if (isequal(length(data), 3) && isequal(data(1),data(3),''''))
+                result = double(data(2));
+            end
+        end
+
+        function isValid = validateInput(this, value, ~, ~) %#ok<INUSL>
+            % The only valid input types are 1x1 doubles
+            isValid = isnumeric(value) && size(value, 1) == 1 && size(value, 2) == 1;
+        end
+
+        function replacementValue = getEmptyValueReplacement(~, ~, ~) 
+			replacementValue = 0;
+        end
+    end
+end

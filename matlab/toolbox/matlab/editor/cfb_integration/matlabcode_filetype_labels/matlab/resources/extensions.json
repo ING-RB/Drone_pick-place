@@ -1,0 +1,36 @@
+{
+    "jsModules": "./generatedModuleDefs.json",
+    "jsModulesDebug": "./generatedModuleDefs.json",
+    "mw.fileTypes.labels": {
+        "m": "%editor_integration:actions:newScriptLabel%",
+        "mlx": "%editor_integration:actions:newLiveScriptLabel%",
+        "p": "%editor_integration:actions:newPCodeLabel%"
+    },
+    "mw.fileTypes.labelPlugins": {
+        "labels": { 
+            "m-script": "%editor_integration:actions:newScriptLabel%" ,
+            "m-livescript": "%editor_integration:actions:newLiveScriptLabel%",
+            "m-function": "%editor_integration:actions:newFunctionLabel%",
+            "m-livefunction": "%editor_integration:actions:newLiveFunctionLabel%",
+            "m-class": "%editor_integration:actions:newClassLabel%",
+            "mlx-script": "%editor_integration:actions:newLiveScriptLabel%",
+            "mlx-function": "%editor_integration:actions:newLiveFunctionLabel%"
+        },
+        "plugins": {
+            "groups.matlabCodeFiles": [{
+                "callback": "matlabcode_filetype_labels/MatlabCodeFileLabelPlugin",
+                "callbackType": "jsModule"
+            }]
+        }
+    },
+    "mw.fileTypes.filters": {
+        "openFileTypeFilters": {
+            "groups.matlabCodeFiles": ["allMatlabFiles", "%editor_integration:filetype_labels:matlabCodeFiles%"],
+            "p": ["allMatlabFiles", "%editor_integration:filetype_labels:pCodeFile%"]
+        },
+        "saveFileTypeFilters": {
+            "m": "%editor_integration:filetype_labels:matlabCodeFile%",
+            "mlx": "%editor_integration:filetype_labels:matlabLiveCodeFile%"
+        }
+    }
+}

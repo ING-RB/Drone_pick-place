@@ -1,0 +1,381 @@
+{
+    "matlab.io.TextVariableImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "Name",           "kind":"namevalue", "type":["char"], "default":"''"},
+            {"name": "Type",           "kind":"namevalue", "type":["char", "choices={'char','string'}"], "default":"'char'"},
+            
+            {"name": "TreatAsMissing", "kind":"namevalue", "type":["cellstr"], "default":"{}"},
+            {"name": "FillValue",      "kind":"namevalue", "type":["char"], "default":"''"},
+
+            {"name": "QuoteRule",      "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+            
+            {"name": "WhitespaceRule", "kind":"namevalue", "type":["char","choices={'trim','trimleading', 'trimtrailing','preserve'}"],"default":"'trim'"}
+        ]
+    },
+    "matlab.io.DatetimeVariableImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "Name",           "kind":"namevalue", "type":["char"], "default":"''"},
+            {"name": "Type",           "kind":"namevalue", "type":["char", "choices={'char','string'}"], "default":"'char'"},
+            
+            {"name": "TreatAsMissing", "kind":"namevalue", "type":["cellstr"], "default":"{}"},
+            {"name": "FillValue",      "kind":"namevalue", "type":[["char"],["datetime","scalar"]], "default":"NaT"},
+
+            {"name": "QuoteRule",      "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+            
+            {"name": "DatetimeFormat", "kind":"namevalue", "type":["char","choices=matlab.internal.datetime.getFormatsForGuessing('en_US')"],"default":"'dd-MMM-uuuu'"},
+            {"name": "DatetimeLocale", "kind":"namevalue", "type":["char"],"default":"'system'"},
+            {"name": "InputFormat",    "kind":"namevalue", "type":[["char"],["cellstr"]],"default":"{}"}
+        ]
+    },
+    "matlab.io.CategoricalVariableImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "Name",           "kind":"namevalue", "type":["char"], "default":"''"},
+            {"name": "Type",           "kind":"namevalue", "type":["char", "choices={'char','string'}"], "default":"'char'"},
+            
+            {"name": "TreatAsMissing", "kind":"namevalue", "type":["cellstr"], "default":"{}"},
+            {"name": "FillValue",      "kind":"namevalue", "type":["char"], "default":"<undefined>"},
+
+            {"name": "QuoteRule",      "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+            
+            {"name": "Categories", "kind":"namevalue", "type":["char","choices={'trim','trim-leading','trim-trailing','preserve'}"],"default":"'trim'"},
+            {"name": "Protected", "kind":"namevalue", "type":[["logical","scalar"]],"default":"false"},
+            {"name": "Ordinal", "kind":"namevalue", "type":[["logical","scalar"]],"default":"false"}
+        ]
+    },
+    "matlab.io.NumericVariableImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "Name",           "kind":"namevalue", "type":["char"], "default":"''"},
+            {"name": "Type",           "kind":"namevalue", "type":["char", "choices={'double','single','int8','int16','int32','int64','uint8','uint16','uint32','uint64'}"], "default":"'double'"},
+            
+            {"name": "TreatAsMissing", "kind":"namevalue", "type":["cellstr"], "default":"{}"},
+            {"name": "FillValue",      "kind":"namevalue", "type":["numeric","scalar"], "default":"NaN"},
+
+            {"name": "QuoteRule",      "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+
+            {"name": "ExponentCharacter", "kind":"namevalue", "type":["char"],"default":"'eEdD'"},
+            {"name": "DecimalSeparator", "kind":"namevalue", "type":["char","choices={'.',','}"],"default":"'.'"},
+            {"name": "ThousandsSeparator", "kind":"namevalue", "type":["char","choices={'',',',' '}"],"default":"''"},
+            {"name": "TrimNonNumeric", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name": "NumberSystem", "kind":"namevalue", "type":["char","choices={'decimal','hex','binary'}"],"default":"'decimal'"}
+        ]
+    },
+    "matlab.io.LogicalVariableImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "Name",           "kind":"namevalue", "type":["char"], "default":"''"},
+            {"name": "Type",           "kind":"namevalue", "type":["char", "choices={'double','single','int8','int16','int32','int64','uint8','uint16','uint32','uint64'}"], "default":"'double'"},
+            
+            {"name": "TreatAsMissing", "kind":"namevalue", "type":["cellstr"], "default":"{}"},
+            {"name": "FillValue",      "kind":"namevalue", "type":["logical","scalar"], "default":"false"},
+
+            {"name": "QuoteRule",      "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+            
+            {"name": "TrueSymbols",    "kind":"namevalue", "type":[["char"],["cellstr"]],"default":"{'T','True'}"},
+            {"name": "FalseSymbols",   "kind":"namevalue", "type":[["char"],["cellstr"]],"default":"{'F','False'}"},
+            {"name": "CaseSensitive",  "kind":"namevalue", "type":["logical","scalar"]}
+        ]
+    },
+    "matlab.io.DurationVariableImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "Name",           "kind":"namevalue", "type":["char"], "default":"''"},
+            {"name": "TreatAsMissing", "kind":"namevalue", "type":["duration"], "default":"{}"},
+            {"name": "FillValue",      "kind":"namevalue", "type":["logical","scalar"], "default":"false"},
+            {"name": "QuoteRule",      "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+            
+            {"name": "DurationFormat",  "kind":"namevalue", "type":[["char"],["cellstr"]]},
+            {"name": "InputFormat",     "kind":"namevalue", "type":[["char"],["cellstr"]]},
+            {"name": "DecimalSeparator","kind":"namevalue", "type":["char","scalar"]},
+            {"name": "FieldSeparator",  "kind":"namevalue", "type":["char","scalar"]}
+        ]
+    },
+    "matlab.io.spreadsheet.SpreadsheetImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "DataRange",                "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableUnitsRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableNamesRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableDescriptionRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "RowNamesRange",            "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "Sheet",                    "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "SelectedVariableNames",    "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableNames",            "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableOptions",          "kind":"namevalue", "type":["matlab.io.VariableImportOptions"], "default":"matlab.io.TextVariableImportOptions('Name','Var1')"},
+            {"name": "VariableTypes",            "kind":"namevalue", "type":["cellstr","choices=matlab.io.internal.supportedTypeNames()"], "default":"''"},
+            {"name": "MissingRule",              "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "ImportErrorRule",          "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "NumVariables",             "kind":"namevalue", "type":"numeric"},
+	        {"name": "VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"}
+        ]
+    },
+    "spreadsheetImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "DataRange",                "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableUnitsRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableNamesRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableDescriptionRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "RowNamesRange",            "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "Sheet",                    "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "SelectedVariableNames",    "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableNames",            "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableOptions",          "kind":"namevalue", "type":["matlab.io.VariableImportOptions"], "default":"matlab.io.TextVariableImportOptions('Name','Var1')"},
+            {"name": "VariableTypes",            "kind":"namevalue", "type":["cellstr","choices=matlab.io.internal.supportedTypeNames()"], "default":"''"},
+            {"name": "MissingRule",              "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "ImportErrorRule",          "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name": "NumVariables",             "kind":"namevalue", "type":"numeric"}
+        ]
+    },
+    "detectImportOptions":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required",  "type":[["file=*.txt,*.dat,*.csv,*.dlm,*.log,*.text"],["matlabpathfile=*.txt,*.dat,*.csv,*.dlm,*.log,*.text"],["char"]]},
+            {"name":"FileType", "kind":"namevalue", "type":["char", "choices={'text','delimitedtext', 'fixedwidth'}"]},
+            {"name":"TextType", "kind":"namevalue", "type":["char", "choices={'string','char'}"]},
+            {"name":"DatetimeType", "kind":"namevalue", "type":["char", "choices={'datetime','text'}"]},
+            {"name":"DateLocale", "kind":"namevalue", "type":["char", "choices={'en_US','ja_JP','zh_CN','ko_KR'}"]},
+            {"name":"Range", "kind":"namevalue", "type":[["char"],["numeric"]]},
+            {"name":"ExpectedNumVariables", "kind":"namevalue", "type":["numeric"]},
+            {"name":"TreatAsMissing", "kind":"namevalue", "type":["cellstr","char"]},
+            {"name":"NumHeaderLines","kind":"namevalue", "type":["numeric"]},
+            {"name":"ReadVariableNames", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"ReadRowNames", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name":"MissingRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ImportErrorRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ExtraColumnsRule" ,"kind":"namevalue", "type":"choices={'addvars', 'ignore', 'wrap', 'error'}"},
+            {"name":"Delimiter", "kind":"namevalue", "type":["char"]},
+            {"name":"Whitespace", "kind":"namevalue", "type":["char"]},
+            {"name":"LineEnding", "kind":"namevalue", "type":["char"]},
+            {"name":"Encoding", "kind":"namevalue", "type":[["char"], ["char", "choices={'UTF-8','ISO-8859-1','windows-1251','GB2312','Shift_JIS','windows-1252','EUC-KR','GBK','EUC-JP'}"]]},
+            {"name":"CommentStyle", "kind":"namevalue", "type":["char"]},
+            {"name":"DurationType", "kind":"namevalue", "type":["char", "choices={'duration','text'}"]},
+            {"name":"DecimalSeparator", "kind":"namevalue", "type":["char"]},
+            {"name":"ThousandsSeparator", "kind":"namevalue", "type":["char"]},
+            {"name":"TrimNonNumeric", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name":"ConsecutiveDelimitersRule", "kind":"namevalue", "type":["char", "choices={'split','join','error'}"]},
+            {"name":"LeadingDelimitersRule", "kind":"namevalue", "type":"choices={'keep', 'ignore', 'error'}"},
+            {"name":"TrailingDelimitersRule","kind":"namevalue", "type":"choices={'keep', 'ignore', 'error'}"},
+            {"name":"PartialFieldRule","kind":"namevalue", "type":"choices={'keep', 'fill', 'omitvar', 'omitrow', 'wrap', 'error'}"},
+            {"name":"VariableDescriptionsLine", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"VariableUnitsLine", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"RowNamesColumn", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"VariableNamesLine", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"EmptyLineRule", "kind":"namevalue", "type":"choices={'skip', 'read', 'error'}"},
+            {"name":"VariableWidths", "kind":"namevalue", "type":"numeric"},
+            {"name":"VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name":"HexType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"BinaryType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]}
+        ]
+    },
+    "detectImportOptions":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.xls,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.ods"],["matlabpathfile=*.xls,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.ods"],["char"]]},
+            {"name":"FileType", "kind":"namevalue", "type":["char", "choices={'spreadsheet'}"]},
+            {"name":"TextType", "kind":"namevalue", "type":["char", "choices={'string','char'}"]},
+            {"name":"DatetimeType", "kind":"namevalue", "type":["char", "choices={'datetime','text','exceldatenum'}"]},
+            {"name":"DateLocale", "kind":"namevalue", "type":["char", "choices={'en_US','ja_JP','zh_CN','ko_KR'}"]},
+            {"name":"Range", "kind":"namevalue", "type":[["char"],["numeric"]]},
+            {"name":"ExpectedNumVariables", "kind":"namevalue", "type":["numeric"]},
+            {"name":"TreatAsMissing", "kind":"namevalue", "type":["cellstr","char"]},
+            {"name":"NumHeaderLines","kind":"namevalue", "type":["numeric"]},
+            {"name":"ReadVariableNames", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"ReadRowNames", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name":"MissingRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ImportErrorRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ExtraColumnsRule" ,"kind":"namevalue", "type":"choices={'addvars', 'ignore', 'wrap', 'error'}"},
+            {"name":"Sheet", "kind":"namevalue", "type":[["char", "choices=cellstr(sheetnames(filename))"], ["numeric", "scalar", "integer", ">=1"]]},
+            {"name":"DataRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name":"RowNamesRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name":"VariableNamesRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name":"VariableUnitsRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name":"VariableDescriptionsRange", "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name":"VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name":"MergedCellRowRule", "kind":"namevalue", "type":"choices={'placetop', 'placebottom', 'duplicate', 'error', 'omitvar'}", "default":"'placetop'"},
+            {"name":"MergedCellColumnRule", "kind":"namevalue", "type":"choices={'placeleft', 'placeright', 'duplicate', 'error', 'omitrow'}", "default":"'placeleft'"}
+        ]
+    },
+
+    "detectImportOptions":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.xml"],["matlabpathfile=*.xml"],["char"]]},
+            {"name":"FileType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'xml'}"]},
+            {"name":"TextType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'string','char'}"]},
+            {"name":"DatetimeType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'datetime','text'}"]},
+            {"name":"DateLocale", "kind":"namevalue", "type":["char", "choices={'en_US','ja_JP','zh_CN','ko_KR'}"]},
+            {"name":"TreatAsMissing", "kind":"namevalue", "type":["cellstr","char","string"]},
+            {"name":"ReadVariableNames", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"MissingRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ImportErrorRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"Encoding", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"DurationType", "kind":"namevalue", "type":["char", "choices={'duration','text'}"]},
+            {"name":"DecimalSeparator", "kind":"namevalue", "type":[["char"],["string","scalar"]]},
+            {"name":"ThousandsSeparator", "kind":"namevalue", "type":[["char"],["string","scalar"]]},
+            {"name":"TrimNonNumeric", "kind":"namevalue", "type":["logical", "scalar"]},
+            {"name":"VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name":"HexType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"BinaryType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"Whitespace", "kind":"namevalue", "type":["char"]},
+            {"name":"TableSelector", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"TableNodeName", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"RowSelector", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"RowNodeName", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"VariableSelectors", "kind":"namevalue", "type":["char","cellstr","string"], "default":"''"},
+            {"name":"VariableNodeNames", "kind":"namevalue", "type":["char","cellstr","string"], "default":"''"},
+	        {"name":"ImportAttributes", "kind":"namevalue", "type":["logical","scalar"]},
+            {"name":"AttributeSuffix", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"'Attribute'"},
+            {"name":"RegisteredNamespaces", "kind":"namevalue", "type":["table", "string"]},
+            {"name":"VariableUnitsSelector", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"VariableDescriptionsSelector", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"RepeatedNodeRule", "kind":"namevalue", "type":"choices={'addcol', 'ignore', 'error'}", "default":"'addcol'"}
+        ]
+    },
+    "detectImportOptions":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.html,*.htm,*.xhtml,*.xhtm"],["matlabpathfile=*.html,*.htm"],["char"]]},
+            {"name":"FileType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'html'}"]},
+            {"name":"TextType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'string','char'}"]},
+            {"name":"DatetimeType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'datetime','text'}"]},
+            {"name":"DateLocale", "kind":"namevalue", "type":["char", "choices={'en_US','ja_JP','zh_CN','ko_KR'}"]},
+            {"name":"TreatAsMissing", "kind":"namevalue", "type":["cellstr","char","string"]},
+            {"name":"ReadVariableNames", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"MissingRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ImportErrorRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"Encoding", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"''"},
+            {"name":"DurationType", "kind":"namevalue", "type":["char", "choices={'duration','text'}"]},
+            {"name":"DecimalSeparator", "kind":"namevalue", "type":[["char"],["string","scalar"]]},
+            {"name":"ThousandsSeparator", "kind":"namevalue", "type":[["char"],["string","scalar"]]},
+            {"name":"VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name":"HexType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"BinaryType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"TableIndex", "kind":"namevalue", "type":[["numeric","integer","scalar",">0"]], "default":"1"},
+            {"name":"TableSelector", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"'//TABLE'"},
+            {"name":"VariableDescriptionsRow", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"VariableUnitsRow", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"RowNamesColumn", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"VariableNamesRow", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"EmptyRowRule", "kind":"namevalue", "type":"choices={'skip', 'read', 'error'}"},
+            {"name":"EmptyColumnRule", "kind":"namevalue", "type":"choices={'skip', 'read', 'error'}"},
+            {"name":"MergedCellRowRule", "kind":"namevalue", "type":"choices={'placetop', 'placebottom', 'duplicate', 'error', 'omitvar'}", "default":"'placetop'"},
+            {"name":"MergedCellColumnRule", "kind":"namevalue", "type":"choices={'placeleft', 'placeright', 'duplicate', 'error', 'omitrow'}", "default":"'placeleft'"}
+        ]
+    },
+    "detectImportOptions":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.docx"],["matlabpathfile=*.docx"],["char"]]},
+            {"name":"FileType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'worddocument'}"]},
+            {"name":"TextType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'string','char'}"]},
+            {"name":"DatetimeType", "kind":"namevalue", "type":["char",["string","scalar"], "choices={'datetime','text'}"]},
+            {"name":"DateLocale", "kind":"namevalue", "type":["char", "choices={'en_US','ja_JP','zh_CN','ko_KR'}"]},
+            {"name":"TreatAsMissing", "kind":"namevalue", "type":["cellstr","char","string"]},
+            {"name":"ReadVariableNames", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"MissingRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"ImportErrorRule", "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name":"DurationType", "kind":"namevalue", "type":["char", "choices={'duration','text'}"]},
+            {"name":"DecimalSeparator", "kind":"namevalue", "type":[["char"],["string","scalar"]]},
+            {"name":"ThousandsSeparator", "kind":"namevalue", "type":[["char"],["string","scalar"]]},
+            {"name":"VariableNamingRule", "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name":"HexType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"BinaryType","kind":"namevalue", "type":[["char"],["cellstr"],["choices=matlab.io.internal.functions.AcceptsHexBinaryType.TypesHexBin"]]},
+            {"name":"TableIndex", "kind":"namevalue", "type":[["numeric","integer","scalar",">0"]], "default":"1"},
+            {"name":"TableSelector", "kind":"namevalue", "type":[["char"],["string","scalar"]], "default":"'//w:tbl'"},
+            {"name":"VariableDescriptionsRow", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"VariableUnitsRow", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"RowNamesColumn", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"VariableNamesRow", "kind":"namevalue", "type":["numeric","scalar"]},
+            {"name":"EmptyRowRule", "kind":"namevalue", "type":"choices={'skip', 'read', 'error'}"},
+            {"name":"EmptyColumnRule", "kind":"namevalue", "type":"choices={'skip', 'read', 'error'}"},
+            {"name":"MergedCellRowRule", "kind":"namevalue", "type":"choices={'placetop', 'placebottom', 'duplicate', 'error', 'omitvar'}", "default":"'placetop'"},
+            {"name":"MergedCellColumnRule", "kind":"namevalue", "type":"choices={'placeleft', 'placeright', 'duplicate', 'error', 'omitrow'}", "default":"'placeleft'"}
+        ]
+    },
+
+    "matlab.io.ImportOptions.setvaropts":
+    {
+        "inputs":
+        [
+            {"name": "opts", "kind":"required", "type":"matlab.io.ImportOptions"},
+            {"name": "selection", "kind":"required", "type":[["numeric"],["choices=opts.VariableNames"]]},
+            {"name": "QuoteRule", "kind":"namevalue", "type":["char","choices={'remove','keep','error'}"],"default":"'keep'"},
+            {"name": "FillValue", "kind":"namevalue","type":"scalar"},
+            {"name": "TreatAsMissing", "kind":"namevalue","type":[["char"],["string"]]},
+            {"name": "WhitespaceRule", "kind":"namevalue", "type":["char","choices={'trim','trimleading','trimtrailing','preserve'}"],"default":"'trim'"},
+            {"name": "ExponentCharacter",  "kind":"namevalue", "type":["char"],"default":"'eEdD'"},
+            {"name": "DecimalSeparator",   "kind":"namevalue", "type":["char","choices={'.',','}"],"default":"'.'"},
+            {"name": "ThousandsSeparator", "kind":"namevalue", "type":["char","choices={'',',',' '}"],"default":"''"},
+            {"name": "FieldSeparator", "kind":"namevalue", "type":["char","choices={':'}"],"default":"':'"},
+            {"name": "DatetimeFormat", "kind":"namevalue", "type":["char","choices=matlab.internal.datetime.getFormatsForGuessing('en_US')"],"default":"'dd-MMM-uuuu'"},
+            {"name": "DurationFormat", "kind":"namevalue", "type":["char","choices={'hh:mm:ss','dd:hh:mm:ss'}"],"default":"'hh:mm:ss'"},
+            {"name": "DatetimeLocale", "kind":"namevalue", "type":["char"],"default":"'system'"},
+            {"name": "InputFormat",   "kind":"namevalue", "type":[["char"],["cellstr"]],"default":"''"},
+            {"name": "Categories", "kind":"namevalue", "type":[["char"],["cellstr"]]},
+            {"name": "Protected", "kind":"namevalue", "type":[["logical","scalar"]],"default":"false"},
+            {"name": "Ordinal", "kind":"namevalue", "type":[["logical","scalar"]],"default":"false"},
+            {"name": "Prefixes", "kind":"namevalue", "type":[["char","cellstr"]]},
+            {"name": "Suffixes", "kind":"namevalue", "type":[["char","cellstr"]]},
+            {"name": "NumberSystem", "kind":"namevalue", "type":["char","choices={'decimal','hex','binary'}"],"default":"'decimal'"},
+            {"name": "Type", "kind":"namevalue", "type":["char", "choices=matlab.io.internal.supportedTypeNames"]}
+        ],
+        "outputs":
+        [
+            {"name":"opts","kind":"required","type":"matlab.io.ImportOptions"}
+        ]
+    },
+    "matlab.io.ImportOptions.getvaropts":{
+        "inputs":
+        [
+            {"name": "opts", "kind":"required", "type":"matlab.io.ImportOptions"},
+            {"name": "selection", "kind":"required", "type":[["numeric"],["choices=opts.VariableNames"]]}
+        ],
+        "outputs":
+        [
+            {"name":"opts","kind":"required","type":"matlab.io.VariableImportOptions"}
+        ]
+    },
+    "matlab.io.ImportOptions.setvartype":
+    {
+        "inputs":
+        [
+            {"name":"opts", "kind":"required", "type":"matlab.io.ImportOptions"},
+            {"name":"selection", "kind":"required", "type":[["numeric"],["choices=opts.VariableNames"]]},
+            {"name":"newtype", "kind":"required", "type":"choices=matlab.io.internal.supportedTypeNames"}
+        ],
+        "outputs":
+        [
+            {"name":"opts","kind":"required","type":"matlab.io.ImportOptions"}
+        ]
+    },
+    "matlab.io.spreadsheet.SpreadsheetImportOptions.preview":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.xls,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.ods"], "char"]},
+            {"name":"opts", "kind":"required", "type":"matlab.io.spreadsheet.SpreadsheetImportOptions"}
+        ],
+        "outputs":
+        [
+            {"name":"data", "type":"table"}
+        ]
+    }
+}

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="vision" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="regionProposalFcnRequiredForMultiChannel">The default value of ''RegionProposalFcn'' is not supported for multi-channel images. Specify a custom region proposal function.</entry>
+    <entry key="regionProposalBegin">--&gt; {0}개의 훈련 영상에서 영역 제안을 추출하는 중...</entry>
+    <entry key="regionProposalEnd">완료.</entry>
+    <entry key="notEnoughObjectClasses">신경망 분류 계층의 객체 클래스 개수는 입력 trainingData에 정의된 클래스 개수에 "Background" 클래스 개수인 1을 더한 값과 같아야 합니다.</entry>
+    <entry key="rangesOverlap">''PositiveOverlapRange''와 ''NegativeOverlapRange''는 겹치지 않아야 합니다.</entry>
+    <entry key="noPositiveSamples">다음 영상에서 양성 훈련 샘플로 사용할 영역 제안을 찾을 수 없습니다:\n\n{0}\n이러한 영상은 훈련에 사용되지 않습니다.</entry>
+    <entry key="noNegativeSamples">다음 영상에서 음성(negative) 훈련 샘플로 사용할 영역 제안을 찾을 수 없습니다:\n\n{0}</entry>
+    <entry key="noTrainingSamples">양성 훈련 샘플로 사용할 영역 제안을 찾을 수 없습니다. PositiveOverlapRange의 첫 번째 값을 낮춰 양성 영역 제안의 개수를 늘리십시오.</entry>
+    <entry key="proposalFcnInvalidNargin">Expected the region proposal function to have 1 input.</entry>
+    <entry key="proposalFcnInvalidNargout">Expected the region proposal function to have 2 outputs.</entry>
+    <entry key="proposalFcnErrorOccurred">{0}을(를) 사용하여 {1}을(를) 처리하는 중 오류가 발생했습니다: \n\n{2}\n\n이 영상의 영역은 훈련에 사용되지 않습니다.</entry>
+    <entry key="invalidBBox">The first output of the region proposal function  must be real, finite, and non-sparse.</entry>
+    <entry key="invalidScores">The second output of the region proposal function must be real, finite, and non-sparse.</entry>
+    <entry key="invalidBBoxDim">The first output of the region proposal function must be an M-by-4 matrix.</entry>
+    <entry key="invalidScoreDim">The second output of the region proposal function must be an M-by-1 vector.</entry>
+    <entry key="proposalInconsistentNumel">The first and second output of the region proposal function must have the same number of rows.</entry>
+    <entry key="proposalInvalidWidthHeight">The width and height of the region proposal bounding boxes must be positive.</entry>
+    <entry key="missingBackgroundClass">The network's classification layer must have a ''Background'' class.</entry>
+    <entry key="lastLayerNotClassificationLayer">신경망은 하나의 분류 계층을 포함해야 합니다.</entry>
+    <entry key="firstLayerNotImageInputLayer">The network must have only one image input layer, and it must be the first layer in the network.</entry>
+    <entry key="removingAugmentation">''{0}'' 데이터 증강은 훈련 중에 적용되지 않습니다.</entry>
+    <entry key="miniBatchSizeTooSmall">신경망 훈련 옵션은 ''MiniBatchSize''를 4로 지정해야 합니다.</entry>
+    <entry key="bboxRegressionBegin">--&gt; 각 객체 클래스에 대한 경계 상자 회귀 모델 훈련 중...</entry>
+    <entry key="bboxRegressionEnd">완료.</entry>
+    <entry key="trainNetworkBegin">--&gt; 훈련 데이터의 객체를 분류하기 위해 신경망 훈련 중...</entry>
+    <entry key="trainNetworkEnd">신경망 훈련이 완료되었습니다.</entry>
+    <entry key="trainingHeader">다음 객체 클래스에 대해 R-CNN 객체 검출기 훈련:</entry>
+    <entry key="trainingFooter">검출기 훈련이 완료되었습니다.</entry>
+    <entry key="trainingFooterWithWarnings">검출기 훈련 완료(경고 있음):</entry>
+    <entry key="noConvLayerSkipBoxReg">Unable to automatically find a feature layer for training the box regression model. Manually specify a layer using ''BoxRegressionLayer''.</entry>
+    <entry key="dagUnableToFindLastFC">Unable to automatically find and replace the last fully-connected layer in the input network. Manually modify the input network so that the last fully connected layer has {0} outputs and replace the old classification layer with a new one using classificationLayer().</entry>
+    <entry key="networkMissingBBoxFeatureLayer">One of the layers in Network must have the name specified in the ''BoxRegressionLayer'' property.</entry>
+    <entry key="autoOrNoneNotAllowedAsLayerName">None of the layers in the input network can be named ''auto''. Please rename any layers named ''auto''.</entry>
+    <entry key="removingInvalidTrainingData">{1}개 중 {0}개의 훈련 영상에서 유효하지 않은 경계 상자가 제거되었습니다. trainingData의 다음 행에 유효하지 않은 경계 상자 데이터가 있습니다:\n\n{2}\n경계 상자는 비어 있지 않고 연결된 영상 내에 완전히 포함되어야 하며 양수 너비와 높이를 가져야 합니다.</entry>
+    <entry key="noValidTrainingData">The input training data contains invalid bounding box data. Modify the training data to ensure all the bounding boxes are fully contained in the image, the bounding box [x y width height] or [xctr yctr width height yaw] values are greater than zero, and that there is at least one bounding box for each training image.</entry>
+    <entry key="networkTrainingLossHasNaNs">훈련 손실이 NaN 값을 갖습니다. 검출기가 제대로 훈련되지 않았을 수 있습니다. trainingOptions 함수를 사용하여 ''InitialLearnRate''를 낮추고 검출기를 다시 훈련시켜 보십시오.</entry>
+    <entry key="fourStepTrainingLossHasNaNs">{0}단계: 훈련 손실이 NaN 값을 갖습니다. 검출기가 제대로 훈련되지 않았을 수 있습니다. trainingOptions 함수를 사용하여 ''InitialLearnRate''를 낮추고 검출기를 다시 훈련시켜 보십시오.</entry>
+    <entry key="nonfiniteRCNNBoxRegressionData">신경망에서 추출한 훈련 특징에 NaN이 포함되어 있습니다. trainingOptions 함수를 사용하여 ''InitialLearnRate''를 낮추고 검출기를 다시 훈련시켜 보십시오.</entry>
+    <entry key="unableToBatchImages">MiniBatchSize가 1보다 큰 경우 훈련 영상은 크기가 동일해야 합니다. 다양한 크기의 영상으로 검출기를 훈련시키려면 trainingOptions 함수를 사용하여 ''MiniBatchSize''를 1로 설정하십시오.</entry>
+    <entry key="notMonoRGB">훈련 데이터가 테이블인 경우 R-CNN은 RGB 또는 회색조 영상만 지원합니다. 다중채널 영상으로 훈련시킬 데이터저장소를 사용하여 훈련 데이터를 지정하십시오.</entry>
+    <entry key="validationDataNotSupported">{0}은(는) ValidationData 훈련 옵션을 지원하지 않습니다.</entry>
+    <entry key="validationPlotsNotSupported">{0}은(는) training-progress Plots 훈련 옵션을 지원하지 않습니다.</entry>
+    <entry key="fourStepValidationPlotsNotSupported">The four-step training method does not support the training-progress Plots training option.</entry>
+    <entry key="fourStepOutputFcnNotSupported">The four-step training method does not support the OutputFcn training option.</entry>
+    <entry key="fourStepExperimentMonitorNotSupported">The four-step training method does not support the ExperimentMonitor option.</entry>
+    <entry key="GPULowOnMemory">GPU 메모리가 부족합니다. 주 메모리를 사용한 추가적인 데이터 전송으로 인해 성능이 저하될 수 있습니다. 훈련 영상의 크기를 줄이려면 ''SmallestImageDimension'' 파라미터를 400에서 600 사이로 설정해 보십시오. &lt;a href="matlab:warning(''on'',''vision:rcnn:GPULowOnMemory'')"&gt;warning(''on'',''vision:rcnn:GPULowOnMemory'')&lt;/a&gt; 명령을 실행하지 않는 한 이 경고는 다시 나타나지 않습니다.</entry>
+    <entry key="mimoDAGNotSupported">여러 개의 입력값과 출력값을 갖는 신경망은 지원되지 않습니다.</entry>
+    <entry key="UseParallelMustBeTrueForParallelTraining">trainingOptions ''ExecutionEnvironment''가 ''multi-gpu'' 또는 ''parallel''인 경우 Computer Vision Toolbox 기본 설정을 사용하여 병렬 연산 지원을 활성화하거나 ''UseParallel'' 값을 true로 설정하십시오.</entry>
+    <entry key="unableToFreezeBNLayer">신경망에 초기화되지 않은 배치 정규화 계층이 있습니다. ''FreezeBatchNormalization''을 false로 설정하십시오.</entry>
+    <entry key="fastTrainingHeader">다음 객체 클래스에 대해 Fast R-CNN 객체 검출기 훈련:</entry>
+    <entry key="fastTrainingFooter">Fast R-CNN 훈련이 완료되었습니다.</entry>
+    <entry key="noClassificationLayers">신경망의 마지막 세 개 계층은 완전 연결 계층, 소프트맥스 계층, 분류 계층이어야 합니다.</entry>
+    <entry key="noMaxPoolingLayer">신경망에 ROI 풀링 계층을 추가할 수 없습니다. 입력 신경망에 ROI 풀링 계층으로 바꿀 수 있는 최댓값 풀링 또는 평균값 풀링이 있어야 합니다.</entry>
+    <entry key="unsupportedNumChannelsForROIPooling">Input data with more than 65535 channels is not supported.</entry>
+    <entry key="BackwardProhibited">역전파는 지원되지 않습니다.</entry>
+    <entry key="invalidSizeSmoothL1">The input to the smooth L1 loss layer must have 3 dimensions and the third dimension must be divisible by 4.</entry>
+    <entry key="imageScaleLTNetInput">''SmallestImageDimension''은 {0}보다 크거나 같아야 합니다.</entry>
+    <entry key="resumeClassNameMismatch">trainingData 열 변수의 순서는 detector.ClassNames의 순서와 일치해야 합니다.</entry>
+    <entry key="fasterTrainingBanner">다음 객체 클래스에 대해 Faster R-CNN 객체 검출기 훈련:</entry>
+    <entry key="fasterStep1">1/4단계: RPN(Region Proposal Network)을 훈련시킵니다.</entry>
+    <entry key="fasterStep2">2/4단계: 1단계의 RPN을 사용하여 Fast R-CNN 신경망을 훈련시킵니다.</entry>
+    <entry key="fasterStep3">3/4단계: Fast R-CNN에 가중치 공유를 사용하여 RPN을 다시 훈련시킵니다.</entry>
+    <entry key="fasterStep4">4/4단계: 업데이트된 RPN을 사용하여 Fast R-CNN을 다시 훈련시킵니다.</entry>
+    <entry key="fasterTrainingDone">Faster R-CNN 객체 검출기 훈련이 완료되었습니다.</entry>
+    <entry key="resumeTrainingAtStage">{0}단계에서 훈련을 재개하는 중입니다.</entry>
+    <entry key="boxesRemovedByScaling">다음 영상의 ground truth 상자는 영상 스케일링 후 너무 작아져 제거되었습니다:\n\n{0}\n'ImageScale' 파라미터를 늘려 보십시오.</entry>
+    <entry key="mismatchDetectorPyramidScale">''BoxPyramidScale''은 detector.BoxPyramidScale과 일치해야 합니다.</entry>
+    <entry key="mismatchDetectorBoxSizes">''MinBoxSizes''는 detector.MinBoxSizes와 일치해야 합니다.</entry>
+    <entry key="minBoxSizeTooSmall">''MinBoxSizes''는 detector.MinObjectSize보다 커야 합니다.</entry>
+    <entry key="mismatchDetectorNumPyramidLevels">''NumBoxPyramidLevels''는 detector.NumBoxPyramidLevels와 일치해야 합니다.</entry>
+    <entry key="inconsistentExeEnv">All four ''options.ExecutionEnvironment'' must be the same.</entry>
+    <entry key="inconsistentResetNorm">All four ''options.ResetInputNormalization'' must be the same.</entry>
+    <entry key="unsupportedExeEnv"> ''options.ExecutionEnvironment''의 값은 ''auto'', ''cpu'' 또는 ''gpu''여야 합니다. ''multi-gpu'' 및 ''parallel''은 지원되지 않습니다.</entry>
+    <entry key="notSupportedForLayerGraph">입력 신경망이 LayerGraph인 경우 ''{0}''은(는) 지원되지 않습니다.</entry>
+    <entry key="partiallyTrainedDetector">검출기에 대한 훈련 단계가 완료되지 않았습니다. trainFasterRCNNObjectDetector 함수를 사용하여 훈련을 재개해야 합니다.</entry>
+    <entry key="anchorBoxesList">RPN 앵커 상자:\n{0}</entry>
+    <entry key="verboseColRPNAcc">RPN 미니 배치 정확도</entry>
+    <entry key="verboseColRPNRmse">RPN 미니 배치 RMSE</entry>
+    <entry key="endToEndFromFourStageCheckpoint">''TrainingMethod'' value must be ''four-step'' to resume training from a detector checkpoint created using the ''four-step'' training method.</entry>
+    <entry key="inconsistentMiniBatchSize">All four values of ''options.MiniBatchSize'' must be the same.</entry>
+    <entry key="fourStepOverlapRangeUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the value of ''{0}'' is of size 4-by-2. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')"&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="fourStepOptionsUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the training options are defined as a four-element vector. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')"&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="fourStepNumRegionsUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the value of 'NumRegionsToSample' is a four-element vector. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')"&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="roiInputType">ROI 입력</entry>
+    <entry key="roiInputDesc">M×4 사각형 ROI</entry>
+    <entry key="rcnnBoxType">상자 회귀 출력</entry>
+    <entry key="rcnnBoxDesc">smooth-l1 손실</entry>
+    <entry key="rpnClsType">RPN 분류 출력</entry>
+    <entry key="rpnClsDesc">'object' 및 'background' 클래스를 갖는 교차 엔트로피 손실</entry>
+    <entry key="proposalType">영역 제안</entry>
+    <entry key="proposalDescSingle">1개의 앵커 상자가 있는 영역 제안</entry>
+    <entry key="proposalDesc">{0}개의 앵커 상자가 있는 영역 제안</entry>
+    <entry key="rpnSoftmaxDesc">rpn 소프트맥스</entry>
+    <entry key="rpnSoftmaxType">RPN 소프트맥스</entry>
+    <entry key="useTrainFastOrFaster">{0} is not supported by trainNetwork. Use trainFastRCNNObjectDetector or trainFasterRCNNObjectDetector to train a network that contains {0}.</entry>
+    <entry key="missingROIInputLayer">The network must contain one ROI input layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast R-CNN networks.</entry>
+    <entry key="missingROIMaxPoolingLayer">The network must contain one ROI max pooling layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="missingClassificationLayer">신경망은 하나의 분류 계층을 포함해야 합니다. Fast 또는 Faster R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="missingBoxRegressionLayerFast">신경망은 하나의 R-CNN 상자 회귀 계층을 포함해야 합니다. Fast R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="invalidBoxRegressionLayerInputSize"> The input size must be {0}. This R-CNN box regression layer expects the third input dimension to be 4 times the number of object classes the network should detect ({1} classes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="invalidInputClassificationLayer">The input size must be {0}. The classification layer expects the third input dimension to be the number of object classes the network should detect ({1} classes) plus 1. The additional class is required for the "background" class. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="mustHaveOneImageInputLayer">The network must have one input layer and it must be an imageInputLayer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="mustHaveTwoBoxRegLayers">신경망은 두 개의 R-CNN 상자 회귀 계층을 포함해야 합니다. Faster R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="missingRegionProposalLayer">신경망은 하나의 영역 제안 계층을 포함해야 합니다. Faster R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="missingRPNClassificationLayer">신경망은 하나의 RPN 분류 계층을 포함해야 합니다. Faster R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="missingRPNSoftmaxLayer">신경망은 하나의 RPN 소프트맥스 계층을 포함해야 합니다. Faster R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="missingBoxRegAfterROIPooling">R-CNN 상자 회귀 계층은 ROI 풀링 계층 다음에 오는 계층 중 하나여야 합니다. Faster R-CNN 신경망 생성에 대한 자세한 내용은 &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;문서&lt;/a&gt;를 참조하십시오.</entry>
+    <entry key="incorrectInputRPNSoftmax">Invalid input size: {0}. Expected the size of the third input dimension to be 2 times the number of anchor boxes defined in the Region Proposal Layer ({1} anchor boxes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="incorrectInputRPNboxReg">Invalid input size: {0}. Expected the size of the third input dimension to be 4 times the number of anchor boxes defined in the Region Proposal Layer ({1} anchor boxes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="incorrectInputRegionProposal">Invalid input sizes: {0},{1}. Expected the size of the first two dimensions of the scores input size ({0}) and the box deltas input size ({1}) to be equal.</entry>
+    <entry key="incorrectInputROIPoolGridSize">Invalid input size: {0}. Expected the size of the first two dimensions to be at least equal to the grid size ({1}).</entry>
+    <entry key="incorrectInputROIPoolSecondInput">Invalid input size: {0}. Expected the size of the second dimension of the second input to be equal to 4 or 5.</entry>
+    <entry key="anchorBoxParamsNotSupportedForDatastore">훈련 데이터가 데이터저장소인 경우 MinBoxSizes, BoxPyramidScale 또는 NumBoxPyramidLevels 옵션은 지원되지 않습니다. 앵커 상자를 추정하려면 estimateAnchorBoxes 함수를 사용하고 Faster R-CNN 신경망을 만들려면 fastRCNNLayers 함수를 사용하십시오.</entry>
+    <entry key="scalingNotAllowedForDatastore">훈련 데이터가 데이터저장소인 경우 SmallestImageDimension 옵션은 지원되지 않습니다. 영상과 경계 상자의 크기를 조정하려면 데이터저장소 transform 메서드를 IMRESIZE 및 BBOXRESIZE와 함께 사용하십시오.</entry>
+    <entry key="regionProposalBeginDatastore">--&gt; 훈련 데이터저장소에서 영역 제안을 추출하는 중...</entry>
+    <entry key="networkMustBeLayerGraphForDatastore">훈련 데이터 입력값이 데이터저장소인 경우 신경망 입력값은 layerGraph여야 합니다. Faster R-CNN 신경망을 만들려면 fasterRCNNLayers 함수를 사용하십시오.</entry>
+  </message>
+</rsccat>

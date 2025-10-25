@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018-2019 The MathWorks, Inc. -->
+<!-- Mapping of math builtin to a Polyspace Backend semantic -->
+<!-- For example the definition: -->
+<!-- <tag id="cosf" kind="function" user_name="cosf" type="double (float)" > -->
+<!--   <properties> -->
+<!--     <property kind="predef">cos</property> -->
+<!--     <property kind="predef">f</property> -->
+<!--   </properties> -->
+<!-- </tag> -->
+<!-- means that the user function double cosf(float) will be flagged as a polyspace builtin and gets the -->
+<!-- attribute "cos" as property1 and "f' as property2 in the IL (in its definition). If the type is not compatible, -->
+<!-- then the user function is not flagged as a polyspace builtin  -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <tag id="infinity" kind="function" user_name="std::numeric_limits::infinity" type="double (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_inf</property>
+    </properties>
+  </tag>
+  <tag id="quiet_NaN" kind="function" user_name="std::numeric_limits::quiet_NaN" type="double (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nan</property>
+    </properties>
+  </tag>
+  <tag id="signaling_NaN" kind="function" user_name="std::numeric_limits::signaling_NaN" type="double (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nans</property>
+    </properties>
+  </tag>
+  <tag id="infinityf" kind="function" user_name="std::numeric_limits::infinity" type="float (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_inff</property>
+    </properties>
+  </tag>
+  <tag id="quiet_NaNf" kind="function" user_name="std::numeric_limits::quiet_NaN" type="float (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nanf</property>
+    </properties>
+  </tag>
+  <tag id="signaling_NaNf" kind="function" user_name="std::numeric_limits::signaling_NaN" type="float (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nansf</property>
+    </properties>
+  </tag>
+  <tag id="infinityl" kind="function" user_name="std::numeric_limits::infinity" type="long double (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_infl</property>
+    </properties>
+  </tag>
+  <tag id="quiet_NaNl" kind="function" user_name="std::numeric_limits::quiet_NaN" type="long double (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nanl</property>
+    </properties>
+  </tag>
+  <tag id="signaling_NaNl" kind="function" user_name="std::numeric_limits::signaling_NaN" type="long double (void)" header="limits" >
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nansl</property>
+    </properties>
+  </tag>
+
+
+</tags>

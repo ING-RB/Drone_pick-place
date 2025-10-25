@@ -1,0 +1,58 @@
+{
+    "matlab.io.spreadsheet.SpreadsheetImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "DataRange",                "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableUnitsRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableNamesRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableDescriptionsRange","kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "RowNamesRange",            "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "Sheet",                    "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "SelectedVariableNames",    "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableNames",            "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableOptions",          "kind":"namevalue", "type":["matlab.io.VariableImportOptions"], "default":"matlab.io.TextVariableImportOptions('Name','Var1')"},
+            {"name": "VariableTypes",            "kind":"namevalue", "type":["cellstr","choices=matlab.io.internal.supportedTypeNames()"], "default":"''"},
+            {"name": "MissingRule",              "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "ImportErrorRule",          "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "NumVariables",             "kind":"namevalue", "type":"numeric"},
+	        {"name": "VariableNamingRule",       "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name":"MergedCellRowRule","kind":"namevalue","type":"choices={'placetop','placebottom','duplicate','error','omitvar'}","default":"'placetop'"},
+            {"name":"MergedCellColumnRule","kind":"namevalue","type":"choices={'placeleft','placeright','duplicate','error','omitrow'}","default":"'placeleft'"}
+        ]
+    },
+    "spreadsheetImportOptions":
+    {
+        "inputs":
+        [
+            {"name": "DataRange",                "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableUnitsRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableNamesRange",       "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "VariableDescriptionsRange","kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "RowNamesRange",            "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "Sheet",                    "kind":"namevalue", "type":[["char"],["numeric"]], "default":"''"},
+            {"name": "SelectedVariableNames",    "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableNames",            "kind":"namevalue", "type":["cellstr"], "default":"''"},
+            {"name": "VariableOptions",          "kind":"namevalue", "type":["matlab.io.VariableImportOptions"], "default":"matlab.io.TextVariableImportOptions('Name','Var1')"},
+            {"name": "VariableTypes",            "kind":"namevalue", "type":["cellstr","choices=matlab.io.internal.supportedTypeNames()"], "default":"''"},
+            {"name": "MissingRule",              "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "ImportErrorRule",          "kind":"namevalue", "type":"choices={'fill', 'error', 'omitrow', 'omitvar'}", "default":"'fill'"},
+            {"name": "VariableNamingRule",       "kind":"namevalue","type": ["string", "choices={'preserve','modify'}"], "default": "'modify'"},
+            {"name": "NumVariables",             "kind":"namevalue", "type":"numeric"},
+            {"name":"MergedCellRowRule","kind":"namevalue","type":"choices={'placetop','placebottom','duplicate','error','omitvar'}","default":"'placetop'"},
+            {"name":"MergedCellColumnRule","kind":"namevalue","type":"choices={'placeleft','placeright','duplicate','error','omitrow'}","default":"'placeleft'"}
+        ]
+    },
+    "matlab.io.spreadsheet.SpreadsheetImportOptions.preview":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.xls,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.ods"], "char"]},
+            {"name":"opts", "kind":"required", "type":"matlab.io.spreadsheet.SpreadsheetImportOptions"}
+        ],
+        "outputs":
+        [
+            {"name":"data", "type":"table"}
+        ]
+    }
+}

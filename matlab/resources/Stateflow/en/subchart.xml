@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2009-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Stateflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+    <message>
+        <entry key="InvalidBindingGeneral">
+            <![CDATA[The expression "{0}" does not resolve to a valid mapping for data {1}. 
+            Please fix this by specifying a valid mapping for this variable in the "Mappings" section of the 
+          <a href="matlab:Stateflow.SLINSF.SubchartMan.openProps({2,number,integer})">properties</a> of state {3}.
+          \n\nPlease see the section "Map Variables for Atomic Subcharts and Boxes" in the documentation for more information.]]>
+        </entry>
+      <entry key="InvalidPortBinding"><![CDATA[The symbol {0} used in {1} cannot be resolved automatically because the container chart {2} does not contain a symbol with the same name and scope. 
+          Fix it by specifying a mapping for this variable in the "Mappings" section of the <a href="matlab:Stateflow.SLINSF.SubchartMan.openProps({3,number,integer})">properties</a> of state {4}.
+          \n\nPlease see the section "Map Variables for Atomic Subcharts and Boxes" in the documentation for more information.]]>
+      </entry>
+
+      <entry key="InvalidOutputPortBinding"><![CDATA[The symbol {0} used in {1} cannot be resolved automatically 
+                  because the container chart {2} does not contain a symbol with the same name and scope. 
+                 Fix it by automatically 
+            <a href="matlab:Stateflow.SLINSF.SubchartMan.createSubchartMappingsForOutput({3,number,integer},{4,number,integer})">propagating the output to Simulink</a>
+          or by manually specifying a mapping for this variable in the "Mappings" section of the 
+          <a href="matlab:Stateflow.SLINSF.SubchartMan.openProps({5,number,integer})">properties</a> of state {6}.
+          \n\nPlease see the section "Map Variables for Atomic Subcharts and Boxes" in the documentation for more information.]]>
+      </entry>
+
+    <entry key="BindingDialogExplanation">
+        The following tables list the mappings from the subchart symbols 
+        (on the left) to the symbols in the main chart (on the right). 
+        For every subchart symbol, the drop-down provides the list of 
+        available symbols which that subchart symbol can map to.
+    </entry>
+    <entry key="BindingDialogExplanationAction">
+        The following tables list the mappings from the subsystem symbols 
+        (on the left) to the symbols in the main chart (on the right).
+        For every subchart symbol, the drop-down provides the list of 
+        available symbols which that subchart symbol can map to.
+    </entry>
+    <entry key="ConvertErrorAccessToNonChartLevelObj">Unable to convert state {0} to an atomic subchart because it uses {1} at {2}. Modify {1} to be parented by the chart instead of {3}.</entry>    
+    <entry key="ConvertErrorAccessToNonInputEvent">Unable to convert state {0} to an atomic subchart because it uses event {1} at {2}. Only chart level input events can be used within a state to be able to convert the state to an atomic subchart.</entry>    
+    <entry key="ConvertErrorAccessGeneric">Unable to convert state {0} to an atomic subchart because it uses {1}. Only chart level functions, input events and data can be used within a state to be able to convert the state to an atomic subchart.</entry>    
+    <entry key="ConvertErrorAccessToPartiallyDefinedData">Unable to convert the state to an atomic subchart because {0} accesses {1} data {2} with inherited {3}. To enable conversion, explicitly specify its {4} in the data properties.
+    </entry>
+        <entry key="ConvertErrorAccessToNonSimpleType">Invalid access to local data {0} in {1}.\n\nFor a state to be convertible automatically into an atomic subchart, any chart-level local data objects accessed from within the state have to be one of the primitive built-in types. You can work around this by converting this local data object into a chart output and then grounding the output.</entry>
+    <entry key="ConvertErrorAccessToComplexLocal">The complexity of local data {0} as used in {1} is set to ''on''. If such local data are accessed inside a state, then that state cannot be converted automatically into an atomic subchart. If you wish to use this data object within an atomic subchart, consider converting it to an output.</entry>
+    <entry key="ConvertErrorStateWithOutputActivity">
+        The state {0} has the same name as {1} and has the ''Output state activity'' property set. It is not possible to convert such a state (or its parents) automatically to or from an atomic subchart. Disambiguate the name and try again.
+    </entry>
+    <entry key="ConvertErrorDuplicateOutputActivityName">
+        <![CDATA[The output state activity of atomic subchart {0} has the same name as the output state activity of state {1}.
+        To convert the atomic subchart, open the atomic subchart <a href="matlab:sfprivate('open_monitoring_tab', {2,number,integer})">properties</a> and change the Data name.]]>
+    </entry>
+    <entry key="ConvertErrorAtomicContainerAndSubchartHaveASLOn">
+        The atomic subchart {0} has both self activity and child/leaf-state activity output turned on. A normal state can only
+        output either self activity, child activity, or leaf state activity. You must unselect one of these before converting the atomic subchart back to 
+        a normal subchart.
+    </entry>
+    <entry key="ConvertErrorStateHasOutputDataWithSameName">
+        The state {0} is unable to be converted to an atomic subchart because it is associated with {1} output data {2} with the same name.
+    </entry>
+    <entry key="ConvertErrorContinuousChart">Continuous time Stateflow charts may not contain atomic subcharts or atomic boxes.</entry>
+    <entry key="ConvertErrorAccessToNonZeroFirstIndexLocal"><![CDATA[Invalid access to local data <a href="matlab:sf('Open', {1,number,integer})">''{0}''</a>.\n\nThis data object has the first index property set to a non-zero value. If such local data objects are accessed inside a state, that state cannot be converted automatically into an atomic subchart.]]></entry>
+    <entry key="ConvertErrorFaultsOnElementsWithin">Unable to convert state {0} to or from an atomic subchart because it contains model elements with faults.</entry>
+    <entry key="IllegalAccessToNonZeroFirstIndexLocal"><![CDATA[Local data {0} has the first index property set to a non-zero value. Such a data object cannot be mapped to a DSM (in this case  {1}) in an atomic subchart.]]></entry>
+    <entry key="IllegalAccessToPartiallyDefinedData">Atomic subchart {0} accesses main chart {1} data {2} with inherited {3} via mapped {4} data {5}. Subchart {6} data {7} can only map to main chart data if its size, type, and complexity are fully specified.
+    </entry>
+    <entry key="DataToMessageMappingIsProhibited">{0} accesses main chart message {1} because one of its inputs or outputs is mapped to it. Mapping to messages is prohibited.
+    </entry>
+    <entry key="BrokenLinkAtomicSubchart">Failed to find chart ''{0}'' in library ''{1}'' referenced by linked atomic subchart {2}.</entry>
+    <entry key="MappingTabTitle">Mappings</entry>
+    <entry key="MappingSectionTitle">Mapping</entry>
+    <entry key="ProposeBindings">Propose mappings for unmapped data</entry>
+    <entry key="MappingAndSubchartProps">Mappings and subchart properties</entry>
+    <entry key="MaskAndMappingsDialog">Subchart mask and mappings</entry>
+    <entry key="DescriptionTitle">Description</entry>
+    <entry key="AtomicSubchartSymbol">Atomic subchart symbol</entry>
+    <entry key="MainChartSymbol">Main chart symbol</entry>
+    <entry key="SaveInPrevVersion">This model contains an atomic subchart. One such atomic subchart is ''{0}'' contained in the chart ''{1}''. Such models cannot be saved in Simulink versions prior to R2010B when this feature was first introduced. This model will not work in the older version.</entry>
+    <entry key="SaveInPrevVersionWithNonTrivialMapping">Atomic subchart ''{0}'' contained in the chart ''{1}'' has input/output data that is mapped to chart level
+        data of a different scope. This feature was introduced in R2015A, so these mappings will be removed. This could change the simulation behavior of the model in previous releases.</entry>
+    <entry key="CannotUnatomicBrokenLink">Unable to convert an atomic subchart with a broken link into a normal subchart. Double-click the link and fix it before converting to a normal subchart.</entry>
+    <entry key="ConvertErrorTitle">Conversion Error</entry>
+    <entry key="CannotUnatomicLinkedSubchart">Unable to convert a linked atomic subchart into a normal subchart. Please first disable/break the link and then convert to a normal subchart.</entry>
+    <entry key="NoAtomicSubchartInMooreChart">Stateflow Moore charts may not contain atomic subcharts or atomic boxes.</entry>
+    <entry key="NoMooreChartsAsAtomicSubcharts">Stateflow Moore charts may not be used as atomic subcharts.</entry>
+    <entry key="ConvertErrorAtomicSubchartInDiscreteEventChart">Conversion of {0} to an atomic subchart is not supported in a discrete-event chart.</entry>
+    <entry key="NoAtomicSubchartInDiscreteEventChart">Stateflow discrete-event charts are unable to contain atomic subcharts or atomic boxes. Remove state {0}. Alternatively, you can convert state {0} to an ordinary subchart.</entry>
+    <entry key="NoDiscreteEventChartsAsAtomicSubcharts">Atomic subchart {0} unable to be a discrete-event chart.</entry>
+    <entry key="ConvertErrorTopLevelFcnNotExported">Unable to convert {0} to an atomic subchart because it accesses function {1} in {2} which will not be
+        visible after conversion, unless the property ''Export Chart Level Functions'' is set for chart {3}.
+    </entry>
+    <entry key="ConvertErrorAccessesStateObjectOutsideItsScope">Unable to convert {0} to an atomic subchart because it accesses data, events, or functions
+        within {1} (see {2}), which will not be visible after conversion. To access functions, you can set the property ''Export Chart Level Functions'' in chart {3}.
+    </entry>
+    <entry key="ConvertErrorAccessesStateObjectOutsideItsScopeInDiscreteEventChart">Conversion of {0} to an atomic subchart is not supported because it accesses data, events, or functions within {1} (see {2}), which will not be visible to the atomic subchart after the conversion.</entry>
+    <entry key="ConversionToAtomicSubchartFailed">Conversion to atomic subchart failed.</entry>
+    <entry key="ConversionToAscFailedDueToSyntaxErrors">Unable convert {0} to an atomic subchart because it contains syntax errors. Update the diagram to identify the error and correct it before re-attempting the conversion.</entry>
+    <entry key="CircularLink">Attempt to create a circular link by pasting a reference to ''{0}'' within ''{1}''. This is not allowed.</entry>
+    <entry key="DataCannotBeMappedToInputAndNonInput">Main chart data {0} cannot be mapped to subchart data ''{1}'' of input scope and subchart data ''{2}'' of non-input scope at the same time.
+    </entry>
+    <entry key="IllegalSubchartOutputEvents">Atomic subchart {0} cannot have output events. The presence of event {1} is therefore illegal.</entry>
+    <entry key="IllegalDataTypeOfMappedLocal">It is illegal to parameterize the data type of a local data which is mapped to an atomic subchart as ''type(...)''. Type specification ''{0}'' for data {1} is therefore illegal. Please use one of the primitive built-in data types or parameterize using a Simulink.Signal object.</entry>
+    <entry key="SubchartProps">Subchart Properties</entry>
+    <entry key="RTWSystemCode">Code generation function packaging:</entry>
+    <entry key="RTWFileNameOpts">Code generation file name options:</entry>
+    <entry key="RTWFileName">Code generation file name (no extension):</entry>
+    <entry key="ExplainLink">In order to set subchart properties, including code generation options, navigate to the actual library chart and set properties there.</entry>
+    <entry key="GotoLinkAction">Go To Library Block</entry>
+    <entry key="LinkOptionsMenuLabel"><![CDATA[&Link Options]]></entry>
+    <entry key="LockedLinkOptionsMenuLabel"><![CDATA[Locked Link Options]]></entry>
+    <entry key="GotoLibraryBlockMenuLabel"><![CDATA[&Go To Library Block]]></entry>
+    <entry key="BreakLinkMenuLabel"><![CDATA[&Break Link]]></entry>
+    <entry key="DisableLinkMenuLabel"><![CDATA[&Disable Link]]></entry>
+    <entry key="DisableLockedLinkMenuLabel"><![CDATA[&Disable Locked Link]]></entry>
+    <entry key="ResolveLinkMenuLabel"><![CDATA[&Resolve Link]]></entry>
+    <entry key="UnatomInvalidBindings">Cannot convert atomic subchart {0} into a normal subchart because of mapping error(s).</entry>
+    <entry key="UnatomInvalidParamBindings">Cannot convert an atomic subchart into a normal subchart in the presence of non-trivial parameter mappings. In this case, the parameter ''{0}'' is mapped to the expression ''{1}''. You will need to manually convert all uses of this parameter in the subchart to the mapped expression and then make this parameter mapping ''&lt;inherited&gt;'' in the Mappings table.</entry>
+    <entry key="UnatomEmlFcns">Cannot convert an atomic subchart into a normal subchart in the presence of non-trivial mappings when the subchart contains MATLAB functions or Truth Table functions using MATLAB as the action language. In this case, the subchart data ''{0}'' is mapped to the container chart symbol ''{1}'' in the presence of the function ''{2}''.</entry>
+    <entry key="ParameterNameClashHeader"><![CDATA[The atomic subchart ''{0}'' has a parameter data <a href="matlab:sf('Open',{1,number,integer})">''{2}''</a> whose value is mapped to ''{3}''. Non trivial parameter mappings are not allowed for parameters whose names clash with names of Simulink subsystem built-in parameters.\n\nTo see a list of all built-in Simulink subsystem parameters, execute the command:\n\n<a href="matlab:fieldnames(get_param('built-in/subsystem','ObjectParameters'))">fieldnames(get_param('built-in/subsystem','ObjectParameters'))</a>]]></entry>
+    <entry key="EditSubchartMappingsMenuLabel"><![CDATA[Subchart Mappings...]]></entry>
+    <entry key="AtomicSubchartedContextMenuOption">Atomic Subcharted</entry>
+    <entry key="IllegalSubchartLocalEventsWithOuterTransitions">When an atomic subchart has local events, it is not allowed to have outgoing transitions. One such local event is {0} </entry>
+    <entry key="IllegalSuperStepForAtomicSubchart">Atomic subchart {0} cannot have super step semantics enabled if the container chart does not have super step.</entry>
+    <entry key="IllegalStateInAtomicBox"><![CDATA[The Atomic box ''{0}'' cannot have states, only functions. <a href="matlab:Stateflow.SLINSF.SubchartMan.convertFromBoxToState({1,number,integer})">Click here to convert this box into a state.</a>]]></entry>
+    <entry key="PleaseWaitForConversion">Please wait. Converting to an atomic subchart...</entry>
+    <entry key="WaitbarConvertingFromAtomicSubchartToNormal">Please wait. Converting from an atomic subchart to normal...</entry>
+    <entry key="ConvertErrorInvalidAccessToNonTopLevelFcn">Cannot convert {0} to an atomic subchart because
+        {1} is accessing {2}, which will no longer be visible after conversion. Only top-level functions
+        and top-level events of an atomic subchart are visible to the parent chart.
+    </entry>
+    <entry key="ConvertErrorSuperTransition">Unable to create an atomic subchart with supertransition {0} crossing its boundaries.</entry>
+    <entry key="ConvertErrorForMessage">Atomic subchart contains message {0}. The use of messages is not supported in atomic subcharts.</entry>
+        <entry key="ConvertErrorBoxWithStates">Unable to convert a box with states into an atomic box. Only boxes containing functions can be converted into atomic boxes. The first such state in this box is {0} </entry>
+    <entry key="IllegalSubchartInputEventTypesMixture">Atomic subchart {0} is unable to have a function call input event as well as an edge triggered input event. All input events in the atomic subchart must either be edge triggered input events or function call input events.</entry>
+    <entry key="SubchartInputEventTriggerTypeMismatch">Atomic subchart {0} defines input event {1} that is mapped to input event {2} which has a different trigger type. Mapped input events must have the same trigger type.</entry>
+    <entry key="IllegalManyToOneInputEventMapping">Atomic subchart {0} maps input events {1} and {2} to the same container input event {3}. Each container input event can only be mapped to one atomic subchart input event.</entry>
+    <entry key="UnatomIncompatibleActionLanguages">Atomic subchart {0} uses the ''{1}'' action language whereas the container chart {2} uses the ''{3}'' action language. The two charts must have the same action language to enable the correct conversion of the atomic subchart to a regular state.</entry>
+    <entry key="IncompatibleBitOpsSetting">Atomic subchart {0} has C-bit operations ''{1}'' whereas the container chart {2} has C-bit operations ''{3}''. The two charts must have the same setting to enable the correct conversion of the atomic subchart to a regular state.</entry>
+    <entry key="ValueFor">Value for ''{0}''</entry>
+    <entry key="LanguageSettingWasNotIdentified">Language setting of {0,number,integer} was not identified</entry>
+    <entry key="IllegalNamelessAtomicSubchart">All atomic subcharts must have non-empty names. Atomic subchart (#{0,number,integer}) does not have a name. Please give the atomic subchart a name.</entry>    
+    <entry key="IllegalNamelessSubstates">All states inside an atomic subchart must have a non-empty name. Click here (#{0,number,integer}) to navigate to nameless state. Please give this state a name.</entry>
+        <entry key="ConvertErrorIllegalEmptyName">Unable to convert nameless state (#{0,number,integer}) into an atomic subchart. Please give the state a name so that it can be converted into an atomic subchart.</entry>
+        <entry key="ConvertErrorIllegalEmptyNameForBox">Unable to convert nameless box (#{0,number,integer}) into an atomic subchart. Please give the box a name so that it can be converted into an atomic subchart.</entry>
+        <entry key="ConvertErrorIllegalSubstateEmptyName">Unable to convert {0} into an atomic subchart because substate (#{1,number,integer}) has no name. Please give the substate a name so that the conversion can work.</entry>
+        <entry key="UnatomIllegalSubstateEmptyName">Unable to convert atomic subchart {0} into a normal subchart because substate (#{1,number,integer}) has no name. Please give this state a name so that the conversion can work.</entry>
+        <entry key="UnatomIllegalEmptySubchartName">Unable to convert atomic subchart (#{0,number,integer}) into a normal subchart because it has no name. Please give this atomic subchart a name so that the conversion can work.</entry>
+    <entry key="IllegalNestedParameterData">All parameter data inside an atomic subchart must be defined at the chart level. Parameter data {0} is defined in {1} instead of {2}.</entry>
+        <entry key="ConvertErrorNonChartLevelParamData">Unable to convert {0} into an atomic subchart because parameter data {1} is defined in {2} instead of ''{3}''. All parameter data must be defined at the top level state for conversion to work.</entry>
+        <entry key="UnatomIllegalNonChartLevelParamData">Unable to convert atomic subchart {0} into a normal subchart because parameter data {1} is not defined at the chart level. The parameter data should be parented by the atomic subchart.</entry>
+    <entry key="UnknownLibrary">Creating a non-linked atomic subchart because the library ''{0}'' specified for creating a linked atomic subchart is not open. The library needs to be open when creating a linked atomic subchart.</entry>
+    <entry key="busSupportForDSMIsUnavailable">The data type ''{0}'' of the local data {1} is a bus type. Local data mapped to atomic subcharts only support bus types when strict bus modeling is ON. To enable this diagnostic, set the 'Mux blocks used to create bus signals' option to 'error' in Configuration Parameters Dialog -> Diagnostics -> Connectivity pane.</entry>
+    <entry key="InvalidSizeForDSM">Invalid size ''{0}'' specified for {1} :\n\n{2}</entry>
+    <entry key="IllegalUseOfSize">Invalid size ''{0}'' specified for {1}. For a local data which is mapped to an atomic subchart, you cannot use "size(...)" to parameterize the size in terms of other Stateflow data. Please parameterize the size using Simulink parameters such as "[M N]".</entry>
+    <entry key="IllegalMlTypeForMappedLocal">Local data {0} mapped to atomic subchart data cannot be of type 'ml'.</entry>
+    <entry key="IllegalComplexOnForMappedLocal">Local data {0} mapped to atomic subchart data cannot have complexity 'on'.</entry>
+    <entry key="ErrorOnDSMCreation">Error mapping local data {0} to an atomic subchart DSM. Please note that the block path below is invalid:\n\n{1}</entry>
+    <entry key="IllegalMaskParamsForAtomicSubchart">The atomic subchart {0} is created from a masked chart {1}. A chart containing mask parameters cannot currently be used as an atomic subchart.</entry>
+    <entry key="AtomicSubchartCreationSuccessful">
+        Creation of atomic subchart {0} was successful.
+    </entry>
+   <entry key="InvalidLocalDataInsideSubchartContainer">Deleting invalid local data {0} found under the atomic subchart container state: {1}.
+    </entry>
+    <entry key="UnatomicSubchartCreationSuccessful">
+        Creation of normal subchart {0} was successful.
+    </entry>
+    <entry key="SynchronizeMachineChartError">
+        An error occurred while synchronizing {0} and its components.
+    </entry>
+    <entry key="ConvertErrorMessageAccessNotAllowed">Cannot convert {0} to an atomic subchart because it uses message {1}. This is currently not supported.</entry>
+    <entry key="MappingOfAtomicSubchartEventsToMainChartWithDifferentScopesNotSupported">Cannot map atomic subchart event {0} with scope ''{1}'' to main chart event {2} with scope ''{3}''. </entry>
+    <entry key="MultipleOutputsMappedToSameOutput"><![CDATA[Multiple outputs {0} and {1} are <a href="matlab:Stateflow.SLINSF.SimulinkMan.openMappingsDialog({2,number,integer})">mapped</a> to the same container chart data {3}.This is not allowed.</a>]]></entry>
+<entry key ="DisableLinkOnMaskedChart">Masks are supported only on linked atomic subcharts. Disabling the link will delete the mask.</entry> 
+</message>
+</rsccat>

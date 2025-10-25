@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- Copyright 2018-2023 The MathWorks, Inc.
+
+     All definitions for the ARM v5 (aka armcc) compiler
+-->
+<compiler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="armcc" default="arm" xsi:noNamespaceSchemaLocation="extensions.xsd">
+  <clients>
+    <client name="polyspace"/>
+  </clients>
+  <asms>
+    <asm name="__asm"/>
+  </asms>
+  <defines>
+    <define name="__arm__"/>
+    <define name="__ARMCC_VERSION" value="5060528"/>
+    <define name="__CC_ARM" value="1"/>
+    <define name="__TARGET_FEATURE_NEON" value="1"/>
+  </defines>
+  <attributes>
+    <attribute name="__declspec" sig="(*)"/>
+    <attribute name="__packed" alias="gnu:packed"
+               constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|d|vL{specifier:declarator_id,prefix:declarator_id}|Wp|Wr|tL{specifier:declarator_id,prefix:declarator_id}"/>
+    <attribute name="__weak" alias="gnu:weak"/>
+    <attribute name="__weak__" alias="gnu:weak"/>
+    <attribute name="__writeonly"/>
+  </attributes>
+  <attributes kind="data">
+    <attribute name="__align" sig="(ci)" attrkind="ak_align"/>
+    <attribute name="__writeonly"/>
+  </attributes>
+  <attributes kind="function">
+    <attribute name="__forceinline"/>
+    <attribute name="__irq"/>
+    <attribute name="__pure"/>
+    <attribute name="__softfp"/>
+    <attribute name="__value_in_regs"/>
+  </attributes>
+  <qualifiers>
+    <qualifier name="__restrict" token="tok_restrict"/>
+  </qualifiers>
+  <types>
+    <type name="__int64" type_kind="int" decl_specs="long_long"/>
+  </types>
+  <options>
+    <option name="--gnu_attributes"/>
+    <option name="--dollar"/>
+    <option name="--polyspace_define_macro" value="__ESCAPE__(X)=X"/>
+    <option name="--polyspace_define_macro" value="__has_builtin(X)=1"/>
+    <option name="--rvalue_to_lvalue_if_possible"/>
+    <if feoption="--c\+\+">
+      <ifnot feoption="--c\+\+03">
+        <ifnot feoption="--c\+\+11">
+          <ifnot feoption="--c\+\+14">
+            <ifnot feoption="--c\+\+17">
+              <ifnot feoption="--c\+\+20">
+                <option name="--c++03"/>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </ifnot>
+    </if>
+  </options>
+  <target name="arm">
+    <!-- type size and alignment -->
+    <options>
+      <option name="--max_alignment" value="8"/>
+      <option name="--char_bit" value="8"/>
+      <option name="--sizeof_short" value="2"/>
+      <option name="--sizeof_int" value="4"/>
+      <option name="--sizeof_long" value="4"/>
+      <option name="--sizeof_long_long" value="8"/>
+      <option name="--sizeof_pointer" value="4"/>
+      <option name="--sizeof_float" value="4"/>
+      <option name="--sizeof_double" value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--unsigned_chars"/>
+      <ifnot option="--big_endian">
+        <ifnot option="--little_endian">
+          <option name="--little_endian"/>
+        </ifnot>
+      </ifnot>
+      <option name="--small_enums"/>
+    </options>
+    <defines>
+      <switch option="--big_endian">
+        <case>
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="armcc/tmw_builtins/armcc.h"/>
+    </options>
+  </target>
+</compiler>

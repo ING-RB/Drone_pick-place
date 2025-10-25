@@ -1,0 +1,14 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Because the code has never initialized the indicated name, Code
+Analyzer treats it as a function call. However, because this call
+occurs within a class method and there is a property with the same
+name as the apparent function being called, it is unclear whether
+you intended to refer to the property rather than to a function of
+the same name. Even if the code is correct it might confuse others
+who read the code.</p><p>For information about using properties in methods, see <a href="matlab:helpview([docroot '/techdoc/matlab_oop/matlab_oop.map'],'properties_storing_class_data')" target="_blank">“Properties
+&#8212; Storing Class Data”</a>.</p><br/><strong>Suggested Action</strong><br/><p>If you want to refer to a property of an object, find the appropriate
+object (often the first input argument of the method) and place the
+object name and a dot before the property name. </p><p>If you want to call a function that has the same name as a property
+in the class, consider renaming the property to avoid confusing someone
+unfamiliar with the code.</p><p>If you want to keep the current name, suppress the message as
+described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust
+Code Analyzer Message Indicators and Messages</a>.</p></body></html>

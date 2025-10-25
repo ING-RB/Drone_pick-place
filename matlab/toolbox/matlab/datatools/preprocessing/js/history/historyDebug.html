@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Pre-processing App History Panel Client Only Showcase Page</title>
+    <!-- Load css -->
+    <link rel="stylesheet" href="../css/main.css"  type="text/css" />
+    <style>
+        #widgetContainer,
+        #dataTypeDropdown,
+        #openButton,
+        #closeButton{
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:30px;
+            display:inline-block
+        }
+        #widgetContainer{
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(224, 224, 224);
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.20);
+            height: 500px;
+            width: 300px;
+        }
+        .InteractiveSortingWidget{
+            height: 300px;
+            width: 100%;
+            float: left;
+            display: inline-block;
+        }
+        .TreeContainer {
+            padding-top: 17px;
+            display: inherit;
+            width: 85%;
+            height: 100%;
+        }
+        .OverlayNode {
+            width: 285px;
+            height: 0px;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 2;
+            position: absolute;
+        }
+        .tree-list-item.tree-list-item.treeNode.mw-tree-node-hover.selected.focused.leafNode.disabled {
+          color: #bbbb;
+        }
+
+    </style>
+</head>
+<body class="tundra">
+
+<!-- Load dojo -->
+<script src="/derived/ui/generated/datatools/preprocessing/preprocessing/generatedDojoConfig.js"></script>
+<script type="text/javascript" src="../../../../../../../derived/3p/ui/dojo/dojo.js"></script>
+
+<div class="pageControls">
+    <select name="dataType" id="dataTypeDropdown">
+        <option value="double">double</option>
+        <option value="string">string</option>
+        <option value="categorical">categorical</option>
+        <option value="cellstr">cellstr</option>
+        <option value="datetime">datetime</option>
+        <option value="duration">duration</option>
+    </select>
+    <input type="submit" id="openButton" value="Launch History Panel" onclick="launchWidget();"/>
+    <input type="button" id="closeButton" value="Close History Panel" onclick="closeWidget();"/>
+    <br>
+    <div id="widgetContainer"/>
+</div>
+
+<script type="text/javascript">
+var widgetsList = [];
+
+var closeWidget = function () {
+    this.widgetsList.forEach(function(widget) {
+        widget.destroy();
+    })
+}
+
+var launchWidget = function () {
+    require([
+        "preprocessing/history/history",
+        "dojo/dom-construct",
+        "dojo/on"
+    ], function (historyPanel, domConstruct, on) {
+        var treeData = [{
+          id: 'command1',
+          label: 'Data Smoothing',
+          checked: 'true',
+          parent: null
+        }, {
+          id: 'param1_command1',
+          label: 'Custom Preprocessing',
+          checked: 'true',
+          parent: null
+        }, {
+          id: 'command2',
+          label: 'Outlier Removal',
+          checked: 'true',
+          parent: null
+        }, {
+          id: 'command3',
+          label: 'Sort the Data',
+          checked: 'true',
+          parent: null
+        }, {
+          id: 'command4',
+          label: 'Filter the Data',
+          checked: 'true',
+          parent: null
+        }, {
+          id: 'command5',
+          label: 'Datatype Conversion',
+          checked: 'true',
+          parent: null
+        }, {
+          id: 'param1_command2',
+          label: 'Custom Preprocessing',
+          checked: 'true',
+          parent: null
+        }]
+        var outerWrapper = document.getElementById("widgetContainer");
+        var historyWidget = new historyPanel(outerWrapper);
+        historyWidget._setHistory({data: treeData});
+    });
+};
+
+</script>
+</body>
+</html>

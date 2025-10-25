@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0"
+        locale="en_US"
+        product="SimulinkExecution"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../schema/.xsd">
+
+    <message>
+
+        <entry key="AttributeConversionFailed">
+            Conversion of zero-crossing attributes from ''{0}'' to ''{1}'' format
+            failed because the target attributes are contained in an enumeration and
+            therefore, cannot contain an arbitrary combination of directions.
+        </entry>
+
+        <entry key="ZeroCrossingConsistencyCheckFailed">
+            The evaluated zero-crossing vector and the zero-crossing vector cached in
+            the solver are inconsistent. \n {0}
+        </entry>
+
+        <entry key="ConsecutiveZeroCrossingsLimitExceeded">
+            Starting at time {0}, the zero crossing signal #{1,number,integer} caused
+            {2,number,integer} consecutive events within a time span of {3}. Too many
+            such consecutive events within a small time span will slow down simulation
+            or cause simulation to hang.
+        </entry>
+
+        <entry key="ConsecutiveZeroCrossingEventsLimitExceeded">
+            Starting at time {0}, the zero crossing signal {1,number,integer} caused {2,number,integer}
+            consecutive events within a time span of {3}. During this time interval, the magnitude of the
+            zero crossing signal remained below {4}. Too many such consecutive events within a small time
+            span will slow down simulation or cause simulation to hang.
+        </entry>
+
+        <entry key="ZeroCrossingNotBracketedDueToConsecutiveEvents">
+            Starting at time {0} detected {1,number,integer} consecutive zero crossings within a time
+            interval of {2}. In order to let simulation proceed and not hang, the adaptive
+            zero-crossing detection algorithm will accept the current step size ({3}) with out reducing it
+            any further.
+        </entry>
+
+        <entry key="ZeroCrossingNotBracketedDueToSmallSignalValues">
+            At time {0} and step size of {1}, found {2,number,integer} zero crossing(s). However, the
+            adaptive zero-crossing detection algorithm is not reducing the step size any further because
+            the magnitude of the signal(s) with zero crossing(s) is less than tolerance ({3}) during this
+            time step.
+        </entry>
+
+        <entry key="SomeZeroCrossingNotBracketedDueToSmallSignalValues">
+            At time {0} and step size of {1}, found {2,number,integer} zero crossing(s). However, the
+            adaptive zero-crossing detection algorithm will not bracket zero crossing(s) due to
+            {3,number,integer} signal(s) because the signal magnitude is less than tolerance ({4}).
+        </entry>
+
+        <entry key="TooManyConsecutiveZeroCrossings">
+            At time {0}, {1,number,integer} zero crossing signal(s) exceeded the
+            maximum number of {2,number,integer} consecutive events. Consider using
+            the adaptive zero-crossing detection algorithm to continue simulation
+            ignoring these zero crossings.
+        </entry>
+
+        <entry key="DetectedMaskedZeroCrossings">
+            During the simulation time step from {0} to {1} (step size = {2}), found #{3,number,integer}
+            masked zero crossings, i.e., signal(s) with an even number of zero crossings. The search
+            algorithm only detected these zero crossings because of the presence of other zero crossings
+            in this time step. Masked zero crossings are caused by one or more zero crossing signals that
+            have an even number of zero crossings in the current time step. Masked zero crossings may not
+            be detected in all cases.
+        </entry>
+
+        <entry key="MaxNumberOfBracketingIterationsExceeded">
+            During the simulation time step from {0} to {1}, simulation has stopped searching for zero
+            crossings because even after a maximum of {2, number, integer} iterations, the zero-crossing
+            detection algorithm failed to reduce the original time interval to a converged interval whose
+            width is less than or equal to the time tolerance and which contains the zero crossings. The
+            simulation will continue by reporting the zero crossings on the current time interval within
+            the detection algorithm.
+        </entry>
+
+        <entry key="StateMismatchInZcConsistencyCheck">
+            At time {0}, states did not match in zero-crossing consistency check.\n
+            x (left post)   : {1} \n
+            x (re-evaluated): {2}
+        </entry>
+
+        <entry key="FixedStepDiscreteSolverWithZc">
+            <![CDATA[Model ''{0}'' has fixed-step zero-crossing detection enabled but does not contain continuous states. Using fixed-step zero-crossing detection in models that do not contain continuous states is not recommended except when required for consistency for generating code from a model hierarchy that contains another model with continuous states. \n
+                     <actions exclusiveFixIts="yes">
+                     <action type="fixit">
+                     <cmd>set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');</cmd>
+                     <txt>Turn off zero-crossing detection for fixed-step simulation.</txt>
+                     </action>
+                     </actions>]]>
+        </entry>
+
+        <entry key="FixedStepZCNotSupportedForRTCodeGen">
+            <![CDATA[The block diagram "{0}" cannot generate code with fixed-step zero crossing enabled. \n
+                     <actions exclusiveFixIts="yes">
+                     <action type="fixit">
+                     <cmd>set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');</cmd>
+                     <txt>Turn off zero-crossing detection for fixed-step simulation.</txt>
+                     </action>
+                     </actions>]]>
+        </entry>
+        <entry key="FixedStepZc_NonInlinedSFcnsNotSupported">
+            <![CDATA[Block ''{0}'' uses a non-inlined S-function, which is not supported for code generation from a model that uses zero-crossing detection with a fixed-step solver. \n
+                     <actions exclusiveFixIts="yes">
+                     <action type="fixit">
+                     <cmd>set_param( bdroot(''{0}''), ''EnableFixedStepZeroCrossing'', ''off'');</cmd>
+                     <txt>Disable zero-crossing detection for fixed-step simulation.</txt>
+                     </action>
+                     </actions>]]>
+        </entry>
+
+    </message>
+
+</rsccat>

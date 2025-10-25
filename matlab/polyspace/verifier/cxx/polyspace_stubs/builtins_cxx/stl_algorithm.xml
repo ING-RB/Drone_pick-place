@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018-2025 The MathWorks, Inc. -->
+<!-- Property "allocates_memory" : this property is used to flag functions that
+     do dynamic allocations or deallocations of memory.
+     Example for "malloc":
+      <property kind="allocates_memory"/>
+
+     The property "allocates_memory" may accept a value "advanced" that means that the function
+     is an advanced memory management function in the meaning of MISRA C++ 2023.
+     Example for "std::destroy_at":
+     <property kind="allocates_memory">advanced</property>
+-->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+
+  <tag id="std_allocate" kind="function" user_name="std::allocator*::allocate" is_template="true">
+    <properties>
+      <property kind="rule">STD_ALLOCATOR_ALLOCATE</property>
+    </properties>
+  </tag>
+  <tag id="std_construct" kind="function" user_name="std::allocator*::construct" is_template="true">
+    <properties>
+      <property kind="rule">STD_ALLOCATOR_CONSTRUCT</property>
+    </properties>
+  </tag>
+
+  <tag id="bind" kind="function" user_name="std::bind" is_template="true" >
+    <properties>
+      <property kind="rule">PS_INTERNAL_USE_STD_BIND</property>
+    </properties>
+  </tag>
+
+  <tag id="move" kind="function" user_name="std::move" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MOVE_CONST_OBJECT</property>
+      <property kind="rule">PS_INTERNAL_MOVE_NOT_NON_CONST_LVALUE</property>
+      <property kind="rule">STD_MOVE</property>
+    </properties>
+  </tag>
+
+  <tag id="swap_template" kind="function" user_name="std::swap" is_template="true" nb_args="2">
+    <properties>
+      <property kind="rule">STD_SWAP</property>
+      <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      <property kind="behavior">PROPAGATE_NIV</property>
+    </properties>
+  </tag>
+
+  <tag id="iter_swap" kind="function" is_template="true" user_name="std::iter_swap" >
+    <match>
+      <match-declaration>
+        <match-type>
+          <match-nbargs value="2" />
+        </match-type>
+      </match-declaration>
+    </match>
+    <properties>
+      <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      <property kind="behavior">PROPAGATE_NIV</property>
+    </properties>
+  </tag>
+
+  <tag id="swap_ranges" kind="function" user_name="std::swap_ranges" is_template="true">
+    <properties>
+      <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      <property kind="behavior">PROPAGATE_NIV</property>
+      <property kind="rule">STD_SWAP_RANGES</property>
+    </properties>
+  </tag>
+
+  <tag id="expensive_const_move" kind="function" user_name="std::move" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_EXPENSIVE_STD_MOVE_CONST_OBJECT</property>
+    </properties>
+  </tag>
+
+  <tag id="endl" kind="function" user_name="std::endl" is_template="true" >
+    <properties>
+      <property kind="rule">PS_INTERNAL_STD_ENDL_USE</property>
+    </properties>
+  </tag>
+
+  <tag id="unmovable_move" kind="function" user_name="std::move" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_STD_MOVE_UNMOVABLE_TYPE</property>
+    </properties>
+  </tag>
+
+  <!--  -->
+  <tag id="std_function" kind="type" user_name="std::function" >
+    <properties>
+      <property kind="rule">STD_FUNCTION</property>
+    </properties>
+  </tag>
+
+  <!-- g1865054 std::unique_lock is used even if not referenced -->
+  <tag id="std_unique_lock" kind="type" user_name="std::unique_lock" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- g1865054 std::lock_guard is used even if not referenced -->
+  <tag id="std_lock_guard" kind="type" user_name="std::lock_guard" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+    </properties>
+  </tag>
+
+  <!-- g2714104 -->
+  <tag id="std_scoped_lock" kind="type" user_name="std::scoped_lock" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+    </properties>
+  </tag>
+
+  <!-- g2714104 -->
+  <tag id="std_shared_lock" kind="type" user_name="std::shared_lock" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- g2714104 -->
+  <tag id="std_thread" kind="type" user_name="std::thread" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- g2714104 -->
+  <tag id="std_future" kind="type" user_name="std::future" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- g2714104 -->
+  <tag id="std_shared_future" kind="type" user_name="std::shared_future" >
+    <properties>
+      <property kind="rule">ALWAYS_USED</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_promise" kind="type" user_name="std::promise" >
+    <properties>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_packaged_task" kind="type" user_name="std::packaged_task" >
+    <properties>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_exception_t" kind="type" user_name="std::exception" >
+    <properties>
+      <property kind="rule">PS_INTERNAL_NOT_DERIVED_STD_EXCEPTION_THROWN</property>
+      <property kind="rule">PS_INTERNAL_THROW_CATCH_FOR_GENERIC_EXCEPTION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_bad_alloc_t" kind="type" user_name="std::bad_alloc">
+    <properties>
+      <property kind="rule">PS_INTERNAL_STD_BAD_ALLOC</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_new_handler" kind="function" user_name="std::set_new_handler" is_template="false" follow_projection="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_SET_NEW_HANDLER</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_terminate" kind="function" user_name="std::set_terminate" is_template="false" follow_projection="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_SET_TERMINATE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_terminate" kind="function" user_name="std::terminate" is_template="false" follow_projection="true" nb_args="0">
+    <properties>
+      <property kind="rule">PS_INTERNAL_TERMINATE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_unexpected" kind="function" user_name="std::set_unexpected" is_template="false" follow_projection="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_SET_UNEXPECTED</property>
+    </properties>
+  </tag>
+
+  <tag id="std_abort" kind="function" user_name="std::abort" is_template="false" follow_projection="true" nb_args="0">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ABORT</property>
+    </properties>
+  </tag>
+
+  <tag id="exit" kind="function" user_name="exit" is_template="false" follow_projection="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_EXIT</property>
+    </properties>
+  </tag>
+
+  <tag id="std_get" kind="function" user_name="std::get" is_template="true">
+    <properties>
+      <property kind="rule">STD_GET</property>
+    </properties>
+  </tag>
+
+  <tag id="addressof" kind="function" user_name="std::addressof" is_template="true">
+    <properties>
+      <property kind="rule">STD_ADDRESSOF</property>
+    </properties>
+  </tag>
+
+  <!-- Smart pointers -->
+  <tag id="std_unique_ptr" kind="type" user_name="std::unique_ptr" other_names="boost::unique_ptr">
+    <properties>
+      <property kind="rule">STD_UNIQUE_PTR</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_weak_ptr" kind="type" user_name="std::weak_ptr" other_names="boost::weak_ptr,std::__weak_ptr">
+    <properties>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="auto_ptr" kind="type" user_name="std::auto_ptr">
+    <properties>
+      <property kind="rule">STD_AUTO_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="make_unique" kind="function" user_name="std::make_unique" other_names="boost::make_unique" is_template="true">
+    <properties>
+      <property kind="rule">MAKE_UNIQUE</property>
+    </properties>
+  </tag>
+
+  <tag id="make_unique_for_overwrite" kind="function" user_name="std::make_unique_for_overwrite" other_names="boost::make_unique_for_overwrite" is_template="true">
+    <properties>
+      <property kind="rule">MAKE_UNIQUE</property>
+    </properties>
+  </tag>
+
+  <tag id="make_shared" kind="function" user_name="std::make_shared" other_names="boost::make_shared" is_template="true">
+    <properties>
+      <property kind="rule">MAKE_SHARED</property>
+    </properties>
+  </tag>
+
+  <tag id="make_shared_for_overwrite" kind="function" user_name="std::make_shared_for_overwrite" other_names="boost::make_shared_for_overwrite" is_template="true">
+    <properties>
+      <property kind="rule">MAKE_SHARED</property>
+    </properties>
+  </tag>
+
+  <tag id="hash" kind="function" user_name="std::hash*::operator()" is_template="true" >
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+   </properties>
+  </tag>
+
+  <tag id="get_deleter" kind="function" user_name="std::get_deleter" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="std_io_base_width" kind="function" user_name="std::io*::width" nb_args="1">
+    <properties>
+      <property kind="rule">STD_IOS_BASE_WIDTH_CONTROL</property>
+    </properties>
+  </tag>
+
+  <tag id="std_cin" kind="variable" user_name="std::cin">
+    <properties>
+      <property kind="rule">CHECK_STD_CIN_WIDTH</property>
+    </properties>
+  </tag>
+
+  <tag id="std_wcin" kind="variable" user_name="std::wcin">
+    <properties>
+      <property kind="rule">CHECK_STD_CIN_WIDTH</property>
+    </properties>
+  </tag>
+
+  <tag id="stream_in" kind="function" user_name="std::operator&gt;&gt;" other_names="std::*::operator&gt;&gt;" is_template="true">
+    <properties>
+      <property kind="rule">CHECK_STD_CIN_WIDTH</property>
+      <property kind="rule">STD_BASIC_ISTREAM_INPUT</property>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="stream_getline" kind="function" user_name="std::getline" other_names="std::*::getline" is_template="true">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_num_get_get" kind="function" user_name="std::num_get*::get" is_template="true" nb_args="5">
+    <properties>
+      <property kind="rule">STD_FACET_NUM_GET_GET</property>
+    </properties>
+  </tag>
+
+  <tag id="stream_out" kind="function" user_name="std::operator&lt;&lt;" other_names="std::*::operator&lt;&lt;" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+      <property kind="rule">STD_BASIC_OSTREAM_WT</property>
+    </properties>
+  </tag>
+
+  <!-- std::basic_fstream<> type -->
+  <tag id="std_basic_fstream" kind="type" user_name="std::basic_fstream">
+    <properties>
+      <property kind="rule">STD_BASIC_FSTREAM_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- std::basic_iostream<> type -->
+  <tag id="std_basic_iostream" kind="type" user_name="std::basic_iostream">
+    <properties>
+      <property kind="rule">STD_BASIC_IOSTREAM_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- std::basic_iostream<> type -->
+  <tag id="std_basic_ofstream" kind="type" user_name="std::basic_ofstream">
+    <properties>
+      <property kind="rule">STD_BASIC_OFSTREAM_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- std::basic_istream<> type -->
+  <tag id="std_basic_istream" kind="type" user_name="std::basic_istream">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_read" kind="function" user_name="std::basic_istream*::read" is_template="true" nb_args="2">
+    <properties>
+      <property kind="rule">RAW_CHAR_ARRAY@output@1</property>
+      <property kind="rule">RAW_CHAR_ARRAY@size@2</property>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_input" kind="function" user_name="std::basic_istream*::operator&gt;&gt;" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_INPUT</property>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_getline" kind="function" user_name="std::basic_istream*::getline" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <!-- std::basic_filebuf<> type -->
+  <tag id="std_basic_filebuf" kind="type" user_name="std::basic_filebuf">
+    <properties>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_vector" kind="type" user_name="std::vector">
+    <properties>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_readsome" kind="function" user_name="std::basic_istream*::readsome" is_template="true" nb_args="2">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_get" kind="function" user_name="std::basic_istream*::get" is_template="true">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_unget" kind="function" user_name="std::basic_istream*::unget" is_template="true" nb_args="0">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_putback" kind="function" user_name="std::basic_istream*::putback" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_ignore" kind="function" user_name="std::basic_istream*::ignore" is_template="true" nb_args="2">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_RD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_seekg" kind="function" user_name="std::basic_istream*::seekg" is_template="true">
+    <properties>
+      <property kind="rule">STD_BASIC_ISTREAM_SETPOS</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_istream_tellg" kind="function" user_name="std::basic_istream*::tellg" is_template="true">
+    <properties>
+      <property kind="rule">STD_BASIC_STREAM_NO_REPOSITIONING</property>
+    </properties>
+  </tag>
+
+  <!-- std::basic_ostream<> type -->
+  <tag id="std_basic_ostream" kind="type" user_name="std::basic_ostream">
+    <properties>
+      <property kind="rule">STD_BASIC_OSTREAM_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ostream_write" kind="function" user_name="std::basic_ostream*::write" is_template="true" nb_args="2">
+    <properties>
+      <property kind="rule">STD_BASIC_OSTREAM_WT</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ostream_put" kind="function" user_name="std::basic_ostream*::put" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">STD_BASIC_OSTREAM_WT</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ostream_seekp" kind="function" user_name="std::basic_ostream*::seekp" is_template="true">
+    <properties>
+      <property kind="rule">STD_BASIC_OSTREAM_SETPOS</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ostream_tellp" kind="function" user_name="std::basic_ostream*::tellp" is_template="true">
+    <properties>
+      <property kind="rule">STD_BASIC_STREAM_NO_REPOSITIONING</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ios_exceptions" kind="function" user_name="std::basic_ios*::exceptions" other_names="std::ios_base::exceptions" nb_args="1">
+    <properties>
+      <property kind="rule">STD_BASIC_IOS_EXCEPTIONS</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ios_fail" kind="function" user_name="std::basic_ios*::fail" other_names="std::ios_base::fail" nb_args="0">
+    <properties>
+      <property kind="rule">STD_BASIC_IOS_CHECK_STATE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ios_good" kind="function" user_name="std::basic_ios*::good" other_names="std::ios_base::good" nb_args="0">
+    <properties>
+      <property kind="rule">STD_BASIC_IOS_CHECK_STATE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ios_operator_not" kind="function" user_name="std::basic_ios*::operator!" other_names="std::ios_base::operator!" nb_args="0">
+    <properties>
+      <property kind="rule">STD_BASIC_IOS_CHECK_STATE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_ios_operator_bool" kind="function" user_name="std::basic_ios*::operator bool" other_names="std::basic_ios*::operator void*,std::ios_base::operator bool,std::ios_base::operator void*" nb_args="0">
+    <properties>
+      <property kind="rule">STD_BASIC_IOS_CHECK_STATE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_basic_string_ctor" kind="function" user_name="std::basic_string*::basic_string" is_template="true" nb_args="1">
+    <properties>
+      <property kind="rule">PS_INTERNAL_NON_NULL_TERMINATED_STRING@arg@1</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_equal" kind="function" user_name="std::operator==" is_template="true">
+    <properties>
+     <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_not_equal" kind="function" user_name="std::operator!=" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_different" kind="function" user_name="std::operator&lt;=&gt;" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_less_than" kind="function" user_name="std::operator&lt;" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_greater_than" kind="function" user_name="std::operator&gt;" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_less_or_equal" kind="function" user_name="std::operator&lt;=" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="optor_greater_or_equal" kind="function" user_name="std::operator&gt;=" is_template="true">
+    <properties>
+      <property kind="rule">STD_OBSERVER_OF_SMART_PTR</property>
+    </properties>
+  </tag>
+
+  <tag id="enable_shared_from_this" kind="type" user_name="std::enable_shared_from_this">
+    <properties>
+      <property kind="rule">STD_ENABLE_SHARED_FROM_THIS</property>
+    </properties>
+  </tag>
+
+  <tag id="vector_container_subscript" kind="function" user_name="std::vector*::operator[]" is_template="true">
+    <properties>
+      <property kind="rule">CHECK_CONTAINER_NEGATIVE_POSITION</property>
+    </properties>
+  </tag>
+
+  <tag id="array_container_subscript" kind="function" user_name="std::array*::operator[]" is_template="true">
+    <properties>
+      <property kind="rule">CHECK_CONTAINER_NEGATIVE_POSITION</property>
+    </properties>
+  </tag>
+
+  <tag id="span_container_subscript" kind="function" user_name="std::span*::operator[]" is_template="true">
+    <properties>
+      <property kind="rule">CHECK_CONTAINER_NEGATIVE_POSITION</property>
+    </properties>
+  </tag>
+
+  <!-- Mutex -->
+  <tag id="std_mutex" kind="type" user_name="std::mutex" other_names="boost::mutex">
+    <properties>
+      <property kind="rule">STD_MUTEX</property>
+    </properties>
+  </tag>
+
+  <tag id="std_mutex_lock" kind="function" user_name="std::mutex::lock" other_names="boost::mutex::lock">
+    <properties>
+      <property kind="rule">STD_MUTEX_LOCK</property>
+    </properties>
+  </tag>
+
+  <tag id="std_mutex_unlock" kind="function" user_name="std::mutex::unlock" other_names="boost::mutex::unlock">
+    <properties>
+      <property kind="rule">STD_MUTEX_UNLOCK</property>
+    </properties>
+  </tag>
+
+  <!-- Atomic -->
+  <!-- C++20 std::atomic constructor -->
+  <tag id="atomic" kind="function" user_name="std::atomic" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <!-- C++11 C11 atomic based obsoleted by C++20 -->
+  <tag id="atomic_is_lock_free" kind="function" user_name="std::atomic_is_lock_free" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_load" kind="function" user_name="std::atomic_load" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_load_explicit" kind="function" user_name="std::atomic_load_explicit" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_store" kind="function" user_name="std::atomic_store" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_store_explicit" kind="function" user_name="std::atomic_store_explicit" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_exchange" kind="function" user_name="std::atomic_exchange" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_exchange_explicit" kind="function" user_name="std::atomic_exchange_explicit" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_compare_exchange_strong" kind="function" user_name="std::atomic_compare_exchange_strong" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_compare_exchange_strong_explicit" kind="function" user_name="std::atomic_compare_exchange_strong_explicit" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_compare_exchange_weak" kind="function" user_name="std::atomic_compare_exchange_weak" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+  <tag id="atomic_compare_exchange_weak_explicit" kind="function" user_name="std::atomic_compare_exchange_weak_explicit" is_template="true">
+    <properties>
+      <property kind="rule">STD_ATOMIC_OP</property>
+    </properties>
+  </tag>
+
+  <!-- Compare -->
+  <tag id="std_equal_to" kind="type" user_name="std::equal_to" other_names="boost::equal_to">
+    <properties>
+      <property kind="rule">STD_EQUAL_TO</property>
+      <property kind="rule">NO_STRICT_WEAK_ORDERING_RELATION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_not_equal_to" kind="type" user_name="std::not_equal_to" other_names="boost::not_equal_to">
+    <properties>
+      <property kind="rule">STD_NOT_EQUAL_TO</property>
+      <property kind="rule">NO_STRICT_WEAK_ORDERING_RELATION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_less" kind="type" user_name="std::less" other_names="boost::less">
+    <properties>
+      <property kind="rule">STD_LESS</property>
+    </properties>
+  </tag>
+
+  <tag id="std_greater" kind="type" user_name="std::greater" other_names="boost::greater">
+    <properties>
+      <property kind="rule">STD_GREATER</property>
+    </properties>
+  </tag>
+
+  <tag id="std_less_equal" kind="type" user_name="std::less_equal" other_names="boost::less_equal">
+    <properties>
+      <property kind="rule">STD_LESS_EQUAL</property>
+      <property kind="rule">NO_STRICT_WEAK_ORDERING_RELATION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_greater_equal" kind="type" user_name="std::greater_equal" other_names="boost::greater_equal">
+    <properties>
+      <property kind="rule">STD_GREATER_EQUAL</property>
+      <property kind="rule">NO_STRICT_WEAK_ORDERING_RELATION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_logical_and" kind="type" user_name="std::logical_and" other_names="boost::logical_and">
+    <properties>
+      <property kind="rule">STD_LOGICAL_AND</property>
+      <property kind="rule">NO_STRICT_WEAK_ORDERING_RELATION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_logical_or" kind="type" user_name="std::logical_or" other_names="boost::logical_or">
+    <properties>
+      <property kind="rule">STD_LOGICAL_OR</property>
+      <property kind="rule">NO_STRICT_WEAK_ORDERING_RELATION</property>
+    </properties>
+  </tag>
+
+  <tag id="std_byte" kind="type" user_name="std::byte">
+    <properties>
+      <property kind="rule">STD_BYTE</property>
+    </properties>
+  </tag>
+
+  <!-- Algorithm using Compare -->
+  <tag id="std_sort" kind="function" user_name="std::sort" other_names="boost::sort" is_template="true">
+    <properties>
+      <property kind="rule">STD_SORT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_stable_sort" kind="function" user_name="std::stable_sort" other_names="boost::stable_sort" is_template="true">
+    <properties>
+      <property kind="rule">STD_STABLE_SORT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_partial_sort" kind="function" user_name="std::partial_sort" other_names="boost::partial_sort" is_template="true">
+    <properties>
+      <property kind="rule">STD_PARTIAL_SORT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_partial_sort_copy" kind="function" user_name="std::partial_sort_copy" other_names="boost::partial_sort_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_PARTIAL_SORT_COPY</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_is_sorted" kind="function" user_name="std::is_sorted" other_names="boost::is_sorted" is_template="true">
+    <properties>
+      <property kind="rule">STD_IS_SORTED</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_is_sorted_until" kind="function" user_name="std::is_sorted_until" other_names="boost::is_sorted_until" is_template="true">
+    <properties>
+      <property kind="rule">STD_IS_SORTED_UNTIL</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_nth_element" kind="function" user_name="std::nth_element" other_names="boost::nth_element" is_template="true">
+    <properties>
+      <property kind="rule">STD_NTH_ELEMENT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_lower_bound" kind="function" user_name="std::lower_bound" other_names="boost::lower_bound" is_template="true">
+    <properties>
+      <property kind="rule">STD_LOWER_BOUND</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+       <property kind="rule">RETURNS_ITERATOR</property>
+       <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_upper_bound" kind="function" user_name="std::upper_bound" other_names="boost::upper_bound" is_template="true">
+    <properties>
+      <property kind="rule">STD_UPPER_BOUND</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+       <property kind="rule">RETURNS_ITERATOR</property>
+       <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_binary_search" kind="function" user_name="std::binary_search" other_names="boost::binary_search" is_template="true">
+    <properties>
+      <property kind="rule">STD_BINARY_SEARCH</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_equal_range" kind="function" user_name="std::equal_range" other_names="boost::equal_range" is_template="true">
+    <properties>
+      <property kind="rule">STD_EQUAL_RANGE</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_merge" kind="function" user_name="std::merge" other_names="boost::merge" is_template="true">
+    <properties>
+      <property kind="rule">STD_MERGE</property>
+      <property kind="rule">COMPARE</property>
+       <property kind="rule">RETURNS_ITERATOR</property>
+       <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_inplace_merge" kind="function" user_name="std::inplace_merge" other_names="boost::inplace_merge" is_template="true">
+    <properties>
+      <property kind="rule">STD_INPLACE_MERGE</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_includes" kind="function" user_name="std::includes" other_names="boost::includes" is_template="true">
+    <properties>
+      <property kind="rule">STD_INCLUDES</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_difference" kind="function" user_name="std::set_difference" other_names="boost::set_difference" is_template="true">
+    <properties>
+      <property kind="rule">STD_SET_DIFFERENCE</property>
+      <property kind="rule">COMPARE</property>
+       <property kind="rule">RETURNS_ITERATOR</property>
+       <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_intersection" kind="function" user_name="std::set_intersection" other_names="boost::set_intersection" is_template="true">
+    <properties>
+      <property kind="rule">STD_SET_INTERSECTION</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_symmetric_difference" kind="function" user_name="std::set_symmetric_difference" other_names="boost::set_symmetric_difference" is_template="true">
+    <properties>
+      <property kind="rule">STD_SET_SYMMETRIC_DIFFERENCE</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_set_union" kind="function" user_name="std::set_union" other_names="boost::set_union" is_template="true">
+    <properties>
+      <property kind="rule">STD_SET_UNION</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_push_heap" kind="function" user_name="std::push_heap" other_names="boost::push_heap" is_template="true">
+    <properties>
+      <property kind="rule">STD_PUSH_HEAP</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_pop_heap" kind="function" user_name="std::pop_heap" other_names="boost::pop_heap" is_template="true">
+    <properties>
+      <property kind="rule">STD_POP_HEAP</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_make_heap" kind="function" user_name="std::make_heap" other_names="boost::make_heap" is_template="true">
+    <properties>
+      <property kind="rule">STD_MAKE_HEAP</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_sort_heap" kind="function" user_name="std::sort_heap" other_names="boost::sort_heap" is_template="true">
+    <properties>
+      <property kind="rule">STD_SORT_HEAP</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_is_heap" kind="function" user_name="std::is_heap" other_names="boost::is_heap" is_template="true">
+    <properties>
+      <property kind="rule">STD_IS_HEAP</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_is_heap_until" kind="function" user_name="std::is_heap_until" other_names="boost::is_heap_until" is_template="true">
+    <properties>
+      <property kind="rule">STD_IS_HEAP_UNTIL</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_max" kind="function" user_name="std::max" other_names="boost::max" is_template="true">
+    <properties>
+      <property kind="rule">STD_MAX</property>
+      <property kind="rule">COMPARE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_max_element" kind="function" user_name="std::max_element" other_names="boost::max_element" is_template="true">
+    <properties>
+      <property kind="rule">STD_MAX_ELEMENT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_min" kind="function" user_name="std::min" other_names="boost::min" is_template="true">
+    <properties>
+      <property kind="rule">STD_MIN</property>
+      <property kind="rule">COMPARE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_min_element" kind="function" user_name="std::min_element" other_names="boost::min_element" is_template="true">
+    <properties>
+      <property kind="rule">STD_MIN_ELEMENT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_minmax" kind="function" user_name="std::minmax" other_names="boost::minmax" is_template="true">
+    <properties>
+      <property kind="rule">STD_MINMAX</property>
+      <property kind="rule">COMPARE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_minmax_element" kind="function" user_name="std::minmax_element" other_names="boost::minmax_element" is_template="true">
+    <properties>
+      <property kind="rule">STD_MINMAX_ELEMENT</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_lexicographical_compare" kind="function" user_name="std::lexicographical_compare" other_names="boost::lexicographical_compare" is_template="true">
+    <properties>
+      <property kind="rule">STD_LEXICOGRAPHICAL_COMPARE</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_next_permutation" kind="function" user_name="std::next_permutation" other_names="boost::next_permutation" is_template="true">
+    <properties>
+      <property kind="rule">STD_NEXT_PERMUTATION</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_prev_permutation" kind="function" user_name="std::prev_permutation" other_names="boost::prev_permutation" is_template="true">
+    <properties>
+      <property kind="rule">STD_PREV_PERMUTATION</property>
+      <property kind="rule">COMPARE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_iota" kind="function" user_name="std::iota" other_names="boost::iota" is_template="true">
+    <properties>
+      <property kind="rule">STD_IOTA</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_accumulate" kind="function" user_name="std::accumulate" other_names="boost::accumulate" is_template="true">
+    <properties>
+      <property kind="rule">STD_ACCUMULATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_inner_product" kind="function" user_name="std::inner_product" other_names="boost::inner_product" is_template="true">
+    <properties>
+      <property kind="rule">STD_INNER_PRODUCT</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+ <tag id="std_adjacent_difference" kind="function" user_name="std::adjacent_difference" other_names="boost::adjacent_difference" is_template="true">
+    <properties>
+      <property kind="rule">STD_ADJACENT_DIFFERENCE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_partial_sum" kind="function" user_name="std::partial_sum" other_names="boost::partial_sum" is_template="true">
+    <properties>
+      <property kind="rule">STD_PARTIAL_SUM</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_reduce" kind="function" user_name="std::reduce" other_names="boost::reduce" is_template="true">
+    <properties>
+      <property kind="rule">STD_REDUCE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_exclusive_scan" kind="function" user_name="std::exclusive_scan" other_names="boost::exclusive_scan" is_template="true">
+    <properties>
+      <property kind="rule">STD_EXCLUSIVE_SCAN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_inclusive_scan" kind="function" user_name="std::inclusive_scan" other_names="boost::inclusive_scan" is_template="true">
+    <properties>
+      <property kind="rule">STD_INCLUSIVE_SCAN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_transform_exclusive_scan" kind="function" user_name="std::transform_exclusive_scan" other_names="boost::transform_exclusive_scan" is_template="true">
+    <properties>
+      <property kind="rule">STD_TRANSFORM_EXCLUSIVE_SCAN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_transform_inclusive_scan" kind="function" user_name="std::transform_inclusive_scan" other_names="boost::transform_inclusive_scan" is_template="true">
+    <properties>
+      <property kind="rule">STD_TRANSFORM_INCLUSIVE_SCAN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_uninitialized_copy" kind="function" user_name="std::uninitialized_copy" other_names="boost::uninitialized_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_COPY</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_copy_n" kind="function" user_name="std::uninitialized_copy_n" other_names="boost::uninitialized_copy_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_COPY_N</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_fill" kind="function" user_name="std::uninitialized_fill" other_names="boost::uninitialized_fill" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_FILL</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_fill_n" kind="function" user_name="std::uninitialized_fill_n" other_names="boost::uninitialized_fill_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_FILL_N</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_move" kind="function" user_name="std::uninitialized_move" other_names="boost::uninitialized_move" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_MOVE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_move_n" kind="function" user_name="std::uninitialized_move_n" other_names="boost::uninitialized_move_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_MOVE_N</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_default_construct" kind="function" user_name="std::uninitialized_default_construct" other_names="boost::uninitialized_default_construct" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNINITIALIZED_DEFAULT_CONSTRUCT</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_default_construct_n" kind="function" user_name="std::uninitialized_default_construct_n" other_names="boost::uninitialized_default_construct_n" is_template="true">
+    <properties>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_value_construct" kind="function" user_name="std::uninitialized_value_construct" other_names="boost::uninitialized_value_construct" is_template="true">
+    <properties>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_uninitialized_value_construct_n" kind="function" user_name="std::uninitialized_value_construct_n" other_names="boost::uninitialized_value_construct_n" is_template="true">
+    <properties>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+
+  <tag id="std_fill" kind="function" user_name="std::fill" other_names="boost::fill" is_template="true">
+    <properties>
+      <property kind="rule">STD_FILL</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_fill_n" kind="function" user_name="std::fill_n" other_names="boost::fill_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_FILL_N</property>
+    </properties>
+  </tag>
+
+
+  <tag id="std_destroy" kind="function" user_name="std::destroy" other_names="boost::destroy" is_template="true">
+    <properties>
+      <property kind="rule">STD_DESTROY</property>
+      <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_destroy_n" kind="function" user_name="std::destroy_n" other_names="boost::destroy_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_DESTROY_N</property>
+      <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_destroy_at" kind="function" user_name="std::destroy_at" other_names="boost::destroy_at" is_template="true">
+    <properties>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+  <tag id="std_launder" kind="function" user_name="std::launder" other_names="boost::launder" is_template="true">
+    <properties>
+      <property kind="allocates_memory">advanced</property>
+    </properties>
+  </tag>
+
+  <!-- HAS_PREDICATE (based on https://en.cppreference.com/w/cpp/header/algorithm) -->
+
+  <!--Non-modifying sequence operations -->
+  <tag id="std_all_of" kind="function" user_name="std::all_of" is_template="true">
+    <properties>
+      <property kind="rule">STD_ALL_OF</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_any_of" kind="function" user_name="std::any_of" is_template="true">
+    <properties>
+      <property kind="rule">STD_ANY_OF</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_none_of" kind="function" user_name="std::none_of" is_template="true">
+    <properties>
+      <property kind="rule">STD_NONE_OF</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_for_each" kind="function" user_name="std::for_each" is_template="true">
+    <properties>
+      <property kind="rule">STD_FOR_EACH</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_for_each_n" kind="function" user_name="std::for_each_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_FOR_EACH_N</property>
+      <property kind="rule">HAS_PREDICATE</property>
+    </properties>
+  </tag>
+  <tag id="std_count" kind="function" user_name="std::count" is_template="true">
+    <properties>
+      <property kind="rule">STD_COUNT</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_count_if" kind="function" user_name="std::count_if" is_template="true">
+    <properties>
+      <property kind="rule">STD_COUNT_IF</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_mismatch" kind="function" user_name="std::mismatch" is_template="true">
+    <properties>
+      <property kind="rule">STD_MISMATCH</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <!-- Modifying sequence operations -->
+  <tag id="std_generate" kind="function" user_name="std::generate" is_template="true">
+    <properties>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_generate_n" kind="function" user_name="std::generate_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_GENERATE_N</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_replace_if" kind="function" user_name="std::replace_if" is_template="true">
+    <properties>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_replace_copy" kind="function" user_name="std::replace_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_REPLACE_COPY</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_replace_copy_if" kind="function" user_name="std::replace_copy_if" is_template="true">
+    <properties>
+      <property kind="rule">STD_REPLACE_COPY_IF</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_reverse_copy" kind="function" user_name="std::reverse_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_REVERSE_COPY</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_rotate_copy" kind="function" user_name="std::rotate_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_ROTATE_COPY</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <!-- Other algorithms -->
+  <tag id="std_find" kind="function" user_name="std::find" other_names="boost::find" is_template="true">
+    <properties>
+      <property kind="rule">STD_FIND</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_find_if" kind="function" user_name="std::find_if" other_names="boost::find_if" is_template="true">
+    <properties>
+      <property kind="rule">STD_FIND_IF</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_find_if_not" kind="function" user_name="std::find_if_not" other_names="boost::find_if_not" is_template="true">
+    <properties>
+      <property kind="rule">STD_FIND_IF_NOT</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_find_end" kind="function" user_name="std::find_end" other_names="boost::find_end" is_template="true">
+    <properties>
+      <property kind="rule">STD_FIND_END</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_find_first_of" kind="function" user_name="std::find_first_of" other_names="boost::find_first_of" is_template="true">
+    <properties>
+      <property kind="rule">STD_FIND_FIRST_OF</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_adjacent_find" kind="function" user_name="std::adjacent_find" other_names="boost::adjacent_find" is_template="true">
+    <properties>
+      <property kind="rule">STD_ADJACENT_FIND</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_search" kind="function" user_name="std::search" other_names="boost::search" is_template="true">
+    <properties>
+      <property kind="rule">STD_SEARCH</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_search_n" kind="function" user_name="std::search_n" other_names="boost::search_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_SEARCH_N</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_copy" kind="function" user_name="std::copy" other_names="boost::copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_COPY</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_copy_if" kind="function" user_name="std::copy_if" other_names="boost::copy_if" is_template="true">
+    <properties>
+      <property kind="rule">STD_COPY_IF</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_copy_n" kind="function" user_name="std::copy_n" other_names="boost::copy_n" is_template="true">
+    <properties>
+      <property kind="rule">STD_COPY_N</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_copy_backward" kind="function" user_name="std::copy_backward" other_names="boost::copy_backward" is_template="true">
+    <properties>
+      <property kind="rule">STD_COPY_BACKWARD</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_move" kind="function" user_name="std::move" other_names="boost::move" is_template="true">
+    <properties>
+      <property kind="rule">STD_MOVE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_move_backward" kind="function" user_name="std::move_backward" other_names="boost::move_backward" is_template="true">
+    <properties>
+      <property kind="rule">STD_MOVE_BACKWARD</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_transform" kind="function" user_name="std::transform" other_names="boost::transform" is_template="true">
+    <properties>
+      <property kind="rule">STD_TRANSFORM</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_remove" kind="function" user_name="std::remove" other_names="boost::remove" is_template="true">
+    <properties>
+      <property kind="rule">STD_REMOVE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+    </properties>
+  </tag>
+  <tag id="std_remove_if" kind="function" user_name="std::remove_if" other_names="boost::remove_if" is_template="true">
+    <properties>
+      <property kind="rule">STD_REMOVE_IF</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+    </properties>
+  </tag>
+  <tag id="std_remove_copy" kind="function" user_name="std::remove_copy" other_names="boost::remove_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_REMOVE_COPY</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_remove_copy_if" kind="function" user_name="std::remove_copy_if" other_names="boost::remove_copy_if" is_template="true">
+    <properties>
+      <property kind="rule">STD_REMOVE_COPY_IF</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_unique" kind="function" user_name="std::unique" other_names="boost::unique" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNIQUE</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+      <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+    </properties>
+  </tag>
+  <tag id="std_unique_copy" kind="function" user_name="std::unique_copy" other_names="boost::unique_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_UNIQUE_COPY</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_partition" kind="function" user_name="std::partition" other_names="boost::partition" is_template="true">
+    <properties>
+      <property kind="rule">STD_PARTITION</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_partition_copy" kind="function" user_name="std::partition_copy" other_names="boost::partition_copy" is_template="true">
+    <properties>
+      <property kind="rule">STD_PARTITION_COPY</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_stable_partition" kind="function" user_name="std::stable_partition" other_names="boost::stable_partition" is_template="true">
+    <properties>
+      <property kind="rule">STD_STABLE_PARTITION</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <!-- Iterator -->
+  <tag id="std_begin" kind="function" user_name="std::begin" other_names="boost::begin" is_template="true">
+    <properties>
+      <property kind="rule">STD_BEGIN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">BEGIN_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_end" kind="function" user_name="std::end" other_names="boost::end" is_template="true">
+    <properties>
+      <property kind="rule">STD_END</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">END_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_cbegin" kind="function" user_name="std::cbegin" other_names="boost::cbegin" is_template="true">
+    <properties>
+      <property kind="rule">STD_CBEGIN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">BEGIN_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_cend" kind="function" user_name="std::cend" other_names="boost::cend" is_template="true">
+    <properties>
+      <property kind="rule">STD_CEND</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+      <property kind="rule">END_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_rbegin" kind="function" user_name="std::rbegin" other_names="boost::rbegin" is_template="true">
+    <properties>
+      <property kind="rule">STD_RBEGIN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_rend" kind="function" user_name="std::rend" other_names="boost::rend" is_template="true">
+    <properties>
+      <property kind="rule">STD_REND</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_crbegin" kind="function" user_name="std::crbegin" other_names="boost::crbegin" is_template="true">
+    <properties>
+      <property kind="rule">STD_CRBEGIN</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+    </properties>
+  </tag>
+  <tag id="std_crend" kind="function" user_name="std::crend" other_names="boost::crend" is_template="true">
+    <properties>
+      <property kind="rule">STD_CREND</property>
+      <property kind="rule">RETURNS_ITERATOR</property>
+    </properties>
+  </tag>
+
+  <!-- Partitioning operations -->
+  <tag id="std_is_partitioned" kind="function" user_name="std::is_partitioned" is_template="true">
+    <properties>
+      <property kind="rule">STD_IS_PARTITIONED</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+  <tag id="std_partition_point" kind="function" user_name="std::partition_point" is_template="true">
+    <properties>
+      <property kind="rule">STD_PARTITION_POINT</property>
+      <property kind="rule">HAS_PREDICATE</property>
+      <property kind="rule">ITERATOR_RANGE</property>
+    </properties>
+  </tag>
+
+  <tag id="std_empty" kind="function" user_name="std::empty" is_template="true">
+    <properties>
+      <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+    </properties>
+  </tag>
+
+  <tag id="std_locale_global" kind="function" user_name="std::locale::global">
+    <properties>
+      <property kind="rule">PS_INTERNAL_STD_LOCALE_GLOBAL_USED</property>
+    </properties>
+  </tag>
+</tags>
+
+<!-- LocalWords:  NIV ADDRESSOF CIN ISTREAM OSTREAM fstream iostream OFSTREAM istream filebuf
+     LocalWords:  ostream INPLACE PREV CBEGIN CEND RBEGIN CRBEGIN CREND
+-->

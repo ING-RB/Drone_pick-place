@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2009-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+    <entry key="Error">
+      Solver encountered an error while simulating model ''{0}'' at time {1} and cannot
+      continue. Please check the model for errors.
+    </entry>
+
+    <entry key="Warning">
+      Solver is encountering difficulty in simulating model ''{0}'' at time {1}. Simulink will
+      continue to simulate with warnings. Please check the model for errors.
+    </entry>
+
+    <entry key="StateNotFinite">
+      Continuous state ''{0}'' of ''{1}'' at time {2} is not finite.
+      Simulink will terminate the simulation. There may be a singularity in the
+      solution. Check the model ''{3}'' for errors. Try reducing the fixed step size
+      or tighten the error tolerances for variable-step solvers.
+    </entry>
+
+    <entry key="InvSrcBlkOutBeingMergedAndUsedToComputeDeriv"><![CDATA[
+      It is invalid to merge the non-continuous signal from block ''{0}'' <sldiag objui="outport" objparam="{1,number,integer}" objname="{0}">output
+      port {1,number,integer}</sldiag> with other continuous signals because the merged
+      signal is driving an input port used to compute the derivative of a
+      continuous state.
+    ]]></entry>
+
+    <entry key="ZeroCrossingIntervalNotBracketedDueToConsecutiveEvents">
+      <![CDATA[
+      Starting at time {1}, Simulink detected {2,number,integer} consecutive zero crossings within
+      a time interval of {3}. In order to let simulation proceed and not hang, the adaptive
+      zero-crossing detection algorithm will accept the current step size ({4}) without reducing it
+      any further. The zero crossings signals causing these consecutive events (or whose events are
+      not being bracketed) are listed below.\n
+      {5}
+      <actions exclusiveFixIts="no">
+        <action type="fixit">
+         <cmd>
+          set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');
+         </cmd>
+         <txt>
+          Turn off this diagnostic by setting 'Ignored Zero Crossings' to 'none'.
+         </txt>
+        </action>
+        <action type="suggestion">
+         <txt>
+          Disable zero-crossing detection on the blocks listed above that had the most number of
+          zero crossings.
+         </txt>
+        </action>
+      </actions>
+      ]]>
+    </entry>
+      
+    <entry key="ZeroCrossingNotBracketedDueToSmallSignalValues">
+      <![CDATA[
+      At time {1} and step size of {2}, found {3,number,integer} zero crossing(s) due to the
+      signal(s) listed below. However, the adaptive zero-crossing detection algorithm is not
+      reducing the step size any further because the magnitude of the signal(s) with zero
+      crossing(s) is less than tolerance ({4}) during this time step.\n
+      {5}
+      <actions exclusiveFixIts="no">
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');</cmd>
+          <txt>
+            Turn off this diagnostic by setting 'Ignored Zero Crossings' to 'none'.
+          </txt>
+        </action>
+        <action type="suggestion">
+         <txt>
+          Disabling zero-crossing detection on the blocks listed above can speed up simulation.
+         </txt>
+        </action>
+      </actions>
+      ]]>
+    </entry>
+      
+    <entry key="SomeZeroCrossingNotBracketedDueToSmallSignalValues">
+      <![CDATA[
+      At time {1} and step size of {2}, found {3,number,integer} zero crossing(s). However, the
+      adaptive zero-crossing detection algorithm will not bracket zero crossing(s) due to the
+      {4,number,integer} signal(s) listed below, because the signal magnitude is less than
+      tolerance ({5}).\n
+      {6}
+      <actions exclusiveFixIts="no">
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');</cmd>
+          <txt>
+            Turn off this diagnostic by setting 'Ignored Zero Crossings' to 'none'.
+          </txt>
+        </action>
+        <action type="suggestion">
+         <txt>
+          Disabling zero-crossing detection on the blocks listed above can speed up simulation.
+         </txt>
+        </action>
+      </actions>
+      ]]>
+    </entry>
+      
+    <entry key="MaxConsecutiveZeroCrossingsError">
+      <![CDATA[
+      Simulink will stop the simulation of model ''{0}'' because the {1, number, integer} zero
+      crossing signal(s) identified below caused {2,number,integer} consecutive zero crossing
+      events in time interval between {3} and {4}.\n
+      {5}
+      <actions exclusiveFixIts="no">
+       <action type="fixit">
+        <cmd>
+         set_param(''{0}'',''ZeroCrossAlgorithm'',''Adaptive'',''IgnoredZcDiagnostic'',''none'');
+        </cmd>
+        <txt>
+         You can suppress the diagnostics and continue simulation without bracketing these zero
+         crossings by switching the <sldiag objui="configset" objparam="ZeroCrossAlgorithm">
+         zero crossing detection algorithm</sldiag> to ''Adaptive'' and setting the 
+         <sldiag objui="configset" objparam="IgnoredZcDiagnostic">Ignored Zero Crossings</sldiag>
+         diagnostic to ''none''.
+        </txt>
+       </action>
+       <action type="suggestion">
+        <txt>
+         Disable zero-crossing detection on the blocks listed above that caused the most events.
+        </txt>
+       </action>
+      </actions>
+      ]]>
+    </entry>
+
+    <entry key="DetectedMaskedZeroCrossings">
+      <![CDATA[During the simulation time step from {0} to {1} (step size = {2}), found
+      the following {3,number,integer} masked zero crossings, i.e., signal(s) with an even number
+      of zero crossing events.\n
+      {4}
+      The search algorithm only detected these zero crossings because of the presence of other zero
+      crossings in this time step. Masked zero crossings are caused by one or more zero crossing
+      signals that have an even number of zero crossings in the current time step. Masked zero
+      crossings may not be detected in all cases.      
+      <actions exclusiveFixIts="yes">
+        <action type="suggestion">
+            <cmd>configset.internal.open(''{6}'',''Refine'')</cmd>
+            <txt>Increase ''Refine factor'' from ({5,number,integer}) to a larger value</txt>
+        </action>
+        <action type="suggestion" btn="apply">
+            <cmd>set_param(''{6}'',''MaskedZcDiagnostic'',''none'');</cmd>
+            <txt>To disable this diagnostic, set the <sldiag objui="configset" objparam="MaskedZcDiagnostic">Masked zero crossings</sldiag> 
+                 diagnostic to ''none''.</txt>
+        </action>
+    </actions>
+
+      ]]>
+    </entry>
+    
+    <entry key="UnsupportedSolverForRSim">
+      The specified solver ''{0}'' is incompatible with RSIM target, hence, the RSIM target build for model ''{1}'' will stop. \n
+      Use one of the following supported solvers for RSIM : \n
+      "ode1"    \n
+      "ode14x"  \n
+      "ode15s"  \n
+      "ode113"  \n
+      "ode2"    \n
+      "ode23"   \n
+      "ode23s"  \n
+      "ode23t"  \n
+      "ode23tb" \n
+      "ode3"    \n
+      "ode4"    \n
+      "ode45"   \n
+      "ode5"    \n
+      "ode8"    \n
+    </entry>
+
+    <entry key="FixedStepZeroCrossingNotSupportedForRSim">
+      <![CDATA[Fixed-step zero crossing detection is not supported for the RSIM target, hence, the RSIM target build for model ''{0}'' will stop.\n
+      <actions exclusiveFixIts="yes">
+      <action type="fixit">
+      <cmd>set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');</cmd>
+      <txt>Turn off zero-crossing detection for fixed-step simulation.</txt>
+    </action>
+    </actions>]]>
+    </entry>
+    
+
+    <entry key="SolverInputCompensationSupportZOHonly">
+      Using zero-order hold input handling for model ''{3}'' referenced by Model block ''{2}'' because solver ''{1}'' does not support ''{0}'' input signal handling.
+    </entry>
+
+     <entry key="SolverOutputApproximationSupportZOHonly">
+         Model block ''{2}'' must use zero-order hold output signal handling because solver ''{1}'' does not support ''{0}'' output signal handling.
+         <![CDATA[
+                 <actions exclusiveFixIts="yes"> 
+                 <action type="fixit" id="UseZOHOutputHandling">
+                 <cmd>set_param(''{2}'', ''OutputSignalHandling'', ''Zero-order hold'')</cmd>    
+                 <txt>Set the ''Output signal handling'' parameter value for Model block ''{2}'' to ''Zero-order hold''.</txt>     
+                 </action>
+            </actions> 			
+         ]]>
+    </entry>
+    <entry key="SolverChangeInFastRestartExplicitToImplicit">Model ''{1}'' was initialized in fast restart using an explicit solver. To support change to ''{0}'' which requires Jacobian; without recompiling the model, the solver Jacobian method control will be switched from ''{2}'' to Full Perturbation.</entry>
+    <entry key="InvalidSolverChangeInFastRestartOdeN">For a model initialized in fast restart using an implicit solver and the model having a mass matrix, changing solver to odeN with an explicit Integration method ''{0}'' is not supported. The new solver odeN for model ''{1}'' will not be used. Set the Integration method for odeN to an implicit solver. Valid methods are 'ode14x' and 'ode1be'.</entry>
+    <entry key="InvalidIntMethodChangeInFastRestartOdeN">For a model initialized in fast restart using an implicit solver and the model having a mass matrix, changing solver to odeN with an explicit integration method ''{0}'' is not supported. The new integration method for model ''{1}'' will not be used. Set the Integration method for odeN to an implicit solver. Valid methods are 'ode14x' and 'ode1be'.</entry>
+    <entry key="InvalidSolverChangeInFastRestartImplicitToExplicit">For a model initialized in fast restart using an implicit solver and the model having a mass matrix, changing solver to an explicit solver is not supported. The new solver ''{0}'' for model ''{1}'' will not be used. Set the solver to an implicit solver.</entry>
+    <entry key="InvalidSolverChangeInFastRestartVarToFixed">For a model initialized in fast restart using a variable-step solver, changing solver to a fixed-step solver is not supported. The new solver ''{0}'' for model ''{1}'' will not be used. Set the solver to a variable-step solver.</entry>
+    <entry key="SolverChangeNotSupportedFixedStep">Solver change with fast restart is not supported for fixed-step solvers. The current compilation needs to be terminated before the solver can be changed.</entry>
+    <entry key="FixedStepIsNotDiscreteDivisor">
+    <![CDATA[Invalid setting for fixed-step size ({0}) in model ''{1}''. All sample times in your model must be an integer multiple of the fixed-step size.
+      <actions exclusiveFixIts="yes">
+        <action type="fixit" id="SetFixedStepToDivisor">
+            <cmd>set_param(''{1}'', 'FixedStep', ''{2}'')</cmd>
+            <txt>Set fixed-step size to {2}</txt>
+        </action>
+    </actions>
+
+    ]]>
+    </entry>
+</message>
+</rsccat>

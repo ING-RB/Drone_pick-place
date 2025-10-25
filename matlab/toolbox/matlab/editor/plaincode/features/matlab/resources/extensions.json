@@ -1,0 +1,47 @@
+{
+    "mw.desktop.copilot": {
+      "definitions": [
+            "#mw.desktop.editor.copilot"
+        ]
+    },
+    "mw.desktop.editor.copilot": {
+       "actions": [
+            {
+                "name": "explainEditorCode",
+                "text": "%rtc_addons:copilot:copilot:explainCode%",
+                "description": "%rtc_addons:copilot:copilot:explainCodeDescription%",
+                "promptID": "matlab-copilot-actions-explain-code",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showEntryPointInChatPanel": true,
+                "chatPanelGlobalActionId": "aiChatPanel.explainSelection",
+                "showInEntryPoint": true,
+                "controllerID": "explaincode"
+            },
+            {
+                "name": "improveEditorCode",
+                "text": "%rtc_addons:copilot:copilot:improveCode%",
+                "description": "%rtc_addons:copilot:copilot:improveCodeEditorDescription%",
+                "promptID": "matlab-copilot-actions-improve-code",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showInEntryPoint": false,
+                "callback": "inlineActions",
+                "callbackType": "jsModule"
+            },
+            {
+                "name": "generateEditorComments",
+                "text": "%rtc_addons:copilot:copilot:generateComments%",
+                "description": "%rtc_addons:copilot:copilot:generateCommentsEditorDescription%",
+                "promptID": "matlab-copilot-actions-generate-comments",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showInEntryPoint": true,
+                "callback": "inlineActions",
+                "callbackType": "jsModule",
+                "controllerID": "generatecomments"
+            }
+        ],
+        "triggers": ["codeSelection"]
+    }
+}

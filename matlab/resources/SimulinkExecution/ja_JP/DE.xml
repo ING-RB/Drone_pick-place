@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="SimulinkExecution" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="JacobianFunctionEvaluationFailure">
+ヤコビ計算の関数を評価中にエラーが発生しました。
+</entry>
+    <entry key="DerivativeIsNonFinite">
+連続状態 {0,number,integer} の導関数が非有限です
+</entry>
+    <entry key="StateIsNonFinite">
+連続状態 {0,number,integer} は非有限です
+</entry>
+    <entry key="ProjectedStateIsNonFinite">
+連続状態 {0,number,integer} は、投影後に非有限となります。
+</entry>
+    <entry key="DerivativeConsistencyCheckFailure">
+  評価された導関数とソルバー内でキャッシュされた導関数が、時間 {0_Double} で一致しません。これは導関数に不連続点があることを意味します。\n {1}
+</entry>
+    <entry key="StateConsistencyCheckFailure"> 
+  方程式とソルバーの状態が時間 {0_Double} で互いに一致していません。つまり、ソルバーのリセットなしで方程式の状態が変更された可能性があります。 \n {1}
+</entry>
+    <entry key="IntegrationAbortedDueToInterrupt"> 
+割り込みのため、ソルバーは積分を中止しました。
+</entry>
+    <entry key="InternalSolverResetRequestWasDenied">
+  非線形の反復が hmin に縮小されたステップ サイズに収束しません。ソルバーをリセットして新しい整合性のある初期条件を計算しようとしましたが失敗しました。  
+</entry>
+    <entry key="MaxConsecutiveMinStepsViolated">
+  ソルバーはステップ サイズを減少させるにあたり、時間 {2_Double} において {1,number,integer} 回連続で最小ステップ サイズの値 {0_Double} に違反しました。これは通常、システムのスティッフが高いために発生します。システムをチェックするか、ソルバーの &lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;[連続的な最小ステップ数]&lt;/sldiag&gt; の違反パラメーターを大きくしてください。 
+  </entry>
+    <entry key="MaxConsecutiveMinStepsViolatedForDAE">
+  ソルバーはステップ サイズを減少させるにあたり、時間 {2_Double} において {1,number,integer} 回連続で最小ステップ サイズの値 {0_Double} に違反しました。これは通常、微分代数系における代数制約に違反しているか、システムのスティッフが高いために発生します。許容誤差や、整合条件の計算の許容限界を厳しくしてみてください。問題が解決しない場合は、システムをチェックするか、ソルバーの &lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;[連続的な最小ステップ数]&lt;/sldiag&gt; の違反パラメーターを大きくしてください。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;solverprofiler.launchSolverProfiler&lt;/cmd&gt; &lt;txt&gt;ソルバー プロファイラーを開いてこのような問題を探す&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="MaxNumMinStepsViolated">
+      最小ステップ サイズ ({0_Double}) のステップの数が、時間 ({1_Double}) で、指定した最大値に達しました。シミュレーション全体について最大ステップ数を最小ステップ サイズとともに指定することは推奨されません。代わりに [連続的な最小ステップ数] パラメーターを使用して、連続ステップの最大数を最小ステップ サイズとともに指定してください。 &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="RemoveLimitOfMaxNumMinSteps"&gt; &lt;cmd&gt;set_param(bdroot, ''MaxNumMinSteps'', ''-1'');&lt;/cmd&gt; &lt;txt&gt;最小ステップ サイズをもつ合計ステップ数の制限を解除する\n&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="OpenMaxConsecutiveMinStepInConfig"&gt; &lt;cmd&gt;configset.internal.open(bdroot, ''MaxConsecutiveMinStep'');&lt;/cmd&gt; &lt;txt&gt;最小ステップ サイズを使用して、連続ステップの数に制限を指定する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="MinStepError">
+  ソルバーはステップ サイズを減少させるにあたり、時間 {1_Double} において最小ステップサイズ {0_Double} に違反しました。
+</entry>
+    <entry key="MinStepCausedByShapePreservationError">
+  ソルバーは状態の形状の保存制約を満たすようステップ サイズを減少させるにあたり、時間 {1_Double} において最小ステップ サイズの値 {0_Double} に違反しました。
+</entry>
+    <entry key="MinStepCausedByShapePreservationWarning">
+  ソルバーは状態の形状の保存制約を満たすようステップ サイズを減少させるにあたり、時間 {1_Double} において最小ステップ サイズの値 {0_Double} に違反しました。ソルバーは、{2_Double} に制限されたステップ サイズと 1 次オイラー積分法を使用してシミュレーションを続行し、状態の形状の保存制約を満たします。
+</entry>
+    <entry key="MinStepSizeWarning">       
+  ソルバーはステップ サイズを減少させるにあたり、時間 {2_Double} において {1,number,integer} 回連続で最小ステップ サイズ {0_Double} に違反しました。ソルバーは {3_Double} に制限されたステップ サイズと、指定の相対許容誤差 {5_Double} を超える有効な相対許容誤差 {4_Double} を使用して、シミュレーションを続行します。これは通常、システムのスティッフが高いために発生します。システムをチェックするか、ソルバーの &lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;[連続的な最小ステップ数]&lt;/sldiag&gt; の違反パラメーターを大きくしてください。
+  </entry>
+    <entry key="MinStepSizeForDAEWarning">  
+  ソルバーはステップ サイズを減少させるにあたり、時間 {2_Double} において {1,number,integer} 回連続で最小ステップ サイズ {0_Double} に違反しました。ソルバーは {3_Double} に制限されたステップ サイズと、指定の相対許容誤差 {5_Double} を超える有効な相対許容誤差 {4_Double} を使用して、シミュレーションを続行します。これは通常、微分代数系における代数制約に違反しているか、システムのスティッフが高いために発生します。許容誤差や、整合条件の計算の許容限界を厳しくしてみてください。問題が解決しない場合は、システムをチェックするか、ソルバーの &lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;[連続的な最小ステップ数]&lt;/sldiag&gt; の違反パラメーターを大きくしてください。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;solverprofiler.launchSolverProfiler&lt;/cmd&gt; &lt;txt&gt;ソルバー プロファイラーを開いてこのような問題を探す&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="NewtonIterationFailure">
+  非線形の反復が、時間 {1_Double} で hmin ({0_Double}) に縮小されたステップ サイズに収束していません。最小ステップ サイズを小さくしたり、相対許容誤差を緩和してみてください。
+</entry>
+    <entry key="SolverSolvesOnlyLinearlyImplicitForm">
+ソルバー ''{0}'' では線形陰的形式の微分方程式のみを解くことができます。したがって、質量行列およびヤコビ関数を指定する必要があります。
+</entry>
+    <entry key="SolverDoesNotSolveDAE">  連立微分代数方程式が検出されました。ソルバー ''{0}'' は、微分代数方程式を対象としていません。可変ステップ シミュレーションに ODE15s または ODE23t を、固定ステップ シミュレーションに ODE14x を使用することを検討してください。</entry>
+    <entry key="SolverRequiresJacobian">
+ソルバー ''{0}'' にはヤコビアンが必要です。構成式にヤコビアンの指定がありません。
+</entry>
+    <entry key="SolverDoesNotSupportInterpolation">
+ソルバー ''{0}'' では、タイム ステップ間の状態の内挿はサポートされていません。
+</entry>
+    <entry key="SolverDoesNotSupportHigherOrderInterpolation">
+  ソルバーでは、タイム ステップ間の {0, number, integer} 次内挿はサポートされていません。
+</entry>
+    <entry key="SolverInterpolantNotAvailable">
+  ソルバー内挿はリセット前および積分中は使用できません。
+</entry>
+    <entry key="SolverInterpolantIncorrectVectorSize">
+  ソルバー内挿に渡されたベクトルのサイズは {0_Double} です。内挿に渡されるベクトルは状態数と同じでなければなりません: {1_Double}。
+</entry>
+    <entry key="SolverRegisteredWithExistingName">
+  既に {0} という名前で登録されたソルバーがあります。別の名前を使用してください
+</entry>
+    <entry key="SolverImplementationRegisteredWithExistingName">
+  既に {0} という名前で登録されたソルバー実装があります。別の名前を使用してください
+</entry>
+    <entry key="UnknownSolver">
+  {0} として登録されたソルバーがありません。
+</entry>
+    <entry key="CreateSolverFailed">
+  ソルバー名 {0} は無効または抽象であるか、あるいはソルバー レジストリ外にあるため、作成することができません。
+</entry>
+    <entry key="ExternalSolverNotFound">
+  ソルバー {0} を作成できませんでした。ライブラリ {1} を正常に読み込めませんでした。エラー: {2}
+</entry>
+    <entry key="AutoSolverHighNx">
+    このモデルについて、自動ソルバーのスティッフ チェックはサポートされていません。連続状態の数 ''{0}'' がしきい値 ''{1}'' を超えているためです。しきい値を変更するには、MATLAB コマンド ラインで ''NumStatesForStiffnessChecking'' モデル パラメーターを設定します。
+</entry>
+    <entry key="ShapePreservationNotSupported">
+    ソルバー {0} は、陰的なシステムに対してこのオプションをサポートしていないため、[形状の保存] 設定を無視しています。
+</entry>
+    <entry key="ShapePreservationNotSupportedForSolver">
+    ソルバー {0} はこのオプションをサポートしていないため、[形状の保存] 設定を無視しています。
+</entry>
+    <entry key="SolverNotAvailable">
+  ソルバー ''{0}'' は利用できません。使用可能な&lt;sldiag objui="configset" objparam="Solver"&gt;ソルバー&lt;/sldiag&gt;のいずれかを選択してください
+</entry>
+    <entry key="ODENInvalidIntegrationMethodForImplicitSystem">  陰的な連立方程式について、odeN の積分手法が正しくない値 ''{0}'' に設定されています。有効な手法は ''ode14x'' および ''ode1be'' です。</entry>
+    <entry key="ODENCannotSwitchExplicitToImplicit">
+  モデルの実行中、または高速リスタートが有効になっているときに、odeN 積分手法を陽解法 ''{0}'' から陰解法 ''{1}'' に変更することはサポートされていません。次の陽的 odeN 積分手法のいずれかを使用してください: \n "ode1" \n "ode2" \n "ode3" \n "ode4" \n "ode5" \n "ode8" \n
+</entry>
+    <entry key="ODENCannotSwitchImplicitToExplicit">
+  モデルの実行中、または高速リスタートが有効になっているときに、odeN 積分手法を陰解法 ''{0}'' から陽解法 ''{1}'' に変更することはサポートされていません。次の陰的 odeN 積分手法のいずれかを使用してください: \n "ode14x" \n "ode1be" \n 
+</entry>
+    <entry key="InvalidPerturbationBound">
+  numjac 設定とブロック設定の間に選択される有効な摂動がありません。
+</entry>
+  </message>
+</rsccat>

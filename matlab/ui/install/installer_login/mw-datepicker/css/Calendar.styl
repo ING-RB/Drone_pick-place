@@ -1,0 +1,251 @@
+/*******************************************************************************************/
+
+/* Calendar
+ *
+ * Styling Calendar mainly includes:
+ *
+ * 1. Calendar container
+ *    .mwCalendar - main container
+ *    .mwCalendarHover / .mwCalendarActive - states e.g. hover,active
+ *
+ * 2. Controls
+ *    .mwCalendarControlsContainer (container for all of the controls above the calendar)
+ *      .mwCalendarMonthYearControlsContainer
+ *          .mwCalendarMonthControl     (mwComboBox)
+ *          .mwCalendarYearControl      (mwComboBox)
+ *      .mwCalendarMonthControlsContainer (buttons for previous month, current month, next month)
+ *          .mwCalendarDecrementMonth   (mwButton)
+ *          .mwCalendarTodayMonth       (mwButton)
+ *          .mwCalendarIncrementMonth   (mwButton)
+ *
+ * 3. Date
+ *    .mwCalendarDayLabelTemplate - week day column header e.g. S M T W T F S
+ *    .mwCalendarDateTemplate - date label wrapper
+ *    .mwCalendarPreviousMonth - special labels for previous or next month
+ *    .mwCalendarSelectedDate - styles for selected date
+ *    .mwCalendarDisabledDate - styles for disabled date
+ *    .mwCalendarActiveDate - states e.g. hover,active
+ *
+ * 4. ComboBox Dropdown for Month Menu (similarly for Year).
+ *      NOTE: This is part of mw-form/ComboBox
+ *    .dijitPopup.mwWidgetPopup.mwComboBoxPopupParent.mwCalendarMonthDropDown
+ *          .mwComboBoxPopup.mwCalendarMonthPopup
+ *              .mwTextNode  // "January"
+ *              .mwTextNode  // "February"
+ *              ...
+ */
+ 
+ .mwCalendar .mwPushButton.mwCalendarDecrementMonth {
+     border-top-right-radius: 0px;
+     border-bottom-right-radius: 0px;
+ }
+ 
+ .mwCalendar .mwPushButton.mwCalendarTodayMonth {
+     border-top-left-radius: 0px;
+     border-bottom-left-radius: 0px;
+     border-top-right-radius: 0px;
+     border-bottom-right-radius: 0px;
+     margin: 0px -1px 0px -1px;
+ }
+ 
+ .mwCalendar .mwPushButton.mwCalendarIncrementMonth {
+     border-top-left-radius: 0px;
+     border-bottom-left-radius: 0px;
+ }
+ 
+ /* Fix while waiting for 1620064 */
+ .mwCalendar .mwCalendarMonthControlsContainer .mwIconAndTextContainerNode .mwTextNode.mwEmptyNode {
+     display:  none;  /* Hide the unused text div, so that the icon div is centered */
+ }
+ 
+ .mwCalendar .mwCalendarDecrease {
+     background-position: top left;
+ }
+ .mwCalendar .mwCalendarIncrease {
+     background-position: -30px top;
+ }
+ 
+ .mwCalendar.mwCalendarContainer {
+     font-size:  12px;
+     font-family: "Arial";
+     border-spacing: 0;
+     border-collapse: separate;
+     margin: 0;
+ }
+ 
+ .mwCalendar .mwCalendarControlsContainer {
+     /* month header cell */
+     padding-bottom: 10px;
+     font-size: 0px; /* fix CSS-ism where undetectable whitespace adds to height */
+ }
+ 
+ .mwCalendar .mwCalendarDayLabelTemplate {
+     /* day of week labels */
+     font-size:  12px;
+     font-family: "Arial";
+     font-weight: normal;
+     text-align: center;
+     padding:  5px;
+     color: var(--mw-color-secondary, $mw-color-secondary);
+     background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+     vertical-align: middle;
+ }
+ 
+ .mwCalendar .mwCalendarHeadContainer {
+     border-top: 1px solid var(--mw-borderColor-secondary, $mw-borderColor-secondary);
+     border-bottom: 1px solid var(--mw-borderColor-secondary, $mw-borderColor-secondary);
+     background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+ }
+ 
+ .mwCalendar .mwCalendarBodyContainer {
+     border-bottom: 1px solid var(--mw-borderColor-secondary, $mw-borderColor-secondary);
+ }
+ 
+ .mwCalendar .mwCalendarTable {
+     border-collapse: collapse;
+ }
+ 
+ .mwCalendar .mwCalendarDateTemplate {
+     /* style for each day cell */
+     font-size:  12px;
+     font-family: "Arial";
+     text-align: center;
+     padding:  3px 5px;
+     vertical-align: middle;
+     color: var(--mw-color-primary, $mw-color-primary);
+     background-color: var(--mw-backgroundColor-tertiary, $mw-backgroundColor-tertiary);
+ }
+ 
+ .mwCalendar .mwCalendarDateTemplate > span {
+   /* style for each day cell */
+   padding: inherit; /* override style.css 0.3em 0.3em 0.05em 0.3em; */
+ }
+ 
+ .mwCalendar .mwCalendarPreviousMonth,
+ .mwCalendar .mwCalendarNextMonth        {
+     /* days that are part of the previous or next month */
+     color: var(--mw-color-readOnly, $mw-color-readOnly);
+ }
+ 
+ .mwCalendar .mwCalendarCurrentMonth,
+ .mwCalendar .mwCalendarCurrentYear {
+     /* days that are part of this month */
+     background-color: var(--mw-backgroundColor-tertiary, $mw-backgroundColor-tertiary);
+ }
+ 
+ .mwCalendar .mwCalendarCurrentDate {
+     /* cell for today's date */
+     /* Adding 1px to the border would make the calendar grow, so use outline */
+     outline: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+ }
+ 
+ .mwCalendar .mwCalendarHoveredDate {
+     background-color: var(--mw-backgroundColor-secondary, $mw-backgroundColor-secondary);
+ }
+ 
+ .mwCalendar .mwCalendarWeekendDate {
+     background-color:var(--mw-backgroundColor-secondary, $mw-backgroundColor-secondary);
+ }
+ 
+ .mwCalendar .mwCalendarWeekendDate.mwCalendarHoveredDate {
+     background-color: var(--mw-backgroundColor-tertiary, $mw-backgroundColor-tertiary);
+ }
+ 
+ .mwCalendar .mwCalendarSelectedDate {
+     /* cell for the selected date */
+     /* $color-selection */
+     background-color: var(--mw-backgroundColor-selectedFocus, $mw-backgroundColor-selectedFocus);// !important;
+     color: var(--mw-color-primary, $mw-color-primary);// !important;
+ }
+ 
+ 
+ /* Calendar-specific styling originally in dijit/themes/dijit.css */
+ 
+ .mwCalendar.mwCalendarContainer > table {
+   width: auto;  /* in case user has specified a width for the TABLE nodes */
+   clear: both;    /* clear margin created for left/right month arrows */
+   border:1px solid var(--mw-borderColor-secondary, $mw-borderColor-secondary);
+ }
+ 
+ .mwCalendar .mwCalendarControlsContainer {
+   text-align: left;
+ }
+ 
+ .mwCalendar .mwCalendarMonthYearControlsContainer {
+     display: inline-block;
+ }
+ 
+ .mwCalendar .mwCalendarMonthControl {
+     margin-right: 3px; /* space between month and year dropdowns */
+ }
+ 
+ .mwCalendar .mwCalendarMonthControlsContainer {
+   float:  right;
+ }
+ 
+ .mwCalendar .mwCalendarDateTemplate {
+   cursor: pointer;
+   -webkit-tap-highlight-color: transparent;
+ }
+ 
+ .mwCalendar .mwCalendarDisabledDate {
+   text-decoration: line-through;
+   cursor: default;
+ }
+
+/*Setting the opacity to give the disabled days the disabled look*/
+.mwCalendar .mwCalendarDisabledDate .mwCalendarDateLabel{
+    opacity: var(--mw-opacity-disabled, $mw-opacity-disabled);
+}
+ 
+ 
+ /* style.css sets "outline: 0" which turns off all outline parameters. This code restores defaults, which calendar sees */
+ .mwCalendar .mwCalendarBodyContainer td:focus {
+   outline-width: 1px;
+   outline-color: var(--mw-borderColor-focus, $mw-borderColor-focus);
+   outline-style: solid;
+ }
+ 
+ .mwCalendar.mwCalendarContainer {
+     border: 1px solid var(--mw-borderColor-secondary, $mw-borderColor-secondary);
+     background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+     padding:  10px;
+ }
+ 
+ .mwCalendarMonthPopup, .mwCalendarYearPopup {
+     border: 1px solid var(--mw-borderColor-secondary, $mw-borderColor-secondary);
+     margin-top: -1px;
+ }
+ 
+ 
+ /* ComboBox has a reliance on .dijitPopup. To remove it, this .dijitPopup styling needs to
+    be added. Ideally, add class name to the parent of mwCalendarMonthPopup */
+ /* From .dijitPopup */
+ .mwCalendarMonthDropDown, .mwCalendarYearDropDown {
+     position: absolute;
+     background-color: transparent;
+     margin: 0;
+     border: 0;
+     padding: 0;
+     -webkit-overflow-scrolling: touch;
+ }
+ 
+ /* When focused, the blue focus border should be visible on all sides of the button, even if the button after it overlaps it */
+ .mwCalendar .mwPushButton.mwCalendarDecrementMonth:focus,
+ .mwCalendar .mwPushButton.mwCalendarTodayMonth:focus,
+ .mwCalendar .mwPushButton.mwCalendarIncrementMonth:focus {
+     z-index: 1;
+ }
+ 
+ .mwCalendar .mwPushButton.mwCalendarDecrementMonth,
+ .mwCalendar .mwPushButton.mwCalendarTodayMonth,
+ .mwCalendar .mwPushButton.mwCalendarIncrementMonth {
+     z-index: 0;
+ }
+
+ .mwCalendar .mwCalendarMonthControlsContainer .mwIconNode {
+    margin-left: 4px;
+    margin-right: 4px;   
+    padding-bottom: 6px;
+}
+ 

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Classes in MATLAB fall broadly into two categories&#8212;<a href="matlab:helpview([docroot '/techdoc/matlab_oop/matlab_oop.map'],'handle_classes_vs_value_classes')" target="_blank">handle classes and value classes</a>. While there are some similarities,
+                    there are also significant usage differences for these classes. Code Analyzer
+                    cannot always determine with certainty whether a class is a handle class or a
+                    value class because it could inherit this property from its superclass. </p><p>Code Analyzer produces this message when it detects some usage patterns
+                    characteristic of a value class, and other usage patterns characteristic of a
+                    handle class&#8212;an apparent conflict. Two other messages always accompany
+                    this message, giving additional information about the behaviors Code Analyzer
+                    has seen suggesting this conflict. </p><br/><strong>Suggested Action</strong><br/><p>This message indicates a possible usage conflict. Examine the messages that
+                    accompany this one and fix the usage that does not correspond to your intended
+                    class behavior. If the class is derived from a superclass that is a handle
+                    class, you can indicate this property directly in the class definition by
+                    including the handle explicitly as a superclass, as shown in the following
+                    example:</p><p>
+                    <code>classdef&nbsp;myclass&nbsp;&lt;&nbsp;superclass&nbsp;&amp;&nbsp;handle</code>
+                </p><p>This makes it clear to Code Analyzer (and others reading the class) that it is
+                    a handle class. This could be enough to suppress inappropriate messages. Code
+                    Analyzer cannot be certain of this conflict without evaluating additional files.
+                    Therefore, it could be appropriate to suppress this message, as described in
+                        <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

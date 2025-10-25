@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2023 The MathWorks, Inc.
+
+     All definitions for the following Cosmic targets:
+       - cxs12z (CPU family: Freescale HC12/HCS12)
+
+     This file is intended for inclusion in a <compilers> node.
+-->
+<compiler name="cosmic"  default="s12z"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+    <client name="matlab"/>
+  </clients>
+
+  <!-- Common definitions -->
+  <options>
+    <option name="--enable_at_keywords"/>
+    <option name="--fixed_point"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--allow_short_float"/>
+    <option name="--preinclude" value="__polyspace_common.h"/>
+  </options>
+
+  <asms>
+    <asm name="_asm"/>
+  </asms>
+
+  <pragmas>
+    <pragma name="asm" end="endasm"/>
+  </pragmas>
+
+  <ppdirects>
+    <ppdirect name="asm" end="endasm" can_be_statement="true"/> <!-- In function bodies, #asm .. #endasm counts as a statement. -->
+  </ppdirects>
+
+  <!--
+       Definitions for cxs12z
+  -->
+  <target name="s12z">
+    <options>
+      <option name="--max_alignment"      value="1"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="3"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--ptr_diff_is_long"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_signed_short"/>
+      <option name="--unsigned_chars"/>
+      <option name="--little_endian"/>
+      <option name="--preinclude" value="cosmic/tmw_builtins/s12z.h"/>
+      <if feoption="--c\+\+">
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++03"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <defines>
+      <!-- 
+      The COSMIC compiler defines the __CSMC__ preprocessor symbol. It
+      expands to a numerical value whose each bit indicates if a specific
+      option has been activated:
+          bit 0 set if nowiden option specified (+nowiden)
+          bit 1 set if single precision option specified (+sprec)
+          bit 2 set if unsigned char option specified (-pu)
+          bit 3 set if alignment option specified (+align)
+          bit 4 set if reverse bitfield option specified (+rev)
+          bit 5 set if no enum optimization specified (-pne)
+          bit 6 set if no bitfield packing specified (-pnb)
+          bit 7 set if no constant replacement specified (-pnc)
+          bit 8 set if no constant propagation specified (-pcp)
+          bit 9 set if prototype checking specified (+proto)
+      -->
+      <define name="__CSMC__" value="68"/>
+      <define name="__TRGT__" value="S12Z"/>
+      <define name="__LGLG__" value="1"/>
+      <define name="__CC99__" value="0"/>
+    </defines>
+
+    <types>
+      <type name="_Bool" type_kind="bit"/>
+      <type name="_Fract" type_kind="fract"/>
+    </types>
+
+    <attributes>
+      <attribute name="@" sig="@"/>
+      <attribute name="@" sig="@" bitstart=":"/>
+      <attribute name="@builtin"/>
+      <attribute name="@dir"/>
+      <attribute name="@eeprom"/>
+      <attribute name="@far"/>
+      <attribute name="@inline"/>
+      <attribute name="@near"/>
+      <attribute name="@small"/>
+      <attribute name="@tiny"/>
+      <attribute name="@vector"/>
+    </attributes>
+    
+    <attributes kind="function">
+      <attribute name="@inline" token="tok_inline"/>
+      <attribute name="@interrupt"/>
+      <attribute name="@nostack"/>
+    </attributes>
+
+  </target>
+
+</compiler>

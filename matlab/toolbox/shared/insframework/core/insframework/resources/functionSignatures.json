@@ -1,0 +1,106 @@
+{
+    "insOptions":
+    {
+        "inputs":
+        [
+            {"name":"Datatype", "kind":"namevalue", "type":"choices={'double', 'single'}"}, 
+            {"name":"ReferenceFrame", "kind":"namevalue", "type":"choices={'NED', 'ENU'}"}, 
+            {"name":"SensorNamesSource", "kind":"namevalue", "type":"choices={'default', 'property'}"}, 
+            {"name":"SensorNames", "kind":"namevalue", "type":[["string"], ["cellstr"] ]} 
+        ]
+    },
+    "insEKF":
+    {
+        "inputs":
+        [
+            {"name":"Sensor", "kind":"positional", "type":["positioning.INSSensorModel"]}
+        ]
+    },
+    "positioning.internal.insEKFBase.stateinfo":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"mutuallyExclusiveGroup":[
+                [
+                    {"name":"Sensor", "kind":"required", "type":["positioning.INSSensorModel"]},
+                    {"name":"State", "kind":"required", "type":"choices=positioning.internal.insEKFBase.statesTabCompletion(Filter, Sensor)"}
+                ],
+                [
+                    {"name":"State", "kind":"required", "type":"choices=positioning.internal.insEKFBase.statesTabCompletion(Filter)"}
+                ]
+            ]} 
+        ]
+    },
+    "positioning.internal.insEKFBase.stateparts":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"mutuallyExclusiveGroup":[
+                [
+                    {"name":"Sensor", "kind":"required", "type":["positioning.INSSensorModel"]},
+                    {"name":"State", "kind":"required", "type":"choices=positioning.internal.insEKFBase.statesTabCompletion(Filter, Sensor)"}
+                ],
+                [
+                    {"name":"State", "kind":"required", "type":"choices=positioning.internal.insEKFBase.statesTabCompletion(Filter)"}
+                ]
+            ]} 
+        ]
+    },
+    "positioning.internal.insEKFBase.statecovparts":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"mutuallyExclusiveGroup":[
+                [
+                    {"name":"Sensor", "kind":"required", "type":["positioning.INSSensorModel"]},
+                    {"name":"State", "kind":"required", "type":"choices=positioning.internal.insEKFBase.statesTabCompletion(Filter, Sensor)"}
+                ],
+                [
+                    {"name":"State", "kind":"required", "type":"choices=positioning.internal.insEKFBase.statesTabCompletion(Filter)"}
+                ]
+            ]} 
+        ]
+    },
+    "positioning.internal.insEKFBase.predict":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"name":"dt", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "positioning.internal.insEKFBase.residual":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"name":"Sensor", "kind":"required", "type":["positioning.INSSensorModel"]},
+            {"name":"Measurement", "kind":"required", "type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "positioning.internal.insEKFBase.fuse":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"name":"Sensor", "kind":"required", "type":["positioning.INSSensorModel"]},
+            {"name":"Measurement", "kind":"required", "type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "positioning.internal.insEKFBase.correct":
+    {
+        "inputs":
+        [
+            {"name":"Filter", "kind":"required", "type":["positioning.internal.insEKFBase"]},
+            {"name":"Index", "kind":"required", "type":"numeric"},
+            {"name":"Measurement", "kind":"required", "type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required", "type":"numeric"}
+        ]
+    }
+}
+

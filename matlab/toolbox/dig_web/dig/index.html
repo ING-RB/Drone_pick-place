@@ -1,0 +1,38 @@
+<!-- Copyright 2016-2024 The MathWorks, Inc. -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            window.instrumentData = {
+                domLoaded: { startTime: performance.now(), stopTime: -1 },
+                cssLoaded: { startTime: -1, stopTime: -1 },
+                dojoLoaded: { startTime: -1, stopTime: -1 },
+                jsLoaded: { startTime: -1, stopTime: -1 }
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                window.instrumentData.domLoaded.stopTime = performance.now();
+            });
+        </script>
+        <!-- Preload web worker as early as possible. -->
+        <link rel="modulepreload" href="../../../toolbox/studio/cache-js/src/workers/CacheWorker.js" as="script" type="text/javascript" />
+        <link rel="modulepreload" href="../../../toolbox/studio/cache-js/src/workers/PersistenceWorker.js" as="script" type="text/javascript" />
+        <meta charset="utf-8"/>
+        <meta http-equiv="cache-control" content="no-cache"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta http-equiv="expires" content="-1"/>
+        <title>Simulink Toolstrip</title>
+        <script>window.instrumentData.cssLoaded.startTime = performance.now();</script>
+        <link rel="stylesheet" href="./release/index-css.css" type="text/css"/>
+        <script>window.instrumentData.cssLoaded.stopTime = performance.now();</script>
+    </head>
+    <body id="simulink-toolstrip" class="tundra">
+        <div id="toolstrip-bg"></div>
+        <div id="toolstrip"></div>
+        <script>window.instrumentData.jsLoaded.startTime = performance.now();</script>
+        <script>window.instrumentData.dojoLoaded.startTime = performance.now();</script>
+        <script src="./release/ui/dojoConfig-release-global.js"></script>
+
+        <script defer src="./release/bundle.index.js"></script>
+    </body>
+</html>

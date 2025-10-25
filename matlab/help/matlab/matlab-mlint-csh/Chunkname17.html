@@ -1,0 +1,18 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Global and persistent variables behave differently in
+                        <code>parfor</code> loops than in <code>for</code> loops.
+                    Because <code>parfor</code> loops run on many different MATLAB workers
+                    simultaneously, there are many different active workspaces and global contexts.
+                    Some assignments to global or persistent variables inside
+                        <code>parfor</code> loops affect only the value of the variable on
+                    the MATLAB client. Some assignments do not affect either the value of the
+                    variable on the MATLAB client or the value of the variable on the MATLAB
+                    workers.</p><p>In other words, the behavior of global and persistent variables within
+                        <code>parfor</code> loops can be surprising and using these
+                    variables inside <code>parfor</code> loops should be avoided.</p><br/><strong>Suggested Action</strong><br/><p>Change the program logic to not assign to global or persistent variables
+                    inside a <code><a href="matlab:doc parfor" target="_blank">parfor</a></code>
+                    loop. For example, you can do either of the following:</p><ul><li><p>Copy the <code><a href="matlab:doc global" target="_blank">global</a></code> or <code><a href="matlab:doc persistent" target="_blank">persistent</a></code>
+                            variable to a temporary variable before the <code>parfor</code>
+                            loop begins, and then copy it back to the <code>global</code> or
+                                <code>persistent</code> variable after the
+                                <code>parfor</code> loop ends.</p></li><li><p>Rewrite the code so that it does not use <code>global</code> or
+                                <code>persistent</code> variables.</p></li></ul></body></html>

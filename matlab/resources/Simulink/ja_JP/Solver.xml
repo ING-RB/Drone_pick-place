@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="Error">
+  ソルバーでモデル ''{0}'' のシミュレーション中に時間 {1} でエラーが発生したため、続行できません。モデルのエラーをチェックしてください。
+</entry>
+    <entry key="Warning">
+  ソルバーでモデル ''{0}'' のシミュレーション中に時間 {1} で問題が発生しています。Simulink はシミュレーションを警告付きで続行します。モデルのエラーをチェックしてください。
+</entry>
+    <entry key="StateNotFinite">  
+  時間 {2} における ''{1}'' の連続状態 ''{0}'' が有限ではありません。Simulink はシミュレーションを終了します。解に特異点が存在する可能性があります。モデル ''{3}'' のエラーをチェックしてください。固定ステップサイズを小さくするか、可変ステップソルバーの許容誤差を厳しくしてみてください。
+</entry>
+    <entry key="InvSrcBlkOutBeingMergedAndUsedToComputeDeriv">
+  ブロック ''{0}'' の&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;出力端子 {1,number,integer}&lt;/sldiag&gt; からの連続でない信号を、他の連続信号とマージすることは無効です。マージした信号が駆動している入力端子は、連続状態の導関数の計算に使用されるためです。
+</entry>
+    <entry key="ZeroCrossingIntervalNotBracketedDueToConsecutiveEvents">
+  
+  時間 {1} から開始して、Simulink が {3} の時間間隔内に {2,number,integer} 個の連続ゼロクロッシングを検出しました。シミュレーションをハングさせずに続行するために、適応ゼロクロッシング検出アルゴリズムは現在のステップ サイズ ({4}) をこれ以上小さくせずに受け入れます。これらの連続イベントを発生させている (すなわち、イベントが囲い込まれていない) ゼロクロッシング信号を以下に示します。\n {5} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt; set_param(''{0}'',''IgnoredZcDiagnostic'',''none''); &lt;/cmd&gt; &lt;txt&gt; [無視されたゼロクロッシング] を [なし] に設定して、この診断をオフにする。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt; 上記のブロックのうち、ゼロクロッシングの数が最も多かったブロックのゼロクロッシング検出を無効にする。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="ZeroCrossingNotBracketedDueToSmallSignalValues">
+  
+  時間 {1} とステップ サイズ {2} で、以下に示す信号による {3,number,integer} 個のゼロクロッシングが見つかりました。しかし、このタイム ステップでは、ゼロクロッシングをもつ信号の振幅が許容誤差 ({4}) より小さいため、適応ゼロクロッシング検出アルゴリズムによってステップ サイズがそれ以上小さくされることはありません。\n {5} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');&lt;/cmd&gt; &lt;txt&gt; [無視されたゼロクロッシング] を [なし] に設定して、この診断をオフにする。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt; 上記のブロックのゼロクロッシング検出を無効にすると、シミュレーションが高速化される場合がある。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="SomeZeroCrossingNotBracketedDueToSmallSignalValues">
+  
+  時間 {1} とステップ サイズ {2} で、{3,number,integer} 個のゼロクロッシングが見つかりました。しかし、信号の振幅が許容誤差 ({5}) より小さいため、以下に示す {4,number,integer} 個の信号によるゼロクロッシングが、適応ゼロクロッシング検出アルゴリズムによって囲い込まれることはありません。\n {6} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');&lt;/cmd&gt; &lt;txt&gt;[無視されたゼロクロッシング] を [なし] に設定して、この診断をオフにする。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;上記のブロックのゼロクロッシング検出を無効にすると、シミュレーションが高速化される場合がある。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="MaxConsecutiveZeroCrossingsError">
+  
+  以下に特定する {1, number, integer} 個のゼロクロッシング信号によって、{3} ～ {4} の時間間隔で {2,number,integer} 件の連続ゼロクロッシング イベントが発生したため、Simulink はモデル ''{0}'' のシミュレーションを停止します。\n {5} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt; set_param(''{0}'',''ZeroCrossAlgorithm'',''Adaptive'',''IgnoredZcDiagnostic'',''none''); &lt;/cmd&gt; &lt;txt&gt; &lt;sldiag objui="configset" objparam="ZeroCrossAlgorithm"&gt;ゼロクロッシング検出アルゴリズム&lt;/sldiag&gt;を [適応] に切り替え、&lt;sldiag objui="configset" objparam="IgnoredZcDiagnostic"&gt;[無視されたゼロクロッシング]&lt;/sldiag&gt; の診断を [なし] に設定することで、これらのゼロクロッシングを囲い込まずに診断を非表示にしてシミュレーションを続行できる。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt; 最も多くのイベントを発生させた上記のブロックにおいて、ゼロクロッシング検出を無効にする。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="DetectedMaskedZeroCrossings">
+  シミュレーションの {0} ～ {1} のタイム ステップ (ステップ サイズ = {2}) の間に、次の {3,number,integer} 個のマスクされたゼロクロッシング信号 (偶数のゼロクロッシング イベントをもつ信号) が見つかりました。\n {4} 検索アルゴリズムがこれらのゼロクロッシングを検出したのは、このタイム ステップに他のゼロクロッシングが存在するためです。マスクされたゼロクロッシングは、現在のタイム ステップ内に偶数のゼロクロッシングをもつゼロクロッシング信号が 1 つ以上あることにより発生します。マスクされたゼロクロッシングは、すべての場合に検出されるとは限りません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;configset.internal.open(''{6}'',''Refine'')&lt;/cmd&gt; &lt;txt&gt;[リファイン ファクター] を ({5,number,integer}) からさらに大きい値に増加させる&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" btn="apply"&gt; &lt;cmd&gt;set_param(''{6}'',''MaskedZcDiagnostic'',''none'');&lt;/cmd&gt; &lt;txt&gt;この診断を無効にするには、&lt;sldiag objui="configset" objparam="MaskedZcDiagnostic"&gt;[マスクされたゼロクロッシング]&lt;/sldiag&gt; の診断を [なし] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+   
+</entry>
+    <entry key="UnsupportedSolverForRSim">
+  指定したソルバー ''{0}'' は RSIM ターゲットと互換性がないため、モデル ''{1}'' の RSIM ターゲット ビルドは停止します。 \n RSIM には次のいずれかのサポートされているソルバーを使用してください。 \n "ode1" \n "ode14x" \n "ode15s" \n "ode113" \n "ode2" \n "ode23" \n "ode23s" \n "ode23t" \n "ode23tb" \n "ode3" \n "ode4" \n "ode45" \n "ode5" \n "ode8" \n
+</entry>
+    <entry key="FixedStepZeroCrossingNotSupportedForRSim">
+  固定ステップのゼロクロッシング検出は RSIM ターゲットではサポートされていないため、モデル ''{0}'' の RSIM ターゲットのビルドは停止します。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt; &lt;txt&gt;固定ステップ シミュレーションのゼロクロッシング検出をオフにする。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="SolverInputCompensationSupportZOHonly">
+      Model ブロック ''{2}'' が参照しているモデル ''{3}'' にはゼロ次ホールド入力処理が使用されます。ソルバー ''{1}'' は ''{0}'' 入力信号処理をサポートしていないためです。
+    </entry>
+    <entry key="SolverOutputApproximationSupportZOHonly">
+         Model ブロック ''{2}'' はゼロ次ホールド出力信号処理を使用しなければなりません。ソルバー ''{1}'' が ''{0}'' 出力信号処理をサポートしないからです。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="UseZOHOutputHandling"&gt; &lt;cmd&gt;set_param(''{2}'', ''OutputSignalHandling'', ''Zero-order hold'')&lt;/cmd&gt; &lt;txt&gt;Model ブロック ''{2}'' の [出力信号の処理] パラメーターの値を [ゼロ次ホールド] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 			
+         
+    </entry>
+    <entry key="SolverChangeInFastRestartExplicitToImplicit">モデル ''{1}'' は陽的ソルバーを使用して高速リスタートで初期化されました。モデルを再コンパイルせずに、ヤコビアンが必要な ''{0}'' への変更をサポートするために、ソルバーのヤコビ メソッドの制御が ''{2}'' から [フル摂動] に切り替えられます。</entry>
+    <entry key="InvalidSolverChangeInFastRestartOdeN">陰的ソルバーを使用して高速リスタートによって初期化されたモデルが質量行列をもつ場合、ソルバーを陽的な積分手法 ''{0}'' をもつ odeN に変更することはサポートされていません。モデル ''{1}'' の新しいソルバー odeN は使用されません。odeN の積分手法を陰的ソルバーに設定してください。有効な手法は 'ode14x' および 'ode1be' です。</entry>
+    <entry key="InvalidIntMethodChangeInFastRestartOdeN">陰的ソルバーを使用して高速リスタートによって初期化されたモデルが質量行列をもつ場合、ソルバーを陽的な積分手法 ''{0}'' をもつ odeN に変更することはサポートされていません。モデル ''{1}'' の新しい積分手法は使用されません。odeN の積分手法を陰的ソルバーに設定してください。有効な手法は 'ode14x' および 'ode1be' です。</entry>
+    <entry key="InvalidSolverChangeInFastRestartImplicitToExplicit">陰的ソルバーを使用して高速リスタートによって初期化されたモデルが質量行列をもつ場合、ソルバーを陽的ソルバーに変更することはサポートされていません。モデル ''{1}'' の新しいソルバー ''{0}'' は使用されません。ソルバーを陰的ソルバーに設定してください。</entry>
+    <entry key="InvalidSolverChangeInFastRestartVarToFixed">可変ステップ ソルバーを使用して高速リスタートによって初期化されたモデルの場合、ソルバーを固定ステップ ソルバーに変更することはサポートされていません。モデル ''{1}'' の新しいソルバー ''{0}'' は使用されません。ソルバーを可変ステップ ソルバーに設定してください。</entry>
+    <entry key="SolverChangeNotSupportedFixedStep">高速リスタートでのソルバー変更は、固定ステップ ソルバーではサポートされていません。ソルバーを変更できるようにするには、現在のコンパイルを終了する必要があります。</entry>
+    <entry key="FixedStepIsNotDiscreteDivisor">
+    モデル ''{1}'' の固定ステップ サイズ ({0}) の設定が無効です。モデル内のサンプル時間はすべて、固定ステップ サイズの整数倍でなければなりません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SetFixedStepToDivisor"&gt; &lt;cmd&gt;set_param(''{1}'', 'FixedStep', ''{2}'')&lt;/cmd&gt; &lt;txt&gt;固定ステップ サイズを {2} に設定する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+    
+    </entry>
+  </message>
+</rsccat>

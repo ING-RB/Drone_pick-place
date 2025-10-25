@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2012-2023 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <entry key="BuildStartConsoleMessage">### Building simulation target for model: ''{0}''.</entry>
+    <entry key="BuildErrorConsoleMessage">### Build procedure for model: ''{0}'' aborted due to an error.</entry>
+    <entry key="BuildSuccessConsoleMessage">### Successfully built the simulation target for model: ''{0}''.</entry>
+    <entry key="BuildError">Problem creating simulation target for the model ''{0}''.</entry>
+    <entry key="ClearStaleCachedInfo">Cached model compile data may be stale. Delete any cached information such as ''slprj'' directory and Simulink cache files.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion">
+                    <cmd>sfprivate(''sfpurgedir'',''all'');</cmd>
+                    <txt>Clear cached model compile data</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    <entry key="MakeError">Error(s) encountered while building simulation target MEX-file for model ''{0}''.</entry>
+    <entry key="SymbolicLinkError">Simulink could not create a link to the shared library file ''{0}'' inside the build directory ''{1}''. This is required by the custom code build process so that the shared library can be successfully linked by the linker.</entry>
+    <entry key="SymbolicLinkErrorCause" translate="false" note="translate=false set due no translatable content">{0}</entry>
+    <entry key="HardLinkErrorWindowsCause">Windows does not allow creating a hard link from inside the build directory to a shared library (DLL) if the DLL is located in a network folder or a different drive. Both the DLL and the build directory must be placed in the same drive, and this drive must be a local (non-network) drive. Note: original error message from Windows: {0}</entry>
+    <entry key="DeleteFileFirstAttempt">Could not delete {0}. Trying to delete again.</entry>
+    <entry key="DeleteFileSecondAttempt">Could not delete {0} on second attempt. This file is either not writable or is locked by another process.</entry>
+    <entry key="DirContainsPound">Current directory name contains a '#' character, which is not supported with the selected compiler. Please change the current directory to one without a '#' character in its name.</entry>
+    <entry key="TwoAttemptsToDeleteFile">Two attempts to delete {0} have failed.</entry>
+    <entry key="FileMoveFailed">Unable to move {0} from {1} to {2}.</entry>
+    <entry key="FileNotFound">Unable to locate file {0} in the folder {1}.</entry>
+    <entry key="FailedToCreateFile">Failed to create file: {0}.</entry>
+    <entry key="FailedToCreateDirectory">Failed to create folder {0} due to the error: {1}</entry>
+    <entry key="GenericModelSetupError">Simulink encountered an error while setting up the simulation target for the model ''{0}''.</entry>
+    <entry key="CodegenAssertion">Simulink encountered an error while generating code through CGXE Infrastructure ''{0}''.</entry>
+    <entry key="MexCompilerNotFound"><![CDATA[Unable to determine MEX compiler or selected MEX compiler is not supported. Use '<a href="matlab: mex -setup">mex -setup</a>' to configure one.]]></entry>
+    <entry key="UnicodePathWithMinGW">Simulation is unable to use the MinGW compiler because the include or build path ''{0}'' contains characters that do not belong to the system locale.</entry>
+    <entry key="CompileError">An error occurred in the block ''{0}'' during compile.</entry>
+    <entry key="CompileWarning">A warning occurred in the block ''{0}'' during compile.</entry>
+    <entry key="RuntimeError">Runtime error occurred in the block ''{0}'' during simulation.</entry>
+    <entry key="RuntimeWarning">Runtime warning occurred in the block ''{0}'' during simulation.</entry>
+    <entry key="RuntimeErrorStack" translate="false" note="TranslateFalseBatch;">{0}</entry>
+    <entry key="RuntimeErrorNullptr">Runtime error occurred in the block ''{0}'' because of accessing a NULL pointer during simulation. Occurred on line {1, number, integer} of ''{4}'':\n{2}\n{3}</entry>
+    <entry key="RuntimeWarningNullptr">Detected NULL pointer passed to custom code function, in block ''{0}''. Occurred on line {1, number, integer} of ''{4}'':\n{2}\n{3}
+         <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="suppression">
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    <entry key="RuntimeBoundsError">Index exceeds array dimensions.  Index value {0,number,integer} exceeds valid range [{1,number,integer}-{2,number,integer}] for array ''{8}''. Occurred in block {3} on line {4, number, integer} of ''{7}'':\n{5}\n{6}</entry>
+    <entry key="RuntimeConstructorArgBoundsError">Index exceeds array dimensions.  Index value {0,number,integer} exceeds valid range [{1,number,integer}-{2,number,integer}] for array ''{4}''. Occurred in block {3} in constructor expression ''{5}''</entry>
+    <entry key="UnableToLocateExecutionEngine">Unable to locate execution engine for the block ''{0}'' for simulation through code generation.</entry>
+    <entry key="MexFileForSimCGNotGenerated">The expected MEX file ''{0}'' is not generated.</entry>
+    <entry key="SimStateNotSupported">Block ''{0}'' does not support simulation save and restore.</entry>
+	<entry key="LibraryNotSupported">The library {0} is not supported by the current target, language, or compiler.</entry>
+    <entry key="JITRequiredButJITIncompatible">JIT is required but JIT incompatibilities found.</entry>
+    <entry key="JITEngineFailedSerialize">Failed to serialize JIT engine to file {0}. Make sure the disk is not full or write-protected. ''{1}''.</entry>
+    <entry key="JITEngineMetadataFailedSerialize">Failed to serialize JIT engine metadata to file {0}. Make sure the disk is not full or write-protected.</entry>
+    <entry key="BadMessageID">Simulation through code generation attempted to generate a diagnostics with message ID ''{0}'' but failed.</entry>
+    <entry key="LeakedJITEngine">Internal warning: A JITEngine loaded for block simulation cannot be freed due to non-zero reference count. It is usually caused by unpaired calls to a block's "setupRuntimeResources" and "cleanupRuntimeResources" methods.</entry>
+    <!--
+        Subsystem CGXE-based simulation
+    -->
+    <entry key="MultirateSubsystemNotSupported">Cannot simulate subsystem block ''{0}'' through code generation because it contains multiple sample times. The subsystem block must be a single-rate block.</entry>
+    <entry key="NestedSubsystems">Cannot simulate subsystem block ''{0}'' through code generation because it contains nested subsystem component blocks ''{1}''. The subsystem block must contain only LLVM compatible blocks that are not subsystem components.</entry>
+    <entry key="VarDimsNotSupported">Cannot simulate subsystem block ''{0}'' through code generation because it contains blocks with variable dimensions mode.</entry>
+    <entry key="DSMAccessNotSupported">Block ''{0}'' accesses Data Store Memory. Access to Data Store Memory is not supported in dataflow domains.</entry>
+    <entry key="TriggerPortsNotSupported">Block ''{0}'' has input or output trigger ports. Input or output trigger ports are not supported in dataflow domains.</entry>
+    <entry key="CallSimulinkFunctionsNotSupported">Block ''{0}'' calls a Simulink Function. Simulink Functions are not supported in dataflow domains.</entry>
+    <entry key="UnsupportedOpaqueDataTypeAtInput"><![CDATA[<sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">Input port {0,number,integer}</sldiag> of ''{1}'' is a signal with the custom data type ''{2}''. Custom data types are not supported in subsystem blocks simulating through code generation.]]></entry>
+    <entry key="UnsupportedOpaqueDataTypeAtOutput"><![CDATA[<sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of ''{1}'' is a signal with the custom data type ''{2}''. Custom data types are not supported in subsystem blocks simulating through code generation.]]></entry>
+    <!--
+        CGXE debugger
+    -->
+    <entry key="TypeMismatchValue">Type mismatch. Cannot change value of {0} at debugger prompt.</entry>
+    <entry key="MultiThreadOOPError">Simulink encountered an error while setting up multithreading for blocks using custom code in a separate process.</entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  subviewer AVT wakeup LLVM -->

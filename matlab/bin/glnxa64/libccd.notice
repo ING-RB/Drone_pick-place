@@ -1,0 +1,15 @@
+This version of libccd has been modified from its original source.
+This notice lists all the affected files and describes all changes.
+
+src/
+- Moved list.h, polytope.h, simplex.h and support.h to src/ccd folder, so that more internal utilities can be exposed
+- Removed support.c (its functions are merged into ccd.c)
+
+src/testsuites
+- Updated all unit tests to use googletest (so that they no longer depend on cu)
+- Updated timer functions in benchmarking tests so that they don't depend on cu 
+- Fixed struct initialization syntax that is not supported on Visual Studio
+- Renamed testsuites/support.h to testsuites/supportIntest.h 
+
+src/CMakeLists.txt
+- Enabled unit tests on all platforms

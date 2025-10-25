@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2009-2025 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+    <message>
+        <entry key="CodeVariantConfigExternalMode"> <![CDATA[Variant activation time ''{1}'' is not supported as ''ExternalMode'' is set to ''on''.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''CodeVariantConfigExternalMode'',''{0}'')</cmd>
+        <txt>To disable, set the variant activation of variant blocks to ''update diagram''.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="CodeVariantConfigRightClickSIL">Variant choices with preprocessor conditionals or regular if conditions are not supported when generating an ERT S-Function for a subsystem. Set the variant activation of the variant blocks to ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.</entry>
+        <entry key="CodeVariantConflictInCustomStorageClass">Variant choice block ''{0}'' has condition expression ''{1}'' with conflicting storage class specification. Variables in variant condition expression can either be compile time or runtime but not both.</entry>
+        <entry key="CodeVariantCustomStorageClassesIgnored"><![CDATA[You have specified to generate code for variant blocks with ''Ignore custom storage classes'' configuration. To generate code for variant blocks you must unselect the ignore custom storage class option in model configset.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''CodeVariantCustomStorageClassesIgnored'',''{0}'')</cmd>
+        <txt>Disable the Ignore custom storage classes option.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="CodeVariantInconsistentOupBusType">The bus type setting (virtual or nonvirtual) of output {0,number,integer} of {1} is not consistent with the bus type setting(s) of the same port of the other variant(s).</entry>
+        <entry key="LoopInvolvingInactiveBranch">Block ''{0}'' and block ''{1}'' are in an algebraic loop through an inactive variant path.</entry>
+        <entry key="CannotInsertRateTransition">Multiple rates are feeding Outport block ''{0}'' of Variant Subsystem block ''{1}''.To fix this issue, ensure that the rate of the signal from each choice feeding the Outport is same.</entry>
+        <entry key="ParameterWriterWithValiateOffForStOrRT">To change active variant of variant block with startup or runtime activation time using Parameter Writer block ''{0}'', set the 'Validate parameter' to 'on'</entry>
+        <entry key="CannotInsertRateTransitionForVMRepByIV">Signals with multiple rates propagating to Variant Source ''{0}'' is not supported. Modify the model such that the signals propagating to the Variant Source have the same rate or you can select the variant activation to ''update diagram'' or if the Variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.</entry>
+        <entry key="UDAACInactiveSLexpr"> Parameter ''{0}'' is referenced in a Simulink Expression by another parameter and is not evaluated due to inactive variant condition. Simulink Expressions containing inactive parameters is not supported. Modify the conditions to make the parameters active or switch the variant blocks to ''{1}'' activation. </entry>
+        <entry key="CannotInsertRateTransitionForIV">Block ''{0}'' output port {1, number, integer} is connected to ''{2}'' which has a different sample time and also have propagated condition on it's ports due to Variant blocks. Try modifying the model to have same propagated condition on all input and output ports of the block ''{3}''.</entry>
+        <entry key="VariantConditionEmpty">Variant condition expression used in block ''{0}'' is empty.</entry>
+        <entry key="VariantConditionEmptyNoContext">Variant condition expression is empty.</entry>
+        <entry key="VariantObjectParseError">Invalid variant condition ''{0}'' in VariantExpression Object ''{1}'' used by block ''{2}''.</entry>
+        <entry key="VariantConditionEnumTypeName">Enumerated type name ''{0}'' can only be used in an expression as the left-hand side of ''{1}.enumeral''. ''{2}'' was found without ''.enumeral'' in variant {3} condition expression ''{4}'' used by block ''{5}''.</entry>
+        <entry key="VariantConditionEnumTypeNameExpr">Enumerated type name ''{0}'' can only be used in an expression as the left-hand side of ''{1}.enumeral''. ''{2}'' was found without ''.enumeral'' in variant condition expression ''{3}'' used by block ''{4}''.</entry>
+        <entry key="VariantConditionEnumTypeNameNoContext">Enumerated type name ''{0}'' can only be used in an expression as the left-hand side of ''{1}.enumeral''. ''{2}'' was found without ''.enumeral'' in variant {3} condition expression ''{4}''.</entry>
+        <entry key="VariantConditionIncorrectExprResultDataType">Result type of variant ''{0}'' condition expression ''{1}'' is {2}. Must be Boolean.</entry>
+        <entry key="VariantConditionIncorrectExprResultDataTypeNoVarObj">Result type of variant condition expression ''{0}'' is {1}. Must be Boolean.</entry>
+        <entry key="VariantConditionInvalidArgumentList">Invalid argument list found, Please try to call with a function.</entry>
+        <entry key="VariantConditionUnsupportedFunction">Function call ''{0}'' not supported for code generation, only bitand, bitor, bitxor, bitcmp, bitshift and idivide are supported</entry>
+        <entry key="VariantConditionInvalidDotLHS">Error in Variant ''{0}'' condition expression ''{1}'' used by block ''{2}''. To resolve, do one of these:\n
+        1) ''{3}'' is an enumeration: Ensure that the enumeration is defined correctly or the MATLAB class file containing the definition is on the path. (or)\n
+        2) ''{3}'' is not an enumeration (for example, MATLAB struct): variant activation must be set to ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.
+        </entry>
+        <entry key="VariantConditionInvalidDotLHSExpr">Error in variant condition expression ''{0}'' used by block ''{1}''. To resolve, do one of these:\n
+        1) ''{2}'' is an enumeration: Ensure that the enumeration is defined correctly or the MATLAB class file containing the definition is on the path. (or)\n
+        2) ''{2}'' is not an enumeration (for example, MATLAB struct): variant activation must be set to ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.
+        </entry>
+        <entry key="VariantConditionInvalidDotLHSNoContext">Error in Variant ''{0}'' condition expression ''{1}''. To resolve, do one of these:\n
+        1) ''{2}'' is an enumeration: Ensure that the enumeration is defined correctly or the MATLAB class file containing the definition is on the path. (or)\n
+        2) ''{2}'' is not an enumeration (for example, MATLAB struct): variant activation must be set to ''update diagram'' or if the Variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.
+        </entry>
+        <entry key="VariantConditionInvalidEnumeral">''{0}'' is not a valid enumeral of enumerated type ''{1}'' in variant {2} condition expression ''{3}'' used by block ''{4}''.</entry>
+        <entry key="VariantConditionInvalidEnumeralExpr">''{0}'' is not a valid enumeral of enumerated type ''{1}'' in variant condition expression ''{2}'' used by block ''{3}''.</entry>
+        <entry key="VariantConditionInvalidEnumeralType">Enumerated type ''{0}'' in variant ''{1}'' condition expression ''{2}'' used by block ''{3}'' is invalid. You need to use enumeral of Simulink.IntEnumType.</entry>
+        <entry key="VariantConditionInvalidEnumeralTypeExpr">Enumerated type ''{0}'' in variant condition expression ''{1}'' used by block ''{2}'' is invalid. You need to use enumeral of Simulink.IntEnumType.</entry>
+        <entry key="VariantConditionInvalidEnumeralNoContext">''{0}'' is not a valid enumeral of enumerated type ''{1}'' in variant {2} condition expression ''{3}''.</entry>
+        <entry key="VariantConditionNumericValue">Unsupported numeric value {0} in variant {1} condition expression ''{2}'' used by block ''{3}''. Value must be within the int32 data type range.</entry>
+        <entry key="VariantConditionNumericValueExpr">Unsupported numeric value {0} in variant condition expression ''{1}'' used by block ''{2}''. Value must be within the int32 data type range.</entry>
+        <entry key="VariantConditionNumericValueNoContext">Unsupported numeric value {0} in variant {1} condition expression ''{2}''. Only integers are allowed.</entry>
+        <entry key="CCVariantControlSCSuggestion">
+            <![CDATA[
+                     <actions exclusiveFixIts="no">
+                     <action type="suggestion" btn="none">
+                     <txt>
+                     For code generation when the 'VariantActivationTime' is set to 'code compile', variant control variable used must be one of the following:\n
+                     - MATLAB variable\n
+                     - Simulink.Parameter object with one of the following custom storage classes:\n
+                     \t- Define or ImportedDefine with header file specified, or CompilerFlag\n
+                     \t- SystemConstant (Applies to AUTOSAR.Parameter only)\n
+                     \t- User-defined custom storage class that defines data as a macro in a specified header file\n
+                     - Constant object in Architectural Data section of data dictionary with one of the following supported storage classes:\n
+                     \t- Native Platform: Define or ImportedDefine with header file specified, or CompilerFlag\n
+                     \t- AUTOSAR Classic Platform: SystemConstant\n
+                     - Simulink.VariantControl object
+                     </txt>
+                     </action>
+                     </actions>
+            ]]>
+        </entry>
+        <entry key="VariantObjectUndefined"><![CDATA[Object ''{0}'' in variant ''{1}'' condition expression ''{2}'' used by block ''{3}'' is not defined.
+        Variables used in variant expressions must be Simulink.VariantExpression objects or variant control variables with scalar numeric values.
+        <actions> <action_catalog id="Simulink:VariantCompile:CCVariantControlSCSuggestion"></action_catalog> </actions>
+        ]]>
+        </entry>
+        <entry key="VariantConditionUndefined"><![CDATA[Variables must be Simulink.VariantExpression objects or scalar numeric values, and must be present in the base workspace or data dictionary.
+        For model reference hierarchies with a data dictionary, use reference dictionaries.
+        <actions> <action_catalog id="Simulink:VariantCompile:CCVariantControlSCSuggestion"></action_catalog> </actions>
+        ]]>
+        </entry>
+        <entry key="VariantConditionUnexpectedToken">Encountered unexpected token ''{0}'' in variant ''{1}'' condition expression ''{2}'' used by block ''{3}''.</entry>
+        <entry key="VariantConditionUnexpectedTokenExpr">Encountered unexpected token ''{0}'' in variant condition expression ''{1}'' used by block ''{2}''.</entry>
+        <entry key="VariantConditionUnexpectedTokenNoContext">Encountered unexpected token ''{0}'' in variant {1} condition expression ''{2}''.</entry>
+        <entry key="VariantConditionUnsupportedComplexity">Object ''{0}'' in variant ''{1}'' condition expression ''{2}'' used by block ''{3}'' must not be complex.</entry>
+        <entry key="VariantConditionUnsupportedDataTypeNV">Unsupported data type ''{0}'' for object ''{1}'' in variant {2} condition expression ''{3}'' used by block ''{4}''. Only Integer, Boolean and Enumerated types are allowed.</entry>
+        <entry key="VariantConditionUnsupportedDataTypeInclFloat">Unsupported data type ''{0}'' for object ''{1}'' in variant {2} condition expression ''{3}'' used by block ''{4}''. Only Integer, Boolean, Enumerated, and Floating Point types are allowed.</entry>
+        <entry key="VariantConditionUnsupportedDimensions">Object ''{0}'' in variant ''{1}'' condition expression ''{2}'' used by block ''{3}'' must be scalar.</entry>
+        <entry key="VariantConditionUnsupportedObjectNV"><![CDATA[Unsupported object class for ''{0}'' in variant {1} condition expression ''{2}'' used by block ''{3}''. Only {4} objects are allowed.
+        Variables used in variant expressions must be Simulink.VariantExpression objects or variant control variables with scalar numeric values.
+        <actions> <action_catalog id="Simulink:VariantCompile:CCVariantControlSCSuggestion"></action_catalog> </actions>
+        ]]>
+        </entry>
+        <entry key="VariantConditionUnsupportedStorageClass"><![CDATA[Storage class ''{0}'' for variant control variable ''{1}'' used by block ''{2}'' is not supported.
+        <actions> <action_catalog id="Simulink:VariantCompile:CCVariantControlSCSuggestion"></action_catalog> </actions>
+        ]]>
+        </entry>
+        <entry key="VariantConditionUnsupportedCustomStorageClass"><![CDATA[Custom storage class ''{0}'' for variant control variable ''{1}'' used by block ''{2}'' is not supported.
+        <actions> <action_catalog id="Simulink:VariantCompile:CCVariantControlSCSuggestion"></action_catalog> </actions>
+        ]]>
+        </entry>
+        <entry key="VariantConditionUsingStructUnsupportedForAutosar">Variant condition expression ''{0}'' used by block ''{1}'' contains a MATLAB struct ''{2}'' that does not support AUTOSAR code generation. Change the variant control expressions to use a normal MATLAB variable.</entry>
+        <entry key="VariantConditionUnsupportedStructuredness">Object ''{0}'' in variant ''{1}'' condition expression ''{2}'' used by block ''{3}'' must not be a structure.</entry>
+        <entry key="VariantConditionUnsupportedStorageClassForStartupOrRuntime">Storage class ''{0}'' for variant control variable ''{1}'' used by block ''{2}'' is not supported.
+        <![CDATA[
+             <actions exclusiveFixIts="yes">
+             <action_catalog id="Simulink:VariantCompile:STVariantControlSCSuggestion" enabled="true">
+             <arg>{3}</arg>
+             </action_catalog>
+             </actions>
+        ]]>
+        </entry>
+        <entry key="STVariantControlSCSuggestion">
+        <![CDATA[
+        <actions exclusiveFixIts="no">
+          <action type="suggestion" btn="none">
+            <txt>
+                    For code generation when the 'VariantActivationTime' is set to ''{0}'', variant control variable used must be one of the following:\n
+            - MATLAB variable\n
+            - Simulink.Parameter object with one of the following storage classes:\n
+              \t- Simulink built-in storage classes:\n
+                \t\t- ExportedGlobal\n
+                \t\t- Model default\n
+                \t\t- ImportedExtern\n
+                \t\t- ImportedExternPointer\n
+              \t- Custom storage class with following configuration:\n
+                \t\t- Data scope must be imported/exported\n
+                \t\t- No const\n
+                \t\t- No macro\n
+            - Simulink.VariantControl object
+            </txt>
+          </action>
+         </actions>
+       ]]>
+       </entry>
+       <entry key="VariantConditionUnsupportedStorageClassForAutosarPostBuild">Storage class ''{0}'' for variant control variable ''{1}'' used by block ''{2}'' does not support AUTOSAR code generation.
+       <![CDATA[
+           <actions exclusiveFixIts="yes">
+             <action_catalog id="Simulink:VariantCompile:STVariantControlSCSuggestion_AR" enabled="true">
+             <arg>{3}</arg>
+             </action_catalog>
+             </actions>
+        ]]>
+       </entry>
+       <entry key="STVariantControlSCSuggestion_AR">
+       <![CDATA[
+        <actions exclusiveFixIts="no">
+          <action type="suggestion" btn="none">
+            <txt>
+            For code generation when the 'VariantActivationTime' is set to ''{0}'', variant control variable used must be one of the following:\n
+            - MATLAB variable\n
+            - Constant object in Architectural Data section of data dictionary mapped to 'PostBuildVariantCriterion' (AUTOSAR Classic Platform)\n
+            - Simulink.VariantControl object
+            </txt>
+          </action>
+        </actions>
+      ]]>
+      </entry>
+      <entry key="VariantConditionContainsArithmeticOperationsError">Variant condition expression ''{0}'' used by block ''{1}'' contains arithmetic operations. This can result in different integer overflow behaviour between simulation and generated code. To allow arithmetic operations in variant conditions, navigate to ''Diagnostics > Arithmetic operations in variant conditions'' diagnostic in the ''Model Configuration Parameters'' dialog box and set the value to ''warning'' or ''none''.</entry>
+        <entry key="VariantConditionContainsArithmeticOperationsWarn">Variant condition expression ''{0}'' used by block ''{1}'' contains arithmetic operations. This can result in different integer overflow behaviour between simulation and generated code. Simulate with the entire set of variant values to ensure that there is no issue of overflow in the arithmetic operation. To disallow arithmetic operations in variant conditions, navigate to ''Diagnostics > Arithmetic operations in variant conditions'' diagnostic in the ''Model Configuration Parameters'' dialog box and set the value to ''error''.</entry>
+        <entry key="VariantConditionArithmeticOperationsInt32">Variant condition expression ''{0}'' used by block ''{1}'' contains an arithmetic operation. The operands of the arithmetic operation should be of signed 32-bit integer type (INT32) when "GeneratePreprocessorConditionals" setting is on. To disallow arithmetic operations in variant conditions, navigate to ''Diagnostics > Arithmetic operations in variant conditions'' diagnostic in the ''Model Configuration Parameters'' dialog box and set the parameter value to ''error''.</entry>
+        <entry key="VariantConditionArithmeticOperationsOverflow">Variant condition expression ''{0}'' used by block ''{1}'' contains an arithmetic operation which overflows the signed 32-bit integer type. This can result in different integer overflow behaviour between simulation and generated code. To disallow arithmetic operations in variant conditions, navigate to ''Diagnostics > Arithmetic operations in variant conditions'' diagnostic in the ''Model Configuration Parameters'' dialog box and set the value to ''error''.</entry>
+        <entry key="VariantConditionMixSignedUnsignedTypes">Variant condition expression ''{0}'' used by block ''{1}'' contains an operation with signed and unsigned integer types. Mixing signed and unsigned types in a variant condition expression can cause implicit type conversion from signed type to unsigned type by the C preprocessor. This can cause different results between simulation and generated code.</entry>
+        <entry key="VSSMultipleSimVariants">Variant Subsystem block ''{0}'' with Variant control mode parameter set to 'sim codegen switching' supports only two variant choices, one for simulation (sim) and the other for code generation (codegen).</entry>
+        <entry key="VSSMultipleCodegenVariants">Variant Subsystem block ''{0}'' with Variant control mode parameter set to 'sim codegen switching' supports only two variant choices, one for simulation (sim) and the other for code generation (codegen).</entry>
+        <entry key="VSSNoSimCodegenVariant">Variant Subsystem block ''{0}'' does not contain any ''(sim)'' or ''(codegen)'' variant choices.</entry>
+        <entry key="VSSSimCodegenOnlyVariants">It is invalid to specify any other variant choice for Variant Subsystem block ''{0}'' when ''(sim)'' and ''(codegen)'' variant choices are used together.</entry>
+        <entry key="VSSSimVariantNoCodegenVariant">Variant Subsystem block ''{0}'' contains ''(sim)'' variant as one variant choice. Its other variant choice must be ''(codegen)'' variant.</entry>
+        <entry key="VSSCodegenVariantNoSimVariant">Variant Subsystem block ''{0}'' contains ''(codegen)'' variant as one variant choice. Its other variant choice must be ''(sim)'' variant.</entry>
+        <entry key="InlineVariantConditionCannotBeEmpty">Variant {0} block ''{1}'' cannot have an empty variant condition. Specify a variant condition as a Simulink.VariantExpression object or a boolean expression.</entry>
+        <entry key="VariantConditionCannotBeEmpty">You cannot specify an empty variant condition for block ''{0}''. The variant condition must be a Simulink.VariantExpression object or a boolean expression. </entry>
+        <entry key="InlineVariantCannotOverride">Failed to set Variant {0} block ''{1}'' as label mode active choice because the specified condition does not exist in variant control list.</entry>
+        <entry key="InlineVariantMultipleOverride">Failed to set Variant {0} block ''{1}'' as label mode active choice because there exists multiple entries of the specified condition.</entry>
+        <entry key="InlineVariantsSimulinkVarControlWithRT">Simulink.VariantControl object ''{0}'' with ''runtime'' variant activation time is used in the variant control expressions in the variant block ''{1}'' with ''Variant activation time'' set to 'inherit from Simulink.VariantControl'. If the ''Variant activation time'' is set to 'inherit from Simulink.VariantControl' for the inline variant blocks, the corresponding Simulink.VariantControl object must have their activation time set accordingly to ''update diagram'' or ''update diagram analyze all choices'' or ''code compile'' or ''startup''.</entry>
+        <entry key="InlineVariantWithMultipleActivePortsAndAZVCOn">Variant {0} block ''{1}'' must have no active ports or only one active port.</entry>
+        <entry key="InlineVariantWithMultipleActivePortsAndAZVCOff">Variant {0} block ''{1}'' must have only one active port.</entry>
+        <entry key="VariantsInvalidToChangeTaskTransConn">Signal at output port {0,number,integer} of block "{1}" branches to blocks mapped to different concurrent tasks. To support this all variant blocks in your model must have variant activation set to update diagram  or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram'' or change the task mapping of blocks connected to the branched signal. </entry>
+        <entry key="InlineVariantSingleDefaultChoice">The variant {0} block ''{1}'' contains only one {2} port, which is also specified as the default port. Add at least one more {3} port before specifying the default port.</entry>
+        <entry key="InlineVariantMismatchVariantControls">Number of {0} ports in variant {1} block ''{2}'' does not match the number of elements defined in variant controls.</entry>
+        <entry key="InlineVariantZeroVariantsNotAllowed"><![CDATA[Variant {0} block ''{1}'' does not contain an active variant.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''InlineVariantZeroVariantsNotAllowed'',''enable_azvc'',''{1}'')</cmd>
+        <txt>To explicitly allow zero variants for this block, select the ''Allow zero active variant controls'' check box in the block parameters dialog box.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="InlineVariantZeroVariantsNotAllowedWithoutFixIt"><![CDATA[Variant {0} block ''{1}'' does not contain an active variant.
+        <actions>
+        <action type="suggestion">
+        <txt>To explicitly allow zero variants for this block, turn off ''Fast Restart'' and select the ''Allow zero active variant controls'' check box in the block parameters dialog box.</txt>
+        </action>
+        </actions> ]]>
+    </entry>
+        <entry key="ConvertMRVToVariantFailedMultiple">
+        <![CDATA[
+        These Model Variants blocks are found in the model:\n ''{0}''
+        <actions exclusiveFixIts="yes">
+        <action type="suggestion">
+        <cmd>upgradeadvisor(''{1}'')</cmd>
+        <txt>Run upgrade advisor to manually convert Model Variants block to Variant Subsystem block.</txt>
+        </action>
+        </actions>
+        ]]>
+        </entry>
+        <entry key="InlineVariantExtInputNotSupported">The root inport block ''{0}'' has a variant condition and the model is configured to accept external inputs. This requires that you specify a comma separated list, corresponding to each of the root input port, in Configuration Parameters -> Data Import/Export -> Input.</entry>
+        <entry key="InlineVariantExtOutputNotSupported"><![CDATA[Root outport block ''{0}'' has a variant condition and the model is configured to log outputs.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''InlineVariantExtOutputNotSupported'',''specify_csv_list'',{1,number,integer})</cmd>
+        <txt>When logging variant Outport blocks in Array, Structure, or Structure with time formats you must specify a comma separated list of variable names, one per Outport block, in the <a href="matlab:load_system(bdroot);configset.highlightParameter(bdroot,'OutputSaveName')">Data Import/Export Pane</a> of the Configuration Parameters Dialog Box.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="InlineVariantFunctionCallCodeReuse">The specified value of ''Code generation function packaging'' parameter for the block ''{0}'' is not supported because it has received a propagated variant condition. Consider changing the value of this parameter to ''inline'' or ''auto''.</entry>
+        <entry key="InlineVariantMultipleSimVariants">Variant {0} block ''{1}'' with Variant control mode parameter set to 'sim codegen switching' supports only two variant choices, one for simulation (sim) and the other for code generation (codegen).</entry>
+        <entry key="InlineVariantMultipleCodegenVariants">Variant {0} block ''{1}'' with Variant control mode parameter set to 'sim codegen switching' supports only two variant choices, one for simulation (sim) and the other for code generation (codegen).</entry>
+        <entry key="InlineVariantSimCodegenOnlyVariants">It is invalid to specify any other variant choice for Variant {0} block ''{1}'' when ''(sim)'' and ''(codegen)'' variant choices are used together.</entry>
+        <entry key="InlineVariantSimNoCodegenVariant">Variant {0} block ''{1}'' contains ''(sim)'' variant as one variant choice. Its other variant choice must be ''(codegen)'' variant.</entry>
+        <entry key="InlineVariantCodegenNoSimVariant">Variant {0} block ''{1}'' contains ''(codegen)'' variant as one variant choice. Its other variant choice must be ''(sim)'' variant.</entry>
+        <entry key="InlineVariantMdlrefMultiInstNormalModeVisibility">
+            <![CDATA[Referenced model {0} is referenced multiple times in normal mode and the visible instance has a variant condition which is not active.
+                     <actions exclusiveFixIts="yes">
+                     <action type="suggestion">
+                     <cmd>matlab:Simulink.ModelReference.NormalModeVisibility(''{1}'')</cmd>
+                     <txt>Select an active instance of ''{1}'' model to be visible.</txt>
+                     </action>
+                     </actions>
+            ]]>
+        </entry>
+        <entry key="VariantControlWithBusElementsConflictWithNormalVar">Variant block ''{0}'' has the variant control expression with ''{1}'' which has a potential conflict with one of the elements ''{2}'' of the bus object ''{1}''. To resolve this error, change variant control with different identifier.</entry>
+        <entry key="VariantControlWithBusElementsConflictWithNormalVarforMdlBlock">Variant block ''{0}'' has the variant control expression with ''{1}'' which has a potential conflict with one of the elements ''{2}'' of the bus object ''{1}''. To resolve this error, change variant control with different identifier.</entry>
+        <entry key="VariantControlVariableConflictWithEnums">Identifier ''{0}'' conflicts with an enumeration string data type ''{1}''. Change the variable ''{0}'' with a different identifier.</entry>
+        <entry key="VariantControlWithStructElemConflictWithNormalVar">Variant block ''{0}'' with variant control ''{1}'' has a potential conflict with a member of structure ''{2}''. Use a different identifier in the variant control expression.</entry>
+        <entry key="VariantControlInvalidStructValueSpecified">Field value of structure "{0}" used as variant control variable in block "{1}" must be a integer, float, or double scalar.</entry>
+        <entry key="VariantControlWithStructElemConflictWithNormalVarforMdlBlock">Model block ''{0}'' directly or indirectly references a model that has the variant control expression with ''{1}'' which has a potential conflict with one of the member of structure ''{2}''. To resolve this error, change variant control with different identifier.</entry>
+        <entry key="NonSimulinkParamConflictWithSTVarControl"><![CDATA[ Variant block ''{0}'' has a conflicting variant control parameter usage ''{1}'' with one of the parameters of the block ''{2}''. When a variable is used in a variant expression of a variant block, you cannot use the same variable as a parameter to a non-variant blocks when the model optimization is set to ''Inlined''.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''ConvertDefaultParameterBehaviorToTunable'',''{3}'')</cmd>
+        <txt>Set the Default parameter behavior to ''Tunable'' in the optimization pane.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="NonSimulinkParamConflictWithVarControl"><![CDATA[ Variant block ''{0}''has a conflicting variant control parameter usage ''{1}'' with one of the parameters of the block ''{2}''. When a variable is used in a variant expression of a variant block, you cannot use the same variable as a parameter to a non-variant blocks.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''ConvertNormalVarControlToSimulinkParam'',''{1}'')</cmd>
+        <txt>Convert ''{1}'' to Simulink.Parameter.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="NonSimulinkParamConflictWithSTVarControlforMdlBlock"><![CDATA[Model block ''{0}'' directly or indirectly references a model that has variant control parameter usage ''{1}'', which conflicts with a parameter of block ''{2}''. Using the same parameter in a variant control expression of a variant block and a non-variant block is not supported when the model optimization is set to ''Inlined''.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''ConvertDefaultParameterBehaviorToTunable'',''{3}'')</cmd>
+        <txt>Set the Default parameter behavior to ''Tunable'' in the optimization pane.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="NonSimulinkParamConflictWithVarControlWithSt">Using the same variable ''{1}'' in variant control expression of variant block ''{0}'' with ''Variant activation time'' set to ''code compile'' and as a parameter of block ''{2}'' is not supported. Use a different variable as a parameter for non-variant blocks.</entry>
+        <entry key="NonSimulinkParamConflictWithStructVarControlWithSt">Using  variable ''{1}'' in variant control expression of variant block ''{0}'' with ''Variant activation time'' set to ''code compile'' and ''{2}'' as a parameter of block ''{3}'' is not supported. Use a different variable as a parameter for non-variant blocks.</entry>
+        <entry key="NonSimulinkParamConflictWithVarControlforMdlBlock"><![CDATA[Model block ''{0}'' directly or indirectly references a model that has variant control parameter usage ''{1}'', which conflicts with a parameter of block ''{2}''. Using the same parameter in a variant control expression of a variant block with ''Variant activation time'' set to ''code compile'' and a non-variant block is not supported.
+        <actions exclusiveFixIts="yes">
+        <action type = "fixit">
+        <cmd>slprivate(''variantfixes'',''ConvertNormalVarControlToSimulinkParam'',''{1}'')</cmd>
+        <txt>Convert ''{1}'' to Simulink.Parameter.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="NonSimulinkParamConflictWithVarControlforMdlBlockWithSt">Model block ''{0}'' directly or indirectly references a model that has variant control parameter usage ''{1}'', which conflicts with a parameter of block ''{2}''. Using the same parameter in a variant control expression of a variant block and a non-variant block is not supported.</entry>
+        <entry key="NonSimulinkParamConflictWithStructVarControlforMdlBlockWithSt">Model block ''{0}'' directly or indirectly references a model that has variant control parameter usage ''{1}'', which conflicts with parameter ''{2}'' of block ''{3}''. Using the same parameter in a variant control expression of a variant block and a non-variant block is not supported.</entry>
+        <entry key="NonSimulinkParamNotSupportedForStartup"><![CDATA[Variant block ''{0}'' with ''Variant activation time'' set to ''startup'' is not supported with the current ''Default parameter behavior'' setting for the model ''{1}''. Change the variant control variable ''{2}'' to a Simulink.Parameter object.
+        <actions exclusiveFixIts="yes">
+        <action type = "fixit">
+        <cmd>slprivate(''variantfixes'',''ConvertNormalVarControlToSimulinkParamForSt'',''{2}'',''{1}'')</cmd>
+        <txt>Convert ''{1}'' to Simulink.Parameter.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="NonSimulinkParamWithVariantTransConflictWithSt">Using the same variable for the variant transition with parameter ''{1}'' in Stateflow chart ''{0}'' and the variant control variable of variant block ''{2}'' is not supported when the ''Variant activation time'' of the variant block is set to ''{3}''.</entry>
+        <entry key="VariantBlocksWithContStatesInsideEnableTriggerSys">Block ''{0}'' with continuous states and startup variant condition found inside subsystem with control ports. Combining startup variants inside conditionally executed subsystem is not supported. Move the startup variant blocks outside of conditionally executed subsystem.</entry>
+        <entry key="ErrorInValidatingConfigLong">Error in validating model ''{0}'' which is using variant configuration ''{1}'' of object ''{2}''.</entry>
+        <entry key="ErrorInValidatingConfigShort">Error in validating model ''{0}'' which is using variant configuration data object ''{1}''.</entry>
+        <entry key="ErrorInEvalOfVarCondition">Variant condition ''{0}'' of variantexpression object ''{1}'' used by block ''{2}'' should return a logical value.</entry>
+        <entry key="InvalidStateflowVariantTransitionLabel" translate="false" note="translate=false set due no translatable content">{0}</entry>
+        <entry key="InvalidActivationTime">Variant Subsystem block ''{0}'' has choice blocks with condition expression having conflicting storage class specification. Variables in variant condition expression can either be compile time or start-up but not both.</entry>
+        <entry key="InvVMergeConnMultSrcTs">Inconsistent sample times detected for signals driving the block ''{0}''. Block ''{1}'' output port {2,number,integer} has the sample time {3}, while block ''{4}'' output port {5,number,integer} has the sample time {6}. All signals driving the block ''{7}'' must have the same sample time.</entry>
+        <entry key="InconsistentVFCJConnMultSrcTs">Output port {0,number,integer} of ''{1}'' has sample time ''{2}'', but the output port {3,number,integer} of ''{4}'' has sample time ''{5}''. Sample time of all signals driving the Variant Source block ''{6}'' with parameter Output function call selected must match.</entry>
+        <entry key="UnsupportedUnionSampleTimeAtInputPort">Connecting block ''{0}'' to the input port {1,number,integer} of block ''{2}''is not supported because union sample time was propagated to block ''{2}''.</entry>
+        <entry key="VarCondPropNonEqualConditionInputErr"> <![CDATA[Variant conditions '{'{1}'}' on input ports of block ''{0}'' must be consistent. Any block contributing to these conditions must have their ''Variant activation time'' set to ''update diagram analyze all choices'' or ''code compile'' or ''startup''. If the ''Variant activation time'' is set to 'inherit from Simulink.VariantControl', the corresponding Simulink.VariantControl objects must have their activation time set accordingly to ''update diagram analyze all choices'' or ''code compile'' or ''startup''.]]></entry>
+        <entry key="VarCondPropNonEqualConditionOutputErr"> <![CDATA[Variant condition '{'{1}'}' on output ports of block ''{0}'' must be consistent. Any block contributing these conditions must have their ''Variant activation time'' set to ''update diagram analyze all choices'' or ''code compile'' or ''startup''. If the 'Variant activation time' is set to 'inherit from Simulink.VariantControl', the activation time of the Simulink.VariantControl objects must be set to ''update diagram analyze all choice'' or ''code compile'' or ''startup''.]]></entry>
+        <entry key="VarCondPropUnsupportedBlockErr">Block ''{0}'' is Stateflow chart with Simulink functions that has variant conditions. Such modeling patterns do not support Variant condition propagation. To fix the error, try modifying the Stateflow chart to not contain Simulink functions.</entry>
+        <entry key="VarCondPropUnsupportedRuntimeVSSBlockErr">Propagating variant conditions from within the Variant Subsystem block ''{0}'' when the activation time is set to ''runtime'' is not supported. Modify the activation time to something other than ''runtime''.</entry>
+        <entry key="VarCondPropUnsupportedVSSBlockErr"><![CDATA[The choice blocks of the Variant Subsystem block ''{0}'' are propagating variant conditions from within the Variant Subsystem. However, the Variant Subsystem block is not configured to propagate variant conditions.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''VSSPropagateConditions'',''{0}'')</cmd>
+        <txt>For the Variant Subsystem block ''{0}'', select the 'Propagate conditions outside of Variant Subsystem' checkbox on the block parameters dialog</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="VarCondSimulinkFunctionArgInErr">Propagation of variant conditions to Argument Inport block ''{0}'' is not supported. Check if the block is in the path of a variant block that propagates conditions. To specify Simulink Function block ''{1}'' to be variant, select the "Enable variant condition" parameter in block ''{2}''.</entry>
+        <entry key="VarCondSimulinkFunctionArgOutErr">Propagation of variant conditions to Argument Outport block ''{0}'' is not supported. Check if the block is in the path of a variant block that propagates conditions. To specify Simulink Function block ''{1}'' to be variant, select the "Enable variant condition" parameter in block ''{2}''.</entry>
+        <entry key="VarCondSimulinkFunctionCallerIncompatibleConditions">Propagated condition on block ''{0}'' will lead in a build error during code generation if ''{0}'' is calling an inactive Simulink Function block ''{1}''. \nVariant condition on blocks: \n &#8226; ''{0}'': {2} \n &#8226; ''{1}'': {3}</entry>
+        <entry key="VarCondStateAccessorOwnerIncompatibleConditions">Propagated condition on the state accessor ''{0}'' can lead to an error during model compilation and code generation if ''{0}'' is accessing the state owned by the inactive block ''{1}''. \nVariant condition on blocks: \n &#8226; ''{0}'': {2} \n &#8226; ''{1}'': {3}</entry>
+        <entry key="VarCondParamAccessorOwnerIncompatibleConditions">Propagated condition on the parameter accessor ''{0}'' can lead to an error during model compilation and code generation if ''{0}'' is accessing the parameter owned by the inactive block ''{1}''. \nVariant condition on blocks: \n &#8226; ''{0}'': {2} \n &#8226; ''{1}'': {3}</entry>
+        <entry key="ParamOwnerAccessorIncompatibleVAT">Parameter Writer ''{0}'' and Parameter Owner ''{1}'' must have the same variant activation time.</entry>
+        <entry key="VarCondPropModelBlockAsVariantChoicePropOffErr"><![CDATA[Variant Subsystem block ''{1}'' is not configured to propagate variant conditions but its choice block ''{0}'' propagates variant conditions.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''VSSPropagateConditions'',''{1}'')</cmd>
+        <txt>For the Variant Subsystem block ''{1}'' set the 'Propagate conditions outside of variant subsystem' to 'on'.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="VariantBlockDefaultChoiceNotAllowed">Variant {0} ''{1}'' does not support ''(default)'' variant keyword as a variant control.</entry>
+        <entry key="VariantBlockSimChoiceNotAllowed">Variant {0} ''{1}'' does not support ''(sim)'' variant keyword as a variant control.</entry>
+        <entry key="VariantBlockCodegenChoiceNotAllowed">Variant {0} ''{1}'' does not support ''(codegen)'' variant keyword as a variant control.</entry>
+        <entry key="VariantBlockCommentedVariantControlNotAllowed">Variant {0} block ''{1}'' does not support ignored variant controls. Remove the "%" in front of the "Variant control" block parameter value of ''{2}'' to specify the variant condition, or uncheck the "Enable variant condition" block parameter to always enable the {0}.</entry>
+        <entry key="InlineVariantSubsysBuildNotSupported"> Subsystem build is not supported since the output port ''{0}'' inside the subsystem is conditional and MAT File logging is enabled. You must either disable MAT File logging or change the model such that the output ports inside the subsystem ''{1}'' do not have any variant conditions.</entry>
+        <entry key="InlineVariantVMReplacedForVarSrcNotSupported"> Function call signal propagating to the Variant Source block ''{0}'' is configured to analyze all choices. Multi-input Variant Source blocks are not supported with function call signals when variant activation time is set to anything other than ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', the activation time of the Simulink.VariantControl objects is set to anything other than ''update diagram''.</entry>
+        <entry key="InlineVariantVMReplacedForVarStartNotSupported">Function call signal propagating to the Variant Start block ''{0}'' is configured to analyze all choices. Multi-input Variant Start blocks are not supported with function call signals when variant activation time is set to anything other than ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', the activation time of the Simulink.VariantControl objects is set to anything other than ''update diagram''.</entry>
+        <entry key="InlineVariantVFCJReplacedForVarSrcNotSupported">Function call signal propagating to Variant Source block ''{0}'' is configured to analyze all choices. Multi-input Variant Source blocks are not supported with function-call signals when variant activation time is set to anything other than ''update diagram'' or if the Variant activation time is set to 'inherit from Simulink.VariantControl', the activation time of the Simulink.VariantControl objects is set to anything other than ''update diagram'', in the export function model.</entry>
+        <entry key="VSSVFCJReplacedForVarSrcNotSupported">Function call signal propagating to Variant Subsystem outport block ''{0}'' is configured to analyze all choices. Variant Subsystems cannot merge multiple function-call signals when variant activation time is set to anything other than ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', the activation time of the Simulink.VariantControl objects is set to anything other than ''update diagram'', in the export function model.</entry>
+        <entry key="VFCJReplacedForVarSrcNotSupported">The Variant function-call join block ''{0}'' is fed by multiple function call signals. Multi-input Variant function-call join blocks are not supported in export function models.</entry>
+        <entry key="InlineVariantSigConvNotSupported"> The variant {0} block ''{1}'' is placed on a function call signal and has a signal property specified on its output port. Specifying signal property on a variant {0} block is not supported when it is placed on a function call signal.</entry>
+        <entry key="InlineVariantInPMBlock">Variant block ''{0}'' is not allowed within a Simscape block. </entry>
+        <entry key="InlineVariantSimEventBlockNotSupportedForST">SimEvents blocks and Stateflow charts with messages are not supported when block ''{0}'' has a propagated variant condition and is present on a path that can generate regular if conditions because ''Variant activation time'' is set to ''startup''. Set the ''Variant activation time'' of all the variant blocks to ''update diagram'' or if the Variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.</entry>
+        <entry key="InlineVariantSimEventBlockNotSupportedForAAC">Block ''{0}'' has a propagated variant condition and is present on a path that analyzes all the variant choices due to variant activation set to ''update diagram analyze all choices''. SimEvents blocks and Stateflow charts with messages are not supported under this scenario. To fix this error, set the variant activation of the appropriate block to ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.</entry>
+        <entry key="InlineVariantSimEventBlockNotSupportedForSimCodegen">Block ''{0}'' has a propagated variant condition due to a variant block with its variant control mode set to ''sim codegen switching'' and variant activation time set to ''update diagram analyze all choices''. SimEvents blocks and Stateflow charts with messages are not supported under this scenario. To fix this error, set the variant activation of the appropriate variant block to ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.</entry>
+        <entry key="CodeVariantInSimViewingDevice">Block ''{0}'' has variant activation set to ''code compile'' or ''startup'' and is not allowed in subsystem ''{1}'' which has "SimViewingDevice" parameter ''on''. Sim Viewing Device subsystems are removed during code generation which conflicts with the request to generate code with #if/if conditions. To fix this error, set the variant activation as ''update diagram'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to ''update diagram''.</entry>
+        <entry key="InlineVariantContStateNotSupported">Block ''{0}'' contains continuous states and has propagated variant condition due to variant blocks. Blocks with continuous states having propagated variant conditions are supported only when variant blocks have ''startup'' or ''update diagram'' activation.</entry>
+        <entry key="InlineVariantContStateNotSupportedWithErtTargets">Block ''{0}'' contains continuous states and model is configured to generate code with ERT based targets. Blocks with continuous states and propagated startup variant conditions are supported for codegen workflows only for non ERT targets such as rsim.tlc.</entry>
+        <entry key="SimplifyVarCondExprInvalidFirstArg">Invalid first argument for simplifying variant condition expression. It must be a string.</entry>
+        <entry key="SimplifyVarCondExprInvalidSecondArg">Invalid second argument for simplifying variant condition expression. It must be boolean. 'true' for an input of type 'MExpr' and 'false' for an input of type 'CExpr'. It is optional and its default value is 'true'.</entry>
+        <entry key="SimplifyVarCondExprInvalidThirdArg">Invalid third argument for simplifying variant condition expression. It must be boolean. 'true' for an output of type 'MExpr' and 'false' for an output of type 'CExpr'. It is optional and its default value is the value of the second argument.</entry>
+        <entry key="ConvertExprBetweenMandCInvalidFirstArg">Invalid first argument for converting expression between M and C. It must be a string.</entry>
+        <entry key="ConvertExprBetweenMandCInvalidSecondArg">Invalid second argument for converting expression between M and C. It must be boolean. 'true' for an input of type 'MExpr' and 'false' for an input of type 'CExpr'.</entry>
+        <entry key="ConvertExprBetweenMandCInvalidThirdArg">Invalid third argument for converting expression between M and C. It must be boolean. 'true' for an output of type 'MExpr' and 'false' for an output of type 'CExpr'.</entry>
+        <entry key="InactiveResetFunctionInRefModelNotAllowed"> Inactive Reinitialize or Reset functions in referenced models are not supported. Reinitialize or Reset function block ''{0}'' is part of a referenced model hierarchy and inherits a variant condition that makes it inactive.</entry>
+        <entry key="AutoInheritSimFcnDataInportError">Inport block ''{0}'' is not supported inside Simulink Function subsystem block ''{1}'' because the Simulink Function is configured to inherit variant conditions from its caller blocks. When using inport blocks inside of Simulink Function subsystems, you must explicitly define the variant condition on the Trigger Port block.</entry>
+        <entry key="AutoInheritSimFcnDataOutportError">Outport block ''{0}'' is not supported inside Simulink Function subsystem block ''{1}'' because the Simulink Function is configured to inherit variant conditions from its caller blocks. When using outport blocks inside of Simulink Function subsystems, you must explicitly define the variant condition on the Trigger Port block.</entry>
+        <entry key="MergeBlockRootOutportEnsureNonVirtualSpecNdVariant">Model ''{0}'' is configured to export functions and hence, the variant condition ''{1}'' on the Outport block ''{2}''must match the variant condition ''{3}'' on the ''{4}'' block. \n
+        To resolve this issue, ensure the variant conditions match.</entry>
+        <entry key="MergeBlockRootOutportEnsureVirtualSpecNdVariant">Outport block ''{0}'' has ''{4}'' selected and hence, its variant condition ''{1}'' must match the variant condition ''{2}'' on the ''{5}'' block ''{3}''. \n
+        To resolve this issue, set parameter ''{4}'' of the ''{0}'' block to 'off'.</entry>
+        <entry key="MergeBlockRootOutportEnsureVirtualSpecNdVariant1">Outport block ''{0}'' has ''{7}'' selected and hence, ''{1}'' block ''{2}'' variant condition ''{3}'' must be a subset of variant condition ''{4}'' on the ''{5}'' block ''{6}''. \n
+        To resolve this issue, set parameter ''{7}'' of the ''{0}'' block to 'off'.</entry>
+        <entry key="VariantOutportEnsureVirtualdrvByIRT">Condition mismatch found between Outport block ''{0}'' (''{1}'') and block ''{2}'' (''{3}''). Outport block ''{0}'' is either driven by an Initialize/Reset/Terminate block or is within it.</entry>
+        <entry key="OutputWhenUnconnectedNotSupportedForAutoInheritDataType"><![CDATA[Outport block ''{0}'' has 'Specify output when source is unconnected' set to 'on', and 'Data Type' set to 'Inherit:auto'. Either set 'Specify output when source is unconnected' to 'off' or select 'Data type' other than 'Inherit:auto'.
+        <actions exclusiveFixIts="no">
+        <action type="fixit" id="outwhenunconnfix">
+        <cmd>slprivate(''variantfixes'',''UnsetOutputWhenUnconnectedParam'',''{0}'')</cmd>
+        <txt>Disable the option 'Specify output when source is connected' for {0}.</txt>
+        </action>
+        <action type="suggestion" id="datatypefix">
+        <cmd>open_system(''{0}'','parameter')</cmd>
+        <txt>On the Signal Attributes tab, select 'Data type' other than 'Inherit:auto'.</txt>
+        </action>
+        </actions>
+        ]]>
+        </entry>
+        <entry key="ICOnMergeBlkWithOneActivePort">One or more inputs to Merge block ''{0}'' are inactive due to variant conditions. In this case you cannot specify an Initial Output on the Merge block. To fix, either remove the Initial Output or ensure all inputs to the Merge block have the same variant condition.</entry>
+        <entry key="VariantControlChangedWhenSimPausedOrRunning">Changing the active variant of Variant Block ''{0}'' during model simulation is not supported. Restart the simulation to use the new value.</entry>
+        <entry key="VSSContChoicesDiffName">Control port block names of choices in Variant Subsystems must be the same. Variant Subsystem ''{0}'' has conflicting control port blocks with name ''{1}'' in choice ''{2}'' and ''{3}'' in choice ''{4}''.</entry>
+        <entry key="VSSContChoicesDiffPortType">Control port block types of choices in Variant Subsystems must be same. Variant Subsystem ''{0}'' has control port blocks of type ''{1}'' in choice ''{2}'' and ''{3}'' in choice ''{4}''.</entry>
+        <entry key="VSSContChoicesMixedUsage">Inconsistent Variant Subsystem choice types found. Variant Subsystem block ''{0}'' must not have a mix of conditionally executed and normal Subsystems or Model blocks. To fix, use the same control port type for all Variant Subsystem choices.</entry>
+        <entry key="SemanticErrorInConditionExpression">Invalid variant control expression ''{1}'' found in block ''{0}''.</entry>
+        <entry key="VariantContPortsDisallowed">The variant choice block ''{0}'' can have input, enable, trigger, reset, output and connection ports only.</entry>
+        <entry key="ModelRefPortsDisallowed">Model reference block ''{0}'' with initialize, terminate, or reset ports is not supported as variant choice.</entry>
+        <entry key ="EventPortInUDorLabelMode"> Model reference block ''{0}'' with Event port(s) is only supported when the variant activation time is set to ''update diagram'' or the variant control mode is set to ''label''.</entry> 
+        <entry key="VSSChoiceVSSWithFcnCalls">Variant Subsystem ''{0}'' has another Variant Subsystem ''{1}'' as choice which in turn has function call block as its choice. Nested Variant Subsystems with function call choices are supported when top level Variant Subsystem has variant activation set to update diagram or, if the variant activation time of the top level Variant subsystem is set to 'inherit from Simulink.VariantControl' with activation time of the Simulink.VariantControl objects set to ''update diagram''. </entry>
+<entry key="WarnOnlyActiveVariantUsedCreated_SIMFCN">Changing the active variant will not be supported in protected model ''{0}'' for Simulink Function blocks which has variant condition enabled. For example block ''{1}'' cannot change its active variant.</entry>
+<entry key="WarnOnlyActiveVariantUsedCreated_IRT">Changing the active variant will not be supported in protected model ''{0}'' for Initialize, Reinitialize, Reset or Terminate Function blocks which has variant condition enabled. For example block ''{1}'' cannot change its active variant.</entry>
+<entry key="WarnOnlyActiveVariantUsedCreated_VSS">Changing the active variant will not be supported in protected model ''{0}'' for Variant Subsystem blocks if variant activation time is other than 'startup' or 'runtime'. For example block ''{1}'' cannot change its active variant.</entry>
+<entry key="WarnOnlyActiveVariantUsedCreated_IV">Changing the active variant will not be supported in protected model ''{0}'' for Variant Source/Sink or Variant Start blocks if variant activation time is not 'startup'. For example block ''{1}'' cannot change its active variant.</entry>
+        <entry key="InConsistentICFromVSS">Block ''{0}'' is connected via variant blocks and one of its sources is configured to reset its value when disabled. To fix this error select 'Output when disabled' to 'held'.</entry>
+        <entry key="InvalidVSSMdlChoicesMergedRates">The Output port {0,number,integer} of Variant Subsystem choice ''{1}'' is driven by multiple functions. Model blocks whose outports are driven by multiple functions cannot be used as Variant Subsystem choices.</entry>
+        <entry key="InvalidVSSMdlChoicesOuts">The Variant Subsystem ''{0}'' choices driving Outport block ''{1}'' of Variant Subsystem have different function-call initiators. Variant Subsystems with the option "Analyze all choices during update diagram and generate preprocessor conditionals" selected and driven by multiple function-calls driving same Outport block are not supported.</entry>
+        <entry key="VSSFcnUnusedPortBlocks">Variant Subsystem block ''{0}'' is in Export Function model and has {1} block ''{2}'' which is not used in choice block ''{3}''. Delete the {1} block ''{2}'' if it is not used in any of the choices to fix this error.</entry>
+        <entry key="VSSInportBlock">Inport</entry>
+        <entry key="VSSOutportBlock">Outport</entry>
+        <entry key="IVForEachInputCondition">At least one Inport block selected for partitioning in the block parameters dialog of For Each block ''{0}'' must match condition of For Each Subsystem block ''{1}''.</entry>
+        <entry key="leafInsideVSSChoiceBlk"> Leaf Variant connector block ''{0}'' is inside a choice block of the Variant Subsystem block ''{1}''. Only primary and nonprimary Variant Connector blocks are allowed inside a Variant Subsystem block. </entry>
+        <entry key="VariantControlWithSLMASK" note="stringDatatypeUpdate">Reserved word SLMASK used in variant control variable ''{0}'' of block ''{1}''.</entry>
+        <entry key="VariantObjectWithTrueFalseName">VariantExpression object ''{0}'' with condition ''{1}'' is not supported for variant blocks. To fix this error use true/false directly as condition expression. </entry>
+        <entry key="AlwaysTrueFalseNotAllowedForStartupAndRuntimeActivation_VSS">Variant control expression for block ''{0}'' of Variant Subsystem block ''{1}'' is not supported because it evaluates to always ''{2}'' and ''Variant activation time'' is set to ''{3}''.</entry>
+        <entry key="AlwaysTrueFalseNotAllowedForStartupTimeActivation_IV">Variant control expression for port {0} of inline variant block ''{1}'' is not supported because it evaluates to always ''{2}'' and the ''Variant activation time'' is set to ''startup''.</entry>
+        <entry key="GraphicalVariantMergeNotSupported">Invalid usage of VariantMergeBlock ''{0}'' as a graphical block. VariantMerge blocks are used internally by Simulink as a hidden block during model compilation and it is not designed to be used as a graphical block.</entry>
+        <entry key="GraphicalVariantFcnJoinBlkNotSupported">Invalid usage of VariantFcnJoinBlock ''{0}'' as a graphical block. VariantFcnJoin blocks are used internally by Simulink as a hidden block during model compilation and it is not designed to be used as a graphical block.</entry>
+        <entry key="VariantSourceBlockType" translate="false">Variant Source block</entry>
+        <entry key="VariantSubsysOutportBlockType" translate="false">Variant Subsystem Outport block</entry>
+        <entry key="OutputFunctionCallAddendum">Simulink leverages the value of 'Output Function Call' when processing variant blocks and in general requires the 'Output Function Call' parameter be consistent with the signal
+        type passing through the block before update diagram is invoked. Model compile will continue ignoring this parameter setting. In the future, this inconsistency will be an error.</entry>
+        <entry key="OutputFunctionCallNotSetForFcnCallSignal"><![CDATA[{0}, ''{1}'', has its 'Output Function Call' parameter unselected, and a function-call signal is connected to the block. {2}
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''SetFunctionCallParam'',''{1}'', ''{3}'')</cmd>
+        <txt>'Output Function Call' must be selected for {0}.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="OutputFunctionCallSetForNonFcnCallSignal"><![CDATA[{0}, ''{1}'', has its 'Output Function Call' parameter selected, and a function-call signal is not connected to the block. {2}
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''SetFunctionCallParam'',''{1}'', ''{3}'')</cmd>
+        <txt>'Output Function Call' must not be selected for {0}.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="VariantStartEndPairFcnCallUnsupported">Function-call signal is connected to the Variant Start Block ''{0}'' which does not produce a function-call signal. Blocks that can produce function-call signals include Stateflow charts, root-level Inport blocks with parameter 'Output function call' selected, or S-functions.</entry>
+        <entry key="GroundInvalidBranchingFcnCall">Ground block ''{0}'', connected to input port of ''{1}'', cannot be branched.</entry>
+        <entry key="VarFcnCallPortCannotBeDrivenByAsyncFcnCaller">The function call input port {0,number,integer} of {1} ''{2}'' cannot be driven by an asynchronous function call initiator.</entry>
+        <entry key="DOC_SUGGESTION" translate="false">
+            <![CDATA[
+                     <actions>
+                     <action id="doc_suggestion" type="suggestion">
+                     <cmd>helpview(fullfile(docroot,''{0}'','helptargets.map'),''{1}'');</cmd>
+                     <msg id="MATLAB:MException:MoreInformation"></msg>
+                     </action>
+                     </actions>
+            ]]>
+        </entry>
+        <entry key="MixOfCCandSTVAT" note="no need to translate anything in CDATA section">
+            Propagated variant condition to block ''{0_SLObject}'' contains both ''code compile'' and ''startup'' variant activation time.
+            <![CDATA[
+                     <actions exclusiveFixIts="no">
+                     <action_catalog id="Simulink:VariantCompile:DOC_SUGGESTION" ids="doc_suggestion"><arg>simulink</arg><arg>startupMixOfCCandSTVAT</arg></action_catalog>    
+                     </actions>
+            ]]>
+        </entry>
+        <entry key="MixOfCCandSTVAT_HidBlkWithNoOrigBlk" note="no need to translate anything in CDATA section">
+            Propagated variant condition contains both ''code compile'' and ''startup'' variant activation time.
+            <![CDATA[
+                     <actions exclusiveFixIts="no">
+                     <action_catalog id="Simulink:VariantCompile:DOC_SUGGESTION" ids="doc_suggestion"><arg>simulink</arg><arg>startupMixOfCCandSTVAT</arg></action_catalog>    
+                     </actions>
+            ]]>
+        </entry>
+         <entry key="SameVCVInSTAndOtherVarBlks">Variant control variable ''{0}'' used in the Variant Block ''{1}'' with ''Variant activation time'' set to ''startup'' is also used in another Variant Block ''{2}'' which is not configured with ''startup'' variant activation time. Modify the variant control variable in either ''{1}'' or ''{2}'' or set the variant activation time in both the blocks to 'inherit from Simulink.VariantControl' with same variant activation time. Ensure variant control variable ''{0}'' originates from the same workspace.</entry>
+        <entry key="SameVCVInSTAndOtherVarBlksProtected">Variant control variable ''{0}'' used in a variant block in the protected model ''{1}'' with ''Variant activation time'' set to ''startup'' is also used in another Variant Block ''{2}'' which is not configured with ''startup'' variant activation time. Modify the variant control variable in ''{2}'' or set the variant activation time in both the blocks to 'inherit from Simulink.VariantControl' with same variant activation time. Ensure variant control ''{0}'' originates from the same workspace.</entry>
+        <entry key="InvalidOperatorForStartupAndRuntimeActivation">Invalid operators in variant condition expression ''{1}'' of variant block ''{0}'' because variant activation time of block is set to ''{2}'' or block inherits from Simulink.VariantControl objects with ''{2}'' activation time. Supported operators are "==", "~=", "&amp;&amp;", "||", and "~".</entry>
+        <entry key="VSSWithRuntimeActivationWithMoreThanOneParamControl">Use of different variant control variables in the variant control expressions of Variant Subsystem block, ''{0}'', with runtime variant activation is not supported. Use a common variant control variable in the variant control expressions, for example: V == 1 for choice1 and V == 2 for choice2.</entry> 
+        <entry key="RuntimeParamWithoutParameterWriterBlock">Variant block ''{0}'' with runtime activation is not associated with a Parameter Writer Block in the model ''{1}''. You need to use parameter writer blocks to change the active variant of runtime variant blocks during simulation.</entry>
+        <entry key="RuntimeParamWithoutParameterWriterBlockProtected">Variant block in the protected model ''{0}'' with runtime activation is not associated with a Parameter Writer Block in the model ''{1}''. You need to use parameter writer blocks to change the active variant of runtime variant blocks during simulation.</entry>
+        <entry key="VariantVariableInStartupNotSupported">Using Simulink.VariantVariable objects in variant control expression ''{1}'' of variant block ''{0}'' is not supported because the variant activation time is set to ''{2}'' or the variant activation time is set to 'inherit from Simulink.VariantControl' and the activation time of the Simulink.VariantControl objects is set to ''{2}''.</entry>
+        <entry key="PostBuildInvalidExpression">Post-build variation condition ''{0}'' in block ''{1}'' is not supported for use with AUTOSAR. Post-build conditions can only be constructed from a set of integer equivalence tests combined using AND logic. For example, "CriterionA == 4 &amp;&amp; CriterionB == 6".</entry>
+        <entry key="PostBuildInvalidExpressionNoBlk">Post-build variation condition ''{0}'' is not supported for use with AUTOSAR. Post-build conditions can only be constructed from a set of integer equivalence tests combined using AND logic. For example, "CriterionA == 4 &amp;&amp; CriterionB == 6".</entry>
+        <entry key="SystemEnableMethodInStartupActivation">Simulating with ''Fast Restart'' is not supported because block ''{0}'' has a propagated ''Variant activation time'' of ''startup'' and is part of conditionally executed function-call subsystem.</entry>
+        <entry key="SystemEnableMethodInRuntimeActivation">Runtime variant activation time not supported because the variant choice block ''{0}''  is part of a conditionally executed subsystem which contain blocks with enable methods.</entry>
+        <entry key="InvalidParameterValue">Using parameter ''{0}'' for ''{1}'' activation failed. Check for missing variant controls in base workspace or data dictionary. If you are using data dictionaries and model reference hierarchies ensure that reference dictionaries are used.</entry>
+        <entry key="InvalidEnumeralUsage">Using same enumeral name ''{0}'' in variant blocks with different activation times i.e. code compile and startup is not allowed.</entry>
+        <entry key="STAndOutputFunctionCallIV">Block ''{0}'' has variant activation time set to ''startup'', ''Output Function Call'' parameter selected and has more than one input port. Either use one input Variant Source or clear ''Output Function Call'' or change the variant activation time to a value other than ''startup'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to a value other than ''startup''.</entry>
+       <entry key="RTSTAndOutputFunctionCallVSS">Variant Subsystem block ''{0}'' has variant activation time set to ''{2}'', has more than one choice block and its Outport block ''{1}'' has ''Output Function Call'' parameter selected. Either use one Variant Subsystem choice or change the variant activation time to a value other than ''{2}'' or if the variant activation time is set to 'inherit from Simulink.VariantControl', set the activation time of the Simulink.VariantControl objects to a value other than ''{2}'' or clear ''Output Function Call'' on the Outport block.</entry>
+        <entry key="MultipleActiveVariantNotAllowed">More than one active variants in the variant block ''{0}'' is not supported.</entry>
+        <entry key="MultipleActiveVariantNotAllowedProtected">More than one active variants in a variant block in the protected model ''{0}'' is not supported.</entry>
+        <entry key="ZeroVariantNotAllowed"><![CDATA[Variant Block ''{0}'' must contain an active choice.
+        <actions>
+        <action type="suggestion">
+        <txt>Set the variant control variables such that one choice is active.</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="ZeroVariantNotAllowedProtected"><![CDATA[Variant block in the protected model ''{0}'' must contain an active choice.
+        <actions>
+        <action type="suggestion">
+        <txt>Set the variant control variables such that one choice is active. The variant conditions are: {1}</txt>
+        </action>
+        </actions> ]]>
+        </entry>
+        <entry key="VCVNotDefinedInParentMdlCtx">Undefined variant control variables from the variant control expression ''{0}'' specified in the variant block ''{1}''. All the variables used in the expression ''{0}'' must be defined either in the base workspace or in the data dictionary linked to the model ''{2}''.</entry>
+        <entry key="VCVNotDefinedInParentMdlCtxProtected">Undefined variant control variables from the variant control expression ''{0}'' specified in a variant block in the protected model ''{1}''. All the variables used in the expression ''{0}'' must be defined either in the base workspace or in the data dictionary linked to the model ''{2}''.</entry>
+        <entry key="STAndNMVAndProtectedModel"><![CDATA[Model protection for ''{0}'' is not supported because variant block ''{1}'' uses a variant control variable ''{2}'' that is not a Simulink.Parameter object and has variant activation time set to ''{3}''.
+        <actions exclusiveFixIts="yes">
+        <action type="fixit">
+        <cmd>slprivate(''variantfixes'',''ConvertNormalVarControlToSimulinkParamForSt'',''{2}'', ''{0}'')</cmd>
+        <txt>Convert variant control variable ''{2}'' to a Simulink.Parameter object.</txt>
+        </action>
+        </actions>]]>
+        </entry>
+        <entry key="STAndSVCNumericValueAndProtectedModel">Model protection for ''{0}'' is not supported because variant block ''{1}'' in ''{3}'' variant activation time uses a Simulink.VariantControl object ''{2}'' with value set to a numeric value type. Setup the model to change the Simulink.VariantControl value type to a Simulink.Parameter object.</entry>
+        <entry key="VariantSrcSnkErrorOnFcnCallLine">Variant condition, ''{0}'', on output port of block ''{1}'' is not compatible with the variant condition on the corresponding function-call signal input port of block ''{2}''. The incompatible conditions can result in ''{2}'' being active and controlled by an inactive function-call signal, which is not allowed. To fix the error, you can make the conditions compatible by placing a single-input single-output Variant Sink at the function-call input port of ''{2}'' with condition ''{3}''.</entry>
+        <entry key="VariantSrcSnkErrorOnFcnCallLineMdlBlk">Variant condition, ''{0}'', on output port of block ''{1}'' is not compatible with the variant condition on the corresponding function-call signal input port of block ''{2}''. The incompatible conditions can result in ''{2}'' being active and controlled by an inactive function-call signal, which is not allowed. To fix the error, you can make the conditions compatible by placing a single-input single-output Variant Sink on all the input ports of ''{2}'' with condition ''{3}''.</entry>
+        <entry key="VariantConditionOnDataPortInvalidRate">Input port {0,number,integer}  of block ''{1}'' must either have the same condition or block ''{1}'' must be run by a root inport with function-call output.</entry>
+        <entry key="ExpFcnInvalidVariantionOnDataSignal">In export function model, input port of function call block ''{0}'' is conditional and ''{0}'' is directly driven by the root function-call inport.
+        Make sure the input port {1,number,integer} and block ''{0}'' has the same condition.</entry>
+        <entry key="ExpFcnInvalidVariantionOnDataSignalDrvThruSplit">In export-function model, variant condition at input port {0,number,integer} of function-call block ''{1}'' must be the same as the variant condition of function-call block ''{1}'' because ''{1}'' is a branched function-call block. If branched function-call block is Subsystem block, insert single output Variant Sink  with condition ''{2}'' on function-call input port, otherwise insert single output Variant Sink block with condition ''{2}'' on all its input ports.</entry>
+        <entry key="VariantMergeInTopLvlExpFcnWithUnionTsUnsupported">In export function model, input port of function call block ''{0}'' is conditional and has a Union sample time.
+        Make sure the input port {1,number,integer} and block ''{0}'' has the same condition. </entry>
+        <!-- VAS related diagnostic messages start -->
+        <!-- Expression Mode related diagnostic messages start -->
+        <entry key="EmptyVCEnumNotSupp">Invalid enumeration class name in Variant Assembly Subsystem block ''{0}'' for parameter 'Variant choices enumeration'.</entry>
+        <entry key="EmptyVCVNotSupp">'Variant control variable' value in Variant Assembly Subsystem block ''{0}'' must be non-empty.</entry>
+        <!-- Expression Mode related diagnostic messages end -->
+        <!-- VAS related diagnostic messages end -->
+	<entry key="VariantStartZeroVariantsNotAllowed">Variant Start Block ''{0}'' must have one active choice for the model to compile.</entry>
+        <entry key="CascadedVariantStartEndBlocksNotSupported">An unpaired ''{0}'' Block ''{1}'' is present between Variant Start Block ''{2}'' and Variant End Block ''{3}''. Cascading of Variant Start and Variant End Blocks is not supported.</entry>
+        <entry key="StateOwnerBlockInPathOfVariantStartEndBlock">Block ''{0}'' is a state owner block that is not supported in the bounded region of Variant Start Block ''{1}'' and Variant End Block ''{2}''.</entry>
+        <entry key="SlVarCtrlActivationTimeChangedWithFastRestartEnabled">Changing activation time of Simulink.VariantControl object {0} of Variant block ''{1}'' after the model is compiled in fast restart is not supported.</entry>
+        <entry key="InvalidParameterWriteFromIRTSystemWithGPCOn">To write the ''{3}'' workspace variable ''{1}'' that is used in a variant control expression in variant blocks with ''{2}'' activation, the Parameter Writer block ''{0}'' must be inside non variant Initialize Function block.</entry>
+        <entry key="ParameterWriteFromNonInitializeFcnToStartup">Parameter writer block ''{0}'' must be in a Initialize Subsystem to write the ''{3}'' workspace variable ''{1}'' to ''{2}'' variant blocks.</entry>
+        <entry key="InvalidParameterWriteToInvVAT">Parameter writer block ''{0}'' is writing the ''{5}'' workspace variable ''{1}'' which is used as variant control expression in variant block ''{2}'' with ''{3}'' activation. We support this workflow only for ''{4}'' activation.</entry>
+        <entry key="InvalidParameterWriteToInvVATModelArg">Parameter writer block ''{0}'' is writing to the model argument ''{1}'' which is used as variant control expression in a block inside the model block ''{2}''. The variant block ''{2}'' has ''{3}'' activation. We support this workflow only for ''{4}'' activation.</entry>
+        <entry key="ParameterWriteToVariantSimulinkFunction">Parameter Writer Block ''{0}'' is writing the ''{4}'' workspace variable ''{1}'' which is used in Simulink Variant function block ''{2}''. Turn off the 'Enable variant condition' option in ''{3}''.</entry>
+        <entry key="ParameterWriteToVariantIRT">Parameter Writer Block ''{0}'' is writing the ''{4}'' workspace variable ''{1}'' which is used in Variant enabled Initialize/Reset/Terminate function block ''{2}''. Turn off the 'Enable variant condition' option in ''{3}''.</entry>
+        <entry key= "MaskOnTriggerPortAndEventListener"><![CDATA[Block ''{0}'' has a mask defined on it and the 'Enable variant condition' parameter is also turned on.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>set_param_action(''{0}'', ''Variant'', ''off'');</cmd>
+                <txt>Turn off the 'Enable Variant Condition' parameter on the block ''{0}''.</txt>
+            </action>
+        </actions>]]>
+        </entry>
+        <entry key="InvalidSimulinkFunctionVisibilityWithMaskModelWks">'Function Visibility' must be set to 'Scoped' on the block ''{0}'' when the variant control originates from mask or model workspace.</entry>
+        <entry key="InvalidExportedSimFcnWithMaskModelWks">Simulink Function block does not support the Function Caller block ''{0}'' in the export-function model ''{1}''  when its variant control originates from mask or model workspace.</entry>
+     <entry key="VariantChildSubsystemArchitectureModel">Variant Component block ''{0}'' is in an architecture model and variant activation time is ''{1}''. Variant Component in an architecture model is supported for all variant activation times when variant choice component implementation is model reference. When variant choice implementation is Subsystem or Subsystem reference, the Variant Component must be in label mode or variant activation time must be update diagram.</entry>
+     <entry key="UngroupedSSNotAllowedInBoundedRegion"><![CDATA[The block ''{0}'' is a virtual
+    ungrouped Subsystem. This is not a supported block in the bounded region of a Variant Start/End block.
+    <actions exclusiveFixIts="yes">
+        <action type="fixit">
+            <cmd>set_param_action(''{0}'', ''TreatAsGroupedWhenPropagatingVariantConditions'', ''on'');</cmd>
+            <txt>Select 'TreatAstGroupedWhenPropagationVariantConditions' parameter on Subsystem block ''{0}''.</txt>
+        </action>        
+      </actions>]]>
+    </entry>
+      <entry key="VariantChildSubsystemMustBeAtomic"><![CDATA[To use ''Variant activation time'' with {2} for the Variant Subsystem block ''{0}'', its child subsystems must be atomic. The variant child subsystem ''{1}'' is a virtual subsystem.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>slprivate(''variantfixes'',''VariantChildSubsystemMustBeAtomic'',''{0}'')</cmd>
+                <txt>For all virtual variant choices of ''{0}'', select the ''Treat as atomic unit'' checkbox on the parameters dialog of the child subsystems</txt>
+            </action>
+        </actions>]]></entry>
+
+    <entry key="VariantChildSubsystemMustBeAtomic_Fix">The command 'set_param(child, 'TreatAsAtomicUnit', 'on')' is executed for these Subsystems:</entry>
+    <entry key="VariantChildSimViewingDevice">The variant choice block ''{0}'' has "SimViewingDevice" parameter set to "on", which means it is removed during code generation, which conflicts with the variant activation setting of 'code compile' or 'startup'. Turn SimViewingDevice off to generate code.</entry>
+    <entry key="VariantChildSubsystemWithInvControlPort">Invalid control port in ''{0}''. Valid ports are Enable, Trigger, Function Call and Enabled and Triggered subsystem.</entry>
+    <entry key="VariantBlockInsideStateChart">Unsupported modeling pattern found. Stateflow block ''{0}'' contains the Variant block ''{1}'' in its hierarchy. To resolve this issue, move the Variant block out of the Stateflow block.</entry>
+    <entry key="NoConnectionPortsForCodeVariants">Connection Ports are allowed in Variant Subsystem block ''{0}'' only when variant activation is set to ''update diagram''.</entry>
+    <!-- AutomatePortSync related diagnostic messages start -->
+    <entry key="VariantSubsystemIOConnPortMismatch">
+        <![CDATA[ The number or names of interface ports, including inports, outports, and connection ports, in the variant choice blocks must be the same as those in the Variant Subsystem block ''{0}''.
+                 <actions exclusiveFixIts="no">
+                 <action type="fixit">
+                 <cmd>slprivate(''variantfixes'',''MissingPorts'',''{0}'', 'addPorts', 'IOConnPort')</cmd>
+                 <txt> Add the missing ports to match the variant choices. </txt>
+                 </action>
+                 <action type="fixit">
+                 <cmd>slprivate(''variantfixes'',''MissingPorts'',''{0}'', 'addAndDeletePorts', 'IOConnPort')</cmd>
+                 <txt> Synchronize the ports to match the variant choices. This would add the missing ports and delete any extra ports. </txt>
+                 </action>
+                 </actions>
+        ]]>
+    </entry>
+    <entry key="VariantSubsystemCtrlPortMismatch">
+        <![CDATA[ Each variant choice within the Variant Subsystem block ''{0}'' must have uniform control ports.
+                 <actions exclusiveFixIts="yes">
+                 <action type="fixit">
+                 <cmd>slprivate(''variantfixes'',''MissingPorts'',''{0}'', 'addAndDeletePorts', 'CtrlPort')</cmd>
+                 <txt> Add the missing control ports and delete any extra control ports. </txt>
+                 </action>
+                 </actions>
+        ]]>
+    </entry>
+    <!-- AutomatePortSync related diagnostic messages end -->
+    <entry key="ParameterWriterWritingToSimulinkVariantExpression">Parameter Writer block ''{0}'' writes to the variant control variable ''{1}'' of the type Simulink.VariantExpression. For variant control variables used with ''{2}'' variant activation, parameter writer block can only write to normal MATLAB variable or a Simulink.Parameter object or a Simulink.VariantControl object.</entry>
+    <entry key="ParamWriterToVssStOrRtSingleChoiceAndAzvcPassthroughOff">Writing to Variant block ''{1}'' using Parameter Writer block ''{0}'' is not supported because ''{1}'' has only one variant choice, and "Built-in passthrough choice" or "Built-in empty choice" is not selected.</entry>
+    <entry key="ParamWriterToIvBlkStWithSinglePortAndAzvcOff">Writing to Variant block ''{1}'' using Parameter Writer block ''{0}'' is not supported because ''{1}'' has only one variant choice and "Allow zero active variant controls" is not selected.</entry>
+    <entry key="ParameterWriterToVariantBlkInStOrRtWithSingleChoiceAndAzvcOff">Parameter writer block ''{0}'' writing to the variant block ''{1}'' with a single choice is not allowed when ''Built-in empty choice'' is turned off.</entry>
+    <entry key="ParamWrInTopLevelToRuntimeBlkInRefModel">The parameter writer block ''{0}'' cannot write to the base workspace variable ''{1}'' because this variable is used as a variant control variable in the variant block ''{2}'' with ''runtime'' variant activation in the model ''{3}''. To proceed with this workflow, you need to use a model argument instead of a base workspace variable as the variant control variable.</entry>
+    <entry key="InconsistentICOnVMBlock">Outport block "{0}" inherits its initial output value from blocks "{1}" and "{2}", but one or more of these signals are invalid, which might result in an incorrect output value. Make sure that all input signals to "{0}" are valid, or specify a value in the 'Initial Output' parameter of block "{0}". </entry>    
+    <entry key="ParameterWriteMoveToInitializeFcnOrSt">Variant Subsystem block ''{0}'' is using variant control variable which is accessed by Parameter Writer blocks outside of Initialize, Reinitialize, Reset or Terminate Function block. Therefore, the block ''{1}'' inside variant subsystem block cannot have a constant sample time, or be placed inside a subsystem with a constant sample time.</entry>
+    </message>
+</rsccat>
+
+<!-- LocalWords:  variantfixes azvc upgradeadvisor variantexpression VSS rsim MExpr CExpr SLMASK
+     LocalWords:  CCand STVAT ungrouped TreatAstGroupedWhenPropagationVariantConditions helptargets
+     LocalWords:  passthrough
+-->

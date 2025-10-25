@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="utf-8"?><book xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"><!--
+   This file created by the MathWorks for the Stylesheet Editor tool.
+   It is condensed from:
+       param-common.mod.xsl
+       param-direct.mod.xsl
+       param-switch.mod.xsl
+
+   Created using rptlatexparam.m
+
+   $Revision: 1.1.8.1 $  $Date: 2005/06/09 21:42:27 $
+--><reference><title>Parameters: Common Options </title>
+
+	
+
+	<refentry id="admon.graphics.path"><refnamediv><refpurpose>LaTeX location for admonition graphics </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>The file path that will be passed to LaTeX in order to find admonition graphics.</para>
+			<para>An empty value suppresses the use of admonition graphics.</para>
+			<para>If your figures are in "the current directory" then use a value of "." (i.e. the full stop or period on its own) to signify this.</para>
+		</refsect1></refentry>
+	
+	
+
+	<refentry id="tex.math.in.alt"><refnamediv><refpurpose>Control the escaping of alt text </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>ext within alt elements <!--within equation-type
+			elements--> is assumed to be valid LaTeX and is passed through
+			unescaped by default (though you should set its value to
+			"plain" or "latex", which are considered
+			confirmative and equivalent by DB2LaTeX). If this is not
+			appropriate for your document, set this variable to the empty
+			value. If you use an explicit &lt;role&gt; attribute with the values
+			"latex" or "tex", you need not concern
+			yourself with this variable. Alt text within equation-type
+			elements is currently assumed to be valid LaTeX regardless
+			of this variable (this is probably a bug!).</para>
+		</refsect1></refentry>
+	
+	
+
+	<refentry id="show.comments"><refnamediv><refpurpose>Display remark and comment elements? </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			Enables or disables the display of comments and remarks.
+			By default, this is equal to param.latex.is.draft.
+			
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="author.othername.in.middle"><refnamediv><refpurpose>Control the display of othername elements in authors </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			When disabled, othername elements will be suppressed when
+			author elements are formatted.
+			
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="biblioentry.item.separator"><refnamediv><refpurpose>Separator for bibliography items </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para/>
+		</refsect1></refentry>
+	
+
+	<refentry id="toc.section.depth"><refnamediv><refpurpose>Cull table-of-contents entries that are deeply nested </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Specifies the maximum depth before sections are omitted from the table of contents.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="section.depth"><refnamediv><refpurpose>Control the automatic numbering of section, parts, and chapters </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			Specifies the maximum depth before sections cease to be uniquely numbered.
+			This is passed to LaTeX using the secnumdepth counter.
+			Therefore, it is possible to use a value of "0" (zero) to disable section numbering.
+			A value of "-1" will disable the numbering of parts and chapters, too.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="graphic.default.extension"><refnamediv><refpurpose>Default filename extension for includegraphics </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+				Specify the LaTeX search parameters for graphics filenames.
+				If empty, DB2LaTeX will specify some explicit defaults.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="use.role.for.mediaobject"><refnamediv><refpurpose>Control mediaobject selection methods </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			This controls how DB2LaTeX behaves when a figure
+			contains multiple mediaobjects. When enabled,
+			DB2LaTeX will prefer the &lt;mediaobject&gt; with the
+			"latex", "tex" or param.preferred.mediaobject.role role, if any.
+			
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="preferred.mediaobject.role"><refnamediv><refpurpose>Control mediaobject selection methods </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			When param.use.role.for.mediaobject is enabled,
+			this variable can be used to specify the
+			mediaobject &lt;role&gt; that your document uses for
+			LaTeX output. DB2LaTeX will try to use this role before using
+			the "latex" or "tex" roles. For example,
+			some authors may choose to set this to
+			"pdf".
+			
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="formal.title.placement"><refnamediv><refpurpose>Specifies where formal component titles should occur </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				Titles for the formal object types (figure, example, quation,
+				table, and procedure) can be placed before or after those
+				objects. The keyword "before" is recognised. All
+				other strings qualify as "after".
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="insert.xref.page.number"><refnamediv><refpurpose>Control the appearance of page numbers in cross references </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				When enabled, xrefs will
+				include page numbers after their generated cross-reference
+				text.
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="ulink.show"><refnamediv><refpurpose>Control the display of URLs after ulinks </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+			When this option is enabled, and a ulink has a URL that is different
+			from the displayed content, the URL will be typeset after the content.
+			If the URL and content are identical, only one of them will appear.
+			Otherwise, the URL is hyperlinked and the content is not.
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="ulink.footnotes"><refnamediv><refpurpose>Control the generation of footnotes for ulinks </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+			When this option is enabled, a ulink that has
+			content different to its URL will have an associated footnote. The
+			contents of the footnote will be the URL. If the ulink is within a
+			footnote, the URL is shown after the content.
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="use.role.as.xrefstyle"><refnamediv><refpurpose>Honour role as proxy for xrefstyle </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			The &lt;xrefstyle&gt; attribute is not
+			yet part of DocBook so the &lt;role&gt; attribute can be used until
+			xrefstyle is available for xref elements.
+			
+			</para>
+		</refsect1></refentry>
+    
+
+	
+	<refentry id="refentry.xref.manvolnum"><refnamediv><refpurpose>Choose whether to include manvolnum in cross-references </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				When this option is enabled, manvolnums will be displayed when
+				cross-referencing refentries.
+
+			</para>
+		</refsect1></refentry>
+	
+	
+	
+	
+	<refentry id="refentry.generate.name"><refnamediv><refpurpose>Control the use of NAME headers </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				See http://docbook.sourceforge.net/release/xsl/current/doc/fo/refentry.generate.name.html.
+
+			</para>
+		</refsect1></refentry>
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    
+
+	<refentry id="rootid"><refnamediv><refpurpose>Process only one element tree within a document </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				When this variable is non-empty, it is interpreted as the ID of
+				an element that should be typeset by DB2LaTeX. The element's
+				children, but none of its siblings or ancestors, will be
+				processed as per normal. When the root element is a
+				book or article, that
+				component will have its normal infrastructure (including
+				bookinfo or articleinfo)
+				processed before the "rootid" element.
+
+			</para>
+		</refsect1></refentry>
+	
+
+    <!--
+    <xsl:variable name="link.mailto.url"></xsl:variable>
+    <xsl:variable name="toc.list.type">dl</xsl:variable>
+    -->
+
+</reference><reference><title>Parameters: LaTeX-direct Strings </title>
+
+	
+
+	<refentry id="latex.documentclass"><refnamediv><refpurpose>DB2LaTeX document class </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			This variable is normally empty and the stylesheets will determine
+			the correct document class according to whether the document is a
+			book or an article. If you wish to use your own document class,
+			put its non-empty value in this variable. It will apply for both
+			books and articles.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.maketitle"><refnamediv><refpurpose>The \maketitle for books and articles. </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Some users may wish to override or eliminate \maketitle.</para>
+			<para>Does not apply to &lt;article&gt;s within &lt;book&gt;s.</para>
+			<para>By default, uses LaTeX \maketitle with the 'empty' pagestyle
+			for the first page. The page style of subsequent pages is determined by
+			template.generate.latex.pagestyle.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.article.preamble.pre"><refnamediv><refpurpose><!-- Undocumented --></refpurpose></refnamediv><refsect1><title>Description</title>
+			<para><!-- Undocumented. --></para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.article.preamble.post"><refnamediv><refpurpose><!-- Undocumented --></refpurpose></refnamediv><refsect1><title>Description</title>
+			<para><!-- Undocumented. --></para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.article.varsets"><refnamediv><refpurpose>Controls what is output after the LaTeX preamble. </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Default values decrease edge margins and allow a large quantity of figures to be set on each page. </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.preamble.pre"><refnamediv><refpurpose><!-- Undocumented --></refpurpose></refnamediv><refsect1><title>Description</title>
+			<para><!-- Undocumented. --></para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.preamble.post"><refnamediv><refpurpose><!-- Undocumented --></refpurpose></refnamediv><refsect1><title>Description</title>
+			<para><!-- Undocumented. --></para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.varsets">
+    <refnamediv><refpurpose>All purpose commands to change text width, height, counters, etc. Defaults to a two-sided margin layout.</refpurpose></refnamediv>
+    <refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.begindocument"><refnamediv><refpurpose>Begin document command</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.afterauthor"><refnamediv><refpurpose>LaTeX code that is output after the author (e.g. \makeglossary)</refpurpose></refnamediv>
+        <refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.thead.row.entry"><refnamediv><refpurpose>Format the output of tabular headings. </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.tfoot.row.entry"><refnamediv><refpurpose>Format the output of tabular footers. </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.inline.monoseq.style"><refnamediv><refpurpose>Control the style of inline monospaced text </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>This is passed directly to LaTeX. Typically,
+			it is \frenchspacing\texttt.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.article.title.style"><refnamediv><refpurpose>Control the style of article titles </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>This is passed directly to LaTeX. Typically,
+			it is either a \command or an empty string.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.article.title.style"><refnamediv><refpurpose>Control the style of article titles within books </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>This is passed directly to LaTeX. Typically,
+			it is either a \command or an empty string.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.book.article.header.style"><refnamediv><refpurpose>Control the style of authors and dates within a book's articles </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>This is passed directly to LaTeX. Typically,
+			it is either a \command or an empty string.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.equation.caption.style"><refnamediv><refpurpose>Control the style of equation captions  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Figure captions are typeset in the default typeface (usually 'roman') but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the caption and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.example.caption.style"><refnamediv><refpurpose>Control the style of example captions  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Figure captions are typeset in the default typeface (usually 'roman') but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the caption and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.figure.caption.style"><refnamediv><refpurpose>Control the style of figure captions  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Figure captions are typeset in the default typeface (usually 'roman') but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the caption and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.figure.title.style"><refnamediv><refpurpose>Control the style of figure titles  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Figure titles are typeset in the default typeface (usually 'roman') but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the title and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.formalpara.title.style"><refnamediv><refpurpose>Control the style of equation captions  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>The titles of formalparas are typeset in the bold typeface by default.
+			This parameter can be set to an alternative LaTeX command, such as textit (or empty).</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.list.title.style"><refnamediv><refpurpose>Control the style of list titles  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>List titles are typeset in small caps but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the title and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.admonition.title.style"><refnamediv><refpurpose>Control the style of admonition titles  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Admonition titles are typeset in small bold caps but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the title and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.procedure.title.style"><refnamediv><refpurpose>Control the style of procedure titles  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Procedure titles are typeset in small caps but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the title and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.segtitle.style"><refnamediv><refpurpose>Control the style of segtitles  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>This is passed directly to LaTeX. Typically,
+			it is either a \command or an empty string.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.step.title.style"><refnamediv><refpurpose>Control the style of step titles  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Step titles are typeset in small caps but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the title and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.table.caption.style"><refnamediv><refpurpose>Control the style of table captions  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Figure captions are typeset in the default typeface (usually 'roman') but if
+			this option is set to a LaTeX command, such as \textit, then
+			that command will precede the caption and it will be typeset accordingly.</para>
+		</refsect1></refentry>
+	
+
+	
+	
+	
+	
+	
+	
+
+	<refentry id="latex.pagestyle"><refnamediv><refpurpose>Override DB2LaTeX's choice of LaTeX page numbering style </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>By default, DB2LaTeX will choose the 'plain' or 'fancy' page styles,
+			depending on param.latex.use.fancyhdr. If non-empty, this
+			variable overrides the automatic selection. An example would be the literal
+			string 'empty', to eliminate headers and page numbers.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.hyperref.param.common"><refnamediv><refpurpose>DB2LaTeX hyperref options</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		In addition to this variable, you can specify additional options using
+		latex.hyperref.param.pdftex or latex.hyperref.param.dvips.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.hyperref.param.pdftex"><refnamediv><refpurpose>DB2LaTeX hyperref options for pdfTeX output</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		See the hyperref documentation for further information.
+		</para>
+	</refsect1></refentry>
+	
+	<!--
+	what is the unicode option?
+	-->
+
+	<refentry id="latex.hyperref.param.dvips"><refnamediv><refpurpose>DB2LaTeX hyperref options for dvips output</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		See the hyperref documentation for further information.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.varioref.options"><refnamediv><refpurpose>Options for the varioref LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Support index generation.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.vpageref.options"><refnamediv><refpurpose>Toggle the use of the varioref LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Support index generation.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.fancyvrb.tabsize"><refnamediv><refpurpose>Choose indentation for tabs in verbatim environments</refpurpose></refnamediv><refsect1><title>Description</title><para>When param.latex.use.fancyvrb is enabled,
+		this variable sets the width of a tab in terms of an equivalent number of spaces.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.fancyvrb.options"><refnamediv><refpurpose>Insert LaTeX options for fancyvrb Verbatim environments</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.inputenc"><refnamediv><refpurpose>Control the use of the inputenc LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			If this option is non-empty, the inputenc package
+			will be used with the specified encoding. This should agree with the your driver
+			file. For example, the default value of latin1
+			is compatible with docbook.xsl, which contains
+			&lt;xsl:output method="text" encoding="ISO-8859-1" indent="yes"/&gt;
+			</para>
+			<para>
+			If this option is empty, the inputenc package
+			will not be invoked by DB2LaTeX.
+			</para>
+			
+			<para>
+			inputenc is a LaTeX base package.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.fontenc"><refnamediv><refpurpose>Options for the fontenc package </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para> <!-- Undocumented. --> </para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.ucs.options"><refnamediv><refpurpose>Select the optional parameter(s) for the unicode LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>See the unicode documentation for details.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.babel.language"><refnamediv><refpurpose>Select the optional parameter for the babel LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>See the babel documentation for details.</para>
+			<para>Although DB2LaTeX will try to choose the correct babel options for your
+			document, you may need to specify the correct choice here. The special value
+			of 'none' (without the quotes) will cause DB2LaTeX to skip babel configuration.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.bibwidelabel"><refnamediv><refpurpose>Adjust bibliography formatting </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>The environment bibliography accepts a parameter that indicates
+		the widest label, which is used to correctly format the bibliography
+		output. The value of this parameter is output inside the
+		\begin{thebibliography[]} LaTeX command.</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.documentclass.common"><refnamediv><refpurpose>DB2LaTeX document class options  </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		These are the first options to be passed to \documentclass
+		(The common options are
+		<!--
+		set to <literal>french,english</literal>
+		-->
+		blank
+		by default.)
+		They will be augmented or superseded by article/book options (see $latex.documentclass.article and $latex.documentclass.book) and pdftex/dvips options (see $latex.documentclass.pdftex and $latex.documentclass.dvips).
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.documentclass.article"><refnamediv><refpurpose>DB2LaTeX document class options for articles</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		The article options are set to a4paper,10pt,twoside,twocolumn by default.
+		These are the intermediate options to be passed to \documentclass,
+		between the common options and the pdftex/dvips options.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.documentclass.book"><refnamediv><refpurpose>DB2LaTeX document class options for books</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		The book options are set to a4paper,10pt,twoside,openright by default.
+		These are the intermediate options to be passed to \documentclass,
+		between the common options and the pdftex/dvips options.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.documentclass.pdftex"><refnamediv><refpurpose>DB2LaTeX document class options for pdfTeX output</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		The pdfTeX options are empty by default.
+		These are the last options to be passed to \documentclass
+		and override the common/article/book options.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.documentclass.dvips"><refnamediv><refpurpose>DB2LaTeX document class options for dvips output</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		The dvips options are empty by default.
+		These are the last options to be passed to \documentclass
+		and override the common/article/book options.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.admonition.imagesize"><refnamediv><refpurpose>DB2LaTeX graphics admonitions size</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+			Is passed as an optional parameter for \includegraphics and
+			can take on any such legal values (or be empty).
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.titlepage.file"><refnamediv><refpurpose>DB2LaTeX allows using an (externally generated) cover page  </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		You may supply a LaTeX file that will supersede DB2LaTeX's default
+		cover page or title. If the value of this variable is non-empty, the
+		generated LaTeX code includes \input{filename}. Otherwise, it uses the
+		\maketitle command.
+		</para>
+		<para>
+			Bear in mind that using an external cover page breaks the
+			"encapsulation" of DocBook. Further revisions of these stylesheets
+			will add chunking support, and the automation of the cover file
+			generation.
+		</para>
+	</refsect1></refentry>
+	
+    <refentry id="latex.document.font"><refnamediv><refpurpose>Document Font(s)  </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+				Document fonts can be chosen by providing LaTeX package names.
+				Common values include default, times, palatcm, charter, helvet, palatino, avant, newcent and bookman.
+				Particular combinations may also work. For example, mathptm,charter,courier.
+			</para>
+			<!--
+			If you want to change explicitly to a certain font, use the command \fontfamily{XYZ}\selectfont whereby XYZ can be set to: pag for Adobe AvantGarde, pbk for Adobe Bookman, pcr for Adobe Courier, phv for Adobe Helvetica, pnc for Adobe NewCenturySchoolbook, ppl for Adobe Palatino, ptm for Adobe Times Roman, pzc for Adobe ZapfChancery
+			-->
+	</refsect1></refentry>
+    
+
+	<refentry id="latex.override"><refnamediv><refpurpose>Override DB2LaTeX's preamble with a custom preamble. </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		When this variable is set, the entire DB2LaTeX premable will be superseded.
+		You should not normally need or want to use this.
+		It may cause LaTeX typesetting problems. This is a last resort or
+		"expert" feature.
+		</para>
+	</refsect1></refentry>
+	
+
+</reference><reference><title>Parameters: DB2LaTeX Switches </title>
+
+	
+
+	<refentry id="latex.caption.lot.titles.only"><refnamediv><refpurpose>Control the display of captions in lists of figures.  </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		By default, lists of figures (see template.lot)
+		will include both figure titles and mediaobject captions.
+		This is useful for readers, as they have a full description of each figure.
+		However, it is impractical for large documents because the list
+		of figures will occupy too many pages.
+		</para>
+		<para>
+		This variable, when set to '1', authorises DB2LaTeX to include
+		mediaobject captions in lists of figures. It is enabled by default.
+		When set to '0', lists of figures will contain only the
+		titles of figures.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.bibfiles"><refnamediv><refpurpose>Control the output of the \bibliography{.bib}.</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>The value of this parameter is output.</para>
+		<para>An example is "citations.bib",
+		if your BibTeX file has that name.</para>
+	</refsect1></refentry>
+	
+
+    <refentry id="latex.math.support">
+<refnamediv><refpurpose>Controls the output of LaTeX packages and commands to support documents with math commands and environments.</refpurpose></refnamediv>
+    <refsect1><title>Description</title>
+	    <para>If this parameter is set to 1, the stylesheets generate code to DEFAULT: 1 Only more code is generated. 
+	    </para>
+	</refsect1></refentry>
+	
+
+    <refentry id="latex.output.revhistory"><refnamediv><refpurpose>Controls if the revision history table is generated as the first document table.</refpurpose></refnamediv><refsect1><title>Description</title>
+	    <para>If this parameter is set to 1, the stylesheets generate code to 
+		DEFAULT: 1 Only more code is generated. 
+	    </para>
+	</refsect1></refentry>
+	
+
+    <refentry id="latex.fancybox.options"><refnamediv><refpurpose>Options for fancybox </refpurpose></refnamediv><refsect1><title>Description</title>
+			<!--
+			<xsl:if test="@role">
+				<xsl:choose>
+					<xsl:when test="@role='small'">
+						<xsl:text>,fontsize=\small</xsl:text>
+					</xsl:when>
+					<xsl:when test="@role='large'">
+						<xsl:text>,fontsize=\large</xsl:text>
+					</xsl:when>
+				</xsl:choose>
+			</xsl:if>
+			-->
+			<para>
+				
+			</para>
+	</refsect1></refentry>
+    
+
+    <refentry id="latex.pdf.support"><refnamediv><refpurpose>Controls the output of LaTeX commands to support the generation of PDF files.</refpurpose></refnamediv><refsect1><title>Description</title>
+	    <para>If this parameter is set to 1, the stylesheets generate code to 
+		detect if it is either latex or pdflatex
+		the shell command that is being used to compile the LaTeX text file. Some
+		packages (graphicx, hyperref) are used
+		with the right parameters. Finally, the graphic extensions declared, to use in
+		\includegraphics commands depends also on which command is
+		being used. If this parameter is set to zero, such code is not generated (which 
+		does not mean that the file cannot compile with pdflatex, but some strange issues 
+		may appear). DEFAULT: 1 Only more code is generated. 
+	    </para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.generate.indexterm"><refnamediv><refpurpose>Enable the generation of indexterms </refpurpose></refnamediv><refsect1><title>Description</title><para>Support index generation.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.hyphenation.tttricks"><refnamediv><refpurpose>DB2LaTeX hyphenation linebreak tricks </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		Usually, LaTeX does not perform hyphenation in "teletype" (monospace)
+		text. This can lead to formatting problems. But certain monospace texts, such as
+		URLs and filenames, have "natural" breakpoints such as full stops
+		and slashes. DB2LaTeX's "tttricks" exploit a hyphenation trick in
+		order to provide line wrapping in the middle of monospace text. Set this to '1'
+		to enable these tricks (they are not enabled by default). See also the FAQ.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.decimal.point"><refnamediv><refpurpose>Decimal point for LaTeX tables </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			This is a non-localisable character that may be used
+			for decimal alignment of LaTeX tables.
+			
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.trim.verbatim"><refnamediv><refpurpose>Toggle the trimming of leading and trailing whitespace in verbatim environments </refpurpose></refnamediv><refsect1><title>Description</title><para>
+			In verbatim environments such as programlisting and screen,
+			it can be useful to trim leading and trailing whitespace. However, this is not compliant
+			with The Definitive Guide.
+		</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.ltxtable"><refnamediv><refpurpose>Toggle the use of the ltxtable LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>If this package is used, then tables will be have the capability
+		to run over multiple pages when necessary.</para>
+		<para>One downside is that some 'narrow' tables might fill the entire
+		width of the column when ltxtable is enabled.</para>
+		<para>
+		Cells spanning multiple columns may require extra passes with LaTeX 
+		in order for column widths to 'converge'.
+		</para>
+		<para>
+		This is not implemented as true ltxtable support, yet.
+		It uses longtable until we can integrate proper ltxtable support.
+		One the feature is supported, it should probably be enabled by
+		default!
+		</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.longtable"><refnamediv><refpurpose>Toggle the use of the longtable LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+				Enabling this option allows simplelists to run over multiple
+				pages. In the future, it will be superseded by param.latex.use.ltxtable.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.overpic"><refnamediv><refpurpose>Toggle the use of the overpic LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Facilitates overlays (for callouts).</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.umoline"><refnamediv><refpurpose>Toggle the use of the umoline LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Provide underlining.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.url"><refnamediv><refpurpose>Toggle the use of the url LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Provide partial support for hyperlinks.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.is.draft"><refnamediv><refpurpose>Toggle the use of the the draft preamble</refpurpose></refnamediv><refsect1><title>Description</title><para>DB2LaTeX provides a number of draft-mode features to aid
+		the refinement of documents. Normally, this mode is enabled or disabled according
+		to the &lt;status&gt; attribute of the top-level
+		book or article element. However, this variable
+		will take precedence when it is not empty. It is empty by default.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.varioref"><refnamediv><refpurpose>Toggle the use of the varioref LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>varioref seemed like a good idea at first,
+		but we not realise it does understand DocBook gentext localisations. By default, it is enabled
+		when param.insert.xref.page.number is enabled.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.fancyhdr"><refnamediv><refpurpose>Toggle the use of the fancyhdr LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Provides page headers and footers. Disabling support for
+		this package will make headers and footer go away.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.bridgehead.in.lot"><refnamediv><refpurpose>Control the inclusion of chapter titles in lots </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+				When this variable is set, lists of tables and lists of figures
+				will be grouped and labeled by chapter.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.fancyhdr.truncation.style"><refnamediv><refpurpose>Configure the application of truncation partitions </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				For param.latex.fancyhdr.truncation.partition, the
+				partition can be modulated in a left-right fashion or an
+				inside-outside fashion. Use "lr" for left-right,
+				all other values are inside-outside ("io" is
+				suggested). The default is "io", because this
+				matches param.latex.documentclass.book.
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.fancyhdr.truncation.partition"><refnamediv><refpurpose>Configure the width of header portions on each page </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				It is possible that the titles of chapter or sections will
+				occupy more than the width of a single line. When this variable
+				is empty, headers will be allowed to occupy multiple lines.
+				However, it is possible that the left-hand portion of a header
+				will collide with the right-hand portion of header. To prevent
+				this, headers can be truncated if they exceed an allowable
+				width. When this variables is set to a number from zero to 100,
+				the left-hand (or inside) side of each header will have that
+				width reserved. The right-hand (or outside) side will have the
+				remainder. A common option is to set this variable to zero and
+				set param.latex.fancyhdr.truncation.style to
+				"io".
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.fancyhdr.style"><refnamediv><refpurpose>Section/chapter style for fancy headers </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+
+				DB2LaTeX comes with some pre-configured styles for page
+				headers. These include "", the default, which is
+				determined by the fancyhdr package.
+				Another option is "natural", in which both the
+				chapter and section are shown on each page with their numbers.
+				An alternative is to provide your own template.generate.latex.pagestyle template with a
+				value such as \pagestyle{headings} (the
+				"headings" page style, which is not a
+				fancyhdr style, shows page numbers
+				in the headers whereas the others show page numbers in the
+				footers).
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.parskip"><refnamediv><refpurpose>Toggle the use of the parskip LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>Use "block" paragraph style instead of indentation.</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.noindent"><refnamediv><refpurpose>Toggle the use of noindent commands</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			When this parameter is 1, DB2LaTeX will deliberately insert
+			noindents at particular locations within your document.
+
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.subfigure"><refnamediv><refpurpose>Toggle the use of the subfigure LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Used to provide nice layout of multiple mediaobjects in figures.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.rotating"><refnamediv><refpurpose>Toggle the use of the rotating LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para><!-- Undocumented. --></para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.tabularx"><refnamediv><refpurpose>Toggle the use of the tabularx LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Used to provide certain table features. Has some incompatabilities
+		with packages, but also solves some conflicts that the regular tabular
+		environment has.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.dcolumn"><refnamediv><refpurpose>Toggle the use of the dcolumn LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+			Currently, dcolumn support does not function
+			correctly.
+		</para>
+		<para>
+			dcolumn provides support for the char
+			alignment of table cells.
+		</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.hyperref"><refnamediv><refpurpose>Toggle the use of the hyperref LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>This is used extensively for hyperlinking within documents.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.fancybox"><refnamediv><refpurpose>Toggle the use of the fancybox LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>This is essential for admonitions.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.fancyvrb"><refnamediv><refpurpose>Toggle the use of the fancyvrb LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>Provides support for tabbed whitespace in verbatim environments.
+		See also param.latex.fancyvrb.tabsize.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.use.isolatin1"><refnamediv><refpurpose>Toggle the use of the isolatin1 LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			This option is deprecated. See param.latex.inputenc.
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.use.ucs"><refnamediv><refpurpose>Choose whether to use the unicode LaTeX package</refpurpose></refnamediv><refsect1><title>Description</title><para>See the unicode documentation for details.</para></refsect1></refentry>
+	
+
+	<refentry id="latex.biblio.output"><refnamediv><refpurpose>Control which references are cited in the bibliography </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		The DB2LaTeX generated bibliography (bibitems) may either
+		include all biblioentries found in the document, or only thee ones explicitly
+		cited with &lt;citation&gt;.
+		</para>
+	    <para>Two values are possible: "all" or "cited".</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.biblioentry.style"><refnamediv><refpurpose>Control bibliographic citation style </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>By default, this value is empty. Alternatively, a special value
+		is recognised: "ieee" (or "IEEE").</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.caption.swapskip"><refnamediv><refpurpose>Improved typesetting of captions  </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		DB2LaTeX supports $formal.title.placement
+		as a mechanism for choosing whether captions will appear above or below the objects they describe.
+		<!--
+		($formal.title.placement is described in the <ulink
+		url="http://docbook.sourceforge.net/release/xsl/current/doc/html/formal.title.placement.html">DocBook
+		XSL Stylesheet HTML Parameter Reference</ulink>.)
+		-->
+		However, LaTeX will often produce an ugly result when captions occur
+		above their corresponding content. This usually arises because of
+		unsuitable \abovecaptionskip and \belowcaptionskip.
+		</para>
+		<para>
+		This variable, when set to '1', authorises DB2LaTeX to swap the caption
+		'skip' lengths when a caption is placed above its
+		corresponding content. This is enabled by default.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.graphics.formats"><refnamediv><refpurpose>Control imagedata selection. </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>This controls how DB2LaTeX behaves when a &lt;mediaobject&gt; contains
+		multiple &lt;imagedata&gt;. When non-empty, DB2LaTeX will exclude
+		imagedata that have a format no listed within this variable.</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.entities"><refnamediv><refpurpose>Control Unicode character handling. </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		Normally, XSLT processors will convert SGML character entities into
+		Unicode characters and DB2LaTeX doesn't have much chance to do anything
+		toward converting them to LaTeX equivalents. We do not yet know how we
+		can solve this problem best.
+		</para>
+		<para>
+		Proposed values: 'catcode', 'unicode', 'extension'.
+		Currently only 'catcode' is supported. All other values will
+		cause no special handling except for certain mappings in MathML.
+		In future, perhaps the 'unicode' LaTeX package could be of assistance.
+		'Extension' could be an XSLT extension that handles the characters
+		using a mapping table.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.otherterm.is.preferred"><refnamediv><refpurpose>Control the use of otherterm attributes </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+				When a glosssee or glossseealso element contains
+				both an "otherterm" attribute and content templates,
+				this variable elects which will be the source of the displayed text. By default,
+				this variable is enabled and a cross-reference to the otherwterm will be
+				generated (i.e. content templates will be ignored).
+			</para>
+		</refsect1></refentry>
+	
+
+	<refentry id="latex.alt.is.preferred"><refnamediv><refpurpose>Control the use of alt text </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		By default, DB2LaTeX assumes that &lt;alt&gt;
+		text should be typeset in preference to any 
+		&lt;mediaobject&gt;s.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.apply.title.templates"><refnamediv><refpurpose>Whether to apply templates for component titles. </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		Controls whether component titles will be generated by
+		applying templates or by conversion to string values.
+		When enabled, templates will be applied. This enables template
+		expression in titles but may have problematic side-effects such
+		as nested links.
+		</para>
+		
+			<para>
+				This variable does not influence all &lt;title&gt;
+				elements. Some may have their own configuration variables or be non-configurable.
+			</para>
+		
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.apply.title.templates.admonitions"><refnamediv><refpurpose>Whether to apply templates for admonition titles. </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		Controls whether admonition titles will be generated by
+		applying templates or by conversion to string values.
+		When enabled, templates will be applied.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.url.quotation"><refnamediv><refpurpose>Whether to delimit URLs with quotation characters </refpurpose></refnamediv><refsect1><title>Description</title>
+		<para>
+		When this option is enabled, gentext quotation characters
+		(urlstartquote and urlendquote) are used to delimit the
+		URLs when they are displayed as part of ulink
+		formatting. The delimiters do not form part of the URL or
+		hyperlink per se.
+		</para>
+	</refsect1></refentry>
+	
+
+	<refentry id="latex.ulink.protocols.relaxed"><refnamediv><refpurpose>Control string comparison for ulinks </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			The formatting of a ulink element varies according
+			to whether its &lt;url&gt; attribute
+			differs from its content. When this option is enabled, the
+			comparison between these two values ignores the
+			"protocol" portion of the URL (that which occurs
+			before ':' or '://', as a concession to HTTP URLs). For example,
+			when this option is enabled, "a.b.c/d" would be
+			considered equivalent to "http://a.b.c/d" and
+			"file:a.b.c/d".
+			
+			</para>
+		</refsect1></refentry>
+	
+   
+
+	<refentry id="latex.suppress.blank.page.headers"><refnamediv><refpurpose>Control the suppression of headers/footers on blank pages in double-side documents </refpurpose></refnamediv><refsect1><title>Description</title>
+			<para>
+			
+			When this option is enabled, DB2LaTeX will attempt to
+			suppress headers and footers on pages that contain no
+			other content (i.e. left-handed pages in a double-sided
+			document). When this option is disabled, DB2LaTeX does
+			not interfere with the default appearance of headers and
+			footers.
+			
+			</para>
+		</refsect1></refentry>
+	
+
+</reference></book>

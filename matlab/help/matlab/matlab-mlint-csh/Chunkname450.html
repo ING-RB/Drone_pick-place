@@ -1,0 +1,10 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>A <a href="matlab:doc parfor" target="_blank"><code>parfor</code></a> loop
+                    contains <a href="matlab:doc return" target="_blank"><code>return</code></a>
+                    statements. The <code>parfor</code> statement works by breaking up
+                    iterations of a loop and running these iterations on multiple MATLAB workers.
+                    Using <code>return</code> statements implies that later iterations of the
+                    loop should not run after either of these two statements execute. Therefore, the
+                    loop iterations must run in sequence. However, for the <code>parfor</code>
+                    loop to be valid, the result of running the successive loop iterations must not
+                    depend on the order in which they run.</p><br/><strong>Suggested Action</strong><br/><p>Transform the program so that loop iterations do not depend on the results of
+                    other loop iterations.</p></body></html>

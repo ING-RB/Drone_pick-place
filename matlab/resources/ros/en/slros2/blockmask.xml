@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<!-- Copyright 2019-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="ros">
+  <message>
+    <entry key="PubSubMainTab">Main</entry>
+    <entry key="PubSubQOSTab">QoS</entry>
+    <entry key="QOSHistoryPrompt">History:</entry>
+    <entry key="QOSDepthPrompt">Depth:</entry>
+    <entry key="QOSReliabilityPrompt">Reliability:</entry>
+    <entry key="QOSDurabilityPrompt">Durability:</entry>
+    <entry key="QOSDeadlinePrompt">Deadline:</entry>
+    <entry key="QOSLifespanPrompt">Lifespan:</entry>
+    <entry key="QOSLivelinessPrompt">Liveliness:</entry>
+    <entry key="QOSLeaseDurationPrompt">Lease Duration:</entry>
+    <entry key="QOSAvoidROSNamespaceConventionsPrompt">Avoid ROS Namespace Conventions</entry>
+    <!-- See https://www.mathworks.com/help/coder/ug/code-generation-for-characters.html
+         for information about this limitation
+    -->
+    <entry key="QOSKeepAll" translate="false">Keep all</entry>
+    <entry key="QOSKeepLast" translate="false">Keep last</entry>
+    <entry key="QOSBesetEffort" translate="false">Best effort</entry>
+    <entry key="QOSReliable" translate="false">Reliable</entry>
+    <entry key="QOSTransient" translate="false">Transient local</entry>
+    <entry key="QOSVolatile" translate="false">Volatile</entry>
+    <entry key="QOSAutomatic" translate="false">Automatic</entry>
+    <entry key="QOSManual" translate="false">Manual</entry>
+    <entry key="TopicSourceFromNetwork">Select from ROS network</entry>
+    <entry key="TopicSourceSpecifyOwn">Specify your own</entry>
+    <entry key="NoTopicsAvailableError">No topics are available from the ROS 2 network.</entry>
+    <entry key="BlankMsgDescription">
+      Create a blank message with the specified message, service, or action type.
+      \n
+      \nThe block output is a blank ROS 2 message (bus signal). Set the
+      Class parameter to select between ROS 2 messages, service request
+      and service response, action feedback, action goal, and action result messages.
+      Use a Bus assignment block to modify specific fields in the bus signal.
+      \n
+      \nThe bus signal is initialized to zero value (ground).
+    </entry>
+    <entry key="ConfigNetworkAddrLinkText">Configure ROS 2 Domain ID and ROS Middleware (RMW)</entry>
+    <entry key="DialogTitle">Select ROS 2 Message Type</entry>
+
+    <!-- Common to Read X blocks -->
+    <entry key="VariableSizeOutputsPrompt">Output variable-size signals</entry>
+    <entry key="ConfigureUsingROS2Label">Configure using ROS 2</entry>
+    <entry key="OutputSettingsPrompt">Output settings</entry>
+
+    <!-- Read Image block only -->
+    <entry key="ReadImageTitle">ROS 2 Read Image</entry>
+    <entry key="ReadImageDescription">
+      Extract image signal from ROS 2 image message.
+      \n
+      \nThe Msg port accepts a ROS 2 message (bus signal) representing
+      an image. The Image port outputs an [MxN] array for grayscale images
+      or an [MxNx3] array for color images. The Alpha port outputs an
+      [MxN] array for images that specify an alpha (transparency) channel.
+      The ErrorCode port outputs the image conversion status as an integer
+      value.
+      \n
+      \nPress "Configure using ROS 2" to set the Maximum image size and
+      Image encoding based on the contents of a ROS 2 topic.
+    </entry>
+    <entry key="ImagePropertiesPrompt">Image settings</entry>
+    <entry key="MaximumImageSizePrompt">Maximum image size:</entry>
+    <entry key="ImageEncodingPrompt">Image encoding:</entry>
+    <entry key="ShowAlphaOutputPortPrompt">Show Alpha output port</entry>
+
+    <!-- Read Point Cloud block only -->
+    <entry key="ReadPointCloudTitle">ROS 2 Read Point Cloud</entry>
+    <entry key="ReadPointCloudDescription">
+      Extract point cloud data from ROS 2 point cloud message.
+      \n
+      \nThe Msg port accepts a ROS 2 message (bus signal)
+      representing a point cloud. If Preserve point cloud structure is
+      unchecked (the default), the XYZ port outputs the Cartesian
+      coordinates of the points as a [Px3] array, where P is the number of
+      points in the incoming point cloud. Otherwise, the XYZ port outputs
+      the Cartesian coordinates for the points as an [MxNx3] array, where M
+      and N are the height and width of the incoming point cloud
+      respectively. The ErrorCode port outputs the image conversion status
+      as an integer value.
+      \n
+      \nSpecify the Maximum point cloud size expected as [height, width].
+      Press "Configure using ROS 2" to set Maximum point cloud size from a
+      topic on a live ROS 2 Network.
+    </entry>
+    <entry key="PointCloudPropertiesPrompt">Point cloud settings</entry>
+    <entry key="PreserveStructurePrompt">Preserve point cloud structure</entry>
+    <entry key="MaximumPointCloudSizePrompt">Maximum point cloud size:</entry>
+    <entry key="PointCloudDataTypePrompt">Point cloud data type:</entry>
+    <entry key="ShowRGBOutputPrompt">Show RGB output port</entry>
+    <entry key="ShowIntensityOutputPrompt">Show Intensity output port</entry>
+
+    <!-- Read Scan block only -->
+    <entry key="ReadScanTitle">ROS 2 Read Scan</entry>
+    <entry key="ScanPropertiesPrompt">Scan settings</entry>
+    <entry key="MaximumArrayLengthPrompt">Maximum array length:</entry>
+    <entry key="ReadScanDescription">
+      Extract scan data from a ROS 2 laser scan message.
+      \n
+      \nThe Msg port accepts a ROS 2 message (bus signal) representing
+      a laser scan. The output ports for Angles, Intensities, and
+      ErrorCode can be toggled on and off using the Output settings. The
+      Ranges, Angles, and Intensities ports output the corresponding [Nx1]
+      arrays from the ROS 2 message. The ErrorCode port outputs the read
+      scan status as an integer value.
+      \n
+      \nSpecify the Maximum array length expected as a scalar value. Press
+      "Configure using ROS 2" to set Maximum array length from a
+      topic on a live ROS 2 Network.
+    </entry>
+
+    <entry key="ShowAnglesOutputPrompt">Show Angles output port</entry>
+
+    <!-- Write Image block only -->
+    <entry key="WriteImageTitle">ROS 2 Write Image</entry>
+    <entry key="WriteImageDescription">
+      Write a ROS 2 message from image data.
+      \n
+      \nThe Image port requires an [MxN] array for single-channel images
+      and an [MxNxC] array for multi-channel images. The Alpha port
+      requires an [MxN] array for images that specify an alpha
+      (transparency) channel. The image encoding is specified in the
+      Image settings. The output is a ROS 2 message (bus signal)
+      representing an image.
+    </entry>
+
+    <!-- Write Point Cloud block only -->
+    <entry key="WritePointCloudTitle">ROS 2 Write Point Cloud</entry>
+    <entry key="WritePointCloudDescription">
+      Write a ROS 2 message from point cloud data.
+      \n
+      \nThe XYZ port specifies the Cartesian coordinates of the points as
+      either a [Px3] array, where P is the number of points, or an
+      [MxNx3] array, where M and N are the height and width of the point
+      cloud respectively. If selected, the RGB and Alpha ports specify
+      the color and transparency respectively. If XYZ is a [Px3] array, then RGB must be
+      a [Px3] array and Alpha must be a [Px1] array. If XYZ is an [MxNx3]
+      array, then RGB must be an [MxNx3] array and Alpha must be an [MxN]
+      array. The color field is specified in the Input settings. The
+      output is a ROS 2 message (bus signal) representing a point cloud.
+    </entry>
+    <entry key="ShowRGBInputPortPrompt">Show RGB input port</entry>
+    <entry key="SelectRGBInputPrompt">Select color field</entry>
+    <entry key="InputConfiguration">Input Settings:</entry>
+
+    <!-- Write Image block and Write Point Cloud-->
+    <entry key="ShowAlphaInputPortPrompt">Show Alpha input port</entry>
+
+    <!-- Call Service block only -->
+    <entry key="ServiceCallerMaskTitle">ROS 2 Call Service</entry>
+    <entry key="ServiceCallerDescription">
+      Call a service in a ROS 2 network.
+      \n
+      \nThe Req block input accepts a ROS 2 service request message (bus signal).
+      The Resp block output returns the service response message.
+      \n
+      \nTo select from a list of services available in an active ROS 2 network,
+      set the Source parameter to "Select from ROS network" and use the "Select" button.
+      You must be connected to a ROS 2 network to get a list of active services. The
+      type of the selected service is set automatically.
+      \n
+      \nTo enter a custom service or specify the service name without an active ROS connection,
+      set Source to "Specify your own". Use the Name parameter to specify the service name, and
+      the "Select" button to select the service type.
+    </entry>
+    <entry key="NoServicesAvailableError">No services are available from the ROS 2 network.</entry>
+    <entry key="ServiceDialogTitle">Select a ROS 2 Service</entry>
+    <entry key="ServiceTypeDialogTitle">Select ROS 2 Service Type</entry>
+
+    <!-- ROS2 Time -->
+    <entry key="CurrentTimeMaskTitle">ROS 2 Current Time</entry>
+    <entry key="CurrentTimeMaskDescription">Retrieve the current ROS 2 time or system time.\n\nThe Time block output is a signal corresponding to the current time used by the ROS 2 node. Depending on the "Output format" parameter selection, the output is either a bus or a double.</entry>
+    <!-- ROS2 Get Parameter -->
+    <entry key="ParamContainerTitle">ROS 2 Parameter</entry>
+    <entry key="GetParamMaskTitle">ROS 2 Get Parameter</entry>
+    <entry key="GetParamMaskDescription">
+     Get values from ROS parameter server.\n\nThe Value port outputs the value of the retrieved ROS 2 parameter. The Length port outputs the size of the retrieved ROS 2 parameter array.
+    </entry>
+      <entry key="GetParamInvalidName">Invalid parameter name ''{0}''. Parameter name must be a valid MATLAB variable name, or a dot-separated valid MATLAB variable name.</entry>
+      <entry key="GetParamMaxLenPrompt">Maximum length:</entry>
+      <entry key="GetParamInvalidInitValue">Expected {0} to be a {1}. Instead, its type was {2}.</entry>
+      <entry key="GetParamTruncateVal">
+          Value of ROS 2 parameter, ''{0}'', can have a maximum of {1,number,integer} items, but the received message has {2,number,integer} items.\nThe output value will be truncated to first {1,number,integer} items.
+          <![CDATA[
+          <actions exclusiveFixIts="yes">
+              <action type="fixit" retvalue="false">
+                  <cmd>set_param(''{3}'','ParameterMaxArrayLength',''{1,number,integer}'');</cmd>
+                  <txt>Increase the 'Maximum length' of the Get Parameter block, ''{3}'' to {2,number,integer}.</txt>
+              </action>
+            </actions>
+        ]]>
+      </entry>
+      <entry key="GetParamInvalidDataType">
+          Data type of ROS 2 Get Parameter block, ''{0}'' is set to ''{1}'', but value received is of type, ''{2}''.\nDynamic data-type change of ROS 2 parameters in Simulink is not supported. Last valid output will be replayed.
+          <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" retvalue="false"> <cmd>set_param(''{0}'','ParameterType',''{1}'');</cmd>
+                <txt>Set the 'Data type' of  "block name" block to 'uint8'.</txt>
+                </action>
+            </actions>
+            ]]>
+      </entry>
+
+      <!-- ROS2 Header Assignment block -->
+      <entry key="SetFrameIdPrompt">Set Frame ID:</entry>
+      <entry key="SetTimestampPrompt">Set Timestamp</entry>
+      <entry key="SetHdrFldNamePrompt">Header field name:</entry>
+      <entry key="HdrFldNameDefault">Use the default header field name</entry>
+      <entry key="HdrFldNameSpecifyOwn">Specify your own</entry>
+      <entry key="HdrAssignDescription">
+        Update the fields of the ROS 2 message header.
+        \n
+        \nThe block input accepts ROS 2 message bus and the block output
+        emits the same type of ROS 2 message bus with updated fields.
+        \n
+        \nUse the Set Frame ID checkbox to set the frame_id field in the
+        ROS 2 message header. Use the Set Timestamp checkbox to update 
+        the time stamp of the ROS 2 message. Set the Header field name 
+        to "Use the default header field name" to set your ROS 2 message's 
+        header field name to "header". Set the Header field name to "Specify 
+        your own" to manually specify the header field name of your ROS 2
+        message.
+      </entry>
+    
+      <!--- ROS2 Header Assignment block entries -->
+      <entry key="InvalidHdrFldError">The input ROS 2 message does not have a field, "{0}".</entry>
+      <entry key="ShortFrameIdError">The frame ID has {0} characters, but the
+      bus element has a maximum size of {1}. Reduce the length of the frame ID
+      or increase the maximum length of the frame_id property in std_msgs/Header.</entry>
+      <entry key="WriteIntensityFieldPrompt">Write to Intensity field</entry>
+
+      <!-- ROS2 Get Transform block entries -->
+      <entry key="GetTransformMaskTitle" translate="false">ROS 2 Get Transform</entry>
+      <entry key="FrameSourcePrompt">Frame source:</entry>
+      <entry key="TargetPrompt">Target:</entry>
+      <entry key="SourcePrompt">Source:</entry>
+      <entry key="SelectPrompt">Select</entry>
+      <entry key="OutputFormatPrompt">Output format:</entry>
+      <entry key="SampleTimePrompt">Sample time:</entry>
+      <entry key="DynamicListenerQoSPrompt">DynamicListenerQoS</entry>
+      <entry key="StaticListenerQoSPrompt">StaticListenerQoS</entry>
+      <entry key="GetTransformDescription">
+        Get transform from ROS 2 network
+        \n
+        \nThe IsAvail port outputs a boolean value indicating whether 
+        the specified transform is available. The Value port outputs a 
+        message bus or a double 4x4 matrix based on selection of output format.
+      </entry>
+
+      <!-- ROS2 Apply Transform block entries -->
+      <entry key="ApplyTransformMaskTitle" translate="false">ROS 2 Apply Transform</entry>
+      <entry key="EntityMsgPrompt">Entity message type:</entry>
+      <entry key="ApplyTransformDescription">
+        Apply forward transform to input entity message
+        \n
+        \nThe TFMsg port accepts a geometry_msgs/TransformStamped message, while the
+        Entity port accepts one of the following types of message:
+        \n    \u2022 geometry_msgs/QuaternionStamped
+        \n    \u2022 geometry_msgs/Vector3Stamped
+        \n    \u2022 geometry_msgs/PointStamped
+        \n    \u2022 geometry_msgs/PoseStamped
+        \nAfter applying the transform, TFEntity port outputs the same type of message bus as the input Entity message.
+      </entry>
+
+      <!-- ROS2 Service Server block entries -->
+      <entry key="ReceiveRequestMaskTitle" translate="false">ROS 2 Receive Service Request</entry>
+      <entry key="PairedReceiveBlkPrompt">Paired Receive Request Block:</entry>
+      <entry key="PairedSendBlkPrompt">Paired Send Response Block:</entry>
+      <entry key="NoSendResponsePairedBlkPrompt">Create paired Send Response block</entry>
+      <entry key="NoReceiveRequestPairedBlkPrompt">Create paired Receive Request block</entry>
+      <entry key="NoSvcPairedBlkError">ROS 2 {0} block is not present in the model.
+          <![CDATA[
+                  <actions exclusiveFixIts="yes">
+                  <action type="fixit" retvalue="false">
+                  <cmd>ros.slros.internal.ROSUtil.addServerResponseBlockPair(bdroot,''{1}'',''{2}'')</cmd>
+                  <txt>Add ROS 2 {0} block into model workspace.</txt>
+                  </action>
+                  </actions>
+      ]]></entry>
+      <entry key="ShowRespOutportPrompt">Show Default Response output port</entry>
+      <entry key="ReceiveRequestDescription">
+          Receive a service request from a ROS 2 network.
+          \n
+          \nThe Req output returns the service request message. The IsNew output returns a boolean indicating if a 
+          new request is received. The optional DefaultResp output always returns an empty default response message bus.
+          \nUse the Name parameter to specify the service name, and the "Select" button to select the service type.
+		  \nTo create a paired Send Service Response block, click "Create paired Send Response block".
+      </entry>
+      <entry key="SendResponseMaskTitle" translate="false">ROS 2 Send Service Response</entry>
+      <entry key="SendResponseDescription">
+          Send a service response to service client.
+          \n
+          \nThe Resp input accepts a service response message. Use the corresponding Receive Request block to 
+          configure server settings.
+          \nPlace this block into an enable subsystem to only send response once per request.
+		  \nTo create a paired Receive Service Request block, click "Create paired Receive Request block".
+      </entry>
+      <entry key="NameAlreadyExists">The specified "{0}" is used by another block in this model, use a different valid name for "{0}" in {1} block.</entry>
+
+      <!-- Send Action Goal block only -->
+      <entry key="SendActionGoalMaskTitle" translate="false">ROS 2 Send Action Goal</entry>
+      <entry key="SendActionGoalDescription">
+        Send an action goal message to a ROS 2 action server.
+        \n
+        \nThe Goal input accepts a ROS 2 action goal message (bus signal).
+        The Enable port accepts a boolean value. When it is true and there is no ongoing goal execution,
+        the block will send the incoming goal message.The UUID output returns a unique ID
+        for the goal as a unique_identifier_msgs/UUID message (bus signal).
+        The ErrorCode port returns an error code as an integer value. To monitor the goal, click "Create paired Monitor Action Goal block".
+        \n
+        \nTo select from available actions in an active ROS 2 network,
+        set the Source parameter as "Select from ROS network" and click the "Select" button.
+        Ensure that you are connected to a ROS 2 network to obtain a list of active actions. The selected action type is automatically set.
+        For custom actions or specifying an action name without an active ROS connection, set Source as "Specify your own". Use the Name parameter to specify the action name and the "Select" button to choose the action type.
+      </entry>
+      <entry key="InvalidActionName">
+            "Invalid ROS 2 action name "{0}".
+            The first character must be alphabetical (a-z) or a forward slash (/).
+            Remaining characters must be alphanumerics (a-z, 0-9), underscores (_), or forward slashes (/).
+      </entry>
+      <entry key="NoActionsAvailableError">No actions are available from the ROS 2 network.</entry>
+      <entry key="ActionSourcePrompt">Source:</entry>
+      <entry key="ActionNamePrompt">Name:</entry>
+      <entry key="ActionTypePrompt">Type:</entry>
+      <entry key="GoalServiceQoSPrompt">Goal Service QoS</entry>
+      <entry key="ResultServiceQoSPrompt">Result Service QoS</entry>
+      <entry key="CancelServiceQoSPrompt">Cancel Service QoS</entry>
+      <entry key="FeedbackTopicQoSPrompt">Feedback Topic QoS</entry>
+      <entry key="StatusTopicQoSPrompt">Status Topic QoS</entry>
+      <entry key="ShowErrorCodePortPrompt">Show ErrorCode output port</entry>
+      <entry key="ShowFeedbackPortPrompt">Show Feedback output port</entry>
+
+      <!-- Monitor Action Goal block only -->
+      <entry key="MonitorActionGoalMaskTitle" translate="false">ROS 2 Monitor Action Goal</entry>
+      <entry key="PairedSendGoalBlkPrompt">Paired Send Action Goal Block:</entry>
+      <entry key="PairedMonitorGoalBlkPrompt">Paired Monitor Action Goal Block:</entry>
+      <entry key="NoSendGoalPairedBlkPrompt">Create paired Send Action Goal block</entry>
+      <entry key="NoMonitorGoalPairedBlkPrompt">Create paired Monitor Action Goal block</entry>
+      <entry key="NoSendGoalPairedBlkError">
+          ROS 2 Send Action Goal block is not present in the model.
+          <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" retvalue="false">
+                  <cmd>ros.slros.internal.ROSUtil.addMonitorAndSendActionGoalBlockPair(bdroot,''{0}'',''{1}'');</cmd>
+                  <txt>Add ROS 2 Send Action Goal block into model workspace.</txt>
+                </action>
+            </actions>
+            ]]>
+      </entry>
+      <entry key="NoSendGoalBlkError">
+          At least one ROS 2 Send Action Goal block is required to be present in the model to cancel a goal.
+          <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" retvalue="false">
+                  <cmd>ros.slros.internal.ROSUtil.bringSendActionGoalBlockIntoModel(bdroot);</cmd>
+                  <txt>Add ROS 2 Send Action Goal block into model workspace.</txt>
+                </action>
+            </actions>
+            ]]>
+      </entry>
+      <entry key="MonitorActionGoalDescription">
+        Monitor an active goal in a ROS 2 network.
+        \n
+        \nThe UUID input accepts a unique_identifier_msgs/UUID
+        message (bus signal) for the goal that you want to monitor.
+        \n
+        \nThe StatusCode port outputs the current state of the goal as an integer value.
+        The Result port returns the final result message (bus signal).
+        The Feedback port returns the feedback message to track progress of the active goal (bus signal).
+        The ErrorCode output returns an error code as an integer value.
+        \n
+        \nThe output ports for Feedback, ErrorCode can be toggled on and off using the Output settings.
+        \nTo send an action goal, click "Create paired Send Action Goal block".
+      </entry>
+
+      <!-- Cancel Action Goal block only -->
+      <entry key="CancelActionGoalMaskTitle" translate="false">ROS 2 Cancel Action Goal</entry>
+      <entry key="CancelActionGoalDescription">
+        Cancel an active goal in a ROS 2 network.
+        \n
+        \nThe UUID input accepts a unique_identifier_msgs/UUID message
+        (bus signal) for an active goal that you want to cancel.
+        The Enable port accepts a boolean value. When it is true, the block will send a signal to cancel an active goal in the same time step.
+        \n
+        \nThe Response output returns the cancel response message for the goal as an action_msgs/CancelGoalResponse message (bus signal).
+        The ErrorCode output returns an error code as an integer value.
+        \n
+        \nThe output port for ErrorCode can be toggled on and off using the Output settings.
+      </entry>
+      <entry key="ROS2PacerDescription">
+          Cosimulate Simulink with ROS 2-enabled simulators using lock-step cosimulation over ROS 2 network.
+          \n
+          \nThe block outputs synchronization status as Status with uint8(0) indicating successful lock-step cosimulation and uint8(1) indicating error in achieving lock-step cosimulation.
+          \n
+          \nSelect from the Reset behavior dropdown to either reset the entire simulator scene upon the beginning of cosimulation or reset the simulator clock.
+          \n
+          \nSet the Sample time parameter to define the rate at which Simulink synchronizes with the external simulator. This value must be a multiple of the Simulator Time Step property value.
+          \n
+          \nOnly one ROS 2 Pacer block must be utilized for a Simulink Model.
+      </entry>
+  </message>
+</rsccat>

@@ -1,0 +1,234 @@
+{
+
+"cmap2gray":
+{
+  "inputs":
+  [
+    {"name":"MAP", "kind":"required", "type":["double","size=:,3"]}
+  ],
+  "outputs":
+  [
+    {"name":"NEWMAP", "type":["double"]}
+  ]
+},    
+
+"im2double":
+    {
+        "inputs":
+        [
+            {"name":"I", "kind":"required", "type":[["numeric"], ["logical"]]}, 
+            {"name":"'indexed'", "kind":"positional", "type":"choices={'indexed'}"}
+        ],
+        "outputs":
+        [
+            {"name":"J", "type":"double"}
+        ]
+    },
+    
+"imresize":
+{
+  "inputs":
+  [
+    {"name":"A", "kind":"required", "type":[["numeric"],["categorical"],["logical"]]},
+    {"name":"SCALE", "kind":"required", "type":["numeric","scalar"]},
+    {"name":"METHOD", "kind":"ordered", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"Antialiasing", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Colormap", "kind":"namevalue", "type":"choices={'original','optimized'}"},
+    {"name":"Dither", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Method", "kind":"namevalue", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"OutputSize", "kind":"namevalue", "type":["numeric","size=1,2"]},
+    {"name":"Scale", "kind":"namevalue", "type":[["numeric","scalar"], ["numeric","size=1,2"]]}
+  ],
+  "outputs":
+  [
+    {"name":"B", "type":[["uint8"],["int8"],["uint16"],["int16"],["uint32"],["int32"],["single"],["double"],["logical"],["categorical"]]}
+  ]
+},
+
+"imresize":
+{
+  "inputs":
+  [
+    {"name":"A", "kind":"required", "type":[["numeric"],["categorical"]]},
+    {"name":"SIZE", "kind":"required", "type":["numeric","size=1,2","positive","integer"]},
+    {"name":"METHOD", "kind":"ordered", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"Antialiasing", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Colormap", "kind":"namevalue", "type":"choices={'original','optimized'}"},
+    {"name":"Dither", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Method", "kind":"namevalue", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"OutputSize", "kind":"namevalue", "type":["numeric","size=1,2"]},
+    {"name":"Scale", "kind":"namevalue", "type":[["numeric","scalar"], ["numeric","size=1,2"]]}
+  ],
+  "outputs":
+  [
+    {"name":"B", "type":[["uint8"],["int8"],["uint16"],["int16"],["uint32"],["int32"],["single"],["double"],["logical"],["categorical"]]}
+  ]
+},
+
+"imresize":
+{
+  "inputs":
+  [
+    {"name":"X", "kind":"required", "type":[["uint8"], ["uint16"], ["double"]]},
+    {"name":"MAP", "kind":"ordered", "type":["double","size=:,3"]},
+    {"name":"SCALE", "kind":"required", "type":["numeric","scalar"]},
+    {"name":"METHOD", "kind":"ordered", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"Antialiasing", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Colormap", "kind":"namevalue", "type":"choices={'original','optimized'}"},
+    {"name":"Dither", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Method", "kind":"namevalue", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"OutputSize", "kind":"namevalue", "type":["numeric","size=1,2"]},
+    {"name":"Scale", "kind":"namevalue", "type":[["numeric","scalar"], ["numeric","size=1,2"]]}
+  ],
+  "outputs":
+  [
+    {"name":"Y", "type":[["uint8"],["uint16"],["double"]]},
+    {"name":"NEWMAP", "type":"double"}
+  ]
+},
+
+"imresize":
+{
+  "inputs":
+  [
+    {"name":"X", "kind":"required", "type":[["uint8"], ["uint16"], ["double"]]},
+    {"name":"MAP", "kind":"ordered", "type":["double","size=:,3"]},
+    {"name":"SIZE", "kind":"required", "type":["numeric","size=1,2","positive","integer"]},
+    {"name":"METHOD", "kind":"ordered", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"Antialiasing", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Colormap", "kind":"namevalue", "type":"choices={'original','optimized'}"},
+    {"name":"Dither", "kind":"namevalue", "type":["logical","scalar"]},
+    {"name":"Method", "kind":"namevalue", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"},
+    {"name":"OutputSize", "kind":"namevalue", "type":["numeric","size=1,2"]},
+    {"name":"Scale", "kind":"namevalue", "type":[["numeric","scalar"], ["numeric","size=1,2"]]}
+  ],
+  "outputs":
+  [
+    {"name":"Y", "type":[["uint8"],["uint16"],["double"]]},
+    {"name":"NEWMAP", "type":"double"}
+  ]
+},
+
+"imshow":
+{
+  "inputs":
+  [
+    {"name":"I", "kind":"required", "type":[["logical"], ["numeric"], ["folder"], ["matlabpathfile=*.bmp,*.cur,*.fts,*.fits,*.gif,*.hdf,*.ico,*.j2c,*.j2k,*.jp2,*.jpf,*.jpx,*.jpg,*.jpeg,*.pbm,*.pcx,*.pgm,*.png,*.pnm,*.ppm,*.ras,*.tif,*.tiff,*.xwd"]]},
+    {"name":"MAP", "kind":"ordered", "type":["numeric", "size=:,3", ">=0", "<=1"]},
+    {"name":"SpatialReferencing", "kind":"ordered", "type":"imref2d"},
+    {"name":"Border", "kind":"namevalue", "type":[["choices={'tight','loose'}"], ["scalar"]]},
+    {"name":"Colormap", "kind":"namevalue", "type":["numeric", "size=:,3", ">=0", "<=1"]},
+    {"name":"DisplayRange", "kind":"namevalue", "type":["numeric", "size=1,2"]},
+    {"name":"InitialMagnification", "kind":"namevalue", "type":[["numeric"], ["char"]]},
+    {"name":"Interpolation", "kind":"namevalue", "type":[["choices={'nearest','bilinear'}"], ["scalar"]]},
+    {"name":"Parent", "kind":"namevalue", "type":"matlab.graphics.axis.Axes"},
+    {"name":"Reduce", "kind":"namevalue", "type":"logical"},
+    {"name":"XData", "kind":"namevalue", "type":"numeric"},
+    {"name":"YData", "kind":"namevalue", "type":"numeric"}
+  ],
+  "outputs":
+  [
+    {"name":"himage", "type":"matlab.graphics.primitive.Image"}
+  ]
+},
+
+"imtile":
+{
+  "inputs":
+  [
+    {"name":"I", "kind":"required", "type":[["logical"], ["uint8"], ["uint16"], ["int16"],["single"], ["double"], ["string"],["cell"],["matlab.io.datastore.ImageDatastore"]]},
+    {"name":"MAP", "kind":"ordered", "type":"numeric"},
+    {"name":"GridSize", "kind":"namevalue", "type":"numeric"},
+    {"name":"Frames", "kind":"namevalue", "type":"numeric"},
+    {"name":"ThumbnailSize", "kind":"namevalue", "type":"numeric"},
+    {"name":"BorderSize", "kind":"namevalue", "type":"numeric"},
+    {"name":"BackgroundColor", "kind":"namevalue", "type":[["numeric"], ["char"]]},
+    {"name":"ThumbnailInterpolation", "kind":"namevalue", "type":"choices={'nearest','bilinear','bicubic','box','triangle','cubic','lanczos2','lanczos3'}"}
+  ],
+  "outputs":
+  [
+    {"name":"out", "type":[["logical"], ["uint8"], ["uint16"], ["int16"],["single"], ["double"]]}
+  ]
+},
+
+"ind2rgb":
+{
+  "inputs":
+  [
+    {"name":"X", "kind":"required", "type":[["uint8","2d"],["uint16","2d"],["double","2d"],["single","2d"]]},
+    {"name":"map", "kind":"required", "type":["double","size=:,3"]}
+  ],
+  "outputs":
+  [
+    {"name":"RGB", "type":[["double"]]}
+  ]
+},
+"rgb2hsv":
+{
+  "inputs":
+  [
+    { "mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"rgbmap", "kind":"required", "type":[["single","size=:,3"],["double","size=:,3"]]}
+                 ],
+                 [
+                     {"name":"RGB", "kind":"required", "type":[["single","size=:,:,3"],["double","size=:,:,3"],["uint8","size=:,:,3"],["uint16","size=:,:,3"]]}
+                 ]
+             ]
+            }
+  ],
+  "outputs":
+  [
+    { "mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"hsvmap", "type":"inferredFrom=rgbmap"}
+                 ],
+                 [
+                     {"name":"H", "type":"inferredFrom=RGB"}
+                 ]
+             ]
+            }
+  ]
+},   
+
+"rgb2gray":
+    {
+        "inputs":
+        [
+            {"name":"RGB", "kind":"required", "type":[
+                                                     ["numeric", "size=:,:,3"],
+                                                     ["double", "size=:, 3"] ] }
+        ],
+        "outputs":
+        [
+            {"name":"I", "type":[
+                                    ["numeric", "size=:,:,3"],
+                                    ["double", "size=:, 3"] ] }
+        ]
+    },
+    
+"rgb2ind":
+{
+  "inputs":
+  [
+    {"name":"RGB", "kind":"required", "type":[["single","size=:,:,3"],["double","size=:,:,3"],["uint8","size=:,:,3"],["uint16","size=:,:,3"]]},
+    {"mutuallyExclusiveGroup":
+      [
+        [
+          {"name":"Q", "kind":"required", "type":["numeric","scalar","integer","positive","<=65536"]}
+        ],
+        [
+          {"name":"tol", "kind":"required", "type":["numeric","scalar",">=0","<=1"]}        
+        ],
+        [
+          {"name":"inmap", "kind":"required", "type":[["double","size=:,3",">=0","<=1"],["single","size=:,3",">=0","<=1"]]}        
+        ]
+      ]
+    },
+    {"name":"dithering", "kind":"positional", "type":"choices=[\"dither\" \"nodither\"]"} 
+  ]
+}
+
+}

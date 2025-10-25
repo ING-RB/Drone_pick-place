@@ -1,0 +1,107 @@
+{
+"nccreate":
+{
+	"inputs":
+	[
+		{"name":"filename", "kind":"required", "type":[["file=*.nc"], ["char"]]},
+		{"name":"varname", "kind":"required", "type":["char"]},
+        {"name":"Dimensions", "kind":"namevalue", "type":["cell"]},
+        {"name":"Datatype", "kind":"namevalue", "type":["char", 
+            "choices={'double','single','int64','uint64','int32','uint32','int16', 'uint16','int8','uint8','char','string'}"]},
+        {"name":"Format", "kind":"namevalue","type":["char", "choices={'classic', '64bit', 'netcdf4_classic', 'netcdf4'}"]},
+        {"name":"FillValue", "kind":"namevalue"},
+        {"name":"ChunkSize", "kind":"namevalue", "type":["numeric"]},
+        {"name":"DeflateLevel", "kind":"namevalue", "type":["numeric", "choices={0,1,2,3,4,5,6,7,8,9}"]},
+        {"name":"Shuffle", "kind":"namevalue", "type":["logical", "scalar"]}
+	]
+},
+"ncdisp":
+{
+	"inputs":
+	[
+		{"name":"source", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"location", "kind":"positional", "type":["char"]},
+        {"name":"dispFormat", "kind":"positional", "type":["char", "choices={'full','min'}"]}
+	]
+},
+"ncinfo":
+{
+	"inputs":
+	[
+		{"name":"source", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"varname", "kind":"ordered", "type":["char"]}
+	]
+},
+"ncinfo":
+{
+	"inputs":
+	[
+		{"name":"source", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"groupname", "kind":"ordered", "type":["char"]}
+	]
+},
+"ncread":
+{
+	"inputs":
+	[
+		{"name":"source", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"varname", "kind":"required", "type":["char"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"start", "kind":"required", "type":["numeric"]},
+                    {"name":"count", "kind":"required", "type":["numeric"]},
+                    {"name":"stride", "kind":"ordered", "type":["numeric"]}
+                ]
+            ]
+        }
+	]
+},
+"ncreadatt":
+{
+	"inputs":
+	[
+		{"name":"source", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"location", "kind":"required", "type":["char"]},
+        {"name":"attname", "kind":"required", "type":["char"]}
+	]
+},
+"ncwrite":
+{
+	"inputs":
+	[
+		{"name":"filename", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"varname", "kind":"required", "type":["char"]},
+        {"name":"vardata", "kind":"required", "type":[["numeric"], ["char"], ["string"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"start", "kind":"required", "type":["numeric"]},
+                    {"name":"stride", "kind":"ordered", "type":["numeric"]}
+                ]
+            ]
+        }
+	]
+},
+"ncwriteatt":
+{
+	"inputs":
+	[
+		{"name":"filename", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"location", "kind":"required", "type":["char"]},
+        {"name":"attname", "kind":"required", "type":["char"]},
+        {"name":"attvalue", "kind":"required", "type":[["numeric"], ["char"], ["string"]]},
+        {"name":"Datatype", "kind":"namevalue", "type":["char", "choices={'double','single','int64','uint64','int32','uint32','int16', 'uint16','int8','uint8','char','string'}"]}
+	]
+},
+"ncwriteschema":
+{
+	"inputs":
+	[
+		{"name":"filename", "kind":"required", "type":[["file=*.nc"], ["matlabpathfile=*.nc"], ["char"]]},
+		{"name":"schema", "kind":"required",  "type":["struct"]}
+	]
+}
+}

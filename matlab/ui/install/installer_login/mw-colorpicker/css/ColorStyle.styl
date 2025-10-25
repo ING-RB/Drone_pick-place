@@ -1,0 +1,90 @@
+.mwColorStyle {
+    width: 106px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;    
+    border-color: transparent;
+    box-sizing: border-box;
+    padding: 1px 3px;
+}
+
+.mwColorStyle:focus {
+    outline: 0;
+}
+
+
+.mwColorStyle.mwColorStyleAuto {
+    order: 1;
+}
+
+.mwColorStyle.mwColorStyleNone {
+    order: 2;
+}
+
+.mwColorStyle.mwColorStyleFlat {
+    order: 3;
+}
+
+.mwColorStyle.mwColorStyleInterp {
+    order: 4;
+}
+
+.mwColorStyle.mwColorStyleTexturemap {
+    order: 5;
+}
+
+/* Swatch styling */
+
+.mwColorStyle .mwColorStyleSwatch {
+    border: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+    margin-right: 5px;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    box-sizing: content-box;
+    width: 24px;
+    height: 24px;
+    padding: 0px;
+}
+
+.mwColorStyle .mwColorStyleSwatch.mwPaletteCellInPreview{
+    border: 1px solid var(--mw-borderColor-hover, $mw-borderColor-hover);
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px rgb(166, 166, 166);
+}
+
+.mwColorStyle.mwColorStyleAuto .mwColorStyleSwatch.mwColorStyleSwatchDefault{
+    border-radius: 2px;
+}
+
+.mwColorStyle.mwColorStyleNone .mwColorStyleSwatch{
+    background-repeat:  repeat;
+    background-color:   var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+    background-image:   linear-gradient(45deg, var(--mw-color-gray400) 25%, transparent 25%, transparent 75%, var(--mw-color-gray400) 75%, var(--mw-color-gray400)),
+                        linear-gradient(45deg, var(--mw-color-gray400) 25%, transparent 25%, transparent 75%, var(--mw-color-gray400) 75%, var(--mw-color-gray400));
+    background-size:    9px 9px;
+    background-position: 0 0, 4px 4px;
+    border-radius: 2px;
+}
+
+.mwColorStyle.mwColorStyleFlat .mwColorStyleSwatch{
+    border-radius: 2px;
+}
+
+.mwColorStyle.mwColorStyleInterp .mwColorStyleSwatch{
+    border-radius: 2px;
+}
+
+.mwColorStyle.mwColorStyleTexturemap .mwColorStyleSwatch{
+    border-radius: 2px;
+}
+
+/* When the ColorStyle is selected */
+.mwColorStyle.mwColorStyleSelected .mwColorStyleSwatch {
+    border: 1px solid var(--mw-borderColor-focus, $mw-borderColor-focus);
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px rgb(0,153,255); 
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ErrorWritingWSData">Error writing variable ''{0}'' to workspace: {1}</entry>
+    <entry key="SkippingFiObjectUpload">타깃 애플리케이션에서 고정소수점 객체를 업로드하는 것은 지원되지 않습니다. 변수 ''{0}''의 데이터 업로드를 건너뜁니다.</entry>
+    <entry key="SkippingNonBaseVariableUpload">Simulink는 기본 작업 공간에 포함된 변수만 타깃 애플리케이션에서 업로드할 수 있습니다. 변수 ''{0}''의 데이터 업로드를 건너뜁니다.</entry>
+    <entry key="SkippingVariantObjectUpload">타깃 애플리케이션에서 Simulink.VariantVariable 객체 및 Simulink.VariantControl 객체를 업로드하는 것은 지원되지 않습니다. 변수 ''{0}''의 데이터 업로드를 건너뜁니다.</entry>
+    <entry key="ReturnWorkspaceOutputsNotSupportedInExtmode">Saving external mode simulation output as a single object is not supported because the workspace variable ''{0}''  is not created during model code execution. To suppress the warning, set ''ReturnWorkspaceOutputs'' to ''off''.</entry>
+    <entry key="CannotStartIfTargetNotConnected">Simulink cannot send a start packet to the model ''{0}'' running in external mode, as the target has lost its connection with the host.</entry>
+    <entry key="OneClickExternalModeNotSupported">
+        External mode simulation is not supported for the ''{0}'' hardware. 
+        However, you can deploy the model on this hardware. From the model window, 
+        click the "Deploy to Hardware" button.
+    </entry>
+    <entry key="OneClickPrepareModel">모델을 ''{0}''에서 실행하기 위해 준비하는 중...</entry>
+    <entry key="OneClickDownloadToHardware">모델을 ''{0}''에 다운로드하는 중...</entry>
+    <entry key="OneClickConnectingToHardware">''{0}''에 연결하는 중...</entry>
+    <entry key="OneClickRunningOnHardware">''{0}''에서 모델을 실행하는 중...</entry>
+    <entry key="OneClickFailedToRunOnHardware">모델을 하드웨어에서 실행하지 못했습니다.</entry>
+    <entry key="OneClickConnectFailed">''{1}''에 대한 ''{0}'' 타깃에 연결할 수 없습니다.</entry>
+    <entry key="OneClickModelIsConfiguredNotificationMsg">모델을 ''{0}'' 하드웨어에서 실행할 준비가 되었습니다.</entry>
+    <entry key="OneClickDisconnectNotificationMsg">Simulink를 중지하지 않고 타깃과의 연결을 끊으려면 &lt;a href="matlab:Simulink.ExtMode.CtrlPanel.createExtModeCtrlPanelForModel(''{0}'');"&gt; 코드 &gt; 외부 모드 제어판&lt;/a&gt;을 열고 [연결 끊기]를 클릭하십시오.</entry>
+    <entry key="OneClickGenCodeOnly">모델 "{0}"이(가) 코드만 생성하도록 구성되었습니다. 모델이 코드만 생성하도록 구성된 경우 외부 모드 시뮬레이션이 허용되지 않습니다. &lt;actions&gt; &lt;action type="fixit" id="disableGenCodeOnly"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenCodeOnly'', ''off'')&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="configset" objparam="GenCodeOnly"&gt;코드만 생성&lt;/sldiag&gt;을 비활성화하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="OneClickModelConfiguringModelMsg">''{0}''을(를) 타깃 하드웨어에서 실행하기 위해 준비하는 중...</entry>
+    <entry key="OneClickModelConfiguringModelTitle">모델 구성</entry>
+    <entry key="OneClickExtModeIsNotHonouredForDeploy">''{0}''의 ''ExtMode'' 파라미터가 빌드 프로세스에서 무시되었습니다. 외부 모드 시뮬레이션을 실행하려면 Simulink 편집기 도구 모음에서 시뮬레이션 모드를 ''외부''로 설정하고 ''실행'' 버튼을 클릭하십시오. 경고를 표시하지 않으려면 set_param(''{1}'', ''ExtMode'', ''off'')를 실행하십시오. </entry>
+    <entry key="ExtModeTransportNotAvailable">ExtModeTransport {0} is not available for this
+        system target file.
+    </entry>
+    <entry key="ExtModeRowMajor">Model ''{0}'' is configured for external mode and row-major code generation, which is not supported.
+        
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;configset.internal.fixIt(''{0}'',''ExtMode'',''off'')&lt;/cmd&gt;
+                    &lt;txt&gt;Disable &lt;sldiag objui="configset" objparam="ExtMode"&gt;external mode&lt;/sldiag&gt;.&lt;/txt&gt;
+                &lt;/action&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;set_param(''{0}'', ''ArrayLayout'',''Column-major'')&lt;/cmd&gt;
+                    &lt;txt&gt;Disable row-major ordering in code generation.&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+         
+    </entry>
+    <entry key="ExtModeInconsistentTransportSettings">The current ''{0}'' value, ''{1}'', does not match ''{2}'', which is the value expected by the current external mode transport layer, ''{3}''. This transport layer is specified by the 'ExtModeTransport' value, ''{4}''. This error can occur when you change the way you register external mode transport layers in Simulink.
+    
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit" retvalue="false" id="ResetTransport"&gt;
+                &lt;cmd&gt;Simulink.ExtMode.Transports.resetExtModeTransportForModel(''{5}'')&lt;/cmd&gt;
+                &lt;txt&gt;Reset external mode transport.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="TooManyTargetConnectivityConfig"> "{0}" is compatible with multiple connectivity configurations. These model configuration parameters were checked for compatibility against registered connectivity configurations: ''SystemTargetFile'', ''TemplateMakefile'' or ''Toolchain'', ''TargetHWDeviceType'', ''HardwareBoard''. Multiple matches were found. To ensure that the model matches only a single connectivity configuration, update the conflicting connectivity configurations. </entry>
+    <entry key="NoTargetConnectivityConfigLauncher">Unable to retrieve a launcher for "{0}". The configuration parameters for this model do not support any registered connectivity configuration.
+        Update the model configuration parameters or create a supported connectivity configuration. For details, see &lt;a href="matlab:helpview(fullfile(docroot,'toolbox','ecoder','helptargets.map'),'create_connect_config_for_target')"&gt;Create a Connectivity Configuration for a Target&lt;/a&gt;.</entry>
+    <entry key="TargetApplicationNotRunning">Target application is not running on the target. Deploy target application.</entry>
+    <entry key="ExtModeLogAllOverriddenForXCP">In model {0}, ''off'' value for ''ExtModeLogAll'' parameter is ignored. 
+    XCP-based external mode simulations do not support selection of individual block signals to upload from the target application.
+    
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;set_param(''{0}'', ''ExtModeLogAll'',''on'')&lt;/cmd&gt;
+                    &lt;txt&gt;For blocks in "{0}" that support external mode, upload all signals from the target application.&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+     
+    
+</entry>
+    <entry key="LauncherNeedsToProvideGetApplicationStatusMethod">Simulink is unable to determine whether the external mode target application is running.  Custom target application launcher "{0}" does not implement the ''getApplicationStatus'' method, or the implementation returns ''UNKNOWN''.  Ensure that the application is deployed to the target before attempting to connect.</entry>
+    <entry key="LauncherFailedToDetectApplicationStart">{0}초를 대기했지만 Simulink가 외부 모드 타깃 애플리케이션이 실행 중인지 여부를 확인할 수 없습니다. 애플리케이션이 시작하지 않았거나, 타깃 애플리케이션 시작 관리자의 "{1}.getApplicationStatus()"가 {0}초 내에 RUNNING을 반환하지 않았습니다. 타깃 애플리케이션이 타깃 하드웨어에 배포되었는지 확인하십시오.</entry>
+    <entry key="LauncherGetApplicationStatusMethodTooSlow">"{0}" 애플리케이션 실행 관리자에 의해 정의된 "getApplicationStatus" 메서드를 실행하는 데 {1}초 이상 걸렸습니다. 이는 "{0}"이(가) 사용 중일 때 MATLAB 반응 속도에 영향을 미칠 수 있습니다.</entry>
+    <entry key="DefaultHostBasedTargetRunsOnHostPC">Default host-based target application runs on the same computer as Simulink. To suppress this warning, in ''MEX-file arguments'' field (''ExtModeMexArgs''), set the network name of your target processor to ''localhost'' or ''127.0.0.1''. Alternatively, provide a custom launcher by registering a connectivity configuration.</entry>
+    <entry key="DefaultHostBasedTargetCannotUsePortZeroWithConfigSetRef">Invalid port number specified in ''ExtModeMexArgs''. Default host-based target application cannot use port 0 if the model uses a configuration set reference (Simulink.ConfigSetRef). Select a port number between 256 and 65535.</entry>
+    <entry key="DefaultHostBasedTargetMustUseLocalHostWithConfigSetRef">Network name of target processor specified in ''ExtModeMexArgs'' is invalid. The model is configured to run a host-based target application on the Simulink computer. Set the network name to ''localhost'' or ''127.0.0.1'' if the model uses a configuration set reference (Simulink.ConfigSetRef).</entry>
+    <entry key="MaxStopTimeExceededForPurelyIntegerCode">When ''PurelyIntegerCode'' is ''on'', ''StopTime'' must not exceed {0}. Specify a smaller value for ''StopTime'' or set it to ''inf''.</entry>
+    <entry key="ParameterWithoutTargetMapFileHit">파라미터 {0}은(는) 외부 모드에서 처리되지 않습니다. 이는 파라미터에 bitfield, define, GetSet 같은 스토리지 클래스가 있어서 생성 코드가 이 파라미터를 처리할 수 없게 되었기 때문일 수 있습니다.</entry>
+    <entry key="XCPExtModeUnspecifiedEndianess">Byte ordering is unspecified for model "{0}".  XCP-based external mode simulations require byte ordering to be specified.  Set the 'Byte ordering' configuration parameter to ''Little Endian' or ''Big Endian''.</entry>
+    <entry key="XCPExtModeHostMustBeLittleEndian">모델 "{0}"은(는) 바이트 순서가 빅 엔디안이지만 선택한 툴체인의 타깃은 MATLAB 개발 컴퓨터입니다. 사용 중인 임베디드 하드웨어의 툴체인을 선택하거나, ''바이트 순서'' 구성 파라미터를 ''리틀 엔디안''으로 설정하거나, ''이식 가능한 워드 크기 사용'' 구성 파라미터를 선택하십시오.</entry>
+    <entry key="StartedExecutable">타깃 애플리케이션이 시작됨: {0}</entry>
+    <entry key="StoppedExecutable">타깃 애플리케이션이 중지됨</entry>
+    <entry key="InvalidTFCommunicationInterface">하드웨어 보드 "{1}"과(와) 연결된 외부 모드 전송 "{0}"을(를) 사용하려면 "채널" 속성이 "{2}"(으)로 설정되어 있는 단일 target.CommunicationInterface 객체가 필요합니다. "{3}" target.Board 정의를 업데이트하십시오.</entry>
+    <entry key="ExtModeTransportOutOfRange">'ExtModeTransport' value "{0}" does not match any of the currently registered external mode transport layers. This error can occur when you change the external mode transport layers that are registered in Simulink for your system target file or hardware board. To refresh the setting, in the Configuration Parameters dialog box, reselect the required value for 'Transport layer' or 'Hardware board'.</entry>
+    <entry key="XCPExtModeUnsupportedNativeWordAddressable">For model "{0}", the specified number of bits for type char is {1} and the native word size is {2}.  When the native word size is greater than 32 bits, XCP-based external mode simulations do not support targets that are not byte addressable.  On the Configuration Parameters &gt; Hardware implementation pane, set the number of bits per char to 8 or set the native word size to 8, 16, or 32.</entry>
+    <entry key="LauncherCannotDetermineExecutableExtension">Unable to start the target application, {0}, because the toolchain information is missing. To learn how to configure a toolchain, see &lt;a href="matlab:helpview('rtw','toolchain_approach')"&gt;Configure Toolchain (ToolchainInfo) or Template Makefile Build Process.&lt;/a&gt;</entry>
+    <entry key="OneClickNotSupportedWithoutToolchain">툴체인 정보가 누락된 경우 원클릭 외부 모드가 지원되지 않습니다. 툴체인을 구성하는 방법을 알아보려면 &lt;a href="matlab:helpview('rtw','toolchain_approach')"&gt;툴체인(ToolchainInfo) 또는 템플릿 makefile 빌드 프로세스 구성&lt;/a&gt;을 참조하십시오</entry>
+    <entry key="ExtModeUploadBlockUnsupportedModelRefSignal">Simulink는 ''{2}''에서 경로가 ''{0}'''이고 포트 인덱스가 {1, number, integer}인 신호를 ''{3}''에 업로드할 수 없습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="EnableLoggingForChild" retvalue="false"&gt; &lt;cmd&gt;if ~bdIsLoaded(''{4}''),load_system(''{4}''),end;set(get_param(''{0}'', ''LineHandles'').Outport({1, number, integer}), 'DataLogging', true)&lt;/cmd&gt; &lt;txt&gt;경로가 ''{0}''이고 포트 인덱스가 {1, number, integer}인 신호의 기록을 활성화하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type = "suggestion" id="ViewInSDI" btn="open" retvalue="false"&gt; &lt;cmd&gt;Simulink.sdi.view&lt;/cmd&gt; &lt;txt&gt;시뮬레이션 데이터 인스펙터에서 기록된 신호 데이터를 확인하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="TFLauncherStdoutOnStart">### 실행 툴 시작 명령에서 반환된 표준 출력(stdout) 메시지:</entry>
+    <entry key="TFLauncherStderrOnStart">### 실행 툴 시작 명령에서 반환된 표준 오류(stderr) 메시지:</entry>
+    <entry key="TFLauncherStdoutOnStop">### 실행 툴 중지 명령에서 반환된 표준 출력(stdout) 메시지:</entry>
+    <entry key="TFLauncherStderrOnStop">### 실행 툴 중지 명령에서 반환된 표준 오류(stderr) 메시지:</entry>
+  </message>
+</rsccat>

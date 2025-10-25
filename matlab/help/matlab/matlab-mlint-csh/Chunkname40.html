@@ -1,0 +1,17 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Comment with percent (<code>%</code>) following comma acts as a row
+                    separator. Your use of a comma suggests that you are trying to create a row
+                    vector, rather than a column vector. Within array initializations, this can
+                    cause unintended errors by spitting an into separate rows in unintended
+                    locations.</p><br/><strong>Suggested Action</strong><br/><p>To comment within an array without splitting rows, replace the percent
+                        (<code>%</code>) with an ellipsis(<code>…</code>). </p><p>
+                    </p>
+<div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td><p>The comment acts as a row separator causing the
+                                            array to have uneven dimensions. </p><p>This
+                                            generates an error.</p><p>
+                                            <code>x&nbsp;=&nbsp;[&nbsp;1,&nbsp;2,&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;My&nbsp;comment<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3,&nbsp;4,&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5,&nbsp;6];</code>
+                                        </p></td><td><p>The comment does not act as a row separator.</p><p>
+                                            <code>x&nbsp;=&nbsp;[&nbsp;1,&nbsp;2,&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;My&nbsp;comment<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3,&nbsp;4,&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5,&nbsp;6];</code>
+                                        </p></td></tr></tbody></table></div><p>
+
+                </p><p>If the row separation is intentional, replace the comma with a semicolon to
+                    make the row separation clearer.</p></body></html>

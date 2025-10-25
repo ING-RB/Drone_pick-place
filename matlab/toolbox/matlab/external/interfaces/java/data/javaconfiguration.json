@@ -1,0 +1,69 @@
+{
+"total_number_of_supported_platforms": 4,
+"platforms": {
+      "win64": {
+          "systemcommand":[
+              [ "java", "-XshowSettings:properties", "-version"],
+              [ "where", "java"]
+          ],
+          "registry": {
+              "openjdk": {
+                  "registry": [ "SOFTWARE\\AdoptOpenJDK\\JRE",
+                                "SOFTWARE\\Eclipse Foundation\\JDK",
+                                "SOFTWARE\\Eclipse Adoptium\\JRE",
+                                "SOFTWARE\\Eclipse Adoptium\\JDK"],
+                  "branch": "\\hotspot\\MSI",
+                  "key": "Path",
+                  "supported_keys": ["8.","11.","17.","21."]
+              },
+              "oracle": {
+                  "jre8": {
+                      "registry": [ "SOFTWARE\\JavaSoft\\Java Runtime Environment" ],
+                      "branch": "\\MSI",
+                      "key": "INSTALLDIR",
+                      "supported_keys": [ "1.8" ]
+                  },
+                  "jdk": {
+                      "registry": [ "SOFTWARE\\JavaSoft\\JDK" ],
+                      "branch": "\\hotspot\\MSI",
+                      "key": "Path",
+                      "supported_keys": ["11.","17.","21."]
+                  }
+              }
+          },
+          "supported_versions": [ "version \"1.8", "version \"11.", "verison \"17.", "version \"21."]
+      },
+      "glnxa64": {
+          "env": "JAVA_HOME",
+          "systemcommand": [ "which", "java"],
+          "supported_versions": [ "version \"1.8",
+                                  "version \"11.",
+                                  "version \"17.",
+                                  "version \"21."]
+      },
+      "maci64": {
+          "systemcommand": [
+              [ "/usr/libexec/java_home","-f","-v","1.8"],
+              [ "/usr/libexec/java_home","-f","-v","11"],
+              [ "/usr/libexec/java_home","-f","-v","17"],
+              [ "/usr/libexec/java_home","-f","-v","21"]
+          ],
+          "supported_versions": [ "version \"1.8",
+                                  "version \"11.",
+                                  "version \"17.",
+                                  "version \"21."]
+      },
+      "maca64": {
+          "systemcommand": [
+              [ "/usr/libexec/java_home","-V","-f","-a","arm64","-v","1.8"],
+              [ "/usr/libexec/java_home","-V","-f","-a","arm64","-v","11"],
+              [ "/usr/libexec/java_home","-V","-f","-a","arm64","-v","17"],
+              [ "/usr/libexec/java_home","-V","-f","-a","arm64","-v","21"]
+          ],
+          "supported_versions": [ "version \"1.8",
+                                  "version \"11.",
+                                  "version \"17.",
+                                  "version \"21."]
+      }
+  }
+}

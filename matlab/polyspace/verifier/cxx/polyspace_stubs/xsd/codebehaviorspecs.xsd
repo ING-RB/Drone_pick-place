@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021-2022 The MathWorks, Inc. -->
+
+<xs:schema targetNamespace="http://www.mathworks.com/PolyspaceCodeBehaviorSpecifications"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://www.mathworks.com/PolyspaceCodeBehaviorSpecifications"
+    elementFormDefault="qualified">
+
+<xs:include schemaLocation="matchers.xsd"/>
+
+
+<xs:annotation>
+    <xs:documentation>Polyspace code behavior specifications.</xs:documentation>
+</xs:annotation>
+
+
+<xs:complexType name="GlobalScopeType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="parameter">
+            <xs:complexType>
+                <xs:attribute name="name" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="MAX_NUMBER_NESTED_LEVEL_CONTROL_FLOW"/>
+                            <xs:enumeration value="MAX_NUMBER_NESTED_LEVEL_INCLUDES"/>
+                            <xs:enumeration value="MAX_NUMBER_CONSTANT_IN_ENUMERATION"/>
+                            <xs:enumeration value="MAX_NUMBER_MACROS_TRANSLATION_UNIT"/>
+                            <xs:enumeration value="MAX_NUMBER_MEMBERS_IN_STRUCT"/>
+                            <xs:enumeration value="MAX_NUMBER_NESTED_MEMBERS_IN_STRUCT"/>
+                            <xs:enumeration value="NUMBER_SIGNIFICANT_CHARACTER_EXTERNAL_IDENTIFIER"/>
+                            <xs:enumeration value="NUMBER_SIGNIFICANT_CHARACTER_INTERNAL_IDENTIFIER"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="value" type="xs:positiveInteger" use="required"/>
+            </xs:complexType>
+        </xs:element>
+    </xs:choice>
+</xs:complexType>
+
+
+<xs:element name="specifications">
+    <xs:complexType>
+        <xs:all>
+            <xs:element name="global_scope" type="tns:GlobalScopeType" minOccurs="0"/>
+            <xs:element name="functions" type="tns:FunctionsType" minOccurs="0"/>
+            <xs:element name="variables" type="tns:VariablesType" minOccurs="0"/>
+            <xs:element name="members" type="tns:MembersType" minOccurs="0"/>
+            <xs:element name="tokens" type="tns:TokensType" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+</xs:element>
+
+
+<xs:complexType name="FunctionsType">
+    <xs:sequence>
+        <xs:element name="function" type="tns:FunctionType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<xs:complexType name="VariablesType">
+    <xs:sequence>
+        <xs:element name="variable" type="tns:VariableType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="MembersType">
+    <xs:sequence>
+        <xs:element name="member" type="tns:MemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TokensType">
+    <xs:sequence>
+        <xs:element name="token" type="tns:TokenType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- elements that can be found both in "function" and "variable"-->
+<xs:group name="CommonGroup">
+    <xs:choice>
+        <xs:element name="match" type="tns:MatchType">
+            <xs:annotation>
+                <xs:documentation>
+                    Specify additionnal constraints that the matching element must meet.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+    </xs:choice>
+</xs:group>
+
+
+<xs:complexType name="FunctionType">
+    <xs:annotation>
+        <xs:documentation>
+            If both the `name` attribute and the `&lt;match&gt;` element specify a constraint on the function name, then the matched function must satisfy both requirements.
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="behavior" type="tns:FunctionBehaviorType"/>
+
+        <xs:element name="check" type="tns:CheckType"/>
+
+        <xs:element name="mapping" type="tns:MappingType">
+            <xs:annotation>
+                <xs:documentation>
+                    Introduce a mapping from one of the matched function's parameter to one of the standard function's parameter. The standard function is selected by attribute `std`.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+
+        <xs:group ref="tns:CommonGroup"/>
+    </xs:choice>
+
+    <xs:attribute name="name" type="tns:NonEmptyString">
+            <xs:annotation>
+                <xs:documentation>
+                    Specify the exact name of the matched function.
+                    If this attribute is not specified, the matched function name must be constrained by the `&lt;match&gt;` element.
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="follow_projection" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                Specify to use the projection name of the symbol instead of the real name.
+                Example:
+                 struct base { int foo();};
+                 struct derive : base { };
+                call to derive::foo() will be in fact a call to base::foo().
+                If set to true and derive::foo() has some specification then base::foo() will be matched
+                If set to `false` or unset, base::foo() will not be matched.
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="std" type="tns:NonEmptyString"/>
+
+    <xs:attribute name="ruleid" type="tns:NonEmptyString">
+        <xs:annotation>
+            <xs:documentation>
+                A custom identifier or description that may be used in
+                results for traceability or as a reference to this `function` element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="type" type="tns:NonEmptyString" use="optional">
+        <xs:annotation>
+            <xs:documentation>
+               A `type` definition to constraint the rule.
+               Example:
+                type="float(float)"
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="behavior" type="tns:FunctionBehaviorNames">
+        <xs:annotation>
+            <xs:documentation>**DEPRECATED**. Replaced by element `behavior`.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+
+<xs:complexType name="VariableType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="tns:CommonGroup"/>
+    </xs:choice>
+
+    <xs:attribute name="ruleid" type="tns:NonEmptyString">
+        <xs:annotation>
+            <xs:documentation>
+                A custom identifier or description that may be used in
+                results for traceability or as a reference to this `variable` element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="MemberType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="behavior" type="tns:MemberBehaviorType"/>
+    </xs:choice>
+
+    <xs:attribute name="name" type="tns:NonEmptyString" use="required">
+        <xs:annotation>
+            <xs:documentation>The name of the matched class-public member.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="kind" type="tns:MemberKindType" use="required">
+        <xs:annotation>
+            <xs:documentation>The kind of matched member.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="regex" type="xs:boolean" use="optional">
+        <xs:annotation>
+                <xs:documentation>The name of the matched class-public member will be interpreted as
+                    a regular expression (not a wildcard).</xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="regex_ignorecase" type="xs:boolean" use="optional">
+        <xs:annotation>
+                <xs:documentation>The name of the matched class-public member will be interpreted as
+                    a case insensitive regular expression.</xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="MappingType">
+    <xs:annotation>
+        <xs:documentation>
+            Map the `arg`-th argument in the source function
+            to the `std_arg`-th argument in the target standard function.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="arg" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="std_arg" type="xs:positiveInteger" use="required"/>
+</xs:complexType>
+
+
+<xs:simpleType name="FunctionBehaviorNames">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="FORBIDDEN_FUNC"/>
+        <xs:enumeration value="EXCEPTION_HANDLING"/>
+        <xs:enumeration value="REAL_TIME_FUNC"/>
+        <xs:enumeration value="MANAGES_MEMORY"/>
+        <xs:enumeration value="STACK_SIZE_LOCAL_VARIABLES"/>
+        <!-- Internal. Do not check for NIV inside the tagged function; leave unitialized values
+             unitialized so they can be checked after the call. -->
+        <xs:enumeration value="PROPAGATE_NIV"/>
+        <!-- Internal. Do not spill calls to tagged functions into temporaries.
+             Use this only on pure functions. -->
+        <xs:enumeration value="NO_TMP_WHEN_CALLED"/>
+        <!-- For support.  Tagged functions are not "floating-point sinks" as per MISRA
+             C 2012 D4.15 even if they match the sink signature. -->
+        <xs:enumeration value="NOT_FLOAT_SINK"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<xs:complexType name="FunctionBehaviorType">
+    <xs:attribute name="name" type="tns:FunctionBehaviorNames" use="required"/>
+    <xs:attribute name="value" type="tns:StackSizeValue" use="optional" />
+</xs:complexType>
+
+
+<xs:complexType name="CheckType">
+    <xs:attribute name="name" type="tns:CheckName" use="optional"/>
+    <xs:attribute name="arg" type="xs:positiveInteger" use="optional"/>
+    <xs:attribute name="checker" type="tns:NonEmptyString" use="optional"/>
+    <xs:attribute name="green_message" type="xs:string" use="optional"/>
+    <xs:attribute name="orange_message" type="xs:string" use="optional"/>
+    <xs:attribute name="red_message" type="xs:string" use="optional"/>
+    <xs:attribute name="grey_message" type="xs:string" use="optional"/>
+</xs:complexType>
+
+
+<xs:simpleType name="CheckName">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="ARGUMENT_POINTS_TO_INITIALIZED_VALUE"/>
+        <xs:enumeration value="ARGUMENT_IS_NOT_NULLPTR"/>
+        <xs:enumeration value="ARGUMENT_IS_ALLOCATED"/>
+        <xs:enumeration value="ARGUMENT_IS_INITIALIZED"/>
+        <xs:enumeration value="ARGUMENT_IS_IN_RANGE"/>
+        <xs:enumeration value="RETURN_STD_RETURNTYPE"/>
+        <xs:enumeration value="RETURN_AUTOSAR_BOOLEAN"/>
+        <xs:enumeration value="ARGUMENT_IS_OUT_INITIALIZED"/>
+        <xs:enumeration value="ARGUMENT_IS_OUT_INITIALIZED_1"/>
+        <xs:enumeration value="ARGUMENT_IS_OUT_INITIALIZED_VECTOR_SIZE"/>
+        <xs:enumeration value="ARGUMENT_MAY_BE_READ_OR_WRITE_BUFFER"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="MemberKindType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="variable"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="MemberBehaviorType">
+    <xs:attribute name="name" type="tns:MemberBehaviorNames" use="required"/>
+</xs:complexType>
+
+<xs:simpleType name="MemberBehaviorNames">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="CRITICAL_DATA"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<xs:complexType name="TokenType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="behavior" type="tns:TokenBehaviorType"/>
+    </xs:choice>
+
+    <xs:attribute name="name" type="tns:NonEmptyString" use="required">
+        <xs:annotation>
+            <xs:documentation>The identifier of the matched C/C++ token.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="kind" type="tns:TokenKindType" use="required">
+        <xs:annotation>
+            <xs:documentation>The kind of matched C/C++ token.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="regex" type="xs:boolean" use="optional">
+        <xs:annotation>
+                <xs:documentation>The name of the matched C/C++ token will be interpreted as
+                    a regular expression (not a wildcard).</xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="regex_ignorecase" type="xs:boolean" use="optional">
+        <xs:annotation>
+                <xs:documentation>The name of the matched C/C++ token  will be interpreted as
+                    a case insensitive regular expression.</xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:simpleType name="TokenKindType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="keyword"/>
+        <xs:enumeration value="macro"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="TokenBehaviorType">
+    <xs:attribute name="name" type="tns:TokenBehaviorNames" use="required"/>
+</xs:complexType>
+
+<xs:simpleType name="TokenBehaviorNames">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="FORBIDDEN_KEYWORD"/>
+        <xs:enumeration value="FORBIDDEN_MACRO"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:string">
+        <xs:minLength value="1"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="StackSizeValue">
+    <xs:restriction base="xs:string">
+       <xs:pattern value="([0-9]{1,9},)?[0-9]{1,9}"/>
+    </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

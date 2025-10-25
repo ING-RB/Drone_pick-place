@@ -1,0 +1,242 @@
+{
+"MapInterfaceCPL.grid2local":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"MapInterfaceCPL"},
+        {"name":"ij", "kind":"required", "type":["numeric","ncols=2","positive","integer"]}
+    ]
+},
+"MapInterfaceCPL.grid2world":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"MapInterfaceCPL"},
+        {"name":"ij", "kind":"required", "type":["numeric","ncols=2","positive","integer"]}
+    ]
+},
+"MapInterfaceCPL.local2grid":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"MapInterfaceCPL"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"MapInterfaceCPL.local2world":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"MapInterfaceCPL"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"MapInterfaceCPL.world2grid":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"MapInterfaceCPL"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"MapInterfaceCPL.world2local":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"MapInterfaceCPL"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"mapLayer":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"map", "kind":"required", "type":"mapLayer"}
+                ],
+                [
+                    {"name":"width",    "kind":"required", "type":["numeric","scalar","positive"]},
+                    {"name":"height",   "kind":"required", "type":["numeric","scalar","positive"]},
+                    {"name":"grid",     "kind":"ordered",  "type":["choices={'grid'}"]}
+                ],
+                [
+                    {"name":"width",    "kind":"required", "type":["numeric","scalar","positive"]},
+                    {"name":"height",   "kind":"required", "type":["numeric","scalar","positive"]},
+                    {"name":"cellDims", "kind":"ordered",  "type":["numeric","positive","integer"]},
+                    {"name":"grid",     "kind":"ordered",  "type":["choices={'grid'}"]}
+                ],
+                [
+                    {"name":"matrix",  "kind":"required",  "type":["numeric","logical","@(m)any(size(m,[1 2]) > 1)"]}
+                ]
+            ]
+        },
+        {"name":"Resolution", "kind":"namevalue", "type":["numeric","integer","scalar","positive"]},
+        {"name":"DefaultValue", "kind":"namevalue", "type":["scalar","numeric","logical"]},
+        {"name":"GridOriginInLocal", "kind":"namevalue", "type":["numeric","row","real","numel=2"]},
+        {"name":"LocalOriginInWorld", "kind":"namevalue", "type":["numeric","row","real","numel=2"]},
+        {"name":"LayerName", "kind":"namevalue", "type":"string"},
+        {"name":"GetTransformFcn", "kind":"namevalue", "type":"function_handle"},
+        {"name":"SetTransformFcn", "kind":"namevalue", "type":"function_handle"}
+    ]
+},
+"MapInterfaceCPL.getMapData":
+{
+    "inputs":
+    [
+        {"name":"obj", "kind":"required", "type":"MapInterfaceCPL"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"XY", "kind":"required", "type":["numeric","ncols=2","real"]}
+                ],
+                [
+                    {"name":"botLeft", "kind":"required", "type":["numeric","row","numel=2","real"]},
+                    {"name":"matSize", "kind":"required", "type":["numeric","positive"]}
+                ]
+            ]
+        },
+        {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+    ]
+},
+"MapInterfaceCPL.setMapData":
+{
+    "inputs":
+    [
+        {"name":"obj", "kind":"required", "type":"MapInterfaceCPL"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"XY",     "kind":"required", "type":["numeric","ncols=2","real"]},
+                    {"name":"values", "kind":"required", "type":[["logical","numeric","scalar"],["logical","numeric","@(val,XY,obj)isequal(size(val), [size(XY,1) 1 obj.DataSize(3:end)])"]]}
+                ],
+                [
+                    {"name":"botLeft",     "kind":"required", "type":["numeric","row","numel=2","real"]},
+                    {"name":"inputMatrix", "kind":"required", "type":[["logical","numeric","scalar"],["logical","numeric","@(val,obj)isequal(size(val,3:numel(size(val))),obj.DataSize(3:end))"]]}
+                ]
+            ]
+        },
+        {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+    ]
+},
+"mapLayer.syncWith":
+{
+    "inputs":
+    [
+        {"name":"obj",       "kind":"required", "type":"mapLayer"},
+        {"name":"sourcemap", "kind":"required", "type":["mapLayer","@(x,obj)all(x~=obj)"]}
+    ]
+},
+"mapLayer.move":
+{
+    "inputs":
+    [
+        {"name":"obj",       "kind":"required",  "type":"mapLayer"},
+        {"name":"moveValue", "kind":"required",  "type":["numeric","row","numel=2","real"]},
+        {"name":"MoveType",  "kind":"namevalue", "type":"choices={'Absolute','Relative'}"},
+        {"name":"SyncWith",  "kind":"namevalue", "type":["mapLayer","@(x,obj)all(x~=obj)"]},
+        {"name":"FillValue", "kind":"namevalue", "type":["numeric","logical","scalar"]}
+    ]
+},
+"multiLayerMap":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"maps", "kind":"required", "type":["cell","@(x)all(cellfun(@(y)multiLayerMap.isaLayer(y),x))"]}
+                ],
+                [
+                    {"name":"names", "kind":"required", "type":"cellstr"},
+                    {"mutuallyExclusiveGroup":
+                        [
+                            [
+                                {"name":"matrices", "kind":"required", "type":["cell","@(x)all(cellfun(@(y)isnumeric(y) && isequal(size(x{1},[1 2]),size(y,[1 2])),x))","@(x,names)numel(x)==numel(names)"]}
+                            ],
+                            [
+                                {"name":"width",  "kind":"required", "type":["numeric","scalar","positive"]},
+                                {"name":"height", "kind":"required", "type":["numeric","scalar","positive"]},
+                                {"name":"cellDims", "kind":"ordered", "type":[["numeric","integer","positive"],["cell","@(x,names)numel(x)==numel(names)","@(x)cellfun(isnumeric(y)&&isinteger(y)&&ispositive(y),x)"]]}
+                            ]
+                        ]
+                    },
+                    {"name":"Resolution", "kind":"namevalue", "type":["numeric","integer","scalar","positive"]},
+                    {"name":"DefaultValue", "kind":"namevalue", "type":["cell","@(x,names)numel(x)==numel(names)","@(x)all(cellfun(@(y)isscalar(y) && (isnumeric(y)||islogical(y)),x))"]},
+                    {"name":"GridOriginInLocal", "kind":"namevalue", "type":["numeric","row","real","numel=2"]},
+                    {"name":"LocalOriginInWorld", "kind":"namevalue", "type":["numeric","row","real","numel=2"]}
+                ]   
+            ]
+        }
+    ]
+},
+"multiLayerMap.syncWith":
+{
+    "inputs":
+    [
+        {"name":"obj",       "kind":"required", "type":"multiLayerMap"},
+        {"name":"sourcemap", "kind":"required", "type":["multiLayerMap","@(x,obj)all(x~=obj)"]}
+    ]
+},
+"multiLayerMap.move":
+{
+    "inputs":
+    [
+        {"name":"obj",       "kind":"required",  "type":"multiLayerMap"},
+        {"name":"moveValue", "kind":"required",  "type":["numeric","row","numel=2","real"]},
+        {"name":"MoveType",  "kind":"namevalue", "type":"choices={'Absolute','Relative'}"},
+        {"name":"SyncWith",  "kind":"namevalue", "type":["multiLayerMap","@(x,obj)all(x~=obj)"]},
+        {"name":"FillValue", "kind":"namevalue", "type":["cell","@(x,obj)all(cellfun(@(y)isnumeric(y)&&isscalar(y),x)) && numel(x)==numel(obj.LayerNames)"]}
+    ]
+},
+"multiLayerMap.getMapData":
+{
+    "inputs":
+    [
+        {"name":"obj", "kind":"required", "type":"multiLayerMap"},
+        {"name":"layerName", "kind":"required", "type":"choices=obj.LayerNames"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"XY", "kind":"required", "type":["numeric","ncols=2","real"]}
+                ],
+                [
+                    {"name":"botLeft", "kind":"required", "type":["numeric","row","numel=2","real"]},
+                    {"name":"matSize", "kind":"required", "type":["numeric","positive","integer"]}
+                ]
+            ]
+        },
+        {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+    ]
+},
+"multiLayerMap.setMapData":
+{
+    "inputs":
+    [
+        {"name":"obj", "kind":"required", "type":"multiLayerMap"},
+        {"name":"layerName", "kind":"required", "type":"choices=obj.LayerNames"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"XY",     "kind":"required", "type":["numeric","ncols=2","real"]},
+                    {"name":"values", "kind":"required", "type":["logical","numeric","@(val,XY,layerName,obj)isequal(size(val), [size(XY,1) 1 obj.DataSize{strcmp(layerName,obj.LayerNames)}(3:end)])"]}
+                ],
+                [
+                    {"name":"botLeft",     "kind":"required", "type":["numeric","row","numel=2","real"]},
+                    {"name":"inputMatrix", "kind":"required", "type":["logical","numeric","@(val,layerName,obj)isequal(size(val,3:numel(size(val))),obj.DataSize{strcmp(layerName,obj.LayerNames)}(3:numel(size(val))))"]}
+                ]
+            ]
+        },
+        {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+    ]
+},
+"multiLayerMap.getLayer":
+{
+    "inputs":
+    [
+        {"name":"obj",       "kind":"required",  "type":"multiLayerMap"},
+        {"name":"layerName", "kind":"required",  "type":"choices=obj.LayerNames"}
+    ]
+}
+}

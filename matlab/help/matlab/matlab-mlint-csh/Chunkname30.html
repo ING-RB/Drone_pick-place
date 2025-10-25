@@ -1,0 +1,10 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>If the reduction assignment uses <code>*</code>, <code>[,]</code>,
+                    or <code>[;]</code>, then the reduction variable must be consistently
+                    specified as the first or second argument in every reduction assignment.</p><p>The <code>parfor</code>-loop on the left is not valid because the order
+                    of items in the concatenation is not consistent throughout the loop. The
+                        <code>parfor</code>-loop on the right is valid.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Invalid</th><th>Valid</th></tr></thead><tbody><tr><td>
+                                    <code>parfor&nbsp;i&nbsp;=&nbsp;1:n<br/>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;testLevel(k)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;=&nbsp;[A,&nbsp;4+i];<br/>&nbsp;&nbsp;&nbsp;&nbsp;else<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;=&nbsp;[r(i),&nbsp;A];<br/>&nbsp;&nbsp;&nbsp;&nbsp;end<br/>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;loop&nbsp;body&nbsp;continued<br/>end</code>
+                                </td><td>
+                                    <code>parfor&nbsp;i&nbsp;=&nbsp;1:n<br/>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;testLevel(k)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;=&nbsp;[A,&nbsp;4+i];<br/>&nbsp;&nbsp;&nbsp;&nbsp;else<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;=&nbsp;[A,&nbsp;r(i)];<br/>&nbsp;&nbsp;&nbsp;&nbsp;end<br/>&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;loop&nbsp;body&nbsp;continued<br/>end</code>
+                                </td></tr></tbody></table></div><br/><strong>Suggested Action</strong><br/><p>Rewrite the application to avoid using the variable in the manner described in
+                    the explanation. For more information, see <a href="matlab:helpview([docroot '/parallel-computing/reduction-variable.html#bq_ttk5'])" target="_blank">Reduction Variables</a>.</p></body></html>

@@ -1,0 +1,346 @@
+{
+
+    "controllerMPPI":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "refPath",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "2d",
+                                "@(x)(width(x)==2 || width(x)==3) && height(x)>2"
+                            ],
+                            [
+                                "navPath",
+                                "@(x)class(x.StateSpace)=='stateSpaceSE2'"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "VehicleModel",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "ackermannKinematics"
+                            ],
+                            [
+                                "bicycleKinematics"
+                            ],
+                            [
+                                "unicycleKinematics"
+                            ],
+                            [
+                                "differentialDriveKinematics"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Map",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "binaryOccupancyMap"
+                            ],
+                            [
+                                "occupancyMap"
+                            ],
+                            [
+                                "signedDistanceMap"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Options",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "struct",
+                                "@(S)all(isfield(S,{'CostFcn','CostWeights','Parameters'}))"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "NumTrajectory",
+                        "kind": "namevalue",
+                        "type": [
+                            "numeric",
+                            "integer",
+                            "scalar",
+                            "positive"
+                        ]
+                    },
+                    {
+                        "name": "StandardDeviation",
+                        "kind": "namevalue",
+                        "type": [
+                            "numeric",
+                            "row",
+                            "numel=2",
+                            ">=0",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "TrajectorySelectionBias",
+                        "kind": "namevalue",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            "positive",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "SampleTime",
+                        "kind": "namevalue",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            "positive",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "LookaheadTime",
+                        "kind": "namevalue",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            "positive",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "GoalTolerance",
+                        "kind": "namevalue",
+                        "type": [
+                            "numeric",
+                            "row",
+                            "numel=3",
+                            "positive",
+                            "real"
+                        ]
+                    }
+                ]
+        },
+    "controllerMPPI.step":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "mppi",
+                        "kind": "required",
+                        "type": "controllerMPPI"
+                    },
+                    {
+                        "name": "currentState",
+                        "kind": "required",
+                        "type": [
+                            "numeric",
+                            "row",
+                            "@(x)numel(x)==3 || numel(x)==4",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "currentControl",
+                        "kind": "required",
+                        "type": [
+                            "numeric",
+                            "row",
+                            "numel=2",
+                            "real"
+                        ]
+                    }
+                ]
+        },
+
+    "nav.algs.mppi.obstacleRepulsionCost":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "trajectories",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "3d",
+                                "@(x)width(x)==3 || width(x)==4"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "map",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "binaryOccupancyMap"
+                            ],
+                            [
+                                "occupancyMap"
+                            ],
+                            [
+                                "signedDistanceMap"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "vehicleCollisionInformation",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "struct",
+                                "@(S)all(isfield(S,{'Shape','Dimension'}))"
+                            ]
+                        ]
+                    }
+                ]
+        },
+    "nav.algs.mppi.pathFollowingCost":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "trajectories",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "3d",
+                                "@(x)width(x)>=3 && width(x)<=4"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "targetPose",
+                        "kind": "required",
+                        "type": [
+                            "numeric",
+                            "row",
+                            "numel=3",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "weightXY",
+                        "kind": "optional",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            ">=0",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "weightTheta",
+                        "kind": "optional",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            ">=0",
+                            "real"
+                        ]
+                    }
+                ]
+        },
+    "nav.algs.mppi.pathAlignmentCost":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "trajectories",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "3d",
+                                "@(x)width(x)>=3 && width(x)<=4"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "pathSegment",
+                        "kind": "required",
+                        "type": [
+                            "numeric",
+                            "2d",
+                            "@(x) width(x)==3",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "weightXY",
+                        "kind": "optional",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            ">=0",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "weightTheta",
+                        "kind": "optional",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            ">=0",
+                            "real"
+                        ]
+                    }
+                ]
+        },
+    "nav.algs.mppi.controlSmoothingCost":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "controlSequences",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "3d",
+                                "@(x)width(x)==2"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "vehicleInputsPrev",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "2d",
+                                "@(x)width(x)==2"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "standardDeviation",
+                        "kind": "required",
+                        "type": [
+                            "numeric",
+                            "row",
+                            "numel=2",
+                            ">=0",
+                            "real"
+                        ]
+                    },
+                    {
+                        "name": "gamma",
+                        "kind": "optional",
+                        "type": [
+                            "numeric",
+                            "scalar",
+                            ">=0",
+                            "real"
+                        ]
+                    }
+                ]
+        }
+}

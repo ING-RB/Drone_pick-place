@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2016 The MathWorks, Inc. -->
+<compiler name="iar_classic" lang="c"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+  <!--
+       Classic IAR, i.e. IAR version 1.x.
+
+       The definitions in this file reflect Polyspace behaviour when option \-\-iar
+       is given.
+
+       1.x features that we do not yet support:
+        - nested comments
+        - sizeof() in preprocessor directives
+        - args$, returns an array of the parameters to a function
+        - argt$, returns the type of a parameter
+
+       Note: this compiler has lang="c" because Classic IAR's 'using' attribute
+       is not compatible with C++.
+  -->
+
+  <options>
+    <option name="--iar_classic_bit_access"/>
+    <option name="--enable_at_keywords"/>
+    <option name="--allow_anonymous_unions"/>
+    <option name="--allow_unnamed_fields"/>
+  </options>
+
+  <asms>
+    <asm name="asm"/>
+    <asm name="_asm"/>
+  </asms>
+
+  <types>
+    <type name="bit"   type_kind="bit"  decl_specs="bit"/>
+    <type name="sfr"   type_kind="char" decl_specs="sfr,volatile,unsigned"/>
+    <type name="sfr16" type_kind="int"  decl_specs="sfr,volatile,unsigned,short"/>
+    <type name="sfr32" type_kind="int"  decl_specs="sfr,volatile,unsigned"/>
+  </types>
+
+  <attributes kind="data">
+    <attribute name="no_init"/>
+    <attribute name="__no_init"/>
+    <attribute name="_at_" sig="@"/> <!-- Really? Isn't this Keil? -->
+    <attribute name="@" sig="@"/>
+    <attribute name="data"/>
+    <attribute name="idata"/>
+    <attribute name="xdata"/> <!-- Also pdata? -->
+    <attribute name="code"/>
+  </attributes>
+
+  <attributes kind="function">
+    <attribute name="interrupt" sig="?[*]"/>
+    <attribute name="_task_" sig="?[*]"/>
+    <attribute name="using" sig="?[*]"/>
+    <attribute name="_priority_" sig="?[*]"/>
+    <attribute name="monitor" sig="?[*]"/>
+    <attribute name="_monitor" sig="?[*]"/>
+    <attribute name="__monitor" sig="?[*]"/>
+    <attribute name="_monitor_" sig="?[*]"/>
+    <attribute name="__monitor__" sig="?[*]"/>
+  </attributes>
+
+</compiler>

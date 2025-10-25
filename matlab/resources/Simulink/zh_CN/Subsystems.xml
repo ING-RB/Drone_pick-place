@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="InheritStatesNotAllowedInRoot">Invalid setting specified for the "States when enabling" parameter of the trigger port block ''{0}''.  The block must not specify this parameter as ''inherit'' because the block is at the root level of the block diagram</entry>
+    <entry key="InheritStatesNotAllowedFromRoot">Invalid setting specified for the "States when enabling" parameter of the trigger port block ''{0}''. The block must not specify this parameter as ''inherit'' because the function-call subsystem ''{1}'' is not allowed to derive "States when enabling" parameter from root system (directly or indirectly) when the model contains a root Inport block that outputs a function-call signal.</entry>
+    <entry key="SfInheritStatesNotAllowedFromRoot">Invalid setting specified for the "States when enabling" parameter of the Stateflow block ''{0}''. The block must not specify this parameter as ''inherit'' because it is not allowed to derive "States when enabling" parameter from root system (directly or indirectly) when the model contains a root Inport block that outputs a function-call signal.</entry>
+    <entry key="InvICForOutportWithFC">''{0}'' 无法指定初始输出，因为它的一个或多个源元素来自一个函数调用输出端口</entry>
+    <entry key="InvInitialOutputForOutport">''{0}'' cannot specify a nonzero initial output for a grounded (0.0) or inactive variant signal, or an unconnected input port</entry>
+    <entry key="InvStaticConnToOutport">Outport ''{0}'' cannot be configured to have initial output when it is driven by a block with a static (unchangeable) output.  For this class of connections, the initial output of the outport must be specified as the empty matrix []</entry>
+    <entry key="UnsupportedCanPrmPassThrough">函数调用子系统 ''{0}'' 有封装参数，但它是从可重用子系统 ''{1}'' 中调用的。当 ''默认参数行为'' 设置为 ''可调'' 时，不支持此情形。请将 ''默认参数行为'' 设置为 ''内联''，或将调用方移出 ''{1}''。</entry>
+    <entry key="MixedStateResetSemantics">Function-call subsystem ''{0}'' inherits its state reset semantics, yet its ancestors specifying ambiguous semantics. ''{1}'' indicates ''held'' while ''{2}'' indicates ''reset''. These ancestors need to consistently indicate that states are either held or reset upon enable</entry>
+    <entry key="MixedStateResetSemantics1">Function-call subsystem ''{0}'' inherits its state reset semantics, yet its ancestors specifying ambiguous semantics. The root model indicates ''held'' while ''{1}'' indicates ''reset''.  These ancestors need to consistently indicate that states are either held or reset upon enable</entry>
+    <entry key="NoEnabWithReset">A reset port already exists in subsystem ''{0}''.  Addition of an enable port is not allowed.</entry>
+    <entry key="NoEnabWithStEnab">子系统 ''{0}'' 中已存在状态使能端口。不允许添加使能端口。</entry>
+    <entry key="NoEnabWithTrigFcnCall">Enable ports are not allowed with function-call triggered ''{0}'' subsystem.</entry>
+    <entry key="NoEnabWithMsgTrig">Enable block inside a message triggered subsystem is not supported. Consider changing parameter ''Trigger time'' of block ''{0}'' to ''on sample time hit''.</entry>
+    <entry key="NoResetWithEnab">An enable port already exists in subsystem ''{0}''.  Addition of a reset port is not allowed.</entry>
+    <entry key="NoResetWithTrig">A trigger port already exists in subsystem ''{0}''.  Addition of a reset port is not allowed.</entry>
+    <entry key="NoRootIfactPorts">The only control ports allowed at the root level of a block diagram are trigger and enable ports.</entry>
+    <entry key="NoStEnabWithEnab">子系统 ''{0}'' 中已存在使能端口。不允许添加状态使能端口。</entry>
+    <entry key="NoStEnabWithTrigFcnCall">子系统 ''{0}'' 中已存在函数调用触发端口。不允许添加状态使能端口。</entry>
+    <entry key="NoTrigFcnCallWithStEnab">在函数调用触发子系统 ''{0}'' 中不允许状态使能端口。</entry>
+    <entry key="NoTrigWithReset">A reset port already exists in subsystem ''{0}''.  Addition of a trigger port is not allowed.</entry>
+    <entry key="NoElapseTimeInNonAtomicCondSubsys">模块 ''{0}'' 使用已用时间，这在非原子条件子系统 ''{1}'' 中是不允许的。</entry>
+    <entry key="InitTermResetSSOutputsFunctionCall">Invalid data type at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}''. An Initialize, Reinitialize, Reset, or Terminate Function block cannot output a function-call signal.</entry>
+    <entry key="InitTermResetSSHasInvalidBlock">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' contains an invalid block below. Consult the documentation for more detail on &lt;a href="matlab:helpview(fullfile(docroot,'toolbox','simulink','helptargets.map'),'irt_limitations')"&gt;Initialize, Reinitialize, Reset, and Terminate Function Limitations&lt;/a&gt;.</entry>
+    <entry key="InitTermResetSSCallsInvalidSimFcn">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' directly or indirectly calls the Simulink Function block ''{1}'' which is invalid.</entry>
+    <entry key="InitTermResetSSCannotHaveInportBlock">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' cannot have an input port because it is inside Simulink Function ''{1}''.</entry>
+    <entry key="InitRootInportCodeGenMustNotZeroInternalWhenStructured">根级 Inport 模块 ''{0}'' 连接到 Initialize Function 模块。与 ''{0}'' 关联的存储类将存储类型指定为 '结构化'，这可能导致在初始化所在结构体时 ''{0}'' 被初始化为零。例如，当所在结构体包含内部数据且 'ZeroInternalMemoryAtStartup' 设置为 'on' 时，所在结构体将被初始化。对于与 ''{0}'' 关联的存储类，请将存储类型更改为 '非结构化' 或应用以下配置设置。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{1}'',''ZeroInternalMemoryAtStartup'',''off'')&lt;/cmd&gt; &lt;txt&gt;要生成代码，请选择模型配置参数 &lt;sldiag objui="configset" objparam="ZeroInternalMemoryAtStartup"&gt;''删除内部数据零初始化''&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitTermResetSSCannotInVariantSSWithGpcOn">The Initialize, Reset, or Terminate Function block ''{0}'' is inside the variant subsystem ''{1}''. However, Initialize, Reset, or Terminate Function block with an input or output port does not support the generation of preprocessor conditionals. You can fix this problem by using the MATLAB
+      command: \n
+      set_param(''{2}'',''GeneratePreprocessorConditionals'',''off'');
+      \n\n
+    </entry>
+    <entry key="InitTermResetSSCannotInlineVariantWithGpcOn">The Initialize, Reset, or Terminate Function block ''{0}'' connects to a Variant Sink or Variant Source block ''{1}''. However, Initialize, Reset, or Terminate Function with an input or output port does not support the generation of preprocessor conditionals. You can fix this problem by using the MATLAB
+      command: \n
+      set_param(''{2}'',''GeneratePreprocessorConditionals'',''off'');
+      \n\n
+    </entry>
+    <entry key="InitTermResetSSWithSideIOCannotSupportVariant">The Initialize, Reset, or Terminate Function block ''{0}'' has an input or output port connected to variant blocks. This is not supported.</entry>
+    <entry key="SimFcnUninitializedWhenCalled">在 t = {1} 处调用 Simulink 函数 ''{0}'' 时，该函数未初始化。请确保在调用 Simulink 函数之前对其进行初始化。</entry>
+    <entry key="SimFcnWithWidthUninitializedWhenCalled">Simulink 函数 ''{0}'' 包含 Width 模块，且在 t = {1} 处被调用时未初始化。请确保在调用 Simulink 函数之前对其进行初始化。</entry>
+    <entry key="SimFcnAcessUninitializedDSMWhenCalled">在 t = {2} 处调用 Simulink 函数 ''{0}'' 时，它正在访问未初始化的数据存储内存 ''{1}''。在调用 Simulink 函数之前，请确保数据存储内存已初始化。</entry>
+    <entry key="InitResetSSHasBlocksWithStates">模块 ''{0}'' 包含状态。Initialize Function、Terminate Function 或 Reinitialize Function 模块中不支持此类模块。</entry>
+    <entry key="InitFcnCallSLFcnWithWidthBlkFixable">模块 ''{0}'' 是 Width 模块。由 Initialize 或 Reinitialize Function 模块调用的 Simulink Function 模块不支持此类模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'')&lt;/cmd&gt; &lt;txt&gt;如果 Simulink Function 模块旨在作为 ''{1}'' 的外部函数，则可以通过打开模块 ''{1}'' 的参数 ''显示模型初始化端口'' 来隐藏此消息。参考&lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;示例模型&lt;/a&gt;和关于 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 模块的常见用法&lt;/a&gt;的文档，以确定这是否为您的用例。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitFcnCallSLFcnWithOutOfScopeDataStoreFixable">模块 ''{0}'' 位于 Simulink Function 模块中，并在 Simulink Function 模块外访问数据存储内存。由 Initialize 或 Reinitialize Function 模块调用的 Simulink Function 模块不支持此类模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'')&lt;/cmd&gt; &lt;txt&gt;如果 Simulink Function 模块旨在作为 ''{1}'' 的外部函数，则可以通过打开模块 ''{1}'' 的参数 ''显示模型初始化端口'' 来隐藏此消息。参考&lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;示例模型&lt;/a&gt;和关于 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 模块的常见用法&lt;/a&gt;的文档，以确定这是否为您的用例。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitFcnCallSLFcnWithWidthBlk">模块 ''{0}'' 是 Width 模块。由 Initialize 或 Reinitialize Function 模块调用的 Simulink Function 模块不支持此类模块。
+    </entry>
+    <entry key="InitFcnCallSLFcnWithOutOfScopeDataStore">模块 ''{0}'' 位于 Simulink Function 模块中，并在 Simulink Function 模块外访问数据存储内存。由 Initialize 或 Reinitialize Function 模块调用的 Simulink Function 模块不支持此类模块。
+    </entry>
+    <entry key="ReinitFcnCallSLFcnWithWidthBlkFixable">模块 ''{0}'' 是 Width 模块。由 Initialize 或 Reinitialize Function 模块调用的 Simulink Function 模块不支持此类模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitAndReinitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'',''ShowModelReinitializePorts'',''on'')&lt;/cmd&gt; &lt;txt&gt;如果 Simulink Function 模块旨在作为 ''{1}'' 的外部函数，则可以通过打开模块 ''{1}'' 的参数 ''显示模型初始化端口'' 和 ''显示模型重新初始化端口'' 来隐藏此消息。参考&lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;示例模型&lt;/a&gt;和关于 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 模块的常见用法&lt;/a&gt;的文档，以确定这是否为您的用例。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ReinitFcnCallSLFcnWithOutOfScopeDataStoreFixable">模块 ''{0}'' 位于 Simulink Function 模块中，并在 Simulink Function 模块外访问数据存储内存。由 Initialize 或 Reinitialize Function 模块调用的 Simulink Function 模块不支持此类模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="showInitAndReinitPort" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''on'',''ShowModelReinitializePorts'',''on'')&lt;/cmd&gt; &lt;txt&gt;如果 Simulink Function 模块旨在作为 ''{1}'' 的外部函数，则可以通过打开模块 ''{1}'' 的参数 ''显示模型初始化端口'' 和 ''显示模型重新初始化端口'' 来隐藏此消息。参考&lt;a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')"&gt;示例模型&lt;/a&gt;和关于 &lt;a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');"&gt;Initialize Function 模块的常见用法&lt;/a&gt;的文档，以确定这是否为您的用例。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InitResetSSHasSimFcnWithStates">Simulink Function 模块 ''{0}'' 包含状态。无法在 Initialize Function、Terminate Function 或 Reinitialize Function 模块中调用这样的函数。</entry>
+    <entry key="InitResetSSHasSimFcnWithGeneralStates">Simulink Function 模块 ''{0}'' 包含 Width 模块或正在访问 Simulink Function 之外的 Data Store Memory。无法在模块 ''{1}'' 中调用此类 Simulink 函数，该模块是 Initialize 或 Reinitialize Function 模块。</entry>
+    <entry key="ModelRefBlockWithInitPortCannotSimulateRefMdlInILWithoutZeroInit">在 SIL/PIL 模式下仿真引用模型 "{0}" 时，参数 '删除内部数据零初始化' 必须设置为 'off'。或者，也可以将 Model 模块 "{1}" 的参数 '显示模型初始化端口' 设置为 'off'。但是，对于部署代码生成，您仍可以将 '显示模型初始化端口' 参数设置为 'on' 以获得更高效的代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="zeroInternalMem"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ZeroInternalMemoryAtStartup'', ''on'');&lt;/cmd&gt; &lt;txt&gt;对引用模型启用参数 ''ZeroInternalMemoryAtStartup''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="showInitPort"&gt; &lt;cmd&gt;set_param(''{1}'',''ShowModelInitializePort'',''off'')&lt;/cmd&gt; &lt;txt&gt;通过清除 ''显示模型初始化端口'' 参数来隐藏此消息。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ModelRefBlockWithInitPortCannotHaveMachineData">Model 模块 ''{0}'' 的 '显示模型初始化端口' 参数必须设为关闭，因为引用模型包含使用状态机级数据的 Stateflow 图。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''off'')&lt;/cmd&gt; &lt;txt&gt;可通过清除 "显示模型初始化端口" 参数来隐藏此消息。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InitResetSSHasBlocksWithAbsOrElapsedTime">模块 ''{0}'' 使用绝对时间或经过的时间。Initialize、Terminate、Reinitialize 或 Reset Function 模块内不支持此类模块。</entry>
+    <entry key="ModelRefBlockWithInitPortCannotHaveAbsOrElapsedTime">The parameter 'Show model initialize port' for the Model block ''{0}'' must be off since the referenced model contains a block that uses absolute or elapsed time.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''off'')&lt;/cmd&gt;
+          &lt;txt&gt;Suppress this message by clearing the parameter ''Show model initialize port''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InitResetSSHasCallerWhichCallsInvalidFcnWithSideIO">The Simulink Function block ''{0}'' called by the Initialize, Terminate, Reinitialize, or Reset Function contains an input port or output port. Such Simulink functions cannot be called from Initialize, Reinitialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InitResetSSHasCallerWhichCallsInvalidFcnWithIRT">The Simulink Function block ''{0}'' called by the Initialize, Terminate, Reinitialize, or Reset Function contains an Initialize, Reinitialize, Reset, or Terminate Function block within itself. Such Simulink functions cannot be called from Initialize, Terminate, Reinitialize, or Reset Functions.</entry>
+    <entry key="InitResetSSCannotContainConditionalSS">Conditionally executed subsystem ''{0}'' has {1,number,integer} output port(s). Only conditional subsystems with no output port are allowed within Initialize, Reset, or Terminate Function block.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportAlgebraicLoop">模块 ''{0}'' 处于代数环中，这与重新初始化函数 ''{1}'' 不兼容。</entry>
+    <entry key="DefaultReinitializeFunctionDoesNotSupportAlgebraicLoop">模块 ''{0}'' 处于代数环中，这与默认重新初始化端口不兼容。</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportContPulseMode">Pulse Generator 模块 ''{0}'' 具有连续采样时间，这与 Reinitialize Function ''{1}'' 不兼容。</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportMachineData">Stateflow 图 ''{0}'' 使用状态机级数据，这与 Reinitialize Function ''{1}'' 不兼容。</entry>
+    <entry key="BlockNotCompatibleWithReinitializeFunction">模块 ''{0}'' 与重新初始化函数 ''{1}'' 不兼容。有关详细信息，请查看文档。 </entry>
+    <entry key="BlockNotCompatibleWithDefaultReinitializePort">模块 ''{0}'' 与默认重新初始化端口不兼容。有关详细信息，请查看文档。 </entry>
+    <entry key="ReinitializeFunctionDoesNotSupportResettableSubsys">可重置子系统 ''{0}'' 与与重新初始化函数不兼容。</entry>
+    <entry key="SimulinkFunctionDoesNotSupportScopedEventPort">Simulink 函数 ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="ResettableSubsystemDoesNotSupportScopedEventPort">Resettable Subsystem ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="VirtualSubsystemDoesNotSupportScopedEventPort">虚拟子系统 ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="StateflowSubsystemDoesNotSupportScopedEventPort">Stateflow 模块 ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="IRTSubsystemDoesNotSupportScopedEventPort">Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="VariantSubsystemDoesNotSupportScopedEventPort">可变子系统 ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="ChoiceSubsystemDoesNotSupportScopedEventPort">变体选择项子系统 ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="ForEachSubsystemDoesNotSupportScopedEventPort">For Each Subsystem ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="ConfigurableSubsystemDoesNotSupportScopedEventPort">Configurable Subsystem ''{0}'' 不能有限定作用域的事件端口。</entry>
+    <entry key="SpecifiedReinitializeFunctionIsNotDefined">由于子系统 ''{0}'' 启用 '显示子系统重新初始化端口'，因此必须在此子系统中定义重新初始化函数 ''{1}''。</entry>
+    <entry key="ReinitializeFunctionIsNotDefined">由于子系统 ''{0}'' 启用 '显示子系统重新初始化端口'，因此必须在此子系统中定义重新初始化函数。</entry>
+    <entry key="ReinitializeFunctionRequireAtomicSS">当子系统 ''{0}'' 启用 '显示子系统重新初始化端口' 时，它应为原子子系统。&lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{0}'' 选择 ''视为原子单元''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="EventFunctionRequireCommonInitiator">子系统 ''{0}'' 具有事件端口。事件端口 ''{1}'' 连接到 ''{2}''，但事件端口 ''{3}'' 连接到 ''{4}''。这是不允许的。事件端口必须连接到公共函数调用发起方。</entry>
+    <entry key="EventFunctionNotSupportAsyncSFcnBlk">子系统 ''{0}'' 具有事件端口，这些端口连接到 Async Interrupt 模块 ''{1}''，该模块与子系统重新初始化函数不兼容。</entry>
+    <entry key="EventFunctionSupportInlinedCallerBlk">子系统 ''{0}'' 具有事件端口，这些端口由子系统模块 ''{1}'' 调用。其函数打包已设置为 '可重用' 或 '不可重用' 的调用方模块与子系统重新初始化函数不兼容。请确保将模块对话框的 "代码生成" 选项卡下的函数打包设置为 '内联'。</entry>
+    <entry key="EventFunctionRequireSingleRate">子系统 ''{0}'' 具有事件端口。当事件端口存在时，子系统必须在单个任务中执行。</entry>
+    <entry key="EventFunctionRequireRunTimeRate">子系统 ''{0}'' 具有事件端口。当事件端口存在时，子系统必须具有运行时速率。</entry>
+    <entry key="ReinitializePortNotInsideForEachSS">子系统 ''{0}'' 启用 '显示子系统重新初始化端口'。当子系统具有事件端口时，它不能位于 For Each Subsystem ''{1}'' 的内部。</entry>
+    <entry key="InitResetSSCannotContainResettableSS">Initialize、Terminate、Reinitialize 或 Reset Function 模块内不支持可重置子系统 ''{0}''。</entry>
+    <entry key="InitResetSSCannotContainReusableOrNonReusableSS">在加速模式下仿真模型时，Initialize、Terminate、Reinitialize 或 Reset Function 模块内不支持其函数打包设置为 '可重用' 或 '不可重用' 的子系统 ''{0}''。请确保将模块对话框的 "代码生成" 选项卡下的函数打包设置为 '内联' 或 '自动'。</entry>
+    <entry key="InitResetSSCannotContainSimulinkFunctions">Initialize、Terminate、Reinitialize 或 Reset Function 模块内不支持 Simulink Function 模块 ''{0}''。</entry>
+    <entry key="InitResetSSCannotCallSimFcnsDefinedInStateflow">The Simulink Function ''{0}'' is defined in an S-Function or a Stateflow chart. Such Simulink Functions cannot be called from Initialize, Reset, or Terminate Functions.</entry>
+    <entry key="InitResetSSCannotContainModelBlock">Model block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainMergeBlock">Initialize、Terminate、Reinitialize 或 Reset Function 模块内不支持 Merge 模块 ''{0}''。</entry>
+    <entry key="InitResetSSCannotContainBlocksWhichLogData">Block ''{0}'' is invalid. To Workspace blocks, To File blocks and other blocks which log data are not supported within Initialize, Terminate, Reinitialize or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainBlock">Block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainCustomCodeBlock">Initialize、Terminate、Reinitialize 或 Reset Function 模块内不支持自定义代码块 ''{0}''。</entry>
+    <entry key="OutportMustHoldOutputWhenDisabledInIRTSS">Outport
+    block ''{0}'' cannot have the parameter ''Output when disabled'' set to ''reset''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''OutputWhenDisabled'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''Output when disabled'' to ''held'' for Outport block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="EnablePortMustHoldStatesWhenEnablingInIRTSS">Enable Port
+    block ''{0}'' must have the parameter ''States when enabling'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''StatesWhenEnabling'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when enabling'' to ''held'' for Enable Port block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="FcnCallPortMustHoldStatesWhenEnablingInIRTSS">Trigger Port
+    block ''{0}'' must have the parameter ''States when enabling'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''StatesWhenEnabling'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when enabling'' to ''held'' for Trigger Port block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ActionPortMustHoldStatesWhenEnablingInIRTSS">Action Port
+    block ''{0}'' must have the parameter ''States when execution is resumed'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''InitializeStates'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when execution is resumed'' to ''held'' for Action Port block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ForIterMustHoldStatesWhenEnablingInIRTSS">For Iterator
+    block ''{0}'' must have the parameter ''States when starting'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''ResetStates'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when starting'' to ''held'' for For Iterator block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="WhileIterMustHoldStatesWhenEnablingInIRTSS">While Iterator
+    block ''{0}'' must have the parameter ''States when starting'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    
+      &lt;actions&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param(''{0}'',''ResetStates'',''held'')&lt;/cmd&gt;
+          &lt;txt&gt;Set ''States when starting'' to ''held'' for While Iterator block ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidSimulinkFunctionHavingSideIOBeingCalledFromIRT">正在从 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块中调用模型 ''{1}'' 或其子模型中的 Simulink Function ''{0}''。请确保 ''{0}'' 没有输入端口或输出端口。或者，请确保 ''{0}'' 的任何调用方都不位于 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块中。</entry>
+    <entry key="InvalidSimulinkFunctionContainingIRTBeingCalledFromIRT">正在从 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块中调用模型 ''{1}'' 或其子模型中的 Simulink Function ''{0}''。请确保 ''{0}'' 本身不包含 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块。或者，请确保 ''{0}'' 的任何调用方都不位于 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块中。</entry>
+    <entry key="InvalidSimulinkFunctionBeingCalledFromIRT">正在从 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块中调用模型 ''{1}'' 或其子模型中的 Simulink Function ''{0}''。请确保 ''{0}'' 满足以下所有条件:\n\t1.它不包含任何具有状态的模块。\n\t2.它不包含任何具有绝对时间或经过时间的模块。\n\t3.它不包含任何调用此类无效 Simulink Function 的 Function Caller 模块。\n或者，请确保 ''{0}'' 的任何调用方都不位于 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块中。</entry>
+    <entry key="InitResetSSDoesNotSupportVarDimSignals">Block ''{0}'' has a variable-size input. Such blocks are not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InvalidTwoInitSubsysAtSameLevel">两个 Initialize Function 模块 ''{0}'' 和 ''{1}'' 处于同一层级。请考虑将它们合并为单一 Initialize Function 模块。</entry>
+    <entry key="InvalidTwoInitSubsysAtSameNonVirtualLevel">Two Initialize Function blocks ''{0}'' and ''{1}'' are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoInitSubsysOneInVirtualSS">Initialize Function 模块 ''{0}'' 位于虚拟子系统中。请考虑将该子系统作为非虚拟子系统。&lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{1}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidTwoInitSubsysBothInVirtualSS">两个 Initialize Function 模块都在虚拟子系统中。请考虑将至少一个子系统作为非虚拟子系统。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{0}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{1}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidTwoTermSubsysAtSameLevel">两个 Terminate Function 模块 ''{0}'' 和 ''{1}'' 处于同一层级。请考虑将它们合并为单一 Terminate Function 模块。</entry>
+    <entry key="InvalidTwoTermSubsysAtSameNonVirtualLevel">两个 Terminate Function 模块 ''{0}'' 和 ''{1}'' 处于同一非虚拟层级。</entry>
+    <entry key="InvalidTwoTermSubsysOneInVirtualSS">Terminate Function 模块 ''{0}'' 位于虚拟子系统中。请考虑将该子系统作为非虚拟子系统。&lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{1}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidTwoTermSubsysBothInVirtualSS">两个 Terminate Function 模块都在虚拟子系统中。请考虑将至少一个子系统作为非虚拟子系统。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{0}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{1}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidTwoResetSubsysAtSameLevel">具有相同标识符的两个 Event Function 模块 ''{0}'' 和 ''{1}'' 处于同一层级。请考虑将它们合并为一个 Event Function 模块。</entry>
+    <entry key="InvalidTwoResetSubsysAtSameNonVirtualLevel">Two Event Function blocks ''{0}'' and ''{1}'' with the same identifier are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoResetSubsysOneInVirtualSS">Event Function 模块 ''{0}'' 位于虚拟子系统中。请考虑将该子系统作为非虚拟子系统。&lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt; &lt;txt&gt;为子系统 ''{1}'' 选择 "视为原子单元"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidTwoResetSubsysBothInVirtualSS">Both Event Function blocks are in virtual subsystems. Consider making at least one of the subsystems non-virtual.
+    
+       &lt;actions exclusiveFixIts="no"&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt;
+          &lt;txt&gt;Select ''Treat as atomic unit'' for subsystem ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');&lt;/cmd&gt;
+          &lt;txt&gt;Select ''Treat as atomic unit'' for subsystem ''{1}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidRootOutportWithTermEventInAutosar">在模型 ''{0}'' 中，根输出端口 ''{1}'' 连接到 Terminate Function 模块。使用 AUTOSAR 系统目标文件时，代码生成器不支持此建模模式。</entry>
+    <entry key="NoNonVirtualBlocksAlongWithIRT">The system ''{0}'' does not contain any non-virtual blocks apart from Initialize, Terminate, Reinitialize, or Reset Function blocks. This is not allowed for simulation and code generation. Ensure that there is at least one other non-virtual block in this system.</entry>
+    <entry key="NoRunTimeRateAlongWithIRT">子系统 ''{0}'' 在未内联时，除固定采样时间和初始化、终止、重新初始化或重置函数外，应至少包含一个运行时速率。</entry>
+    <entry key="NoBlocksWithNonIRTSampleTime">The system ''{0}'' contains only blocks which are driven by, or called by, Initialize, Reinitialize, Reset or Terminate Function blocks. Ensure that there is at least one other block which is not driven by such Function blocks.</entry>
+    <entry key="InitTermResetSSWithinAnotherInitTermResetSS">The Initialize/Terminate/Reinitialize/Reset Function ''{0}'' is being placed within another Initialize/Terminate/Reinitialize/Reset Function ''{1}''. This is not allowed.</entry>
+    <entry key="ConflictingResetSpecificationsInTopAndSubModel">A Reinitialize/Reset Function with the Event name ''{0}'' exists in the system ''{1}'' and the model referenced by the block ''{2}'' with conflicting specifications. To fix this, ensure that the setting of the parameter 'Event type' is the same for all Reinitialize/Reset Functions with the Event name ''{0}'' in the model.</entry>
+    <entry key="RunFirstLastSubsystemWithCState">Run First Subsystem 或 Run Last Subsystem ''{0}'' 不支持连续状态。</entry>
+    <entry key="SubsystemWithoutSchedulingConstraintsHasInvalidBlock">The unconstrained partitioned subsystem ''{0}'' contains invalid block(s) below.</entry>
+    <entry key="SubsystemWithoutSchedulingConstraintsCannotContainBlock">Block ''{0}'' is not supported within unconstrained partitioned subsystems.</entry>
+    <entry key="SchedulingConstraintsForBlockWithTime">模块 ''{0}'' 访问时间，因此不受调度约束的支持。</entry>
+    <entry key="RequireMdlTerminateFcn">必须生成 Terminate 函数，因为模型 ''{0}'' 包含 Terminate Function ''{1}''。&lt;actions&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;matlab:configset.internal.fixIt(''{0}'',''IncludeMdlTerminateFcn'',''on'')&lt;/cmd&gt; &lt;txt&gt;要生成代码，请检查配置参数 &lt;sldiag objui="configset" objparam="IncludeMdlTerminateFcn"&gt;IncludeMdlTerminateFcn&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="OutportConnConflict">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; and ''{1}'' which are driven by the same signal must have the same setting for the "Output when disabled" parameter</entry>
+    <entry key="OutportConnConflictWithMdlRef">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; inside the Model block ''{1}'' and ''{2}'' must have the same setting for the "Output when disabled" parameter because they connect to the same signal.</entry>
+    <entry key="OutportInitOutConflict">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; and ''{1}'' which are driven by the same signal specify conflicting values for the "Initial output" parameter.  Only one should specify an initial output and the others should be the empty, [], matrix</entry>
+    <entry key="SfChartOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values.  To resolve this issue, make sure both blocks have the same initial output values  or ensure that the "Initial output" parameter of the Outport block is an empty matrix([]).</entry>
+    <entry key="SfChartDefaultICOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values. Because the 'Initial value' field of the output of the Stateflow chart has been left empty, a default initial value of zero is used. To resolve this conflict, specify a matching initial output value for the output of the Stateflow chart or specify the initial output value of the Outport Block to be '0' or the empty matrix([]). </entry>
+    <entry key="SfChartDefaultBusICOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values. Because the output of the Stateflow Chart is a bus, a default initial value of zero is used. To resolve this conflict, specify the initial output value of the Outport block to be '0' or the empty matrix ([]). </entry>
+    <entry key="PortBasedDrivingVirtualOutport">''{0}'' may not be wired directly to the subsystem outport because it has a constant sample time on &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;output port {1,number,integer}&lt;/sldiag&gt;</entry>
+    <entry key="TrigFcnCallNotAllowedInEnab">在使能系统中，不允许 ''{0}'' 中使用触发器类型函数调用。</entry>
+    <entry key="WarnDupOutportInitOutValues">&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;Outport {0}&lt;/sldiag&gt; and ''{1}'' which are driven by the same signal are specifying the same value for the "Initial output" parameter. Only one should specify an initial output for the signal and the others should be the empty, [], matrix</entry>
+    <entry key="ResettableSSLevelLevelHoldInvalidWithContST">The 'ResetTriggerType' parameter of the Reset port block ''{0}'' within the Resettable subsystem ''{1}'' is set to 'level' or 'level-hold'. Continuous sample-times are not supported within such resettable subsystems. To resolve the issue, use a different trigger type or use discrete sample-time.</entry>
+    <entry key="DupRunFirstLastSubsystem">具有相同优先级的两个 Run First Subsystem 或两个 Run Last Subsystem ''{0}'' 和 ''{1}'' 不能存在于同一层次结构中。</entry>
+    <entry key="ContinuousStateReaderWriterInRunFirstLastSubsystems">State Reader 或 State Writer 模块 ''{0}'' 不允许存在于 Run First Subsystem 或 Run Last Subsystem 中，因为它正在访问由模块 ''{1}'' 拥有的连续状态。
+    </entry>
+    <entry key="ContinuousStateWriterInRunLastSubsystem">State Writer 模块 ''{0}'' 不允许写入 Run Last Subsystem ''{1}'' 内的连续状态，因为 Run Last Subsystem 与连续状态所有者模块 ''{2}'' 的非虚拟父级子系统相关联。
+    </entry>
+    <entry key="RunLastContinuousStateWriter">当 '执行顺序' 值设置为 '最后' 时，不允许 State Writer 模块 ''{0}'' 写入连续状态，因为 State Writer 模块和连续状态所有者模块 ''{1}'' 包含在同一个非虚拟父级子系统中。
+    </entry>
+    <entry key="messagePollingSubsysNotAllowedInAccelMode">
+    Message Polling Subsystem 模块 ''{0}'' 不支持加速模式仿真。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''normal'');&lt;/cmd&gt; &lt;txt&gt;将仿真模式设置为 "普通"。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_2" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''rapid-accelerator'');&lt;/cmd&gt; &lt;txt&gt;将仿真模式设置为 "快速加速"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MsgTrigSubsysAccelNotSupport">
+    选择了 ''作为非周期性分区调度'' 的消息触发子系统 ''{0}'' 不支持加速模式仿真。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fix_1" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;清除模块 ''{1}'' 的 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{1}"&gt;''作为非周期性分区调度''&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_2" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''normal'');&lt;/cmd&gt; &lt;txt&gt;将仿真模式设置为 "普通"。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="fix_3" retvalue="false"&gt; &lt;cmd&gt;set_param_action(bdroot(''{0}''), ''SimulationMode'', ''rapid-accelerator'');&lt;/cmd&gt; &lt;txt&gt;将仿真模式设置为 "快速加速"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ConvertToVSSDialogTitle">将子系统转换为可变子系统</entry>
+    <entry key="ConvertToVariantSubsystemLE">在标签模式或表达式模式下转换为单选择项可变子系统。选定子系统将作为选择项添加到新创建的可变子系统。</entry>
+    <entry key="ConvertToVSSDialogTitleSystemComposer">将组件转换为变体组件</entry>
+    <entry key="ConvertToVariantSubsystemLESystemComposer">在标签模式或表达式模式下转换为单选择项变体组件。选定所选组件将作为选择项添加到新创建的变体组件。</entry>
+    <entry key="EmptyControlExpression">变体控制项不能为空。添加控制项表达式并定义变体控制项变量以继续。</entry>
+    <entry key="OptionalSubsystemDesc">将此变体 {0} 设为可以选择是否存在。</entry>
+    <entry key="ConversionOperationFailure">由于此失败，{0} 已转换为具有默认设置的变体 {0}。</entry>
+  </message>
+</rsccat>

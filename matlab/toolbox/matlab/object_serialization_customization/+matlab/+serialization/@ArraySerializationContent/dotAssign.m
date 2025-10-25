@@ -1,0 +1,24 @@
+function obj = dotAssign(obj, indexOp, varargin)
+%
+% Updates the value of an existing object-based
+% name-value on the ArraySerializationContent.
+% Dot assign is NOT supported for array-based
+% name-value pairs.
+% Errors if the name does not exist
+
+%   Copyright 2024 The MathWorks, Inc.
+
+    if (indexOp(1).Type == matlab.indexing.IndexingOperationType.Dot)
+        file = matlab.lang.internal.introspective.IntrospectiveContext.caller.FullFileName;
+        [~, func] = fileparts(file);
+        caller = matlab.lang.internal.diagnostic.getStandardFunctionName(file, func);
+        propName = indexOp(1).Name;
+        if isscalar(indexOp)
+            obj.updateValueWithCaller(propName, caller, file, varargin{:});
+        else
+            val = obj.getValueWithCaller(propName, caller, file);
+            [val.(indexOp(2:end))] = varargin{:};
+            obj.updateValueWithCaller(propName, caller, file, val);
+        end
+    end
+end

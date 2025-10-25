@@ -1,0 +1,12 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer has detected a cell array that is constructed, in part, by
+                    extracting all the elements from another cell array. This operation can be
+                    inefficient, especially if the existing cell array is large. Typically, it is
+                    better to concatenate the new elements with the existing cell array.</p><br/><strong>Suggested Action</strong><br/><p>Replace <code>{A{:} X}</code> with <code>[A(:)' {X}]</code>.
+                    Instead of extracting the cell array (<code>A{:}</code>), reshape the cell
+                    array into a row vector (<code>A(:)'</code>) and then concatenate the two
+                    cell arrays.</p><p>If <code>A</code> has a single row, you can simplify the replacement
+                    even further to <code>[A {X}]</code>.</p><p>You also might be able to simplify <code>{X}</code>, depending on what
+                    kind of expression it is. For example, if <code>{X}</code> is an
+                    expression similar to <code>B{J}</code>, then you might be able to replace
+                    it with <code>B(J)</code> or <code>B(J)'</code>, depending on the
+                    shape of <code>B</code> and <code>J</code>.</p><p>For more information, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'cell_array_concatenation')" target="_blank">Combine Cell Arrays</a>.</p></body></html>

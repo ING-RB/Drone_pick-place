@@ -1,0 +1,27 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Using <code>isempty</code> on a logical expression creates incorrect
+                    results.</p><br/><strong>Suggested Action</strong><br/><p>To determine if all the conditions are false, use <code>~any(...)</code>
+                    or <code>~any(..., "all")</code> for matrices instead. For example:</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="33%"><col class="tcol2" width="33%"><col class="tcol3" width="33%"></colgroup><thead><tr><th>Old</th><th>Replacement</th><th>Replacement For Matrices</th></tr></thead><tbody><tr><td>
+                                    <code>isempty(x&nbsp;==&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;==&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;==&nbsp;y,&nbsp;"all")</code>
+                                </td></tr><tr><td>
+                                    <code>isempty(x&nbsp;~=&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;~=&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;~=&nbsp;y,&nbsp;"all")</code>
+                                </td></tr><tr><td>
+                                    <code>isempty(x&nbsp;&lt;&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;&lt;&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;&lt;&nbsp;y,&nbsp;"all")</code>
+                                </td></tr><tr><td>
+                                    <code>isempty(x&nbsp;&amp;&amp;&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;&amp;&amp;&nbsp;y)</code>
+                                </td><td>
+                                    <code>~any(x&nbsp;&amp;&amp;&nbsp;y,&nbsp;"all")</code>
+                                </td></tr></tbody></table></div></body></html>

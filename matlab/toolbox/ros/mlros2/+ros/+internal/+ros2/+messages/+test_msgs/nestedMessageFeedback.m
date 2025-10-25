@@ -1,0 +1,43 @@
+function [data, info] = nestedMessageFeedback
+%NestedMessageFeedback gives an empty data for test_msgs/NestedMessageFeedback
+
+% Copyright 2019-2021 The MathWorks, Inc.
+data = struct();
+data.MessageType = 'test_msgs/NestedMessageFeedback';
+[data.nested_field_no_pkg, info.nested_field_no_pkg] = ros.internal.ros2.messages.test_msgs.builtins;
+info.nested_field_no_pkg.MLdataType = 'struct';
+[data.nested_field, info.nested_field] = ros.internal.ros2.messages.test_msgs.basicTypes;
+info.nested_field.MLdataType = 'struct';
+[data.nested_different_pkg, info.nested_different_pkg] = ros.internal.ros2.messages.builtin_interfaces.time;
+info.nested_different_pkg.MLdataType = 'struct';
+info.MessageType = 'test_msgs/NestedMessageFeedback';
+info.constant = 0;
+info.default = 0;
+info.maxstrlen = NaN;
+info.MaxLen = 1;
+info.MinLen = 1;
+info.MatPath = cell(1,24);
+info.MatPath{1} = 'nested_field_no_pkg';
+info.MatPath{2} = 'nested_field_no_pkg.duration_value';
+info.MatPath{3} = 'nested_field_no_pkg.duration_value.sec';
+info.MatPath{4} = 'nested_field_no_pkg.duration_value.nanosec';
+info.MatPath{5} = 'nested_field_no_pkg.time_value';
+info.MatPath{6} = 'nested_field_no_pkg.time_value.sec';
+info.MatPath{7} = 'nested_field_no_pkg.time_value.nanosec';
+info.MatPath{8} = 'nested_field';
+info.MatPath{9} = 'nested_field.bool_value';
+info.MatPath{10} = 'nested_field.byte_value';
+info.MatPath{11} = 'nested_field.char_value';
+info.MatPath{12} = 'nested_field.float32_value';
+info.MatPath{13} = 'nested_field.float64_value';
+info.MatPath{14} = 'nested_field.int8_value';
+info.MatPath{15} = 'nested_field.uint8_value';
+info.MatPath{16} = 'nested_field.int16_value';
+info.MatPath{17} = 'nested_field.uint16_value';
+info.MatPath{18} = 'nested_field.int32_value';
+info.MatPath{19} = 'nested_field.uint32_value';
+info.MatPath{20} = 'nested_field.int64_value';
+info.MatPath{21} = 'nested_field.uint64_value';
+info.MatPath{22} = 'nested_different_pkg';
+info.MatPath{23} = 'nested_different_pkg.sec';
+info.MatPath{24} = 'nested_different_pkg.nanosec';

@@ -1,0 +1,47 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.desktop.editor.languageSupport": [{
+        "languageName": "JavaScript",
+        "mimeType": "application/javascript",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["js"],
+        "commentStyle": {
+            "lineComment": "//"
+        },
+        "jsModule": "javascriptLanguageRegistry"
+    }, {
+        "languageName": "TypeScript",
+        "alias": "JavaScript",
+        "mimeType": "application/typescript",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["ts"],
+        "commentStyle": {
+            "lineComment": "//"
+        },
+        "jsModule": "typescriptLanguageRegistry"
+    }, {
+        "languageName": "JSON",
+        "alias": "JavaScript",
+        "mimeType": "application/json",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["json"],
+        "jsModule": "jsonLanguageRegistry"
+    }],
+    "mw.fileTypes": {
+        "groups": {
+            "jsLikeCodeFiles": ["js", "ts", "json"]
+        },
+        "open": {
+            "groups.jsLikeCodeFiles": [{
+                "callback": "editor_open_action/openAction",
+                "callbackType": "jsModule"
+            }, {
+                "callback": "edit",
+                "callbackType": "matlab"
+            }]
+        },
+        "icons": {
+            "groups.jsLikeCodeFiles": "webFT"
+        }
+    }
+}

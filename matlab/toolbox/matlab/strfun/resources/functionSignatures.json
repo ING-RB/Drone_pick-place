@@ -1,0 +1,1459 @@
+{
+"append":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"], ["string"]], "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"newTxt", "type":[["char", "~string"], ["cellstr"]]}
+	]
+},
+"base2dec":
+{
+	"inputs":
+	[
+		{"name":"baseStr", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"n", "kind":"required", "type":["numeric", "scalar", ">=2", "<=36"]}
+	],
+	"outputs":
+	[
+		{"name":"D", "type":"double"}
+	]
+},
+"bin2dec":
+{
+	"inputs":
+	[
+		{"name":"binStr", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"D", "type":"double"}
+	]
+},
+"blanks":
+{
+	"inputs":
+	[
+		{"name":"n", "kind":"required", "type":["numeric", "scalar"]}
+	],
+	"outputs":
+	[
+		{"name":"c", "type":"char"}
+	]
+},
+"cellstr":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "type":[["char"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"c", "type":"cell"}
+	]
+},
+"char":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "type":[["char"], ["numeric"]], "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"c", "type":"char"}
+	]
+},
+"compose":
+{
+	"inputs":
+	[
+		{"name":"formatSpec", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"A", "kind":"required", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":"cellstr"}
+	]
+},
+"compose":
+{
+	"inputs":
+	[
+		{"name":"txt", "kind":"required", "type":[["char", "~string"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":"cellstr"}
+	]
+},
+"contains":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"],["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"convertCharsToStrings":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"B"}
+	]
+},
+"convertContainedStringsToChars":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"B"}
+	]
+},
+"convertStringsToChars":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"B"}
+	]
+},
+"count":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"count", "type":"double"}
+	]
+},
+"deblank":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["string"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":"char"}
+	]
+},
+"dec2base":
+{
+	"inputs":
+	[
+		{"name":"D", "kind":"required", "type":["numeric"]},
+		{"name":"n", "kind":"required", "type":["numeric"]},
+		{"name":"minDigits", "kind":"ordered", "type":["numeric"]}
+	],
+	"outputs":
+	[
+		{"name":"baseStr", "type":"char"}
+	]
+},
+"dec2bin":
+{
+	"inputs":
+	[
+		{"name":"D", "kind":"required", "type":["numeric"]},
+		{"name":"minDigits", "kind":"ordered", "type":["numeric"]}
+	],
+	"outputs":
+	[
+		{"name":"binStr", "type":"char"}
+	]
+},
+"dec2hex":
+{
+	"inputs":
+	[
+		{"name":"D", "kind":"required", "type":["numeric"]},
+		{"name":"minDigits", "kind":"ordered", "type":["numeric"]}
+	],
+	"outputs":
+	[
+		{"name":"hexStr", "type":"char"}
+	]
+},
+"endsWith":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"erase":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"match", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":[["char", "~string"], ["cellstr"]]}
+	]
+},
+"eraseBetween":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"startPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"startPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"endPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"endPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+		{"name":"Boundaries", "kind":"namevalue", "type":["char", "choices={'inclusive','exclusive'}"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["char", "~string"]}
+	]
+},
+"extract":
+{
+        "inputs":
+        [
+                {"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+                {
+                        "mutuallyExclusiveGroup":
+                        [
+                                {"name":"pat",  "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["pattern"]]},
+                                {"name":"pos",  "kind":"required", "type":["numeric", ">=1", "integer", "scalar"]}
+                        ]
+                }
+        ],
+        "outputs":
+        [
+                {"name":"newStr", "type":["cellstr"]}
+        ]
+},
+"extractAfter":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=0", "scalar"]}
+			]
+		}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["char", "~string"]}
+	]
+},
+"extractBefore":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=1", "scalar"]}
+			]
+		}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["char", "~string"]}
+	]
+},
+"extractBetween":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"startPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"startPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"endPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"endPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+		{"name":"Boundaries", "kind":"namevalue", "type":["char", "choices={'inclusive','exclusive'}"]}
+	],
+	"outputs":
+	[
+		{"name":"out", "type":["cellstr"]}
+	]
+},
+"hex2dec":
+{
+	"inputs":
+	[
+		{"name":"hexStr", "kind":"required", "type":[["char"], ["string"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"D", "type":"double"}
+	]
+},
+"hex2num":
+{
+	"inputs":
+	[
+		{"name":"hexStr", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"X", "type":"double"}
+	]
+},
+"insertAfter":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=0", "scalar"]}
+			]
+		},
+		{"name":"newText", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["inferredFrom=str"]}
+	]
+},
+"insertBefore":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=0", "scalar"]}
+			]
+		},
+		{"name":"newText", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["char", "~string"]}
+	]
+},
+"int2str":
+{
+	"inputs":
+	[
+		{"name":"N", "kind":"required", "type":"numeric"}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":"char"}
+	]
+},
+"iscellstr":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":["logical", "scalar"]}
+	]
+},
+"ischar":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":["logical", "scalar"]}
+	]
+},
+"isletter":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":["logical", "vector"]}
+	]
+},
+"isspace":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":["logical", "vector"]}
+	]
+},
+"isstring":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":["logical", "scalar"]}
+	]
+},
+"isStringScalar":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":["logical", "scalar"]}
+	]
+},
+"isstrprop":
+{
+	"inputs":
+	[
+		{"name":"str",			 "kind":"required",  "type":[["cell"], ["char"], ["string"]]},
+		{"name":"category",		 "kind":"required",  "type":["char", "choices={'alpha','alphanum','cntrl','digit','graphic','lower','print','punct','upper','wspace','xdigit'}"]},
+		{"name":"ForceCellOutput",  "kind":"namevalue", "type":["logical", "scalar"]}
+	],
+	"outputs":
+	[
+		{"name":"out",			  "type":[["cell"], ["logical"]]}
+	]
+},
+"join":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"delimiter", "kind":"ordered", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"dim", "kind":"ordered", "type":["numeric", "positive", "scalar", "integer"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":[["char", "~string"], ["cellstr"]]}
+	]
+},
+"lower":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["char", "~string"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["char", "~string"]}
+	]
+},
+"mat2str":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "type":[["numeric"], ["string"]]},
+		{"name":"n", "kind":"ordered", "type":["numeric", "scalar", ">=1", "integer"]},
+		{"name":"'class'", "kind":"ordered", "type":"choices={'class'}"}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":["char"]}
+	]
+},
+"matches":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"native2unicode":
+{
+	"inputs":
+	[
+		{"name":"bytes", "kind":"required", "type":["numeric", "vector"]},
+		{"name":"encoding", "kind":"ordered", "type":[["char"], ["char", "choices={'UTF-8','ISO-8859-1','windows-1251','GB2312','Shift_JIS','windows-1252','EUC-KR','GBK','EUC-JP'}"]]}
+	],
+	"outputs":
+	[
+		{"name":"unicodestr", "type":["char"]}
+	]
+},
+"newline":
+{
+	"inputs":
+	[
+	],
+	"outputs":
+	[
+		{"name":"c", "type":["char"]}
+	]
+},
+"num2hex":
+{
+	"inputs":
+	[
+		{"name":"X", "kind":"required", "type":[["double"], ["single"]]}
+	],
+	"outputs":
+	[
+		{"name":"hexStr", "type":["char"]}
+	]
+},
+"num2str":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "type":"numeric"},
+		{"name":"precision", "kind":"positional", "type":["numeric", "scalar"]}
+	],
+	"outputs":
+	[
+		{"name":"s", "type":["char"]}
+	]
+},
+"num2str":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "type":"numeric"},
+		{"name":"formatSpec", "kind":"positional", "type":"char"}
+	],
+	"outputs":
+	[
+		{"name":"s", "type":["char"]}
+	]
+},
+"pad":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"numberOfCharacters", "kind":"ordered", "type":["numeric", ">=0"]},
+		{"name":"side", "kind":"positional", "type":[["char", "choices={'left','right','both'}"], ["string"]]},
+		{"name":"padCharacter", "kind":"positional", "type":[["char", "scalar"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["inferredFrom=str"]}
+	]
+},
+"regexp":
+{
+	"inputs":
+	[
+		{"name":"str",        "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"expression", "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"outkey",     "kind":"flag",	 "type":["char", "choices={'start','end','tokenExtents','match','tokens','names','split'}"], "default":"'start'", "repeating":true},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'all','once'}"],                   "default":"'all'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'nowarnings','warnings'}"],        "default":"'nowarnings'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'matchcase','ignorecase'}"],       "default":"'matchcase'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'noemptymatch','emptymatch'}"],    "default":"'noemptymatch'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'dotall','dotexceptnewline'}"],    "default":"'dotall'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'stringanchors','lineanchors'}"],  "default":"'stringanchors'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'literalspacing','freespacing'}"], "default":"'literalspacing'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'forcecelloutput'}"]}
+	],
+	"outputs":
+	[
+		{"name":"out1",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out2",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out3",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out4",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out5",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out6",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out7",	 "type":[["char"], ["cell"], ["double"], ["string"]]}
+	]
+},
+"regexpi":
+{
+	"inputs":
+	[
+		{"name":"str",        "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"expression", "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'start','end','tokenExtents','match','tokens','names','split'}"], "default":"'start'", "repeating":true},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'all','once'}"],                   "default":"'all'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'nowarnings','warnings'}"],        "default":"'nowarnings'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'matchcase','ignorecase'}"],       "default":"'ignorecase'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'noemptymatch','emptymatch'}"],    "default":"'noemptymatch'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'dotall','dotexceptnewline'}"],    "default":"'dotall'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'stringanchors','lineanchors'}"],  "default":"'stringanchors'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'literalspacing','freespacing'}"], "default":"'literalspacing'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'forcecelloutput'}"]}
+	],
+	"outputs":
+	[
+		{"name":"out1",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out2",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out3",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out4",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out5",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out6",	 "type":[["char"], ["cell"], ["double"], ["string"]]},
+		{"name":"out7",	 "type":[["char"], ["cell"], ["double"], ["string"]]}
+	]
+},
+"regexprep":
+{
+	"inputs":
+	[
+		{"name":"str",        "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"expression", "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"replace",    "kind":"required", "type":[["char"], ["cell"], ["string"]]},
+		{"name":"option",     "kind":"flag",	 "type":[["char", "choices={'all','once'}"], ["numeric", "scalar"]],   "default":"'all'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'nowarnings','warnings'}"],                 "default":"'nowarnings'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'matchcase','ignorecase','preservecase'}"], "default":"'matchcase'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'noemptymatch','emptymatch'}"],             "default":"'noemptymatch'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'dotall','dotexceptnewline'}"],             "default":"'dotall'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'stringanchors','lineanchors'}"],           "default":"'stringanchors'"},
+		{"name":"option",     "kind":"flag",	 "type":["char", "choices={'literalspacing','freespacing'}"],          "default":"'literalspacing'"}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":[["char"], ["cell"], ["string"]]}
+	]
+},
+"regexptranslate":
+{
+	"inputs":
+	[
+		{"name":"op", "kind":"required", "type":["char", "choices={'escape','wildcard','flexible'}"]},
+		{"name":"str", "kind":"required", "type":[["char"], ["cell"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":[["char"], ["cell"], ["string"]]}
+	]
+},
+"replace":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"old", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+		{"name":"new", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":[["char", "~string"], ["cellstr"]]}
+	]
+},
+"replaceBetween":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"startPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"startPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"endPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"endPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+		{"name":"newText", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"Boundaries", "kind":"namevalue", "type":["char", "choices={'inclusive','exclusive'}"]}
+	],
+	"outputs":
+	[
+		{"name":"out", "type":["inferredFrom=str"]}
+	]
+},
+"reverse":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr"}
+	]
+},
+"split":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"delimiter", "kind":"positional", "type":[["char"], ["string"], ["cellstr"], ["pattern"]]},
+		{"name":"dim", "kind":"positional", "type":["numeric", "scalar", ">=1"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr"},
+		{"name":"matches"}
+	]
+},
+"splitlines":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":"cell"}
+	]
+},
+"sprintf":
+{
+	"inputs":
+	[
+		{"name":"formatSpec", "kind":"required", "type":["char", "string"]},
+		{"name":"A", "kind":"positional", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":["inferredFrom=formatSpec"]},
+		{"name":"errmsg", "type":"char"}
+	]
+},
+"sscanf":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":"char"},
+		{"name":"formatSpec", "kind":"required", "type":"char"},
+		{"name":"sizeA", "kind":"ordered", "type":"numeric"}
+	],
+	"outputs":
+	[
+		{"name":"A"},
+		{"name":"count", "type":["double", "scalar"]},
+		{"name":"errmsg", "type":"char"},
+		{"name":"nextindex", "type":["double", "scalar"]}
+	]
+},
+"startsWith":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"str2double":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"X", "type":"double"}
+	]
+},
+"str2num":
+{
+	"inputs":
+	[
+		{"name":"chr", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]},
+    {"name":"Evaluation", "kind":"namevalue", "type":["char", "choices={'restricted','all'}"]}
+	],
+	"outputs":
+	[
+		{"name":"X", "type":"double"},
+		{"name":"tf", "type":[["logical"], ["scalar"]]}		
+	]
+},
+"strcat":
+{
+	"inputs":
+	[
+		{"name":"s", "kind":"required",  "type":[["cell"], ["char"], ["string"]], "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"s", "type":[["cell"], ["char"], ["string"]]}
+	]
+},
+"strcmp":
+{
+	"inputs":
+	[
+		{"name":"s1", "kind":"required",  "type":[["cell"], ["char"], ["string"]]},
+		{"name":"s2", "kind":"required",  "type":[["cell"], ["char"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"strcmpi":
+{
+	"inputs":
+	[
+		{"name":"s1", "kind":"required",  "type":[["cell"], ["char"], ["string"]]},
+		{"name":"s2", "kind":"required",  "type":[["cell"], ["char"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"strfind":
+{
+	"inputs":
+	[
+		{"name":"str",             "kind":"required",  "type":[["cell"], ["char"], ["string"]]},
+		{"name":"pat",             "kind":"required",  "type":[["cell"], ["char"], ["string"]]},
+		{"name":"ForceCellOutput", "kind":"namevalue", "type":["logical", "scalar"]}
+	],
+	"outputs":
+	[
+		{"name":"k",			  "type":[["cell"], ["double"]]}
+	]
+},
+"string":
+{
+	"inputs":
+	[
+        {"name":"A", "kind":"required", "type":[["char"], ["numeric"], ["logical"], ["cell"]]}
+    ],
+	"outputs":
+	[
+		{"name":"str", "type":"string"}
+	]
+},
+"string.append":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"], "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.compose":
+{
+	"inputs":
+	[
+		{"name":"formatSpec", "kind":"required", "type":["string", "~char"]},
+		{"name":"A", "kind":"required", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":"string"}
+	]
+},
+"string.compose":
+{
+	"inputs":
+	[
+		{"name":"txt", "kind":"required", "type":["string", "~char"]}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":"string"}
+	]
+},
+"string.contains":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"string.convertStringsToChars":
+{
+	"inputs":
+	[
+		{"name":"A", "kind":"required", "repeating":true}
+	],
+	"outputs":
+	[
+		{"name":"B"}
+	]
+},
+"string.count":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"count", "type":"double"}
+	]
+},
+"string.endsWith":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"string.erase":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["string", "~char"]]},
+		{"name":"match", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.eraseBetween":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"startPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"startPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"endPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"endPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+		{"name":"Boundaries", "kind":"namevalue", "type":["char", "choices={'inclusive','exclusive'}"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.extract":
+{
+        "inputs":
+        [
+                {"name":"str", "kind":"required", "type":["string", "~char"]},
+                {
+                        "mutuallyExclusiveGroup":
+                        [
+                                {"name":"pat", "kind":"required", "type":[["string"], ["cellstr"], ["char"], ["pattern"]]},
+                                {"name":"pos", "kind":"required", "type":["numeric", ">=1", "integer", "scalar"]}
+                        ]
+                }
+        ],
+        "outputs":
+        [
+                {"name":"newStr", "type":["string", "~char"]}
+        ]
+},
+"string.extractAfter":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=0", "scalar"]}
+			]
+		}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.extractBefore":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=1", "scalar"]}
+			]
+		}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.extractBetween":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"startPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"startPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"endPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"endPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+		{"name":"Boundaries", "kind":"namevalue", "type":["char", "choices={'inclusive','exclusive'}"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.insertAfter":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+			        {"name":"pat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=0", "scalar"]}
+			]
+		},
+		{"name":"newText", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.insertBefore":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"pat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+				{"name":"pos", "kind":"required", "type":["numeric", ">=0", "scalar"]}
+			]
+		},
+		{"name":"newText", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.join":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"delimiter", "kind":"ordered", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"dim", "kind":"ordered", "type":["numeric", "positive", "scalar", "integer"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":"string"}
+	]
+},
+"string.lower":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.matches":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"string.pad":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"numberOfCharacters", "kind":"ordered", "type":["numeric", ">=0"]},
+		{"name":"side", "kind":"positional", "type":[["char", "choices={'left','right','both'}"], ["string"]]},
+		{"name":"padCharacter", "kind":"positional", "type":[["char", "scalar"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.replace":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"old", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+		{"name":"new", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.replaceBetween":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"startPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"startPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+        {"mutuallyExclusiveGroup":
+        [
+              {"name":"endPat", "kind":"required", "type":[["char"], ["cellstr"], ["string"], ["pattern"]]},
+              {"name":"endPos", "kind":"required", "type":["numeric"]}
+
+        ]},
+		{"name":"newText", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"Boundaries", "kind":"namevalue", "type":["char", "choices={'inclusive','exclusive'}"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.reverse":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.split":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"delimiter", "kind":"positional", "type":[["char"], ["string"], ["cell"], ["pattern"]]},
+		{"name":"dim", "kind":"positional", "type":["numeric", "scalar", ">=1"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr"},
+		{"name":"matches"}
+	]
+},
+"string.splitlines":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.startsWith":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"pat", "kind":"required", "type":[["string"], ["char"], ["cellstr"], ["pattern"]]},
+		{"name":"IgnoreCase", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"string.strip":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]},
+		{"name":"side", "kind":"positional", "type":[["char", "choices={'left','right','both'}"], ["string"]]},
+		{"name":"stripCharacter", "kind":"positional", "type":[["char", "scalar"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"string.upper":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["string", "~char"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["string", "~char"]}
+	]
+},
+"strings":
+{
+	"inputs":
+	[
+		{
+			"mutuallyExclusiveGroup":
+			[
+				{"name":"n", "kind":"ordered", "type":["numeric", "scalar", "integer", ">=0"]},
+				{"name":"sz", "kind":"required", "type":["numeric", "scalar", "integer", ">=0"], "repeating":true},
+				{"name":"sz", "kind":"required", "type":["numeric", "vector", "integer", ">=0"]}
+			]
+		}
+	],
+	"outputs":
+	[
+		{"name":"str", "type":["string", "~char"]}
+	]
+},
+"strjoin":
+{
+	"inputs":
+	[
+		{"name":"C", "kind":"required", "type":[["string", "~char"], ["cellstr"]]},
+		{"name":"delimiter", "kind":"ordered", "type":[["char"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"str"}
+	]
+},
+"strjust":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"side", "kind":"ordered", "type":"choices={'right','left','center'}"}
+	],
+	"outputs":
+	[
+		{"name":"T"}
+	]
+},
+"strip":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char", "~string"], ["cellstr"]]},
+		{"name":"side", "kind":"positional", "type":[["char", "choices={'left','right','both'}"], ["string"]]},
+		{"name":"stripCharacter", "kind":"positional", "type":[["char", "scalar"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr"}
+	]
+},
+"strlength":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"L", "type":"double"}
+	]
+},
+"strncmp":
+{
+	"inputs":
+	[
+		{"name":"s1", "kind":"required",  "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"s2", "kind":"required",  "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"n", "kind":"required", "type":["numeric", "scalar", ">=0"]}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"strncmpi":
+{
+	"inputs":
+	[
+		{"name":"s1", "kind":"required",  "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"s2", "kind":"required",  "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"n", "kind":"required", "type":["numeric", "scalar", ">=0"]}
+	],
+	"outputs":
+	[
+		{"name":"tf", "type":"logical"}
+	]
+},
+"strrep":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required",  "type":[["char"], ["string"], ["cellstr"]]},
+		{"name":"old", "kind":"required",  "type":[["char"], ["string"], ["cellstr"]]},
+		{"name":"new", "kind":"required",  "type":[["char"], ["string"], ["cellstr"]]}
+	],
+	"outputs":
+	[
+		{"name":"modifiedStr"}
+	]
+},
+"strsplit":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"C", "type":"cell"},
+		{"name":"matches", "type":"cell"}
+	]
+},
+"strsplit":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["string"]]},
+		{"name":"delimiter", "kind":"required", "type":[["char"], ["string"], ["cell"]]},
+		{"name":"CollapseDelimiters", "kind":"namevalue", "type":["logical", "scalar"]},
+		{"name":"DelimiterType", "kind":"namevalue", "type":"choices={'Simple','RegularExpression'}"}
+	],
+	"outputs":
+	[
+		{"name":"C", "type":"cell"},
+		{"name":"matches", "type":"cell"}
+	]
+},
+"strtok":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]},
+		{"name":"delimiters", "kind":"positional", "type":[["char"], ["string"], ["cell"]]}
+	],
+	"outputs":
+	[
+		{"name":"token"},
+		{"name":"remain"}
+	]
+},
+"strtrim":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":[["char"], ["cellstr"], ["string"]]}
+	],
+	"outputs":
+	[
+		{"name":"newStr"}
+	]
+},
+"unicode2native":
+{
+	"inputs":
+	[
+		{"name":"unicodestr", "kind":"required", "type":"char"},
+		{"name":"encoding", "kind":"ordered", "type":[["char"], ["char", "choices={'UTF-8','ISO-8859-1','windows-1251','GB2312','Shift_JIS','windows-1252','EUC-KR','GBK','EUC-JP'}"]]}
+	],
+	"outputs":
+	[
+		{"name":"bytes"}
+	]
+},
+"upper":
+{
+	"inputs":
+	[
+		{"name":"str", "kind":"required", "type":["char", "~string"]}
+	],
+	"outputs":
+	[
+		{"name":"newStr", "type":["char", "~string"]}
+	]
+}
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="Cache-Control" content="no-cache">
+<html>
+    <head>
+        <link rel="stylesheet" href="release/index-css.css"/>
+        <meta name="viewport" content="width=device-width" />
+        <meta charset="utf-8" >
+
+        <script src="release/variableeditor_peer/dojoConfig-release-global.js"></script>
+        
+        <!-- Include release build -->
+        <script type="text/javascript" src="release/bundle.index.js"></script>
+        <script type="text/javascript">
+            function init(){
+                require([
+                    'variableeditor_peer/PeerManagerFactory',
+                    'variableeditor_peer/VEFactory',
+                    'variableeditor_peer/ViewManifest',
+                    "variableeditor_peer/VariableEditorPopoutHandlerWidget"
+                ], function(PeerManagerFactory, VEFactory, ViewManifest, PopoutHandlerWidget) {
+                    var popoutHandlerWidget = new PopoutHandlerWidget();
+                });
+            }
+        </script>
+
+    </head>
+    <body class="tundra" id="PopOutHandlerBody" onload="init()">
+    </body>
+</html>
+

@@ -1,0 +1,82 @@
+This version of eigen has been modified from its original source to build with MathWorks' toolchain.
+
+This notice lists all the affected files and describes all changes.
+
+CMakeLists.txt
+- Disabled in-source build check to comply with common practice in MW build infrastructure
+- Skipped building bench (due to incompatible licenses)
+- Skipped building doc
+- Suppressed -Wint-in-bool-context warning on glnxa
+- Suppressed -Wshadow and -Winvalid-invalid-partial-specialization warnings on maci
+
+Eigen/CMakeLists.txt
+- Added a check to filter out GLOB results that are directories, this is needed as we are now doing in-source build
+
+test/CMakeLists.txt
+- Avoided building/running a bunch of tests. Some seems to rely on unsupported features like 'unsupported/Eigen/SparseExtra'
+    sparse_basic
+    sparse_block
+    sparse_vector
+    sparse_product
+    sparse_ref
+    sparse_solvers
+    sparse_permutations
+    simplicial_cholesky
+    conjugate_gradient
+    incomplete_cholesky
+    bicgstab
+    lscg
+    sparselu
+    sparseqr
+    denseLM
+
+test/bdcsvd.cpp
+- Removed subtest 9
+
+test/main.h
+- Changed the random seed from current time to a fixed value (to avoid random test failures)
+
+test/array.cpp
+- Disabled a check in array_real test point in MSVC, due to a bug in Windows C++ standard library (https://github.com/microsoft/STL/issues/785)
+
+test/product_small.cpp
+- Disabled some check lines in subtest l3 in MSVC (passed in Debug mode but failed in Release mode, might be a bug in Eigen)
+
+unsupported/bench/bench_svd.cpp
+- Removed (it is not built by the CMake anyway)
+
+unsupported/test/matrix_exponentials.cpp
+- Disabled subtests 8 and 9 in MSVC, due to a long double specialization issue related to matrixBase::exp()
+
+unsupported/test/matrix_power.cpp
+- Disabled subtests 9 and 12 in MSVC, due to a long double specialization issue related to matrixBase::exp()
+
+unsupported/test/sparse_extra.cpp
+- Disabled subtest 3 on all platforms (DynamicSparseMatrix has been deprecated and it's missing some debug macros)
+
+
+
+A few more tweaks:
+
+- Edit eigen/cmake/EigenConfigureTesting.cmake line 11 to the following:
+   
+       add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --verbose)
+   
+   originally, the test driver command is hardcoded as "ctest" and it won't work in 3p harness
+
+- In eigen/test/CMakeLists.txt, change the "add_test" command towards the bottom of the file to the following:
+
+       add_test(NAME failtests WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/failtests COMMAND ${CMAKE_COMMAND} ${Eigen_SOURCE_DIR} -G "${CMAKE_GENERATOR}" -DEIGEN_FAILTEST=ON ${CMAKE_CURRENT_BINARY_DIR}/.. )
+
+   Alternatively, it seems like a cleaner solution to directly set the EIGEN_FAILTEST flag in the eigen/CMakeLists.txt to TRUE. 
+   With this call, the cmake configuration is invoked twice, the second time the failtests are executed.
+
+- (Optional) Edit eigen/scripts/CMakeLists.txt lines 4 and 5 to the following:
+   
+       configure_file(check.in ${CMAKE_BINARY_DIR}/check.sh @ONLY)
+       configure_file(debug.in ${CMAKE_BINARY_DIR}/debug.sh @ONLY)   
+ 
+   Then in eigen/scripts/check.in, replace ctest with @CMAKE_CTEST_COMMAND@, 
+   and in eigen/scripts/debug.in, replace cmake with @CMAKE_COMMAND@
+
+   This step is optional, as the generated scripts are for manual use only. BaT doesn't care.

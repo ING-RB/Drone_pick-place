@@ -1,0 +1,7 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The code uses the indicated variable as a reduction variable in the loop, but
+                    does not initialize it before the loop. If the variable is not initialized, the
+                    result might be undefined. The <code>parfor</code> function supports
+                    reductions, which are a kind of parallel construct. Reductions compute a value
+                    with contributions from all the iterations (for example, the sum of a vector),
+                    but the iterations can still run in an arbitrary order.</p><br/><strong>Suggested Action</strong><br/><p>Initialize the reduction variable before the <code><a href="matlab:doc parfor" target="_blank">parfor</a></code> loop starts. For more
+                    information, see <a href="matlab:helpview('parallel-computing','MIR_ERROR_PARFOR_ILLEGAL_REDUCTION')" target="_blank">Reduction Variables</a>.</p></body></html>

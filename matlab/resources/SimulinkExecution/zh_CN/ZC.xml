@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="SimulinkExecution" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="AttributeConversionFailed">
+      Conversion of zero-crossing attributes from ''{0}'' to ''{1}'' format
+      failed because the target attributes are contained in an enumeration and
+      therefore, cannot contain an arbitrary combination of directions.
+    </entry>
+    <entry key="ZeroCrossingConsistencyCheckFailed">
+  计算的过零向量和缓存在求解器中的过零向量不一致。\n {0}
+</entry>
+    <entry key="ConsecutiveZeroCrossingsLimitExceeded">
+  从时间 {0} 开始，过零信号 #{1,number,integer} 在时间跨度 {3} 内导致了 {2,number,integer} 个连续事件。在小时间跨度内存在太多这样的连续事件会减慢仿真速度或导致仿真挂起。
+</entry>
+    <entry key="ConsecutiveZeroCrossingEventsLimitExceeded">
+  从时间 {0} 开始，过零信号 {1,number,integer} 在时间跨度 {3} 内导致了 {2,number,integer} 个连续事件。在此时间间隔内，过零信号的幅值保持在 {4} 以下。在小时间跨度内存在太多这样的连续事件会减慢仿真速度或导致仿真挂起。
+</entry>
+    <entry key="ZeroCrossingNotBracketedDueToConsecutiveEvents">
+  从时间 {0} 开始，在时间间隔 {2} 内检测到 {1,number,integer} 个连续过零。为了让仿真继续进行而不挂起，自适应过零检测算法将接受当前步长({3})，而不会进一步减小它。
+</entry>
+    <entry key="ZeroCrossingNotBracketedDueToSmallSignalValues">
+  在时间为 {0}、步长为 {1} 的位置处，发现 {2,number,integer} 个过零。但是，自适应过零检测算法不会进一步减小步长，因为在此时间步内，过零信号的幅值小于容差({3})。
+</entry>
+    <entry key="SomeZeroCrossingNotBracketedDueToSmallSignalValues">
+  在时间为 {0}、步长为 {1} 的位置处，发现 {2,number,integer} 个过零。但是，自适应过零检测算法不会因为 {3,number,integer} 信号而包含过零，因为信号幅值小于容差({4})。
+</entry>
+    <entry key="TooManyConsecutiveZeroCrossings">
+  在时间 {0} 处，{1,number,integer} 个过零信号超过了最大连续事件数 {2,number,integer}。请考虑使用自适应过零检测算法继续仿真，而忽略这些过零。
+</entry>
+    <entry key="DetectedMaskedZeroCrossings">
+  在从 {0} 到 {1} 的仿真时间步期间(步长 = {2})，发现 #{3,number,integer} 个遮蔽的过零点，即过零次数为偶数的信号。搜索算法仅检测到这些过零点，因为在该时间步中存在其他过零点。遮蔽的过零点是由一个或多个在当前时间步内具有偶数个过零点的过零信号导致的。可能并非在所有情况下都能检测到遮蔽的过零点。
+</entry>
+    <entry key="MaxNumberOfBracketingIterationsExceeded">
+  在从 {0} 到 {1} 的仿真时间步期间，仿真已停止搜索过零，因为即使经过 {2, number, integer} 次(最大值)迭代后，过零检测算法仍无法将原始时间间隔减小到宽度小于或等于时间容差且包含过零的收敛时间间隔。仿真将通过报告在检测算法内当前时间间隔的过零点来继续。
+</entry>
+    <entry key="StateMismatchInZcConsistencyCheck">
+  在时间 {0} 处，过零一致性检查中的状态不匹配。\n x (左端) : {1}\n x (重新计算): {2} 
+</entry>
+    <entry key="FixedStepDiscreteSolverWithZc">
+            Model ''{0}'' has fixed-step zero-crossing detection enabled but does not contain continuous states. Using fixed-step zero-crossing detection in models that do not contain continuous states is not recommended except when required for consistency for generating code from a model hierarchy that contains another model with continuous states. \n
+                     &lt;actions exclusiveFixIts="yes"&gt;
+                     &lt;action type="fixit"&gt;
+                     &lt;cmd&gt;set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt;
+                     &lt;txt&gt;Turn off zero-crossing detection for fixed-step simulation.&lt;/txt&gt;
+                     &lt;/action&gt;
+                     &lt;/actions&gt;
+        </entry>
+    <entry key="FixedStepZCNotSupportedForRTCodeGen">
+            模块图 "{0}" 无法生成启用定步长过零的代码。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt; &lt;txt&gt;关闭定步长仿真的过零检测。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        </entry>
+    <entry key="FixedStepZc_NonInlinedSFcnsNotSupported">
+            Block ''{0}'' uses a non-inlined S-function, which is not supported for code generation from a model that uses zero-crossing detection with a fixed-step solver. \n
+                     &lt;actions exclusiveFixIts="yes"&gt;
+                     &lt;action type="fixit"&gt;
+                     &lt;cmd&gt;set_param( bdroot(''{0}''), ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt;
+                     &lt;txt&gt;Disable zero-crossing detection for fixed-step simulation.&lt;/txt&gt;
+                     &lt;/action&gt;
+                     &lt;/actions&gt;
+        </entry>
+  </message>
+</rsccat>

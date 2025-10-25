@@ -1,0 +1,1218 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2016 The MathWorks, Inc. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Basic types -->
+
+  <!-- token_type
+       ==========
+       The names of attributes, qualifiers, and storage classes usually follow those for
+       C identifiers. In addition, '@' can appear as leading character in Cosmos attributes,
+       and '@' can appear as attribute by itself (absolute addresses; e.g., Cosmos, IAR).
+       Backslashes can appear in back-references, and together with parentheses in functions
+       such as \lower and \upper, in 'name' and 'value' attributes.
+  -->
+  <xs:simpleType name="token_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="@?[A-Za-z0-9_\\()]*"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="lang_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="c"/>
+      <xs:enumeration value="c99"/>
+      <xs:enumeration value="c++"/>
+      <xs:enumeration value="cpp"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="kind_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="data"/>
+      <xs:enumeration value="function"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- option_name_type
+       ================
+       We allow passing options to EDG in either of two forms:
+        * -a
+        * \-\-option_name
+      In option_name, back-references and functions \lower and \upper may be used.
+  -->
+  <xs:simpleType name="option_name_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(-[A-Za-z$#])|(--[A-Za-z0-9_.+-\\()]+)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- path_type
+       =========
+       For now we simply use xs:string.
+  -->
+  <xs:simpleType name="path_type">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_kind_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="bit"/>
+      <xs:enumeration value="bool"/>
+      <xs:enumeration value="char"/>
+      <xs:enumeration value="wchar_t"/>
+      <xs:enumeration value="int"/>
+      <xs:enumeration value="float"/>
+      <xs:enumeration value="double"/>
+      <xs:enumeration value="fract"/>
+      <xs:enumeration value="accum"/>
+      <xs:enumeration value="opaque"/>
+      <xs:enumeration value="float16"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="decl_spec_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="signed"/>
+      <xs:enumeration value="unsigned"/>
+      <xs:enumeration value="short"/>
+      <xs:enumeration value="long"/>
+      <xs:enumeration value="long_long"/>
+      <xs:enumeration value="sat"/>
+      <xs:enumeration value="bit"/>
+      <xs:enumeration value="sbit"/>
+      <xs:enumeration value="sfr"/>
+      <xs:enumeration value="volatile"/>
+      <xs:enumeration value="vector8"/>
+      <xs:enumeration value="vector16"/>
+      <xs:enumeration value="vector32"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- decl_specs_type is a comma-separated list of decl_spec_type.
+       Since decl_spec_type cannot be used to express that, we fall back to a pattern.
+  -->
+  <xs:simpleType name="decl_specs_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(signed|unsigned|short|long|long_long|sat|bit|sbit|sfr|volatile|vector8|vector16|vector32)(,(signed|unsigned|short|long|long_long|sat|bit|sbit|sfr|volatile|vector8|vector16|vector32))*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="position_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pre"/>
+      <xs:enumeration value="post"/>
+      <xs:enumeration value="both"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="args_type">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="()"/>
+          <xs:enumeration value="[]"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[0-9]+"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:simpleType name="alias_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(std|gnu|ms):.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="family_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(std|gnu|ms)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="attrkind_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="ak_.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- The 'value' attribute on <if>, <ifnot>, and <case> elements is a list of fixed
+       strings concatenated by '|'. Note that the pattern does not allow escaping of '|'.
+  -->
+  <xs:simpleType name="string_list_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([^\|]*)(\|[^\|]*)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- The 'option' and 'define' attributes on <if>, <ifnot>, and <switch> elements is
+       a list of fixed strings or regular expressions concatenated by '|', effectively one
+       regular expression. As REs are hard to express in an <xs:pattern>, we contend
+       ourselves for now with xs:string without providing the restriction. For the REs, see:
+       http://www.boost.org/doc/libs/1_59_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html
+  -->
+  <xs:simpleType name="pattern_list_type">
+    <xs:restriction base="xs:string">
+      <!-- <xs:pattern value="Boost Perl-syntax regex pattern"/> -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="compare_type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="eq"/>     <!-- Equal -->
+      <xs:enumeration value="ne"/>     <!-- Not equal -->
+      <xs:enumeration value="gt"/>     <!-- Greater than -->
+      <xs:enumeration value="ge"/>     <!-- Greater than or equal -->
+      <xs:enumeration value="lt"/>     <!-- Less than -->
+      <xs:enumeration value="le"/>     <!-- Less than or equal -->
+      <xs:enumeration value="and"/>    <!-- Bitwise and -->
+      <xs:enumeration value="like"/>   <!-- Matches pattern -->
+      <xs:enumeration value="unlike"/> <!-- Does not match pattern -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="supportedby_type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(matlab|polyspace)(,(matlab|polyspace))?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--
+       Referencing
+       ===========
+       All elements other than the root node can take part in referencing. Ids are unique
+       across the whole XML document.
+
+       When an element has an 'idref' attribute, no other attributes are allowed (they are
+       obtained from the referenced element), except for 'id' to allow more freedom in
+       organising into libraries. Unfortunately, we cannot express this in XSD 1.0. We also
+       cannot express that certain attributes, like 'name' are required when no 'idref' is
+       given. We mark these with 'use="required"' in a comment in the schema types.
+
+       Examples:
+       Ok:
+         <type id="mytype" name="sfract" type_kind="fract" decl_specs="short"/>
+         <type idref="mytype"/>                <==  references <type> with id='mytype' above
+
+       Bad:
+         <type idref="mytype" decl_specs="unsigned"/>  <== can't reference and add attributes
+         <type type_kind="bit"/>                       <== no 'name' attribute
+
+       Ok (referencing over two levels):
+         <type id="type1" name="foo" etc./>    <== in global library
+         <type idref="type1" id="bar.type1"/>  <== in library for compiler bar
+         <type idref="bar.type1"/>             <== in some target element for compiler bar
+  -->
+
+  <xs:complexType name="referrable">
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="idref" type="xs:IDREF"/>
+  </xs:complexType>
+
+  <!--
+       Conditional nodes
+       =================
+       All single and plural element types may be embedded in multiple levels of
+       conditionals. Conditionals are expressed with the node types <if>, <ifnot>,
+       <switch>. The latter has two child node types <case> and <default>, which hold
+       the conditioned nodes. <if> and <ifnot> nodes hold their conditioned nodes
+       directly.
+
+       <if>, <ifnot>, and <switch> test either options or defines, which are given in the
+       'option' or 'define' attribute. Exactly one of these attributes must be present. In
+       the case of <if> and <ifnot>, the value of the option or define is tested against a
+       value given in the node itself, through a 'value' attribute, possibly with an 'op'
+       attribute to specify a comparison operator ('eq' if not given). If no 'value'
+       attribute is given, presence of the option or define is tested.
+
+       In the case of <switch>, the 'value' and 'op' attributes are given on the <case>
+       nodes. Again, if 'value' is not given, the option or define is tested for presence.
+       The <default> node does not take any attributes.
+
+       The 'op' attribute can only be used together with 'value'.
+
+       The 'option' and 'define' attributes may specify multiple options or defines, or
+       patterns for those, separated by the '|' character.
+
+       Conditional nodes are not referrable.
+
+       Conditional nodes: attributes
+       - All conditional node types must have either 'option' or 'define'.
+       - <if> and <ifnot> nodes may have 'value' (presence testing if not given).
+       - <if>, <ifnot>, <case> may have 'op'.
+       - <switch> must not have 'value'.
+       - <case> must not have 'option', 'define', or 'op'.
+       - <case> may have value (presence testing if not given).
+       - <default> does not have any of 'option', 'define', 'value', 'op'.
+  -->
+
+  <xs:attributeGroup name="if_type_attrs">
+    <xs:attribute name="option"   type="pattern_list_type"/>
+    <xs:attribute name="feoption" type="pattern_list_type"/>
+    <xs:attribute name="define"   type="pattern_list_type"/>
+    <xs:attribute name="value"    type="string_list_type"/>
+    <xs:attribute name="op"       type="compare_type"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="switch_type_attrs">
+    <xs:attribute name="option"   type="pattern_list_type"/>
+    <xs:attribute name="feoption" type="pattern_list_type"/>
+    <xs:attribute name="define"   type="pattern_list_type"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="case_type_attrs">
+    <xs:attribute name="value"    type="string_list_type"/>
+    <xs:attribute name="op"       type="compare_type"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="default_type_attrs"/>
+
+  <xs:attributeGroup name="set_type_attrs">
+    <xs:attribute name="target"   type="xs:string"/>
+    <xs:attribute name="var"      type="xs:string"/>
+    <xs:attribute name="value"    type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="error_type_attrs">
+    <xs:attribute name="message"  type="xs:string"/>
+  </xs:attributeGroup>
+
+  <!--
+       Single element types
+  -->
+
+  <!--
+       <target_option> element type
+       This element type does not allow conditionals
+  -->
+  <xs:attributeGroup name="target_option_type_attrs">
+    <xs:attribute name="pattern" type="xs:string"/>
+    <xs:attribute name="name" type="option_name_type"/>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="target_option_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="target_option_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+       <option> element type and its conditionals
+  -->
+  <xs:attributeGroup name="option_type_attrs">
+    <xs:attribute name="name" type="option_name_type"/> <!--use="required"-->
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="option_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="option_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_option_group">
+    <xs:choice>
+      <xs:element name="option" type="option_type"/>
+      <xs:element name="if"     type="if_option_type"/>
+      <xs:element name="ifnot"  type="ifnot_option_type"/>
+      <xs:element name="switch" type="switch_option_type"/>
+      <xs:element name="error"  type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_option_type">
+    <xs:group ref="cond_option_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_option_type">
+    <xs:group ref="cond_option_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_option_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_option_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_option_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_option_type">
+    <xs:group ref="cond_option_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_option_type">
+    <xs:group ref="cond_option_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <define>, <undef> element types and their conditionals
+  -->
+  <xs:attributeGroup name="define_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="predef" type="xs:boolean"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="define_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="define_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:attributeGroup name="undef_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+  </xs:attributeGroup>
+
+  <xs:complexType name="undef_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="undef_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_def_undef_group">
+    <xs:choice>
+      <xs:element name="define" type="define_type"/>
+      <xs:element name="undef"  type="undef_type"/>
+      <xs:element name="if"     type="if_def_undef_type"/>
+      <xs:element name="ifnot"  type="ifnot_def_undef_type"/>
+      <xs:element name="switch" type="switch_def_undef_type"/>
+      <xs:element name="error"  type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_def_undef_type">
+    <xs:group ref="cond_def_undef_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_def_undef_type">
+    <xs:group ref="cond_def_undef_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_def_undef_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_def_undef_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_def_undef_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_def_undef_type">
+    <xs:group ref="cond_def_undef_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_def_undef_type">
+    <xs:group ref="cond_def_undef_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <include> element type and its conditionals
+  -->
+  <xs:attributeGroup name="include_type_attrs">
+    <xs:attribute name="path" type="path_type"/> <!--use="required"-->
+    <xs:attribute name="platform" type="token_type"/>
+    <xs:attribute name="system" type="xs:boolean"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="include_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="include_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_include_group">
+    <xs:choice>
+      <xs:element name="include" type="include_type"/>
+      <xs:element name="if"      type="if_include_type"/>
+      <xs:element name="ifnot"   type="ifnot_include_type"/>
+      <xs:element name="switch"  type="switch_include_type"/>
+      <xs:element name="error"   type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_include_type">
+    <xs:group ref="cond_include_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_include_type">
+    <xs:group ref="cond_include_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_include_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_include_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_include_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_include_type">
+    <xs:group ref="cond_include_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_include_type">
+    <xs:group ref="cond_include_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <ppdirect> element type and its conditionals
+  -->
+  <xs:attributeGroup name="ppdirect_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="end" type="token_type"/>
+    <xs:attribute name="can_be_statement" type="xs:boolean"/>
+    <xs:attribute name="alias" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="ppdirect_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="ppdirect_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_ppdirect_group">
+    <xs:choice>
+      <xs:element name="ppdirect" type="ppdirect_type"/>
+      <xs:element name="if"       type="if_ppdirect_type"/>
+      <xs:element name="ifnot"    type="ifnot_ppdirect_type"/>
+      <xs:element name="switch"   type="switch_ppdirect_type"/>
+      <xs:element name="error"    type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_ppdirect_type">
+    <xs:group ref="cond_ppdirect_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_ppdirect_type">
+    <xs:group ref="cond_ppdirect_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_ppdirect_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_ppdirect_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_ppdirect_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_ppdirect_type">
+    <xs:group ref="cond_ppdirect_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_ppdirect_type">
+    <xs:group ref="cond_ppdirect_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <pragma> element type and its conditionals
+  -->
+  <xs:attributeGroup name="pragma_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="end" type="token_type"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="pragma_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="pragma_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_pragma_group">
+    <xs:choice>
+      <xs:element name="pragma" type="pragma_type"/>
+      <xs:element name="if"     type="if_pragma_type"/>
+      <xs:element name="ifnot"  type="ifnot_pragma_type"/>
+      <xs:element name="switch" type="switch_pragma_type"/>
+      <xs:element name="error"  type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_pragma_type">
+    <xs:group ref="cond_pragma_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_pragma_type">
+    <xs:group ref="cond_pragma_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_pragma_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_pragma_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_pragma_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_pragma_type">
+    <xs:group ref="cond_pragma_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_pragma_type">
+    <xs:group ref="cond_pragma_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <asm> element type and its conditionals
+  -->
+  <xs:attributeGroup name="asm_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="end" type="token_type"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="asm_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="asm_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_asm_group">
+    <xs:choice>
+      <xs:element name="asm"    type="asm_type"/>
+      <xs:element name="if"     type="if_asm_type"/>
+      <xs:element name="ifnot"  type="ifnot_asm_type"/>
+      <xs:element name="switch" type="switch_asm_type"/>
+      <xs:element name="error"  type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_asm_type">
+    <xs:group ref="cond_asm_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_asm_type">
+    <xs:group ref="cond_asm_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_asm_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_asm_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_asm_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_asm_type">
+    <xs:group ref="cond_asm_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_asm_type">
+    <xs:group ref="cond_asm_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <type> element type and its conditionals
+  -->
+  <xs:attributeGroup name="type_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="type_kind" type="type_kind_type"/>
+    <xs:attribute name="decl_specs" type="decl_specs_type"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="type_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="type_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_type_group">
+    <xs:choice>
+      <xs:element name="type"   type="type_type"/>
+      <xs:element name="if"     type="if_type_type"/>
+      <xs:element name="ifnot"  type="ifnot_type_type"/>
+      <xs:element name="switch" type="switch_type_type"/>
+      <xs:element name="error"  type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_type_type">
+    <xs:group ref="cond_type_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_type_type">
+    <xs:group ref="cond_type_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_type_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_type_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_type_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_type_type">
+    <xs:group ref="cond_type_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_type_type">
+    <xs:group ref="cond_type_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <attribute> element type and its conditionals
+  -->
+  <xs:attributeGroup name="attribute_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="sig" type="xs:string"/>
+    <xs:attribute name="bitstart" type="xs:string"/>
+    <xs:attribute name="bitend" type="xs:string"/>
+    <xs:attribute name="alias" type="alias_type"/>
+    <xs:attribute name="token" type="xs:string"/>
+    <xs:attribute name="family" type="family_type"/>
+    <xs:attribute name="attrkind" type="attrkind_type"/>
+    <xs:attribute name="cond" type="xs:string"/>
+    <xs:attribute name="constraints" type="xs:string"/>
+    <xs:attribute name="apply" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="attribute_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="attribute_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_attribute_group">
+    <xs:choice>
+      <xs:element name="attribute" type="attribute_type"/>
+      <xs:element name="if"        type="if_attribute_type"/>
+      <xs:element name="ifnot"     type="ifnot_attribute_type"/>
+      <xs:element name="switch"    type="switch_attribute_type"/>
+      <xs:element name="error"     type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_attribute_type">
+    <xs:group ref="cond_attribute_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_attribute_type">
+    <xs:group ref="cond_attribute_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_attribute_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_attribute_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_attribute_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_attribute_type">
+    <xs:group ref="cond_attribute_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_attribute_type">
+    <xs:group ref="cond_attribute_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <qualifier> element type and its conditionals
+  -->
+  <xs:attributeGroup name="qualifier_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="position" type="position_type"/>
+    <xs:attribute name="args" type="args_type"/>
+    <xs:attribute name="token" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="qualifier_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="qualifier_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_qualifier_group">
+    <xs:choice>
+      <xs:element name="qualifier" type="qualifier_type"/>
+      <xs:element name="if"        type="if_qualifier_type"/>
+      <xs:element name="ifnot"     type="ifnot_qualifier_type"/>
+      <xs:element name="switch"    type="switch_qualifier_type"/>
+      <xs:element name="error"     type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_qualifier_type">
+    <xs:group ref="cond_qualifier_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_qualifier_type">
+    <xs:group ref="cond_qualifier_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_qualifier_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_qualifier_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_qualifier_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_qualifier_type">
+    <xs:group ref="cond_qualifier_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_qualifier_type">
+    <xs:group ref="cond_qualifier_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       <storage_class> element type and its conditionals
+  -->
+  <xs:attributeGroup name="storage_class_type_attrs">
+    <xs:attribute name="name" type="token_type"/> <!--use="required"-->
+    <xs:attribute name="position" type="position_type"/>
+    <xs:attribute name="args" type="args_type"/>
+    <xs:attribute name="token" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="storage_class_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:attributeGroup ref="storage_class_type_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:group name="cond_storage_class_group">
+    <xs:choice>
+      <xs:element name="storage_class" type="storage_class_type"/>
+      <xs:element name="if"            type="if_storage_class_type"/>
+      <xs:element name="ifnot"         type="ifnot_storage_class_type"/>
+      <xs:element name="switch"        type="switch_storage_class_type"/>
+      <xs:element name="error"         type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="if_storage_class_type">
+    <xs:group ref="cond_storage_class_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_storage_class_type">
+    <xs:group ref="cond_storage_class_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_storage_class_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_storage_class_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_storage_class_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_storage_class_type">
+    <xs:group ref="cond_storage_class_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_storage_class_type">
+    <xs:group ref="cond_storage_class_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       Group-of-elements types ('plural nodes')
+  -->
+
+  <xs:attributeGroup name="plural_node_attrs">
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="plural_decl_node_attrs">
+    <xs:attribute name="kind" type="kind_type"/>
+  </xs:attributeGroup>
+
+  <!-- Target_options does not allow conditionals -->
+  <xs:complexType name="target_options_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:sequence>
+          <xs:element name="target_option" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- The other plural nodes do allow conditionals -->
+
+  <xs:complexType name="options_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_option_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="defines_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_def_undef_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="includes_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_include_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ppdirects_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_ppdirect_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="pragmas_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_pragma_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="asms_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_asm_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="types_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_type_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="attributes_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_attribute_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_decl_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="qualifiers_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_qualifier_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_decl_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="storage_classes_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:group ref="cond_storage_class_group" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:attributeGroup ref="plural_decl_node_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+       Conditional nodes outside plural nodes
+  -->
+
+  <xs:complexType name="if_type">
+    <xs:group ref="full_definition_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="ifnot_type">
+    <xs:group ref="full_definition_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="if_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="switch_type">
+    <xs:sequence>
+      <xs:element name="case"    type="case_type"    minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="default" type="default_type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="switch_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="case_type">
+    <xs:group ref="full_definition_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="case_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="default_type">
+    <xs:group ref="full_definition_group" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attributeGroup ref="default_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="set_type">
+    <xs:attributeGroup ref="set_type_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="error_type">
+    <xs:attributeGroup ref="error_type_attrs"/>
+  </xs:complexType>
+
+  <!--
+       Library, compiler and target nodes
+  -->
+
+  <xs:group name="definition_group">
+    <xs:choice>
+      <xs:element name="options"         type="options_type"/>
+      <xs:element name="defines"         type="defines_type"/>
+      <xs:element name="includes"        type="includes_type"/>
+      <xs:element name="ppdirects"       type="ppdirects_type"/>
+      <xs:element name="pragmas"         type="pragmas_type"/>
+      <xs:element name="asms"            type="asms_type"/>
+      <xs:element name="types"           type="types_type"/>
+      <xs:element name="attributes"      type="attributes_type"/>
+      <xs:element name="qualifiers"      type="qualifiers_type"/>
+      <xs:element name="storage_classes" type="storage_classes_type"/>
+      <xs:element name="set"             type="set_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="top_definition_group">
+    <xs:choice>
+      <xs:group ref="definition_group"/>
+      <xs:element name="target_options"  type="target_options_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="full_definition_group">
+    <xs:choice>
+      <xs:group ref="definition_group"/>
+      <xs:element name="if"              type="if_type"/>
+      <xs:element name="ifnot"           type="ifnot_type"/>
+      <xs:element name="switch"          type="switch_type"/>
+      <xs:element name="error"           type="error_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="top_full_definition_group">
+    <xs:choice>
+      <xs:group ref="full_definition_group"/>
+      <xs:element name="target_options"  type="target_options_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <!--
+       Library
+       =======
+       Libraries hold definitions (<options> etc.) that won't appear in a syntax
+       extensions session. Definitions in a library can only be used through idrefs.
+       Libraries cannot hold conditional elements (this schema enforces that only
+       outside plural nodes; the schema does allow conditionals within plural
+       nodes but this is not legal).
+  -->
+  <xs:complexType name="library_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:sequence>
+          <xs:group ref="top_definition_group" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+       Target
+       ======
+       Target elements hold definitions (<options> etc.) that will appear in a syntax
+       extensions session if the target name is selected for the given compiler, or if
+       no target is specified for the given compiler. Definitions in a target element
+       can be actual definitions, or references (by idref) to definitions elsewhere in
+       the XML file, e.g. in a library.
+  -->
+  <xs:attributeGroup name="target_attrs">
+    <xs:attribute name="name"        type="xs:string"/> <!--use="required"-->
+    <xs:attribute name="title"       type="xs:string"/>
+    <xs:attribute name="explicit"    type="xs:boolean"/>
+    <xs:attribute name="supportedby" type="supportedby_type"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="target_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:group ref="top_full_definition_group" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attributeGroup ref="target_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="clients_type">
+    <xs:sequence maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="client" type="client_type"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="clients_attrs"/>
+  </xs:complexType>
+
+  <xs:complexType name="client_type">
+    <xs:attributeGroup ref="client_attrs"/>
+  </xs:complexType>
+
+  <xs:attributeGroup name="clients_attrs">
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="client_attrs">
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:attributeGroup>
+
+  <!--
+       Compiler
+       ========
+       Compiler elements hold definitions (<options> etc.) that will appear in a syntax
+       extensions session if the compiler name is selected, or if no compiler is specified.
+       Definitions in a compiler element can be actual definitions, or references (by idref)
+       to definitions elsewhere in the XML file, e.g. in a library. Dialects can also hold
+       library and target elements.
+
+       A compiler element will not be selected if its 'lang' attribute does not match the
+       session's language. This feature is intended to prevent incompatible modes when no
+       compiler is specified. This way for instance, compilers that set lang="c99" will not be
+       selected in C++ mode (which would give rise to an error from EDG).
+         - no lang    matches any language mode
+         - lang="c"   matches language modes C, C99
+         - lang="c99" matches language mode C99
+         - lang="c++" matches language mode C++
+  -->
+  <xs:group name="compiler_group">
+    <xs:choice>
+      <xs:group ref="top_full_definition_group"/>
+      <xs:element name="clients"  type="clients_type"/>
+      <xs:element name="library"  type="library_type"/>
+      <xs:element name="target"   type="target_type"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:attributeGroup name="compiler_attrs">
+    <xs:attribute name="name"     type="xs:string"/> <!--use="required"-->
+    <xs:attribute name="clients"  type="xs:string"/> <!-- Comma-separated list, e.g. "polyspace,matlab" -->
+    <xs:attribute name="lang"     type="lang_type"/>
+    <xs:attribute name="default"  type="xs:string"/>
+    <xs:attribute name="explicit" type="xs:boolean"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="compiler_type">
+    <xs:complexContent>
+      <xs:extension base="referrable">
+        <xs:sequence>
+          <xs:group ref="compiler_group" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="compiler_attrs"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!--
+       Document node
+       =============
+  -->
+  <xs:complexType name="compilers_type">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element name="compiler" type="compiler_type"/>
+        <xs:element name="library" type="library_type"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="compilers" type="compilers_type"/>
+
+  <!--
+       Compiler and library nodes
+       ==========================
+       We provide these also to enable included documents to be validated separately.
+       The reason: when the SAX parser/validator finds an error in an included document,
+       it just throws an exception at the position of the <xi:include> with the message
+       'Error attempting to parse XML file'. All details about the error in the included
+       document are lost. Validating included documents separately allows to obtain the
+       actual error messages.
+  -->
+  <xs:element name="compiler" type="compiler_type"/>
+  <xs:element name="library" type="library_type"/>
+
+</xs:schema>

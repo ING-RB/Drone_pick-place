@@ -1,0 +1,54 @@
+{
+    "readdictionary":{
+        "inputs":[
+            {"mutuallyExclusiveGroup": [[
+                {"name":"filename","kind":"required","type":[["file=*.json"],["matlabpathfile=*.json"],["char","@(x) endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true)"]]},
+                {"name":"FileType","kind":"namevalue","type":["string","choices={'json'}"]},
+                {"name":"DictionaryNodeName","kind":"namevalue","type":"string"},
+                {"name":"DictionarySelector","kind":"namevalue","type":"string"},
+                {"name":"DateLocale","kind":"namevalue","type":"string","default":"'system'"},
+                {"name":"DuplicateKeyRule","kind":"namevalue","type":["string","choices={'preserveLast','makeUnique','error'}"],"default":"'preserveLast'"},
+                {"name":"WebOptions","kind":"namevalue","type":"weboptions"},
+                {"name":"AllowComments","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AllowInfAndNaN","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AllowTrailingCommas","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"ParsingMode","kind":"namevalue","type":["string","choices={'strict','lenient'}"]},
+                {"name":"ValueType","kind":"namevalue","type":["string","choices={'auto', 'cell', 'uint8', 'uint16', 'uint32', 'uint64', 'int8', 'int16', 'int32', 'int64', 'double', 'single', 'string', 'logical', 'datetime', 'duration'}"]}
+            ],[
+                {"name":"filename","kind":"required","type":["char","@(x) ~(endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true))"]},
+                {"name":"FileType","kind":"namevalue","type":["string","choices={'json'}"]},
+                {"name":"DictionaryNodeName","kind":"namevalue","type":"string"},
+                {"name":"DictionarySelector","kind":"namevalue","type":"string"},
+                {"name":"DateLocale","kind":"namevalue","type":"string","default":"'system'"},
+                {"name":"DuplicateKeyRule","kind":"namevalue","type":["string","choices={'preserveLast','makeUnique','error'}"],"default":"'preserveLast'"},
+                {"name":"WebOptions","kind":"namevalue","type":"weboptions"},
+                {"name":"AllowComments","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AllowInfAndNaN","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AllowTrailingCommas","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"ParsingMode","kind":"namevalue","type":["string","choices={'strict','lenient'}"]},
+                {"name":"ValueType","kind":"namevalue","type":["string","choices={'auto', 'cell', 'uint8', 'uint16', 'uint32', 'uint64', 'int8', 'int16', 'int32', 'int64', 'double', 'single', 'string', 'logical', 'datetime', 'duration'}"]}
+            ]]}
+        ],
+        "outputs":[
+            {"name":"d","type":"dictionary"}
+        ],
+        "keywords":"json,dictionary,import"
+    },
+    "writedictionary":{
+        "inputs":[
+            {"name":"d","kind":"required","type":"dictionary"},
+            {"mutuallyExclusiveGroup": [[
+                {"name":"filename","kind":"required","type":["char","@(x) endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true)"]},
+                {"name":"FileType","kind":"namevalue","type":["choices={'json'}"]},
+                {"name":"PrettyPrint","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"PreserveInfAndNaN","kind":"namevalue","type":["logical","scalar"]}
+            ],[
+                {"name":"filename","kind":"required","type":["char","@(x) ~(endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true))"]},
+                {"name":"FileType","kind":"namevalue","type":["string","choices={'json'}"]},
+                {"name":"PrettyPrint","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"PreserveInfAndNaN","kind":"namevalue","type":["logical","scalar"]}
+            ]]}
+        ],
+        "keywords":"json,dictionary,export"
+    }
+}

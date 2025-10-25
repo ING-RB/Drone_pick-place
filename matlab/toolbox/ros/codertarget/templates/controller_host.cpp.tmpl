@@ -1,0 +1,179 @@
+{% if (false) %}
+// Copyright 2021-2024 The MathWorks, Inc.
+{% endif %}
+
+{% var slCoderVer = ver('simulinkcoder') %}
+//
+// Code generated for Simulink model '{%ModelName%}'.
+//
+// Model version                  : {% get_param(ModelName,'ModelVersion') %}
+// Simulink Coder version         : {% [slCoderVer.Version, ' ', slCoderVer.Release, ' ', slCoderVer.Date] %}
+// C/C++ source code generated on : {% datestr(now,'ddd mmm dd HH:MM:SS YYYY') %}
+//
+
+#include "{%ModelName%}_ctrlr_host.h"
+#include <pluginlib/class_list_macros.h>
+#include <ros/ros.h>
+
+// Model Includes
+#include "{%ModelName%}.h"
+
+extern ros::NodeHandle * SLROSNodePtr;
+namespace {%ProjectName%} {
+
+{% var inportIndices = arrayfun(@(y)isequal(y.PortType,'Inport'), JointInterfaces) %}
+{% var outportIndices = arrayfun(@(y)isequal(y.PortType,'Outport'), JointInterfaces) %}
+{% var inportRes = JointInterfaces(inportIndices) %}
+{% var outportRes = JointInterfaces(outportIndices) %}
+{% var inportIndexNum = find(inportIndices) %}
+{% var outportIndexNum = find(outportIndices) %}
+
+bool {%ClassName%}::init(hardware_interface::RobotHW* hw, ros::NodeHandle& nh)
+{
+  // Get joint interface handles
+  {% for k = numel(HardwareInterfaces) %}
+  hardware_interface::{%HardwareInterfaces(k).Type%} *{%HardwareInterfaces(k).VarName%} = hw->get<hardware_interface::{%HardwareInterfaces(k).Type%}>();
+  {% endfor %}
+
+  // Retrieve command handles from robot hardware interface
+  try
+  {
+    {% for k = numel(JointInterfaces) %}
+    ROS_INFO_STREAM_NAMED("init", "Retrieving '" << {% JointInterfaces(k).JointName %} << "' from interface");
+    joint_handle{% num2str(k-1) %}_ = {%JointInterfaces(k).HwInterfaceVarName%}->getHandle({% JointInterfaces(k).JointName %});
+    {% endfor %}
+  }
+  catch (hardware_interface::HardwareInterfaceException const& e)
+  {
+    ROS_ERROR_STREAM_NAMED("init", "Error retrieving joint: " << e.what());
+    return false;
+  }
+
+  // Assign global Simulink ROS Node handle
+  SLROSNodePtr = &nh;
+
+
+  {% if ~isempty(DynamicParams) %}
+
+  // Dynamic reconfigure RT storage buffer
+  DynamicParams dynamic_params;
+  {% for k=numel(DynamicParams) %}
+  dynamic_params.{%DynamicParams(k).Name%} =  {%ModelName%}_P.{%DynamicParams(k).Name%};
+  {% endfor %}
+
+  dyn_reconf_server_ = std::make_shared<ReconfigureServer>(dyn_reconf_server_mutex_, nh);
+
+  ControllerHostConfig config;
+
+  {% for k=numel(DynamicParams) %}
+  config.{%DynamicParams(k).Name%} =  {%ModelName%}_P.{%DynamicParams(k).Name%};
+
+  {% endfor %}
+  dyn_reconf_server_mutex_.lock();
+
+  dyn_reconf_server_->updateConfig(config);
+
+  dyn_reconf_server_mutex_.unlock();
+
+  // enable processing incoming reconfiguration requests
+  dyn_reconf_server_->setCallback(boost::bind(&ControllerHost::reconfCallback, this, _1, _2));
+  
+  {% endif %}
+
+  // Initialize Simulink controller
+  {% InitFcn %};
+
+  // done
+  return true;
+}
+
+
+void {%ClassName%}::reset()
+{
+  // Set output velocity and effort interface commands to zero
+  // for other intefaces default output values depend on controller status
+  {% for k = numel(outportRes) %}
+      {% if isequal(outportRes(k).InterfaceType,'VelocityJointInterface') || isequal(outportRes(k).InterfaceType,'EffortJointInterface') %}
+  joint_handle{% num2str(k-1) %}_.setCommand(0.0);
+      {% endif %}
+  {% endfor %}
+}
+
+
+void {%ClassName%}::starting(const ros::Time& time)
+{
+  ROS_INFO_STREAM_NAMED("starting", "Starting at time " << time);
+  reset();
+}
+
+
+void {%ClassName%}::stopping(const ros::Time& time)
+{
+  ROS_INFO_STREAM_NAMED("stopping", "Stopping at time " << time);
+  reset();
+}
+
+
+void {%ClassName%}::update(const ros::Time& time, const ros::Duration& period)
+{
+
+  {% if ~isempty(DynamicParams) %}
+  updateDynamicParams();
+  {% endif %}
+  {% for k = numel(inportRes) %}
+      {% if 1==k %}
+  // Get model inputs from resources
+      {% endif %}
+  {%inportRes(k).FieldName%} = joint_handle{% num2str(inportIndexNum(k)-1) %}_.getCommand();
+  {% endfor %}
+
+  // trigger Simulink tick/update
+  {% StepFcn %};
+
+  {% for k = numel(outportRes) %}
+      {% if 1==k %}
+  // Write model output to resources
+      {% endif %}
+  joint_handle{% num2str(outportIndexNum(k)-1) %}_.setCommand({%outportRes(k).FieldName%});
+  {% endfor %}
+}
+
+
+{% if ~isempty(DynamicParams) %}
+
+void {%ClassName%}::reconfCallback({%ClassName%}Config& config, uint32_t /*level*/)
+{
+  // copy incoming data to RT buffer
+  DynamicParams dynamic_params;
+  {% for k=numel(DynamicParams) %}
+  dynamic_params.{%DynamicParams(k).Name%} =  config.{%DynamicParams(k).Name%};
+  {% endfor %}
+  dynamic_params_.writeFromNonRT(dynamic_params);
+  // Print dynamic parameters when changed
+  ROS_INFO_STREAM_NAMED("reconfigure", "Dynamic Reconfigure:\n" << dynamic_params);
+}
+
+void {%ClassName%}::updateDynamicParams()
+{
+  // update internal config based on data in RT buffer
+  const auto dynamic_params = *(dynamic_params_.readFromRT());
+  {% for k=numel(DynamicParams) %}
+  {%ModelParamName%}_P.{%DynamicParams(k).Name%} =  dynamic_params.{%DynamicParams(k).Name%};
+  {% endfor %}
+}
+
+
+{% endif %}
+
+} // ~namespace {%ProjectName%}
+
+
+
+PLUGINLIB_EXPORT_CLASS({%ProjectName%}::{%ClassName%}, controller_interface::ControllerBase)
+
+//
+// File trailer for generated code.
+//
+// [EOF]
+//
+

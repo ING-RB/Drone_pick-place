@@ -1,0 +1,93 @@
+{
+    "$schema": "justifications_catalog_schema.jsonc",
+    "$id": "justifications_catalog_schema.jsonc",
+    "title": "Catalog of allowed justifications",
+    "description": "This describes the format of a catalog of justifications that can be used in the organization to justify Polyspace findings. They will be proposed as completion in Polyspace as You Code. The file must be in UTF-8 encoding.",
+    "type": "object",
+    "properties": {
+        "justifications": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "family": {
+                            "type": "string"
+                        },
+                        "acronym": {
+                            "type": "string"
+                        },
+                        "comment": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "family",
+                        "acronym",
+                        "comment"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "family": {
+                            "type": "string"
+                        },
+                        "acronym": {
+                            "type": "string"
+                        },
+                        "comment": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "family",
+                        "acronym",
+                        "comment"
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "justifications"
+    ]
+}
+// Example:
+// {
+//     "justifications": [
+//         {
+//             "family": "Defect",
+//             "acronym": "INT_ZERO_DIV",
+//             "comment": [
+//                 "A justification",
+//                 "Another justification"
+//             ]
+//         },
+//         {
+//             "family": "*",
+//             "acronym": "INT_ZERO_DIV",
+//             "comment": "Family wildcard justification"
+//         },
+//         {
+//             "family": "Defect",
+//             "acronym": "*",
+//             "comment": "Rule wildcard justification"
+//         },
+//         {
+//             "family": "MISRA C:2012",
+//             "acronym": "21.3",
+//             "comment": "Justification for 21.3"
+//         },
+//         {
+//             "family": "MISRA C:2012",
+//             "acronym": "22.*",
+//             "comment": "Justification for all 22 rules"
+//         }
+//     ]
+// }

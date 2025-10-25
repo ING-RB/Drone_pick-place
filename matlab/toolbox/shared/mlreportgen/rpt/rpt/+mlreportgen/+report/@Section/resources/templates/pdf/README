@@ -1,0 +1,200 @@
+Copyright 2024 The MathWorks, Inc.
+
+This folder contains a template that the Section (and Chapter) reporter
+use to generate PDF output. The template is a compressed (zipped) OPC 
+package of HTML and related files that specify the static content and
+page layout of the Section (or Chapter) PDF output. To customize the
+reporter's PDF output, edit the contents of this template.
+
+NOTE. The Chapter reporter uses the Section reporter template. Thus the
+template documentation in this file applies to the Chapter reporter as well.
+
+PDF TEMPLATE PACKAGE
+
+The Section reporter template conforms to the Open Packaging Convention
+(OPC) for XML files. The template package is a collection of files that 
+includes metadata that describes the content of the package. The package 
+is stored in compressed (zipped) forn. To customize the template, you 
+must unzip the package and edit its contents. To use the customized 
+template, you must rezip it. The MATLAB Report Generator provides 
+functions for zipping and unzipping the template. The functions preserve
+the OPC metadata. You must use these functions to avoid losing required
+metadata.
+
+ZIPPING AND UNZIPPING THE DEFAULT SECTION PDF TEMPLATE
+
+To unzip the template:
+
+1. Change the current MATLAB directory to the directory containing
+   the default Section reporter PDF template.
+
+2. Enter
+
+   unzipTemplate("default.pdftx");
+
+   at the MATLAB command line. A folder named "default" appears in the
+   current directory. The folder contains the default Section reporter 
+   PDF template.
+
+To zip the template:
+
+1. Change the current MATLAB working directory to the template directory
+   if the current directory is not alread the working directory.
+
+ 2. Remove any temporary files, such as MATLAB .asv files, from the
+    default directory.
+
+2. Enter
+
+   zipTemplate("default.pdftx");
+
+   at the MATLAB command line. MATLAB overwrites the existing default.pdftx
+   file with the contents of the default directory.
+
+CONTENTS OF THE DEFAULT PDF TEMPLATE
+
+The default template contains the following files:
+
+* root.html
+
+This is the main PDF template document. The Section (Chapter) reporter
+does not use the contents of this file as a template. Instead, it uses the 
+content of the templates defined in this template package's 
+docpart_templates.html file.
+
+* docpart_templates.html
+
+  This file contains a library of templates used by the Section reporter
+  to generate its output. The templates include comments describing their
+  contents and usage.
+
+     NOTE: The MATLAB Report Generator defines a custom set of HTML
+     elements for creating holes and document part libraries in HTML and
+     PDF templates and for creating page layouts in PDF templates. This 
+     file uses these custom elements to define the Section template 
+     library. The MATLAB Report Generator also supports use of many but
+     not all standard HTML elements in PDF templates. This template library
+     uses only the supported standard elements. If you customize this
+     template, your customizations should use only the supported custom 
+     and standard HTML elements. See 
+     "Create PDF Document Part Template Library"
+     in the MATLAB Report Generator documentation for information on the 
+     HTML elements supported for use in Section reporter templates.
+
+  This template library includes the following document part
+  templates:
+
+    * Section 1
+
+      This template defines the content and page layout of a top-level
+      section. It contains the following elements
+
+      - Title hole. The Section (or Chapter) reporter fills this hole
+        with the title of the top-level section, e.g. 
+        "Chapter 1. Introduction".
+
+      - Content hole. The Section (Chapter) reporter fills this hole with
+        the value of the reporter's Content property. 
+
+      - Page Layout. The page layout defines the page layout of the
+        top-level section and all its subsections. The page layout 
+        includes page margins, orientation (portrait, landscape), and page
+        headers and footers. The page layout defines separate headers 
+        and footers for the first  page of a section, for even pages, and 
+        for odd pages.
+
+     * Section 2 - Section 6
+
+       These templates define the content of a section's subsections via 
+       Title and Content holes, respectively. The Section reporter uses the
+       Section 2 template to define the output of a Section appended to a 
+       Section reporter. It uses the Section 3 template to define the output
+       of a Section appended to a top-level section, etc.
+
+     * SectionNumberedTitle1 - SectionNumberedTitle6
+
+       These templates define the content of hierarchically numbered
+       titles of level 1-6 sections. If the Numbered property of a Section
+       reporter is true, the Section reporter uses these templates
+       to generate the titles that it uses to fill the Title holes of
+       Section 1-6 templates.
+
+     * SectionTitle1 - SectionTitle6
+
+       These templates define the content of unnumbered titles of level 1-6
+       sections. If the Numbered property of a Section reporter is false, 
+       the Section reporter uses these templates to generate section
+       titles.
+
+     * SectionFirstPageHeader
+
+       This template defines the content of the header of the first page
+       in a section.
+
+     * SectionEvenPageHeader
+
+       This template defines the content of the header of the even pages
+       of a section.
+
+     * SectionDefaultPageHeader
+
+       This template defines the content of the header of the odd pages
+       of a section. This template also specifies the content of the 
+       headers for other pages (first page or even pages) if the section
+       page layout does not specify headers for those pages.
+
+     * SectionFirstPageFooter
+
+       This template defines the content of the footer of the first page
+       in a section.
+
+     * SectionEvenPageFooter
+
+       This template defines the content of the footer of the even pages
+       of a section.
+
+     * SectionDefaultPageFooter
+
+       This template defines the content of the footer of the odd pages
+       of a section. This template also specifies the content of the 
+       footers for other pages (first page or even pages) if the section
+       page layout does not specify footers for those pages.
+    
+
+* stylesheets/root.css
+
+  This file defines the styles for the section titles, body content, and
+  header and footer content generated by the Section reporter. You can 
+  customize the appearance of the titles, body content, and header and
+  footer content by changing the title properties in this file,
+  such as font-size.
+
+  You can also use this file to define styles for content elements that
+  you add to the template.
+
+* images folder
+
+  This folder is intended to be used to store image files referenced by
+  template document part elements. The Section reporter does not by default
+  use any images. Thus, this folder is empty by default. If your customized
+  template uses images, store the image files in this directory. To 
+  include an image in a customized document part template, add an img 
+  element where you want the image to appear, store the image file in this
+  folder, and uses a relative path to specify the image file location,
+  for example,
+
+  <img src="images/CompanyLogo.svg"/>
+
+* images/_imageprefix
+
+  This file specifies a prefix for the names of image files appended to
+  the FO output generated by the Section reporter. The FO output is used
+  to generate the PDF output of the Section reporter. This prefix is 
+  intended to prevent naming conflicts between names copied from the
+  files in the template images folder and names generated when images
+  are added to a section during report generation. The default value of
+  the prefix is "image". You should either avoid adding images to the
+  tamplate images folder whose name begins with the prefix or change the
+  value of the prefix. For example, either avoid adding an image file 
+  named "image1.svg" to the images folder or change the name of the prefix
+  to something other than "image".

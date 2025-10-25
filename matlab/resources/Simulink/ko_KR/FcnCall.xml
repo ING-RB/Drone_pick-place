@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="FcnCallConnMustBeSFcnOrCoreBlk">블록 ''{0}''의 함수 호출 포트가 함수 호출 신호를 생성하지 않는 ''{1}''에 연결되어 있습니다. 함수 호출 신호를 생성할 수 있는 블록에는 Stateflow 차트, 파라미터 '함수 호출 출력'이 선택된 루트 수준 Inport 블록, S-Function 등이 있습니다.</entry>
+    <entry key="FcnCallConnMustBeRootFcnCallInportBlk">블록 ''{0}''의 함수 호출 포트가 함수 호출 신호를 생성하지 않는 ''{1}''에 연결되어 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''OutputFunctionCall'', ''on'');&lt;/cmd&gt; &lt;txt&gt;Inport 블록 ''{2}''에서 '함수 호출 출력' 파라미터를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 Function-Call Generator, Stateflow 차트 또는 S-Function을 사용하여 함수 호출 신호를 생성하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="FcnCallConnMustBeFromPort0">Function-call port of block ''{0}'' must be connected to a block whose output port produces a function-call signal. Blocks that can produce function-call signals include Stateflow charts, root-level Inport blocks with parameter 'Output function call' selected, or S-functions (which must produce the signal out of port 1 only). ''{1}'' is not producing a function-call signal.</entry>
+    <entry key="InvFcnCallConn">유효하지 않은 "함수 호출" 연결입니다.</entry>
+    <entry key="InvFcnCallConnEnd_FcnCallSysEnd">Invalid connection ends with block ''{0}'' on &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer}.</entry>
+    <entry key="InvFcnCallConnStart_NonSFcnStart">Invalid connection starting from ''{0}'' (output port {1,number,integer}, element {2,number,integer}) is disallowed because it is not a valid function-call initiator. Blocks that can produce function-call signals include Stateflow charts, root-level Inport blocks, or S-functions.</entry>
+    <entry key="InvFcnCallConn_MultSys">Invalid function-call connection originating from function-call initiator ''{0}'' on &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{3}"&gt;output port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer}. The destination function-call block ''{3}'' resides within a nonvirtual subsystem. To fix the error, place the destination function-call block at (or above) the same level in the model hierarchy as the function-call initiator.</entry>
+    <entry key="InvFcnCallConn_NonFcnCallEnd">''{0}''으로 끝나는 연결이 유효하지 않습니다. 함수 호출 블록이 아니므로 이는 적절치 않습니다.</entry>
+    <entry key="InvFcnCallConn_SFcnStart">{1,number,integer}번 출력 포트의 요소 {2,number,integer}이(가) 함수 호출 신호를 출력하도록 구성되지 않았음에도, 함수 호출 개시자 ''{0}''이(가) 이 출력 포트 요소에서 함수 호출 블록을 호출하려고 시도하고 있습니다.</entry>
+    <entry key="InvFcnCallConn_Async">Invalid connection starts with S-function ''{0}'', which is making a function call on output port element {1,number,integer}. An asynchronous function call generator must drive a function call port of a subsystem or a Model block. </entry>
+    <entry key="InvFcnCallInport_Dst">Invalid function-call connection from Inport block ''{0}'' to function-call block ''{1}''. Cannot invoke a function-call from function-call initiator ''{2}'' that is outside nonvirtual subsystem ''{3}'' with the function-call block.</entry>
+    <entry key="InvFcnCallInport_VarDst">Inport 블록 ''{0}''에서 Variant Source 블록 또는 Variant Subsystem 아웃포트 ''{1}''(으)로의 함수 호출 연결이 유효하지 않습니다. 비가상 서브시스템 ''{3}'' 외부에 있는 함수 호출 개시자 ''{2}''에서 함수 호출 블록을 사용하여 함수 호출을 실행하는 기능은 지원되지 않습니다.</entry>
+    <entry key="InvFcnCallInport_Src">Invalid function-call connection originating from function-call initiator ''{0}'' on &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2,number,integer}"&gt;output port {1,number,integer}&lt;/sldiag&gt; element {2,number,integer}. The function-call initiator cannot invoke a function-call block inside a nonvirtual subsystem ''{3}'' via the subsystem input port {4,number,integer}.</entry>
+    <entry key="InvFcnCallConn_MdlRef_RefBld">Invalid function-call connection originating from function-call initiator ''{0}'' to port {1,number,integer} of Model block ''{2}''. The function-call initiator must reside at the same level in the model hierarchy as the Model block. If you want to keep the function-call initiator at a different level in the model hierarchy, change 'Function Packaging' for subsystem ''{3}'' to 'Inline'.</entry>
+    <entry key="InvFcnCallSigToStream">Unable to log signal that originates from &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' because logging function-call signals is not supported. To stop logging the signal, ensure that it is not marked for signal logging, connected to a To Workspace block or Record block, or connected to an Outport block if output logging is enabled.</entry>
+    <entry key="InvFcnCallSigToWks">To Workspace 블록 ''{0}''이(가) 함수 호출 신호에 연결되어 있습니다. To Workspace 블록은 함수 호출 신호를 지원하지 않습니다.</entry>
+    <entry key="InvVariantSrcInExportFcn">Variant Source block ''{0}'' with multiple input ports found in the root window of ''{1}''. Only single input port Variant Source blocks are supported in root window when the model is configured for export function.</entry>
+    <entry key="FcnCallGeneratorNumOfIterationsMustBeScalar">Invalid setting for Function-Call Generator block ''{0}''. &lt;sldiag objui="blockdlg" objparam="{1}"&gt;''Number of iterations''&lt;/sldiag&gt; must be scalar when &lt;sldiag objui="blockdlg" objparam="{2}"&gt;''Disallow wide output''&lt;/sldiag&gt; option is selected.</entry>
+    <entry key="FcnCallGeneratorNumOfIterationsMustBePositive">Invalid setting for Function-Call Generator block ''{0}''. Each element of &lt;sldiag objui="blockdlg" objparam="{1}"&gt;''Number of iterations''&lt;/sldiag&gt; parameter must be a positive integer.</entry>
+    <entry key="FcnCallGeneratorUnsupportedEnablePortDataType">데이터형 ''{0}''은(는) Function-Call Generator 블록 ''{1}''의 인에이블 입력 포트에 대해 지원되지 않습니다. 데이터형은 double형, single형, int8형, uint8형, int16형, uint16형, int32형, uint32형 또는 부울형이어야 합니다.</entry>
+    <entry key="RootOutportCannotAcceptFcnCall">Root-level Outport block ''{0}'' cannot accept a function-call signal.</entry>
+    <entry key="CannotMuxFcnCallRootInportWithOtherBlock">
+      Root-level Inport block ''{0}'' is configured to output a function-call signal. Therefore, its output cannot be combined with output of ''{1}'' through block ''{2}''.
+    </entry>
+    <entry key="NoFCSSCycles">함수 호출 사이클은 지원되지 않습니다. 함수 호출 사이클은 함수 호출 개시자 블록(예: Stateflow Chart 블록 또는 S-Function 블록)을 포함하는 블록이 동일한 블록의 다른 함수 호출 입력 포트를 직접 또는 간접적으로 구동하는 경우에 발생합니다.</entry>
+    <entry key="FCSSCycle1">블록 ''{0}''의 출력 포트 {1}이(가) 블록 ''{2}''의 입력 포트 {3}을(를) 구동합니다.</entry>
+    <entry key="FCSSCycle2">블록 ''{0}''의 출력 포트 {1} 및 블록 ''{2}''의 출력 포트 {3}이(가) 블록 ''{4}''의 입력 포트 {5}을(를) 구동합니다.</entry>
+    <entry key="FCSSCycle3">{0} 및 ''{1}''의 함수 호출 출력 포트가 블록 ''{2}''의 입력 포트 {3}을(를) 구동합니다.</entry>
+    <entry key="MessageCannotBeFcnCallInpArg">
+  유효하지 않은 메시지 신호가 ''{3}''의 &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;{2,number,integer}번 출력 포트&lt;/sldiag&gt;에서 ''{1}''의 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;로 전달되었습니다. 개시자에서 함수 호출 블록으로 메시지 신호를 전달하는 것은 허용되지 않습니다.
+</entry>
+    <entry key="MessageCannotBeFcnCallRetVal">
+  유효하지 않은 메시지 신호가 ''{3}''의 &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;{2,number,integer}번 출력 포트&lt;/sldiag&gt;에서 ''{1}''의 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;로 전달되었습니다. 함수 호출 블록에서 개시자로 메시지 신호를 다시 전달하는 것은 허용되지 않습니다.
+</entry>
+    <entry key="UnresolvableRootDataPortGroupInLoop">
+      Cannot simulate this model in accelerator mode. Consider simulating the model in normal mode, or changing 'Task priority' parameter of Asynchronous Task Specification blocks ''{1}'' to non-empty values.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''SimulationMode'', ''Normal'');&lt;/cmd&gt;
+            &lt;txt&gt;Change 'Simulation Mode' to 'Normal'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="NGSrcsForMdlBlkEventInitsInLoop">
+      A data dependency violation has been detected. When the Model block ''{0}'' has model event ports, its model initialize port has the highest priority, followed by model reset ports, model terminate port, and other function-call input ports. Therefore, the block ''{1}'' that drives one of model event ports should execute before ''{2}''. However, the data dependency between these two blocks violates this requirement. See &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''function_call_adaptation'')"&gt;help page&lt;/a&gt; for details.
+    </entry>
+    <entry key="NGSrcsForAsyncFcnCallInLoop">
+      A data dependency violation has been detected involving asynchronous function-call initiators and corresponding Rate Transition blocks, or subsystems or referenced models containing such Rate Transition blocks. See &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''rate_transitions_and_ansynchronous_blocks'')"&gt;help page&lt;/a&gt; for details.
+    </entry>
+    <entry key="NonGraphicalSrcsLoop">
+      A data dependency violation has been detected. See &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''function_call_adaptation'')"&gt;help page&lt;/a&gt; for details.
+    </entry>
+    <entry key="NGSrcForMultiRateInitsForExpFcnMdlRefInLoop">
+      When the Model block ''{1}'' references an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', its function-call initiators must execute rate-monotonically. This implies that ''{2}'' driving its &lt;sldiag objui="inport" objparam="{3}" objname="{1}"&gt;input port ''{3}''&lt;/sldiag&gt; in a faster rate must execute before ''{4}'' that drives &lt;sldiag objui="inport" objparam="{5}" objname="{1}"&gt;input port ''{5}''&lt;/sldiag&gt; with a slower rate.
+    </entry>
+    <entry key="NGSrcForSameRateInitsForIRTPortsInLoop">
+      Model 블록 ''{0}''에 하나 이상의 '모델 이벤트 시뮬레이션' 파라미터가 선택되어 있습니다. Model 블록에 모델 이벤트 포트가 있는 경우, 모델 초기화 포트가 우선 순위가 가장 높고 그다음은 모델 재설정 포트, 모델 종료 포트 및 다른 함수 호출 입력 포트 순입니다. 두 개시자가 동일한 태스크에서 실행되는 경우, 이는 참조된 모델의 &lt;sldiag objui="inport" objparam="{2}" objname="{0}"&gt;입력 포트 ''{2}''&lt;/sldiag&gt;을(를) 구동하는 ''{1}''이(가) &lt;sldiag objui="inport" objparam="{4}" objname="{0}"&gt;입력 포트 ''{4}''&lt;/sldiag&gt;을(를) 구동하는 ''{3}'' 보다 먼저 실행되어야 함을 의미합니다.
+    </entry>
+    <entry key="NGSrcForSameRateInitsForAdaptedMdlRefInLoop">
+      Model 블록 ''{0}''에 &lt;sldiag objui="blockdlg" objparam="ShowModelPeriodicEventPorts"&gt;'레이트 스케줄링'&lt;/sldiag&gt; 파라미터가 선택되어 있습니다. 따라서, 함수 호출 입력 포트들이 각각의 샘플 시간 또는 태스크 우선 순위의 순서대로 실행되어야 합니다. 두 개시자가 동일한 태스크에서 실행되는 경우, 이는 참조된 모델의 &lt;sldiag objui="inport" objparam="{2}" objname="{0}"&gt;입력 포트 ''{2}''&lt;/sldiag&gt;을(를) 구동하는 ''{1}''이(가) &lt;sldiag objui="inport" objparam="{4}" objname="{0}"&gt;입력 포트 ''{4}''&lt;/sldiag&gt;을(를) 구동하는 ''{3}'' 보다 먼저 실행되어야 함을 의미합니다.
+    </entry>
+    <entry key="TaskCausedNonGraphicalSrcsLoopSuggestion1">
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''Solver'', ''FixedStepDiscrete'');set_param_action(''{0}'', ''SolverMode'', ''MultiTasking'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider executing those function-call input ports in different tasks to fix this problem. One possible solution is to change model ''{0}'' to multitasking mode so that initiators with different sample times will execute in different tasks.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="TaskCausedNonGraphicalSrcsLoopSuggestion2">
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider specifying different sample times for those initiators so that they execute in different tasks when model ''{0}'' is in multitasking mode.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="NGSrcForMuxedFcnCallInLoop">
+      ''{2}'' is to sort before ''{3}'' because they both drive input port {0,number,integer} of function-call block ''{1}'' through Mux block ''{4}''. When a function-call block is called by multiple initiators in the same task with their function-call output signals muxed together, the signal are scheduled in the order they are connected to the Mux block.
+    </entry>
+    <entry key="NGSrcForMergeFcnCallInLoop">
+      ''{2}'' is to sort before ''{3}'' because they both drive input port {0,number,integer} of function-call block ''{1}'' through Merge block ''{4}''. When a function-call block is called by multiple initiators in the same task with their function-call output signals merged, the signal are scheduled in the order they are connected to the Merge block.
+    </entry>
+    <entry key="NGSrcForExpFcnMdlRootPortGroupInLoop">
+      Specification on function-call root-level Inport block ''{0}'' indicates it should execute before ''{1}'' in the export-function model. The following factors impact the relative scheduling order of function-call root-level Inport blocks in an export-function model: block priorities, sample times specified, and port numbers.
+    </entry>
+    <entry key="PeriodicFCSSMustBeCalledOnceWhenEnabled">함수 호출 개시자가 시간 스텝 {1}에 Function-Call Subsystem ''{0}''을(를) 여러 번 실행했습니다. 이 주기적 Function-Call Subsystem은 일단 활성화되면 종료(비활성화)될 때까지 주기적으로 호출되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;개시자가 Function-Call Subsystem을 주기적으로 호출하도록 조정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;또는 ''{2}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFcnCallMdlMustBeCalledOnceWhenEnabled">함수 호출 개시자가 시간 스텝 {1}에 함수 호출 Model 블록 ''{0}''을(를) 여러 번 실행했습니다. 이 주기적 함수 호출 블록은 일단 활성화되면 종료(비활성화)될 때까지 주기적으로 호출되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;개시자가 함수 호출 블록을 주기적으로 호출하도록 조정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 ''{2}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSMustNotBeCalledWhenDisabled">Function-call block ''{0}'' must not be executed during the same time step that it is deactivated (disabled) by its function-call initiator because it has a periodic sample time. The function-call initiator both executed and disabled the function-call block on time step ''{1}''.</entry>
+    <entry key="RootPeriodicFcnCallMustBeCalledOnceWhenEnabled">함수 호출 개시자가 시간 스텝 {1}에 함수 호출 블록 ''{0}''을(를) 여러 번 실행했습니다. 이 주기적 함수 호출 블록은 일단 활성화되면 종료(비활성화)될 때까지 {2}의 레이트로 주기적으로 호출되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;개시자가 함수 호출 블록을 주기적으로 호출하도록 조정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 ''{3}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="RootPeriodicFcnCallMustBeCalledOnceWhenEnabled2">함수 호출 개시자가 시간 스텝 {1}에 함수 호출 블록 ''{0}''을(를) 여러 번 실행했습니다. 이 주기적 함수 호출 블록은 일단 활성화되면 종료(비활성화)될 때까지 {2}의 레이트로 주기적으로 호출되어야 합니다. 개시자가 함수 호출 블록을 주기적으로 호출하도록 조정해 보십시오.</entry>
+    <entry key="RootPeriodicFcnCallMustBeCalledWhenEnabled2">함수 호출 개시자가 시간 스텝 {1}에 함수 호출 블록 ''{0}''을(를) 실행하지 않았습니다. 이 주기적 함수 호출 블록은 일단 활성화되면 종료(비활성화)될 때까지 {2}의 레이트로 주기적으로 호출되어야 합니다. 개시자가 함수 호출 블록을 주기적으로 호출하도록 조정해 보십시오.</entry>
+    <entry key="RootPeriodicFcnCallWithAbsTimeMustBeCalledWhenEnabled">함수 호출 개시자가 시간 스텝 {1}에 함수 호출 블록 ''{0}''을(를) 실행하지 않았습니다. 이 주기적 함수 호출 블록은 절대 시간 또는 경과 시간을 사용하는 ''{3}''을(를) 포함하며 일단 활성화되면 종료(비활성화)될 때까지 {2}의 레이트로 주기적으로 호출되어야 합니다. 개시자가 함수 호출 블록을 주기적으로 호출하도록 조정해 보십시오.</entry>
+    <entry key="PeriodicEventPortCannotBeGrounded">Model 블록 ''{0}''에서 ''레이트 스케줄링'' 파라미터가 선택되어 있고 ''레이트 스케줄링 방법''이 ''포트''로 설정되어 있으면, 함수 호출 입력 포트 ''{1}''은(는) 함수 호출 개시자에 의해 활성화될 경우 주기적으로 실행되어야 합니다. 이 포트가 주기적 샘플 시간을 갖기 때문입니다. 그러나 이 함수 호출 입력 포트는 활성 개시자에 연결되어 있지 않으므로 결코 호출되지 않습니다.</entry>
+    <entry key="PeriodicEventPortMustBeCalledOnceWhenEnabled">입력 포트 ''{0}''에 연결된 함수 호출 개시자가 시간 스텝 ''{2}''에 Model 블록 ''{1}''을(를) 여러 번 실행했습니다. Model 블록에서 ''레이트 스케줄링'' 파라미터가 선택되어 있고 ''레이트 스케줄링 방법''이 ''포트''로 설정되어 있으면, 이 블록은 함수 호출 개시자에 의해 일단 활성화되면 종료(비활성화)될 때까지 주기적으로 실행되어야 합니다.</entry>
+    <entry key="PeriodicEventPortMustBeCalledWhenEnabled">입력 포트 ''{0}''에 연결된 함수 호출 개시자가 시간 스텝 ''{2}''에 Model 블록 ''{1}''을(를) 실행하지 않았습니다. Model 블록에서 ''레이트 스케줄링'' 파라미터가 선택되어 있고 ''레이트 스케줄링 방법''이 ''포트''로 설정되어 있으면, 이 블록은 함수 호출 개시자에 의해 일단 활성화되면 종료(비활성화)될 때까지 주기적으로 실행되어야 합니다.</entry>
+    <entry key="AccExpFcnMdlPeriodicFcnCallMustBeCalledOnceWhenEnabled">
+  함수 호출 개시자 ''{2}''이(가) 시간 {3}에 Model 블록 ''{1}''의 함수 호출 입력 포트 ''{0}''을(를) 여러 번 실행했습니다. 참조된 모델 내부에서, Model 블록의 대응되는 입력 포트에 의해 구동되는 함수 호출 블록이 주기적 함수 호출 블록으로 구성되었습니다. 이 블록은 함수 호출 개시자에 의해 일단 활성화되면 종료(비활성화)될 때까지 주기적으로 실행되어야 합니다.
+</entry>
+    <entry key="AccExpFcnMdlPeriodFCWithAbsElpsTMustBeCalledWhenEnabled">
+      함수 호출 개시자 ''{2}''이(가) 시간 {3}에 Model 블록 ''{1}''의 함수 호출 입력 포트 ''{0}''을(를) 실행하지 않았습니다. Model 블록의 대응되는 입력 포트에 의해 구동되는 함수 호출 블록이 주기적 함수 호출 블록으로 구성되었습니다. 이 블록은 ''레이트 스케줄링'' 파라미터가 선택되어 있는 Model 블록에 해당되거나 절대 시간 또는 경과 시간을 사용하는 ''{4}''을(를) 포함하며 일단 활성화되면 종료(비활성화)될 때까지 주기적으로 실행되어야 합니다.
+    </entry>
+    <entry key="ExpFcnMdlMustNotBeEnabledDuringSim">The model referenced by Model block ''{0}'' has a root inport which outputs a function-call signal. The function-call subsystems driven by the root inport must be enabled at the start of simulation, and should not be disabled or re-enabled during the simulation. However, at time {1}, the function-call signal originating from output port {2,number,integer} of ''{3}'' attempts to enable the function via input port {4,number,integer} of the Model block.</entry>
+    <entry key="ExpFcnMdlMustNotBeDisabledDuringSim">Model 블록 ''{0}''에서 참조하는 모델에 함수 호출 신호를 출력하는 루트 인포트가 있습니다. 루트 인포트에 의해 구동되는 Function-Call Subsystem은 시뮬레이션 시작 시 활성화되어야 하며, 시뮬레이션 중에 비활성화되거나 다시 활성화되어서는 안 됩니다. 그러나 시간 {1}에, ''{3}''의 {2,number,integer}번 출력 포트에서 발생하는 함수 호출 신호가 Model 블록의 {4,number,integer}번 입력 포트를 통해 함수를 비활성화려고 합니다.</entry>
+    <entry key="ExplicitFCSSCalledWhenNotEnabled">Function-call initiator ''{0}'' attempted to execute function-call subsystem ''{1}'' while it was inactive (disabled) on time step ''{2}''. The function-call subsystem must be activated by a function-call initiator before execution can occur.</entry>
+    <entry key="ExplicitFCSSDisabledWhenDisabled">함수 호출 개시자 ''{0}''이(가) 시간 스텝 ''{2}''에 Function-Call Subsystem ''{1}''을(를) 다시 비활성화하려고 했습니다. 이 Function-Call Subsystem은 동일한 함수 호출 개시자에 의해 다시 비활성화될 수 없습니다. 함수 호출 개시자의 구현에 결함이 있기 때문입니다.</entry>
+    <entry key="ExplicitFCSSEnabledWhenEnabled">함수 호출 개시자 ''{0}''이(가) 시간 스텝 ''{2}''에 Function-Call Subsystem ''{1}''을(를) 다시 활성화하려고 했습니다. 이 Function-Call Subsystem은 동일한 함수 호출 개시자에 의해 다시 활성화될 수 없습니다. 함수 호출 개시자의 구현에 결함이 있기 때문입니다.</entry>
+    <entry key="SfcnNotAdvCallingDisable">함수 호출 개시자 ''{0}''은(는) ssDisableSystemWithTid를 호출할 수 없습니다. 이 개시자가 ssSetExplicitFCSSCtrl을 통해 그러한 작업을 수행할 수 있도록 구성되지 않았기 때문입니다.</entry>
+    <entry key="SfcnNotAdvCallingEnable">The function-call initiator ''{0}'' may not call ssEnableSystemWithTid since it has not been configured to be capable of such via ssSetExplicitFCSSCtrl.</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredFCSS">Function-Call Subsystem ''{0}''은(는) 주기적으로 실행되도록 구성되어 있습니다. 따라서, Triggered Function-Call Subsystem 또는 모델 ''{1}'' 내부에 배치할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;''{2}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;또는 ''{3}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredFCSS2">함수 호출 블록 ''{0}''은(는) 주기적으로 실행되도록 구성되어 있습니다. 따라서, Triggered Function-Call Subsystem 또는 모델 ''{1}'' 내부에 배치할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{2}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;또는 ''{3}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredSS">Function-Call Subsystem ''{0}''은(는) 주기적으로 실행되도록 구성되어 있습니다. 따라서, Triggered Subsystem ''{1}'' 내부에 배치할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;''{2}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredSS2">함수 호출 블록 ''{0}''은(는) 주기적으로 실행되도록 구성되어 있습니다. 따라서, Triggered Subsystem ''{1}'' 내부에 배치할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{2}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'에서 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCallerMustHaveDiscreteTs">
+    Function-call subsystem ''{0}'' is configured to execute periodically. Therefore, it must be called by an initiator with a discrete sample time.
+    </entry>
+    <entry key="InvRootLvlPeriodicFcnCallPort">Trigger Port 블록 ''{0}''이(가) 대화 상자 파라미터 '샘플 시간 유형'을 '주기적'으로 지정했습니다. 이 블록은 모델의 루트 수준에 배치되어 있으므로 파라미터 '샘플 시간'을 -1로 설정할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;이산 샘플 시간을 지정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;또는 ''{0}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InvRootInportFcnCallMultiIteration">
+    Since the function-call root-level Inport block ''{0}'' has specified a discrete sample time ''{1}'', and none of function-call blocks it directly drives is set up to execute periodically, executing the function-call multiple times at a given sample time is not supported. However, the workspace variable specified as the external input has specified the block will invoke function-call multiple times at time ''{2}''. Consider either updating the workspace variable so that at any time step the function-call will be invoked only once, or set up any function-call subsystem this root-level Inport block directly drives to execute periodically, by specifying dialog parameter 'Sample time type' to 'periodic' on the Trigger Port block inside the function-call subsystem.
+    </entry>
+    <entry key="AdaptedModelInvalidExecOrder1">
+    When the Model block ''{0}'' has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', all its function-call input ports must be invoked in the sequence of the task priorities of specified rates. Function-call &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; was specified a discrete rate {2}, which has a higher priority than that of discrete rate {4} specified for function-call input port ''{3}''. However, at time {5}, function-call &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;input port ''{3}''&lt;/sldiag&gt; was invoked before ''{1}''.
+    </entry>
+    <entry key="AdaptedModelInvalidExecOrder2">
+    When the Model block ''{0}'' has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', all its function-call input ports must be invoked in the sequence of the specified task priorities. Function-call &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; was specified a task priority {2,number,integer} via an Asynchronous Task Specification block inside the referenced model, which has a higher priority than the task priority {4,number,integer} specified for function-call input port ''{3}''. However, at time {5}, function-call &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;input port ''{3}''&lt;/sldiag&gt; was invoked before ''{1}''.
+    </entry>
+    <entry key="InvalidExecOrderForFcnsAdaptedToPartitions">
+Model 블록 ''{0}''이(가) '일정 편집기'를 통해 레이트를 스케줄링할 때 비동기 함수 호출에 대응되는 모든 분할은 지정된 태스크 우선 순위 순으로 호출되어야 합니다. 참조된 모델 내부의 Asynchronous Task Specification 블록을 통해, 함수 호출 &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt;에 태스크 우선 순위 {2,number,integer}이(가) 지정되었습니다. 이 포트는 태스크 우선 순위 {4,number,integer}을(를) 갖는 함수 호출 &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;입력 포트 ''{3}''&lt;/sldiag&gt;보다 우선 순위가 더 높습니다. 그러나 시간 {5}에 분할 ''{6}''이(가) ''{7}''보다 먼저 호출되었습니다.
+</entry>
+    <entry key="AdaptedModelInvalidExecOrder3">
+    When the Model block ''{0}'' has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', all its function-call input ports must be invoked in the sequence of the specified task priorities. Function-call &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; was specified a task priority {2,number,integer} via an Asynchronous Task Specification block inside the referenced model, which has a higher priority than the discrete rate {4} specified for function-call input port ''{3}''. However, at time {5}, function-call &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;input port ''{3}''&lt;/sldiag&gt; was invoked before ''{1}''.
+    </entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup">A data dependency violation is detected involving at least one function-call block driven by a root-level Inport block that outputs a function-call signal. In model ''{0}'', all blocks that are not driven by root-level Inport blocks producing function-call signals must execute either before or after the corresponding function-call invocations. Details of this data dependency violation are listed below:</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup1">블록 ''{0}''은(는) 루트 수준 Inport 블록 ''{2}''에 의해 구동되는 함수 호출 블록 ''{1}'' 다음에 실행되어야 합니다.</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup1a">블록 ''{0}''은(는) 루트 수준 Inport 블록 ''{1}'' 다음에 실행되어야 합니다.</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup2">블록 ''{0}''은(는) 루트 수준 Inport 블록 ''{2}''에 의해 구동되는 함수 호출 블록 ''{1}''보다 먼저 실행되어야 합니다.</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup2a">루트 수준 Inport 블록 ''{1}''에 의해 구동되는 함수 호출 블록 ''{0}''은(는) 다른 루트 수준 Inport 블록 ''{3}''에 의해 구동되는 함수 호출 블록 ''{2}''보다 먼저 실행되어야 합니다.</entry>
+    <entry key="DataDepViolationInvolvingFcnCallPortGroups">A data dependency loop is detected involving at least two function-call blocks driven by root-level Inport blocks producing function-call signals. Details of this loop are listed below:</entry>
+    <entry key="DataDepViolationInvolvingFcnCallPortGroup">루트 수준 Inport 블록 ''{1}''에 의해 구동되는 함수 호출 블록 ''{0}''이(가) 다른 루트 수준 Inport 블록 ''{3}''에 의해 구동되는 함수 호출 블록 ''{2}''의 출력을 읽어와야 합니다. 그러나 후자의 함수 호출 블록이 전자의 함수 호출 블록의 출력에서 직접 또는 간접적으로 자신의 출력을 계산합니다.</entry>
+    <entry key="DataDepViolationInvolvingFcnCallPortGroup2">루트 수준 Inport 블록 ''{1}''에 의해 구동되는 함수 호출 블록 ''{0}''은(는) 다른 루트 수준 Inport 블록 ''{2}'' 다음에 실행되어야 합니다. 그러나 후자가 전자의 출력에서 직접 또는 간접적으로 자신의 출력을 계산하는 함수 호출 블록을 호출합니다.</entry>
+    <entry key="NonInlinedSFcnCannotCallModelBlkWithFcnCallInput">Code generation is not supported for the non-inlined S-function ''{0}'' that is invoking a function-call input at input port {1,number,integer} of the Model block ''{2}''. Consider converting the non-inlined S-function ''{3}'' to an inlined S-function by providing a corresponding TLC implementation.</entry>
+    <entry key="ExpFcnMdlInvUnionRateWithGroundSrc">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''을(를) 모델 참조로 사용할 수 없습니다. 루트 수준 Outport 블록 ''{1}''은(는) 접지된 소스를 여러 개의 내보낸 함수, Initialize Function, Reset Function 또는 Terminate Function의 신호와 혼합해서는 안 됩니다.
+    </entry>
+    <entry key="BranchedFunctionCallCannotProduceRetVal">A function-call signal, originating at initiator ''{0}'', is branched incorrectly. The function-call block ''{1}'', which is part of this branched function-call network, violates the following requirement: the block output signals may not be fed back directly to the initiator. Consider inserting a block to provide a delay on this feedback signal.</entry>
+    <entry key="BranchedFunctionCallInvalidBranching">개시자 ''{2}''의 &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;{1,number,integer}번 출력 포트&lt;/sldiag&gt;의 요소 {0,number,integer}에서 발생하는 함수 호출 신호가 잘못 분기되었습니다. Function-Call Split 블록을 사용하여, ''{3}''에 연결된 함수 호출 신호 분기를 다시 생성해야 합니다.</entry>
+    <entry key="BranchedFunctionCallInvalidCommonInitiatorCallingFCSS">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call signal is fed to element {2,number,integer} and element {3,number,integer} of &lt;sldiag objui="inport" objparam="{4}" objname="{5}"&gt;input port {4}&lt;/sldiag&gt; of block ''{5}''. To use multiple initiators to call a function-call block, all function-call signals invoking the block must be unique.</entry>
+    <entry key="BranchedFunctionCallInvalidCommonInitiatorCallingNonSS">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call signal is fed to element {2,number,integer} and element {3,number,integer} of &lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;input port {4,number,integer}&lt;/sldiag&gt; of block ''{5}''. To use multiple initiators to call a function-call block, all function-call signals invoking the block must be unique.</entry>
+    <entry key="BranchedFunctionCallInvalidCompInfo">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call blocks ''{2}'' and ''{3}'' violate the requirement that all function-call blocks within a branched function-call network must reside at the same nonvirtual hierarchical level of the model.</entry>
+    <entry key="BranchedFunctionCallInvalidFcnCallBlock">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. An S-function block ''{2}'' is supported in a branched function-call network, only when the model simulates in normal mode. Consider changing the simulation mode of this model to 'Normal', or using the following workaround: Insert a function-call subsystem with a function-call initiator such as a Stateflow chart inside it. Change the connections such that the original function-call signal from ''{3}'' is connected to the function-call input port of the inserted function-call subsystem, and let the function-call initiator inside the inserted function-call subsystem drive the S-function block.</entry>
+    <entry key="BranchedFunctionCallInvalideMultipleCaller">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call block ''{2}'' is invoked by multiple initiators. Each function-call block within a branched function-call network must be invoked by a unique initiator.</entry>
+    <entry key="BranchedFunctionCallInvalidWideFcnCall">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function call initiator ''{2}'' emits a function-call signal with multiple elements. All function-call initiators within a branched function-call network must emit scalar function-call signals.</entry>
+    <entry key="NonInlinedSFcnCannotInvokeBranchedFcnCall">Code generation is not supported for the non-inlined S-function ''{0}'' that is invoking a branched function-call signal. Consider converting the non-inlined S-function to an inlined S-function by providing a corresponding TLC implementation.</entry>
+    <entry key="FcnCallLatchDisallowVarSizeInput">Function-Call Feedback Latch 블록 ''{0}''(으)로 들어오는 입력 신호는 가변 크기 신호이거나 가변 크기 신호가 포함된 버스 신호입니다. 이 블록은 가변 크기 신호 입력을 지원하지 않습니다.</entry>
+    <entry key="FcnCallLatchInvalidDstBlock">The output of the Function-Call Feedback Latch block ''{0}'' is connected to an invalid destination ''{1}''. The output of a Function-Call Feedback Latch block must be connected to the data input port of a function-call block.</entry>
+    <entry key="FcnCallLatchInvalidDstSFcn">The output of the Function-Call Feedback Latch block ''{0}'' is connected to an invalid destination ''{1}''. Connecting the data input port of an S-function block to the output of a Function-Call Feedback Latch block is allowed only when the model simulates in normal mode.</entry>
+    <entry key="FcnCallLatchInvalidDstPort">Function-Call Feedback Latch 블록 ''{0}''의 출력이 블록 ''{2}''의 유효하지 않은 대상 포트 {1,number,integer}에 연결되어 있습니다. Function-Call Feedback Latch 블록의 출력은 Function-Call Subsystem 또는 모델의 데이터 입력 포트에 연결되어야 합니다.</entry>
+    <entry key="FcnCallLatchInvalidDstPortOfMdlBlk">Function-Call Feedback Latch 블록 ''{0}''의 출력을 Model 블록 ''{2}''의 &lt;sldiag objui="inport" objparam="{1}" objname="{2}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt;에 연결할 수 없습니다. 이 데이터 입력 포트가 ''{2}''의 어떤 함수 호출 입력 포트에도 연결되어 있지 않기 때문입니다.</entry>
+    <entry key="FcnCallLatchInvalidDstPortOfExpSFcnBlk">함수 호출을 내보내도록 구성된 S-Function 블록 ''{2}''의 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt;에 Function-Call Feedback Latch 블록 ''{0}''의 출력을 연결할 수 없습니다. 이 S-Function 블록에 두 개 이상의 함수 호출 입력 포트가 있기 때문입니다.</entry>
+    <entry key="FcnCallLatchInvalidDstPortOfFcnCallCoreBlk">함수 호출을 내보내도록 구성된 블록 ''{2}''의 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt;에 Function-Call Feedback Latch 블록 ''{0}''의 출력을 연결할 수 없습니다. 이 블록에 두 개 이상의 함수 호출 입력 포트가 있기 때문입니다.</entry>
+    <entry key="FcnCallLatchInvalidDstWithMultiCaller">Function-Call Feedback Latch 블록 ''{0}''의 출력을 비 스칼라 함수 호출 트리거 신호를 가진 Function-Call Subsystem ''{1}''에 연결할 수 없습니다. 입력 신호를 래치하려면 이 대신 해당 Inport 블록에서 'Function-Call Subsystem 출력의 피드백 신호에 대한 입력 래치' 옵션을 선택하십시오. </entry>
+    <entry key="FcnCallLatchInvalidMultiDsts">Function-Call Feedback Latch 블록 ''{0}''의 출력이 여러 대상에 연결되어 있습니다. Function-Call Feedback Latch 블록의 출력은 Function-Call Subsystem 또는 모델의 정확히 하나의 데이터 입력 포트에 연결되어야 합니다.</entry>
+    <entry key="FcnCallLatchInvalidMultiDstsDetail">블록 ''{1}''의 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;가 Function-Call Feedback Latch 블록 ''{2}''의 출력에 연결되어 있습니다.</entry>
+    <entry key="FcnCallLatchInvalidMultiDstBlocks">The output of Function-Call Feedback Latch block ''{0}'' is connected to multiple destination blocks. The output of a Function-Call Feedback Latch block must be connected to one function-call subsystem or model block.</entry>
+    <entry key="FcnCallLatchInvalidMultiDstsBlocksDetail"> block ''{0}''  and block ''{1}'' are connected to the output of Function-Call Feedback Latch block ''{2}''.</entry>
+    <entry key="FcnCallLatchInvalidMultiDstPortGroup">Function-Call Feedback Latch 블록 ''{0}''의 출력이 여러 내보낸 함수를 구동하는 Model 블록 ''{2}''의 입력 포트 ''{1}''에 연결되어 있습니다. Function-Call Feedback Latch 블록의 출력이 최대 하나의 내보낸 함수를 구동하는 포트에 연결되었을 수 있습니다.</entry>
+    <entry key="FcnCallLatchInvalidDst">Function-Call Feedback Latch 블록 ''{0}''의 출력은 Function-Call Subsystem 또는 모델의 데이터 입력에 연결되어야 합니다.</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal1a">Function-Call Feedback Latch 블록 ''{0}''이(가) 함수 호출 블록과 관련된 피드백 신호에 연결되어 있지 않습니다. 소스 블록 ''{1}''이(가) 분기된 함수 호출 네트워크에서 대상 블록 ''{2}''보다 먼저 실행되도록 스케줄링되어 있기 때문입니다. Function-Call Feedback Latch 블록을 제거해 보십시오.</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal1b">Function-Call Feedback Latch 블록 ''{0}''이(가) 함수 호출 블록과 관련된 피드백 신호에 연결되어 있지 않습니다. 소스 블록 ''{1}''이(가) 대상 블록 ''{2}''의 함수적 부모이므로 소스 블록이 대상 블록보다 먼저 실행되기 때문입니다. Function-Call Feedback Latch 블록을 제거해 보십시오.</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal2">Function-Call Feedback Latch 블록 ''{0}''이(가) 함수 호출 블록과 관련된 피드백 신호에 연결되어 있지 않습니다. 소스 블록 ''{1}'' 및 대상 블록 ''{2}''이(가) 공통 개시자의 함수 호출 신호로 구동되지 않습니다. Function-Call Feedback Latch 블록을 제거해 보십시오.</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal3">The Function-Call Feedback Latch block ''{0}'' is not connected to a feedback signal involving function-call blocks. Its input is not from a function-call block. Consider removing the Function-Call Feedback Latch block.</entry>
+    <entry key="FcnCallLatchRedundantSSInportLatched">''{2}''의 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt; 앞에 있는 Function-Call Feedback Latch 블록 ''{0}''은(는) 불필요합니다. ''{3}''에서 대화 상자 파라미터 'Function-Call Subsystem 출력의 피드백 신호에 대한 입력 래치'도 선택되어 있기 때문입니다. Function-Call Feedback Latch 블록을 제거하거나 이 대화 상자 파라미터의 선택을 해제해 보십시오.</entry>
+    <entry key="FcnCallLatchRedundantSimulinkFcnLatched">Simulink 함수 ''{2}''의 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt; 앞에 있는 Function-Call Feedback Latch 블록 ''{0}''은(는) 불필요합니다. Simulink Function 블록이 이미 모든 입력 신호를 래치했기 때문입니다. Function-Call Feedback Latch 블록을 제거해 보십시오.</entry>
+    <entry key="FcnCallLatchRedundantSimulinkFcnInMdlRefLatched">Function-Call Feedback Latch 블록 ''{0}''은(는) 불필요합니다. 이 블록은 참조된 모델 내부에서 Simulink 함수 ''{3}''을(를) 갖는 Model 블록 ''{2}''의 &lt;sldiag objui="inport" objparam="{1}" objname="{2}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt; 앞에 있으며, Simulink Function 블록이 이미 모든 입력 신호를 래치했기 때문입니다. Function-Call Feedback Latch 블록을 제거해 보십시오.</entry>
+    <entry key="FcnCallLatchRedundantMdlRefInportLatched">''{2}''의 &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt; 앞에 있는 Function-Call Feedback Latch 블록 ''{0}''은(는) 불필요합니다. 참조된 모델 내부에 있는 루트 수준 Inport 블록에서 대화 상자 파라미터 'Function-Call Subsystem 출력의 피드백 신호에 대한 입력 래치'도 선택되어 있기 때문입니다. Function-Call Feedback Latch 블록을 제거하거나 이 대화 상자 파라미터의 선택을 해제해 보십시오.</entry>
+    <entry key="FcnCallLatchInvalidWideFcnCall">Function-Call Feedback Latch 블록 ''{0}''의 출력을 함수 호출 블록 ''{1}''에 연결할 수 없습니다. 이 구성은 올바르지 않습니다. 여러 요소로 된 함수 호출 신호를 내보내는 함수 호출 개시자 ''{2}''에 의해 ''{1}''이(가) 호출되기 때문입니다. Function-Call Feedback Latch 블록의 출력을 함수 호출 블록에 연결할 때는 함수 호출 블록이 스칼라 함수 호출 신호를 내보내는 함수 호출 개시자에 의해 호출되어야 합니다.</entry>
+    <entry key="FcnCallLatchCannotWorkWithNonInlinedSFcn">Code generation is not supported for the non-inlined S-function ''{0}'' that is invoking a function-call block that is used in combination with Function-Call Feedback Latch block ''{1}''. Consider converting the non-inlined S-function ''{2}'' to an inlined S-function by providing a corresponding TLC implementation.</entry>
+    <entry key="FcnCallSplitBlkHasInvalidSrc">The Function-Call Split block ''{0}'' must be driven by a function-call initiator. However, the input of this block comes from &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of block ''{2}'', which is not a function-call signal.</entry>
+    <entry key="FcnCallSplitDisallowVarSizeInput">The input signal to the Function-Call Split ''{0}'' is a variable-sized signal. This block does not support variable-sized signal inputs.</entry>
+    <entry key="FcnCallSplitDisallowsCompositeDims">Function-Call Split ''{0}''에 대한 입력에 요소가 여러 개 포함되어 있습니다. 이 블록은 스칼라 함수 호출 입력만 지원합니다.</entry>
+    <entry key="BlockRunFcnCallError">
+  함수 호출을 실행하는 중 블록 ''{0}''에 오류가 발생했습니다.\n{1}
+</entry>
+    <entry key="BlockDisableFcnCallError">
+  함수 호출을 비활성화하는 중 블록 ''{0}''에 오류가 발생했습니다.\n{1}
+</entry>
+    <entry key="BlockEnableFcnCallError">
+  함수 호출을 활성화하는 중 블록 ''{0}''에 오류가 발생했습니다.\n{1}
+</entry>
+    <entry key="InvalidMdlInitFcnCall">시간 {1}에 Model 블록 ''{0}''의 모델 초기화 포트에서 함수 호출을 실행하는 중 오류가 발생했습니다. Model 블록을 다시 초기화하려면 먼저 모델 종료 포트를 호출해야 합니다. Simulink에서 모델 종료 이벤트를 자동으로 처리할 수 있게 모델 종료 포트를 숨길 수도 있습니다.</entry>
+    <entry key="InvalidMdlResetFcnCall">시간 {2}에 Model 블록 ''{1}''의 모델 재설정 포트 ''{0}''에서 함수 호출을 실행하는 중 오류가 발생했습니다. 다른 함수 호출이 실행되기 전에 먼저 모델 초기화 포트를 통해 Model 블록을 초기화해야 합니다. Simulink에서 모델 초기화 이벤트를 자동으로 처리할 수 있게 모델 초기화 포트를 숨길 수도 있습니다.</entry>
+    <entry key="InvalidMdlTermFcnCall">시간 {1}에 Model 블록 ''{0}''의 모델 종료 포트에서 함수 호출을 실행하는 중 오류가 발생했습니다. 함수 호출이 실행되기 전에 먼저 모델 초기화 포트를 통해 Model 블록을 초기화해야 합니다. Simulink에서 모델 초기화 이벤트를 자동으로 처리할 수 있게 모델 초기화 포트를 숨길 수도 있습니다.</entry>
+    <entry key="InvalidNonMdlEventFcnCall">시간 {2}에 Model 블록 ''{1}''의 &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;입력 포트 ''{0}''&lt;/sldiag&gt;에서 함수 호출을 실행하는 중 오류가 발생했습니다. 함수 호출이 실행되기 전에 먼저 모델 초기화 포트를 통해 Model 블록을 초기화해야 합니다. 또한 Model 블록은 모델 종료 포트를 통해 종료된 후에는 함수 호출에 의해 호출할 수 없습니다. Simulink에서 모델 초기화 이벤트와 모델 종료 이벤트를 자동으로 처리할 수 있게 모델 초기화 포트와 모델 종료 포트를 숨길 수도 있습니다.</entry>
+    <entry key="InvalidNonMdlEventSimulinkFcn">Error executing Simulink function ''{0}'' inside the model referenced by Model block ''{1}'' at time {2}. The Model block must be initialized via the model initialize port before any function-call can be executed. Also, the Model block cannot be called by any function-call after it has been terminated via the model terminate port. You can choose to hide the model initialize and terminate ports to allow Simulink to handle the model initialize and terminate events automatically.</entry>
+    <entry key="FcnCallPortMustBeDrivenByAsyncFcnCaller">The function call input port ''{0}'' of model block ''{1}'' must be driven by an asynchronous function call initiator.</entry>
+    <entry key="FcnCallPortCannotBeDrivenByAsyncFcnCaller">The function call input port ''{0}'' of model block ''{1}'' cannot be driven by an asynchronous function call initiator.</entry>
+    <entry key="NoRTWForRootFcnCallInport">모델 ''{0}''에 함수 호출 신호를 출력하는 루트 수준 Inport 블록 ''{1}''이(가) 포함되어 있으므로, 이 모델에 대해서는 독립형 코드 생성이 지원되지 않습니다.</entry>
+    <entry key="NoVarStepSolverForRootFcnCall">
+      모델 ''{0}''에는 함수 호출 신호를 출력하는 루트 수준 Inport 블록 ''{1}''이(가) 포함되어 있으므로 가변 스텝 솔버는 이 모델에 대해 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SolverParameterFixedStepFix"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'Solver', 'FixedStepDiscrete');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 &lt;sldiag objui="configset" objparam="SolverType" objname="{0}"&gt;''솔버 선택'' &gt; ''유형''&lt;/sldiag&gt;을 ''고정 스텝''으로 설정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="NoVarStepSolverForSimulinkFunction">
+      Variable-step solver is not supported for model ''{0}'' because the model exports a Simulink function.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param_action(''{0}'', 'Solver', 'FixedStepDiscrete');&lt;/cmd&gt;
+          &lt;txt&gt;Consider setting the configuration parameter &lt;sldiag objui="configset" objparam="SolverType" objname="{0}"&gt;''Solver selection'' &gt; ''Type''&lt;/sldiag&gt; to ''Fixed-step''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="NoVarStepSolverForSWArchModel">
+      가변 스텝 솔버는 소프트웨어 아키텍처 모델 ''{0}''에서 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'Solver', 'FixedStepDiscrete');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 &lt;sldiag objui="configset" objparam="SolverType" objname="{0}"&gt;''솔버 선택'' &gt; ''유형''&lt;/sldiag&gt;을 ''고정 스텝''으로 설정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="NoModelRefMinAlgLoopForSimulinkFunction">Simulink 함수를 내보내는 모델 ''{0}''의 구성 파라미터 대화 상자의 모델 참조 창에서 '인위적 대수 루프 발생 최소화' 옵션에 유효하지 않은 설정입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'ModelReferenceMinAlgLoopOccurrences', 'off');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 옵션 '인위적 대수 루프 발생 최소화'의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="NoModelRefMinAlgLoopForRootFcnCallInport">함수 호출 신호를 출력하는 루트 수준 Inport 블록 ''{1}''을(를) 포함하는 모델 ''{0}''의 구성 파라미터 대화 상자의 모델 참조 창에서 '인위적 대수 루프 발생 최소화' 옵션에 유효하지 않은 설정입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'ModelReferenceMinAlgLoopOccurrences', 'off');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 옵션 '인위적 대수 루프 발생 최소화'의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="NoModelRefMinAlgLoopForSWArchMdl">소프트웨어 아키텍처 모델 ''{0}''의 구성 파라미터 대화 상자의 모델 참조 창에서 '인위적 대수 루프 발생 최소화' 옵션에 유효하지 않은 설정입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'ModelReferenceMinAlgLoopOccurrences', 'off');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 옵션 '인위적 대수 루프 발생 최소화'의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="SWArchModelRefMustBeFcnCallAtRoot">Unable to compile model ''{0}''. Trigger type of root-level trigger ports in software architectures must be function-call.</entry>
+    <entry key="MultiInstanceFcnCallInport">''Configuration Parameters &gt; Model Referencing &gt; Total number of instances allowed per top model'' is set to ''Multiple'' for model ''{0}''. Block ''{1}'' of this model is a root-level Inport block that outputs a function-call signal. A model that contains any function-call root-level Inport blocks cannot be configured to be referenced multiple times.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'',''ModelReferenceNumInstancesAllowed'',''Single'')&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the configuration parameter &lt;sldiag objui="configset" objparam="ModelReferenceNumInstancesAllowed" objname="{0}"&gt;Total number of instances allowed per top model&lt;/sldiag&gt; to ''One''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="InvFcnCallerBlockInAlgLoop">Detected an algebraic loop containing a Function Caller block ''{0}''. Function Caller blocks are not allowed in algebraic loops.</entry>
+    <entry key="InvFcnCallMdlRefInAlgLoop">Detected an algebraic loop containing a Model block ''{0}'' (referencing model ''{1}'') that has at least one function-call input signal. Such Model blocks are not allowed in algebraic loops.</entry>
+    <entry key="FcnCallModelRefInvDiagSettings">모델 ''{0}''에 대한 현재 진단 설정이 유효하지 않습니다. 모델에 Model 블록 ''{1}''이(가) 포함되어 있고, 참조된 모델 ''{2}''에 함수 호출 신호를 출력하는 루트 수준 Inport 블록이 포함되어 있기 때문입니다. 자세한 내용은 아래에 보고된 오류를 참조하십시오.</entry>
+    <entry key="FcnCallRootInportInvDiagSettings">The current diagnostic settings for model ''{0}'' are not valid because the model contains root-level Inport block ''{1}'' that outputs a function-call signal. See errors reported below for details.</entry>
+    <entry key="FcnCallRootInvMultiTaskRateTransMsg">모델 ''{0}''에 대해 구성 파라미터 대화 상자의 샘플 시간 진단 창에서 &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg" objname="{0}"&gt;''멀티태스크 데이터 전송''&lt;/sldiag&gt; 옵션이 ''오류''로 설정되지 않았습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''MultiTaskRateTransMsg'', ''error'');&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg" objname="{0}"&gt;''멀티태스크 데이터 전송''&lt;/sldiag&gt;을 ''오류''로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+
+</entry>
+    <entry key="FcnCallRootInvMultiTaskCondExecSysMsg">모델 ''{0}''에 대해 구성 파라미터 대화 상자의 샘플 시간 진단 창에서 ''멀티태스크 조건부 실행 서브시스템'' 옵션이 ''오류''로 설정되지 않았습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''MultiTaskCondExecSysMsg'', ''error'');&lt;/cmd&gt; &lt;txt&gt;''{0}''에서 ''멀티태스크 조건부 실행 서브시스템''을 ''오류''로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+
+</entry>
+    <entry key="FcnCallRootNeedSimplifiedInitMode">모델 ''{0}''은(는) 단순 방식 초기화 모드여야 합니다. 자세한 내용은 &lt;a href="matlab:helpview([docroot '/simulink/ug/simplified-initialization-mode.html'])"&gt;단순 방식 초기화 모드&lt;/a&gt;를 참조하십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''UnderspecifiedInitializationDetection'',''Simplified'')&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 대화 상자의 진단 페이지에서 파라미터 &lt;sldiag objui="configset" objparam="UnderspecifiedInitializationDetection"&gt;'과소 지정된 초기화 감지'&lt;/sldiag&gt;를 '단순 방식'으로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvalidAsyncLoggingForExportFcnMdl1">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging root-level Outport blocks or signals in Dataset format is not supported, when the Outport block or the signal is driven by function-call root-level Inport block with inherited sample time (-1). Consider either specifying a discrete sample time on ''{1}'', or changing the 'Format' parameter in 'Configuration Parameters' &gt; 'Data Import/Export' &gt; 'Save to workspace' to options other than 'Dataset'.
+    </entry>
+    <entry key="InvalidAsyncLoggingForExportFcnMdl2">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging root-level Outport blocks or signals in Dataset format is not supported, when the Outport block or the signal is driven by Simulink function ''{1}''. Consider changing the 'Format' parameter in 'Configuration Parameters' &gt; 'Data Import/Export' &gt; 'Save to workspace' to options other than 'Dataset'.
+    </entry>
+    <entry key="InvPartialSrcForMuxInExpFcnMdl">
+      Invalid partial element selection from &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;output port {2,number,integer}&lt;/sldiag&gt; of ''{3}'' to &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of Mux block ''{0}''. Any input signal of a Mux block feeding root-level Outport blocks in the export-function model must include all elements of the source output port. Consider removing any element selection block such as Selector or Demux blocks on the signal path.
+    </entry>
+    <entry key="InvSameSrcsForMuxInExpFcnMdl">
+  ''{4}''의 &lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{4}"&gt;{3,number,integer}번 출력 포트&lt;/sldiag&gt;에서 Mux 블록 ''{0}''의 {1,number,integer}번 및 {2,number,integer}번 입력 포트로의 연결이 유효하지 않습니다. 함수 내보내기 모델에서 루트 수준 Outport 블록에 신호를 전달하는 Mux 블록의 입력 신호는 다른 소스 출력 포트에서 발생하는 것이어야 합니다.
+</entry>
+    <entry key="InvStorageClassForMuxInExpFcnMdl">
+  Mux 블록이 함수 내보내기 모델의 루트 수준 Outport 블록에 연결된 경우, Mux 블록 ''{0}''의 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt;로 들어오는 입력 신호는 자동이 아닌 스토리지 클래스를 가질 수 없습니다.
+</entry>
+    <entry key="InvalidCallingSequenceForExportFcnMdl">
+      Model block ''{0}'' requires that function-call input port ''{1}'' execute before function-call input port ''{2}''. However, this execution order was violated at time {3}.
+      
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action type="fixit"&gt;
+                  &lt;cmd&gt;configset.internal.fixIt(''{4}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt;
+                  &lt;txt&gt;To disable this error message, clear the parameter &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'Enable strict scheduling checks for referenced models'&lt;/sldiag&gt; in the Model Referencing page of the Configuration Parameters dialog.&lt;/txt&gt;
+              &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="PotentialExpFcnMdlWithReferenceBlock">
+      모델 ''{0}''에 라이브러리 링크가 포함된 블록이 있습니다. 모델 ''{0}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt; 함수 내보내기 모델&lt;/a&gt;인지 여부와 그 실행 영역 유형을 확인하려면, '업그레이드 어드바이저 &gt; Check Export Function models'를 선택하십시오. </entry>
+    <entry key="InvalidExpFcnDomain">''함수 내보내기'' 실행 영역은 모델의 루트 수준에만 적용 가능합니다.</entry>
+    <entry key="InportSampleTimeMsg">Inport ''{0}'' has a sample time of {1}.</entry>
+    <entry key="OutportSampleTimeMsg">Outport ''{0}'' has a sample time of {1}.</entry>
+    <entry key="FunctionSampleTimeMsg">Function ''{0}'' has a sample time of {1}.</entry>
+    <entry key="InvalidBranchingToMultiRootOutport">
+      ''{0}'' is driven by the function-call root-level Inport block(s). Therefore, it is not allowed to branch the output signal from output port {1,number,integer} of this block to feed multiple root Outport blocks ''{2}'' and ''{3}''.
+    </entry>
+    <entry key="DiffTsBetweenRootAndNestedFcnCallPortGroupInExpFcnMdl">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에서, ''{1}''의 &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;입력 포트 ''{0}''&lt;/sldiag&gt;에 대한 함수 호출 신호가 루트 수준 Inport 블록 ''{2}''에서 오는 함수 호출 신호로 직접 구동됩니다. 따라서 이러한 함수 호출 신호는 동일한 샘플 시간을 가져야 합니다. 그러나 블록 ''{2}''이(가) {3}의 샘플 시간을 지정한 반면, ''{1}''의 &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;입력 포트 ''{0}''&lt;/sldiag&gt;에 들어오는 함수 호출 신호가 {4}의 샘플 시간을 설정했습니다.
+</entry>
+    <entry key="DiffTsBetweenRootInportAndPeriodicFCSSInExpFcnMdl">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, ''{0}'' is configured to a periodic function-call subsystem with sample time {1}. However, it is driven by the function-call root-level Inport block ''{2}'' that has specified a different sample time {3}.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider updating sample times to make them consistent.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{4}'', ''SampleTime'', ''-1'');&lt;/cmd&gt;
+            &lt;txt&gt;Alternatively, set &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time'&lt;/sldiag&gt; parameter of Trigger Port block ''{4}'' to '-1'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="DiffTsBetweenRootInportAndPeriodicFCSSInExpFcnMdl2">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에서, ''{0}''은(는) 샘플 시간이 {1}인 주기적 Function-Call Subsystem으로 구성되어 있습니다. 그러나 이는 다른 샘플 시간 {3}을(를) 지정한 함수 호출 루트 수준 Inport 블록 ''{2}''에 의해 구동됩니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;샘플 시간이 서로 일치하도록 업데이트해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 Trigger Port 블록 ''{4}''의 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간'&lt;/sldiag&gt; 파라미터를 '-1'로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="IndirectConnBetweenRootAndNestedFcnCallPortGroupInExpFcnMdl">
+  Model 블록 ''{0}''에서 참조하는 모델 내부에서, Model 블록의 &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt;에 대응되는 루트 수준 Inport 블록이 상속되지 않은 샘플 시간 {2}을(를) 지정했습니다. 이 경우 Model 블록의 이 입력 포트로 들어오는 함수 호출 신호가 동일한 샘플 시간을 갖는 함수 호출 루트 수준 Inport 블록에 의해 직접 구동되어야 합니다.
+</entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeNotEqual">
+      Inside the model referenced by Model block ''{0}'', the function-call context driven by the function-call signal to its input port ''{1}'' has specified the sample time of {2}. However, the function-call initiator ''{3}'' has a different sample time of {4}.
+       &lt;actions exclusiveFixIts="yes"&gt;
+           &lt;action type="fixit"&gt;
+               &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt;
+               &lt;txt&gt;To disable this error message, clear the parameter &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'Enable strict scheduling checks for referenced models'&lt;/sldiag&gt; in the Model Referencing page of the Configuration Parameters dialog.&lt;/txt&gt;
+           &lt;/action&gt;
+           &lt;action type="suggestion"&gt;
+               &lt;txt&gt;Alternatively, consider updating the sample time of the function-call initiator.&lt;/txt&gt;
+           &lt;/action&gt;
+        &lt;/actions&gt;
+    </entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeMismatch">
+  Model 블록 ''{0}''에서 참조하는 모델 내부에서, &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt;에 들어오는 함수 호출 신호로 구동되는 함수 호출 컨텍스트가 상응하는 Inport 블록의 대화 상자에 샘플 시간 {2}을(를) 지정했습니다. 그러나 함수 호출 개시자 ''{3}''은(는) 충분한 분해능을 제공할 수 없는 샘플 시간 {4}을(를) 갖습니다. {5}의 샘플 시간을 샘플 시간 {6}이(가) 그 값의 정수 배수가 되도록 변경해 보십시오.
+</entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeMismatch2">
+      Inside the model referenced by Model block ''{0}'', the function-call context driven by the function-call signal to its &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; has specified a discrete sample time of {2} on the dialog of corresponding Inport block. However, the function-call initiator ''{3}'' has an asynchronous sample time.
+    </entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeMismatch3">
+      Inside the model referenced by Model block ''{0}'', the function-call context driven by the function-call signal to its &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; has specified the sample time of {2} on the dialog box of corresponding Inport block. However, it was invoked by the function-call initiator ''{3}'' at time {4}, that is not a multiple of the specified sample time.
+    </entry>
+    <entry key="InvalidSampleTimeSetOnRootDataOutportInExpFcnMdl">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 또는 소프트웨어 아키텍처 모델의 루트 수준에 있는 Outport 블록 ''{1}''에 대한 샘플 시간 {0}이(가) 유효하지 않습니다. 블록의 샘플 시간은 상속됨(-1)으로 설정해야 합니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''-1'');&lt;/cmd&gt; &lt;txt&gt;Outport 블록 ''{1}''에서 &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'샘플 시간'&lt;/sldiag&gt; 파라미터를 '-1'로 설정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSampleTimeSetOnRootDataInportInExpFcnMdl">
+      It is not allowed to set sample time of {0} on the root-level Inport block ''{1}''. When a data root-level Inport block is inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, the sample time of the block must be inherited (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''-1'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; parameter on Inport block ''{1}'' to '-1'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSampleTimeSetOnSynthRootDataInportInExpFcnMdl">
+       &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 또는 소프트웨어 아키텍처 모델의 루트 수준에 있는 In Bus Element 블록 ''{0}''에 대응되는 Inport 블록에 대한 샘플 시간은 상속됨(-1)이어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="BEPInExportFunctionMdl" retvalue="false"&gt; &lt;cmd&gt;Simulink.internal.setInheritedSampleTimeForPortInExpFcnMdl(''{0}'');&lt;/cmd&gt; &lt;txt&gt;In Bus Element 블록 ''{0}''에 대응되는 버스 포트의 모든 요소에 대해 &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'샘플 시간'&lt;/sldiag&gt;을 '-1'로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="InvalidSampleTimeSetOnRootDataBEPInExpFcnMdl">
+      In Bus Element 블록 ''{0}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;의 루트 수준에 있는 경우 이에 대한 샘플 시간은 상속됨(-1)이어야 합니다.
+  </entry>
+    <entry key="InvalidSampleTimeSetOnRootFcnCallInportInExpFcnMdl">
+      It is not allowed to set sample time of {0} on the root-level Inport block ''{1}''. When a root-level Inport block outputs a function-call signal and is inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, the sample time of the block must be discrete or inherited (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;cmd&gt;Simulink.internal.OpenBlockParamsDialog(''{1}'', ''SampleTime'')&lt;/cmd&gt;
+        &lt;txt&gt;Consider specifying &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; parameter on Inport block ''{1}'' to '-1' or a discrete rate.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSampleTimeSetOnRootFcnCallInportInAsyncFcnCallMdl">
+      It is not allowed to set sample time of {0} on the root-level Inport block ''{1}''. When a root-level Inport block outputs an asynchronous function-call signal by connecting to an Asynchronous Task Specification block, the sample time of the Inport block must be inherited (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''-1'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; parameter on Inport block ''{1}'' to '-1'.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidPeriodicFCSSInExpFcnMdl">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에서, ''{0}''을(를) 주기적 함수 호출 블록으로 구성하려면 이것이 이산 샘플 시간을 지정한 함수 호출 루트 수준 Inport 블록에 의해 직접 구동되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;이 블록의 함수 호출 입력을 함수 호출 루트 수준 Inport 블록에 직접 연결하고 Inport 블록의 이산 샘플 시간을 지정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;또는 ''{1}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InvalidPeriodicFCSSInExpFcnMdl2">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에서, ''{0}''을(를) 주기적 함수 호출 블록으로 구성하려면 이것이 이산 샘플 시간을 지정한 함수 호출 루트 수준 Inport 블록에 의해 직접 구동되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;이 블록의 함수 호출 입력을 함수 호출 루트 수준 Inport 블록에 직접 연결하고 Inport 블록의 이산 샘플 시간을 지정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 ''{1}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '트리거됨'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFcnCallInputMustBeScalar">
+  Model 블록 ''{0}''에서 참조하는 모델 내부에서, Model 블록의 &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 {1}&lt;/sldiag&gt;을(를) 통해 함수 호출 신호로 직접 구동되는 Function-Call Subsystem은 샘플 시간이 {2}인 주기적 Function-Call Subsystem으로 구성되어 있습니다. 따라서 이 입력 포트에 들어오는 함수 호출 신호는 스칼라 신호여야 합니다. 그러나 이 입력으로 들어오는 신호의 너비가 {3,number,integer}입니다.
+</entry>
+    <entry key="InvExpFcnMdlInFcnCallSubsystem">
+      모델 ''{1}''을(를) 참조하는 Model 블록 ''{0}''이(가) {2} 서브시스템 ''{3}''에 잘못 배치되었습니다. 참조된 모델은 이러한 서브시스템의 샘플 시간을 상속해야 합니다. 그러나 참조된 모델 ''{4}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기&lt;/a&gt;를 수행하도록 설정되어 있으므로 샘플 시간을 상속할 수 없습니다.
+    </entry>
+    <entry key="ExpFcnMdlInFcnCallSubsystemMustInheritSampleTime">
+      Model block ''{0}'' has been improperly placed in the {1} subsystem ''{2}''. All function-call root inports in the referenced &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export function model&lt;/a&gt; ''{3}'' must inherit sample time.
+    </entry>
+    <entry key="RefExpCallMdlMustBeInRootOfExpFcnMdl">
+      함수 내보내기 모델 ''{1}''을(를) 참조하는 Model 블록 ''{0}''이(가) 비가상 서브시스템 ''{2}'' 내부에 잘못 배치되었습니다. 부모 모델 ''{3}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기&lt;/a&gt;를 수행하도록 설정된 경우, 루트 수준에 배치된 다른 함수 내보내기 모델만 참조할 수 있습니다.
+    </entry>
+    <entry key="FcnCallPortCannotResetState">
+      The Trigger Port block ''{0}'' has set its parameter 'State when enabling' to 'reset'. This block is inside function-call subsystem ''{1}'' directly driven by function-call root-level Inport block ''{2}'' in the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{3}''. Since the function-call root-level Inport block inside an export-function model doesn't enable or disable function-call blocks it directly drives, the 'reset' option will have no effect.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''StatesWhenEnabling'', ''held'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider changing the parameter to 'held' to eliminate this warning.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="OutportCannotResetInitVal">
+      The Outport block ''{0}'' has set its parameter 'Output when disabled' to 'reset'. This block is inside function-call subsystem ''{1}'' directly driven by function-call root-level Inport block ''{2}'' in the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{3}''. Since the function-call root-level Inport block inside an export-function model doesn't enable or disable function-call blocks it directly drives, the 'reset' option will have no effect.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''OutputWhenDisabled'', ''held'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider changing the parameter to 'held' to eliminate this warning.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="SWArchModelHasNoSimBehaviorForDirectlyConnectedRootIO1">
+      소프트웨어 아키텍처 모델 ''{0}'' 내에서 루트 수준 Outport 블록 ''{2}''이(가) 시뮬레이션 중에 루트 수준 Inport 블록 ''{1}''의 입력을 복사하지 않습니다. Inport 블록 ''{1}''이(가) Interface Adapter 블록 ''{3}''을(를) 통해 Outport 블록 ''{2}''에 연결되어 있기 때문입니다. 시뮬레이션 중에 신호 복사가 필요한 경우 함수에 Interface Adapter 블록을 포함시키십시오.
+    </entry>
+    <entry key="SWArchModelHasNoSimBehaviorForDirectlyConnectedRootIO2">
+      소프트웨어 아키텍처 모델 ''{0}'' 내에서 루트 수준 Outport 블록 ''{2}''이(가) 시뮬레이션 중에 루트 수준 Inport 블록 ''{1}''의 입력을 복사하지 않습니다. Inport 블록 ''{1}''이(가) Outport 블록 ''{2}''에 연결되어 있기 때문입니다. 시뮬레이션에서 신호 복사가 필요한 경우 함수를 통해 이러한 루트 수준 Inport 및 Outport 블록을 연결하십시오.
+    </entry>
+    <entry key="AsyncFcnCallPortGroupsAccessingGlobalDSM">
+  Model 블록 ''{0}''이 참조하는 모델 내부에서, &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt;에 들어오는 함수 호출 신호로 구동되며 전역 Simulink.Signal 객체 ''{2}''에 의해 정의된 전역 데이터 저장소에 액세스할 수 있는 함수 호출 컨텍스트가 비동기 태스크에서 실행되도록 구성되었습니다. 모델 내에서 액세스되는 전역 데이터 저장소는 모두 주기적 단일 태스크에서 실행되어야 합니다.
+</entry>
+    <entry key="SimulinkFunctionPortGroupsAccessingGlobalDSM">
+  Model 블록 ''{1}''에서 함수 ''{0}''은(는) 비동기 샘플링 시간을 사용하여 호출되며, Simulink.Signal 객체 ''{2}''에 의해 정의된 전역 데이터 저장소에 대한 Reader 또는 Writer를 포함합니다. 모델 내에서 액세스되는 전역 데이터 저장소는 모두 주기적 단일 태스크에서 실행되어야 합니다.
+</entry>
+    <entry key="MultiTsGlobalDSMAccessedByDescExpFcnMdls">
+      모델 ''{0}''에서 전역 Simulink.Signal 객체 ''{1}''이(가) 정의한 전역 데이터 저장소에 액세스하는 블록들이 있고 이들 블록은 Model 블록 ''{2}'' 및 ''{3}''에서 각각 참조하는 모델들 안에 있습니다. 그러나 접근자 블록이 각각 다른 샘플 시간 {4} 및 {5}을(를) 지정했습니다. 이로 인해 데이터 무결성 문제가 발생할 수 있습니다.
+          &lt;actions exclusiveFixIts = "yes"&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt;
+                 &lt;arg&gt;{1}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="MultiTsGlobalDSMAccessedByDescExpFcnMdls2">
+      모델 ''{0}''에서 전역 Simulink.Signal 객체 ''{1}''이(가) 정의한 전역 데이터 저장소에 액세스하는 블록들이 있고 이들 블록은 Model 블록 ''{2}''에서 참조하는 모델 안에 있습니다. 그러나 접근자 블록이 각각 다른 샘플 시간 {3} 및 {4}을(를) 지정했습니다. 이로 인해 데이터 무결성 문제가 발생할 수 있습니다.
+         &lt;actions exclusiveFixIts = "yes"&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt;
+                 &lt;arg&gt;{1}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpFcnMdlPortGroupsErr">
+    In the model referenced by Model block ''{0}'', the function-call blocks driven by input ports ''{1}'' and ''{2}'' have a data transfer connection between them. However, they have different sample times {3} and {4}, which can lead to a data integrity issue.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Consider adjusting the sample times of function-call input signals.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+          &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpFcnMdlPortGroupsWarn">
+    In the model referenced by Model block ''{0}'', the function-call blocks driven by input ports ''{1}'' and ''{2}'' have a data transfer connection between them. However, they have different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of function-call input signals.
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpAndSLFcnPortGroupsErr">
+    In the model referenced by Model block ''{0}'', the function-call block triggered by &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port {1}&lt;/sldiag&gt; and the Simulink function ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Consider adjusting the sample times of function-call input signals.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+          &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpAndSLFcnPortGroupsWarn">
+    In the model referenced by Model block ''{0}'', the function-call block triggered by &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port {1}&lt;/sldiag&gt; and the Simulink function ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of function-call input signals.
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenSLFcnPortGroupsErr">
+    In the model referenced by Model block ''{0}'', the Simulink functions ''{1}'' and ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of blocks which invoke these functions.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Consider adjusting the sample times of function-call input signals.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+          &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenSLFcnPortGroupsWarn">
+    In the model referenced by Model block ''{0}'', the Simulink functions ''{1}'' and ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of blocks which invoke these functions. Consider adjusting the sample times of function-call input signals.
+    </entry>
+    <entry key="UnionTsInputMultitaskRateTransMsgErr">
+      Input port ''{0}'' of Model block ''{1}'' is connected to function-call contexts driven by different sample times {2}, respectively. This can lead to a data integrity issue.
+      
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action type="suggestion"&gt;
+                  &lt;txt&gt;Alternatively, consider splitting this input port into multiple ports to feed each function-call context separately.&lt;/txt&gt;
+              &lt;/action&gt;
+              &lt;action type="fixit"&gt;
+                  &lt;cmd&gt;configset.internal.fixIt(''{3}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+                  &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+              &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="UnionTsInputMultitaskRateTransMsgWarn">
+      Input port ''{0}'' of Model block ''{1}'' is connected to function-call contexts driven by different sample times {2}, respectively. This can lead to a data integrity issue. Consider splitting this input port into multiple ports to feed each function-call context separately.
+    </entry>
+    <entry key="UnionTsOutputMultitaskLoggingWarn">
+      Model 블록 ''{1}''의 출력 포트 ''{0}''이(가) 이 포트를 구동하는 다음 함수 호출 개시자 또는 Simulink 함수의 샘플 시간보다 빠른 샘플 시간 {2}을(를) 갖습니다. 모델이 멀티태스킹 모드에서 실행되는 경우, 함수가 호출되기 전에 다운스트림 블록에 의해 출력 신호의 값이 기록되거나 사용되므로 지연이 발생합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SolverMode'', ''SingleTasking'');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 &lt;sldiag objui="configset" objparam="EnableMultiTasking" objname="{0}"&gt;'솔버' &gt; '각 이산 레이트를 별개의 태스크로 처리'&lt;/sldiag&gt; 옵션을 해제하여 싱글태스킹 모드로 실행되도록 모델 ''{3}''을(를) 변경하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 단일 블록을 사용하여 이 출력 포트를 구동하는 모든 함수를 호출하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnionTsOutputMultitaskLoggingWarnDetail1">
+      함수 호출 개시자 ''{0}''에 샘플 시간 {1}이(가) 있습니다.
+    </entry>
+    <entry key="UnionTsOutputMultitaskLoggingWarnDetail2">
+      Simulink 함수 ''{0}''에 샘플 시간 {1}이(가) 있습니다.
+    </entry>
+    <entry key="InvalidDstsForRootInportInDataPortGroup">
+      루트 수준 Inport 블록 ''{0}''이(가) 내보낸 함수에 없는 비가상 블록 ''{1}''에 연결되어 있습니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;에서 루트 수준 Inport 블록은 하나 이상의 내보낸 함수에 연결되거나, 연결되지 않은 채로 유지되어야 합니다.
+    </entry>
+    <entry key="InvalidSrcsForRootOutportInDataPortGroup">
+      The root-level Outport block ''{0}'' is driven by block ''{1}'', which is not in any exported function. In an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, a root-level Outport block must be driven by one or more exported functions or left unconnected.
+    </entry>
+    <entry key="InvalidSrcsForRootOutportInMultiFcnCallPortGroups">
+  루트 수준 Outport 블록 ''{0}''은(는) 함수 호출 루트 수준 Inport 블록 ''{1}'' 및 ''{2}''에 의해 구동됩니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;에서, 여러 개의 함수 호출 루트 수준 Inport 블록에 의해 구동되는 루트 수준 Outport 블록의 입력은 소스 블록의 전체 출력 영역에서 가져와야 합니다.
+</entry>
+    <entry key="InvalidSrcsForRootOutportInMultiServerFcnCallPortGroups">
+  루트 수준 Outport 블록 ''{0}''은(는) Simulink Function ''{1}'' 및 ''{2}''에 의해 구동됩니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에서, 여러 개의 Simulink Function 블록에 의해 구동되는 루트 수준 Outport 블록의 입력은 소스 블록의 전체 출력 영역에서 가져와야 합니다.
+</entry>
+    <entry key="InvalidSrcsForRootOutportInMixedFcnCallPortGroups">
+  루트 수준 Outport 블록 ''{0}''은(는) Simulink Function ''{1}'' 및 함수 호출 루트 수준 Inport 블록 ''{2}''에 의해 구동됩니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에서, Simulink Function 블록 및 함수 호출 루트 수준 Inport 블록에 의해 구동되는 루트 수준 Outport 블록의 입력은 소스 블록의 전체 출력 영역에서 가져와야 합니다.
+</entry>
+    <entry key="NonVirtBusCreatorDrvRegularRootOutportInExpFcnMdl">
+      Bus Creator 블록 ''{1}''은(는) 루트 수준 Out Bus Element 블록에 바로 연결해야 합니다. Bus Creator 블록이 비가상 버스를 생성하고 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 있기 때문입니다. Outport 블록 ''{2}''을(를) Out Bus Element 블록으로 바꾸십시오.
+     </entry>
+    <entry key="NonVirtBusCreatorInvDstInExpFcnMdl">
+      Bus Creator 블록 ''{1}''은(는) 루트 수준 Out Bus Element 블록에 바로 연결해야 합니다. Bus Creator 블록이 비가상 버스를 생성하고 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 있기 때문입니다.
+     </entry>
+    <entry key="NonVirtBusCreatorInMultiFcnsInExpFcnMdl">
+      Bus Creator 블록 ''{1}''에 대한 입력은 동일한 루트 수준 함수 호출 신호 또는 Simulink 함수에 의해 구동되어야 합니다. Bus Creator 블록이 비가상 버스를 생성하고 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 있기 때문입니다.
+    </entry>
+    <entry key="NonFcnCallBlkNotAllowedForExportFcn">
+      For nonvirtual block ''{1}'' of type ''{2}'' to be placed at the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', the block must have a constant sample time.
+    </entry>
+    <entry key="NonFcnCallBlkDisallowConstRateNotAllowedForExportFcn1">
+    유형 ''{2}''의 비가상 블록 ''{1}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 배치하는 것은 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;''{0}''의 루트 수준에서 블록 ''{1}''을(를) 삭제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="NonFcnCallBlkDisallowConstRateNotAllowedForExportFcn2">
+    유형 ''{2}''의 비가상 블록 ''{1}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 배치하는 것은 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;''{0}''의 루트 수준에서 블록 ''{1}''을(를) 삭제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 모델 ''{0}''의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ConstBlkNotAllowedForExportFcnWithNonConstRate">
+      Constant 블록 ''{1}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 배치하려면 이 블록의 '샘플 시간' 파라미터를 'inf'로 설정해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''inf'');&lt;/cmd&gt; &lt;txt&gt;''{1}''의 '샘플 시간' 파라미터를 'inf'로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="NonVirtualSubsysNotAllowedForExportFcn">
+      비가상 서브시스템 ''{1}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에 배치하려면 블록이 상수 샘플 시간을 가져야 합니다.
+    </entry>
+    <entry key="TunableConstTsBlkNotAllowedForExpFcnMdlWithSuggestion1">
+      In the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' has an input signal originated from Constant blocks with tunable run time parameters. Code generation is not supported for this case. Consider moving the block ''{1}'' into its destination function-call block ''{2}''.
+    </entry>
+    <entry key="TunableConstTsBlkNotAllowedForExpFcnMdlWithSuggestion2">
+      In the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' has an input signal originated from Constant blocks with tunable run time parameters. Code generation is not supported for this case. Since the block ''{1}'' does not drive any function-call blocks, consider removing this block ''{1}''.
+    </entry>
+    <entry key="TunableConstTsBlkNotAllowedForExpFcnMdlWithFix">
+      In the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' has an input signal originated from Constant blocks with tunable run time parameters. Code generation is not supported for this case.
+      &lt;actions exclusiveFixIts="yes"&gt;
+           &lt;action type="fixit"&gt;
+               &lt;cmd&gt;configset.internal.fixIt(''{0}'',''DefaultParameterBehavior'',''Inlined'')&lt;/cmd&gt;
+                   &lt;txt&gt;Select the option ''Default parameter behavior'' for the model ''{0}'' to 'Inlined'.&lt;/txt&gt;
+           &lt;/action&gt;
+           &lt;action type="suggestion"&gt;
+                   &lt;txt&gt;Move the block ''{1}'' into its destination function-call block ''{2}''.&lt;/txt&gt;
+           &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="TunableConstBlkNotAllowedToDrvMultiExportFcns">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에서 Constant 블록 ''{1}''에 조정 가능형 런타임 파라미터가 있습니다. 이 블록이 각각 서로 다른 샘플 시간 ''{6}'' 및 ''{7}''(으)로 블록 ''{3}''의 &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;{2,number,integer}번 입력 포트&lt;/sldiag&gt;와 블록 ''{5}''의 &lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;{4,number,integer}번 입력 포트&lt;/sldiag&gt;를 모두 구동하므로, 코드 생성이 지원되지 않습니다. 블록 ''{1}''의 복사본을 만들고, 이 블록과 이 블록의 각 복사본에 대상이 하나만 있도록 다시 연결해 보십시오.
+</entry>
+    <entry key="TunableConstBlkNotAllowedToDrvMultiExportFcnsWithFix">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''의 루트 수준에서 Constant 블록 ''{1}''에 조정 가능형 런타임 파라미터가 있습니다. 이 블록이 각각 서로 다른 샘플 시간 ''{6}'' 및 ''{7}''(으)로 블록 ''{3}''의 &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;{2,number,integer}번 입력 포트&lt;/sldiag&gt;와 블록 ''{5}''의 &lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;{4,number,integer}번 입력 포트&lt;/sldiag&gt;를 모두 구동하므로, 코드 생성이 지원되지 않습니다. 다음 조치 중 하나 또는 둘 다를 수행해 보십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''DefaultParameterBehavior'',''Inlined'')&lt;/cmd&gt; &lt;txt&gt;모델 ''{0}''에 대해 옵션 ''디폴트 파라미터 동작''을 '인라인'으로 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;블록 ''{1}''의 복사본을 만들고, 이 블록과 이 블록의 각 복사본에 대상이 하나만 있도록 다시 연결하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="FcnCallSubsysMustBeDrvByRootFcnCallInportInExpFcnMdl1">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 블록 ''{1}''의 {2,number,integer}번 함수 호출 입력 포트는 함수 호출 루트 수준 Inport 블록에 의해 구동되어야 합니다.
+    </entry>
+    <entry key="FcnCallSubsysMustBeDrvByRootFcnCallInportInExpFcnMdl2">
+    &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 블록 ''{1}''의 {2,number,integer}번 함수 호출 입력 포트는 함수 호출 루트 수준 Inport 블록에 의해 구동되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;''{0}''의 루트 수준에서 블록 ''{1}''을(를) 삭제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 모델 ''{0}''의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootInport">
+      ''{1}'' 및 ''{4}'' 유형의 ''{2}'' {3,number,integer}번 입력 포트 사이의 연결이 유효하지 않습니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 루트 수준 Inport 블록은 내보낸 함수 블록, Simulink Function 블록, Initialize/Reset/Terminate Function 블록, Terminator 블록 중 하나에 연결되어야 합니다.
+    </entry>
+    <entry key="RootOutportMustBeDrvByRootFcnCallInportInExpFcnMdl1">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 루트 수준 Outport 블록 ''{1}''은(는) 함수 호출 루트 수준 Inport 블록에 의해 구동되는 함수 호출 블록, Simulink 함수, 또는 이러한 함수 호출 블록에 의해서만 구동되는 Merge 또는 Mux 블록에 연결되어야 합니다.
+    </entry>
+    <entry key="RootOutportMustBeDrvByRootFcnCallInportInExpFcnMdl2">
+    &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 루트 수준 Outport 블록 ''{1}''은(는) 함수 호출 루트 수준 Inport 블록에 의해 구동되는 함수 호출 블록, Simulink 함수, 또는 이러한 함수 호출 블록에 의해서만 구동되는 Merge 또는 Mux 블록에 연결되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 모델 ''{0}''의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutport">
+      ''{1}'' 및 ''{4}'' 유형의 ''{2}'' {3,number,integer}번 출력 포트 사이의 연결이 유효하지 않습니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 루트 수준 Outport 블록은 내보낸 함수 블록, Simulink Function 블록, Initialize/Reset/Terminate Function 블록, 내보낸 함수에 의해 구동되는 Merge 또는 Mux 블록, Ground 블록 중 하나에 연결되어야 합니다.
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutportDrvByVM">
+      ''{1}''과(와) ''{2}'' 사이의 연결이 유효하지 않습니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 루트 수준 Outport 블록은 내보낸 함수 블록, Simulink Function 블록, Initialize/Reset/Terminate Function 블록, 내보낸 함수에 의해 구동되는 Merge 또는 Mux 블록, Ground 블록 중 하나에 연결되어야 합니다.
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutportDrvByMdlBlk">
+      Model 블록 ''{1}''이(가) 포트 및 상응하는 출력 포트 ''{2}''을(를) 통해 레이트를 스케줄링하고, &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{3}''의 루트 수준 Outport 또는 Out Bus Element 블록에 연결되기 때문에 블록 ''{0}''은(는) 이산 레이트 또는 상속된 레이트를 가진 신호, 그라운드 신호 또는 무신호에 의해 구동되어야 합니다.
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutportDrvConstRate">
+      함수 내보내기 모델 ''{0}''은(는) Model 블록 ''{2}''의 {3,number,integer}번 출력 포트에서 일정한 레이트를 상속하는 루트 수준의 Outport 블록 ''{1}''을(를) 지원하지 않습니다. ''{2}''의 소스 블록 레이트를 상수가 아닌 값으로 변경하거나 소스 블록에서 ''{1}''의 연결을 끊으십시오.
+    </entry>
+    <entry key="RootOutportMustBeDrivenByRootFcnCallInputForAsync">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 루트 수준 Outport 블록 ''{1}''이(가) 함수 호출 루트 수준 Inport 블록으로 트리거되는 함수 호출 블록뿐만 아니라 함수 호출 루트 수준 Inport 블록으로 트리거되지 않는 블록에도 연결되어 있습니다. 이는 지원되지 않습니다. 루트 수준 Outport 블록 ''{1}''은(는) 다음 중 하나에만 연결되어야 합니다. \n\t1) 함수 호출 루트 수준 Inport 블록에 의해 트리거되는 함수 호출 블록. \n\t2) 1)에서 언급한 블록 같은 함수 호출 블록에 의해서만 구동되는 Merge 블록. \n\t3) 함수 호출 루트 수준 Inport 블록에 의해 구동되지 않는 블록.
+</entry>
+    <entry key="BEPInForExportFcn">
+      Model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;. Bus Element Inports (e.g. ''{1}'') are not supported at the root-level for such models. Consider using an Inport block instead.
+    </entry>
+    <entry key="BEPOutForExportFcn">
+  모델 ''{0}''이(가) 함수 호출 루트 수준 Outport 블록을 갖고 있거나, &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기&lt;/a&gt; 작업을 수행하도록 설정되었습니다. 이러한 모델의 루트 수준에서는 Bus Element Outport(예: ''{1}'')가 지원되지 않습니다. 대신 Outport 블록을 사용해 보십시오.
+</entry>
+    <entry key="RootBEPNotSupportedIRTForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;, Bus Element port block ''{1}'' cannot be connected to Initialize, Reset or Terminate Function blocks.
+    </entry>
+    <entry key="RootInportCannotOutputVirtualBusForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;, the output signal of the root-level Inport block ''{1}'' cannot be a virtual bus. Consider replacing this Inport block with an In Bus Element block, or changing the output to a nonvirtual bus.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;set_param_action(''{1}'', ''BusOutputAsStruct'', ''on'');&lt;/cmd&gt;
+                   &lt;txt&gt;Select the option ''Output as nonvirtual bus'' for the root inport {1}&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+
+    </entry>
+    <entry key="RootOutportCannotAcceptVirtualBusForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;, the input signal to the root-level Outport block ''{1}'' cannot be a virtual bus. Consider replacing this Outport block with an Out Bus Element block, or making the input signal a nonvirtual bus.
+    </entry>
+    <entry key="StorageClassSpecOnBothRootOutportAndItsSourceBlockForExportFcn">
+      Model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;. The root-level Outport block ''{1}'' and the driving signal line both cannot have storage class specification in such a model.
+    </entry>
+    <entry key="PlatformServicesSpecOnBothRootOutportAndItsSourceBlockForExportFcn">
+      모델 ''{0}''이(가) 함수 호출 루트 수준 Inport 블록을 갖거나 함수를 내보내도록 설정되었습니다(도움말 센터 참고). 이러한 모델에서는 루트 수준 Outport 블록 ''{1}''을(를) 전송자 서비스 인터페이스에 매핑하고 구동 신호를 측정 서비스 인터페이스에 매핑하는 것이 지원되지 않습니다. 코드 매핑에서 측정 서비스 인터페이스에 매핑된 구동 신호를 제거하십시오.
+    </entry>
+    <entry key="RootOutportCannotOutputVirtualBusForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt; export functions&lt;/a&gt;, the root-level Outport block ''{1}'' cannot have a virtual bus input signal, or output a virtual bus in the parent model if the model is being referenced when the incoming bus is nonvirtual. Consider either replacing this Outport block with an Out Bus Element block, or making the input signal a nonvirtual bus, and selecting the option ''Output as nonvirtual bus in parent model''.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;Simulink.ModelReference.internal.ModelRefFixes(''NonvirtualOutportForExpFcn'',''{1}'')&lt;/cmd&gt;
+                   &lt;txt&gt;Select the option ''Output as nonvirtual bus'' for the root outport {1}&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="RootOutportCannotOutputVirtualBusForExportFcn_fix"> Executed the command
+    set_param(''{0}'',''BusOutputAsStruct'', ''on'') </entry>
+    <entry key="RootLevelSignalLoggingNotAllowedForExportFcn">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging or streaming root-level signal originating from &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of block ''{2}'' is not allowed.
+    </entry>
+    <entry key="RootLevelSignalLoggingNotAllowedForExportFcn2">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging or streaming root-level signal originating from block ''{1}'' is not allowed.
+    </entry>
+    <entry key="DatasetOutputLoggingNotAllowedForAsyncFcnCallMdl">
+      모델 ''{0}''에 Asynchronous Task Specification 블록에 연결된 함수 호출 루트 수준 Inport 블록이 포함되어 있으므로 '데이터셋' 형식을 사용할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;모든 Asynchronous Task Specification 블록을 제거하고 이 모델을 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 구성 파라미터 &gt; 데이터 가져오기/내보내기 &gt; 작업 공간 또는 파일에 저장 &gt; 형식에서 다른 옵션을 지정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvalidExpFcnMdlRootLevelSignalToLogOrView">
+  블록 ''{0}''의 출력 신호를 기록하거나 볼 수 없습니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내에서 루트 수준 데이터 신호는 Function-Call Subsystem에서 발생한 경우에만 Dataset 형식으로 기록하거나 볼 수 있습니다.
+</entry>
+    <entry key="InvalidExpFcnMdlRootLevelScopeSaveFormat">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; 내부에 루트 수준 데이터 신호를 기록하려면 ''{0}''이(가) 대화 상자 파라미터 '기록' &gt; '저장 형식'을 'Dataset'으로 설정해야 합니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''DataLoggingSaveFormat'', ''Dataset'');&lt;/cmd&gt; &lt;txt&gt;''{0}''에서 ''저장 형식''을 ''Dataset''으로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+  </entry>
+    <entry key="ExportFcnModelCannotExecConcurrently">&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서는 태스크를 동시에 실행하는 것이 지원되지 않습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ConcurrentTasks'', ''off'');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 대화 상자에서 '솔버 &gt; 태스킹 및 샘플 시간 옵션 &gt; 타깃에서 태스크를 동시에 실행하도록 허용' 옵션의 선택을 취소하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+    </entry>
+    <entry key="SWArchMdlCannotExecConcurrently">소프트웨어 아키텍처 모델 ''{0}''에서는 '구성 파라미터' &gt; '타깃에서 태스크를 동시에 실행하도록 허용'을 선택할 수 없습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ConcurrentTasks'', ''off'');&lt;/cmd&gt; &lt;txt&gt;'구성 파라미터' &gt; '타깃에서 태스크를 동시에 실행하도록 허용' 옵션의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+      </entry>
+    <entry key="ExportFcnModelInvalidSampleTimeConstraint">&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 '구성 파라미터' &gt; '솔버' &gt; '태스킹 및 샘플 시간 옵션'에 있는 파라미터 '주기적인 샘플 시간 제약 조건'을 '제약 없음'으로 설정해야 합니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SampleTimeConstraint'', ''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt;''{0}''에서 ''주기적인 샘플 시간 제약 조건''을 ''제약 없음''으로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+</entry>
+    <entry key="SWArchMdlInvalidSampleTimeConstraint">소프트웨어 아키텍처 모델 ''{0}''에서는 '구성 파라미터 &gt; 솔버 &gt; 태스킹 및 샘플 시간 옵션'에 있는 '주기적인 샘플 시간 제약 조건' 파라미터를 '제약 없음'으로 설정해야 합니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SampleTimeConstraint'', ''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt;''{0}''에서 ''주기적인 샘플 시간 제약 조건''을 ''제약 없음''으로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+    </entry>
+    <entry key="MuxLoggingAtRootLevelForExportFcn">
+      Signal logging is not supported for mux signals inside export-function models. Log signals at the input for block ''{0}'' instead.
+    </entry>
+    <entry key="RootFcnCallInportMustBeBuiltWithERT">The system target file must be set to ert.tlc in order to generate code because the model ''{0}'' contains a root-level Inport block ''{1}'' that outputs a function-call signal.
+    
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;configset.internal.fixIt(''{0}'',''SystemTargetFile'',''ert.tlc'')&lt;/cmd&gt;
+                &lt;txt&gt;Set system target file &lt;sldiag objui="configset" objparam="SystemTargetFile"&gt;SystemTargetFile&lt;/sldiag&gt; to ert.tlc.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="RootFcnCallInportDoesNotSupportClassicCallInterface">코드를 생성하려면 &lt;sldiag objui="configset" objparam="GRTInterface"&gt;고전 방식 호출 인터페이스&lt;/sldiag&gt;의 선택을 해제해야 합니다. 모델 ''{0}''에 함수 호출 신호를 출력하는 루트 수준 Inport 블록 ''{1}''이(가) 포함되어 있기 때문입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''GRTInterface'',''off'')&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="configset" objparam="GRTInterface"&gt;GRTInterface&lt;/sldiag&gt; 파라미터의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="RootFcnCallInportRequiresSampleERTMain">옵션 '구성 파라미터' &gt; '코드 생성' &gt; '코드만 생성'을 선택해야 합니다. 모델 ''{0}''에 함수 호출 신호를 출력하는 루트 수준 Inport 블록 ''{1}''이(가) 포함되어 있고, 옵션 '구성 파라미터' &gt; '코드 생성' &gt; '템플릿' &gt; '사용자 지정 템플릿' &gt; '예제 메인 프로그램 생성'이 선택되지 않았기 때문입니다.</entry>
+    <entry key="ExportFcnModelMustBeBuiltWithERT">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', the system target file must be set to ert.tlc to generate code.
+      
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action type="fixit"&gt;
+                  &lt;cmd&gt;configset.internal.fixIt(''{0}'',''SystemTargetFile'',''ert.tlc'')&lt;/cmd&gt;
+                  &lt;txt&gt;Set system target file &lt;sldiag objui="configset" objparam="SystemTargetFile"&gt;SystemTargetFile&lt;/sldiag&gt; to ert.tlc.&lt;/txt&gt;
+              &lt;/action&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SWArchMdlMustBeBuiltWithERT">
+      소프트웨어 아키텍처 모델 ''{0}''에서는 코드를 생성하려면 시스템 타깃 파일을 ert.tlc로 설정해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''SystemTargetFile'',''ert.tlc'')&lt;/cmd&gt; &lt;txt&gt;시스템 타깃 파일 &lt;sldiag objui="configset" objparam="SystemTargetFile"&gt;SystemTargetFile&lt;/sldiag&gt;을 ert.tlc로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="ExportFcnModelDoesNotSupportClassicCallInterface">&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서는 &lt;sldiag objui="configset" objparam="GRTInterface"&gt;'고전 방식 호출 인터페이스' 파라미터&lt;/sldiag&gt;를 선택할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''GRTInterface'',''off'')&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="configset" objparam="GRTInterface"&gt;GRTInterface&lt;/sldiag&gt; 파라미터의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="SWArchMdlDoesNotSupportClassicCallInterface">소프트웨어 아키텍처 모델 ''{0}''에서 &lt;sldiag objui="configset" objparam="GRTInterface"&gt;'고전 방식 호출 인터페이스' 파라미터&lt;/sldiag&gt;에 대한 선택이 잘못되었습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''GRTInterface'',''off'')&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="configset" objparam="GRTInterface"&gt;GRTInterface&lt;/sldiag&gt; 파라미터 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelRequiresSampleERTMain">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 '구성 파라미터' &gt; '코드 생성' &gt; '템플릿' &gt; '사용자 지정 템플릿' &gt; '예제 메인 프로그램 생성'이 선택되지 않은 경우, '구성 파라미터' &gt; '코드 생성' &gt; '코드만 생성'을 선택해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenCodeOnly'', ''on'')&lt;/cmd&gt; &lt;txt&gt;파라미터 &lt;sldiag objui="configset" objparam="GenCodeOnly"&gt;'코드만 생성'&lt;/sldiag&gt;을 선택해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenerateSampleERTMain'', ''on'')&lt;/cmd&gt; &lt;txt&gt;또는 파라미터 &lt;sldiag objui="configset" objparam="GenerateSampleERTMain"&gt;'예제 메인 프로그램 생성'&lt;/sldiag&gt;을 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnCallModelInvalidExecOrderInBranchFcnCall">
+      Model 블록 ''{0}''에서는 함수 호출 입력 포트 ''{1}''이(가) 함수 호출 입력 포트 ''{2}''보다 먼저 실행되어야 합니다. 그러나 이 두 함수 호출 입력 포트는 개시자 ''{4}''의 {3,number,integer}번 출력 포트에서 발생하는 분기된 함수 호출 신호로 구동되고, 이 분기된 함수 호출 신호에 연결된 Function-Call Split 블록이 반대 실행 순서를 지정합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="EnableSchedulingChecks"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;이 오류 메시지를 비활성화하려면 구성 파라미터 대화 상자의 모델 참조 페이지에서 파라미터 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'참조된 모델에 대해 엄격한 스케줄링 검사 활성화'&lt;/sldiag&gt;의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidExecOrderInTopModelSameTs">
+      The function-call input ports ''{0}'' and ''{1}'' of the Model block ''{2}'' are driven by different function-call initiators, ''{3}'' and ''{4}'', respectively. Since these two initiators have the same sample time, their relative execution order could be ambiguous and lead to different simulation results. Consider using a Function-Call Split block or a common function-call initiator block such as a Stateflow chart to schedule the function-calls for these two input ports in a deterministic order.
+    </entry>
+    <entry key="InvalidExecOrderInTopModelSameTs2">
+  Model 블록 ''{1}''의 함수 호출 &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;입력 포트 ''{0}''&lt;/sldiag&gt;이(가) 각각 다른 함수 호출 개시자 ''{2}'' 및 ''{3}''에 의해 구동됩니다. 이 두 개시자가 동일한 샘플 시간을 가지므로, 서로 간의 상대적 실행 순서가 모호해질 수 있고 그로 인해 시뮬레이션 결과가 달라질 수 있습니다. 이 두 입력 포트에 대한 함수 호출을 결정적 순서로 스케줄링하려면 Function-Call Split 블록이나 공통 함수 호출 개시자 블록(예: Stateflow 차트)을 사용해 보십시오.
+</entry>
+    <entry key="InvalidExecOrderInTopModelPriorityEqualOrUnknown">
+  Model 블록 ''{2}''의 함수 호출 입력 포트 ''{0}'' 및 ''{1}''에 대한 샘플 시간의 태스크 우선 순위가 일치하거나, 우선 순위 관계를 알 수 없습니다. 이 두 함수 호출 입력 포트가 각각 다른 함수 호출 개시자 ''{3}'' 및 ''{4}''에 의해 구동되므로, 이러한 개시자의 상대적 실행 순서가 모호해질 수 있고 그로 인해 시뮬레이션 결과가 달라질 수 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;이 오류 메시지를 비활성화하려면 구성 파라미터 대화 상자의 모델 참조 페이지에서 파라미터 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'참조된 모델에 대해 엄격한 스케줄링 검사 활성화'&lt;/sldiag&gt;의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 비동기 태스크 우선 순위를 조정하거나, 이 두 입력 포트에 대한 함수 호출을 결정적 순서로 스케줄링하기 위해 Function-Call Split 블록 또는 공통 함수 호출 개시자 블록(예: Stateflow 차트)을 사용해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+</entry>
+    <entry key="InvalidExecOrderInTopModelReversePriority">
+      Model 블록 ''{0}''에서는 함수 호출 입력 포트 ''{1}''이(가) 함수 호출 입력 포트 ''{2}''보다 먼저 실행되어야 합니다. 그러나 함수 호출 입력 포트 ''{1}''에 대한 샘플 시간의 태스크 우선 순위가 함수 호출 입력 포트 ''{2}''에 대한 샘플 시간의 태스크 우선 순위보다 낮으므로 실행 순서를 적용할 수 없습니다. 두 함수 호출 입력 포트는 각각 함수 호출 개시자 블록 ''{3}'' 및 ''{4}''에 의해 구동됩니다. 함수 호출 입력 포트 ''{1}''에 대해 더 빠른 샘플 시간(더 높은 우선 순위) 또는 더 높은 비동기 태스크 우선 순위를 갖는 함수 호출 개시자를 사용해 보십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;이 오류 메시지를 비활성화하려면 구성 파라미터 대화 상자의 모델 참조 페이지에서 파라미터 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'참조된 모델에 대해 엄격한 스케줄링 검사 활성화'&lt;/sldiag&gt;의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 이 두 입력 포트에 대한 함수 호출을 필요한 순서로 스케줄링하려면 Function-Call Split 블록 또는 공통 함수 호출 개시자 블록(예: Stateflow 차트)을 사용해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="FcnCallPortMustBeDrivenByFcnCallRootInportInExportFcnModel">
+  Model 블록 ''{1}''의 함수 호출 &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;입력 포트 ''{0}''&lt;/sldiag&gt;이(가) 함수 호출 루트 수준 Inport 블록에 의해 구동되어야 합니다. Model 블록이 루트 수준에 있고, 부모 모델 ''{2}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;이기 때문입니다.
+</entry>
+    <entry key="InvalidExecOrderInParentExportFcnModel">
+      Model 블록 ''{0}''에서는 함수 호출 입력 포트 ''{1}''이(가) 함수 호출 입력 포트 ''{2}''보다 먼저 실행되어야 합니다. 그러나 이 실행 순서를 적용할 수 없습니다. 함수 호출 입력 포트 ''{1}''을(를) 구동하는 함수 호출 루트 수준 Inport 블록 ''{3}''이(가) 함수 호출 입력 포트 ''{2}''을(를) 구동하는 함수 호출 루트 수준 Inport 블록 ''{4}'' 다음에 실행되도록 지정되었기 때문입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;이 오류 메시지를 비활성화하려면 구성 파라미터 대화 상자의 모델 참조 페이지에서 파라미터 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'참조된 모델에 대해 엄격한 스케줄링 검사 활성화'&lt;/sldiag&gt;의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;또는 부모 모델 ''{5}''에 있는 함수 호출 루트 수준 Inport 블록의 실행 순서를 참조된 모델 ''{6}''에서의 실행 순서와 일치하도록 조정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="NonExportFcnModelBlockNotAllowedInExportFcnModel">
+  Model 블록 ''{0}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{1}''의 내부에 배치할 수 없습니다. 참조된 모델 ''{2}''에 이산 레이트가 포함되어 있기 때문입니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ShowModelPeriodicEventPorts'', ''on'');&lt;/cmd&gt; &lt;txt&gt;Model 블록 ''{0}''에서 &lt;sldiag objui="blockdlg" objparam="ShowModelPeriodicEventPorts"&gt;'레이트 스케줄링'&lt;/sldiag&gt; 파라미터를 선택하여 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''function_call_adaptation'')"&gt;참조된 모델의 이산 레이트를 함수 호출 입력 포트에 맞게 조정&lt;/a&gt;하고, 포트를 함수 호출 루트 수준 Inport 블록에 연결해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses elapsed time cannot be allowed inside a function-call subsystem driven by function-call root-level Inport block ''{2}'' with an inherited sample time (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;cmd&gt;Simulink.internal.OpenBlockParamsDialog(''{3}'', ''SampleTime'')&lt;/cmd&gt;
+        &lt;txt&gt;To fix this, set &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; on Inport block ''{3}'' to a discrete rate.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported2a">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 경과 시간을 사용하는 블록 ''{1}''을(를) 함수 호출 루트 수준 Inport 블록 ''{3}''에 의해 직접 구동되는 Triggered Function-Call Subsystem ''{2}''에 배치할 수 없습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{4}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;''{4}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported2b">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 경과 시간을 사용하는 블록 ''{1}''을(를) 함수 호출 루트 수준 Inport 블록 ''{3}''에 의해 직접 구동되는 Triggered Function-Call Subsystem ''{2}''에 배치할 수 없습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{4}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported3a">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 블록 ''{1}''은(는) 경과 시간을 사용합니다. 이 블록을 Triggered Function-Call Subsystem ''{2}''에 의해 구동되는 Function-Call Subsystem에 배치할 수 없습니다. ''{3}''이(가) 함수 호출 루트 수준 Inport 블록 ''{4}''에 의해 직접 구동되기 때문입니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{5}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;''{5}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported3b">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 블록 ''{1}''은(는) 경과 시간을 사용합니다. 이 블록을 Triggered Function-Call Subsystem ''{2}''에 의해 구동되는 Function-Call Subsystem에 배치할 수 없습니다. ''{3}''이(가) 함수 호출 루트 수준 Inport 블록 ''{4}''에 의해 직접 구동되기 때문입니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{5}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses absolute time cannot be allowed inside a function-call subsystem driven by function-call root-level Inport block ''{2}'' with an inherited sample time (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;cmd&gt;Simulink.internal.OpenBlockParamsDialog(''{3}'', ''SampleTime'')&lt;/cmd&gt;
+        &lt;txt&gt;To fix this, set &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; on Inport block ''{3}'' to a discrete rate.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported2a">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 절대 시간을 사용하는 블록 ''{1}''을(를) 함수 호출 루트 수준 Inport 블록 ''{3}''에 의해 직접 구동되는 Triggered Function-Call Subsystem ''{2}''에 배치할 수 없습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{4}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;''{4}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported2b">
+  &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서, 절대 시간을 사용하는 블록 ''{1}''을(를) 함수 호출 루트 수준 Inport 블록 ''{3}''에 의해 직접 구동되는 Triggered Function-Call Subsystem ''{2}''에 배치할 수 없습니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{4}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported3a">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 블록 ''{1}''은(는) 절대 시간을 사용합니다. 이 블록을 Triggered Function-Call Subsystem ''{2}''에 의해 구동되는 Function-Call Subsystem에 배치할 수 없습니다. ''{3}''이(가) 함수 호출 루트 수준 Inport 블록 ''{4}''에 의해 직접 구동되기 때문입니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{5}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;''{5}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported3b">
+      &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서 블록 ''{1}''은(는) 절대 시간을 사용합니다. 이 블록을 Triggered Function-Call Subsystem ''{2}''에 의해 구동되는 Function-Call Subsystem에 배치할 수 없습니다. ''{3}''이(가) 함수 호출 루트 수준 Inport 블록 ''{4}''에 의해 직접 구동되기 때문입니다. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{5}''의 대화 상자 파라미터 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'샘플 시간 유형'&lt;/sldiag&gt;을 '주기적'으로 변경해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportedAsyncJMAABBClockResolutionMismatch">
+        Block ''{0}'', triggered by the function-call input port ''{1,number,integer}'' of model block ''{2}'' uses absolute or elapsed time. The base timer resolution ''{3}'' of the model block ''{2}'' is different from the timer resolution ''{4}'' of the caller. The base timer resolution of the model block and the caller timer resolution must be the same.
+        
+    </entry>
+    <entry key="ExportFcnModelNonInlinedSFcnsNotSupported">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', code generation is not supported for the non-inlined S-function ''{1}''. Consider converting the non-inlined S-function to an inlined S-function by providing a corresponding TLC implementation, or connecting each function-call root-level Inport block to an Asynchronous Task Specification block, which will introduce asynchronous function-call behavior.
+    </entry>
+    <entry key="ExportFcnModelMatFileLoggingNotSupported">
+       &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에서는 코드 생성 시 MAT 파일 기록이 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''MatFileLogging'', ''off'')&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 &lt;sldiag objui="configset" objparam="MatFileLogging"&gt;MatFileLogging&lt;/sldiag&gt;의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SWArchMdlMatFileLoggingNotSupported">
+       소프트웨어 아키텍처 모델 ''{0}''에서는 코드 생성 시 MAT 파일 기록이 지원되지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''MatFileLogging'', ''off'')&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 &lt;sldiag objui="configset" objparam="MatFileLogging"&gt;MatFileLogging&lt;/sldiag&gt;의 선택을 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MixedRootFcnCallInportToAsyncTaskSpecConnections1">
+        모델 ''{0}''에서 함수 호출 루트 수준 Inport 블록 ''{1}''은(는) Asynchronous Task Specification 블록 ''{2}''에 연결되어 있지만 다른 함수 호출 루트 수준 Inport 블록 ''{3}''은(는) 그렇지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on'');set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction''); set_param(''{2}'', ''Commented'', ''Through'');&lt;/cmd&gt; &lt;txt&gt;이 모델을 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정하려면, 통과형 주석 처리를 사용하거나 Asynchronous Task Specification 블록 ''{2}''을(를) 제거하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 ''{3}''을(를) Asynchronous Task Specification 블록에 연결하고 이 모델의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MixedRootFcnCallInportToAsyncTaskSpecConnections2">
+        모델 ''{0}''에서 함수 호출 루트 수준 Inport 블록 ''{1}''은(는) Asynchronous Task Specification 블록 ''{2}''에 연결되어 있지만 다른 함수 호출 루트 수준 Inport 블록 ''{3}''은(는) 그렇지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 ''{3}''을(를) Asynchronous Task Specification 블록에 연결하고 이 모델의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on'');set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction''); set_param(''{2}'', ''Commented'', ''Through'');&lt;/cmd&gt; &lt;txt&gt;또는 이 모델을 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정하려면, 통과형 주석 처리를 사용하거나 Asynchronous Task Specification 블록 ''{2}''을(를) 제거하십시오. 이 모델의 루트 수준에서 속성 인스펙터를 엽니다. 실행 탭에서 '실행 영역 설정'을 선택하고 '영역'을 '함수 내보내기'로 설정합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="FcnCallRootInportCannotDriveSimEventsGateway">
+  함수 호출 루트 수준 Inport 블록 ''{0}''이(가) SimEvents Gateway 블록 ''{1}''을(를) 구동하는 것은 허용되지 않습니다.
+</entry>
+    <entry key="MultiInstanceERTCodeNotSupportedForExpFcnMdl">&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{0}''에 대해서는 재사용 가능한 코드를 생성할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''CodeInterfacePackaging'', ''Nonreusable function'')&lt;/cmd&gt; &lt;txt&gt;'구성 파라미터' &gt; '코드 생성' &gt; '인터페이스'에서 옵션 &lt;sldiag objui="configset" objparam="CodeInterfacePackaging"&gt;'코드 인터페이스 패키징'&lt;/sldiag&gt;을 '재사용 불가 함수'로 설정해 보십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MergeConstantSampleTimeDisallowedInExpFcnMdl">At root level of export function model ''{0}'', source block ''{1}'' of Merge block ''{2}'' is not a function-call subsystem or subsystem that includes an Initialize Function, Terminate Function, Reinitialize Function, or Reset Function block. Connect ''{2}'' to a valid source block.</entry>
+    <entry key="MergeMdlBlkUnconnectedPortDisallowedInExpFcnMdl">블록 ''{1}''의 출력 포트 ''{2}''은(는) Merge 블록 ''{0}''에 유효하지 않은 입력입니다. &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;의 루트 그래프에서 Merge 블록에 대한 입력을 구동하는 모든 소스는 함수 호출 루트 수준 Inport 블록, Simulink 함수 또는 Initialize Function, Reset Function 또는 Terminate Function 블록에 의해 구동되어야 합니다.</entry>
+    <entry key="FcnCallerNotInFcnCallPortGroupInExpFcnMdl">Function Caller 블록 ''{0}''은(는) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt; ''{1}'' 내에 있습니다. 따라서 Simulink Function 블록 내에 배치되거나 함수 호출 루트 수준 Inport 블록에 의해 구동되어야 합니다. 하지만 블록이 서브시스템 ''{2}'' 내에 있어 이 규칙을 위반합니다.</entry>
+    <entry key="SLFcnHasInputFromCaller">Simulink 함수 ''{1}''의 {0,number,integer}번 입력 포트와 블록 ''{3}''의 &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;{2,number,integer}번 출력 포트&lt;/sldiag&gt; 사이의 연결이 유효하지 않습니다. ''{4}''이(가) 실행되는 동안 Simulink 함수가 호출될 수 있으므로 이러한 연결로 인해 예기치 않은 동작이 발생할 수 있습니다.</entry>
+    <entry key="SLFcnInRefMdlHasInputFromCaller">Model 블록 ''{2}''의 {1,number,integer}번 입력 포트를 통한 Simulink 함수 ''{0}''에 대한 입력과 블록 ''{4}''의 &lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{4}"&gt;{3,number,integer}번 출력 포트&lt;/sldiag&gt; 사이의 연결이 유효하지 않습니다. ''{5}''이(가) 실행되는 동안 Simulink 함수가 호출될 수 있으므로 이러한 연결로 인해 예기치 않은 동작이 발생할 수 있습니다.</entry>
+    <entry key="FcnCallBlkShouldLatchInputFromSimulinkFcn">함수 호출 블록 ''{1}''의 {0,number,integer}번 입력 포트와 Simulink 함수 ''{3}''의 {2,number,integer}번 출력 포트 사이의 연결이 유효하지 않습니다. ''{4}''이(가) 실행되는 동안 Simulink 함수가 호출될 수 있으므로 이러한 연결로 인해 예기치 않은 동작이 발생할 수 있습니다. 대응되는 입력 앞에 Function-Call Feedback Latch 블록을 배치하거나, ''{6}''의 &lt;sldiag objui="inport" objparam="{5,number,integer}" objname="{6}"&gt;{5,number,integer}번 입력 포트&lt;/sldiag&gt;에 대응되는 Inport 블록에서 'Function-Call Subsystem 출력의 피드백 신호에 대한 입력 래치' 파라미터를 선택해 보십시오.</entry>
+    <entry key="SLFcnConstTsUncalled">Simulink Coder does not generate code for uncalled Simulink function ''{0}'' defined by block ''{1}''.</entry>
+    <entry key="SLFcnUncalledInPossibleExpFcnMdl">Simulink Coder는 블록 ''{1}''에 의해 정의된 호출되지 않은 Simulink 함수 ''{0}''에 대해 코드를 생성하지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SetExecutionDomain'', ''on'');set_param_action(''{2}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;이 함수에 대한 코드를 생성하려면 모델 ''{2}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 지정하십시오. 모델의 루트 수준에서 속성 인스펙터를 엽니다. 실행 탭에서 '실행 영역 설정'을 선택하고 '영역'을 '함수 내보내기'로 설정합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="SLFcnHasInvalidInputConnection">The connection between input port {0,number,integer} of scoped Simulink function ''{1}'' and &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;output port {2,number,integer}&lt;/sldiag&gt; of block ''{3}'' is invalid. The input of a scoped Simulink function called from outside the scoping subsystem must be connected to another Simulink function, Merge, Constant or an Inport block. </entry>
+    <entry key="SLFcnHasInvalidOutputConnection">The connection between output port {0,number,integer} of scoped Simulink function ''{1}'' and &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;input port {2,number,integer}&lt;/sldiag&gt; of block ''{3}'' is invalid. The output of a scoped Simulink function called from outside the scoping subsystem must be connected to only one of the following blocks: Simulink Function, Outport, Terminator, Scope, Display, To Workspace, or To File. </entry>
+    <entry key="BadFcnCallStubInportNum">Simulink 함수 ''{0}''의 Argument Inport 블록 중 하나 이상이 누락되었거나 번호가 잘못 매겨졌습니다. Argument Inport 블록의 번호는 1부터 시작하여 연속적으로 매겨져야 합니다.</entry>
+    <entry key="BadFcnCallStubOutportNum">Simulink 함수 ''{0}''의 Argument Outport 블록 중 하나 이상이 누락되었거나 번호가 잘못 매겨졌습니다. Argument Outport 블록의 번호는 1부터 시작하여 연속적으로 매겨져야 합니다.</entry>
+    <entry key="BadFcnCallStubStatusNum">There can be only one Function-Call Stub Status block in system ''{0}''.</entry>
+    <entry key="RootInportFcnCallNoAsyncTaskSpecBlk">An Asynchronous Task Specification block must be placed at the output port of Inport block ''{0}'' since the Inport block is configured to output a function-call signal.</entry>
+    <entry key="RootInportFcnCallNoAsyncTaskSpecBlkWithFix">
+    루트 수준 Inport 블록 ''{0}''이(가) 함수 호출 신호를 출력하도록 구성되어 있고 Asynchronous Task Specification 블록에 연결되지 않았으므로, 모델은 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SetExecutionDomain'', ''on'');set_param_action(''{1}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;모델 ''{1}''의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'을 선택하고 '영역'을 '함수 내보내기'로 설정합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MdlWithRootSLFcnOnlyNotSetAsExpFcnMdl">
+    모델 ''{0}''에 루트 수준의 Simulink Function 블록만 들어 있습니다. Simulink 함수를 내보내려면, ''{0}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on''); set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;모델 ''{0}''을(를) 함수 내보내기 모델로 설정하려면 이 모델의 루트 수준에서 '속성 인스펙터 &gt; 실행 &gt; 실행 영역 설정'을 선택하십시오. '영역' 목록에서 '함수 내보내기'를 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MdlWithGlobalSLFcnMdlBlkNotSetAsExpFcnMdl">
+     Model 블록 ''{1}''에서 Simulink 함수를 내보내려면 모델 ''{0}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on''); set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;모델 ''{0}''을(를) 함수 내보내기 모델로 설정하려면 이 모델의 루트 수준에서 캔버스를 클릭하여 모든 블록에서 선택 항목을 선택 해제하십시오. '속성 인스펙터 &gt; 실행 &gt; 실행 영역 설정'으로 이동합니다. '영역' 목록에서 '함수 내보내기'를 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithNoRootFcnCallSetToExpFcns">
+    &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정되려면 모델 ''{0}''의 루트 수준에 함수 호출 Inport 블록 또는 Simulink 함수가 있어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;이 모델의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithPotentialRootFcnCallInportSetToExpFcns">
+    &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정되려면 모델 ''{0}''의 루트 수준에 함수 호출 Inport 블록 또는 Simulink 함수가 있어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''OutputFunctionCall'', ''on'');&lt;/cmd&gt; &lt;txt&gt;Inport 블록 ''{1}''에서 '함수 호출 출력' 파라미터를 선택하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithRootCtrlPortSetToExpFcns">
+    모델 ''{1}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정할 수 없습니다. 모델에 루트 수준 제어 포트 ''{0}''이(가) 포함되어 있기 때문입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;모델 ''{1}''의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{0}'');&lt;/cmd&gt; &lt;txt&gt;''{1}''의 루트 그래프에서 제어 포트 ''{0}''을(를) 삭제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MdlWithClientServerPortMustSetToExpFcns">
+    모델에 함수 포트 ''{1}''이(가) 포함되어 있기 때문에 모델 ''{0}''은(는) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on'');set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;이 모델을 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정하려면 이 모델의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'을 선택하고 '영역'을 '함수 내보내기'로 설정합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithAsyncTaskSpecSetToExpFcns">
+    모델 ''{1}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정할 수 없습니다. 함수 호출 루트 수준 Inport 블록 ''{0}''이(가) Asynchronous Task Specification 블록 ''{1}''에 연결되어 있기 때문입니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'', ''Commented'', ''Through'');&lt;/cmd&gt; &lt;txt&gt;통과형 주석 처리를 사용하거나 Asynchronous Task Specification 블록 ''{1}''을(를) 제거하고 함수 호출 루트 수준 Inport 블록을 다시 연결하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;이 모델이 함수 내보내기 모델용이 아닌 경우 모델 ''{2}''의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'의 선택을 해제하거나 '함수 내보내기'가 아닌 '영역' 옵션을 선택합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="RootInportFcnCallWithAsyncTaskSpecBlkMultDsts">Inport 블록 ''{0}''에 유효하지 않은 연결이 있습니다. Asynchronous Task Specification 블록이 이 Inport 블록의 출력 포트에 배치되어 있으므로 Inport 블록의 출력 신호를 다른 블록(다른 Asynchronous Task Specification 블록 포함)에 연결할 수 없습니다.</entry>
+    <entry key="AsyncTaskSpecBlkNotDrivenByRootInportFcnCall">Asynchronous Task Specification 블록 ''{0}''은(는) 함수 호출 신호를 출력하도록 구성된 루트 수준 Inport 블록의 출력 포트에 직접 연결되어야 합니다.</entry>
+    <entry key="AsyncTaskSpecBlkUnconnectedOutput">Asynchronous Task Specification 블록 ''{0}''의 출력은 반드시 연결돼 있어야 하지만 Terminator 블록에는 연결될 수 없습니다.</entry>
+    <entry key="ExpFcnSpecBlkNotDrivenByRootInportFcnCall">Export Function Specification 블록 ''{0}''은(는) 함수 호출 신호를 출력하도록 구성된 루트 수준 Inport 블록의 출력 포트에 직접 연결되어야 합니다.</entry>
+    <entry key="ExpFcnSpecBlkUnconnectedOutput">Export Function Specification 블록 ''{0}''의 출력은 반드시 연결돼 있어야 하지만 Terminator 블록에는 연결될 수 없습니다.</entry>
+    <entry key="RootInportFcnCallInvalidDst">Inport 블록 ''{0}''이(가) 대화 상자 파라미터 '함수 호출 출력'을 선택했습니다. 그러나 이 블록은 함수 호출 신호를 받을 수 없는 ''{2}''의 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;{1,number,integer}번 입력 포트&lt;/sldiag&gt;에 연결됩니다.</entry>
+    <entry key="RootInportFcnCallNotAllowedWithRootControlPort">
+    제어 포트 ''{1}''이(가) 모델의 루트 수준에 있기 때문에 함수 호출 신호를 출력하도록 Inport 블록 ''{0}''을(를) 구성할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;제어 포트 블록 ''{1}''을(를) 삭제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     
+    </entry>
+    <entry key="SimulinkFunctionNotAllowedWithForEach">Simulink function ''{0}'' cannot be placed inside a For Each block.</entry>
+    <entry key="SimulinkFunctionGlobalNotAllowedInNonVirtualSS">Simulink function ''{0}'' defined by ''{1}'' is configured to be global, and must be placed either at the root level of a model or in a virtual subsystem hierarchy.</entry>
+    <entry key="RootInportFcnCallDuplicateNotAllowed">Duplicate Inport block ''{0}'' is not allowed because ''Output function call'' option is selected for the original Inport block ''{1}''.</entry>
+    <entry key="InvalidAsyncBlockWithinSimulinkFunction">Asynchronous block ''{0}'' is not allowed inside a Simulink Function block.</entry>
+    <entry key="DataRootInportDrvMultiFcnCallPortGroups">The root-level Inport block ''{0}'' is connected to input port {1,number,integer} of ''{2}'', which is driven by function-call root-level Inport block ''{3}'', and input port {4,number,integer} of ''{5}'', which is driven by another function-call root-level Inport block ''{6}''. All destinations of a root-level Inport block must be driven by the same function-call root-level Inport block. Consider splitting the root-level Inport block ''{7}'' into two Inport blocks to drive each destination separately.</entry>
+    <entry key="RateTransBlkDrvMultiFcnCallPortGroups">Rate Transition 블록 ''{0}''이(가) 함수 호출 루트 Inport 블록 ''{3}''에 의해 구동되는 ''{2}''의 {1,number,integer}번 입력 포트와 다른 함수 호출 루트 수준 Inport 블록 ''{6}''에 의해 구동되는 ''{5}''의 {4,number,integer}번 입력 포트에 연결되어 있습니다. Rate Transition 블록의 모든 대상은 동일한 함수 호출 루트 수준 Inport 블록에 의해 구동되어야 합니다. 두 개의 Rate Transition 블록을 사용하여 각 대상을 개별적으로 구동해 보십시오.</entry>
+    <entry key="RateTransBlkDrvDataAndFcnCallPortGroups">Rate Transition 블록 ''{0}''이(가) 함수 호출 루트 Inport 블록 ''{3}''에 의해 구동되는 ''{2}''의 {1,number,integer}번 입력 포트와 함수 호출 루트 수준 Inport 블록에 의해 구동되지 않는 ''{5}''의 {4,number,integer}번 입력 포트에 연결되어 있습니다. Rate Transition 블록의 모든 대상은 동일한 함수 호출 루트 수준 Inport 블록에 의해 구동되어야 합니다. 두 개의 Rate Transition 블록을 사용하여 각 대상을 개별적으로 구동해 보십시오.</entry>
+    <entry key="DataRootInportDrvFcnCallAndDataPortGroups">In a model with a root-level Inport block which outputs a function-call signal, all destinations of the root-level Inport block ''{0}'' must be either Simulink functions or driven by function-call root-level Inport blocks. However, ''{1}'' violates this rule.</entry>
+    <entry key="DataRootOutportInFcnCallAndDataPortGroups">In a model with a root-level Inport block which outputs a function-call signal, all sources of any root-level Outport block, such as ''{0}'', must be either Simulink functions or blocks driven by function-call root-level Inport blocks. However, ''{1}'' violates this rule.</entry>
+    <entry key="FcNodeInMultiFcnCallPortGroups">함수 호출 블록 ''{0}''이(가) 함수 호출 루트 수준 Inport 블록 ''{1}'' 및 ''{2}''에 의해 구동됩니다. 함수 호출 블록은 최대 1개의 함수 호출 루트 수준 Inport 블록에 의해서만 구동될 수 있습니다.</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroups">The trigger to Function-Call Subsystem block ''{0}'' should be traced back to the same exported function initiator. The following triggers have different initiators:</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroupsCauseData">The non-exported initiator, ''{0}'' is driving the Function-Call Subsystem block.</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroupsCauseExpRoot">The exported root inport, ''{0}'' is driving the Function-Call Subsystem block.</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroupsCauseSimFcn">The exported Simulink Function, ''{0}'' is driving the Function-Call Subsystem block.</entry>
+    <entry key="FcnCallSysCalledByMultiFcnCallPorts">The function-call block ''{0}'' is driven by multiple function-call root-level Inport blocks. Any function-call block can only be directly or indirectly driven by at most one function-call root-level Inport block.</entry>
+    <entry key="InvFcnCallSysCalledByMultiFcnCallRootInports">
+    Inside an export-function model, when a function-call block ''{0}'' is indirectly driven by multiple function-call root-level Inport blocks, all its initiators must be driven by the same set of function-call root-level Inport blocks. However, ''{1}'' is invoked by function-call signals originating from ''{2}'' and ''{3}'' that violate this rule.</entry>
+    <entry key="InvExpFcnMdlCalledByMultiFcnCallRootInports">
+    Model 블록 ''{0}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;을 참조하는 경우 이 Model 블록의 &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;입력 포트 ''{1}''&lt;/sldiag&gt;을(를) 여러 개의 함수 호출 루트 수준 Inport 블록 ''{2}'' 및 ''{3}''에 연결하는 것은 지원되지 않습니다.</entry>
+    <entry key="LoopCausedByNgSrcForExpFcnMdlInSingleTaskingHarness">
+      The function-call initiators invoking the export-function model referenced by Model block ''{0}'' must execute in the order of their sample times or task priorities. In a model with a single task, this implies that ''{1}'' must execute before ''{2}''. However, applying this rule caused a data dependency violation. Consider clearing the 'Configuration Parameters' &gt; 'Solver' &gt; 'Treat each discrete rate as a separate task' option or tracing the data connections between the blocks listed below to resolve the data dependency loop.
+    </entry>
+    <entry key="LoopCausedByNgSrcForExpFcnMdlInSingleTaskingHarnessDetail">
+      Block ''{0}'' is involved in the loop.
+    </entry>
+    <entry key="LoopCausedByMuxedFcnCaller">
+      ''{0}'' must execute before ''{1}'' because they both drive the same function-call block through Mux block ''{2}''. When a function-call block is called by multiple initiators in the same task muxing their function-call output signals, the one connected to the input port of lower index of the Mux block executes before the one connected to the input port of higher index of the Mux block.
+    </entry>
+    <entry key="FcnCallNumInOutArgsMismatchCallerSrcFcnDst">Function ''{2}'' defined by ''{1}'' differs in number of reusable arguments from its caller ''{0}''.</entry>
+    <entry key="FcnCallNumInOutArgsMismatchCallerSrcGenericDst">함수 ''{1}''은(는) 자신의 호출자 ''{0}''과(와) 재사용 가능 인수의 개수가 다릅니다.</entry>
+    <entry key="FcnCallNumInOutArgsMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{1}''은(는) 자신의 호출자와 재사용 가능 인수의 개수가 다릅니다.</entry>
+    <entry key="FcnCallNumInOutArgsMismatchGenericSrcDst">함수 ''{0}''은(는) 자신의 호출자와 재사용 가능 인수의 개수가 다릅니다.</entry>
+    <entry key="FcnCallNumInArgsMismatchCallerSrcFcnDst">Function ''{4}'', defined
+    by ''{1}'', was expecting {2,number,integer} input 
+    arguments, but was called by ''{0}'' with {3,number,integer}.</entry>
+    <entry key="FcnCallNumInArgsMismatchCallerSrcGenericDst">Function ''{3}''
+    was expecting {1,number,integer} input arguments, but was called by 
+    ''{0}'' with {2,number,integer}.</entry>
+    <entry key="FcnCallNumInArgsMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{3}''은(는) {1,number,integer}개의 입력 인수가 있어야 하지만 {2,number,integer}개의 입력 인수를 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallNumInArgsMismatchGenericSrcDst">함수 ''{2}''은(는) {0,number,integer}개의 입력 인수가 있어야 하지만 {1,number,integer}개의 입력 인수를 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgDTypeMismatchCallerSrcFcnDst">Function ''{5}'',
+    defined by ''{1}'', was expecting datatype ''{4}'' for input  
+    argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallInArgDTypeMismatchCallerSrcGenericDst">Function ''{4}''
+    was expecting datatype ''{3}'' for input argument {1,number,integer}, 
+    but was called by ''{0}'' with ''{2}''.</entry>
+    <entry key="FcnCallInArgDTypeMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{4}''은(는) 입력 인수 {1,number,integer}에 대해 데이터형 ''{3}''이(가) 필요하지만 ''{2}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgDTypeMismatchGenericSrcDst">함수 ''{3}''은(는) 입력 인수 {0,number,integer}에 대해 ID {2,number,integer}의 데이터형이 필요하지만 {1,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgCplxMismatchCallerSrcFcnDst">Function ''{5}'', 
+    defined by ''{1}'', was expecting complexity {4,number,integer} (0=real or
+    1=complex) for input argument {2,number,integer}, but was called by 
+    ''{0}'' with {3,number,integer}.</entry>
+    <entry key="FcnCallInArgCplxMismatchCallerSrcGenericDst">함수 ''{4}''은(는) 입력 인수 {1,number,integer}에 대해 실수/복소수 여부 {3,number,integer}(0=실수, 1=복소수)이(가) 필요하지만, ''{0}''에서 {2,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgCplxMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{4}''은(는) 입력 인수 {1,number,integer}에 대해 실수/복소수 여부 {3,number,integer}(0=실수, 1=복소수)이(가) 필요하지만, {2,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgCplxMismatchGenericSrcDst">함수 ''{3}''은(는) 입력 인수 {0,number,integer}에 대해 실수/복소수 여부 {2,number,integer}(0=실수, 1=복소수)이(가) 필요하지만, {1,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgDimsMismatchCallerSrcFcnDst">Function ''{5}'', 
+    defined by ''{1}'', was expecting dimensions ''{4}'' 
+    for input argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallInArgDimsMismatchCallerSrcGenericDst">함수 ''{4}''은(는) 입력 인수 {1,number,integer}에 대해 차원 ''{3}''이(가) 필요하지만 ''{0}''에서 ''{2}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgDimsMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{4}''은(는) 입력 인수 {1,number,integer}에 대해 차원 ''{3}''이(가) 필요하지만 ''{2}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallInArgDimsMismatchGenericSrcDst">함수 ''{3}''은(는) 입력 인수 {0,number,integer}에 대해 차원 ''{2}''이(가) 필요하지만 ''{1}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallNumOutArgsMismatchCallerSrcFcnDst">Function ''{4}'', defined
+    by ''{1}'', was expecting {2,number,integer} output 
+    arguments, but was called by ''{0}'' with {3,number,integer}.</entry>
+    <entry key="FcnCallNumOutArgsMismatchCallerSrcGenericDst">함수 ''{3}''은(는) {1,number,integer}개의 출력 인수가 있어야 하지만 ''{0}''에서 {2,number,integer}개의 출력 인수를 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallNumOutArgsMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{3}''은(는) {1,number,integer}개의 출력 인수가 있어야 하지만 {2,number,integer}개의 출력 인수를 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallNumOutArgsMismatchGenericSrcDst">함수 ''{2}''은(는) {0,number,integer}개의 출력 인수가 있어야 하지만 {1,number,integer}개의 출력 인수를 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgDTypeMismatchCallerSrcFcnDst">Function ''{5}'',
+    defined by ''{1}'', was expecting datatype ''{4}'' for output  
+    argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallOutArgDTypeMismatchCallerSrcGenericDst">Function ''{4}''
+    was expecting datatype ''{3}'' for output argument {1,number,integer}, 
+    but was called by ''{0}'' with ''{2}''.</entry>
+    <entry key="FcnCallOutArgDTypeMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{4}''은(는) 출력 인수 {1,number,integer}에 대해 데이터형 ''{3}''이(가) 필요하지만 ''{2}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgDTypeMismatchGenericSrcDst">함수 ''{3}''은(는) 출력 인수 {0,number,integer}에 대해 ID {2,number,integer}의 데이터형이 필요하지만 {1,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgCplxMismatchCallerSrcFcnDst">''{1}''에 의해 정의된 함수 ''{5}''은(는) 출력 인수 {2,number,integer}에 대해 실수/복소수 여부 {4,number,integer}(0=실수, 1=복소수)이(가) 필요하지만 ''{0}''에서 {3,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgCplxMismatchCallerSrcGenericDst">함수 ''{4}''은(는) 출력 인수 {1,number,integer}에 대해 실수/복소수 여부 {3,number,integer}(0=실수, 1=복소수)이(가) 필요하지만 ''{0}''에서 {2,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgCplxMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{4}''은(는) 출력 인수 {1,number,integer}에 대해 실수/복소수 여부 {3,number,integer}(0=실수, 1=복소수)이(가) 필요하지만 {2,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgCplxMismatchGenericSrcDst">함수 ''{3}''은(는) 출력 인수 {0,number,integer}에 대해 실수/복소수 여부 {2,number,integer}(0=실수, 1=복소수)이(가) 필요하지만 {1,number,integer}을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgDimsMismatchCallerSrcFcnDst">Function ''{5}'', 
+    defined by ''{1}'', was expecting dimensions ''{4}'' 
+    for output argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallOutArgDimsMismatchCallerSrcGenericDst">함수 ''{4}''은(는) 출력 인수 {1,number,integer}에 대해 차원 ''{3}''이(가) 필요하지만 ''{0}''에서 ''{2}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgDimsMismatchGenericSrcFcnDst">''{0}''에 의해 정의된 함수 ''{4}''은(는) 출력 인수 {1,number,integer}에 대해 차원 ''{3}''이(가) 필요하지만 ''{2}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="FcnCallOutArgDimsMismatchGenericSrcDst">함수 ''{3}''은(는) 출력 인수 {0,number,integer}에 대해 차원 ''{2}''이(가) 필요하지만 ''{1}''을(를) 사용하여 호출되었습니다.</entry>
+    <entry key="ssCallSimulinkFunctionExecArgInvalid">S-Function block ''{0}'' passes an invalid argument to ''ssCallSimulinkFunction'' macro to call Simulink function ''{1}''. The argument {2,number,integer} (known as ''{3}'') must be a pointer to a valid array of ''_ssFcnCallExecArgInfo'' struct, and the struct field ''dataPtr'' must point to a pre-assigned memory buffer for each associated Simulink function argument.</entry>
+    <entry key="ssCallSimulinkFunctionFail">Memory access violation occurs when S-Function block ''{0}'' is using ''ssCallSimulinkFunction'' macro to call Simulink function ''{1}''. Ensure both the fourth and sixth argument (known as ''execInArg'' and ''execOutArg'') are a pointer to a valid array of ''_ssFcnCallExecArgInfo'' struct, and in each array element, the struct fields ''dataPtr'' and ''dataSize'' are associated with a pre-assigned memory buffer with data type and size matching the corresponding Simulink function argument.</entry>
+    <entry key="FcnCallSubsysInvalidRoutingBlock">The function-call signal
+      driving function-call input port of block ''{0}'' cannot be routed through
+      &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of block ''{2}''. This function-call signal
+      can be routed through a From, Goto, Inport, Outport, or Subsystem
+      block.</entry>
+    <entry key="FcnCallBlockInvalidRoutingBlock">The function-call signal
+      driving &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' cannot be routed
+      through &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;output port {2,number,integer}&lt;/sldiag&gt; of block ''{3}''. This
+      function-call signal can be routed through a From, Goto, Inport, Outport,
+      or Subsystem block.</entry>
+    <entry key="SlFcnCodeGenVarSizedSideIO">Block ''{0}'' contains a variable-sized signal which is being used within a Simulink Function to connect to local signals within the model, this is not supported for model reference code generation.</entry>
+    <entry key="StubPortBlockMustBeInFcnCallSubsys">서브시스템 ''{0}''에 대한 함수 인수를 정의할 수 없습니다. Simulink 함수에 대해서만 인수를 정의할 수 있습니다.</entry>
+    <entry key="StubPortBlockNotAllowedInRoot">Cannot define function arguments at the root level of a block diagram. Arguments may be defined only for a Simulink function.</entry>
+    <entry key="SimulinkFunctionInvDiagSettings">Configuration Parameters settings for the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'' are invalid.</entry>
+    <entry key="SWArchMdlInvDiagSettings">소프트웨어 아키텍처 모델 ''{0}''에 대한 구성 파라미터 설정이 유효하지 않습니다.</entry>
+    <entry key="InvFcnCallName">변수 ''{0}''이(가) 유효한 함수 호출 객체 유형 이름을 제공하지 않습니다.</entry>
+    <entry key="FcnCallObjectSignature">시그니처:</entry>
+    <entry key="ResolveToFcnCallObjInMaskWorkspace">기호 ''{0}''이(가) 마스크 작업 공간의 Function Signature 객체와 연결이 맺어졌습니다. Function Signature 객체는 기본 작업 공간에서만 생성되어야 합니다.</entry>
+    <entry key="ResolveToFcnCallObjInModelWorkspace">기호 ''{0}''이(가) 모델 작업 공간의 Function Signature 객체와 연결이 맺어졌습니다. Function Signature 객체는 기본 작업 공간에서만 생성되어야 합니다.</entry>
+    <entry key="FcnCallEmptyArguments">Function Signature 객체 ''{0}''에는 적어도 하나의 인수(입력 또는 출력)가 있어야 합니다.</entry>
+    <entry key="FcnCallPortArgMismatch">Function Signature 객체 ''{0}''에는 Function-Call Subsystem의 Stub Inport 및 Outport의 개수와 동일한 개수의 인수(입력 및 출력)가 있어야 합니다.</entry>
+    <entry key="FcnCallIncorrectComplexEntry">함수 인수 ''{0}''의 실수/복소수 여부는 'auto', 'real' 또는 'complex'로 설정되어야 합니다.</entry>
+    <entry key="FcnCallIncorrectArgumentEntry">제공되는 인수는 Simulink.FunctionArgument 또는 Simulink.FunctionStatusArgument 유형이거나 이러한 객체로 구성된 벡터여야 합니다.</entry>
+    <entry key="FcnCallIncorrectDataTypeEntry">함수 인수 ''{0}''의 데이터형은 Function Signature 객체가 아니어야 합니다.</entry>
+    <entry key="FcnCallIncorrectArgTypeEntry">함수 인수 ''{0}''의 인수 유형은 'input', 'output' 또는 'inout'으로 설정되어야 합니다.</entry>
+    <entry key="FcnCallIncorrectStatusArgEntry">Function Signature 객체 ''{0}''은(는) 하나의 상태 인수 세트만 가질 수 있습니다.</entry>
+    <entry key="FcnCallArgScope">범위:</entry>
+    <entry key="FcnCallArgument">인수</entry>
+    <entry key="FcnCallInputArg">입력 인수</entry>
+    <entry key="FcnCallOutputArg">출력 인수</entry>
+    <entry key="InvalidSimulinkFunctionName">Simulink Function 블록 ''{1}''의 함수 이름 ''{0}''은(는) 유효한 ANSI C 식별자여야 합니다.</entry>
+    <entry key="InvalidFunctionNameAtCaller"> Function name, ''{0}'', called by the Function Caller block ''{1}'' must be a valid ANSI C identifier.</entry>
+    <entry key="InvalidFunctionScopeName"> The block ''{0}'' contains Simulink functions, and the block name also represents the name of the scope for these Simulink functions. The block name specified, ''{1}'' is not a valid ANSI C identifier required for being a scope name. Valid identifiers start with an alphabetic or ''_'' character, followed by alphanumeric or ''_'' characters.</entry>
+    <entry key="InvalidFunctionCallerScopeName"> 블록 ''{0}''이(가) 유효 범위가 설정된 Simulink Function을 호출하고 있습니다. 지정된 범위 이름 ''{1}''은(는) 범위 이름이 되기 위해 필요한 유효한 ANSI C 식별자가 아닙니다. 유효한 식별자는 영문자 또는 ''_'' 문자로 시작한 다음 영숫자 또는 ''_'' 문자가 오는 식별자입니다.</entry>
+    <entry key="InvalidTriggerPortScopeName"> 범위 이름 ''{0}''은(는) 범위 이름이 되기 위해 필요한 유효한 ANSI C 식별자가 아닙니다. 유효한 식별자는 영문자 또는 ''_'' 문자로 시작한 다음 영숫자 또는 ''_'' 문자가 오는 식별자입니다.</entry>
+    <entry key="DuplicateInArgName"> Input argument names provided in the function prototype of block ''{0}'' must be unique.</entry>
+    <entry key="DuplicateOutArgName"> Output argument names provided in the function prototype of block ''{0}'' must be unique.</entry>
+    <entry key="FcnCallDuplicateServerBlock">두 개의 블록 ''{0}''과(와) ''{1}''이(가) 동일한 함수 ''{2}''을(를) 정의하고 있습니다. 함수 이름은 고유해야 합니다.</entry>
+    <entry key="AmbiguousSourceModel">Global function ''{0}'' is defined in multiple models.</entry>
+    <entry key="FunctionIncludedBy">The function is included from model ''{0}'' for caller block ''{1}''.</entry>
+    <entry key="FunctionDefinedIn">The function is defined in model ''{0}'' by function block''{1}''.</entry>
+    <entry key="GlobalSimulinkFcnNotInExpFcnMdl">
+    Simulink function ''{0}'' must be in an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; to be called by block ''{2}'' from another model.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;At the root level of the model referenced by Model block ''{1}'', open the 'Property Inspector'. On the 'Execution' tab, select 'Set execution domain', and set 'Domain' to 'Export function'.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="GlobalSimulinkFcnNotInExpFcnMdlWithFix">
+    Simulink function ''{0}'' must be in an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; to be called by block ''{2}'' from another model. 
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{3}'', ''SetExecutionDomain'', ''on'');set_param_action(''{3}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt;
+            &lt;txt&gt;At the root level of model ''{3}'' referenced by Model block ''{1}'', open the 'Property Inspector'. On the 'Execution' tab, select 'Set execution domain', and set 'Domain' to 'Export function'.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="UndefinedFunctionBuilt">The function ''{0}'' called by block ''{1}'' has not been defined in the model.</entry>
+    <entry key="UnknownFunctionInvoked">블록 ''{1}''에 의해 호출된 함수 ''{0}''에 대한 정의를 찾을 수 없습니다. </entry>
+    <entry key="UnknownFunctionSkipped">클라이언트 포트 ''{2}''이(가) 유효한 함수 요소 ''{0}''이(가) 정의된 서버 포트에 연결되지 않았기 때문에 블록 ''{1}''이(가) 클라이언트 포트에서 함수 ''{0}''을(를) 호출하지 않습니다.</entry>
+    <entry key="UnknownServerReferred">Cannot find a Simulink function named ''{0}'' in the model.</entry>
+    <entry key="CallingUndeclaredFunction">Block ''{1}'' must declare the function prototype to call Simulink function ''{0}''. For S-Function block, use ''ssDeclareFunctionCaller'' macro to declare the function prototype.</entry>
+    <entry key="UnresolvedScopedFunctionCall">Block ''{0}'' is unable to call the function ''{1}'' with scope name ''{2}'' because the function definition is not found.
+    
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion" id="scopedFcn"&gt;
+            &lt;txt&gt;To call a scoped function, see &lt;a href="matlab:helpview(fullfile(docroot, 'simulink/ug/troubleshoot-block-unable-to-call-function.html'))"&gt;Resolve Error: Block is Unable to Call the Scoped Simulink Function&lt;/a&gt; for more information.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit" id="fcnPort" retvalue="false"&gt;
+            &lt;cmd&gt;slprivate(''insertFunctionElementPort'', bdroot(''{0}''), ''{2}'', ''{1}'', true);&lt;/cmd&gt;
+            &lt;txt&gt;To call a port-scoped function outside the model, add a Function Element Call block ''{2}.{1}'' at the model root level.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="CallerScopeCannotBeCurrentModelName">블록 ''{0}''은(는) 모델 이름 ''{2}''을(를) 범위 이름으로 사용하여 함수 ''{1}''을(를) 호출할 수 없습니다. 범위 이름 및 함수 배치를 수정하십시오. 올바른 사용에 대한 자세한 내용은 &lt;a href="matlab:helpview(fullfile(docroot, 'simulink/ug/troubleshoot-block-unable-to-call-function.html'))"&gt;Resolve Error: Block is Unable to Call the Scoped Simulink Function&lt;/a&gt; 항목을 참조하십시오.
+    </entry>
+    <entry key="UnableToCallFunctionFromRef">참조 모델의 블록 ''{0}''은(는) 블록 ''{2}''에 의해 정의된, 유효 범위가 설정된 Simulink 함수 ''{1}''을(를) 호출할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="setGlobal" retvalue="false"&gt; &lt;cmd&gt;set_param(''{3}'', ''FunctionVisibility'', ''global'');&lt;/cmd&gt; &lt;txt&gt;블록 ''{3}''의 ''FunctionVisibility'' 파라미터를 ''global''로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="moveFcnToRef"&gt; &lt;txt&gt;유효 범위가 설정된 Simulink 함수 ''{1}''을(를) 정의하는 블록 ''{2}''을(를) 참조 모델로 이동(함수 내보내기 모델로 구성)하고 해당 모델 이름을 Caller 블록 ''{0}''의 범위 이름으로 사용하십시오. 자세한 내용은 &lt;a href="matlab:helpview(fullfile(docroot, 'simulink/ug/simulink-functions-in-referenced-models.html'))"&gt;Simulink Function Blocks in Referenced Models&lt;/a&gt;를 참조하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnableToCallScopedFunctionFromRef">참조 모델의 블록 ''{0}''은(는) 범위 이름 ''{4}''을(를) 사용하여 블록 ''{2}''에 의해 정의된 Simulink 함수 ''{1}''을(를) 호출할 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="setGlobal" retvalue="false"&gt; &lt;cmd&gt;set_param(''{3}'', ''FunctionVisibility'', ''global''); set_param(''{0}'', ''FunctionPrototype'', regexprep(get_param(''{0}'', ''FunctionPrototype''), ''(\\w+)\\.'', ''''));&lt;/cmd&gt; &lt;txt&gt;블록 ''{3}''의 ''FunctionVisibility'' 파라미터를 ''global''로 설정하고 Caller 블록 ''{0}''의 범위 이름을 제거하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action_catalog id="Simulink:FcnCall:UnableToCallFunctionFromRef" ids="moveFcnToRef"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MultiInstanceIfCallScopeIsModelName">Simulink 함수 ''{1}''을(를) 정의하는 참조 모델 ''{0}''의 인스턴스가 여러 개 있습니다. 이 함수는 해당 모델 이름을 인스턴스를 지정하지 않은 범위 이름으로 사용하는 블록 ''{2}''에 의해 호출됩니다. 따라서 이 함수는 Model 블록 ''{3}''의 한 인스턴스로 연결이 맺어집니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="ChangeCallerScope" retvalue="false" enabled="true"&gt; &lt;cmd&gt;set_param(''{2}'', ''FunctionPrototype'', regexprep(get_param(''{2}'', ''FunctionPrototype''), ''(\\w+)\\.'', ''__ARG1__.''));&lt;/cmd&gt; &lt;cargs&gt; &lt;carg name="__ARG1__" type="text"&gt; &lt;txt_prompt&gt;&lt;/txt_prompt&gt; &lt;def_cmd&gt;"{4}"&lt;/def_cmd&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;Caller 블록 ''{2}''에서 범위 이름을 Model 블록(인스턴스) 이름으로 변경하십시오:&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="RemoveInstanceToOne" retvalue="false"&gt; &lt;txt&gt;''{0}''을(를) 참조하는 Model 블록을 하나만 유지하고 나머지는 제거하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="RequireSingleInstanceIfCallScopeIsModelName">When generating code for the top model, reference model ''{0}'' that defines the Simulink function ''{1}'' only allows a single instance, because the function is called by block ''{2}'' using that model name ''{0}'' as the scope name which does not specify an instance. 
+    
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" id="AllowSingleInstance" retvalue="false"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''ModelReferenceNumInstancesAllowed'', ''Single'');&lt;/cmd&gt;
+            &lt;txt&gt;For model ''{0}'', set &lt;sldiag objui="configset" objparam="ModelReferenceNumInstancesAllowed"&gt;&lt;/sldiag&gt; parameter to ''Single''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="FcnCallArgumentCatalogMismatch">''{0}''의 함수 정의와 해당 호출자의 함수 정의 간에 인수 사양이 일치하지 않습니다.</entry>
+    <entry key="FcnCallArgumentPrototypeInvalidDatatype">블록 ''{0}''의 프로토타입 사양에 지정된 데이터형 ''{1}''이(가) 유효하지 않습니다.</entry>
+    <entry key="FcnCallArgumentSpecificationMismatch">제공된 입력/출력 인수 사양의 개수와 블록 ''{0}''의 함수 프로토타입에 제공된 입력/출력 인수의 개수는 일치해야 합니다.</entry>
+    <entry key="FcnCallArgumentSpecificationInvalid">블록 ''{0}''의 입력/출력 인수 사양에 대해 제공된 표현식은 내장 데이터형이나 Simulink.NumericType 객체로 평가되어야 합니다.</entry>
+    <entry key="FcnCallArgumentSpecificationINOUTMismatch">The input and output
+    argument specifications provided for argument ''{0}'' which is both an input
+    and output argument at block ''{1}'', must match.</entry>
+    <entry key="FcnCallArgsINOUTMismatch">The specifications of dimensions,
+    complexity and data type for the reusable input argument {0,number,integer},
+    and reusable output argument {1,number,integer} at block ''{2}'', must match.</entry>
+    <entry key="FcnCallNeedsNonvirtualBus">블록 ''{1}''에서는 &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;{0,number,integer}번 입력 포트&lt;/sldiag&gt;의 버스가 비가상 버스여야 합니다. Signal Conversion 블록을 삽입하여 버스를 비가상 버스로 변환해 보십시오.</entry>
+    <entry key="FcnCallArgNotShared">The data scope of data type ''{2}'' must be set to ''Imported'' or ''Exported''. This condition is required to be able to export the declaration of argument ''{0}'' of function ''{1}''.</entry>
+    <entry key="FcnCallPrototypeInvalid">프로토타입 사양에 대해 지정된 문자형 벡터 ''{0}''이(가) 유효하지 않습니다.</entry>
+    <entry key="FcnCallNeedsTimeAccess">Block ''{0}'' is not able to access absolute time because it is contained in a Simulink Function block. Consider changing your model such that time is passed in as an argument to the Simulink function.</entry>
+    <entry key="FunctionCallerNonSourceInheritedTs">Function Caller block ''{0}'' must specify inherited sample time (-1 is inherited) when the block is not a source.</entry>
+    <entry key="FunctionCallerNonNumericTypeInArgSpec">Input argument specifications at Function Caller block ''{0}'' must specify examples of built-in or user-defined data types. Examples of user-defined data types, including Bus, Fixed-point, Enumerations, and Alias types, may be provided with a Simulink.Parameter object.</entry>
+    <entry key="FunctionCallerNonNumericTypeOutArgSpec">Output argument specifications at Function Caller block ''{0}'' must specify examples of built-in or user-defined data types. Examples of user-defined data types, including Bus, Fixed-point, Enumerations, and Alias types, may be provided with a Simulink.Parameter object.</entry>
+    <entry key="FcnCallNeedsGlobalDWork">Function ''{0}'' may not be invoked concurrently because it contains block ''{1}'' which may access global data through its dwork vectors. This diagnostic is reported because ''Can be invoked concurrently'' option is selected in the AUTOSAR configuration for the Simulink Function block ''{2}''.</entry>
+    <entry key="FcnCallNeedsGlobalOutputs">Function ''{0}'' may not be invoked concurrently because it contains block ''{1}'' with persistent outputs. This diagnostic is reported because ''Can be invoked concurrently'' option is selected in the AUTOSAR configuration for Simulink Function block ''{2}''.</entry>
+    <entry key="SimulinkFunctionInvalidBusVarDims">Data type ''{0}'' of argument ''{1}'' of the function ''{2}'' defined in block ''{3}'' is a bus containing variable-size elements. Simulink does not support calling Simulink Functions with variable-sized arguments.</entry>
+    <entry key="SimulinkFunctionCycleMsg">Simulink does not support the execution of function-call cycles:</entry>
+    <entry key="CascadeSimulinkFunction">함수 ''{0}''에 ''{2}''을(를) 호출하는 블록 ''{1}''이(가) 포함되어 있습니다.</entry>
+    <entry key="SimulinkFunctionInconsistentPrototype">함수 ''{0}''의 인수는 ''{1}''과(와) ''{2}'' 간에 일관된 이름을 사용해야 합니다.</entry>
+    <entry key="SimulinkFunctionInvalidRootIOForCoder">Simulink function ''{0}'' defined in model ''{1}'' may not be connected to root Inport or root Outport blocks when the model is generating code as a model reference target.</entry>
+    <entry key="SimulinkFunctionInvalidScalarRootIOForCoder">The scalar root-level Inport block ''{0}'' defined in model ''{1}'' may not be connected to Simulink Function blocks when the model is generating code as a model reference target unless ''Configuration Parameters'' &gt; ''Model referencing'' &gt; ''Pass fixed-size scalar root inputs by value for code generation'' is deselected.</entry>
+    <entry key="SimulinkFunctionNonreusableCodeInterface">모델 ''{0}''은(는) ''{1}''에 정의된 전역 Simulink 함수를 포함하므로 재사용 가능 코드 또는 C++ 클래스 코드를 생성할 수 없습니다. 옵션 '코드 인터페이스 패키징'을 '재사용 불가 함수'로 설정해 보십시오.</entry>
+    <entry key="SingleInstScopedSimulinkFunctionNonreusableCodeInterface">Model ''{0}'' may not generate reusable code because it contains one or more Scoped Single Instance Simulink functions. Consider setting the option 'Code interface packaging' to 'Nonreusable function'.</entry>
+    <entry key="SimulinkFunctionInvalidLocation">Simulink 함수 ''{1}''을(를) 정의하는 블록 ''{0}''은(는) 모델의 루트 수준에 포함되거나 참조된 모델의 루트 수준 내에 포함되어야 합니다.</entry>
+    <entry key="SimulinkFunctionInRefMdlInvalidLocation">Inside the model referenced by Model block ''{0}'' there are global Simulink functions. Therefore, this Model block must be contained within the root level of a model or within a virtual subsystem hierarchy.</entry>
+    <entry key="SimulinkFunctionInSSInvalidAccess">The Simulink function ''{0}'' cannot be accessed by ''{2}'' because the function is scoped to a nonvirtual subsystem ''{1}''.</entry>
+    <entry key="SimulinkFunctionInAtomicSSInvalidAccess">The subsystem block ''{0}'' is atomic. Consider clearing the 'Treat as atomic unit' flag on the subsystem block dialog.</entry>
+    <entry key="SimulinkFunctionAndCallerDifferentRates">The sample time {0} of the function ''{1}'' defined by block ''{2}'' differs from the sample time {3} of its caller block ''{4}''.</entry>
+    <entry key="SimulinkFunctionAndCallerDifferentTasks">블록 ''{1}''에 의해 정의된 함수 ''{0}''이(가) 해당 호출자 블록 ''{2}''의 태스크가 아닌 다른 태스크에 있습니다.</entry>
+    <entry key="SimulinkFunctionDrivenByDifferentRates">Function ''{0}'' defined by block ''{1}'' is invoked by multiple callers with different sample times. It is called by ''{2}'' with sample time {3} and by ''{4}'' with sample time {5}.</entry>
+    <entry key="FcnCallerNotSupportRateType">Sample time of block ''{0}'' must not be continuous because it contains a call to a Simulink function.</entry>
+    <entry key="FunctionCallerSvcIntrfArgMismatch">함수 ''{0}''에 대해 Function Caller 블록 ''{1}''에 지정된 인수 사양과 클라이언트-서버 포트 ''{2}''에 할당된 서비스 인터페이스에 지정된 인수 사양이 일치하지 않습니다. </entry>
+    <entry key="FunctionCallerUnspecifiedArgDims">이 계층 구조, 모델 또는 임의의 참조된 모델 내에서 대응하는 Simulink 함수와 연결을 맺을 수 없으므로 Function Caller 블록 ''{0}''에 대한 입력 인수 사양과 출력 인수 사양을 제공하십시오.</entry>
+    <entry key="ClientPortUnspecifiedArgDims">이 계층 구조, 모델 또는 임의의 참조된 모델 내에서 대응하는 Simulink 함수와 연결을 맺을 수 없으므로 클라이언트-서버 포트 ''{0}''에 서비스 인터페이스를 할당하여 이 포트에 대한 인수 사양을 제공하십시오. 또는, Function Caller 블록 ''{1}''에 대한 입력 인수 사양 및 출력 인수 사양을 제공하십시오.</entry>
+    <entry key="FunctionCallerServicePortInvalidDataType">클라이언트-서버 포트 ''{0}''의 데이터형이 유효하지 않습니다. 서비스 인터페이스만 클라이언트-서버 포트에 할당할 수 있습니다. </entry>
+    <entry key="StubInputPortBlockUnspecifiedDataType">인수 입력 블록 ''{0}''은(는) 데이터형을 지정해야 합니다.</entry>
+    <entry key="StubInputPortBlockUnspecifiedDimension">The argument input block''{0}'' must fully specify its dimension.</entry>
+    <entry key="StubInputPortBlockUnspecifiedSignalType">인수 입력 블록 ''{0}''은(는) 신호 유형을 지정해야 합니다.</entry>
+    <entry key="StubOutputPortBlockUnspecifiedDataType">인수 출력 블록 ''{0}''은(는) 데이터형을 지정해야 합니다.</entry>
+    <entry key="StubOutputPortBlockUnspecifiedDimension">The argument output block''{0}'' must fully specify its dimension.</entry>
+    <entry key="StubOutputPortBlockUnspecifiedSignalType">인수 출력 블록 ''{0}''은(는) 신호 유형을 지정해야 합니다.</entry>
+    <entry key="StubInputPortBlockGlobalVar">The signal leaving the argument input block ''{0}'' must not be testpointed or have a non-auto storage class.</entry>
+    <entry key="StubOutputPortBlockGlobalVar">인수 출력 블록 ''{0}''에 들어오는 신호는 테스트 지점으로 지정되거나 자동이 아닌 스토리지 클래스를 가지면 안 됩니다.</entry>
+    <entry key="SimFunCallAcrossMdls">$PRODUCT$ does not support calls to Simulink Functions across model boundaries. Define the Simulink Function ''{0}'' within the same model as its caller.</entry>
+    <entry key="SimulinkFunctionSFcnAPIDataTypeInvalid">Block ''{0}'' defining Simulink Function ''{1}'', is providing an invalid data type ''{2,number,integer}'' for argument ''{3}''.</entry>
+    <entry key="SimulinkFunctionSFcnAPINotFound">Cannot find argument ''{0}'' of function ''{1}'' for ''{2}''.</entry>
+    <entry key="ServiceInterfaceTypeConflict">포트 ''{1}''에 대한 인터페이스 이름 ''{0}''이(가) 다른 정의에 사용되었습니다. 다른 이름을 사용해 보십시오.</entry>
+    <entry key="ServiceInterfaceTypeAndSharedDataTypeConflict">포트 ''{1}''에 대한 인터페이스 이름 ''{0}''은(는) 내보낸 유형으로 이전에 선언되었습니다. 다른 이름을 사용해 보십시오.</entry>
+    <entry key="CPPClassNotAllowedForFunctionCallsDefinedOutsideModel">Code generator cannot produce C++ class interface for model ''{0}''. Model contains block ''{1}'', which calls a Simulink function (''{2}'') that is defined outside the model hierarchy.</entry>
+    <entry key="CPPClassNotAllowedForFCSSCalledByNonInlinedSFcn">Code generator cannot produce C++ class interface for model ''{0}''. Model contains function-call subsystem ''{1}'', which is called by a non-inlined S-Function ''{2}''.</entry>
+    <entry key="NoMessageInport"> No message is passed to function-call block.</entry>
+    <entry key="InvalidInportNumberForMessageType"> Passing multiple messages into a function-call block is not allowed.</entry>
+    <entry key="InvalidOutportNumberForMessageType">Function Caller 블록 ''{0}''은(는) 비동기 실행을 위해 구성되어 있으므로 최대 하나의 출력을 가질 수 있습니다.</entry>
+    <entry key="PortScopedSimulinkFunctionMustBeAtRootLevel">Simulink Function block ''{0}'' must be placed at the root level of an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; because its function visibility is set to ''port''.
+    </entry>
+    <entry key="SimulinkFunctionProvidedNoServicePort">Because Simulink function ''{0}'' has function visibility set to ''port'', it must have an associated Function Element block ''{2}.{1}'' placed at the model root level.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" id="fcnPort" retvalue="false"&gt;
+            &lt;cmd&gt;slprivate(''insertFunctionElementPort'', bdroot(''{0}''), ''{2}'', ''{1}'', false);&lt;/cmd&gt;
+            &lt;txt&gt;Add a Function Element block ''{2}.{1}'' at the model root level.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="FunctionCallerRequestedNoServicePort">Function Caller 블록 ''{0}''은(는) Function Element 블록 ''{3}''과(와) 연결된, 정의되지 않은 함수 ''{2}.{1}''을(를) 호출합니다. 포트 범위로 설정된 외부 함수를 호출하려면 Function Element Call 블록을 대신 사용하십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fcnPort" retvalue="false"&gt; &lt;cmd&gt;slprivate(''insertFunctionElementPort'', bdroot(''{0}''), ''{2}'', ''{1}'', true);&lt;/cmd&gt; &lt;txt&gt;블록 ''{3}''을(를) 모델 루트 수준에 배치된 Function Element Call 블록 ''{2}.{1}''(으)로 바꾸십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ClientPortNotAtRootLevel">블록 ''{0}''은(는) Function Element Call 포트이며 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;의 루트 수준에 배치되어야 합니다.</entry>
+    <entry key="ServerPortNotAtRootLevel">블록 ''{0}''은(는) Function Element 포트이며 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;의 루트 수준에 배치되어야 합니다.</entry>
+    <entry key="SimulinkFunctionProvidedNoServicePortTs">Simulink Function ''{0}''에서 포트 이름 ''{1}''을(를) 통해 서비스의 정의를 제공하고 있습니다. 이 포트는 샘플 시간을 지정해야 합니다.</entry>
+    <entry key="SimulinkFunctionDuplicateServiceName">블록 ''{0}''은(는) 포트 ''{2}''을(를) 통해 서비스 ''{1}''을(를) 정의하지만, 블록 ''{3}''은(는) 다른 포트를 통해 동일한 이름의 서비스도 정의합니다.</entry>
+    <entry key="CannotCreateSubsystemFromClientServerPorts">블록에 클라이언트-서버 포트가 포함되어 있으므로 블록 ''{0}''에서 서브시스템을 만들 수 없습니다. 클라이언트-서버 포트는 모델의 루트 수준에 있어야 합니다.</entry>
+    <entry key="ClientServerNoBranching">블록 ''{0}''이(가) 포트 번호 {1,number,integer}을(를) 통해 클라이언트 호출을 하고 있습니다. 이 포트는 서버 포트에만 연결되어야 하며 연결을 여러 개의 클라이언트 포트로 분기할 수 없습니다.</entry>
+    <entry key="ClientServerSyncExpFcnOnly">블록 ''{0}''이(가) 입력 포트 ''{1}''을(를) 통해 동기 클라이언트 호출을 하고 있으며 &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;에 배치되어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SetExecutionDomain'', ''on'');set_param_action(''{2}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;모델 ''{2}''을(를) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;로 설정하려면 이 모델의 루트 수준에서 속성 인스펙터를 여십시오. 실행 탭에서 '실행 영역 설정'을 선택하고 '영역'을 '함수 내보내기'로 설정합니다.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ClientServerSyncSWArchOnly">블록 ''{0}''이(가) 입력 포트 ''{1}''을(를) 통해 동기 클라이언트 호출을 하고 있으며, 소프트웨어 아키텍처 모델에 배치되어야 합니다.
+    </entry>
+    <entry key="ClientServerNoAccel">모델 ''{0}''에 비동기 클라이언트-서버 함수 포트가 포함되어 있으므로 액셀러레이터 모드 시뮬레이션은 지원되지 않습니다.</entry>
+    <entry key="ClientServerNoRapid">Rapid Accelerator mode simulation is not supported because model ''{0}'' contains client-server function ports.</entry>
+    <entry key="ClientServerNoSILPIL">모델 ''{0}''에 클라이언트/서버 함수 포트가 포함되어 있으므로 이 모델은 현재 타깃 ''{1}''에 대해 SIL(Software-in-the-Loop) 및 PIL(Processor-in-the-Loop) 시뮬레이션 모드를 지원하지 않습니다.</entry>
+    <entry key="AsyncFunctionCallerNoLogging">Function Caller 블록 ''{0}''이(가) 비동기 실행을 위해 구성되어 있으므로 이 블록의 출력을 기록하는 것은 지원되지 않습니다.</entry>
+    <entry key="AsyncFunctionCallerConnection">Function Caller 블록 ''{0}''이(가) 비동기 실행을 위해 구성되어 있으므로 이 블록의 출력은 모델 ''{1}''의 루트 수준에 배치된 Message Triggered Subsystem에 연결되어야 합니다.</entry>
+    <entry key="AsyncCallerMsgTrigSubsysSetting">Message Triggered Subsystem ''{0}''이(가) Function Caller 블록 ''{1}''의 비동기 응답 함수가 되려면 연결된 Trigger Port 블록에서 파라미터 ''TriggerTime''이 ''on message''로 설정되어 있고 파라미터 ''ScheduleAsAperiodic''가 꺼져 있어야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''TriggerTime'', ''on message available''); set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;블록 ''{2}''의 파라미터 &lt;sldiag objui="blockdlg" objparam="TriggerTime" objname="{2}"&gt;''트리거 시간''&lt;/sldiag&gt;을 ''메시지 제공 시''로 설정하고 파라미터 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}"&gt;''비주기적 분할로 스케줄링''&lt;/sldiag&gt;을 끄십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AsyncCallerMsgTrigSSMustBeAtRoot">Message Triggered Subsystem ''{0}''이(가) Function Caller 블록 ''{1}''의 비동기 응답 함수가 되려면 모델 ''{2}''의 루트 수준에 배치되어야 합니다.
+    </entry>
+    <entry key="AsyncFunctionNeedsMultiTasking">블록 ''{0}''에 비동기 함수 ''{1}''이(가) 포함되어 있습니다. 이를 허용하려면 '구성 파라미터' &gt; '솔버' &gt; '각 이산 레이트를 별개의 태스크로 처리' 옵션을 설정해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SolverMode'', ''MultiTasking'');&lt;/cmd&gt; &lt;txt&gt;구성 파라미터 &lt;sldiag objui="configset" objparam="EnableMultiTasking" objname="{0}"&gt;'솔버' &gt; '각 이산 레이트를 별개의 태스크로 처리'&lt;/sldiag&gt; 옵션을 설정하여 멀티태스킹 모드로 실행되도록 모델 ''{2}''을(를) 변경하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AsyncFunctionNeedsScheduleEditor">블록 ''{0}''에 비동기 함수 ''{1}''이(가) 포함되어 있습니다. 블록을 함수 내보내기 모델에 배치하거나, [블록 파라미터] 대화 상자에서 '레이트 스케줄링 방법' 파라미터를 '스케줄 편집기'로 설정해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ScheduleRatesWith'', ''Schedule Editor'');&lt;/cmd&gt; &lt;txt&gt;'레이트 스케줄링 방법'을 '스케줄 편집기'로 변경하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AsyncFunctionNeedsClientPort">'함수 호출을 비동기식으로 실행' 옵션이 선택된 경우 Function Caller 블록 ''{0}''은(는) 클라이언트 포트로 연결이 맺어져야 합니다.</entry>
+    <entry key="AsyncFunctionNeedsServerPort">'함수 호출을 비동기식으로 실행' 옵션이 선택된 경우 Simulink Function 블록 ''{0}''은(는) 포트 범위가 서버 포트로 설정되어야 합니다.</entry>
+    <entry key="AsyncFunctionDisallowPublicSimulinkFunctions">포트 범위로 설정된 비동기 Simulink 함수가 모델에 포함된 경우 Simulink Function 블록 ''{0}''은(는) 다음 두 가지 방법 중 하나로 구성해야 합니다. (1) 가시성을 '유효 범위'로 설정하고 블록을 가상 서브시스템 내부에 배치하여 함수가 모델에 대한 프라이빗 함수가 되도록 합니다. (2) 가시성을 '포트'로 설정하고 Function Element Out 블록을 사용하여 구성합니다.
+    </entry>
+    <entry key="AsyncFunctionDisallowInheritedFunctions">모델 ''{1}''이(가) 하나 이상의 포트로 유효 범위가 설정된 함수를 포함하므로 이 모델의 함수 ''{0}''은(는) 주기적인 샘플 시간을 지정해야 합니다.
+    </entry>
+    <entry key="AsyncFunctionDisallowInheritedFcnsSWArch">모델 ''{1}''이(가) 하나 이상의 포트로 유효 범위가 설정된 함수를 포함하므로 이 모델의 함수 ''{0}''은(는) 주기적인 샘플 시간을 가져야 합니다. 함수 편집기를 열고 함수 주기를 편집하십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="openFunctionsEditor" retvalue="false"&gt; &lt;cmd&gt;swarch.internal.fixes.showArchitectureEditor(''{1}'')&lt;/cmd&gt; &lt;txt&gt;함수 편집기를 여십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="AsyncSpecificationMismatch"> 서버 포트 ''{1}''(으)로 범위가 지정된 함수 ''{0}''은(는) Simulink Function 블록 및 대응하는 Function Caller 블록에서 '함수 호출을 비동기식으로 실행' 옵션의 지정이 일치해야 합니다.</entry>
+    <entry key="UnsupportedAsyncCodegenTargets">Function Caller 블록 ''{0}''이(가) 비동기 실행을 위해 구성되어 있으므로 이 블록에 대한 코드 생성은 지원되지 않습니다.</entry>
+    <entry key="UnsupportedCGForAsyncFcnMultiOutputs">출력 인수가 두 개 이상 있는 Function Caller 블록 ''{0}''이(가) 비동기 실행을 위해 구성된 경우 이 블록에 대한 코드 생성은 지원되지 않습니다.</entry>
+    <entry key="AsyncInterfaceMismatchAtCaller">
+    Simulink 동작에서 Function Caller 블록 ''{2}''의 함수 호출 실행에 대한 비동시성은 클라이언트 포트 ''{1}''의 인터페이스에 정의된 함수 ''{0}''과(와) 일치해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AsyncInterfaceMismatchAtCallerFix"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''AsynchronousCaller'', ''{3}'');&lt;/cmd&gt; &lt;txt&gt;Function Caller 블록 ''{2}''의 'AsynchronousFunction' 파라미터를 함수 ''{0}''에 대한 인터페이스의 '비동기' 파라미터와 일치하도록 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="AsyncInterfaceMismatchAtFunction">
+    Simulink 동작에서 Trigger 블록 ''{2}''의 함수 호출 실행에 대한 비동시성은 서버 포트 ''{1}''의 인터페이스에 정의된 함수 ''{0}''과(와) 일치해야 합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AsyncInterfaceMismatchAtFunctionFix"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''AsynchronousFunction'', ''{3}'');&lt;/cmd&gt; &lt;txt&gt;Trigger 블록 ''{2}''의 'AsynchronousFunction' 파라미터를 함수 ''{0}''에 대한 인터페이스의 '비동기' 파라미터와 일치하도록 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ArgBlockFcnArgMinMismatch">
+    ''{2}''에 정의된 함수 ''{1}''에서 함수 인수 ''{0}''의 'Minimum' 파라미터는 Argument 블록 ''{3}''의 'OutMin' 파라미터와 일치해야 합니다 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="ArgBlockFcnArgMinMismatchFix"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''OutMin'', ''{4}'');&lt;/cmd&gt; &lt;txt&gt;''{2}''에 있는 함수 인수의 'Minimum' 속성과 일치하도록 Argument 블록 ''{5}''의 'OutMin' 파라미터를 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ArgBlockFcnArgMaxMismatch">
+    ''{2}''에 정의된 함수 ''{1}''에서 함수 인수 ''{0}''의 'Maximum' 파라미터는 Argument 블록 ''{3}''의 'OutMax' 파라미터와 일치해야 합니다 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="ArgBlockFcnArgMaxMismatchFix"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''OutMax'', ''{4}'');&lt;/cmd&gt; &lt;txt&gt;''{2}''에 있는 함수 인수의 'Maximum' 속성과 일치하도록 Argument 블록 ''{5}''의 'OutMax' 파라미터를 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="AsyncInterfaceMismatchSelect">선택</entry>
+    <entry key="AsyncInterfaceMismatchDeselect">선택 취소</entry>
+    <entry key="UnsupportedCGForAsyncFcnVoidOutput">출력 인수가 없는 Function Caller 블록 ''{0}''이(가) 비동기 실행을 위해 구성된 경우 이 블록에 대한 코드 생성은 지원되지 않습니다.</entry>
+    <entry key="InvalidFunctionOrder">함수 내보내기 모델 ''{0}''에서 함수 ''{1}'' 및 ''{2}''에 충돌하는 순서가 있습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param("{0}","OrderFunctionsByDependency","off"); tcg = sltp.TaskConnectivityGraph("{0}"); tcg.assignInputPortPrioritiesForModel();&lt;/cmd&gt; &lt;txt&gt;모델이 일치하지 않습니다. ''수정'' 버튼을 클릭하여 이 문제를 해결하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ClientPortDelegateUnsupported">
+      Model 블록 ''{1}''의 함수 포트 ''{0}''과(와) 데이터 포트 ''{2}'' 사이의 연결이 유효하지 않습니다. 함수 포트는 다른 Model 블록의 내보내기 함수 포트에 연결해야 합니다. 클라이언트-서버 통신을 모델링하는 방법에 대한 자세한 내용은 System Composer 문서의 &lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;Author Service Interfaces for Client-Server Communication&lt;/a&gt;을 참조하십시오.
+    </entry>
+    <entry key="ClientPortConnectionUnsupported">
+      Model 블록 ''{1}''의 함수 포트 ''{0}''과(와) 블록 ''{2}'' 사이의 연결이 유효하지 않습니다. 함수 포트는 다른 Model 블록의 내보내기 함수 포트에 연결해야 합니다. 클라이언트-서버 통신을 모델링하는 방법에 대한 자세한 내용은 System Composer 문서의 &lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;Author Service Interfaces for Client-Server Communication&lt;/a&gt;을 참조하십시오.
+    </entry>
+    <entry key="ServerPortDelegateUnsupported">
+      Model 블록 ''{1}''의 내보내기 함수 포트 ''{0}''과(와) 데이터 포트 ''{2}'' 사이의 연결이 유효하지 않습니다. 내보내기 함수 포트는 다른 Model 블록의 함수 포트에 연결해야 합니다. 클라이언트-서버 통신을 모델링하는 방법에 대한 자세한 내용은 System Composer 문서의 &lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;Author Service Interfaces for Client-Server Communication&lt;/a&gt;을 참조하십시오.
+    </entry>
+    <entry key="ServerPortConnectionUnsupported">
+      Model 블록 ''{1}''의 내보내기 함수 포트 ''{0}''과(와) 블록 ''{2}'' 사이의 연결이 유효하지 않습니다. 내보내기 함수 포트는 다른 Model 블록의 함수 포트에 연결해야 합니다. 클라이언트-서버 통신을 모델링하는 방법에 대한 자세한 내용은 System Composer 문서의 &lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;Author Service Interfaces for Client-Server Communication&lt;/a&gt;을 참조하십시오.
+    </entry>
+    <entry key="ClientServerModelRefPortsMustHaveSameInterfaceForCG">
+      코드 생성 시 ''{2}''의 서버 포트 ''{0}''(&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;링크&lt;/sldiag&gt;) 및 ''{5}''의 클라이언트 포트 ''{3}''(&lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;링크&lt;/sldiag&gt;)은(는) 동일한 서비스 인터페이스를 지정하거나, 서비스 인터페이스를 사용하지 않는 경우 포트 이름이 동일해야 합니다. 해결하려면, 참조된 모델에서 데이터형 또는 연결된 함수 요소 포트의 포트 이름을 변경하십시오.
+    </entry>
+    <entry key="ClientServerDelegationPortsMustHaveSameInterfaceForCG">
+      코드 생성 시, 연결된 클라이언트 포트 또는 서버 포트에 해당하는 ''{2}''의 ''{0}'' 포트(''{1}'') 및 ''{6}''의 포트 ''{3}''(&lt;sldiag objui="{4}" objparam="{5,number,integer}" objname="{6}"&gt;링크&lt;/sldiag&gt;)은(는) 동일한 서비스 인터페이스를 지정하거나, 서비스 인터페이스를 사용하지 않는 경우 포트 이름이 동일해야 합니다.
+    </entry>
+    <entry key="SimulinkStateContainsFcnCallInAcceleratorMode">블록 ''{0}''은(는) Stateflow 차트의 Simulink 기반 상태 내에 함수 호출 신호를 출력하므로 액셀러레이터 모드에서 시뮬레이션할 수 없습니다.</entry>
+    <entry key="CoreBlockCannotCallSFcnInAcceleratorMode">S-Function 블록 ''{0}''의 {1,number,integer}번 함수 호출 입력 포트가 인라인이 아닌 S-Function에 해당하지 않는 블록 ''{2}''에 의해 구동되므로, 이 S-Function 블록을 액셀러레이터 모드에서 시뮬레이션할 수 없습니다. 액셀러레이터에 대해 인라인이 아닌 함수 호출 개시자의 예로는 TLC에 액셀러레이터를 사용하지 않는 Stateflow 차트와 S-Function이 있습니다.</entry>
+    <entry key="ScopeToPortPrompt">&lt;포트 이름 선택 또는 입력&gt;</entry>
+    <entry key="AddFunctionPortTitle">함수 포트 추가</entry>
+    <entry key="AddFunctionPortDialog">새 함수 포트 ''{0}''이(가) 지정되었습니다. 지금 이 포트를 만드시겠습니까?</entry>
+    <entry key="AsyncCallerOnlySupportsExpFcnMdl">
+    
+    블록 ''{0}''이(가) &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;함수 내보내기 모델&lt;/a&gt;의 함수 내에 있는 경우에만 이 블록에서 함수를 비동기식으로 실행하는 것이 지원됩니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SetToSync" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''AsynchronousCaller'', ''off'');&lt;/cmd&gt; &lt;txt&gt;블록 ''{0}''의 파라미터 ''함수 호출을 비동기식으로 실행''을 ''끄기''로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidArgumentDatatypeInServiceInterface">서비스 인터페이스 ''{3}''에서 함수 요소 ''{2}''의 인수 ''{1}''에 대해 지정된 데이터형 ''{0}''이(가) 유효하지 않습니다.</entry>
+    <entry key="MultiFunctionsSameNameInMdlRef">Model 블록 ''{0}''에 이름이 ''{1}''인 Simulink Function이 여러 개 포함되어 있습니다. 이전 릴리스의 보호 모델을 참조하고 액셀러레이터 모드에서 시뮬레이션할 경우에 이러한 구성은 지원되지 않습니다. 원본 모델 파일을 사용하여 이 릴리스에서 보호 모델을 만들거나 업데이트하십시오.</entry>
+  </message>
+</rsccat>

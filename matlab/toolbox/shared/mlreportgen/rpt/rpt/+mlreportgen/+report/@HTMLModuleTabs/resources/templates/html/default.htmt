@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>HTMLModuleTabs Template</title>
+    <style>/*<![CDATA[*/
+         /* Style the tabs label area */
+        .HTMLModuleTabsLabelArea {
+          overflow: hidden;
+          border-top: 1px solid #ccc;
+          border-left: 1px solid #ccc;
+          border-right: 1px solid #ccc;
+          background-color: #f1f1f1;
+        }
+
+        /* Style the tabs label area buttons */
+        .HTMLModuleTabsLabelArea button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+        }
+
+        /* Change background color of tabs label area button on hover */
+        .HTMLModuleTabsLabelArea button:hover {
+          background-color: #ddd;
+        }
+
+        /* Change background color of the active/current tab button */
+        .HTMLModuleTabsLabelArea button.active {
+          background-color: white;
+        }
+
+        /* Style the tab label button */
+        .HTMLModuleTabsLabelButton {
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        /* Style the tab content pane */
+        .HTMLModuleTabsContentPane {
+          display: none;
+          padding: 6px 12px;
+          border: 1px solid #ccc;
+          border-top: none;
+        }
+
+        /* Style the tab close button */
+        .HTMLModuleTabsCloseButton {
+          float: right;
+          cursor: pointer;
+          font-size: 28px;
+          transition: transform .2s;
+        }
+
+        /* Style the tab close button on hover */
+        .HTMLModuleTabsCloseButton:hover {
+            font-weight: bold;
+            -ms-transform: scale(1.2); /* IE 9 */
+            -webkit-transform: scale(1.2); /* Safari 3-8 */
+            transform: scale(1.2);
+        }
+
+        //]]>
+    </style>
+
+</head>
+
+<body>
+  <dplibrary>
+  
+    <dptemplate name="HTMLModuleTabs">
+    	<!-- filled with HTMLModuleTabsLabel template for each tab -->
+        <div class="HTMLModuleTabsLabelArea">
+            <hole id="TabsLabelArea">TABS_LABEL_AREA</hole>
+        </div>
+
+        <!-- filled with HTMLModuleTabsContent template for each tab -->
+        <hole id="TabsContentArea">TABS_CONTENT_AREA</hole>
+    </dptemplate>
+    
+    <!-- template for label button of a single tab -->
+    <!-- used to fill the "HTMLModuleTabsLabelArea" hole of the HTMLModuleTabs main template -->
+    <dptemplate name="HTMLModuleTabsLabel">
+        <button class="HTMLModuleTabsLabelButton" onClick="moduletabs.openTab()">
+            <!-- filled with the tab label -->
+            <hole id="TabLabel">TAB_LABEL</hole>
+        </button>
+    </dptemplate>
+    
+    <!-- template for content of a single tab -->
+    <!-- used to fill the "TabsContentArea" hole of the HTMLModuleTabs main template -->
+    <dptemplate name="HTMLModuleTabsContent">
+        <div class="HTMLModuleTabsContentPane">
+            <!-- close button for the tab -->
+            <span onClick="moduletabs.closeTabs()" class="HTMLModuleTabsCloseButton">&#215;</span>
+            
+            <!-- filled with the tab content -->
+            <hole id="TabContent">TAB_CONTENT</hole>
+         </div>
+    </dptemplate>
+	
+  </dplibrary>
+</body>
+</html>

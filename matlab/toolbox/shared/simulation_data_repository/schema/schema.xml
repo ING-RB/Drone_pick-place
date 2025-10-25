@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright 2012-2024 The MathWorks, Inc. -->
+<Metamodel formatVersion="2" metamodelVersion="5.16">
+  <file optional="true" path="toolbox/stm/schema/schema.xml"/>
+  <file optional="true" path="toolbox/shared/dastudio/seqdiagram/schema/schema.xml"/>
+  <file optional="true" path="toolbox/shared/simulation_data_repository/schema/sl_artifacts_schema.xml"/>
+  <file optional="true" path="toolbox/simulink/sta/repository/schema/schema.xml"/>
+  <file optional="true" path="toolbox/simulink/sta/derivedSignals/schema/schema.xml"/>
+  <Package name="sdi">
+  
+    <!-- SDI.SIGNAL:  Signal (composite or leaf) -->
+    <member name="Signal" type="Class">
+      <Property isIndexed="true" name="FK_Parent" type="int32"/>
+      <Property name="HideInSDI" isIndexed="true" indexedProperties="FK_SetID" type="int32"/>
+      <Property name="HasChildren" isIndexed="true" indexedProperties="FK_SetID" type="int32"/>
+      <Property name="InstanceID" type="int64" />
+      <Property name="LazyExpand" isIndexed="true" indexedProperties="InstanceID" type="int32"/>
+      <Property name="ManualCollapse" type="int32"/>
+      <Property name="LazyImport" type="int32" />
+      <Property name="DeinterleavedCacheState" type="int32" />
+      <Property name="WasNonExpanded" isIndexed="true" indexedProperties="FK_SetID" type="int32"/>
+      <Property name="SourceType" isIndexed="true" indexedProperties="FK_SetID OrderIndex" type="int32"/>
+      <Property name="WorkerSignalID" isIndexed="true" type="int32"/>
+      <Property name="WorkerIsStreaming" type="int32"/>
+      <Property name="DimensionMode" type ="int32"/>
+      <Property name="Dimensions" type="blob"/>
+      <Property name="VarDimsOffset" type="int32"/>
+      <!-- Frame Size is used for non-bus signal only(matrices/vector/scalar), as setting is not applicable for buses in To Wks block-->
+      <Property name="FrameSize" type="int32" default="0"/>
+      <Property name="Complexity" type="int32"/>
+      <Property name="ComplexCoordSystem" type="int32"/>
+      <Property name="SampleTime" type="ustring"/>
+      <Property name="DomainType" type="string"/>
+      <Property name="IsTopLevelElement" type="int32"/>
+      <!-- The order index can be used if the sorting different than by signal ID is needed-->
+      <Property name="OrderIndex" type="int32" default="0"/>
+      <Property name="ExportOrderIndex" type="int32" default="0"/>
+      <Property name="Decimation" type="int32" default="1"/>
+      <Property name="MaxPoints" type="int32" default="0"/>
+      <Property name="Channel" type="blob"/>
+      <Property name="IsImagPartOfComplex" type="int32"/>
+      <Property name="IsForEach" type="int32"/>
+      <Property name="ForEachIteration" type="blob"/>
+      <Property name="LeafBusSignal" type="ustring"/>
+      <Property name="HasDataHierarchy" type="int32" isIndexed="true"/>
+      <Property name="SignalSourceID" type="sdi.SignalSource" isIndexed="true"/>
+      <Property name="DataSource" type ="ustring" isIndexed="true"/>
+      <Property name="InterpSetting" type="string"/>
+      <Property name="TimeAlignmentMethod" type="string"/>
+      <Property name="DataTypeName" type="string"/>
+      <Property name="DataTypeID" type="sdi.DataType" isIndexed="true"/>
+      <Property name="SourceDataTypeID" type="sdi.DataType" isIndexed="true"/>
+      <Property name="ObservedElemSize" type="int32"/>
+      <Property name="CompositeDataSize" type="int32"/>
+      <Property name="CompositeSigByteOffset" type="int32"/>
+      <Property name="IdOfSignalWhoHasMyData" isIndexed="true" type="sdi.Signal"/>
+      <Property name="LastChunkIndex" type="int32"/>
+      <Property name="LargestChunkSize" type="int32"/>
+      <Property name="NumBytesInLastChunk" type="int32"/>
+      <Property name="TotalNumBytesWritten" type="int64"/>
+      <Property isIndexed="true" name="FK_SetID" type="sdi.DataSet"/>
+      <Property name="Checked" isIndexed="true" type="int64"/>
+      <Property name="Color" type="blob"/>
+      <Property name="LineStyle" type="int32"/>
+      <Property name="LineWidth" type="int32" default="1"/>
+      <Property name="Marker" type="int32"/>
+      <Property name="Abs" type="real64"/>
+      <Property name="Rel" type="real64"/>
+      <Property name="TimeTol" type="real64"/>
+      <Property name="OverrideGlobalTol" type="int32" default="0"/>
+      <Property name="BackwardTimeTol" type="real64"/>
+      <Property name="ForwardTimeTol" type="real64"/>      
+      <Property name="UnitsChecksum" type="int32"/>
+      <Property name="DisplayUnitsChecksum" type="int32"/>
+      <Property name="DisplayScaling" type="real64" default="1"/>
+      <Property name="DisplayOffset" type="real64"/>
+      <Property name="MinValue" type="real64"/>
+      <Property name="MaxValue" type="real64"/>
+      <Property name="Gaps" type="blob"/>
+      
+      <!-- Properties used to compress discrete time -->
+      <Property name="CompressedTimeStart" type="real64"/>
+      <Property name="CompressedTimeInc" type="real64"/>
+      
+      <Property name="DiscreteInterval" type="real64"/>    
+      <Property name="HasDuplicateTimes" type="int32" default="0"/>
+      <Property name="SupportsThinning" type="int32" default="1"/> 
+      <Property name="CustomLegendTooltip" type="ustring"/>
+      <Property name="BlockSubPath" type="ustring"/>
+        <!-- MinMaxDirectReadOkay: 0 means false, 1 means true, 2 means lazily dirty all children -->
+      <Property name="MinMaxDirectReadOkay" type="int32" default="2"/>
+      <Property name="MinValueAtTimeOfNormalization" type="real64"/>
+      <Property name="MaxValueAtTimeOfNormalization" type="real64"/>
+        <!-- BlockPathHash, SIDHash, NameHash: Used to look up a signal based on block path,
+             SID, or name without joining across three tables. -->
+      <Property name="BlockPathHash" type="real64" isIndexed="true" indexedProperties="FK_SetID"/>
+      <Property name="SIDHash" type="real64" isIndexed="true" indexedProperties="FK_SetID"/>
+      <Property name="NameHash" type="real64" isIndexed="true" indexedProperties="FK_SetID"/>
+        <!-- SimTimeOfNewestPoint: This is used for rolling back signal data when you attempt to
+             write data that "goes backwards" in time. This is needed to enforce monotonically
+             increasing time values in the repository. -->
+      <Property name="SimTimeOfNewestPoint" type="real64"/>
+        <!-- SourceSignal: When copying signals (e.g. for run comparison), we set the ID of the 
+             signal copied. this will allow us to link back to the original signal if it exists 
+             for changing properties such as tolerance, color, etc. -->
+      <Property name="SourceSignal" type="sdi.Signal"/>
+        <!-- IsWithinTol: If this signal represents a signal comparison, is the signal within 
+             tolerance? -->
+      <Property name="IsWithinTol" type="int32" />
+      <!-- The name of the class inside the application  -->
+      <Property name="SignalClassName" type="string"/>
+        <!-- AlignedBy: For comparison signals, this is the name of the field use to align signals -->
+      <Property name="AlignedBy" type="ustring" />
+        <!-- InstrumentedSignalUUID: UUID of "instrumented signal" from model. An instrumented signal
+             represents a single "badge" in the model, so the same UUID will be used for all elements
+             of a bus or vector. This is used for HMI scopes to plot only the signals from a single
+             line in the Simulink model. -->
+      <Property name="InstrumentedSignalUUID" type="int64" isIndexed="true" indexedProperties="FK_SetID"/>
+      <!-- Time metadata - used to define time for vectors and matrices -->
+      <Property name="TmSampleRate" type="real64" default="-1"/>
+      <Property name="TmSampleTime" type="real64" default="-1"/>
+      <Property name="TmStartTime" type="real64" default="0"/>
+      <Property name="TmSampleRateUnits" type="ustring" default="Hz"/>
+      <Property name="TmSampleTimeUnits" type="ustring" default="s"/>
+      <Property name="TmStartTimeUnits" type="ustring" default="s"/>
+      <Property name="TmTimeVectorStr" type="ustring" default=" "/>
+      <Property name="TmAvgSampleRate" type="real64" default="-1"/>
+      <Property name="TmResampledSigID" type="int32" default="-1"/>
+      <Property name="TmResampledSigParentID" type="int32" default="-1"/>
+      <Property name="TmMinTimeRange" type="real64" default="-1"/>
+      <Property name="TmMaxTimeRange" type="real64" default="-1"/>
+      <Property name="TmNumPoints" type="int32" default="-1"/>
+      <Property name="TmOrigin" type="ustring" default="none"/>
+      <!-- Time metadata mode can take values of 'none', 'samples, 'fs', 'ts', 'tv', 'inherentTimetable', 'inherentTimeseries', 'resampled' ,'spectrogram'-->
+      <Property name="TmMode" type="ustring" default="none"/>
+      <Property name="ComparisonSignalStatus" type="int32" default="3"/>
+      <Property name="Description" type="ustring"/>
+      
+      <Property name="IsHiddenBlock" type="int32" />
+      <Property name="SharedMemoryType" type="int32" />
+      <Property name="NumWriters" type="int32" />
+      
+      <Property name="TimeR2" type="int64" default="-1" />
+      <Property name="DataR2" type="int64" default="-1" />
+      <Property name="DSMWritersR2" type="int64" default="-1" />
+      <Property name="VarDimsR2" type="int64" default="-1" />
+      <Property name="DisableCompressedTimeForLogToFile" type="int32" />
+      
+      <Property name="ComparisonColor" type="blob"/>
+    </member>
+	 
+    <!-- SDI.SIGNALSOURCE: Metadata indicating source of a signal -->
+    <member name="SignalSource" type="Class">
+      <Property name="TimeSource" type ="ustring"/>
+      <Property name="RootSource" type ="ustring"/>
+        <!-- HierarchyReference: Used by Physmod to give an alternative to block path for grouping by model hierarchy. -->
+      <Property name="HierarchyReference" type="ustring"/>
+      <Property name="SourceSignalDataHierarchy" type="blob"/>
+      <Property name="Name" type="ustring"/>
+      <Property name="LoggedName" type="ustring"/>
+      <Property name="OriginalSignalName" type="ustring"/>
+      <Property name="PropagatedName" type="ustring"/>
+      <Property name="Model" type = "ustring"/>
+      <Property name="PortIndex" type="int32"/>
+      <Property name="StorageType" type="int32" default="0"/>
+     </member>
+
+     <!-- SDI.WRITERBLOCKPATH: "full" path, may be multiple per signal -->
+     <member name="WriterBlockPath" type="Class">
+         <Property isIndexed="true" name="Signal" type="sdi.Signal"/>
+         <Property name="BlockPath" type="ustring"/>
+         <Property name="WriterIndex" type="int32"/>
+         <Property name="OrderingIndex" type="int32"/>
+     </member>
+
+    <!-- SDI.PLAYBACKSIGNALINFO: Playback signal information -->
+     <member name="PlaybackSignalInfo" type="Class">
+         <Property name="FK_SignalID" type="int32" isIndexed="true"/>
+         <Property name="Source" type="ustring"/>
+         <Property name="IsLinked" type="int32"/>
+         <Property name="IsResolved" type="int32"/>
+         <Property name="SignalNumber" type="int32"/>
+         <Property name="SourcePath" type="ustring"/>
+         <Property name="VariableName" type="ustring"/>
+         <Property name="DestPortIndex" type="int32"/>
+     </member>
+     
+     <!-- SDI.BLOCKPATH: "full" modelref block path (sorted vector of strings) -->
+     <member name="BlockPath" type="Class">
+         <Property isIndexed="true" name="SignalSourceID" type="sdi.SignalSource"/>
+         <Property name="BlockPath" type="ustring"/>
+         <Property name="OrderingIndex" type="int32"/>
+     </member>
+
+     <!-- SDI.SID: "full" modelref SID (sorted vector of strings) -->
+     <member name="SID" type="Class">
+         <Property isIndexed="true" name="SignalSourceID" type="sdi.SignalSource"/>
+         <Property name="SID" type="ustring"/>
+         <Property name="OrderingIndex" type="int32"/>
+     </member>
+
+     <!-- TODO: Add interpolation type for a given signal (instead of string in Signal table) -->
+
+     <!-- SDI.DATATYPE: Data type for a given Signal -->
+    <member name="DataType" type="Class">
+      <Property name="Name" isIndexed="true" type="string"/>
+      <Property name="Classification" isIndexed="true" indexedProperties="Name" type="string"/>
+      <Property name="FK_DataTypeDefinitionID" isIndexed="true" type="int32"/>
+    </member>
+
+    <!-- SDI.FIXEDPOINTBINARYPOINTSCALING: Fixed point def for binary point scaling -->
+    <member  name="FixedPointBinaryPointScaling" type="Class">
+      <Property name="NumericDataType" type="int32"/>
+      <Property name="Signedness" type="int32"/>
+      <Property name="WordLength" type="int32"/>
+      <Property name="FractionLength" type="int32"/>
+      <Property isIndexed="true" name="CheckSum" type="int32"/>
+      <Property name="InstanceID" type="int64"/>
+    </member>
+
+    <!-- SDI.FIXEDPOINTSLOPEBIASSCALING: Fixed point def for slope-bias scaling -->
+    <member  name="FixedPointSlopeBiasScaling" type="Class">
+      <Property name="NumericDataType" type="int32"/>
+      <Property name="Signedness" type="int32"/>
+      <Property name="WordLength" type="int32"/>
+      <Property name="SlopeAdjustmentFactor" type="real64"/>
+      <Property name="FixedExponent" type="int32"/>
+      <Property name="Bias" type="real64"/>
+      <Property isIndexed="true" name="CheckSum" type="int32"/>
+      <Property name="InstanceID" type="int64"/>
+    </member>
+
+    <!-- SDI.FIXEDPOINTUNSPECIFIEDSCALING: Fixed point def for unspecified scaling -->
+    <member  name="FixedPointUnspecifiedScaling" type="Class">
+      <Property name="NumericDataType" type="int32"/>
+      <Property name="Signedness" type="int32"/>
+      <Property name="WordLength" type="int32"/>
+      <Property isIndexed="true" name="CheckSum" type="int32"/>
+      <Property name="InstanceID" type="int64"/>
+    </member>
+    
+    <!-- SDI.DATASET: Run (collection of signals and other artifacts) -->
+    <member  name="DataSet" type="Class">
+      <Property name="UName" type="ustring"/>
+      <Property name="Visible" type="int32" isIndexed="true"/>
+      <Property name="PendingInitialization" type="int32" isIndexed="true" />
+      <Property name="SignalHashesAreCached" type="int32" isIndexed="true"/>
+      <Property name="MarkedForDelete" type="int32" isIndexed="true" indexedProperties="Visible" />
+      <Property name="InstanceID" type="int64" isIndexed="true" indexedProperties="Visible MarkedForDelete"/>
+      <Property name="Application" type="int32" isIndexed="true" indexedProperties="Visible MarkedForDelete InstanceID IsHostBasedRunForRapidAccelSim"/>
+      <Property name="SupportsCompositeComplex" type="int32"/>
+      <Property name="EnableRuntimeChunkMerging" type="int32"/>
+      <Property name="EnableOptimizedVisualization" type="int32" default="1"/>
+      <Property name="WksVarChecksum" type="string" isIndexed="true" indexedProperties="Visible MarkedForDelete InstanceID"/>
+      <Property name="DataSetUuid" type="int64" isIndexed="true"/>
+	  <Property name="DatasetExportedToWks" type="int32" default="0"/>
+      
+        <!-- IsActivelyStreaming: Set to TRUE when the signal starts streaming and FALSE when it is done streaming.
+             We need this because we do not allow a signal to be deleted while it is actively streaming. -->
+      <Property name="IsActivelyStreaming" type="int32"/>
+      <Property name="IsActivelyStreamingCustomApp" type="int32" isIndexed="true"/>
+      <!-- Set to true, when we create run in MATLAB process for a Rapid Accel Simulation. This run is merged with Rapid Accel run later while import-->
+      <Property name="IsHostBasedRunForRapidAccelSim" type="int32" default="0" isIndexed="true" indexedProperties="Visible MarkedForDelete InstanceID"/>
+      <Property name="Date" type="real64"/>
+      <Property name="OrderIndex" type="int32"/>
+      <Property name="TestHarnessDataID" type="sdi.TestHarnessData"/>
+      <Property name="TestUnitDataID" type="sdi.TestHarnessData"/>
+      <!-- The name of the class inside the application  -->
+      <Property name="RunClassName" type="string"/>
+      <!-- BaselineSetID, CompareToSetID: For run comparison, these are the IDs of the compared runs. -->
+      <Property name="BaselineSetID" type="sdi.DataSet"/>
+      <Property name="CompareToSetID" type="sdi.DataSet"/>
+      <!-- BaselineSetName, CompareToSetName: For run comparison, these are the names of the compared runs. -->
+      <Property name="BaselineSetName" type="ustring"/>
+      <Property name="CompareToSetName" type="ustring"/>
+      
+      <Property name="TotalNumBytesWritten" type="int64"/>
+      
+      <!-- Runs copied from PCT Workers -->
+      <Property name="WorkerInstanceID" type="int64" isIndexed="true" />
+      <Property name="WorkerRunID" type="int32" isIndexed="true" indexedProperties="WorkerInstanceID" />
+      <Property name="WorkerIsStreaming" type="int32" />
+      <Property name="WorkerRunWasImported" type="int32" />
+      <Property name="TargetComputer" type="ustring"/>
+    </member>
+
+    <!-- SDI.COMPARISONDATASET: Comparison Run (extension for regular dataset) -->
+    <member  name="ComparisonDataSet" type="Class">
+      <Property isIndexed="true" name="DataSet" type="sdi.DataSet"/>
+     
+        <!-- Comparison Run Tolerance -->
+      <Property name="Abs" type="real64" default="0"/>
+      <Property name="Rel" type="real64" default="0"/>
+      <Property name="BackwardTimeTol" type="real64" default="0"/>
+      <Property name="ForwardTimeTol" type="real64" default="0"/>
+      <Property name="NumOfExpectedSignals" type="int32" default="0"/>  
+      <Property name="Status" type="int32" default="0"/>
+      <Property name="StopReasonSignalID" type="int32" default="0"/>
+      <Property name="ComparisonOptions" type="blob"/>
+      <Property name="ExpectedBaselineSignalID" type="int32" default="0"/>
+    </member>
+
+    <!-- SDI.OUTPUTMETADATA: Metadata for runs output from simulation -->
+    <member  name="OutputMetaData" type="Class">
+      <Property name="DataSet" type="sdi.DataSet" />
+      <Property name="DatasetSignalFormat" type="int32"/>
+      
+      <!-- Standard model info (all import and streaming types) -->
+      <Property name="Model" type="ustring"/>
+      <Property name="SimMode" type="string"/>
+      <Property name="StartTime" type="real64"/>
+      <Property name="StopTime" type="real64"/>
+      <Property name="InitialStopTime" type="real64"/>
+      
+      <!-- Custom properties -->
+      <Property name="Tag" type="ustring"/>
+      <Property name="Description" type="ustring"/>
+      
+      <!-- Model Info from SimulationOutput -->
+      <Property name="SLVersion" type="ustring"/>
+      <Property name ="ModelVersion" type="ustring"/>
+      <Property name ="UserID" type="ustring"/>
+      <Property name ="MachineName" type="ustring"/>
+      <Property name ="SolverType" type="ustring"/>
+      <Property name ="SolverName" type="ustring"/>
+      
+      <Property name ="Platform" type="ustring"/>
+      <Property name ="SolverMaxStepSize" type="ustring"/>
+      <Property name ="StopEvent" type="ustring"/>
+      <Property name ="StopEventSource" type="ustring"/>
+      <Property name ="StopEventDescription" type="ustring"/>
+      <Property name ="ExecutionErrors" type="ustring"/>
+      <Property name ="ExecutionWarnings" type="ustring"/>
+      <Property name ="UserString" type="ustring"/>
+      
+      <!-- Timing Info from SimulationOutput -->
+      <Property name="UpdateTime" type="real64"/>
+      <Property name="SimTime" type="real64"/>
+      <Property name="TermTime" type="real64"/>
+      <Property name="TotalTime" type="real64"/>
+      
+      <!-- PCT Worker Settings -->
+      <Property name ="TaskName" type="ustring"/>
+      
+      <!-- Used by Excel import and Simulink Test -->
+      <Property name ="SimulationID" type="ustring"/>
+      <Property name ="SimulationSource" type="ustring"/>
+    </member>
+
+    <!-- SDI.UUIDTYPEPAIR: Used for serialization to get the list of all rows to save/load.
+                           This mapping is needed in any lookup where we know only the ID
+                           and not the type. -->
+    <member  name="UUIDTypePair" type="Class">
+      <Property isIndexed="true" name="id" type="int32"/>
+      <Property name="class" type="string" isIndexed="true" indexedProperties="id"/>
+    </member>
+
+    <!-- SDI.METADATA: Generic meta data available for signals or runs -->
+    <member  name="MetaData" type="Class">
+      <Property name="Name" type="string"/>
+      <Property name="FK_ParentID" isIndexed="true" type="int32"/>
+      <Property name="ParentType" isIndexed="true" indexedProperties="Name FK_ParentID" type="string"/>
+      <Property name="Type" type="int32"/>
+      <Property name="IntValue" type="int32"/>
+      <Property name="FloatValue" type="real64"/>
+      <Property name="StringValue" type="string"/>
+      <Property name="UStringValue" type="ustring"/>
+      <Property name="BlobValue" type="blob"/>
+      <Property name="MxarrayValue" type="mxarray"/>
+    </member>
+
+    <!-- SDI.CHUNK: Chunk of data for a given signal (time and data) -->
+    <member  name="Chunk" type="Class">
+      <Property isIndexed="true" name="Signal" type="sdi.Signal" />
+      <Property name="NumPoints" type="int32"/>
+      <Property name="StartTime" type="real64"/>
+      <Property isIndexed="true" indexedProperties="Signal StartTime" name="EndTime" type="real64"/>
+      <Property name="ChunkNum" type="int32"/>
+      <Property name="MarkedForDelete" type="int32" isIndexed="true" />
+      <Property name="IsBeingMerged" type="int32" isIndexed="true" indexedProperties="Signal" />
+    </member>
+
+    <!-- SDI.CHUNK: Chunk of time for a given signal -->
+    <member  name="TimeChunk" type="Class">
+      <Property name="Chunk" type="sdi.Chunk" isIndexed="true"/>
+      <Property name="BlobData" type="blob"/>
+      <Property name="EpochBlobData" type="blob"/>
+      <Property name="CompressedTimeStart" type="real64"/>
+      <Property name="CompressedTimeInc" type="real64"/>
+      <Property name="CompressedTimeLen" type="int32"/>
+      <Property name="CompressedSignalStartIndex" type="int32"/>
+      <Property name="CompressedSignalStartTime" type="real64"/>
+      <Property name="MarkedForDelete" type="int32" isIndexed="true" />
+    </member>
+
+    <!-- SDI.CHUNK: Chunk of values for a given signal -->
+    <member  name="DataChunk" type="Class">      
+      <Property name="Chunk" type="sdi.Chunk" isIndexed="true"/>
+      <Property name="BlobData" type="blob"/>
+      <Property name="Dimensions" type="blob"/>
+      <Property name="MarkedForDelete" type="int32" isIndexed="true" />
+    </member>
+
+    <!-- SDI.TEMPORALMETADATACHUNK: Chunk of time-based meta-data -->
+    <member  name="TemporalMetaDataChunk" type="Class">
+      <Property isIndexed="true" name="Signal" type="sdi.Signal" />
+      <Property isIndexed="true" indexedProperties="Signal" name="MetaDataName" type="string"/>
+      <Property name="ChunkNum" type="int32"/>
+      <Property name="DataTypeID" type="int32"/>
+      <Property name="BlobData" type="blob"/>
+    </member>
+    
+    <!-- SDI.CLASSDEFINITION: Details about a given Data Type for Signals -->
+    <member  name="ClassDefinition" type="Class">
+      <Property name="Name" type="string"/>
+      <Property name="Classification" type="string"/>
+      <Property isIndexed="true" name="CheckSum" type="int32"/>
+      <Property name="InstanceID" type="int64"/>
+    </member>
+
+    <!-- SDI.ENUMERATIONVALUE: Name-Value pair for a given enumeration -->
+    <member  name="EnumerationValue" type="Class">
+      <Property name="Value" type="int32"/>
+      <Property name="Label" type="string"/>
+      <Property name="ClassDefinition" isIndexed="true" type="sdi.ClassDefinition" />
+    </member>
+
+    <!-- SDI.STRINGVALUE: Name-Value pair for a given string (value for string data type) -->
+    <member  name="StringValueMapping" type="Class">
+      <Property name="Signal" isIndexed="true" type="sdi.Signal" />
+      <Property name="NumericValue" isIndexed="true" indexedProperties="Signal" type="int32"/>
+      <Property name="StringValue" type="ustring"/>
+    </member>
+    
+    <!-- SDI.SIGNALMETRIC: Single measurement value for a signal -->
+    <member  name="SignalMetric" type="Class">
+      <Property isIndexed="true" name="Signal" type="sdi.Signal" />
+      <Property isIndexed="true" indexedProperties="Signal" name="Name" type="string"/>
+      <Property name="Value" type="real64"/>
+    </member>
+    
+    <!-- SDI.PAUSEDMODEL: Used for importing logged data during simulation pause. When a model
+                          is paused we need to remember which run it was writing to so that when
+                          we step or stop the model, we can update that run. -->
+    <member  name="PausedModel" type="Class">
+      <Property isIndexed="true" name="Handle" type="real64"/>
+      <Property isIndexed="true" name="SetID" type="sdi.DataSet"/>
+    </member>
+
+    <!-- SDI.SIGNALOBSERVERS: Non-default signal observer settings for a given signal -->
+    <member  name="SignalObservers" type="Class">
+      <Property isIndexed="true" name="SignalID" type="sdi.Signal"/>
+      <Property name="ObserverType" type="string"/>
+      <Property name="UpdateRate" type="int32"/>
+      <Property isIndexed="true" name="ClientUUID" type="int64"/>
+    </member>
+
+    <!-- SDI.OBSERVERPARAMS: Non-default observer parameters for a given signal observer.
+         Observer parameters are structures where each field can be an array of strings,
+         doubles, integers, or Booleans. So the default SDI signal adaptors would be
+         represented in the database as follows:
+         
+         SignalObserverID ParamName    FieldName    FieldType FieldArrayIndex StringVal DoubleVal  IntVal LogicalVal
+         ================ =========    =========    ========= =============== ========= ========== ====== ==========
+         164              Adaptors     "Name"      "string"  1               "min_max" 
+         164              Adaptors     "Name"      "string"  2               "quant" 
+         164              Adaptors     "Name"      "string"  3               "rwv2pix"
+         
+         And line settings might be represented as follows:
+         
+         SignalObserverID ParamName    FieldName    FieldType FieldArrayIndex StringVal DoubleVal  IntVal LogicalVal
+         ================ =========    =========    ========= =============== ========= ========== ====== ==========
+         164              LineSettings "Color"      "double"  1                         0.7
+         164              LineSettings "Color"      "double"  2                         0.1
+         164              LineSettings "Color"      "double"  3                         0.4
+         164              LineSettings "LineStyle"  "string"  1              ":"
+    -->
+    <member  name="ObserverParams" type="Class">
+      <Property name="SignalObserverID" type="sdi.SignalObservers"/>
+      <Property name="ParamName" type="string"/>
+      <Property name="FieldName" type="string"/>
+      <Property name="FieldType" type="string"/>
+      <Property name="FieldArrayIndex" type="int32"/>
+      <Property name="StringVal" type="string"/>
+      <Property name="DoubleVal" type="real64"/>
+      <Property name="IntVal" type="int32"/>
+      <Property name="LogicalVal" type="int32"/>
+    </member>
+    
+    <!-- SDI.ACTIVESIMULATION: Currently simulating models and the associated run ID -->
+    <member  name="ActiveSimulation" type="Class">
+      <Property name="Model" type="ustring"/>
+      <Property name="TargetComputer" type="ustring"/>
+      <Property name="ModelHandle" type="real64"/>
+      <Property name="RunID" type="sdi.DataSet"/>
+      <Property name="InstanceID" isIndexed="true" indexedProperties="Model TargetComputer" type="int64"/>
+    </member>
+
+    <!-- SDI.PENDINGSIMULATION: Pending simulating models and the associated run ID -->
+    <member  name="PendingSimulation" type="Class">
+      <Property name="Model" type="ustring"/>
+      <Property name="TargetComputer" type="ustring"/>
+      <Property name="RunID" type="sdi.DataSet"/>
+      <Property name="InstanceID" isIndexed="true" indexedProperties="Model TargetComputer" type="int64"/>
+    </member>
+	
+    <!-- SDI.RECORDEDVARIABLE: Pending recorded variables and files for a given run -->
+    <member  name="RecordedVariable" type="Class">
+      <!-- Common properties -->
+      <Property name="RunID" isIndexed="true" type="sdi.DataSet"/>
+      <Property name="DomainType" type="string"/>
+      <Property name="BlockPath" type="ustring"/>
+      
+      <!-- Workspace logging -->
+      <Property name="WksVarName" type="ustring"/>
+      <Property name="WksVarFormat" type="string"/>
+      
+      <!-- File logging -->
+      <Property name="FileType" type="string"/>
+      <Property name="FilePath" type="ustring"/>
+    </member>
+	
+	<!-- SDI.BlockStreamedWorkspaceVars: Used to get the list of all the variable names logged by given run for streamout blocks -->
+    <member  name="BlockStreamedWorkspaceVars" type="Class">
+      <!-- Common properties -->
+      <Property name="RunID" isIndexed="true" type="sdi.DataSet"/>
+      <Property name="WksVarName" type="ustring"/>
+    </member>
+	
+    <!-- SDI.RECORDEDFILEMETADATA: property associated with RecordedVariable -->
+    <member  name="RecordedFileMetaData" type="Class">
+      <Property name="RecordedVariable" isIndexed="true" type="sdi.RecordedVariable"/>
+      <Property name="Name" type="string"/>
+      <Property name="NumericValue" type="real64"/>
+      <Property name="StringValue" type="ustring"/>
+    </member>
+    
+    <!-- SDI.UNIT: Unit of measure (currently label only) -->
+    <member  name="Unit" type="Class">
+      <Property name="Checksum" type="int32" isIndexed="true"/>
+      <Property name="Label" type="ustring"/>
+    </member>
+
+    <!-- SDI.TESTHARNESSDATA: Test harness data used for report -->
+    <member  name="TestHarnessData" type="Class">
+      <Property name="Name" type="string"/>
+      <Property name="Version" type="string"/>
+      <Property name="Modified" type="string"/>
+      <Property name="SolverType" type="string"/>
+      <Property name="SolverName" type="string"/>
+      <Property name="FixedStep" type="string"/>
+    </member>
+
+    <!-- SDI.MINMAXORDERINDEX: For adding runs to top or bottom -->
+    <member  name="MinMaxOrderIndex" type="Class">
+      <Property name="InstanceID" type="int64" />
+      <Property name="MinIndex" type="int32"/>
+      <Property name="MaxIndex" type="int32"/>
+      <Property name="ShowAtTop" type="int32"/>
+    </member>
+
+    <!-- SDI.RUNNUMBERBYRUNID: Displayed index for each run -->
+    <member  name="RunNumberByRunID" type="Class">
+      <Property name="InstanceID" type="int64" />
+      <Property isIndexed="true" name="FK_SetID" type="int32"/>
+      <Property name="RunNumber" type="int32"/>
+    </member>
+
+    <!-- SDI.RUNNAMETEMPLATE: Template to use for name of new runs -->
+    <member  name="RunNameTemplate" type="Class">
+      <Property name="Template" type="ustring"/>
+    </member>
+
+    <!-- SDI.DATABASEPROPERTIES: Single row table with a UUID for the DB -->
+    <member  name="DatabaseProperties" type="Class">
+      <Property name="id" type="string"/>
+    </member>
+ 
+    <!-- SDI.CLIENTAXESNORMALIZATIONSTATE: Specifies which client axes are normalized and which are not -->
+    <member  name="ClientAxesNormalizationState" type="Class">
+      <Property name="ClientID" type="string" isIndexed="true"/>
+      <Property name="AxesID" type="int32" isIndexed="true" indexedProperties="ClientID"/>
+      <Property name="IsNormalized" type="int32"/>
+    </member>
+    
+    <!-- SDI.OBJECTTYPEMAP -->
+    <member  name="ObjectTypeMap" type="Class">
+      <Property name="TableId" type="int32"/>
+      <Property name="TableName" type="string"/>
+    </member>
+    
+    <!-- SDI.PLOTTED_COMPARISON_SIGNAL: Single row indicating which comparison signal is plotted -->
+    <member  name="PlottedComparisonSignal" type="Class">
+      <Property name="InstanceID" type="int64" isIndexed="true"/>
+      <Property name="FK_SignalID" type="int32"/>
+    </member>
+    
+    <!-- SDI.IMAGETYPEMETADATA -->
+    <member  name="ImageTypeMetadata" type="Class">
+        <Property isIndexed="true" name="Signal" type="sdi.Signal"/>
+        <Property name="Layout" type="int32"/>
+        <Property name="ColorFormat" type="int32"/>
+    </member>
+    
+    <!-- SDI.DATETIMETYPEMETADATA -->
+    <member  name="DateTimeTypeMetadata" type="Class">
+        <Property isIndexed="true" name="Signal" type="sdi.Signal"/>
+        <Property name="TimePoint" type="int32"/>
+        <Property name="TimeStandard" type="int32"/>
+        <Property name="StorageDataType" type="string"/>
+        <Property name="DataTypeName" type="string"/>
+    </member>
+
+    <!-- SDI.PROFILINGMODE -->
+    <member  name="ProfilingMode" type="Class">
+      <Property name="OnOrOff" type="int32"/>
+    </member>
+    
+    <!-- SDI.PROFILESESSION -->
+    <member  name="ProfileSession" type="Class">
+      <Property name="Description" type="string"/>
+    </member>
+    
+    <!-- SDI.PROFILEDATA -->
+    <member  name="ProfileData" type="Class">
+      <Property isIndexed="true" name="FK_ProfileSession" type="sdi.ProfileSession"/>
+      <Property name="ObserverThreadNumHits" type="int32"/>
+      <Property name="AggregatorThreadNumHits" type="int32"/>
+      <Property name="ObserverThreadElapsedTimes" type="blob"/>
+      <Property name="AggregatorThreadElapsedTimes" type="blob"/>
+      <Property name="ObserverThreadNumPoints" type="blob"/>
+      <Property name="AggregatorThreadNumPoints" type="blob"/>
+      <Property name="AggregatorThreadType" type="blob"/>
+      <Property name="SynchronousFlushElapsedTime" type="real64"/>
+      <Property name="TotalQueues" type="int32"/>
+      <Property name="TotalObservers" type="int32"/>
+      <Property name="DisconnectElapsedTimes" type="blob"/>
+      <Property name="DisconnectNumPoints" type="blob"/>
+      <Property name="ObserverMapKey" type="blob"/>
+      <Property name="ObserverMapValue" type="blob"/>  
+    </member>
+  </Package>
+</Metamodel>

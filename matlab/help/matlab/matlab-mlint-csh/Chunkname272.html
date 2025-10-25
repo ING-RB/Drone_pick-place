@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><tmw_trademark class="registered">MATLAB</tmw_trademark> is unable to analyze code within statements called by
+                        <code>eval</code>. This prevents <tmw_trademark class="registered">MATLAB</tmw_trademark> from performing any performance optimization and limits the
+                    guidance that the editor is able to provide. This makes code less efficient and
+                    difficult to debug.</p><p>Furthermore, concatenated character vectors within an <code>eval</code>
+                    statement are often difficult to read. This makes code less clear and causes
+                    issues with sharing and maintaining code. </p><br/><strong>Suggested Action</strong><br/><p>Structure fields or object properties can be accessed using <span class="emphasis"><em>dynamic field names</em></span>. The example shows how code
+                    using <code>eval</code> to assign numbered field names can be refactored
+                    to use dynamic field names.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>for&nbsp;i&nbsp;=&nbsp;1:5<br/>&nbsp;&nbsp;&nbsp;&nbsp;eval(['handles.axes',&nbsp;num2str(i)])&nbsp;<br/>end</code>
+                                </td><td>
+                                    <code>for&nbsp;i&nbsp;=&nbsp;1:5<br/>&nbsp;&nbsp;&nbsp;&nbsp;handles.("axes"&nbsp;+&nbsp;num2str(i))<br/>end</code>
+                                </td></tr></tbody></table></div><p><tmw_trademark class="registered">MATLAB</tmw_trademark> is able to detect that fields of <code>handles</code> will
+                    be accessed and this allows performance optimization.</p><p>For more information, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'dynamic_field_names')" target="_blank">Generate Field Names from Variables </a>. </p></body></html>

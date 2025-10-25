@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+         Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Opening...</title>
+
+    <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- iPad specific settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="72x72" href="release/2973910-20250704022829/MOTW/images/apple-icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="release/2973910-20250704022829/MOTW/images/apple-icons/apple-touch-icon-144x144.png" />
+
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* g2680135: The body should reflect the theme color*/
+            background-color: var(--mw-backgroundColor-primary) !important;
+        }
+
+        #uiroot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- CSS : implied media="all" -->
+    <link rel="stylesheet" href="release/2973910-20250704022829/index-css.css"/>
+</head>
+
+<body class="tundra">
+
+<div id="uiroot"></div>
+    <script>
+        // g2680135: Immediately set the theme on the undocking window's body
+        const queryParams = new URLSearchParams(window.location.search);
+        document.body.classList.add(queryParams.get('theme'));
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('websocket','on');
+        window.history.pushState({path: url.href}, '', url.href);
+
+        // NOTE: Temporary fix to aid use of the app shell for undocked figures.
+        // This will not work in all cases and will need to be revisited.
+        // Preload figure-related bundles
+        const preload = (path) => {
+            const u = new URL(path, window.location.href);
+            u.searchParams.set('mre', location.origin + '/');
+            const n = document.createElement('link');
+            n.setAttribute('as','script');
+            n.setAttribute('rel','preload');
+            n.setAttribute('href',u.href);
+            document.head.appendChild(n);
+        }
+        preload('/toolbox/matlab/uitools/figureuicontainerjs/release/bundle.mwBundle.gbtfigure_uicontainer.js');
+        preload('/toolbox/matlab/uitools/figurelibjs/release/bundle.mwBundle.gbtfigure-lib.js');
+
+        // g2763028 marker when the JS started for DDUX
+        window.UIFigureLoadJavaScriptStart = new Date();
+    </script>
+    <script src="release/2973910-20250704022829/bundle.appshell.js"></script>
+</body>
+</html>

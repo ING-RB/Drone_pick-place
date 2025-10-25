@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2020-2021 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="SL_SERVICES">
+  <message>
+    <entry key="DEFAULT_HELP_CALLBACK" translate="false">
+        matlab:helpview(''{0}'', ''{1}'')
+    </entry>
+    <entry key="DEFAULT_DOC_CALLBACK" translate="false">
+        matlab:doc(''{0}'');
+    </entry>
+    <entry key="TEST_ACTIONS_WITH_SINGLE_HELP" translate="false">
+        Diagnostic with help link.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="help"/>
+            </actions>
+        ]]>
+    </entry>    
+    <entry key="TEST_ACTIONS_WITH_SINGLE_DEFAULT_HELP" translate="false">
+        Diagnostic with default help link.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="help"><cmd>my_product:my_anchor</cmd></action>
+            </actions>
+        ]]>
+    </entry>    
+    <entry key="TEST_ACTIONS_WITH_SINGLE_DEFAULT_HELP_2" translate="false">
+        Diagnostic with default help link.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="help"><cmd>{0}</cmd></action>
+            </actions>
+        ]]>
+    </entry>    
+    <entry key="TEST_ACTIONS_WITH_SINGLE_DOC" translate="false">
+        Diagnostic with doc link.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="doc"/>
+            </actions>
+        ]]>
+    </entry>    
+    <entry key="TEST_ACTIONS_WITH_SINGLE_DEFAULT_DOC" translate="false">
+        Diagnostic with default doc link.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="doc"><cmd>Schedule Editor</cmd></action>
+            </actions>
+        ]]>
+    </entry>    
+    <entry key="TEST_ACTIONS_WITH_SINGLE_CUSTOM_DOC" translate="false">
+        Diagnostic with doc link.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action type="doc"><cmd>matlab:helpview(''simulink'', ''simulink_overview_doc'')</cmd></action>
+            </actions>
+        ]]>
+    </entry>    
+    <entry key="TEST_ACTIONS_WITH_DOC" translate="false">Variant block {0} has "Generate preprocessor conditionals" is set to "on" and one of its port has been overridden.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action id="first_fixit" type="fixit">
+                    <cmd>vsfixutil(''setGPC'',''{1}'',''{0}'')</cmd>
+                    <txt>You can set "Generate preprocessor conditionals" to "off" to eliminate the error</txt>
+                </action>
+                <action id="second_fixit" type="fixit">
+                    <cmd>vsfixutil(''disableOverride'',''{0}'', {2,number,integer})</cmd>
+                    <txt>You can disable the override to eliminate the error</txt>
+                </action>
+                <action id="first_suggestion" type="suggestion">
+                    <txt>If the destination block is a bus-capable block, ensure that the block configuration and its input signal(s) meet the requirements for bus support. Please see Simulink <sldiag objui="doc" objparam="{3}">documentation</sldiag> for further information on composite(i.e bus) signals and their proper usage.</txt>
+                </action>
+                <action type="help"/>
+            </actions>
+        ]]>
+    </entry>    
+    
+    <entry key="DOC_SUGGESTION" translate="false">
+        <![CDATA[
+            <actions>
+                <action id="help" type="suggestion">
+                    <cmd>helpview(''{0}'',''{1}'');</cmd>
+                    <msg id="MATLAB:MException:MoreInformation"></msg>
+                </action>
+                <action id="doc" type="suggestion">
+                    <cmd>doc(''{0}'');</cmd>
+                    <msg id="MATLAB:MException:MoreInformation"></msg>
+                </action>
+                <action id="web" type="suggestion">
+                    <cmd>web(''{0}'');</cmd>
+                    <msg id="MATLAB:MException:MoreInformation"></msg>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    <entry key="MixOfCCandSTVAT" note="no need to translate anything in CDATA section" translate="false">
+        Propagated variant condition to block ''{0_SLObject}'' contains both ''code compile'' and ''startup'' variant activation time.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action_catalog id="SL_SERVICES:doc_support:DOC_SUGGESTION" ids="help">
+                    <arg>simulink</arg>                 <!-- shortname first argument for the DOC_SUGGESTION entry -->
+                    <arg>startupMixOfCCandSTVAT</arg>   <!-- topicID  second argument for the DOC_SUGGESTION entry -->
+                </action_catalog>    
+            </actions>
+        ]]>
+    </entry>
+    <entry key="MixOfCCandSTVAT_HidBlkWithNoOrigBlk" note="no need to translate anything in CDATA section" translate="false">
+        Propagated variant condition contains both ''code compile'' and ''startup'' variant activation time.
+        <![CDATA[
+            <actions exclusiveFixIts="no">
+                <action_catalog id="SL_SERVICES:doc_support:DOC_SUGGESTION" ids="help">
+                    <arg>simulink</arg>                 <!-- shortname first argument for the DOC_SUGGESTION entry -->
+                    <arg>startupMixOfCCandSTVAT</arg>   <!-- topicID  second argument for the DOC_SUGGESTION entry -->
+                </action_catalog>    
+            </actions>
+        ]]>
+    </entry>
+    <entry key="TEST_INTERACTIVE_TEXT" translate="false">
+        This is test message for testing interactive text argument
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action id="suggestion_first" type="suggestion" retvalue="false" btn="apply">
+                    <cmd>web(''__ARG1__'')</cmd>
+                    <cargs>
+                        <carg name="__ARG1__" type="text">
+                            <txt_prompt>Please provide feedback:</txt_prompt>
+                        </carg>
+                    </cargs>
+                    <txt>Testing feedback</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    <entry key="copilot_suggestion" note="no need to translate anything in CDATA section" translate="false">
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action id="copilot" type="suggestion" retvalue="true" btn="open">
+                    <cmd>slcopilot.actions.explainSimulinkError(''{0}'',''{1}'',''{2}'',''{3}'');</cmd>
+                    <txt>Ask copilot</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+  </message>
+</rsccat>

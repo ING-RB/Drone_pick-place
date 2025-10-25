@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="generateSFuncModelRefParamMismatch">1 つ以上の Model ブロックを含むサブシステムの S-Function の生成で、コンフィギュレーション パラメーターの不一致が検出されました。 \n\n不一致の原因は次のいずれかです。 \nA) S-Function の生成前に、モデル ''{0}'' のモデル参照階層内にコンフィギュレーション パラメーターの不一致があった。 \nB) S-Function の生成の設定によりコンフィギュレーション パラメーターの設定が変更された。 \n\nどちらが原因であるかを判断するには、モデル ''{1}'' のビルドを試してください。 \n- コンフィギュレーション パラメーターの不一致のためにビルドできない場合は、"A" の原因が当てはまります。 \n- ビルドが成功した場合は、"B" が原因です。 \n\n"A" の原因に対処するには、次のコンフィギュレーション パラメーターをモデルの階層構造全体にわたって一致させ、モデル ''{2}'' を正常にビルドできるまで再試行してください。モデルを正常にビルドできたら、再度 S-Function を生成します。S-Function を生成できなかった場合は、原因 "B" について対処します。 \n\n原因 "B" に対処するには、次に記述されている不一致に基づいてモデルの階層構造のパラメーターを調整し、階層が ''{3}'' の設定に一致するようにします。</entry>
+    <entry key="incompatibleComponents">設定内容 ''{0}'' (モデル ''{1}'') と設定内容 ''{2}'' (モデル ''{3}'') は、互換性がありません。比較機能から返されたエラー メッセージ:\n{4}</entry>
+    <entry key="invalidMdlRefStatus">configure_model_reference_target_status の無効な状態</entry>
+    <entry key="invalidModelName">Model ''{0}'' にある Model ブロックの 1 つのモデル名パラメーターは ''{1}'' です。モデル名は、有効な MATLAB 識別子でなければなりません。</entry>
+    <entry key="mdlRefLoopDetected">モデル リファレンスのループ ''{0}'' が検出されました</entry>
+    <entry key="propertyMapping">{0} は ''{1}'' にマッピングされます</entry>
+    <entry key="paramNotInDataModel">パラメーター {0} に対するモデル参照の親子関係の一致動作がデータ モデルで定義されていません。</entry>
+    <entry key="removeIncludeModelReferenceSimulationTargets">''IncludeModelReferenceSimulationTargets'' は効果がなく、将来のリリースで削除される予定です。</entry>
+    <entry key="reportStateLoggingErr">状態のログ オプション ({0} != {1}) は、次のように計算されます: (SaveState または SaveFinalState) および MatFileLogging\n
+
+- SaveState は ''{2}'' (''{3}'') にマッピングされます\n
+
+- SaveFinalState は ''{4}''' (''{5}'') にマッピングされます\n
+
+- MatFileLogging は ''{6}'' (''{7}'') にマッピングされます\n
+    </entry>
+    <entry key="reportStateLoggingErrMatFileLoggingAlwaysOn">状態のログ オプション ({0} != {1}) は、(SaveState または SaveFinalState) と MatFileLogging として計算されます\n - SaveState は ''{2}'' (''{3}'') にマッピングされます\n - SaveFinalState は ''{4}''' (''{5}'') にマッピングされます\n - MatFileLogging はこのシステム ターゲット ファイルでは常に ''on'' です\n
+    </entry>
+    <entry key="MismatchInLoggingParameters">ログ パラメーターの不一致</entry>
+    <entry key="topChildMdlParamMismatchMsgUI">\n\t{0} ({1}):\n \t\t&lt;a href="matlab:configset.internal.open(''{2}'',''{3}'');"&gt;親モデルの設定&lt;/a&gt;: {4}\n \t\t&lt;a href="matlab:configset.internal.open(''{5}'',''{6}'');"&gt;参照モデルの設定&lt;/a&gt;: {7}\n</entry>
+    <entry key="topChildMdlParamMismatchMsgNonUI">\n\t{0} [設定を変更するには set_param を使用]:\n \t\t親設定: {1}\n \t\t子設定: {2}\n</entry>
+    <entry key="topChildMdlParamMismatch">いくつかのコンフィギュレーション パラメーター設定は、親モデル ''{0}'' と参照モデル ''{1}'' の間で互換性がなければなりません。 &lt;a href="matlab:helpview([docroot,''/toolbox/simulink/ug/simulink_ug.map''], ''about_configuration_references'');"&gt;コンフィギュレーション参照&lt;/a&gt;がパラメーターの不一致の回避に役立ちます。\n</entry>
+    <entry key="incompatibleConfigurationSets">モデル ''{2}'' のコンポーネント ''{0} ({1})'' がモデル ''{3}'' に対して存在しません</entry>
+    <entry key="unsavedChanges">未保存の変更があるため、''{0}'' のモデル参照ターゲットを更新できません。</entry>
+    <entry key="unsavedMdlRefs">Unable to update model reference target of ''{0}'' used in ''{1}'' because it has unsaved changes.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt;
+            &lt;txt&gt;Save ''{0}''&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="unsavedMdlRefsSaved">''{0}'' が保存されました。</entry>
+    <entry key="unsavedMdlRefsAllowed">モデル ''{0}'' またはその依存関係に未保存の変更があるため、モデルの階層構造のコンパイルと、モデル参照ターゲットが最新かどうかのチェックに必要な時間が長くなります。未保存の変更はまた、参照モデルの並列ビルドの妨げにもなります。</entry>
+    <entry key="unsavedMdlLibCause">ライブラリ ''{0}'' に未保存の変更があります。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt; &lt;txt&gt;ライブラリ ''{0}'' を保存する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+	</entry>
+    <entry key="unsavedMdlRefsCause">モデル ''{0}'' に未保存の変更があります。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt; &lt;txt&gt;モデル ''{0}'' を保存する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="unsavedMdlRefsWorkspaceCause">参照モデル ''{0}'' のモデル ワークスペースに未保存の変更があります。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt; &lt;txt&gt;モデル ''{0}'' とそのワークスペースを保存する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="rebuildSetToNever">モデル参照のリビルド オプションは ''行わない'' に設定されています。参照モデルは最新であるものと仮定します。</entry>
+    <entry key="allSIMTargetsUpToDate">モデル参照シミュレーション ターゲットは最新です。</entry>
+    <entry key="allCoderTargetsUpToDate">モデル参照のコード生成ターゲットは最新です。</entry>
+    <entry key="checkingStatusOfModelSIM">モデル ''{0}'' のモデル参照シミュレーション ターゲットの状態をチェックしています。</entry>
+    <entry key="checkingStatusOfModelCoder">モデル ''{0}'' のモデル参照コード生成ターゲットの状態をチェックしています。</entry>
+    <entry key="modelReferenceChecksumChanged">参照モデル ''{0}'' のチェックサムが変更されました。モデル参照ターゲットを再生成してください。</entry>
+    <entry key="skipPartOfRebuildManager">リビルド マネージャーのスキップ リストに含まれているため、モデル ''{0}'' のリビルド チェックをスキップします。</entry>
+    <entry key="skipNeverRebuildModel">モデル ''{0}'' またはその親は ''NeverRebuildModel'' が ''on'' に設定されているため、このモデルのリビルドをスキップします。</entry>
+    <entry key="rebuildSetToAlways">リビルド オプションは [常に行う] に設定されています。</entry>
+    <entry key="modelReferenceSIMTargetUpToDate">{0} のモデル参照シミュレーション ターゲットは最新です。</entry>
+    <entry key="modelReferenceCoderTargetUpToDate">{0} のモデル参照コード生成ターゲットは最新です。</entry>
+    <entry key="checkingForStructuralChangesSIM">モデル参照のリビルド オプションが [変更が検出された場合] に設定されているため、{0} 内の構造的な変更をチェックしています。構造的な変更により、モデル参照シミュレーション ターゲットがリビルドされます。</entry>
+    <entry key="checkingForStructuralChangesCoder">モデル参照のリビルド オプションが [変更が検出された場合] に設定されているため、{0} 内の構造的な変更をチェックしています。構造的な変更により、モデル参照コード生成ターゲットがリビルドされます。</entry>
+    <entry key="targetSIMDoesNotExist">モデル {1} のモデル参照シミュレーション ターゲット ({0}) が無効でした。{2} が存在しませんでした。</entry>
+    <entry key="targetCoderDoesNotExist">モデル {1} のモデル参照コード生成ターゲット ({0}) が無効でした。{2} が存在しませんでした。</entry>
+    <entry key="buildInfoDotMatMissingCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) が無効でした。buildInfo.mat ファイルが存在しませんでした。</entry>
+    <entry key="buildInfoDotMatMissingSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) が無効でした。buildInfo.mat ファイルが存在しませんでした。</entry>
+    <entry key="binfoDoesNotExistCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) が無効でした。バイナリ情報のキャッシュが存在しませんでした。バイナリ情報のキャッシュが含まれる slprj フォルダーが削除された可能性があります。</entry>
+    <entry key="binfoDoesNotExistSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) が無効でした。バイナリ情報のキャッシュが存在しませんでした。バイナリ情報のキャッシュが含まれる slprj フォルダーが削除された可能性があります。</entry>
+    <entry key="binfoNotHaveNecessaryInformationSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) が無効でした。バイナリ情報のキャッシュに必要な情報が含まれていませんでした。このモデルの前回のビルドが失敗した可能性があります。</entry>
+    <entry key="binfoNotHaveNecessaryInformationCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) が無効でした。バイナリ情報のキャッシュに必要な情報が含まれていませんでした。このモデルの前回のビルドが失敗した可能性があります。</entry>
+    <entry key="userDependencyUpdatedSinceLastBuildSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、{2} (モデル {3} の依存関係) が前回のビルドから変更されたため無効です。</entry>
+    <entry key="userDependencyUpdatedSinceLastBuildCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、{2} (モデル {3} の依存関係) が前回のビルドから変更されたため無効です。</entry>
+    <entry key="mdlWkspaceDependencyUpdatedSinceLastBuildSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は無効です。モデル ワークスペースのデータ ソース ({2}) の依存関係が前回のビルドから変更されています。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildSIMMCOSEnum">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は無効です。列挙クラス ({2}) の依存関係が前回のビルドから変更されています。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildSIMRequirement">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は無効です。Requirements Toolbox セット ファイル ({2}) の依存関係が前回のビルドから変更されています。</entry>
+    <entry key="mdlWkspaceDependencyUpdatedSinceLastBuildCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は無効です。モデル ワークスペースのデータ ソース ({2}) の依存関係が前回のビルドから変更されています。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildCoderMCOSEnum">モデル {1} のモデル参照コード生成ターゲット ({0}) は無効です。列挙クラス ({2}) の依存関係が前回のビルドから変更されています。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildCoderRequirement">モデル {1} のモデル参照コード生成ターゲット ({0}) は無効です。Requirements Toolbox セット ファイル ({2}) の依存関係が前回のビルドから変更されています。</entry>
+    <entry key="referencedModelSIMTargetDoesNotExist">モデル {1} のモデル参照シミュレーション ターゲット ({0}) が無効でした。参照モデル {2} のターゲット ({3}) が存在しませんでした。</entry>
+    <entry key="referencedModelCoderTargetDoesNotExist">モデル {1} のモデル参照コード生成ターゲット ({0}) が無効でした。参照モデル {2} のターゲット ({3}) が存在しませんでした。</entry>
+    <entry key="targetFunctionLibraryChangedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、モデル {2} で使用するコード置換ライブラリが前回のビルド以降変更されたため無効です。</entry>
+    <entry key="targetFunctionLibraryChangedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、モデル {2} で使用するコード置換ライブラリが前回のビルド以降変更されたため無効です。</entry>
+    <entry key="previousBuildProtectedUnprotectedMismatchSIM">前回のビルドの対象が保護モデルで今回のビルドが保護されていないモデルを対象としているか、またはその逆であったため、モデル {1} のモデル参照シミュレーション ターゲット ({0}) は無効です。</entry>
+    <entry key="previousBuildProtectedUnprotectedMismatchCoder">前回のビルドの対象が保護モデルで今回のビルドが保護されていないモデルを対象としているか、またはその逆であったため、モデル {1} のモデル参照コード生成ターゲット ({0}) は無効です。</entry>
+    <entry key="stateflowExternalFileChangedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、Stateflow ブロックまたは MATLAB Function ブロックで使用される次の MATLAB ファイルが変更されたため無効です: {2}。</entry>
+    <entry key="stateflowExternalFileChangedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、Stateflow ブロックまたは MATLAB Function ブロックで使用される次の MATLAB ファイルが変更されたため無効です: {2}。</entry>
+    <entry key="matlabSystemExternalFileChangedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、MATLAB System ブロックで使用される次の MATLAB ファイルが変更されたため無効です: {2}。</entry>
+    <entry key="matlabSystemExternalFileChangedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、MATLAB System ブロックで使用される次の MATLAB ファイルが変更されたため無効です: {2}。</entry>
+    <entry key="customCodeFileChangedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、モデル コンフィギュレーション セットで使用されるカスタム コード ファイルが変更されたため無効です。</entry>
+    <entry key="customCodeFileChangedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、モデル コンフィギュレーション セットで使用されるカスタム コード ファイルが変更されたため無効です。</entry>
+    <entry key="dataflowNumCoresChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' が無効です。開発マシンの CPU コア数が変更されており、マルチスレッド シミュレーション用にデータフロー領域を再コンパイルする必要があるためです。</entry>
+    <entry key="dataflowProfilingChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' が無効です。シミュレーションの自動調整プロファイリング用にデータフロー領域を再コンパイルする必要があるためです。</entry>
+    <entry key="dataflowPartitioningChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' が無効です。マルチスレッド シミュレーション用にデータフロー領域を再コンパイルする必要があるためです。</entry>
+    <entry key="dataflowCacheFolderChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' は無効です。シミュレーション キャッシュ フォルダーが変更されており、シミュレーションの自動調整プロファイリング用にデータフロー領域を再コンパイルする必要があるためです。</entry>
+    <entry key="simHardwareAccelerationChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' は無効です。開発マシンの CPU が変更されており、Simulink はネイティブのシミュレーション ハードウェア アクセラレーション用に再コンパイルする必要があるためです。</entry>
+    <entry key="debugSILBuildMismatch">モデル {1} のモデル参照コード生成ターゲット ({0}) は、[SIL シミュレーションでソース レベル デバッグを有効にする] 設定が変更されたため無効です。</entry>
+    <entry key="extModeXCPBuildMismatch">モデル {1} のモデル参照コード生成ターゲット ({0}) は、'ExtModeTransport' の値が変更されたため無効です。</entry>
+    <entry key="genCodeOnlyChanged">Model reference code generation target ''{0}'' for model ''{1}'' must be recompiled because genCodeOnly setting changed.</entry>
+    <entry key="ModelReferenceSIMTargetNeedsCompiling">前回のビルド以降このターゲットが変更されたか、コンパイルされていないため、モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' をコンパイルしなければなりません。</entry>
+    <entry key="ModelReferenceCoderTargetNeedsCompiling">前回のビルド以降このターゲットが変更されたか、コンパイルされていないため、モデル ''{1}'' のモデル参照コード生成ターゲット ''{0}'' をコンパイルしなければなりません。</entry>
+    <entry key="modelWorkspaceChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ({0}) を再コンパイルしなければなりません。そのモデル ワークスペース内で変更が検出されたためです。</entry>
+    <entry key="bsModelWorkspaceChanged">モデル ''{0}'' のモデル ワークスペース内で変更が検出されました。</entry>
+    <entry key="loggedSignalsChanged">モデル ''{1}'' のモデル参照シミュレーション ターゲット ({0}) を再コンパイルしなければなりません。信号のログで変更が検出されたためです。</entry>
+    <entry key="bsLoggedSignalsChanged">モデル ''{0}'' の信号のログで変更が検出されました。</entry>
+    <entry key="modelInformationCacheUpdatedSIM">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' は無効になっている可能性があります。{2}</entry>
+    <entry key="modelInformationCacheUpdatedCoder">モデル ''{1}'' のモデル参照コード生成ターゲット ''{0}'' は無効になっている可能性があります。{2}</entry>
+    <entry key="buildDueToUnsavedChangesSIM">未保存の変更があるため、モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' は無効になっている可能性があります。{2}</entry>
+    <entry key="buildDueToUnsavedChangesCoder">未保存の変更があるため、モデル ''{1}'' のモデル参照コード生成ターゲット ''{0}'' は無効になっている可能性があります。{2}</entry>
+    <entry key="referencedModelOutOfDateSIM">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' は、参照モデル ''{2}'' の期限が切れたため無効になっている可能性があります。</entry>
+    <entry key="referencedModelOutOfDateCoder">Model reference code generation target ''{0}'' 
+    for model ''{1}'' might be out of date because the referenced model ''{2}'' was out of date.</entry>
+    <entry key="referencedModelSIMTargetUpdated">モデル ''{1}'' のモデル参照シミュレーションターゲット ''{0}'' は、参照モデル ''{2}'' のモデル参照シミュレーション生成ターゲット ''{3}'' が前回のビルド以降に変更されているため無効になっている可能性があります。</entry>
+    <entry key="referencedModelCoderTargetUpdated">モデル ''{1}'' のモデル参照コード生成ターゲット ''{0}'' は、参照モデル ''{2}'' のモデル参照コード生成ターゲット ''{3}'' が前回のビルド以降に変更されているため無効になっている可能性があります。</entry>
+    <entry key="referencedModelSIMTargetInterfaceUpdated">モデル ''{1}'' のモデル参照シミュレーション ターゲット ''{0}'' は、参照モデル ''{2}'' のモデル参照シミュレーション ターゲット ''{3}'' のインターフェイスが前回のビルドから変更されたため無効です。</entry>
+    <entry key="referencedModelCoderTargetInterfaceUpdated">モデル ''{1}'' のモデル参照コード生成ターゲット ''{0}'' は、参照モデル ''{2}'' のモデル参照コード生成ターゲット ''{3}'' のインターフェイスが前回のビルドから変更されたため無効です。</entry>
+    <entry key="resolveSignalsForAllNamedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、名前付き信号と状態に対する信号オブジェクトを関連付けるようモデルが設定されているため無効になっている可能性があります。コード生成を高速化し、このメッセージを取り除くには、[コンフィギュレーション パラメーター] ダイアログの [診断/データ有効性] ページで [信号の関連付け] を [明示的のみ] に設定してください</entry>
+    <entry key="resolveSignalsForAllNamedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、名前付き信号と状態に対する信号オブジェクトを関連付けるようモデルが設定されているため無効になっている可能性があります。コード生成を高速化し、このメッセージを取り除くには、[コンフィギュレーション パラメーター] ダイアログの [診断/データ有効性] ページで [信号の関連付け] を [明示的のみ] に設定してください</entry>
+    <entry key="incompatibleGlobalVariablesSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、このモデルで使用される次のグローバル変数と、ターゲット生成時に存在していた変数に互換性がないため、無効になっている可能性があります: {2}。</entry>
+    <entry key="incompatibleGlobalVariablesCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、このモデルで使用される次のグローバル変数と、ターゲット生成時に存在していた変数に互換性がないため、無効になっている可能性があります: {2}。</entry>
+    <entry key="incompatibleDynamicEnumTypeSIM">モデル {1} で使用されている次の動的な enum 型が変更されたため、このモデルのモデル参照シミュレーション ターゲット ({0}) は無効になっている可能性があります: {2}。</entry>
+    <entry key="incompatibleDynamicEnumTypeCoder">モデル {1} で使用されている次の動的な enum 型が変更されたため、このモデルのモデル参照コード生成ターゲット ({0}) は無効になっている可能性があります: {2}。</entry>
+    <entry key="ProtectedModelChangedSIM">モデル ''{1}'' が参照している保護モデル ''{2}'' が変更されたため、このモデルのモデル参照シミュレーション ターゲット (''{0}'') は無効になっている可能性があります。</entry>
+    <entry key="ProtectedModelChangedCoder">モデル ''{1}'' が参照している保護モデル ''{2}'' が変更されたため、このモデルのモデル参照コード生成ターゲット (''{0}'') は無効になっている可能性があります。</entry>
+    <entry key="SSCFileChangedSIM">モデル ''{1}'' が使用している Simscape ソース ファイル ''{2}'' が変更されたため、このモデルのモデル参照シミュレーション ターゲット (''{0}'') は無効になっている可能性があります。</entry>
+    <entry key="SSCFileChangedCoder">モデル ''{1}'' が使用している Simscape ソース ファイル ''{2}'' が変更されたため、このモデルのモデル参照コード生成ターゲット (''{0}'') は無効になっている可能性があります。</entry>
+    <entry key="MaskCallbackFileChangedSIM">モデル ''{1}'' が使用しているマスク コールバック ファイル ''{2}'' が変更または削除されたため、このモデルのモデル参照シミュレーション ターゲット (''{0}'') は無効になっている可能性があります。</entry>
+    <entry key="MaskCallbackFileChangedCoder">モデル ''{1}'' が使用しているマスク コールバック ファイル ''{2}'' が変更または削除されたため、このモデルのモデル参照コード生成ターゲット (''{0}'') は無効になっている可能性があります。</entry>
+    <entry key="customStorageClassChangedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、カスタム ストレージ クラスの定義がモデルの前回のコンパイル以降に変更されたため無効です。このモデルはグローバル変数 ''{2}'' を使用します。</entry>
+    <entry key="customStorageClassChangedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、カスタム ストレージ クラスの定義がモデルの前回のコンパイル以降に変更されたため無効です。このモデルはグローバル変数 ''{2}'' を使用します。</entry>
+    <entry key="sfunctionDoesNotExistSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、S-Function {2} (''{3}'' 内で使用) が見つからないため無効です。</entry>
+    <entry key="sfunctionDoesNotExistCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、S-Function {2} (''{3}'' 内で使用) が見つからないため無効です。</entry>
+    <entry key="sfunctionFileUpdatedSIM">モデル {1} のモデル参照シミュレーション ターゲット ({0}) は、S-Function ''{3}'' に関連付けられたファイル {2} (''{4}'' 内で使用) が前回のビルド以降変更されたため無効です。</entry>
+    <entry key="sfunctionFileUpdatedCoder">モデル {1} のモデル参照コード生成ターゲット ({0}) は、S-Function ''{3}'' に関連付けられたファイル {2} (''{4}'' 内で使用) が前回のビルド以降変更されたため無効です。</entry>
+    <entry key="modelRefSIMTargetNoCodeGenNeeded">参照モデル内に機能の変更が見つからなかったため、モデル {0} のモデル参照シミュレーション ターゲットのコードは最新です。</entry>
+    <entry key="modelRefCoderTargetNoCodeGenNeeded">参照モデル内に機能の変更が見つからなかったため、モデル {0} に対するモデル参照コード生成ターゲットのコードは最新です。</entry>
+    <entry key="sfunctionFileDoesNotExist">S-Function ''{1}'' に関連付けられたファイル {0} (''{2}'' で使用) は存在しません。</entry>
+    <entry key="ignoringUnfoundDependency">依存関係 ''{0}'' (モデル {1} 用) が見つからないため無視します。</entry>
+    <entry key="checkingDependency">依存関係 ''{0}'' (モデル {1} 用) をチェックしています。</entry>
+    <entry key="ignoringDirectoryDependency">フォルダーの依存関係 ''{0}'' (モデル {1} 用) にはファイルがないため無視します。</entry>
+    <entry key="parBuildInit">並列モデルの参照ビルドに対してワーカーを初期化中です。</entry>
+    <entry key="parBuildLoadTopModel">並列ワーカーに ''{0}'' を読み込み中です。</entry>
+    <entry key="parBuildCopyWorkspace">ベース ワークスペースを並列ワーカーにコピー中です。</entry>
+    <entry key="parBuildInitComplete">並列ワーカーの初期化が完了しました。</entry>
+    <entry key="unknownAction">不明なアクション ''{0}'' です。</entry>
+    <entry key="parBuildCleanup">並列ワーカーをクリーンアップしています。</entry>
+    <entry key="parBuildStartSIM">次に対する並列モデル参照シミュレーション ビルドを開始中: {0}。</entry>
+    <entry key="parBuildStartCoder">次に対する並列モデル参照コード生成ビルドを開始中: {0}。</entry>
+    <entry key="parBuildFinishSIM">次に対する並列モデル参照シミュレーション ビルドが完了しました: {0}。</entry>
+    <entry key="parBuildFinishCoder">次に対する並列モデル参照コード生成ビルドが完了しました: {0}。</entry>
+    <entry key="parBuildErrorSIM">{0} に対する並列モデル参照シミュレーション ビルド中に次のエラーが発生しました。\n\n{1}。</entry>
+    <entry key="parBuildErrorCoder">{0} に対する並列モデル参照コード生成ビルド中に次のエラーが発生しました。\n\n{1}。</entry>
+    <entry key="parBuildVerifyManifestError">The following files are listed in manifest but are missing in {0}:\n\n{1}\n.</entry>
+    <entry key="parBuildCreateManifestError">Failed to create manifest. Temporary "*.dmr-journal" files exist in following folder:\n{0}.</entry>
+    <entry key="poolNotOpen">Model is configured for parallel model reference builds, but parallel pool is not open. See the documentation on parpool for information on opening a parallel pool.\n</entry>
+    <entry key="PoolNotAutoStarted">最上位モデルに対して [モデル参照の並列ビルドを有効にする] が選択されていても、MATLAB ワーカーの並列プールを自動的に作成できません。Parallel Computing Toolbox の基本設定の [並列プールを自動的に作成する] が選択されていない可能性があります。参照モデルは逐次的にビルドされます。</entry>
+    <entry key="poolArchInconsistent">並列モデル参照ビルドを実行するには、すべての並列プール ワーカーのアーキテクチャが MATLAB セッション クライアントと同じでなければなりません。\n</entry>
+    <entry key="PCTNotAvailable">モデルは参照モデルの並列ビルド用に構成されていますが、Parallel Computing Toolbox が利用できません。シリアル ビルドが使用されます。</entry>
+    <entry key="startingParallelTestModeSIMBuild">並列シミュレーション ビルドをテスト モードで開始中です。</entry>
+    <entry key="startingParallelTestModeCoderBuild">並列コード生成ビルドをテスト モードで開始中です。</entry>
+    <entry key="startingParallelSIMBuild">並列シミュレーション ビルドを開始中です。</entry>
+    <entry key="startingParallelCoderBuild">並列コード生成ビルドを開始中です。</entry>
+    <entry key="startingSerialSIMBuild">シリアル モデル ビルドを開始中です。</entry>
+    <entry key="startingSerialCoderBuild">シリアル コード生成ビルドを開始中です。</entry>
+    <entry key="ParBuildLicenseNotAvailable">One or more workers could not get a {0} license. Check the consistency of parallel pool of workers.</entry>
+    <entry key="threadPoolNotSupported">スレッドベースの並列プールをもつ参照モデルの並列ビルドはサポートされていません。</entry>
+    <entry key="CoverageParallelBuild">モデル {0} は、コード カバレッジ測定を収集するように設定されています。ただし、並列のモデル参照のビルドに対してコード カバレッジはサポートされません。</entry>
+    <entry key="RemoteParallelBuild">モデル {0} は、生成されたコードをリモートでビルドするためのツールチェーン ''{1}'' を指定していますが、これは参照モデルの並列ビルドをサポートしません。</entry>
+    <entry key="parallelFileSystemInaccessible">現在のルート ビルド フォルダー "{0}" に 1 つ以上の並列ワーカーからアクセスできません。ワーカーがこの場所に書き込めることを確認してください。</entry>
+    <entry key="parWorkerConfigError">ターゲットの並列ワーカーを設定しようとしたときに、次のエラーが発生しました。\n{0}</entry>
+    <entry key="advisorWarning">コード生成アドバイザーでモデル設定の潜在的な問題が検出され、[コード生成前にモデルをチェック] パラメーターが [オン (警告が発生すると停止)] に設定されています。コード生成アドバイザーで見つかった問題を解決するか、[コード生成前にモデルをチェック] パラメーターを [オフ] に設定してください。</entry>
+    <entry key="advisorWarning2">アクティブなコンフィギュレーション セットの ''ObjectivePriorities'' パラメーターの値が ''Unspecified'' に変更されました。\n以前の値 ''{0}'' は、ERT ベースのシステム ターゲット ファイルを使用している場合のみ使用可能です。</entry>
+    <entry key="AccelTargetFileNotAllowedForModelRefTarget">Cannot build model reference code generation target for model ''{0}'', because its ''System target file'' is set to ''accel.tlc''. Change ''System target file'' parameter to a value other than ''accel.tlc''.</entry>
+    <entry key="BuildFolderDoesNotExist">''{0}'' のパスが存在しなければなりませんが、指定されたパス (''{1}'') は存在しません。有効なフォルダーを入力するか、[参照] ボタンを使用して目的のフォルダーを選択してください。</entry>
+    <entry key="CacheFolderLbl">シミュレーション キャッシュ フォルダー:</entry>
+    <entry key="CacheFolderToolTip">シミュレーション用のビルド アーティファクトが配置されるルート フォルダー。</entry>
+    <entry key="CodeGenFolderLbl">コード生成フォルダー:</entry>
+    <entry key="CodeGenFolderToolTip">コード生成ファイルが配置されるルート フォルダー。</entry>
+    <entry key="CodeGenFolderStructureLbl">コード生成フォルダーの構造:</entry>
+    <entry key="CodeGenFolderStructureToolTip">コード生成ファイルが配置されるフォルダーの構造。</entry>
+    <entry key="FileGenFolderOptions">生成ファイル用のフォルダー</entry>
+    <entry key="CacheFolderBrowseTitle">Simulink キャッシュ用のルート フォルダーを選択。</entry>
+    <entry key="CodeGenFolderBrowseTitle">コード生成用のルート フォルダーを選択。</entry>
+    <entry key="ForceBuildOnModelRefTarget">''{0}'' は最上位モデルまたはスタンドアロン モデルのビルドのみに使用されます。</entry>
+    <entry key="NoCodeGenForSimOnly">モデル ''{0}'' はシミュレーション専用に構成されているため、展開用コードを生成できません。現在のモデルがコード生成を目的としている場合 (たとえば、テスト ハーネスまたはプラント モデルではない場合)、Embedded Coder アプリで、ツールストリップの [出力] メニューの選択内容を、[シミュレーションのみ] 以外の出力タイプに変更してください。または、コード展開用のモデルを開き、Coder アプリのフォーカスを別のモデルに変更してください。</entry>
+    <entry key="BrowseButtonText">参照...</entry>
+    <entry key="XcodeLicenseNotAccepted">Xcode license (for GM or Beta version) was not accepted. Run Xcode and accept its license agreement.</entry>
+    <entry key="minfoResaveDifferentPlatform">前回のビルドは ''{0}'' プラットフォーム上で実行されましたが、このプラットフォームは ''{1}'' です。</entry>
+    <entry key="minfoResaveLastSaveWhenDirtyModel">前回のビルドは、モデルまたはリンク ライブラリが変更未保存 (ダーティ) のときに実行されました。</entry>
+    <entry key="minfoResaveModelDirty">モデルまたはリンク ライブラリ ''{0}'' は変更未保存 (ダーティ) です。</entry>
+    <entry key="minfoResaveProtectionChange">Model ブロック ''{0}'' は、以前は ''{1}'' を参照しましたが、現在は ''{2}'' を参照します。</entry>
+    <entry key="minfoResaveModelAdded">モデルまたはライブラリ ''{0}'' は前回のビルドで見つかりませんでした。</entry>
+    <entry key="minfoResaveMissingLibrary">ライブラリ ''{0}'' が見つかりません。</entry>
+    <entry key="minfoResaveModelChanged">モデルまたはライブラリ ''{0}'' が変更されました。</entry>
+    <entry key="minfoResaveVariantEvaluateError">バリアント制御 ''{0}'' は論理値として評価されませんでした。</entry>
+    <entry key="minfoResaveVariantValueChange">バリアント制御 ''{0}'' の値が ''{1}'' から ''{2}'' に変更されました。</entry>
+    <entry key="minfoResaveConfigSetChanged">コンフィギュレーション参照 ''{0}'' が変更されました。</entry>
+    <entry key="minfoResaveCompilerInfoChanged">''{0}'' の現在のコンパイラ構成は、''{1}'' の以前のビルドのコンパイラ構成とは異なります。</entry>
+    <entry key="minfoResaveSharedCoderDictChanged">共有 Embedded Coder ディクショナリ ''{0}'' が変更されました。</entry>
+    <entry key="minfoResaveSILVerificationChange1">SIL/PIL マネージャーで使用される検証モードが、ノーマル、アクセラレータ、またはラピッド アクセラレータ シミュレーションから SIL または PIL シミュレーションに変更されました。</entry>
+    <entry key="minfoResaveSILVerificationChange2">SIL/PIL マネージャーで使用される検証モードが、SIL または PIL シミュレーションからノーマル、アクセラレータ、またはラピッド アクセラレータ シミュレーションに変更されました。</entry>
+    <entry key="compileInfoRegenMsg">次の理由により、モデル参照インターフェイスの情報を再生成しています:</entry>
+    <entry key="binfoCacheUpdated">バイナリ情報のキャッシュを保存しています。</entry>
+    <entry key="rrhSearchStart">{0} 内の binfo ファイルを検索しています。</entry>
+    <entry key="rrhHarvestStart">{0,number,integer} 個のファイルからリビルドの理由を収集しています。</entry>
+    <entry key="rrhDone">完了。</entry>
+    <entry key="rrhWritingFile">{0} にデータを書き込んでいます。</entry>
+    <entry key="rrhNoReason">リビルドの理由は記録されませんでした。</entry>
+    <entry key="rrhCodeGen">コード生成</entry>
+    <entry key="rrhSimulation">シミュレーション</entry>
+    <entry key="bs3MissingTarget">ターゲット ({0}) が存在しませんでした。</entry>
+    <entry key="bs3MissingBinfo">情報キャッシュ フォルダーまたはアーティファクトが見つかりませんでした。</entry>
+    <entry key="bs3InvalidBinfo">一部のアーティファクトが無効でした。</entry>
+    <entry key="bs3MissingBuildInfoDotMat">ビルド情報ファイルが存在しませんでした。</entry>
+    <entry key="bs3UserDependencyChange">ユーザー指定の依存関係 {0} が変更されました。</entry>
+    <entry key="bs3MCOSEnumDependencyChange">列挙クラス {0} が変更されました。</entry>
+    <entry key="bs3RequirementDependencyChange">Requirements Toolbox セット ファイル {0} が変更されました。</entry>
+    <entry key="bs3CSCChange">カスタム ストレージ クラスの定義が変更されました。</entry>
+    <entry key="bs3MissingSubModelTarget">参照モデル {1} のターゲット {0} が存在しませんでした。</entry>
+    <entry key="bs3MissingSFunction">S-Function {0} が存在しませんでした。</entry>
+    <entry key="bs3SFunctionDependencyChange">S-Function {1} の依存関係 {0} が変更されました。</entry>
+    <entry key="bs3CRLChange">コード置換ライブラリが変更されました。</entry>
+    <entry key="bs3SILChange">SIL デバッグ設定が {0} から {1} に変更されました。</entry>
+    <entry key="bs3MFileChange">MATLAB ファイル {0} が変更されました。</entry>
+    <entry key="bs3ExtModeChange">トランスポート層パラメーター値が {0} から {1} に変更されました。</entry>
+    <entry key="bs3CustomCodeChange">モデル configset で使用されているカスタム コード ファイルが変更されました。</entry>
+    <entry key="bs3DataflowChange">データフローの分割が変更されました。</entry>
+    <entry key="bs3SimHardwareAccelerationCPU">Sim ハードウェア アクセラレーション CPU が変更されました。</entry>
+    <entry key="bs2mdlWkspaceDependencyChange">モデル ワークスペースのデータ ソース ファイル {0} が変更されました。</entry>
+    <entry key="bs2PlatformChange">ビルド プラットフォームが {0} から {1} に変更されました。</entry>
+    <entry key="bs2ModelDirty">前回のビルドでモデルまたはライブラリが変更未保存 (ダーティ) です。</entry>
+    <entry key="bs2LibraryDirty">モデルまたはライブラリ {0} が変更未保存 (ダーティ) です。</entry>
+    <entry key="bs2ProtectionChange">Model ブロック {0} 参照が {1} から {2} に変更されました。</entry>
+    <entry key="bs2MissingModel">モデルまたはライブラリ {0} は前回のビルドで見つかりませんでした。</entry>
+    <entry key="bs2MissingLibrary">ライブラリ {0} が見つかりません。</entry>
+    <entry key="bs2ModelChange">モデルまたはライブラリ {0} が変更されました。</entry>
+    <entry key="bs2VariantChange">バリアント制御 {0} の値が {1} から {2} に変更されました。</entry>
+    <entry key="bs2CompilerInfoChange">コンパイラ構成が変更されました。</entry>
+    <entry key="bs2ConfigSetRefChange">コンフィギュレーション参照 {0} が変更されました。</entry>
+    <entry key="bs2SharedCoderDictChange">共有 Embedded Coder ディクショナリ ''{0}'' が変更されました。</entry>
+    <entry key="bs2SILVerificationChange1">SIL/PIL マネージャーの検証モードが SIL または PIL シミュレーションに変更されました。</entry>
+    <entry key="bs2SILVerificationChange2">SIL/PIL マネージャーの検証モードがノーマル、アクセラレータ、またはラピッド アクセラレータ シミュレーションに変更されました。</entry>
+    <entry key="bs1GlobalVarChange">グローバル変数 {0} が変更されました。</entry>
+    <entry key="bs1ModelRefOutOfDate">参照モデル ''{0}'' が期限切れでした。</entry>
+    <entry key="bs1ModelRefInterfaceOutOfDate">参照モデル ''{0}'' のインターフェイスが期限切れでした。</entry>
+    <entry key="bs1UnresolvedSignals">信号オブジェクトは解決されなければなりません。</entry>
+    <entry key="bs1GenCodeOnlyChange">[コード生成のみ] パラメーター値が {0} から {1} に変更されました。</entry>
+    <entry key="bs1CodeInstrChange">コード インストルメンテーション設定が変更されました。</entry>
+    <entry key="bs1DynamicEnumTypeChange">動的な enum 型 {0} が変更されました。</entry>
+    <entry key="bs1ProtectedModelChange">参照している SLXP ファイル ''{0}'' が変更されました。</entry>
+    <entry key="bs1SSCFileChange">Simscape ソース ファイル ''{0}'' が変更されました。</entry>
+    <entry key="bs1MaskCallbackFileChange">マスク コールバック ファイル ''{0}'' が変更または削除されました。</entry>
+    <entry key="bsTargetModelRefSim">モデル参照シミュレーション</entry>
+    <entry key="bsTargetModelRefCoder">モデル参照コード生成</entry>
+    <entry key="bsTargetTopCoder">コード生成</entry>
+    <entry key="bsTargetRapidAccel">ラピッド アクセラレータ</entry>
+    <entry key="bsTargetSimAccel">Simulink アクセラレータ</entry>
+    <entry key="bsCodeGen">コードが生成されました。</entry>
+    <entry key="bsCodeCompile">コードがコンパイルされました。</entry>
+    <entry key="bsCodeGenAndCompile">コードが生成されコンパイルされました。</entry>
+    <entry key="bsTopCodeOutOfDate">生成されたコードが期限切れでした。</entry>
+    <entry key="bsTopCompileArtifactsOutOfDate">コンパイル アーティファクトが期限切れでした。</entry>
+    <entry key="bsTopForced">ForceTopModelBuild が有効化されました。</entry>
+    <entry key="bsTopUnsuccessfulBuild">前回のビルドは失敗しました。</entry>
+    <entry key="bsTopDDMoved">データ ディクショナリの設計データが {0} から {1} に再配置されました。</entry>
+    <entry key="bsTopSimAccel">Accelerator MEX ファイルが期限切れです。</entry>
+    <entry key="bsTopTLCParamOn">{0} 設定は {1} です。</entry>
+    <entry key="bsTopIncrementalChecksumMissing">インクリメンタル チェックサムが空です。</entry>
+    <entry key="bsTopIncrementalChecksumChange">インクリメンタル チェックサムが変更されました。</entry>
+    <entry key="bsTopBuildDirMissing">ビルド フォルダーが存在しません。</entry>
+    <entry key="bsTopBuildDirEmpty">ビルド フォルダーが空です。</entry>
+    <entry key="bsTopBuildInfoMissing">buildInfo.mat が存在しません。</entry>
+    <entry key="bsTopIncompatibleBuildLocation">ビルド アーティファクトが現在の位置と適合しません。</entry>
+    <entry key="bsTopMdlRefsUpdated">参照モデルが更新されています。</entry>
+    <entry key="bsTopEnableAccessToBaseWorkspaceChanged">EnableAccessToBaseWorkspace が {0} に変更されました。</entry>
+    <entry key="bsBuildSummaryTitle">ビルド概要</entry>
+    <entry key="bsSimTargetsBuilt">モデル参照シミュレーション ターゲット:</entry>
+    <entry key="bsCoderTargetsBuilt">モデル参照コード生成ターゲット:</entry>
+    <entry key="bsTopModelTargetsBuilt">最上位モデルターゲット:</entry>
+    <entry key="bsTopModelAcceleratorTargetsBuilt">最上位モデルのアクセラレータ ターゲット:</entry>
+    <entry key="bsTopModelRapidAcceleratorTargetsBuilt">最上位モデルのラピッド アクセラレータ ターゲット:</entry>
+    <entry key="bsModelHeader">モデル</entry>
+    <entry key="bsActionHeader">ステータス</entry>
+    <entry key="bsReasonsHeader">ビルドの理由</entry>
+    <entry key="bsBuildTimeHeader">ビルド期間</entry>
+    <entry key="bsModelsBuilt">{1}/{0} ビルドされたモデル (既に最新のモデル {2})</entry>
+    <entry key="bsBuildDuration">ビルド期間: {0}</entry>
+    <entry key="bsActionFailed">ビルドに失敗しました。詳細については、ビルド ログを参照してください。</entry>
+    <entry key="bsActionRebuilt">リビルド</entry>
+    <entry key="componentNotFound">Internal Error: Expected component ''{0}'' is not found in ''{1}'' configuration set.</entry>
+    <entry key="rrhModel">Model</entry>
+    <entry key="rrhTarget">Target</entry>
+    <entry key="rrhDate">Date</entry>
+    <entry key="rrhReason">Reason</entry>
+  </message>
+</rsccat>

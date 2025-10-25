@@ -1,0 +1,18 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code>bitshift</code> function will change in a future release.
+                    This function will no longer accept an integer argument for
+                    <code>N</code>. Instead, you must specify a character vector containing
+                    the assumed integer type <code>A</code>.</p><br/><strong>Suggested Action</strong><br/><p>Replace the number of bits <code>N</code> with an appropriate character
+                    vector that indicates the integer type of <code>A</code>:
+                        <code>'int8'</code>, <code>'uint8'</code>,
+                        <code>'int16'</code>, <code>'uint16'</code>,
+                        <code>'int32'</code>, <code>'uint32'</code>,
+                        <code>'int64'</code>, or <code>'uint64'</code>.</p><p>You still can use the <code>bitshift</code> function on integers of
+                    arbitrary bit length. For example, <code>bitshift(x,k,N)</code> and
+                        <code>bitand(bitshift(x,k),2^N-1)</code> yield the same result:</p><p>
+                    <code>x&nbsp;=&nbsp;1000;<br/>k&nbsp;=&nbsp;3;<br/>N&nbsp;=&nbsp;10;<br/>oldsyntax&nbsp;=&nbsp;bitshift(x,k,N)<br/></code>
+                </p><p>
+                    <code>oldsyntax&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;832<br/></code>
+                    <code>newsyntax&nbsp;=&nbsp;bitand(bitshift(x,k),2^N-1)</code>
+                    <code>newsyntax&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;832</code>
+                </p><p>For further information, see the <code><a href="matlab:doc bitshift" target="_blank">bitshift</a></code> function
+                    reference page.</p></body></html>

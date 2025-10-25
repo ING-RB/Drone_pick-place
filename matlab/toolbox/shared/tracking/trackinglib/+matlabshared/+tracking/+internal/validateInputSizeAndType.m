@@ -1,0 +1,19 @@
+%#codegen
+function validateInputSizeAndType(name, objname, value, len)
+
+%   Copyright 2015-2018 The MathWorks, Inc.
+
+if nargin < 4
+    % Skip checking length, len is not provided
+    validateattributes(value, ...
+        {'numeric'}, ...
+        {'real', 'finite', 'nonsparse', 'vector'},...
+        objname, name);
+else
+    % Check length
+    validateattributes(value, ...
+        {'numeric'}, ...
+        {'real', 'finite', 'nonsparse', 'vector', 'numel', len},...
+        objname, name);
+end
+end

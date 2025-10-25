@@ -1,0 +1,79 @@
+{
+"Simulink.SimulationData.Dataset.extractTimetable":
+{
+    "inputs":[
+        {"name":"DS","kind":"required","type":[["Simulink.SimulationData.Dataset"],["Simulink.SimulationData.Signal"]]},
+        {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+        {"name":"Template","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["timeseries"],["timetable"],["Simulink.SimulationData.Signal"],["string"]]}
+    ],
+    "outputs":[
+        {"name":"TT","type":[["timetable"],["cell"]]}
+    ]
+},
+"Simulink.SimulationData.Dataset.extractTimetable":
+{
+    "inputs":[
+        {"name":"DS","kind":"required","type":[["Simulink.SimulationData.Dataset"],["Simulink.SimulationData.Signal"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                [        
+                    {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+                    {"name":"SignalNames","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["string"],["cellstr"]]},
+                    {"name":"SampleRate","kind":"namevalue","type":"numeric"},
+                    {"name":"StartTime","kind":"namevalue","type":"duration"},
+                    {"name":"SampleTime","kind":"namevalue","type":"numeric"}
+                ],
+                [        
+                    {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+                    {"name":"SignalNames","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["string"],["cellstr"]]},
+                    {"name":"TimeStep","kind":"namevalue","type":"duration"},
+                    {"name":"StartTime","kind":"namevalue","type":"duration"},
+                    {"name":"SampleTime","kind":"namevalue","type":"numeric"}
+                ],
+                [        
+                    {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+                    {"name":"SignalNames","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["string"],["cellstr"]]},
+                    {"name":"RowTimes","kind":"namevalue","type":"duration"},
+                    {"name":"SampleTime","kind":"namevalue","type":"numeric"}
+                ]
+            ]
+        }
+    ],
+    "outputs":[
+        {"name":"TT","type":[["timetable"],["cell"]]}
+    ]
+},
+"Simulink.SimulationData.Dataset.extractTimetable":
+{
+    "inputs":[
+        {"name":"DS","kind":"required","type":[["Simulink.SimulationData.Dataset"],["Simulink.SimulationData.Signal"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                [        
+                    {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+                    {"name":"SignalNames","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["string"],["cellstr"]]},
+                    {"name":"SampleRate","kind":"namevalue","type":"numeric"},
+                    {"name":"StartTime","kind":"namevalue","type":"duration"},
+                    {"name":"TimeVector","kind":"namevalue","type":"numeric"}
+                ],
+                [        
+                    {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+                    {"name":"SignalNames","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["string"],["cellstr"]]},
+                    {"name":"TimeStep","kind":"namevalue","type":"duration"},
+                    {"name":"StartTime","kind":"namevalue","type":"duration"},
+                    {"name":"TimeVector","kind":"namevalue","type":"numeric"}
+                ],
+                [        
+                    {"name":"OutputFormat","kind":"namevalue","type":["choices={'timetable','cell-by-signal','cell-by-sampletime','cell-by-timestep'}"],"default":"'timetable'"},
+                    {"name":"SignalNames","kind":"namevalue","type":[["choices=getElementNames(DS)'"],["string"],["cellstr"]]},
+                    {"name":"RowTimes","kind":"namevalue","type":"duration"},
+                    {"name":"TimeVector","kind":"namevalue","type":"numeric"}
+                ]
+            ]
+        }
+    ],
+    "outputs":[
+        {"name":"TT","type":[["timetable"],["cell"]]}
+    ]
+}
+}

@@ -1,0 +1,101 @@
+<?xml version = "1.0"?>
+<!-- Copyright 2022-2023 The MathWorks, Inc. -->
+
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="booleanType">
+    <xs:attribute name="value" type="xs:boolean"/>
+  </xs:complexType>
+  
+  <xs:simpleType name="versionType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+.\d+"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="specification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="classification" type="classificationType" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="versionType" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="classificationType">
+    <xs:sequence>
+      <xs:element name="fileset" type="filesetType" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="product" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="filesetType">
+    <xs:sequence>
+        <xs:element name="files-in-set" type="fileIncludedType"/>
+        <xs:element name="files-not-in-set" type="fileIncludedType" minOccurs="0"/>
+        <xs:element name="behaviors" type="behaviorsType"/>
+        <xs:element name="rationale" type="rationaleType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="fileIncludedType">
+    <xs:sequence>
+      <xs:element name="file-pattern" type="filePatternType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="behaviorsType">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <!-- Public -->
+        <xs:element name="analyze-functions" type="functionSetType"/>
+        <xs:element name="do-not-analyze-functions" type="functionSetType"/>
+        <xs:element name="show-results" type="booleanType"/>
+        <!-- Internal use only -->
+        <xs:element name="disable-checkers" type="checkerSetType"/>
+        <xs:element name="keep-unused-constructs" type="booleanType"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="functionSetType">
+    <xs:sequence>
+      <xs:element name="function-pattern" type="functionPatternType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="filePatternType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="functionPatternType">
+    <xs:restriction base="xs:string">
+      <!-- ::namespace:: or $(all-relevant-functions) or $(called-functions) or * or '' -->
+      <xs:pattern value="\s*(::[^: ]+::|$\(all-relevant-functions\)|$\(called-functions\)|\*|)\s*"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="checkerSetType">
+    <xs:sequence>
+      <xs:element name="checker-tag" type="checkerTagPatternType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="checkerTagPatternType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*.+\s*"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="rationaleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+</xs:schema>

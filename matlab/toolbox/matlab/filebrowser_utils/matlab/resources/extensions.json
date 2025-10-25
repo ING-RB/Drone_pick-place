@@ -1,0 +1,217 @@
+{
+    "mw.desktop.fileBrowsers.contextMenu": {
+        "type": "SimpleMenu",
+        "sections": [
+            "#mw.desktop.fileBrowsers.contextMenuSections.open",
+            "#mw.desktop.fileBrowsers.contextMenuSections.fileOperations",
+            "#mw.desktop.fileBrowsers.contextMenuSections.fileManagement",
+            "#mw.desktop.fileBrowsers.contextMenuSections.dataTransfer",
+            "#mw.desktop.fileBrowsers.contextMenuSections.share",
+            "#mw.desktop.fileBrowsers.contextMenuSections.comparison",
+            "#mw.desktop.fileBrowsers.contextMenuSections.sourceControl",
+            "#mw.desktop.fileBrowsers.contextMenuSections.pathManagement",
+            "#mw.desktop.fileBrowsers.contextMenuSections.layoutManagement",
+            "#mw.desktop.fileBrowsers.contextMenuSections.dependencyAnalyzer",
+            "#mw.desktop.fileBrowsers.contextMenuSections.project",
+            "#mw.desktop.fileBrowsers.contextMenuSections.reports",
+            "#mw.desktop.fileBrowsers.contextMenuSections.custom"
+        ],
+        "extensible": true
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.open": {
+        "type": "SimpleMenuSection",
+        "items": [
+            "#mw.desktop.fileBrowsers.contextMenuItems.extractZip"
+        ],
+        "extensible": true
+    },
+    "mw.desktop.fileBrowsers.contextMenuItems.extractZip": {
+        "type": "SimpleMenuItem",
+        "when": "selection.containsOnlyFileType.zip",
+        "action": "#mw.desktop.fileBrowsers.contextMenuActions.extractZip",
+        "orderPriorityWithinSection": 2
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.extractZip": {
+        "type": "Action",
+        "text": "%filebrowser_actions:messages:extract%",
+        "callback": "filebrowser_actions_ui/extractZipCallback",
+        "callbackType": "jsModule"
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.fileOperations": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": true
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.fileManagement": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.dataTransfer": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.share": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.comparison": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.sourceControl": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.pathManagement": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.layoutManagement": {
+        "type": "SimpleMenuSection",
+        "items": [
+            "#mw.desktop.fileBrowsers.contextMenuItems.show",
+            "#mw.desktop.fileBrowsers.contextMenuItems.sortBy",
+            "#mw.desktop.fileBrowsers.contextMenuItems.groupBy"
+        ],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuItems.show": {
+        "type": "SimpleMenuItem",
+        "when": "selection.isEmpty",
+        "action": "#mw.desktop.fileBrowsers.contextMenuActions.show",
+        "popup": {
+            "type": "SimpleMenu",
+            "name": "mw.desktop.fileBrowsers.contextMenuItems.showPopupMenu",
+            "sections": [{
+                "type": "SimpleMenuSection",
+                "name": "mw.desktop.fileBrowsers.contextMenuItems.showPopupMenuSection",
+                "items": [
+                    "${layout.showColumnPopupMenuItems}"
+                ]
+            }]
+        }
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.show": {
+        "type": "Action",
+        "text": "%currentfolderbrowser:actions:show%"
+    },
+    "mw.desktop.fileBrowsers.contextMenuItems.sortBy": {
+        "type": "SimpleMenuItem",
+        "when": "selection.isEmpty",
+        "action": "#mw.desktop.fileBrowsers.contextMenuActions.sortBy",
+        "popup": {
+            "type": "SimpleMenu",
+            "name": "mw.desktop.fileBrowsers.contextMenuItems.sortByPopupMenu",
+            "sections": [{
+                "type": "SimpleMenuSection",
+                "name": "mw.desktop.fileBrowsers.contextMenuItems.sortByColumnsPopupMenuSection",
+                "items": [
+                    "${layout.sortByColumnPopupMenuItems}"
+                ]
+            },{
+                "type": "SimpleMenuSection",
+                "name": "mw.desktop.fileBrowsers.contextMenuItems.sortByDirectionPopupMenuSection",
+                "items": [{
+                    "type": "SimpleRadioButtonItem",
+                    "name": "mw.desktop.fileBrowsers.contextMenuItems.sortByAscending",
+                    "action": "#mw.desktop.fileBrowsers.contextMenuActions.sortByDirection",
+                    "choice": "mw.desktop.fileBrowsers.contextMenuActions.sortByAscending",
+                    "closePopupOnClick": false
+                }, {
+                    "type": "SimpleRadioButtonItem",
+                    "name": "mw.desktop.fileBrowsers.contextMenuItems.sortByDescending",
+                    "action": "#mw.desktop.fileBrowsers.contextMenuActions.sortByDirection",
+                    "choice": "mw.desktop.fileBrowsers.contextMenuActions.sortByDescending",
+                    "closePopupOnClick": false
+                }]
+            }]
+        }
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.sortBy": {
+        "type": "Action",
+        "text": "%currentfolderbrowser:actions:sortBy%"
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.sortByDirection": {
+        "type": "Action",
+        "choices": [
+            "#mw.desktop.fileBrowsers.contextMenuActions.sortByAscending",
+            "#mw.desktop.fileBrowsers.contextMenuActions.sortByDescending"
+        ],
+        "value": "${layout.sortByDirection}",
+        "valueType": "choice"
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.sortByAscending": {
+        "type": "Action",
+        "text": "%currentfolderbrowser:actions:sortOrderAscending%",
+        "callback": "filebrowser_actions_ui/sortByColumnDirectionCallback",
+        "callbackType": "jsModule"
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.sortByDescending": {
+        "type": "Action",
+        "text": "%currentfolderbrowser:actions:sortOrderDescending%",
+        "callback": "filebrowser_actions_ui/sortByColumnDirectionCallback",
+        "callbackType": "jsModule"
+    },
+    "mw.desktop.fileBrowsers.contextMenuItems.groupBy": {
+        "type": "SimpleMenuItem",
+        "when": "selection.isEmpty",
+        "action": "#mw.desktop.fileBrowsers.contextMenuActions.groupBy",
+        "popup": {
+            "type": "SimpleMenu",
+            "name": "mw.desktop.fileBrowsers.contextMenuItems.groupByPopupMenu",
+            "sections": [{
+                "type": "SimpleMenuSection",
+                "name": "mw.desktop.fileBrowsers.contextMenuItems.stopGroupingPopupMenuSection",
+                "items": [{
+                    "type": "SimpleMenuItem",
+                    "name": "mw.desktop.fileBrowsers.contextMenuItems.stopGrouping",
+                    "when": "selection.isEmpty",
+                    "action": "#mw.desktop.fileBrowsers.contextMenuActions.stopGrouping"
+                }]
+            }, {
+                "type": "SimpleMenuSection",
+                "name": "mw.desktop.fileBrowsers.contextMenuItems.groupByColumnsPopupMenuSection",
+                "items": [
+                    "${layout.groupByColumnPopupMenuItems}"
+                ]
+            }]
+        }
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.groupBy": {
+        "type": "Action",
+        "text": "%currentfolderbrowser:actions:groupBy%"
+    },
+    "mw.desktop.fileBrowsers.contextMenuActions.stopGrouping": {
+        "type": "Action",
+        "text": "%currentfolderbrowser:actions:stopGrouping%",
+        "when": "layout.isGroupedMode",
+        "callback": "filebrowser_actions_ui/stopGroupingCallback",
+        "callbackType": "jsModule"
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.dependencyAnalyzer": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": false
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.project": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": true
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.reports": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": true
+    },
+    "mw.desktop.fileBrowsers.contextMenuSections.custom": {
+        "type": "SimpleMenuSection",
+        "items": [],
+        "extensible": true
+    }
+}

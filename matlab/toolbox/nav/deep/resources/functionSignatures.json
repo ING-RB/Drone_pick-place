@@ -1,0 +1,420 @@
+{
+    "mpnetSE2": {
+        "inputs": [
+            {
+                "name": "Network",
+                "kind": "namevalue",
+                "type": [
+                    [
+                        "dlnetwork"
+                    ],
+                    [
+                        "nnet.cnn.layer.Layer"
+                    ],
+                    [
+                        "nnet.cnn.LayerGraph"
+                    ]
+                ]
+            },
+            {
+                "name": "StateBounds",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "size=3,2"
+                ]
+            },
+            {
+                "name": "LossWeights",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "row",
+                    "numel=3",
+                    ">=0"
+                ]
+            },
+            {
+                "name": "EncodingSize",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "integer",
+                    "row",
+                    "numel=2",
+                    ">=0"
+                ]
+            }
+        ]
+    },
+    "mpnetSE2.predict": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "mpnetSE2"
+            },
+            {
+                "name": "state",
+                "kind": "required",
+                "type": [
+                    [
+                        "numeric",
+                        "row",
+                        "numel=3"
+                    ]
+                ]
+            },
+            {
+                "name": "goal",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "row",
+                    "numel=3"
+                ]
+            },
+            {
+                "name": "environment",
+                "kind": "optional",
+                "type": [
+                    [
+                        "binaryOccupancyMap"
+                    ],
+                    [
+                        "occupancyMap"
+                    ]
+                ]
+            }
+        ]
+    },
+    "mpnetSE2.loss": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "mpnetSE2"
+            },
+            {
+                "name": "statePredicted",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "row",
+                    "numel=4"
+                ]
+            },
+            {
+                "name": "stateActual",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "row",
+                    "numel=4"
+                ]
+            }
+        ]
+    },
+    "mpnetSE2.copy": {
+        "inputs": [
+            {
+                "name": "mpnet1",
+                "kind": "required",
+                "type": "mpnetSE2"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "mpnet2",
+                "type": "mpnetSE2"
+            }
+        ]
+    },
+    "stateSamplerMPNET": {
+        "inputs": [
+            {
+                "name": "stateSpace",
+                "kind": "required",
+                "type": "nav.StateSpace"
+            },
+            {
+                "name": "mpnet",
+                "kind": "required",
+                "type": "nav.internal.MPNET"
+            },
+            {
+                "name": "Environment",
+                "kind": "namevalue",
+                "type": [
+                    [
+                        "binaryOccupancyMap"
+                    ],
+                    [
+                        "occupancyMap"
+                    ]
+                ]
+            },
+            {
+                "name": "StartState",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "row",
+                    "@(x,stateSpace)numel(x)==stateSpace.NumStateVariables"
+                ]
+            },
+            {
+                "name": "GoalState",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "row",
+                    "@(x,stateSpace)numel(x)==stateSpace.NumStateVariables"
+                ]
+            },
+            {
+                "name": "MaxLearnedSamples",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "integer",
+                    "scalar",
+                    ">=0"
+                ]
+            },
+            {
+                "name": "GoalThreshold",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "real",
+                    "scalar",
+                    "positive"
+                ]
+            }
+        ]
+    },
+    "stateSamplerMPNET.sample": {
+        "inputs": [
+            {
+                "name": "sampler",
+                "kind": "required",
+                "type": "stateSamplerMPNET"
+            },
+            {
+                "name": "numSamples",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "integer",
+                    "scalar",
+                    "positive"
+                ]
+            }
+        ]
+    },
+    "stateSamplerMPNET.copy": {
+        "inputs": [
+            {
+                "name": "sampler",
+                "kind": "required",
+                "type": "stateSamplerMPNET"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "sampler1",
+                "type": "stateSamplerMPNET"
+            }
+        ]
+    },
+    "mpnetLayers": {
+        "inputs": [
+            {
+                "name": "numInputs",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "integer",
+                    "scalar",
+                    "positive"
+                ]
+            },
+            {
+                "name": "numOutputs",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "integer",
+                    "scalar",
+                    "positive"
+                ]
+            },
+            {
+                "name": "HiddenSizes",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "integer",
+                    "vector",
+                    "positive"
+                ]
+            },
+            {
+                "name": "DropoutProbabilities",
+                "kind": "namevalue",
+                "type": [
+                    "numeric",
+                    "real",
+                    "vector",
+                    "<1.0",
+                    ">=0.0",
+                    "@(x,HiddenSizes)numel(x)<=numel(HiddenSizes)"
+                ]
+            }
+        ]
+    },
+    "nav.algs.mpnetDropoutLayer": {
+        "inputs": [
+            {
+                "name": "probability",
+                "kind": "optional",
+                "type": [
+                    "numeric",
+                    "scalar",
+                    ">=0.0",
+                    "<1.0"
+                ]
+            },
+            {
+                "name": "Name",
+                "kind": "namevalue",
+                "type": [
+                    [
+                        "stringscalar",
+                        "scalar"
+                    ],
+                    [
+                        "char",
+                        "vector"
+                    ]
+                ]
+            }
+        ]
+    },
+    "mpnetPrepareData": {
+        "inputs": [
+            {
+                "name": "dataset",
+                "kind": "required",
+                "type": [
+                    [
+                        "table"
+                    ],
+                    [
+                        "cell"
+                    ]
+                ]
+            },
+            {
+                "name": "mpnet",
+                "kind": "required",
+                "type": "nav.internal.MPNET"
+            }
+        ]
+    },
+    "plannerMPNET": {
+        "inputs": [
+            {
+                "name": "stateValidator",
+                "kind": "required",
+                "type": [
+                    "nav.StateValidator"
+                ]
+            },
+            {
+                "name": "mpnet",
+                "kind": "required",
+                "type": [
+                    "nav.internal.MPNET"
+                ]
+            },
+            {
+                "name": "MaxLearnedStates",
+                "kind": "namevalue",
+                "type": [
+                    [
+                        "numeric",
+                        "integer",
+                        "scalar",
+                        "positive"
+                    ]
+                ]
+            },
+            {
+                "name": "ClassicalPlannerFcn",
+                "kind": "namevalue",
+                "type": [
+                    "function_handle",
+                    "@(fh)isequal(nargin(fh),2)||isequal(nargin(fh),-1)"
+                ]
+            }
+        ],
+        "outputs": [
+            {
+                "name": "planner",
+                "type": "plannerMPNET"
+            }
+        ]
+    },
+    "plannerMPNET.plan": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "plannerMPNET"
+            },
+            {
+                "name": "Start",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "@(x,obj)isequal(size(x),[1 obj.StateValidator.StateSpace.NumStateVariables])"
+                ]
+            },
+            {
+                "name": "Goal",
+                "kind": "required",
+                "type": [
+                    "numeric",
+                    "@(x,obj)isequal(size(x),[1 obj.StateValidator.StateSpace.NumStateVariables])"
+                ]
+            }
+        ],
+        "outputs": [
+            {
+                "name": "path",
+                "type": "navPath"
+            },
+            {
+                "name": "solnInfo",
+                "type": "struct"
+            }
+        ]
+    },
+    "plannerMPNET.copy": {
+        "inputs": [
+            {
+                "name": "planner1",
+                "kind": "required",
+                "type": "plannerMPNET"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "planner2",
+                "type": "plannerMPNET"
+            }
+        ]
+    }
+}

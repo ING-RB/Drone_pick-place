@@ -1,0 +1,17 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The specified variable appears inside a <code><a href="matlab:doc parfor" target="_blank">parfor</a></code> loop within
+                    different indexing expressions. Because the indices are inconsistent across the
+                    uses of the array created by the <code>parfor</code> loop, MATLAB sends
+                    the entire array to each worker, resulting in high data communication overhead.
+                    For example, the following code elicits this message for <code>c</code>,
+                    because there are two different indexing expressions for it: </p><p>
+                    <code>&nbsp;c&nbsp;=&nbsp;foo();<br/>&nbsp;parfor&nbsp;i&nbsp;=&nbsp;1:N<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(i)&nbsp;=&nbsp;c(i,1);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(i)&nbsp;=&nbsp;c(i,2);<br/>&nbsp;end<br/></code>
+                </p><p>When the indices are the same for all instances of the indexed variable, the
+                    variable is classified as sliced, and MATLAB sends only the required elements to
+                    the workers for each iteration of the <code>parfor</code> loop.</p><br/><strong>Suggested Action</strong><br/><p>In some cases, there is no way to avoid this message, and therefore you should
+                    suppress it, as described in <a href="matlab:helpview([docroot  '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a></p><p>However, in most cases, you can use additional variables to avoid this
+                    problem. For example, in the following code, <code>x</code> and
+                        <code>y</code> are sliced and do not elicit the message. In effect,
+                    the temporary variables make it clear to MATLAB which data to ship to the
+                    workers: </p><p>
+                    <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;foo();<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;c(:,1);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;c(:,2);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parfor&nbsp;i&nbsp;=&nbsp;1:N<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a(i)&nbsp;=&nbsp;x(i);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b(i)&nbsp;=&nbsp;y(i);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br/></code>
+                </p><p>For more information, see <a href="matlab:helpview('parallel-computing','PARFOR_CLASSIFICATION_OF_VARIABLES')" target="_blank">Classification of Variables in parfor-Loops</a>.</p></body></html>

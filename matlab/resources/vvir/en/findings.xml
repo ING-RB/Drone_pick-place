@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2018-2021 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="vvir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!--
+          One may want to use custom holes:
+          - {0_symbol} for user-defined identifiers (variable, function, ...)
+          - {0_operation} for C/C++ operators (&, +, <<)
+    -->
+
+    <!-- Miscellaneous formatters -->
+    <entry key="AnyEvenValue" translate="false">any even value</entry>
+    <entry key="AnyOddValue" translate="false">any odd value</entry>
+    <entry key="AnyMultipleOf" translate="false">multiples of {0}</entry>
+    <entry key="EveryEvenValueInIntervals" translate="false">even values in {0}</entry>
+    <entry key="EveryOddValueInIntervals" translate="false">odd values in {0}</entry>
+    <entry key="MultiplesOfInIntervals" translate="false">multiples of {0} in {1}</entry>
+    <entry key="ValuesAreMultipleOf" translate="false">{0} (values are multiples of {1})</entry>
+    <entry key="EveryIntegerInFloatIntervals" translate="false">integer values in {0}</entry>
+    <entry key="EveryEvenIntegerInFloatIntervals" translate="false">even integer values in {0}</entry>
+    <entry key="PointerToFunction" translate="false">Pointer to function of the form</entry>
+    <entry key="IntervalSeparator" translate="false">or</entry>
+    <entry key="FullRange" translate="false">full-range</entry>
+    <entry key="PermanentRange" translate="false">permanent range</entry>
+    <entry key="SetByDrsOption" translate="false">(set by -data-range-specifications option)</entry>
+    <entry key="SignBitPositiveIfZero" translate="false">{0} (sign bit positive if zero)</entry>
+    <entry key="SignBitNegativeIfZero" translate="false">{0} (sign bit negative if zero)</entry>
+
+    <!-- Standard elements of a tooltip/detailed message -->
+    <entry key="ValueExpected" translate="false">Expected values</entry>
+    <entry key="ActualValue" translate="false">Actual values</entry>
+    <entry key="Risk" translate="false">Risk</entry>
+    <entry key="Fix" translate="false">Fix</entry>
+
+    <!-- Needed to avoid emission of default spurious messages in tooltips and details -->
+    <entry key="NoInformation" translate="false"></entry>
+
+    <!-- Separation between summary and other information -->
+    <entry key="AdditionalInfio" translate="false">Additional Info:</entry>
+
+    <!-- Common messages -->
+    <entry key="BF_Actual_Value" translate="false">{0}.</entry>
+    <entry key="BF_Actual_Smart_Int" translate="false">{0_smart_int}.</entry>
+    <entry key="BF_Actual_Smart_Int_Range" translate="false">{0_range_int}.</entry>
+    <entry key="BF_Expected_Value" translate="false">{0}.</entry>
+    <entry key="BF_Actual_Value_GreenInModule" translate="false">{0} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_Actual_Value_Type_PointerTo" translate="false">Pointer to {0}.</entry>
+    <entry key="BF_Actual_Value_Symbol_Is" translate="false">{0_symbol} is {1}.</entry>
+    <entry key="BF_Actual_Value_Symbol_Is_WithBytes" translate="false">{0_symbol} is {1} ({2} bytes).</entry>
+    <entry key="BF_Actual_Value_Symbol_IsGreenInModule" translate="false">{0_symbol} is {1} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_Actual_Value_Symbol_IsGreenInModule_WithBytes" translate="false">{0_symbol} is {1} ({2} bytes) with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_Actual_Value_Buffer_Is" translate="false">Buffer offset is {0}.</entry>
+    <entry key="BF_Actual_Value_Buffer_IsGreenInModule" translate="false">Buffer offset is {0} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_Actual_Value_Buffer_Is_WithBytes" translate="false">Buffer offset is {0} ({1} bytes).</entry>
+    <entry key="BF_Actual_Value_Buffer_IsGreenInModule_WithBytes" translate="false">Buffer offset is {0} ({1} bytes) with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_TemplateInstance" translate="false">Defect occurs during the instantiation of {0_symbol}.</entry>
+
+    <!-- Bugfinder messages -->
+    <!--
+      Constant names are normalized as follows:
+       - BF_<Defect>_ as a prefix to each part of the finding description
+       - Followed by the item name: Summary, Expected, Actual, Risk, Fix
+       - Followed by the parameter profile: each field specifies the argument meaning
+      -->
+    <!-- ZDV -->
+    <entry key="BF_ZDV_TooltipSummary" translate="false">Division by zero.</entry>
+
+    <!-- CONV_OVFL -->
+    <entry key="BF_CONV_OVFL_TooltipSummary_Ty_Ty" translate="false">Conversion from type {0_symbol} to type {1_symbol} might overflow.</entry>
+    <entry key="BF_CONV_OVFL_TooltipSummary_Ty" translate="false">Constant value overflows the destination type {0_symbol}.</entry>
+    <entry key="BF_CONV_OVFL_Risk" translate="false">Truncation or wrap-around of value to fit destination type might lead to unexpected results.</entry>
+    <entry key="BF_CONV_OVFL_Risk_Source" translate="false">Truncation or wrap-around of {0_symbol} to fit destination type might lead to unexpected results.</entry>
+    <entry key="BF_CONV_OVFL_FixConstant" translate="false">Change source value or change the destination type.</entry>
+    <entry key="BF_CONV_OVFL_FixVariable" translate="false">Ensure that the destination type is larger than or same as the source type.</entry>
+    <entry key="BF_CONV_OVFL_FixVariable_Source" translate="false">Ensure that the destination type is larger than or same as the type of {0_symbol}.</entry>
+
+    <!-- NON_INIT_VAR -->
+    <entry key="BF_NIV_Summary_VariableSmart" translate="false">Local variable {0_symbol} is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_Variable" translate="false">Local variable is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_IndirectionSmart" translate="false">Dereferenced value of local pointer {0_symbol} is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_Indirection" translate="false">Dereferenced value of local pointer is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_FieldSmart" translate="false">Field of local structure {0_symbol} is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_Field" translate="false">Field of local structure is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_ArrayElementSmart" translate="false">Element of local array {0_symbol} is read before it is initialized.</entry>
+    <entry key="BF_NIV_Summary_ArrayElement" translate="false">Element of local array is read before it is initialized.</entry>
+    <entry key="BF_NIV_Risk" translate="false">Reading non-initialized memory can result in unexpected values.</entry>
+    <entry key="BF_NIV_Fix_Variable" translate="false">Initialize the local variable before use.</entry>
+    <entry key="BF_NIV_Fix_Indirection" translate="false">Initialize all memory before use.</entry>
+    <entry key="BF_NIV_Fix_Field" translate="false">Initialize all fields of the local structure before use.</entry>
+    <entry key="BF_NIV_Fix_ArrayElement" translate="false">Initialize all elements of the local array before use.</entry>
+
+    <!-- OBAI OUT_BOUND_ARRAY -->
+    <entry key="BF_OBAI_TooltipSummary" translate="false">Attempt to access an array outside its bounds.</entry>
+    <entry key="BF_OBAI_TooltipSummary_Array" translate="false">Attempt to access {0_symbol} outside its bounds.</entry>
+    <entry key="BF_OBAI_TooltipRisk" translate="false">Value read is invalid or program can hang or segfault.</entry>
+    <entry key="BF_OBAI_TooltipFix" translate="false">Check for possible programming error earlier, for instance, an incorrect loop bound.</entry>
+
+    <!-- OUT_BOUND_PTR -->
+    <entry key="BF_OutBoundPtr_TooltipSummary" translate="false">Attempt to dereference a pointer that points outside allowed buffer.</entry>
+    <entry key="BF_OutBoundPtr_TooltipSummary_Ptr" translate="false">Attempt to dereference {0_symbol}, which points outside allowed buffer.</entry>
+    <entry key="BF_OutBoundPtr_TooltipRisk" translate="false">Value read is invalid or program can hang or segfault.</entry>
+    <entry key="BF_OutBoundPtr_TooltipFix" translate="false">Check for possible programming error earlier, for instance, an incorrect loop bound.</entry>
+
+    <!-- OBJECT_SIZE_MISMATCH -->
+    <entry key="BF_ObjectSizeMismatch_TooltipSummarySmart" translate="false">Size of allocated memory ({0} bytes) is not an integer multiple of size of destination type ({1_symbol}).</entry>
+    <entry key="BF_ObjectSizeMismatch_TooltipSummary" translate="false">Size of allocated memory is not an integer multiple of size of destination type.</entry>
+    <entry key="BF_ObjectSizeMismatch_TooltipRisk" translate="false">Dereferencing a misaligned pointer has undefined behavior and might cause your program to crash.</entry>
+    <entry key="BF_ObjectSizeMismatch_TooltipFix" translate="false">Make sure that the destination pointer size is aligned with the source pointer size.</entry>
+    <entry key="BF_ObjectSizeMismatch_Actual_Value" translate="false">{0} bytes.</entry>
+    <entry key="BF_ObjectSizeMismatch_Actual_Value_GreenInModule" translate="false">{0} bytes with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_ObjectSizeMismatch_Expected_Value" translate="false">Multiple of {0,number,integer} bytes.</entry>
+
+    <!-- FLOAT_ABSORPTION -->
+    <entry key="BF_FABS_OneNegligibleOther" translate="false"><!-- For completeness, should never happen -->One operand is negligible compared to the other and has no effect on the result.</entry>
+    <entry key="BF_FABS_LeftNegligibleRight" translate="false">The left operand is negligible compared to the right and has no effect on the result.</entry>
+    <entry key="BF_FABS_RightNegligibleLeft" translate="false">The right operand is negligible compared to the left and has no effect on the result.</entry>
+    <entry key="BF_FABS_SmartNegligibleSmart" translate="false">{0_symbol} is negligible compared to {1_symbol} and has no effect on the result.</entry>
+    <entry key="BF_FABS_SmartNegligibleLeft" translate="false">{0_symbol} is negligible compared to the left operand and has no effect on the result.</entry>
+    <entry key="BF_FABS_SmartNegligibleRight" translate="false">{0_symbol} is negligible compared to the right operand and has no effect on the result.</entry>
+    <entry key="BF_FABS_LeftNegligibleSmart" translate="false">The left operand is negligible compared to {0_symbol} and has no effect on the result.</entry>
+    <entry key="BF_FABS_RightNegligibleSmart" translate="false">The right operand is negligible compared to {0_symbol} and has no effect on the result.</entry>
+    <entry key="BF_FABS_Risk" translate="false">Computation time is wasted in redundant operation. The negligible value might also indicate a previous programming error.</entry>
+    <entry key="BF_FABS_FixWithSmart" translate="false">If the values are expected, replace the operation with only {0_symbol}. Otherwise, fix any previous issue that leads to the negligible operand value.</entry>
+    <entry key="BF_FABS_FixWithLeft" translate="false">If the values are expected, replace the operation with only the left operand. Otherwise, fix any previous issue that leads to the negligible operand value.</entry>
+    <entry key="BF_FABS_FixWithRight" translate="false">If the values are expected, replace the operation with only the right operand. Otherwise, fix any previous issue that leads to the negligible operand value.</entry>
+    <entry key="BF_FABS_Actual_LeftRight" translate="false">Left operand is {0_concrete_value} and right is {1_concrete_value}.</entry>
+    <entry key="BF_FABS_Actual_LeftSmart" translate="false">Left operand is {0_concrete_value} and {1_symbol} is {2_concrete_value}.</entry>
+    <entry key="BF_FABS_Actual_SmartRight" translate="false">{0_symbol} is {1_concrete_value} and right operand is {2_concrete_value}.</entry>
+    <entry key="BF_FABS_Actual_SmartSmart" translate="false">{0_symbol} is {1_concrete_value} and {2_symbol} is {3_concrete_value}.</entry>
+    <entry key="BF_FABS_Actual_LeftRight_GreenInModule" translate="false">Left operand is {0_concrete_value} and right is {1_concrete_value} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_FABS_Actual_LeftSmart_GreenInModule" translate="false">Left operand is {0_concrete_value} and {1_symbol} is {2_concrete_value} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_FABS_Actual_SmartRight_GreenInModule" translate="false">{0_symbol} is {1_concrete_value} and right operand is {2_concrete_value} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_FABS_Actual_SmartSmart_GreenInModule" translate="false">{0_symbol} is {1_concrete_value} and {2_symbol} is {3_concrete_value} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+
+    <!-- BAD_FLOAT_OP -->
+    <entry key="BF_BADFOP_Summary_Equality" translate="false">Use of equality operator with two floating point operands.</entry>
+    <entry key="BF_BADFOP_Summary_Inequality" translate="false">Use of inequality operator with two floating point operands.</entry>
+    <entry key="BF_BADFOP_Risk" translate="false">Because of precision limits in floating-point computations, the operands might differ by a non-significant amount and produce unexpected results.</entry>
+    <entry key="BF_BADFOP_Fix_Equality" translate="false">Instead of an equality test, check that the difference between the operands is smaller than the precision limit of your use-case.</entry>
+    <entry key="BF_BADFOP_Fix_Inequality" translate="false">Instead of an inequality test, check that the difference between the operands is greater than the precision limit of your use-case.</entry>
+
+    <!-- SHIFT_NEG -->
+    <entry key="BF_SHIFTNEG_Summary_Left" translate="false">Left operand of <![CDATA[&lt;&lt;]]> is negative.</entry>
+    <entry key="BF_SHIFTNEG_Summary_Smart" translate="false">Left operand {0_symbol} of <![CDATA[&lt;&lt;]]> is negative.</entry>
+    <entry key="BF_SHIFTNEG_Risk" translate="false">Shifting a negative value overwrites the sign bit that identifies a number as negative. The shift operation can result in unexpected values.</entry>
+    <entry key="BF_SHIFTNEG_Fix" translate="false">Before a left shift operation, handle negative values. Alternatively, check previous operations that lead to the negative value.</entry>
+    <entry key="BF_SHIFTNEG_Actual_Value_Context" translate="false"> {0} (All actual values might not be detected. Value might still be negative).</entry>
+
+    <!-- BITWISE_NEG -->
+    <entry key="BF_BITWISENEG_Summary_Left" translate="false">Left operand of {0_operation} is negative.</entry>
+    <entry key="BF_BITWISENEG_Summary_Left_Smart" translate="false">Left operand {0_symbol} of {1_operation} is negative.</entry>
+    <entry key="BF_BITWISENEG_Summary_Unary" translate="false">Operand of {0_operation} is negative.</entry>
+    <entry key="BF_BITWISENEG_Summary_Unary_Smart" translate="false">Operand {0_symbol} of {1_operation} is negative.</entry>
+    <entry key="BF_BITWISENEG_Summary_Default" translate="false">Operand is negative.</entry>
+    <entry key="BF_BITWISENEG_Risk" translate="false">{0_operation} operation on negative values might overwrite the sign bit that identifies a number as negative. The results might be implementation-defined and unexpected.</entry>
+    <entry key="BF_BITWISENEG_Fix" translate="false">Before a {0_operation} operation, handle negative values. Alternatively, check previous operations that lead to the negative value.</entry>
+
+    <!-- INT_OVFL, FLOAT_OVFL -->
+    <entry key="BF_OVFL_Summary" translate="false">Operation overflows.</entry>
+    <entry key="BF_OVFL_Summary_OperationName" translate="false">Operation {0_operation} overflows.</entry>
+    <entry key="BF_OVFL_Risk" translate="false">Overflow can result in unexpected values.</entry>
+    <entry key="BF_OVFL_Fix" translate="false">Handle large values of operands before the operation or use larger types for operands.</entry>
+    <entry key="BF_OVFL_Expected" translate="false">Based on operand types, operation result must be in {0} to fit type {1_symbol}.</entry>
+    <entry key="BF_OVFL_Actual_LeftString_RightString" translate="false">{0_symbol} is {1} and {2_symbol} is {3}.</entry>
+    <entry key="BF_OVFL_Actual_LeftString_Right" translate="false">{0_symbol} is {1} and right operand is {2}.</entry>
+    <entry key="BF_OVFL_Actual_Left_RightString" translate="false">Left operand is {0} and {1_symbol} is {2}.</entry>
+    <entry key="BF_OVFL_Actual_Left_Right" translate="false">Left operand is {0} and right is {1}.</entry>
+    <entry key="BF_OVFL_Actual_String" translate="false">{0_symbol} is {1}.</entry>
+    <entry key="BF_OVFL_Actual_Left" translate="false">Left operand is {0}.</entry>
+    <entry key="BF_OVFL_Actual_Right" translate="false">Right operand is {0}.</entry>
+    <entry key="BF_OVFL_Actual_Any" translate="false">Operand is {0}.</entry>
+    <entry key="BF_OVFL_Actual_LeftString_RightString_GreenInModule" translate="false">{0_symbol} is {1} and {2_symbol} is {3} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_LeftString_Right_GreenInModule" translate="false">{0_symbol} is {1} and right operand is {2} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_Left_RightString_GreenInModule" translate="false">Left operand is {0} and {1_symbol} is {2} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_Left_Right_GreenInModule" translate="false">Left operand is {0} and right is {1} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_String_GreenInModule" translate="false">{0_symbol} is {1} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_Left_GreenInModule" translate="false">Left operand is {0} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_Right_GreenInModule" translate="false">Right operand is {0} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+    <entry key="BF_OVFL_Actual_Any_GreenInModule" translate="false">Operand is {0} with known inputs to the function but there is the risk of a defect if the function is called with other inputs.</entry>
+
+    <!-- SHIFT_OVFL -->
+    <entry key="BF_SHIFTOVFL_Summary_Right" translate="false">Right operand of shift operation is negative or larger than the number of bits in the left operand data type.</entry>
+    <entry key="BF_SHIFTOVFL_Summary_Smart" translate="false">Right operand {0_symbol} of shift operation is negative or larger than the number of bits in the left operand data type.</entry>
+    <entry key="BF_SHIFTOVFL_Risk" translate="false">If a number is shifted more than the size of the destination type, the behavior is undefined.</entry>
+    <entry key="BF_SHIFTOVFL_Fix" translate="false">Before a shift operation, handle negative and large values of right operand. Alternatively, check previous operations that lead to negative or large values. Or, simply use a larger data type for the left operand.</entry>
+    <entry key="BF_SHIFTOVFL_Fix_Smart" translate="false">Before a shift operation, handle negative and large values of right operand {0_symbol}. Alternatively, check previous operations that lead to negative or large values. Or, simply use a larger data type for the left operand.</entry>
+    <entry key="BF_SHIFTOVFL_Expected_Range" translate="false">Right operand must be in {0}.</entry>
+    <entry key="BF_SHIFTOVFL_Expected_Range_Smart" translate="false">Right operand {0_symbol} must be in {1}.</entry>
+
+    <!-- INVALID_OPERATION_ON_BOOLEAN -->
+    <entry key="BF_INVALIDOPONBOOL_Summary_Both" translate="false">Both operands of {0_operation} are boolean.</entry>
+    <entry key="BF_INVALIDOPONBOOL_Summary_First" translate="false">Left operand of {0_operation} is boolean.</entry>
+    <entry key="BF_INVALIDOPONBOOL_Summary_Second" translate="false">Right operand of {0_operation} is boolean.</entry>
+    <entry key="BF_INVALIDOPONBOOL_Summary" translate="false">Operand {0_symbol} of {1_operation} is boolean.</entry>
+    <entry key="BF_INVALIDOPONBOOL_Summary_Unary" translate="false">The operand of {0_operation} is boolean.</entry>
+    <entry key="BF_INVALIDOPONBOOL_Risk" translate="false">Operation might result in loss of precision or unexpected values.</entry>
+    <entry key="BF_INVALIDOPONBOOL_Fix" translate="false">Cast operand to a numerical type or use a different variable as operand.</entry>
+
+    <!-- INT_CONSTANT_OVFL, UINT_CONSTANT_OVFL -->
+    <entry key="BF_CONSTOVFL_Summary_Signed" translate="false">Overflow on signed constant.</entry>
+    <entry key="BF_CONSTOVFL_Summary_Unsigned" translate="false">Overflow on unsigned constant.</entry>
+    <entry key="BF_CONSTOVFL_Expected_Enum" translate="false">{0_range_int}. The underlying type of this enum is {1_symbol}.</entry>
+    <entry key="BF_CONSTOVFL_Expected_Cast" translate="false">{0_range_int}. The destination type is {1_symbol}.</entry>
+    <entry key="BF_CONSTOVFL_Expected_LongLong_Promotion" translate="false">{0_range_int}. The destination type is {1_symbol} because the constant has not been promoted to long long.</entry>
+
+
+    <entry key="BF_CONSTOVFL_Risk" translate="false">Depending on your compiler, overflowing constants might be truncated or wrapped around and cause unexpected results.</entry>
+    <entry key="BF_CONSTOVFL_Fix" translate="false">If the constant value is intended, use a larger type to store the value.</entry>
+
+    <!-- INT_PRECISION_EXCEEDED -->
+    <entry key="BF_INTPRECISION_Summary_Op" translate="false">Right operand of {0_operation} exceeds the precision of left operand.</entry>
+    <entry key="BF_INTPRECISION_Summary_Default" translate="false">Right operand exceeds precision of left operand.</entry>
+    <entry key="BF_INTPRECISION_Risk" translate="false">Operation might overflow or result in an unexpected value.</entry>
+    <entry key="BF_INTPRECISION_Fix" translate="false">Use the precision of the maximum value that the variable can take on a given platform. You can compute this number using, for instance, __builtin_popcount().</entry>
+
+    <!-- BAD_DELETE -->
+    <entry key="BF_BAD_DELETE_Summary_Named" translate="false">{0_symbol} is used to deallocate {1_symbol}, which was previously allocated with {2_symbol}.</entry>
+    <entry key="BF_BAD_DELETE_Summary_Unnamed" translate="false">{0_symbol} is used to deallocate an operand which was previously allocated with {1_symbol}.</entry>
+    <entry key="BF_BAD_DELETE_Summary_NoDynamic_Named" translate="false">{0_symbol} is used to deallocate {1_symbol}, which was not dynamically allocated.</entry>
+    <entry key="BF_BAD_DELETE_Summary_NoDynamic_Unnamed" translate="false">{0_symbol} is used to deallocate an operand which was not dynamically allocated.</entry>
+    <entry key="BF_BAD_DELETE_Risk" translate="false">Using mismatched allocation and deallocation operators is undefined behavior.</entry>
+    <entry key="BF_BAD_DELETE_Fix" translate="false">Use {0_symbol} to deallocate memory.</entry>
+    <entry key="BF_BAD_DELETE_Risk_NoDynamic" translate="false">Deallocating memory that was not dynamically allocated might lead to a segmentation fault.</entry>
+    <entry key="BF_BAD_DELETE_Fix_NoDynamic" translate="false">Do not attempt to deallocate memory that was not dynamically allocated.</entry>
+
+    <!-- INT_PRECISION_EXCEEDED_SIZEOF -->
+    <entry key="BF_INTPRECISIONSIZEOF_Summary_Op" translate="false">The right operand of {0_operation} is calculated using sizeof().</entry>
+    <entry key="BF_INTPRECISIONSIZEOF_Summary_Op_Smart" translate="false">The right operand {0_symbol} of {1_operation} is calculated using sizeof().</entry>
+    <entry key="BF_INTPRECISIONSIZEOF_Summary_Default" translate="false">The right operand is calculated using sizeof().</entry>
+    <entry key="BF_INTPRECISIONSIZEOF_Risk" translate="false">sizeof() returns the size of a type. Certain platforms might use fewer bits than this size to store values. Using this size in shift operations might cause overflows.</entry>
+    <entry key="BF_INTPRECISIONSIZEOF_Fix" translate="false">Instead of sizeof(), use the precision of the maximum value that the variable can take on a given platform. You can compute this number using, for instance, __builtin_popcount().</entry>
+
+    <!-- BAD_PLAIN_CHAR -->
+    <entry key="BF_BADPLAINCHAR_Summary_Left" translate="false">Signedness of left operand depends on the compiler used.</entry>
+    <entry key="BF_BADPLAINCHAR_Summary_Left_Smart" translate="false">Signedness of left operand {0_symbol} depends on the compiler used.</entry>
+    <entry key="BF_BADPLAINCHAR_Summary_Right" translate="false">Signedness of right operand depends on the compiler used.</entry>
+    <entry key="BF_BADPLAINCHAR_Summary_Right_Smart" translate="false">Signedness of right operand {0_symbol} depends on the compiler used.</entry>
+    <entry key="BF_BADPLAINCHAR_Summary_Operand" translate="false">Signedness of operand depends on the compiler used.</entry>
+    <entry key="BF_BADPLAINCHAR_Summary_Operand_Smart" translate="false">Signedness of operand {0_symbol} depends on the compiler used.</entry>
+    <entry key="BF_BADPLAINCHAR_Risk" translate="false">Depending on the compiler, character value might be truncated or change sign and result in unexpected values.</entry>
+    <entry key="BF_BADPLAINCHAR_Fix" translate="false">Specify the signedness of the 'char' variable as 'signed char' or 'unsigned char'.</entry>
+
+    <!-- INT_TO_FLOAT_PRECISION_LOSS -->
+    <entry key="BF_INTTOFLOATPRECISION_Summary_Full_Smart" translate="false">Integer precision of {0_symbol} is larger than the {1,number,integer} bit mantissa of {2_symbol}.</entry>
+    <entry key="BF_INTTOFLOATPRECISION_Summary_Smart" translate="false">The precision of the integer variable is larger than the mantissa of {0_symbol}.</entry>
+    <entry key="BF_INTTOFLOATPRECISION_Summary" translate="false">The precision of the integer variable is larger than the mantissa of the floating type.</entry>
+    <entry key="BF_INTTOFLOATPRECISION_Risk" translate="false">A destination floating-point type that cannot represent the integer value results in undefined behavior.</entry>
+    <entry key="BF_INTTOFLOATPRECISION_Fix" translate="false">Use a destination floating-point type whose mantissa is large enough to represent the source integer value.</entry>
+
+    <!-- NULLPTR -->
+    <entry key="BF_NULLPTR_TooltipSummary" translate="false">Attempt to dereference a null pointer.</entry>
+    <entry key="BF_NULLPTR_Maybe_TooltipSummary" translate="false">Attempt to dereference a null pointer on some execution paths.</entry>
+    <entry key="BF_NULLPTR_TooltipRisk" translate="false">Program can hang or segfault.</entry>
+    <entry key="BF_NULLPTR_TooltipFix" translate="false">Check for previous assignment to NULL that is not overwritten.</entry>
+
+    <!--  FUNC_CAST -->
+    <entry key="BF_FUNC_CAST_Summary" translate="false">A function pointer is cast to another function pointer that has different argument or return type.</entry>
+    <entry key="BF_FUNC_CAST_Risk" translate="false">If you cast a function pointer to another function pointer with different argument or return type and then use the latter function pointer to call a function, the behavior is undefined.</entry>
+    <entry key="BF_FUNC_CAST_Fix" translate="false">Avoid a cast between two function pointers with mismatch in argument or return types.</entry>
+
+    <!--  PTR_CAST -->
+    <entry key="BF_PTR_CAST_Summary" translate="false">A pointer is implicitly cast to pointer of another type.</entry>
+    <entry key="BF_PTR_CAST_Risk" translate="false">Casting a pointer can result in issues such as buffer overflow. If the cast is implicit, it can indicate a coding error.</entry>
+    <entry key="BF_PTR_CAST_Fix" translate="false">Avoid implicit cast of a pointer to a data type different from its declaration type.</entry>
+
+    <!-- NULL_PTR_ARITH -->
+    <entry key="BF_NULLPTRARITH_TooltipSummary" translate="false">An operation involves a null pointer.</entry>
+    <entry key="BF_NULLPTRARITH_Maybe_TooltipSummary" translate="false">An operation involves a null pointer on some execution paths.</entry>
+    <entry key="BF_NULLPTRARITH_TooltipRisk" translate="false">Dereferencing the result of this operation is undefined behavior. In most implementations, the dereference can cause your program to crash.</entry>
+    <entry key="BF_NULLPTRARITH_TooltipFix" translate="false">Check a pointer for NULL before arithmetic operations on the pointer.</entry>
+
+    <!-- NON_INIT_PTR_CONV -->
+    <entry key="BF_NON_INIT_PTR_CONV_Variable_TooltipSummary_PointedVar" translate="false">Pointer to non-initialized object {0_symbol} is converted to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Maybe_Variable_TooltipSummary_PointedVar" translate="false">Pointer to possibly non-initialized object {0_symbol} is converted to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Pointer_TooltipSummary" translate="false">Pointer to non-initialized memory area is converted to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Pointer_TooltipSummary_PointerVar" translate="false">Pointer {0_symbol} to non-initialized object is converted to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Maybe_Pointer_TooltipSummary" translate="false">Pointer to possibly non-initialized memory area is converted to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Maybe_Pointer_TooltipSummary_PointerVar" translate="false">Pointer {0_symbol} to possibly non-initialized object is converted to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_TooltipRisk" translate="false">If a pointer to const points to a non-initialized variable, the variable cannot be initialized later and contains unpredictable values for the rest of the program.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Variable_TooltipFix_PointedVar" translate="false">Initialize {0_symbol} before assigning its address to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Pointer_TooltipFix" translate="false">Initialize the memory area before assigning its address to a pointer to const.</entry>
+    <entry key="BF_NON_INIT_PTR_CONV_Pointer_TooltipFix_PointerVar" translate="false">Initialize the memory area pointed by {0_symbol} before assigning it to a pointer to const.</entry>
+
+    <!-- DATA_RACE_SINGLETON -->
+    <entry key="BF_DATA_RACE_SINGLETON_TooltipSummary" translate="false">Calls to singleton constructor {0_symbol} may interfere with each other.</entry>
+    <entry key="BF_DATA_RACE_SINGLETON_TooltipRisk" translate="false">This may result in two objects of class {0_symbol} being constructed, breaking the singleton design pattern.</entry>
+    <entry key="BF_DATA_RACE_SINGLETON_TooltipSummary_NoCtorName" translate="false">Calls to singleton constructor may interfere with each other.</entry>
+    <entry key="BF_DATA_RACE_SINGLETON_TooltipRisk_NoClassName" translate="false">This may result in two objects being constructed, breaking the singleton design pattern.</entry>
+    <entry key="BF_DATA_RACE_SINGLETON_TooltipFix" translate="false">Use mutexes to ensure two objects cannot be constructed at the same time.</entry>
+
+    <!-- PUBLIC_STATIC_FIELD_NOT_CONST -->
+    <entry key="BF_PUBLICSTATICNOTCONST_Summary_Smart" translate="false">Public static field {0_symbol} is not const</entry>
+    <entry key="BF_PUBLICSTATICNOTCONST_Summary" translate="false">Public static field is not const</entry>
+    <entry key="BF_PUBLICSTATICNOTCONST_Risk" translate="false">The field might be accessed by any class, leading to unexpected behavior.</entry>
+    <entry key="BF_PUBLICSTATICNOTCONST_Fix" translate="false">Prevent other classes from accessing this field by declaring it as a const. Alternatively, declare the field as private or protected.</entry>
+
+    <!-- STD8FUNC_ARG_MISMATCH -->
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionMayBeANullPointer">First argument of function {0_symbol} may be a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionMayBeANullPointer">Second argument of function {0_symbol} may be a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionMayBeANullPointer">Argument {1,number,integer} of function {0_symbol} may be a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentMayBeANullPointer">First argument may be a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentMayBeANullPointer">Second argument may be a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentMayBeANullPointer">Argument {0,number,integer} may be a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsANullPointer">First argument of function {0_symbol} is a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsANullPointer">Second argument of function {0_symbol} is a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsANullPointer">Argument {1,number,integer} of function {0_symbol} is a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsANullPointer">First argument is a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsANullPointer">Second argument is a null pointer instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsANullPointer">Argument {0,number,integer} is a null pointer instead of a null-terminated string.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsAFunctionAddress">First argument of function {0_symbol} is a function address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsAFunctionAddress">Second argument of function {0_symbol} is a function address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsAFunctionAddress">Argument {1,number,integer} of function {0_symbol} is a function address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsAFunctionAddress">First argument is a function address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsAFunctionAddress">Second argument is a function address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsAFunctionAddress">Argument {0,number,integer} is a function address instead of a null-terminated string.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsALabelAddress">First argument of function {0_symbol} is a label address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsALabelAddress">Second argument of function {0_symbol} is a label address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsALabelAddress">Argument {1,number,integer} of function {0_symbol} is a label address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsALabelAddress">First argument is a label address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsALabelAddress">Second argument is a label address instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsALabelAddress">Argument {0,number,integer} is a label address instead of a null-terminated string.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionMayBeANonTerminatingString">First argument of function {0_symbol} may be non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionMayBeANonTerminatingString">Second argument of function {0_symbol} may be non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionMayBeANonTerminatingString">Argument {1,number,integer} of function {0_symbol} may be non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentMayBeANonTerminatingString">First argument may be non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentMayBeANonTerminatingString">Second argument may be non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentMayBeANonTerminatingString">Argument {0,number,integer} may be non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsANonTerminatingString">First argument of function {0_symbol} is either non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsANonTerminatingString">Second argument of function {0_symbol} is either non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsANonTerminatingString">Argument {1,number,integer} of function {0_symbol} is either non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsANonTerminatingString">First argument is either non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsANonTerminatingString">Second argument is either non-initialized or not null-terminated.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsANonTerminatingString">Argument {0,number,integer} is either non-initialized or not null-terminated.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionMayBeAnEmptyString">First argument of function {0_symbol} may be an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionMayBeAnEmptyString">Second argument of function {0_symbol} may be an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionMayBeAnEmptyString">Argument {1,number,integer} of function {0_symbol} may be an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentMayBeAnEmptyString">First argument may be an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentMayBeAnEmptyString">Second argument may be an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentMayBeAnEmptyString">Argument {0,number,integer} may be an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsAnEmptyString">First argument of function {0_symbol} is an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsAnEmptyString">Second argument of function {0_symbol} is an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsAnEmptyString">Argument {1,number,integer} of function {0_symbol} is an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsAnEmptyString">First argument is an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsAnEmptyString">Second argument is an empty string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsAnEmptyString">Argument {0,number,integer} is an empty string.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionMayBeTooSmall">First argument of function {0_symbol} may be too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionMayBeTooSmall">Second argument of function {0_symbol} may be too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionMayBeTooSmall">Argument {1,number,integer} of function {0_symbol} may be too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentMayBeTooSmall">First argument may be too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentMayBeTooSmall">Second argument may be too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentMayBeTooSmall">Argument {0,number,integer} may be too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsTooSmall">First argument of function {0_symbol} is too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsTooSmall">Second argument of function {0_symbol} is too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsTooSmall">Argument {1,number,integer} of function {0_symbol} is too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsTooSmall">First argument is too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsTooSmall">Second argument is too small.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsTooSmall">Argument {0,number,integer} is too small.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_ArgumentTooSmall_Risk">Up to this value the function reads the buffer past its end.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentTooSmall_Fix">Use a string with at least the number of rooms given by the third argument.</entry>
+
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentOfFunctionIsAnIncorrectPointerObject">First argument of function {0_symbol} is an incorrect pointer object instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentOfFunctionIsAnIncorrectPointerObject">Second argument of function {0_symbol} is an incorrect pointer object instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentOfFunctionIsAnIncorrectPointerObject">Argument {1,number,integer} of function {0_symbol} is an incorrect pointer object instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_FirstArgumentIsAnIncorrectPointerObject">First argument is an incorrect pointer object instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_SecondArgumentIsAnIncorrectPointerObject">Second argument is an incorrect pointer object instead of a null-terminated string.</entry>
+    <entry key="STDFUNCARG_MISMATCH_ArgumentIsAnIncorrectPointerObject">Argument {0,number,integer} is an incorrect pointer object instead of a null-terminated string.</entry>
+  </message>
+</rsccat>

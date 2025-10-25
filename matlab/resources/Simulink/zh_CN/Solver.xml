@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="Error">
+      仿真模型 ''{0}'' 时，求解器在时间 {1} 处遇到错误，无法继续。请检查模型是否有错误。
+    </entry>
+    <entry key="Warning">
+      仿真模型 ''{0}'' 时，求解器在时间 {1} 处遇到困难。Simulink 将继续仿真并发出警告。请检查模型是否有错误。
+    </entry>
+    <entry key="StateNotFinite">
+      在时间 {2} 处 ''{1}'' 的连续状态 ''{0}'' 不是有限的。Simulink 将终止仿真。解中可能存在一个奇异点。请检查模型 ''{3}'' 是否有错误。请尝试减小定步长或收紧变步长求解器的误差容限。
+    </entry>
+    <entry key="InvSrcBlkOutBeingMergedAndUsedToComputeDeriv">
+      将来自模块 ''{0}'' &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 的非连续信号与其他连续信号合并是无效的，因为合并的信号连接到用于计算连续状态导数的输入端口。
+    </entry>
+    <entry key="ZeroCrossingIntervalNotBracketedDueToConsecutiveEvents">
+  
+  从时间 {1} 开始，Simulink 在 {3} 时间间隔内检测到 {2,number,integer} 个连续过零事件。为了让仿真继续进行而不挂起，自适应过零检测算法将接受当前步长({4})，而不会进一步减小它。下面列出了导致这些连续事件(或其事件当前未包含在其中)的过零信号。\n {5} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt; set_param(''{0}'',''IgnoredZcDiagnostic'',''none''); &lt;/cmd&gt; &lt;txt&gt;通过将 ''忽略的过零点'' 设置为 ''无'' 来关闭此诊断。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;对上面列出的过零点数最多的模块禁用过零检测。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="ZeroCrossingNotBracketedDueToSmallSignalValues">
+      
+      由于下面列出的信号，在时间为 {1}、步长为 {2} 的位置处发现 {3,number,integer} 个过零。但是，自适应过零检测算法不会进一步减小步长，因为在此时间步内，过零信号的幅值小于容差({4})。\n {5} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');&lt;/cmd&gt; &lt;txt&gt;通过将 '忽略的过零点' 设置为 '无' 来关闭此诊断。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;对上面列出的模块禁用过零检测可以加快仿真速度。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SomeZeroCrossingNotBracketedDueToSmallSignalValues">
+  
+  在时间 {1} 处，步长为 {2} 时，发现 {3,number,integer} 个过零点。但是，由于下面列出的 {4,number,integer} 个信号，自适应过零检测算法不会包含过零点，因为信号幅值小于容差({5})。\n {6} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''IgnoredZcDiagnostic'',''none'');&lt;/cmd&gt; &lt;txt&gt;通过将 ''忽略的过零点'' 设置为 ''无'' 来关闭此诊断。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;对上面列出的模块禁用过零检测可以加快仿真速度。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="MaxConsecutiveZeroCrossingsError">
+      
+      Simulink 将停止模型 ''{0}'' 的仿真，因为下面标识的 {1, number, integer} 个过零信号在 {3} 和 {4} 之间的时间间隔内导致了 {2,number,integer} 个连续过零事件。\n {5} &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt; set_param(''{0}'',''ZeroCrossAlgorithm'',''Adaptive'',''IgnoredZcDiagnostic'',''none''); &lt;/cmd&gt; &lt;txt&gt;您可以通过将&lt;sldiag objui="configset" objparam="ZeroCrossAlgorithm"&gt;过零检测算法&lt;/sldiag&gt;切换到 ''自适应'' 并将&lt;sldiag objui="configset" objparam="IgnoredZcDiagnostic"&gt;忽略的过零点&lt;/sldiag&gt;诊断设置为 ''无'' 来隐藏诊断并继续仿真，而无需围捕这些过零点。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;对上面列出的导致大多数事件的模块禁用过零检测。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="DetectedMaskedZeroCrossings">
+      在从 {0} 到 {1} 的仿真时间步期间(步长 = {2})，发现以下 {3,number,integer} 个遮蔽的过零点，即具有偶数个过零事件的信号。\n {4} 搜索算法仅检测到这些过零点，因为在此时间步中存在其他过零点。遮蔽的过零点是由一个或多个在当前时间步内具有偶数个过零点的过零信号导致的。遮蔽的过零点可能并非在所有情况下都能检测到。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;configset.internal.open(''{6}'',''Refine'')&lt;/cmd&gt; &lt;txt&gt;将 ''细化因子'' 从({5,number,integer})增加到更大的值&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" btn="apply"&gt; &lt;cmd&gt;set_param(''{6}'',''MaskedZcDiagnostic'',''none'');&lt;/cmd&gt; &lt;txt&gt;要禁用此诊断，请将&lt;sldiag objui="configset" objparam="MaskedZcDiagnostic"&gt;遮蔽的过零点&lt;/sldiag&gt;诊断设置为 ''无''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+      
+    </entry>
+    <entry key="UnsupportedSolverForRSim">
+      指定的求解器 ''{0}'' 与 RSIM 目标不兼容，因此模型 ''{1}'' 的 RSIM 目标编译将停止。\n 对 RSIM 使用以下受支持的求解器之一: \n "ode1" \n "ode14x" \n "ode15s" \n "ode113" \n "ode2" \n "ode23" \n "ode23s" \n "ode23t" \n "ode23tb" \n "ode3" \n "ode4" \n "ode45" \n "ode5" \n "ode8" \n
+    </entry>
+    <entry key="FixedStepZeroCrossingNotSupportedForRSim">
+      RSIM 目标不支持定步长过零检测，因此，模型 ''{0}'' 的 RSIM 目标编译将停止。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt; &lt;txt&gt;关闭定步长仿真的过零检测。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="SolverInputCompensationSupportZOHonly">
+      对 Model 模块 ''{2}'' 引用的模型 ''{3}'' 使用零阶保持输入处理，因为求解器 ''{1}'' 不支持 ''{0}'' 输入信号处理。
+    </entry>
+    <entry key="SolverOutputApproximationSupportZOHonly">
+         Model 模块 ''{2}'' 必须使用零阶保持输出信号处理，因为求解器 ''{1}'' 不支持 ''{0}'' 输出信号处理。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="UseZOHOutputHandling"&gt; &lt;cmd&gt;set_param(''{2}'', ''OutputSignalHandling'', ''Zero-order hold'')&lt;/cmd&gt; &lt;txt&gt;将 Model 模块 ''{2}'' 的 ''输出信号处理'' 参数值设置为 ''零阶保持''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 			
+         
+    </entry>
+    <entry key="SolverChangeInFastRestartExplicitToImplicit">使用显式求解器在快速重启模式下初始化模型 ''{1}''。为了支持在不重新编译模型的情况下更改为需要雅可比矩阵的 ''{0}''，求解器雅可比矩阵法控制将从 ''{2}'' 切换到 "满扰动"。</entry>
+    <entry key="InvalidSolverChangeInFastRestartOdeN">对于使用隐式求解器在快速重启模式下初始化的具有质量矩阵的模型，不支持将求解器更改为使用显式积分方法 ''{0}'' 的 odeN。将不使用模型 ''{1}'' 的新求解器 odeN。将 odeN 的积分方法设置为隐式求解器。有效方法是 'ode14x' 和 'ode1be'。</entry>
+    <entry key="InvalidIntMethodChangeInFastRestartOdeN">对于使用隐式求解器在快速重启模式下初始化的具有质量矩阵的模型，不支持将求解器更改为使用显式积分方法 ''{0}'' 的 odeN。将不使用模型 ''{1}'' 的新积分方法。将 odeN 的积分方法设置为隐式求解器。有效方法是 'ode14x' 和 'ode1be'。</entry>
+    <entry key="InvalidSolverChangeInFastRestartImplicitToExplicit">对于使用隐式求解器在快速重启模式下初始化的具有质量矩阵的模型，不支持将求解器更改为显式求解器。将不对模型 ''{1}'' 使用新求解器 ''{0}''。请将求解器设置为隐式求解器。</entry>
+    <entry key="InvalidSolverChangeInFastRestartVarToFixed">对于使用变步长求解器在快速重启模式下初始化的模型，不支持将求解器更改为定步长求解器。将不对模型 ''{1}'' 使用新求解器 ''{0}''。请将求解器设置为变步长求解器。</entry>
+    <entry key="SolverChangeNotSupportedFixedStep">定步长求解器不支持在快速重启模式下更改求解器。需要终止当前编译，然后才能更改求解器。</entry>
+    <entry key="FixedStepIsNotDiscreteDivisor">
+    模型 ''{1}'' 中定步长({0})的设置无效。模型中的所有采样时间必须为定步长的整数倍。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SetFixedStepToDivisor"&gt; &lt;cmd&gt;set_param(''{1}'', 'FixedStep', ''{2}'')&lt;/cmd&gt; &lt;txt&gt;将定步长设置为 {2}&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+    
+    </entry>
+  </message>
+</rsccat>

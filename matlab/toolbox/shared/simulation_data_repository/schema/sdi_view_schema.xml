@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright 2014-2019 The MathWorks, Inc. -->
+<Metamodel formatVersion="2" metamodelVersion="R2018a_v1.0"> 
+  <Package name="sdi_view">  
+    <!-- SDI_VIEW.SessionInfo: Initial information to send to client when it
+         is opened.  This allows setting the tab and/or selected signal
+         to be displayed when SDI is opened.
+     -->
+    <member name="SessionInfo" type="Class">
+      <Property name="Title" type="ustring"/>
+      <Property name="FileName" type="ustring"/>
+      <Property name="Dirty" type="int32"/>
+      <Property name="TabType" type="int32"/>
+      <Property name="SignalIDToSelect" type="int32"/>
+      <Property name="Application" type="string"/>
+    </member>
+
+    <member name="CachedComparison" type="Class">
+      <Property name="SetID" type="int32"/>
+    </member>
+
+    <!-- SDI_VIEW.TABLECLIENTIDS: Used for registering table client id-->
+    <member  name="TableClientIDs" type="Class">
+      <Property isIndexed="true" name="ClientUUID" type="int64"/>
+      <Property isIndexed="true" name="Valid" type="int32"/><!-- Client ID is marked as invalid when client stops sending heartbeat. It is marked as valid again when we get messages from the client.-->
+      <Property isIndexed="true" indexedProperties="Valid" name="IsLatestRegisteredClient" type="int32"/><!-- Latest registered client. Only applies to SDIRun Application -->
+      <Property isIndexed="true" indexedProperties="Valid" name="Application" type="int32"/><!-- SDIRun or SDIComparison -->      
+      <Property isIndexed="true" indexedProperties="ClientUUID Valid Application" name="TableType" type="int32"/> <!-- Tree or Properties table -->
+      <Property name="FK_NextViewIndex" type="int32"/>
+      <Property name="AxesID" type="int32"/><!-- Selected plot. Default is 1-->
+      <Property name="NumAxesRows" type="int32"/><!-- Number of plot rows shown in this client -->
+      <Property name="NumAxesCols" type="int32"/><!-- Number of plot columns shown in this client -->
+    </member>
+    
+    <!-- SDI_VIEW.LEGEND: Stores legend preferences for Runs and Comparison view -->
+    <member name="Legend" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Application" type="int32"/><!-- SDIRun or SDIComparison -->
+      <Property name="Position" type="ustring"/><!-- Legend position -->
+    </member>
+
+    <!-- SDI_VIEW.TABLEROWENTRY: UI Table hierarchy -->
+    <member  name="TableRowEntry" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TableType" type="int32"/>
+      <!-- Tree or Properties table -->        
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="ViewIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType ViewIndex" name="Level" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Parent" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Ancestors" type="string"/>
+      <!-- Row index of parent row-->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType Parent" name="Valid" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="RowIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="FK_DbID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Selected" type="int32"/>
+      <Property name="Expanded" type="int32"/>
+      <Property name="RowValue" type="string"/>      
+      <Property name="Type" type="int32"/>
+      <Property name="MayHaveChildren" type="int32"/>
+      <Property name="AreChildrenOnWorker" type="int32"/>
+      <Property name="WorkerDBID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Checked" type="int32"/><!-- Used to store displayed checked property for SDI table -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="PropEnum" type="int32"/> <!-- Used to store property enum for Properties table -->
+    </member>
+
+    <!-- SDI_VIEW.TABLECOLUMNVALUES: SDI UI Table row values-->
+    <member  name="TableColumnValues" type="Class"> 
+      <Property isIndexed="true" name="FK_TableRowEntryID" type="sdi_view.TableRowEntry"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TableType" type="int32"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Plotted" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Unit" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="dataType" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="complexity" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="complexFormat" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="sampleTime" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="ModelSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="BlockName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="BlockPath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="PortIndex" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Dimensions" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Channel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="RunName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="OverrideGlobalTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Abs" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Rel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="TimeTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="InterpSetting" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="SyncMethod" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="RootSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="TimeSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="DataSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="DisplayScaling" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="DisplayOffset" type="ustring"/>
+    </member>
+
+    <!-- SDI_VIEW.ANALYZERTABLECOLUMNVALUES: SDI UI Table row values-->
+    <member  name="AnalyzerTableColumnValues" type="Class"> 
+      <Property isIndexed="true" name="FK_TableRowEntryID" type="sdi_view.TableRowEntry"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TableType" type="int32"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Plotted" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Samples" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Time" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="StartTime" type="ustring"/>
+    </member>
+
+    <!-- SDI_VIEW.COMPARISONTABLECOLUMNVALUES: Comparison UI Table row values-->
+    <member  name="ComparisonTableColumnValues" type="Class"> 
+      <Property isIndexed="true" name="FK_TableRowEntryID" type="sdi_view.TableRowEntry"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TableType" type="int32"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Status" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_name" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="OverrideGlobalTol" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Abs" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Rel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="TimeTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="MaxDiff" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_units" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_units" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_dataType" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_dataType" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_sampleTime" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_sampleTime" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_run_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_run_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="AlignedBy" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_model_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_model_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_block_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_block_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_blockpath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_blockpath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_port" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_port" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_dimension" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_dimension" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_channel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_channel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="InterpSetting" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="SyncMethod" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_root_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_root_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_time_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_time_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Baseline_data_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Compared_data_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StatusName" type="ustring" default="unknown"/>
+    </member>
+     
+    <!-- SDI_VIEW.TOOLSTRIPRUNLIST: Specifies list of runs available for run comparison-->
+    <member  name="ToolstripRunList" type="Class"> 
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="FK_DbID" type="int32"/>
+      <Property name="RowValue" type="string"/>
+    </member>
+
+    <!-- SDI_VIEW.TOOLSTRIPSIGNALCOMPARISON: Specifies properties of the signal comparison section in Toolstrip-->
+    <member  name="ToolstripSignalComparison" type="Class"> 
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property name="FK_BaselineDbID" type="int32"/>
+      <Property name="FK_CompareToDbID" type="int32"/>
+      <Property name="FK_BaselineRunID" type="int32"/>
+      <Property name="FK_CompareToRunID" type="int32"/>
+      <Property name="BaselineText" type="ustring"/>
+      <Property name="CompareToText" type="ustring"/>
+    </member>
+
+    <!-- SDI_VIEW.COMPARISONALIGNOPTS: Specifies client-setting for comparison alignment options-->
+    <member  name="ComparisonAlignmentOptions" type="Class"> 
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Index" type="int32"/>
+      <Property name="Value" type="int32"/>
+    </member>    
+
+    <!-- SDI_VIEW.CACHED_PLOTTED_COMPARISON_SIGNAL: Single row indicating which comparison signal should be plotted when client is registered -->
+    <member  name="CachedPlottedComparisonSignal" type="Class">
+      <Property name="FK_SignalID" type="int32"/>
+    </member>
+
+    <!-- SDI_VIEW.TABLEGROUPING: Specifies the grouping criteria of the table -->
+    <member  name="TableGrouping" type="Class">
+      <Property name="Order" type="int32"/>      
+      <Property isIndexed="true" indexedProperties="Order" name="FK_ClientUUID" type="int64"/>
+      <Property name="GroupingCriteria" type="int32"/> <!-- this is an enum define in C++ layer -->
+    </member>
+
+    <!-- SDI_VIEW.TABLECOLUMNDEFINITION: Used for displaying table-->
+    <member  name="TableColumnDefinition" type="Class">      
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TableType" type="int32"/><!-- Tree or Properties table -->  
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Application" type="int32"/><!-- SDIRun or SDIComparison -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="ColID" type="int32"/>       
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="Field" type="string"/> 
+      <Property name="LocalizedLabel" type="ustring"/>
+      <Property name="LocalizedShortLabel" type="ustring"/> 
+      <Property name="RenderType" type="string"/>
+      <Property name="MinWidth" type="int32"/>
+      <Property name="WidthPercent" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType" name="OrderID" type="int32"/>
+      <Property name="ColumnInfo" type="string"/>
+      <Property name="ColumnRowEntryColName" type="string"/>
+<!-- Property name in TableColumnValues/ComparisonTableColumnValues table -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType ColID OrderID" name="Valid" type="int32"/><!-- True if this column does not need regeneration of values for filtering -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID TableType OrderID Valid" name="StringFilterable" type="int32"/>
+<!-- True if this is a filterable column -->
+    </member> 
+    
+    <!-- SDI_VIEW.SAVEDFILTERS: Used for persisting filters-->
+    <member  name="SavedFilters" type="Class">      
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Application" type="int32"/><!-- SDIRun or SDIComparison. The SavedFilters parsed from preference file and stored in db has clientID is 0 for both SDIRun and SDIComparison  -->   
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/> <!-- Applicable to Named filters only -->   
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID Application Name" name="Type" type="int32"/> <!-- Named vs Recent -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID Type" name="FilterText" type="ustring"/> 
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID Name Type Application FilterText" name="InsertionOrder" type="int32"/> <!-- Inverse order of filter-->   
+      </member> 
+
+    <!-- SDI_VIEW.SAVEDPREPAREDFILTERS: Prepared filters in SavedFilters-->
+    <member  name="SavedPreparedFilters" type="Class"> 
+      <Property isIndexed="true" name="FK_SavedFilters" type="sdi_view.SavedFilters"/>
+      <Property name="PreparedID" type="int32"/>
+    <!-- Id associated with a prepared filter -->
+      <Property name="Value" type="int32"/> <!-- True or false. True will result in the rows filtered by the prepared criteria. False will result in the inverse of the rows filtered by the prepared criteria.-->
+    </member> 
+
+    <!-- SDI_VIEW.SAVEDCOLUMNFILTERS: Column-FilterText entry for SavedFilters-->
+    <member  name="SavedColumnFilters" type="Class"> 
+      <Property isIndexed="true" name="FK_SavedFilters" type="sdi_view.SavedFilters"/>
+      <Property isIndexed="true" indexedProperties="FK_SavedFilters" name="FK_ColID" type="int32"/> <!-- Column id -->
+      <Property isIndexed="true" indexedProperties="FK_SavedFilters FK_ColID" name="FilterText" type="ustring"/> <!-- Filter text associated with a specific column -->
+      <Property name="Application" type="int32"/><!-- SDIRun or SDIComparison -->
+    </member>
+    
+    <!--              The following tables are used for the Version 3.0 of the Table ViewModel code         -->
+
+    <!-- SDI_VIEW.PlotPreferences: Used for persisting plot preferences-->
+    <member  name="PlotPreferences" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Application" type="int32"/>
+      <!-- SDIRun or SDIComparison -->
+      <Property name="AxesID" type="int32"/>
+      <!-- Selected plot. Default is 1-->
+      <Property name="NumAxesRows" type="int32"/>
+      <!-- Number of plot rows shown in this client -->
+      <Property name="NumAxesCols" type="int32"/>
+      <!-- Number of plot columns shown in this client -->
+      <Property name="LegendPosition" type="ustring"/>
+      <!-- Legend position -->
+    </member>
+
+
+  </Package>
+  <Package name="table">
+    <!--              The following tables are used for the Version 3.0 of the Table ViewModel code         -->
+    <!-- table.Client: Used for registering table client id-->
+    <member  name="Client" type="Class">
+      <Property isIndexed="true" name="ClientUUID" type="int64"/>
+      <Property isIndexed="true" name="Valid" type="int32"/>
+      <!-- Client ID is marked as invalid when client stops sending heartbeat. It is marked as valid again when we get messages from the client.-->
+      <Property isIndexed="true" indexedProperties="Valid" name="IsLatestRegisteredClient" type="int32"/>
+      <!-- Latest registered client. Only applies to SDIRun Application -->
+      <Property isIndexed="true" indexedProperties="Valid" name="Application" type="int32"/>
+      <!-- SDIRun or SDIComparison -->
+      <Property name="NumVisibleRows" type="int32"/>
+      <Property name="PrevRunClient" type="int32"/>
+      <Property name="StoreHandler" type="string"/>
+    </member>
+
+    <!-- table.Row: UI Table hierarchy -->
+    <member  name="Row" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <!-- Tree or Properties table -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ViewIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ViewIndexCache" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID ViewIndex" name="Level" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Parent" type="int32"/>
+      <!-- Row index of parent row-->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID Parent" name="Valid" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RowIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="FK_DbID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Selected" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PrimarySelected" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="GroupID" type="int32"/>
+      <Property name="NodeName" type="string"/>
+      <Property name="Expanded" type="int32"/>
+      <Property name="RowValue" type="string"/>
+      <Property name="Type" type="int32"/>
+      <Property name="MayHaveChildren" type="int32"/>
+      <Property name="AreChildrenOnWorker" type="int32"/>
+      <Property name="WorkerDBID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Checked" type="int32"/>
+    </member>
+
+    <member  name="RowInspect" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <!-- Tree or Properties table -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ViewIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ViewIndexCache" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID ViewIndex" name="Level" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Parent" type="int32"/>
+      <!-- Row index of parent row-->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID Parent" name="Valid" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RowIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="FK_DbID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Selected" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PrimarySelected" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="GroupID" type="int32"/>
+      <Property name="Expanded" type="int32"/>
+      <Property name="RowValue" type="string"/>
+      <Property name="Type" type="int32"/>
+      <Property name="MayHaveChildren" type="int32"/>
+      <Property name="AreChildrenOnWorker" type="int32"/>
+      <Property name="WorkerDBID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Checked" type="int32"/>
+    </member>
+
+    <member  name="RowArchive" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <!-- Tree or Properties table -->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ViewIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ViewIndexCache" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID ViewIndex" name="Level" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Parent" type="int32"/>
+      <!-- Row index of parent row-->
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID Parent" name="Valid" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RowIndex" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="FK_DbID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Selected" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PrimarySelected" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="GroupID" type="int32"/>
+      <Property name="Expanded" type="int32"/>
+      <Property name="RowValue" type="string"/>
+      <Property name="Type" type="int32"/>
+      <Property name="MayHaveChildren" type="int32"/>
+      <Property name="AreChildrenOnWorker" type="int32"/>
+      <Property name="WorkerDBID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Checked" type="int32"/>
+    </member>
+
+    <!-- table.Column: UI Table column -->
+    <member  name="Column" type="Class">
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ColID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Field" type="string"/>
+      <Property name="WidthPercent" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="OrderID" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID ColID OrderID" name="Valid" type="int32"/>
+      <!-- True if this column does not need regeneration of values for filtering -->
+    </member>
+
+    <!-- table.RunsTableCachedValues: SDI Table cached filter values-->
+    <member  name="RunsTableCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_TableRowInspectID" type="table.RowInspect"/>
+      <Property isIndexed="true" name="FK_TableRowArchiveID" type="table.RowArchive"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Plotted" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Unit" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="dataType" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="complexity" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="complexFormat" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="sampleTime" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ModelSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="BlockName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="BlockPath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PortIndex" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PortIndexNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Dimensions" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Channel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RunName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Abs" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AbsNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Rel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RelNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="OverrideGlobalTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TimeTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TimeTolNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="InterpSetting" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SyncMethod" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RootSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TimeSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Domain" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DisplayScaling" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DisplayScalingNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DisplayOffset" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DisplayOffsetNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Status" type="ustring"/>
+    </member>
+
+    <!-- table.AnalyzerCachedValues: Analyzer Table cached filter values-->
+    <member  name="AnalyzerCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Plotted" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Samples" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Time" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StartTime" type="ustring"/>
+    </member>
+    
+    <!-- table.ComparisonFilterCachedValues: Comparison Filter Table cached filter values-->
+    <member  name="ComparisonFilterCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+    </member>
+
+
+    <!-- table.ComparisonsCachedValues: Comparison Table cached filter values-->
+    <member  name="ComparisonsCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Status" type="int32"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="OverrideGlobalTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Abs" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AbsNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Rel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="RelNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TimeTol" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TimeTolNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="MaxDiff" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="MaxDiffNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_units" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_units" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_dataType" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_dataType" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_sampleTime" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_sampleTime" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_run_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_run_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AlignedBy" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_model_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_model_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_block_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_block_name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_blockpath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_blockpath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_port" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_port" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_dimension" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_dimension" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_channel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_channel" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="InterpSetting" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SyncMethod" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_root_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_root_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_time_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_time_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Baseline_data_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Compared_data_source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Domain" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StatusName" type="ustring" default="unknown"/>
+    </member>
+
+    <member name="AddDataTableCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Plotted" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ModelSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="BlockPath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PortIndex" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PortIndexNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Dimensions" type="ustring"/>
+    </member>
+
+    <member  name="PBTableCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Plotted" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ModelSource" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="BlockPath" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PortIndex" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PortIndexNum" type="real64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Dimensions" type="ustring"/>
+    </member>
+
+    <member name="CoderDataGroupsCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="MemorySection" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInit" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AsStructure" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInstantiation" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Scope" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StructureTypeName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StructureInstanceName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StructureArgumentName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StructureReferenceName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfStructureTypeName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfStructureInstanceName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfStructureArgumentName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfStructureReferenceName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ParameterAccessMacroName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AccessMethod" type="ustring"/>
+    </member>
+
+    <member name="RuntimeEnvironmentDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFileName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>      
+    </member>
+    
+    <member name="CoderDataAccessMethodsCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="NamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AccessMode" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Latching" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+    </member>
+
+    <member name="CoderGroupsDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StorageClass_Packaging" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="MemorySection" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AccessMethod" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ComponentSingleInstance" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ComponentMultiInstance" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SubcomponentSingleInstance" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SubcomponentMultiInstance" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Scope" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInit" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DefinitionFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TypeNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataAccess" type="ustring"/>
+    </member>
+
+    <member name="AccessMethodDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Scope" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="AccessMode" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="LatchingMode" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="NamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DefinitionFile" type="ustring"/>       
+    </member>
+
+    <member name="MemorySectionDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>    
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Comment" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PreStatement" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="PostStatement" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="StatementsSurround" type="ustring"/>
+    </member>
+
+    <member name="FunctionClassDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Description" type="ustring"/>    
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="FunctionName" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="MemorySection" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DefinitionFile" type="ustring"/>
+    </member>
+
+    <member name="UnstructuredImplDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Scope" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="NamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInit" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInstantiation" type="ustring"/>      
+    </member>
+    
+    <member name="StructuredImplDDCachedValues" type="Class">
+      <Property isIndexed="true" name="FK_TableRowID" type="table.Row"/>
+      <Property isIndexed="true" name="FK_ClientUUID" type="int64"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Source" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Name" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="HeaderFile" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Scope" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="TypeNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfTypeNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ReferenceNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfReferenceNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="ArgumentNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfArgumentNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="InstanceNamingRule" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="SelfInstanceNamingRule" type="ustring"/>      
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInit" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="Placement" type="ustring"/>
+      <Property isIndexed="true" indexedProperties="FK_ClientUUID" name="DataInstantiation" type="ustring"/>      
+    </member>    
+
+  </Package>  
+</Metamodel>

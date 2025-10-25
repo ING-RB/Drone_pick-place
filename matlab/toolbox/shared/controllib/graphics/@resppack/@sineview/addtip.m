@@ -1,0 +1,14 @@
+function addtip(this,tipfcn,info)
+%ADDTIP  Adds line tip to each curve in both steady state and regular sine in
+%@Sineview object
+
+%  Author(s): Erman Korkut 17-Mar-2009
+%  Copyright 1986-2009 The MathWorks, Inc.
+
+for ct1 = 1:size(this.Curves,1)
+   for ct2 = 1:size(this.Curves,2)
+      info.Row = ct1; info.Col = ct2;
+      this.installtip(this.Curves(ct1,ct2),tipfcn,info)
+      this.installtip(this.SSCurves(ct1,ct2),tipfcn,info)      
+   end
+end

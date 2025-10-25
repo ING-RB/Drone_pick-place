@@ -1,0 +1,22 @@
+{
+    "mw.schemaVersion": "1.0.0",
+    "mw": {
+        "snippets": {
+            "definitions": {
+                "WriteToFile": {
+                    "text": "Write to file",
+                    "prefix": ["fwrite", "fopen", "fclose"],
+                    "body": [
+                        "fileID = fopen('${1:pathToFile}','W');",
+                        "if fileID < 0",
+                        "\terror(\"Unable to open file: %s\",msg);",
+                        "end",
+                        "fwrite(fileID,${2:text},'${3:dataType}');",
+                        "fclose(fileID);"
+                    ],
+                    "description": "%MATLAB:io:filesystem:common:WriteToFileDescription%"
+                }
+            }
+        }
+    }
+}

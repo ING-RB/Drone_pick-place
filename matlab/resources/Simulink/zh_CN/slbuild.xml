@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="generateSFuncModelRefParamMismatch">为包含一个或多个 Model 模块的子系统生成 S-Function 时检测到配置参数不匹配。\n\n不匹配是以下原因之一造成的: \nA) 在生成 S-Function 之前，模型 ''{0}'' 的模型引用层次结构中存在配置参数不匹配。\nB) S-Function 生成设置更改了配置参数设置。\n\n要确定具体哪种原因导致了这种情况，请尝试编译模型 ''{1}''。\n - 如果编译因配置参数不匹配而失败，则原因为 "A"。\n - 如果编译成功，则原因为 "B"。\n\n要解决原因 "A"，请使下面列出的配置参数在整个模型层次结构中都是匹配的，并尝试重新编译模型 ''{2}''，直到编译成功。模型编译成功后，请再次尝试生成 S-Function。如果 S-Function 生成失败，请解决原因 "B"。\n\n要解决原因 "B"，请根据下面描述的不匹配调整模型层次结构的参数，以便您的层次结构与 ''{3}'' 的设置相匹配。</entry>
+    <entry key="incompatibleComponents">Configuration component ''{0}'' of model ''{1}'' and configuration component ''{2}'' of model ''{3}'' are not compatible. The error message returned by the comparison function is:\n{4}</entry>
+    <entry key="invalidMdlRefStatus">Invalid status in configure_model_reference_target_status</entry>
+    <entry key="invalidModelName">Model name parameter of one of the Model blocks in Model ''{0}'' is ''{1}''. Model name must be a valid Matlab identifier</entry>
+    <entry key="mdlRefLoopDetected">Detected model reference loop ''{0}''</entry>
+    <entry key="propertyMapping">{0} 映射到 ''{1}''</entry>
+    <entry key="paramNotInDataModel">Model Reference parent-child match behavior for the parameter {0} is not defined in the data model.</entry>
+    <entry key="removeIncludeModelReferenceSimulationTargets">''IncludeModelReferenceSimulationTargets'' 不起作用，将在以后的版本中删除。</entry>
+    <entry key="reportStateLoggingErr">The state logging option ({0} != {1})
+    which is computed as: (SaveState or SaveFinalState) and
+    MatFileLogging\n
+
+    - SaveState is mapped to ''{2}'' on ''{3}''\n
+
+    - SaveFinalState is mapped to ''{4}'' on ''{5}''\n
+
+    - MatFileLogging is mapped to ''{6}'' on ''{7}''\n
+    </entry>
+    <entry key="reportStateLoggingErrMatFileLoggingAlwaysOn">状态记录选项({0} != {1})，其计算方式为: (SaveState 或 SaveFinalState)和 MatFileLogging\n - SaveState 映射到 ''{3}'' 上的 ''{2}''\n - SaveFinalistate 映射到 ''{5}'' 上的 ''{4}''\n - 对于此系统目标文件，MatfileLogging 始终为 ''on''\n
+    </entry>
+    <entry key="MismatchInLoggingParameters">记录参数不匹配</entry>
+    <entry key="topChildMdlParamMismatchMsgUI">\n\t{0} ({1}):\n \t\t&lt;a href="matlab:configset.internal.open(''{2}'',''{3}'');"&gt;父模型设置&lt;/a&gt;: {4}\n \t\t&lt;a href="matlab:configset.internal.open(''{5}'',''{6}'');"&gt;引用模型设置&lt;/a&gt;: {7}\n</entry>
+    <entry key="topChildMdlParamMismatchMsgNonUI">\n\t{0} [使用 set_param 更改设置]:\n \t\t父设置: {1}\n \t\t子设置: {2}\n</entry>
+    <entry key="topChildMdlParamMismatch">父模型 ''{0}'' 和引用模型 ''{1}'' 之间的某些配置参数设置必须兼容。&lt;a href="matlab:helpview([docroot,''/toolbox/simulink/ug/simulink_ug.map''], ''about_configuration_references'');"&gt;配置引用&lt;/a&gt;有助于避免参数不匹配。\n</entry>
+    <entry key="incompatibleConfigurationSets">模型 ''{2}'' 的组件 ''{0} ({1})'' 对于模型 ''{3}'' 不存在</entry>
+    <entry key="unsavedChanges">无法更新 ''{0}'' 的模型引用目标，因为它有未保存的更改。</entry>
+    <entry key="unsavedMdlRefs">Unable to update model reference target of ''{0}'' used in ''{1}'' because it has unsaved changes.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt;
+            &lt;txt&gt;Save ''{0}''&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="unsavedMdlRefsSaved">''{0}'' 已保存。</entry>
+    <entry key="unsavedMdlRefsAllowed">模型 ''{0}'' 或其依赖关系有未保存的更改，这会增加编译模型层次结构和检查模型引用目标是否为最新所需的时间。未保存的更改还会阻止并行编译引用模型。</entry>
+    <entry key="unsavedMdlLibCause">库 ''{0}'' 有未保存的更改。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt; &lt;txt&gt;请保存库 ''{0}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+	</entry>
+    <entry key="unsavedMdlRefsCause">Model ''{0}'' has unsaved changes.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt;
+            &lt;txt&gt;Save model ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="unsavedMdlRefsWorkspaceCause">引用模型 ''{0}'' 的模型工作区有未保存的更改。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;Simulink.internal.fixUnsavedModel(''{0}'')&lt;/cmd&gt; &lt;txt&gt;请保存模型 ''{0}'' 及其工作区。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="rebuildSetToNever">模型引用 "重新编译" 选项设置为 ''从不''。假设引用模型是最新的。</entry>
+    <entry key="allSIMTargetsUpToDate">模型引用仿真目标均为最新的。</entry>
+    <entry key="allCoderTargetsUpToDate">模型引用代码生成目标均为最新的。</entry>
+    <entry key="checkingStatusOfModelSIM">检查模型 ''{0}'' 的模型引用仿真目标的状态。</entry>
+    <entry key="checkingStatusOfModelCoder">检查模型 ''{0}'' 的模型引用代码生成目标的状态。</entry>
+    <entry key="modelReferenceChecksumChanged">引用模型 ''{0}'' 的校验和已更改。重新生成模型引用目标。</entry>
+    <entry key="skipPartOfRebuildManager">将跳过模型 ''{0}'' 的重新编译检查，因为它是 Rebuild Manager Skiplist 的一部分。</entry>
+    <entry key="skipNeverRebuildModel">将跳过模型 ''{0}'' 的重新编译，因为该模型或其父模型已将 ''NeverRebuildModel'' 设置为 ''on''。</entry>
+    <entry key="rebuildSetToAlways">"重新编译" 选项设置为 ''始终''。</entry>
+    <entry key="modelReferenceSIMTargetUpToDate">{0} 的模型引用仿真目标是最新的。</entry>
+    <entry key="modelReferenceCoderTargetUpToDate">{0} 的模型引用代码生成目标是最新的。</entry>
+    <entry key="checkingForStructuralChangesSIM">正在检查 {0} 中的结构性更改，因为模型引用重新编译选项设置为 ''如果检测到变化''。结构性更改会导致模型引用仿真目标重新编译。</entry>
+    <entry key="checkingForStructuralChangesCoder">正在检查 {0} 中的结构性更改，因为模型引用重新编译选项设置为 ''如果检测到变化''。结构性更改会导致模型引用代码生成目标重新编译。</entry>
+    <entry key="targetSIMDoesNotExist">模型 {1} 的模型引用仿真目标({0})已过期。{2} 不存在。</entry>
+    <entry key="targetCoderDoesNotExist">模型 {1} 的模型引用代码生成目标({0})已过期。{2} 不存在。</entry>
+    <entry key="buildInfoDotMatMissingCoder">模型 {1} 的模型引用代码生成目标({0})已过期。buildInfo.mat 文件不存在。</entry>
+    <entry key="buildInfoDotMatMissingSIM">模型 {1} 的模型引用仿真目标({0})已过期。buildInfo.mat 文件不存在。</entry>
+    <entry key="binfoDoesNotExistCoder">模型 {1} 的模型引用代码生成目标({0})已过期。二进制信息缓存不存在。包含二进制信息缓存的 slprj 文件夹可能已删除。</entry>
+    <entry key="binfoDoesNotExistSIM">模型 {1} 的模型引用仿真目标({0})已过期。二进制信息缓存不存在。包含二进制信息缓存的 slprj 文件夹可能已删除。</entry>
+    <entry key="binfoNotHaveNecessaryInformationSIM">模型 {1} 的模型引用仿真目标({0})已过期。二进制信息缓存未包含必要的信息。此模型先前的某次编译可能失败了。</entry>
+    <entry key="binfoNotHaveNecessaryInformationCoder">模型 {1} 的模型引用代码生成目标({0})已过期。二进制信息缓存未包含必要的信息。此模型先前的某次编译可能失败了。</entry>
+    <entry key="userDependencyUpdatedSinceLastBuildSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为自上次编译以来 {2} (模型 {3} 的依赖关系)已更改。</entry>
+    <entry key="userDependencyUpdatedSinceLastBuildCoder">模型 {1} 的模型引用代码目标({0})已过期，因为自上次编译以来 {2} (模型 {3} 的依赖关系)已更改。</entry>
+    <entry key="mdlWkspaceDependencyUpdatedSinceLastBuildSIM">模型 {1} 的模型引用仿真目标({0})已过期。自上次编译以来，模型工作区数据源({2})依赖关系已更改。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildSIMMCOSEnum">模型 {1} 的模型引用仿真目标({0})已过期。自上次编译以来，枚举类({2})依赖关系已更改。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildSIMRequirement">模型 {1} 的模型引用仿真目标({0})已过期。自上次编译以来，Requirements Toolbox 集文件({2})依赖关系已更改。</entry>
+    <entry key="mdlWkspaceDependencyUpdatedSinceLastBuildCoder">模型 {1} 的模型引用代码生成目标({0})已过期。自上次编译以来，模型工作区数据源({2})依赖关系已更改。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildCoderMCOSEnum">模型 {1} 的模型引用代码生成目标({0})已过期。自上次编译以来，枚举类({2})依赖关系已更改。</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildCoderRequirement">模型 {1} 的模型引用代码生成目标({0})已过期。自上次编译以来，Requirements Toolbox 集文件({2})依赖关系已更改。</entry>
+    <entry key="referencedModelSIMTargetDoesNotExist">模型 {1} 的模型引用仿真目标({0})已过期。引用模型 {2} 的目标({3})不存在。</entry>
+    <entry key="referencedModelCoderTargetDoesNotExist">模型 {1} 的模型引用代码生成目标({0})已过期。引用模型 {2} 的目标({3})不存在。</entry>
+    <entry key="targetFunctionLibraryChangedSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为自上次编译以来模型 {2} 中使用的代码替换库已更改。</entry>
+    <entry key="targetFunctionLibraryChangedCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为自上次编译以来模型 {2} 中使用的代码替换库已更改。</entry>
+    <entry key="previousBuildProtectedUnprotectedMismatchSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为以前的编译针对受保护模型，而此编译针对非受保护模型，反之亦然。</entry>
+    <entry key="previousBuildProtectedUnprotectedMismatchCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为以前的编译针对受保护模型，而此编译针对非受保护模型，反之亦然。</entry>
+    <entry key="stateflowExternalFileChangedSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为 Stateflow 模块或 MATLAB Function 模块使用的以下 MATLAB 文件已更改: {2}。</entry>
+    <entry key="stateflowExternalFileChangedCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为 Stateflow 模块或 MATLAB Function 模块使用的以下 MATLAB 文件已更改: {2}。</entry>
+    <entry key="matlabSystemExternalFileChangedSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为 MATLAB System 模块使用的以下 MATLAB 文件已更改: {2}。</entry>
+    <entry key="matlabSystemExternalFileChangedCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为 MATLAB System 模块使用的以下 MATLAB 文件已更改: {2}。</entry>
+    <entry key="customCodeFileChangedSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为模型配置集中使用的自定义代码文件已更改。</entry>
+    <entry key="customCodeFileChangedCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为模型配置集中使用的自定义代码文件已更改。</entry>
+    <entry key="dataflowNumCoresChanged">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 已过期，因为开发计算机上的 CPU 内核数已更改，数据流域需要重新编译才能进行多线程仿真。</entry>
+    <entry key="dataflowProfilingChanged">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 已过期，因为数据流域需要重新编译才能进行仿真自动调整探查。</entry>
+    <entry key="dataflowPartitioningChanged">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 已过期，因为数据流域需要重新编译才能进行多线程仿真。</entry>
+    <entry key="dataflowCacheFolderChanged">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 已过期，因为仿真缓存文件夹已更改，数据流域需要重新编译才能进行仿真自动调整探查。</entry>
+    <entry key="simHardwareAccelerationChanged">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 已过期，因为开发计算机上的 CPU 已更改，Simulink 需要重新编译才能实现本机仿真硬件加速。</entry>
+    <entry key="debugSILBuildMismatch">模型 {1} 的模型引用代码生成目标({0})已过期，因为 "在 SIL 仿真期间启用源代码级调试" 设置已更改。</entry>
+    <entry key="extModeXCPBuildMismatch">模型 {1} 的模型引用代码生成目标({0})已过期，因为 'ExtModeTransport' 值已更改。</entry>
+    <entry key="genCodeOnlyChanged">Model reference code generation target ''{0}'' for model ''{1}'' must be recompiled because genCodeOnly setting changed.</entry>
+    <entry key="ModelReferenceSIMTargetNeedsCompiling">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 必须进行编译，因为该目标自上次编译后已更改或尚未编译。</entry>
+    <entry key="ModelReferenceCoderTargetNeedsCompiling">模型 ''{1}'' 的模型引用代码生成目标 ''{0}'' 必须进行编译，因为该目标自上次编译后已更改或尚未编译。</entry>
+    <entry key="modelWorkspaceChanged">模型 ''{1}'' 的模型引用仿真目标({0})必须重新编译，因为在其模型工作区中检测到更改。</entry>
+    <entry key="bsModelWorkspaceChanged">在模型 ''{0}'' 的模型工作区中检测到更改。</entry>
+    <entry key="loggedSignalsChanged">模型 ''{1}'' 的模型引用仿真目标({0})必须重新编译，因为在信号记录中检测到更改。</entry>
+    <entry key="bsLoggedSignalsChanged">在模型 ''{0}'' 的信号记录中检测到更改。</entry>
+    <entry key="modelInformationCacheUpdatedSIM">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 可能已过期。{2}</entry>
+    <entry key="modelInformationCacheUpdatedCoder">模型 ''{1}'' 的模型引用代码生成目标 ''{0}'' 可能已过期。{2}</entry>
+    <entry key="buildDueToUnsavedChangesSIM">由于存在未保存的更改，模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 可能已过期。{2}</entry>
+    <entry key="buildDueToUnsavedChangesCoder">由于存在未保存的更改，模型 ''{1}'' 的模型引用代码生成目标 ''{0}'' 可能已过期。{2}</entry>
+    <entry key="referencedModelOutOfDateSIM">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 可能已过期，因为引用模型 ''{2}'' 已过期。</entry>
+    <entry key="referencedModelOutOfDateCoder">Model reference code generation target ''{0}'' 
+    for model ''{1}'' might be out of date because the referenced model ''{2}'' was out of date.</entry>
+    <entry key="referencedModelSIMTargetUpdated">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 可能已过期，因为引用模型 ''{2}'' 的模型引用仿真生成目标 ''{3}'' 自上次编译以来已更改。</entry>
+    <entry key="referencedModelCoderTargetUpdated">模型 ''{1}'' 的模型引用代码生成目标 ''{0}'' 可能已过期，因为引用模型 ''{2}'' 的模型引用代码生成目标 ''{3}'' 自上次编译以来已更改。</entry>
+    <entry key="referencedModelSIMTargetInterfaceUpdated">模型 ''{1}'' 的模型引用仿真目标 ''{0}'' 已过期，因为引用模型 ''{2}'' 的模型引用仿真目标 ''{3}'' 的接口自上次编译以来已更改。</entry>
+    <entry key="referencedModelCoderTargetInterfaceUpdated">模型 ''{1}'' 的模型引用代码生成目标 ''{0}'' 已过期，因为引用模型 ''{2}'' 的模型引用代码生成目标 ''{3}'' 的接口自上次编译以来已更改。</entry>
+    <entry key="resolveSignalsForAllNamedSIM">模型 {1} 的模型引用仿真目标({0})可能已过期，因为该模型配置为解析指定信号和状态的信号对象。要加快代码生成并消除此消息，请将 "配置参数 &gt; 诊断/数据有效性 &gt; 信号解析" 设置为 "仅显式"。</entry>
+    <entry key="resolveSignalsForAllNamedCoder">模型 {1} 的模型引用代码生成目标({0})可能已过期，因为该模型配置为解析指定信号和状态的信号对象。要加快代码生成并消除此消息，请将 "配置参数 &gt; 诊断/数据有效性 &gt; 信号解析" 设置为 "仅显式"。</entry>
+    <entry key="incompatibleGlobalVariablesSIM">模型 {1} 的模型引用仿真目标({0})可能已过期，因为此模型使用的以下全局变量与生成目标时存在的变量不兼容: {2}。</entry>
+    <entry key="incompatibleGlobalVariablesCoder">模型 {1} 的模型引用代码生成目标({0})可能已过期，因为此模型使用的以下全局变量与生成目标时存在的变量不兼容: {2}。</entry>
+    <entry key="incompatibleDynamicEnumTypeSIM">模型 {1} 的模型引用仿真目标({0})可能已过期，因为此模型使用的以下动态枚举类型已更改: {2}。</entry>
+    <entry key="incompatibleDynamicEnumTypeCoder">模型 {1} 的模型引用代码生成目标({0})可能已过期，因为此模型使用的以下动态枚举类型已更改: {2}。</entry>
+    <entry key="ProtectedModelChangedSIM">模型 ''{1}'' 的模型引用仿真目标(''{0}'')可能已过期，因为此模型引用的受保护模型 ''{2}'' 已更改。</entry>
+    <entry key="ProtectedModelChangedCoder">模型 ''{1}'' 的模型引用代码生成目标(''{0}'')可能已过期，因为此模型引用的受保护模型 ''{2}'' 已更改。</entry>
+    <entry key="SSCFileChangedSIM">模型 ''{1}'' 的模型引用仿真目标(''{0}'')可能已过期，因为此模型使用的 Simscape 源文件 ''{2}'' 已更改。</entry>
+    <entry key="SSCFileChangedCoder">模型 ''{1}'' 的模型引用代码生成目标(''{0}'')可能已过期，因为此模型使用的 Simscape 源文件 ''{2}'' 已更改。</entry>
+    <entry key="MaskCallbackFileChangedSIM">模型 ''{1}'' 的模型引用仿真目标(''{0}'')可能已过期，因为此模型使用的封装回调文件 ''{2}'' 已更改或删除。</entry>
+    <entry key="MaskCallbackFileChangedCoder">模型 ''{1}'' 的模型引用代码生成目标(''{0}'')可能已过期，因为此模型使用的封装回调文件 ''{2}'' 已更改或删除。</entry>
+    <entry key="customStorageClassChangedSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为自模型上次编译以来自定义存储类定义已更改。此模型使用全局变量: ''{2}''。</entry>
+    <entry key="customStorageClassChangedCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为自模型上次编译以来自定义存储类定义已更改。此模型使用全局变量: ''{2}''。</entry>
+    <entry key="sfunctionDoesNotExistSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为找不到 S-Function {2} (在 ''{3}'' 中使用)。</entry>
+    <entry key="sfunctionDoesNotExistCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为找不到 S-Function {2} (在 ''{3}'' 中使用)。</entry>
+    <entry key="sfunctionFileUpdatedSIM">模型 {1} 的模型引用仿真目标({0})已过期，因为自上次编译以来与 S-Function ''{3}'' (在 ''{4}'' 中使用)关联的文件 {2} 已更改。</entry>
+    <entry key="sfunctionFileUpdatedCoder">模型 {1} 的模型引用代码生成目标({0})已过期，因为自上次编译以来与 S-Function ''{3}'' (在 ''{4}'' 中使用)关联的文件 {2} 已更改。</entry>
+    <entry key="modelRefSIMTargetNoCodeGenNeeded">模型 {0} 的模型引用仿真目标的代码是最新的，因为在引用模型中未找到功能更改。</entry>
+    <entry key="modelRefCoderTargetNoCodeGenNeeded">模型 {0} 的模型引用代码生成目标的代码是最新的，因为在引用模型中未找到功能更改。</entry>
+    <entry key="sfunctionFileDoesNotExist">与 S-Function ''{1}'' (在 ''{2}'' 中使用)相关联的文件 {0} 不存在。</entry>
+    <entry key="ignoringUnfoundDependency">将忽略模型 {1} 的依赖关系 ''{0}''，因为找不到它。</entry>
+    <entry key="checkingDependency">正在检查模型 {1} 的依赖关系 ''{0}''。</entry>
+    <entry key="ignoringDirectoryDependency">将忽略模型 {1} 的文件夹依赖关系 ''{0}''，因为它没有文件。</entry>
+    <entry key="parBuildInit">正在为并行模型引用编译初始化工作进程。</entry>
+    <entry key="parBuildLoadTopModel">正在将 ''{0}'' 加载到并行工作进程。</entry>
+    <entry key="parBuildCopyWorkspace">正在将基础工作区复制到并行工作进程。</entry>
+    <entry key="parBuildInitComplete">并行工作进程初始化完成。</entry>
+    <entry key="unknownAction">未知操作 ''{0}''。</entry>
+    <entry key="parBuildCleanup">正在清理并行工作进程。</entry>
+    <entry key="parBuildStartSIM">启动以下模型的并行模型引用仿真编译: {0}。</entry>
+    <entry key="parBuildStartCoder">启动以下模型的并行模型引用代码生成编译: {0}。</entry>
+    <entry key="parBuildFinishSIM">已完成以下模型的并行模型引用仿真编译: {0}。</entry>
+    <entry key="parBuildFinishCoder">{0} 的并行模型引用代码生成编译已完成。</entry>
+    <entry key="parBuildErrorSIM">在 {0} 的并行模型引用仿真编译过程中出现以下错误:\n\n{1}。</entry>
+    <entry key="parBuildErrorCoder">在 {0} 的并行模型引用代码生成编译过程中出现以下错误:\n\n{1}。</entry>
+    <entry key="parBuildVerifyManifestError">The following files are listed in manifest but are missing in {0}:\n\n{1}\n.</entry>
+    <entry key="parBuildCreateManifestError">Failed to create manifest. Temporary "*.dmr-journal" files exist in following folder:\n{0}.</entry>
+    <entry key="poolNotOpen">Model is configured for parallel model reference builds, but parallel pool is not open. See the documentation on parpool for information on opening a parallel pool.\n</entry>
+    <entry key="PoolNotAutoStarted">即使为顶层模型选择了 '启用并行模型引用编译'，也无法自动创建 MATLAB 工作进程的并行池。可能未选择 Parallel Computing Toolbox 预设项 '自动创建并行池'。引用模型以串行方式编译。</entry>
+    <entry key="poolArchInconsistent">要执行并行模型引用编译，所有并行池工作进程必须具有与 MATLAB 会话客户端相同的架构。\n</entry>
+    <entry key="PCTNotAvailable">模型配置为并行编译引用模型，但 Parallel Computing Toolbox 不可用。使用了串行编译。</entry>
+    <entry key="startingParallelTestModeSIMBuild">在测试模式下启动并行仿真编译。</entry>
+    <entry key="startingParallelTestModeCoderBuild">在测试模式下启动并行代码生成编译。</entry>
+    <entry key="startingParallelSIMBuild">启动并行仿真编译。</entry>
+    <entry key="startingParallelCoderBuild">启动并行代码生成编译。</entry>
+    <entry key="startingSerialSIMBuild">启动串行模型编译。</entry>
+    <entry key="startingSerialCoderBuild">启动串行代码生成编译。</entry>
+    <entry key="ParBuildLicenseNotAvailable">One or more workers could not get a {0} license. Check the consistency of parallel pool of workers.</entry>
+    <entry key="threadPoolNotSupported">Parallel building of referenced models with a thread-based parallel pool is not supported.</entry>
+    <entry key="CoverageParallelBuild">模型 {0} 配置为收集代码覆盖率测量值。但是，并行模型引用编译不支持代码覆盖率。</entry>
+    <entry key="RemoteParallelBuild">模型 {0} 指定工具链 ''{1}'' 以远程编译生成的代码，但这不支持引用模型的并行编译。</entry>
+    <entry key="parallelFileSystemInaccessible">一个或多个并行工作进程无法访问当前根编译文件夹 "{0}"。请验证工作进程可以向此位置写入数据。</entry>
+    <entry key="parWorkerConfigError">尝试为目标配置并行工作进程时出现以下错误。\n{0}</entry>
+    <entry key="advisorWarning">代码生成顾问检测到模型设置的潜在问题，"生成代码前检查模型" 参数设置为 "打开(遇到警告时停止)"。请解决代码生成顾问发现的问题，或将 "生成代码前检查模型" 参数设置为 "关"。</entry>
+    <entry key="advisorWarning2">活动配置集中的 ''目标优先级'' 参数值已更改为 ''未指定''。\n仅在使用基于 ERT 的系统目标文件时，以前的值 ''{0}'' 才可用。</entry>
+    <entry key="AccelTargetFileNotAllowedForModelRefTarget">Cannot build model reference code generation target for model ''{0}'', because its ''System target file'' is set to ''accel.tlc''. Change ''System target file'' parameter to a value other than ''accel.tlc''.</entry>
+    <entry key="BuildFolderDoesNotExist">''{0}'' 的路径必须存在，但指定的路径(''{1}'')不存在。请输入有效的文件夹或使用 "浏览" 按钮选择所需的文件夹。</entry>
+    <entry key="CacheFolderLbl">仿真缓存文件夹:</entry>
+    <entry key="CacheFolderToolTip">放置用于仿真的编译工件的根文件夹。</entry>
+    <entry key="CodeGenFolderLbl">代码生成文件夹:</entry>
+    <entry key="CodeGenFolderToolTip">放置代码生成文件的根文件夹。</entry>
+    <entry key="CodeGenFolderStructureLbl">代码生成文件夹结构:</entry>
+    <entry key="CodeGenFolderStructureToolTip">放置代码生成文件的文件夹结构。</entry>
+    <entry key="FileGenFolderOptions">存放生成文件的文件夹</entry>
+    <entry key="CacheFolderBrowseTitle">选择 Simulink 缓存的根文件夹。</entry>
+    <entry key="CodeGenFolderBrowseTitle">为代码生成选择根文件夹。</entry>
+    <entry key="ForceBuildOnModelRefTarget">''{0}'' can only be used with top model or standalone model builds.</entry>
+    <entry key="NoCodeGenForSimOnly">无法为部署生成代码，因为模型 ''{0}'' 是仅针对仿真而配置的。如果当前模型用于代码生成(例如，不是测试框架或被控对象模型)，请在 Embedded Coder 中，将工具条的 "输出" 菜单中的所选内容更改为 "仅仿真" 以外的输出类型。否则，您需要打开另一个用于代码部署的模型，从而将 Coder App 的焦点切换到该模型。</entry>
+    <entry key="BrowseButtonText">浏览...</entry>
+    <entry key="XcodeLicenseNotAccepted">Xcode license (for GM or Beta version) was not accepted. Run Xcode and accept its license agreement.</entry>
+    <entry key="minfoResaveDifferentPlatform">上一次编译是在 ''{0}'' 平台上执行的，此平台是 ''{1}''。</entry>
+    <entry key="minfoResaveLastSaveWhenDirtyModel">上一次编译是在模型或链接库为脏时执行的。</entry>
+    <entry key="minfoResaveModelDirty">模型或链接库 ''{0}'' 是脏的。</entry>
+    <entry key="minfoResaveProtectionChange">Model 模块 ''{0}'' 先前引用的是 ''{1}''，但现在引用的是 ''{2}''。</entry>
+    <entry key="minfoResaveModelAdded">在上一次编译中找不到模型或库 ''{0}''。</entry>
+    <entry key="minfoResaveMissingLibrary">库 ''{0}'' 缺失。</entry>
+    <entry key="minfoResaveModelChanged">模型或库 ''{0}'' 已更改。</entry>
+    <entry key="minfoResaveVariantEvaluateError">变体控制项 ''{0}'' 的计算结果不是逻辑值。</entry>
+    <entry key="minfoResaveVariantValueChange">变体控制项 ''{0}'' 的值从 ''{1}'' 更改为 ''{2}''。</entry>
+    <entry key="minfoResaveConfigSetChanged">配置引用 ''{0}'' 已更改。</entry>
+    <entry key="minfoResaveCompilerInfoChanged">''{0}'' 的当前编译器配置与 ''{1}'' 上一次编译中的编译器配置不同。</entry>
+    <entry key="minfoResaveSharedCoderDictChanged">共享的 Embedded Coder 字典 ''{0}'' 已更改。</entry>
+    <entry key="minfoResaveSILVerificationChange1">SIL/PIL Manager 使用的验证模式已从普通、加速或快速加速仿真更改为 SIL 或 PIL 仿真。</entry>
+    <entry key="minfoResaveSILVerificationChange2">SIL/PIL Manager 使用的验证模式已从 SIL 或 PIL 仿真更改为普通、加速或快速加速仿真。</entry>
+    <entry key="compileInfoRegenMsg">重新生成模型引用接口信息，因为:</entry>
+    <entry key="binfoCacheUpdated">正在保存二进制信息缓存。</entry>
+    <entry key="rrhSearchStart">正在 {0} 中搜索 binfo 文件。</entry>
+    <entry key="rrhHarvestStart">正在从 {0,number,integer} 文件中获取重新编译原因。</entry>
+    <entry key="rrhDone">完成。</entry>
+    <entry key="rrhWritingFile">正在向 {0} 写入数据。</entry>
+    <entry key="rrhNoReason">没有记录重新编译原因。</entry>
+    <entry key="rrhCodeGen">代码生成</entry>
+    <entry key="rrhSimulation">仿真</entry>
+    <entry key="bs3MissingTarget">目标({0})不存在。</entry>
+    <entry key="bs3MissingBinfo">信息缓存文件夹或工件缺失。</entry>
+    <entry key="bs3InvalidBinfo">一些工件无效。</entry>
+    <entry key="bs3MissingBuildInfoDotMat">编译信息文件不存在。</entry>
+    <entry key="bs3UserDependencyChange">用户指定的依赖关系 {0} 已更改。</entry>
+    <entry key="bs3MCOSEnumDependencyChange">枚举类 {0} 已更改。</entry>
+    <entry key="bs3RequirementDependencyChange">Requirements Toolbox 集文件 {0} 已更改。</entry>
+    <entry key="bs3CSCChange">自定义存储类定义已更改。</entry>
+    <entry key="bs3MissingSubModelTarget">引用模型 {1} 的目标 {0} 不存在。</entry>
+    <entry key="bs3MissingSFunction">S-Function {0} 不存在。</entry>
+    <entry key="bs3SFunctionDependencyChange">S-Function {1} 的依赖关系 {0} 已更改。</entry>
+    <entry key="bs3CRLChange">代码替换库已更改。</entry>
+    <entry key="bs3SILChange">SIL 调试设置已从 {0} 更改为 {1}。</entry>
+    <entry key="bs3MFileChange">MATLAB 文件 {0} 已更改。</entry>
+    <entry key="bs3ExtModeChange">传输层参数值已从 {0} 更改为 {1}。</entry>
+    <entry key="bs3CustomCodeChange">模型配置集中使用的自定义代码文件已更改。</entry>
+    <entry key="bs3DataflowChange">数据流分区已更改。</entry>
+    <entry key="bs3SimHardwareAccelerationCPU">Sim 硬件加速 CPU 已更改。</entry>
+    <entry key="bs2mdlWkspaceDependencyChange">模型工作区数据源文件 {0} 已更改。</entry>
+    <entry key="bs2PlatformChange">编译平台已从 {0} 更改为 {1}。</entry>
+    <entry key="bs2ModelDirty">上一次编译中的模型或库是脏的。</entry>
+    <entry key="bs2LibraryDirty">模型或库 {0} 是脏的。</entry>
+    <entry key="bs2ProtectionChange">Model 模块 {0} 引用已从 {1} 更改为 {2}。</entry>
+    <entry key="bs2MissingModel">在上一次编译中找不到模型或库 {0}。</entry>
+    <entry key="bs2MissingLibrary">找不到库 {0}。</entry>
+    <entry key="bs2ModelChange">模型或库 {0} 已更改。</entry>
+    <entry key="bs2VariantChange">变体控制项 {0} 的值已从 {1} 更改为 {2}。</entry>
+    <entry key="bs2CompilerInfoChange">编译器配置已更改。</entry>
+    <entry key="bs2ConfigSetRefChange">配置引用 {0} 已更改。</entry>
+    <entry key="bs2SharedCoderDictChange">共享的 Embedded Coder 字典 ''{0}'' 已更改。</entry>
+    <entry key="bs2SILVerificationChange1">SIL/PIL Manager 的验证模式已更改为 SIL 或 PIL 仿真。</entry>
+    <entry key="bs2SILVerificationChange2">SIL/PIL Manager 的验证模式已更改为普通、加速或快速加速仿真。</entry>
+    <entry key="bs1GlobalVarChange">全局变量 {0} 已更改。</entry>
+    <entry key="bs1ModelRefOutOfDate">引用模型 ''{0}'' 已过期。</entry>
+    <entry key="bs1ModelRefInterfaceOutOfDate">引用模型 ''{0}'' 的接口已过期。</entry>
+    <entry key="bs1UnresolvedSignals">必须解析信号对象。</entry>
+    <entry key="bs1GenCodeOnlyChange">"仅生成代码" 参数值已从 {0} 更改为 {1}。</entry>
+    <entry key="bs1CodeInstrChange">代码插桩设置已更改。</entry>
+    <entry key="bs1DynamicEnumTypeChange">动态枚举类型 {0} 已更改。</entry>
+    <entry key="bs1ProtectedModelChange">引用的 SLXP 文件 ''{0}'' 已更改。</entry>
+    <entry key="bs1SSCFileChange">Simscape 源文件 ''{0}'' 已更改。</entry>
+    <entry key="bs1MaskCallbackFileChange">封装回调文件 ''{0}'' 已更改或删除。</entry>
+    <entry key="bsTargetModelRefSim">模型引用仿真</entry>
+    <entry key="bsTargetModelRefCoder">模型引用代码生成</entry>
+    <entry key="bsTargetTopCoder">代码生成</entry>
+    <entry key="bsTargetRapidAccel">快速加速</entry>
+    <entry key="bsTargetSimAccel">Simulink 加速</entry>
+    <entry key="bsCodeGen">代码已生成。</entry>
+    <entry key="bsCodeCompile">代码已完成编译。</entry>
+    <entry key="bsCodeGenAndCompile">代码已生成并完成编译。</entry>
+    <entry key="bsTopCodeOutOfDate">生成的代码已过期。</entry>
+    <entry key="bsTopCompileArtifactsOutOfDate">编译工件已过期。</entry>
+    <entry key="bsTopForced">ForceTopModelBuild 已启用。</entry>
+    <entry key="bsTopUnsuccessfulBuild">上一次编译不成功。</entry>
+    <entry key="bsTopDDMoved">数据字典设计数据已从 {0} 转移到 {1}。</entry>
+    <entry key="bsTopSimAccel">加速 MEX 文件已过期。</entry>
+    <entry key="bsTopTLCParamOn">{0} 设置为 {1}。</entry>
+    <entry key="bsTopIncrementalChecksumMissing">增量校验和为空。</entry>
+    <entry key="bsTopIncrementalChecksumChange">增量校验和已更改。</entry>
+    <entry key="bsTopBuildDirMissing">编译文件夹不存在。</entry>
+    <entry key="bsTopBuildDirEmpty">编译文件夹为空。</entry>
+    <entry key="bsTopBuildInfoMissing">buildInfo.mat 不存在。</entry>
+    <entry key="bsTopIncompatibleBuildLocation">编译工件与当前位置不兼容。</entry>
+    <entry key="bsTopMdlRefsUpdated">引用模型已更新。</entry>
+    <entry key="bsTopEnableAccessToBaseWorkspaceChanged">EnableAccessToBaseWorkspace 已更改为 {0}。</entry>
+    <entry key="bsBuildSummaryTitle">编译摘要</entry>
+    <entry key="bsSimTargetsBuilt">模型引用仿真目标:</entry>
+    <entry key="bsCoderTargetsBuilt">模型引用代码生成目标:</entry>
+    <entry key="bsTopModelTargetsBuilt">顶层模型目标:</entry>
+    <entry key="bsTopModelAcceleratorTargetsBuilt">顶层模型加速模式目标:</entry>
+    <entry key="bsTopModelRapidAcceleratorTargetsBuilt">顶层模型快速加速模式目标:</entry>
+    <entry key="bsModelHeader">模型</entry>
+    <entry key="bsActionHeader">状态</entry>
+    <entry key="bsReasonsHeader">编译原因</entry>
+    <entry key="bsBuildTimeHeader">编译持续时间</entry>
+    <entry key="bsModelsBuilt">编译了 {0} 个模型，共 {1} 个模型({2} 个模型已经是最新的)</entry>
+    <entry key="bsBuildDuration">编译持续时间: {0}</entry>
+    <entry key="bsActionFailed">无法编译。有关详细信息，请参阅编译日志。</entry>
+    <entry key="bsActionRebuilt">已重新编译</entry>
+    <entry key="componentNotFound">Internal Error: Expected component ''{0}'' is not found in ''{1}'' configuration set.</entry>
+    <entry key="rrhModel">Model</entry>
+    <entry key="rrhTarget">Target</entry>
+    <entry key="rrhDate">Date</entry>
+    <entry key="rrhReason">Reason</entry>
+  </message>
+</rsccat>

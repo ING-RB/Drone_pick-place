@@ -1,0 +1,888 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2024 The MathWorks, Inc.
+
+     All definitions for the following Tasking VX-toolset targets:
+       - arm
+       - c166
+       - tricore
+       - rh850
+-->
+<compiler name="tasking" default="tricore"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+  </clients>
+
+  <asms>
+    <asm name="__asm"/>
+  </asms>
+
+  <attributes>
+
+    <!-- ATTRIBUTES available in ALL Tasking targets -->
+    <attribute name="__at" sig="(*)"/>
+    <attribute name="__noinline"/>
+    <attribute name="__interrupt" sig="(*)"/>
+
+    <!-- Can be used with __attribute__((name, ...)) -->
+    <attribute name="__alias__" sig="(*)"/>
+    <attribute name="__export__"/>
+    <attribute name="__const__"/>
+    <attribute name="__flatten__"/>
+    <attribute name="__format__" sig="(*)"/>
+    <attribute name="__leaf__"/>
+    <attribute name="__malloc__"/>
+    <attribute name="__noinline__"/>
+    <attribute name="__always_inline__"/>
+    <attribute name="__noreturn__"/>
+    <attribute name="__protect__"/>
+    <attribute name="__pure__"/>
+    <attribute name="__section__" sig="(*)"/>
+    <attribute name="__used__"/>
+    <attribute name="__unused__"/>
+    <attribute name="__weak" alias="gnu:weak"/>   <!-- VX Toolset docs (4.3 and up) don't mention __weak, __weak__ -->
+    <attribute name="__weak__" alias="gnu:weak"/> <!-- and cctc (in GNB) does not accept it. -->
+    <attribute name="__wrap"/>
+    <attribute name="__builtin"/>
+  </attributes>
+
+  <target_options>
+    <target_option pattern="-u" option="--uchar"/>
+    <target_option pattern="-c(.*)" option="--iso" value="\1"/>
+    <!-- Turn -Carch into - -cpu=arch -->
+    <target_option pattern="-C(.*)" option="--cpu" value="\1"/>
+    <target_option pattern="--cpu=(.*)" option="--cpu" value="\1"/>
+    <!-- Finally, split options like '- -foo=bar' into option '- -foo' and value 'bar'. -->
+    <target_option pattern="--([^=]*)=(.*)" option="--\1" value="\2"/>
+  </target_options>
+
+  <options>
+    <option name="--lean_gnu_mode"/>
+    <option name="--gnu_version" value="40900"/>
+    <option name="--no_has_include_macro"/>
+    <if feoption="--c\+\+">
+      <option name="--override_feature" value="cxx_atomic=0"/> <!-- Because Tasking's <atomic> does not have include guards or pragma once. -->
+    </if>
+    <option name="--restrict"/>
+    <option name="--c99_bool_is_keyword"/>
+    <option name="--enable_function_post_attributes"/>
+    <option name="--incl_suffixes" value="::stdh:"/>
+    <option name="--set_flag" value="allow_anonymous_union_like_construct"/>
+    <if feoption="--preprocess">
+      <option name="--ignore_macro_definition_file" value="$matlabroot/polyspace/verifier/extensions/tasking/tmw_builtins/macros_to_deactivate.txt"/>
+    </if>
+
+    <if feoption="--c\+\+">
+      <ifnot feoption="--c\+\+03">
+        <ifnot feoption="--c\+\+11">
+          <ifnot feoption="--c\+\+14">
+            <ifnot feoption="--c\+\+17">
+              <ifnot feoption="--c\+\+20">
+                <option name="--c++03"/>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </ifnot>
+      <switch option="--wchar_t-keyword">
+        <case>
+          <option name="--wchar_t_keyword"/>
+        </case>
+        <default>
+          <option name="--no_wchar_t_keyword"/>
+        </default>
+      </switch>
+      <option name="--ignore_pragma_define_type_info"/>
+      <if option="--long-long">
+        <option name="--long_long"/>
+      </if>
+      <if option="--using-std">
+        <option name="--using_std"/>
+      </if>
+      <if option="--uliterals">
+        <option name="--uliterals"/>
+      </if>
+    </if>
+
+    <if feoption="--c">
+      <option name="--c99_imaginary_is_keyword"/>
+      <option name="--polyspace_define_macro" value="__bitsizeof(a)=(sizeof(a)*8)"/>
+      <option name="--allow_array_of_void"/>
+    </if>
+    <option name="--tasking_pragma_pack"/>
+    <switch option="--uchar">
+      <case>
+        <option name="--unsigned_chars"/>
+      </case>
+      <default>
+        <switch feoption="--unsigned_chars">
+          <case>
+          </case>
+          <default>
+            <option name="--signed_chars"/>
+          </default>
+        </switch>
+      </default>
+    </switch>
+  </options>
+
+  <defines>
+    <define name="__TASKING__" value="1"/>
+    <define name="__VX__" value="1"/>
+    <define name="__BUILD__"/>
+    <define name="__PROF_ENABLE__" value="0"/>
+
+    <switch option="--language">
+      <case>
+        <!-- Option used without value. -->
+        <define name="__STDC__" value="1"/>
+      </case>
+      <default>
+        <define name="__STDC__" value="0"/>
+      </default>
+    </switch>
+
+    <if feoption="--c">
+      <define name="__STDC_HOSTED__" value="0"/>
+      <switch option="--misrac-version">
+        <case value="1998">
+          <define name="__MISRAC_VERSION__" value="1998"/>
+        </case>
+        <case value="2012">
+          <define name="__MISRAC_VERSION__" value="2012"/>
+        </case>
+        <default>
+          <define name="__MISRAC_VERSION__" value="2004"/>
+        </default>
+      </switch>
+    </if>
+
+    <if feoption="--c\+\+">
+      <define name="__STDC_VERSION__" value="199901L"/>
+      
+      <ifnot option="--wchar_t-keyword">
+        <define name="_WCHAR_T_TASKING_NOT_KEYWORD" value="1"/>
+      </ifnot>
+      <!-- Macros for C++ Tasking Libraries. -->
+      <define name="__ABI_COMPATIBILITY_VERSION" value="1"/>
+      <define name="__ABI_CHANGES_FOR_RTTI" value="1"/>
+      <define name="__ABI_CHANGES_FOR_ARRAY_NEW_AND_DELETE" value="1"/>
+      <define name="__ABI_CHANGES_FOR_PLACEMENT_DELETE" value="1"/>
+      <define name="__DELTA_TYPE" value="1"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE" value="1"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS" value="1"/>
+      <define name="__NULL_EH_REGION_NUMBER" value="1"/>
+      <define name="__REGION_NUMBER_TYPE" value="1"/>
+      <define name="__VAR_HANDLE_TYPE" value="1"/>
+      <define name="__VIRTUAL_FUNCTION_INDEX_TYPE" value="1"/>
+
+      <!-- Macros for C++ Polyspace libraries. -->
+      <define name="__USE_ISOC99" value="1"/>
+      <define name="__RUNTIME_USES_NAMESPACES" value="1"/>
+      <ifnot option="--no-namespaces">
+        <define name="__NAMESPACES" value="1"/>
+      </ifnot>
+      <ifnot option="--no-type-traits-helpers">
+        <define name="__TYPE_TRAITS_ENABLED" value="1"/>
+      </ifnot>
+      <ifnot option="--long-long">
+        <define name="__NO_LONG_LONG" value="1"/>
+      </ifnot>
+      <if option="--using-std">
+        <define name="__IMPLICIT_USING_STD" value="1"/>
+      </if>
+      <if option="--no-array-new-and-delete">
+        <undef name="__ARRAY_OPERATORS"/>
+      </if>
+      <if option="--no-bool">
+        <undef name="_BOOL"/>
+      </if>
+    </if>
+
+    <!-- Defines linked to CPU -->
+    <if option="--cpu" op="like" value="(.*)">
+      <define name="__CPU__" value="\1"/>
+      <define name="__CPU_\upper(\1)__" value="1"/>
+    </if>
+
+    <!-- Defines to allow parsing with generic header files. -->
+    <!-- These are normally set by edg.sml when -compiler not given when Gnu mode is set. -->
+    <define name="__MW_GNU__" value="1"/>
+    <define name="PST_GNU" value="1"/>
+    <define name="_GNU_SOURCE" value="1"/>
+    <define name="POLYSPACE_LIBC_NO_THROW" value="1"/>
+
+    <switch option="--uchar">
+      <case>
+        <define name="__CHAR_MIN" value="0"/>
+        <define name="__CHAR_MAX" value="255"/>
+      </case>
+      <default>
+        <define name="__CHAR_MIN" value="-128"/>
+        <define name="__CHAR_MAX" value="127"/>
+      </default>
+    </switch>
+
+    <define name="__WCHAR_MIN" value="0"/>
+    <define name="__WCHAR_MAX" value="UINT16_MAX"/>
+  </defines>
+
+  <types>
+    <type name="__codeptr" type_kind="int"/>
+    <type name="__size_t" type_kind="int" decl_specs="unsigned"/>
+    <type name="size_t" type_kind="int" decl_specs="unsigned"/>
+    <type name="__ssize_t" type_kind="int" decl_specs="signed"/>
+    <type name="__wchar_t" type_kind="int" decl_specs="unsigned,short"/>
+    <type name="__ptrdiff_t" type_kind="int"/>
+  </types>
+
+
+  <!-- Tricore target -->
+  <target name="tricore">
+
+    <target_options>
+      <target_option pattern="--cpu" notmatched="true" option="--cpu" value="tc1793b"/>
+    </target_options>
+
+    <types>
+      <type name="__bit" type_kind="bit" decl_specs="bit"/>
+    </types>
+
+    <options>
+      <!-- Intrinsic functions for Tasking Tricore -->
+      <option name="--preinclude" value="tasking/tmw_builtins/tricore.h"/>
+      <option name="--max_alignment" value="4"/>
+      <option name="--char_bit" value="8"/>
+      <option name="--sizeof_short" value="2"/>
+      <option name="--sizeof_int" value="4"/>
+      <option name="--sizeof_long" value="4"/>
+      <option name="--sizeof_long_long" value="8"/>
+      <option name="--sizeof_pointer" value="4"/>
+      <option name="--sizeof_float" value="4"/>
+      <option name="--alignof_float" value="2"/>
+      <option name="--small_enums"/>
+      <option name="--struct_align" value="4"/>
+      <option name="--bit_field_container_size" value="0"/>
+
+      <!-- Emulate - -eabi=-no-half-align -->
+      <switch option="--no-half-word-align">
+        <case>
+          <option name="--alignof_int" value="4"/>
+          <option name="--alignof_long" value="4"/>
+        </case>
+        <default>
+          <option name="--alignof_int" value="2"/>
+          <option name="--alignof_long" value="2"/>
+          <option name="--tasking_tricore_small_struct"/>
+        </default>
+      </switch>
+
+      <switch option="--fp-model">
+        <case value="+float">
+          <option name="--sizeof_double" value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <switch option="--no-double">
+            <case>
+              <option name="--sizeof_double" value="4"/>
+              <option name="--sizeof_long_double" value="4"/>
+            </case>
+            <default>
+              <option name="--sizeof_double" value="8"/>
+              <option name="--sizeof_long_double" value="8"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+
+      <option name="--little_endian"/>
+      <option name="--allow_sbit_pointer"/>
+
+      <if feoption="--c">
+        <option name="--allow_short_float"/>
+      </if>
+      <if feoption="--c\+\+">
+        <ifnot option="--rtti">
+          <option name="--no_rtti"/>
+        </ifnot>
+      </if>
+
+      <!-- Defines linked to SFR files -->
+      <!-- A two-step approach is needed to expand a symbol passed as argument to __SFRFILE__ as in
+              #include __SFRFILE__(__CPU__)
+           Hence the extra define __SFRFILENAME__.
+      -->
+      <option name="--polyspace_define_macro" value="__SFRFILENAME__(cpu)=sfr/reg##cpu.sfr"/>
+      <option name="--polyspace_define_macro" value="__SFRFILE__(cpu)=&lt;__SFRFILENAME__(cpu)&gt;"/>
+    </options>
+
+    <types>
+      <type name="__fract" type_kind="fract" decl_specs="signed,sat"/>
+      <type name="__lfract" type_kind="fract" decl_specs="signed,long,sat"/>
+      <type name="__sfract" type_kind="fract" decl_specs="signed,short,sat"/>
+      <type name="__laccum" type_kind="accum" decl_specs="signed,sat"/>
+      <type name="__accum" type_kind="accum" decl_specs="signed,sat"/> <!-- compatibility only, mapped to __laccum -->
+      <type name="__packb" type_kind="opaque"/>
+      <type name="__packhw" type_kind="opaque"/>
+
+      <if feoption="--c">
+        <type name="_Float16" type_kind="float16"/>
+      </if>
+
+      <type name="__intptr_t" type_kind="int"/>
+      <type name="__uintptr_t" type_kind="int" decl_specs="unsigned"/>
+    </types>
+
+    <defines>
+      <if feoption="--c">
+        <define name="__CTC__" value="1"/>
+        <define name="__DSPC__" value="1"/>
+        <define name="__DSPC_VERSION__" value="200001L"/>
+
+        <!-- Defines linked to FLOAT in C -->
+        <if option="--fp-model" value="-float">
+          <define name="__DOUBLE_FP__" value="1"/>
+        </if>
+        <if option="--fp-model" value="+float">
+          <define name="__SINGLE_FP__" value="1"/>
+        </if>
+      </if>
+
+      <if feoption="--c\+\+">
+        <define name="__CPTC__" value="1"/>
+        <!-- Defines linked to FLOAT in C++ -->
+        <switch option="--no-double">
+          <case>
+            <define name="__SINGLE_FP__" value="1"/>
+          </case>
+          <default>
+            <define name="__DOUBLE_FP__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__VERSION__" value="6000"/>
+      <define name="__REVISION__" value="1"/>
+
+      <!-- Defines linked to CORE -->
+      <if option="--core" op="like" value="(?:([^.]*)(?:.([^.]*)(?:.([^.]*))?)?)">
+        <define name="__CORE_\upper(\1\2\3)__" value="1"/>
+      </if>
+
+      <switch option="--core">
+        <case op="like" value="(.*)">
+          <define name="__CORE__" value="\1"/>
+        </case>
+        <default>
+          <define name="__CORE__" value="tc13"/>
+          <define name="__CORE_TC13__"/>
+        </default>
+      </switch>
+
+      <ifnot option="--fp-model" value="+soft">
+        <define name="__FPU__" value="1"/>
+      </ifnot>
+
+      <define name="__SIZE_MIN" value="INT32_MIN"/>
+      <define name="__SIZE_MAX" value="INT32_MAX"/>
+      <define name="__PTRDIFF_MIN" value="0"/>
+      <define name="__PTRDIFF_MAX" value="UINT32_MAX"/>
+      <define name="__CHAR_BIT__" value="8"/>
+      <define name="__SHORT_BIT__" value="16"/>
+      <define name="__INT_BIT__" value="32"/>
+      <define name="__LONG_BIT__" value="32"/>
+      <ifnot feoption="--c89">
+        <ifnot feoption="--c90">
+          <define name="__LLONG_BIT__" value="64"/>
+        </ifnot>
+      </ifnot>
+      <define name="__INTPTR_BIT__" value="32"/>
+      <define name="__PTRDIFF_BIT__" value="32"/>
+      <define name="__SIZE_BIT__" value="32"/>
+      <define name="__WCHAR_BIT__" value="16"/>
+    </defines>
+
+    <attributes>
+      <attribute name="__align" sig="(ci)" attrkind="ak_align"/>
+      <!-- TODO __align32 is not supported by modern Tasking compilers any more.
+                We should revisit the attributes that are actually used by VX Toolset (i.e., modern) compilers.
+      -->
+      <attribute name="__align32" alias="gnu:align(4)" constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|d|Wv|Wp|Wr|tcL{specifier:declarator_id,prefix:declarator_id}"/>
+      <attribute name="__atbit" sig="(*)"/>
+      <attribute name="__bita"/>
+      <!-- SFR Attributes -->
+      <attribute name="__sfrbit16"/>
+      <attribute name="__sfrbit32"/>
+      <!-- Memory Attributes -->
+      <attribute name="__near"/>
+      <attribute name="__far"/>
+      <attribute name="__a0"/>
+      <attribute name="__a1"/>
+      <attribute name="__a8"/>
+      <attribute name="__a9"/>
+      <attribute name="__mcsram"/>
+      <attribute name="__pram"/>
+      <attribute name="__share_pcp"/>
+      <if feoption="--c">
+        <attribute name="__share"/>
+        <attribute name="__private0"/>
+        <attribute name="__private1"/>
+        <attribute name="__private2"/>
+        <attribute name="__clone"/>
+      </if>
+      <!-- Circular Buffers -->
+      <attribute name="__circ"/>
+      <!-- Saturation Arithmetic -->
+      <attribute name="__sat" token="tok_volatile"/>
+      <attribute name="__stackparm"/>
+      <attribute name="__indirect"/>
+      <attribute name="__interrupt_fast" sig="(*)"/>
+      <attribute name="__interrupt8" sig="(*)"/>
+      <attribute name="__interrupt8_fast" sig="(*)"/>
+      <attribute name="__trap" sig="(*)"/>
+      <attribute name="__trap_fast" sig="(*)"/>
+      <attribute name="__vector_table" sig="(*)"/>
+      <attribute name="__syscallfunc" sig="(*)"/>
+      <attribute name="__enable_"/>
+      <attribute name="__bisr_" sig="(*)"/>
+      <!-- Function attributes -->
+      <attribute name="__jump__"/>
+
+      <!-- Gnu-style attributes: __attribute__((...)) -->
+      <attribute name="align" family="gnu" sig="(ci)" attrkind="ak_align"/>
+    </attributes>
+  </target>
+
+
+  <!-- C166 target -->
+  <target name="c166">
+
+    <target_options>
+      <target_option pattern="-Mn" option="--model" value="near"/>
+      <target_option pattern="-Mf" option="--model" value="far"/>
+      <target_option pattern="-Ms" option="--model" value="shuge"/>
+      <target_option pattern="-Mh" option="--model" value="huge"/>
+      <target_option pattern="--cpu" notmatched="true" option="--cpu" value="xc167ci"/>
+    </target_options>
+
+    <options>
+      <!-- Intrinsic functions for Tasking C166 -->
+      <option name="--preinclude" value="tasking/tmw_builtins/c166.h"/>
+      <option name="--max_alignment" value="2"/>
+      <option name="--char_bit" value="8"/>
+      <option name="--sizeof_short" value="2"/>
+      <option name="--sizeof_int" value="2"/>
+      <option name="--sizeof_long" value="4"/>
+      <option name="--sizeof_long_long" value="8"/>
+      <option name="--sizeof_pointer" value="4"/>
+      <option name="--sizeof_float" value="4"/>
+      <option name="--struct_align" value="2"/>
+      
+      <switch option="--fp-model">
+        <case value="+float">
+          <option name="--sizeof_double" value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <switch option="--no-double">
+            <case>
+              <option name="--sizeof_double" value="4"/>
+              <option name="--sizeof_long_double" value="4"/>
+            </case>
+            <default>
+              <option name="--sizeof_double" value="8"/>
+              <option name="--sizeof_long_double" value="8"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--little_endian"/>
+      <option name="--small_enums"/>
+      <option name="--allow_sbit_pointer"/>
+
+      <!-- Defines linked to SFR files -->
+      <!-- A two-step approach is needed to expand a symbol passed as argument to __SFRFILE__ as in
+              #include __SFRFILE__(__CPU__)
+           Hence the extra define __SFRFILENAME__. -->
+      <switch option="--alternative-sfr-file">
+        <case>
+          <option name="--polyspace_define_macro" value="__SFRFILENAME__(cpu)=sfr/reg##cpu.asfr"/>
+        </case>
+        <default>
+          <option name="--polyspace_define_macro" value="__SFRFILENAME__(cpu)=sfr/reg##cpu.sfr"/>
+        </default>
+      </switch>
+
+      <option name="--polyspace_define_macro" value="__SFRFILE__(cpu)=&lt;__SFRFILENAME__(cpu)&gt;"/>
+    </options>
+
+    <types>
+      <type name="__bit" type_kind="bit" decl_specs="bit"/>
+    </types>
+
+    <defines>
+      <define name="__BIG_ENDIAN__" value="0"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+
+      <if feoption="--c">
+        <define name="__C166__" value="1"/>
+
+        <if option="--near-functions">
+          <define name="__NEAR_FUNCTIONS__" value="1"/>
+        </if>
+
+        <switch option="--user-stack">
+          <case>
+            <define name="__USMLIB__" value="__usm"/>
+          </case>
+          <default>
+            <define name="__USMLIB__" value="__nousm"/>
+          </default>
+        </switch>
+
+        <if option="--user-stack">
+          <define name="__USER_STACK__" value="1"/>
+        </if>
+
+        <ifnot option="--no-tasking-sfr">
+          <define name="__TASKING_SFR__" value="1"/>
+        </ifnot>
+
+        <switch option="--silicon-bug">
+          <case op="like" value="(.*,.*)">
+            <error message="Cannot handle --silicon-bug with multiple bugs. Please split into separate --silicon-bug options."/>
+          </case>
+          <case op="like" value="(\d+)">
+            <define name="__SILICON_BUG_\1__" value="1"/>
+          </case>
+        </switch>
+
+        <!-- Defines linked to FLOAT in C -->
+        <if option="--fp-model" value="-float">
+          <define name="__DOUBLE_FP__" value="1"/>
+        </if>
+
+        <if option="--fp-model" value="+float">
+          <define name="__SINGLE_FP__" value="1"/>
+        </if>
+
+        <define name="__PRECISE_LIB_FP__" value="1"/>
+      </if>
+
+      <if feoption="--c\+\+">
+        <define name="__CP166__" value="1"/>
+
+        <!-- Defines linked to FLOAT in C++ -->
+        <switch option="--no-double">
+          <case>
+            <define name="__SINGLE_FP__" value="1"/>
+          </case>
+          <default>
+            <define name="__DOUBLE_FP__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__VERSION__" value="4000"/>
+      <define name="__REVISION__" value="1"/>
+
+      <switch option="--model">
+        <case value="far">
+          <define name="__MODEL__" value="'f'"/>
+        </case>
+        <case value="shuge">
+          <define name="__MODEL__" value="'s'"/>
+        </case>
+        <case value="huge">
+          <define name="__MODEL__" value="'h'"/>
+        </case>
+        <default>
+          <define name="__MODEL__" value="'n'"/>
+        </default>
+      </switch>
+
+      <!-- Defines linked to CORE -->
+      <if option="--core" op="like" value="(?:([^.]*)(?:.([^.]*)(?:.([^.]*))?)?)">
+        <define name="__CORE_\upper(\1\2\3)__" value="1"/>
+      </if>
+
+      <switch option="--core">
+        <case op="like" value="(.*)">
+          <define name="__CORE__" value="\1"/>
+        </case>
+        <default>
+          <define name="__CORE__" value="c16x"/>
+          <define name="__CORE_C16X__"/>
+        </default>
+      </switch>
+
+      <define name="__SIZE_MIN" value="INT32_MIN"/>
+      <define name="__SIZE_MAX" value="INT32_MAX"/>
+      <define name="__PTRDIFF_MIN" value="0"/>
+      <define name="__PTRDIFF_MAX" value="UINT32_MAX"/>
+    </defines>
+
+    <attributes>
+      <attribute name="__atbit" sig="(*)"/>
+      <!-- Memory Attributes -->
+      <attribute name="__near"/>
+      <attribute name="__far"/>
+      <attribute name="__bita"/>
+      <attribute name="__iram"/>
+      <attribute name="__shuge"/>
+      <attribute name="__huge"/>
+      <attribute name="__isr"/>
+      <attribute name="__usm"/>
+      <attribute name="__nousm"/>
+      <attribute name="__mac"/>
+      <attribute name="__frame" sig="(*)"/>
+      <attribute name="__registerbank" sig="(*)"/>
+      <attribute name="__packed__"/>
+      <attribute name="__unaligned"/>
+    </attributes>
+  </target>
+
+
+  <!-- RH850 target -->
+  <target name="rh850">
+
+    <target_options>
+      <target_option pattern="--cpu" notmatched="true" option="--cpu" value="r7f701603"/>
+    </target_options>
+
+    <options>
+      <!-- Intrinsic functions for Tasking RH850 -->
+      <option name="--preinclude" value="tasking/tmw_builtins/rh850.h"/>
+      <option name="--max_alignment" value="8"/>
+      <option name="--char_bit" value="8"/>
+      <option name="--sizeof_short" value="2"/>
+      <option name="--sizeof_int" value="4"/>
+      <option name="--sizeof_long" value="4"/>
+      <option name="--sizeof_long_long" value="8"/>
+      <option name="--sizeof_pointer" value="4"/>
+      <option name="--sizeof_float" value="4"/>
+
+      <switch option="--fp-model">
+        <case value="+float">
+          <option name="--sizeof_double" value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double" value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+
+      <option name="--little_endian"/>
+    </options>
+
+    <defines>
+      <if feoption="--c">
+        <define name="__C850__" value="1"/>
+      </if>
+
+      <define name="__VERSION__" value="2002"/>
+      <define name="__REVISION__" value="1"/>
+
+      <!-- Defines linked to FPU -->
+      <ifnot option="--fp-model" value="+soft">
+        <define name="__FPU__" value="1"/>
+      </ifnot>
+
+      <if option="--fpu" value="double">
+        <define name="__FPU_DOUBLE__" value="1"/>
+      </if>
+
+      <if option="--fpu" value="single">
+        <define name="__FPU_SINGLE__" value="1"/>
+      </if>
+
+      <define name="__SIZE_MIN" value="0"/>
+      <define name="__SIZE_MAX" value="UINT32_MAX"/>
+      <define name="__PTRDIFF_MIN" value="INT32_MIN"/>
+      <define name="__PTRDIFF_MAX" value="INT32_MAX"/>
+    </defines>
+
+    <attributes>
+      <attribute name="__fpu"/>
+      <attribute name="__nofpu"/>
+      <!-- Memory Attributes -->
+      <attribute name="__near"/>
+      <attribute name="__far"/>
+      <attribute name="__data"/>
+      <attribute name="__sdata"/>
+      <attribute name="__zdata"/>
+      <attribute name="__isr"/>
+      <attribute name="__nested__"/>
+      <attribute name="__interrupt__" sig="(*)"/>
+      <attribute name="__align__" sig="(ci)" attrkind="ak_align"/>
+      <attribute name="__aligned__" sig="(ci)" attrkind="ak_align"/>
+      <attribute name="__at__" sig="(*)"/>
+      <attribute name="__enable__"/>
+
+      <!-- Gnu-style attributes: __attribute__((...)) -->
+      <attribute name="align"   family="gnu" sig="(ci)" attrkind="ak_align"/>
+      <attribute name="aligned" family="gnu" sig="(ci)" attrkind="ak_align"/>
+    </attributes>
+  </target>
+
+
+  <!-- ARM target -->
+  <target name="arm">
+
+    <target_options>
+      <target_option pattern="-B" option="--endianness" value="big"/>
+      <target_option pattern="--big-endian" option="--endianness" value="big"/>
+      <target_option pattern="--cpu" notmatched="true" option="--cpu" value="ARMv7M"/>
+    </target_options>
+
+    <options>
+      <!-- Intrinsic functions for Tasking ARM -->
+      <option name="--preinclude" value="tasking/tmw_builtins/arm.h"/>
+      <option name="--max_alignment" value="8"/>
+      <option name="--char_bit" value="8"/>
+      <option name="--sizeof_short" value="2"/>
+      <option name="--sizeof_int" value="4"/>
+      <option name="--sizeof_long" value="4"/>
+      <option name="--sizeof_long_long" value="8"/>
+      <option name="--sizeof_pointer" value="4"/>
+      <option name="--sizeof_float" value="4"/>
+
+      <switch option="--fp-model">
+        <case value="+float">
+          <option name="--sizeof_double" value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <switch option="--no-double">
+            <case>
+              <option name="--sizeof_double" value="4"/>
+              <option name="--sizeof_long_double" value="4"/>
+            </case>
+            <default>
+              <option name="--sizeof_double" value="8"/>
+              <option name="--sizeof_long_double" value="8"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+
+      <!-- Endianness -->
+      <if option="--endianness" value="big">
+        <option name="--big_endian"/>
+      </if>
+
+      <if option="--endianness" value="little">
+        <option name="--little_endian"/>
+      </if>
+    </options>
+
+    <defines>
+      <if feoption="--c">
+        <define name="__ARM__" value="1"/>
+        <define name="__CARM__" value="1"/>
+        <define name="__DSPC__" value="1"/>
+        <define name="__DSPC_VERSION__" value="200001L"/>
+
+        <!-- Defines linked to FLOAT in C -->
+        <if option="--fp-model" value="-float">
+          <define name="__DOUBLE_FP__" value="1"/>
+        </if>
+
+        <if option="--fp-model" value="+float">
+          <define name="__SINGLE_FP__" value="1"/>
+        </if>
+      </if>
+
+      <if feoption="--c\+\+">
+        <define name="__CPARM__" value="1"/>
+
+        <!-- Defines linked to FLOAT in C++ -->
+        <switch option="--no-double">
+          <case>
+            <define name="__SINGLE_FP__" value="1"/>
+          </case>
+          <default>
+            <define name="__DOUBLE_FP__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__VERSION__" value="5002"/>
+      <define name="__REVISION__" value="1"/>
+
+      <if option="--thumb">
+        <define name="__THUMB__" value="1"/>
+      </if>
+
+      <!-- Defines linked to FPU -->
+      <switch option="--fpu">
+        <case value="none">
+          <define name="__FPU_NONE__" value="1"/>
+        </case>
+        <!-- The __FPU_{fpu}__ macro takes various elements of the fpu argument.
+             The forms are:
+               FPv4-sp, VFPv2, VFPv3, VFPv3-sp, VFPv4-sp
+             We need the 'base name' (FP, VFP), the version number, and optionally the sp part.
+        -->
+        <case op="like" value="(.*)v(\d+)(?-(sp))?">
+          <define name="__FPU_VFP__" value="1"/>
+          <define name="__FPU_\1\2\upper(\3)__" value="1"/>
+        </case>
+        <!-- In case the fpu argument does not match (maybe an undocumented fpu) our best guess is: -->
+        <case op="like" value="(.*)">
+          <define name="__FPU_VFP__" value="1"/>
+          <define name="__FPU_\upper(\1)__" value="1"/>
+        </case>
+        <default>
+          <define name="__FPU__" value="1"/>
+          <define name="__FPU_NONE__" value="1"/>
+        </default>
+      </switch>
+
+      <!-- Defines linked to FLOAT in C -->
+      <switch option="--endianness">
+        <case value="big">
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__SIZE_MIN" value="INT32_MIN"/>
+      <define name="__SIZE_MAX" value="INT32_MAX"/>
+      <define name="__PTRDIFF_MIN" value="0"/>
+      <define name="__PTRDIFF_MAX" value="UINT32_MAX"/>
+    </defines>
+
+    <types>
+      <type name="__intptr_t" type_kind="int"/>
+      <type name="__uintptr_t" type_kind="int" decl_specs="unsigned"/>
+    </types>
+
+    <attributes>
+      <attribute name="__interrupt_svc"/>
+      <attribute name="__interrupt_und"/>
+      <attribute name="__interrupt_iabt"/>
+      <attribute name="__interrupt_dabt"/>
+      <attribute name="__interrupt_irq"/>
+      <attribute name="__interrupt_fiq"/>
+      <attribute name="__frame" sig="(*)"/>
+      <attribute name="__unaligned" alias="gnu:unaligned" constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|t|v|d|r" apply="apply_unaligned_attr"/>
+      <attribute name="__align__" sig="(ci)" attrkind="ak_align"/>
+      <attribute name="__aligned__" sig="(ci)" attrkind="ak_align"/>
+      <attribute name="__packed__" alias="gnu:packed" constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|t|v|d|r"/>
+      <attribute name="__data"/>
+
+      <!-- Gnu-style attributes: __attribute__((...)) -->
+      <attribute name="unalign" family="gnu" apply="apply_unaligned_attr"/> <!-- Implements __unaligned above. -->
+    </attributes>
+  </target>
+</compiler>

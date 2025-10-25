@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!-- 
+       Message catalog: Simulink:PluggableInterfaceConstraints
+       Messages originating from Pluggable Interface Constraints
+       Copyright 2016-2021 The MathWorks, Inc.
+    -->
+
+    <entry key="TargetNotAllowedForFcnCall">Model ''{0}'' is a model with a Simulink Function or a function-call root inport and is configured for multi-instance code generation. This modeling pattern and configuration requires use of the ERT system target file.</entry>
+    <entry key="TargetNotAllowedForFPC">Model ''{0}'' is or refers to a model configured with a customized function interface and for multi-instance code generation. This model configuration requires use of the ERT system target file.</entry>
+    <entry key="RootIOAsPartOfModelDataStructure">
+    <![CDATA[
+        Model ''{0}'' is set up as a multi-instance Export Function model, which requires model configuration parameter ''Pass root-level I/O as:'' be set to ''Part of model data structure''
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''RootIOFormat'', ''Part of model data structure'')</cmd>
+            <txt>Consider setting the model configuration parameter 'Pass root-level I/O as:' to 'Part of model data structure'.</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="RootIOIndividualArguments">
+    <![CDATA[
+        Model ''{0}'' is configured with a customized function interface and for multi-instance code generation. This configuration requires model configuration parameter ''Pass root-level I/O as:'' to be set to ''Individual arguments''
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''RootIOFormat'', ''Individual arguments'')</cmd>
+            <txt>Consider setting the model configuration parameter 'Pass root-level I/O as:' to 'Individual arguments'.</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="SLCIForFcnCall">
+    <![CDATA[
+        Cannot configure Model ''{0}'' to use Simulink Code Inspector. Model ''{0}'' is a model with a Simulink Function or a function-call root inport and is configured for multi-instance code generation. Set model configuration parameter ''Disable incompatible optimizations'' to ''empty''
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''AdvancedOptControl'', '''')</cmd>
+            <txt>Consider setting the model configuration parameter 'Disable incompatible optimizations' to 'empty'.</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="SLCIForFPC">
+    <![CDATA[
+        Cannot configure Model ''{0}'' to use Simulink Code Inspector. Model ''{0}'' is or refers to a model configured with a customized function interface and for multi-instance code generation. Set model configuration parameter ''Disable incompatible optimizations'' to ''empty''
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''AdvancedOptControl'', '''')</cmd>
+            <txt>Consider setting the model configuration parameter 'Disable incompatible optimizations' to 'empty'.</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="FCModelHasModelBlockInAtomicSubSys">Code generator does not support multi-instance Export Function model ''{0}'' to contain model block ''{1}'' within reusable subsystem ''{2}''. </entry>
+    <entry key="FunctionCallerBlockCallingICMMethodsFromNonExpFcnModel">
+    <![CDATA[
+        Model ''{0}'', which is not an Export Function model, may not generate reusable code because it contains Function Caller block ''{1}'' that calls a scoped Simulink function. Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function' and 'Total number of instances allowed per top model' to 'One' or ensure that the model ''{0}'' is an Export Function model.
+        <actions exclusiveFixIts="no">
+          <action type="fixit" id="CodeInterfacePackagingNonreusableFix" retvalue="false">
+            <cmd>load_system(''{2}''); set_param_action(''{2}'', ''CodeInterfacePackaging'', ''Nonreusable function'');</cmd>
+            <txt>Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function'.</txt>
+          </action>
+          <action type="fixit" id="ModelReferenceNumInstancesAllowedSingleFix" retvalue="false">
+            <cmd>load_system(''{2}''); set_param_action(''{2}'',''ModelReferenceNumInstancesAllowed'',''Single'');</cmd>
+            <txt>Consider setting the model configuration parameter 'Total number of instances allowed per top model' to 'One'</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="ForEachSSInClassModel">The model ''{0}'' is a multi-instance Export Function model. In this case, ForEach Subsystem ''{1}'' is not allowed. </entry>
+    <entry key="ModelOrSubSysVariant">Model ''{0}'' is set up as a multi-instance Export Function model. In this case, Variants block ''{1}'' is not supported. </entry>
+    <entry key="InvalidStateFlowCallToICM">
+    <![CDATA[
+        Cannot generate code for call to Simulink function ''{1}'' from ''{2}'' block.
+        Model ''{0}'', which is not an Export Function model, may not generate reusable code because it contains scoped Simulink function ''{1}'' which generates reusable code. 
+        Ensure that the model ''{0}'' is an Export Function model to generate reusable code or 
+        Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function' and 
+        'Total number of instances allowed per top model' to 'One'.
+        <actions exclusiveFixIts="no">
+          <action type="fixit" id="CodeInterfacePackagingNonreusableFix" retvalue="false">
+            <cmd>load_system(''{0}''); set_param_action(''{0}'', ''CodeInterfacePackaging'', ''Nonreusable function'');</cmd>
+            <txt>Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function'.</txt>
+          </action>
+          <action type="fixit" id="ModelReferenceNumInstancesAllowedSingleFix" retvalue="false">
+            <cmd>load_system(''{0}''); set_param_action(''{0}'',''ModelReferenceNumInstancesAllowed'',''Single'');</cmd>
+            <txt>Consider setting the model configuration parameter 'Total number of instances allowed per top model' to 'One'</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="NonExpFcnModelWithICM">
+    <![CDATA[
+        Model ''{0}'', which is not an Export Function model, may not generate reusable code because it contains scoped Simulink function ''{1}'' which generates reusable code. 
+        Ensure that the model ''{0}'' is an Export Function model to generate reusable code or 
+        Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function' and 'Total number of instances allowed per top model' to 'One'.
+        <actions exclusiveFixIts="no">
+          <action type="fixit" id="CodeInterfacePackagingNonreusableFix" retvalue="false">
+            <cmd>load_system(''{0}''); set_param_action(''{0}'', ''CodeInterfacePackaging'', ''Nonreusable function'');</cmd>
+            <txt>Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function'.</txt>
+          </action>
+          <action type="fixit" id="ModelReferenceNumInstancesAllowedSingleFix" retvalue="false">
+            <cmd>load_system(''{0}''); set_param_action(''{0}'',''ModelReferenceNumInstancesAllowed'',''Single'');</cmd>
+            <txt>Consider setting the model configuration parameter 'Total number of instances allowed per top model' to 'One'</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="MultiInstExpFcnInNonExpFcn">Model ''{0}'', which is not an Export Function model, may not generate code because it contains a reference model ''{1}'' that is set up as a multi-instance Export Function. Consider setting the 'Total number of instances allowed per top model' model configuration parameter from ''{1}'' to 'One' or ensure that the model ''{0}'' is an Export Function model.</entry>
+    <entry key="MultiInstFcnCallInNonFcnCall">Model ''{0}'' contains a reference model ''{1}'' which has a Simulink Function or a function-call root inport and is configured for multi-instance code generation. This modeling pattern and configuration requires model ''{0}'' to use function-call root inport as well.</entry>
+    <entry key="CPPClassNotAllowedForFPC">Model ''{0}'' refers to a model configured with a customized function interface and for multi-instance code generation. This model setup requires model configuration parameter ''Code interface packaging'' be set to ''Nonreusable function'' or ''Reusable function''.</entry>
+    <entry key="ModelBlockInReusableVSSFcnCall">Model block ''{0}'' refers to a model with a Simulink Function or a function-call root inport and is configured for multi-instance code generation. This model block cannot be inside a reusable variant subsystem ''{1}''.</entry>
+    <entry key="ModelBlockInReusableVSSFPC">Model block ''{0}'' refers to a model configured with a customized function interface and for multi-instance code generation. This model block cannot be inside a reusable variant subsystem ''{1}''.</entry>
+    <entry key="LibrarySubsystemWithFcnCall">Code generator does not support model block ''{0}'' that has a Simulink Function or a function-call root inport and is configured for multi-instance code generation to be inside a library subsystem.</entry>
+    <entry key="LibrarySubsystemWithFPC">Code generator does not support model block ''{0}'' that is configured with a customized function interface and for multi-instance code generation to be inside a library subsystem.</entry>
+    <entry key="FunctionCallerCrossSubsysBoundary">Model ''{0}'' is set up as a multi-instance Export Function model. In this case, Function Caller block ''{1}'' inside atomic subsystem ''{2}'' cannot call a Simulink Function that is outside this subsystem.</entry>
+    <entry key="ContinuousStatesForFcnCall">
+    <![CDATA[
+        Model ''{0}'' is a model with a Simulink Function or a function-call root inport and is configured for continuous time and multi-instance code generation. Clear the model configuration parameter ''Support continuous time''
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''SupportContinuousTime'', ''off'')</cmd>
+            <txt>Clear the model configuration parameter 'Support continuous time'.</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="ContinuousStatesForFPC">
+    <![CDATA[
+        Model ''{0}'' is or refers to a model configured with a customized function interface and for continuous time and multi-instance code generation. Clear the model configuration parameter ''Support continuous time''
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''SupportContinuousTime'', ''off'')</cmd>
+            <txt>Clear the model configuration parameter 'Support continuous time'.</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+</message>
+</rsccat>

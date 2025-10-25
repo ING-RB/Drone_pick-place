@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code>session</code> interface object and its
+                        <code>queueOutputData</code> function will be removed in a future
+                    release.</p><br/><strong>Suggested Action</strong><br/><p>To access a data acquisition device, use a <code>DataAcquisition</code>
+                    object with its functions and properties instead. You can replace the
+                        <code>queueOutputData</code> function with one of the
+                    following:</p><ul><li><p>Use <code>preload</code> if the
+                                <code>DataAcquisition</code> is not running and you do not
+                            want to start it at this time. This is necessary before starting
+                            background operations.</p></li><li><p>Use <code>write</code> if you want to immediately start the
+                                <code>DataAcquisition</code> with the data you are writing
+                            (foreground), or if the <code>DataAcquisition</code> is already
+                            running and you want to add output data (background).</p></li></ul><p>For more information, see <a href="matlab:helpview([docroot '/daq/daq.map'],'transition')" target="_blank">Transition Your Code from Session to DataAcquisition
+                    Interface</a>.</p></body></html>

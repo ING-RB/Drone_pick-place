@@ -1,0 +1,218 @@
+@import "variables";
+
+.mwDefaultVisualFamily.mwComboBox {
+  background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+  border: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+  color: var(--mw-color-primary, $mw-color-primary);
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwComboBoxHover {
+  border-color: var(--mw-borderColor-hover, $mw-borderColor-hover);
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwComboBoxFocused {
+  border-color: var(--mw-borderColor-focus, $mw-borderColor-focus);
+}
+
+.mwDefaultVisualFamily.mwComboBox:not(.mwComboBoxHover) .mwArrowContainerNode {
+  background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwArrowContainerNode:hover {
+  background: var(--mw-backgroundColor-hover, $mw-backgroundColor-hover);
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwArrowContainerNode:active {
+  background: var(--mw-backgroundColor-active, $mw-backgroundColor-active);
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwDefaultVisualFamily.mwTextField {
+  background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+  border-radius: 0;
+  border: none;
+  color: var(--mw-color-primary, $mw-color-primary);
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwDefaultVisualFamily.mwTextField.mwWidgetDisabled {
+  background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+  opacity: 1
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwWidgetDisabled .mwArrowContainerNode {
+  pointer-events: none
+}
+
+.mwDefaultVisualFamily.mwComboBox {
+  border-radius: 0 5px 5px 0
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwHasMenuOpened.mwHasMenuOpenedBottom {
+  border-radius: 0 5px 0 0
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwHasMenuOpened.mwHasMenuOpenedTop {
+  border-radius: 0 0 5px 0
+}
+
+/* ==== NonEditable ==== */
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable {
+  background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+  border: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+  border-radius: 5px
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable:not(.mwComboBoxHover),
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable:not(.mwComboBoxHover) .mwArrowContainerNode {
+  background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+/* Border between arrow container and text container */
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwArrowContainerNode {
+  border-left: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwComboBoxHover,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwArrowContainerNode:hover {
+  background: var(--mw-backgroundColor-hover, $mw-backgroundColor-hover);
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwComboBoxActive,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwComboBoxFocused,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwComboBoxFocused .mwArrowContainerNode,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwArrowContainerNode:active {
+  border-color: var(--mw-borderColor-focus, $mw-borderColor-focus);
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwHasMenuOpened.mwComboBoxActive,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwHasMenuOpened.mwComboBoxFocused,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwHasMenuOpened.mwComboBoxFocused .mwArrowContainerNode,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwHasMenuOpened .mwArrowContainerNode:active {
+  background: var(--mw-backgroundColor-active, $mw-backgroundColor-active);
+  border-color: var(--mw-borderColor-focus, $mw-borderColor-focus);
+}
+
+// fix for g3049667
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable.mwValidationError,
+.mwDefaultVisualFamily.mwComboBox.mwComboBoxFocused.mwNonEditable.mwValidationError {
+    border: 1px solid var(--mw-borderColor-error);
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwDefaultVisualFamily.mwTextField.mwWidgetDisabled,
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwDefaultVisualFamily.mwTextField input {
+  background: none
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.mwWidget.mwDefaultVisualFamily.mwComboBoxPopup {
+  background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+.mwWidget.mwDefaultVisualFamily.mwComboBoxPopup .mwSharedMenuItem {
+  background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+.mwWidget.mwDefaultVisualFamily.mwComboBoxPopup:not(.mwComboBoxPopupHover) .mwSharedMenuItem:focus {
+  background: var(--mw-backgroundColor-selectedFocus, $mw-backgroundColor-selectedFocus);
+  color: var(--mw-color-primary, $mw-color-primary); /* g2384753 */
+}
+
+.mwWidget.mwDefaultVisualFamily.mwComboBoxPopup .mwSharedMenuItem:hover {
+  background: var(--mw-backgroundColor-selectedFocus, $mw-backgroundColor-selectedFocus);
+  color: var(--mw-color-primary, $mw-color-primary); /* g2384753 */
+}
+
+.mwDefaultVisualFamily.mwWidget.mwComboBoxPopup .mwSharedMenuItem.mwComboBoxSelectedMenuItem {
+  background: var(--mw-backgroundColor-selected, $mw-backgroundColor-selected);
+  color: var(--mw-color-primary, $mw-color-primary); /* g2384753 */
+}
+
+/* Border between arrow container and text container */
+.mwWidget.mwDefaultVisualFamily.mwComboBox .mwArrowContainerNode {
+  border-left: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+}
+
+.mwWidget.mwDefaultVisualFamily.mwComboBox.mwHasMenuOpened.mwHasMenuOpenedBottom.mwNonEditable {
+  border-radius: 5px 5px 0 0;
+}
+
+.mwWidget.mwDefaultVisualFamily.mwComboBox.mwHasMenuOpened.mwHasMenuOpenedTop.mwNonEditable {
+  border-radius: 0 0 5px 5px;
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwArrowContainerNode {
+  border-left: none;
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwDefaultVisualFamily.mwTextField {
+  cursor: default;
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwDefaultVisualFamily.mwTextField .mwInputNode {
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwDisabledOverlayNode,.mwDefaultVisualFamily.mwComboBox.mwNonEditable .mwDefaultVisualFamily.mwTextField .mwDisabledOverlayNode {
+  display: none;
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwDefaultVisualFamily.mwTextField .mwInputNode:disabled {
+  color: var(--mw-color-primary, $mw-color-primary);
+  opacity: 1;
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwDefaultVisualFamily.mwTextField .mwInputNode{
+  color: var(--mw-color-primary, $mw-color-primary);
+  opacity: 1;
+}
+
+.mwDefaultVisualFamily.mwComboBox .mwDefaultVisualFamily.mwTextField .mwInputNode::placeholder{
+  color: var(--mw-color-secondary, $mw-color-secondary);
+  opacity: 1;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.mwDropDownHasOpenedDownwards {
+  margin-top: 1px;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.mwDropDownHasOpenedUpwards {
+  margin-top: -1px;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.mwDropDownHasOpenedDownwards.mwDropDownHasScrollbars {
+  margin-top: 0px;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.mwDropDownHasOpenedUpwards.mwDropDownHasScrollbars {
+  margin-top: -2px;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.mwDropDownHasOpenedDownwards.mwDropDownHasScrollbars.mwDropDownHasMaxHeight {
+  margin-top: 1px;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.mwDropDownHasOpenedUpwards.mwDropDownHasScrollbars.mwDropDownHasMaxHeight {
+  margin-top: -1px;
+}
+
+.mwComboBoxPopup .mwTextNode {
+  min-height: 1em;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.darkScrollbar {
+  color-scheme: dark;
+}
+
+.mwComboBoxPopupParent.mwWidgetPopup.lightScrollbar {
+  color-scheme: light;
+}

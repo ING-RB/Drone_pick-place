@@ -1,0 +1,1071 @@
+{
+  "_schemaVersion": "1.0.0",
+  
+    "Simulink.sdi.createRun":
+    {
+        "inputs":[
+            {
+                "name": "var",
+                "kind": "required",
+                "purpose": "Variable to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runID",
+                "purpose": "ID of created Run"
+            },
+            {
+                "name": "runIdx",
+                "purpose": "Index of created Run"
+            },
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in created Run"
+            }
+        ]
+    },
+    "Simulink.sdi.createRun":
+    {
+        "inputs":[
+            {
+                "name": "runName",
+                "kind": "positional",
+                "type": ["char"],
+                "purpose": "Run name"
+            },
+            {
+                "name": "mode",
+                "kind": "positional",
+                "type": ["char", "choices={'vars'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "var",
+                "kind": "ordered",
+                "repeating": true,
+                "purpose": "Variables to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runID",
+                "purpose": "ID of created Run"
+            },
+            {
+                "name": "runIdx",
+                "purpose": "Index of created Run"
+            },
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in created Run"
+            }
+        ]
+    },
+    "Simulink.sdi.createRun":
+    {
+        "inputs":[
+            {
+                "name": "runName",
+                "kind": "required",
+                "type": ["char"],
+                "purpose": "Run name"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'file'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "filename",
+                "kind": "required",
+                "type": "file",
+                "purpose": "File to import"
+            },
+            {
+                "name": "reader",
+                "kind": "positional",
+                "type": "char",
+                "purpose": "File reader to use for importing data"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runID",
+                "purpose": "ID of created Run"
+            },
+            {
+                "name": "runIdx",
+                "purpose": "Index of created Run"
+            },
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in created Run"
+            }
+        ]
+    },
+    "Simulink.sdi.createRun":
+    {
+        "inputs":[
+            {
+                "name": "runName",
+                "kind": "required",
+                "type": ["char"],
+                "purpose": "Run name"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'namevalue'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "sourceNames",
+                "kind": "required",
+                "type": [["cellstr"], ["string"]],
+                "purpose": "Source names for imported data"
+            },
+            {
+                "name": "sigValues",
+                "kind": "required",
+                "type": ["cell"],
+                "purpose": "Data to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runID",
+                "purpose": "ID of created Run"
+            },
+            {
+                "name": "runIdx",
+                "purpose": "Index of created Run"
+            },
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in created Run"
+            }
+        ]
+    },
+
+    "Simulink.sdi.addToRun":
+    {
+        "inputs":[
+            {
+                "name": "runID",
+                "kind": "required",
+                "type": "numeric",
+                "purpose": "ID of Run to add to"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'vars'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "var",
+                "kind": "ordered",
+                "repeating": true,
+                "purpose": "Variables to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in Run"
+            }
+        ]
+    },
+    "Simulink.sdi.addToRun":
+    {
+        "inputs":[
+            {
+                "name": "runID",
+                "kind": "required",
+                "type": "numeric",
+                "purpose": "ID of Run to add to"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'file'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "filename",
+                "kind": "required",
+                "type": "file",
+                "purpose": "File to import"
+            },
+            {
+                "name": "reader",
+                "kind": "positional",
+                "type": "char",
+                "purpose": "File reader to use for importing data"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in Run"
+            }
+        ]
+    },
+    "Simulink.sdi.addToRun":
+    {
+        "inputs":[
+            {
+                "name": "runID",
+                "kind": "required",
+                "type": "numeric",
+                "purpose": "ID of Run to add to"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'namevalue'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "sourceNames",
+                "kind": "required",
+                "type": [["cellstr"], ["string"]],
+                "purpose": "Source names for imported data"
+            },
+            {
+                "name": "sigValues",
+                "kind": "required",
+                "type": ["cell"],
+                "purpose": "Data to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigIDs",
+                "purpose": "IDs of the new signals in Run"
+            }
+        ]
+    },
+
+    "Simulink.sdi.getSource":
+    {
+        "inputs":[],
+        "outputs":[
+            {
+                "name": "source",
+                "purpose": "Path to internal repository file"
+            }
+        ]
+    },
+
+    "Simulink.sdi.DatasetRef":
+    {
+        "inputs":[
+            {
+                "name": "runID",
+                "kind": "positional",
+                "type": ["numeric"],
+                "purpose": "Run identifier"
+            },
+            {
+                "name": "domain",
+                "kind": "positional",
+                "type": ["char", "choices={'signals','outports','dsm','state','param','sf_data','sf_state','sf_state_child','sf_state_leaf','slt_verify','dashboard'}"],
+                "purpose": "Data to reference in DatasetRef object"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runID",
+                "purpose": "ID of created Run"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef":
+    {
+        "inputs":[
+            {
+                "name": "domain",
+                "kind": "required",
+                "type": ["char", "choices={'signals','outports','dsm','state','param','sf_data','sf_state','sf_state_child','sf_state_leaf','slt_verify','dashboard'}"],
+                "purpose": "Data to reference in DatasetRef object"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runID",
+                "purpose": "ID of created Run"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.compare":
+    {
+        "inputs":[
+            {
+                "name": "dsrObj",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference for baseline"
+            },
+            {
+                "name": "other",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to compare to"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "matches"
+            },
+            {
+                "name": "mismatches"
+            },
+            {
+                "name": "results"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.get":
+    {
+        "inputs":[
+            {
+                "name": "SDIdatasetRef",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to get element from"
+            },
+            {
+                "name": "index",
+                "kind": "required",
+                "type": "numeric",
+                "purpose": "Index of element"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "element"
+            },
+            {
+                "name": "name"
+            },
+            {
+                "name": "index"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.getElement":
+    {
+        "inputs":[
+            {
+                "name": "SDIdatasetRef",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to get element from"
+            },
+            {
+                "name": "index",
+                "kind": "required",
+                "type": "numeric"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "element"
+            },
+            {
+                "name": "name"
+            },
+            {
+                "name": "index"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.getAsDatastore":
+    {
+        "inputs":[
+            {
+                "name": "SDIdatasetRef",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to get element from"
+            },
+            {
+                "name": "arg",
+                "kind": "required",
+                "type": [["numeric"], ["char"]],
+                "purpose": "Element name or index"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "elementDatastore"
+            },
+            {
+                "name": "name"
+            },
+            {
+                "name": "index"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.getElementNames":
+    {
+        "inputs":[
+            {
+                "name": "dsrObj",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to get names from"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "names"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.getSignal":
+    {
+        "inputs":[
+            {
+                "name": "SDIdatasetRef",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to get element from"
+            },
+            {
+                "name": "searchArg",
+                "kind": "required",
+                "type": [["numeric"], ["char"]],
+                "purpose": "Element name or index"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigObj"
+            }
+        ]
+    },
+    "Simulink.sdi.DatasetRef.plot":
+    {
+        "inputs":[
+            {
+                "name": "SDIDatasetRef",
+                "kind": "required",
+                "type": "Simulink.sdi.DatasetRef",
+                "purpose": "Dataset Reference to get element from"
+            }
+        ],
+        "outputs":[]
+    },
+
+    "Simulink.sdi.Run.add":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "sig",
+                "kind": "required",
+                "purpose":"Data to add to run"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Run.add":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'vars'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "var",
+                "kind": "ordered",
+                "repeating": true,
+                "purpose": "Variables to import"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Run.add":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'file'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "filename",
+                "kind": "required",
+                "type": "file",
+                "purpose": "File to import"
+            },
+            {
+                "name": "reader",
+                "kind": "positional",
+                "type": "char",
+                "purpose": "File reader to use for importing data"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Run.add":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'namevalue'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "sourceNames",
+                "kind": "required",
+                "type": [["cellstr"], ["string"]],
+                "purpose": "Source names for imported data"
+            },
+            {
+                "name": "sigValues",
+                "kind": "required",
+                "type": ["cell"],
+                "purpose": "Data to import"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Run.export":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "to",
+                "kind": "namevalue",
+                "type": "choices={'variable','file'}"
+            },
+            {
+                "name": "filename",
+                "kind": "namevalue",
+                "type": "file"
+            },
+            {
+                "name": "overwrite",
+                "kind": "namevalue",
+                "type": "choices={'file','sheetsonly'}"
+            },
+            {
+                "name": "metadata",
+                "kind": "namevalue",
+                "type": "string"
+            },
+            {
+                "name": "sharetimecolumn",
+                "kind": "namevalue",
+                "type": "choices={'on','off'}"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "ds"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getAllSignalIDs":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigIDs"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getAllSignals":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigs"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getDatasetRef":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sdiDSRef"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getSignalByIndex":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "idx",
+                "kind": "required",
+                "type": "numeric"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sig"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getSignalIDByIndex":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "idx",
+                "kind": "required",
+                "type": "numeric"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigID"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getSignalIDsByName":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "name",
+                "kind": "required",
+                "type": "char"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigIDs"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getSignalsByName":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "name",
+                "kind": "required",
+                "type": "char"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "sigs"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.isValidSignalID":
+    {
+        "inputs":[
+            {
+                "name": "runObj",
+                "kind": "required",
+                "type": "Simulink.sdi.Run"
+            },
+            {
+                "name": "sigID",
+                "kind": "required",
+                "type": "numeric"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "isValid"
+            }
+        ]
+    },
+
+    "Simulink.sdi.Run.create":
+    {
+        "inputs":[
+            {
+                "name": "var",
+                "kind": "required",
+                "purpose": "Variable to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runObj"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.create":
+    {
+        "inputs":[
+            {
+                "name": "runName",
+                "kind": "positional",
+                "type": ["char"],
+                "purpose": "Run name"
+            },
+            {
+                "name": "mode",
+                "kind": "positional",
+                "type": ["char", "choices={'vars'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "var",
+                "kind": "ordered",
+                "repeating": true,
+                "purpose": "Variables to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runObj"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.create":
+    {
+        "inputs":[
+            {
+                "name": "runName",
+                "kind": "required",
+                "type": ["char"],
+                "purpose": "Run name"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'file'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "filename",
+                "kind": "required",
+                "type": "file",
+                "purpose": "File to import"
+            },
+            {
+                "name": "reader",
+                "kind": "positional",
+                "type": "char",
+                "purpose": "File reader to use for importing data"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runObj"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.create":
+    {
+        "inputs":[
+            {
+                "name": "runName",
+                "kind": "required",
+                "type": ["char"],
+                "purpose": "Run name"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": ["char", "choices={'namevalue'}"],
+                "purpose": "What to import from"
+            },
+            {
+                "name": "sourceNames",
+                "kind": "required",
+                "type": [["cellstr"], ["string"]],
+                "purpose": "Source names for imported data"
+            },
+            {
+                "name": "sigValues",
+                "kind": "required",
+                "type": ["cell"],
+                "purpose": "Data to import"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "runObj"
+            }
+        ]
+    },
+    "Simulink.sdi.Run.getLatest":
+    {
+        "inputs":[],
+        "outputs":[
+            {
+                "name": "runObj"
+            }
+        ]
+    },
+
+    "Simulink.sdi.Signal.convertDataType":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            },
+            {
+                "name": "type",
+                "kind": "required",
+                "type": ["string", "choices={'double','single','half','int8','uint8','int16','uint16','int32','uint32','int64','uint64','boolean','fixdt()'}"],
+                "purpose": "New data type"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Signal.convertUnits":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            },
+            {
+                "name": "units",
+                "kind": "required",
+                "type": "string"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Signal.collapse":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Signal.convertToFrames":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Signal.expand":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Signal.export":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            },
+            {
+                "name": "startTime",
+                "kind": "positional",
+                "type": "numeric"
+            },
+            {
+                "name": "endTime",
+                "kind": "positional",
+                "type": "numeric"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "ts"
+            }
+        ]
+    },
+    "Simulink.sdi.Signal.export":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            },
+            {
+                "name": "to",
+                "kind": "namevalue",
+                "type": "choices={'variable','file'}"
+            },
+            {
+                "name": "filename",
+                "kind": "namevalue",
+                "type": "file"
+            },
+            {
+                "name": "overwrite",
+                "kind": "namevalue",
+                "type": "choices={'file','sheetsonly'}"
+            },
+            {
+                "name": "metadata",
+                "kind": "namevalue",
+                "type": "string"
+            },
+            {
+                "name": "sharetimecolumn",
+                "kind": "namevalue",
+                "type": "choices={'on','off'}"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "ts"
+            }
+        ]
+    },
+    "Simulink.sdi.Signal.getAsTall":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            }
+        ],
+        "outputs":[
+            {
+                "name": "tt"
+            }
+        ]
+    },
+    "Simulink.sdi.Signal.plotOnSubPlot":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            },
+            {
+                "name": "r",
+                "kind": "required",
+                "type": "numeric"
+            },
+            {
+                "name": "c",
+                "kind": "required",
+                "type": "numeric"
+            },
+            {
+                "name": "checked",
+                "kind": "required",
+                "type": "logical"
+            }
+        ],
+        "outputs":[]
+    },
+    "Simulink.sdi.Signal.removeTimePoints":
+    {
+        "inputs":[
+            {
+                "name": "sig",
+                "kind": "required",
+                "type": "Simulink.sdi.Signal"
+            },
+            {
+                "name": "startTime",
+                "kind": "namevalue",
+                "type": "numeric",
+                "purpose": "Start time of region to remove"
+            },
+            {
+                "name": "endTime",
+                "kind": "namevalue",
+                "type": "numeric",
+                "purpose": "End time of region to remove"
+            },
+            {
+                "name": "splice",
+                "kind": "namevalue",
+                "type": "logical",
+                "purpose": "Whether to shift points after removal"
+            }
+        ],
+        "outputs":[]
+    }
+
+}

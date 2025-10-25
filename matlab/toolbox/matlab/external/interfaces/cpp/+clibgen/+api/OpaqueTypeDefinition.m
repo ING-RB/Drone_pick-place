@@ -1,0 +1,2 @@
+classdef OpaqueTypeDefinition < handle
+end

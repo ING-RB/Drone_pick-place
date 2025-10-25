@@ -1,0 +1,33 @@
+{
+"datatip":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"required",  "type":[["matlab.graphics.chart.interaction.DataAnnotatable"],
+                                                      ["matlab.graphics.primitive.Polygon"],
+                                                      ["matlab.graphics.primitive.Line"],
+                                                      ["matlab.graphics.primitive.Surface"],
+                                                      ["matlab.graphics.primitive.Patch"],
+                                                      ["matlab.graphics.primitive.Image"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"x", "kind":"required", "type":"double"},
+                    {"name":"y", "kind":"required", "type":"double"},
+                    {"name":"z", "kind":"ordered", "type":"double"}
+                ],
+                [
+                    {"name":"DataIndex", "kind":"ordered", "type":"double"}
+                ]
+            ]
+        },
+        {"name":"Location", "kind":"namevalue", "type":"choices={'northeast','northwest','southeast','southwest'}"},
+        {"name":"SnapToDataVertex", "kind":"namevalue", "type":"choices={'on','off'}"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.datatip.DataTip"}
+    ],
+    "outputs":
+    [
+        {"name":"dt", "type":"matlab.graphics.datatip.DataTip"}
+    ]
+}
+}

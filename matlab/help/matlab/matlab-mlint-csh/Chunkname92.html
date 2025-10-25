@@ -1,0 +1,30 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The size of the indicated variable or array appears to be changing with each
+                    loop iteration. Commonly, this message appears because an array is growing by
+                    assignment or concatenation. Growing an array by assignment or concatenation can
+                    be expensive. For large arrays, MATLAB must allocate a new block of memory and
+                    copy the older array contents to the new array as it makes each assignment. </p><p>Programs that change the size of a variable in this way can spend most of
+                    their run time in this inefficient activity. There is also significant overhead
+                    in shrinking an array on each iteration or in changing the size of a variable on
+                    each iteration. In such cases, MATLAB must reallocate and copy the contents
+                    repeatedly.</p><p>For scripts, Code Analyzer cannot determine whether the array was preallocated
+                    before the script was called. Depending on your use of scripts, you might want
+                    to enable or disable this message independently of the related message (with
+                    message ID AGROW) that applies to functions and class methods. </p><br/><strong>Suggested Action</strong><br/><p>Consider preallocating a variable or array before entering the loop by using
+                            <code><a href="matlab:doc zeros" target="_blank">zeros</a></code>,
+                            <code><a href="matlab:doc ones" target="_blank">ones</a></code>,
+                            <code><a href="matlab:doc cell" target="_blank">cell</a></code>, or
+                    a similar function. Preallocating avoids the need for MATLAB to copy the data
+                    from one array to another inside the loop. For examples of code that do and do
+                    not preallocate an array, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'prog_prealloc_arrays')" target="_blank">“Preallocating Arrays”</a></p><p>When an array grows by assigning past the end of the array or using
+                    concatenation, preallocation alone does not improve the performance. The code
+                    must use explicit indices also.</p><p>Assigning to an array in a script that the caller of the script preallocated
+                    provides an opportunity to create bugs that are difficult to detect. If the
+                    script is called multiple times, these bugs are particularly difficult to
+                    detect. However, there are other uses of scripts where preallocating in this
+                    manner is necessary or even desirable. In this case, suppress the message for
+                    specific assignments or for the whole script, as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>. It might also
+                    be appropriate to suppress this message if any of the following is true:<ul><li><p>The loop code is searching for rare or exceptional events
+                                (especially if you do not expect it to find any).</p><p>In this case, it can be reasonable to grow the array only as the
+                                loop code finds such events.</p></li><li><p>The array is small and will always be small.</p><p>In this case, the impact of recopying is also small.</p></li><li><p>The array was preallocated, but in a way that Code Analyzer does
+                                not recognize.</p></li></ul></p><p>If you do not know the size of an array before the loop begins, preallocate
+                    it, and then shrink it, if necessary, after the loop completes.</p></body></html>

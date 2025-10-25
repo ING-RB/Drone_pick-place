@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!--
+ * default_observer_configurations.xml 
+ * Abstract: 
+ *    Define the default configuration parameters for signal clients.
+ *    Only primitive types are supported, so the XML is designed to
+ *    allow parameters to be arrays of structures.
+ *
+ * Copyright 2013-2023 The MathWorks, Inc.
+ *
+ -->
+<default_observer_configurations>
+
+    <!-- Web Client Observer (SDI) -->
+    <webclient_observer>
+        <Parameter name="LineSettings">
+            <LineStyle type="string" value=""/>
+            <SLINSTLineWidth type="unsigned int" value="2"/>
+            <DefaultLineWidth type="unsigned int" value="1"/>
+            <Color type="double" value=""/>
+            <Axes type="unsigned int" value=""/>
+            <ColorString type="string" value=""/> 
+        </Parameter>
+        <Parameter name="Adaptors">
+            <Name type="asciiString" value="hmi_mag_phase_converter"/>
+            <Name type="asciiString" value="hmi_choose_min_and_max"/>
+            <Name type="asciiString" value="hmi_display_unit_converter"/>
+            <Name type="asciiString" value="hmi_data_range_normalizer"/>
+            <Name type="asciiString" value="hmi_convert_to_double"/>
+            <!-- To support cursors and markers, we disable run-length encoding 
+            <Name type="asciiString" value="hmi_remove_duplicate_data"/>
+            -->
+        </Parameter>
+    </webclient_observer>
+  
+    <!-- Web Widget Observer (HMI) -->
+    <hmi_web_widget_observer>
+        <Parameter name="WebWidgetParameters">
+            <DisablePrebuffering type="unsigned int" value="1"/>
+            <AlwaysExpandable type="unsigned int" value="1"/>
+        </Parameter>
+    </hmi_web_widget_observer>
+
+    <!-- Logic Analyzer -->
+    <logicanalyzer_observer>
+      <Parameter name="Adaptors">
+          <Name type="asciiString" value="simviz_LA_Trigger"/>
+          <Name type="asciiString" value="simviz_LA_min_and_max_thinner"/>
+      </Parameter>
+    </logicanalyzer_observer>
+    
+    <!-- Web Scopes -->
+    <webscope_observer>
+        <Parameter name="Adaptors">
+            <Name type="asciiString" value="webscope_adaptor"/>
+        </Parameter>
+    </webscope_observer>
+    
+    <webscopecomposite_observer>
+        <Parameter name="Adaptors">
+            <Name type="asciiString" value="webscope_adaptor"/>
+        </Parameter>
+    </webscopecomposite_observer>
+    
+    <!-- Spectrogram and Measurement Observers do not want to use the DataProcessorInterface to
+        call their data processor's transform methods. A dummy converter is passed in that does
+        not match the domain is used instead. -->
+    
+    <!-- Spectrogram Observer (SA) -->
+    <spectrogram_observer>
+        <Parameter name="Adaptors">
+		
+            <Name type="asciiString" value="hmi_pspectrum_converter"/>
+        </Parameter>
+    </spectrogram_observer>
+    
+    <!-- Measurements Observer (SA) -->
+    <measurement_observer>
+        <Parameter name="Adaptors">
+            <Name type="asciiString" value="hmi_pspectrum_converter"/>
+        </Parameter>
+    </measurement_observer>
+    
+    <!-- Spectrum Estimation Obserer (SA) -->
+    <spectralestimation_observer>
+        <Parameter name="Adaptors">
+            <Name type="asciiString" value="hmi_spectrogram_converter"/>
+        </Parameter>
+    </spectralestimation_observer>
+    
+    <!-- Aero HMI Dashboard Block Observer (HMI) -->
+    <aerohmiblocks_observer>
+        <Parameter name="WebWidgetParameters">
+            <DisablePrebuffering type="unsigned int" value="1"/>
+            <AlwaysExpandable type="unsigned int" value="1"/>
+        </Parameter>
+    </aerohmiblocks_observer>
+    
+    <webclient_param_observer>
+        <Parameter name="Adaptors">
+            <Name type="asciiString" value="hmi_display_unit_converter"/>
+        </Parameter>
+    </webclient_param_observer>
+</default_observer_configurations>

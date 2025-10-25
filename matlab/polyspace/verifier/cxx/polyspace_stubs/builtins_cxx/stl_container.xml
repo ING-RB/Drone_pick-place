@@ -1,0 +1,2665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020-2024 The MathWorks, Inc. -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+
+  <tag id="std_equal" kind="function" user_name="std::operator==" other_names="std::__detail::operator==" is_template="true">
+    <properties>
+       <property kind="stl_cont">STD_EQUAL</property>
+    </properties>
+  </tag>
+
+  <tag id="std_not_equal" kind="function" user_name="std::operator!=" other_names="std::__detail::operator!=" is_template="true">
+    <properties>
+       <property kind="stl_cont">STD_NOT_EQUAL</property>
+    </properties>
+  </tag>
+
+  <tag id="std_add" kind="function" user_name="std::operator+">
+    <properties>
+       <property kind="stl_cont">STD_ADD</property>
+    </properties>
+  </tag>
+
+  <tag id="std_minus" kind="function" user_name="std::operator-">
+    <properties>
+       <property kind="stl_cont">STD_MINUS</property>
+    </properties>
+  </tag>
+
+  <tag id="std_distance" kind="function" user_name="std::distance" is_template="true">
+    <properties>
+       <property kind="stl_cont">STD_DISTANCE</property>
+       <property kind="rule">STD_DISTANCE</property>
+    </properties>
+  </tag>
+
+  <!-- https://www.cplusplus.com/reference/initializer_list/initializer_list/ -->
+  <tag id="std_initializer_list" kind="type" user_name="std::initializer_list" >
+    <properties>
+      <property kind="stl_cont">INITIALIZER_LIST</property>
+    </properties>
+  </tag>
+
+  <tag id="std_initializer_list_begin" kind="function" user_name="std::initializer_list::begin" >
+    <properties>
+      <property kind="stl_cont">INITIALIZER_LIST_BEGIN</property>
+      <property kind="rule">BEGIN_ITERATOR</property>
+    </properties>
+  </tag>
+
+  <tag id="std_initializer_list_end" kind="function" user_name="std::initializer_list::end" >
+    <properties>
+      <property kind="stl_cont">INITIALIZER_LIST_END</property>
+      <property kind="rule">END_ITERATOR</property>
+    </properties>
+  </tag>
+
+  <!-- -->
+  <tag id="std_allocator" kind="type" user_name="std::allocator" >
+    <properties>
+      <property kind="stl_cont">ALLOCATOR</property>
+      <property kind="rule">PS_INTERNAL_STD_ALLOCATOR_DEPRECATED_CPP17</property>
+    </properties>
+  </tag>
+
+  <!-- -->
+  <tag id="std_back_inserter" kind="function" user_name="std::back_inserter" >
+    <properties>
+      <property kind="rule">STD_BACK_INSERTER</property>
+    </properties>
+  </tag>
+
+  <tag id="std_enable_if" kind="type" user_name="std::enable_if::type" >
+    <properties>
+      <property kind="stl_cont">ENABLE_IF</property>
+    </properties>
+  </tag>
+
+  <!-- Containers -->
+
+  <!-- http://www.cplusplus.com/reference/array/array/ -->
+  <tag id="std_array" kind="type" user_name="std::array" other_names="boost::array">
+    <properties>
+      <property kind="stl_cont">ARRAY_TYPE</property>
+    </properties>
+    <!-- std::array Member functions -->
+
+    <tag id="std_array_at" kind="function" user_name="at" is_template="true">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_AT</property> -->
+        <property kind="rule">RETURNS_REFERENCE</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_array_size" kind="function" user_name="size">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_SIZE</property> -->
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_array_begin" kind="function" user_name="begin">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_BEGIN</property> -->
+        <property kind="rule">BEGIN_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_cbegin" kind="function" user_name="cbegin">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_CBEGIN</property> -->
+        <property kind="rule">BEGIN_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_rbegin" kind="function" user_name="rbegin">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_RBEGIN</property> -->
+        <property kind="rule">RBEGIN_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_crbegin" kind="function" user_name="crbegin">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_CRBEGIN</property> -->
+        <property kind="rule">RBEGIN_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_end" kind="function" user_name="end">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_END</property> -->
+        <property kind="rule">END_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_cend" kind="function" user_name="cend">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_CEND</property> -->
+        <property kind="rule">END_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_rend" kind="function" user_name="rend">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_REND</property> -->
+        <property kind="rule">REND_ITERATOR</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_crend" kind="function" user_name="crend">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_CREND</property> -->
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_array_operator_bracket" kind="function" user_name="operator[]" is_template="true">
+      <properties>
+        <!-- <property kind="stl_cont">ARRAY_OPERATOR_BRACKET</property> -->
+        <property kind="rule">RETURNS_REFERENCE</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::array -->
+
+  <!-- http://www.cplusplus.com/reference/map/map/ -->
+  <tag id="std_map_type" kind="type" user_name="std::map" >
+    <properties>
+      <property kind="stl_cont">MAP_TYPE</property>
+    </properties>
+
+    <!-- std::map Member types -->
+    <tag id="std_map_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">MAP_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">MAP_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_riterator" kind="type" user_name="reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">MAP_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_const_riterator" kind="type" user_name="const_reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">MAP_CONST_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">MAP_VALUE_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_key_type" kind="type" user_name="key_type" >
+      <properties>
+        <property kind="stl_cont">MAP_KEY_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_mapped_type" kind="type" user_name="mapped_type" >
+      <properties>
+        <property kind="stl_cont">MAP_MAPPED_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">MAP_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_key_compare" kind="type" user_name="key_compare" >
+      <properties>
+        <property kind="stl_cont">MAP_KEY_COMPARE</property>
+      </properties>
+    </tag>
+
+    <!-- std::map Member functions  -->
+    <tag id="std_map_ctor" kind="function" user_name="map" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_CTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_dtor" kind="function" user_name="~map" is_template="true">
+      <properties>
+         <property kind="stl_cont">MAP_DTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_at" kind="function" follow_projection="true" user_name="at" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_AT</property>
+        <property kind="rule">RETURNS_REFERENCE</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_begin" kind="function" follow_projection="true" user_name="begin" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_cbegin" kind="function" follow_projection="true" user_name="cbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_cend" kind="function" follow_projection="true" user_name="cend" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_clear" kind="function" follow_projection="true" user_name="clear" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_count" kind="function" follow_projection="true" user_name="count" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_COUNT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_crbegin" kind="function" follow_projection="true" user_name="crbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_crend" kind="function" follow_projection="true" user_name="crend" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_emplace" kind="function" follow_projection="true" user_name="emplace" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_EMPLACE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_EMPLACE_HINT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_try_emplace" kind="function" follow_projection="true" user_name="try_emplace" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_TRY_EMPLACE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_end" kind="function" follow_projection="true" user_name="end" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_equal_range" kind="function" follow_projection="true" user_name="equal_range" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_EQUAL_RANGE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_erase" kind="function" follow_projection="true" user_name="erase" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_find" kind="function" follow_projection="true" user_name="find" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_insert" kind="function" follow_projection="true" user_name="insert" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_INSERT</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_insert_or_assign" kind="function" follow_projection="true" user_name="insert_or_assign" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_INSERT_OR_ASSIGN</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_key_comp" kind="function" follow_projection="true" user_name="key_comp" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_KEY_COMP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_lower_bound" kind="function" follow_projection="true" user_name="lower_bound" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_LOWER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_max_size" kind="function" follow_projection="true" user_name="max_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_MAX_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_rbegin" kind="function" follow_projection="true" user_name="rbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_rend" kind="function" follow_projection="true" user_name="rend" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_size" kind="function" follow_projection="true" user_name="size" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_swap" kind="function" follow_projection="true" user_name="swap" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_SWAP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_upper_bound" kind="function" follow_projection="true" user_name="upper_bound" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_UPPER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_value_comp" kind="function" follow_projection="true" user_name="value_comp" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_VALUE_COMP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_operator_bracket" kind="function" follow_projection="true" user_name="operator[]" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_OPERATOR_BRACKET</property>
+        <property kind="rule">RETURNS_REFERENCE</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_map_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">MAP_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::map -->
+
+  <!-- http://www.cplusplus.com/reference/map/multimap/ -->
+  <tag id="std_multimap" kind="type" user_name="std::multimap" other_names="boost::container::multimap">
+    <properties>
+      <property kind="stl_cont">MULTIMAP_TYPE</property>
+    </properties>
+
+    <!-- std::multimap Member functions -->
+    <tag id="std_multimap_find" kind="function" follow_projection="true" user_name="find">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_INSERT</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_lower_bound" kind="function" follow_projection="true" user_name="lower_bound">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_LOWER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_upper_bound" kind="function" follow_projection="true" user_name="upper_bound">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_UPPER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_rbegin" kind="function" follow_projection="true" user_name="rbegin">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_crbegin" kind="function" follow_projection="true" user_name="crbegin">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_rend" kind="function" follow_projection="true" user_name="rend">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_crend" kind="function" follow_projection="true" user_name="crend">
+      <properties>
+        <property kind="stl_cont">MULTIMAP_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multimap_size" kind="function" follow_projection="true" user_name="size">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::multimap -->
+
+  <!-- http://www.cplusplus.com/reference/queue/priority_queue/ -->
+  <tag id="std_priority_queue" kind="type" user_name="std::priority_queue" other_names="boost::priority_queue">
+    <properties>
+      <property kind="stl_cont">PRIORITY_QUEUE_TYPE</property>
+    </properties>
+
+    <tag id="std_priority_queue_push" kind="function" user_name="push">
+      <properties>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_priority_queue_size" kind="function" user_name="size">
+      <properties>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::priority_queue -->
+
+  <!-- https://www.cplusplus.com/reference/queue/queue/ -->
+  <tag id="std_queue" kind="type" user_name="std::queue" other_names="boost::queue">
+    <properties>
+      <property kind="stl_cont">QUEUE_TYPE</property>
+    </properties>
+
+    <tag id="std_queue_push" kind="function" user_name="push">
+      <properties>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_queue_size" kind="function" user_name="size">
+      <properties>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_queue_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::queue -->
+
+  <!-- https://www.cplusplus.com/reference/stack/stack/ -->
+  <tag id="std_stack" kind="type" user_name="std::stack" other_names="boost::stack">
+    <properties>
+      <property kind="stl_cont">STACK_TYPE</property>
+    </properties>
+
+    <tag id="std_stack_push" kind="function" user_name="push">
+      <properties>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_stack_size" kind="function" user_name="size">
+      <properties>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_stack_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::queue -->
+
+  <!-- http://www.cplusplus.com/reference/deque/deque/ -->
+  <tag id="std_deque_type" kind="type" user_name="std::deque" other_names="boost::container::deque">
+    <properties>
+      <property kind="stl_cont">DEQUE_TYPE</property>
+    </properties>
+
+    <!-- std::deque Member types -->
+    <tag id="std_deque_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">DEQUE_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">DEQUE_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_riterator" kind="type" user_name="reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">DEQUE_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_const_riterator" kind="type" user_name="const_reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">DEQUE_CONST_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">DEQUE_VALUE_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">DEQUE_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <!-- std::deque Member functions -->
+    <tag id="std_deque_ctor" kind="function" user_name="deque" is_template="true">
+      <properties>
+         <property kind="stl_cont">DEQUE_CTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_dtor" kind="function" user_name="~deque" is_template="true">
+      <properties>
+         <property kind="stl_cont">DEQUE_DTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_assign" kind="function" follow_projection="true" user_name="assign" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_ASSIGN</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_at" kind="function" follow_projection="true" user_name="at" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_AT</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_back" kind="function" follow_projection="true" user_name="back" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_BACK</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_begin" kind="function" follow_projection="true" user_name="begin" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_cbegin" kind="function" follow_projection="true" user_name="cbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_cend" kind="function" follow_projection="true" user_name="cend" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_clear" kind="function" follow_projection="true" user_name="clear" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_crbegin" kind="function" follow_projection="true" user_name="crbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_crend" kind="function" follow_projection="true" user_name="crend" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_emplace" kind="function" follow_projection="true" user_name="emplace" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_EMPLACE</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_emplace_back" kind="function" follow_projection="true" user_name="emplace_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_EMPLACE_BACK</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_emplace_front" kind="function" follow_projection="true" user_name="emplace_front" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_EMPLACE_FRONT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_end" kind="function" follow_projection="true" user_name="end" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_erase" kind="function" follow_projection="true" user_name="erase" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_ERASE</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_front" kind="function" follow_projection="true" user_name="front" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_FRONT</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_insert" kind="function" follow_projection="true" user_name="insert" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_INSERT</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_max_size" kind="function" follow_projection="true" user_name="max_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_MAX_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_pop_back" kind="function" follow_projection="true" user_name="pop_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_POP_BACK</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_pop_front" kind="function" follow_projection="true" user_name="pop_front" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_POP_FRONT</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_push_back" kind="function" follow_projection="true" user_name="push_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_PUSH_BACK</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_push_front" kind="function" follow_projection="true" user_name="push_front" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_PUSH_FRONT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_rbegin" kind="function" follow_projection="true" user_name="rbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_rend" kind="function" follow_projection="true" user_name="rend" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_resize" kind="function" follow_projection="true" user_name="resize" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_RESIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_shrink_to_fit" kind="function" follow_projection="true" user_name="shrink_to_fit" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_SHRINK_TO_FIT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_size" kind="function" follow_projection="true" user_name="size" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_swap" kind="function" follow_projection="true" user_name="swap" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_SWAP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_operator_bracket" kind="function" follow_projection="true" user_name="operator[]" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_OPERATOR_BRACKET</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_deque_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">DEQUE_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+  </tag>  <!-- std::deque -->
+
+  <!-- http://www.cplusplus.com/reference/vector/vector/ -->
+  <tag id="std_vector_type" kind="type" user_name="std::vector" >
+    <properties>
+      <property kind="stl_cont">VECTOR_TYPE</property>
+    </properties>
+
+    <!-- std::vector Member types -->
+    <tag id="std_vector_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">VECTOR_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">VECTOR_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_riterator" kind="type" user_name="reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">VECTOR_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_const_riterator" kind="type" user_name="const_reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">VECTOR_CONST_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">VECTOR_VALUE_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">VECTOR_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <!-- std::vector Member functions -->
+    <tag id="std_vector_ctor" kind="function" user_name="vector" is_template="true">
+      <properties>
+         <property kind="stl_cont">VECTOR_CTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_dtor" kind="function" user_name="~vector" is_template="true">
+      <properties>
+         <property kind="stl_cont">VECTOR_DTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_assign" kind="function" follow_projection="true" user_name="assign" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_ASSIGN</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_at" kind="function" follow_projection="true" user_name="at" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_AT</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_back" kind="function" follow_projection="true" user_name="back" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_BACK</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_begin" kind="function" follow_projection="true" user_name="begin" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_capacity" kind="function" follow_projection="true" user_name="capacity" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_CAPACITY</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_cbegin" kind="function" follow_projection="true" user_name="cbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_cend" kind="function" follow_projection="true" user_name="cend" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_crbegin" kind="function" follow_projection="true" user_name="crbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_crend" kind="function" follow_projection="true" user_name="crend" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_clear" kind="function" follow_projection="true" user_name="clear" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_data" kind="function" follow_projection="true" user_name="data" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_DATA</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_emplace" kind="function" follow_projection="true" user_name="emplace" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_EMPLACE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_emplace_back" kind="function" follow_projection="true" user_name="emplace_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_EMPLACE_BACK</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_end" kind="function" follow_projection="true" user_name="end" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_erase" kind="function" follow_projection="true" user_name="erase" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_ERASE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_front" kind="function" follow_projection="true" user_name="front" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_FRONT</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_insert" kind="function" follow_projection="true" user_name="insert" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_INSERT</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_max_size" kind="function" follow_projection="true" user_name="max_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_MAX_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_pop_back" kind="function" follow_projection="true" user_name="pop_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_POP_BACK</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_push_back" kind="function" follow_projection="true" user_name="push_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_PUSH_BACK</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_rbegin" kind="function" follow_projection="true" user_name="rbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_rend" kind="function" follow_projection="true" user_name="rend" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_reserve" kind="function" follow_projection="true" user_name="reserve" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_RESERVE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_resize" kind="function" follow_projection="true" user_name="resize" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_RESIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_shrink_to_fit" kind="function" follow_projection="true" user_name="shrink_to_fit" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_SHRINK_TO_FIT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_size" kind="function" follow_projection="true" user_name="size" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_swap" kind="function" follow_projection="true" user_name="swap" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_SWAP</property>
+      </properties>
+    </tag>
+
+     <tag id="std_vector_operator_bracket" kind="function" follow_projection="true" user_name="operator[]" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_OPERATOR_BRACKET</property>
+         <property kind="rule">RETURNS_REFERENCE</property>
+         <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_vector_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">VECTOR_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::vector -->
+
+  <!-- http://www.cplusplus.com/reference/set/set/ -->
+  <tag id="std_set_type" kind="type" user_name="std::set" >
+    <properties>
+      <property kind="stl_cont">SET_TYPE</property>
+    </properties>
+
+    <!-- std::set Member types -->
+    <tag id="std_set_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">SET_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">SET_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+<!--
+    <tag id="std_set__Unchecked_iterator" kind="type" user_name="_Unchecked_iterator" >
+      <properties>
+        <property kind="stl_cont">SET_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set__Unchecked_const_iterator" kind="type" user_name="_Unchecked_const_iterator" >
+      <properties>
+        <property kind="stl_cont">SET_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+-->
+    <tag id="std_set_riterator" kind="type" user_name="reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">SET_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_const_riterator" kind="type" user_name="const_reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">SET_CONST_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">SET_VALUE_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">SET_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_key_compare" kind="type" user_name="key_compare" >
+      <properties>
+        <property kind="stl_cont">SET_KEY_COMPARE</property>
+      </properties>
+    </tag>
+
+    <!-- std::set Member functions -->
+    <tag id="std_set_ctor" kind="function" user_name="set" is_template="true">
+      <properties>
+         <property kind="stl_cont">SET_CTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_dtor" kind="function" user_name="~set" is_template="true">
+      <properties>
+         <property kind="stl_cont">SET_DTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_begin" kind="function" follow_projection="true" user_name="begin" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_cbegin" kind="function" follow_projection="true" user_name="cbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_cend" kind="function" follow_projection="true" user_name="cend" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_clear" kind="function" follow_projection="true" user_name="clear" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_count" kind="function" follow_projection="true" user_name="count" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_COUNT</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_crbegin" kind="function" follow_projection="true" user_name="crbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_crend" kind="function" follow_projection="true" user_name="crend" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_emplace" kind="function" follow_projection="true" user_name="emplace" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_EMPLACE</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_EMPLACE_HINT</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_end" kind="function" follow_projection="true" user_name="end" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_equal_range" kind="function" follow_projection="true" user_name="equal_range" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_EQUAL_RANGE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_erase" kind="function" follow_projection="true" user_name="erase" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_find" kind="function" follow_projection="true" user_name="find" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_insert" kind="function" follow_projection="true" user_name="insert" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_INSERT</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_key_comp" kind="function" follow_projection="true" user_name="key_comp" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_KEY_COMP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_lower_bound" kind="function" follow_projection="true" user_name="lower_bound" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_LOWER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_max_size" kind="function" follow_projection="true" user_name="max_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_MAX_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_rbegin" kind="function" follow_projection="true" user_name="rbegin" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_rend" kind="function" follow_projection="true" user_name="rend" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_size" kind="function" follow_projection="true" user_name="size" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_swap" kind="function" follow_projection="true" user_name="swap" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_SWAP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_upper_bound" kind="function" follow_projection="true" user_name="upper_bound" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_UPPER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_value_comp" kind="function" follow_projection="true" user_name="value_comp" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_VALUE_COMP</property>
+      </properties>
+    </tag>
+
+    <tag id="std_set_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">SET_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::set -->
+
+  <!-- http://www.cplusplus.com/reference/set/multiset/ -->
+  <tag id="std_multiset" kind="type" user_name="std::multiset" other_names="boost::container::multiset">
+    <properties>
+      <property kind="stl_cont">MULTISET_TYPE</property>
+    </properties>
+
+    <!-- std::multiset Member functions -->
+    <tag id="std_multiset_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">MULTISET_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">MULTISET_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_rbegin" kind="function" follow_projection="true" user_name="rbegin">
+      <properties>
+        <property kind="stl_cont">MULTISET_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_crbegin" kind="function" follow_projection="true" user_name="crbegin">
+      <properties>
+        <property kind="stl_cont">MULTISET_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">MULTISET_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">MULTISET_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_rend" kind="function" follow_projection="true" user_name="rend">
+      <properties>
+        <property kind="stl_cont">MULTISET_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_crend" kind="function" follow_projection="true" user_name="crend">
+      <properties>
+        <property kind="stl_cont">MULTISET_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">MULTISET_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">MULTISET_INSERT</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">MULTISET_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_find" kind="function" follow_projection="true" user_name="find">
+      <properties>
+        <property kind="stl_cont">MULTISET_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_lower_bound" kind="function" follow_projection="true" user_name="lower_bound">
+      <properties>
+        <property kind="stl_cont">MULTISET_LOWER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_upper_bound" kind="function" follow_projection="true" user_name="upper_bound">
+      <properties>
+        <property kind="stl_cont">MULTISET_UPPER_BOUND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_emplace" kind="function" follow_projection="true" user_name="emplace">
+      <properties>
+        <property kind="stl_cont">MULTISET_EMPLACE</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint">
+      <properties>
+        <property kind="stl_cont">MULTISET_EMPLACE_HINT</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_size" kind="function" follow_projection="true" user_name="size">
+      <properties>
+        <property kind="stl_cont">MULTISET_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_multiset_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::multiset -->
+
+  <!-- http://www.cplusplus.com/reference/list/list/ -->
+  <tag id="std_list_type" kind="type" user_name="std::list" >
+    <properties>
+      <property kind="stl_cont">LIST_TYPE</property>
+    </properties>
+
+    <!-- std::list Member types -->
+    <tag id="std_list_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">LIST_VALUE_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">LIST_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">LIST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">LIST_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_riterator" kind="type" user_name="reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">LIST_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_const_riterator" kind="type" user_name="const_reverse_iterator" >
+      <properties>
+        <property kind="stl_cont">LIST_CONST_RITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <!-- std::list Member functions -->
+    <tag id="std_list_ctor" kind="function" user_name="list" is_template="true">
+      <properties>
+         <property kind="stl_cont">LIST_CTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_dtor" kind="function" user_name="~list" is_template="true">
+      <properties>
+         <property kind="stl_cont">LIST_DTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+    <tag id="std_list_assign" kind="function" follow_projection="true" user_name="assign" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_ASSIGN</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_list_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_front" kind="function" follow_projection="true" user_name="front">
+      <properties>
+        <property kind="stl_cont">LIST_FRONT</property>
+        <property kind="rule">RETURNS_REFERENCE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_back" kind="function" follow_projection="true" user_name="back">
+      <properties>
+        <property kind="stl_cont">LIST_BACK</property>
+        <property kind="rule">RETURNS_REFERENCE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">LIST_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">LIST_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">LIST_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">LIST_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_rbegin" kind="function" follow_projection="true" user_name="rbegin">
+      <properties>
+        <property kind="stl_cont">LIST_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_crbegin" kind="function" follow_projection="true" user_name="crbegin">
+      <properties>
+        <property kind="stl_cont">LIST_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_rend" kind="function" follow_projection="true" user_name="rend">
+      <properties>
+        <property kind="stl_cont">LIST_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_crend" kind="function" follow_projection="true" user_name="crend">
+      <properties>
+        <property kind="stl_cont">LIST_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+    <tag id="std_list_size" kind="function" follow_projection="true" user_name="size">
+      <properties>
+        <property kind="stl_cont">LIST_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_max_size" kind="function" follow_projection="true" user_name="max_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_MAX_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">LIST_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">LIST_INSERT</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_emplace" kind="function" follow_projection="true" user_name="emplace">
+      <properties>
+        <property kind="stl_cont">LIST_EMPLACE</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">LIST_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_list_push_back" kind="function" follow_projection="true" user_name="push_back">
+      <properties>
+        <property kind="stl_cont">LIST_PUSH_BACK</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_list_emplace_back" kind="function" follow_projection="true" user_name="emplace_back">
+      <properties>
+        <property kind="stl_cont">LIST_EMPLACE_BACK</property>
+      </properties>
+    </tag>
+    <tag id="std_list_pop_back" kind="function" follow_projection="true" user_name="pop_back" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_POP_BACK</property>
+      </properties>
+    </tag>
+    <tag id="std_list_push_front" kind="function" follow_projection="true" user_name="push_front">
+      <properties>
+        <property kind="stl_cont">LIST_PUSH_FRONT</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_list_emplace_front" kind="function" follow_projection="true" user_name="emplace_front">
+      <properties>
+        <property kind="stl_cont">LIST_EMPLACE_FRONT</property>
+      </properties>
+    </tag>
+    <tag id="std_list_pop_front" kind="function" follow_projection="true" user_name="pop_front" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_POP_FRONT</property>
+      </properties>
+    </tag>
+    <tag id="std_list_resize" kind="function" follow_projection="true" user_name="resize" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_RESIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_swap" kind="function" follow_projection="true" user_name="swap" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_SWAP</property>
+      </properties>
+    </tag>
+    <tag id="std_list_merge" kind="function" follow_projection="true" user_name="merge" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_MERGE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_splice" kind="function" follow_projection="true" user_name="splice" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_SPLICE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_remove" kind="function" follow_projection="true" user_name="remove" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_REMOVE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_remove_if" kind="function" follow_projection="true" user_name="remove_if" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_REMOVE_IF</property>
+      </properties>
+    </tag>
+    <tag id="std_list_reverse" kind="function" follow_projection="true" user_name="reverse" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_REVERSE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_unique" kind="function" follow_projection="true" user_name="unique" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_UNIQUE</property>
+      </properties>
+    </tag>
+    <tag id="std_list_sort" kind="function" follow_projection="true" user_name="sort" is_template="true">
+      <properties>
+        <property kind="stl_cont">LIST_SORT</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::list -->
+
+  <!-- http://www.cplusplus.com/reference/forward_list/forward_list/ -->
+  <tag id="std_forward_list" kind="type" user_name="std::forward_list" other_names="boost::forward_list">
+    <properties>
+      <property kind="stl_cont">FORWARD_LIST_TYPE</property>
+    </properties>
+
+    <!-- std::forward_list Member functions -->
+    <tag id="std_forward_list_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_before_begin" kind="function" follow_projection="true" user_name="before_begin">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_BEFORE_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_cbefore_begin" kind="function" follow_projection="true" user_name="cbefore_begin">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_CBEFORE_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_insert_after" kind="function" follow_projection="true" user_name="insert_after">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_INSERT_AFTER</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_emplace_after" kind="function" follow_projection="true" user_name="emplace_after">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_EMPLACE_INSERT_AFTER</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_forwardlist_push_front" kind="function" follow_projection="true" user_name="push_front">
+      <properties>
+        <property kind="stl_cont">FORWARD_LIST_PUSH_FRONT</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_forward_list_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::forward_list -->
+
+  <!-- https://www.cplusplus.com/reference/unordered_set/unordered_set/ -->
+  <tag id="std_unordered_set" kind="type" user_name="std::unordered_set" other_names="boost::unordered::unordered_set">
+    <properties>
+      <property kind="stl_cont">UNORDERED_SET_TYPE</property>
+    </properties>
+
+    <!-- std::unordered_set Member types -->
+    <tag id="std_unordered_set_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_unordered_set_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_unordered_set_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_VALUE_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_unordered_set_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <tag id="std_unordered_set_key_equal" kind="type" user_name="key_equal" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_KEY_EQUAL</property>
+      </properties>
+    </tag>
+
+    <tag id="std_unordered_set_hasher" kind="type" user_name="hasher" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_HASHER</property>
+      </properties>
+    </tag>
+
+    <!-- std::unordered_set Member functions -->
+    <tag id="std_unordered_set_ctor" kind="function" user_name="unordered_set" is_template="true">
+      <properties>
+         <property kind="stl_cont">UNORDERED_SET_CTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_dtor" kind="function" user_name="~unordered_set" is_template="true">
+      <properties>
+         <property kind="stl_cont">UNORDERED_SET_DTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_empty" kind="function" follow_projection="true" user_name="empty" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_size" kind="function" follow_projection="true" user_name="size" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_max_size" kind="function" follow_projection="true" user_name="max_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_MAX_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_clear" kind="function" follow_projection="true" user_name="clear" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_INSERT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_emplace" kind="function" follow_projection="true" user_name="emplace">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_EMPLACE</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_EMPLACE_HINT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_swap" kind="function" follow_projection="true" user_name="swap" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_SWAP</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_count" kind="function" follow_projection="true" user_name="count" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_COUNT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_find" kind="function" follow_projection="true" user_name="find">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_equal_range" kind="function" follow_projection="true" user_name="equal_range" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_EQUAL_RANGE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_bucket_count" kind="function" follow_projection="true" user_name="bucket_count" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_BUCKET_COUNT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_max_bucket_count" kind="function" follow_projection="true" user_name="max_bucket_count" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_MAX_BUCKET_COUNT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_bucket_size" kind="function" follow_projection="true" user_name="bucket_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_BUCKET_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_bucket" kind="function" follow_projection="true" user_name="bucket" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_BUCKET</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_load_factor" kind="function" follow_projection="true" user_name="load_factor" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_LOAD_FACTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_max_load_factor" kind="function" follow_projection="true" user_name="max_load_factor" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_MAX_LOAD_FACTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_rehash" kind="function" follow_projection="true" user_name="rehash">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_REHASH</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_reserve" kind="function" follow_projection="true" user_name="reserve">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_RESERVE</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_hash_function" kind="function" follow_projection="true" user_name="hash_function">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_HASH_FUNCTION</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_set_key_eq" kind="function" follow_projection="true" user_name="key_eq">
+      <properties>
+        <property kind="stl_cont">UNORDERED_SET_KEY_EQ</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::unordered_set -->
+
+  <!-- https://www.cplusplus.com/reference/unordered_map/unordered_map/ -->
+  <tag id="std_unordered_map" kind="type" user_name="std::unordered_map" other_names="boost::unordered::unordered_map">
+    <properties>
+      <property kind="stl_cont">UNORDERED_MAP_TYPE</property>
+    </properties>
+
+    <!-- std::unordered_map Member types -->
+    <tag id="std_unordered_map_ctor" kind="function" user_name="unordered_map" is_template="true">
+      <properties>
+         <property kind="stl_cont">UNORDERED_MAP_CTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_dtor" kind="function" user_name="~unordered_map" is_template="true">
+      <properties>
+         <property kind="stl_cont">UNORDERED_MAP_DTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_operator_equal" kind="function" user_name="operator=" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_OPERATOR_EQUAL</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_get_allocator" kind="function" follow_projection="true" user_name="get_allocator" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_GET_ALLOCATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_key_type" kind="type" user_name="key_type" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_KEY_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_mapped_type" kind="type" user_name="mapped_type" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_MAPPED_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_value_type" kind="type" user_name="value_type" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_VALUE_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_hasher" kind="type" user_name="hasher" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_HASHER</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_key_equal" kind="type" user_name="key_equal" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_KEY_EQUAL</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_allocator_type" kind="type" user_name="allocator_type" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_ALLOCATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_iterator" kind="type" user_name="iterator" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_const_iterator" kind="type" user_name="const_iterator" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_CONST_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_local_iterator" kind="type" user_name="local_iterator" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_LOCAL_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_const_local_iterator" kind="type" user_name="const_local_iterator" >
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_CONST_LOCAL_ITERATOR_TYPE</property>
+      </properties>
+    </tag>
+
+    <!-- std::unordered_map Member functions -->
+    <tag id="std_unordered_map_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_empty" kind="function" follow_projection="true" user_name="empty">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_EMPTY</property>
+        <property kind="rule">PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_size" kind="function" follow_projection="true" user_name="size">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_max_size" kind="function" follow_projection="true" user_name="max_size">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_MAX_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_INSERT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_insert_or_assign" kind="function" follow_projection="true" user_name="insert_or_assign" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_INSERT_OR_ASSIGN</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_emplace" kind="function" follow_projection="true" user_name="emplace">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_EMPLACE</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_EMPLACE_HINT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_try_emplace" kind="function" follow_projection="true" user_name="try_emplace" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_TRY_EMPLACE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_swap" kind="function" follow_projection="true" user_name="swap">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_SWAP</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_at" kind="function" follow_projection="true" user_name="at">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_AT</property>
+        <property kind="rule">RETURNS_REFERENCE</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_operator_bracket" kind="function" follow_projection="true" user_name="operator[]">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_OPERATOR_BRACKET</property>
+        <property kind="rule">RETURNS_REFERENCE</property>
+        <property kind="rule">CONTAINER_AT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_count" kind="function" follow_projection="true" user_name="count">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_COUNT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_find" kind="function" follow_projection="true" user_name="find">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_equal_range" kind="function" follow_projection="true" user_name="equal_range">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_EQUAL_RANGE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_bucket_count" kind="function" follow_projection="true" user_name="bucket_count" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_BUCKET_COUNT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_max_bucket_count" kind="function" follow_projection="true" user_name="max_bucket_count" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_MAX_BUCKET_COUNT</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_bucket_size" kind="function" follow_projection="true" user_name="bucket_size" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_BUCKET_SIZE</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_bucket" kind="function" follow_projection="true" user_name="bucket" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_BUCKET</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_load_factor" kind="function" follow_projection="true" user_name="load_factor" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_LOAD_FACTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_max_load_factor" kind="function" follow_projection="true" user_name="max_load_factor" is_template="true">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_MAX_LOAD_FACTOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_rehash" kind="function" follow_projection="true" user_name="rehash">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_REHASH</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_reserve" kind="function" follow_projection="true" user_name="reserve">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_RESERVE</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_hash_function" kind="function" follow_projection="true" user_name="hash_function">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_HASH_FUNCTION</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_map_key_eq" kind="function" follow_projection="true" user_name="key_eq">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MAP_KEY_EQ</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::unordered_map -->
+
+  <!-- https://www.cplusplus.com/reference/unordered_set/unordered_multiset/ -->
+  <tag id="std_unordered_multiset" kind="type" user_name="std::unordered_multiset" other_names="boost::unordered::unordered_multiset">
+    <properties>
+      <property kind="stl_cont">UNORDERED_MULTISET_TYPE</property>
+    </properties>
+
+    <!-- std:unordered_multiset Member functions -->
+    <tag id="std_unordered_multiset_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_INSERT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_emplace" kind="function" follow_projection="true" user_name="emplace">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_EMPLACE</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_EMPLACE_HINT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_find" kind="function" follow_projection="true" user_name="find">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_rehash" kind="function" follow_projection="true" user_name="rehash">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_REHASH</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_reserve" kind="function" follow_projection="true" user_name="reserve">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_RESERVE</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_size" kind="function" follow_projection="true" user_name="size">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTISET_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::unordered_multiset -->
+
+  <!-- https://www.cplusplus.com/reference/unordered_map/unordered_multimap/ -->
+  <tag id="std_unordered_multimap" kind="type" user_name="std::unordered_multimap" other_names="boost::unordered::unordered_multimap">
+    <properties>
+      <property kind="stl_cont">UNORDERED_MULTIMAP_TYPE</property>
+    </properties>
+
+    <!-- std::unordered_multimap Member functions -->
+    <tag id="std_unordered_multimap_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_clear" kind="function" follow_projection="true" user_name="clear">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_CLEAR</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+        <property kind="rule">CONTAINER_CLEAR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_insert" kind="function" follow_projection="true" user_name="insert">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_INSERT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">EXPENSIVE_CONTAINER_INSERTION</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_emplace" kind="function" follow_projection="true" user_name="emplace">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_EMPLACE</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_emplace_hint" kind="function" follow_projection="true" user_name="emplace_hint">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_EMPLACE_HINT</property>
+        <property kind="rule">INVALIDATES_ITERATORS</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_erase" kind="function" follow_projection="true" user_name="erase">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_ERASE</property>
+        <property kind="rule">INVALIDATES_PARAM_ITERATORS</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_find" kind="function" follow_projection="true" user_name="find">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_FIND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_rehash" kind="function" follow_projection="true" user_name="rehash">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_REHASH</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multimap_reserve" kind="function" follow_projection="true" user_name="reserve">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_RESERVE</property>
+        <property kind="rule">INVALIDATES_ITERATORS_REFERENCES</property>
+      </properties>
+    </tag>
+    <tag id="std_unordered_multiset_map_size" kind="function" follow_projection="true" user_name="size">
+      <properties>
+        <property kind="stl_cont">UNORDERED_MULTIMAP_SIZE</property>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+  </tag> <!-- std::unordered_multimap -->
+
+  <!-- https://en.cppreference.com/w/cpp/container/span -->
+  <tag id="std_span" kind="type" user_name="std::span">
+    <properties>
+      <property kind="stl_cont">SPAN_TYPE</property>
+    </properties>
+
+    <!-- std::span Member functions -->
+    <tag id="std_span_ctor" kind="function" user_name="span" is_template="true">
+      <properties>
+         <property kind="stl_cont">SPAN_CTOR</property>
+      </properties>
+    </tag>
+
+    <tag id="std_span_begin" kind="function" follow_projection="true" user_name="begin">
+      <properties>
+        <property kind="stl_cont">SPAN_BEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_cbegin" kind="function" follow_projection="true" user_name="cbegin">
+      <properties>
+        <property kind="stl_cont">SPAN_CBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">BEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_end" kind="function" follow_projection="true" user_name="end">
+      <properties>
+        <property kind="stl_cont">SPAN_END</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_cend" kind="function" follow_projection="true" user_name="cend">
+      <properties>
+        <property kind="stl_cont">SPAN_CEND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">END_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_rbegin" kind="function" follow_projection="true" user_name="rbegin">
+      <properties>
+        <property kind="stl_cont">SPAN_RBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_crbegin" kind="function" follow_projection="true" user_name="crbegin">
+      <properties>
+        <property kind="stl_cont">SPAN_CRBEGIN</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">RBEGIN_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_rend" kind="function" follow_projection="true" user_name="rend">
+      <properties>
+        <property kind="stl_cont">SPAN_REND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+    <tag id="std_span_crend" kind="function" follow_projection="true" user_name="crend">
+      <properties>
+        <property kind="stl_cont">SPAN_CREND</property>
+        <property kind="rule">RETURNS_ITERATOR</property>
+        <property kind="rule">REND_ITERATOR</property>
+      </properties>
+    </tag>
+  </tag>
+
+  <!-- Visual C++ template class used to instantiate std::set, std::map & std::multiset, std::multimap -->
+  <tag id="VCpp_std_Tree" kind="type" user_name="std::_Tree">
+    <properties>
+      <property kind="stl_cont">_TREE_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="VCpp_std_Tset_traits" kind="type" user_name="std::_Tset_traits">
+    <properties>
+      <property kind="stl_cont">_TSET_TRAITS_TYPE</property>
+    </properties>
+  </tag>
+
+  <tag id="VCpp_std_Tmap_traits" kind="type" user_name="std::_Tmap_traits">
+    <properties>
+      <property kind="stl_cont">_TMAP_TRAITS_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- boost::multimap & boost::multiset base class -->
+  <tag id="boost_dlt_tree" kind="type" user_name="boost::container::dtl::tree">
+    <tag id="boost_dlt_tree_size" kind="function" user_name="size">
+      <properties>
+        <property kind="rule">CONTAINER_SIZE</property>
+      </properties>
+    </tag>
+  </tag>
+</tags>

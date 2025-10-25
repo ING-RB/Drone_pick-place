@@ -1,0 +1,24 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>MATLAB enforces a nesting limit of 15 for functions. This message appears when
+                    one or more of the following is true:</p><ul><li><p>Some of the functions in the file are written with
+                                <code>end</code> statements and others are not.</p><p>When Code Analyzer examines the file, it checks to see if functions
+                            terminate with <code>end</code> statements. If the functions are
+                            not nested, you can omit their corresponding <code>end</code>
+                            statements. However, the same file cannot have some functions with
+                                <code>end</code> statements and some without. </p></li><li><p>There is an extra <code>end</code> statement in the file and it
+                            appears to Code Analyzer that it matches a <code>function</code>
+                            keyword. </p><p>For example, suppose your code has nested <code>for</code> loops
+                            and multiple unnested functions without <code>end</code>
+                            statements. Furthermore, suppose there is an extra
+                                <code>end</code> statement for one of the
+                                <code>for</code> loops. If that <code>end</code>
+                            statement appears to match a function keyword, Code Analyzer interprets
+                            it as the situation described in the first item in this list.</p></li><li><p>Functions with <code>end</code> statements are nested more than
+                            15 deep.</p></li></ul><p> In the first two cases, additional messages might indicate where the extra
+                        <code>end</code> is. Code Analyzer indicates keywords that do not
+                    align with their matching <code>end</code> keywords. </p><br/><strong>Suggested Action</strong><br/><p>If the message is due to mixing <code>function</code> keywords with and
+                    without corresponding <code>end</code> statements, fix the function style
+                    to be consistent. If there are extra <code>end</code> statements in the
+                    file by mistake, remove them. If you want more than 16 levels of nesting,
+                    consider using the MATLAB class system. Often the function nesting level drops
+                    and the code becomes simpler to understand when you use classes instead of
+                    nested functions.</p></body></html>

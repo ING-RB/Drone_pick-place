@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="DomainMismatchAtInputPort">The &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of the block ''{1}'' requires ''{2}'' signal. However, the &lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{4}"&gt;output port {3,number,integer}&lt;/sldiag&gt; of the block ''{4}'' produces a time-based signal.\nInsert a block that converts this signal.</entry>
+    <entry key="DomainMismatchAtOutputPort">The &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of the block ''{1}'' produces ''{2}'' signal. However, the &lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{4}"&gt;input port {3,number,integer}&lt;/sldiag&gt; of the block ''{4}'' requires a time-based signal.\nInsert a block that converts this signal.</entry>
+    <entry key="DomainMismatchAtConnectionPort">The {0} connection port {1,number,integer} of the block ''{2}'' is of type ''{3}'', which does not match that of the {4} connection port {5,number,integer} of the block ''{6}''.</entry>
+    <entry key="DomainMismatchAtVirtualBlockInput">The transition between time-based signals and SimEvents block is not supported at the input port {0,number,integer} of the virtual block ''{1}''. Replace block ''{1}'' with a nonvirtual block or connect it to a SimEvents block.</entry>
+    <entry key="AlgLoopsDisabledWithNoCStateBlocks">Algebraic Loop: One or more signals originating from a discrete-event system in model ''{0}'' are being fed back to the same discrete-event system through a direct feedback path. This forms an algebraic loop, which cannot be solved due to the presence of SimEvents blocks.\n\nThis loop includes timed-to-event and event-to-timed transitions at input ports of the following blocks:\n{1}\nThe time-based blocks involved in the loop are:\n{2}\nTo resolve this error see '&lt;a href="matlab:helpview(fullfile(docroot,'mapfiles','simulink.map'),'how_sl_works_algebraic_loops')"&gt;Algebraic Loops in Simulink&lt;/a&gt;''</entry>
+    <entry key="AlgLoopsDisabledWithCStatesBlocks">Algebraic Loop: One or more signals originating from a discrete-event system in model ''{0}'' are being fed back to the same discrete-event system through a direct feedback path. This forms an algebraic loop, which cannot be solved due to the presence of SimEvents blocks.\n\nThis loop includes timed-to-event and event-to-timed transitions at input ports of the following blocks:\n{1}\nThe time-based blocks involved in the loop are:\n{2}\nTo resolve this error see '&lt;a href="matlab:helpview(fullfile(docroot,'mapfiles','simulink.map'),'how_sl_works_algebraic_loops')"&gt;Algebraic Loops in Simulink&lt;/a&gt;''</entry>
+    <entry key="AlgLoopsDisabledNoBlocks">Algebraic Loop: One or more signals originating from a discrete-event system in model ''{0}'' are being fed back to the same discrete-event system through a direct feedback path. This forms an algebraic loop, which cannot be solved due to the presence of SimEvents blocks.\n\nThis loop includes timed-to-event and event-to-timed transitions at input ports of the following blocks:\n{1}\nTo resolve this error see '&lt;a href="matlab:helpview(fullfile(docroot,'mapfiles','simulink.map'),'how_sl_works_algebraic_loops')"&gt;Algebraic Loops in Simulink&lt;/a&gt;''</entry>
+    <entry key="AlgLoopMsgIgnored">Note that the Algebraic loop option in the Diagnostics page of the Configuration Parameters Dialog is being ignored because the algebraic loop contains SimEvents blocks.</entry>
+    <entry key="FcnCallInputGatewayInvalidDst">The output port of block ''{0}'' is connected to an invalid destination ''{1}''. You can connect the output port of the ''{2}'' block to the function-call input port of only one of the following blocks:\n-- Entity Departure Counter\n-- Event-Based Entity Generator\n-- Instantaneous Event Counting Scope\n-- Release Gate\n-- Signal-Based Function-Call Generator\n\nIf you connect the output port of the ''{3}'' block to a Signal-Based Function-Call Generator block, on the Timing tab of the Signal-Based Function-Call Generator block dialog box, select the 'Resolve simultaneous signal updates according to event priority' check box. Also, set the value of the 'Function-call delay from' parameter to one of the following:\n-- 'Signal port t'\n-- 'Dialog', with 'Function-call time delay' value greater than zero</entry>
+    <entry key="FcnCallInputGatewayInvalidTerminated">The output of Timed to Event Function-Call block ''{0}'' cannot be unconnected or be connected to a Terminator block.</entry>
+    <entry key="FcnCallInputGatewayInvalidMultiDsts">The output of Timed to Event Function-Call block ''{0}'' cannot be connected to multiple destinations.</entry>
+    <entry key="FcnCallInputGatewayDstHasInvalidDataInputConn">If the function-call input port of ''{0}'' is connected to the Timed to Event Function-Call block ''{1}'', its data &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{1}"&gt;input port {2,number,integer}&lt;/sldiag&gt; must connect to a Timed to Event Signal block, not ''{3}''.</entry>
+    <entry key="FcnCallInputGatewayDstHasInvalidSrcWithMultiDsts">If the function-call input port of ''{0}'' is connected to the Timed to Event Function-Call block ''{1}'', its data input port {2,number,integer} must connect to a Timed to Event Signal block. This block ''{3}'' cannot have multiple destinations. </entry>
+    <entry key="AbsoluteTimeNotSupported">Block ''{0}'' requires to use simulation time. However, maintaining simulation time is not supported when both of the following are true:\n  - This block is in a discrete-event system\n  - The model is configured to use fixed-step solver\n\nTo resolve this issue, change Solver type to Variable-step in Solver pane of the Configuration Parameters dialog.</entry>
+    <entry key="ElaspeTimeNotSupported">Block ''{0}'' requires the atomic subsystem ''{1}'' to maintain the time elapsed since the previous block execution. However, maintaining elapsed time is not supported when the subsystem is connected to an event-based signal.</entry>
+    <entry key="IntegrationModeNotSupported">Block ''{0}'' is configured to run under integration mode. However, integration mode is not supported when this block is in an atomic subsystem block (''{1}'') and the subsystem is connected to an event-based signal. Reconfigure the block to use accumulation mode.</entry>
+    <entry key="UseEventPriorityInsteadOfBlockPriority">SimEvents 模块 ''{0}'' 的事件优先级为 {1,number,integer}，模块优先级为 {2,number,integer}。对于此模块，SimEvents 将使用事件优先级并忽略模块优先级。</entry>
+    <entry key="AsyncAcrossDomainBoundaryNotSupported">The ''{0}'' block does not accept asynchronous function-call at its input port 1. </entry>
+    <entry key="AsyncSFunctionNotSupportedInSEDomain">The ''{0}'' block is not supported in discrete-event systems.</entry>
+    <entry key="CrossedNonVirtualSubsystemBoundary">The line connecting the ''{0}'' block to the ''{1}'' block cannot cross a non-virtual subsystem boundary, since both blocks are part of the same discrete-event system.</entry>
+    <entry key="CrossedNonVirtualSubsystemBoundaryForDSM">The connection from the ''{0}'' block to the ''{1}'' block crosses a nonvirtual subsystem boundary. The connection is not supported because both blocks are not part of the same discrete-event system. Consider placing a Data Store Memory block in the nonvirtual subsystem.</entry>
+    <entry key="GatewaysInDifferentNonVirtualSubsystems">入口模块 ''{0}'' 和 ''{1}'' 不能位于两个不同的非虚拟子系统中，因为这两个模块均为同一离散事件系统的一部分。</entry>
+    <entry key="CannotUpdateBlock_InvalidReplacementBlock">断言失败: 无法更新类型为 ''{1}'' 的模块 ''{0}''，因为其替换类型 ''{2}'' 未知。</entry>
+    <entry key="UnableToFindSymbolInLibrary">在共享目标文件 ''{1}'' 中找不到符号 ''{0}''</entry>
+    <entry key="UnsupportedVariantAnalyzeAllChoices">Connecting the variant block ''{0}'' to SimEvents blocks is not supported for any variant activation other than ''update diagram''. To resolve this error, change the variant activation to ''update diagram''.</entry>
+    <entry key="InvalidSettingForLatency">Invalid setting in ''{0}'' for &lt;sldiag objui="blockdlg" objparam="Latency"&gt;&lt;/sldiag&gt; parameter. The Latency parameter must be a positive integer number.</entry>
+    <entry key="MultirateConcurrentTasks">并发任务的代码生成不支持数据流自动计算帧大小。对 ''{0}'' 子系统禁用自动计算帧大小，以便为此模型生成具有并发任务的代码。&lt;actions&gt; &lt;action type="fixit" retvalue="yes"&gt; &lt;cmd&gt;dfs.disableMultirateForSubsystem(''{0}'');&lt;/cmd&gt; &lt;txt&gt;对 ''{0}'' 子系统禁用自动计算帧大小。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="MExplorerBlockEventDialogTitle">由模块调度的事件</entry>
+    <entry key="MExplorerBlockEventDialogCaption1">{0}，位于 {1} 处</entry>
+    <entry key="MExplorerBlockEventSection1Heading">事件类型</entry>
+    <entry key="MExplorerBlockEventSection2Heading">事件详细信息</entry>
+    <entry key="MExplorerBlockEventTable1Heading1">调度模块</entry>
+    <entry key="MExplorerEntityRouteDialogTitle">从属转移组</entry>
+    <entry key="MExplorerEntityRouteDialogCaption">从属转移组 {0}</entry>
+    <entry key="MExplorerEntityRouteSection1Heading">源</entry>
+    <entry key="MExplorerEntityRouteSection2Heading">目标</entry>
+    <entry key="MExplorerEntityRouteSection3Heading">路径</entry>
+    <entry key="MExplorerEntityRouteTable1Heading1">模块</entry>
+    <entry key="MExplorerEntityRouteTable1Heading2">输出端口</entry>
+    <entry key="MExplorerEntityRouteTable2Heading1">模块</entry>
+    <entry key="MExplorerEntityRouteTable2Heading2">输入端口</entry>
+    <entry key="MExplorerEntityRouteTable3Heading1">模块</entry>
+    <entry key="MExplorerEntityRouteTable3Heading2">从输入端口</entry>
+    <entry key="MExplorerEntityRouteTable3Heading3">到输出端口</entry>
+    <entry key="MExplorerUnableToCreateEventInfoObj">无法为模型创建 Simulink.EventInfo 类。</entry>
+    <entry key="MExplorerToggleHighlight">切换突出显示</entry>
+    <entry key="MExplorerMultipleBlocks">多个模块</entry>
+    <entry key="MExplorerContentEmpty">无</entry>
+    <entry key="MExplorerSignalOutputSectionHeading">信号输出</entry>
+    <entry key="MExplorerSignalOutputTableHeading1">模块</entry>
+    <entry key="MExplorerSignalOutputTableHeading2">端口</entry>
+    <entry key="MExplorerBlockEventDialogCaption2">{0}</entry>
+  </message>
+</rsccat>

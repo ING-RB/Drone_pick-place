@@ -1,0 +1,39 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><code><a href="matlab:doc strmatch" target="_blank">strmatch</a></code> is
+                    not recommended. Use <code><a href="matlab:doc strncmp" target="_blank">strncmp</a></code> instead.</p><br/><strong>Suggested Action</strong><br/><p>To find possible partial matches for a character vector, use <code><a href="matlab:doc strncmp" target="_blank">strncmp</a></code> or
+                            <code><a href="matlab:doc validatestring" target="_blank">validatestring</a></code>, depending on your requirements.
+                        <code>strncmp</code> returns the numeric index of all array elements
+                    that begin with the specified character vector, whereas
+                        <code>validatestring</code> returns a single character vector that
+                    represents the best match to the specified character vector. To find an exact
+                    match for a character vector, use <code><a href="matlab:doc strcmp" target="_blank">strcmp</a></code>.</p><p>For instance, if your code currently contains lines such as these:</p><p>
+                    <code>list&nbsp;=&nbsp;{'max',&nbsp;'minimax',&nbsp;'maximum',&nbsp;'max'}&nbsp;<br/>x&nbsp;=&nbsp;strmatch('max',list)</code>
+                </p><p>MATLAB returns the numeric indices of the <code>list</code> array
+                    elements that begin with <code>max</code>:</p><p>
+                    <code>x&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</code>
+                </p><p>Replace <code>strmatch</code> with one of the following:</p><ul><li><p><code>validatestring</code></p><p>MATLAB returns the character vector representing the best match, and
+                            if multiple or no matches exist, returns an error. </p><p>For instance, this code returns a character vector:</p><p>
+                            <code>list&nbsp;=&nbsp;{'max',&nbsp;'minimax',&nbsp;'maximum',&nbsp;'max'}<br/>x&nbsp;=&nbsp;validatestring('max',&nbsp;list)<br/>x&nbsp;=<br/><br/>max</code>
+                        </p></li><li><p><code>strncmp</code></p><p>MATLAB returns a logical array indicating which character vectors
+                            match the specified character vector.</p><p> For instance, if you specify this code:</p><p>
+                            <code>list&nbsp;=&nbsp;{'max',&nbsp;'minimax',&nbsp;'maximum',&nbsp;'max'}<br/>x&nbsp;=&nbsp;strncmp('max',&nbsp;list,&nbsp;3)</code>
+                        </p><p>MATLAB returns logical value true (1) to indicate that the first,
+                            third, and fourth <code>list</code> elements begin with
+                                <code>max</code> and logical value false (0) to indicate that
+                            the second <code>list</code> element does not begin with
+                                <code>max</code>.</p><p>
+                            <code>x&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/></code>
+                        </p><p>If you prefer for MATLAB to return the numeric indices of
+                                <code>list</code>, use <code><a href="matlab:doc find" target="_blank">find</a></code>, as
+                            follows:</p><p>
+                            <code>list&nbsp;=&nbsp;{'max',&nbsp;'minimax',&nbsp;'maximum',&nbsp;'max'}<br/>x&nbsp;=&nbsp;find(strncmp(list,&nbsp;'max',&nbsp;3))<br/></code>
+                        </p></li></ul><p>If your input to <code>strmatch</code> is a character matrix, then first
+                    convert the matrix to a cell array using <code><a href="matlab:doc cellstr" target="_blank">cellstr</a></code>. Then, pass
+                    the output from <code>cellstr</code> to <code>strncmp</code> or
+                        <code>validatestring</code>. For example, if your code is currently
+                    this:</p><p>
+                    <code>&nbsp;x&nbsp;=&nbsp;strmatch('max',&nbsp;char('max','minimax',&nbsp;'maximum',&nbsp;'max'))<br/></code>
+                </p><p>Replace it with this:</p><p>
+                    <code>list&nbsp;=&nbsp;cellstr(char('max',&nbsp;'minimax',&nbsp;'maximum',&nbsp;'max'))<br/>x&nbsp;=&nbsp;strncmp('max',&nbsp;list,&nbsp;3)</code>
+                </p><p>MATLAB returns:</p><p>
+                    <code>x&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</code>
+                </p></body></html>

@@ -1,0 +1,47 @@
+function [data, info] = pidState
+%PidState gives an empty data for control_msgs/PidState
+
+% Copyright 2019-2021 The MathWorks, Inc.
+data = struct();
+data.MessageType = 'control_msgs/PidState';
+[data.header, info.header] = ros.internal.ros2.messages.std_msgs.header;
+info.header.MLdataType = 'struct';
+[data.timestep, info.timestep] = ros.internal.ros2.messages.builtin_interfaces.duration;
+info.timestep.MLdataType = 'struct';
+[data.error, info.error] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.error_dot, info.error_dot] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.p_error, info.p_error] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.i_error, info.i_error] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.d_error, info.d_error] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.p_term, info.p_term] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.i_term, info.i_term] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.d_term, info.d_term] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.i_max, info.i_max] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.i_min, info.i_min] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.output, info.output] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+info.MessageType = 'control_msgs/PidState';
+info.constant = 0;
+info.default = 0;
+info.maxstrlen = NaN;
+info.MaxLen = 1;
+info.MinLen = 1;
+info.MatPath = cell(1,19);
+info.MatPath{1} = 'header';
+info.MatPath{2} = 'header.stamp';
+info.MatPath{3} = 'header.stamp.sec';
+info.MatPath{4} = 'header.stamp.nanosec';
+info.MatPath{5} = 'header.frame_id';
+info.MatPath{6} = 'timestep';
+info.MatPath{7} = 'timestep.sec';
+info.MatPath{8} = 'timestep.nanosec';
+info.MatPath{9} = 'error';
+info.MatPath{10} = 'error_dot';
+info.MatPath{11} = 'p_error';
+info.MatPath{12} = 'i_error';
+info.MatPath{13} = 'd_error';
+info.MatPath{14} = 'p_term';
+info.MatPath{15} = 'i_term';
+info.MatPath{16} = 'd_term';
+info.MatPath{17} = 'i_max';
+info.MatPath{18} = 'i_min';
+info.MatPath{19} = 'output';

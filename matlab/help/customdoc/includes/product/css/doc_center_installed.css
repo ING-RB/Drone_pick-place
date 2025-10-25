@@ -1,0 +1,158 @@
+/* Overrides for Doc Center in the Product */
+
+/*
+-----------------------------------
+TOC
+-----------------------------------
+
+Bootstrap Overrides:......Changes to base-Bootstrap CSS
+
+Page Globals:.............Styling of HTML and BODY
+
+Site Elements:............Re-usable site elements   
+
+Structure:................Site structural components
+
+Section Specific:.........Styles for Home and all Sub Pages
+
+Page/Element Specific:....Page, element or flow Specific CSS
+
+Responsive:...............Specific styles for Desktop, Tablet and Mobile
+
+Additive CSS:.............Additive/override CSS
+
+*/
+
+
+
+/* ------------------------------------
+$ Fonts
+------------------------------------ */
+/* ---- MathWorks Icon and Pictogram Font ---- */
+@font-face { font-family: 'mathworks'; font-style: normal; font-weight: normal;
+  src:  url('../fonts/mathworks.woff?20220214') format('woff'),
+        url('../fonts/mathworks.ttf?20220214') format('truetype');
+}
+
+@font-face { font-family: 'mathworks-eps'; font-style: normal; font-weight: normal;
+  src:  url('../fonts/mathworks-eps.woff?20220214') format('woff'),
+        url('../fonts/mathworks-eps.ttf?20220214') format('truetype');
+}
+
+@font-face { font-family: 'mathworks-pictograms'; font-style: normal; font-weight: normal;
+  src:  url('../fonts/mathworks-pictograms.woff?20220214') format('woff'),
+        url('../fonts/mathworks-pictograms.ttf?20220214') format('truetype');
+}
+
+
+
+/*-----------------------------------
+   Page Globals
+-------------------------------------*/
+html body { font-family:Arial,Helvetica,sans-serif; }
+
+#doc_center_content { color:#404040; }
+
+/* ---- Hierarchy ---- */
+#doc_center_content h1 { font-family:Arial,Helvetica,sans-serif; font-weight:normal; }
+h2, .h2 { font-family:Arial,Helvetica,sans-serif; font-weight:bold; }
+h3, .h3 { font-family:Arial,Helvetica,sans-serif; font-weight:bold; }
+h4, .h4 { font-family:Arial,Helvetica,sans-serif; font-weight:bold; }
+h5, .h5 { font-family:Arial,Helvetica,sans-serif; font-weight:normal; }
+h6, .h6 { font-family:Arial,Helvetica,sans-serif; font-weight:normal; }
+
+#doc_center_content h2.title[class*="r20"] { font-family:Arial,Helvetica,sans-serif; font-weight:normal; }
+
+/* ---- Tables ---- */
+
+  /* Tables: Reference Clusters */
+  .doc_blocksgroup_container .ref_cluster td.term { font-family:Arial,Helvetica,sans-serif; }
+
+
+/*-----------------------------------
+   Site Elements
+-------------------------------------*/
+
+/* ---- Product and Web Specific Links ---- */
+
+  /* Product and Web Specific Links: Hide/Show - Responsive-ification Needed: visible_product hidden_web; */
+  .execmatlabproduct { display:inline; }
+  .execmatlabweb { display:none; }
+
+  .coming_from_product { display:inline; }
+  div.coming_from_product { display:block; }
+
+  .not_coming_from_product { display:none; }
+  div.not_coming_from_product { display:none; }
+
+    /* CRUX Nav */
+    .crux_browse li > a.coming_from_product { display: block !important; }
+    .crux_browse li > a.not_coming_from_product { display: none !important; }
+
+  .execmatlabproduct.video { display:inline-block; }
+  .execmatlabweb.video { display:none; }
+
+  .support_package_list { display:none; }
+
+
+/* ---- Examples Cards in Doc ---- */
+#doc_center_content .example_short_list .card_container h3 { font-family:Arial,Helvetica,sans-serif; font-weight:bold; }
+.example_short_list .example-source html body { font-family:Arial,Helvetica,sans-serif; }
+#doc_center_content .example_short_list .nav_examples h3 { font-family:Arial,Helvetica,sans-serif; font-weight:bold; }
+#doc_center_content .example_short_list .nav_examples__facets h3 { font-family:Arial,Helvetica,sans-serif; font-weight:bold; }
+.example_short_list .nav_examples__supplement h4 { font-family:Arial,Helvetica,sans-serif; }
+
+
+/*-----------------------------------
+   Structure
+-------------------------------------*/
+
+/* ---- Header ---- */
+#header_mobile,
+#header_desktop { display: none !important; }
+
+  /* Product Documentation does not use #header_mobile or #header_desktop, so the sticky_header_container affixes immediately. This spacer prevents that. */
+  #doc_header_spacer { height:1px; display: none; }
+
+
+/* ---- Section Header ---- */
+.section_header .btn_search_adjacent.dropdown-toggle { display: none; }
+
+.section_header_content a,
+.section_header_content a:hover,
+.section_header_content a:visited { color: #fff; text-decoration: none; }
+
+.sticky_header_container .section_header.level_3 h1,
+.sticky_header_container .section_header.level_3 p.h1 { font-size: 23px; } 
+
+/*.sticky_header_container.affix { box-shadow: none !important; }*/
+
+
+/* ---- Horizontal Nav ---- */
+/*
+.horizontal_nav_container .cta_box { display: none; }
+*/
+
+
+/* ---- Offcanvas ---- */
+
+  /* TOC Nav */
+  .sidebar-offcanvas .search_refine h2 { font-family:Arial,Helvetica,sans-serif; font-weight: bold; }  
+
+
+/* ---- Body Trail ---- */
+.body_trail_container .panel { display: none; }
+
+
+/* ---- Mobile CTA Container ---- */
+.cta_container_mobile { display: none !important; }
+
+
+/* ---- Footer ---- */
+.fat_footer_container { display: block; }
+.fat_footer_container .footernav > li:first-child> a { padding-left: 0; }
+
+#footer { min-height: 100px; padding: 18px 0; overflow: hidden; }
+
+
+

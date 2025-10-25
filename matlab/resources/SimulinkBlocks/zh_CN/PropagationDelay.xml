@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="SimulinkBlocks" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BlockDescription" context="uistring">
+        将采样输入信号(u)延迟由输入延迟信号(dt)指定的时间。
+
+       
+    </entry>
+    <entry key="InitialOutput" context="uistring">初始输出</entry>
+    <entry key="RunAtFixedTimeIntervals" context="uistring"> 以固定时间间隔运行</entry>
+    <entry key="SampleTime" context="uistring">采样时间</entry>
+    <entry key="OutofBoundSamplingRate" context="error">
+      
+               Sample time for block ''{0}'' must be finite and greater than the smallest supported 
+               time resolution (128*eps).
+      
+    </entry>
+    <entry key="InvSamplingModeSetting" context="error">
+      
+               Block ''{0}'' is not configured to work with a fixed step solver.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                   &lt;action type="fixit" retvalue="false"&gt;
+                       &lt;cmd&gt;set_param(''{0}'',''RunAtFixedTimeIntervals'',''on'')&lt;/cmd&gt;
+                       &lt;txt&gt;Enable the Run at fixed time intervals parameter for the block.&lt;/txt&gt;
+                   &lt;/action&gt;
+                   &lt;action type="fixit" retvalue="false"&gt;
+                       &lt;cmd&gt;set_param(''{1}'',''SolverType'',''Variable-step'')&lt;/cmd&gt;
+                       &lt;txt&gt;Change the solver type to variable step.&lt;/txt&gt;
+                   &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InputDelayNotFinite" context="error">
+      At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is not finite. Delay
+      values must be finite, positive, and greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBePositive" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than or equal
+        to the smallest supported time resolution (128*eps). The delay input must be finite, positive, and
+        greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasing" context="error">
+        At time {0}, the delay input (dt) for Propagation Delay block ''{2}'' results in a delayed output
+        time (t + dt) {1} that occurs at the same time or before the output time for the previous sample
+        {3}. Delayed output times must increase monotonically.
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasingInDiscreteMode" context="error">
+        在时间 {0} 处，Propagation Delay 模块 ''{2}'' 的延迟输入(dt)导致延迟的输出
+        时间(t + dt){1}，该输出时间等于或早于前一个采样的输出时间
+        {3}。延迟的输出时间必须单调递增，并且当您配置模块以
+        固定时间间隔运行时，延迟的输出时间必须为指定
+        采样时间 ''{4}'' 的整数倍。
+    </entry>
+    <entry key="InputDelayMustBeGreaterThanSampleTime" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than the
+        specified sample time ''{3}''. When you configure the block to run at fixed time intervals, the
+        delay input must be positive and an integer multiple of the specified sample time.
+    </entry>
+    <entry key="InvalidDataType" context="error">
+        Data type {1} not supported for Propagation Delay block ''{0}''.
+    </entry>
+    <entry key="InputDelayTooLarge" context="error">
+        与当前仿真时间 {0} 相比，Propagation Delay 模块 ''{2}'' 的
+        延迟输入 {1} 太大，这会导致浮点精度问题。
+    </entry>
+    <entry key="InputDelayGreaterThanSizeTMax" context="error">
+        在时间 {0} 处，Propagation Delay 模块 ''{2}'' 的延迟输入为 {1}。在模块配置为
+        以固定时间间隔运行且采样时间为 ''{3}'' 时，支持的最大延迟为 {4}。
+    </entry>
+  </message>
+</rsccat>

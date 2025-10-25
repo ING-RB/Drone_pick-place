@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2018-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="vision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+    <message>
+
+        <!-- Common -->
+        <entry key="invalidNumFilters">Number of filters in the output convolutional layer must be {0} for {1} anchor boxes and {2} classes.</entry>
+        <entry key="invalidClasses">Classes must be specified as a string vector, a cell array of character vectors, or a categorical vector.</entry>
+        <entry key="duplicateClasses">Classes must be unique.</entry>
+        <entry key="numOutputLayerMismatch">Number of anchor boxes must match the number of output layers.</entry>
+        <entry key="InvalidLayerName">Layer {0} does not exist in the network. Specify a layer name that is part of the network.</entry>
+
+
+        <!-- reorg layer -->
+        <entry key="yoloReorgType">YOLO v2 Reorg </entry>
+        <entry key="yoloReorgOneLineDisp">YOLO v2 Reorg with stride {0}</entry>
+        <entry key="yoloReorgToBeRemoved">yolov2ReorgLayer will be removed in a future release. Use spaceToDepthLayer instead.</entry>
+        <!-- yolov2Layers -->
+        <entry key="DepthConcatInputMisMatch">Unable to configure the yolov2ReorgLayer to produce an output size of {0} given an input size of {1}.</entry>
+        <entry key="NotaValidLayerGraphSeriesNetworkDAGNetwork">Invalid layer graph or series network or DAG network.</entry>
+        <entry key="MultiChannelInputIsNotSupported">Multi-channel input is not supported.</entry>
+        <entry key="LayerDoesNotExist">Unable to find layer ''{0}''.</entry>
+        <entry key="MatrixCharacterOrVectorMatrixString">Input must be a character vector or a string scalar.</entry>
+        <entry key="SmallerAnchorthanImage">Anchor box dimension {0} must be smaller than or equal to image size {1}.</entry>
+        <entry key="InvalidLayerSize">Input size mismatch. Size of input to this layer {0} is different from the expected input size {1}.</entry>
+        <entry key="deprecateYolov2Layers">yolov2Layers will be removed in a future release. Use yolov2ObjectDetector API instead.</entry>
+
+        <!-- yolov2TransformLayer -->
+        <entry key="yolov2TransfromDispAnchors">YOLO v2 Transform Layer with {0} anchors</entry>
+        <entry key="yolov2TransfromType">YOLO v2 Transform Layer</entry>
+
+        <!-- yolov2OutputLayer -->
+        <entry key="deprecateYolov2OutputLayer">yolov2OutputLayer will be removed in a future release. Use the yolov2ObjectDetector function to create a YOLOv2 object detection network, instead.</entry>
+
+        <!-- trainYOLOv2ObjectDetector -->
+        <entry key="trainingBanner">Training a YOLO v2 Object Detector for the following object classes:</entry>
+        <entry key="multiScaleInputError">Training image sizes must be greater than or equal to the input size in image input layer of the network.</entry>
+        <entry key="networkTrainingLossHasNaNs">NaN values are present in the training loss. The detector may not be properly trained. Try to lower the ''InitialLearnRate'' using the trainingOptions function and retrain the detector.</entry>
+        <entry key="invalidNetworkConnection">YOLO v2 transform layer must be connected to the YOLO v2 output layer.</entry>
+        <entry key="invalidFilterSize">The input to the YOLO v2 transform layer must have {0} channels to support {1} anchor boxes and {2} classes. The number of channels must equal numAnchors * (5 + numClasses). Update the training data, the number of anchor boxes specified in the yolov2Transform layer, or the layers preceding the transform layer.</entry>
+        <entry key="multiScaleUnsupported">The yolov2ReorgLayer must produce an output size of {0} for an input dimension of {1} provided in the set of training image sizes.</entry>
+        <entry key="mustHaveInputLayer">Network must have an input layer.</entry>
+        <entry key="mustHaveOnlyOneInputLayer">Network must have only one input layer.</entry>
+        <entry key="mustBeImageInputLayer">Input layer of the network must be an image input layer. Use &lt;a href="matlab:helpview(fullfile(docroot,'deeplearning','ref','nnet.cnn.layer.imageinputlayer.html'))"&gt;imageInputLayer&lt;/a&gt; to create input layer for the network.</entry>
+        <entry key="mustHaveOnlyOneTransformLayer">Network must have only one transform layer.</entry>
+        <entry key="mustHaveTransformLayer">Network must have a transform layer. Use &lt;a href="matlab:helpview(fullfile(docroot,'vision','ref','nnet.cnn.layer.yolov2transformlayer.html'))"&gt;yolov2TransformLayer&lt;/a&gt; to create the transform layer.</entry>
+        <entry key="mustHaveOnlyOneOutputLayer">Network must have only one output layer.</entry>
+        <entry key="mustHaveOutputLayer">Network must have an output layer. Use &lt;a href="matlab:helpview(fullfile(docroot,'vision','ref','nnet.cnn.layer.yolov2outputlayer.html'))"&gt;yolov2OutputLayer&lt;/a&gt; to create the output layer.</entry>
+        <entry key="mustBeYOLOv2OutputLayer">Output layer of the network must be a &lt;a href="matlab:helpview(fullfile(docroot,'vision','ref','nnet.cnn.layer.yolov2outputlayer.html'))"&gt;yolov2OutputLayer&lt;/a&gt;.</entry>
+        <entry key="trainingDataDetectorClassesMismatch">The class names specified in the detector must match training data.</entry>
+        <entry key="mustNotHaveAnyFCLayer">Network must not have any fully connected layers.</entry>
+        <entry key="mustNotHaveAnyGlobalPoolingLayer">Network must not have any global pooling layers.</entry>
+        <entry key="checkTrainingDataBegin">Checking training data...</entry>
+        <entry key="checkTrainingDataEnd">done.</entry>
+        <entry key="trainingFooter">Detector training complete.</entry>
+        <entry key="outputLayerClassesMismatch">The class names specified in the yolov2OutputLayer must match training data.</entry>
+        <entry key="mustHaveValidFinalActivationsSize">Final activations size of layer graph must be greater than [1,1].</entry>
+        <entry key="discourageTrainingImageSize">TrainingImageSize NVP is not required if detector object is passed to trainYOLOv2ObjectDetector.</entry>
+
+
+        <!-- yolov2ObjectDetector -->
+        <entry key="unableToDetect">Unable to use a detector with batch normalization layers before training is complete. Use trainYOLOv2ObjectDetector to train the detector for one epoch to complete training.</entry>
+        <entry key="modelMaxSizeGTROISize">Expected MaxSize to be less than [{0} {1}], which is the ROI size.</entry>
+        <entry key="modelMaxSizeGTImgSize">Expected MaxSize to be less than [{0} {1}], which is the image size.</entry>
+        <entry key="mustHaveClassNames">The class names must be specified in the yolov2OutputLayer. Use the Classes name-value argument in yolov2OutputLayer to specify the class names.</entry>
+        <entry key="networkOutputAsdlnetwork">Starting in R2024b, DAGNetwork objects are not recommended as input to the yolov2ObjectDetector. Use dlnetwork objects, instead.</entry>
+        <entry key="reorganizeLayerSourceRequiredDNS">ReorganizeLayerSource applicable only when DetectionNetworkSource has been specified.</entry>
+
+
+        <!-- Ouput layer -->
+        <entry key="yolov2OutputType">YOLO v2 Output</entry>
+        <entry key="yolov2OutputOneLineDisp">YOLO v2 Output with {0} anchors</entry>
+        <entry key="classNameExists">'auto' cannot be set as classes. Try to use different class name.</entry>
+
+        <!-- yolov4ObjectDetector -->
+        <entry key="invalidLayerName">Layer {0} does not exist in the network. Specify a layer name that is part of the network.</entry>
+        <entry key="numPretrainedAnchorsMismatch">Number of anchor boxes must match number of output layers in pretrained network. {0} expects {1} cell array of anchor boxes.</entry>
+        <entry key="mustBeMultipleOfThirtyTwo">Height and width of the input must be a multiple of 32 for {0}.</entry>
+        <entry key="mustHaveConvLayers">Input network must have convolution layer.</entry>
+        <entry key="invalidInputSize">Input size must be a 2 or 3 element vector.</entry>
+        <entry key="requireClassesAndAnchors">classNames and anchorBoxes must be specified to configure detector for training using DetectionNetworksource or InputSize</entry>
+        <entry key="numChannelDifferent">Number of channels are different between YOLO v4 deep learning network input and specified input size.</entry>
+        <entry key="pretrainedBackboneCustomYOLOv4AnchorsMismatch">Number of anchor boxes must match number of detection network source layers in custom YOLO v4 with pretrained backbone. Expected {0}-by-1 cell array of anchor boxes.</entry>
+
+        <!-- trainYOLOv4ObjectDetector -->
+        <entry key="trainingHeader">Training a YOLO v4 Object Detector for the following object classes:</entry>
+        <entry key="invalidDetector">Invalid detector. The detector must be a YOLO v4 object detector.</entry>
+        <entry key="invalidOptions">Invalid options. The options must be a TrainingOptions object.</entry>
+        <entry key="invalidTrainInput">Invalid training data. The training data must be a datastore object.</entry>
+        <entry key="invalidValInput">Invalid validation data. The validation data must be a combined datastore object.</entry>
+        <entry key="unsupportedTrainInputClass">Training datatype must be any of uint8, uint16, int16, double or single.</entry>
+        <entry key="unsupportedValInputClass">Validation datatype must be any of uint8, uint16, int16, double or single.</entry>
+        <entry key="numChannelMismatch">Number of channels are different between network input and training data.</entry>
+        <entry key="detectedNaNInf">NaN/Inf has been detected during training. Try reducing the learning rate.</entry>
+        <entry key="invalidPredictions">The network predicted invalid bounding boxes during training. Try reducing the learning rate.</entry>
+        <entry key="invalidGroundTruth">Invalid groundtruth. Check that your ground truth boxes are not empty, are real and finite, fully contained within the image boundary, and have positive width and height.</entry>
+        <entry key="trainingClassesMismatch">The class names specified in the detector must match the class names in training data.</entry>
+        <entry key="validationClassesMismatch">The class names specified in the detector must match the class names in validation data.</entry>
+        <entry key="computingInputNormalization">Computing Input Normalization Statistics.</entry>
+        <entry key="invalidFreezeSubNetworkValue">'FreezeSubNetwork' value must be "backbone", "backboneAndNeck", or "none".</entry>
+        <entry key="freezingBackboneNotSupported">Freezing 'backbone' is not supported for YOLO v4 object detector created before MATLAB® ''R2024a'' or created using the object 'yolov4ObjectDetector(net,classes,aboxes)'.</entry>
+        <entry key="freezingBackboneAndNeckNotSupported">Freezing 'backboneAndNeck' is not supported for YOLO v4 object detector created before MATLAB® ''R2024a'' or created using the object 'yolov4ObjectDetector(net,classes,aboxes)'.</entry>
+        <entry key="invalidDetectionNetworkSourceForCustomYOLOV4withPretrainedBackbone">Invalid value for 'DetectionNetworkSource' argument. The value must be backbone network layers for creating custom YOLO v4 object detector with pretrained backbone.</entry>
+        <entry key="unsupportedMetricForYOLOv4">Invalid Metric specified in trainingOptions. trainYOLOv4ObjectDetector only supports mAPObjectDetectionMetric.</entry>
+
+        <!-- yolov3ObjectDetector -->
+        <entry key="pretrainedAnchorsMismatch">Number of anchor boxes must match number of output layers in pretrained network. {0} expects {1}-by-1 cell array of anchor boxes.</entry>
+        <entry key="roiNotSupported">ROI is not supported when DetectionPreprocessing is set to none.</entry>
+        <entry key="unSupportedInputClass">Input data type must be single or double if DetectionPreprocessing parameter is set to none.</entry>
+        <entry key="pretrainedBackboneCustomYOLOv3AnchorsMismatch">Number of anchor boxes must match number of detection network source layers in custom YOLO v3 with pretrained backbone. Expected {0}-by-1 cell array of anchor boxes.</entry>
+        <entry key="invalidForwardInput">The input dlX must be a formatted dlarray.</entry>
+
+        <!-- trainYOLOv3ObjectDetector -->
+        <entry key="trainingHeaderYOLOv3">Training a YOLO v3 Object Detector for the following object classes:</entry>
+        <entry key="freezingBackboneNotSupportedYOLOv3">Freezing 'backbone' is not supported for YOLO v3 object detector created before MATLAB® ''R2024a'' or created using the object 'yolov3ObjectDetector(net,classes,aboxes)'.</entry>
+        <entry key="freezingBackboneAndNeckNotSupportedYOLOv3">Freezing 'backboneAndNeck' is not supported for YOLO v3 object detector created before MATLAB® ''R2024a'' or created using the object 'yolov3ObjectDetector(net,classes,aboxes)'.</entry>
+        <entry key="invalidDetectionNetworkSourceForCustomYOLOV3withPretrainedBackbone">Invalid value for 'DetectionNetworkSource' argument. The value must be backbone network layers for creating custom YOLO v3 object detector with pretrained backbone.</entry>
+        <entry key="unsupportedMetricForYOLOv3">Invalid Metric specified in trainingOptions. trainYOLOv3ObjectDetector only supports mAPObjectDetectionMetric.</entry>
+    </message>
+</rsccat>

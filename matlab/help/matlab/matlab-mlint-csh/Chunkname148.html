@@ -1,0 +1,18 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code>bitcmp</code> function will change in a future release. This
+                    function will no longer accept an integer argument for <code>N</code>.
+                    Instead, you must specify a character vector containing the assumed integer type
+                        <code>A</code>.</p><br/><strong>Suggested Action</strong><br/><p>Replace the number of bits <code>N</code> with an appropriate character
+                    vector that indicates the integer type of <code>A</code>:
+                        <code>'int8'</code>, <code>'uint8'</code>,
+                        <code>'int16'</code>, <code>'uint16'</code>,
+                        <code>'int32'</code>, <code>'uint32'</code>,
+                        <code>'int64'</code>, or <code>'uint64'</code>.</p><p>You still can use the <code>bitcmp</code> function on integers of
+                    arbitrary bit length. For example, <code>bitcmp(x,N)</code> and
+                        <code>bitand(bitcmp(x),2^N-1)</code> yield the same result:</p><p>
+                    <code>x&nbsp;=&nbsp;uint16(1000);<br/>N&nbsp;=&nbsp;10;<br/>oldsyntax&nbsp;=&nbsp;bitcmp(x,N)<br/></code>
+                    <code>oldsyntax&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23</code>
+                </p><p>
+                    <code>newsyntax&nbsp;=&nbsp;bitand(bitcmp(x),2^N-1)</code>
+                    <code>newsyntax&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23</code>
+                </p><p>For further information, see the <code><a href="matlab:doc bitcmp" target="_blank">bitcmp</a></code> function
+                    reference page.</p></body></html>

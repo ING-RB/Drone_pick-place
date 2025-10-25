@@ -1,0 +1,27 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>MATLAB is unable to analyze code within statements called by
+                        <code>eval</code>. This prevents MATLAB from performing any
+                    performance optimization and limits the guidance that the editor is able to
+                    provide. This makes code less efficient and difficult to debug.</p><p>Furthermore, concatenated character vectors within an <code>eval</code>
+                    statement are often difficult to read. This makes code less clear and causes
+                    issues with sharing and maintaining code. </p><br/><strong>Suggested Action</strong><br/><p>Use function syntax instead of using <code>eval</code> to use command
+                    syntax. This allows you to pass variables as inputs. For example:</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>eval(['load&nbsp;'&nbsp;theFilename])</code>
+                                </td><td>
+                                    <code>load(theFilename)</code>
+                                </td></tr><tr><td>
+                                    <code>eval(['save&nbsp;'&nbsp;theFilename&nbsp;'&nbsp;bigArray'])</code>
+                                </td><td>
+                                    <code>save(theFilename,&nbsp;"bigArray")</code>
+                                </td></tr><tr><td>
+                                    <code>eval(['cd&nbsp;'&nbsp;labdata])</code>
+                                </td><td>
+                                    <code>cd(labdata)</code>
+                                </td></tr><tr><td>
+                                    <code>eval(['mex&nbsp;',&nbsp;myOptions,&nbsp;'&nbsp;-c&nbsp;modlab.c&nbsp;'])</code>
+                                </td><td>
+                                    <code>mex(myOptions,&nbsp;"-c",&nbsp;"modlab.c")</code>
+                                </td></tr><tr><td>
+                                    <code>eval(['clear&nbsp;selectMode&nbsp;'&nbsp;tempvar])</code>
+                                </td><td>
+                                    <code>clear("selectMode",&nbsp;tempvar)</code>
+                                </td></tr></tbody></table></div><p>For more information see <a href="matlab:helpview([docroot '/matlab/matlab_prog/command-vs-function-syntax.html'])" target="_blank">Choose Command Syntax vs Function Syntax</a></p></body></html>

@@ -1,0 +1,11 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>MATLAB is unable to analyze code within statements called by
+                        <code>eval</code>. This prevents <tmw_trademark class="registered">MATLAB</tmw_trademark> from performing any performance optimization and limits the
+                    guidance that the editor is able to provide. This makes code less efficient and
+                    difficult to debug.</p><p>Furthermore, concatenated character vectors within an <code>eval</code>
+                    statement are often difficult to read. This makes code less clear and causes
+                    issues with sharing and maintaining code. </p><br/><strong>Suggested Action</strong><br/><p>To allow <tmw_trademark class="registered">MATLAB</tmw_trademark> to perform performance optimization, use the variable directly and
+                    use <code>eval</code> for the right hand side of the assignment.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>eval(&nbsp;[&nbsp;'signal=',&nbsp;varname,&nbsp;';'&nbsp;]&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                </td><td>
+                                    <code>signal&nbsp;=&nbsp;eval(varname);</code>
+                                </td></tr></tbody></table></div></body></html>

@@ -1,0 +1,65 @@
+{
+    "applicablePrompts" : ["DEBUG_PROMPT", "KEYBOARD_PROMPT"],
+    "mCommands" : {
+        "continue" : {
+            "evalString": "if system_dependent('IsDebugMode')==1, dbcont; end"
+        },
+        "step" : {
+            "evalString": "if system_dependent('IsDebugMode')==1, dbstep; end"
+        },
+        "stepin" : {
+            "evalString": "if system_dependent('IsDebugMode')==1, dbstep in; end"
+        },
+        "stepout" : {
+            "evalString": "if system_dependent('IsDebugMode')==1, dbstep out; end"
+        },
+        "exit" : {
+            "evalString": "if system_dependent('IsDebugMode')==1, dbquit; end"
+        },
+        "exitall" : {
+            "evalString": "if system_dependent('IsDebugMode')==1, dbquit all; end"
+        },
+        "up" : {
+            "functionName" : "dbup"
+        },
+        "down" : {
+            "functionName" : "dbdown"
+        },
+        "getSourceBreakpoints" : {
+            "functionName" : "matlab.internal.debugger.breakpoints.getSourceBreakpoints"
+        },
+        "getGlobalBreakpoints" : {
+            "functionName" : "matlab.internal.debugger.breakpoints.getGlobalBreakpoints"
+        },
+        "overwriteBreakpoints" : {
+            "functionName" : "matlab.internal.debugger.breakpoints.clearAndSetBreakpointsForFile"
+        },
+        "clearAllBreakpoints" : {
+            "functionName" : "dbclear",
+            "inputArguments" : ["all"]
+        },
+        "dbstack": {
+            "functionName" : "dbstack",
+            "inputArguments": ["-completenames"]
+        },
+        "datatip": {
+            "functionName" : "datatipinfo",
+            "evalc": true
+        }
+    },
+    "jsCommandsPath": "rtc/plugins/debug/jsdebugger/private/breakpoints/RegisteredJSActions",
+    "debugFlowEventChannels": {
+        "ENTER": "::MathWorks::ExecutionEvents::EnterDebuggerEvent",
+        "ENTER_WITH_WARNING": "::MathWorks::ExecutionEvents::EnterDebuggerWithWarningEvent",
+        "CONTINUE": "::MathWorks::ExecutionEvents::ContinueExecutionEvent",
+        "EXIT": "::MathWorks::ExecutionEvents::ExitDebuggerEvent",
+        "WORKSPACE_CHANGE": "::MathWorks::ExecutionEvents::ChangeCurrentWorkspaceEvent"
+    },
+    "breakpointEventChannels" : {
+        "BREAKPOINT_ADDED" : "::MathWorks::ExecutionEvents::AddLineNumberBreakpointEvent",
+        "BREAKPOINT_REMOVED" : "::MathWorks::ExecutionEvents::DeleteLineNumberBreakpointEvent",
+        "ALL_BREAKPOINTS_CLEARED" : "::MathWorks::ExecutionEvents::DeleteAllBreakpointsEvent",
+        "GLOBAL_BREAKPOINT_ADDED" : "::MathWorks::ExecutionEvents::AddProgramWideBreakpointEvent",
+        "GLOBAL_BREAKPOINT_REMOVED" : "::MathWorks::ExecutionEvents::DeleteProgramWideBreakpointEvent"
+    }
+}

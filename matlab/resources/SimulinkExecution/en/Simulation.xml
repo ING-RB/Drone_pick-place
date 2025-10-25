@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0"
+        locale="en_US"
+        product="SimulinkExecution"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../schema/.xsd">
+
+  <message>
+
+    <entry key="AcceleratedExecutionError">
+      The following error occurred while simulating model ''{0}'' : {1} 
+      \n      
+      Try rerunning the simulation in normal mode to get more details about the
+      error.
+    </entry>
+
+    <entry key="ClockNotFound">
+      Clock with identifier {0} was not found at runtime. 
+    </entry>
+
+    <entry key="TaskNotFound">
+      Task with identifier {0} was not found at runtime. 
+    </entry>
+
+    <entry key="ClassicSimulatorConstructionFailed">
+      Construction of classic simulation loop failed because of the following reason : {0}. 
+    </entry>
+
+    <entry key="DenseTimerOverrideNotSupported">
+      Dense timer cannot be used for the fixed-step simulation because the model has continuous rates.
+    </entry>
+
+    <entry key="ExecutionSequenceNotFound">
+      Requested sequence with the given rate specification was not found. 
+    </entry>
+
+    <entry key="ExecutionSequenceHasNoSpecification">
+      Execution sequence or timeline ''{0}'' has no formal specification available. 
+    </entry>
+    
+    <entry key="MultipleEventRaiseDuringTaskExecution">
+      Event {0} was broadcasted/raised again before its associated tasks have completed execution. 
+    </entry>
+
+    <entry key="MultipleLogicalClockTicksDuringTaskExecution" context="diagnostic">
+      Execution loop detected for partition ''{0}''.
+    </entry>
+
+    <entry key="HitTimesForFixedStepNotSupported">
+      Fixed step simulation does not support specifying hit times. 
+    </entry>
+
+    <entry key="HitTimeIsLessThanCurrentTime">
+      Specified hit time {0} is less than the current time {1}. 
+    </entry>
+
+    <entry key="InvalidTimeOfNextHit">
+      The time of next hit ({0}) specified for the variable sample time (id={1})
+      is invalid because it is less than the current time ({2})
+    </entry>
+
+    <entry key="NextTimeOverflow">
+      Simulation time will exceed the maximum double precision value for the
+      next time step. Hence, the simulation is being stopped at time {0}.
+    </entry>
+
+    <entry key="ErrorInstallingSignalHandler">
+      There was an error installing signal handler. 
+    </entry>
+    
+    <entry key="PopulateTaskTableForMultipleExecSpecNotSupported">
+     A call was made to populate task table for multiple execution specification. This is not supported. For now, we just 
+     aggregate the task tables.
+    </entry>
+
+   <entry key="ObserverHasDifferentStartTime">
+      Start time for design is set to {0} while the start time for observer {1, number, integer} is set to {2}. Set them to be the same value.
+    </entry>
+
+   <entry key="TaskToRunOnPreemptionIsNotReady">
+      A request was made to preempt currently active task with task ''{0}'' at time {1}, however, 
+      task ''{0}'' is not ready and cannot be scheduled to run at this time.
+    </entry>
+
+   <entry key="TaskToRunOnPreemptionHasAlreadyRun">
+      A request was made to preempt currently active task with task ''{0}'' at time {1}. Task ''{0}'' 
+      is ready to run, however, all runnable instances have already been executed and there are no runnable 
+      instances of this task left at this step. Therefore, the preemption request cannot be fulfilled.
+    </entry>
+
+   <entry key="TaskToRunOnPreemptionIsAlreadyRunning">
+      A request was made to preempt currently active task with task ''{0}'' at time {1}. However, task ''{0}'' is 
+      already running.
+    </entry>
+
+    <entry key="TaskDispatchInactiveOnPreemptionRequest">
+      A request was made to the scheduler to preempt currently running task and run task ''{0}'' at time {1}, however, 
+      task dispatch is not active, so the request to run cannot be fulfilled.
+    </entry>
+
+    <entry key="TimerAdvancedAfterFinalTick">
+      Timer {0} was advanced at time {1} but the earlier tick was the final tick of this timer. Timers 
+      should not be advanced after final tick.
+    </entry>
+
+    <entry key="TimerAdvancedWithoutClose">
+      Timer {0} was advanced at time {1} but it was already in advanced state and had a tick. A close must be called before calling advance again.
+    </entry>
+    
+    <entry key="TimerResolutionChangeAtTick">
+      The resolution of timer {0} is being changed in middle of the step. This is not allowed.   
+    </entry>
+
+    <entry key="TimerResolutionIsNotAMultipleOfMaster">
+      The specified timer resolution {0} set for timer {2} is not an integer multiple of the resolution {1} of its parent timer.   
+    </entry>
+
+    <entry key="TimerResolutionIsNotAnIntegerFractionOfInitial">
+      The specified timer resolution {0} is not an integer fraction of the original resolution {1} for timer {2}.   
+    </entry>
+
+    <entry key="TimerResolutionIsNotValid">
+      The new timer resolution {0} is not a valid resolution.   
+    </entry>
+
+    <entry key="TimerResolutionIsNotTunable">
+      The resolution of timer {0} cannot be tuned.    
+    </entry>
+
+    <entry key="TimerResolutionIsNotScalable">
+      The resolution of timer {0} cannot be scaled.    
+    </entry>
+
+    <entry key="TimerResolutionIsNonFiniteNegativeOrZero">
+      The resolution {1} for timer {0} is non finite, negative or zero. Set the resolution to a strictly positive finite value.    
+    </entry>
+    
+    <entry key="TimerResolutionScaleFactorIsNonFiniteNegativeOrZero">
+      The resolution scale factor {1} for timer {0} is non finite, negative or zero. Set the scale factor to a strictly positive finite value.    
+    </entry>
+    
+    <entry key="TimerResolutionTuningConstraintIsNotValid">
+      Resolution tuning constraint {1, number, integer} specified for timer {0} resolution is not valid.
+    </entry>
+
+    <entry key="SchedulerDoesNotSupportEvents">
+      Scheduler implementation used in the current simulation does not
+      support event handling.
+    </entry>
+
+    <entry key="SchedulerDoesNotSupportTaskPreemption">
+      Scheduler implementation in use for current simulation does not support task preemption.
+    </entry>
+    <entry key="StepSizeSmallerThanEPS">
+      Simulation step size of {0} is smaller than the double precision eps {1}
+      around time {2}.  Hence, the simulation is being terminated.
+    </entry>
+
+    <entry key="StopTimeSetToInfinity">
+      Model stop time is set to infinity. Simulation may run forever.
+    </entry>
+
+    <entry key="StopTimeSetToNaN">
+      Model stop time is set to NaN. Set the stop time to a finite positive value or inf.
+    </entry>
+    
+    <entry key="ExplicitlyScheduledTimeIsLessThanCurrentTime">
+      Scheduled hit time {0} is less than the current time {1} for rate with
+      index {2} and identifier {3}.
+    </entry>
+
+    <entry key="InvalidNumTicksToNextHitForControllableSampleTime">
+      Number of ticks to the next hit for the controllable sample time (id={0}) at time {1} is
+      specified as {2} that is not valid and hence, the next hit cannot be scheduled. Specify the
+      number of ticks to next hit as a strictly positive integer.
+
+    </entry>
+
+
+  </message>
+
+</rsccat>

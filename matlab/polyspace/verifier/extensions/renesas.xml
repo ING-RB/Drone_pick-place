@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<!-- Copyright 2018-2023 The MathWorks, Inc.
+
+    All definitions for the targets for Renesas compilers:
+    - ccrl   (CPU family: Renesas RL78)
+    - ccrh   (CPU family: Renesas RH850)
+    - ccrx   (CPU family: Renesas RX)
+    - shc    (CPU family: Renesas SuperH)
+-->
+<compiler name="renesas" default="rl78"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+    <client name="matlab"/>
+  </clients>
+
+  <!-- Macros common to all targets -->
+  <defines>
+    <if feoption="--c">
+      <define name="__STDC__" value="1"/>
+    </if>
+
+    <if feoption="--c\+\+">
+      <define name="_NO_DEFINITIONS_IN_HEADER_FILES" value=""/>
+    </if>
+  </defines>
+
+  <options>
+    <option name="--set_flag" value="allow_anonymous_union_like_construct"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--enable_static_assert"/>
+    <option name="--extended_variadic_macros"/>
+
+    <switch feoption="--signed_chars">
+      <case>
+      </case>
+      <default>
+        <option name="--unsigned_chars"/>
+      </default>
+    </switch>
+    <if feoption="--c\+\+">
+      <ifnot feoption="--c\+\+03">
+        <ifnot feoption="--c\+\+11">
+          <ifnot feoption="--c\+\+14">
+            <ifnot feoption="--c\+\+17">
+              <ifnot feoption="--c\+\+20">
+                <option name="--c++03"/>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </ifnot>
+    </if>
+  </options>
+
+  <asms>
+    <asm name="asm"/>
+    <asm name="__asm"/>
+  </asms>
+
+  <!--
+       Definitions for RL78
+  -->
+  <target name="rl78">
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="renesas/tmw_builtins/rl78.h"/>
+      <option name="--max_alignment"      value="2"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="2"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="4"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--little_endian"/>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__far"/>
+      <attribute name="__near"/>
+      <attribute name="__saddr"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__callt"/>
+      <attribute name="__inline"/>
+    </attributes>
+
+    <defines>
+      <define name="__CCRL" value="1"/>
+      <define name="__CCRL__" value="1"/>
+      <define name="__DBL4" value="1"/>
+      <define name="__RENESAS__" value="1"/>
+      <define name="__RENESAS_VERSION__" value="0x01050000"/>
+      <define name="__RL78_S3__" value="1"/>
+      <define name="__RL78_MEDIUM__" value="1"/>
+      <define name="__RL78__" value="1"/>
+      <define name="__UCHAR" value="1"/>
+    </defines>
+
+  </target>
+
+  <!--
+       Definitions for RH850
+  -->
+  <target name="rh850">
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="renesas/tmw_builtins/rh850.h"/>
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_signed_short"/>
+      <option name="--little_endian"/>
+      <option name="--allow_short_float"/>
+    </options>
+
+    <defines>
+      <define name="__CCRH" value="1"/>
+      <define name="__CCRH__" value="1"/>
+      <define name="__RENESAS__" value="1"/>
+      <define name="__RENESAS_VERSION__" value="0x01060000"/>
+      <define name="__RH850__" value="1"/>
+      <define name="__RH850" value="1"/>
+      <define name="__CHAR_SIGNED__" value="1"/>
+      <define name="__DBL8" value="1"/>
+      <define name="__DOUBLE_IS_64BITS__" value="1"/>
+      <define name="__FPU" value="1"/>
+      <define name="_LIT" value="1"/>
+      <define name="__MULTI_LEVEL__" value="0"/>
+      <define name="__reg32__" value="1"/>
+      <define name="__RON" value="1"/>
+      <define name="__BITRIGHT" value="1"/>
+    </defines>
+
+    <types>
+      <type name="__fp16" type_kind="float16"/>
+    </types>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="renesas/tmw_builtins/rh850.h"/>
+    </options>
+
+  </target>
+
+  <!--
+       Definitions for RX
+  -->
+  <target name="rx">
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="renesas/tmw_builtins/rx.h"/>
+      <if feoption="--preprocess">
+        <option name="--ignore_macro_definition_file" value="$matlabroot/polyspace/verifier/extensions/renesas/tmw_builtins/macros_to_deactivate.txt"/>
+      </if>
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="4"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_signed_short"/>
+      <option name="--little_endian"/>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__evenaccess"/>
+      <attribute name="far"/>
+      <attribute name="_far"/>
+      <attribute name="near"/>
+      <attribute name="_near"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__inline"/>
+    </attributes>
+
+    <types>
+      <if feoption="--c\+\+">
+        <type name="size_t" type_kind="int" decl_specs="unsigned,long"/>
+        <type name="wchar_t" type_kind="int" decl_specs="signed,short"/>
+      </if>
+    </types>
+
+    <defines>
+      <define name="__RENESAS__" value="1"/>
+      <define name="__RENESAS_VERSION__" value="0x02070000"/>
+      <define name="__CCRX__" value="1"/>
+      <define name="__RX" value="1"/>
+      <define name="__RXV2" value="1"/>
+
+      <define name="__LIT" value="1"/>
+      <define name="__DBL4" value="1"/>
+      <define name="__UCHAR" value="1"/>
+      <define name="__UBIT" value="1"/>
+      <define name="__RON" value="1"/>
+      <define name="__DOFF" value="1"/>
+      <define name="__BITRIGHT" value="1"/>
+      <define name="__FPU" value="1"/>
+
+      <define name="__FUNCTION_LIB" value="1"/> <!-- Avoid library conflicts -->
+    </defines>
+
+  </target>
+
+  <!--
+       Definitions for SuperH
+  -->
+  <target name="sh">
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="renesas/tmw_builtins/sh.h"/>
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--little_endian"/>
+      <option name="--signed_chars"/>
+      <option name="--lean_gnu_mode"/>
+      <option name="--gnu_version" value="40300"/>
+      <if feoption="--c">
+        <option name="--c99_bool_type_disabled"/>
+      </if>
+      <if feoption="--c\+\+">
+        <option name="--no_wchar_t_keyword"/>
+      </if>
+      <option name="--tasking_pragma_pack"/>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__accum"/>
+      <attribute name="__fixed"/>
+      <attribute name="__X"/>
+      <attribute name="__Y"/>
+      <attribute name="__sat"/>
+      <attribute name="__circ"/>
+    </attributes>
+
+    <defines>
+      <define name="__HITACHI__" value="1"/>
+      <define name="__HITACHI_VERSION__" value="0x0904"/>
+      <define name="__RENESAS__" value="1"/>
+      <define name="__RENESAS_VERSION__" value="0x0904"/>
+      <define name="_SH" value="1"/>
+      <define name="__STDC_VERSION__" value="199409L"/>
+    </defines>
+
+  </target>
+
+</compiler>

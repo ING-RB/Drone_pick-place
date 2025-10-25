@@ -1,0 +1,64 @@
+{
+    "xmlread": {
+        "inputs": [
+            {"name": "filename", "kind": "required", "type": "file"},
+            {"name": "varargin", "kind": "ordered", "repeating": true},
+            {
+                "name": "AllowDoctype",
+                "kind": "namevalue",
+                "type": ["logical", "scalar"]
+            }
+        ]
+    },
+    "xmlwrite": {
+        "inputs": [
+            {
+                "name": "filename",
+                "kind": "required",
+                "type": [["file"], ["char"]]
+            },
+            {
+                "name": "DOMnode",
+                "kind": "required",
+                "type": "org.apache.xerces.dom.DocumentImpl"
+            }
+        ]
+    },
+    "xmlwrite": {
+        "inputs": [
+            {
+                "name": "DOMnode",
+                "kind": "required",
+                "type": "org.apache.xerces.dom.DocumentImpl"
+            }
+        ],
+        "outputs": [{"name": "chr", "type": "char"}]
+    },
+    "xslt": {
+        "inputs": [
+            {
+                "name": "source",
+                "kind": "required",
+                "type": [["file=*.xml"], ["char"]]
+            },
+            {"name": "style", "kind": "required", "type": [["file=*.xsl"], ["char"]]},
+            {
+                "mutuallyExclusiveGroup": [
+                    {
+                        "name": "dest",
+                        "kind": "required",
+                        "type": [["file"], ["char"]]
+                    },
+                    {
+                        "name": "dest",
+                        "kind": "required",
+                        "type": "choices={'-tostring'}"
+                    }
+                ]
+            },
+            {"name": "'-web'", "kind": "ordered", "type": "choices={'-web'}"},
+            {"name": "XMLEngine", "kind": "namevalue", "type": "choices={'auto', 'maxp', 'jaxp'}"}
+        ],
+        "outputs": [{"name": "result", "type": "char"}]
+    }
+}

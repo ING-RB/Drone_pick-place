@@ -1,0 +1,22 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>It appears you are using the transpose character (<code>'</code>) to
+                    influence the results of the <code>sort</code> function. Depending on
+                    what you are trying to accomplish, this might be inefficient or ineffective. </p><p>The <code>sort</code> function with no input arguments sorts the
+                    columns of a matrix and the row of a row vector.</p><br/><strong>Suggested Action</strong><br/><p>If you want to change the order of the input matrix, while maintaining its
+                    original shape, do one of the following, depending on the type of array you
+                    input to the <code><a href="matlab:doc sort" target="_blank">sort</a></code>
+                    function: </p>
+<div class="alert alert-info d-inline-block"><span class="alert_icon icon-alert-info-reverse"></span><p class="alert_heading"><strong>Note</strong></p><p>If a variable you pass to the <code>sort</code> function could
+                            be matrix or a vector because the variable's size varies, use the syntax
+                            suggested for matrix input.</p></div><p>
+<ul><li><p>Matrix input</p><p>Specify the dimension of the matrix as the second input argument.
+                                For instance, in the following example, the variables
+                                    <code>y</code> and <code>z</code> are identical, but
+                                the syntax used to specify <code>z</code> is more
+                                efficient.</p><p>
+                                <code>x&nbsp;=&nbsp;[5,&nbsp;1,&nbsp;3;&nbsp;2,&nbsp;4,&nbsp;0];<br/>y&nbsp;=&nbsp;sort(x')'<br/>z&nbsp;=&nbsp;sort(x,&nbsp;2)<br/></code>
+                            </p></li><li><p>Vector input</p><p>Remove the transpose character (<code>'</code>). For
+                                example, if your code looks like this,</p><p>
+                                <code>y&nbsp;=&nbsp;[&nbsp;9;&nbsp;4;&nbsp;6;&nbsp;2&nbsp;]<br/>sort(y')</code>
+                            </p><p>then replace it with this:</p><p>
+                                <code>y&nbsp;=&nbsp;[&nbsp;9;&nbsp;4;&nbsp;6;&nbsp;2&nbsp;]<br/>sort(y)</code>
+                            </p></li></ul></p></body></html>

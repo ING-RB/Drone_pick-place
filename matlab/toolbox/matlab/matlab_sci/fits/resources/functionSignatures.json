@@ -1,0 +1,68 @@
+{
+"fitsdisp":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.fts,*.fits"], ["matlabpathfile=*.fts,*.fits"], ["char"]]},
+        {"name":"Index", "kind":"namevalue", "type":[["numeric", "column"], ["numeric", "row"], ["numeric", "scalar"]]},
+        {"name":"Mode", "kind":"namevalue", "type":"choices={'standard', 'min', 'full'}"}
+	]
+},
+"fitsinfo":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.fts,*.fits"], ["matlabpathfile=*.fts,*.fits"], ["char"]]}
+	],
+	"outputs":
+	[
+        {"name":"info", "type":[["struct", "scalar"]]}
+	]
+},
+"fitsread":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.fts,*.fits"], ["matlabpathfile=*.fts,*.fits"], ["char"]]},
+        {"name":"extname", "kind":"ordered", "type":"choices={'primary', 'asciitable', 'binarytable', 'image', 'unknown'}"},
+        {"name":"index", "kind":"ordered", "type":[["numeric", "scalar"]]},
+        {"name":"'raw'", "kind":"ordered", "type":"choices={'raw'}"},
+        {"name":"Info", "kind":"namevalue", "type":[["struct", "scalar"]]},
+        {"name":"PixelRegion", "kind":"namevalue", "type":[["cell"]]},
+        {"name":"TableColumns", "kind":"namevalue", "type":[["numeric", "row"], ["numeric", "column"]]},
+        {"name":"TableRows", "kind":"namevalue", "type":[["numeric", "row"], ["numeric", "column"]]}
+	],
+    "outputs":
+	[
+        {"name":"data"}
+    ]
+},
+"fitsread":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.fts,*.fits"], ["matlabpathfile=*.fts,*.fits"], ["char"]]},
+        {"name":"'raw'", "kind":"ordered", "type":"choices={'raw'}"},
+        {"name":"extname", "kind":"ordered", "type":"choices={'primary', 'asciitable', 'binarytable', 'image', 'unknown'}"},
+        {"name":"index", "kind":"ordered", "type":[["numeric", "scalar"]]},
+        {"name":"Info", "kind":"namevalue", "type":[["struct", "scalar"]]},
+        {"name":"PixelRegion", "kind":"namevalue", "type":[["cell"]]},
+        {"name":"TableColumns", "kind":"namevalue", "type":[["numeric", "row"], ["numeric", "column"]]},
+        {"name":"TableRows", "kind":"namevalue", "type":[["numeric", "row"], ["numeric", "column"]]}
+	],
+    "outputs":
+	[
+        {"name":"data"}
+    ]
+},
+"fitswrite":
+{
+    "inputs":
+    [
+        {"name":"imagedata", "kind":"required", "type":"numeric"},
+        {"name":"filename", "kind":"required", "type":[["file=*.fts,*.fits"], ["char"]]},
+        {"name":"WriteMode", "kind":"namevalue", "type":"choices={'overwrite', 'append'}"},
+        {"name":"Compression", "kind":"namevalue", "type":"choices={'none', 'gzip', 'rice', 'hcompress', 'plio'}"}
+    ]    
+}
+}

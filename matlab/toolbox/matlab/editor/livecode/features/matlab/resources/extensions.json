@@ -1,0 +1,66 @@
+{
+    "mw.desktop.copilot": {
+      "definitions": [
+            "#mw.desktop.liveeditor.copilot"
+        ]
+    },
+    "mw.desktop.liveeditor.copilot": {
+       "actions": [
+            {
+                "name": "explainLiveEditorCode",
+                "text": "%rtc_addons:copilot:copilot:explainCode%",
+                "description": "%rtc_addons:copilot:copilot:explainCodeDescription%",
+                "promptID": "matlab-copilot-actions-explain-code",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showEntryPointInChatPanel": true,
+                "chatPanelGlobalActionId": "aiChatPanel.explainSelection",
+                "showInEntryPoint": true,
+                "controllerID": "explaincode"
+            },
+            {
+                "name": "explainLiveEditorError",
+                "text": "%rtc_addons:copilot:copilot:explainError%",
+                "description": "%rtc_addons:copilot:copilot:explainErrorDescription%",
+                "promptID": "matlab-copilot-actions-explain-error",
+                "promptVersion": "v1",
+                "callback": "explainError",
+                "callbackType": "jsModule",
+                "controllerID": "explainerror"
+            },
+            {
+                "name": "improveLiveEditorCode",
+                "text": "%rtc_addons:copilot:copilot:improveCode%",
+                "description": "%rtc_addons:copilot:copilot:improveCodeLiveEditorDescription%",
+                "promptID": "matlab-copilot-actions-improve-code",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showInEntryPoint": false,
+                "callback": "inlineActions",
+                "callbackType": "jsModule"
+            },
+            {
+                "name": "generateLiveEditorComments",
+                "text": "%rtc_addons:copilot:copilot:generateComments%",
+                "description": "%rtc_addons:copilot:copilot:generateCommentsLiveEditorDescription%",
+                "promptID": "matlab-copilot-actions-generate-comments",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showInEntryPoint": true,
+                "callback": "inlineActions",
+                "callbackType": "jsModule",
+                "controllerID": "generatecomments"
+            },
+            {
+                "name": "fixLiveEditorError",
+                "text": "%rtc_addons:copilot:copilot:fixError%",
+                "description": "%rtc_addons:copilot:copilot:fixErrorLiveEditorDescription%",
+                "promptID": "matlab-copilot-actions-fix-error",
+                "promptVersion": "v1",
+                "callback": "fixError",
+                "callbackType": "jsModule"
+            }
+        ],
+        "triggers": ["codeSelection"]
+    }
+}

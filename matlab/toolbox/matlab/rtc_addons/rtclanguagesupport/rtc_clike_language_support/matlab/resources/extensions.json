@@ -1,0 +1,43 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.desktop.editor.languageSupport": [{
+        "languageName": "C",
+        "mimeType": "text/x-c",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["c"],
+        "commentStyle": {
+            "lineComment": "//"
+        },
+        "jsModule": "cLanguageRegistry"
+    }, {
+        "languageName": "CPP",
+        "alias": "C",
+        "mimeType": "text/x-c++src",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["cpp", "h", "hpp", "cu", "cuh"],
+        "commentStyle": {
+            "lineComment": "//"
+        },
+        "jsModule": "cppLanguageRegistry"
+    }],
+    "mw.fileTypes": {
+        "groups": {
+            "cLikeCodeFiles": ["c", "cpp", "h", "hpp", "cu", "cuh"]
+        },
+        "open": {
+            "groups.cLikeCodeFiles": [{
+                "callback": "editor_open_action/openAction",
+                "callbackType": "jsModule"
+            }, {
+                "callback": "edit",
+                "callbackType": "matlab"
+            }]
+        },
+        "icons": {
+            "c": "cCodeFT",
+            "cpp": "cppCodeFT",
+            "h": "hCodeFT",
+            "hpp": "hppCodeFT"
+        }
+    }
+}

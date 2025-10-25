@@ -1,0 +1,36 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.connections.availableConnections": [{
+        "text": "Package Repository",
+        "description": "Connect to a folder-based Package Repository",
+        "icon": "packageRepository",
+        "moduleDefinition": "customPackageRepositoryConnectionType",
+        "moduleDefinitionType": "jsModule",
+        "configurationSchemas": {
+            "NameAndPath": {
+                "title": "%matlab_addons:customRepositoryConnection:addNewRepositoryLabel%",
+                "mainInstruction": "%matlab_addons:customRepositoryConnection:addNewRepositoryInstruction%",
+                "fields": [
+                    {
+                        "name": "mw.customPackageRepositoryConnectionType.fields.Name",
+                        "type": "TextFieldItem",
+                        "text": "%matlab_addons:customRepositoryConnection:repositoryNameLabel%",
+                        "placeholder": "%matlab_addons:customRepositoryConnection:defaultName%",
+                        "required": true,
+                        "derivedFrom": {
+                            "field": "mw.customPackageRepositoryConnectionType.fields.Path",
+                            "transform": "NameFromPath"
+                        }
+                    },
+                    {
+                        "name": "mw.customPackageRepositoryConnectionType.fields.Path",
+                        "type": "FolderPickerItem",
+                        "text": "%matlab_addons:customRepositoryConnection:repositoryPathLabel%",
+                        "browseDialogTitle": "%matlab_addons:customRepositoryConnection:selectRepositoryPath%",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    }]
+}

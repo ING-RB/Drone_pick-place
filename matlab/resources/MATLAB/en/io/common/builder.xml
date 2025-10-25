@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="MATLAB"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+    <message>
+        <!-- TableBuilder messages -->
+        <entry key="SelectedVariableIndicesTooLarge">SelectedVariableIndices out of range. Value must not be greater than {0}.\nSelectedVariableIndices must be in range 1 to N, where N is the number of VariableNames.</entry>
+        <entry key="SelectedVariableIndicesMustBeUnique">SelectedVariableIndices must be unique.</entry>
+        <entry key="SelectedVariableNamesMustBeNonmissing">SelectedVariableNames must not contain missing strings.</entry>
+        <entry key="SelectedVariableNamesInvalid">SelectedVariableNames must be a subset of VariableNames: {0}</entry>
+        <entry key="NumberOfVariablesMustBeConstant">VariableNames must have {0} elements.</entry>
+        <entry key="TypeMismatch">Type mismatch: Received value of type "{0}" for variable index {1} named "{2}".\nExpected value of type "{3}".</entry>
+        <entry key="TooManyDuplicateSelectedVariableNames">SelectedVariableNames contains too many duplicate values for name "{0}".\n"{0}" has been specified as a SelectedVariableName {1} times, which exceeds the number of duplicates for "{0}" in VariableNames ({2}).</entry>
+
+        <!-- TimetableBuilder messages -->
+        <entry key="RowTimesVariableIndexTooLarge">RowTimes index out of range. Value must not be greater than {0}.\nRowTimes index must be in range 1 to N, where N is the number of VariableNames.</entry>
+        <entry key="RowTimesVariableMustBeASelectedVariable">RowTimes variable must be a selected variable.</entry>
+        <entry key="RowTimesTypeMismatch">Type mismatch: RowTimes must be a variable of type "datetime" or "duration".\nSpecified variable "{0}" has type "{1}".</entry>
+        <entry key="InvalidRowTimesInput">Invalid input for RowTimes. RowTimes must be specified as a positive integer or the name of a selected variable.\nThe variable specified by RowTimes must be of the datatype datetime or duration.</entry>
+        <entry key="CouldNotInferRowTimes">Could not infer RowTimes from the input parameters.\nConsider providing a datetime or duration variable name as input for RowTimes.</entry>
+
+        <!-- TabularBuilder messages -->
+        <entry key="InvalidOutputType">OutputType must be "table" or "timetable".\nDuring construction, OutputType can also be specified as "auto".</entry>
+        <entry key="UseOutputTypeTimetable">RowTimes parameters are not supported when OutputType is set to "table".\nSet OutputType to "timetable" to use RowTimes.</entry>
+
+        <!-- RowFilter cross-validation messages -->
+        <entry key="DeselectedConstrainedVariableNames">RowFilter is constrained by variables that are not selected: {0}\n\nConsider selecting these variables using SelectedVariableNames.</entry>
+        <entry key="UnrecognizedConstrainedVariableNames">Invalid constrained variable names on RowFilter: {0}\n\nAll constraints on RowFilter must use names that are in the SelectedVariableNames list.</entry>
+        <entry key="SelectedVariableNamesDeselectsConstrainedVariableNames">Cannot deselect the following SelectedVariableNames since they are constrained on RowFilter: {0}\n\nAll constraints on RowFilter must use names that are in the SelectedVariableNames list.</entry>
+
+        <!-- Internal errors. Should not be publicly visible during normal operation -->
+        <entry key="BuildRequiresConsistentHeights">Internal error: Inconsistent variable heights during {0}.\nExpected height {1} for Variable {2} but it has height {3}.</entry>
+        <entry key="IncorrectNumberOfVariablesForBuild">Internal error: Incorrect number of inputs for {0}. The number of input variables must match the length of {1}.\nReceived {2} inputs but expected {3}.</entry>
+        <entry key="IncorrectNumberOfVariableTypes">Internal error: Incorrect number of VariableTypes values. Expected {0} values but received {1}.\nThe length of VariableTypes must match the length of VariableNames.\nThe length of SelectedVariableTypes must match the length of SelectedVariableNames.</entry>
+        <entry key="BuildEmptyRequiresRowTimesType">Internal error: RowTimes type must be specified to use TimetableBuilder.buildEmpty().</entry>
+    </message>
+</rsccat>

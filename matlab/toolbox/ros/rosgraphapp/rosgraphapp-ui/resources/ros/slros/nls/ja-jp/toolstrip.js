@@ -1,0 +1,102 @@
+//
+// Copyright 2025 The MathWorks, Inc
+
+// Added the below rules to silence the ESLint warnings
+
+/* eslint-disable max-len */
+/* eslint-disable no-template-curly-in-string */
+/* eslint-disable quotes */
+/* eslint-disable no-useless-escape */
+
+//
+// DO NOT MODIFY THIS FILE!!  This is a derived file.
+// Instead, modify the English message catalog XML file "resources/ros/en/slros/toolstrip.xml"
+// Encoding: UTF-8
+//
+
+define({
+    BatchModeRosActionDescription: "複数のパラメーターの変更を\n一度に伝えます",
+    BatchModeRosActionText: "バッチ\nモード",
+    BuildActionBuildLoadRosActionDescription: "スタンドアロンのプログラムを生成して\nROS デバイスに展開します",
+    BuildActionBuildLoadRosActionText: "モデルの\nビルド",
+    BuildActionBuildRunRosActionDescription: "スタンドアロンのプログラムを生成して ROS デバイス上で展開し、\nプログラムを起動します",
+    BuildActionBuildRunRosActionText: "ビルドと\n実行",
+    BuildActionNoneRosActionDescription: "モデルのコードを生成します",
+    BuildActionNoneRosActionText: "コード\n生成",
+    BuildForExternalModeRosActionDescription: "信号を観察してパラメーターを調整するよう\nインストルメント化された実行可能プログラムを生成します",
+    BuildForExternalModeRosActionText: "監視用の\nビルド",
+    BuildROSControlActionDescription: "Simulink モデルから ros_control コントローラーを生成するための設定を指定します。",
+    BuildROSControlActionText: "ROS Control の生成",
+    CodeGenerationRosGalleryCategoryLabel: "コード生成",
+    ConfigurationRosGalleryCategoryLabel: "ROS のハードウェア構成",
+    ConfigureROSLoggingActionDescription: "バス信号を ROS メッセージとして ROS Bag ファイルに記録します",
+    ConfigureROSLoggingActionText: "ROS\nLogger",
+    ConfigureRobotConnectionRosActionText: "リモート デバイスの管理",
+    ConfigureRosNetworkRosActionDescription: "ROS ネットワークを構成します",
+    ConfigureRosNetworkRosActionText: "ROS\nネットワーク",
+    ConfigureVariableSizeArraysRosActionDescription: "可変長配列で ROS\nメッセージを構成します",
+    ConfigureVariableSizeArraysRosActionText: "可変サイズの\nメッセージ",
+    ConnectExternalModeRosActionDescription: "ROS デバイス上のプログラムにモデルを接続します",
+    ConnectExternalModeRosActionText: "モデルを\n接続",
+    CurrentBuildActionRosDescription: "スタンドアロンのアプリケーションを生成して展開し、\nハードウェア ボード上でアプリケーションを起動します",
+    CurrentBuildActionRosText: "ビルドと\n実行",
+    DeployForExternalModeRosActionDescription: "インストルメント化されたプログラムを ROS デバイスに展開します",
+    DeployForExternalModeRosActionText: "展開",
+    DeploymentRosSectionLabel: "展開",
+    DisconnectExternalModeRosActionDescription: "ROS デバイス上のプログラムから\nモデルを切断します",
+    DisconnectExternalModeRosActionText: "モデルを\n切断",
+    EventLogRosActionText: "イベント\nログ",
+    ExternalInputsRosGalleryCategoryLabel: "外部入力信号",
+    GenerateROSControlActionText: "ROS Control\nの設定",
+    HardwareDeploymentRosGalleryCategoryLabel: "スタンドアロンの展開",
+    Localhost: "ローカルホスト",
+    LoggingRosGalleryCategoryLabel: "信号のログとビューアー",
+    OneClickExternalModeRosActionDescription: "ROS デバイス上でインストルメント化されたプログラムを作成し、実行します。\n信号を監視してパラメーターを調整します。",
+    OneClickExternalModeRosActionText: "監視\nと調整",
+    OneClickExternalModeRosGalleryCategoryLabel: "信号の監視とパラメーターの調整",
+    ROSDeploymentTypeActionDescription: "モデルから生成されるコードの展開タイプ。",
+    ROSDeploymentTypeActionText: "展開タイプ",
+    ROSDeploymentTypeComponentDescription: "モデルをコンポーネント ノード ライブラリとして生成します",
+    ROSDeploymentTypeComponentText: "コンポーネント ノード",
+    ROSDeploymentTypeControlDescription: "モデルをコントロール プラグイン ライブラリとして生成します",
+    ROSDeploymentTypeControlText: "ROS Control プラグイン",
+    ROSDeploymentTypeSectionText: "展開タイプ",
+    ROSDeploymentTypeStandardDescription: "モデルを標準ノードの実行可能ファイルとして生成します",
+    ROSDeploymentTypeStandardText: "標準ノード",
+    ROSNetworkDeviceTypeLabel: "展開先",
+    ROSNetworkSelectLabel: "ROS ネットワーク",
+    ROSNetworkTestConnectionLabel: "",
+    ROSTabTitle: "ROS",
+    ROSToolboxPrepareGalleryCategoryLabel: "ROS ツールボックス",
+    RemoteDevice: "リモート デバイス",
+    RestartExternalModeRosActionDescription: "ROS デバイス上のプログラムを再起動します",
+    RestartExternalModeRosActionText: "再起動",
+    ResultsToolsRosGalleryCategoryLabel: "ROS ツール",
+    RobotHardwareConfigurationRosActionDescription: "ROS デバイスで実行するモデルを設定します",
+    RobotHardwareConfigurationRosActionText: "ハードウェア\n設定",
+    RoboticsSystemToolboxTargetSectionLabel: "接続",
+    SetupDialogDefaultSelection: "ROS ネットワークの選択",
+    SetupDialogDescription: "ROS メッセージを使用し、ROS 対応ロボットと接続するようにモデルを構成するには、以下の ROS ネットワークを選択します。",
+    SetupDialogSelectionPrompt: "ROS ネットワーク:",
+    SetupDialogTitle: "ROBOT OPERATING SYSTEM (ROS)",
+    SignalLoggingRosGalleryCategoryLabel: "信号ログの結果",
+    SimulationSettingsRosGalleryCategoryLabel: "コンフィギュレーションとシミュレーション",
+    SpareCommandsExternalModeRosGalleryCategoryLabel: "(予備のコマンド - 状態に使用)",
+    StartRunningInExternalModeRosActionDescription: "信号の監視とパラメーターの調整を\n開始します",
+    StartRunningInExternalModeRosActionText: "開始",
+    StepByStepExternalModeRosGalleryCategoryLabel: "ステップ単位のコマンド",
+    StopExternalModeRosActionDescription: "ロボット上のプログラムを停止して\nモデルを切断します",
+    StopExternalModeRosActionText: "停止",
+    StopTimeExternalModeRosActionDescription: "ROS デバイス上で実行中のインストルメント化された\nプログラムの終了時間",
+    StopTimeExternalModeRosActionText: "inf",
+    StopTimeLabelExternalModeRosActionDescription: "ROS デバイス上で実行中のインストルメント化された\nプログラムの終了時間",
+    StopTimeLabelExternalModeRosActionText: "終了時間",
+    StopTimeUnitsExternalModeRosActionDescription: "秒",
+    StopTimeUnitsExternalModeRosActionText: "(秒)",
+    TestRobotConnectionRosActionText: "接続\nテスト",
+    UpdateAllParametersRosActionDescription: "ROS デバイス上ですべてのパラメーターを更新します",
+    UpdateAllParametersRosActionText: "すべてのパラメーターを\n更新",
+    UpdateVariablesRosActionDescription: "ROS デバイス上でワークスペース変数の値を\n更新します",
+    UpdateVariablesRosActionText: "変数の\n更新",
+    roboticsSystemToolboxContextHardwareBoardTabTitle: "ROS"
+});

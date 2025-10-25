@@ -1,0 +1,80 @@
+{
+    "meshtsdf":
+    {
+        "inputs":
+        [
+            {"name":"meshStruct", "kind":"ordered", "type":["struct","@(meshStruct)all(ismember({'ID','Pose','Vertices','Faces'},fieldnames(meshStruct)))"]},
+            {"name":"FillInterior", "kind":"namevalue", "type":["numeric","choices={0,1}"]},
+            {"name":"Resolution", "kind":"namevalue", "type":["numeric","real","positive","scalar"]},
+            {"name":"TruncationDistance", "kind":"namevalue", "type":["numeric","positive","scalar"]}
+        ]
+    },
+    "meshtsdf.activeVoxels":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"id", "kind":"ordered", "type":["numeric","@(id,mTSDF)all(ismember(id,mTSDF.MeshID))"]}
+        ]
+    },
+    "meshtsdf.addMesh":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"meshStruct", "kind":"required", "type":["struct","@(meshStruct)all(ismember({'ID','Pose','Vertices','Faces'},fieldnames(meshStruct)))"]}
+        ]
+    },
+    "meshtsdf.distance":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"points", "kind":"required", "type":["numeric","size=:,3","real"]}
+        ]
+    },
+    "meshtsdf.gradient":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"points", "kind":"required", "type":["numeric","size=:,3","real"]}
+        ]
+    },
+    "meshtsdf.poses":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"id", "kind":"required", "type":["numeric","@(id,mTSDF)all(ismember(id,mTSDF.MeshID))"]}
+        ]
+    },
+    "meshtsdf.removeMesh":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"id", "kind":"required", "type":["numeric","@(id,mTSDF)all(ismember(id,mTSDF.MeshID))"]}
+        ]
+    },
+    "meshtsdf.show":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"Parent", "kind":"namevalue", "type":["matlab.graphics.axis.Axes"]},
+            {"name":"MeshID", "kind":"namevalue", "type":["numeric","@(id,mTSDF)all(ismember(id,mTSDF.MeshID))"]},
+            {"name":"IsoRange", "kind":"namevalue", "type":["numeric","numel=2"]},
+            {"name":"Colorbar", "kind":"namevalue", "type":["choices={0,1}"]},
+            {"name":"FastUpdate", "kind":"namevalue", "type":["choices={0,1}"]}
+        ]
+    },
+    "meshtsdf.updatePose":
+    {
+        "inputs":
+        [
+            {"name":"mTSDF", "kind":"required", "type":["meshtsdf"]},             
+            {"name":"poseStruct", "kind":"required", "type":["struct","@(poseStruct)all(ismember({'ID','Pose'},fieldnames(poseStruct)))"]}
+        ]
+    }
+}

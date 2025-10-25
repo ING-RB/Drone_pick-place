@@ -1,0 +1,1956 @@
+{
+    "currentProject":
+        {
+            "inputs":
+                [
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "matlab.project.Project"
+                    }
+                ]
+        },
+
+    "openProject":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "projectPath",
+                        "kind": "positional",
+                        "type": [
+                            "file=*.prj",
+                            "folder"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "matlab.project.Project"
+                    }
+                ]
+        },
+
+    "matlab.project.createProject":
+        {
+            "inputs":
+                [
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "path",
+                                        "kind": "positional",
+                                        "type": [
+                                            "folder",
+                                            "char"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "Name",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "char"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Folder",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "folder",
+                                            "char"
+                                        ]
+                                    }
+                                ]
+                            ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "matlab.project.Project"
+                    }
+                ]
+        },
+
+    "matlab.project.deleteProject":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "path",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.extractProject":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "archive",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.mlproj,*.zip"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "destination",
+                        "kind": "ordered",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "matlab.project.Project"
+                    }
+                ]
+        },
+
+    "matlab.project.loadProject":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "projectPath",
+                        "kind": "positional",
+                        "type": [
+                            "file=*.prj",
+                            "folder"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "matlab.project.Project"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.listImpactedFiles":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "files",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file"
+                            ],
+                            [
+                                "folder"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "AnalyzeReferences",
+                        "kind": "namevalue",
+                        "type": [
+                            "logical",
+                            "scalar"
+                        ]
+                    },
+                    {
+                        "name": "UpdateDependencies",
+                        "kind": "namevalue",
+                        "type": [
+                            "logical",
+                            "scalar"
+                        ]
+                    }
+
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "impactedfiles",
+                        "type": "char"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.listRequiredFiles":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "files",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file"
+                            ],
+                            [
+                                "folder"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "AnalyzeReferences",
+                        "kind": "namevalue",
+                        "type": [
+                            "logical",
+                            "scalar"
+                        ]
+                    },
+                    {
+                        "name": "UpdateDependencies",
+                        "kind": "namevalue",
+                        "type": [
+                            "logical",
+                            "scalar"
+                        ]
+                    }
+
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "impactedfiles",
+                        "type": "char"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "fileOrFolder",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectFile",
+                        "type": "matlab.project.ProjectFile"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addFolderIncludingChildFiles":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectFile",
+                        "type": "matlab.project.ProjectFile"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.findFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "fileOrFolder",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "file",
+                        "type": "matlab.project.ProjectFile"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.findFiles":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "files",
+                        "kind": "ordered",
+                        "type": [
+                            [
+                                "file"
+                            ],
+                            [
+                                "folder"
+                            ],
+                            [
+                                "char"
+                            ],
+                            [
+                                "matlab.project.ProjectFile"
+                            ]
+                        ]
+                    },
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "Category",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "choices=[proj.Categories.Name]"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Label",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj, Category)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "IncludeReferences",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "logical",
+                                            "scalar"
+                                        ]
+                                    },
+                                    {
+                                        "name": "OutputFormat",
+                                        "kind": "namevalue",
+                                        "type": "choices={'string', 'ProjectFile'}"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "Label",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "IncludeReferences",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "logical",
+                                            "scalar"
+                                        ]
+                                    },
+                                    {
+                                        "name": "OutputFormat",
+                                        "kind": "namevalue",
+                                        "type": "choices={'string', 'ProjectFile'}"
+                                    }
+                                ]
+                            ]
+                    }
+
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "file",
+                        "type": [
+                            "char",
+                            "matlab.project.ProjectFile"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "fileOrFolder",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.export":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "archiveName",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "filepath=*.zip,*.mlproj"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "ArchiveReferences",
+                        "kind": "namevalue",
+                        "type": [
+                            "logical",
+                            "scalar"
+                        ]
+                    },
+                    {
+                        "name": "IgnoreMissingFilesError",
+                        "kind": "namevalue",
+                        "type": [
+                            "logical",
+                            "scalar"
+                        ]
+                    },
+                    {
+                        "name": "ExportProfile",
+                        "kind": "namevalue",
+                        "type": [
+                            "choices={matlab.internal.project.profiles.getAvailableExportProfiles(proj.RootFolder).Name}"
+                        ]
+                    },
+                    {
+                        "name": "DefinitionType",
+                        "kind": "namevalue"
+                    },
+                    {
+                        "name": "Files",
+                        "kind": "namevalue",
+                        "type": "char"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "files",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file"
+                            ],
+                            [
+                                "folder"
+                            ],
+                            [
+                                "char"
+                            ],
+                            [
+                                "matlab.project.ProjectFile"
+                            ]
+                        ]
+                    },
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "categoryName",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices=[proj.Categories.Name]"
+                                        ]
+                                    },
+                                    {
+                                        "name": "labelName",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj, categoryName)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "labelData",
+                                        "kind": "ordered",
+                                        "type": [
+                                            "char",
+                                            "numeric"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "labelName",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj)"
+                                        ]
+                                    }
+                                ]
+                            ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "label",
+                        "type": "matlab.project.Label"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file"
+                            ],
+                            [
+                                "folder"
+                            ],
+                            [
+                                "char"
+                            ],
+                            [
+                                "matlab.project.ProjectFile"
+                            ]
+                        ]
+                    },
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "categoryName",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "labelName",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file,categoryName)"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "labelName",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj)"
+                                        ]
+                                    }
+                                ]
+                            ]
+                    }
+                ]
+        },
+
+    "matlab.project.ProjectFile.addLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "matlab.project.ProjectFile"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                        ]
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file,categoryName)"
+                        ]
+                    },
+                    {
+                        "name": "labelData",
+                        "kind": "ordered",
+                        "type": [
+                            "char",
+                            "numeric"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "label",
+                        "type": "matlab.project.Label"
+                    }
+                ]
+        },
+
+    "matlab.project.ProjectFile.findLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "matlab.project.ProjectFile"
+                    },
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "categoryName",
+                                        "kind": "required",
+                                        "type": [
+                                            "char",
+                                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "labelName",
+                                        "kind": "required",
+                                        "type": [
+                                            "char",
+                                            "choices=matlab.internal.project.util.getLabelNamesInCategoryInFile(file,categoryName)"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "labelDefinition",
+                                        "kind": "required",
+                                        "type": "matlab.project.LabelDefinition"
+                                    }
+                                ],
+                                []
+                            ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "label",
+                        "type": "matlab.project.Label"
+                    }
+                ]
+        },
+
+    "matlab.project.Category.findLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "category",
+                        "kind": "required",
+                        "type": "matlab.project.Category"
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=arrayfun(@(x)char(x.Name), category.LabelDefinitions, 'UniformOutput', false)"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "label",
+                        "type": "matlab.project.LabelDefinition"
+                    }
+                ]
+        },
+
+    "matlab.project.ProjectFile.removeLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "matlab.project.ProjectFile"
+                    },
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "categoryName",
+                                        "kind": "required",
+                                        "type": [
+                                            "char",
+                                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "labelName",
+                                        "kind": "required",
+                                        "type": [
+                                            "char",
+                                            "choices=matlab.internal.project.util.getLabelNamesInCategoryInFile(file,categoryName)"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "file",
+                                        "kind": "required",
+                                        "type": "matlab.project.ProjectFile"
+                                    },
+                                    {
+                                        "name": "LabelDefinition",
+                                        "kind": "required",
+                                        "type": "matlab.project.LabelDefinition"
+                                    }
+                                ]
+                            ]
+                    }
+                ]
+        },
+
+    "matlab.project.Category.removeLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "category",
+                        "kind": "required",
+                        "type": "matlab.project.Category"
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=arrayfun(@(x) char(x.Name), category.LabelDefinitions, 'UniformOutput', false)"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.createCategory":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char"
+                        ]
+                    },
+                    {
+                        "name": "dataType",
+                        "kind": "ordered",
+                        "type": "choices=matlab.project.Project.ValidDataTypes"
+                    },
+                    {
+                        "name": "'single-valued'",
+                        "kind": "ordered",
+                        "type": "choices={'single-valued'}"
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "newCategory",
+                        "type": "matlab.project.Category"
+                    }
+                ]
+        },
+
+
+    "matlab.project.Project.findCategory":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=[proj.Categories.Name]"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "category",
+                        "type": "matlab.project.Category"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeCategory":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=[proj.Categories.Name]"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addPath":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectPath",
+                        "type": "matlab.project.PathFolder"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removePath":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "folderPath",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addReference":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "referenceFolder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    },
+                    {
+                        "name": "type",
+                        "kind": "positional",
+                        "type": [
+                            "choices={'absolute', 'relative'}"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectReference",
+                        "type": "matlab.project.ProjectReference"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeReference":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addShortcut":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "shortcut",
+                        "type": "matlab.project.Shortcut"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeShortcut":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "shortcut",
+                        "kind": "required",
+                        "type": [
+                            "choices=[proj.Shortcuts.File]"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addStartupFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "shortcut",
+                        "type": "string"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeStartupFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "matlab.project.Project.addShutdownFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "shortcut",
+                        "type": "string"
+                    }
+                ]
+        },
+
+    "matlab.project.Project.removeShutdownFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "matlab.project.Project"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "simulinkproject":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "projectPath",
+                        "kind": "positional",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "slproject.ProjectManager"
+                    }
+                ]
+        },
+
+    "slproject.create":
+        {
+            "inputs":
+                [
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "path",
+                                        "kind": "positional",
+                                        "type": [
+                                            "folder",
+                                            "char"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "Name",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "char"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Folder",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "folder",
+                                            "char"
+                                        ]
+                                    }
+                                ]
+                            ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "slproject.ProjectManager"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectFile",
+                        "type": "slproject.ProjectFile"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addFolderIncludingChildFiles":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectFile",
+                        "type": "slproject.ProjectFile"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.findFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "fileName",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "file",
+                        "type": "slproject.ProjectFile"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.findFiles":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "files",
+                        "kind": "ordered",
+                        "type": [
+                            [
+                                "file"
+                            ],
+                            [
+                                "folder"
+                            ],
+                            [
+                                "char"
+                            ],
+                            [
+                                "matlab.project.ProjectFile"
+                            ]
+                        ]
+                    },
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "Category",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "choices={proj.Categories.Name}"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Label",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj.Project, Category)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "IncludeReferences",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "logical",
+                                            "scalar"
+                                        ]
+                                    },
+                                    {
+                                        "name": "OutputFormat",
+                                        "kind": "namevalue",
+                                        "type": "choices={'string', 'ProjectFile'}"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "Label",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "choices=matlab.internal.project.api.getLabelNames(proj.Project)"
+                                        ]
+                                    },
+                                    {
+                                        "name": "IncludeReferences",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "logical",
+                                            "scalar"
+                                        ]
+                                    },
+                                    {
+                                        "name": "OutputFormat",
+                                        "kind": "namevalue",
+                                        "type": "choices={'string', 'ProjectFile'}"
+                                    }
+                                ]
+                            ]
+                    }
+
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "file",
+                        "type": [
+                            "char",
+                            "slproject.ProjectFile"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removeFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.export":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "zipFileName",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "filepath=*.zip"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "definitionType",
+                        "kind": "ordered"
+                    }
+                ]
+        },
+
+    "slproject.loadProject":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "projectPath",
+                        "kind": "required",
+                        "type": [
+                            "file=*.prj",
+                            "folder"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "proj",
+                        "type": "slproject.ProjectManager"
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.addLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "slproject.ProjectFile"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                        ]
+                    },
+                    {
+                        "name": "label",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file,categoryName)"
+                        ]
+                    },
+                    {
+                        "name": "labelData",
+                        "kind": "ordered",
+                        "type": [
+                            "char",
+                            "numeric"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "labelObject",
+                        "type": "slproject.Label"
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.findLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "slproject.ProjectFile"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                        ]
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getLabelNamesInCategoryInFile(file,categoryName)"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "labelObject",
+                        "type": "slproject.Label"
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.findLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "slproject.ProjectFile"
+                    },
+                    {
+                        "name": "LabelDefinition",
+                        "kind": "required",
+                        "type": "slproject.LabelDefinition"
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "labelObject",
+                        "type": "slproject.Label"
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.findLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "category",
+                        "kind": "required",
+                        "type": "slproject.Category"
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices={category.LabelDefinitions.Name}"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "labelObject",
+                        "type": "slproject.LabelDefinition"
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.removeLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "slproject.ProjectFile"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getCategoriesAndLabelNamesInProjectFromFile(file)"
+                        ]
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices=matlab.internal.project.util.getLabelNamesInCategoryInFile(file,categoryName)"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.removeLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": "slproject.ProjectFile"
+                    },
+                    {
+                        "name": "LabelDefinition",
+                        "kind": "required",
+                        "type": "slproject.LabelDefinition"
+                    }
+                ]
+        },
+
+    "slproject.ProjectFile.removeLabel":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "category",
+                        "kind": "required",
+                        "type": "slproject.Category"
+                    },
+                    {
+                        "name": "labelName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices={category.LabelDefinitions.Name}"
+                        ]
+                    }
+                ]
+        },
+
+
+    "slproject.ProjectManager.findCategory":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "choices={proj.Categories.Name}"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "category",
+                        "type": "slproject.Category"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removeCategory":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "categoryName",
+                        "kind": "required",
+                        "type": [
+                            "char",
+                            "choices={proj.Categories.Name}"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addPath":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectPath",
+                        "type": "slproject.PathFolder"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removePath":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addReference":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    },
+                    {
+                        "name": "type",
+                        "kind": "positional",
+                        "type": [
+                            "choices={'absolute', 'relative'}"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "projectReference",
+                        "type": "slproject.ProjectReference"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removeReference":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "folder",
+                        "kind": "required",
+                        "type": [
+                            "folder",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addShortcut":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "fileName",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "shortcut",
+                        "type": "slproject.Shortcut"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removeShortcut":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "choices={proj.Shortcuts.File}"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addStartupFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "fileName",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "shortcut",
+                        "type": "string"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removeStartupFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.addShutdownFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "fileName",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "shortcut",
+                        "type": "string"
+                    }
+                ]
+        },
+
+    "slproject.ProjectManager.removeShutdownFile":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "proj",
+                        "kind": "required",
+                        "type": "slproject.ProjectManager"
+                    },
+                    {
+                        "name": "file",
+                        "kind": "required",
+                        "type": [
+                            "file",
+                            "char"
+                        ]
+                    }
+                ]
+        }
+
+}

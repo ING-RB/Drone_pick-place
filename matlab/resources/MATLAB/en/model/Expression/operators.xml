@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Copyright 2024 The MathWorks, Inc. -->
+<rsccat product="MATLAB" locale="en_US" version="1.0">
+  <!--Please use note attribute to describe note="" context of message-->
+  <message>
+    <!-- Used with mtimes (original MATLAB message recommends functions 
+         that are not supported for AD - pagemtimes & tensorprod) -->
+      <entry context="error" key="mtimes_inputsMustBe2D" translate="false">Arguments must be 2-dimensional, or at least one argument must be scalar. Use TIMES (.*) for elementwise multiplication.</entry>
+    <!-- Used with mrdivide and mldivide (we only support division by a scalar, for now) -->
+      <entry context="error" key="mlrdivide_divisorMustBeScalar" translate="false">Divisor must be scalar.</entry>
+    <!-- Used with max/min (original MATLAB message includes other nan 
+         flags which are not supported for AD) -->
+      <entry context="error" key="unknownNaNFlag" translate="false">Missing value condition must be specified as ''omitnan'' or ''includenan''.</entry>
+    <!-- Used with cumulative functions (original MATLAB message includes nan 
+         flags which are not supported for AD) -->
+      <entry context="error" key="cumfun_invalidFlag" translate="false">Invalid option. Option must be ''forward'', or ''reverse''.</entry>
+	  <entry context="error" key="InvalidRHS" translate="false">Unable to perform assignment because right-hand side must be an Expression, or a double or logical array.</entry>
+    <!-- Used with mpower (we only support scalar ^ scalar, or (square matrix) ^ (non-negative integer scalar)) -->
+      <entry context="error" key="mpower_exponentMustBeNonnegativeInteger" translate="false">When the base is a matrix, the exponent must be a nonnegative integer scalar.</entry>
+    <!-- Used with norm (we only support norm(vector) and norm(vector, p) where p is non-negative scalar or 'Inf'. -->  
+    <entry context="error" key="norm_vectorOnly" translate="false">First input must be a vector.</entry>
+    <entry context="error" key="norm_invalidP" translate="false">Second input must be a positive real-valued scalar or 'inf'.</entry>
+    <!-- Supported syntaxes for sum, prod, mean -->
+    <entry context="error" key="reductor_supportedSyntaxes" translate="false">Syntax not supported. Only the dimension argument is supported when using Expression.</entry>
+    <!-- Supported syntaxes for sort -->
+    <entry context="error" key="sort_supportedSyntaxes" translate="false">Syntax not supported. Only the dimension argument is supported when using Expression.</entry>
+    <!-- Used with gamma (input must be non-negative for gradient) -->
+    <entry context="error" key="gamma_invalidX" translate="false">Derivative of gamma is only supported when gamma is called with a nonnegative input.</entry>
+  </message>
+</rsccat>

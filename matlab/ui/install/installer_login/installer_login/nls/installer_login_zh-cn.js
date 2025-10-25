@@ -1,0 +1,3 @@
+define('installer_login/nls/installer_login_zh-cn',{
+'installer_login/l10n/nls/installer_login':{"connectionError":"连接错误","connectionErrorMsg":"应用程序无法连接到 MathWorks。有关解决此问题的详细信息，请参阅此<a target=\"_blank\" href=\"https://www.mathworks.com/mlf_err_${0}_${1}\">支持文章</a>。","cancel":"取消","tryAgain":"重试","unexpectedError":"意外错误","unexpectedErrorMsg":"出现意外错误。请稍后重试。<br><br>如果您仍有问题，请重新启动 MATLAB。要获得更多帮助，请<a target=\"_blank\" href=\"https://www.mathworks.com/support/contact_us/?s_tid=sp_ban_cs\">联系技术支持</a>。","_localized":{}}
+});

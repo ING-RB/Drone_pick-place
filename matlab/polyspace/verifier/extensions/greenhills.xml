@@ -1,0 +1,979 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2023 The MathWorks, Inc. -->
+
+<compiler name="greenhills" default="powerpc"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+  </clients>
+
+  <options>
+    <option name="--lean_gnu_mode"/>
+    <option name="--gnu_version" value="40300"/>
+    <option name="--restrict"/>
+    <option name="--enable_static_assert"/>
+    <option name="--enable_static_assert_cpp"/>
+    <option name="--allow_long_float"/>
+    <option name="--preinclude" value="__polyspace_common.h"/>
+    <option name="--preinclude" value="greenhills/tmw_builtins/intrinsic_greenhills.h"/>
+    <option name="--va_list_is_void_star"/>
+    <if feoption="--c\+\+">
+      <option name="--c99_generic_in_cpp"/>
+      <ifnot feoption="--c\+\+03">
+        <ifnot feoption="--c\+\+11">
+          <ifnot feoption="--c\+\+14">
+            <ifnot feoption="--c\+\+17">
+              <ifnot feoption="--c\+\+20">
+                <option name="--c++03"/>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </ifnot>
+    </if>
+    
+    <if feoption="--c">
+      <option name="--preserve_lvalues_with_same_type_casts"/>
+      <option name="--set_flag" value="allow_anonymous_union_like_construct"/>
+    </if>
+    <option name="--nonstd_anonymous_unions"/>
+  </options>
+
+  <attributes>
+    <attribute name="__noinline"/>
+    <attribute name="__interrupt"/>
+    <attribute name="__linkonce"/>
+    <attribute name="__nearcall"/>
+    <attribute name="__farcall"/>
+    <attribute name="__packed" alias="gnu:packed" constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|d|Wv|Wp|Wr|Wt"/>
+    <attribute name="__callt"/>     <!-- Only available in RH850 but compiles in other targets -->
+
+    <attribute name="__littleendian" token="tok_volatile"/>
+    <attribute name="__bigendian" token="tok_volatile"/>
+    <attribute name="__bytereversed" token="tok_volatile"/>
+
+    <!-- Gnu-style attributes: __attribute__((...)) -->
+    <!-- format: Greenhills compiler allows 3 arguments -->
+    <attribute name="format" family="gnu" sig="(n,ci,ci?,ci)" attrkind="ak_format"/>
+  </attributes>
+
+
+  <!-- Macros common to all targets -->
+  <defines>
+
+    <!-- GHS Macros -->
+    <define name="__ghs__" value="1"/>
+    <define name="__ghs" value="1"/>
+    <define name="__ghs_asm" value="1"/>
+    <define name="__GHS_REVISION_DATE" value="&quot;Oct 19 2015&quot;"/>
+    <define name="__GHS_REVISION_VALUE" value="1445230492"/>
+    <define name="__GHS_VERSION_NUMBER" value="201516"/>
+    <define name="__PROTOTYPES__" value="1"/>
+    <define name="__ATTRIBUTES" value="1"/>
+    <define name="__IeeeFloat__" value="1"/>
+    <define name="__IeeeFloat" value="1"/>
+    <define name="__ELF__" value="1"/>
+    <define name="__ELF" value="1"/>
+
+    <!-- Macros for the Language C or C++ -->
+    <if feoption="--c\+\+">
+      <define name="__LANGUAGE_CXX__"  value="1"/>
+      <define name="__LANGUAGE_CXX"  value="1"/>
+      <define name="__STANDARD_CXX"  value="1"/>
+      <define name="__STANDARD_CXX_HEADERS"  value="1"/>
+      <define name="__c_plusplus"  value="1"/>
+      <define name="__GHS_NOCOMMONS__" value="1"/>
+      <define name="__GHS_NOCOMMONS" value="1"/>
+      <define name="__STDC__" value="0"/>
+      <define name="__NAMESPACES" value="1"/>
+      <!-- Macros for C++ Polyspace Libraries. -->
+      <define name="_LIBCPP_COMPILER_GENERIC_POLYSPACE" value="1"/>
+    </if>
+    <if feoption="--c">
+      <define name="__LANGUAGE_C__"  value="1"/>
+      <define name="__LANGUAGE_C"  value="1"/>
+    </if>
+
+    <define name="__STDC_HOSTED__" value="1"/>
+
+    <!-- GNU compatibilities -->
+    <define name="__MW_GNU__" value="1"/>
+    <define name="PST_GNU" value="1"/>
+    <define name="_GNU_SOURCE" value="1"/>
+    <define name="POLYSPACE_LIBC_NO_THROW" value="1"/>
+
+    <!-- Polyspace varargs compatibilities -->
+    <define name="__gh_va_list" value="va_list"/>
+
+  </defines>
+
+  <pragmas>
+    <pragma name="asm" end="endasm"/>
+  </pragmas>
+
+  <asms>
+    <asm name="__asm"/>
+    <asm name="__asm__"/>
+    <asm name="asm"/>
+    <asm name="__asmleaf"/>
+  </asms>
+
+  <target name="powerpc" title="PowerPC">
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_signed_long"/>
+
+      <!-- Unsigned char is default in PowerPC
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--signed_chars">
+        <option name="--unsigned_chars"/>
+      </ifnot>
+
+      <option name="--preinclude" value="greenhills/tmw_builtins/powerpc.h"/>
+    </options>
+
+    <!-- By default, Altivec is not supported -->
+    <if option="-Altivec">
+      <options>
+        <option name="--altivec"/>
+        <option name="--gnu_vector_types"/>
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+
+      <defines>
+        <define name="__ALTIVEC__" value="1"/>
+        <define name="__VEC__" value="10205"/>
+        <define name="pixel" value="__pixel"/>
+        <define name="vector" value="__vector"/>
+      </defines>
+    </if>
+
+    <if option="-SPE">
+      <defines>
+        <define name="__SPE__" value="1"/>
+      </defines>
+
+      <types>
+        <type name="__ev64_u16__"    type_kind="int"    decl_specs="vector8,short,unsigned"/>
+        <type name="__ev64_s16__"    type_kind="int"    decl_specs="vector8,short"/>
+        <type name="__ev64_u32__"    type_kind="int"    decl_specs="vector8,unsigned"/>
+        <type name="__ev64_s32__"    type_kind="int"    decl_specs="vector8"/>
+        <type name="__ev64_u64__"    type_kind="int"    decl_specs="vector8,long_long,unsigned"/>
+        <type name="__ev64_s64__"    type_kind="int"    decl_specs="vector8,long_long"/>
+        <type name="__ev64_opaque__" type_kind="opaque" decl_specs="vector8"/>
+        <type name="__ev64_fs__"     type_kind="float"  decl_specs="vector8"/>
+        <type name="__ev64_u5bit__"  type_kind="int"    decl_specs="vector8,unsigned"/>
+        <type name="__ev64_s5bit__"  type_kind="int"    decl_specs="vector8"/>
+      </types>
+
+      <options>
+        <option name="--gnu_vector_types"/>
+        <option name="--allow_implicit_vector_conversions"/>
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+    </if>
+
+    <defines>
+      <define name="__ppc__" value="1"/>
+      <define name="__ppc" value="1"/>
+      <define name="__PowerPC__" value="1"/>
+      <define name="__PowerPC" value="1"/>
+      <define name="__powerpc__" value="1"/>
+      <define name="__LSP_APU__" value="1"/>
+
+      <!-- Unsigned char is default in PowerPC
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__BigEndian__" value="1"/>
+      <define name="__BigEndian" value="1"/>
+      <define name="__BIG_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Unsigned__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Long__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="32"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="32"/>
+      <define name="__FUNCPTR_BIT" value="32"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="32"/>
+      <define name="__FREG_BIT" value="64"/>
+      <define name="__LDBL_BIT" value="64"/>
+      <define name="__TIME_T_BIT" value="32"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="8"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_32" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_32" value="1"/>
+      <define name="__Reg_Is_32" value="1"/>
+
+      <define name="__DOUBLE_HL__" value="1"/>
+      <define name="__DOUBLE_HL" value="1"/>
+      <define name="__ghs_sda" value="1"/>
+      <define name="__ghs_zda" value="1"/>
+      <define name="__ghs_alignment" value="8"/>
+      <define name="__ghs_max_pack_value" value="16"/>
+    </defines>
+
+  </target>
+
+  <target name="powerpc64" title="PowerPC64">
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="8"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="8"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--ptr_diff_is_long"/>
+      <option name="--wchar_t_is_signed_int"/>
+
+      <!-- Unsigned char is default in PowerPC64
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--signed_chars">
+        <option name="--unsigned_chars"/>
+      </ifnot>
+
+      <option name="--preinclude" value="greenhills/tmw_builtins/powerpc64.h"/>
+    </options>
+
+    <!-- By default, Altivec is not supported -->
+    <if option="-Altivec">
+      <options>
+        <option name="--altivec"/>
+        <option name="--gnu_vector_types"/>
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+
+      <defines>
+        <define name="__ALTIVEC__" value="1"/>
+        <define name="__VEC__" value="10205"/>
+        <define name="pixel" value="__pixel"/>
+        <define name="vector" value="__vector"/>
+      </defines>
+    </if>
+
+    <if option="-SPE">
+      <defines>
+        <define name="__SPE__" value="1"/>
+      </defines>
+
+      <types>
+        <type name="__ev64_u16__"    type_kind="int"    decl_specs="vector8,short,unsigned"/>
+        <type name="__ev64_s16__"    type_kind="int"    decl_specs="vector8,short"/>
+        <type name="__ev64_u32__"    type_kind="int"    decl_specs="vector8,unsigned"/>
+        <type name="__ev64_s32__"    type_kind="int"    decl_specs="vector8"/>
+        <type name="__ev64_u64__"    type_kind="int"    decl_specs="vector8,long_long,unsigned"/>
+        <type name="__ev64_s64__"    type_kind="int"    decl_specs="vector8,long_long"/>
+        <type name="__ev64_opaque__" type_kind="opaque" decl_specs="vector8"/>
+        <type name="__ev64_fs__"     type_kind="float"  decl_specs="vector8"/>
+        <type name="__ev64_u5bit__"  type_kind="int"    decl_specs="vector8,unsigned"/>
+        <type name="__ev64_s5bit__"  type_kind="int"    decl_specs="vector8"/>
+      </types>
+
+      <options>
+        <option name="--gnu_vector_types"/>
+        <option name="--allow_implicit_vector_conversions"/>
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+    </if>
+
+    <defines>
+      <define name="__ppc__" value="1"/>
+      <define name="__ppc" value="1"/>
+      <define name="__PowerPC__" value="1"/>
+      <define name="__PowerPC" value="1"/>
+      <define name="__powerpc__" value="1"/>
+      <define name="__LSP_APU__" value="1"/>
+
+      <!-- Unsigned char is default in PowerPC64
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__BigEndian__" value="1"/>
+      <define name="__BigEndian" value="1"/>
+      <define name="__BIG_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Unsigned__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Int__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="64"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="64"/>
+      <define name="__FUNCPTR_BIT" value="64"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="64"/>
+      <define name="__FREG_BIT" value="64"/>
+      <define name="__LDBL_BIT" value="64"/>
+      <define name="__TIME_T_BIT" value="64"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="8"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_64" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_64" value="1"/>
+      <define name="__Reg_Is_64" value="1"/>
+
+      <define name="__DOUBLE_HL__" value="1"/>
+      <define name="__DOUBLE_HL" value="1"/>
+      <define name="__ghs_sda" value="1"/>
+      <define name="__ghs_zda" value="1"/>
+      <define name="__ghs_alignment" value="8"/>
+      <define name="__ghs_max_pack_value" value="16"/>
+
+      <define name="__LP64__" value="1"/>
+      <define name="__PPC64__" value="1"/>
+      <define name="__PPC64_ABI__" value="1"/>
+      <define name="__PPC_FSEL__" value="1"/>
+    </defines>
+
+  </target>
+
+  <target name="arm" title="ARM">
+
+    <options>
+      <ifnot feoption="--max_alignment">
+        <option name="--max_alignment"      value="4"/>  <!-- -align4 only -->
+      </ifnot>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+
+      <!-- Unsigned char is default in ARM
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--signed_chars">
+        <option name="--unsigned_chars"/>
+      </ifnot>
+    </options>
+
+    <defines>
+      <define name="__ARM" value="1"/>
+      <define name="__ARM__" value="1"/>
+      <define name="__arm__" value="1"/>
+      <define name="__THUMB_AWARE" value="1"/>
+      <define name="__THUMB_AWARE__" value="1"/>
+      <define name="__SoftwareFloat" value="1"/>
+      <define name="__SoftwareFloat__" value="1"/>
+      <define name="__SoftwareDouble" value="1"/>
+      <define name="__SoftwareDouble__" value="1"/>
+
+      <!-- Unsigned char is default in ARM
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__LittleEndian__" value="1"/>
+      <define name="__LittleEndian" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__WChar_Is_Unsigned__" value="1"/>
+      <define name="__WChar_Is_Short__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="32"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="32"/>
+      <define name="__FUNCPTR_BIT" value="32"/>
+      <define name="__WCHAR_BIT" value="16"/>
+      <define name="__REG_BIT" value="32"/>
+      <define name="__FREG_BIT" value="32"/>
+      <define name="__LDBL_BIT" value="64"/>
+      <define name="__TIME_T_BIT" value="32"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="8"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_32" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_32" value="1"/>
+      <define name="__Reg_Is_32" value="1"/>
+
+      <define name="__ghs_alignment" value="4"/>
+      <define name="__ghs_max_pack_value" value="4"/>
+    </defines>
+
+
+    <attributes>
+      <attribute name="__swi" sig="(*)"/>
+    </attributes>
+
+  </target>
+
+  <target name="arm64" title="ARM64">
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="8"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="8"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--ptr_diff_is_long"/>
+      <option name="--wchar_t_is_signed_int"/>
+
+      <!-- Unsigned char is default in ARM64
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--signed_chars">
+        <option name="--unsigned_chars"/>
+      </ifnot>
+    </options>
+
+    <defines>
+      <define name="__ARM64__" value="1"/>
+
+      <!-- Unsigned char is default in ARM64
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__LittleEndian__" value="1"/>
+      <define name="__LittleEndian" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Int__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="64"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="64"/>
+      <define name="__FUNCPTR_BIT" value="64"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="64"/>
+      <define name="__FREG_BIT" value="64"/>
+      <define name="__LDBL_BIT" value="64"/>
+      <define name="__TIME_T_BIT" value="64"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="8"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_64" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_64" value="1"/>
+      <define name="__Reg_Is_64" value="1"/>
+      <define name="__LP64__" value="1"/>
+
+      <define name="__ghs_alignment" value="8"/>
+      <define name="__ghs_max_pack_value" value="8"/>
+
+      <if feoption="--c">
+        <define name="__GHS_NOCOMMONS__" value="1"/>
+        <define name="__GHS_NOCOMMONS" value="1"/>
+      </if>
+    </defines>
+
+  </target>
+
+
+  <target name="tricore" title="Tricore">
+
+    <options>
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--struct_align"       value="2"/>
+
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_signed_long"/>
+
+      <!-- Signed char is default in Tricore
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--unsigned_chars">
+        <option name="--signed_chars"/>
+      </ifnot>
+    </options>
+
+    <defines>
+      <define name="__Tricore" value="1"/>
+      <define name="__Tricore__" value="1"/>
+      <define name="__tricore_rosda" value="1"/>
+      <define name="__tricore_rozda" value="1"/>
+      <define name="__SoftwareFloat" value="1"/>
+      <define name="__SoftwareFloat__" value="1"/>
+      <define name="__SoftwareDouble" value="1"/>
+      <define name="__SoftwareDouble__" value="1"/>
+
+      <!-- Signed char is default in Tricore
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--unsigned_chars">
+        <case>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__LittleEndian__" value="1"/>
+      <define name="__LittleEndian" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Signed__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Long__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="32"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="32"/>
+      <define name="__FUNCPTR_BIT" value="32"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="32"/>
+      <define name="__FREG_BIT" value="32"/>
+      <define name="__LDBL_BIT" value="64"/>
+      <define name="__TIME_T_BIT" value="32"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="8"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_32" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_32" value="1"/>
+      <define name="__Reg_Is_32" value="1"/>
+
+      <define name="__ghs_alignment" value="4"/>
+      <define name="__ghs_max_pack_value" value="4"/>
+      <define name="__ghs_struct_min_alignment" value="2"/>
+
+      <define name="__ghs_sda" value="1"/>
+      <define name="__ghs_zda" value="1"/>
+      <define name="__FLT_SUBNORMAL_IS_ZERO__" value="1"/>
+    </defines>
+
+  </target>
+
+  <target name="rh850" title="RH850">
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_signed_long"/>
+
+      <!-- Signed char is default in RH850
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--unsigned_chars">
+        <option name="--signed_chars"/>
+      </ifnot>
+    </options>
+
+    <if option="-rh850_simd">
+      <if option="-rh850_fpsimd">
+        <error message="-rh850_simd and -rh850_fpsimd are incompatible"/>
+      </if>
+    </if>
+
+    <if option="-rh850_simd">
+      <defines>
+        <define name="__RH850_SIMD_TYPES__" value="1"/>
+        <define name="__CORE_V850E3V5__" value="1"/>
+      </defines>
+
+      <types>
+        <type name="__ev64_u16__"    type_kind="int"    decl_specs="vector8,short,unsigned"/>
+        <type name="__ev64_s16__"    type_kind="int"    decl_specs="vector8,short"/>
+        <type name="__ev64_u32__"    type_kind="int"    decl_specs="vector8,unsigned"/>
+        <type name="__ev64_s32__"    type_kind="int"    decl_specs="vector8"/>
+        <type name="__ev64_u64__"    type_kind="int"    decl_specs="vector8,long_long,unsigned"/>
+        <type name="__ev64_s64__"    type_kind="int"    decl_specs="vector8,long_long"/>
+        <type name="__ev64_opaque__" type_kind="opaque" decl_specs="vector8"/>
+        <type name="__ev128_opaque__" type_kind="opaque" decl_specs="vector16"/> <!-- Alignment is on 64bits on GHS -->
+      </types>
+
+      <options>
+        <option name="--gnu_vector_types"/>
+        <option name="--allow_implicit_vector_conversions"/>
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+    </if>
+
+    <if option="-rh850_fpsimd">
+      <defines>
+        <define name="__RH850_FPSIMD_TYPES__" value="1"/>
+        <define name="__CORE_V850E3V5__" value="1"/>
+      </defines>
+
+      <types>
+        <type name="__ev128_opaque__" type_kind="opaque" decl_specs="vector16"/>
+        <type name="__ev128_f32__"    type_kind="int"    decl_specs="vector16"/>
+        <type name="__ev256_f32__"    type_kind="int"    decl_specs="vector32"/> <!-- Alignment is on 128bits on GHS -->
+      </types>
+
+      <options>
+        <option name="--gnu_vector_types"/>
+        <option name="--allow_implicit_vector_conversions"/>
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+    </if>
+
+    <defines>
+      <define name="__v850e__" value="1"/>
+      <define name="__V850E__" value="1"/>
+      <define name="__V850E" value="1"/>
+      <define name="__v851__" value="1"/>
+      <define name="__v850" value="1"/>
+      <define name="__v850__" value="1"/>
+      <define name="__v800__" value="1"/>
+      <define name="__v800" value="1"/>
+      <define name="__V800_registermode" value="32"/>
+      <define name="__V800_registermode__" value="32"/>
+      <define name="__V810" value="1"/>
+      <define name="__RH850" value="1"/>
+      <define name="__RH850__" value="1"/>
+      <define name="__SoftwareFloat" value="1"/>
+      <define name="__SoftwareFloat__" value="1"/>
+      <define name="__SoftwareDouble" value="1"/>
+      <define name="__SoftwareDouble__" value="1"/>
+
+      <!-- Signed char is default in RH850
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--unsigned_chars">
+        <case>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__LittleEndian__" value="1"/>
+      <define name="__LittleEndian" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Signed__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Long__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="32"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="32"/>
+      <define name="__FUNCPTR_BIT" value="32"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="32"/>
+      <define name="__FREG_BIT" value="32"/>
+      <define name="__LDBL_BIT" value="64"/>
+      <define name="__TIME_T_BIT" value="32"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="8"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_32" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_32" value="1"/>
+      <define name="__Reg_Is_32" value="1"/>
+
+      <define name="__ghs_alignment" value="8"/>
+      <define name="__ghs_max_pack_value" value="8"/>
+      <define name="__ghs_struct_min_alignment" value="2"/>
+
+      <define name="__ghs_sda" value="1"/>
+      <define name="__ghs_zda" value="1"/>
+    </defines>
+
+  </target>
+
+  <target name="i386" title="i386">
+
+    <options>
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="12"/>
+      <option name="--bits_for_long_double" value="80"/>
+
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_signed_long"/>
+
+      <!-- Signed char is default in i386
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--unsigned_chars">
+        <option name="--signed_chars"/>
+      </ifnot>
+    </options>
+
+    <defines>
+      <define name="__i386" value="1"/>
+      <define name="__i386__" value="1"/>
+
+      <!-- Signed char is default in i386
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--unsigned_chars">
+        <case>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__LittleEndian__" value="1"/>
+      <define name="__LittleEndian" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Long__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="32"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="32"/>
+      <define name="__FUNCPTR_BIT" value="32"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="32"/>
+      <define name="__FREG_BIT" value="80"/>
+      <define name="__LDBL_BIT" value="80"/>
+      <define name="__TIME_T_BIT" value="32"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="12"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_32" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_32" value="1"/>
+      <define name="__Reg_Is_32" value="1"/>
+
+      <define name="__ghs_alignment" value="4"/>
+      <define name="__ghs_max_pack_value" value="4"/>
+    </defines>
+
+  </target>
+
+  <target name="x86_64" title="x86_64">
+
+    <options>
+      <option name="--max_alignment"      value="16"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="8"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="8"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="16"/>
+      <option name="--bits_for_long_double" value="80"/>
+
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--ptr_diff_is_long"/>
+      <option name="--wchar_t_is_signed_int"/>
+
+      <!-- Signed char is default in i386
+           Polyspace option -default-sign-of-chars used -->
+      <ifnot feoption="--unsigned_chars">
+        <option name="--signed_chars"/>
+      </ifnot>
+    </options>
+
+    <defines>
+      <define name="__i386" value="1"/>
+      <define name="__i386__" value="1"/>
+      <define name="__x86_64__" value="1"/>
+      <define name="__x86_64" value="1"/>
+      <define name="__LP64__" value="1"/>
+
+      <!-- Signed char is default in i386
+           Polyspace option -default-sign-of-chars used -->
+      <switch feoption="--unsigned_chars">
+        <case>
+          <define name="__Char_Is_Unsigned__" value="1"/>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </case>
+        <default>
+          <define name="__Char_Is_Signed__" value="1"/>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__LittleEndian__" value="1"/>
+      <define name="__LittleEndian" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__Field_Is_Unsigned__" value="1"/>
+      <define name="__Enum_Field_Is_Signed__" value="1"/>
+      <define name="__Ptr_Is_Unsigned__" value="1"/>
+      <define name="__WChar_Is_Signed__" value="1"/>
+      <define name="__WChar_Is_Int__" value="1"/>
+
+      <define name="__CHAR_BIT" value="8"/>
+      <define name="__SHRT_BIT" value="16"/>
+      <define name="__INT_BIT" value="32"/>
+      <define name="__LONG_BIT" value="64"/>
+      <define name="__LLONG_BIT" value="64"/>
+      <define name="__LL_BIT" value="64"/>
+      <define name="__PTR_BIT" value="64"/>
+      <define name="__FUNCPTR_BIT" value="64"/>
+      <define name="__WCHAR_BIT" value="32"/>
+      <define name="__REG_BIT" value="64"/>
+      <define name="__FREG_BIT" value="80"/>
+      <define name="__LDBL_BIT" value="80"/>
+      <define name="__TIME_T_BIT" value="64"/>
+      <define name="__MAX_BIT" value="64"/>
+
+      <define name="__LDBL_SIZE" value="16"/>
+      <define name="__Int_Is_32" value="1"/>
+      <define name="__Long_Is_64" value="1"/>
+      <define name="__LL_Is_64" value="1"/>
+      <define name="__Ptr_Is_64" value="1"/>
+      <define name="__Reg_Is_64" value="1"/>
+
+      <define name="__ghs_alignment" value="8"/>
+      <define name="__ghs_max_pack_value" value="16"/>
+    </defines>
+
+  </target>
+
+</compiler>

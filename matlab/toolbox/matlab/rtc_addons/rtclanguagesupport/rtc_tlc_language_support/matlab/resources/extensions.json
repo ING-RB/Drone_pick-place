@@ -1,0 +1,27 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.desktop.editor.languageSupport": [{
+        "languageName": "TLC",
+        "mimeType": "text/tlc",
+        "languagePriority": "PRODUCT",
+        "defaultSupportedFileTypes": ["tlc", "cgt"],
+        "commentStyle": {
+            "lineComment": "%%"
+        },
+        "jsModule": "tlcLanguageRegistry"
+    }],
+    "mw.fileTypes": {
+        "groups": {
+            "tlcLikeCodeFiles": ["tlc", "cgt"]
+        },
+        "open": {
+            "groups.tlcLikeCodeFiles": [{
+                "callback": "editor_open_action/openAction",
+                "callbackType": "jsModule"
+            }, {
+                "callback": "edit",
+                "callbackType": "matlab"
+            }]
+        }
+    }
+}

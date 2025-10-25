@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config
+    Name="gcc"
+    ShortName="gcc"
+    Manufacturer="GNU"
+    Version="$VER"
+    Language="C"
+    Priority="A"
+    Location="$GCC" >
+    <Details
+        CompilerExecutable="$CC"
+        CompilerDefines="$DEFINES"
+        CompilerFlags="$CFLAGS"
+        OptimizationFlags="$COPTIMFLAGS"
+        DebugFlags="$CDEBUGFLAGS"
+        IncludeFlags="$INCLUDE"
+        LinkerLibraries="$LINKLIBS"
+        LinkerOptimizationFlags="$LDOPTIMFLAGS"
+        LinkerDebugFlags="$LDDEBUGFLAGS"
+
+        CompilerDefineFormatter="-D%s"
+        LinkerLibrarySwitchFormatter="-l%s"
+        LinkerPathFormatter="-L%s"
+    />
+    <vars
+        CMDLINE1="$CC -c $DEFINES $INCLUDE $CFLAGS $OPTIM $SRC -o $OBJ"
+        CMDLINE2="$LD $LDFLAGS $LDTYPE $LINKOPTIM $LINKEXPORTVER $OBJS $CLIBS $LINKLIBS $LDEXECSTACK -o $EXE"
+
+        CC="$GCC"
+        DEFINES="-D_GNU_SOURCE $MATLABMEX"
+        MATLABMEX="-DMATLAB_MEX_FILE "
+        CFLAGS="-fexceptions -fPIC -fno-omit-frame-pointer -pthread -fwrapv"
+        INCLUDE="-I&quot;$MATLABROOT/extern/include&quot; -I&quot;$MATLABROOT/simulink/include&quot;"
+        COPTIMFLAGS="-O2 -DNDEBUG -fno-predictive-commoning"
+        CDEBUGFLAGS="-g"
+
+        LD="$CC"
+        LDFLAGS="-pthread -Wl,--no-undefined -Wl,-rpath-link,$MATLABROOT/bin/$ARCH"
+        LDTYPE="-shared "
+        FUNCTIONMAP="&quot;$MATLABROOT/extern/lib/$ARCH/mexFunction.map&quot;"
+        VERSIONMAP="&quot;$MATLABROOT/extern/lib/$ARCH/c_exportsmexfileversion.map&quot;"
+        LINKEXPORT="-Wl,--version-script,$FUNCTIONMAP"
+        LINKEXPORTVER="-Wl,--version-script,$VERSIONMAP"
+        LINKLIBS="-L&quot;$MATLABROOT/bin/$ARCH&quot; -lmx -lmex -lmat -lm -lstdc++"
+        LDOPTIMFLAGS="-O"
+        LDDEBUGFLAGS="-g"
+        MWCPPLIB="&quot;$MATLABROOT/sys/os/$ARCH/orig/libstdc++.so.6&quot;"
+        LDEXECSTACK="-z noexecstack"
+
+        OBJEXT=".o"
+        LDEXT=".mexa64"
+        SETENV="CC=&quot;$CC&quot;
+                CXX=&quot;g++&quot;
+                CFLAGS=&quot;$CFLAGS $DEFINES&quot;
+                CXXFLAGS=&quot;$CFLAGS $DEFINES&quot;
+                COPTIMFLAGS=&quot;$COPTIMFLAGS&quot;
+                CXXOPTIMFLAGS=&quot;$COPTIMFLAGS&quot;
+                CDEBUGFLAGS=&quot;$CDEBUGFLAGS&quot;
+                CXXDEBUGFLAGS=&quot;$CDEBUGFLAGS&quot;                
+                MW_GLIBC_SHIM=&quot;$MW_GLIBC_SHIM&quot;
+                LD=&quot;$LD&quot;
+                LDXX=&quot;g++&quot;
+                LDFLAGS=&quot;$LDFLAGS $LDTYPE $LINKLIBS $LINKEXPORT&quot;
+                LDDEBUGFLAGS=&quot;$LDDEBUGFLAGS&quot;">
+    </vars>
+    <client>
+        <engine
+            LINKLIBS="$MWCPPLIB $MW_GLIBC_SHIM $LINKLIBS -leng"
+            LINKEXPORT=""
+            LINKEXPORTVER=""
+            LDEXT=""
+            LDTYPE=""
+        />
+
+        <mbuild
+            DEFINES="-D_GNU_SOURCE $MATLABMEX -DUNIX -DX11"
+            CFLAGS="-ansi -pthread"
+            LDFLAGS="-pthread -Wl,-rpath-link,$MATLABROOT/bin/$ARCH"
+            LINKEXPORT=""
+            LINKEXPORTVER=""
+            LINKLIBS="$MWCPPLIB $MW_GLIBC_SHIM -L&quot;$MATLABROOT/runtime/$ARCH&quot; -lm -lmwmclmcrrt"
+            LDEXT=""
+            MATLABMEX=""
+            LDTYPE=""
+        />
+
+    </client>
+    <locationFinder>
+        <GCC>
+            <cmdReturns name="which gcc" />
+        </GCC>
+        <VER>
+            <cmdReturns name="gcc -dumpversion"/>
+        </VER>
+        <CPPLIBS>
+            <cmdReturns name="gcc -print-file-name=libstdc++.so"
+                        diagnostic="GCC appears to be installed, but supporting C++ libraries were not found.  You must first install the gcc-c++ package, or similiar, to complete this action."/>
+        </CPPLIBS>
+    </locationFinder>
+</config>

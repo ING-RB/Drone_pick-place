@@ -1,0 +1,737 @@
+{
+"caxis":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.graphics.chart.HeatmapChart"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                {"name":"limits", "kind":"required", "type":["numeric", "numel=2"]},
+                {"name":"'auto'", "kind":"required", "type":"choices={'auto'}"},
+                {"name":"'manual'", "kind":"required", "type":"choices={'manual'}"},
+                {"name":"'mode'", "kind":"required", "type":"choices={'mode'}"}
+            ]
+        }
+    ]
+},
+"caxis":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.graphics.chart.HeatmapChart"]]}
+    ],
+    "outputs":
+    [
+        {"name":"limits", "type":["numeric", "numel=2"]}
+    ]
+},
+"fill3":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+                ],
+                [
+                    {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+                ]
+            ]
+        },
+        {"repeating":true, "tuple":
+            [
+                {"name":"X", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                {"name":"C", "kind":"required", "type":[["numeric"],["char", "@matlab.graphics.internal.isLineSpec"]]}
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Patch"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.primitive.Patch"}
+    ]
+},
+"lighting":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"style", "kind":"required", "type":"choices={'flat','gouraud','none'}"}
+    ],
+    "outputs":
+    [
+    ]
+},
+"material":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"style", "kind":"required", "type":"choices={'shiny','dull','metal','default'}"}
+    ],
+    "outputs":
+    [
+    ]
+},
+"material":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"properties", "kind":"required", "type":[["numeric", "vector", "numel=3"], ["numeric", "vector", "numel=4"], ["numeric", "vector", "numel=5"]]}
+    ],
+    "outputs":
+    [
+    ]
+},
+"mesh":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+                ],
+                [
+                    {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+                ]
+            ]
+        },
+        {"name":"X", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"C", "kind":"ordered", "type":"numeric"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyXYZColor",
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"},
+                {"name":"C", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"MeshStyle", "description":"MATLAB:graphics:visualizedatatask:MeshStyleDesc", "type":"choices={'both','row','column'}", "kind":"properties"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'none','o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram'}", "kind":"properties"},
+                {"name":"AlignVertexCenters", "description":"MATLAB:graphics:visualizedatatask:AlignVertexDesc", "type":"choices={'on','off'}", "kind":"properties"}
+            ],
+            "icon":"meshPlot",
+            "description":"MATLAB:plots:Tool_mesh_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:SurfaceAndMeshLabel",
+            "validateDataFunction":"matlab.visualize.task.internal.validators.validateDataForSurfacePlots",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generate3DVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"mesh":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+                ],
+                [
+                    {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+                ]
+            ]
+        },
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"C", "kind":"ordered", "type":"numeric"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyZColor",
+            "params":
+            [
+                {"name":"Z"},
+                {"name":"C", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"}
+            ]
+        }
+    }
+},
+"plot3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"repeating":true, "tuple":
+            [
+                {"name":"X", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+                {"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'none','o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram'}", "kind":"properties"},
+                {"name":"AlignVertexCenters", "description":"MATLAB:graphics:visualizedatatask:AlignVertexDesc", "type":"choices={'on','off'}", "kind":"properties"}
+            ],
+            "icon":"3Plot",
+            "description":"MATLAB:plots:Tool_plot3_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:LinePlotsLabel",
+            "supportsOverlay": true
+        }
+    }
+},
+"plot3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"zvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ]
+},
+"shading":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"style", "kind":"required", "type":"choices={'flat','faceted','interp'}"}
+    ],
+    "outputs":
+    [
+    ]
+},
+"surf":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+                ],
+                [
+                    {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+                ]
+            ]
+        },
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"C", "kind":"ordered", "type":"numeric"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyZColor",
+            "params":
+            [
+                {"name":"Z"},
+                {"name":"C", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"}
+            ],
+            "icon":"surfPlot",
+            "description":"MATLAB:plots:Tool_surf_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:SurfaceAndMeshLabel",
+            "validateDataFunction":"matlab.visualize.task.internal.validators.validateDataForSurfacePlots",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generate3DVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"surf":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+                ],
+                [
+                    {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+                ]
+            ]
+        },
+        {"name":"X", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"C", "kind":"ordered", "type":"numeric"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyXYZColor",
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"},
+                {"name":"C", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"MeshStyle", "description":"MATLAB:graphics:visualizedatatask:MeshStyleDesc", "type":"choices={'both','row','column'}", "kind":"properties"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'none','o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram'}", "kind":"properties"},
+                {"name":"AlignVertexCenters", "description":"MATLAB:graphics:visualizedatatask:AlignVertexDesc", "type":"choices={'on','off'}", "kind":"properties"}
+            ]
+        }
+    }
+},
+"surfl":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"X", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"s", "kind":"ordered", "type":[["numeric", "vector", "numel=2"], ["numeric", "vector", "numel=3"]]},
+        {"name":"k", "kind":"ordered", "type":["numeric", "vector", "numel=4"]},
+        {"name":"'light'", "kind":"flag", "type":"choices={'light'}"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyXYZ",
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"}
+            ],
+            "icon":"surfLPlot",
+            "description":"MATLAB:plots:Tool_surfl_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:SurfaceAndMeshLabel",
+            "validateDataFunction":"matlab.visualize.task.internal.validators.validateDataForSurfacePlots",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generate3DVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"surfl":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"s", "kind":"ordered", "type":[["numeric", "vector", "numel=2"], ["numeric", "vector", "numel=3"]]},
+        {"name":"k", "kind":"ordered", "type":["numeric", "vector", "numel=4"]},
+        {"name":"'light'", "kind":"flag", "type":"choices={'light'}"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Surface"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyZ",
+            "params":
+            [
+                {"name":"Z"}
+            ]
+        }
+    }
+},
+"view":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+            {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"az", "kind":"required", "type":["numeric"]},
+                    {"name":"el", "kind":"required", "type":["numeric"]}
+                ],
+                [
+                    {"name":"v", "kind":"required", "type":[["numeric", "vector", "numel=2"], ["numeric", "vector", "numel=3"]]}
+                ],
+                [
+                    {"name":"dim", "kind":"required", "type":"choices={2,3}"}
+                ]
+            ]
+            }
+    ]
+},
+"xlim":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+            {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"limits", "kind":"required", "type":["numeric","datetime","duration","categorical"]}
+                ],
+                [
+                    {"name":"limitmode", "kind":"required", "type":["char", "choices={'auto','manual','mode'}"]}
+                ],
+                [
+                    {"name":"limitmethod", "kind":"required", "type":["char", "choices={'tickaligned','padded','tight','method'}"]}
+                ]
+            ]
+            }
+    ]
+},
+"ylim":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+            {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"limits", "kind":"required", "type":["numeric","datetime","duration","categorical"]}
+                ],
+                [
+                    {"name":"limitmode", "kind":"required", "type":["char", "choices={'auto','manual','mode'}"]}
+                ],
+                [
+                    {"name":"limitmethod", "kind":"required", "type":["char", "choices={'tickaligned','padded','tight','method'}"]}
+                ]
+            ]
+            }
+    ]
+},
+"zlim":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+            {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"limits", "kind":"required", "type":["numeric","datetime","duration","categorical"]}
+                ],
+                [
+                    {"name":"limitmode", "kind":"required", "type":["char", "choices={'auto','manual','mode'}"]}
+                ],
+                [
+                    {"name":"limitmethod", "kind":"required", "type":["char", "choices={'tickaligned','padded','tight','method'}"]}
+                ]
+            ]
+            }
+    ]
+},
+"thetalim":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+            {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"limits", "kind":"required", "type":["numeric"]}
+                ],
+                [
+                    {"name":"modevalue", "kind":"required", "type":["char", "choices={'auto','manual','mode'}"]}
+                ]
+            ]
+            }
+    ]
+},
+"rlim":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+            {"mutuallyExclusiveGroup":
+            [
+                [],
+                [
+                    {"name":"limits", "kind":"required", "type":["numeric"]}
+                ],
+                [
+                    {"name":"modevalue", "kind":"required", "type":["char", "choices={'auto','manual','mode'}"]}
+                ]
+            ]
+            }
+    ]
+},
+"xtickformat":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"fmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('numeric')"],
+                            ["char"]
+                        ]
+                    }
+                ],
+                [
+                    {"name":"datefmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('datetime')"],
+                            ["char"]
+                        ]
+                    }
+                ],
+                [
+                    {"name":"durationfmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('duration')"],
+                            ["char"]
+                        ]
+                    }
+                ]
+            ]
+        }
+    ]
+},
+"xtickformat":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+    ],
+    "outputs":
+    [
+        {"name":"xfmt", "type":"char"}
+    ]
+
+},
+"ytickformat":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"fmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('numeric')"],
+                            ["char"]
+                        ]
+                    }
+                ],
+                [
+                    {"name":"datefmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('datetime')"],
+                            ["char"]
+                        ]
+                    }
+                ],
+                [
+                    {"name":"durationfmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('duration')"],
+                            ["char"]
+                        ]
+                    }
+                ]
+            ]
+        }
+    ]
+},
+"ytickformat":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+    ],
+    "outputs":
+    [
+        {"name":"yfmt", "type":"char"}
+    ]
+
+},
+"ztickformat":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"fmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('numeric')"],
+                            ["char"]
+                        ]
+                    }
+                ],
+                [
+                    {"name":"datefmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('datetime')"],
+                            ["char"]
+                        ]
+                    }
+                ],
+                [
+                    {"name":"durationfmt", "kind":"required", "type":
+                        [
+                            ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('duration')"],
+                            ["char"]
+                        ]
+                    }
+                ]
+            ]
+        }
+    ]
+},
+"ztickformat":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+    ],
+    "outputs":
+    [
+        {"name":"zfmt", "type":"char"}
+    ]
+
+},
+"rtickformat":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"fmt", "kind":"required", "type":
+            [
+                ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('numeric')"],
+                ["char"]
+            ]
+        }
+    ]
+},
+"rtickformat":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+    ],
+    "outputs":
+    [
+        {"name":"rfmt", "type":"char"}
+    ]
+
+},
+"thetatickformat":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"fmt", "kind":"required", "type":
+            [
+                ["choices=matlab.graphics.internal.ruler.getValidFormatStrings('numeric')"],
+                ["char"]
+            ]
+        }
+    ]
+},
+"thetatickformat":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+    ],
+    "outputs":
+    [
+        {"name":"tfmt", "type":"char"}
+    ]
+
+},
+"xscale":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"scale", "kind":"ordered", "type":"choices={'linear','log'}"}
+    ],
+    "outputs":
+    [
+        {"name":"xs", "type":"char"}
+    ]
+},
+"yscale":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"scale", "kind":"ordered", "type":"choices={'linear','log'}"}
+    ],
+    "outputs":
+    [
+        {"name":"ys", "type":"char"}
+    ]
+},
+"zscale":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"scale", "kind":"ordered", "type":"choices={'linear','log'}"}
+    ],
+    "outputs":
+    [
+        {"name":"zs", "type":"char"}
+    ]
+}
+}
+

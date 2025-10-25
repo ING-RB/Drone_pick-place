@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018-2021 The MathWorks, Inc. -->
+
+<!-- ("predef_fe", "name") property is used to force using the EDG folding constant when translating -->
+<!-- into VVIR. If a backing expression is a call to a builtin with that property, the backing -->
+<!-- expression is ignored by Polyspace. This because EDG constant folding will be more accurate -->
+<!-- than the polyspace backend that is full range for such builtins. -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <!--
+    standard function "__builtin_mw_nan" from <math.h>
+    expected return: double
+    expected arguments: void
+  -->
+  <tag id="__builtin_nan_void" kind="function" user_name="__builtin_nan" type="double (void)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_nan" from <math.h>
+    expected return: double
+    expected arguments: const char*
+  -->
+  <tag id="__builtin_nan" kind="function" user_name="nan" type="double (const char*)" header="math.h" other_names="std::nan">
+    <properties>
+      <property kind="predef_fe">__builtin_nan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_mw_nanf" from <math.h>
+    expected return: float
+    expected arguments: void
+  -->
+  <tag id="__builtin_nanf_void" kind="function" user_name="__builtin_nanf" type="float (void)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nanf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_nanf" from <math.h>
+    expected return: float
+    expected arguments: const char*
+  -->
+  <tag id="__builtin_nanf_char" kind="function" user_name="nanf" type="float (const char*)" header="math.h" other_names="std::nanf">
+    <properties>
+      <property kind="predef_fe">__builtin_nanf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_mw_nanl" from <math.h>
+    expected return: long double
+    expected arguments: void
+  -->
+  <tag id="__builtin_nanl_void" kind="function" user_name="__builtin_nanl" type="long double (void)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nanl</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_nanl" from <math.h>
+    expected return: long double
+    expected arguments: const char*
+  -->
+  <tag id="__builtin_nanl" kind="function" user_name="nanl" type="long double (const char*)" header="math.h" other_names="std::nanl">
+    <properties>
+      <property kind="predef_fe">__builtin_nanl</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_mw_nans" from <math.h>
+    expected return: double
+    expected arguments: void
+  -->
+  <tag id="__builtin_nans_void" kind="function" user_name="__builtin_nans" type="double (void)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nans</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_nans" from <math.h>
+    expected return: double
+    expected arguments: const char*
+  -->
+  <tag id="__builtin_nans" kind="function" user_name="nans" type="double (const char*)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_nans</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_mw_nansf" from <math.h>
+    expected return: float
+    expected arguments: void
+  -->
+  <tag id="__builtin_nansf_void" kind="function" user_name="__builtin_nansf" type="float (void)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nansf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_nansf" from <math.h>
+    expected return: float
+    expected arguments: const char*
+  -->
+  <tag id="__builtin_nansf" kind="function" user_name="nansf" type="float (const char*)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_nansf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_mw_nansl" from <math.h>
+    expected return: long double
+    expected arguments: void
+  -->
+  <tag id="__builtin_nansl_void" kind="function" user_name="__builtin_nansl" type="long double (void)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_mw_nansl</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "__builtin_nansl" from <math.h>
+    expected return: long double
+    expected arguments: const char*
+  -->
+  <tag id="__builtin_nansl" kind="function" user_name="nansl" type="long double (const char*)" header="math.h">
+    <properties>
+      <property kind="predef_fe">__builtin_nansl</property>
+    </properties>
+  </tag>
+
+  <!-- predef_vvir properties used to add predefined pre-condition to functions even if they have a
+       body. We used this on integer version of C++ math function that the backend cannot
+       recognized.-->
+
+  <tag id="acoshi" kind="function" user_name="acosh" other_names="std::acosh">
+    <match>
+      <match-declaration>
+        <match-type first_arg_is_of_integral_type="true" return_type_is_double="true" nb_args="1" />
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_is_more_or_equal_to_one</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <tag id="asini" kind="function" user_name="asin" other_names="std::asin,atanh,std::atanh,acos,std::acos">
+    <match>
+      <match-declaration>
+        <match-type first_arg_is_of_integral_type="true" return_type_is_double="true" nb_args="1" />
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_in_minus_one_one</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <!--
+    standard c++ function "Promoted atan2 ( Arithmetic1 x, Arithmetic2 y )"
+    Partial support only because libreco can not express "is_of_arithmetic_type" nor "is_promotion_of" yet.
+  -->
+  <tag id="atan2i" kind="function" user_name="atan2" other_names="std::atan2">
+    <match>
+      <match-declaration>
+        <match-type>
+          <match-nbargs value="2" />
+          <match-parameter>
+            <match-index value="0" />
+            <match-type is_of_integral_type="true" />
+          </match-parameter>
+          <match-parameter>
+            <match-index value="1" />
+            <match-type is_of_integral_type="true" />
+          </match-parameter>
+        </match-type>
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">atan2</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <!--
+    standard c++ function "Promoted fmod ( Arithmetic1 x, Arithmetic2 y )" Partial support only
+    because libreco can not express "is_of_arithmetic_type" nor "is_promotion_of" yet.
+  -->
+  <!--
+    standard c++ function "Promoted remainder ( Arithmetic1 x, Arithmetic2 y )" Partial support only
+    because libreco can not express "is_of_arithmetic_type" nor "is_promotion_of" yet.
+  -->
+  <tag id="fmodi" kind="function" user_name="fmod" other_names="std::fmod,remainder,std::remainder">
+    <match>
+      <match-declaration>
+        <match-type>
+          <match-nbargs value="2" />
+          <match-parameter>
+            <match-index value="0" />
+            <match-type is_of_integral_type="true" />
+          </match-parameter>
+          <match-parameter>
+            <match-index value="1" />
+            <match-type is_of_integral_type="true" />
+          </match-parameter>
+        </match-type>
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">second_arg_is_non_zero</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <tag id="ilogbi" kind="function" user_name="ilogb"  other_names="std::ilogb">
+    <match>
+      <match-declaration>
+        <match-type first_arg_is_of_integral_type="true" nb_args="1" />
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_is_non_zero</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <tag id="logbi" kind="function" user_name="logb"  other_names="logb,std::logb">
+    <match>
+      <match-declaration>
+        <match-type first_arg_is_of_integral_type="true" return_type_is_double="true" nb_args="1" />
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_is_non_zero</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <tag id="logi" kind="function" user_name="log"  other_names="std::log,log10,std::log10,log2,std::log2">
+    <match>
+      <match-declaration>
+        <match-type first_arg_is_of_integral_type="true" return_type_is_double="true" nb_args="1" />
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_is_strictly_positive</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <tag id="log1pi" kind="function" user_name="log1p" other_names="std::log1p">
+    <match>
+      <match-declaration>
+        <match-type first_arg_is_of_integral_type="true" return_type_is_double="true" nb_args="1" />
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_is_more_than_minus_one</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+
+  <!-- Incompatible with C and pre-cpp++11 because it conflicts with double (double) => DO NOT
+       CHANGE THE ORDER TO KEEP WARNINGS (even though product behavior is not impacted) -->
+  <tag id="sqrti" kind="function" user_name="sqrt" other_names="std::sqrt,tgamma,std::tgamma">
+    <match>
+      <match-declaration>
+        <match-type>
+          <match-nbargs value="1" />
+          <match-return>
+            <match-type value="double" />
+          </match-return>
+          <match-parameter>
+            <match-index value="0" />
+            <match-type is_of_integral_type="true" />
+          </match-parameter>
+        </match-type>
+      </match-declaration>
+      <match-function>
+        <match-included-definition-header regex="math\.h|cmath" />
+      </match-function>
+    </match>
+    <properties>
+      <property kind="predef_vvir">first_arg_is_positive_or_zero</property>
+      <property kind="keep_body" />
+    </properties>
+  </tag>
+</tags>

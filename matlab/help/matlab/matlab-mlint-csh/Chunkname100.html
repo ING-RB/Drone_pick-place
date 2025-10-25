@@ -1,0 +1,10 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>When you call <code>axes(h)</code> within a loop, MATLAB makes the
+                    specified axes the current axes. However, MATLAB also attempts to give focus to
+                    the axes and its parent figure with every loop iteration, which slows
+                    performance significantly. </p><br/><strong>Suggested Action</strong><br/><p>If you are calling <code><a href="matlab:doc axes" target="_blank">axes</a></code> because you have multiple axes and you need to
+                    specify in which axes to plot, pass the axes handle as an argument to the plot
+                    function instead. For example, replace code such as this: </p><p>
+                    <code>a1&nbsp;=&nbsp;subplot(1,2,1)<br/>a2&nbsp;=&nbsp;subplot(1,2,2);<br/>while&nbsp;1<br/>&nbsp;&nbsp;&nbsp;&nbsp;axes(a1)<br/>&nbsp;&nbsp;&nbsp;&nbsp;plot(rand(3))<br/>&nbsp;&nbsp;&nbsp;&nbsp;axes(a2)<br/>&nbsp;&nbsp;&nbsp;&nbsp;plot(rand(3))<br/>&nbsp;&nbsp;&nbsp;&nbsp;drawnow<br/>end</code>
+                </p><p>with this:</p><p>
+                    <code>a1&nbsp;=&nbsp;subplot(1,2,1);<br/>a2&nbsp;=&nbsp;subplot(1,2,2);<br/>while&nbsp;1<br/>&nbsp;&nbsp;&nbsp;plot(a1,&nbsp;rand(3))<br/>&nbsp;&nbsp;&nbsp;plot(a2,&nbsp;rand(3))<br/>&nbsp;&nbsp;&nbsp;drawnow<br/>end<br/></code>
+                </p><p>For more information, see <a href="matlab:helpview([docroot  '/techdoc/creating_plots/creating_plots.map'],'specify_axes_with_plotting_function')" target="_blank">“Judicious Object Creation”</a>.</p></body></html>

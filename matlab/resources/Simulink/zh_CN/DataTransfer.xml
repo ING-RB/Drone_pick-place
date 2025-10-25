@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ErrorCauseDifferentSampletimes">
+      ''{0}'' has a sample time of {1}.
+    </entry>
+    <entry key="ErrorCauseImplicitTask">
+      ''{0}'' is in an implicit partition.
+    </entry>
+    <entry key="ErrorCauseExplicitTask" context="error">
+      ''{0}'' is in explicit partition {1}.
+    </entry>
+    <entry key="IllegalInsertedRtb" context="error">
+      
+               Data integrity issue between &lt;sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt;
+               of block ''{1}'' and &lt;sldiag objui="inport" objparam="{2,number,integer}"
+               objname="{3}"&gt;input port {2,number,integer}&lt;/sldiag&gt; of block ''{3}''.  Simulink
+               cannot insert the rate transition block automatically because the model does not
+               currently have sample time {4} needed for the inserted rate transition block.
+               &lt;actions&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions"
+               ids="InsertRTBManuallyPorts"&gt;&lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkInput" context="error">
+       
+                模块 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 处存在数据完整性问题。但是，Simulink 无法自动插入 Rate Transition 模块，因为存在以下情况之一:\n - 修复未指定的速率转换需要重新连接模块；\n - Simulink 无法为 Rate Transition 模块选择插入位置，因为存在多种可能性；\n - 未指定的速率转换要求在虚拟总线信号上插入 Rate Transition 模块。\n - 正在记录此模块的输入信号。\n - 源或目标是状态端口。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB"&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+       
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkOutput" context="error">
+      
+               模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 上存在数据完整性问题。但是，Simulink 无法自动插入 Rate Transition 模块，因为存在以下情况之一: \n - 修复未指定的速率转换需要重新连接模块；\n - Simulink 无法为 Rate Transition 模块选择插入位置，因为存在多种可能性；\n - 未指定的速率转换要求在虚拟总线信号上插入 Rate Transition 模块。\n - 正在记录此模块的输出信号。\n - 源或目标是状态端口。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB"&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkEnablePort">
+      
+               Simulink 在 Enable Port 模块 ''{0}'' 处检测到未指定速率转换。但是，Simulink 无法自动插入 Rate Transition 模块，因为存在以下情况之一: \n - 修复未指定的速率转换需要重新连接模块；\n - Simulink 无法为 Rate Transition 模块选择插入位置，因为存在多种可能性；\n - 未指定的速率转换要求在虚拟总线信号上插入 Rate Transition 模块。\n - 正在记录此模块的输出信号。\n - 源或目标是状态端口。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB"&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NeedToRewireManuallyDueToBranchToOutportBEPExpFcn">
+      
+               The model ''{3}'' is configured for export function and has modeling constraints due to the usage of Bus Element Port. 
+               An unsupported signal branch detected at &lt;sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of block
+               ''{1}''. Consider connect to root outport block ''{2}'' through an outport of block ''{1}''.
+      
+    </entry>
+    <entry key="IllegalIPortRateTransSingleTasking" context="error">
+      
+               ''{0}'' 和 ''{1}'' 之间存在数据完整性问题。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB,{2},SingleTaskRateTransMsgWarning"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransViewer" context="error">
+      
+               在 ''{0}'' 的 {1} 和 ''{2}'' 的输出端口 {3, number,integer} 之间存在数据完整性问题。{0} 上显示的数据可能偏离一个采样周期。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}, ChangeDiagnosticSettingToWarning"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransForFramedData" context="error">
+      
+               基于帧的信号不支持数据传输保护。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type = "suggestion"&gt; &lt;txt&gt;在 ''{0}'' 上的 {1} 处和 ''{2}'' 上的输出端口 {3,number,integer} 处使用相同的采样时间。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransVarDimsSignal">
+       
+                Simulink does not support rate transitions for variable-size signals. 
+                &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type = "suggestion"&gt;
+                &lt;txt&gt;Consider making the sample time of ''{0}'' at input port {1,number,integer} and ''{2}'' at
+                     output port {3,number,integer} equal.
+                &lt;/txt&gt;
+                &lt;/action&gt;
+                &lt;/actions&gt;
+       
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockPortNumErr">
+      Illegal usage of SS_OPTION_RATE_TRANSITION by S-function ''{0}'' in ''{1}''. This option can
+      only be used by S-functions with one input and one output port.
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockTsNumErr">
+      Illegal usage of SS_OPTION_RATE_TRANSITION by S-function ''{0}'' in ''{1}''. This option can
+      only be used by S-functions that specifies only one functional sample time.
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockContTsErr">
+      Illegal usage of SS_OPTION_RATE_TRANSITION by S-function ''{0}'' in ''{1}''. This option can
+      only be used by S-functions with a discrete sample time.
+    </entry>
+    <entry key="IllegalFCSSPortRateTrans" context="diagnostic">
+      Function call initiator with different rates or partitions found at {0} of ''{1}''.
+      To prevent inconsistent and unpredictable simulation and code generation outcomes,
+      all function calls must operate at the same rate and within the same partition.
+    </entry>
+    <entry key="IllegalRateTransAtStatePort">
+      The sample time {0} of ''{1}'' at {2} is different from the sample time {3} of ''{4}'' at
+      output port {5,number,integer}. A rate transition is not allowed at a state port.
+    </entry>
+    <entry key="IllegalIPortRateTrans" context="error">
+      
+               ''{0}'' 的 {1} 和 ''{2}'' 的输出端口 {3,number,integer} 之间存在数据完整性问题。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action type="fixit" id="MultiTaskingOff"&gt; &lt;cmd&gt;set_param( bdroot(''{0}''), 'EnableMultiTasking', 'off');&lt;/cmd&gt; &lt;txt&gt;考虑清除 "将每个离散速率视为单独任务" 选项。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="MultiTaskRTBMsgWarning" retvalue="false"&gt; &lt;cmd&gt;set_param( bdroot(''{0}''), 'MultiTaskRateTransMsg', 'warning');&lt;/cmd&gt; &lt;txt&gt;将配置参数 "多任务数据传输" 设置为警告以隐藏错误消息。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransNoAutoInsert">
+      Data integrity issue between ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Insert a rate transition block to protect the data transfer.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransExplicitTask">
+      
+               {2} 处 ''{1}'' 的采样时间 {0} 与&lt;sldiag objui="outport" objparam="{5,number,integer}" objname="{4}"&gt;输出端口 {5,number,integer}&lt;/sldiag&gt; 处 ''{4}'' 的采样时间 {3} 属于不同分区。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="CommentThrough" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{4}'','Commented','through');set_param_action(''{6}'','AutoInsertRateTranBlk','on');&lt;/cmd&gt; &lt;txt&gt;请注释直通 Rate Transition 模块 ''{4}''，以允许 Simulink 通过插入适当的 Rate Transition 模块来自动处理数据传输。这将在 "配置参数" 对话框中启用 "自动处理数据传输的速率转换"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalRateTransBlkInInputRegion" context="error">
+      
+               Rate transition block ''{0}'' next to a root inport is not supported because multiple tasks are reading from the inport.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                  &lt;action type="fixit" id="CommentThrough"  retvalue="false"&gt;
+                  &lt;cmd&gt;set_param_action(''{0}'','Commented','through');&lt;/cmd&gt;
+                  &lt;txt&gt;Comment through the Rate Transition block ''{0}''&lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="AllowMultipleTaskToAccessIOParamOFF"  retvalue="false"&gt;
+                  &lt;cmd&gt;set_param( bdroot(''{0}''), 'AllowMultiTaskInputOutput', 'off');&lt;/cmd&gt;
+                  &lt;txt&gt;Set the configuration parameter "Allow multiple tasks to access inputs and outputs" to "off".&lt;/txt&gt;
+                  &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalIPortRateTransForConcurrentExecution" context="error">
+      
+               ''{1}'' 在 {2} 处的采样时间 {0} 不同于 ''{4}'' 在输出端口 {5,number,integer} 处的采样时间 {3}。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{6}"&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalRateTransAtMergeBlk">
+      
+               The sample time {0} of the Merge block ''{1}'' at {2} is different from the sample
+               time {3} of its source, ''{4}'', at &lt;sldiag objui="outport" objparam="{5,number,integer}"
+               objname="{1}"&gt;output port {5,number,integer}&lt;/sldiag&gt;.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action type="suggestion"&gt;
+                   &lt;txt&gt;Consider making two sample times equal.&lt;/txt&gt;
+                 &lt;/action&gt;
+                 &lt;action type="suggestion"&gt;
+                   &lt;txt&gt;Insert a Rate Transition block and a Signal Conversion block between ''{6}'' and the Merge block.&lt;/txt&gt;
+                 &lt;/action&gt;
+                 &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="ChangeDiagnosticSettingToWarning"&gt;
+                   &lt;arg&gt;{1}&lt;/arg&gt;
+                 &lt;/action_catalog&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="IllegalRateTransBlkInRightClickBuild">
+      The subsystem right-click build resulted in an improperly configured rate transition block,
+      {0}. Investigate this issue in the original model by verifying: \n
+      - The original model uses a fixed-step solver; \n
+      - The Sample Time parameters of the Inport and Outport blocks in the subsystem
+      are all set to -1; \n
+      - The subsystem input signals do not have a constant sample time.
+    </entry>
+    <entry key="IllegalRateTransInRightClickBuild">
+      The subsystem right-click build resulted in an unspecified rate transition between ({0}) and
+      ({1}). Investigate this issue in the original model, by verifying: \n
+      - The original model uses a fixed-step solver; \n
+      - The Sample Time parameters of the Inport and Outport blocks in the subsystem
+      are all set to -1; \n
+      - The subsystem input signals do not have a constant sample time.
+    </entry>
+    <entry key="IllegalRateTransDelay">
+      The configuration of the Delay ''{0}'' is incorrect for handling a rate transition. The sample
+      time {1} of its destination is not present on any blocks in the system containing the Delay
+      block. Consider using the Rate Transition block to handle the data transfer between rates.
+    </entry>
+    <entry key="IllegalRateTransUnitDelay">
+      The configuration of the Unit Delay ''{0}'' is incorrect for handling a rate transition. The
+      sample time {1} of its destination is not present on any blocks in the system containing the Unit
+      Delay block. Consider using the Rate Transition block to handle the data transfer between rates.
+    </entry>
+    <entry key="IllegalSampleTimeRateTransUnitDelay">
+      The sample time {0} is too small for the Unit Delay ''{1}'' to handle a rate
+      transition. Specify a value higher than 1e10 or choose 0 for continuous rate transition.
+    </entry>
+    <entry key="IllegalRateTransZOH">
+      
+               The configuration of the Zero Order Hold ''{0}'' is incorrect for handling a rate
+               transition. The sample time {1} of its source is not present on any blocks in the system containing
+               the Zero Order Hold block. 
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="InsertRTBManually"&gt;&lt;/action_catalog&gt;
+               &lt;/actions&gt;
+    
+    </entry>
+    <entry key="IllegalUnitDelayRateTrans">
+      
+               The configuration of the Unit Delay ''{0}'' is incorrect for handling a rate transition. 
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="InsertRTBManually"&gt;&lt;/action_catalog&gt;
+               &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="ChangeDiagnosticSettingToWarning"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+               &lt;/action_catalog&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTrans" context="error">
+      
+               &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 处的 ''{0}'' 与&lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{0}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 处的 ''{2}'' 之间存在数据完整性问题。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTransOutHiddenToWksSigLog" context="diagnostic">
+      
+               The signal cannot be logged at &lt;sldiag objui="outport" objparam="{1,number,integer}"
+               objname="{0}"&gt;output port {1,number,integer}&lt;/sldiag&gt; because the block ''{0}'' is asynchronously
+               executed.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{2}"&gt;
+                   &lt;arg&gt;{0}&lt;/arg&gt;
+                 &lt;/action_catalog&gt;
+                 &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;set_param(bdroot(''{0}''),'SignalLogging','off');&lt;/cmd&gt;
+                   &lt;txt&gt;Disable signal logging.&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTransOutHiddenToWksOutLog" context="diagnostic">
+      
+               Because the block ''{0}'' is asynchronously executed, output cannot be logged at the
+               destination of &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;output port
+               {1,number,integer}&lt;/sldiag&gt; in Dataset format.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{2},ChangeSaveFormatConfig"&gt;
+                   &lt;arg&gt;{0}&lt;/arg&gt;
+                 &lt;/action_catalog&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvAsyncRateTransBlkConn">
+      Invalid connection for asynchronous rate transition ''{0}''. It should only be used when the
+      source or destination is an asynchronously executed function-call block. In addition a direct
+      connection between the asynchronous rate transition and the function-call block must exist (i.e.,
+      the signal connecting them cannot be observed).
+    </entry>
+    <entry key="NoRateTransBlkInsertedForRateTransBlkInput">
+      
+               Simulink 未在模块 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 处自动插入 Rate Transition 模块，因为 Rate Transition 模块存在于插入位置的上游。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;在上游 Rate Transition 模块上将 '输出端口采样时间' 设置为 '-1'。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;在 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 上手动插入 Rate Transition 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NoRateTransBlkInsertedForRateTransBlkOutput">
+      
+               Simulink did not automatically insert a Rate Transition block at &lt;sldiag
+               objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port
+               {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' because a rate transition block exists downstream
+               of the insertion location.  
+      
+    </entry>
+    <entry key="InvalidRateTransForSimulinkFunctionInMdlRef">
+  
+           不允许模型模块 ''{1}'' 中异步执行的 Simulink Function ''{0}'' 连接到模块 ''{2}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请将 Simulink Function ''{0}'' 的调用方更改为周期性速率。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="InvalidUnsupportedRootOutportMultiWriteDataTransfer" context="diagnostic">
+        
+            根 Outport 模块 ''{0}'' 不支持数据传输保护，因为多个任务正在写入 Outport 模块 ''{0}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="MultiTaskRateTransMsgWarning"&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="AperiodicRateAbsoluteTimeDataTransferUnsupported" context="error">
+        
+            Absolute or elapsed time for Block ''{0}'' with aperiodic partition is not supported as it may lead to corrupted data because it accesses the base task tick counter.
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="MultiTaskRateTransMsgWarning"&gt;
+                   &lt;arg&gt;{1}&lt;/arg&gt;
+                &lt;/action_catalog&gt;
+            &lt;/actions&gt;
+        
+    </entry>
+    <entry key="RTBFixitsAndSuggestions" context="error">
+      
+               &lt;actions exclusiveFixIts="yes"&gt;
+                  &lt;action type="suggestion" id="RewireBlkDiagOrManuallyAddRTB" retvalue="false"&gt;
+                    &lt;txt&gt; Rewire the block diagram or manually insert a Rate Transition block to
+                    resolve the data integrity issue.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="AutoInsertRTBOn" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param(bdroot(''{0}''), 'AutoInsertRateTranBlk', 'on');&lt;/cmd&gt;
+                    &lt;txt&gt;Enable configuration parameter Automatically handle rate transition for data transfer.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="SingleTaskRateTransMsgWarning" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param( bdroot(''{0}''), 'SingleTaskRateTransMsg', 'warning');&lt;/cmd&gt;
+                    &lt;txt&gt;Set configuration parameter Single task data transfer to warning.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="MultiTaskRateTransMsgWarning" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param( bdroot(''{0}''), 'MultiTaskRateTransMsg', 'warning');&lt;/cmd&gt;
+                    &lt;txt&gt;Set configuration parameter Multi task data transfer to warning.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="ChangeDiagnosticSettingToWarning" retvalue="false"&gt;
+                    &lt;cmd&gt;
+                    slprivate(''changeDataTransDiagSettingToWarning'',bdroot(''{0}''));
+                    &lt;/cmd&gt;
+                    &lt;txt&gt;Set the Multitask data transfer or Single task data transfer configuration parameter to warning.
+                    &lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="suggestion" id="InsertRTBManually" retvalue="false"&gt;
+                    &lt;txt&gt;Insert a Rate Transition block to handle the data transfer between rates.&lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="suggestion" id="InsertRTBManuallyPorts" retvalue="false"&gt;
+                    &lt;txt&gt;Insert a Rate Transition block between these ports.&lt;/txt&gt;
+                  &lt;/action&gt;
+                  &lt;action type="fixit" id="ChangeSaveFormatConfig" retvalue="false"&gt;
+                    &lt;cmd&gt;set_param(bdroot(''{0}''), 'SaveFormat', ''__ARG1__'');&lt;/cmd&gt;
+                    &lt;cargs&gt;
+                      &lt;carg translate="false" name="__ARG1__" type="menu"&gt;
+                      &lt;txt_prompt&gt;Format configuration&lt;/txt_prompt&gt;
+                      &lt;enum&gt;Array&lt;/enum&gt;
+                      &lt;enum&gt;Structure&lt;/enum&gt;
+                      &lt;enum&gt;StructureWithTime&lt;/enum&gt;
+                      &lt;/carg&gt;
+                    &lt;/cargs&gt;
+                    &lt;txt&gt;Log states and outputs using Array, Structure, or Structure with time format.&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+  </message>
+</rsccat>

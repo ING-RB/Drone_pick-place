@@ -1,0 +1,11 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer detects an indexing pattern for a sparse array that is likely to
+                    be slow. An assignment that changes the nonzero pattern of a sparse array can
+                    cause this error because such assignments result in considerable
+                    overhead.</p><br/><strong>Suggested Action</strong><br/><p>If possible, build sparse arrays using <code><a href="matlab:doc sparse" target="_blank">sparse</a></code> as follows, and
+                    do not use indexed assignments (such as <code>C(4) = B</code>) to build
+                    them:</p><p>
+                    <ol><li><p>Create separate index and value arrays.</p></li><li><p>Call <code>sparse</code> to assemble the index and value
+                                arrays. </p></li></ol>
+                </p><p>If you must use indexed assignments to build sparse arrays, you can optimize
+                    performance by first preallocating the sparse array with <code><a href="matlab:doc spalloc" target="_blank">spalloc</a></code>.</p><p> If the code changes only array elements that are already nonzero, then the
+                    overhead is reasonable. Suppress this message as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p><p>For more information, see <a href="matlab:helpview([docroot '/techdoc/math/math.map'],'construct_sparse')" target="_blank">“Constructing Sparse Matrices”</a>.</p></body></html>

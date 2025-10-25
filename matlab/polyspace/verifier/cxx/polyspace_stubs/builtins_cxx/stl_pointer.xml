@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020-2023 The MathWorks, Inc. -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+
+  <!-- std::shared_ptr<> -->
+  <tag id="std_shared_ptr" kind="type" user_name="std::shared_ptr" other_names="boost::shared_ptr">
+    <properties>
+      <property kind="rule">STD_SHARED_PTR</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+      <property kind="stl_cont">SHARED_PTR_TYPE</property>
+    </properties>
+    <!-- member type -->
+    <tag id="std_shared_ptr_element_type" kind="type" user_name="element_type">
+      <properties>
+        <property kind="stl_cont">SHARED_PTR_ELEMENT_TYPE</property>
+      </properties>
+    </tag>
+  </tag>
+
+  <!-- with MSVC header, std::shared_ptr inherits from std::_Ptr_base that defines element_type
+       adding this property ensure the typedef will be available when required
+  -->
+  <tag id="std_shared_ptr_element_type_msvc" kind="type" user_name="std::_Ptr_base::element_type">
+    <properties>
+      <property kind="stl_cont">SHARED_PTR_ELEMENT_TYPE</property>
+    </properties>
+  </tag>
+
+  <!-- extended for rules -->
+  <tag id="std_shared_ptr_ext" kind="type" user_name="std::__shared_ptr">
+    <properties>
+      <property kind="rule">STD_SHARED_PTR</property>
+      <property kind="rule">STD_MOVED_FROM_SAFE_TYPE</property>
+    </properties>
+  </tag>
+
+
+</tags>

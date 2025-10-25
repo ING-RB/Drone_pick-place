@@ -1,0 +1,65 @@
+.mwColorPalette {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0px 7px;
+    position: relative;
+    cursor: default;
+}
+
+.mwColorPalette .mwColorPaletteTitle {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--mw-color-primary, $mw-color-primary);
+    padding-left: 3px;
+}
+
+.mwColorPalette .mwColorPaletteTitle.mwColorPaletteTitleHidden {
+    display: none;
+}
+
+.mwColorPalette .dijitPaletteTable {
+    position: relative;
+    overflow: hidden;
+    outline: 0;
+    border-collapse: separate;
+}
+
+.mwColorPalette .dijitPaletteCell {
+    vertical-align: middle;
+    text-align: center;
+    background: none;
+    cursor: pointer;
+}
+
+.mwColorPalette .mwColorPaletteSwatch {
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary); /* $color-mediumgray3 */
+    border-radius: 2px;
+}
+
+.mwColorPalette .dijitPaletteCellSelected .mwColorPaletteSwatch {
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--mw-borderColor-focus, $mw-borderColor-focus);
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px rgb(0,153,255); 
+}
+
+/* Needed to override the gray focus for keyboard focus */
+.mwColorPalette.mwColorPaletteFocused .dijitPaletteTable .dijitPaletteCell.dijitPaletteCellSelected .mwColorPaletteSwatch {
+    border: 1px solid var(--mw-borderColor-focus, $mw-borderColor-focus);
+    box-shadow: 0 0 0 2px rgb(0,153,255);
+}
+
+/* For changing focus using arrows on keyboard and on mouse hover*/
+.mwColorPalette .dijitPaletteCell.mwPaletteCellInPreview .mwColorPaletteSwatch{
+    border: 1px solid var(--mw-borderColor-hover, $mw-borderColor-hover);
+    border-radius: 1px;
+    box-shadow: 0 0 0 2px rgb(166, 166, 166);
+}
+
+.mwColorPalette .dijitPaletteCellSelected .mwPaletteDiv,
+.mwColorPalette .mwPaletteDiv {
+    padding: 0px;
+    margin: 3px 3px; /* top-bottom and right-left margins */
+}

@@ -1,0 +1,49 @@
+classdef MLStringArrayDataModel < internal.matlab.variableeditor.MLArrayDataModel & internal.matlab.variableeditor.StringArrayDataModel
+    %MLSTRINGARRAYDATAMODEL
+    %   MATLAB String Array Data Model
+
+    % Copyright 2015-2024 The MathWorks, Inc.
+    
+    events        
+        CellMetaDataChanged;        
+    end
+
+    methods(Access='public')
+        % Constructor
+        function this = MLStringArrayDataModel(name, workspace)
+            this@internal.matlab.variableeditor.MLArrayDataModel(name, workspace);
+        end
+    end %methods
+
+    methods(Access='protected')
+        % Compares new data to the current data and returns Rows(I) and
+        % Columns(J) of Unmatched Values.  Assumes this.Data and newData
+        % are the same size.
+        %
+		% called only when the data is changed. In this case since there 
+		% is just one cell, changed data always has the same indices. So the
+		% entire view can be refreshed.
+		% Note: I,J cannot be 1 (though one cell only is changed) since the data
+		% and view model have different dimensions for char arrays in VE
+		% Eg: c = 'hello' 
+		% size in view model is 1x1
+		% size in data model is 1x5
+        function [I,J] = doCompare(this, newData)
+            [I,J] = find(this.Data~=newData);
+        end
+        
+        function handleMetaDataUpdate(this, newData, currentData, sizeChanged, rowDiff, columnDiff)
+            % If missing indices exist in either, update cellmetadata for
+            % range. DO Not update for sizeChanged usecases as we would
+            % update from the datastore.
+            if ~sizeChanged && (anymissing(newData) || anymissing(currentData))
+                metaDataEvent = internal.matlab.datatoolsservices.data.ModelChangeEventData; 
+                metaDataEvent.Row = rowDiff;
+                metaDataEvent.Column = columnDiff;
+                this.notify('CellMetaDataChanged', metaDataEvent);
+            end
+        end
+    end
+end
+
+

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="SimulinkExecution" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="JacobianFunctionEvaluationFailure">
+  执行雅可比矩阵计算的函数时出错。
+</entry>
+    <entry key="DerivativeIsNonFinite">
+      Derivative of continuous state {0,number,integer} is non-finite
+    </entry>
+    <entry key="StateIsNonFinite">
+  连续状态 {0,number,integer} 是非有限值
+</entry>
+    <entry key="ProjectedStateIsNonFinite">
+  连续状态 {0,number,integer} 在投影后是非有限值。
+</entry>
+    <entry key="DerivativeConsistencyCheckFailure">
+  在时间 {0_Double} 处，计算的导数和缓存在求解器中的导数不一致。这意味着导数存在不连续性。\n {1}
+</entry>
+    <entry key="StateConsistencyCheckFailure"> 
+  在时间 {0_Double} 处，方程状态和求解器状态彼此不一致。这意味着方程状态可能在求解器未重置的情况下发生更改。\n {1}
+</entry>
+    <entry key="IntegrationAbortedDueToInterrupt"> 
+  由于中断，求解器中止了积分。
+</entry>
+    <entry key="InternalSolverResetRequestWasDenied">
+  随着步长减小到 hmin，非线性迭代并未收敛。尝试重置求解器并计算新的一致初始条件失败。  
+</entry>
+    <entry key="MaxConsecutiveMinStepsViolated">
+      Solver was unable to reduce the step size without violating the minimum 
+      step size value of {0_Double} for {1,number,integer} consecutive times at time 
+      {2_Double}. This usually may be caused by the high stiffness of the system. 
+      Please check the system or increase the solver &lt;sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep"&gt;Number of consecutive min steps&lt;/sldiag&gt; 
+      violation parameter. 
+      </entry>
+    <entry key="MaxConsecutiveMinStepsViolatedForDAE">
+  在时间 {2_Double} 处，求解器无法在不违反最小步长值 {0_Double} 的情况下连续 {1,number,integer} 次减小步长。这通常可能是由于违反微分代数方程组中代数约束或由于方程组的高刚度造成的。请尝试收紧误差容限和/或容差以计算一致条件。如果问题仍然存在，请检查方程组或增大求解器的&lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;连续最小步数&lt;/sldiag&gt;违规参数。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;solverprofiler.launchSolverProfiler&lt;/cmd&gt; &lt;txt&gt;请打开求解器探查工具来探查此类问题&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="MaxNumMinStepsViolated">
+      具有最小步长({0_Double})的步数在时间({1_Double})处达到指定的最大值。建议不要为整个仿真指定具有最小步长的最大步数。应使用 "连续最小步数" 参数指定具有最小步长的最大连续步数。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="RemoveLimitOfMaxNumMinSteps"&gt; &lt;cmd&gt;set_param(bdroot, ''MaxNumMinSteps'', ''-1'');&lt;/cmd&gt; &lt;txt&gt;删除对具有最小步长的总步数的限制\n&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="OpenMaxConsecutiveMinStepInConfig"&gt; &lt;cmd&gt;configset.internal.open(bdroot, ''MaxConsecutiveMinStep'');&lt;/cmd&gt; &lt;txt&gt;指定对具有最小步长的连续步数的限制&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="MinStepError">
+  在时间 {1_Double} 处，求解器无法在不违反最小步长 {0_Double} 的情况下减小步长。
+</entry>
+    <entry key="MinStepCausedByShapePreservationError">
+  求解器无法在时间 {1_Double} 处在不违反最小步长值 {0_Double} 的情况下减小步长以满足状态形状保持约束。
+</entry>
+    <entry key="MinStepCausedByShapePreservationWarning">
+  求解器无法在时间 {1_Double} 处在不违反最小步长值 {0_Double} 的情况下减小步长以满足状态形状保持约束。求解器将继续仿真，步长限制为 {2_Double}，并使用一阶欧拉积分法来满足状态形状保持约束。
+</entry>
+    <entry key="MinStepSizeWarning">       
+      Solver was unable to reduce the step size without violating minimum step
+      size of {0_Double} for {1,number,integer} consecutive times at time {2_Double}.  Solver
+      will continue simulation with the step size restricted to {3_Double} and using an
+      effective relative error tolerance of {4_Double}, which is greater than the
+      specified relative error tolerance of {5_Double}. This usually may be caused by the
+      high stiffness of the system. Please check the system or increase the solver 
+      &lt;sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep"&gt;Number of consecutive min steps&lt;/sldiag&gt; violation 
+      parameter.
+      </entry>
+    <entry key="MinStepSizeForDAEWarning">  
+  在时间 {2_Double} 处，求解器无法在不违反最小步长 {0_Double} 的情况下连续 {1,number,integer} 次减小步长。求解器将继续仿真，步长限制为 {3_Double} 并使用有效相对误差容限 {4_Double}，该容限大于指定的相对误差容限 {5_Double}。这通常可能是由于违反微分代数方程组中代数约束或由于方程组的高刚度造成的。请尝试收紧误差容限和/或容差以计算一致条件。如果问题仍然存在，请检查方程组或增大求解器的&lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;连续最小步数&lt;/sldiag&gt;违规参数。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;solverprofiler.launchSolverProfiler&lt;/cmd&gt; &lt;txt&gt;请打开求解器探查工具来探查此类问题&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="NewtonIterationFailure">
+      Nonlinear iteration is not converging with step size reduced to hmin ({0_Double})
+      at time {1_Double}.  Try reducing the minimum step size and/or relax the relative
+      error tolerance.
+    </entry>
+    <entry key="SolverSolvesOnlyLinearlyImplicitForm">
+  求解器 ''{0}'' 仅求解线性隐式形式的微分方程。因此，需要指定质量矩阵和雅可比矩阵函数。
+</entry>
+    <entry key="SolverDoesNotSolveDAE">
+  检测到微分代数方程组。求解器 ''{0}'' 不适用于微分代数方程组。请考虑使用 ODE15s 或 ODE23t 进行变步长仿真，使用 ODE14x 进行定步长仿真。
+</entry>
+    <entry key="SolverRequiresJacobian">
+  求解器 ''{0}'' 需要雅可比矩阵。配置的方程未指定雅可比矩阵。
+</entry>
+    <entry key="SolverDoesNotSupportInterpolation">
+  求解器 ''{0}'' 不支持时间步之间的状态插值。
+</entry>
+    <entry key="SolverDoesNotSupportHigherOrderInterpolation">
+  求解器不支持时间步之间的 {0, number, integer} 阶插值。
+</entry>
+    <entry key="SolverInterpolantNotAvailable">
+  在重置前和积分期间，求解器插值不可用。
+</entry>
+    <entry key="SolverInterpolantIncorrectVectorSize">
+  传入求解器插值的向量大小为 {0_Double}。传入插值的向量应与状态数相同: {1_Double}。
+</entry>
+    <entry key="SolverRegisteredWithExistingName">
+  已注册名为 {0} 的求解器。请使用不同名称
+</entry>
+    <entry key="SolverImplementationRegisteredWithExistingName">
+  已注册名为 {0} 的求解器实现。请使用不同名称
+</entry>
+    <entry key="UnknownSolver">
+      There is no solver registered as {0}.
+    </entry>
+    <entry key="CreateSolverFailed">
+  求解器名称 {0} 无效、抽象或位于求解器注册表外部，因此无法创建。
+</entry>
+    <entry key="ExternalSolverNotFound">
+      Solver {0} creation failure: library {1} wasn't loaded successfully.  Error: {2}
+    </entry>
+    <entry key="AutoSolverHighNx">
+        The stiffness check in auto solver is not supported for this model because the 
+        number of continuous states ''{0}'' is  greater than the threshold value ''{1}''. 
+        To change the threshold value, set the ''NumStatesForStiffnessChecking'' model 
+        parameter at the MATLAB command line.
+    </entry>
+    <entry key="ShapePreservationNotSupported">
+    将忽略形状保持设置，因为求解器 {0} 不支持对隐式方程组使用此选项。
+</entry>
+    <entry key="ShapePreservationNotSupportedForSolver">
+    将忽略形状保持设置，因为求解器 {0} 不支持使用此选项。
+</entry>
+    <entry key="SolverNotAvailable">
+      Solver ''{0}'' is not available. Select one of available
+      &lt;sldiag objui="configset" objparam="Solver"&gt;solvers&lt;/sldiag&gt;
+    </entry>
+    <entry key="ODENInvalidIntegrationMethodForImplicitSystem">
+      Integration method for odeN is set to incorrect value ''{0}'' for implicit system of equations. Valid methods are ''ode14x'', and ''ode1be''.
+    </entry>
+    <entry key="ODENCannotSwitchExplicitToImplicit">
+      Changing odeN integration method from explicit method ''{0}'' to implicit method ''{1}'' is not supported while the model is running or fast restart is enabled. Use one of the following explicit odeN integration methods: \n
+      "ode1"    \n
+      "ode2"    \n
+      "ode3"    \n
+      "ode4"    \n
+      "ode5"    \n
+      "ode8"    \n
+    </entry>
+    <entry key="ODENCannotSwitchImplicitToExplicit">
+      Changing odeN integration method from implicit method ''{0}'' to explicit method ''{1}'' is not supported while the model is running or fast restart is enabled. Use one of the following implicit odeN integration methods: \n
+      "ode14x"    \n
+      "ode1be"    \n 
+    </entry>
+    <entry key="InvalidPerturbationBound">
+      There is no valid perturbation bound to be selected between numjac setting and block setting.
+    </entry>
+  </message>
+</rsccat>

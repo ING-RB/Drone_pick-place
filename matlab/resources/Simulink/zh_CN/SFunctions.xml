@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="AccessElapseTimeBfSetNeedElapseTime">''{0}'' 的 S-Function 访问所有者子系统历时。S-Function 必须在其 mdlInitializeSize 函数中添加 ssSetNeedElapseTime(S,true)</entry>
+    <entry key="BackCompatLevel1SFcns">''{1}'' 中的 S-Function ''{0}'' 是 1 级 S-Function。建议将此 S-Function 升级为 2 级 S-Function。使用 "配置参数" 对话框，可以将这种针对 S-Function 升级所需的兼容性诊断设置为无、警告或错误</entry>
+    <entry key="BackCompatSfcnNoRunTimePrms">S-function ''{0}'' in ''{1}'' does not explicitly set the number of run-time parameters using ssSetNumRunTimeParams. This compatibility diagnostic on the need for S-function upgrades can be set to none, warning, or error using the Configuration Parameters dialog</entry>
+    <entry key="BackCompatSfcnParamTunableNotSet">''{1}'' 中的 S-Function ''{0}'' 不使用 ssSetSFcnParamTunable 显式设置所有参数的可调属性。使用 "配置参数" 对话框，可以将这种针对 S-Function 升级所需的兼容性诊断设置为无、警告或错误</entry>
+    <entry key="BackCompatSfcnUsingSSWritePrms">''{1}'' 中的 S-Function ''{0}'' 正在使用 ssWriteRTWParameters。建议升级 S-Function，以利用 Simulink 中的运行时参数处理机制。使用 "配置参数" 对话框，可以将这种针对 S-Function 升级所需的兼容性诊断设置为无、警告或错误</entry>
+    <entry key="CMexSFcnExecutionErr">在时间 {3}，执行 C MEX S-Function ''{1}'' ({2})时在 ''{0}'' 中出错。</entry>
+    <entry key="CMexSFcnTerminateErr">Error in ''{0}'' while executing C MEX S-function ''{1}'', (mdlTerminate).</entry>
+    <entry key="CannotChangeNumParams">在仿真期间，无法更改以逗号分隔的列表中参数的数目。模块 ''{0}'' 的原始参数的数目为 {1,number,integer}，以逗号分隔的列表中的数目为 {2,number,integer}</entry>
+    <entry key="CannotChangeNumRTP">Cannot change number of run-time parameters of S-function ''{0}'' in ''{1}''. It is already set to have {2,number,integer} run-time parameters</entry>
+    <entry key="CannotRegRunTimeParams">Cannot register run-time parameters of S-function ''{0}'' in ''{1}'' from current location. The registration of run-time parameters can be performed only within ''mdlSetWorkWidths''</entry>
+    <entry key="CannotResetRTP">Attempting to set info for run-time parameter {0,number,integer} of S-function ''{1}'' in ''{2}'' more than once. The S-function can set the param info only once in ''mdlSetWorkWidths''</entry>
+    <entry key="CannotUpdateNullRTP">Attempting to update info for run-time parameter {0,number,integer} of S-function ''{1}'' in ''{2}'' even though the run-time parameter was never set up initially</entry>
+    <entry key="CannotUpdateRunTimeParams">Cannot update run-time parameters of S-function ''{0}'' in ''{1}'' from current location. Run-time parameters can be updated only within ''mdlProcessParameters''</entry>
+    <entry key="ContinuousStateChangeWithoutSolverReset">Simulink detected that S-function ''{0}'' changed the value of one or more elements of its continuous state vector without resetting the ODE solver at time {1}.  Continuous states should only be changed in a major time step and the S-function should request a solver reset using 'ssSetSolverNeedsReset' macro. Changing states without resetting the solver can lead to unexpected results, especially in accelerated simulation modes. Use 'ssSetSkipContStatesConsistencyCheck(S,1)' in mdlInitializeSizes method to disable this check once you have fixed your S-function.</entry>
+    <entry key="DWorkWithPaddingHasConstraints">The block ''{0}'' uses dwork bitfields in an unsupported manner. Bitfields can only be specified for scalar, real dworks of unsigned data type</entry>
+    <entry key="FMexSFcnExecutionErr">Error in ''{0}'' while executing FORTRAN MEX S-function ''{1}'', flag = {2,number,integer} ({3}), at time {4}.</entry>
+    <entry key="IncorrectRTPRegistration">In S-function ''{0}'', dialog parameter {1,number,integer} has not been utilized to create any run-time parameter even though it was declared to be tunable. Each tunable dialog parameter must appear in the ''dlgParamIndices'' field of at least one run-time parameter</entry>
+    <entry key="InvDataTypeForOutputAsBus">Error in output port specification for S-function {0}. This S-function specifies that the bus object ''{1}'' is associated with its &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{0}"&gt;output port {2,number,integer}&lt;/sldiag&gt;, yet the data type of that port is ''{3}'' instead</entry>
+    <entry key="InvDerivsVect">在 flag={2,number,integer} 调用期间，由 ''{1}'' 中的 S-Function ''{0}'' 返回的状态导数必须是长度为 {3,number,integer} 的实数向量</entry>
+    <entry key="InvDiscStateVect">Discrete state(s) returned by S-function ''{0}'' in ''{1}'' during flag={2,number,integer} call must be a real vector of length {3,number,integer}</entry>
+    <entry key="InvFMexX0Len">X0 returned by FORTRAN MEX S-function ''{0}'' in ''{1}'' must be a vector of length {2,number,integer}</entry>
+    <entry key="InvFMexX0Vect">Invalid X0 vector returned by FORTRAN MEX S-function ''{0}'' in ''{1}''</entry>
+    <entry key="ObsoleteMFileSFcn">S-Function 模块 ''{0}'' 引用了弃用的 1 级 MATLAB S-Function ''{1}''。请手动检查代码，并在必要时转换为 2 级 MATLAB S-Function。有关详细信息，请参阅&lt;a href="matlab:helpview(fullfile(docroot, 'simulink/sfg/maintaining-level-1-matlab-s-functions.html#bq3i98j'))"&gt;将 1 级 MATLAB S-Function 转换为 2 级&lt;/a&gt;。</entry>
+    <entry key="InvMFileSFcnPCnt">错误，''{1}'' 中的 MATLAB S-Function ''{0}'' 需要 {2,number,integer} 个参数，而实际上提供了 {3,number,integer} 个</entry>
+    <entry key="InvMFileSFcnSyntax">''{1}'' 中指定的 MATLAB 文件 ''{0}'' 不是有效的 1 级 S-Function。输入和/或输出参数的数目无效。此错误的可能原因是在此模块中指定了 2 级 MATLAB S-Function 的名称(此模块仅支持 1 级 MATLAB S-Function)。请使用 Simulink 库中的 ''Level-2 MATLAB S-Function'' 模块</entry>
+    <entry key="InvMFileSizesVec">由 ''{1}'' 中的 MATLAB S-Function ''{0}'' 返回的大小向量必须是长度为 {2,number,integer} 的由整数值组成的实数向量</entry>
+    <entry key="InvMFileX0Len">由 ''{1}'' 中的 MATLAB S-Function ''{0}'' 返回的 X0 必须是长度为 {2,number,integer} 的向量</entry>
+    <entry key="InvMFileX0Vect">''{1}'' 中的 MATLAB S-Function ''{0}'' 返回无效的 X0 向量</entry>
+    <entry key="InvMexSizesVect">Invalid sizes vector returned by MEX S-function ''{0}'' in ''{1}''</entry>
+    <entry key="InvOutputVect">在 flag={2,number,integer} 调用期间，由 ''{1}'' 中的 S-Function ''{0}'' 返回的输出必须是长度为 {3,number,integer} 的实数向量</entry>
+    <entry key="InvalidCondInputId">S-Function ''{0}'' 在 ssSetInputPortSignalWhenNeeded 中对 &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 使用了无效设置。Simulink 假设 S-Function 始终需要输入信号</entry>
+    <entry key="InvalidCondOutputId">S-Function ''{0}'' 在 ssSetOutputPortSignalWhenRefreshed 中对&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 使用了无效设置。Simulink 假设 S-Function 始终刷新输出信号</entry>
+    <entry key="InvalidRootSimStructAccess">S-Function ''{0}'' 中使用了弃用的宏 ssGetRootSS()。使用此宏将导致未定义的行为，在以后的版本中将不支持使用此宏。请从此 S-Function 中删除此宏的所有用例。</entry>
+    <entry key="InvalidParentSimStructAccess">S-Function ''{0}'' 中使用了弃用的宏 ssGetParentSS()。使用此宏将导致未定义的行为，在以后的版本中将不支持使用此宏。请从此 S-Function 中删除此宏的所有用例。</entry>
+    <entry key="MFileArgCountErr">获取 ''{1}'' 中 S-Function ''{0}'' 的参数计数时出错。</entry>
+    <entry key="MFileInitErr">在仿真开始时，flag = {2,number,integer} ({3}) 期间执行 MATLAB S-Function ''{1}'' 时 ''{0}'' 中出错，flag = {2,number,integer} ({3})。</entry>
+    <entry key="MFileSFcnExecutionErr">在时间 {4}，flag = {2,number,integer} ({3}) 时执行 MATLAB S-Function ''{1}'' 时 ''{0}'' 中出错。</entry>
+    <entry key="MexAlignmentErr">Unable to execute C MEX S-function ''{0}''.  S-function ''{1}'' appears to have been built with incorrect structure alignment compiler options.  Please verify that the correct structure alignment  compiler options are specified and recompile the S-function (see the mex command for details)</entry>
+    <entry key="MexSFcnSizesInitErr">从 ''{1}'' 中的 MEX S-Function ''{0}'' 获取大小时出错。</entry>
+    <entry key="NegNumRunTimeParams">Invalid number of run-time parameters specified for S-function ''{0}'' in ''{1}''.  The number of run-time parameters is specified to be negative</entry>
+    <entry key="NoBdSFcnSupport">错误，在 S-Function ''{0}'' 中指定了模块图。请确保您的 S-Function 名称不是 Simulink 模型或当前模型的名称。您可以使用 Matlab 命令 ''which -all sfunction_name'' 来查找名为 sfunction_name 的所有模型文件</entry>
+    <entry key="NoCinidForNonInlineSfunInAccel">S-Function ''{0}'' 不能有条件地针对&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 执行其输入信号，因为它不是针对加速模式的内联信号。要使 S-Function 在加速模式下有条件地执行其输入信号，请设置 S-Function 选项 SS_OPTION_USE_TLC_WITH_ACCELERATOR</entry>
+    <entry key="NoCoutidForNonInlineSfunInAccel">S-Function ''{0}'' 不能有条件地针对&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 执行其输出信号，因为它不是针对加速模式的内联信号。要使 S-Function 在加速模式下有条件地执行其输出信号，请设置 S-Function 选项 SS_OPTION_USE_TLC_WITH_ACCELERATOR</entry>
+    <entry key="NoSuchRTP">Cannot set info for run-time parameter {0,number,integer} of S-function ''{1}'' in ''{2}''. The S-function has {3,number,integer} run-time parameters</entry>
+    <entry key="NoSupportForOPortWithMixedFcnCallAndData">在下一版本中，Simulink 将不支持具有混合函数调用和数据元素的输出端口。''{0}'' 的第一个输出端口配置为具有混合函数调用和数据元素。请使用一个额外的输出端口，并拆分函数调用和数据元素。有关示例，请参阅 &lt;matlabroot&gt;/simulink/src 目录中的 sfun_fcncall.c</entry>
+    <entry key="NoninlinedSFcnBlkParamMustBeDoubleOrChar">S-function ''{0}'' parameters must be of type double or char if the S-function does not have TLC</entry>
+    <entry key="NoninlinedSFcnBlkParamMustBeReal">S-function ''{0}'' parameters must be non-complex numeric arrays if the S-function does not have TLC</entry>
+    <entry key="NormalModeModelRefSignalNotFound">信号查看器浮动示波器无法显示在普通模式下引用的模型中包含的信号。路径为 ''{0}''、端口索引为 {1,number,integer} 的信号包含在 ''{2}'' 中以普通模式引用的模型中</entry>
+    <entry key="OnlyBlkTsIsTrigCanAccessElapseTime">只有触发了采样时间的模块需要访问所有者子系统历时。''{0}'' 的 S-Function 访问所有者子系统历时，但其采样时间并未触发。</entry>
+    <entry key="OnlyBlkInSingleRateSysCanAccessElapseTime">Only block in a single rate owner subsystem can access elapsed time. S-function of ''{0}'' accesses elapsed time, but it is not in a single rate subsystem. </entry>
+    <entry key="OnlyBlkInRootAccessElapseTimeInSingleRateModel">当模块位于根系统中时，只有单速率模型中的模块可以访问历时。''{0}'' 的 S-Function 访问历时，但模型有多个速率。</entry>
+    <entry key="OverwriteInputPortNotSupportedLvlOneSfcn">ssSetOutputPortOverwritesInputPort is not supported in Level 1 S-function ''{0}''</entry>
+    <entry key="OverwriteNonOverwritableInputPort">&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;Output port {0,number,integer}&lt;/sldiag&gt; of S-function ''{1}'' cannot overwrite input port {2,number,integer} since this input port is not overwritable. Please use ssSetInputPortOverwritable to set input port {3,number,integer} to be overwritable</entry>
+    <entry key="PILSignalNotFound">无法记录 ''{2}'' 中路径为 ''{0}'' 且端口索引为 {1,number,integer} 的信号，因为它是针对 SIL 或 PIL 仿真模式配置的</entry>
+    <entry key="PositiveDataAlignment">Invalid data alignment specified for S-function ''{0}'' in ''{1}''.  The data alignment attribute must be a non-zero positive integer</entry>
+    <entry key="RTPOnlyIfInlined">Invalid run-time parameter registration in S-function ''{0}''. It can register run-time parameters only if the S-function is being inlined</entry>
+    <entry key="NoRTPsInRowMajorSFcnsInRapidAccelerator">The S-function ''{0}'' sets the SS_ROW_MAJOR option and it attempted to register run-time parameters. Run-time parameter registration by row-major S-functions is not allowed in Rapid-Accelerator mode. </entry>
+    <entry key="RTWSFcnGlobalDSM">The S-function ''{0}'' was generated from a subsystem or model that contains Data Store Read or Write blocks referencing global data store memory.  Code generation is not supported for such S-functions</entry>
+    <entry key="RTWSFcnSubsysDSM">The S-function ''{0}'' was generated from a subsystem that contains Data Store Read or Write blocks corresponding to Data Store Memory blocks that are placed outside the subsystem. Code generation is not supported for such S-functions</entry>
+    <entry key="RecompileMex">Unable to execute C MEX S-function ''{0}''.  S-function ''{1}'' appears to have been built with an old version of simstruc.h and needs to be recompiled (see the mex command for details)</entry>
+    <entry key="RecompileMexForMT">Unable to execute C MEX S-function ''{0}'' with the 'Configuration Parameters' &gt; 'Solver' &gt; 'Treat each discrete rate as a separate task' option selected. S-function ''{1}'' was built with an older version of simstruc.h and needs to be recompiled (see the mex command for details).</entry>
+    <entry key="RegisterInputDimsModeErr">Cannot register MdlSetInputPortDimensionsModeFcn method for S-function ''{0}'' in {1} because this method has already been registered</entry>
+    <entry key="RunTimeParamWithNoData">Run-time parameter ''{0}'' registered by ''{1}'' specified a NULL data pointer. This will cause re-build problems when using the Accelerator. This will also disable the ''Parameter Pooling'' optimization for this parameter. Please consider correcting your S-function to specify the run-time parameter data in mdlSetWorkWidths</entry>
+    <entry key="SFcnAccessingDSMElementWithoutRegistration">Block ''{0}'' is accessing individual elements of data store {1,number,integer} even though it registered that it would not do so</entry>
+    <entry key="SFcnAccessingUnregisteredDataStore">The S-function ''{0}'' must register data store index {1,number,integer} before it accesses it</entry>
+    <entry key="SFcnBadDefCompSigFcnInCompSig">Error in default port complex signal function of S-function ''{0}''. This function does not set the complex signal of &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;</entry>
+    <entry key="SFcnBadDefCompSigFcnOutCompSig">Error in default port complex signal function of S-function ''{0}''. This function does not set the complex signal of &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;output port {1,number,integer}&lt;/sldiag&gt;</entry>
+    <entry key="SFcnBadDefDTypeFcnInDType">S-Function ''{0}'' 的默认端口数据类型函数出错。此函数不设置&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 的数据类型</entry>
+    <entry key="SFcnBadDefDTypeFcnOutDType">S-Function ''{0}'' 的默认端口数据类型函数出错。此函数不设置&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 的数据类型</entry>
+    <entry key="SFcnBadDefDimsFcnInDims">Error in default port dimensions function of S-function ''{0}''. This function does not fully set the dimensions of &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;</entry>
+    <entry key="SFcnBadDefDimsFcnOutDims">S-Function ''{0}'' 的默认端口维度函数出错。此函数未完全设置&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{0}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 的维度</entry>
+    <entry key="SFcnBlkInvalidParam">Invalid parameters for S-function ''{0}''. For code generation, S-function parameters must be one or two dimensional nonsparse numeric or character arrays unless the S-function uses a TLC file and has an mdlRTW function.</entry>
+    <entry key="SFcnBlkNotTunableParamChange">Cannot modify non-tunable parameter {0,number,integer} of S-function ''{1}''. This parameter is configured to be non-tunable and cannot be modified while simulation is running or when a model is being initialized for simulation. In the case where this parameter references a model argument, the model argument value entered at the model block cannot be different from its default value as specified in the model workspace of the corresponding model.</entry>
+    <entry key="SFcnBlkParamMustBeBuiltIn">S-function ''{0}'' parameters must be of a built-in data type for code generation</entry>
+    <entry key="SFcnCannotChangeNumParams">仿真运行时(或 set_param 处于活动状态时)，无法更改 S-Function ''{0}'' 中参数的数目</entry>
+    <entry key="SFcnCannotSetRangeCheckpointForScratchDWork">Cannot set value range checkpoint for dwork of index {0,number,integer} in S-Function ''{1}'' because the dwork is used as scratch</entry>
+    <entry key="SFcnCantLinearizeMultipleSampleTimes">线性化中不支持具有多个采样时间的 S-Function 模块</entry>
+    <entry key="SFcnComplexToRealConv">Unable to map complex-valued data to real-valued run-time parameter ''{0}'' for S-function ''{1}'' in ''{2}''</entry>
+    <entry key="SFcnDSMBadElementRead">In block ''{0}'' the element ({1,number,integer}) used in calling ssReadFromDataStoreElement is larger than the width of the data store ({2,number,integer})</entry>
+    <entry key="SFcnDSMBadElementWrite">In block ''{0}'' the element ({1,number,integer}) used in calling ssWriteToDataStoreElement is larger than the width of the data store ({2,number,integer})</entry>
+    <entry key="SFcnDSMInfoNullPtr">The S-function ''{0}'' is passing NULL as the third argument to ssGetDataStoreInfo for data store index {1,number,integer}. The third argument must be a valid SFcnDataStoreInfo pointer</entry>
+    <entry key="SFcnDSMNegElementRead">Block ''{0}'' is calling ssReadFromDataStoreElement with an element index of ({1,number,integer}); element indices must be non-negative</entry>
+    <entry key="SFcnDSMNegElementWrite">Block ''{0}'' is calling ssWriteToDataStoreElement with an element index of ({1,number,integer}); element indices must be non-negative</entry>
+    <entry key="SFcnDSWDisallowConstantSampleTime">Error while initializing sizes for S-function block ''{0}''. Any S-function that accesses data stores must disallow constant sample time by using the option SS_OPTION_DISALLOW_CONSTANT_SAMPLE_TIME</entry>
+    <entry key="SFcnDWorksUsedAsDStatesNeedName">S-Function ''{1}'' 的数据类型工作向量 {0,number,integer} 的 usedAsDState 标志被忽略，因为未对其命名</entry>
+    <entry key="SFcnDataCannotBeEmptyForRTP">Cannot register run-time parameter for dialog parameter {0,number,integer} for S-function ''{1}'' in ''{2}'' because the dialog parameter is empty</entry>
+    <entry key="SFcnDataCannotBeNULLForRTP">Cannot register run-time parameter with NULL data pointer for S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnDataComplexityCannotBeInheritedForRTP">Cannot register run-time parameter with a COMPLEX_INHERITED data pointer for S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnDataTypeCannotBeDynamicForRTP">Cannot register run-time parameter with a DYNAMICALLY_TYPED data pointer for S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnDesignMaxIsOutOfDTRange">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 设计最大值({3})超出数据类型范围 [{4}, {5}]</entry>
+    <entry key="SFcnDesignMaxPrmShouldBeDoubleScalar">''{1}'' 中 S-Function 的参数 {0,number,integer} 指定索引 {3,number,integer} 的 {2} 的设计最大值。但是，该参数不会计算为非 -Inf 的双精度标量值</entry>
+    <entry key="SFcnDesignMaxPrmShouldBeFiniteRealDoubleScalar">Argument {0,number,integer} of the S-function in ''{1}'' specifies the design maximum for {2} of index {3,number,integer}.  However, the argument does not evaluate to a finite real double scalar value</entry>
+    <entry key="SFcnDesignMinIsOutOfDTRange">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 设计最小值({3})超出数据类型范围 [{4}, {5}]</entry>
+    <entry key="SFcnDesignMinPrmShouldBeDoubleScalar">''{1}'' 中 S-Function 的参数 {0,number,integer} 指定索引 {3,number,integer} 的 {2} 的设计最小值。但是，该参数不会计算为非 -Inf 的双精度标量值</entry>
+    <entry key="SFcnDesignMinPrmShouldBeFiniteRealDoubleScalar">Argument {0,number,integer} of the S-function in ''{1}'' specifies the design minimum for {2} of index {3,number,integer}.  However, the argument does not evaluate to a finite real double scalar value</entry>
+    <entry key="SFcnDisableExportedFcnError">S-function ''{0}'' had an error during function-call disabling on function-call &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer} at time {3}</entry>
+    <entry key="SFcnDlgPrmIdxNotNull">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The number of dialog parameter indices is 0 but dlgParamIndices is not NULL</entry>
+    <entry key="SFcnEnableExportedFcnError">S-function ''{0}'' had an error during function-call enabling on function-call &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer} at time {3}</entry>
+    <entry key="SFcnErrResolvingVar">Error resolving variable ''{0}'' for ''{1}'' in resolve callback</entry>
+    <entry key="SFcnErrorStatus">''{1}'' 中的 S-Function ''{0}'' 报告错误:\n{2}</entry>
+    <entry key="SFcnExportFcnInvPort">Error while exporting function on  &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; for S-function ''{1}''. The specified input port does not exist. Consider using ''ssSetNumInputPorts'' before specifying input port based methods</entry>
+    <entry key="SFcnGetDSMAddrUnsupported">The S-function ''{0}'' is calling ssGetSFcnDataStoreNameAddrIdx or ssGetSFcnGlobalDataStoreNameAddrIdx which are for internal Simulink use only</entry>
+    <entry key="SFcnIgnoringUsedAsDStateFlag">''{1}'' 的数据类型工作向量 {0} 的 SS_DWORK_USED_AS_DSTATE 标志被忽略，因为其数据类型 ''{2}'' 不是内置数据类型</entry>
+    <entry key="SFcnIncompleteDTForExportedFcns">Error while initializing sizes for S-function block ''{0}''.  The S-function must set the dimensions for all of its input and output ports.  Dynamically sized ports are not supported for S-function blocks which export functions</entry>
+    <entry key="SFcnIncompleteDimsForExportedFcns">Error while initializing sizes for S-function block ''{0}''.  The S-function must set the data type for all of its input and output ports. Dynamically typed ports are not supported for S-function blocks which export functions</entry>
+    <entry key="SFcnInheritedBlockTsForPortTsAssigned">The S-function ''{0}'' in ''{1}'' has specified the option SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED and specified inherited for sample time number {2,number,integer}. Inheriting a sample time is not supported when specifying SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED</entry>
+    <entry key="SFcnInheritedInputTsForPortTsAssigned">The S-function ''{0}'' in ''{1}'' has specified the option SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED and specified inherited for the sample time of input port number {2,number,integer}. Inheriting a sample time is not supported when specifying SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED</entry>
+    <entry key="SFcnInheritedOutputTsForPortTsAssigned">The S-function ''{0}'' in ''{1}'' has specified the option SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED and specified inherited for the sample time of output port number {2,number,integer}. Inheriting a sample time is not supported when specifying SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED</entry>
+    <entry key="SFcnInlinedForRTWWithoutTLC">S-function ''{0}'' in ''{1}'' specifies option SS_OPTION_SFUNCTION_INLINED_FOR_RTW however a ''{2}.tlc'' file could not be located in the current working directory, the S-function directory ''{3}'', or the directory ''{4}''</entry>
+    <entry key="SFcnInvDWorkComplexSignal">Invalid complex signal for data type work vector {0,number,integer} returned by S-function ''{1}'' in ''{2}''</entry>
+    <entry key="SFcnInvDWorkDataType">Invalid data type for data type work vector {0,number,integer} returned by S-function ''{1}'' in ''{2}''</entry>
+    <entry key="SFcnInvParamDatatype">Invalid data type ''{0}'' specified for parameter {1,number,integer} of S-function ''{2}'' in ''{3}''. For the list of data types supported by the block execute the following command at the MATLAB prompt:\n\t showblockdatatypetable </entry>
+    <entry key="SFcnInvDWorkWidth">Invalid number of elements ({0,number,integer}) for data type work vector {1,number,integer} returned by S-function ''{2}'' in ''{3}''</entry>
+    <entry key="SFcnInvDlgPrmForRTParam">Unable to map dialog parameter {0,number,integer} of S-function ''{1}'' in ''{2}'' to a run-time parameter.  This parameter is an unsupported variable class such as a character vector, string, structure, cell, or an unsupported data type</entry>
+    <entry key="SFcnInvDlgPrmIdx">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The record indicates that the run-time parameter is dependent on a non-existent dialog parameter with index {3,number,integer}. The run-time parameter can depend only on dialog parameters with indices in the range from 0 to {4,number,integer} (one less than the total number of dialog parameters)</entry>
+    <entry key="SFcnInvInputPortWidth">''{2}'' 中的 S-Function ''{1}'' 指定的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 的宽度无效</entry>
+    <entry key="SFcnInvNumContStates">Invalid number of continuous states returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumDWork">Invalid number of data type work vectors returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumDiscStates">Invalid number of discrete states returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumDlgPrmIdx">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The number of dialog parameter indices cannot be negative</entry>
+    <entry key="SFcnInvNumIWork">Invalid number of integer work elements returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumInputPorts">Invalid number of output ports returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumInputs">Invalid number of inputs returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumModes">Invalid number of modes returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumNonsampledZCs">Invalid number of zero crossings returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumNzMax">Invalid number of nonzero Jacobian entries returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumOutputPorts">Invalid number of output ports returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumOutputs">Invalid number of outputs returned by S-function  ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumPWork">Invalid number of pointer work elements returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumRWork">Invalid number of real work elements returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvNumZCEvents">Invalid number of zero crossings events returned by S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnInvOutputPortWidth">''{2}'' 中的 S-Function ''{1}'' 指定的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 的宽度无效</entry>
+    <entry key="SFcnInvRTParamRec">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The number of dimensions must be greater than zero and only 1 &amp; 2-D arrays are supported when outputAsMatrix is enabled</entry>
+    <entry key="SFcnInvTsForExportedFcns">Error while initializing sizes for S-function block ''{0}''.  The S-function must specify a single sample time.  Consider using ''ssSetNumSampleTimes''</entry>
+    <entry key="SFcnInvalidDataStoreIndex">The S-function ''{0}'' may not reference a data store with index {1,number,integer}; it has declared that it only accesses {2,number,integer} data stores</entry>
+    <entry key="SFcnInvalidGlobalDSMRegistration">The S-function ''{0}'' may not register global data store ''{1}'' using the macro ''ssRegMdlInfo''</entry>
+    <entry key="SFcnInvalidNegDataStoreIndex">The S-function ''{0}'' may not reference a data store with index {1,number,integer}; the index must be non-negative</entry>
+    <entry key="SFcnInvalidNumDataStores">The S-function ''{0}'' may not set the number of global data stores accessed to {1,number,integer}; the number accessed must be a positive value</entry>
+    <entry key="SFcnInvalidRTPComplexity">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The complexSignal attribute must be COMPLEX_YES or COMPLEX_NO</entry>
+    <entry key="SFcnInvalidRTPName">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The name of the run-time parameter must be a valid variable name</entry>
+    <entry key="SFcnInvalidReassignNumDataStores">The S-function ''{0}'' may not reset the number of global data stores accessed to {1,number,integer}; it has already been set to {2,number,integer}</entry>
+    <entry key="SFcnInvalidTransformedFlag">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid.  The transformed attribute must be one of the enumerations in the TransformedFlag type</entry>
+    <entry key="SFcnLoggingFromReadOnlyBlock">Block ''{0}'' registered that it only reads from data store {1,number,integer} but is now updating the DSM log.</entry>
+    <entry key="SFcnMissingGetInputPortWidth">S-function ''{0}'' in ''{1}'' has a mdlGetOutputPortWidth, but doesn''t have a mdlGetInputPortWidth routine</entry>
+    <entry key="SFcnMissingGetOutputPortWidth">S-function ''{0}'' in ''{1}'' has a mdlGetInputPortWidth, but doesn''t have a mdlGetOutputPortWidth routine</entry>
+    <entry key="SFcnMissingMdlDerivatives">S-function ''{0}'' in ''{1}'' has continuous states, but doesn''t have a mdlDerivatives routine</entry>
+    <entry key="SFcnMissingMethods">S-function ''{0}'' in ''{1}'' is linearly implicit, but doesn''t have {2}</entry>
+    <entry key="SFcnMissingSetInputPortDims">S-function ''{0}'' in ''{1}'' has a mdlSetOutputPortDimensionInfo, but doesn''t have a mdlSetInputPortDimensionInfo routine</entry>
+    <entry key="SFcnMissingSetInputPortWidth">S-function ''{0}'' in ''{1}'' has a mdlSetOutputPortWidth, but doesn''t have a mdlSetInputPortWidth routine</entry>
+    <entry key="SFcnMissingSetOutputPortDims">S-function ''{0}'' in ''{1}'' has a mdlSetInputPortDimensionInfo, but doesn''t have a mdlSetOutputPortDimensionInfo routine</entry>
+    <entry key="SFcnMissingSetOutputPortWidth">S-function ''{0}'' in ''{1}'' has a mdlSetInputPortWidth, but doesn''t have a mdlSetOutputPortWidth routine</entry>
+    <entry key="SFcnMultExportedDisableFcn">Error while exporting a disable function on &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; for S-function ''{1}''. A disable function is already exported for the specified input port</entry>
+    <entry key="SFcnMultExportedEnableFcn">Error while exporting an enable function on &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; for S-function ''{1}''. An enable function is already exported for the specified input port</entry>
+    <entry key="SFcnMultExportedOutputFcn">Error while exporting an output function on &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; for S-function ''{1}''. An output function is already exported for the specified input port</entry>
+    <entry key="SFcnMultSetNumInputPortsCalls">Error, S-function ''{0}'' in ''{1}'' called mdlSetNumInputPorts more than once</entry>
+    <entry key="SFcnMultSetNumOutputPortsCalls">Error, S-function ''{0}'' in ''{1}'' called mdlSetNumOutputPorts more than once</entry>
+    <entry key="SFcnNeedsToExportMethod">Error while specifying &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of S-function ''{1}''.  The input port was specified to be of type function-call but an output method was not registered.  Consider using ''ssExportOutputFcn''</entry>
+    <entry key="SFcnNeedsToSpecifyFcnCall">Error while exporting function for &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of S-function ''{1}''.  The input port must specify its data type as a function-call (SS_FCN_CALL) while initializing sizes</entry>
+    <entry key="SFcnNoFiObjWithoutRTP">S-Function ''{0}'' in ''{1}'' can not support parameters that are specified using Fi objects because it does not register run-time parameters</entry>
+    <entry key="SFcnNoEnumWithoutRTP">S-Function ''{0}'' in ''{1}'' can not support parameters that are specified using enumeration objects because it does not register run-time parameters</entry>
+    <entry key="SFcnNoninlinedDSM">The S-function ''{0}'' may not register data store memories when generating code because it is not inlined</entry>
+    <entry key="SFcnNotSupportedForNormalMode">The S-Function ''{0}'' in ''{1}'' has a mdlStart and a mdlProcessParameters function.  This is not supported when used in a model referenced in normal mode, unless the S-Function has called ssSetModelReferenceNormalModeSupport with the value MDL_START_AND_MDL_PROCESS_PARAMS_OK</entry>
+    <entry key="SFcnNullDSMAddrUnsupported">The S-function ''{0}'' is passing NULL as the address for reading or writing with data store index {1,number,integer}</entry>
+    <entry key="SFcnNullDlgPrmIdx">Run-time parameter record (index={0,number,integer}) specified by S-function ''{1}'' in ''{2}'' is invalid. The number of dialog parameter indices is not 0 but dlgParamIndices is NULL</entry>
+    <entry key="SFcnParamCountErr">对于 S-Function ''{0}''，定义的参数数目 {1,number,integer} 与 ''{2}'' 的对话框中的参数数目 {3,number,integer} 不匹配。这两个值必须相同。</entry>
+    <entry key="SFcnPortCountsConflict">Port counts conflicts with number of ports specified in sizes routine of S-function ''{0}'' in ''{1}''</entry>
+    <entry key="SFcnPriorityNumIsWrongForBlock">For S-function ''{0}'' in ''{1}'', the width {2,number,integer} of priority array passed to ssSetAsyncTaskPriorities is not equal to the width of output port. Please modify the S-function so that the width of priority array is consistent with output port width</entry>
+    <entry key="SFcnPrmDesignMinGreaterThanDesignMax">Arguments {0,number,integer} and {1,number,integer} of the S-function in ''{2}'' specifies respectively the design minimum and maximum for {3} of index {4,number,integer}.  However, the design minimum ({5}) is greater than the design maximum ({6})</entry>
+    <entry key="SFcnPrmNotSupportDesignMinMax">Cannot specify design minimum and maximum for {0} of index {1,number,integer} in ''{2}'': Design minimum and maximum are not supported for data type ''{3}''</entry>
+    <entry key="SFcnPrmValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值({3})小于设计最小值({4})</entry>
+    <entry key="SFcnPrmImValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的虚部({3})小于设计最小值({4})</entry>
+    <entry key="SFcnPrmReValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的实部({3})小于设计最小值({4})</entry>
+    <entry key="SFcnPrmValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值({3})大于设计最大值({4})</entry>
+    <entry key="SFcnPrmImValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的虚部({3})大于设计最大值({4})</entry>
+    <entry key="SFcnPrmReValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的实部({3})大于设计最大值({4})</entry>
+    <entry key="SFcnPrmArrayValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值({3})小于设计最小值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmArrayImValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的虚部({3})小于设计最小值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmArrayReValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的实部({3})小于设计最小值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmArrayValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值({3})大于设计最大值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmArrayImValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的虚部({3})大于设计最大值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmArrayReValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 参数值的实部({3})大于设计最大值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmQuantizedValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值({3})小于设计最小值({4})</entry>
+    <entry key="SFcnPrmQuantizedImValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的虚部({3})小于设计最小值({4})</entry>
+    <entry key="SFcnPrmQuantizedReValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的实部({3})小于设计最小值({4})</entry>
+    <entry key="SFcnPrmQuantizedValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值({3})大于设计最大值({4})</entry>
+    <entry key="SFcnPrmQuantizedImValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数的虚部({3})大于设计最大值({4})</entry>
+    <entry key="SFcnPrmQuantizedReValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的实部({3})大于设计最大值({4})</entry>
+    <entry key="SFcnPrmQuantizedArrayValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值({3})小于设计最小值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmQuantizedArrayImValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的虚部({3})小于设计最小值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmQuantizedArrayReValueLessThanDesignMin">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的实部({3})小于设计最小值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmQuantizedArrayValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值({3})大于设计最大值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmQuantizedArrayImValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的虚部({3})大于设计最大值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmQuantizedArrayReValueGreaterThanDesignMax">''{2}'' 中索引 {1,number,integer} 的 {0} 的数值不一致: 运行时参数值的实部({3})大于设计最大值({4})。元素 {5} 存在此问题。</entry>
+    <entry key="SFcnPrmInConsistentWithBusEleDesignMinMaxMsg">Inconsistent numeric values for {0} of index {1,number,integer} in ''{2}'':\n{3}</entry>
+    <entry key="SFcDataBusWithNameNotSupportScalarMin">总线数据类型不支持最小值 ''{0}''，并已在检查 ''{3}'' 中的索引 {2,number,integer} 的 {1} 时忽略该最小值。指定总线对象 ''{4}'' 的叶元素上的最小值以启用此检查，并避免以后的版本中出现错误</entry>
+    <entry key="SFcDataBusWitoutNameNotSupportScalarMin">总线数据类型不支持最小值 ''{0}''，并已在检查 ''{3}'' 中的索引 {2,number,integer} 的 {1} 时忽略该最小值。指定叶总线元素上的最小值以启用此检查，并避免在以后的版本中出现错误</entry>
+    <entry key="SFcDataBusWithNameNotSupportScalarMax">总线数据类型不支持最大值 ''{0}''，并已在检查 ''{3}'' 中的索引 {2,number,integer} 的 {1} 时忽略该最大值。指定总线对象 ''{4}'' 的叶元素上的最大值以启用此检查，并避免以后的版本中出现错误</entry>
+    <entry key="SFcDataBusWitoutNameNotSupportScalarMax">总线数据类型不支持最大值 ''{0}''，并已在检查 ''{3}'' 中的索引 {2,number,integer} 的 {1} 时忽略该最大值。指定叶总线元素上的最大值以启用此检查，并避免在以后的版本中出现错误</entry>
+    <entry key="SFcnRTPCompat_MustHaveNullData">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} must have NULL data if the S-Function parameter is empty</entry>
+    <entry key="SFcnRTPCompat_MustHaveSameComplexity">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} must have the same complexity as the S-Function parameter</entry>
+    <entry key="SFcnRTPCompat_MustHaveSameDimensions">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} must have the same dimensions as the S-Function parameter</entry>
+    <entry key="SFcnRTPCompat_MustMapOneToOne">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' in ''{2}''. Run-time parameters marked as {3} must map to exactly one S-Function parameter</entry>
+    <entry key="SFcnRTPCompat_NotTransformed_MustHaveSameData">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} must have the same data as the S-Function parameter</entry>
+    <entry key="SFcnRTPCompat_NotTransformed_MustHaveSameDataPointer">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} must have the same data pointer as the S-Function parameter</entry>
+    <entry key="SFcnRTPCompat_NotTransformed_MustHaveSameDataType">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} must have the same data type as the S-Function parameter</entry>
+    <entry key="SFcnRTPCompat_TransformedTunable_MustBeSimpleCast">无法从 ''{3}'' 中的 S-Function 参数 {2,number,integer} 为 ''{1}'' 注册运行时参数(索引={0,number,integer})。标记为 {4} 的运行时参数必须为从 S-Function 参数的简单数据类型转换</entry>
+    <entry key="SFcnRTPCompat_TransformedTunable_OnlySupportDoubleParam">Cannot register run-time parameter (index={0,number,integer}) for ''{1}'' from S-Function parameter {2,number,integer} in ''{3}''. Run-time parameters marked as {4} only support double-precision (context-sensitive) S-Function parameters</entry>
+    <entry key="SFcnReRegisteringDSM">The S-function ''{0}'' may not register the data store ''{1}'' for index {2,number,integer} because the data store ''{3}'' is already associated with that index</entry>
+    <entry key="SFcnReadingFromWriteOnlyBlock">Block ''{0}'' registered that it only writes to data store {1,number,integer} but is now reading from it</entry>
+    <entry key="SFcnRegGlobalDSMButNotInlinedForTLC">The S-function ''{0}'' must set the option SS_OPTION_USE_TLC_WITH_ACCELERATOR for use with model reference since it registers the usage of global data stores</entry>
+    <entry key="SFcnRunExportedFcnError">S-function ''{0}'' had an error during function-call invocation on function-call on function-call &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer} at time {3}</entry>
+    <entry key="SFcnRunTimeModelAPINotSupported">Error executing the model API call because the S-Function ''{0}'' in block ''{1}'' is configured to disallow model API calls, such as output, update and derivative</entry>
+    <entry key="SFcnSkipSinkWithVarSampleTime">''{1}'' 中的 S-Function ''{0}'' 被视为信宿模块，并在生成的代码中跳过。然而，因为它具有可变采样时间，仿真和代码生成的时间步可能不同</entry>
+    <entry key="SFcnSupportRTW33Plus">Invalid value is passed to the method ssSetSupportDataTypeBeyond32BitsInRTW in S-function ''{0}''. The valid values are RTW_SUPPORT_BEYOND_32_BITS_NO, RTW_SUPPORT_BEYOND_32_BITS_FULLY, and RTW_SUPPORT_BEYOND_32_BITS_UP_TO_TARGET_LONG</entry>
+    <entry key="SFcnUseTLCWithAccelOrMdlrefNotInlined">S-function ''{0}'' in ''{1}'' specified option SS_OPTION_USE_TLC_WITH_ACCELERATOR, however a ''{2}.tlc'' file could not be located in the current working directory, the S-function directory ''{3}'', or the directory ''{4}''</entry>
+    <entry key="SFcnWritingFromReadOnlyBlock">Block ''{0}'' registered that it only reads from data store {1,number,integer} but is now writing to it</entry>
+    <entry key="SFcnWroteTooManyRTWParams">S-function ''{0}'' wrote out more params (in mdlRTW) than it registered</entry>
+    <entry key="SFcn_SetOutputDimsRTWCG_Needed">S-function ''{0}'' in ''{1}'' uses CGIR to generate code. Therefore, ''setOutputDimsRTWCGFcn'' field must be set before using ''ssAddOutputDimsDependencyRule'' to add dimensions dependency rule</entry>
+    <entry key="SFcnmdlZeroCrossingsIgnored">在 Simulink Coder 中，对 1 级 S-Function 忽略 mdlZeroCrossings 函数。请将 ''{0}'' 更新为 2 级 S-Function</entry>
+    <entry key="SfcnClockTickStepSizeIsNotSpecified">The S-function ''{0}'' does not specify its clock tick step size</entry>
+    <entry key="SfcnClockTickStepSizeIsNotPositive">The S-function ''{0}'' does not specify a positive clock tick step size</entry>
+    <entry key="SfcnElementIdxMustLessThanWidth">In S-function ''{0}'', the element {1,number,integer} of passed in must be less than or equal to the output port width {2,number,integer}</entry>
+    <entry key="SfcnExpectedRealEDP">S-Function parameter {0,number,integer} in ''{1}'' is invalid. The S-Function ''{2}'' expects a non-complex parameter</entry>
+    <entry key="SfcnIncorrectDimsForEDP">S-Function parameter {0,number,integer} in ''{1}'' is invalid. The S-Function ''{2}'' expects the dimensions of this parameter to be ''{3}''</entry>
+    <entry key="SfcnIncorrectDtypeForEDP">S-Function parameter {0,number,integer} in ''{1}'' is invalid. The S-Function ''{2}'' expects the data type of this parameter to be ''{3}''</entry>
+    <entry key="SfcnInterfaceInfoSignalNotFound">无效的信号名称 ''{0}''</entry>
+    <entry key="SfcnScopeSignalNotFound">找不到信号 ''{0}''，该信号已从 ''{1}'' 中删除。请使用 ''{2}'' 的信号选择器重新选择要查看的信号。</entry>
+    <entry key="SfcnInvalidDimsSpecifiedForEDP">Invalid expected dimensions specified by S-function ''{0}'' for parameter {1,number,integer} in ''{2}''. S-Function parameter dimensions must all be greater than zero</entry>
+    <entry key="SfcnInvalidDtypeForRTP">Parameter {0,number,integer} of S-function ''{1}'' has been specified to be tunable even though it does not resolve to a MATLAB vector or matrix containing data of one of the following data types: uint8, uint16, uint32, int8, int16, int32, single, or double. Only parameters which are arrays of these data types can be specified to be tunable. Use ssSetSFcnParamTunable in mdlInitializeSizes to make this parameter not tunable</entry>
+    <entry key="SfcnInvalidNumDimsSpecifiedForEDP">Invalid expected number of dimensions specified by S-function ''{0}'' for parameter {1,number,integer} in ''{2}''. S-Function parameters must have at least two dimensions</entry>
+    <entry key="SfcnInvalidStepSize">Asynchronous timer attribute defined in S-function ''{0}'' is invalid. Step size {1} must be a positive value</entry>
+    <entry key="SfcnMissingReqTLCforConstTs">The S-function ''{0}'' in ''{1}'' does not have TLC. TLC is required for this S-function because it permits constant sample times on its ports</entry>
+    <entry key="SfcnMissingReqTLCforElapseTime">The S-function ''{0}'' in ''{1}'' does not have TLC. TLC is required for this S-function because it accesses elapsed time which it indicated by specifying ssSetNeedElapseTime(S,true) in the mdlInitializeSizes function</entry>
+    <entry key="SfcnMissingReqTLCforTrigSS">The S-function ''{0}'' in ''{1}'' does not have TLC. TLC is required for this S-function because it has port-based sample times and has specified the option SS_OPTION_ALLOW_PORT_SAMPLE_TIME_IN_TRIGSS</entry>
+    <entry key="SfcnNotManageOwnTime">Asynchronous task defined by S-function ''{0}'' specifies asynchronous timer attributes, but the task does not manage its own timer. S-function must call ssSetTimeSource(S, SL_TIMERSOURCE_SELF) before calling ssSetAsyncTimerAttributes or ssSetAsyncTimerDataType</entry>
+    <entry key="SignalNotFound">无法记录 ''{2}'' 中路径为 ''{0}'' 且端口索引为 {1,number,integer} 的信号。最可能的原因是所选测试点信号不可记录，或引用模型中的测试点已更改。要确定测试点信号是否不可记录，请打开引用模型，使用 "信号属性" 对话框将信号配置为记录数据，并对引用模型进行仿真。如果信号不可记录，将出现描述性错误消息</entry>
+    <entry key="ScopeModelRefSignalNotFound">找不到来自模块 ''{0}'' 和端口 {1,number,integer} 的信号，该信号已从 ''{2}'' 中删除。验证信号和模型引用路径。如果需要，请将一个测试点添加到要查看的信号。使用 ''{3}'' 的信号选择器重新选择信号。 </entry>
+    <entry key="ScopeStateflowSignalNotFound">找不到信号 ''{0}''，该信号已从 ''{1}'' 中删除。验证信号和 Stateflow 图路径。如果需要，请将一个测试点添加到要查看的信号。使用 ''{2}'' 的信号选择器重新选择信号。 </entry>
+    <entry key="StateflowSignalNotFound">在 ''{1}'' 中找不到信号 ''{0}''</entry>
+    <entry key="UnknownOptForGenericFcn">Unknown option specified with the generic function of S-function ''{0}'' in ''{1}''.  This may be caused by using an S-function generated in a more recent version of Simulink than the one you are currently using.</entry>
+    <entry key="SfcnInvalidCallFromGeneratedCode">Nested S-function ''{0}'' is not allowed to call macros that use the generic function in the SimStruct. A possible cause is nonvirtual bus input or output signals in the nested S-function. See ''Limitations on Nesting S-Functions'' in the product documentation</entry>
+    <entry key="SimStructNoMdlZeroCrossings">To have nonsampled zero crossings, define MDL_ZERO_CROSSINGS and add a mdlZeroCrossings routine.</entry>
+    <entry key="SimStructNoMdlGetTimeOfNextVarHit">要使用可变采样时间，请定义 MDL_GET_TIME_OF_NEXT_VAR_HIT 并添加 mdlGetTimeOfNextVarHit 例程。</entry>
+    <entry key="SimStructInvalidRTWPairValueType">传递给 ssWriteRTWNameValuePair 的 SSWRITE_VALUE_type 无效。</entry>
+    <entry key="SimStructInvalidRTWPairName">传递给 ssWriteRTWNameValuePair 的名称无效。</entry>
+    <entry key="SimStructInvalidRTWPairDimension">传递给 ssWriteRTWNameValuePair 的行数或列数无效。</entry>
+    <entry key="SimStructNullRTWPair">传递给 ssWriteRTWNameValuePair 的值(NULL)无效。</entry>
+    <entry key="SimStructInvalidRTWParamValueType">传递给 ssWriteRTWParameters 的 SSWRITE_VALUE_type 无效。</entry>
+    <entry key="SimStructInvalidRTWParamArgument">传递给 ssWriteRTWParameters 的参数无效。</entry>
+    <entry key="SimStructInvalidRTWParamSetting">传递给 ssWriteRTWParamSettings 的 SSWRITE_VALUE_type 无效。</entry>
+    <entry key="SimStructInvalidRTWWorkVectorName">传递给 ssWriteRTWWorkVect 的工作向量名称(vectName)无效。向量名称必须为 RWork、IWork 或 PWork。</entry>
+    <entry key="SimStructInvalidRTWWorkVectorNumArgs">ssWriteRTWWorkVect 的 ''nNames'' 参数必须大于 0。</entry>
+    <entry key="SimStructInvalidRTWWorkVectorArgument">传递给 ssWriteRTWWorkVect 的参数无效。</entry>
+    <entry key="SimStructRTWWorkVectorSizeMismatch">ssWriteRTWWorkVect 中出错。写入 .rtw 文件的 {0}Defines 的总数(= {1,number,integer})必须等于在 mdlInitializeSizes 中注册的 {2} 的数量(= {3,number,integer})。</entry>
+    <entry key="SimStructUnexpectedFunctionCall">对 {0} 的调用无效。</entry>
+    <entry key="SimStructUnexpectedMdlOutputsInExportedFcnCall">导出函数调用的 S-Function 中存在对 mdlOutputs 的无效调用。</entry>
+    <entry key="SimStructUnexpectedGetSimState">Invalid call to mdlGetSimState. Define MDL_SIM_STATE macro.</entry>
+    <entry key="SimStructUnexpectedSetSimState">对 mdlSetSimState 的调用无效。定义 MDL_SIM_STATE 宏。</entry>
+    <entry key="SimStructInvalidFlagInSimulinkC">在 simulink.c 中发现无效的标志参数。</entry>
+    <entry key="SimStructTooFewRHSArguments">必须使用至少 {1,number,integer} 个输入参数调用 {0}。</entry>
+    <entry key="SimStructTooManyLHSArguments">调用 {0} 时使用的输出参数过多。</entry>
+    <entry key="SimStructForthRHSArgIsNotInteger">传递给 {0} 的第四个输入参数 FLAG 必须为整数。</entry>
+    <entry key="SimStructInvalidFlagPassedToSfcn">传递给 {0} 的标志参数无效。</entry>
+    <entry key="SimStructSFunctionNameMismatch">S-Function 名称不匹配。源代码中的名称为 "#define S_FUNCTION_NAME {0}"，但 S-Function MEX 文件的名称为 "{1}"。请更新源代码中的名称。</entry>
+    <entry key="SimStructLevel1InvalidAccessToInputSignal">模块 ''{1}'' 中的 S-Function ''{0}'' 无法在 mdlOutput 或 mdlGetTimeOfNextVarHit 中访问其输入信号。请更新 S-Function 以在其 mdlInitializeSizes 中注册 ssSetDirectFeedThrough(S,1)，或删除对 mdlOutputs 和 mdlGetTimeOfNextVarHit 中 ssGetU/ssGetUPtrs 的调用。 </entry>
+    <entry key="SimStructLevel2InvalidInputPortNumber">模块 ''{1}'' 中的 S-Function ''{0}'' 无法在其方法之一中访问来自输入端口 {2,number,integer} 的信号。对 ssGetInputPort[Real]Signal[Ptrs] 的所有调用必须使用范围 [0..{3,number,integer}] 中的端口索引。</entry>
+    <entry key="SimStructLevel2InvalidAccessToReusableInputSignal">S-function ''{0}'' in block ''{1}'' is unable to access the signal from input port {2,number,integer} in the mdlInitializeConditions and/or mdlUpdate method(s). Update the S-function to declare this input port as non-reusable.</entry>
+    <entry key="SimStructLevel2InvalidInputPortNumberForDirectFeedThrough">模块 ''{1}'' 中的 S-Function ''{0}'' 无法设置或清除端口 {2,number,integer} 的直接馈通标志。对 ssSetInputPortDirectFeedThrough 的所有调用必须使用范围 [0..{3,number,integer}] 中的端口索引。</entry>
+    <entry key="SimStructLevel2InvalidAccessToNonDirectFeedthroughInputSignal">S-function ''{0}'' in block ''{1}'' is unable to access the signal from input port {2,number,integer} in the mdlOutputs and/or mdlGetTimeOfNextVarHit method(s). Declare ssSetInputPortDirectFeedThrough in mdlInitializeSizes and set the direct feedthrough flag to 1 when accessing the input port signals.</entry>
+    <entry key="SimStructReplace_ssSetInputPortReusable_With_ssSetInputPortOptimOpts">宏 ssSetInputPortReusable 已弃用。请更新 {0} 以使用宏 ssSetInputPortOptimOpts。</entry>
+    <entry key="SimStructReplace_ssSetOutputPortReusable_With_ssSetOutputPortOptimOpts">宏 ssSetOutputPortReusable 已弃用。请更新 {0} 以使用宏 ssSetOutputPortOptimOpts。</entry>
+    <entry key="SimStructIndexOutOfBound">Error in file ''{0}'' on line {1,number,integer}. The specified index ({2,number,integer}) in call to {3} is out of bounds. It should be between {4,number,integer} and {5,number,integer}.</entry>
+    <entry key="SFcnPkgFileCopyFailure">由于将文件 ''{1}'' 从 ''{2}'' 复制到 ''{3}'' 时出错，S-Function ''{0}'' 包创建失败。请确保该文件存在于指定的目录中。</entry>
+    <entry key="SFcnPkgDirectoryCreationFailure">S-function ''{0}'' package creation failed due to error creating folder ''{1}''. Please make sure you have write permissions for ''{2}''.</entry>
+    <entry key="SFcnPkgDirScanFailure">S-function ''{0}'' package creation failed due to error scanning the specified directory ''{1}''.</entry>
+    <entry key="SFcnPkgSignFailed">无法对包 ''{0}'' 进行签名</entry>
+    <entry key="SFcnPkgSignatureNotVerified">无法在包 ''{0}'' 上验证签名。原因: ''{1}''。</entry>
+    <entry key="SFcnPkgMaskNotApplied">无法为 S-Function ''{0}'' 应用默认封装。</entry>
+    <entry key="SFcnPkgCreationFailed">Could not create S-Function package ''{0}''.</entry>
+    <entry key="SFcnPkgSignatureNotMatch">''{0}'' 在签名后已修改。</entry>
+    <entry key="SFcnPkgSignatureNotPresent">''{0}'' 尚未签名。</entry>
+    <entry key="SFcnPkgNotValidPackage">''{0}'' is not a valid S-Function package.</entry>
+    <entry key="SFcnPkgMexCreationFailed"> Could not generate ''{0}''.</entry>
+    <entry key="SFcnPkgAddToPackageFailed"> 无法将 ''{0}'' 添加到 S-Function 包。原因: ''{1}''。</entry>
+    <entry key="SFcnPkgDuplicateVarExists"> S-Function ''{0}'' 所需的变量 ''{1}'' 已存在于工作区中。请在工作区中加载 ''{2}'' 的内容。</entry>
+    <entry key="SFcnPkgReadFailure"> 无法从包 ''{0}'' 中读取内容</entry>
+    <entry key="SFcnPkgWriteFailure"> 无法写入包 ''{0}''</entry>
+    <entry key="SFcnPkgCommitFailure"> 无法保存对包 ''{0}'' 的更改</entry>
+    <entry key="SFcnPkgSelfModify"> 文件已更新或添加到 S-Function 包 ''{0}''，这将损坏该包的签名(如果有)。</entry>
+    <entry key="SFcnPkgDLLDependencyRaccel"> 无法为模型 ''{3}'' 的编译目录 ''{2}'' 中的 DLL ''{0}'' (S-Function ''{1}'' 需要)复制或创建符号链接。请检查对此目录的访问权限。</entry>
+    <entry key="SFcnPkgDYLIBDependencyRaccel"> 对于模型 ''{3}''，无法将共享库 ''{0}'' (S-Function ''{1}'' 所需)与快速加速目标 ''{2}'' 链接。</entry>
+    <entry key="NonZeroContinuousStates">First set the number of continuous states to be greater than zero, then you can set the state attributes</entry>
+    <entry key="AsyncTSNotAllowedAtSfcnOutport"> Outport block ''{0}'' uses asynchronous sample time. However, this sample time is not supported when generating a SIL or PIL verification block. To avoid this error, do one of the following:\n* Use an alternative sample time, for example, discrete sample time.\n* Search for ''Create block'' in the Configuration Parameters dialog box and set it to ''None''.\n\nAlternatively, consider running the model in top-model SIL or PIL mode.</entry>
+    <entry key="InternalErrorSfcnValidateDimsMethod">Unexpected or internal error encountered in ''{0}''. Please report this to MathWorks if you can reproduce it</entry>
+    <entry key="MdlOutputsModifyContinuousStates">模块 ''{1}'' 中的 S-Function ''{0}'' 已在其 mdlOutputs 方法中修改其连续状态。连续状态应只在主时间步内更改，S-Function 应使用 'ssSetSolverNeedsReset' 宏请求求解器重置。在不重置求解器的情况下更改状态可能会导致意外的结果。 </entry>
+    <entry key="MdlUpdateModifyContinuousStates">模块 ''{1}'' 中的 S-Function ''{0}'' 已在其 mdlUpdate 方法中修改其连续状态。连续状态应只在主时间步内更改，S-Function 应使用 'ssSetSolverNeedsReset' 宏请求求解器重置。在不重置求解器的情况下更改状态可能会导致意外的结果。 </entry>
+    <entry key="MinorStepModifyDiscreteStates">模块 ''{1}'' 中的 S-Function ''{0}'' 在 mdlOutputs 方法的子时间步中的时间 ''{2}'' 修改了其离散状态。 </entry>
+    <entry key="MinorStepModifyModes">模块 ''{1}'' 中的 S-Function ''{0}'' 在 mdlOutputs 方法的子时间步中的时间 ''{2}'' 修改了其模式向量。</entry>
+    <entry key="GlobalStaticAsInvisibleState">Simulink 检测到模块 ''{1}'' 中的 S-Function ''{0}'' 可能正在使用静态或全局变量来表示内部状态。当在多个 S-Function 模块中使用该 S-Function 时，这可能会导致意外的行为。</entry>
+    <entry key="ContinuousStateWithoutContinuousSampleTime">模块 ''{1}'' 中的 S-Function ''{0}'' 具有连续状态，但它未将其采样时间显式设置为连续类型。</entry>
+    <entry key="CombinedMdlOutputsMdlUpdateWithDiscreteState">模块 ''{1}'' 中的 S-Function ''{0}'' 具有离散状态，但其 mdlOutputs 和 mdlUpdate 方法以组合方式使用。当该 S-Function 放在代数环中时，这可能会导致意外的行为。 </entry>
+    <entry key="DeclareCanBeConditionalExecWithState">模块 ''{1}'' 中的 S-Function ''{0}'' 具有与状态类似的数据或多个采样时间，但该 S-Function 设置了 SS_OPTION_CAN_BE_CALLED_CONDITIONALLY 选项。 </entry>
+    <entry key="NotExceptionFree">必须使用 ssSetOptions 函数将模块 ''{1}'' 中的 S-function ''{0}'' 声明为 SS_OPTION_EXCEPTION_FREE_CODE 或 SS_OPTION_RUNTIME_EXCEPTION_FREE_CODE。为了获得更好的性能，请将任何不使用 mexErrMsgTxt、mxCalloc 或任何其他可能引发异常的例程的 S-Function 声明为无异常。 </entry>
+    <entry key="ThreadSafetyComplianceUnknown">模块 ''{1}'' 中的 S-Function ''{0}'' 未显式声明线程安全合规标志，或设置为 RUNTIME_THREAD_SAFETY_COMPLIANCE_UNKNOWN。如果 S-Function 代码可以在多线程模式下安全运行，则使用 ssSetRuntimeThreadSafetyCompliance(S, RUNTIME_THREAD_SAFETY_COMPLIANCE_TRUE) 声明其 S-Function 为 threadsafe，否则使用 ssSetRuntimeThreadSafetyCompliance(S, RUNTIME_THREAD_SAFETY_COMPLIANCE_FALSE)。 </entry>
+    <entry key="ThreadSafeButNotExceptionFree">模块 ''{1}'' 中的 S-Function ''{0}'' 使用 ssSetRuntimeThreadSafetyCompliance(S, RUNTIME_THREAD_SAFETY_COMPLIANCE_TRUE)。要在多线程模式下运行，它还必须声明为无异常。请使用 ssSetOptions 设置 SS_OPTION_EXCEPTION_FREE_CODE 或 SS_OPTION_RUNTIME_EXCEPTION_FRee_CODE。</entry>
+    <entry key="OperatingPointEmptyWithStates">模块 ''{1}'' 中的 S-Function ''{0}'' 使用 ssSetOperatingPointCompliance(S, USE_EMPTY_OPERATING_POINT)。此设置仅可用于没有仿真状态的 S-Function (例如，离散、连续状态、过零信号或模式)。要支持 Simulink 保存和还原此 S-Function 的工作点，请使用 USE_DEFAULT_OPERATING_POINT 或 USE_CUSTOM_OPERATING_POINT 设置，并提供 mdlGetOperatingPoint 和 mdlSetOperatingPoint 方法。 </entry>
+    <entry key="OperatingPointUnknownWithPWork">模块 ''{1}'' 中的 S-Function ''{0}'' 使用 ssSetOperatingPointCompliance(S, OPERATING_POINT_COMPLIANCE_UNKNOWN)。但是，S-Function 已注册 PWork，不支持将 ssSetOperatingPointCompliance 设置为 OPERATING_POINT_COMPLIANCE_UNKNOWN。为了支持 Simulink 保存和还原此 S-Function 的工作点，请使用 USE_CUSTOM_OPERATING_POINT 并提供 mdlGetOperatingPoint 和 mdlSetOperatingPoint 方法。 </entry>
+    <entry key="ComplianceCheckEnvironmentCheck">环境检查</entry>
+    <entry key="ComplianceCheckSourceCodeCheck">源代码检查</entry>
+    <entry key="ComplianceCheckPolyspaceCodeProverCheck">Polyspace Code Prover 检查</entry>
+    <entry key="ComplianceCheckSfunMEXCheck">S-Function MEX 文件检查</entry>
+    <entry key="ComplianceCheckRobustnessCheck">稳健性检查</entry>
+    <entry key="ComplianceCheckUnitTestingCheck">单元测试检查</entry>
+    <entry key="ComplianceCheckNotRun">未运行</entry>
+    <entry key="ComplianceCheckPass">通过</entry>
+    <entry key="ComplianceCheckFail">失败</entry>
+    <entry key="ComplianceCheckWarning">警告</entry>
+    <entry key="ComplianceCheckNoSourceOrCompiler">未指定源代码或 MEX 编译器。</entry>
+    <entry key="ComplianceCheckInvalidInput">Invalid input for S-function analyzer. Input to S-function analyzer must be the name of a Simulink model, library, or the path to a subsystem.</entry>
+    <entry key="ComplianceCheckInvalidCategory">Must choose a check category from ''{0}''</entry>
+    <entry key="ComplianceCheckMEXCompilerSetupCorrect">''{0}'' 的 MEX 编译器设置正确。</entry>
+    <entry key="ComplianceCheckMEXCompilerSetupIncorrect">''{0}'' 的 MEX 编译器设置不正确。</entry>
+    <entry key="ComplianceCheckNoSource">未检测到要编译的源代码。</entry>
+    <entry key="ComplianceCheckInvalidSfcnBuildInfoInput">SfcnBuildInfo 类的属性 ''{0}'' 的输入类型无效。</entry>
+    <entry key="ComplianceCheckValidDirectory">Value assigned must be a valid directory.</entry>
+    <entry key="ComplianceCheckValidBoolean">Value assigned must be a boolean value.</entry>
+    <entry key="ComplianceCheckPolyspaceLicenseFail">Polyspace checks cannot be enabled with a license.</entry>
+    <entry key="ComplianceCheckWaitBar">正在对 S-Function 运行合规性检查...</entry>
+    <entry key="ComplianceCheckInvalidOptionalParameterType">S-Function 分析器可选参数的输入类型无效。输入应为类 ''{0}''。</entry>
+    <entry key="ComplianceCheckInvalidInputModel">加载提供给 S-Function 分析器的模型时出错。</entry>
+    <entry key="ComplianceCheckInputParamRobustCheckFail">''{0}'' 对各种错误的输入参数不稳健。</entry>
+    <entry key="ComplianceCheckTestHarnessCreateFail">S-Function ''{0}'' 的测试框架创建因错误而中止。</entry>
+    <entry key="ComplianceCheckTestHarnessCreateWarning">为 S-Function ''{0}'' 创建测试框架时失败。</entry>
+    <entry key="ComplianceCheckWaitbarRunning"> 正在检查 ''{0}'' </entry>
+    <entry key="ComplianceCheckWaitbarExiting"> 正在退出 ''{0}'' </entry>
+    <entry key="ComplianceCheckNotRunDueToCancel">由于取消，检查未运行。</entry>
+    <entry key="ComplianceCheckInvalidSfcnSource">Expected SfcnFile to be an existing .c or .cpp file.</entry>
+    <entry key="ComplianceCheckNoEligibleSfunction">在模型中找不到合格的 S-Function</entry>
+    <entry key="AnalyzerInitError">Unable to create 'slprj' folder in current folder. Consider changing to a folder with write permissions.</entry>
+    <entry key="UnableToRestore">Unable to restore original S-function MEX-file ''{0}'' to ''{1}''. ''{2}''</entry>
+    <entry key="ComplianceCheckNote">注意</entry>
+    <entry key="ComplianceCheckError">错误</entry>
+    <entry key="ComplianceCheckWarningL">警告</entry>
+    <entry key="ComplianceCheckQuestionDlg">稳健性检查在最后一次运行中确定了一组参数，这些参数导致了 MATLAB 因 S-Function ''{0}'' 而崩溃。是否要继续使用此 S-Function 运行检查?</entry>
+    <entry key="ComplianceCheckYes">是</entry>
+    <entry key="ComplianceCheckNo">否</entry>
+    <entry key="ComplianceCheckNoAndSee">否，请参阅再现步骤</entry>
+    <entry key="ComplianceCheckRobustCheckReportDetail">稳健性检查在最后一次运行中确定了一组参数。有关详细信息，请参阅 ''{0}''。</entry>
+    <entry key="ComplianceCheckInvalidFileInput">S-Function 分析器 BuildInfo 的输入无效。参数 ''{0}'' 的值必须为字符向量元胞数组或字符串向量。</entry>
+    <entry key="BlockSetSDKSfcnNameEmpty">S-Function 名称必须为非空值。</entry>
+    <entry key="BlockSetSDKSfcnCreateFail">无法创建 S-Function。</entry>
+    <entry key="BlockSetSDKSfcnImportFromLib">从 ''{0}'' 导入 S-Function。 </entry>
+    <entry key="BlockSetSDKSfcnImportComplete">导入过程已完成。 </entry>
+    <entry key="BlockSetSDKSfcnBuildInfoIncomplete">S-Function ''{0}'' 的编译信息不完整。</entry>
+    <entry key="BlockSetSDKSfcnNoPresence">在当前工程中找不到 S-Function。</entry>
+    <entry key="BlockSetSDKSfcnNoBlockInModel">在 ''{1}'' 中找不到 ''{0}'' 的 S-Function 模块。</entry>
+    <entry key="BlockSetSDKSfcnMEXNOTExist">找不到 S-Function ''{0}'' 的 MEX 文件。</entry>
+    <entry key="BlockSetSDKSfcnNoTestHarness">在当前工程中找不到 S-Function ''{0}'' 的测试框架。</entry>
+    <entry key="BlockSetSDKSfcnExist">同名的工件已存在。</entry>
+    <entry key="BlockSetSDKTestHarnessCreationFail">由于编译失败，无法为该模块创建测试框架。有关详细信息，请参阅控制台窗口。</entry>
+    <entry key="BlockSetSDKTestHarnessIsOpen">无法创建 ''{0}''，因为 ''{0}'' 已打开。</entry>
+    <entry key="BlockSetSDKFileCannotFound">找不到文件 ''{0}''。</entry>
+    <entry key="BlockSetSDKOperationFailed">Failure occurred when applying operations.</entry>
+    <entry key="BlockSetSDKBlockEmptyInput">输入不能为空字符串。</entry>
+    <entry key="BlockSetSDKBlockNotFound">在库中找不到 ''{0}''。请使用工具条中的 ''刷新'' 按钮更新模块集工程。</entry>
+    <entry key="BlockSetSDKNoBlockFolder">在工程根目录下找不到模块 ''{1}'' 的文件夹 ''{0}''。</entry>
+    <entry key="BlockSetSDKNoTopLibraryOrSlblocks">找不到当前模块集的顶层库文件和 slblocks.m 文件。请在模块集工程中指定顶层库文件，并将对应的 slblocks.m 添加到工程路径中。</entry>
+    <entry key="BlockSetSDKInvalidIdentifier">模块集设计器的标识符 ''{0}'' 无效。已应用函数 ''matlab.lang.makeValidName'' 来从 ''{0}'' 构造有效标识符。</entry>
+    <entry key="BlockSetSDKGenericErrorMessage">模块集设计器中出错。</entry>
+    <entry key="RowMajorTargetNotSupported">Row-major code generation not supported for rtwsfcn target.</entry>
+    <entry key="BlockSetSDKCodeBuilderConfigurationNotFound">找不到代码编译器的配置。</entry>
+    <entry key="UnsetSFunctionNotSupported">S-function "{0}" with SSArrayLayout set to 'SS_UNSET' does not support row major code generation. To test this S-function, set the configuration parameter ''External functions compatibility for row-major code generation'' to 'warning' or 'none'.</entry>
+    <entry key="ColumnMajorSFunctionNotSupported">S-function ''{0}'' with SSArrayLayout set to 'SS_COLUMN_MAJOR' at ''{1}'' does not support row-major code generation.</entry>
+    <entry key="InvalidSymbolicDimensionExpression">"{1}" 的 {2} 端口 {0,number,integer} 上的符号维度表达式的计算结果小于 2。符号维度必须始终大于 1。</entry>
+    <entry key="SLDVUnSupSfunc">
+    
+        从模块 ''$PATH$'' 中调用的 S-Function ''{0}'' 与 $PRODUCT$ 不兼容。请使用 slcovmex 和 '-sldv' 选项重新编译 {1}。请&amp;lt;a href="matlab:helpview([docroot ''/slcoverage/helptargets.map''],''CGIRUnSupSfunc_suggest_slcovmex'')"&amp;gt;参阅文档&amp;lt;/a&amp;gt;。
+    
+</entry>
+    <entry key="SFcnMultiDimsHandlingInfoForUser">对于此 S-Function，"ssAllowSignalWithMoreThan2D" 位未设置为 true。如果您的 S-Function 具有 3 维或更多维信号，请使用 "ssAllowSignalsWithMoreThan2D"。</entry>
+  </message>
+</rsccat>

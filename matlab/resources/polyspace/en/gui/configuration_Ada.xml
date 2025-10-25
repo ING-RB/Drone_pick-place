@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!-- Copyright 2012-2014 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="polyspace">
+  <message>
+  	<!-- Machine configuration -->
+    <entry key="MachineConfiguration_node" note="">Machine Configuration</entry>
+	<entry key="MachineConfiguration_title" note="">Machine Configuration</entry>
+	<entry key="host_machine_configuation_section" note="">Host Machine Configuration</entry>
+	<entry key="extra_settings_section" note="">Extra Settings</entry>
+	<entry key="_server" note="">Send to Polyspace Server</entry>
+	<entry key="_add_to_results_repository" note="analysis results">Add to results repository</entry>
+	
+	<entry key="_server_help" note="">Send a verification to a specific or referenced Polyspace server.</entry>
+	<entry key="_add_to_results_repository_help" note="analysis results">Store Polyspace results in repository and enable Web-based reporting of code metrics and results.</entry>
+	
+	<!-- Target and Compiler -->
+    <entry key="language_section" note="">Target Language</entry>
+    <entry key="_lang" note="">Source code language</entry>
+	<entry key="TargetCompiler_node" note="">Target &amp; Compiler</entry>
+	<entry key="TargetCompiler_title" note="">Target &amp; Compiler</entry>
+	<entry key="target_environment_section" note="">Target Environment</entry>
+	<entry key="compiler_behavior_section" note="">Compiler Behavior</entry>
+	<entry key="_OS_target" note="">Target operating system</entry>
+	<entry key="_target" note="">Target processor type</entry>
+	<entry key="_extensions_for_spec_files" note="">Files extensions</entry>
+	<entry key="_base_type_directly_visible" note="">Remove ambiguities in comparison operators</entry>
+	<entry key="_storage_unit" note="">Value of the constant Storage_Unit</entry>
+
+	<entry key="_OS_target_help" note="">Specify the target operating system. Polyspace only supplies the Ada Standard Libraries for gnat include files.&lt;BR&gt;For other operating systems, verify your projects using the corresponding include files (not supplied).</entry>
+	<entry key="_lang_help" note="">Specify the source code language for the project, either Ada83 for Ada83 source code or Ada95 for Ada95 source code.</entry>
+	<entry key="_target_help" note="">Select the processor type of your target machine.</entry>
+	<entry key="_extensions_for_spec_files_help" note="">Specify the file extension for the included package specification files.</entry>
+	<entry key="_base_type_directly_visible_help" note="">Select to remove ambiguities in comparison and equality operators (=,/=,&lt;=,=&gt;,&lt;,&gt;). &lt;BR&gt;The Ada Reference Manual standard is ambiguous on the visibility of comparison and equality operators. &lt;BR&gt;This option can make the code legal to avoid compilation errors concerning the visibility of comparison and equality operators. &lt;BR&gt;E.g.,&lt;BR&gt;&lt;li&gt;ambiguous expression (cannot resolve "&lt;=")&lt;BR&gt;&lt;li&gt;operator for type "X" defined at ./exemple.ada:2 is not directly visible: use clause would make operation legal</entry>
+	<entry key="_storage_unit_help" note="">Set the value of the constant SYSTEM.Storage_Unit defined in the SYSTEM package. If this option is set, the value found in the SYSTEM package will be ignored.&lt;BR&gt;&lt;BR&gt;Default value:&lt;ul&gt;&lt;li&gt;sparc, m68k, i386 and powerpc: 8&lt;li&gt;1750a: 16&lt;BR&gt;&lt;/ul&gt;Example&lt;BR&gt;-- Definition of record type&lt;BR&gt;type REC is record &lt;BR&gt; A : integer;&lt;BR&gt; B : boolean;&lt;BR&gt; REC;&lt;BR&gt; A : integer;&lt;BR&gt; B : boolean;&lt;BR&gt; REC;&lt;BR&gt; -- Representation clause of this record&lt;BR&gt; for REC use record&lt;BR&gt; A at 0 range 0 .. 31;&lt;BR&gt; B at 1 range 0 .. 31;&lt;BR&gt; end record;&lt;BR&gt; &lt;BR&gt;If sparc is the target processor type, the value of SYSTEM.Storage_Unit is 8. So the error ''A overlaps B'' appears because this example requires 32 bit memory units. &lt;BR&gt;To resolve the error message, set the storage unit size to 32 (-storage-unit 32).</entry>
+	
+	<!-- Macros -->
+	<entry key="Macros_node" note="">Macros</entry>
+	<entry key="Macros_title" note="">Preprocessor Macros</entry>
+	<entry key="_D" note="">Preprocessor definitions</entry>
+	<entry key="_D_column_1" note="">Macro</entry>
+	<entry key="_U" note="">Disabled preprocessor definitions</entry>
+	<entry key="_U_column_1" note="">Macro</entry>
+	
+	<entry key="_D_help" note="">Specify preprocessing symbols</entry>
+	<entry key="_U_help" note="">Specify preprocessor definitions to be disabled</entry>
+	
+	<!-- Environment Settings -->
+	<entry key="EnvironmentSettings_node" note="">Environment Settings</entry>
+	<entry key="EnvironmentSettings_title" note="">Environment Settings</entry>
+	<entry key="_pre_analysis_command" note="">Command/script to apply before start of the code verification</entry>
+	<entry key="_I" note="">Include folders</entry>
+	<entry key="_I_column_1" note="">Folder</entry>
+
+	<entry key="_I_help" note="">Include Folders</entry>
+	<entry key="_pre_analysis_command_help" note="">Specify this option to run a command or file before compilation.  Unless the command is already in the path the absolute path to it must be given. &lt;BR&gt;The command or file runs once on every source or header in the code verification. &lt;BR&gt; The command should read from its standard input and echo the modified file to the standard output. &lt;BR&gt; &lt;B&gt; Note: &lt;/B&gt;  the original files are not modified by this process.</entry>
+
+	<!-- Verification Mode -->
+	<entry key="VerificationMode_node" note="">Verification Mode</entry>
+	<entry key="VerificationMode_title" note="">Verification Mode</entry>
+	<entry key="__main" note="">Verify whole application</entry>
+	<entry key="_main" note="">Main entry point</entry>
+	<entry key="__multitasking" note="">Multitasking</entry>
+	<entry key="_entry_points" note="">Entry points</entry>
+	<entry key="_entry_points_column_1" note="">Task</entry>
+	<entry key="_critical_section_begin" note="">Critical section details</entry>
+	<entry key="_critical_section_end" note="">Critical section details</entry>
+	<entry key="_critical_section_begin_column_1" note="">Starting procedure</entry>
+	<entry key="_critical_section_begin_column_2" note="">Ending procedure</entry>
+	<entry key="_temporal_exclusions_file" note="">Temporally exclusive tasks</entry>
+	<entry key="_temporal_exclusions_file_column_1" note="">Tasks</entry>
+	<entry key="_main_generator" note="">Verify module</entry>
+	<entry key="_unit_by_unit" note="">Verify files independently</entry>
+	<entry key="_unit_by_unit_common_source" note="">Common source files</entry>
+	<entry key="_unit_by_unit_common_source_column_1" note="">File</entry>
+
+	<entry key="__main_help" note="">Use the given subprogram 'main' to verify the whole application.</entry>
+	<entry key="_main_help" note="">Enter the main procedure of the project</entry>
+	<entry key="__multitasking_help" note="">Verify multitasking code</entry>
+	<entry key="_entry_points_help" note="">Specify the list of the implicit tasks to be analyzed. &lt;BR&gt;This option is important since it lets you specify task entry points. These entry points must not take parameters&lt;BR&gt;If your task entry points are functions with parameters, you can encapsulate them in functions with no parameters and pass parameters through global variables.</entry>
+	<entry key="_critical_section_begin_help" note="">Specify the procedures that start and end critical sections. Use these critical sections to model protection of shared resources, &lt;BR&gt;or model interruption enabling/disabling. To model the behavior of binary semaphore, using the following syntax for both the start and end of a critical section: &lt;BR&gt;'package_name#the_semaphore_index'.</entry>
+
+	<entry key="_temporal_exclusions_file_help" note="">Specify the set of tasks which never execute at the same time.</entry>
+	<entry key="_main_generator_help" note="">Automatically generate a 'main' function to verify a module.</entry>
+	<entry key="_unit_by_unit_help" note="">Create a separate verification job for each source file in the project.&lt;br&gt;Each file is compiled and then verified individually.</entry>
+	<entry key="_unit_by_unit_common_source_help" note="">Specify a list of files to include with each file verification.&lt;br&gt;Functions not included in this list are stubbed.</entry>
+
+	<!-- Inputs and Stubbing -->
+	<entry key="InputsStubbing_node" note="">Inputs &amp; Stubbing</entry>
+	<entry key="InputsStubbing_title" note="">Inputs &amp; Stubbing</entry>
+	<entry key="Inputs_section" note="">Inputs</entry>
+	<entry key="Stubbing_section" note="">Stubbing</entry>
+	<entry key="_data_range_specifications" note="">Constraint setup</entry>
+	<entry key="__init_uninitialized_global_variables" note="">Initialization of uninitialized global variables</entry>
+
+	<entry key="_data_range_specifications_help" note="">Select a file that specifies constraints for global variables, values returned by stubbed functions, and out or in out parameters of stubbed procedures.&lt;br&gt;In this file, you can also set the initial constraint for arguments of user-defined subprograms called by the main generator.&lt;br&gt; &lt;br&gt;&lt;B&gt;Format&lt;/B&gt;: &lt;I&gt;symbol val_min val_max [reinit|init|permanent]&lt;/I&gt;, where:&lt;br&gt;- &lt;I&gt;symbol&lt;/I&gt;is a variable name, the name of a function that returns a value, or a subprogram parameter name&lt;br&gt;- &lt;I&gt;val_min&lt;/I&gt; and &lt;I&gt;val_max&lt;/I&gt; are minimum and maximum values&lt;br&gt;- &lt;I&gt;reinit&lt;/I&gt; restricts global variables to the specified constraint at the entry point for each subprogram called by the main generator, or the entry point for the user defined main subprogram.&lt;br&gt;- &lt;I&gt;init&lt;/I&gt;initializes input parameters of subprograms to the specified constraint when the subprogram is called by the main generator.&lt;br&gt;- &lt;I&gt;permanent&lt;/I&gt; restricts the return, out or in/out parameters to the specified constraint range of a stubbed subprogram each time the subprogram is called.</entry>
+	<entry key="__init_uninitialized_global_variables_help" note="">Initialization of uninitialized global variables: &lt;UL&gt;&lt;li&gt;With random value: force initialization of uninitialized global variables to a random value. &lt;li&gt;With zero or random value: if the type contains zero, initialize uninitialized global variables to zero, otherwise initialize to a random value. &lt;/UL&gt;</entry>
+
+	<!-- Verification Assumption -->
+	<entry key="VerificationAssumption_node" note="">Verification Assumptions</entry>
+	<entry key="VerificationAssumption_title" note="">Verification Assumptions</entry>
+	<entry key="_continue_with_all_niv" note="">Continue after noninitialized variables</entry>
+	<entry key="_continue_with_in_out_niv" note="">Continue with noninitialized in/out parameters</entry>
+	<entry key="_import_are_not_volatile" note="">Treat import as nonvolatile</entry>
+	<entry key="_export_are_not_volatile" note="">Treat export as nonvolatile</entry>
+
+	<entry key="_ignore_float_rounding_help" note="">Perform exact computation with float values. &lt;br&gt;Otherwise, Polyspace rounds float values according to the IEEE 754 standard.</entry>
+	<entry key="_continue_with_all_niv_help" note="">Detect all noninitialized variables. &lt;br&gt;Without this option, Verification stops after the first red NIV. &lt;br&gt; &lt;B&gt;Warning&lt;/B&gt;: May incur loss of precision. It should only be set for the first run of a project.</entry>
+	<entry key="_continue_with_in_out_niv_help" note="">The Ada standard requires that in/out parameters of a procedure (function) must be initialized. &lt;br&gt;With this option, such a variable is still detect as a red NIV but the following code won't be unreachable and&lt;br&gt;this red error won't have any impact on the code verification.</entry>
+
+	<entry key="_import_are_not_volatile_help" note="">If a variable has a pragma import(C|ASM|other, my_variable), Polyspace Software considers it a volatile variable. &lt;br&gt;Use this option to treat them as normal variables.</entry>
+	<entry key="_export_are_not_volatile_help" note="">If a variable has a pragma export(C|ASM|other, my_variable), Polyspace Software considers it a volatile variable. &lt;br&gt;Use this option to treat them as normal variables.</entry>
+
+	<!-- Precision -->
+	<entry key="Precision_node" note="">Precision</entry>
+	<entry key="Precision_title" note="">Precision</entry>
+	<entry key="GlobalSettings_section" note="">Global Settings</entry>
+	<entry key="SpecificConstructsSettings_section" note="">Specific Constructs Settings</entry>
+	<entry key="_O" note="">Precision level</entry>
+	<entry key="_to" note="">Verification level</entry>
+	<entry key="_timeout" note="">Verification time limit</entry>
+	<entry key="_context_sensitivity" note="">Sensitivity context</entry>
+	<entry key="_context_sensitivity_column_1" note="">Procedure</entry>
+	<entry key="_path_sensitivity_delta" note="">Improve precision of interprocedural analysis</entry>
+	<entry key="_modules_precision" note="">Specific precision</entry>
+	<entry key="_modules_precision_column_1" note="">Package</entry>
+	<entry key="_modules_precision_column_2" note="">Precision</entry>
+	<entry key="_array_expansion_size" note="">Max size of global array variables</entry>
+	<entry key="_variables_to_expand" note="">Variables to expand</entry>
+	<entry key="_variables_to_expand_column_1" note="">Variable</entry>
+	<entry key="_variable_expansion_depth" note="">Expansion limit for a structured variable</entry>
+
+	<entry key="_O_help" note="">Specify precision level of verification. Higher precision levels result in longer verification times:&lt;ul&gt;&lt;li&gt;Level 0 - Static interval code verification.&lt;li&gt;Level 1 - Verification uses complex polyhedron model of domain values.&lt;li&gt;Level 2 - Verification uses more complex algorithms to closely model domain values (a mixed approach with integer lattices and complex polyhedrons).&lt;li&gt;Level 3 - Only suitable for code less than 1000 lines long. For such code, the selectivity may become high, resulting in a very long code verification time. For example, 1 hour per 1000 lines of code.&lt;/ul&gt;Start code verification at Level 0. Next, correct red and gray checks. Then, run verification at a higher level of precision.</entry>
+	<entry key="_to_help" note="analysis results">Specify verification level. A higher verification level improves the results (increasing selectivity), and also increases verification time.</entry>
+	<entry key="_timeout_help" note="">Stop verification if verification is not completed within specified time limit X[.Y] or X[,Y], where X represents hours and Y (optional) represents a fraction of an hour. &lt;br&gt;&lt;br&gt;For example:&lt;ul&gt;&lt;li&gt;timeout 5.75 specifies a time limit of 5 hours and 45 minutes&lt;br&gt;&lt;li&gt;timeout 3,5 specifies a time limit of 3 hours and 30 minutes&lt;/ul&gt;If verification is not completed within the specified time limit, verification is considered to have failed.</entry>
+	<entry key="_context_sensitivity_help" note="">Add calling context information for checks contained in the given functions.&lt;br&gt;For example, if one call to the function results in a red check, and another call results in a green check, the calling information and color for both will be contained within the check.&lt;br&gt;&lt;br&gt;Select one of the following values:&lt;ul&gt;&lt;li&gt;none - No context sensitivity&lt;br&gt;&lt;li&gt;auto - Automatically select the functions that context sensitivity will be applied to&lt;br&gt;&lt;li&gt;custom - Provide the functions that context sensitivity will be applied to&lt;/li&gt;</entry>
+	<entry key="_path_sensitivity_delta_help" note="analysis results">Select this option to more precisely verify code within procedures. &lt;br&gt;This option improves the quality of results, but increases verification time.&lt;br&gt;&lt;br&gt;WARNING: should be used with a value less than or equal to 3. Otherwise, the verification could take longer.</entry>
+	<entry key="_modules_precision_help" note="">Specify list of compilation units to be analyzed with a different precision level than the specified "Precision level" (-O).&lt;br&gt;&lt;br&gt;By default,all compilation units are verified at the same precision level.&lt;br&gt;In ADA, compilation units are packages.</entry>
+	<entry key="_array_expansion_size_help" note="">Specify an array size (default is 3).  For global array variables with length less than or equal to this number, Polyspace verifies each cell as a separate variable. &lt;br&gt; This option has an impact on the Global Data Dictionary results. &lt;br&gt;&lt;br&gt; &lt;B&gt;Warning&lt;/B&gt;: Increasing the number of global variables to be analyzed will have an impact on the code verification time.</entry>
+	<entry key="_variables_to_expand_help" note="">Specify aggregate variables (e.g., record) that will be split into independent variables for the purpose of code verification. &lt;br&gt;&lt;br&gt;&lt;B&gt;Warning:&lt;/B&gt; this option has an impact on the Global Data Dictionary results.</entry>
+	<entry key="_variable_expansion_depth_help" note="">Indicate the maximum depth for expansion of variables specified by the &lt;code&gt;-variables-to-expand option. &lt;/code&gt;</entry>
+
+	<!-- Post verification -->
+	<entry key="Advanced_node" note="">Advanced Settings</entry>
+	<entry key="Advanced_title" note="">Advanced Settings</entry>
+	<entry key="code_metrics_section" note="">Code Metrics</entry>
+	<entry key="_no_code_metrics" note="">Disable code metrics generation</entry>
+	<entry key="post_verification_section" note="">Post Verification</entry>
+	<entry key="_post_analysis_command" note="">Command/script to apply after the end of the code verification</entry>
+	<entry key="__other" note="">Other</entry>
+
+	<entry key="_no_code_metrics_help" note="">Do not produce code metric results.</entry>
+	<entry key="_post_analysis_command_help" note="">Specify command or file that must be run after code verification is complete.</entry>
+	<entry key="__other_help" note="">If necessary, the Technical Support team may provide non-official options for fine-tuning your verifications.</entry>
+
+	<!-- Reporting -->
+	<entry key="Reporting_node" note="">Reporting</entry>
+	<entry key="Reporting_title" note="">Reporting</entry>
+	<entry key="__report_generation" note="">Generate report</entry>
+	<entry key="_report_template" note="">Report template</entry>
+	<entry key="_report_output_format" note="">Output format</entry>
+
+	<entry key="__report_generation_help" note="">Create verification report using report generation options.</entry>
+	<entry key="_report_template_help" note="">Specify template for generating verification report.</entry>
+	<entry key="_report_output_format_help" note="">Specify output format of report.</entry>
+
+  </message>
+</rsccat>

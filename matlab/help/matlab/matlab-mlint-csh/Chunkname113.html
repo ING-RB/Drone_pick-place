@@ -1,0 +1,16 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>In a <code><a href="matlab: doc parfor" target="_blank">parfor</a></code>-loop,
+                    temporary variables are cleared at the beginning of each iteration. These
+                    variables must be set inside the body of the loop before they are used, so that
+                    their values are defined separately for each iteration. A variable that is set
+                    outside the <code>parfor</code>-loop has no effect on a temporary variable
+                    with the same name.</p><br/><strong>Suggested Action</strong><br/><p>Make sure that any temporary variable is set inside the
+                        <code>parfor</code>-loop before it is used. For readability, consider
+                    renaming variables outside the loop that have the same names as the temporary
+                    variables. In this example, the original version tries to display the temporary
+                    variable <code>a</code> in the <code>parfor</code>-loop before it is
+                    assigned a value. The revised version avoids the error by setting
+                        <code>a</code> first.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="33%" align="left"><col class="tcol2" width="33%" align="left"><col class="tcol3" width="33%" align="left"></colgroup><thead><tr><th>Original</th><th>&nbsp;</th><th>Revised</th></tr></thead><tbody><tr><td>
+                                    <code>a&nbsp;=&nbsp;0;<br/>parfor&nbsp;i&nbsp;=&nbsp;1:10<br/>&nbsp;&nbsp;&nbsp;&nbsp;disp(a)<br/>&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;i;<br/>end<br/>disp(a)<br/></code>
+                                </td><td>&nbsp;</td><td>
+                                    <code>b&nbsp;=&nbsp;0;<br/>parfor&nbsp;i&nbsp;=&nbsp;1:10<br/>&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;i;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;disp(a)&nbsp;&nbsp;&nbsp;<br/>end<br/>disp(b)<br/></code>
+                                </td></tr></tbody></table></div><p>For more information, see <a href="matlab:helpview('parallel-computing','PARFOR_TEMPORARY_VARIABLES')" target="_blank">Temporary Variables</a>.</p></body></html>

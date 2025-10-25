@@ -1,0 +1,59 @@
+{
+"openfig":
+{
+	"inputs":
+	[
+		{"name":"filename", "kind":"required", "type":"file=*.fig"},
+		{"name":"copies", "kind":"ordered", "type":"choices={'new','reuse'}", "default":"'new'"},
+		{"name":"visibility", "kind":"ordered", "type":"choices={'invisible','visible'}"}
+	]
+},
+"reset":
+{
+	"inputs":
+	[
+		{"name":"h", "type":"numeric"}
+	]
+},
+"fontname":
+{
+	"inputs":
+	[
+		{"name":"target", "kind":"ordered", "type":"matlab.graphics.Graphics"},
+        {"mutuallyExclusiveGroup":
+            [
+                {"name":"fname", "kind":"required", "type":"choices=listfonts"},
+                {"name":"'default'", "kind":"required", "type":"choices={'default'}"}
+            ]
+        }
+	]
+},
+"fontsize":
+{
+	"inputs":
+	[
+		{"name":"target", "kind":"ordered", "type":"matlab.graphics.Graphics"},
+        {"mutuallyExclusiveGroup":
+            [
+                {"mutuallyExclusiveGroup":
+                 [
+                     [
+                         {"name":"fontsize", "kind":"required", "type":"numeric"},
+                         {"name":"units", "kind":"required", "type":"choices={'points','pixels','centimeters','inches'}"}
+                     ],
+                     [{"name":"'increase'", "kind":"required", "type":"choices={'increase'}"}],
+                     [{"name":"'decrease'", "kind":"required", "type":"choices={'decrease'}"}],
+                     [
+                         {"name":"'scale'", "kind":"required", "type":"choices={'scale'}"},
+                         {"name":"factor", "kind":"required", "type":"numeric"}
+                     ],
+                     [{"name":"'default'", "kind":"required", "type":"choices={'default'}"}]
+
+                 ]
+                }
+
+            ]
+        }
+	]
+}
+}

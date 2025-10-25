@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2010-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+    <entry key="AbsTimeNotSuppForTsDepAsyncBlk" context="diagnostic">The Model block ''{0}'' is triggered by an asynchronous function-call initiator. This configuration is not supported when the referenced model ''{1}'' needs absolute time.</entry>
+    <entry key="InportFCPortNotAllowAsyncRootOutportDrivenByRTB" context="diagnostic">''{0}'' cannot be driven by a Rate Transition block that has an asynchronous rate when the model has asynchronous function-call input port.</entry>
+    <entry key="InportFCPortNotAllowAsyncSfcnBlk" context="diagnostic">''{0}'' is an asynchronous function call initiator. Such blocks are not allowed in a model that has an asynchronous function-call input port.</entry>
+    <entry key="InportFCPortMustUseBuildInRTB" context="diagnostic">''{0}'' is not a Simulink Rate Transition block. When a model has an asynchronous function-call input port, use the Rate Transition block in Simulink library to handle rate transitions to or from an asynchronous function-call block.</entry>
+    <entry key="AsyncFCSSCannotBePeriodic" context="diagnostic">''{0}'' cannot be defined to be a periodic function-call block because it has an asynchronous rate.</entry>
+    <entry key="ConstSampleTimeAtAsyncInitiator" context="diagnostic">Asynchronous function-call initiator ''{0}'' specifies a constant (inf) sample time. Constant (inf) sample time is not supported for asynchronous function-call initiators in simulation. This sample time will be changed to inherited (-1). To remove this warning message, make sure this block specifies a sample time other than constant (inf). You can do this by selecting the Simulation mode if this block has a 'Mode' option.</entry>
+    <entry key="AsyncSfcnInvalidDtype" context="diagnostic">Asynchronous task defined by S-function ''{0}'' specifies invalid data type for the timer associated with this asynchronous task.</entry>
+    <entry key="AsyncTsPriorityMustHigherThanBaseRate" context="diagnostic">The Asynchronous Task Specification block connected to root-level Inport block ''{0}'' specifies priority {1,number, integer}, but the periodic base rate priority is {2, number, integer}. Asynchronous task must specify a priority higher than periodic base rate.</entry>
+    <entry key="AsyncTIDSamePriorityAsSyncTID" context="diagnostic">The asynchronous task associated with the S-function ''{0}'', and the periodic task with sample time {1} share the same priority: {2,number,integer}. Either specify differing priorities, or set the Tasks with equal priority option in the Diagnostics page of the Configuration Parameters Dialog to "none" if tasks of equal priority can not preempt each other in the target system.</entry>
+    <entry key="AsyncTriggerInActionSys" context="diagnostic">Asynchronous subsystem ''{0}'' may not be put in an action or iterator subsystem.</entry>
+    <entry key="BlkFastestTsNotGCDOfInTs" context="diagnostic">Cannot determine a sample time for block ''{0}''. Either specify the sample time of this block (a suggested rate is {1}, the greatest common divisor of the input rates) or specify sample times for the blocks that drive this block''s inputs.</entry>
+    <entry key="BlkInputSampleTimeMismatch" context="diagnostic"><![CDATA[Sample time mismatch. Sample time ({0}) of signal driving <sldiag objui="inport" objparam="{1,number,integer}" objname="{2}">input port {1,number,integer}</sldiag> of ''{2}'' does not match the sample time ({3}) of the block.]]></entry>
+    <entry key="BlkWithUnsetTsInhSupLevel" context="diagnostic"><![CDATA[The model reference sample time inheritance rule for block ''{0}'' is not set and the model is sample time independent. The generated code from the block might produce incorrect results if it is referenced by a Model block. For S-functions, specify the model reference sample time inheritance rule through the ssSetModelReferenceSampleTimeInheritanceRule macro. You can suppress the diagnostic by setting <sldiag objui="configset" objparam="UnknownTsInhSupMsg">Unspecified inheritability of sample time</sldiag> to 'none'.]]></entry>
+    <entry key="BlockTsNotAMultipleOfFixedStep" context="diagnostic">The sample time {0} ({1}) of ''{2}'' is not an integer multiple of the fixed step size ({3}) specified for model.</entry>
+    <entry key="CompileNeededForBlockSampleTimes" context="diagnostic">An Update Diagram must be performed in order to access the ''SampleTimes'' information for the block ''{0}''.</entry>
+    <entry key="ComputedStepSizeIsTooSmall" context="diagnostic">The computed fixed step size ({0}) is {1} times smaller than all the discrete sample times in the model ''{2}''. This fixed step size has been computed based on the following specified discrete sample times:{3} and the following propagated discrete sample times:{4} in the model. You can fix this error either by switching to a variable step solver or by specifying a fixed step size such that the discrete sample times (both periods and offsets) are integer multiples of the fixed step size.</entry>
+    <entry key="ComputedStepSizeMayBeTooSmall" context="diagnostic">The computed fixed step size ({0}) is {1} times smaller than some of the discrete sample times in the model ''{2}''. This fixed step size has been computed based on the following specified discrete sample times:{3} and the following propagated discrete sample times:{4} in the model. You can disable this diagnostic either by specifying a fixed step size such that the discrete sample times (both periods and offsets) are integer multiples of the fixed step size, or by setting ''Automatic solver parameter selection'' diagnostic to ''none'' in the Diagnostics tab of the configuration parameters dialog.</entry>
+    <entry key="ConstantSampleTimeDescription" context="uistring">Constant</entry>
+    <entry key="ConstantSampleTimeDescription_Advanced" context="uistring">Invariant</entry>
+    <entry key="ParameterSampleTimeDescription" context="uistring">Constant</entry>
+    <entry key="InvPrmSampleTimeDescription_Advanced" context="uistring">Invariant</entry>
+    <entry key="SampleTimeValueNA" context="uistring" translate="false">N/A</entry>
+    <entry key="SampleTimeValueInf" context="uistring" translate="false" note="TranslateFalseBatch;">Inf</entry>
+    <entry key="ContinuousSTBlkHasFrames" context="diagnostic">One or more ports of block ''{0}'' are set to be frame-based even though this block has a continuous sample time. Frame-based signals should have a discrete sample time.</entry>
+    <entry key="ContSTOutPortIsFrameBased" context="diagnostic"><![CDATA[<sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of ''{1}'' is set to be frame-based even though this port has a continuous sample time. Frame-based signals should have a discrete sample time.]]></entry>
+    <entry key="SFcnNeedsContTsOrInhTsForCStates" context="diagnostic">Single rate S-function ''{0}'' in ''{1}'' must specify a continuous sample time or an inherited sample time since it has continuous states.</entry>
+    <entry key="SFcnNeedsContTs" context="diagnostic">S-function {0} in ''{1}'' must have a continuous sample time since it has continuous states.</entry>
+    <entry key="BlockNeedsContTs" context="diagnostic">Block {0} must have a continuous sample time since it has continuous states.</entry>
+    <entry key="DefaultFixedStepSizeMsg" context="diagnostic">The model ''{0}'' will use a fixed step size of ({1}) based on start and stop times. You can disable this diagnostic by setting the ''Automatic solver parameter selection'' diagnostic to ''none'' in the Solver group on the Diagnostics pane of the Configuration Parameters dialog box.\n</entry>
+    <entry key="DiscreteBecomingInf" context="diagnostic">The periodic sample time {0}, used in block ''{1}'', is too large for use in a model with a base rate of {2}. Either explicitly specify this sample time as inf, or specify a fixed step size large enough that this sample time divided by the fixed step size will not be inf within the limits of numerical precision.</entry>
+    <entry key="ErrorInParamInit" context="diagnostic">Error while initializing parameters.</entry>
+    <entry key="ParamUpgradeNotification" context="diagnostic">If this model was created in a previous release, upgrade problems may occur and cause parameter initialization issues.</entry>
+    <entry key="FasterTaskMustHaveHigherPriority" context="diagnostic">For synchronous tasks, faster tasks must have higher priority. Faster synchronous task whose sample time is {0} has priority {1,number,integer}. This priority is lower than the priority of slower task whose sample time is {2}. The slower task priority is: {3,number,integer}.</entry>
+    <entry key="FixedInMinorStepDescription" context="uistring">Fixed in Minor Step</entry>
+    <entry key="FixedStepNEFundStep" context="diagnostic">Invalid setting for fixed-step size ({0}) in model ''{1}''. All sample times in your model must be an integer multiple of the fixed-step size.</entry>
+    <entry key="FixedStepSizeHeuristicErr" context="diagnostic">Unable to determine a fixed step size based on the sample times in the model ''{0}'', because the model does not have any discrete sample times. You can disable this diagnostic by explicitly specifying a fixed step size in the Solver pane of the Configuration Parameters dialog box, or setting the ''Automatic solver parameter selection'' diagnostic to ''none'' in the Solver group on the Diagnostics pane of the Configuration Parameters dialog box.</entry>
+    <entry key="FixedStepSizeHeuristicWarn" context="diagnostic">Unable to determine a fixed step size based on the sample times in the model ''{0}'', because the model does not have any discrete sample times. Picking a fixed step size of ({1}) based on simulation start and stop times. You can disable this diagnostic by explicitly specifying a fixed step size in the Solver pane of the Configuration Parameters dialog box, or setting the ''Automatic solver parameter selection'' diagnostic to ''none'' in the Solver group on the Diagnostics pane of the Configuration Parameters dialog box.</entry>
+    <entry key="FunctionalSampleTimesNotMatchSFcn" context="diagnostic">Number of functional sample times specified in block ''{0}'' does not match the number of sample times in this block. This can happen when you build an S-Function block from a variable-step model, and then use the S-Function block in a fixed-step model. You can fix this error by switching to a variable-step solver or regenerating the S-Function block with a fixed-step solver.</entry>
+    <entry key="FunctionalSampleTimesNotMatchMdlRef" context="diagnostic">Number of functional sample times specified in block ''{0}'' does not match the number of sample times in this block. This can happen when you drive two different function-call inputs of a Model block with the same Asynchronous function call initiator. You can fix this error by using two different function-call generators or by using only one function-call input inside the referenced model.</entry>
+    <entry key="IgnoringAsyncFlag" context="diagnostic">The SS_OPTION_ASYNCHRONOUS, SS_OPTION_ASYNCHRONOUS_INTERRUPT, or SS_OPTION_ASYNCHRONOUS_CUSTOM flag for S-function ''{0}'' is being ignored because the S-function does not meet all of the following criteria: number of sample times is 1, the sample time is inherited (-1), 1 output port, and all elements of the output port are configured to perform function calls.</entry>
+ <entry key="IllegalUnsupportedMultiRWRateTransWarn" context="diagnostic">Multiple read and write transition detected between ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}. Rate Transition block cannot ensure data transfer protection.
+    </entry>
+    <entry key="IllegalUnsupportedMultiRWRateTransErr" context="diagnostic">Multiple read and write transition detected ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}. Rate Transition block cannot ensure data transfer protection.
+    <![CDATA[
+    <actions exclusiveFixIts="yes">
+        <action type="fixit" id="MultiTaskRateTransMsgWarn">
+            <cmd>set_param(''{4}'', ''MultiTaskRateTransMsg'', ''warning'');</cmd>
+            <txt>Set the ''Diagnostics > Sample Time > Multitask data transfer'' diagnostic to ''warning''.</txt>
+        </action>
+    </actions>
+    ]]>
+    </entry>
+    <entry key="InconsistentPortBasedTs" context="diagnostic"><![CDATA[Data integrity issue between <sldiag objui="inport" objparam="{1,number,integer}" objname="{0}">input port {1,number,integer}</sldiag> of ''{0}'' and the signal driving this input port.
+      <actions exclusiveFixIts="yes">
+        <action type="suggestion">
+          <txt>Insert a rate transition block to protect the data transfer.</txt>
+        </action>
+      </actions>
+      ]]>
+    </entry>
+    <entry key="InconsistentBlockBasedTs" context="diagnostic">Inconsistent sample times. Sample time ({0}) of ''{1}'' is slower than sample time ({2}) at input port {3,number,integer}. This is likely because there is a loop of blocks, containing ''{4}'' that do not specify sample time (all are inherited (-1)). Either specify the sample time of this
+    block or specify sample times for the blocks that drive this block''s inputs.</entry>
+    <entry key="InconsistentAsyncPriority" context="diagnostic">The block ''{0}'' is invoked by asynchronous S-functions specifying conflicting priorities: ''{1}'' specifies {2,number,integer}, while ''{3}'' specifies {4,number,integer}.</entry>
+    <entry key="InconsistentAsyncClockTickSize" context="diagnostic">The function-call block ''{0}'' is triggered by asynchronous S-functions specifying conflicting clock tick size: ''{1}'' specifies {2}, while ''{3}'' specifies {4}.</entry>
+    <entry key="InconsistentAsyncClockTickDType" context="diagnostic">The function-call block ''{0}'' is triggered by asynchronous S-functions specifying conflicting clock tick data type: ''{1}'' specifies {2}, while ''{3}'' specifies {4}.</entry>
+    <entry key="JmaabbCannotCombineFunctionCalls" context="diagnostic">Triggering function-call block ''{0}'' from multiple function-call input ports is not supported in rate-based models.</entry>
+    <entry key="AsyncCustomCannotCombineWithOtherAsyc" context="diagnostic">The function-call block ''{0}'' is triggered by asynchronous S-functions specifying conflicting SS_OPTION: either ''{1}'' or ''{2}'' specifies SS_OPTION_ASYNCHRONOUS_CUSTOM while the other specifies SS_OPTION_ASYNCHRONOUS or SS_OPTION_ASYNCHRONOUS_INTERRUPT.}</entry>
+    <entry key="InputPortSampleTimeMismatch" context="diagnostic"><![CDATA[Sample time mismatch. Sample time ({0}) of signal driving <sldiag objui="inport" objparam="{1,number,integer}" objname="{2}">input port {1,number,integer}</sldiag> of ''{2}'' differs from the required sample time ({3}) at this input port.]]></entry>
+    <entry key="InvAsynSFuncLocation" context="diagnostic">All destinations of Asynchronous S-function ''{0}'' must be in the root system (i.e., destinations cannot be contained in conditionally executed subsystems).</entry>
+    <entry key="InvAsyncInterruptSFcnLoc" context="diagnostic">S-function ''{0}'' and its function-call destination block must be in the root system or atomic subsystems because it has indicated that it is executing the destination function-call block asynchronously via a hardware interrupt.</entry>
+    <entry key="InvalidAsyncTimeSourceCaller" context="diagnostic">The function-call block ''{0}'' is triggered by the asynchronous S-function ''{1}'', which specifies that it obtains its time from its caller. However, any asynchronous S-function triggering a function-call block that has multiple triggers may not specify that it obtains its time from its caller.</entry>
+    <entry key="InvBlkInPeriodicFCSS" context="diagnostic">''{0}'' has an invalid sample time. Only constant (inf), inherited (-1), or periodic ({1}) sample times are allowed in the periodic function-call block ''{2}''.</entry>
+    <entry key="InvBlkInPeriodicAtomic" context="diagnostic"><![CDATA[
+    Block ''{0}'' has an invalid sample time of {1}. Periodic atomic subsystem ''{2}'' may contain only blocks that have constant (inf), inherited (-1), or periodic ({3}) sample times.
+        <actions exclusiveFixIts = "yes">
+            <action type="fixit">
+                <cmd>set_param(''{0}'', 'SampleTime', ''__ARG1__'');</cmd>
+                <cargs>
+                    <carg translate="false" name="__ARG1__" type="menu">
+                        <txt_prompt>New Sample Time</txt_prompt>
+                        <enum>{3}</enum>
+                        <enum>inf</enum>
+                        <enum>-1</enum>
+                    </carg>
+                </cargs>
+                <txt>Set Sample Time of Block ''{0}'' to periodic ({3}), or inherited (-1), or constant (inf).</txt>
+             </action>
+             <action type="fixit">
+                   <cmd>set_param(''{2}'', 'SystemSampleTime', '-1');</cmd>
+                   <txt>Configure Subsystem ''{2}'' to inherit the sample time.</txt>
+             </action>
+         </actions>
+         ]]>
+    </entry>
+
+    <entry key="InvBlkWithNoSTPrmInPeriodicAtomic" context="diagnostic">
+      <![CDATA[
+               Block ''{0}'' has an invalid sample time of {1}. Periodic atomic subsystem ''{2}''
+               may contain only blocks that have constant (inf), inherited (-1), or periodic ({3}) sample times.
+               <actions exclusiveFixIts = "yes">
+                  <action type="fixit">
+                     <cmd>set_param(''{2}'', 'SystemSampleTime', '-1');</cmd>
+                     <txt>Configure Subsystem ''{2}'' to inherit the sample time.</txt>
+                  </action>
+               </actions>
+      ]]>
+    </entry>
+    
+    <entry key="InvSubsysInPeriodicAtomic" context="diagnostic"><![CDATA[
+    Subsystem ''{0}'' has an invalid sample time of {1}. Periodic atomic subsystem ''{2}'' may contain only subsystems that have inherited (-1), or periodic ({3}) sample times.
+        <actions exclusiveFixIts = "yes">
+            <action type="fixit">
+                <cmd>set_param(''{0}'', 'SystemSampleTime', ''__ARG1__'');</cmd>
+                <cargs>
+                    <carg translate="false" name="__ARG1__" type="menu">
+                        <txt_prompt>New Sample Time</txt_prompt>
+                        <enum>{3}</enum>
+                        <enum>-1</enum>
+                    </carg>
+                </cargs>
+                <txt>Set Sample Time of Subsystem ''{0}'' to periodic ({3}), or inherited (-1).</txt>
+            </action>
+            <action type="fixit">
+                   <cmd>set_param(''{2}'', 'SystemSampleTime', '-1');</cmd>
+                   <txt>Configure Subsystem ''{2}'' to inherit the sample time.</txt>
+             </action>
+         </actions>
+    ]]> </entry>
+    
+    <entry key="InvTs" context="diagnostic">Sample time {0} of ''{1}'' is invalid.</entry>
+
+    <entry key="InvPeriodOffsetPairFromSFcn" context="diagnostic">Sample time [{0} {1}] specified in
+    the S-Function block ''{2}'' is invalid. Sample time must be a real double
+    scalar (period) or a real double vector of length 2 (period, offset); where
+    period, offset must be finite and non-negative and offset must be less than
+    period.</entry>
+
+    <entry key="InvTsInCaseSS" context="diagnostic">Sample time {0} of ''{1}'' does not match the sample time {2} of the SwitchCase block ''{3}'' controlling its execution.</entry>
+    <entry key="InvTsInIfActionSS" context="diagnostic">Sample time {0} of ''{1}'' does not match the sample time {2} of the If block ''{3}'' controlling its execution.</entry>
+    <entry key="InvDiscreteTsInCaseSS" context="diagnostic">The block ''{0}'' has a discrete sample time that does not match the sample time {1} of the SwitchCase block ''{2}'' controlling its execution.</entry>
+    <entry key="InvDiscreteTsInIfActionSS" context="diagnostic">The block ''{0}'' has a discrete sample time that does not match the sample time {1} of the If block ''{2}'' controlling its execution.</entry>
+    <entry key="InvTsInDiscreteCaseSS" context="diagnostic">Sample time {0} of ''{1}'' does not match the discrete sample time of the SwitchCase block ''{2}'' controlling its execution.</entry>
+    <entry key="InvTsInDiscreteIfActionSS" context="diagnostic">Sample time {0} of ''{1}'' does not match the discrete sample time of the If block ''{2}'' controlling its execution.</entry>
+    <entry key="InvTsParamSettingWithCause" context="diagnostic">In ''{0}'', the parameter ''{1}'' is not a valid sample time due to the cause attached.</entry>
+    <entry key="InvTsParamSetting_Constant" context="diagnostic">In ''{0}'', the parameter ''{1}'' must be real and finite. Constant (inf) sample time is not allowed.</entry>
+    <entry key="InvTsParamSetting_First_Element" context="diagnostic">In ''{0}'', the first element of the parameter ''{1}'' is {2}; this value is not permitted.</entry>
+    <entry key="InvTsParamSetting_No_Continuous" context="diagnostic">The block ''{0}'' does not permit continuous sample time (0 or [0,0]) for the parameter ''{1}''.</entry>
+    <entry key="InvTsParamSetting_No_ZOHContinuous" context="diagnostic">The block ''{0}'' does not permit fixed-in-minor-step sample time ([0,1]) for the parameter ''{1}''.</entry>
+    <entry key="InvTsParamSetting_Inf" context="diagnostic">For ''{0}'', the first element of the parameter ''{1}'' is inf, so the second element must be zero.</entry>
+
+    <entry key="InvTsParamSetting_Vector" context="diagnostic">
+      For ''{0}'', the ''{1}'' parameter must be a real double scalar (period) or
+      a real double vector of length 2 (period, offset). Period and offset
+      must be finite and nonnegative; offset must be less than period.
+    </entry>
+
+    <entry key="InvHybridIfactionSS" context="diagnostic">The block ''{0}'' is not allowed in an action subsystem because it has more than one sample time.</entry>
+    <entry key="InvalidInputPortTsInTrigSS" context="diagnostic"><![CDATA[<sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">Input port {0,number,integer}</sldiag> of the block ''{1}'' has an improperly defined sample time when placed in the {2} subsystem ''{3}''. Only constant (inf) or inherited (-1) sample times are allowed.]]></entry>
+    <entry key="InvalidOutputPortTsInTrigSS" context="diagnostic"><![CDATA[<sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of the block ''{1}'' has an improperly defined sample time when placed in the {2} subsystem ''{3}''. Only constant (inf) or inherited (-1) sample times are allowed.]]></entry>
+    <entry key="AsyncDatasetLoggingForSimulinkFunctionInMdlRef" context="diagnostic">The Simulink Function ''{0}'' inside the model block ''{1}'' is not supported to log output signal in Dataset format, because it is asynchronously executed. To resolve this issue, change Format configuration parameter to Array, Structure, or Structure with time and disable signal logging.</entry>
+    <entry key="InvMRateBlkInPeriodicFCSS" context="diagnostic">''{0}'' has multiple sample times. Only constant (inf), inherited (-1), or periodic ({1}) sample times are allowed in the periodic function-call block ''{2}''.</entry>
+    <entry key="InvNonFiniteFundamentalStepSize" context="diagnostic"><![CDATA[The fundamental sample time of model ''{0}'' is not finite.
+    <actions exclusiveFixIts="yes">
+    <action type="fixit">
+    <cmd>set_param(''{0}'',''FixedStep'',''__finiteStepSize__'');</cmd>
+    <cargs>
+    <carg name = "__finiteStepSize__" type="text">
+    <txt_prompt>Enter a finite value for the Fixed-step size (fundamental sample time) parameter of the model:
+    </txt_prompt>
+    </carg>
+    </cargs>
+    <txt>Specify a finite value for the Fixed-step size (fundamental sample time) parameter of the model.</txt>
+    </action>
+    </actions>
+    ]]>
+      </entry>
+    <entry key="InvMRateBlkInPeriodicAtomic" context="diagnostic">''{0}'' has multiple sample times. Only constant (inf), inherited (-1), or periodic ({1}) sample times are allowed in the periodic atomic subsystem ''{2}''.</entry>
+    <entry key="InvMRateBlkInTrigSubsys" context="diagnostic">''{0}'' has multiple sample times. Only constant (inf) or inherited (-1) sample times are allowed in {1} subsystem ''{2}''.</entry>
+    <entry key="InvalidNegativeTsPeriod" context="diagnostic">The period ({0}) and offset ({1}) specified are not a valid sample time specification. The period may not be negative unless it is INHERITED_SAMPLE_TIME (-1).</entry>
+    <entry key="InvalidNegativeTsPeriodAllowVariableTs" context="diagnostic">The period ({0}) and offset ({1}) specified are not a valid sample time specification. The period may not be negative unless it is either INHERITED_SAMPLE_TIME (-1) or VARIABLE_SAMPLE_TIME (-2).</entry>
+    <entry key="InvBlkInAsyncFCSS" context="diagnostic">
+      ''{0}'' has an invalid sample time. Only constant (inf) or inherited (-1) sample times are
+      allowed in the asynchronous subsystem ''{1}''.
+    </entry>
+    <entry key="InvBlkInTrigSubsys" context="error">
+      <![CDATA[
+               ''{0}'' has sample time {1}. Sample time of block must be inherited (-1) because
+               blocks in a triggered subsystem must run only when the triggered subsystem runs.
+               <actions exclusiveFixIts="yes">
+                  <action type="suggestion">
+                     <txt>Consider setting the sample time for the block ''{0}'' to inherited (-1) if the
+                          block has a sample time parameter
+                     </txt>
+                  </action>
+                  <action type="suggestion">
+                     <txt>Replace the block ''{0}'' in ''{2}''</txt>
+                  </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="InvSigLogTSInTrigSubsys" context="diagnostic">Cannot honor data logging Sample time ''{0}'' specified in 'Signal Properties'' dialog of output signals of block ''{1}''. Only constant (inf) or inherited (-1) sample times are allowed in {2} subsystem ''{3}''.</entry>
+    <entry key="InvBlkInTrigModel" context="diagnostic">''{0}'' has sample time {1}. Only constant (inf) or inherited (-1) sample times are allowed in {2} model ''{3}''.</entry>
+    <entry key="InvPortBasedModelBlkInTrigSubsys" context="diagnostic">The Model block ''{0}'' referencing model ''{1}'' has been improperly placed in the {2} subsystem ''{3}''. The model being referenced must inherit a sample time. Set the ''Periodic sample time constraint'' parameter to ''Ensure sample time independent'' on the Solver page of the Configuration Parameters for the model ''{4}'' and update the diagram to see why it does not inherit a sample time.</entry>
+    <entry key="InvCallerTsForPeriodicFCSS" context="diagnostic">The caller ''{0}'' of function-call subsystem ''{1}'' has a sample time of {2} that does not match the periodic sample time {3} of the function-call subsystem.</entry>
+    <entry key="InvConstCompTs" context="diagnostic">''{0}'' has an invalid constant (inf) sample time. Discrete states, continuous states, and tunable parameters are not allowed with constant sample times.</entry>
+
+    <entry key="InvSFcnCallInitiatorTs" context="diagnostic"><![CDATA[Invalid configuration at <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of  S-function block ''{1}''. The block specifies the sample time {2} which is different than the sample time of its function call initiator ''{3}'']]></entry>
+    <entry key="InvConstOffset" context="diagnostic">The period ({0}) and offset ({1}) specified are not a valid sample time specification. When the period is CONSTANT_SAMPLE_TIME (inf), the offset must be 0.</entry>
+    <entry key="InvDiscOffsetTooBig" context="diagnostic">The period ({0}) and offset ({1}) specified are not a valid sample time specification. The offset must be less than the period.</entry>
+    <entry key="InvNumTsForAsyncBlock" context="diagnostic">Invalid number of sample times registered by asynchronous ''{0}''.</entry>
+    <entry key="InvPortBasedSFcnBlkInTrigSubsys" context="diagnostic">''{0}'' has port-based sample times and has been improperly placed in the {1} subsystem ''{2}''. Port based sample time S-Functions may only be used in {3} subsystems if they specify the option SS_OPTION_ALLOW_PORT_SAMPLE_TIME_IN_TRIGSS.</entry>
+    <entry key="InvPortBasedBlkInTrigSubsys" context="diagnostic">''{0}'' has been placed in the {1} subsystem ''{2}'' but does not support this configuration. Move the block out of the {3} subsystem.</entry>
+    <entry key="InvInputPortTsInPeriodicFCSS" context="diagnostic">Port-based sample time block ''{0}'' has a sample time, {1}, on input port {2,number,integer} that does not align with the periodic sample time of function-call block ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the block.</entry>
+    <entry key="InvInputPortTsInPeriodicAtomic" context="diagnostic"><![CDATA[Port-based sample time block ''{0}'' has a sample time, {1}, on <sldiag objui="inport" objparam="{2,number,integer}" objname="{0}">input port {2,number,integer}</sldiag> that does not align with the periodic sample time of the atomic subsystem ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the subsystem.]]></entry>
+    <entry key="InvOutputPortTsInPeriodicFCSS" context="diagnostic">Port-based sample time block ''{0}'' has a sample time, {1}, on output port {2,number,integer} that does not align with the periodic sample time of function-call block ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the block.</entry>
+    <entry key="InvOutputPortTsInPeriodicAtomic" context="diagnostic"><![CDATA[Port-based sample time block ''{0}'' has a sample time, {1}, on <sldiag objui="outport" objparam="{2,number,integer}" objname="{0}">output port {2,number,integer}</sldiag> that does not align with the periodic sample time of the atomic subsystem ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the subsystem.]]></entry>
+
+    <entry key="InvMRateBlkInContinuousAtomic" context="diagnostic">''{0}'' has multiple sample times. Only constant (inf), inherited (-1), or continuous ({1}) sample times are allowed in the continuous atomic subsystem ''{2}''.</entry>
+    <entry key="InvInputPortTsInContinuousAtomic" context="diagnostic"><![CDATA[Port-based sample time block ''{0}'' has a sample time, {1}, on <sldiag objui="inport" objparam="{2,number,integer}" objname="{0}">input port {2,number,integer}</sldiag> that does not align with the continuous sample time of the atomic subsystem ''{3}''. Only constant (inf), inherited (-1), or continuous ({4}) sample times are allowed in the subsystem.]]></entry>
+    <entry key="InvOutputPortTsInContinuousAtomic" context="diagnostic"><![CDATA[Port-based sample time block ''{0}'' has a sample time, {1}, on <sldiag objui="outport" objparam="{2,number,integer}" objname="{0}">output port {2,number,integer}</sldiag> that does not align with the continuous sample time of the atomic subsystem ''{3}''. Only constant (inf), inherited (-1), or continuous ({4}) sample times are allowed in the subsystem.]]></entry>
+
+    <entry key="MultiTaskDSM" context="diagnostic"><![CDATA[
+    The blocks ''{0}'' and ''{1}'' are accessing data store memory ''{2}'' in the model ''{3}''. The two blocks execute in different tasks, which can lead to a lack of data integrity in a multi-tasking, real-time environment.
+         <actions exclusiveFixIts = "yes">
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes">
+                 <arg>{2}</arg>
+             </action_catalog>
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone">
+                 <arg>{3}</arg>
+             </action_catalog>
+         </actions>
+    ]]></entry>
+    <entry key="AutosarMultiTaskDSM" context="diagnostic"><![CDATA[Blocks ''{0}'' and ''{1}'' access data store memory ''{2}'' and execute in different runnables leading to a lack of data integrity in the real-time environment.
+    <actions exclusiveFixIts = "yes">
+    <action type="suggestion" id="AdjustSampleTimes">
+    <txt>Adjust the sample times of blocks ''{0}'' and ''{1}''.</txt>
+    </action>
+    <action type="fixit">
+    <cmd>set_param_action(''{3}'', ''SolverMode'', ''SingleTasking'');</cmd>
+    <txt>Alternatively, deselect 'Configuration Parameters > Solver > Treat each discrete rate as a separate task' option.</txt>
+    </action>
+    </actions>
+    ]]></entry>
+
+    <entry key="MultiTaskDSMSingleBlock" context="diagnostic"><![CDATA[
+    The block ''{0}'' is accessing data store memory ''{1}'' and executes in multiple tasks. This can lead to a lack of data integrity in a multi-tasking, real-time environment.
+         <actions exclusiveFixIts = "yes">
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone">
+                 <arg>{2}</arg>
+             </action_catalog>
+         </actions>
+    ]]></entry>
+    <entry key="AutosarMultiTaskDSMSingleBlock" context="diagnostic">Block ''{1}'' access data store memory ''{0}'' and executes in multiple tasks. This is not supported for AUTOSAR because it can lead to a lack of data integrity in a multi-tasking, real-time environment.</entry>
+
+    <entry key="MultiTsGlobalDSM" context="diagnostic"><![CDATA[
+    In model ''{0}'', blocks ''{1}'' and ''{2}'' are accessing a global data store defined by the global Simulink.Signal object ''{3}''. The two blocks execute in different tasks, which can lead to a lack of data integrity in a multi-tasking, real-time environment.
+         <actions exclusiveFixIts = "yes">
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes">
+                 <arg>{2}</arg>
+             </action_catalog>
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone">
+                 <arg>{0}</arg>
+             </action_catalog>
+         </actions>
+    ]]></entry>
+    
+    <entry key="AutosarMultiTsGlobalDSM" context="diagnostic"><![CDATA[In model ''{0}'', blocks ''{1}'' and ''{2}'' are accessing a global data store defined by global Simulink.Signal object ''{3}'', which is not supported for AUTOSAR.
+    <actions exclusiveFixIts = "yes">
+    <action type="suggestion" id="AdjustSampleTimes">
+    <txt>Consider using local Data Store Memory blocks.</txt>
+    </action>
+    </actions>]]>
+    </entry>
+    
+    <entry key="MultiTsGlobalDSMSingleBlock" context="diagnostic"><![CDATA[
+    Model block ''{1}'' is configured for multitasking and includes Data Store Read and Data Store Write blocks that share global data store defined by the Simulink.Signal ''{2}''. If you deploy the generated code in a multitasking real-time environment, data integrity issues can result.
+         <actions exclusiveFixIts = "yes">
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes">
+                 <arg>{2}</arg>
+             </action_catalog>
+             <action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone">
+                 <arg>{0}</arg>
+             </action_catalog>
+         </actions>
+    ]]></entry>
+
+    <entry key="AutosarMultiTsGlobalDSMSingleBlock" context="diagnostic"><![CDATA[In model ''{0}'', block ''{1}'' is accessing a global data store defined by global Simulink.Signal object ''{2}'', which is not supported for AUTOSAR.
+    <actions exclusiveFixIts = "yes">
+    <action type="suggestion" id="AdjustSampleTimes">
+    <txt>Consider using local Data Store Memory blocks.</txt>
+    </action>
+    </actions>]]>
+    </entry>
+
+    <entry key="DSMErrMsgFixits" context="diagnostic" translate="true">
+      <![CDATA[
+               <actions exclusiveFixIts="yes">
+                   <action type="suggestion" id="AdjustSampleTimes">
+                       <txt> Consider making the sample times and the tasks of the blocks accessing data store ''{0}'' consistent. </txt>
+                   </action>
+                   <action type="fixit" id="MultiTaskDSMMsgSetToNone">
+                       <cmd>set_param(''{0}'',''MultiTaskDSMMsg'',''none'');</cmd>
+                       <txt>
+                       Alternatively, if the data store is accessed with an atomic operation, or if the tasks involved cannot preempt each other in the target system, set the ''Configuration Parameters > Diagnostics > Data Validity > Multitask data store'' parameter to ''none''.
+                       </txt>
+                   </action>
+               </actions>
+    ]]></entry>
+
+    <entry key="MustUseVariableStepSolver" context="diagnostic">Fixed-step solver ''{0}'' cannot be used for hybrid block diagram ''{1}'' because it contains S-functions with variable sample times.</entry>
+    <entry key="MultirateSfcnWritesToGlobalDSM" context="diagnostic">The S-Function block ''{0}'' has multiple rates, yet accesses the global data store ''{1}''; S-Functions accessing global data stores must be single rate.</entry>
+    <entry key="MultiTrigWithoutPriority" context="diagnostic">The function-call block ''{0}'' has multiple asynchronous triggers that do not specify priority. Data integrity will not be maintained if these triggers can preempt one another.</entry>
+    <entry key="MuxedSyncAndAsyncTriggers" context="diagnostic">''{0}'' may not be used to combine an asynchronous function call with data or a synchronous function call.</entry>
+    <entry key="NoTsInhDueToPreSetBlkTs" context="diagnostic">This model will not inherit a sample time because a sample time was explicitly set in block ''{0}''.\n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="InvalidExportPerodicConnection" context="diagnostic">Invalid connection starts with S-function ''{0}'', which is making a function call on output port element {1,number,integer}. A function call generator must drive a function call port of a subsystem or a Model block. </entry>
+    <entry key="NoTsBlockReduced" context="diagnostic">Since block ''{0}'' has been removed from the compiled version of the model, Simulink cannot access its sample time information. To obtain the sample time information for this block, search for ''Block reduction'' in the Configuration Parameters dialog box and clear the checkbox.</entry>
+    <entry key="NoMoreSampleTimeColors" context="diagnostic">The model has {0,number,integer} discrete rates, which is greater than the {1,number,integer} discrete sample time colors available. The {2,number,integer}th and slower rates have been marked using the orange sample time color.</entry>
+    <entry key="NoMultiTasking" context="diagnostic">Model ''{0}'' does not contain multiple sample times. You must specify solver mode as Auto or SingleTasking.</entry>
+    <entry key="NoMultiTaskingTid01eq" context="diagnostic">Model ''{0}'' does not contain multiple sample times. This model contains a continuous and a discrete sample time which are the same rate. You must specify solver mode as Auto or SingleTasking.</entry>
+    <entry key="NoMultiTaskingWithIntegerRates" context="diagnostic">Model ''{0}'' is set to scale discrete rates. You must specify solver mode as SingleTasking.
+    <![CDATA[<actions exclusiveFixIts="yes">
+    <action type="fixit" id="MultiTaskingOff">
+    <cmd>set_param( ''{0}'', 'EnableMultiTasking', 'off');</cmd>
+    <txt>Consider clearing the "Treat each discrete rate as a separate task" option.</txt>
+    </action>
+    <action type="fixit" id="ScaleDiscreteRatesOff">
+    <cmd>set_param( ''{0}'', 'ScaleDiscreteRates', 'off');</cmd>
+    <txt>Consider clearing the "Scale all discrete rates in the model" option.</txt>
+    </action>
+    </actions>
+    ]]></entry>
+    <entry key="IntegerRatesDoesNotSupportCustomCode" context="diagnostic">Custom code block ''{0}'' is not supported when scaling discrete rates.</entry>
+    <entry key="NoRateCheckForMultiRateSFcn" context="diagnostic">Unable to check for valid rate transitions in S-function {0} of ''{1}'' since it has multiple block based sample times and no port sample times. You should update your S-function to specify port sample times.</entry>
+    <entry key="NotCombinableAsyncPeriodicTsAtBlk" context="diagnostic">A port of ''{0}'' is being invoked with asynchronous rate and periodic rate. Asynchronous rate can not be combined with other type of sample times. </entry>
+    <entry key="NotCombinableAsyncPeriodicTsInBlk" context="diagnostic">A Simulink function ''{0}'' in ''{1}'' is being called with an asynchronous rate and a periodic rate. Asynchronous rates can not be combined with other types of sample times. </entry>
+    <entry key="NotCombinableSignalAndMessagesRelatedTsAtBlk" context="diagnostic">''{0}'' block accepts one or more inputs of type Simulink Messages payload and periodic rate signals. This block can accept only either of them. </entry>
+    <entry key="NotCombinableForAsyncSfcnNotSpecifyPrioirty" context="diagnostic">The asynchronous function-call signal initiated by S-Function ''{0}'' cannot be combined with other asynchronous rates because the S-function has not set a priority for the asynchronous rate.</entry>
+    <entry key="NotCombinableForAsyncSfcnNotUsingBaseRateTimer" context="diagnostic">The asynchronous function-call signal initiated by S-Function ''{0}'' cannot be combined with other asynchronous rates because the S-function does not set the asynchronous rate to use the base rate timer.</entry>
+    <entry key="UnionRateMergingNotAllowedWithoutBIMO" context="error">
+      <![CDATA[
+               The greatest common divisor (GCD) of the union sample times {1} and {2} cannot be computed for the input ports ''{0}''.
+               <actions exclusiveFixIts="yes">
+               <action type="fixit" id="AllowMultipleTaskToAccessIOParamON" retvalue="false">
+               <cmd>set_param(bdroot(''{0}''), 'AllowMultiTaskInputOutput','on');</cmd>
+               <txt>To allow the combination of the union sample times, set the configuration setting 'Allow multiple tasks to access inputs and outputs' to 'on'.</txt>
+               </action>
+               <action type="fixit" id="SetDiscreteSpecOnBlock" retvalue="false">
+               <cmd>set_param(''{0}'', 'SampleTime', ''__ARG1__'');</cmd>
+               <cargs>
+               <carg translate="false" name="__ARG1__" type="text">
+               <txt_prompt>Enter a sample time</txt_prompt>
+               </carg>
+               </cargs>
+               <txt>Specify a discrete sample time on the block {0}</txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="NotCombinableContinuousAndOtherRates" context="diagnostic">
+        <![CDATA[
+            ''{0}'' block cannot form union sample time from continuous sample time.
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion">
+                    <txt>Replace the block with a suitable discrete block.</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    <entry key="NotCombinableZOHContinuousAndOtherRates" context="diagnostic">
+    <![CDATA[
+        ''{0}'' block cannot form union sample time from fixed-in-minor-step sample time.
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion">
+                <txt>Replace the block with a suitable discrete block.</txt>
+            </action>
+            <action type="suggestion">
+                <txt>Run with fixed-step solver.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="NotCombinableLegacyAsyncRates" context="error">
+      Combining asynchronous sample time {0} with another asynchronous sample time {1} is not supported for block {2}.
+    </entry>
+    <entry key="NoTsInhDueToAbsTimeUnknownSource" context="diagnostic">This model will not inherit a sample time because either at least one block requires absolute time or at least one signal in the model uses signal logging. \n \n If this model does not need to inherit a sample time, change the Configuration Parameters > Solver > Periodic sample time constraint parameter to an option other than "Ensure sample time independent".</entry>
+    <entry key="NoTsInhDueToBlock" context="diagnostic">This model will not inherit a sample time because the block ''{0}'' disallows it from doing so. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToBlkNeedsAbsTime" context="diagnostic">This model will not inherit a sample time because ''{0}'' uses absolute time. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToSpecifiedFixedStepSize" context="diagnostic">This model will not inherit a sample time because the fixed step size was explicitly set for the model.\n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToNoInsAndOnlyConstOuts" context="diagnostic">This model will not inherit a sample time because there are no input ports and all of the output ports have a constant (inf) sample time. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToResetEventInterface" context="diagnostic">
+      <![CDATA[
+            Inheriting the sample time is not supported in this model because all inports and outports have reset or reinitialize event sample time. \n \n If this model is not required to inherit a sample time, change the "Periodic sample time constraint" parameter to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.
+            <actions exclusiveFixIts="yes">
+            <action type="fixit" id="SetTsConstraintToUnconstrained" retvalue="false">
+            <cmd>set_param(''{0}'',''SampleTimeConstraint'',''unconstrained'')</cmd>
+            <txt>Set ''Configuration Parameters > Solver > Periodic sample time constraint'' to "Unconstrained".</txt>
+            </action>
+            </actions>
+      ]]>
+    </entry>
+    <entry key="NoTsInhDueToMultiTs" context="diagnostic">This model will not inherit a sample time because there are multiple sample times in the model. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToContinuousTs" context="diagnostic">This model will not inherit a sample time because there is a continuous sample time in the model. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NvBusBlkInputSampleTimeMismatch" context="diagnostic"><![CDATA[Sample time mismatch. When a Bus Creator or Bus Assignment block outputs a nonvirtual bus, all of the signals driving its input ports must have the same sample time. This restriction applies even if the elements of the object defining the bus specify an inherited (-1) sample time. The sample time ({0}) of the signal driving <sldiag objui="inport" objparam="{1,number,integer}" objname="{2}">input port {1,number,integer}</sldiag> of ''{2}'' does not match the sample time ({3}) of the block.]]></entry>
+    <entry key="SfcnTimerOverFlow" context="diagnostic"><![CDATA[Asynchronous timer defined in S-function ''{0}'' will overflow in {1} days. Considering choosing larger timer data type size or larger timer clocktick stepsize in the S-function or choosing a smaller value for the ''Application lifespan (days)'' option in the Optimization page of the Configuration Parameters Dialog. You can also consider disabling the message by choosing ''None'' for the (''Diagnostics'' > ''Data Validity'' > ''Signals'' >) ''Wrap on overflow'' option in the Configuration Parameters dialog.
+    <actions exclusiveFixIts="yes">
+    <action type="fixit">
+    <cmd>set_param_action(''{2}'',''IntegerOverflowMsg'',''None'');</cmd>
+    <txt>Change the Diagnostic ''Wrap on overflow '' to ''None''.</txt>
+    </action>
+    </actions>]]></entry>
+    <entry key="SfcnSpecifyTooLongTimerForIntegerOnlyCode" context="diagnostic">Asynchronous S-function block ''{0}'' specifies 64-bit timer. Generate code must support floating-point numbers to hold value of a 64-bit timer. Consider specifying smaller timer in Asynchronous S-function or checking Support ''Floating-point numbers'' option on Code Generation -> Interface pane</entry>
+    <entry key="SharedAsyncPriority" context="diagnostic">The function-call block ''{0}'' has multiple asynchronous triggers specifying equal priorities. Set the Tasks with equal priority option in the Diagnostics page of the Configuration Parameters Dialog to "none" if tasks of equal priority can not preempt each other in the target system.</entry>
+
+    <!-- Sample time related errors, fixits, and suggestions for signal spec block -->
+    <entry key="SigspecFixitsAndSuggestions" context="diagnostic">
+      <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion" id="ManuallyAddRTBInputPort">
+                <txt>To handle the sample time mismatch, Insert a Rate Transition block on the 
+                     <sldiag objui="inport" objparam="{0}" objname="{1}">input port ''{0}''</sldiag> of ''{1}''.
+                </txt>
+            </action>
+            <action type="suggestion" id="ManuallyAddRTBOutputPort">
+                <txt>To handle the sample time mismatch, Insert a Rate Transition block on the 
+                     <sldiag objui="outport" objparam="{0}" objname="{1}">output port ''{0}''</sldiag> of ''{1}''.
+                </txt>
+            </action>
+            <action type="fixit" id="SetSigSpecEnsureSampleTimeMsgNoneFixit" retvalue="false">
+                <cmd>set_param(''{2}'', 'SigSpecEnsureSampleTimeMsg', 'None');</cmd>
+                <txt>To disable the diagnostic message, set the Configuration parameter 
+                     ''Enforce sample times specified by Signal Specification blocks'' to ''none''.
+                </txt>
+            </action>
+            <action type="suggestion" id="SignalObjectSuggestion">
+                <txt>To resolve this conflict, change the signal object property or the mismatching block setting.
+                </txt>
+            </action>
+            <action type="suggestion" id="BusObjectSuggestion">
+                <txt>To resolve this conflict, change the bus element property or the mismatching block setting.
+                </txt>
+            </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="SigspecInputSampleTimeMismatch" context="diagnostic">
+      <![CDATA[
+          Sample time of ''{1}'' <sldiag objui="outport" objparam="{0}" objname="{1}">output port ''{0}''</sldiag> 
+          and the sample time specified for this signal by ''{2}'' must match.
+          <actions exclusiveFixIts="yes">
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort" enabled="true">
+                  <arg>{0}</arg>
+                  <arg>{1}</arg>
+                  <arg></arg>
+              </action_catalog>
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,SetSigSpecEnsureSampleTimeMsgNoneFixit" enabled="true">
+                  <arg>{3}</arg>
+                  <arg>{4}</arg>
+                  <arg>{5}</arg>
+              </action_catalog>
+          </actions>
+      ]]>
+    </entry>
+    <entry key="SigspecOutputSampleTimeMismatch" context="diagnostic">
+      <![CDATA[
+          Sample time of ''{1}'' <sldiag objui="inport" objparam="{0}" objname="{1}">input port ''{0}''</sldiag> 
+          and the sample time specified for this signal by ''{2}'' must match.
+          <actions exclusiveFixIts="yes">
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort" enabled="true">
+                  <arg>{0}</arg>
+                  <arg>{1}</arg>
+                  <arg></arg>
+              </action_catalog>
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort,SetSigSpecEnsureSampleTimeMsgNoneFixit" enabled="true">
+                  <arg>{3}</arg>
+                  <arg>{4}</arg>
+                  <arg>{5}</arg>
+              </action_catalog>
+          </actions>
+      ]]>
+    </entry>
+    <entry key="SigspecSignalObjectOutputPortCause" context="diagnostic">
+      <![CDATA[
+          The signal object is resolved to <sldiag objui="outport" objparam="{0,number,integer}"
+          objname="{1}">output port ''{0,number,integer}''</sldiag> of ''{1}''.
+      ]]>
+    </entry>
+    <entry key="SigspecSignalObjectInputPortCause" context="diagnostic">
+      <![CDATA[
+          The signal object is resolved to <sldiag objui="inport" objparam="{0,number,integer}"
+          objname="{1}">input port ''{0,number,integer}''</sldiag> of ''{1}''.
+      ]]>
+    </entry>
+    <entry key="ErrorCauseSignalObjectSampletime" context="diagnostic">
+      Signal object ''{0}'' has a sample time of {1}.
+    </entry>
+    <entry key="ErrorCauseBusObjectSampleTime" context="diagnostic">
+      The bus element in the bus object ''{0}'' has a sample time of {1}.
+    </entry>
+    <entry key="SigspecSignalObjectOutportCause" context="diagnostic">
+      The signal object is resolved to outport block ''{0}''.
+    </entry>
+    <entry key="SigspecBusObjectCause" context="diagnostic">
+      The bus object is resolved to the output port of ''{0}''.
+    </entry>
+    <entry key="SigspecSignalObjectInputSampleTimeMismatch" context="diagnostic">
+      <![CDATA[
+          Sample time of ''{1}'' <sldiag objui="outport" objparam="{0}" objname="{1}">output port ''{0}''</sldiag> 
+          and the sample time specified for this signal by signal object ''{2}'' must match.
+          <actions exclusiveFixIts="yes">
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="SignalObjectSuggestion" enabled="true">
+                  <arg></arg>
+                  <arg></arg>
+                  <arg></arg>
+              </action_catalog>
+          </actions>
+      ]]>
+    </entry>
+    <entry key="SigspecSignalObjectOutputSampleTimeMismatch" context="diagnostic">
+      <![CDATA[
+          Sample time of ''{1}'' <sldiag objui="inport" objparam="{0}" objname="{1}">input port ''{0}''</sldiag>
+          and the sample time specified for this signal by signal object ''{2}'' must match.
+          <actions exclusiveFixIts="yes">
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,SignalObjectSuggestion" enabled="true">
+                  <arg>{3}</arg>
+                  <arg>{4}</arg>
+                  <arg></arg>
+              </action_catalog>
+          </actions>
+      ]]>
+    </entry>
+    <entry key="SigspecBusObjectInputSampleTimeMismatch" context="diagnostic">
+      <![CDATA[
+          Sample time of ''{1}'' <sldiag objui="outport" objparam="{0}" objname="{1}">output port ''{0}''</sldiag>
+          and the sample time specified for this signal by the bus element in the bus object ''{2}'' must match.
+          <actions exclusiveFixIts="yes">
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort"  enabled="true">
+                  <arg>{0}</arg>
+                  <arg>{1}</arg>
+                  <arg></arg>
+              </action_catalog>
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,BusObjectSuggestion" enabled="true">
+                  <arg>{3}</arg>
+                  <arg>{4}</arg>
+                  <arg></arg>
+              </action_catalog>
+          </actions>
+      ]]>
+    </entry>
+    <entry key="SigspecBusObjectOutputSampleTimeMismatch" context="diagnostic">
+      <![CDATA[
+          Sample time of ''{1}'' <sldiag objui="inport" objparam="{0}" objname="{1}">input port ''{0}''</sldiag>
+          and the sample time specified for this signal by the bus element in the bus object ''{2}'' must match.
+          <actions exclusiveFixIts="yes">
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort"  enabled="true">
+                  <arg>{0}</arg>
+                  <arg>{1}</arg>
+                  <arg></arg>
+              </action_catalog>
+              <action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort,BusObjectSuggestion" enabled="true">
+                  <arg>{3}</arg>
+                  <arg>{4}</arg>
+                  <arg></arg>
+              </action_catalog>
+          </actions>
+      ]]>
+    </entry>
+    
+    <entry key="SlowEnableToFastSubsys" context="diagnostic">Sample time of enable signal feeding subsystem ''{0}'' is slower than sample times within the enabled subsystem. This can result in nondeterministic behavior in a multitasking real-time system. Consider adding a Rate Transition followed by a Signal Specification with a sample time equal to the enable signal rate.</entry>
+    <entry key="SourceInheritedTS" context="diagnostic">Source ''{0}'' specifies that its sample time (-1) is back-inherited. You should explicitly specify the sample time of sources. You can disable this diagnostic by setting the ''Source block specifies -1 sample time'' diagnostic to ''none'' in the Sample Time group on the Diagnostics pane of the Configuration Parameters dialog box.</entry>
+    <entry key="OutlinedRTBRequiresProtectedForAll" context="diagnostic">Since the model ''{0}'' has the configuration parameter ''Rate Transition block code'' set to ''Function'', all Rate Transition blocks in the model must select the ''Ensure data integrity during data transfer'' parameter, but block ''{1}'' does not select this parameter.</entry>
+    <entry key="InheritedIndexedRateAfterProp" context="diagnostic">Block ''{0}'' should not have any inherited indexed sample times after sample time propagation.</entry>
+    <entry key="SpecifyTsPriorityForModelRef" context="diagnostic"><![CDATA[Simulink does not allow explicit specification of sample time priority for model reference target ''{0}''.
+    <actions exclusiveFixIts="yes">
+    <action type="fixit">
+    <cmd>set_param_action(''{0}'',''SampleTimeConstraint'',''Unconstrained'');</cmd>
+    <txt>Change the Solver parameter ''Periodic sample time constraint'' to ''Unconstrained''.</txt>
+    </action>
+    </actions>]]></entry>
+    <entry key="TmpModelDisallowTsInheritInRightClickBuild" context="diagnostic">Since the right click build subsystem is in a triggered or function call subsystem in original model, generated S-function block must inherit sample time to match its behavior. However, the subsystem disallows inherited sample time because of reasons reported in following error messages. Consider: \n - Removing blocks that disallow sample time inheritance; \n - Moving the subsystem out of the triggered subsystem in original model.</entry>
+    <entry key="OutputPortMixedSampleTime" context="diagnostic">The output port {0,number,integer} of the subsystem ''{1}'' is connected to a signal with mixed sample times and therefore not supported for subsystem based code generation.</entry>
+    <entry key="TooLargeRatioBaseRateSubRate" context="diagnostic">The periodic sample time {0} is not allowed because the ratio of this sample time over base rate ({1}) is greater than the maximum value of uint32.</entry>
+    <entry key="TooLongTimerForIntegerOnlyCode" context="diagnostic">Generated code doesn''t support floating-point numbers. Integer timer of TID {0,number,integer} will overflow during model ''Application life span (days)''. Consider choosing smaller value for ''Application life span(days)'' parameter specified in the Optimization page of the Configuration Parameters dialog, or checking support ''Floating-point numbers'' option on Code Generation > Interface pane</entry>
+    <entry key="TsMismatchForTsDepModelBlk" context="diagnostic">The Model block ''{0}'' is triggered using a sample time {1}. This value is inconsistent with the sample time {2} specified by the referenced model ''{3}'' on the Solver tab of the Configuration Parameters dialog. These two sample times must be identical.</entry>
+    <entry key="TsPropEnabOutputsChangeNotAligned" context="diagnostic">Signal from outport ''{0}'', which is configured to reset when disabled, can change at times that do not align with the signal''s sample time due to the enable signal which is executing at a faster rate.</entry>
+    <entry key="TsRepeatedErr" context="diagnostic">Repeated (duplicate) sample times were registered by ''{0}''.</entry>
+    <entry key="TooManyContTs" context="diagnostic">More than one continuous sample time specified for ''{0}''.</entry>
+    <entry key="TsPropTsNotSet" context="diagnostic">Sample time for ''{0}'' output {1,number,integer} was not set.</entry>
+
+    <entry key="TSSpecifiedMisMatchPropTS" context="error">
+      <![CDATA[
+               At least one sample time in the model is not found in the sample time
+               properties specified on the Solver page. The periodic sample time
+               constraints specified are: {0}, whereas the periodic sample times in the
+               model are: {1}.
+      ]]>
+    </entry>
+
+    <entry key="TSSpecifiesInWrongOrder" context="diagnostic">At least one sample time is specified in wrong order in the sample time properties on the Solver page. The periodic sample time {0} is slower than the sample time {1}. All sample times must be ordered from fast to slow.</entry>
+    <entry key="TwoAsyncTIDsAssignedSamePriority" context="diagnostic">
+      <![CDATA[
+               Asynchronous tasks associated with S-functions ''{0}'' and ''{1}'' are assigned the
+               same priority: {2,number,integer} that can preempt each other.
+               <actions exclusiveFixIts="yes">
+               <action type = "suggestion">
+               <txt>Consider modifying these S-functions to specify different priorities.</txt>
+               </action>
+               <action type="fixit">
+               <cmd>set_param(''{3}'',''TasksWithSamePriorityMsg'',''none'')</cmd>
+               <txt>Set the parameter ''Tasks with equal priority'' in the Diagnostics page of the Configuration Parameters
+               Dialog to "none" if tasks of equal priority cannot preempt each other in the target system.</txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="TwoAsyncTaskSpecTIDsAssignedSamePriority" context="diagnostic">
+      <![CDATA[
+               Asynchronous tasks associated with Asynchronous Task Specification blocks ''{0}'' and
+               ''{1}'' are assigned the same priority: {2,number,integer} that can preempt each other.
+               <actions exclusiveFixIts="yes">
+               <action type = "suggestion">
+               <txt>Consider modifying these blocks to specify different priorities.</txt>
+               </action>
+               <action type="fixit">
+               <cmd>set_param(''{3}'',''TasksWithSamePriorityMsg'',''none'')</cmd>
+               <txt>Set the parameter ''Tasks with equal priority'' in the Diagnostics page of the Configuration Parameters
+               Dialog to "none" if tasks of equal priority cannot preempt each other in the target system.</txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="TwoSyncTIDsAssignedSamePriority" context="diagnostic">Two periodic tasks may not share the same priority. The tasks with sample time {0} and sample time {1} are assigned the same priority: {2,number,integer}.</entry>
+    <entry key="VarSTOutPortIsFrameBased" context="diagnostic"><![CDATA[<sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of ''{1}'' is set to be frame-based even though this port has a variable sample time. Frame-based signals should have a discrete sample time.]]></entry>
+    <entry key="VariableSTBlkHasFrames" context="diagnostic">One or more ports of block ''{0}'' are set to be frame-based even though this block has a variable sample time. Frame-based signals should have a discrete sample time.</entry>
+    <entry key="VariableTsWithSFunctionTarget" context="diagnostic">''{0}'' has a variable sample time. Variable sample times are not supported by the S-Function Target.</entry>
+    <entry key="VariableStepTsNotAllowed" context="diagnostic">Cannot compile diagram ''{0}'' because it contains variable sample times or S-functions and is using a fixed-step solver.</entry>
+    <entry key="VariableSampleTimeDescription" context="uistring">Variable {0,number,integer}</entry>
+    <entry key="ControllableRateDescription" context="uistring">Controllable {0,number,integer}</entry>
+    <entry key="TriggeredSampleTimeDescription" context="uistring">Triggered</entry>
+    <entry key="HybridSampleTimeDescription" context="uistring">Hybrid</entry>
+    <entry key="MultipleSampleTimeDescription" context="uistring">Multirate</entry>
+    <entry key="UnionSampleTimeDescription" context="uistring">Union {0,number,integer}</entry>
+    <entry key="AsyncSampleTimeDescription" context="uistring">Asynchronous {0,number,integer}</entry>
+    <entry key="MessageSampleTimeDescription" context="uistring">Message Triggered {0,number,integer}</entry>
+    <entry key="EventSampleTimeDescription" context="uistring">Event</entry>
+    <entry key="PowerUpSampleTimeDescription" context="uistring">Initialize</entry>
+    <entry key="ResetSampleTimeDescription" context="uistring">Reset</entry>
+    <entry key="ResetWithInitSampleTimeDescription" context="uistring">Reinitialize</entry>
+    <entry key="PowerDownSampleTimeDescription" context="uistring">Terminate</entry>
+    <entry key="GenericAsyncSampleTimeDescription" context="uistring">Asynchronous Hybrid</entry>
+    <entry key="PeriodicSampleTimeDescription" context="uistring">Discrete {0,number,integer}</entry>
+    <entry key="ContinuousDescription" context="uistring">Continuous</entry>
+    <entry key="ExportInheritSampleTimeDescription" context="uistring"> Exported Inherit </entry>
+    <entry key="AperiodicExplicitPartitionSampleTimeDescription" context="uistring"> Explicit {0} </entry>
+    <entry key="AperiodicExplicitPartitionSampleTimeValue" context="uistring"> Inherited </entry>
+    <entry key="MessageSampleTimeValue" context="uistring"> Inherited </entry>
+    <entry key="ExportPeriodicSampleTimeDescription" context="uistring"> Exported Discrete </entry>
+    <entry key="ExportPeriodicPartitionSampleTimeDescription" context="uistring"> Explicit {0} </entry>
+    <entry key="DataDrivenSampleTimeDescription" context="uistring">Data Driven</entry>
+    <entry key="DataDrivenSampleTimeValue" context="uistring">N/A</entry>
+    <entry key="ReCompileSFcn" context="diagnostic"> To use block ''{0}'' in referenced models, recompile the S-function with the current version of Simulink.</entry>
+    <entry key="ModelWideEventWithUpdateFcn" context="diagnostic"> The block ''{0}'' has an Update Function and has been assigned the same time {1}. These settings are not compatible. The update function will not be called.</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasInherited" context="diagnostic"> In ''{0}'', the parameter ''{1}'' specified a sample time type of ''Periodic'', but the evaluated sample time type was ''Inherited''. Update the sample time type or the sample time value to ensure consistency.</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasParameter" context="diagnostic"> In ''{0}'', the parameter ''{1}'' specified a sample time type of ''Periodic'', but the evaluated sample time type was ''Parameter''. Update the sample time type or the sample time value to ensure consistency.</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasContinuous" context="diagnostic"> In ''{0}'', the parameter ''{1}'' specified a sample time type of ''Periodic'', but the evaluated sample time type was ''Continuous''. Update the sample time type or the sample time value to ensure consistency.</entry>
+    <entry key="SampleTimeTypePeriodicWithoutValidSampleTime" context="diagnostic"> In ''{0}'', ''{1}'' should be a positive finite number, but ''{2}'' was specified. Either specify a valid number, or change ''{3}'' to ''{4}''.</entry>
+    <entry key="SampleTimeTypeDisallowed" context="diagnostic"> In ''{0}'', the parameter ''{1}'' does not allow a sample time type of {2}.</entry>
+    <entry key="SampleTimeWidgetTypeParameter" context="uistring">Parameter</entry>
+    <entry key="SampleTimeWidgetTypeConstant" context="uistring">Constant</entry>
+    <entry key="SampleTimeWidgetTypeUnresolved" context="uistring"><![CDATA[<From Value>]]></entry>
+    <entry key="SampleTimeWidgetTypeInherited" context="uistring">Inherited</entry>
+    <entry key="SampleTimeWidgetTypeContinuous" context="uistring">Continuous</entry>
+    <entry key="SampleTimeWidgetTypePeriodic" context="uistring">Periodic</entry>
+    <entry key="SampleTimeWidgetTooltipCombobox" context="uistring">Select the sample time type. To specify an unknown sample time from a variable, select ''{0}''.</entry>
+    <entry key="SampleTimeWidgetTooltipPeriodic" context="uistring">Enter a periodic sample time. Values can be either a period expressed as a positive finite double, or a two element vector containing a period and an offset.</entry>
+    <entry key="SampleTimeWidgetTooltipUnresolved" context="uistring">Enter a sample time. Values can be either a double, or a two element vector of doubles.</entry>
+    <entry key="SampleTimeWidgetTooltipOther" context="uistring">The current integer value of the sample time.</entry>
+    <entry key="GenericError" context="diagnostic">Generic error {0}. Please report this as a bug.</entry>
+    <entry key="InvalidBlockConnectToIRTInport" context="diagnostic">Block ''{0}'' output port is connected to an Initialize Function block ''{1}'' input port {2,number,integer}. Only virtual blocks such as Inport, From blocks, etc., are allowed to connect to the input ports of an Initialize Function block.</entry>
+    <entry key="InvalidBlockConnectToIRTInportMdlRef" context="diagnostic">Block ''{0}'' output port is connected to an Initialize Function block inside Model block ''{1}'' via input port ''{2}''. Only virtual blocks such as Inport, From blocks, etc., are allowed to connect to the input ports of an Initialize Function block. If the Model block resides in the topmost model hierarchy and is referencing an export function model saved in R2016b or later, you can select the option ''{3}'' for the Model block to remove this restriction.</entry>
+    <entry key="InvalidBlockConnectToIRTOutport" context="diagnostic">Block ''{0}'' input port {1,number,integer} is connected to a Terminate Function block ''{2}'' output port {3,number,integer}. Only virtual blocks such as Outport, Goto blocks, etc., are allowed to connect to the output ports of a Terminate Function block; Connections to Merge blocks are allowed within export function models.</entry>
+    <entry key="InvalidBlockConnectToIRTOutportMdlRef" context="diagnostic">Block ''{0}'' input port {1,number,integer} is connected to a Terminate Function block inside Model block ''{2}'' via output port {3,number,integer}. Only virtual blocks such as Outport, Goto blocks, etc., are allowed to connect to the output ports of a Terminate Function block; Connections to Merge blocks are allowed within export function models. If the Model block resides in the topmost model hierarchy and is referencing an export function model saved in R2016b or later, you can select the option ''{4}'', ''{5}'', or ''{6}'' for the Model block that corresponds to the function type to remove this restriction.</entry>
+    <entry key="InValidInterconnectionBetweenIRT" context="diagnostic">Block ''{0}'' is connected to an Initialize, Reinitialize, Reset, or Terminate Function block ''{1}''. Only Outport blocks are allowed to connect to the output ports of an Initialize, Reinitialize, Reset, or Terminate Function block in a rate-based model.</entry>
+    <entry key="InValidInterconnectionBetweenIRTMdlRef" context="diagnostic">Block ''{0}'' is connected to Initialize, Reinitialize, Reset, or Terminate Function block inside Model block ''{1}''. Only Outport blocks are allowed to connect to the output ports of an Initialize, Reinitialize, Reset, or Terminate Function block; Connections to Merge blocks are allowed within export function models. If the Model block resides in the topmost model hierarchy and is referencing an export function model saved in R2016b or later, you can select the option ''{2}'', ''{3}'', ''{4}'', or ''{5}'' for the Model block that corresponds to the function type to remove this restriction.</entry>
+    <entry key="InvalidIRTPropForProtectedModelBefore20bOrNeedVirtualBusExp" context="diagnostic"> Model block ''{0}'' has input or output ports with virtual bus signals, and references a protected model created before R2020b containing an Initialize, Reset, or Terminate Function Block. This case is not supported.</entry>  
+    <entry key="InValidMdlRefInitResetInportBranching" context="diagnostic">The Model block ''{0}'' is referencing a model with a root Inport block that is connected to multiple destinations, one of which is an Initialize Function, a Reinitialize Function or a Reset Function block. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' options.
+    <![CDATA[<actions exclusiveFixIts="yes">
+             <action type="fixit">
+             <cmd>set_param(''{0}'',''ShowModelInitializePort'',''on'', ''ShowModelReinitializePort'',''on'', ''ShowModelResetPorts'',''on'',''ShowModelTerminatePort'',''on'');</cmd>
+             <txt>Select ''Show model initialize port'', ''Show model reinitialize ports'', ''Show model reset ports'', and ''Show model terminate port'' for the Model block.</txt>
+             </action>
+             </actions>]]>
+    </entry>
+    <entry key="InValidMdlRefInitInportBranching" context="diagnostic">The Model block ''{0}'' is referencing a model with a root Inport block that is connected to multiple destinations, one of which is an Initialize Function block. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' options.
+    <![CDATA[<actions exclusiveFixIts="yes">
+             <action type="fixit">
+               <cmd>set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'');</cmd>
+               <txt>Select ''Show model initialize port'' and ''Show model terminate port'' for the Model block.</txt>
+             </action>
+             </actions>]]>
+    </entry>
+    <entry key="InValidMdlRefResetInportBranching" context="diagnostic">The Model block ''{0}'' is referencing a model with a root Inport block that is connected to multiple destinations, one of which is a Reinitialize Function block or a Reset Function block. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' option.
+    <![CDATA[<actions exclusiveFixIts="yes">
+             <action type="fixit">
+               <cmd>set_param(''{0}'',''ShowModelReinitializePorts'',''on'', ''ShowModelResetPorts'',''on'');</cmd>
+               <txt>Select ''Show model reinitialize ports'' and ''Show model reset ports'' for the Model block.</txt>
+             </action>
+             </actions>]]>
+    </entry>
+    <entry key="InvalidMdlRefUnionIRTInput" context="diagnostic">
+    <![CDATA[
+    Input port ''{1}'' of Model block ''{0}'' is connected to multiple Initialize, Reset, or Terminate functions ''{2}'' and ''{3}'' inside the referenced model. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' options.
+       <actions exclusiveFixIts="yes">
+             <action type="fixit">
+               <cmd>set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'',''ShowModelResetPorts'',''on'');</cmd>
+               <txt>Select ''Show model initialize port'', ''Show model reset ports'', and ''Show model terminate port'' for the Model block.</txt>
+             </action>
+            <action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true">
+                <arg>{4}</arg>
+            </action_catalog>
+         </actions>]]>
+    </entry>
+    <entry key="InvalidMdlRefUnionIRTOutput" context="diagnostic">
+        <![CDATA[
+        Model block ''{0}'' with output port ''{1}'' inside the referenced model that is connected to multiple Initialize, Reset, or Terminate functions ''{2}'' and ''{3}'' is not supported.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'',''ShowModelResetPorts'',''on'');</cmd>
+                <txt>Select ''Show model initialize port'', ''Show model reset ports'', and ''Show model terminate port'' for the Model block.</txt>
+            </action>
+            <action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true">
+                <arg>{4}</arg>
+            </action_catalog>
+        </actions>]]>
+    </entry>
+    <entry key="InvalidInitResetTermInportBranchingWithSimulinkFunction" context="diagnostic">The root Inport block ''{0}'' is connected to multiple destinations, one of which is an Initialize Function, a Reinitialize Function, a Reset Function, or a Terminate Function. Such Inport block cannot be connected to the Simulink Function block ''{1}''.</entry>
+    <entry key="InValidIRTConnection1" context="diagnostic">Invalid connection from block ''{0}'' to block ''{1}''.</entry>
+    <entry key="InValidIRTConnection2" context="diagnostic">Invalid connection from block ''{0}'' to block ''{1}'' input port {2,number,integer}.</entry>
+    <entry key="InValidIRTConnection3" context="diagnostic"><![CDATA[Invalid connection from block ''{0}'' <sldiag objui="outport" objparam="{1,number,integer}" objname="{2}">output port {1,number,integer}</sldiag> to block ''{2}''.]]></entry>
+    <entry key="InValidIRTConnection4" context="diagnostic"><![CDATA[Invalid connection from block ''{0}'' <sldiag objui="outport" objparam="{1,number,integer}" objname="{2}">output port {1,number,integer}</sldiag> to block ''{2}'' input port {3,number,integer}.]]></entry>
+    <entry key="InvalidInitializeFunctionConnection" context="diagnostic">Initialize Function blocks cannot be connected to each other.</entry>
+    <entry key="InvalidTerminateFunctionConnection" context="diagnostic">Terminate Function blocks cannot be connected to each other.</entry>
+    <entry key="InvalidResetFunctionConnection" context="diagnostic">Reset Function blocks with the same identifier cannot be connected to each other.</entry>
+    <entry key="InvalidInitializeFunctionAsDst" context="diagnostic">Initialize Function block input port cannot be connected to a Reinitialize, a Reset or Terminate Function output port.</entry>
+    <entry key="InvalidTerminateFunctionAsSrc" context="diagnostic">Terminate Function block output port cannot be connected to an Initialize, Reinitialize or Reset Function input port.</entry>
+    <entry key="InitResetTermEventMustMergeWithOtherRate" context="diagnostic">All sources of the Merge block ''{0}'' are from Initialize, Reinitialize, Reset, or Terminate Functions. This is not allowed.</entry>
+    <entry key="InitTermFunctionDoesNotSupportCPPCodeGen" context="diagnostic">Code Generation using the C++ interface is not supported in models containing the Initialize, Reinitialize, Reset or Terminate Function blocks.</entry>
+    <entry key="InitTermFunctionDoesNotSupportRsimAndAsap2Targets" context="diagnostic"><![CDATA[Code Generation using the rsim, asap2 or RTW S-Function targets are not supported in models such as ''{0}'', which contain Initialize, Reinitialize, Reset or Terminate Function blocks.
+    <actions exclusiveFixIts="yes">
+    <action type="suggestion">
+    <cmd>configset.internal.open(''{0}'',''SystemTargetFile'')</cmd>
+    <txt>Set ''System target file'' to a file different from rsim.tlc, rtwsfcn.tlc or asap2.tlc</txt>
+    </action>
+    </actions>]]>
+    </entry>
+    <entry key="PeriodicEventPortTsMismatch" context="diagnostic"><![CDATA[Periodic event <sldiag objui="inport" objparam="{0}" objname="{1}">input port ''{0}''</sldiag> of Model block ''{1}'' has specified a discrete sample time {2}. Therefore, it must be driven by a signal with a discrete sample time that can provide enough resolution. However, it is driven by a sample time of {3}, and the specified sample time is not an integral multiple of it.
+    ]]></entry>
+    <entry key="InvRateBlkInIRTSubsys" context="diagnostic">Block ''{0}'' has a sample time which is not permitted in ''{1}''.</entry>
+    <entry key="InvalidBlockRateinIRTSubsys" context="diagnostic">The block ''{0}'' has a sample time of ''{1}''. Only constant (inf) or inherited (-1) sample times are allowed in Initialize, Reinitialize, Reset or Terminate Functions.</entry>
+    <entry key="InitTermFunctionDoesNotSupportCustomCode" context="diagnostic">Addition of custom initialization and custom termination code using the 'Configuration Parameters > Code Generation > Custom Code' dialog is not supported in models containing the Initialize, Reinitialize, Reset or Terminate Function blocks.</entry>
+    <entry key="ModelBlockNoTerminatePortForTermInput" context="diagnostic"><![CDATA[The option ''{0}'' must be selected in addition to the option ''{1}'' for Model block ''{2}'' because its <sldiag objui="inport" objparam="{3,number,integer}" objname="{2}">input port {3,number,integer}</sldiag> is connected to a Terminate Function block inside the referenced model.]]></entry>
+    <entry key="ModelBlockNoTerminatePortForTermOutput" context="diagnostic"><![CDATA[The option ''{0}'' must be selected in addition to the option ''{1}'' for Model block ''{2}'' because its <sldiag objui="outport" objparam="{3,number,integer}" objname="{2}">output port {3,number,integer}</sldiag> is connected to a Terminate Function block inside the referenced model.]]></entry>
+    <entry key="BIMO" translate="true" context="error">
+        <![CDATA[
+          <actions exclusiveFixIts="yes">
+            <action type="fixit" id="EnableBIMOSetting" retvalue="false">
+              <cmd>set_param(''{0}'', ''AllowMultiTaskInputOutput'', ''on'');</cmd>
+              <txt>Enable configuration parameter 'Allow multiple tasks to access inputs and outputs' for model ''{0}''.</txt>
+            </action>
+          </actions>
+        ]]>
+    </entry>
+    <entry key="IRTInportBranching" context="diagnostic">
+        <![CDATA[
+          Branching the output port of block ''{0}'' that is connected to Initialize Function ''{1}'' is not supported.
+          <actions exclusiveFixIts="yes">
+            <action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true">
+              <arg>{2}</arg>
+            </action_catalog>
+          </actions>
+        ]]>
+    </entry>
+    <entry key="RootInportBranchingToDifferentInitResetTermEvents" context="diagnostic">
+        <![CDATA[Simultaneously connecting the root Inport block ''{0}'' to more than one Initialize, Reset or Terminate Function blocks that correspond to different events is not supported.
+          <actions exclusiveFixIts="yes">
+            <action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true">
+              <arg>{1}</arg>
+            </action_catalog>
+          </actions>
+        ]]>
+    </entry>
+    <entry key="InvalidResolutionForControllableSampleTime" context="diagnostic">The resolution of a controllable sample time should be a positive finite number, but in ''{0}'', ''{1}'' was specified.</entry>
+    <entry key="IRTInportMustInheritSampleTime" context="diagnostic">Block ''{0}'' connecting to Initialize, Reinitialize, Reset or Terminate Functions ''{1}'' must have an inherited (-1) sample time.</entry>
+    <entry key="IRTRootOutportMustInheritSampleTime" context="diagnostic">Root Outport block ''{0}'' must have an inherited (-1) sample time because it is connected to an output of Initialize, Reset, or Terminate Function block.</entry>
+    <entry key="DisallowControllableSampleTimeOwnerInsideCondExecSubsys" context="diagnostic">Block ''{0}'' has a controllable sample time in the conditionally executed subsystem ''{1}''. Blocks having controllable sample time are not supported inside conditionally executed subsystems.</entry>
+    <entry key="DisallowControllableSampleTimeInheritedInsideCondExecSubsys" context="diagnostic">Block ''{0}'' in the conditionally executed subsystem ''{1}'' inherits a controllable sample time. Controllable sample time is not supported for driving blocks inside conditionally executed subsystems.</entry>
+    <entry key="ControllableSampleTimeOnlySupportSingleTaskingMode" context="diagnostic">Block ''{0}'' has a controllable sample time, but the model ''{1}'' is not using single tasking mode. Currently, controllable sample times can only be used in single tasking mode.</entry>
+    <entry key="InvMergeConnMultAyncSrcTs" context="diagnostic">Inconsistent sample times detected for signals driving the Merge block ''{0}''. In this model, the Merge block cannot be driven by multiple asynchronous rates.</entry>
+    <entry key="ControllableSampleTimeOnlySupportSingleRateSFcn" context="diagnostic">S-function ''{0}'' specifies a controllable sample time. Currently, controllable sample time can only be used in a single rate S-function.</entry>
+    <entry key="ControllableSampleTimeOnlySupportFixedStepSolver" context="diagnostic">Block ''{0}'' has a controllable sample time, but the model ''{1}'' is using a variable-step solver. Currently, controllable sample times can only be used with a fixed-step solver.</entry>
+    <entry key="ControllableSampleTimeNotSupportCPPCodeGen" context="diagnostic">Block ''{0}'' specified a controllable sample time. Currently, code generation using the C++ interface is not supported in models containing a controllable sample time.</entry>
+    <entry key="ControllableSampleTimeNotSupportTopXILSimulation" context="diagnostic">Block ''{0}'' specified a controllable sample time. Currently, Top-model SIL or PIL simulation mode does not support controllable sample time.</entry>
+    <entry key="ControllableSampleTimeNotSupportMdlRefXILSimulation" context="diagnostic">The Model block ''{0}'' has controllable discrete sample times. Currently, when the Model block is in Software-in-the-Loop (SIL) or Processor-in-the-Loop (PIL) simulation mode, controllable sample time is not supported.</entry>
+    <entry key="ControllableSampleTimeCannotDriveSFcnInputPort" context="diagnostic"><![CDATA[<sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">Input port {0,number,integer}</sldiag> of S-function ''{1}'' is driven by a controllable sample time. Currently, controllable sample time cannot be inherited by a S-function that has more than one sample time or uses PORT_BASED_SAMPLE_TIMES.]]></entry>
+    <entry key="ControllableSampleTimeCannotBeInheritedBySFcnOutputPort" context="diagnostic"><![CDATA[<sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of S-function ''{1}'' inherits a controllable sample time. Currently, controllable sample time cannot be inherited by a S-function that has more than one sample time or uses PORT_BASED_SAMPLE_TIMES.]]></entry>
+    <entry key="UnionSampleTimeCannotDriveSFcnInputPort" context="diagnostic"><![CDATA[Invalid hybrid sample time at <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">Input port {0,number,integer}</sldiag> of S-Function ''{1}''. Hybrid sample time is not supported by S-Functions that are multirate or use port-based sample times.]]></entry>
+    <entry key="UnionSampleTimeCannotBeInheritedBySFcnOutputPort" context="diagnostic"><![CDATA[Invalid hybrid sample time at <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of S-Function ''{1}''. Hybrid sample time is not supported by S-Functions that are multirate or use port-based sample times.]]></entry>
+    <entry key="InvalidPeriodicSampletimeConstraintForControllableSampleTime" context="error">
+      <![CDATA[
+               Block ''{0}'' has a controllable sample time, but the parameter "Periodic sample time
+               constraint" in model ''{1}'' is configured to "Ensure sample time independent" or "Specified", which
+               is not allowed.
+               <actions exclusiveFixIts="yes">
+               <action type="fixit">
+               <cmd>set_param(''{1}'',''SampleTimeConstraint'',''unconstrained'')</cmd>
+               <txt>Set ''Configuration Parameters > Solver > Periodic sample time constraint'' to "Unconstrained".</txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="CtrlRateErrorStatus" context="diagnostic">Error reported when running the block ''{0}'' with controllable sample times :\n{1}</entry>
+
+    <entry key="InvExecutionDomainContentsGeneric" context="diagnostic">The time domain ''{0}'' contains invalid contents ''{1}''.</entry>
+
+    <entry key="InvContinuousExecutionTypeInPeriodicAtomic" context="diagnostic">Invalid continuous time domain for system ''{0}''. Continuous time domain is invalid inside the periodic atomic subsystem ''{1}''.</entry>
+    <entry key="InvContinuousExecutionTypeInExplicitPartition" context="diagnostic">System ''{0}'' is specified a continuous execution domain. Continuous execution domain is not allowed inside of the partitioned subsystem ''{1}''.</entry>
+    <entry key="InvExecutionTypeInSubsystemWithTriggerPort" context="diagnostic">Invalid continuous time domain specification for ''{0}'' because the subsystem ''{1}'' contains a trigger port.</entry>
+    <entry key="InvVariableRateInsideContinuousDomainFixedStep" context="diagnostic">Block ''{0}'' with a variable sample time is not supported inside a continuous domain ''{1}'' when a fixed-step solver is used.</entry>
+
+    <entry key="InvBlkInsideContinuousDomainFixedStep" context="diagnostic">Block ''{0}'' is not supported inside a continuous time domain ''{1}'' when a fixed-step solver is used.</entry>
+
+    <entry key="IgnoreSpecifiedPriorityForSTModes" context="diagnostic">Model ''{0}'' is currently in Single Tasking Mode. The priority specified in the first rate will be used for all the rates specified in the 'SampleTimeProperty' parameter in the Model Configuration Parameters. The priorities from the other rates will be ignored.</entry>
+
+	<entry key="CtrlRateFeatureDisabled" context="diagnostic">Error initializing block ''{0}''. The ''ControllableRate'' feature has been disabled</entry>
+    <!-- Error messages for discrete domain -->
+    <entry key="InvContinuousStateInsideDiscreteDomain" context="diagnostic"><![CDATA[Block ''{0}'' has continuous states. Only blocks with discrete states are valid inside discrete domain for ''{1}''.
+    <actions exclusiveFixIts="yes">
+    <action type="fixit">
+    <cmd>set_param(''{2}'',''ExecutionDomainType'',''Deduce'');</cmd>
+    <txt>Set the execution domain 'Type' parameter for ''{2}'' to 'Deduce from contents.'</txt>
+    </action>
+    <action type="fixit">
+    <cmd>set_param(''{2}'',''SetExecutionDomain'',''Off'');</cmd>
+    <txt>Clear the 'Set Domain Specification' parameter for ''{2}''</txt>
+    </action>
+    <action type="suggestion">
+    <txt>Replace the block ''{3}'' with a suitable discrete block.</txt>
+    </action>
+    </actions>]]></entry>
+    <entry key="InvContinuousRateInsideDiscreteDomain" context="diagnostic"><![CDATA[Block ''{0}'' has an invalid sample time setting for discrete time domain ''{1}''.
+    <actions exclusiveFixIts="yes">
+    <action type="fixit">
+    <cmd>set_param(''{1}'',''ExecutionDomainType'',''Deduce'');</cmd>
+    <txt>Set the execution domain 'Type' parameter for ''{1}'' to 'Deduce from contents.'</txt>
+    </action>
+    <action type="fixit">
+    <cmd>set_param(''{1}'',''SetExecutionDomain'',''Off'');</cmd>
+    <txt>Clear the 'Set Domain Specification' parameter for ''{1}''</txt>
+    </action>
+    <action type="suggestion">
+    <txt>Set the sample time for  ''{0}'' to a valid discrete sample time, if possible.</txt>
+    </action>
+    </actions>
+    ]]></entry>
+
+    <entry key="InvContinuousRateInsideExplicitlyPartitionedDiscreteDomain" context="diagnostic">Block ''{0}'' has an invalid sample time setting for discrete partition ''{1}''.</entry>
+
+    <entry key="InvContinuousDomainInsideDiscreteDomain" context="diagnostic">''{0}'' is located inside ''{1}'' which has a discrete domain. A continuous time domain for ''{2}'' is not allowed inside a discrete time domain. To avoid this error, set the 'Domain' parameter for ''{3}'' to 'Deduce from contents' or 'Discrete'.</entry>
+
+    <entry key="InvContinuousMdlRefInsideDiscreteDomain" context="diagnostic">Block ''{0}'' references a model that is configured as a continuous domain and is not allowed inside the discrete time domain ''{1}''.</entry>
+
+    <entry key="InvZOHBlkInsideDiscreteDomain" context="diagnostic">The Zero Order Hold Block ''{0}'' is not supported inside a domain ''{1}'' that is specified to 'Discrete'. To avoid this error, change the Domain parameter for ''{2}'' to 'Deduce from contents' or disable the 'Set execution domain' parameter.</entry>
+
+    <entry key="InvBlkInsideDiscreteDomain" context="diagnostic">Block ''{0}'' is not supported inside a domain ''{1}'' that is specified to 'Discrete'. To avoid this error, change the Domain parameter for ''{2}'' to 'Deduce from contents' or disable the 'Set execution domain' parameter.</entry>
+
+    <!-- Error messages for Continuous Domain -->
+    <entry key="InvDiscreteStateInsideContinuousDomain" context="diagnostic">Block ''{0}'' has discrete states. Only blocks with continuous states are valid inside continuous domain for ''{1}''.</entry>
+
+    <entry key="InvDiscreteRateInsideContinuousDomain" context="diagnostic">Block ''{0}'' has an invalid sample time for continuous time domain ''{1}''.</entry>
+
+    <entry key="InvDiscreteRateInsideExplicitlyPartitionedContinuousDomain" context="diagnostic">Block ''{0}'' has an invalid sample time for continuous partition ''{1}''.</entry>
+
+    <entry key="InvBlkDisallowContinuousInsideContinuousDomain" context="diagnostic">Block ''{0}'' is not configured to allow continuous sample time and is not supported inside a continuous time domain ''{1}''.</entry>
+
+    <entry key="InvDiscreteDomainInsideContinuousDomain" context="diagnostic">Discrete time domain for ''{0}'' is not allowed inside ''{1}'' with a continuous time domain.</entry>
+
+    <entry key="InvDiscreteMdlRefInsideContinuousDomain" context="diagnostic">Block ''{0}'' references a model that is configured as a discrete time domain and is not allowed inside the continuous time domain ''{1}''.</entry>
+
+    <entry key="InvExpFcnModelBlockInContinuousDomain" context="diagnostic">Block ''{0}'' references an export-function model and is not supported inside the continuous time domain ''{1}''.</entry>
+
+    <entry key="InvSampleTimeIndependentModelBlockInContinuousDomain" context="diagnostic">Block ''{0}'' references sample time independent model and is not allowed inside the continuous time domain ''{1}''.</entry>
+
+    <entry key="InvBlkInsideContinuousDomain" context="diagnostic">Block ''{0}'' is not supported inside a domain ''{1}'' that is specified to 'Continuous'. To avoid this error, change the Domain parameter for ''{2}'' to 'Deduce from contents' or disable the 'Set execution domain' parameter.</entry>
+
+    <entry key="DomainSpecificationReadOnlyBadge" context="diagnostic">The domain specification badge is read-only since you cannot specify a domain for ''{0}''. See &lt;a href="matlab:helpview(fullfile(docroot,''simulink'',''ug'',''subsystem-domain-specification.html#read_only_badge''))"&gt;documentation&lt;/a&gt; for more information.</entry>
+
+    <entry key="ContinuousDomainNotSupported" context="diagnostic">Continuous time domain for ''{0}'' is not supported.</entry>
+
+    <!-- Error messages for scaling discrete rates -->
+    <entry key="InvOffsetWhenScalingDiscreteRates" context="diagnostic">Block ''{0}'' specifies an offset {1}. Offsets are not supported for a model when the "Scale discrete rates" is enabled on the configuration pane. Disable the "Scale discrete rates" option or modify the periodic sample times in the model to not have offsets.</entry>
+     <entry key="ScalingDiscreteRatesNotSupportedInExpFcnMdl" context="diagnostic"> Rate scaling is not supported in export-function model {0}.</entry>
+
+    <!-- Error messages for Dataflow domain -->
+    <entry key="InvRootDataflowDomain" context="diagnostic">Dataflow domains are not supported at the root level of a block diagram.</entry>
+    <entry key="NoDataflowDomainAndControlBlocks" context="diagnostic">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported for subsystems with control blocks.</entry>
+    <entry key="NoDataflowDomainForObserver" context="diagnostic">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported in Observer subsystems.</entry>
+    <entry key="InvDataflowDomainForStateflow" context="diagnostic">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported for MATLAB Function blocks, Stateflow Charts, and Truth Tables.</entry>
+    <entry key="InvDataflowDomainForIRT" context="diagnostic">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported for Initialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InvDataflowDomainInsideContinuousDomain" context="diagnostic">Dataflow domain for ''{0}'' is not allowed inside ''{1}'' with a continuous time domain.</entry>
+    <entry key="InvDiscreteDomainInsideDataflowDomain" context="diagnostic">''{0}'' is located inside ''{1}'' which has a dataflow domain. A discrete time domain for ''{2}'' is not allowed inside a dataflow domain. To avoid this error, set the 'Domain' parameter for ''{3}'' to 'Deduce from contents' or 'Dataflow'.</entry>
+    <entry key="InvContinuousDomainInsideDataflowDomain" context="diagnostic">Continuous time domain for ''{0}'' is not allowed inside ''{1}'' with a dataflow domain.</entry>
+    <entry key="InsertedSISOBlockAtInport" context="uistring">The {0} block ''{1}'' was inserted before block ''{2}''.</entry>
+    <entry key="NotInsertedSISOBlockAtInport" context="diagnostic">No action performed, as a {0} block was previously inserted before block ''{1}''.</entry>
+	<entry key="SignalConversionBlockInsertionNeededForIR" context="diagnostic"> <![CDATA[<sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">Input port {0,number,integer}</sldiag> of the block ''{1}'' is driven by multiple outputs of Initialize, Reinitialize or Reset Functions and requires signal conversion. Insert a Signal Conversion block before this input port.]]></entry>
+    <entry key="UnableToPropagateSampleTimeForContinuousExecutionDomain" context="diagnostic"><![CDATA[
+    Unable to propagate continuous sample time from output port {0,number,integer} of Subsystem block ''{1}'' with an Execution Domain specification because the path between block ''{2}'' and Outport block ''{3}'' has only virtual blocks.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>slprivate(''insertSISOBlockAtInport'',''built-in/signalconversion'',''SC'',1,''{3}'');</cmd>
+                <txt>Insert a Signal Conversion block inside Subsystem block ''{1}'' before Outport block ''{3}''.</txt>
+            </action>
+            <action type="fixit">
+                <cmd>set_param(''{1}'', ''SetExecutionDomain'', ''off'');</cmd>
+                <txt>Unset the execution domain for Subsystem block ''{1}''.</txt>
+            </action>
+            <action type="suggestion">
+                <txt>Re-route the path between block ''{2}'' and Outport block ''{3}'' outside subsystem ''{2}''.</txt>
+            </action>
+        </actions>]]>
+    </entry>
+    <entry key="UnableToPropagateSampleTimeForDiscreteExecutionDomain" context="diagnostic"><![CDATA[
+    Unable to propagate discrete sample time from output port {0,number,integer} of Subsystem block
+    ''{1}'' with an Execution Domain specification because the path between block ''{2}'' and Outport
+    block ''{3}'' has only virtual blocks.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>slprivate(''insertSISOBlockAtInport'',''built-in/signalconversion'',''SC'',1,''{3}'');</cmd>
+                <txt>Insert a Signal Conversion block inside Subsystem block ''{1}'' before Outport block ''{3}''.</txt>
+            </action>
+            <action type="fixit">
+                <cmd>set_param(''{1}'', ''SetExecutionDomain'', ''off'');</cmd>
+                <txt>Unset the execution domain for Subsystem block ''{1}''.</txt>
+            </action>
+            <action type="suggestion">
+                <txt>Re-route the path between block ''{2}'' and Outport block ''{3}'' outside subsystem ''{2}''.</txt>
+            </action>
+        </actions>]]>
+    </entry>
+    <entry key="AdditionalEntryPointInCodegenForKnownBlock" context="diagnostic"><![CDATA[
+    Simulink was unable to replace the Parameter Change Event sample time of block ''{0}'' during
+    code generation of tunable parameters for model ''{1}'' with a sample time that exists during
+    simulation.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>set_param(''{0}'', ''SampleTime'', ''[-1,0]'');</cmd>
+                <txt>Set the sample time of block ''{0}'' to Inherited ([-1,0]).</txt>
+            </action>
+            <action type="fixit">
+                <cmd>set_param(''{1}'', ''DefaultParameterBehavior'', ''Inlined'');</cmd>
+                <txt>Set the ''Code Generation > Optimization > Default Parameter Behavior'' of model ''{1}'' to ''Inlined''</txt>
+            </action>
+        </actions>]]>
+    </entry>
+    <entry key="AdditionalEntryPointInCodegenForBlockInReferencedModel" context="diagnostic"><![CDATA[
+    Simulink was unable to replace the Parameter Change Event sample time of block ''{0}'' in
+    referenced model ''{1}'' during code generation of tunable parameters for model ''{2}'' with a
+    sample time that exists during simulation because the fixed step sample time of the referenced model
+    doesn't exist in the top model.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit">
+                <cmd>set_param(''{0}'', ''SampleTime'', ''[-1,0]'');</cmd>
+                <txt>Set the sample time of block ''{0}'' to Inherited.</txt>
+            </action>
+            <action type="fixit">
+                <cmd>set_param(''{1}'', ''FixedStep'', get_param(''{2}'', ''FixedStep''));</cmd>
+                <txt>Set the fixed step size of referenced model ''{1}'' the same as top model ''{2}''.</txt>
+            </action>
+            <action type="suggestion">
+                <txt>Set the ''Solver > Solver Details > Tasking and sample time options > Periodic sample time constraint'' to ''Unconstrained''.</txt>
+            </action>
+            <action type="fixit">
+                <cmd>set_param(''{1}'', ''DefaultParameterBehavior'', ''Inlined'');set_param(''{2}'', ''DefaultParameterBehavior'', ''Inlined'');</cmd>
+                <txt>Set the ''Code Generation > Optimization > Default Parameter Behavior'' of referenced ''{0}'' and top ''{1}'' models to ''Inlined''</txt>
+            </action>
+        </actions>]]>
+    </entry>
+
+    <entry key="InvSampleTimeScopeInExpFcnMdl" context="error">
+      <![CDATA[
+               Scope block ''{0}'' has an invalid sample time. Scopes in an export function model
+               should have inherited(-1) sample time.
+               <actions exclusiveFixIts="yes">
+               <action type="fixit">
+               <cmd>set_param(''{0}'',''SampleTime'',''[-1]'')</cmd>
+               <txt>Set sample time for block ''{0}'' to '-1'</txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="InvalidFcnCallNameReservedImplicitSampleTime" context="error">Root-level function-call Inport block ''{1}'' must use a function-call name other than ''{0}''. Names that start with _task followed by a number are reserved for sample time partitions. </entry>
+    <entry key="InvalidOutputPortInPST" context="diagnostic">
+      <![CDATA[
+        Root outport block ''{0}'' has constant sample time and is not supported in code generation with tunable parameters. 
+        <actions exclusiveFixIts = "yes">
+            <action type="fixit" id="InlineParams" retvalue="false">
+                <cmd>set_param(bdroot, 'InlineParams', 'on');</cmd>                
+                <txt>Set the default parameter behavior to inlined.</txt>
+             </action> 
+            <action type="fixit" id="DiscreteSampleTime" retvalue="false">
+                <cmd>set_param(''{0}'', 'SampleTime', ''{1}'');</cmd>                
+                <txt>Set the sample time of block ''{0}'' to the discrete sample time ''{1}''.</txt>
+             </action>             
+         </actions>
+    ]]>
+    </entry>
+
+    <entry key="InvalidCoefficientSampleTime" context="diagnostic">Inconsistent sample times propagated to the input ports of block ''{0}''. Sample time {2} propagated to input port {1,number,integer} is less than the sample time {3} propagated to input port 1. Specify the sample time on the source blocks for input port {1,number,integer} to a value that is greater than or equal to sample time {3} propagated to input port 1. </entry>
+
+   <entry key="InvalidStorageClassWithTunableParameterRate" context="diagnostic">
+  <![CDATA[
+        Simulink block ''{0}'' is connected to multiple destinations blocks through signals with non-optimizable storage class.
+        This configuration is not supported for code generation with tunable parameters.
+        <actions exclusiveFixIts = "yes">
+            <action type="fixit" id="DiscreteSampleTime" retvalue="false">
+                <cmd>set_param(''{0}'', 'SampleTime', ''{1}'');</cmd>                
+                <txt>Set the sample time of block ''{0}'' to the discrete sample time ''{1}''.</txt>
+             </action> 
+         </actions>
+    ]]>
+  </entry> 
+
+  <entry key="InvalidStorageClassWithParameterOrContRateDst" context="diagnostic">
+  <![CDATA[
+        Simulink block ''{0}'' is connected to a destination block having continuous or parameter rate through signal with non-optimizable storage class.
+        This configuration is not supported for code generation with tunable parameters.
+        <actions exclusiveFixIts = "yes">
+            <action type="fixit" id="DiscreteSampleTime" retvalue="false">
+                <cmd>set_param(''{0}'', 'SampleTime', ''{1}'');</cmd>                
+                <txt>Set the sample time of block ''{0}'' to the discrete sample time ''{1}''.</txt>
+             </action> 
+         </actions>
+    ]]>
+  </entry>
+ 
+</message>
+</rsccat>
+
+<!-- LocalWords:  xml UTF CDATA sle Acc uncheck preactivation ashow DTYPE rsim fixits
+     LocalWords:  DSTATES RWORK IWORK PWORK datatypes testpoint Jc nonvirtual
+     LocalWords:  SIL Unbuffer PWork demultiplexed checksums Deriv etrace elist
+     LocalWords:  sid atrace bafter mth bshow ebreak emode ishow strace rtwsfcn
+     LocalWords:  nanbreak rbreak slist blockmth stimes tbreak Tj Tz Hs Izc ug
+     LocalWords:  undisp untrace winreuse xbreak zcbreak zclist CSTATE Zc Evnt
+     LocalWords:  Sgnl UDI uploadable dworks extmode Intrf matfile Inp subsys
+     LocalWords:  DF directfeed HMI slfeature suboption DSTATE TRIGSS unapplied
+     LocalWords:  SCD scrollbar Ds linearizing Metadata grt uncompiled th
+     LocalWords:  TIMESPAN DWork Dlg overwritable discontiguous PLC datatype
+     LocalWords:  reusability bitfields UDD AUTOSAR Bitsets bitsets Prms
+     LocalWords:  aliasedthrough tunabilities sfundemo superset WKS resave slvr
+     LocalWords:  Zcs hmin Demuxes sfunction unselecting Nonreused nonreused
+     LocalWords:  TFL UI pri modelname nondiscrete noncustom runnables
+     LocalWords:  inheritability clocktick stepsize nonconcurrent
+     LocalWords:  signalconversion
+-->

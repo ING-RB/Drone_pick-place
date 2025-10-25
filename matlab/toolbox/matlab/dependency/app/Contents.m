@@ -1,0 +1,3 @@
+% This file exists so the Dependency Analyzer may appear in the Apps Gallery
+
+% Copyright 2022 The MathWorks, Inc.

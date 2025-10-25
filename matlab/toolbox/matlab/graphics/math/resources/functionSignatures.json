@@ -1,0 +1,412 @@
+{
+"histogram":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"X", "kind":"required", "type":[["numeric"],["logical"]]},
+        {"mutuallyExclusiveGroup":
+			[
+				[],
+				{"name":"nbins", "kind":"required", "type":[["numeric","scalar"],["logical"]]},
+				{"name":"edges", "kind":"required", "type":[["numeric", "vector"],["logical", "vector"]]}
+			]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyX",
+            "params":
+            [
+                {"name":"X"},
+                {"name":"BEdges", "optional":true},
+                {"name":"Orientation", "description":"MATLAB:histogram:BarOrientationLabel", "type":"choices={'vertical','horizontal'}", "kind":"properties"},
+                {"name":"NumBins", "description":"MATLAB:histogram:NumBinsLabel", "type":"numeric", "kind":"properties"},
+                {"name":"BinMethod", "description":"MATLAB:histogram:BinMethodLabel", "type":"choices={'auto','scott','fd','integers','sturges','sqrt'}", "kind":"properties"},
+                {"name":"BinWidth", "description":"MATLAB:histogram:BinWidthLabel", "type":"numeric", "kind":"properties"},
+                {"name":"DisplayStyle", "description":"MATLAB:histogram:DisplayStyleLabel", "type":"choices={'bar','stairs'}", "kind":"properties"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"}
+            ],
+            "icon":"histogramPlot",
+            "description":"MATLAB:plots:Tool_histogram_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:DataDistLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateXLabelForPlots",
+            "supportsOverlay": true
+        }
+    }
+},
+"histogram":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"X", "kind":"required", "type":"duration"},
+        {"mutuallyExclusiveGroup":
+			[
+				[],
+				{"name":"nbins", "kind":"required", "type":[["numeric","scalar"],["logical"]]},
+				{"name":"edges", "kind":"required", "type":[["duration","vector"]]}
+			]
+        },
+        {"name":"BinMethod","kind":"namevalue","type":"choices=['auto','scott','fd','sturges','sqrt',matlab.internal.datatypes.functionSignatures.unitOfTimeChoices('ydhms')]","default":"'auto'"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ]
+},
+"histogram":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"X", "kind":"required", "type":"datetime"},
+        {"mutuallyExclusiveGroup":
+			[
+				[],
+				{"name":"nbins", "kind":"required", "type":[["numeric","scalar"],["logical"]]},
+				{"name":"edges", "kind":"required", "type":[["datetime","vector"]]}
+			]
+        },
+        {"name":"BinMethod","kind":"namevalue","type":"choices=['auto','scott','fd','sturges','sqrt',matlab.internal.datatypes.functionSignatures.unitOfTimeChoices('cdyqmwdhms')]","default":"'auto'"},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ]
+},
+"histogram":
+{
+    "inputs":
+	[
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.ui.control.UIAxes"]]},
+        {"mutuallyExclusiveGroup":
+			[
+				[
+					{"name":"C", "kind":"required", "type":"categorical"},
+					{"name":"Categories", "kind":"ordered", "display":"categories", "type":[["choices=categories(C)"], ["categorical", "vector"]]},
+					{"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.categorical.Histogram"}
+				],
+				[
+					{"name":"Categories","kind":"namevalue","type":[["cellstr"], ["categorical", "vector"]]},
+					{"name":"BinCounts","kind":"namevalue","type":["integer", "vector", ">=0"]},
+					{"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.categorical.Histogram"}
+				]
+			]
+		}
+    ],
+    "outputs":
+	[
+        {"name":"h", "type":"matlab.graphics.chart.primitive.categorical.Histogram"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "configuration": "MATLAB:graphics:visualizedatatask:SpecifyCategorical",
+            "params":
+            [                
+                {"name":"C"},
+                {"name":"ShowOthers", "description":"MATLAB:histogram:ShowOthersLabel", "type":"choices={'off','on'}", "kind":"properties"}
+            ],
+            "icon":"histogramPlot",
+            "description":"MATLAB:plots:Tool_histogram_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:DataDistLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateXLabelForPlots",
+            "supportsOverlay": true
+        }
+    }
+},
+"histogram":
+{
+    "inputs":
+	[
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Histogram"}
+    ]
+},
+"histogram2":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.Axes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram2"}
+    ],
+	"outputs":
+    [
+		{"name":"h", "type":"matlab.graphics.chart.primitive.Histogram2"}
+    ]
+},
+"histogram2":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.Axes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"X", "kind":"required", "type":[["numeric"],["logical"]]},
+        {"name":"Y", "kind":"required", "type":[["numeric"],["logical"]]},
+        {"name":"nbins", "kind":"ordered", "type":[["numeric", "numel=2"],["numeric", "scalar"]]},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram2"}
+    ],
+	"outputs":
+	[
+		{"name":"h", "type":"matlab.graphics.chart.primitive.Histogram2"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"NumBins", "description":"MATLAB:histogram:NumBinsLabel", "type":"numeric", "kind":"properties"},
+                {"name":"BinMethod", "description":"MATLAB:histogram:BinMethodLabel", "type":"choices={'auto','scott','fd','integers'}", "kind":"properties"},
+                {"name":"BinWidth", "description":"MATLAB:histogram:BinWidthLabel", "type":"numeric", "kind":"properties"},
+                {"name":"DisplayStyle", "description":"MATLAB:histogram:DisplayStyleLabel", "type":"choices={'bar3','tile'}", "kind":"properties"},
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"}
+            ],
+            "icon":"histogram2Plot",
+            "description":"MATLAB:plots:Tool_histogram2_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:DataDistLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateNoLabelNoLegend",
+            "supportsOverlay": true
+        }
+    }
+},
+"histogram2":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.Axes"], ["matlab.ui.control.UIAxes"]]},
+        {"name":"X", "kind":"required", "type":[["numeric"],["logical"]]},
+        {"name":"Y", "kind":"required", "type":[["numeric"],["logical"]]},
+        {"name":"Xedges", "kind":"required", "type":[["numeric", "vector"],["logical","vector"]]},
+        {"name":"Yedges", "kind":"required", "type":[["numeric", "vector"],["logical","vector"]]},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.Histogram2"}
+    ],
+	"outputs":
+	[
+		{"name":"h", "type":"matlab.graphics.chart.primitive.Histogram2"}
+    ]
+},
+"plot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"G", "kind":"required", "type":[["graph"],["digraph"]]},
+        {"name":"Layout", "kind":"namevalue", "type":["char","choices={'auto','circle','force','layered','subspace','force3','subspace3'}"]},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.GraphPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.GraphPlot"}
+    ]
+},
+"matlab.graphics.chart.primitive.GraphPlot.highlight":
+{
+	"inputs":
+	[
+		{"mutuallyExclusiveGroup":
+			[
+				[
+					{"name":"H", "kind":"required", "type":"matlab.graphics.chart.primitive.GraphPlot"},
+					{"name":"nodeIDs", "kind":"ordered", "type":[["logical","vector"],["cellstr","vector"],["numeric","vector"],["char","choices=getNodeNames(H)"]]},
+					{"name":"Edges", "kind":"namevalue", "type":[["logical","vector"],["numeric", "vector"]]},
+					{"name":"EdgeColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"LineStyle", "kind":"namevalue", "type":["char", "choices={'-','--',':','-.','none'}"]},
+					{"name":"LineWidth", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"Marker", "kind":"namevalue", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+					{"name":"MarkerSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"NodeColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"NodeLabelColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"NodeFontSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"NodeFontAngle", "kind":"namevalue", "type":["char", "choices={'italic', 'normal'}"]},
+					{"name":"NodeFontWeight", "kind":"namevalue", "type":["char", "choices={'bold', 'normal'}"]},
+					{"name":"EdgeLabelColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"EdgeFontSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"EdgeFontAngle", "kind":"namevalue", "type":["char", "choices={'italic', 'normal'}"]},
+					{"name":"EdgeFontWeight", "kind":"namevalue", "type":["char", "choices={'bold', 'normal'}"]},
+					{"name":"ArrowSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"ArrowPosition", "kind":"namevalue", "type":["numeric", "scalar"]}
+				],
+				[
+					{"name":"H", "kind":"required", "type":"matlab.graphics.chart.primitive.GraphPlot"},
+					{"name":"G", "kind":"required", "type":[["graph"],["digraph"]]},
+					{"name":"EdgeColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"LineStyle", "kind":"namevalue", "type":["char", "choices={'-','--',':','-.','none'}"]},
+					{"name":"LineWidth", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"Marker", "kind":"namevalue", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+					{"name":"MarkerSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"NodeColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"NodeLabelColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"NodeFontSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"NodeFontAngle", "kind":"namevalue", "type":["char", "choices={'italic', 'normal'}"]},
+					{"name":"NodeFontWeight", "kind":"namevalue", "type":["char", "choices={'bold', 'normal'}"]},
+					{"name":"EdgeLabelColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"EdgeFontSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"EdgeFontAngle", "kind":"namevalue", "type":["char", "choices={'italic', 'normal'}"]},
+					{"name":"EdgeFontWeight", "kind":"namevalue", "type":["char", "choices={'bold', 'normal'}"]},
+					{"name":"ArrowSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"ArrowPosition", "kind":"namevalue", "type":["numeric", "scalar"]}
+				],
+				[
+					{"name":"H", "kind":"required", "type":"matlab.graphics.chart.primitive.GraphPlot"},
+					{"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=getNodeNames(H)"]]},
+					{"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=getNodeNames(H)"]]},
+					{"name":"EdgeColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"LineStyle", "kind":"namevalue", "type":["char", "choices={'-','--',':','-.','none'}"]},
+					{"name":"LineWidth", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"Marker", "kind":"namevalue", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+					{"name":"MarkerSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"NodeColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"NodeLabelColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"NodeFontSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"NodeFontAngle", "kind":"namevalue", "type":["char", "choices={'italic', 'normal'}"]},
+					{"name":"NodeFontWeight", "kind":"namevalue", "type":["char", "choices={'bold', 'normal'}"]},
+					{"name":"EdgeLabelColor", "kind":"namevalue", "type":[["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],["numeric", "vector", "ncols=3", ">=0", "<=1"],["char", "@matlab.graphics.internal.isColorSpec"]]},
+					{"name":"EdgeFontSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"EdgeFontAngle", "kind":"namevalue", "type":["char", "choices={'italic', 'normal'}"]},
+					{"name":"EdgeFontWeight", "kind":"namevalue", "type":["char", "choices={'bold', 'normal'}"]},
+					{"name":"ArrowSize", "kind":"namevalue", "type":["numeric", "scalar", ">0"]},
+					{"name":"ArrowPosition", "kind":"namevalue", "type":["numeric", "scalar"]}
+				]
+			]
+		}
+	]
+},
+"matlab.graphics.chart.primitive.GraphPlot.layout":
+{
+	"inputs":
+	[
+		{"name":"H", "kind":"required", "type":"matlab.graphics.chart.primitive.GraphPlot"},
+		{"mutuallyExclusiveGroup":
+			[
+				[
+					{"name":"method", "kind":"required", "type":["char", "choices={'auto'}"]}
+				],
+				[
+					{"name":"method", "kind":"required", "type":["char", "choices={'circle'}"]},
+					{"name":"Center", "kind":"namevalue", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=getNodeNames(H)"]]}
+				],
+				[
+					{"name":"method", "kind":"required", "type":["char", "choices={'force'}"]},
+					{"name":"Iterations", "kind":"namevalue", "type":[["numeric","scalar"]]},
+					{"name":"WeightEffect", "kind":"namevalue", "type":["char", "choices={'direct', 'inverse', 'none'}"]},
+					{"name":"UseGravity", "kind":"namevalue", "type":["char", "choices={'on', 'off'}"]},
+					{"name":"XStart", "kind":"namevalue", "type":[["numeric","vector"]]},
+					{"name":"YStart", "kind":"namevalue", "type":[["numeric","vector"]]}
+				],
+				[
+					{"name":"method", "kind":"required", "type":["char", "choices={'force3'}"]},
+					{"name":"Iterations", "kind":"namevalue", "type":[["numeric","scalar"]]},
+					{"name":"WeightEffect", "kind":"namevalue", "type":["char", "choices={'direct', 'inverse', 'none'}"]},
+					{"name":"UseGravity", "kind":"namevalue", "type":["char", "choices={'on', 'off'}"]},
+					{"name":"XStart", "kind":"namevalue", "type":[["numeric","vector"]]},
+					{"name":"YStart", "kind":"namevalue", "type":[["numeric","vector"]]},
+					{"name":"ZStart", "kind":"namevalue", "type":[["numeric","vector"]]}
+				],
+				[
+					{"name":"method", "kind":"required", "type":["char", "choices={'layered'}"]},
+					{"name":"AssignLayers", "kind":"namevalue", "type":["char", "choices={'auto','asap','alap'}"]},
+					{"name":"Direction", "kind":"namevalue", "type":["char", "choices={'left','right','up','down'}"]},
+					{"name":"Sinks", "kind":"namevalue", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=getNodeNames(H)"]]},
+					{"name":"Sources", "kind":"namevalue", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=getNodeNames(H)"]]}
+				],
+				[
+					{"name":"method", "kind":"required", "type":["char", "choices={'subspace','subspace3'}"]},
+					{"name":"Dimension", "kind":"namevalue", "type":[["numeric","scalar"]]}
+				]
+			]
+		}
+	]
+},
+"matlab.graphics.chart.primitive.GraphPlot.labelnode":
+{
+	"inputs":
+	[
+		{"name":"H", "kind":"required", "type":"matlab.graphics.chart.primitive.GraphPlot"},
+		{"name":"nodeIDs", "kind":"required", "type":[["logical","vector"],["cellstr","vector"],["numeric","vector"],["char","choices=getNodeNames(H)"]]},
+		{"name":"Labels", "kind":"required", "type":[["cellstr","vector"]]}
+	]
+},
+"matlab.graphics.chart.primitive.GraphPlot.labeledge":
+{
+	"inputs":
+	[
+		{"name":"H", "kind":"required", "type":"matlab.graphics.chart.primitive.GraphPlot"},
+		{"mutuallyExclusiveGroup":
+			[
+				[
+					{"name":"s", "kind":"required", "type":[["cellstr","vector"],["numeric","vector"],["char","choices=getNodeNames(H)"]]},
+					{"name":"t", "kind":"required", "type":[["cellstr","vector"],["numeric","vector"],["char","choices=getNodeNames(H)"]]}
+				],
+				[
+					{"name":"idx", "kind":"required", "type":[["numeric", "vector"],["logical", "vector"]]}
+				]
+			]
+		},
+		{"name":"Labels", "kind":"required", "type":[["cellstr","vector"]]}
+	]
+},
+"hist":
+{
+    "inputs": [
+        {"name":"ax", "kind":"optional", "type":"matlab.graphics.axis.Axes"},
+        {"name":"x", "kind":"required", "type":"categorical"},
+        {"name":"xbins", "kind":"optional", "type":[["choices=categories(x)"], ["categorical", "vector"]]}
+    ],
+    "outputs": [
+        {"name":"counts", "type":["integer", ">=0"]},
+        {"name":"centers", "type":"cellstr"}
+    ]
+},
+"spy":
+{
+    "inputs":
+    [
+        {"name":"S", "kind":"positional", "type":"logical"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"LineSpec", "kind":"ordered", "type":["char", "string"]},
+                    {"name":"MarkerSize", "kind":"ordered", "type":["numeric", "positive", "scalar"]}
+                ],
+                [
+                    {"name":"MarkerSize", "kind":"ordered", "type":["numeric", "positive", "scalar"]},
+                    {"name":"LineSpec", "kind":"ordered", "type":["char", "string"]}
+                ]
+            ]
+        }
+    ]
+},
+"alphaShape.plot":
+{
+    "inputs":
+    [
+        {"name":"shp", "kind":"required", "type":"alphaShape"},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.primitive.Patch"}
+    ]
+},
+"polyshape.plot":
+{
+    "inputs":
+    [
+        {"name":"pgon", "kind":"required", "type":"polyshape"},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.primitive.Polygon"}
+    ]
+}
+}

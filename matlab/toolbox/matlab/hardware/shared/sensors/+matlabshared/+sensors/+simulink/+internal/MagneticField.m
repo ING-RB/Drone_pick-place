@@ -1,0 +1,19 @@
+classdef MagneticField < matlabshared.sensors.simulink.internal.OutputModuleBase
+   %MAGNETICFIELD object gives the the required fields for propogation
+   %   methods related to magnetic field 
+   %   Copyright 2020-2023 The MathWorks, Inc.
+    
+   %#codegen
+    properties(Nontunable)
+        OutputSize = [1, 3]
+        OutputName = 'Magnetic Field'
+        IsOutputComplex = false
+        OutputDataType = 'double'
+    end
+    
+    methods
+        function [data, timestamp] = readSensorImpl(~, sensorObj)
+            [data, timestamp] = readMagneticField(sensorObj);
+        end
+    end
+end

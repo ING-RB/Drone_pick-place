@@ -1,0 +1,102 @@
+//
+// Copyright 2025 The MathWorks, Inc
+
+// Added the below rules to silence the ESLint warnings
+
+/* eslint-disable max-len */
+/* eslint-disable no-template-curly-in-string */
+/* eslint-disable quotes */
+/* eslint-disable no-useless-escape */
+
+//
+// DO NOT MODIFY THIS FILE!!  This is a derived file.
+// Instead, modify the English message catalog XML file "resources/ros/en/slros/toolstrip.xml"
+// Encoding: UTF-8
+//
+
+define({
+    BatchModeRosActionDescription: "여러 파라미터의 변경 사항을 한 번에\n전달합니다",
+    BatchModeRosActionText: "일괄 처리\n모드",
+    BuildActionBuildLoadRosActionDescription: "독립형 프로그램을 생성하여\nROS 장치에 배포합니다",
+    BuildActionBuildLoadRosActionText: "모델\n빌드",
+    BuildActionBuildRunRosActionDescription: "독립형 애플리케이션을 생성하여\nROS 장치에 배포하고 시작합니다",
+    BuildActionBuildRunRosActionText: "빌드 및\n실행",
+    BuildActionNoneRosActionDescription: "모델 코드를 생성합니다",
+    BuildActionNoneRosActionText: "코드\n생성",
+    BuildForExternalModeRosActionDescription: "신호 관측과 파라미터 조정을 위해\n계측되는 실행 가능 프로그램을 생성합니다",
+    BuildForExternalModeRosActionText: "모니터링을 위한\n빌드",
+    BuildROSControlActionDescription: "Simulink 모델에서 ros_control 제어기를 생성하기 위한 설정을 제공합니다.",
+    BuildROSControlActionText: "ROS Control 생성",
+    CodeGenerationRosGalleryCategoryLabel: "코드 생성",
+    ConfigurationRosGalleryCategoryLabel: "ROS 하드웨어 구성",
+    ConfigureROSLoggingActionDescription: "버스 신호를 ROS Bag 파일에 ROS 메시지로 기록합니다",
+    ConfigureROSLoggingActionText: "ROS\n기록기",
+    ConfigureRobotConnectionRosActionText: "원격 장치 관리",
+    ConfigureRosNetworkRosActionDescription: "ROS 네트워크를 구성합니다",
+    ConfigureRosNetworkRosActionText: "ROS\n네트워크",
+    ConfigureVariableSizeArraysRosActionDescription: "가변 길이 배열을 포함하는\nROS 메시지를 구성합니다",
+    ConfigureVariableSizeArraysRosActionText: "가변 크기\n메시지",
+    ConnectExternalModeRosActionDescription: "ROS 장치에서 프로그래밍할 모델을 연결합니다",
+    ConnectExternalModeRosActionText: "모델\n연결",
+    CurrentBuildActionRosDescription: "독립형 애플리케이션을 생성하여\n하드웨어 보드에 배포하고 시작합니다",
+    CurrentBuildActionRosText: "빌드 및\n실행",
+    DeployForExternalModeRosActionDescription: "계측 프로그램을 ROS 장치에 배포합니다",
+    DeployForExternalModeRosActionText: "배포",
+    DeploymentRosSectionLabel: "배포",
+    DisconnectExternalModeRosActionDescription: "ROS 장치에서 프로그램과\n모델의 연결을 끊습니다",
+    DisconnectExternalModeRosActionText: "모델\n연결 끊기",
+    EventLogRosActionText: "이벤트\n로그",
+    ExternalInputsRosGalleryCategoryLabel: "외부 입력 신호",
+    GenerateROSControlActionText: "ROS Control\n설정",
+    HardwareDeploymentRosGalleryCategoryLabel: "독립형 배포",
+    Localhost: "로컬 호스트",
+    LoggingRosGalleryCategoryLabel: "신호 기록 및 뷰어",
+    OneClickExternalModeRosActionDescription: "ROS 장치에서 계측 프로그램을 생성하고 실행합니다.\n신호를 모니터링하고 파라미터를 조정합니다.",
+    OneClickExternalModeRosActionText: "모니터링\n및 조정",
+    OneClickExternalModeRosGalleryCategoryLabel: "신호 모니터링 및 파라미터 조정",
+    ROSDeploymentTypeActionDescription: "모델에서 생성된 코드의 배포 유형.",
+    ROSDeploymentTypeActionText: "배포 유형",
+    ROSDeploymentTypeComponentDescription: "모델을 컴포넌트 노드 라이브러리로 생성합니다",
+    ROSDeploymentTypeComponentText: "컴포넌트 노드",
+    ROSDeploymentTypeControlDescription: "모델을 제어 플러그인 라이브러리로 생성합니다",
+    ROSDeploymentTypeControlText: "ROS Control 플러그인",
+    ROSDeploymentTypeSectionText: "배포 유형",
+    ROSDeploymentTypeStandardDescription: "모델을 표준 노드 실행 파일로 생성합니다",
+    ROSDeploymentTypeStandardText: "표준 노드",
+    ROSNetworkDeviceTypeLabel: "배포 위치",
+    ROSNetworkSelectLabel: "ROS 네트워크",
+    ROSNetworkTestConnectionLabel: "",
+    ROSTabTitle: "ROS",
+    ROSToolboxPrepareGalleryCategoryLabel: "ROS TOOLBOX",
+    RemoteDevice: "원격 장치",
+    RestartExternalModeRosActionDescription: "ROS 장치에서 프로그램을 다시 시작합니다",
+    RestartExternalModeRosActionText: "다시 시작",
+    ResultsToolsRosGalleryCategoryLabel: "ROS 툴",
+    RobotHardwareConfigurationRosActionDescription: "ROS 장치에서 실행할 모델을 구성합니다",
+    RobotHardwareConfigurationRosActionText: "하드웨어\n설정",
+    RoboticsSystemToolboxTargetSectionLabel: "연결",
+    SetupDialogDefaultSelection: "ROS 네트워크 선택",
+    SetupDialogDescription: "ROS 메시지를 사용하고 ROS가 지원되는 로봇과 연결되도록 모델을 구성하려면 아래 ROS 네트워크를 선택합니다.",
+    SetupDialogSelectionPrompt: "ROS 네트워크:",
+    SetupDialogTitle: "로봇 운영 체제(ROS)",
+    SignalLoggingRosGalleryCategoryLabel: "신호 기록 결과",
+    SimulationSettingsRosGalleryCategoryLabel: "구성 및 시뮬레이션",
+    SpareCommandsExternalModeRosGalleryCategoryLabel: "(예비 명령 - 상태에 사용)",
+    StartRunningInExternalModeRosActionDescription: "신호 모니터링과 파라미터 조정을\n시작합니다",
+    StartRunningInExternalModeRosActionText: "시작",
+    StepByStepExternalModeRosGalleryCategoryLabel: "단계별 명령",
+    StopExternalModeRosActionDescription: "로봇에서 프로그램을 중지하고\n모델의 연결을 끊습니다",
+    StopExternalModeRosActionText: "중지",
+    StopTimeExternalModeRosActionDescription: "ROS 장치에서 실행되는\n계측 프로그램의 중지 시간입니다",
+    StopTimeExternalModeRosActionText: "inf",
+    StopTimeLabelExternalModeRosActionDescription: "ROS 장치에서 실행되는\n계측 프로그램의 중지 시간입니다",
+    StopTimeLabelExternalModeRosActionText: "중지 시간",
+    StopTimeUnitsExternalModeRosActionDescription: "초",
+    StopTimeUnitsExternalModeRosActionText: "(초)",
+    TestRobotConnectionRosActionText: "연결\n테스트",
+    UpdateAllParametersRosActionDescription: "ROS 장치에서 모든 파라미터를 업데이트합니다",
+    UpdateAllParametersRosActionText: "모든 파라미터\n업데이트",
+    UpdateVariablesRosActionDescription: "ROS 장치에서 작업 공간 변수의 값을\n업데이트합니다",
+    UpdateVariablesRosActionText: "변수\n업데이트",
+    roboticsSystemToolboxContextHardwareBoardTabTitle: "ROS"
+});

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- Copyright 2014-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="ros">
+  <message>
+    <entry key="IncorrectPackageVersion">
+        The version number of the ROS package, "{0}", does not follow ROS conventions. 
+        The version number must have three digits, e.g. "1.0.0".
+        \n
+        \nOn the Modeling tab, click Model Settings. 
+		On the Hardware Implementation pane, set Hardware board settings > Target hardware resources > Package information > Version to a valid value. 
+    </entry>
+        
+    <entry key="CppLanguageRequired">
+        The "Language" parameter for the model is set to "{0}", which is not supported
+        for ROS code generation. 
+        \n
+        \nTo fix this error, on the Modeling tab, click Model Settings. 
+		On the Code Generation pane, set Target selection > Language to "C++".
+    </entry>    
+    
+    <entry key="ModularPackagingRequired">
+        The "ERTFilePackagingFormat" parameter for the model is set to "{0}", which is not supported
+        for ROS code generation. 
+        \n
+        \nTo fix this error, on the Modeling tab, click Model Settings.  
+        On the Code Generation pane, set Code Placement > Code packaging > File packaging format to "Modular".
+    </entry>   
+    
+    <entry key="PackNGoNotSupported">
+        The "Package code and artifacts" parameter for the model is enabled, which is not supported.
+        ROS code generation uses a separate mechanism to produce a single zip package that 
+        contains the required code and artifacts.
+        \n
+        \nTo avoid this error, on the Modeling tab, click Model Settings. 
+        On the Code Generation pane, uncheck Build process > Package code and artifacts.
+    </entry>
+        
+    <entry key="UnableToCreateROSPkgName">
+        Unable to create ROS Package Name for model "{0}".
+    </entry>
+    
+    <entry key="InferenceAssertion">
+        Assertion violated.
+    </entry>
+    <entry key="ui_hwboard" translate="false">Robot Operating System (ROS)</entry>
+    <!-- conflict checks - ros & ros2 -->
+    <entry key="ROS2ROS1TogetherError"><![CDATA[Using ROS and ROS 2 blocks inside the same Simulink model is not supported.]]></entry>
+    <entry key="HWBoardIncorrectError">To generate C++ code from ''{0}'' block, ''Hardware board'' parameter must be set to ''{1}''.</entry>
+      
+    <entry key="InvalidHostForExplicitPartitions">
+        Windows is not a supported platform for deploying ROS node to the ''Localhost'' for the Simulink model, ''{0}'', with explicit partitions enabled for concurrent behavior.
+    </entry>
+    <entry key="ModelRefPkgTypePrompt">Generate model reference code as:</entry>
+    <entry key="ModelRefPkgTypeStandalone">Standalone package</entry>
+    <entry key="ModelRefPkgTypeSubDirectory">Sub-directory in same package</entry>
+    <entry key="RefModelPackageTypeMismatch"><![CDATA[Configuration parameter option, ''Model reference package type'', does not match between the models ''{0} (Parent)'' and ''{1} (Child)''. <a href="matlab:helpview([docroot,''/toolbox/simulink/ug/simulink_ug.map''],''about_configuration_references'');">Configuration references</a> can help avoid parameter mismatches.\nChange 'Model reference package type' option in ''Configuration Parameters > Target Hardware Resources > Build options'':\n\t\tParent setting: {2}\n\t\tChild setting: {3}\n]]></entry>
+    <entry key="RefModelExcessDepth">Top level model ''{0}'' contains more than one layer of model-reference, which is not supported for ''Sub-directory in same package''. Consider switching ''Generate model reference code as'' to ''Standalone package'', or simplify model hierarchy to keep at most one layer of model-reference.</entry>
+  </message>
+</rsccat>

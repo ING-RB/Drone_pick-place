@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="DSReadBlockDescription">지정된 데이터 저장소에서 값을 읽어옵니다. '요소 선택' 탭을 사용하여, 읽어올 특정 요소를 선택합니다. 요소를 선택하지 않으면 전체 데이터 저장소를 읽어옵니다.</entry>
+    <entry key="DSWriteBlockDescription">지정된 데이터 저장소에 값을 씁니다. '요소 할당' 탭을 사용하여 특정 요소에 값을 할당합니다. 요소를 선택하지 않으면 전체 데이터 저장소에 대해 쓰기 작업이 수행됩니다.</entry>
+    <entry key="DSMDynamicIndexingBlockDescription">동적 인덱싱에서는 요소 선택 표현식에서 idx1, idx2 같은 인덱스 포트 레이블을 인덱스 변수로 사용합니다.</entry>
+    <entry key="busSupportForDSMIsUnavailable">Data Store Memory 블록 ''{0}''의 데이터형은 버스 유형입니다. Data Store Memory 블록은 엄격한 버스 모델링이 ON인 경우에만 버스 유형을 지원합니다. 이 진단을 활성화하려면 구성 파라미터 대화 상자 -&gt; 진단 -&gt; 연결성 창에서 ''버스 신호를 생성하는 데 사용되는 Mux 블록''을 ''오류''로 설정하십시오.</entry>
+    <entry key="hiddenGlobalDSMBlockMessage">The above message is related to a hidden Data Store Memory block. This block is inserted to support a global data store corresponding to the Simulink.Signal object ''{0}''.</entry>
+    <entry key="hiddenModelDSMBlockMessage">위 메시지는 숨겨진 Data Store Memory 블록과 관련이 있습니다. 이 블록은 모델 작업 공간에 있는 Simulink.Signal 객체 ''{0}''에 해당하는 로컬 데이터 저장소를 지원하기 위해 삽입됩니다.</entry>
+    <entry key="hiddenDSMRefBlockMessage">위 메시지는 서브모델의 데이터 저장소 ''{0}''에 대한 참조와 관련이 있습니다.</entry>
+    <entry key="dsmLoggingNotSupportedWithBusesInBlocks">Data Store Memory 블록 ''{0}''은(는) Data Store Memory를 기록하도록 구성되었지만 이 블록의 데이터형이 버스 유형입니다. Data Store Memory 기록은 비 버스 유형에만 지원됩니다. 이 경고가 발생하지 않도록 하려면 [블록 파라미터] 대화 상자의 [기록] 창에서 ''신호 데이터 기록'' 옵션의 선택을 해제하십시오.</entry>
+    <entry key="dsmLoggingNotSupportedWithBusesInObjects">Simulink.Signal 객체 ''{0}''은(는) Data Store Memory를 기록하도록 구성되었지만 이 객체의 데이터형이 버스 유형입니다. Data Store Memory 기록은 비 버스 유형에만 지원됩니다. 이 경고가 발생하지 않도록 하려면 이 Simulink.Signal 객체에 대해 DataLogging을 끄십시오.</entry>
+    <entry key="dsmLoggingNotSupportedInsideForEachSS">Data Store Memory 블록 ''{0}''은(는) Data Store Memory를 기록하도록 구성되었습니다. 하지만 Data Store Memory 기록은 For Each 블록이 포함된 서브시스템 내의 블록을 지원하지 않습니다. 이 경고가 발생하지 않도록 하려면 [블록 파라미터] 대화 상자의 [기록] 창에서 ''신호 데이터 기록'' 옵션의 선택을 해제하십시오.</entry>
+    <entry key="dsmLoggingNotSupportedInsideMLSystemBlk">액셀러레이터 및 고속 액셀러레이터 모드 시뮬레이션 중에 MATLAB System 블록 ''{0}'' 내부에 데이터 저장소를 기록하는 것은 지원되지 않습니다. 이 데이터를 기록하려면 표준 모드에서 시뮬레이션을 실행하십시오.</entry>
+    <entry key="dsmLoggingNotSupportedForDynamicArray">데이터가 비유계 가변 크기 신호이기 때문에 액셀러레이터 및 고속 액셀러레이터 모드 시뮬레이션에서 Data Store Memory 블록 ''{0}'' 변수를 기록할 수 없습니다.</entry>
+    <entry key="busDSMCannotBeComplex">The data type of the Data Store Memory block ''{0}'' is a bus type and its complexity is set as ''complex''. Please change the complexity of this block or the associated Simulink.Signal object to ''real''.</entry>
+    <entry key="InvDSMSettingWithStringType">Invalid parameter setting in Data Store Memory block ''{0}'' with string data type:</entry>
+    <entry key="busDSMCannotHaveVarDims">All signals in the bus object hierarchy must be fixed-sized when bus objects are used in Data Store Memory blocks. The Data Store Memory block ''{0}'' specifies a bus object ''{1}'' for its data type, and this bus object has one or more variable-sized signals in its hierarchy.</entry>
+    <entry key="DSMemoryICDimsMismatch">The dimensions of the ''InitialValue'' parameter of the Data Store Memory block ''{0}'' is inconsistent with the value specified for the ''Dimensions'' parameter of this block. To infer dimensions from ''InitialValue'' specify ''-1'' in the ''Dimensions'' parameter.</entry>
+    <entry key="DSMemoryBlockNotFound">블록 ''{1}''에 대해 이름이 ''{0}''인 데이터 저장소 메모리를 찾을 수 없습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''createMissingDataStore_cb'', ''missingDataStoreCompileTime'', ''{0}'', ''{1}'')&lt;/cmd&gt; &lt;txt&gt;데이터 저장소를 만드십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="DSMemoryBlockNotFoundForDataStoreReference">Unable to find data store ''{0}'' for Data Store Memory block ''{1}'' placed inside the model referenced by Model block ''{2}'' with parameter &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''Data store reference''&lt;/sldiag&gt; selected.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;add_block(''simulink/Signal Routing/Data Store Memory'', ''{3}'', ''MakeNameUnique'', ''on'', ''DataStoreName'', ''{0}'');&lt;/cmd&gt;
+            &lt;txt&gt;Add a Data Store Memory block with &lt;sldiag objui="blockdlg" objparam="DataStoreName"&gt;''Data store name''&lt;/sldiag&gt; ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="DSMemoryBlockNotFoundForDataStoreReferenceNonDSM">파라미터 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt;가 선택되고 Model 블록 ''{2}''에서 참조하는 모델 내에 배치되어 있는 유형 ''{3}''의 Data Store 블록 ''{1}''에 대한 데이터 저장소 ''{0}''을(를) 찾을 수 없습니다.</entry>
+    <entry key="DSMemoryRenamed">
+      블록 ''{4}''에 대해 {2}에서 데이터 저장소 메모리의 이름이 ''{0}''에서 ''{1}''(으)로 변경되었습니다 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''robustVarRefHotlink_cb'', ''renameRef'', ''{6}'', ''{2}'', ''{1}'', ''{0}'', ''{3}'', ''{4}'', ''{5}'')&lt;/cmd&gt; &lt;txt&gt;''{1}''을(를) 사용하도록 참조를 업데이트하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''robustVarRefHotlink_cb'', ''copyEntry'', ''{6}'', ''{2}'', ''{1}'', ''{0}'', ''{5}'')&lt;/cmd&gt; &lt;txt&gt;''{0}'' 이름의 새 변수를 ''{1}''의 복사본으로 생성하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''createMissingDataStore_cb'', ''missingDataStoreCompileTime'', ''{0}'', ''{4}'')&lt;/cmd&gt; &lt;txt&gt;데이터 저장소를 생성하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="DSMemoryDeleted">
+      블록 ''{5}''에서 이름이 ''{0}''인 데이터 저장소 메모리가 {4}에서 삭제되었습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''robustVarRefHotlink_cb'', ''revertCache'', ''{2}'', ''{1}'', ''{0}'', ''{3}'')&lt;/cmd&gt; &lt;txt&gt;삭제를 실행 취소하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''createMissingDataStore_cb'', ''missingDataStoreCompileTime'', ''{0}'', ''{5}'')&lt;/cmd&gt; &lt;txt&gt;데이터 저장소를 만드십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="DSMemoryBlockNotFound3">Data store memory with name ''{0}'' was not found</entry>
+    <entry key="DupDSMemoryBlockFound0">Duplicate data store blocks of block type ''{1}'' named ''{0}'' found.</entry>
+    <entry key="DupDSMemoryBlockFound1">First reference is in ''{0}''</entry>
+    <entry key="DupDSMemoryBlockFound2">Second reference is in ''{0}''</entry>
+    <entry key="InvDataStoreName">''{0}''에 지정된 데이터 저장소 이름은 유효하지 않은 식별자입니다. 유효한 식별자는 영문자로 시작하고, 공백이나 특수 문자를 포함하지 않으며, 최대 {1,number,integer}자여야 합니다</entry>
+    <entry key="UniqueDataStoreMemory"> Data store memory name ''{0}'' is used for block ''{1}'' and block ''{2}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{3}'', 'UniqueDataStoreMsg', 'none');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the configuration parameter &lt;sldiag objui="configset" objparam="UniqueDataStoreMsg" objname="{0}"&gt;''Duplicate data store names''&lt;/sldiag&gt; to ''none''.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Alternatively, make &lt;sldiag objui="blockdlg" objparam="DataStoreName"&gt;''Data store name''&lt;/sldiag&gt; parameters of these two blocks different.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+</entry>
+    <entry key="DSReadDiagnosticsNotReported">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에서 버스 요소를 읽어 들이고 있습니다. 데이터 저장소 읽기/쓰기 진단은 보고되지 않습니다. 이 블록이 액셀러레이터 모드로 실행 중인 모델에 있거나, [시뮬레이션 모드]가 [액셀러레이터]로 설정된 참조 모델에 있기 때문입니다. 이 경고를 끄려면 warning(''off'',''Simulink:DataStores:DSReadDiagnosticsNotReported'')를 사용하십시오.</entry>
+    <entry key="DSWriteDiagnosticsNotReported">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 버스 요소를 쓰고 있습니다. 데이터 저장소 읽기/쓰기 진단은 보고되지 않습니다. 이 블록이 액셀러레이터 모드로 실행 중인 모델에 있거나, [시뮬레이션 모드]가 [액셀러레이터]로 설정된 참조 모델에 있기 때문입니다. 이 경고를 끄려면 warning(''off'',''Simulink:DataStores:DSWriteDiagnosticsNotReported'')를 사용하십시오.</entry>
+    <entry key="DSDiagnosticsNotReported">블록 ''{0}''이(가) 블록 ''{1}''에 의해 정의된 데이터 저장소에 액세스 중입니다. 데이터 저장소 읽기/쓰기 진단은 보고되지 않습니다. 데이터 저장소에 2개 이상의 차원이 있고, 이 블록이 액셀러레이터 모드로 실행 중인 모델에 있거나 [시뮬레이션 모드]가 [액셀러레이터]로 설정된 참조 모델에 있기 때문입니다. 이 경고를 끄려면 warning(''off'',''Simulink:DataStores:DSDiagnosticsNotReported'')를 사용하십시오</entry>
+    <entry key="DSReadBeforeWrite">시간 {2}에 어떠한 블록도 이 메모리의 전체 영역에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 데이터 저장소 ''{1}''에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteInMinor">시간 {2}에 어떠한 블록도 이 메모리의 전체 영역에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 데이터 저장소 ''{1}''에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteInMWE">이벤트 ''{3}'' 시간 {2}에 어떠한 블록도 메모리의 전체 영역에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 데이터 저장소 ''{1}''에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteOfElement">시간 {3}에 어떠한 블록도 이 메모리에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteOfElementInMinor">시간 {3}에 어떠한 블록도 이 메모리에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteOfElementInMWE">이벤트 ''{4}'' 시간 {3}에 어떠한 블록도 이 메모리에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteOfRegionExpr">시간 {3}에 어떠한 블록도 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 이 영역을 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteOfRegionExprInMinor">시간 {3}에 어떠한 블록도 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 이 영역을 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSReadBeforeWriteOfRegionExprInMWE">이벤트 ''{4}'' 시간 {3}에 어떠한 블록도 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 이 영역을 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterRead">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역을 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadInMinor">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역을 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadInMWE">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 쓰는 중인데 블록 ''{2}''이(가) 이벤트 ''{4}'' 시간 {3}에 이 메모리의 일부 또는 전체 영역을 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadOfElement">블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리를 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadOfElementInMinor">블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리를 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadOfElementInMWE">블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 이 메모리를 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadOfRegionExpr">블록 ''{0}''이(가) 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰는 중인데 해당 영역의 일부 또는 전체를 블록 ''{3}''이(가) 시간 {4}에 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadOfRegionExprInMinor">블록 ''{0}''이(가) 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰는 중인데 해당 영역의 일부 또는 전체를 블록 ''{3}''이(가) 시간 {4}에 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterReadOfRegionExprInMWE">블록 ''{0}''이(가) 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰는 중인데 해당 영역의 일부 또는 전체를 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWrite">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteInMinor">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteInMWE">블록 ''{0}''이(가) 데이터 저장소 ''{1}''에 쓰는 중인데 블록 ''{2}''이(가) 이벤트 ''{4}'' 시간 {3}에 이 메모리의 일부 또는 전체 영역에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteOfElement">블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteOfElementInMinor">블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteOfElementInMWE">블록 ''{0}''이(가) 데이터 저장소 ''{2}''의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 이 메모리에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteOfRegionExpr">블록 ''{0}''이(가) 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 해당 영역의 일부 또는 전체에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteOfRegionExprInMinor">블록 ''{0}''이(가) 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 해당 영역의 일부 또는 전체에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="DSWriteAfterWriteOfRegionExprInMWE">블록 ''{0}''이(가) 데이터 저장소 메모리 ''{2}''의 영역 ''{1}''에 쓰는 중인데 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 해당 영역의 일부 또는 전체에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWrite">시간 {2}에 어떠한 블록도 이 메모리의 전체 영역에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteInMinor">시간 {2}에 어떠한 블록도 이 메모리의 전체 영역에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteInMWE">이벤트 ''{3}'' 시간 {2}에 어떠한 블록도 이 메모리의 전체 영역에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteOfElement">시간 {3}에 어떠한 블록도 이 메모리에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteOfElementInMinor">시간 {3}에 어떠한 블록도 이 메모리에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteOfElementInMWE">이벤트 ''{4}'' 시간 {3}에 어떠한 블록도 이 메모리에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에서 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteOfRegionExpr">시간 {3}에 어떠한 블록도 Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 이 영역을 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteOfRegionExprInMinor">시간 {3}에 어떠한 블록도 Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 이 영역을 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSReadBeforeWriteOfRegionExprInMWE">이벤트 ''{4}'' 시간 {3}에 어떠한 블록도 Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰기를 완료하지 않았는데 블록 ''{0}''이(가) 이 영역을 읽어오고 있습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterRead">블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역을 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadInMinor">블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역을 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadInMWE">블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에 쓰는 중인데 블록 ''{2}''이(가) 이벤트 ''{4}'' 시간 {3}에 이 메모리의 일부 또는 전체 영역을 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadOfElement">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리를 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadOfElementInMinor">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리를 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadOfElementInMWE">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 이 메모리를 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadOfRegionExpr">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰는 중인데 해당 영역의 일부 또는 전체를 블록 ''{3}''이(가) 시간 {4}에 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadOfRegionExprInMinor">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰는 중인데 해당 영역의 일부 또는 전체를 블록 ''{3}''이(가) 시간 {4}에 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterReadOfRegionExprInMWE">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰는 중인데 해당 영역의 일부 또는 전체를 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 이미 읽어왔습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWrite">블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteInMinor">블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에 쓰는 중인데 블록 ''{2}''이(가) 시간 {3}에 이 메모리의 일부 또는 전체 영역에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteInMWE">블록 ''{0}''이(가) Simulink.Signal 객체 ''{1}''에 해당하는 데이터 저장소에 쓰는 중인데 블록 ''{2}''이(가) 이벤트 ''{4}'' 시간 {3}에 이 메모리의 일부 또는 전체 영역에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteOfElement">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteOfElementInMinor">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 이 메모리에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteOfElementInMWE">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소의 요소 {1,number,integer}에 쓰는 중인데 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 이 메모리에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteOfRegionExpr">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 해당 영역의 일부 또는 전체에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteOfRegionExprInMinor">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰는 중인데 블록 ''{3}''이(가) 시간 {4}에 해당 영역의 일부 또는 전체에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="GlobalDSWriteAfterWriteOfRegionExprInMWE">블록 ''{0}''이(가) Simulink.Signal 객체 ''{2}''에 해당하는 데이터 저장소 메모리의 영역 ''{1}''에 쓰는 중인데 블록 ''{3}''이(가) 이벤트 ''{5}'' 시간 {4}에 해당 영역의 일부 또는 전체에 이미 쓰기를 완료했습니다. 성능상의 이유로, 다른 시뮬레이션 시간 스텝에서는 이 메모리에 대해 해당 진단을 표시하지 않습니다.</entry>
+    <entry key="RegionValidationDimsMismatch">The number of dimensions is specified as ''{0,number,integer}'' for the region of memory ''{1}'' associated with the block ''{2}''. This does not match the actual number of dimensions ''{3,number,integer}'' associated with this memory</entry>
+    <entry key="RegionValidationInvalidBusElementIdx">The index of the bus element is specified as ''{0,number,integer}''. This value is not valid for the region of memory ''{1}'' associated with the block ''{2}''</entry>
+    <entry key="RegionValidationIndexSpecifiedWhenSelectingAll">옵션 MEM_REGION_SELECT_ALL을 사용할 경우 인덱스를 지정해서는 안 됩니다. 블록 ''{1}''에 연결된 메모리 ''{0}''의 영역에 인덱스가 지정되었습니다.</entry>
+    <entry key="RegionValidationDiscontiguousAtNonLeaf">Accessing dis-contiguous memory regions is supported only at non-bus nodes. This was specified for the region of memory ''{0}'' associated with the block ''{1}''</entry>
+    <entry key="RegionValidationInvalidStartIncrEnd">Invalid indices specified for the indexing option MEM_REGION_STARTIDX_INCR_ENDIDX. This was specified for the region of memory ''{0}'' associated with the block ''{1}''</entry>
+    <entry key="RegionValidationIndexOutOfBounds">The indices specified for the region of memory ''{0}'' associated with the block ''{1}'' is out of bounds</entry>
+    <entry key="RegionValidationInvalidIndexingMode">블록 ''{1}''에 연결된 메모리 ''{0}''의 영역에 지정된 인덱싱 모드가 유효하지 않습니다.</entry>
+    <entry key="ExpressionValidationMissingField">필드 ''{0}''이(가) 표현식 ''{1}''에 대해 ''{5}'' 탭에 지정되었고 블록 ''{3}''의 포트 {2}에 연결되었는데 연결된 Bus 객체 ''{4}''에서 동일한 이름의 버스 요소와 일치하지 않습니다. 표현식의 필드 이름을 일치하는 버스 요소 이름으로 수정하거나 이 이름의 새 버스 요소를 추가하여 Bus 객체를 업데이트하십시오.</entry>
+    <entry key="ExpressionValidationFieldSpecifiedForNonBus">필드 ''{0}''이(가) 표현식 ''{1}''에 대해 ''{4}'' 탭에 지정되었고 블록 ''{3}''의 포트 {2}에 연결되어 있는데 연결된 데이터 저장소 메모리의 데이터형에서 일치하는 버스 요소가 없습니다. 표현식에서 이 필드를 제거하거나, 연결된 데이터 저장소 메모리의 데이터형을 이 필드 이름을 갖는 버스 요소가 포함된 bus 객체로 업데이트하십시오.</entry>
+    <entry key="ExpressionValidationParseError">''{4}'' 탭에 지정되고 블록 ''{2}''의 포트 {1}에 연결된 표현식 ''{0}''에 유효하지 않은 MATLAB 구문이 있습니다. ''{3}''</entry>
+    <entry key="ExpressionValidationUnsupportedOps">''{3}'' 탭에 지정되고 블록 ''{2}''의 포트 {1}에 연결된 표현식 ''{0}''에 이 블록에서 지원하지 않는 연산자, 변수 또는 함수가 사용되었습니다. 자세한 내용은 이 블록에 대한 문서를 참조하십시오.</entry>
+    <entry key="ExpressionValidationInvalidRootName">''{4}'' 탭에 지정되었고 블록 ''{2}''의 포트 {1}에 연결된 표현식 ''{0}''이(가) 연결된 데이터 저장소 메모리 이름 ''{3}''(으)로 시작하지 않거나 이를 참조하지 않습니다.</entry>
+    <entry key="ExpressionValidationDisContiguous">The expression ''{0}'' specified in the ''{4}'' tab and associated with port {1} of block ''{2}'' is associated with non-contiguous elements. Non-contiguous element access is only supported at terminal nodes. ''{3}'' in the given expression is not a terminal node.</entry>
+    <entry key="ExpressionValidationDimsMismatch">The expression ''{0}'' specified in the ''{5}'' tab and associated with port {1} of block ''{2}'' specifies an invalid number of dimensions at node ''{3}''. The expected number of dimensions for this node is {4}.</entry>
+    <entry key="ExpressionValidationDimsMismatchWithDetail">''{5}'' 탭에 지정되고 블록 ''{2}''의 포트 {1}에 연결된 표현식 ''{0}''이(가) 노드 ''{3}'' {6}에서 유효하지 않은 차원 수를 지정합니다. 이 노드의 차원 수는 {4}이어야 합니다.</entry>
+    <entry key="ExpressionValidationIndexOutOfBounds">The expression ''{0}'' specified in the ''{5}'' tab and associated with port {1} of block ''{2}'' specifies one or more indices that are out of bounds at node ''{3}''. Indices are one-based and must be greater than zero in each dimension. The maximum allowed values for indices (in each dimension) at this node is ''{4}''.</entry>
+    <entry key="ExpressionValidationIndexRepeats">The expression ''{0}'' specified in the ''{4}'' tab and associated with port {1} of block ''{2}'' specifies one or more indices that repeat at node ''{3}''. Indices must be unique in each dimension.</entry>
+    <entry key="IndexLabelsNotMatching">''{1}'' 탭에 지정되고 블록 ''{2}''에 연결된 표현식 ''{0}''에 인덱스 포트 레이블과 일치하지 않는 인덱스 변수가 하나 이상 있습니다.</entry>
+    <entry key="ElementsNotSupportedForDynamicArrays">요소 선택을 위해 블록 ''{0}''을(를) 구성할 수 없습니다. 데이터 저장소 메모리가 비유계 가변 크기 신호 또는 비유계 가변 크기 요소를 포함한 버스와 연결되어 있기 때문입니다.</entry>
+    <entry key="ScopedDSMSignalAttribMismatch1">블록 유형 ''{3}''의 Data Store 블록 ''{0}'' 및 ''{1}''은(는) 동일한 신호 특성을 지정해야 합니다. 두 블록이 동일한 데이터 저장소 이름 ''{2}''을(를) 지정하고 ''{1}''에 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;'참조'&lt;/sldiag&gt; 파라미터가 선택되어 있기 때문입니다.</entry>
+    <entry key="ScopedDSMSignalAttribMismatch2">블록 유형 ''{3}''의 Data Store 블록 ''{0}'' 및 ''{1}''은(는) 동일한 신호 특성을 지정해야 합니다. 두 블록이 동일한 데이터 저장소 이름 ''{2}''을(를) 지정하고 두 블록 모두에 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;'참조'&lt;/sldiag&gt; 파라미터가 선택되어 있기 때문입니다.</entry>
+    <entry key="ScopedDSMSignalAttribMismatch3">모델 ''{2}''의 모델 작업 공간에 있는 Simulink.Signal 객체 ''{0}'' 및 블록 유형 ''{2}''의 Data Store 블록 ''{1}''은(는) 동일한 신호 특성을 지정해야 합니다. 두 블록이 동일한 데이터 저장소 이름을 사용하고 ''{1}''에 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;'참조'&lt;/sldiag&gt; 파라미터가 선택되어 있기 때문입니다.</entry>
+    <entry key="ScopedDSMBusSignalPropNotSupported">Unable to set &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''Data type''&lt;/sldiag&gt; of Data Store Memory block ''{0}'' with data store name ''{1}'' to ''Inherit: auto'' when the corresponding data store reference ''{2}'' inside the model referenced by Model block ''{3}'' specifies a bus data type ''{4}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" retvalue="false"&gt;
+            &lt;cmd&gt;set_param(''{0}'', 'OutDataTypeStr', ''{4}'');&lt;/cmd&gt;
+            &lt;txt&gt;Set &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''Data type''&lt;/sldiag&gt; of ''{0}'' to ''{4}''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="ScopedDSMImageTypePropNotSupported">Model 블록 ''{3}''이(가) 참조하는 모델 내의 대응되는 데이터 저장소 참조 ''{2}''이(가) 이미지 유형 ''{4}''을(를) 지정하는 경우, 데이터 저장소 이름이 ''{1}''인 Data Store Memory 블록 ''{0}''의 &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''데이터형''&lt;/sldiag&gt;을 ''상속: 자동''으로 설정할 수 없습니다.&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'OutDataTypeStr', ''{4}'');&lt;/cmd&gt; &lt;txt&gt;''{0}''의 &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''데이터형''&lt;/sldiag&gt;을 ''{4}''(으)로 설정하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ScopedDSMDataTypeMismatch">''{0}'' 및 ''{1}''이(가) 데이터형을 각각 ''{2}'' 및 ''{3}''(으)로 설정합니다.</entry>
+    <entry key="ScopedDSMComplexityMismatch">''{0}'' 및 ''{1}''이(가) &lt;sldiag objui="blockdlg" objparam="SignalType"&gt;'신호 유형'&lt;/sldiag&gt;을 각각 ''{2}'' 및 ''{3}''(으)로 설정합니다.</entry>
+    <entry key="ScopedDSMOneDVectorMismatch">''{0}'' 및 ''{1}''이(가) &lt;sldiag objui="blockdlg" objparam="VectorParams1D"&gt;'벡터 파라미터를 1차원으로 해석'&lt;/sldiag&gt;을 각각 ''{2}'' 및 ''{3}''(으)로 설정합니다.</entry>
+    <entry key="ScopedDSMDimensionMismatch">''{0}'' 및 ''{1}''이(가) &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;'차원'&lt;/sldiag&gt;을 각각 ''{2}'' 및 ''{3}''(으)로 설정합니다.</entry>
+    <entry key="DupDataStoreReferences1">Data Store Memory 블록 ''{0}''이(가) 데이터 저장소 참조로 구성된 경우, 이 모델에서 어떠한 다른 Data Store Memory 블록도 동일한 데이터 저장소 이름 ''{2}''을(를) 갖는 데이터 저장소 참조로 구성할 수 없습니다. 하지만, ''{1}''이(가) 이 규칙을 위반합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;add_block(''{0}'', ''{3}'', ''MakeNameUnique'', ''on''); delete_block(''{0}''); delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;데이터 저장소 참조 ''{2}''을(를) 상위 그래프에서 정의하고 ''{0}'' 및 ''{1}''을(를) 제거하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DupDataStoreReferences2">Data Store Memory 블록 ''{0}''이(가) 데이터 저장소 참조로 구성된 경우, 이 모델에서 어떠한 다른 Data Store Memory 블록도 동일한 데이터 저장소 이름 ''{2}''을(를) 갖는 데이터 저장소 참조로 구성할 수 없습니다. 하지만, ''{1}''이(가) 이 규칙을 위반합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;''{1}''을(를) 제거하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DupDataStoreReferences3">Data Store Memory 블록 ''{0}''이(가) 데이터 저장소 참조로 구성된 경우, 이 모델에서 어떠한 다른 Data Store Memory 블록도 동일한 데이터 저장소 이름 ''{2}''을(를) 갖는 데이터 저장소 참조로 구성할 수 없습니다. 그러나 모델 블록 ''{1}''이(가) 참조된 모델 계층 구조에서 동일한 이름을 갖는 데이터 저장소 참조를 포함하며, 데이터 저장소 참조를 정의해야 하는 블록이 이 규칙을 위반합니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;add_block(''{0}'', ''{3}'', ''MakeNameUnique'', ''on''); delete_block(''{0}'');&lt;/cmd&gt; &lt;txt&gt;''{0}''을(를) 상위 그래프로 옮기십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ScopedDSMNameShadowing">유형 ''{3}''의 Data Store 블록 ''{0}''이(가) 데이터 저장소 참조로 구성된 경우, 유형 ''{3}''의 다른 Data Store 블록에 대해 더 높은 수준의 서브시스템에서 동일한 데이터 저장소 이름 ''{2}''을(를) 지정하는 것은 지원되지 않습니다. ''{1}''이(가) 이 규칙을 위반합니다.</entry>
+    <entry key="ScopedDSMNameShadowing_HiddenLocalDSM">Data Store Memory 블록 ''{1}''이(가) 데이터 저장소 참조로 구성된 경우, 다른 Data Store Memory 블록에 대해 더 높은 수준의 서브시스템에서 동일한 데이터 저장소 이름 ''{0}''을(를) 지정하는 것은 지원되지 않습니다. 그런데 모델 ''{2}''의 모델 작업 공간에 동일한 이름 ''{0}''을(를) 가진 Simulink.Signal 객체가 있고 블록 ''{3}''이(가) 이 모델 작업 공간을 데이터 저장소로 액세스하므로, 이로 인해 Data Store Memory 블록이 이 모델의 루트 그래프에 묵시적으로 배치되어 이 규칙을 위반하게 됩니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;h=add_block(''{6}'', ''{5}'', ''MakeNameUnique'', ''on''); set_param(h,''DataStoreName'', ''{0}'');&lt;/cmd&gt; &lt;txt&gt;''{4}''의 Data Store Memory 블록을 명시적으로 추가하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DSMRefStdStringUnsupported">데이터 저장소 참조 ''{0}''이(가) std::string으로 구현되어 있는데, 지원되지 않습니다.</entry>
+    <entry key="DataStoreRefShadowedByGlobalDSM">파라미터 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt;가 선택된 서브시스템의 내부에 배치된 Data Store Memory 블록 ''{0}''은(는) 모델의 서브시스템 계층에서 더 높은 수준에 있는, 동일한 ''데이터 저장소 이름''을 가진 다른 Data Store Memory 블록을 허용하지 않습니다. 그러나 전역 데이터 저장소 역할을 하는 Simulink.Signal 객체 ''{1}''이(가) 이 규칙을 위반합니다.</entry>
+    <entry key="DataStoreRefFromChildMdlShadowedByGlobalDSM">파라미터 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt;가 선택된 Model 블록 ''{2}''에서 참조하는 모델의 내부에 배치된 Data Store Memory 블록 ''{0}''은(는) 모델 계층의 더 높은 수준에 있는 서브시스템 내에 동일한 ''데이터 저장소 이름''을 가진 다른 Data Store Memory 블록을 허용하지 않습니다. 그러나 전역 데이터 저장소 역할을 하는 Simulink.Signal 객체 ''{1}''이(가) 이 규칙을 위반합니다.</entry>
+    <entry key="InvalidSharedDSMDefMemForDataStoreRef">&lt;sldiag objui="blockdlg" objparam="ShareAcrossModelInstances"&gt;'모델 인스턴스 간에 공유'&lt;/sldiag&gt;가 선택된 Data Store Memory 블록 ''{1}''은(는) &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;'데이터 저장소 참조'&lt;/sldiag&gt; 파라미터가 선택된 Data Store Memory 블록 ''{0}''에 대해 데이터 저장소를 정의하는 것을 지원하지 않습니다. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''ShareAcrossModelInstances'', ''off'');&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="blockdlg" objparam="ShareAcrossModelInstances"&gt;'모델 인스턴스 간에 공유'&lt;/sldiag&gt;를 선택 해제하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DataTypeNotSpecifiedForDataStoreRef">파라미터 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt;가 선택된 블록 ''{0}''의 파라미터 &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''데이터형''&lt;/sldiag&gt;이 ''상속: 자동''으로 잘못 설정되었습니다. 드롭다운 옵션에서 명시적으로 &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''데이터형''&lt;/sldiag&gt;을 선택하십시오.</entry>
+    <entry key="DimensionNotSpecifiedForDataStoreRef">파라미터 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt;가 선택된 블록 ''{0}''의 파라미터 &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;''차원''&lt;/sldiag&gt;이 ''-1''로 잘못 설정되었습니다. &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;''차원''&lt;/sldiag&gt;을 명시적으로 지정하십시오.</entry>
+    <entry key="ComplexityNotSpecifiedForDataStoreRef">파라미터 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt;가 선택된 블록 ''{0}''의 파라미터 &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''신호 유형''&lt;/sldiag&gt;이 ''자동''으로 잘못 설정되었습니다. 드롭다운 옵션에서 명시적으로 &lt;sldiag objui="blockdlg" objparam="SignalType"&gt;''신호 유형''&lt;/sldiag&gt;을 선택하십시오.</entry>
+    <entry key="UnableToRenameDataStoreRefInProtectedMdl">참조된 모델 ''{3}''이(가) 보호 모델로 저장되었기 때문에 Data Store Memory 블록의 &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''데이터 저장소 참조''&lt;/sldiag&gt; 파라미터가 선택된 Model 블록 ''{2}''이(가) 참조하는 모델 내에 배치된 Data Store Memory 블록에 대해 &lt;sldiag objui="blockdlg" objparam="DataStoreName"&gt;''데이터 저장소 이름''&lt;/sldiag&gt; 파라미터를 ''{0}''에서 ''{1}''(으)로 변경할 수 없습니다.</entry>
+    <entry key="UnableToRenameLibLinkedStateflowDataStoreName">''{2}''의 데이터 저장소 이름을 ''{0}''에서 ''{1}''(으)로 변경할 수 없습니다. ''{2}''이(가) 라이브러리에서 연결된 MATLAB 함수이거나 Stateflow 차트이기 때문입니다.</entry>
+    <entry key="RefdDSMIndMapToNonAddr">처리할 수 없는 스토리지 클래스 ''{1}''에 대한 참조로 데이터 저장소 메모리 ''{0}''을(를) 설정할 수 없음</entry>
+    <entry key="RefdDSMDefMapToNonAddr">''Model default''에 대한 참조로 데이터 저장소 메모리 ''{0}''을(를) 설정할 수 없습니다. 내부 데이터에 대한 디폴트 스토리지 클래스가 처리할 수 없는 스토리지 클래스 ''{1}''(으)로 설정되어 있기 때문입니다.</entry>
+    <entry key="DSMRefIndMapToLegacy">Cannot set the storage class of data store reference ''{0}'' to ''{1}'' because that storage class is a built-in storage class, or a storage class that is defined in a package. The storage class of a data store reference must be configured as Auto or a storage class defined in the Embedded Coder dictionary</entry>
+    <entry key="DSMRefDefMapToLegacy">Cannot set the storage class of data store reference ''{0}'' to 'Model default' because the default storage class for internal data, ''{1}'', is a built-in storage class or a storage class that is defined in a package. The storage class of a data store reference must be Auto or a storage class defined in the Embedded Coder dictionary</entry>
+    <entry key="RefdDSMIndPreserveND">''{1}''에 대한 참조로 데이터 저장소 메모리 ''{0}''의 스토리지 클래스를 설정할 수 없습니다. 이 스토리지 클래스가 ''배열 차원 유지''를 선택하기 때문입니다 </entry>
+    <entry key="RefdDSMDefPreserveND">''Model default''에 대한 참조로 데이터 저장소 메모리 ''{0}''의 스토리지 클래스를 설정할 수 없습니다. 내부 데이터에 대한 디폴트 스토리지 클래스가 ''배열 차원 유지''를 선택하는 스토리지 클래스 ''{1}''(으)로 설정되어 있기 때문입니다.</entry>
+    <entry key="DSMRefIndPreserveND">데이터 저장소 참조 ''{0}''의 스토리지 클래스를 ''{1}''(으)로 설정할 수 없습니다. 이 스토리지 클래스가 ''배열 차원 유지''를 선택하기 때문입니다</entry>
+    <entry key="DSMRefDefPreserveND">데이터 저장소 참조 ''{0}''의 스토리지 클래스를 'Model default'로 설정할 수 없습니다. 내부 데이터 ''{1}''에 대한 디폴트 스토리지 클래스가 ''배열 차원 유지''를 선택하기 때문입니다</entry>
+    <entry key="DynamicallySizedDataStoreReference">데이터 저장소 참조 ''{0}''은(는) 유한한 차원을 가져야 합니다</entry>
+    <entry key="DataStoreReferenceRequiresPublic">The data store reference accessed by ''{0}'' requires the ''Data Visibility'' of ''Signals, states, and internal data'' to be set to ''public''</entry>
+    <entry key="DSMDataTypeAuto">{1}에 사용된 Data Store Memory {0}에는 데이터형 'auto'가 지원되지 않습니다. Simulink Data Store Memory 대화 상자에서 데이터형을 지정하십시오.</entry>
+    <entry key="DSMSignalTypeAuto">{1}에 사용된 Data Store Memory ''{0}''에는 신호 유형 'auto'가 지원되지 않습니다. Simulink Data Store Memory 대화 상자에서 신호 유형을 지정하십시오.</entry>
+    <entry key="ScopedDSMICDimensionMismatch">''{0}'' set the dimensions of &lt;sldiag objui="blockdlg" objparam="InitialValue"&gt;'Initial value'&lt;/sldiag&gt; to ''{2}''. But ''{1}'' set &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;'Dimensions'&lt;/sldiag&gt; to ''{3}''.</entry>
+  </message>
+</rsccat>

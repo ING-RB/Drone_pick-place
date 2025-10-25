@@ -1,0 +1,31 @@
+classdef DiscreteKnobInteractor < ...
+        matlab.uiautomation.internal.interactors.AbstractStateComponentInteractor
+    % This class is undocumented and subject to change in a future release
+    
+    % Copyright 2016-2018 The MathWorks, Inc.
+    
+    methods
+        
+        function uichoose(actor, option)
+            
+            import matlab.uiautomation.internal.SingleLineTextValidator;
+            import matlab.uiautomation.internal.UISingleSelectionStrategy;
+            
+            narginchk(2,2)
+            
+            component = actor.Component;
+            
+            strategy = UISingleSelectionStrategy(SingleLineTextValidator, component.Items);
+            index = strategy.validate(option);
+            
+            if component.SelectedIndex == index
+                return;
+            end
+            
+            actor.Dispatcher.dispatch(...
+                actor.Component, 'uipress', 'Index', index);
+        end
+        
+    end
+    
+end

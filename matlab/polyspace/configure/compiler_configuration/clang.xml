@@ -1,0 +1,551 @@
+<!--Copyright 2013-2025 The MathWorks, Inc. -->
+<compiler_configuration>
+  <compiler_names>
+    <name>(.*-)?clang(\+\+)?(-[0-9\.]+)?</name>
+  </compiler_names>
+  <include_options>
+    <opt>-I</opt>
+    <opt>--include-directory</opt>
+  </include_options>
+  <system_include_options>
+    <opt>-isystem</opt>
+  </system_include_options>
+  <preinclude_options>
+    <opt>-include</opt>
+    <opt>--include</opt>
+  </preinclude_options>
+  <define_options>
+    <opt removePhases="instrum">-D</opt>
+    <opt removePhases="instrum">--define-macro</opt>
+  </define_options>
+  <undefine_options>
+    <opt>-U</opt>
+    <opt>--undefine-macro</opt>
+  </undefine_options>
+  <options_file_options>
+    <opt>@</opt>
+  </options_file_options>
+  <options_file_strategy>clang</options_file_strategy>
+  <output_options>
+    <opt>-o</opt>
+    <opt>--output</opt>
+  </output_options>
+  <standard_options>
+    <std version="c90">-std=c90</std>
+    <std version="c99">-std=c99</std>
+    <std version="c11">-std=c11</std>
+    <std version="c17" c_default="1">-std=c17</std>
+    <std version="c++03">-std=c++03</std>
+    <std version="c++11">-std=c++11</std>
+    <std version="c++14">-std=c++14</std>
+    <std version="c++17" cpp_default="1">-std=c++17</std>
+    <std version="c++20">-std=c++20</std>
+  </standard_options>
+  <semantic_options>
+    <!-- Note: CL.EXE compatibility options are not supported yet -->
+    <opt numArgs="1">--language</opt>
+    <opt isPrefix="true" isIgnored="true">-a</opt>
+    <opt isPrefix="true" isIgnored="true">--analyze</opt>
+    <opt>-ansi</opt>
+    <opt>--ansi</opt>
+    <opt isPrefix="true">-arc</opt>
+    <opt numArgs="1">-arch</opt>
+    <opt isPrefix="true">-B</opt>
+    <opt>-C</opt>
+    <opt isIgnored="true" removePhases="build_config">-c</opt>
+    <opt>-CC</opt>
+    <opt isPrefix="true" isIgnored="true">-cl-</opt>
+    <opt isPrefix="true">-client_name</opt>
+    <opt isPrefix="true">-compatibility_version</opt>
+    <opt numArgs="1">--config</opt>
+    <opt numArgs="1">-dependency-file</opt>
+    <opt isPrefix="true" isIgnored="true">-d</opt>
+    <opt isPrefix="true">--driver_mode</opt>
+    <opt isPrefix="true" isIgnored="true">-dump</opt>
+    <opt>-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang</opt>
+    <opt isPrefix="true">-f</opt>
+    <opt isPrefix="true" isIgnored="true">-fprofile</opt>
+    <opt isPrefix="true" isIgnored="true">-frandom-seed</opt>
+    <opt isPrefix="true" isIgnored="true">-fsanitize-ignorelist</opt>
+    <opt isPrefix="true">-g</opt>
+    <opt numArgs="1" argsArePaths="true">--gcc-toolchain</opt>
+    <opt numArgs="1" argsArePaths="true">--gcc-install-dir</opt>
+    <opt isIgnored="true">-H</opt>
+    <opt isIgnored="true">-help</opt>
+    <opt isIgnored="true">--help</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">--include-with-prefix-after</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">--include-with-prefix</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-imacros</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-isysroot</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-iwithprefix</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-iwithsysroot</opt>
+    <opt numArgs="1" isIgnored="true">-include-pch</opt>
+    <opt numArgs="1" isIgnored="true">-install_name</opt>
+    <opt isPrefix="true">-L</opt>
+    <opt isPrefix="true">-l</opt>
+    <opt isPrefix="true" isIgnored="true">-LNO</opt> <!-- Xtensa -->
+    <opt isPrefix="true">-m</opt>
+    <opt isPrefix="true" isIgnored="true">-M</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config">-MD</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config">-MMD</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config" numArgs="1">-MF</opt>
+    <opt isIgnored="true">-MG</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config">-MP</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config" numArgs="1">-MQ</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config" numArgs="1">-MT</opt>
+    <opt numArgs="1">-mllvm</opt>
+    <opt numArgs="1">-mmlir</opt>
+    <opt>-nobuiltininc</opt>
+    <opt>-nostdinc</opt>
+    <opt>-nostdinc++</opt>
+    <opt>--no-standard-includes</opt>
+    <opt>-nostdlib</opt>
+    <opt>-nostdlib++</opt>
+    <opt>-nostdlibinc</opt>
+    <opt isPrefix="true">--no-system-header-prefix</opt>
+    <opt isPrefix="true">-O</opt>
+    <opt isPrefix="true" isIgnored="true">-OPT</opt> <!-- Xtensa -->
+    <opt isIgnored="true" removePhases="instrum">-pedantic</opt>
+    <opt isIgnored="true">-pedantic-errors</opt>
+    <opt>-pipe</opt>
+    <opt>--pipe</opt>
+    <opt isPrefix="true">--prefix</opt>
+    <opt isPrefix="true" isIgnored="true">-print</opt>
+    <opt isPrefix="true" isIgnored="true">-Q</opt>
+    <opt isPrefix="true" isIgnored="true">-R</opt>
+    <opt>-S</opt>
+    <opt isIgnored="true">-single_module</opt>
+    <opt isPrefix="true">-std=</opt>
+    <opt isPrefix="true">-stdlib=</opt>
+    <opt isPrefix="true">--system-header-prefix</opt>
+    <opt numArgs="1" argsArePaths="true">--sysroot</opt>
+    <opt isPrefix="true">--target=</opt> <!-- same as -target but it has to be prefixed. Must be placed before -target -->
+    <opt numArgs="1">-target</opt>       <!-- same behavior but its argument is separated with a space -->
+    <opt isIgnored="true">--trace-includes</opt>
+    <opt isIgnored="true">--version</opt>
+    <opt isIgnored="true">-v</opt>
+    <opt isIgnored="true">-w</opt>
+    <opt isIgnored="true" removePhases="instrum" >-Wall</opt>
+    <opt isPrefix="true" isIgnored="true" removePhases="instrum" >-Werror</opt>
+    <opt isPrefix="true" isIgnored="true">-W</opt>
+    <opt numArgs="1">-x</opt>
+    <opt isPrefix="true">--xtensa-core</opt>
+    <opt isPrefix="true">--xtensa-params</opt>
+    <opt isPrefix="true">--xtensa-system</opt>
+    <opt isPrefix="true" isIgnored="true">-X</opt>
+    <opt numArgs="1">-Xclang</opt>
+    <opt isPrefix="true">-Xpreprocessor</opt>
+    <opt isPrefix="true" isIgnored="true">-Z</opt>
+    <opt isUnsupported="true">-cc1</opt>
+    <opt isIgnored="true">-verify</opt>
+  </semantic_options>
+  <semantic_environment_variable_list>
+    <env>CPATH</env>
+    <env>C_INCLUDE_PATH</env>
+    <env>OBJC_INCLUDE_PATH</env>
+    <env>CPLUS_INCLUDE_PATH</env>
+    <env>OBJCPLUS_INCLUDE_PATH</env>
+    <env>MACOSX_DEPLOYMENT_TARGET</env>
+  </semantic_environment_variable_list>
+  <preprocess_options_list>
+    <opt>-E</opt>
+  </preprocess_options_list>
+  <preprocess_dollar_macros>yes</preprocess_dollar_macros>
+  <forbidden_macros_list>
+    <name>__has_builtin</name>
+    <name>__has_feature</name>
+    <name>__has_extension</name>
+    <name>__has_attribute</name>
+    <name>__has_warning</name>
+    <!-- The __BLOCKS__ macro is undefined, as macOS blocks are not supported (g1952610). -->
+    <name>__BLOCKS__</name>
+  </forbidden_macros_list>
+  <compile_options_list>
+    <opt>-S</opt>
+  </compile_options_list>
+  <switch>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__arm__"/>
+          <not>
+            <macro_defined name="__aarch64__"/>
+          </not>
+        </and>
+      </condition>
+      <actions>
+        <target_name>arm</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_defined name="__aarch64__"/>
+      </condition>
+      <actions>
+        <target_name>arm64</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__riscv"/>
+          <not>
+            <macro_defined name="__LP64__"/>
+          </not>
+        </and>
+      </condition>
+      <actions>
+        <target_name>riscv</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__riscv"/>
+          <macro_defined name="__LP64__"/>
+        </and>
+      </condition>
+      <actions>
+        <target_name>riscv64</target_name>
+      </actions>
+    </case>
+  </switch>
+  <switch>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__APPLE__"/>
+          <macro_defined name="__apple_build_version__"/>
+        </and>
+      </condition>
+      <actions>
+        <!-- Mapping between stock and Apple LLVM/Clang versions taken from https://en.wikipedia.org/wiki/Xcode#Latest_versions -->
+        <switch>
+          <case>
+            <condition>
+              <macro_equal name="__clang_major__" value="15"/>
+            </condition>
+            <actions>
+              <compiler>clang16.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="14"/>
+                <macro_equal name="__clang_minor__" value="0"/>
+                <macro_equal name="__clang_patchlevel__" value="3"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang15.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <macro_equal name="__clang_major__" value="14"/>
+            </condition>
+            <actions>
+              <compiler>clang14.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="13"/>
+                <macro_equal name="__clang_minor__" value="1"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang13.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <macro_equal name="__clang_major__" value="13"/>
+            </condition>
+            <actions>
+              <compiler>clang12.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="12"/>
+                <macro_equal name="__clang_minor__" value="0"/>
+                <macro_equal name="__clang_patchlevel__" value="0"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang10.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <macro_equal name="__clang_major__" value="12"/>
+            </condition>
+            <actions>
+              <compiler>clang11.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="11"/>
+                <macro_equal name="__clang_minor__" value="0"/>
+                <macro_equal name="__clang_patchlevel__" value="0"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang8.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <macro_equal name="__clang_major__" value="11"/>
+            </condition>
+            <actions>
+              <compiler>clang9.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="10"/>
+                <macro_equal name="__clang_minor__" value="0"/>
+                <macro_equal name="__clang_patchlevel__" value="0"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang6.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <macro_equal name="__clang_major__" value="10"/>
+            </condition>
+            <actions>
+              <compiler>clang7.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="9"/>
+                <macro_equal name="__clang_minor__" value="1"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang5.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <and>
+                <macro_equal name="__clang_major__" value="9"/>
+                <macro_equal name="__clang_minor__" value="0"/>
+              </and>
+            </condition>
+            <actions>
+              <compiler>clang4.x</compiler>
+            </actions>
+          </case>
+          <case>
+            <condition>
+              <or>
+                <macro_equal name="__clang_major__" value="5"/>
+                <macro_equal name="__clang_major__" value="6"/>
+                <macro_equal name="__clang_major__" value="7"/>
+                <macro_equal name="__clang_major__" value="8"/>
+              </or>
+            </condition>
+            <actions>
+              <compiler>clang3.x</compiler>
+            </actions>
+          </case>
+          <default>
+            <log severity="warning">Clang version not supported (Apple). Defaulting to clang16.x</log>
+            <compiler>clang16.x</compiler>
+          </default>
+        </switch>
+      </actions>
+    </case>
+    <default>
+      <!-- Stock clang, not Apple's fork -->
+      <switch>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="16"/>
+          </condition>
+          <actions>
+            <compiler>clang16.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="15"/>
+          </condition>
+          <actions>
+            <compiler>clang15.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="14"/>
+          </condition>
+          <actions>
+            <compiler>clang14.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="13"/>
+          </condition>
+          <actions>
+            <compiler>clang13.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="12"/>
+          </condition>
+          <actions>
+            <compiler>clang12.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="11"/>
+          </condition>
+          <actions>
+            <compiler>clang11.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="10"/>
+          </condition>
+          <actions>
+            <compiler>clang10.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="9"/>
+          </condition>
+          <actions>
+            <compiler>clang9.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="8"/>
+          </condition>
+          <actions>
+            <compiler>clang8.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="7"/>
+          </condition>
+          <actions>
+            <compiler>clang7.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="6"/>
+          </condition>
+          <actions>
+            <compiler>clang6.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="5"/>
+          </condition>
+          <actions>
+            <compiler>clang5.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="4"/>
+          </condition>
+          <actions>
+            <compiler>clang4.x</compiler>
+          </actions>
+        </case>
+        <case>
+          <condition>
+            <macro_equal name="__clang_major__" value="3"/>
+          </condition>
+          <actions>
+            <compiler>clang3.x</compiler>
+          </actions>
+        </case>
+        <default>
+          <log severity="warning">Clang version not supported. Defaulting to clang16.x</log>
+          <compiler>clang16.x</compiler>
+        </default>
+      </switch>
+    </default>
+  </switch>
+  <!-- Last switcher so it overwrites previously defined compiler/target -->
+  <switch>
+    <case>
+      <condition>
+        <or>
+          <macro_defined name="__XC8__"/>
+          <macro_defined name="__XC8"/>
+          <macro_defined name="__XC8_VERSION"/>
+          <macro_defined name="_XC8_MODE_"/>
+        </or>
+      </condition>
+      <actions>
+        <!-- When tracing the build, Microchip xc8 will be detected as a clang with extensions -->
+        <target_name>pic</target_name>
+        <compiler>microchip</compiler>
+      </actions>
+    </case>
+  </switch>
+  <src_extensions>
+    <ext>c</ext>
+    <ext>cc</ext>
+    <ext>cp</ext>
+    <ext>cxx</ext>
+    <ext>cpp</ext>
+    <ext>c++</ext>
+  </src_extensions>
+  <obj_extensions>
+    <ext>o</ext>
+  </obj_extensions>
+  <precompiled_header_extensions>
+    <ext>pch</ext>
+  </precompiled_header_extensions>
+  <sources_to_ignore>doprnt.c</sources_to_ignore> <!-- Microchip xc8 -->
+  <include_strategy>from-compiler</include_strategy>
+  <from_compiler_include_strategy>
+    <input>
+      <opt>-v</opt>
+      <opt>-E</opt>
+      <empty_source_file>true</empty_source_file>
+    </input>
+    <output>
+      <regex>^\s((\/|[a-zA-Z]:[\\\/]|\\\\).*)$</regex>
+    </output>
+  </from_compiler_include_strategy>
+  <default_macro_strategy>from-compiler</default_macro_strategy>
+  <from_compiler_macro_strategy>
+    <input>
+      <opt>-dM</opt>
+      <opt>-E</opt>
+      <empty_source_file>true</empty_source_file>
+    </input>
+    <output>
+      <regex name_group="1" value_group="5">^#\s*define\s+(([^\s]*(\(.*\)))|([^\s]*))\s+(.*)?$</regex>
+    </output>
+  </from_compiler_macro_strategy>
+  <duplicate_include_strategy>clang</duplicate_include_strategy>
+</compiler_configuration>

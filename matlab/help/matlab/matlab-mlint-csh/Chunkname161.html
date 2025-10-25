@@ -1,0 +1,9 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code generation does not support:<ul><li><p>The command form of <code>load</code></p></li><li><p>The functional form of <code>load</code> without
+                                assignment to a structure or array</p></li><li><p> Assignment of the output of <code>load</code> to a
+                                subscripted variable</p></li></ul></p><br/><strong>Suggested Action</strong><br/><p>Replace instances of the command form of <code>load</code> and
+                    instances of the functional form of <code>load</code> where you have not
+                    assigned the output to a non-subscripted structure or array.&nbsp;For example,
+                    replaces instances such as:</p><p>
+                    <code>load&nbsp;myFile.mat<br/>load('myFile.mat')<br/>S(i)&nbsp;=&nbsp;load('myFile.mat')</code>
+                </p><p>with <code>S = load('myFile.mat')</code>, where <code>S</code> is
+                    a structure or array without any subscripting.</p></body></html>

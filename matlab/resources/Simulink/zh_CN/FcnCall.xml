@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="FcnCallConnMustBeSFcnOrCoreBlk">模块 ''{0}'' 的函数调用端口连接到不生成函数调用信号的 ''{1}''。可以生成函数调用信号的模块包括 Stateflow 图、选中了参数 '输出函数调用' 的根级 Inport 模块或 S-Function。</entry>
+    <entry key="FcnCallConnMustBeRootFcnCallInportBlk">模块 ''{0}'' 的函数调用端口连接到不生成函数调用信号的 ''{1}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''OutputFunctionCall'', ''on'');&lt;/cmd&gt; &lt;txt&gt;在 Inport 模块 ''{2}'' 上选择 '输出函数调用' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;或者，使用函数调用生成器、Stateflow 图或 S-Function 生成函数调用信号。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="FcnCallConnMustBeFromPort0">Function-call port of block ''{0}'' must be connected to a block whose output port produces a function-call signal. Blocks that can produce function-call signals include Stateflow charts, root-level Inport blocks with parameter 'Output function call' selected, or S-functions (which must produce the signal out of port 1 only). ''{1}'' is not producing a function-call signal.</entry>
+    <entry key="InvFcnCallConn">"函数调用" 连接无效。</entry>
+    <entry key="InvFcnCallConnEnd_FcnCallSysEnd">Invalid connection ends with block ''{0}'' on &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer}.</entry>
+    <entry key="InvFcnCallConnStart_NonSFcnStart">Invalid connection starting from ''{0}'' (output port {1,number,integer}, element {2,number,integer}) is disallowed because it is not a valid function-call initiator. Blocks that can produce function-call signals include Stateflow charts, root-level Inport blocks, or S-functions.</entry>
+    <entry key="InvFcnCallConn_MultSys">Invalid function-call connection originating from function-call initiator ''{0}'' on &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{3}"&gt;output port {1,number,integer}&lt;/sldiag&gt;, element {2,number,integer}. The destination function-call block ''{3}'' resides within a nonvirtual subsystem. To fix the error, place the destination function-call block at (or above) the same level in the model hierarchy as the function-call initiator.</entry>
+    <entry key="InvFcnCallConn_NonFcnCallEnd">无效连接以 ''{0}'' 结尾，这是非法的，因为它不是函数调用模块。</entry>
+    <entry key="InvFcnCallConn_SFcnStart">函数调用发起方 ''{0}'' 尝试对输出端口 {1,number,integer} 的元素 {2,number,integer} 调用函数调用模块，即使此端口元素尚未配置为输出函数调用信号也是如此。</entry>
+    <entry key="InvFcnCallConn_Async">Invalid connection starts with S-function ''{0}'', which is making a function call on output port element {1,number,integer}. An asynchronous function call generator must drive a function call port of a subsystem or a Model block. </entry>
+    <entry key="InvFcnCallInport_Dst">Invalid function-call connection from Inport block ''{0}'' to function-call block ''{1}''. Cannot invoke a function-call from function-call initiator ''{2}'' that is outside nonvirtual subsystem ''{3}'' with the function-call block.</entry>
+    <entry key="InvFcnCallInport_VarDst">从 Inport 模块 ''{0}'' 到 Variant Source 模块或 Variant Subsystem 的输出端口 ''{1}'' 的函数调用连接无效。不支持从位于包含函数调用模块的非虚拟子系统 ''{3}'' 外部的函数调用发起方 ''{2}'' 调用函数调用。</entry>
+    <entry key="InvFcnCallInport_Src">Invalid function-call connection originating from function-call initiator ''{0}'' on &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2,number,integer}"&gt;output port {1,number,integer}&lt;/sldiag&gt; element {2,number,integer}. The function-call initiator cannot invoke a function-call block inside a nonvirtual subsystem ''{3}'' via the subsystem input port {4,number,integer}.</entry>
+    <entry key="InvFcnCallConn_MdlRef_RefBld">Invalid function-call connection originating from function-call initiator ''{0}'' to port {1,number,integer} of Model block ''{2}''. The function-call initiator must reside at the same level in the model hierarchy as the Model block. If you want to keep the function-call initiator at a different level in the model hierarchy, change 'Function Packaging' for subsystem ''{3}'' to 'Inline'.</entry>
+    <entry key="InvFcnCallSigToStream">无法记录源于模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 的信号，因为不支持记录函数调用信号。要停止记录信号，请确保它未标记为信号记录、未连接到 To Workspace 模块或 Record 模块，或未连接到 Outport 模块(如果启用输出记录)。</entry>
+    <entry key="InvFcnCallSigToWks">The To Workspace block ''{0}'' is connected to a function-call signal.  To Workspace blocks do not support function-call signals.</entry>
+    <entry key="InvVariantSrcInExportFcn">Variant Source block ''{0}'' with multiple input ports found in the root window of ''{1}''. Only single input port Variant Source blocks are supported in root window when the model is configured for export function.</entry>
+    <entry key="FcnCallGeneratorNumOfIterationsMustBeScalar">Invalid setting for Function-Call Generator block ''{0}''. &lt;sldiag objui="blockdlg" objparam="{1}"&gt;''Number of iterations''&lt;/sldiag&gt; must be scalar when &lt;sldiag objui="blockdlg" objparam="{2}"&gt;''Disallow wide output''&lt;/sldiag&gt; option is selected.</entry>
+    <entry key="FcnCallGeneratorNumOfIterationsMustBePositive">Invalid setting for Function-Call Generator block ''{0}''. Each element of &lt;sldiag objui="blockdlg" objparam="{1}"&gt;''Number of iterations''&lt;/sldiag&gt; parameter must be a positive integer.</entry>
+    <entry key="FcnCallGeneratorUnsupportedEnablePortDataType">Function-Call Generator 模块 ''{1}'' 的使能输入端口不支持数据类型 ''{0}''。数据类型必须为 double、single、int8、uint8、int16、uint16、int32、uint32 或 boolean。</entry>
+    <entry key="RootOutportCannotAcceptFcnCall">Root-level Outport block ''{0}'' cannot accept a function-call signal.</entry>
+    <entry key="CannotMuxFcnCallRootInportWithOtherBlock">
+  根级 Inport 模块 ''{0}'' 配置为输出函数调用信号。因此，其输出无法通过模块 ''{2}'' 与 ''{1}'' 的输出组合。
+</entry>
+    <entry key="NoFCSSCycles">不支持函数调用循环。当包含函数调用发起方模块(如 Stateflow 图或 S-Function 模块)的模块直接或间接驱动同一模块的其他函数调用输入端口时，会出现函数调用循环。</entry>
+    <entry key="FCSSCycle1">模块 ''{0}'' 的输出端口 {1} 驱动模块 ''{2}'' 的输入端口 {3}。</entry>
+    <entry key="FCSSCycle2">模块 ''{0}'' 的输出端口 {1} 和模块 ''{2}'' 的输出端口 {3} 驱动模块 ''{4}'' 的输入端口 {5}。</entry>
+    <entry key="FCSSCycle3">{0} 和 ''{1}'' 的函数调用输出端口驱动模块 ''{2}'' 的输入端口 {3}。</entry>
+    <entry key="MessageCannotBeFcnCallInpArg">
+  从 ''{3}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 向 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 传递了无效消息信号。不允许从函数调用模块的发起方向该函数调用模块传递消息信号。
+</entry>
+    <entry key="MessageCannotBeFcnCallRetVal">
+  从 ''{3}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 向 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 传递了无效消息信号。不允许将消息信号从函数调用模块反馈给其发起方。
+</entry>
+    <entry key="UnresolvableRootDataPortGroupInLoop">
+      Cannot simulate this model in accelerator mode. Consider simulating the model in normal mode, or changing 'Task priority' parameter of Asynchronous Task Specification blocks ''{1}'' to non-empty values.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''SimulationMode'', ''Normal'');&lt;/cmd&gt;
+            &lt;txt&gt;Change 'Simulation Mode' to 'Normal'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="NGSrcsForMdlBlkEventInitsInLoop">
+      A data dependency violation has been detected. When the Model block ''{0}'' has model event ports, its model initialize port has the highest priority, followed by model reset ports, model terminate port, and other function-call input ports. Therefore, the block ''{1}'' that drives one of model event ports should execute before ''{2}''. However, the data dependency between these two blocks violates this requirement. See &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''function_call_adaptation'')"&gt;help page&lt;/a&gt; for details.
+    </entry>
+    <entry key="NGSrcsForAsyncFcnCallInLoop">
+      A data dependency violation has been detected involving asynchronous function-call initiators and corresponding Rate Transition blocks, or subsystems or referenced models containing such Rate Transition blocks. See &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''rate_transitions_and_ansynchronous_blocks'')"&gt;help page&lt;/a&gt; for details.
+    </entry>
+    <entry key="NonGraphicalSrcsLoop">
+      A data dependency violation has been detected. See &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''function_call_adaptation'')"&gt;help page&lt;/a&gt; for details.
+    </entry>
+    <entry key="NGSrcForMultiRateInitsForExpFcnMdlRefInLoop">
+      When the Model block ''{1}'' references an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', its function-call initiators must execute rate-monotonically. This implies that ''{2}'' driving its &lt;sldiag objui="inport" objparam="{3}" objname="{1}"&gt;input port ''{3}''&lt;/sldiag&gt; in a faster rate must execute before ''{4}'' that drives &lt;sldiag objui="inport" objparam="{5}" objname="{1}"&gt;input port ''{5}''&lt;/sldiag&gt; with a slower rate.
+    </entry>
+    <entry key="NGSrcForSameRateInitsForIRTPortsInLoop">
+      Model 模块 ''{0}'' 已选择一个或多个 '模型事件仿真' 参数。当 Model 模块具有模型事件端口时，其模型初始化端口具有最高优先级，其次是模型重置端口、模型终止端口和其他函数调用输入端口。当两个发起方在同一任务中执行时，这意味着驱动引用模型的&lt;sldiag objui="inport" objparam="{2}" objname="{0}"&gt;输入端口 ''{2}''&lt;/sldiag&gt; 的 ''{1}'' 必须在驱动其&lt;sldiag objui="inport" objparam="{4}" objname="{0}"&gt;输入端口 ''{4}''&lt;/sldiag&gt; 的 ''{3}'' 之前执行。
+    </entry>
+    <entry key="NGSrcForSameRateInitsForAdaptedMdlRefInLoop">
+      Model 模块 ''{0}'' 已选择 &lt;sldiag objui="blockdlg" objparam="ShowModelPeriodicEventPorts"&gt;'调度速率'&lt;/sldiag&gt; 参数。因此，其函数调用输入端口必须按照其采样时间或任务优先级的顺序执行。当两个发起方在同一任务中执行时，这意味着驱动引用模型的&lt;sldiag objui="inport" objparam="{2}" objname="{0}"&gt;输入端口 ''{2}''&lt;/sldiag&gt; 的 ''{1}'' 必须在驱动其&lt;sldiag objui="inport" objparam="{4}" objname="{0}"&gt;输入端口 ''{4}''&lt;/sldiag&gt; 的 ''{3}'' 之前执行。
+    </entry>
+    <entry key="TaskCausedNonGraphicalSrcsLoopSuggestion1">
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''Solver'', ''FixedStepDiscrete'');set_param_action(''{0}'', ''SolverMode'', ''MultiTasking'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider executing those function-call input ports in different tasks to fix this problem. One possible solution is to change model ''{0}'' to multitasking mode so that initiators with different sample times will execute in different tasks.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="TaskCausedNonGraphicalSrcsLoopSuggestion2">
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider specifying different sample times for those initiators so that they execute in different tasks when model ''{0}'' is in multitasking mode.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="NGSrcForMuxedFcnCallInLoop">
+      ''{2}'' is to sort before ''{3}'' because they both drive input port {0,number,integer} of function-call block ''{1}'' through Mux block ''{4}''. When a function-call block is called by multiple initiators in the same task with their function-call output signals muxed together, the signal are scheduled in the order they are connected to the Mux block.
+    </entry>
+    <entry key="NGSrcForMergeFcnCallInLoop">
+      ''{2}'' is to sort before ''{3}'' because they both drive input port {0,number,integer} of function-call block ''{1}'' through Merge block ''{4}''. When a function-call block is called by multiple initiators in the same task with their function-call output signals merged, the signal are scheduled in the order they are connected to the Merge block.
+    </entry>
+    <entry key="NGSrcForExpFcnMdlRootPortGroupInLoop">
+      Specification on function-call root-level Inport block ''{0}'' indicates it should execute before ''{1}'' in the export-function model. The following factors impact the relative scheduling order of function-call root-level Inport blocks in an export-function model: block priorities, sample times specified, and port numbers.
+    </entry>
+    <entry key="PeriodicFCSSMustBeCalledOnceWhenEnabled">The function-call initiator executed function-call subsystem ''{0}'' multiple times on time step {1}. This periodic function-call subsystem must be invoked periodically once it is activated (enabled) and until it is terminated (disabled).
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider adjusting the initiator to invoke the function-call periodically.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{2}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt;
+            &lt;txt&gt;Alternatively, consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{2}'' from 'periodic' to 'triggered'.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="PeriodicFcnCallMdlMustBeCalledOnceWhenEnabled">The function-call initiator executed function-call Model block ''{0}'' multiple times on time step {1}. This periodic function-call block must be invoked periodically once it is activated (enabled) and until it is terminated (disabled).
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider adjusting the initiator to invoke the function-call periodically.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Alternatively, consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{2}'' from 'periodic' to 'triggered'.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="PeriodicFCSSMustNotBeCalledWhenDisabled">Function-call block ''{0}'' must not be executed during the same time step that it is deactivated (disabled) by its function-call initiator because it has a periodic sample time. The function-call initiator both executed and disabled the function-call block on time step ''{1}''.</entry>
+    <entry key="RootPeriodicFcnCallMustBeCalledOnceWhenEnabled">The function-call initiator executed function-call block ''{0}'' multiple times on time step {1}. This periodic function-call block must be invoked periodically at a rate of {2} once it is activated (enabled) and until it is terminated (disabled).
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider adjusting the initiator to invoke the function-call periodically.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Alternatively, consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{3}'' from 'periodic' to 'triggered'.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="RootPeriodicFcnCallMustBeCalledOnceWhenEnabled2">函数调用发起方在时间步 {1} 上多次执行了函数调用模块 ''{0}''。一旦激活(启用)此周期函数调用模块，必须以 {2} 的速率周期性调用它，直到它被终止(禁用)。请考虑调整发起方以周期性调用函数调用。</entry>
+    <entry key="RootPeriodicFcnCallMustBeCalledWhenEnabled2">函数调用发起方未在时间步 {1} 上执行函数调用模块 ''{0}''。一旦激活(启用)此周期函数调用模块，必须以 {2} 的速率周期性调用它，直到它被终止(禁用)。请考虑调整发起方以周期性调用函数调用。</entry>
+    <entry key="RootPeriodicFcnCallWithAbsTimeMustBeCalledWhenEnabled">函数调用发起方未在时间步 {1} 上执行函数调用模块 ''{0}''。此周期函数调用模块包含使用绝对时间或历时的 ''{3}''，一旦激活(启用)此模块，必须以 {2} 的速率周期性调用它，直到它被终止(禁用)。请考虑调整发起方以周期性调用函数调用。</entry>
+    <entry key="PeriodicEventPortCannotBeGrounded">当 Model 模块 ''{0}'' 中选择了 ''调度速率'' 参数并且 ''速率调度方式'' 设置为 ''端口'' 时，其函数调用输入端口 ''{1}'' 被函数调用发起方激活(启用)时必须周期性执行，因为它具有周期性采样时间。但是，此函数调用输入端口将永远不会被调用，因为它没有连接到活动的发起方。</entry>
+    <entry key="PeriodicEventPortMustBeCalledOnceWhenEnabled">The function-call initiator connected to input port ''{0}'' executed the Model block ''{1}'' multiple times on time step ''{2}''. When the Model block has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', it must be executed periodically once it is activated (enabled) by its function-call initiator until it is terminated (disabled).</entry>
+    <entry key="PeriodicEventPortMustBeCalledWhenEnabled">The function-call initiator connected to input port ''{0}'' did not execute the Model block ''{1}'' on time step ''{2}''. When the Model block has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', it must be executed periodically once it is activated (enabled) by its function-call initiator until it is terminated (disabled).</entry>
+    <entry key="AccExpFcnMdlPeriodicFcnCallMustBeCalledOnceWhenEnabled">
+  函数调用发起方 ''{2}'' 在时间 {3} 多次执行了 Model 模块 ''{1}'' 的函数调用输入端口 ''{0}''。在引用模型内部，由 Model 模块的对应输入端口驱动的函数调用模块已配置为周期性函数调用模块。一旦它被其函数调用发起方激活(启用)，就必须周期性执行，直到被终止(禁用)。
+</entry>
+    <entry key="AccExpFcnMdlPeriodFCWithAbsElpsTMustBeCalledWhenEnabled">
+      函数调用发起方 ''{2}'' 在时间 {3} 未执行 Model 模块 ''{1}'' 的函数调用输入端口 ''{0}''。由 Model 模块的对应输入端口驱动的函数调用模块已配置为周期函数调用模块。它包含 ''{4}''，后者或者是已选择 ''调度速率'' 参数的模型模块，或者使用绝对时间或经过时间并且一旦激活(启用)就必须周期性执行，直到被终止(禁用)。
+    </entry>
+    <entry key="ExpFcnMdlMustNotBeEnabledDuringSim">The model referenced by Model block ''{0}'' has a root inport which outputs a function-call signal. The function-call subsystems driven by the root inport must be enabled at the start of simulation, and should not be disabled or re-enabled during the simulation. However, at time {1}, the function-call signal originating from output port {2,number,integer} of ''{3}'' attempts to enable the function via input port {4,number,integer} of the Model block.</entry>
+    <entry key="ExpFcnMdlMustNotBeDisabledDuringSim">Model 模块 ''{0}'' 引用的模型有一个输出函数调用信号的根输入端口。由根输入端口驱动的函数调用子系统必须在仿真开始时启用，并且不应在仿真期间被禁用或重新启用。但是，在时间 {1}，源自 ''{3}'' 的输出端口 {2,number,integer} 的函数调用信号尝试通过 Model 模块的输入端口 {4,number,integer} 禁用该函数。</entry>
+    <entry key="ExplicitFCSSCalledWhenNotEnabled">Function-call initiator ''{0}'' attempted to execute function-call subsystem ''{1}'' while it was inactive (disabled) on time step ''{2}''. The function-call subsystem must be activated by a function-call initiator before execution can occur.</entry>
+    <entry key="ExplicitFCSSDisabledWhenDisabled">函数调用发起方 ''{0}'' 尝试在时间步 ''{2}'' 上重新禁用函数调用子系统 ''{1}''。函数调用子系统无法被同一个函数调用发起方重新禁用；函数调用发起方的实现存在缺陷。</entry>
+    <entry key="ExplicitFCSSEnabledWhenEnabled">Function-call initiator ''{0}'' attempted to reenable function-call subsystem ''{1}'' on time step ''{2}''. The function-call subsystem cannot be reactivated by the same function-call initiator; there is a flaw in the implementation of the function-call initiator.</entry>
+    <entry key="SfcnNotAdvCallingDisable">函数调用发起方 ''{0}'' 无法调用 ssDisableSystemWithTid，因为它尚未配置为通过 ssSetExplicitFCSSCtrl 实现此操作。</entry>
+    <entry key="SfcnNotAdvCallingEnable">The function-call initiator ''{0}'' may not call ssEnableSystemWithTid since it has not been configured to be capable of such via ssSetExplicitFCSSCtrl.</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredFCSS">Function-call subsystem ''{0}'' is configured to execute periodically. Therefore, it cannot be placed inside a triggered function-call subsystem or model ''{1}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{2}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{2}'' from 'periodic' to 'triggered'.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{3}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt;
+            &lt;txt&gt;Alternatively, consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{3}'' to 'periodic'.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredFCSS2">函数调用模块 ''{0}'' 配置为周期性执行。因此，它无法放置在触发的函数调用子系统或模型 ''{1}'' 中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请考虑将 ''{2}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 从 ''周期性'' 更改为 ''触发''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;或者，考虑将 ''{3}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 更改为 ''周期性''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredSS">函数调用子系统 ''{0}'' 配置为周期性执行。因此，它无法放置在触发的子系统 ''{1}'' 中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;请考虑将 ''{2}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 从 ''周期性'' 更改为 ''触发''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCannotBeChildOfTriggeredSS2">函数调用模块 ''{0}'' 配置为周期性执行。因此，它无法放置在触发的子系统 ''{1}'' 中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请考虑将 ''{2}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 从 ''周期性'' 更改为 ''触发''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicFCSSCallerMustHaveDiscreteTs">
+    Function-call subsystem ''{0}'' is configured to execute periodically. Therefore, it must be called by an initiator with a discrete sample time.
+    </entry>
+    <entry key="InvRootLvlPeriodicFcnCallPort">Trigger Port 模块 ''{0}'' 已将其对话框参数 ''采样时间类型'' 指定为 ''周期性''。由于此模块位于模型的根级，因此不允许将其参数 '采样时间' 设置为 -1。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请考虑指定离散采样时间。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt; &lt;txt&gt;或者，考虑将 ''{0}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 更改为 ''触发''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InvRootInportFcnCallMultiIteration">
+    Since the function-call root-level Inport block ''{0}'' has specified a discrete sample time ''{1}'', and none of function-call blocks it directly drives is set up to execute periodically, executing the function-call multiple times at a given sample time is not supported. However, the workspace variable specified as the external input has specified the block will invoke function-call multiple times at time ''{2}''. Consider either updating the workspace variable so that at any time step the function-call will be invoked only once, or set up any function-call subsystem this root-level Inport block directly drives to execute periodically, by specifying dialog parameter 'Sample time type' to 'periodic' on the Trigger Port block inside the function-call subsystem.
+    </entry>
+    <entry key="AdaptedModelInvalidExecOrder1">
+    When the Model block ''{0}'' has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', all its function-call input ports must be invoked in the sequence of the task priorities of specified rates. Function-call &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; was specified a discrete rate {2}, which has a higher priority than that of discrete rate {4} specified for function-call input port ''{3}''. However, at time {5}, function-call &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;input port ''{3}''&lt;/sldiag&gt; was invoked before ''{1}''.
+    </entry>
+    <entry key="AdaptedModelInvalidExecOrder2">
+    When the Model block ''{0}'' has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', all its function-call input ports must be invoked in the sequence of the specified task priorities. Function-call &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; was specified a task priority {2,number,integer} via an Asynchronous Task Specification block inside the referenced model, which has a higher priority than the task priority {4,number,integer} specified for function-call input port ''{3}''. However, at time {5}, function-call &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;input port ''{3}''&lt;/sldiag&gt; was invoked before ''{1}''.
+    </entry>
+    <entry key="InvalidExecOrderForFcnsAdaptedToPartitions">
+当 Model 模块 ''{0}'' 使用 ''调度编辑器'' 调度速率时，必须按照指定的任务优先级顺序调用与异步函数调用对应的所有分区。函数调用&lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;输入端口 ''{1}''&lt;/sldiag&gt; 的任务优先级 {2,number,integer} 是通过引用模型中的 Asynchronous Task Specification 模块指定的，其优先级高于任务优先级为 {4,number,integer} 的函数调用&lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;输入端口 ''{3}''&lt;/sldiag&gt;。但是，在时间 {5}，分区 ''{6}'' 在 ''{7}'' 之前调用。
+</entry>
+    <entry key="AdaptedModelInvalidExecOrder3">
+    When the Model block ''{0}'' has the ''Schedule rates'' parameter selected and ''Schedule rates with'' is set to ''Ports'', all its function-call input ports must be invoked in the sequence of the specified task priorities. Function-call &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; was specified a task priority {2,number,integer} via an Asynchronous Task Specification block inside the referenced model, which has a higher priority than the discrete rate {4} specified for function-call input port ''{3}''. However, at time {5}, function-call &lt;sldiag objui="inport" objparam="{3}" objname="{0}"&gt;input port ''{3}''&lt;/sldiag&gt; was invoked before ''{1}''.
+    </entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup">A data dependency violation is detected involving at least one function-call block driven by a root-level Inport block that outputs a function-call signal. In model ''{0}'', all blocks that are not driven by root-level Inport blocks producing function-call signals must execute either before or after the corresponding function-call invocations. Details of this data dependency violation are listed below:</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup1">模块 ''{0}'' 需要在由根级 Inport 模块 ''{2}'' 驱动的函数调用模块 ''{1}'' 后执行。</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup1a">模块 ''{0}'' 需要在根级 Inport 模块 ''{1}'' 后执行。</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup2">模块 ''{0}'' 需要在由根级 Inport 模块 ''{2}'' 驱动的函数调用模块 ''{1}'' 前执行。</entry>
+    <entry key="DataDepViolationInvolvingDataPortGroup2a">由根级 Inport 模块 ''{1}'' 驱动的函数调用模块 ''{0}'' 需要在由另一个根级 Inport 模块 ''{3}'' 驱动的函数调用模块 ''{2}'' 前执行。</entry>
+    <entry key="DataDepViolationInvolvingFcnCallPortGroups">A data dependency loop is detected involving at least two function-call blocks driven by root-level Inport blocks producing function-call signals. Details of this loop are listed below:</entry>
+    <entry key="DataDepViolationInvolvingFcnCallPortGroup">由根级 Inport 模块 ''{1}'' 驱动的函数调用模块 ''{0}'' 需要读取由另一个根级 Inport 模块 ''{3}'' 驱动的函数调用模块 ''{2}'' 的输出。然而，后一个函数调用模块却需要直接或间接地根据前一个函数的输出来计算其输出。</entry>
+    <entry key="DataDepViolationInvolvingFcnCallPortGroup2">由根级 Inport 模块 ''{1}'' 驱动的函数调用模块 ''{0}'' 需要在另一个根级 Inport 模块 ''{2}'' 后执行。然而，后者调用的函数调用模块却需要直接或间接地根据前者的输出计算其输出。</entry>
+    <entry key="NonInlinedSFcnCannotCallModelBlkWithFcnCallInput">Code generation is not supported for the non-inlined S-function ''{0}'' that is invoking a function-call input at input port {1,number,integer} of the Model block ''{2}''. Consider converting the non-inlined S-function ''{3}'' to an inlined S-function by providing a corresponding TLC implementation.</entry>
+    <entry key="ExpFcnMdlInvUnionRateWithGroundSrc">
+      Unable to use &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'' as a model reference. Root level Outport block ''{1}'' must not mix grounded sources with signals from multiple exported functions, Initialize, Reset, or Terminate functions.
+    </entry>
+    <entry key="BranchedFunctionCallCannotProduceRetVal">A function-call signal, originating at initiator ''{0}'', is branched incorrectly. The function-call block ''{1}'', which is part of this branched function-call network, violates the following requirement: the block output signals may not be fed back directly to the initiator. Consider inserting a block to provide a delay on this feedback signal.</entry>
+    <entry key="BranchedFunctionCallInvalidBranching">发起方 ''{2}'' 的&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;输出端口 {1,number,integer}&lt;/sldiag&gt; 的元素 {0,number,integer} 发出的函数调用信号的分支不正确。需要使用 Function-Call Split 模块重新创建连接到 ''{3}'' 的函数调用信号分支。</entry>
+    <entry key="BranchedFunctionCallInvalidCommonInitiatorCallingFCSS">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call signal is fed to element {2,number,integer} and element {3,number,integer} of &lt;sldiag objui="inport" objparam="{4}" objname="{5}"&gt;input port {4}&lt;/sldiag&gt; of block ''{5}''. To use multiple initiators to call a function-call block, all function-call signals invoking the block must be unique.</entry>
+    <entry key="BranchedFunctionCallInvalidCommonInitiatorCallingNonSS">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call signal is fed to element {2,number,integer} and element {3,number,integer} of &lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;input port {4,number,integer}&lt;/sldiag&gt; of block ''{5}''. To use multiple initiators to call a function-call block, all function-call signals invoking the block must be unique.</entry>
+    <entry key="BranchedFunctionCallInvalidCompInfo">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call blocks ''{2}'' and ''{3}'' violate the requirement that all function-call blocks within a branched function-call network must reside at the same nonvirtual hierarchical level of the model.</entry>
+    <entry key="BranchedFunctionCallInvalidFcnCallBlock">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. An S-function block ''{2}'' is supported in a branched function-call network, only when the model simulates in normal mode. Consider changing the simulation mode of this model to 'Normal', or using the following workaround: Insert a function-call subsystem with a function-call initiator such as a Stateflow chart inside it. Change the connections such that the original function-call signal from ''{3}'' is connected to the function-call input port of the inserted function-call subsystem, and let the function-call initiator inside the inserted function-call subsystem drive the S-function block.</entry>
+    <entry key="BranchedFunctionCallInvalideMultipleCaller">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function-call block ''{2}'' is invoked by multiple initiators. Each function-call block within a branched function-call network must be invoked by a unique initiator.</entry>
+    <entry key="BranchedFunctionCallInvalidWideFcnCall">A function-call signal, originating at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;output port {0,number,integer}&lt;/sldiag&gt; of initiator ''{1}'', is branched incorrectly. The function call initiator ''{2}'' emits a function-call signal with multiple elements. All function-call initiators within a branched function-call network must emit scalar function-call signals.</entry>
+    <entry key="NonInlinedSFcnCannotInvokeBranchedFcnCall">Code generation is not supported for the non-inlined S-function ''{0}'' that is invoking a branched function-call signal. Consider converting the non-inlined S-function to an inlined S-function by providing a corresponding TLC implementation.</entry>
+    <entry key="FcnCallLatchDisallowVarSizeInput">Function-Call Feedback Latch 模块 ''{0}'' 的输入信号是可变大小信号或包含可变大小信号的总线信号。此模块不支持可变大小信号输入。</entry>
+    <entry key="FcnCallLatchInvalidDstBlock">The output of the Function-Call Feedback Latch block ''{0}'' is connected to an invalid destination ''{1}''. The output of a Function-Call Feedback Latch block must be connected to the data input port of a function-call block.</entry>
+    <entry key="FcnCallLatchInvalidDstSFcn">The output of the Function-Call Feedback Latch block ''{0}'' is connected to an invalid destination ''{1}''. Connecting the data input port of an S-function block to the output of a Function-Call Feedback Latch block is allowed only when the model simulates in normal mode.</entry>
+    <entry key="FcnCallLatchInvalidDstPort">Function-Call Feedback Latch 模块 ''{0}'' 的输出连接到模块 ''{2}'' 的无效目标端口 {1,number,integer}。Function-Call Feedback Latch 模块的输出必须连接到函数调用子系统或模型的数据输入端口。</entry>
+    <entry key="FcnCallLatchInvalidDstPortOfMdlBlk">Function-Call Feedback Latch 模块 ''{0}'' 的输出无法连接到 Model 模块 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1}" objname="{2}"&gt;输入端口 ''{1}''&lt;/sldiag&gt;，因为此数据输入端口与 ''{2}'' 的任何函数调用输入端口都不相关联。</entry>
+    <entry key="FcnCallLatchInvalidDstPortOfExpSFcnBlk">Function-Call Feedback Latch 模块 ''{0}'' 的输出无法连接到配置为导出函数调用的 S-Function 模块 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt;，因为此 S-Function 模块有多个函数调用输入端口。</entry>
+    <entry key="FcnCallLatchInvalidDstPortOfFcnCallCoreBlk">Function-Call Feedback Latch 模块 ''{0}'' 的输出无法连接到配置为导出函数调用的模块 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt;，因为此模块有多个函数调用输入端口。</entry>
+    <entry key="FcnCallLatchInvalidDstWithMultiCaller">不允许将 Function-Call Feedback Latch 模块 ''{0}'' 的输出连接到具有非标量函数调用触发信号的函数调用子系统 ''{1}''。要锁存输入信号，请在对应的 Inport 模块上选择 ''针对函数调用子系统输出的反馈信号锁存输入'' 选项。 </entry>
+    <entry key="FcnCallLatchInvalidMultiDsts">Function-Call Feedback Latch 模块 ''{0}'' 的输出连接到多个目标。Function-Call Feedback Latch 模块的输出必须连接到函数调用子系统或模型的恰好一个数据输入端口。</entry>
+    <entry key="FcnCallLatchInvalidMultiDstsDetail">模块 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 连接到 Function-Call Feedback Latch 模块 ''{2}'' 的输出。</entry>
+    <entry key="FcnCallLatchInvalidMultiDstBlocks">The output of Function-Call Feedback Latch block ''{0}'' is connected to multiple destination blocks. The output of a Function-Call Feedback Latch block must be connected to one function-call subsystem or model block.</entry>
+    <entry key="FcnCallLatchInvalidMultiDstsBlocksDetail"> block ''{0}''  and block ''{1}'' are connected to the output of Function-Call Feedback Latch block ''{2}''.</entry>
+    <entry key="FcnCallLatchInvalidMultiDstPortGroup">Function-Call Feedback Latch 模块 ''{0}'' 的输出连接到驱动多个导出函数的 Model 模块 ''{2}'' 的输入端口 ''{1}''。Function-Call Feedback Latch 模块的输出可连接到最多驱动一个导出函数的端口。</entry>
+    <entry key="FcnCallLatchInvalidDst">Function-Call Feedback Latch 模块 ''{0}'' 的输出必须连接到函数调用子系统或模型的数据输入。</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal1a">Function-Call Feedback Latch 模块 ''{0}'' 未连接到涉及函数调用模块的反馈信号，因为其信源模块 ''{1}'' 会在带分支的函数调用网络中的目标模块 ''{2}'' 前执行。请考虑删除 Function-Call Feedback Latch 模块。</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal1b">Function-Call Feedback Latch 模块 ''{0}'' 未连接到涉及函数调用模块的反馈信号，因为其源模块 ''{1}'' 是目标模块 ''{2}'' 的可正常工作的父模块，因此源模块将在目标模块之前执行。请考虑删除 Function-Call Feedback Latch 模块。</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal2">Function-Call Feedback Latch 模块 ''{0}'' 未连接到涉及函数调用模块的反馈信号。其源模块 ''{1}'' 和目标模块 ''{2}'' 不是由来自共同发起方的函数调用信号驱动的。请考虑删除 Function-Call Feedback Latch 模块。</entry>
+    <entry key="FcnCallLatchNoFeedbackSignal3">The Function-Call Feedback Latch block ''{0}'' is not connected to a feedback signal involving function-call blocks. Its input is not from a function-call block. Consider removing the Function-Call Feedback Latch block.</entry>
+    <entry key="FcnCallLatchRedundantSSInportLatched">The Function-Call Feedback Latch block ''{0}'' placed in front of &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of ''{2}'' is unnecessary, because the dialog parameter 'Latch input for feedback signals of function-call subsystem outputs' on ''{3}'' is also selected. Consider either removing the Function-Call Feedback Latch block or clearing the dialog parameter.</entry>
+    <entry key="FcnCallLatchRedundantSimulinkFcnLatched">放在 Simulink 函数 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 前面的 Function-Call Feedback Latch 模块 ''{0}'' 是不必要的，因为 Simulink Function 模块已锁存其所有输入信号。请考虑删除 Function-Call Feedback Latch 模块。</entry>
+    <entry key="FcnCallLatchRedundantSimulinkFcnInMdlRefLatched">Function-Call Feedback Latch 模块 ''{0}'' 是不必要的。该模块位于模型模块 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1}" objname="{2}"&gt;输入端口 ''{1}''&lt;/sldiag&gt; 的前面，该模型模块在引用模型中具有 Simulink 函数 ''{3}''，且 Simulink Function 模块已锁存其所有输入信号。请考虑删除 Function-Call Feedback Latch 模块。</entry>
+    <entry key="FcnCallLatchRedundantMdlRefInportLatched">The Function-Call Feedback Latch block ''{0}'', placed in front of &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; of ''{2}'', is unnecessary, because the dialog parameter 'Latch input for feedback signals of function-call subsystem outputs' is also selected on the root-level Inport block inside the referenced model. Consider either removing the Function-Call Feedback Latch block or clearing the dialog parameter.</entry>
+    <entry key="FcnCallLatchInvalidWideFcnCall">Function-Call Feedback Latch 模块 ''{0}'' 的输出无法连接到函数调用模块 ''{1}''。此配置不正确，因为 ''{1}'' 是由函数调用发起方 ''{2}'' 调用的，该发起方发出具有多个元素的函数调用信号。Function-Call Feedback Latch 模块的输出必须连接到由发出标量函数调用信号的函数调用发起方调用的函数调用模块。</entry>
+    <entry key="FcnCallLatchCannotWorkWithNonInlinedSFcn">Code generation is not supported for the non-inlined S-function ''{0}'' that is invoking a function-call block that is used in combination with Function-Call Feedback Latch block ''{1}''. Consider converting the non-inlined S-function ''{2}'' to an inlined S-function by providing a corresponding TLC implementation.</entry>
+    <entry key="FcnCallSplitBlkHasInvalidSrc">The Function-Call Split block ''{0}'' must be driven by a function-call initiator. However, the input of this block comes from &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of block ''{2}'', which is not a function-call signal.</entry>
+    <entry key="FcnCallSplitDisallowVarSizeInput">The input signal to the Function-Call Split ''{0}'' is a variable-sized signal. This block does not support variable-sized signal inputs.</entry>
+    <entry key="FcnCallSplitDisallowsCompositeDims">Function-Call Split ''{0}'' 的输入包含多个元素。此模块仅支持标量函数调用输入。</entry>
+    <entry key="BlockRunFcnCallError">
+  模块 ''{0}'' 在函数调用期间出错:\n{1}
+</entry>
+    <entry key="BlockDisableFcnCallError">
+  模块 ''{0}'' 在函数调用禁用期间出错:\n{1}
+</entry>
+    <entry key="BlockEnableFcnCallError">
+  模块 ''{0}'' 在函数调用启用期间出错:\n{1}
+</entry>
+    <entry key="InvalidMdlInitFcnCall">在时间 {1}，在 Model 模块 ''{0}'' 的模型初始化端口执行函数调用时出错。必须先调用模型终止端口，然后才能再次初始化 Model 模块。您可以选择隐藏模型终止端口，以允许 Simulink 自动处理模型终止事件。</entry>
+    <entry key="InvalidMdlResetFcnCall">在时间 {2}，在 Model 模块 ''{1}'' 的模型重置端口 ''{0}'' 执行函数调用时出错。在执行任何其他函数调用之前，必须通过模型初始化端口初始化 Model 模块。您可以选择隐藏模型初始化端口，以允许 Simulink 自动处理模型初始化事件。</entry>
+    <entry key="InvalidMdlTermFcnCall">在时间 {1}，在 Model 模块 ''{0}'' 的模型终止端口执行函数调用时出错。在执行任何函数调用之前，必须通过模型初始化端口初始化 Model 模块。您可以选择隐藏模型初始化端口，以允许 Simulink 自动处理模型初始化事件。</entry>
+    <entry key="InvalidNonMdlEventFcnCall">在时间 {2}，在 Model 模块 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 执行函数调用时出错。在执行任何函数调用之前，必须通过模型初始化端口初始化 Model 模块。此外，在通过模型终止端口终止 Model 模块后，无法由任何函数调用来调用该模块。您可以选择隐藏模型初始化和终止端口，以允许 Simulink 自动处理模型初始化和终止事件。</entry>
+    <entry key="InvalidNonMdlEventSimulinkFcn">Error executing Simulink function ''{0}'' inside the model referenced by Model block ''{1}'' at time {2}. The Model block must be initialized via the model initialize port before any function-call can be executed. Also, the Model block cannot be called by any function-call after it has been terminated via the model terminate port. You can choose to hide the model initialize and terminate ports to allow Simulink to handle the model initialize and terminate events automatically.</entry>
+    <entry key="FcnCallPortMustBeDrivenByAsyncFcnCaller">The function call input port ''{0}'' of model block ''{1}'' must be driven by an asynchronous function call initiator.</entry>
+    <entry key="FcnCallPortCannotBeDrivenByAsyncFcnCaller">The function call input port ''{0}'' of model block ''{1}'' cannot be driven by an asynchronous function call initiator.</entry>
+    <entry key="NoRTWForRootFcnCallInport">Stand-alone code generation is not supported for model ''{0}'' because the model contains a root-level Inport block ''{1}'' that outputs a function-call signal.</entry>
+    <entry key="NoVarStepSolverForRootFcnCall">
+      模型 ''{0}'' 不支持变步长求解器，因为该模型包含输出函数调用信号的根级 Inport 模块 ''{1}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SolverParameterFixedStepFix"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'Solver', 'FixedStepDiscrete');&lt;/cmd&gt; &lt;txt&gt;请考虑将配置参数 &lt;sldiag objui="configset" objparam="SolverType" objname="{0}"&gt;''求解器选择'' &gt; ''类型''&lt;/sldiag&gt; 设置为 ''定步长''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="NoVarStepSolverForSimulinkFunction">
+      Variable-step solver is not supported for model ''{0}'' because the model exports a Simulink function.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;set_param_action(''{0}'', 'Solver', 'FixedStepDiscrete');&lt;/cmd&gt;
+          &lt;txt&gt;Consider setting the configuration parameter &lt;sldiag objui="configset" objparam="SolverType" objname="{0}"&gt;''Solver selection'' &gt; ''Type''&lt;/sldiag&gt; to ''Fixed-step''.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="NoVarStepSolverForSWArchModel">
+      软件架构模型 ''{0}'' 不支持变步长求解器。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'Solver', 'FixedStepDiscrete');&lt;/cmd&gt; &lt;txt&gt;请考虑将配置参数 &lt;sldiag objui="configset" objparam="SolverType" objname="{0}"&gt;''求解器选择'' &gt; ''类型''&lt;/sldiag&gt; 设置为 ''定步长''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="NoModelRefMinAlgLoopForSimulinkFunction">'尽量减少出现人为代数环' 选项的设置无效，该选项位于导出 Simulink 函数的模型 ''{0}'' 的 "配置参数" 对话框的 "模型引用" 窗格中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'ModelReferenceMinAlgLoopOccurrences', 'off');&lt;/cmd&gt; &lt;txt&gt;请清除 "配置参数" 中的选项 '尽量减少出现人为代数环'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="NoModelRefMinAlgLoopForRootFcnCallInport">'尽量减少出现人为代数环' 选项的设置无效，该选项位于包含输出函数调用信号的根级 Inport 模块 ''{1}'' 的模型 ''{0}'' 的 "配置参数" 对话框的 "模型引用" 窗格中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'ModelReferenceMinAlgLoopOccurrences', 'off');&lt;/cmd&gt; &lt;txt&gt;清除 "配置参数" 中的 '尽量减少出现人为代数环' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="NoModelRefMinAlgLoopForSWArchMdl">'尽量减少出现人为代数环' 选项的设置无效，该选项位于软件架构模型 ''{0}'' 的 "配置参数" 对话框的 "模型引用" 窗格中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'ModelReferenceMinAlgLoopOccurrences', 'off');&lt;/cmd&gt; &lt;txt&gt;清除 "配置参数" 中的选项 '尽量减少出现人为代数环'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="SWArchModelRefMustBeFcnCallAtRoot">Unable to compile model ''{0}''. Trigger type of root-level trigger ports in software architectures must be function-call.</entry>
+    <entry key="MultiInstanceFcnCallInport">''Configuration Parameters &gt; Model Referencing &gt; Total number of instances allowed per top model'' is set to ''Multiple'' for model ''{0}''. Block ''{1}'' of this model is a root-level Inport block that outputs a function-call signal. A model that contains any function-call root-level Inport blocks cannot be configured to be referenced multiple times.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'',''ModelReferenceNumInstancesAllowed'',''Single'')&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the configuration parameter &lt;sldiag objui="configset" objparam="ModelReferenceNumInstancesAllowed" objname="{0}"&gt;Total number of instances allowed per top model&lt;/sldiag&gt; to ''One''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="InvFcnCallerBlockInAlgLoop">Detected an algebraic loop containing a Function Caller block ''{0}''. Function Caller blocks are not allowed in algebraic loops.</entry>
+    <entry key="InvFcnCallMdlRefInAlgLoop">Detected an algebraic loop containing a Model block ''{0}'' (referencing model ''{1}'') that has at least one function-call input signal. Such Model blocks are not allowed in algebraic loops.</entry>
+    <entry key="FcnCallModelRefInvDiagSettings">模型 ''{0}'' 的当前诊断设置无效，因为该模型包含 Model 模块 ''{1}''，而引用模型 ''{2}'' 包含输出函数调用信号的根级 Inport 模块。有关详细信息，请参阅下面报告的错误。</entry>
+    <entry key="FcnCallRootInportInvDiagSettings">The current diagnostic settings for model ''{0}'' are not valid because the model contains root-level Inport block ''{1}'' that outputs a function-call signal. See errors reported below for details.</entry>
+    <entry key="FcnCallRootInvMultiTaskRateTransMsg">模型 ''{0}'' 的 "配置参数" 对话框的 "采样时间诊断" 窗格中的 &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg" objname="{0}"&gt;''多任务数据传输''&lt;/sldiag&gt; 选项未设置为 ''错误''。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''MultiTaskRateTransMsg'', ''error'');&lt;/cmd&gt; &lt;txt&gt;请将 &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg" objname="{0}"&gt;''多任务数据传输''&lt;/sldiag&gt; 设置为 ''错误''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+
+</entry>
+    <entry key="FcnCallRootInvMultiTaskCondExecSysMsg">模型 ''{0}'' 的 "配置参数" 对话框的 "采样时间诊断" 窗格中的 ''多任务条件执行子系统'' 选项未设置为 ''错误''。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''MultiTaskCondExecSysMsg'', ''error'');&lt;/cmd&gt; &lt;txt&gt;请将 ''{0}'' 中的 ''多任务条件执行子系统'' 设置为 ''错误''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+
+</entry>
+    <entry key="FcnCallRootNeedSimplifiedInitMode">模型 ''{0}'' 需要处于简化初始化模式。有关详细信息，请参阅&lt;a href="matlab:helpview([docroot '/simulink/ug/simplified-initialization-mode.html'])"&gt;简化初始化模式&lt;/a&gt;。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''UnderspecifiedInitializationDetection'',''Simplified'')&lt;/cmd&gt; &lt;txt&gt;请将 "配置参数" 对话框的 "诊断" 页中的参数 &lt;sldiag objui="configset" objparam="UnderspecifiedInitializationDetection"&gt;'欠定初始化检测'&lt;/sldiag&gt; 设置为 ''简化''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvalidAsyncLoggingForExportFcnMdl1">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging root-level Outport blocks or signals in Dataset format is not supported, when the Outport block or the signal is driven by function-call root-level Inport block with inherited sample time (-1). Consider either specifying a discrete sample time on ''{1}'', or changing the 'Format' parameter in 'Configuration Parameters' &gt; 'Data Import/Export' &gt; 'Save to workspace' to options other than 'Dataset'.
+    </entry>
+    <entry key="InvalidAsyncLoggingForExportFcnMdl2">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging root-level Outport blocks or signals in Dataset format is not supported, when the Outport block or the signal is driven by Simulink function ''{1}''. Consider changing the 'Format' parameter in 'Configuration Parameters' &gt; 'Data Import/Export' &gt; 'Save to workspace' to options other than 'Dataset'.
+    </entry>
+    <entry key="InvPartialSrcForMuxInExpFcnMdl">
+      Invalid partial element selection from &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;output port {2,number,integer}&lt;/sldiag&gt; of ''{3}'' to &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of Mux block ''{0}''. Any input signal of a Mux block feeding root-level Outport blocks in the export-function model must include all elements of the source output port. Consider removing any element selection block such as Selector or Demux blocks on the signal path.
+    </entry>
+    <entry key="InvSameSrcsForMuxInExpFcnMdl">
+  从 ''{4}'' 的&lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{4}"&gt;输出端口 {3,number,integer}&lt;/sldiag&gt; 到 Mux 模块 ''{0}'' 的输入端口 {1,number,integer} 和 {2,number,integer} 的连接无效。向导出函数模型中的根级 Outport 模块馈送信号的 Mux 模块的输入信号必须来自不同的源输出端口。
+</entry>
+    <entry key="InvStorageClassForMuxInExpFcnMdl">
+  当 Mux 模块连接到导出函数模型中的根级 Outport 模块时，Mux 模块 ''{0}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 的输入信号不能有非自动存储类。
+</entry>
+    <entry key="InvalidCallingSequenceForExportFcnMdl">
+      Model block ''{0}'' requires that function-call input port ''{1}'' execute before function-call input port ''{2}''. However, this execution order was violated at time {3}.
+      
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action type="fixit"&gt;
+                  &lt;cmd&gt;configset.internal.fixIt(''{4}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt;
+                  &lt;txt&gt;To disable this error message, clear the parameter &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'Enable strict scheduling checks for referenced models'&lt;/sldiag&gt; in the Model Referencing page of the Configuration Parameters dialog.&lt;/txt&gt;
+              &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="PotentialExpFcnMdlWithReferenceBlock">
+      模型 ''{0}'' 包含具有库链接的模块。要确定模型 ''{0}'' 是否为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;及其执行域类型，请选择 ' 升级顾问 &gt; 检查导出函数模型'。 </entry>
+    <entry key="InvalidExpFcnDomain">''导出函数'' 执行域仅适用于模型的根级。</entry>
+    <entry key="InportSampleTimeMsg">Inport ''{0}'' has a sample time of {1}.</entry>
+    <entry key="OutportSampleTimeMsg">Outport ''{0}'' has a sample time of {1}.</entry>
+    <entry key="FunctionSampleTimeMsg">Function ''{0}'' has a sample time of {1}.</entry>
+    <entry key="InvalidBranchingToMultiRootOutport">
+      ''{0}'' is driven by the function-call root-level Inport block(s). Therefore, it is not allowed to branch the output signal from output port {1,number,integer} of this block to feed multiple root Outport blocks ''{2}'' and ''{3}''.
+    </entry>
+    <entry key="DiffTsBetweenRootAndNestedFcnCallPortGroupInExpFcnMdl">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, the function-call signal to &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;input port ''{0}''&lt;/sldiag&gt; of ''{1}'' is directly driven by function-call signal from root-level Inport block ''{2}''. Therefore, these function-call signals must have the same sample time. However, the block ''{2}'' has specified the sample time of {3}, while the function-call signal to &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;input port ''{0}''&lt;/sldiag&gt; of ''{1}'' has set a sample time of {4}.
+    </entry>
+    <entry key="DiffTsBetweenRootInportAndPeriodicFCSSInExpFcnMdl">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, ''{0}'' is configured to a periodic function-call subsystem with sample time {1}. However, it is driven by the function-call root-level Inport block ''{2}'' that has specified a different sample time {3}.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider updating sample times to make them consistent.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{4}'', ''SampleTime'', ''-1'');&lt;/cmd&gt;
+            &lt;txt&gt;Alternatively, set &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time'&lt;/sldiag&gt; parameter of Trigger Port block ''{4}'' to '-1'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="DiffTsBetweenRootInportAndPeriodicFCSSInExpFcnMdl2">
+  在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;内，''{0}'' 配置为具有采样时间 {1} 的周期性函数调用子系统。但是，它是由指定不同采样时间 {3} 的函数调用根级 Inport 模块 ''{2}'' 驱动的。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请考虑更新采样时间以使其一致。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;或者，将 Trigger Port 模块 ''{4}'' 的 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间'&lt;/sldiag&gt; 参数设置为 '-1'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="IndirectConnBetweenRootAndNestedFcnCallPortGroupInExpFcnMdl">
+      Inside the model referenced by Model block ''{0}'', the root-level Inport block corresponding to &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; of the Model block has specified a non-inherited sample time {2}. In this case, the function-call signal to this input port of the Model block must be directly driven by the function-call root-level Inport block with the same sample time.
+    </entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeNotEqual">
+      Inside the model referenced by Model block ''{0}'', the function-call context driven by the function-call signal to its input port ''{1}'' has specified the sample time of {2}. However, the function-call initiator ''{3}'' has a different sample time of {4}.
+       &lt;actions exclusiveFixIts="yes"&gt;
+           &lt;action type="fixit"&gt;
+               &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt;
+               &lt;txt&gt;To disable this error message, clear the parameter &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'Enable strict scheduling checks for referenced models'&lt;/sldiag&gt; in the Model Referencing page of the Configuration Parameters dialog.&lt;/txt&gt;
+           &lt;/action&gt;
+           &lt;action type="suggestion"&gt;
+               &lt;txt&gt;Alternatively, consider updating the sample time of the function-call initiator.&lt;/txt&gt;
+           &lt;/action&gt;
+        &lt;/actions&gt;
+    </entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeMismatch">
+  在 Model 模块 ''{0}'' 引用的模型内部，由连接到其&lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;输入端口 ''{1}''&lt;/sldiag&gt; 的函数调用信号驱动的函数调用上下文已在对应 Inport 模块的对话框上指定了采样时间 {2}。但是，函数调用发起方 ''{3}'' 的采样时间为 {4}，无法提供足够的分辨率。请考虑更改采样时间 {5} 的值，使得采样时间 {6} 是其整数倍。
+</entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeMismatch2">
+      Inside the model referenced by Model block ''{0}'', the function-call context driven by the function-call signal to its &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; has specified a discrete sample time of {2} on the dialog of corresponding Inport block. However, the function-call initiator ''{3}'' has an asynchronous sample time.
+    </entry>
+    <entry key="ExpFcnMdlCompAndSpecifiedSampleTimeMismatch3">
+      Inside the model referenced by Model block ''{0}'', the function-call context driven by the function-call signal to its &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port ''{1}''&lt;/sldiag&gt; has specified the sample time of {2} on the dialog box of corresponding Inport block. However, it was invoked by the function-call initiator ''{3}'' at time {4}, that is not a multiple of the specified sample time.
+    </entry>
+    <entry key="InvalidSampleTimeSetOnRootDataOutportInExpFcnMdl">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;或软件架构模型根级，Outport 模块 ''{1}'' 的采样时间 {0} 无效。该模块的采样时间必须设置为继承(-1)。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''-1'');&lt;/cmd&gt; &lt;txt&gt;请考虑将 Outport 模块 ''{1}'' 的 &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'采样时间'&lt;/sldiag&gt; 参数设置为 '-1'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSampleTimeSetOnRootDataInportInExpFcnMdl">
+      It is not allowed to set sample time of {0} on the root-level Inport block ''{1}''. When a data root-level Inport block is inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, the sample time of the block must be inherited (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''-1'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; parameter on Inport block ''{1}'' to '-1'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSampleTimeSetOnSynthRootDataInportInExpFcnMdl">
+       在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;或软件架构模型的根级，对应于 In Bus Element 模块 ''{0}'' 的 Inport 模块的采样时间必须为继承(-1)。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="BEPInExportFunctionMdl" retvalue="false"&gt; &lt;cmd&gt;Simulink.internal.setInheritedSampleTimeForPortInExpFcnMdl(''{0}'');&lt;/cmd&gt; &lt;txt&gt;请在对应于 In Bus Element 模块 ''{0}'' 的总线端口的所有元素上将 &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'采样时间'&lt;/sldiag&gt; 设置为 '-1'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="InvalidSampleTimeSetOnRootDataBEPInExpFcnMdl">
+      当 In Bus Element 模块 ''{0}'' 位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;的根级时，其采样时间必须为继承(-1)。
+  </entry>
+    <entry key="InvalidSampleTimeSetOnRootFcnCallInportInExpFcnMdl">
+      It is not allowed to set sample time of {0} on the root-level Inport block ''{1}''. When a root-level Inport block outputs a function-call signal and is inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, the sample time of the block must be discrete or inherited (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;cmd&gt;Simulink.internal.OpenBlockParamsDialog(''{1}'', ''SampleTime'')&lt;/cmd&gt;
+        &lt;txt&gt;Consider specifying &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; parameter on Inport block ''{1}'' to '-1' or a discrete rate.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSampleTimeSetOnRootFcnCallInportInAsyncFcnCallMdl">
+      It is not allowed to set sample time of {0} on the root-level Inport block ''{1}''. When a root-level Inport block outputs an asynchronous function-call signal by connecting to an Asynchronous Task Specification block, the sample time of the Inport block must be inherited (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''-1'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; parameter on Inport block ''{1}'' to '-1'.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidPeriodicFCSSInExpFcnMdl">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, to configure ''{0}'' to a periodic function-call block, it must be directly driven by a function-call root-level Inport block that has specified a discrete sample time.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider connecting the function-call input of this block directly to a function-call root-level Inport block and specify a discrete sample time on the Inport block.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{1}'', ''SampleTimeType'', ''triggered'');&lt;/cmd&gt;
+            &lt;txt&gt;Alternatively, consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{1}'' to 'triggered'.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidPeriodicFCSSInExpFcnMdl2">
+      Inside an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, to configure ''{0}'' to a periodic function-call block, it must be directly driven by a function-call root-level Inport block that has specified a discrete sample time.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Consider connecting the function-call input of this block directly to a function-call root-level Inport block and specify a discrete sample time on the Inport block.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Alternatively, consider changing dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{1}'' to 'triggered'.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="PeriodicFcnCallInputMustBeScalar">
+  在 Model 模块 ''{0}'' 引用的模型内部，函数调用信号通过 Model 模块的&lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;输入端口 {1}&lt;/sldiag&gt; 直接驱动的函数调用子系统配置为具有采样时间 {2} 的周期性函数调用子系统。因此，此输入端口的函数调用信号必须为标量信号。但是，此输入的信号宽度为 {3,number,integer}。
+</entry>
+    <entry key="InvExpFcnMdlInFcnCallSubsystem">
+      引用模型 ''{1}'' 的 Model 模块 ''{0}'' 被错误地放置在 {2} 子系统 ''{3}'' 中。此类子系统中的引用模型必须继承采样时间。但是，引用模型 ''{4}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数&lt;/a&gt;，因此无法继承采样时间。
+    </entry>
+    <entry key="ExpFcnMdlInFcnCallSubsystemMustInheritSampleTime">
+      Model block ''{0}'' has been improperly placed in the {1} subsystem ''{2}''. All function-call root inports in the referenced &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export function model&lt;/a&gt; ''{3}'' must inherit sample time.
+    </entry>
+    <entry key="RefExpCallMdlMustBeInRootOfExpFcnMdl">
+      引用导出函数模型 ''{1}'' 的 Model 模块 ''{0}'' 被错误地放置在非虚拟子系统 ''{2}'' 中。当父模型 ''{3}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数&lt;/a&gt;时，它只能引用位于根级的另一个导出函数模型。
+    </entry>
+    <entry key="FcnCallPortCannotResetState">
+      The Trigger Port block ''{0}'' has set its parameter 'State when enabling' to 'reset'. This block is inside function-call subsystem ''{1}'' directly driven by function-call root-level Inport block ''{2}'' in the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{3}''. Since the function-call root-level Inport block inside an export-function model doesn't enable or disable function-call blocks it directly drives, the 'reset' option will have no effect.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''StatesWhenEnabling'', ''held'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider changing the parameter to 'held' to eliminate this warning.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="OutportCannotResetInitVal">
+      The Outport block ''{0}'' has set its parameter 'Output when disabled' to 'reset'. This block is inside function-call subsystem ''{1}'' directly driven by function-call root-level Inport block ''{2}'' in the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{3}''. Since the function-call root-level Inport block inside an export-function model doesn't enable or disable function-call blocks it directly drives, the 'reset' option will have no effect.
+      
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''OutputWhenDisabled'', ''held'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider changing the parameter to 'held' to eliminate this warning.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="SWArchModelHasNoSimBehaviorForDirectlyConnectedRootIO1">
+      在软件架构模型 ''{0}'' 内，根级 Outport 模块 ''{2}'' 在仿真期间不会复制来自根级 Inport 模块 ''{1}'' 的输入，因为 Inport 模块 ''{1}'' 通过 Interface Adapter 模块 ''{3}'' 连接到 Outport 模块 ''{2}''。如果在仿真期间需要信号副本，请在函数中包含 Interface Adapter 模块。
+    </entry>
+    <entry key="SWArchModelHasNoSimBehaviorForDirectlyConnectedRootIO2">
+      在软件架构模型 ''{0}'' 中，根级 Outport 模块 ''{2}'' 在仿真期间不会复制来自根级 Inport 模块 ''{1}'' 的输入，因为 Inport 模块 ''{1}'' 直接连接到 Outport 模块 ''{2}''。如果在仿真过程中需要信号副本，请通过函数连接这些根级 Inport 模块和 Outport 模块。
+    </entry>
+    <entry key="AsyncFcnCallPortGroupsAccessingGlobalDSM">
+  在 Model 模块 ''{0}'' 引用的模型中，由连接到其&lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;输入端口 ''{1}''&lt;/sldiag&gt; 的函数调用信号驱动的函数调用上下文配置为在异步任务中执行，该函数调用上下文可访问由全局 Simulink.Signal 对象 ''{2}'' 定义的全局数据存储。在模型内对所有全局数据存储的访问必须在单个周期性任务中执行。
+</entry>
+    <entry key="SimulinkFunctionPortGroupsAccessingGlobalDSM">
+  Model 模块 ''{1}'' 中的函数 ''{0}'' 以异步采样时间调用，并包含针对 Simulink.Signal 对象 ''{2}'' 定义的全局数据存储的读取器或写入器。在模型内对所有全局数据存储的访问必须在单个周期性任务中执行。
+</entry>
+    <entry key="MultiTsGlobalDSMAccessedByDescExpFcnMdls">
+      在模型 ''{0}'' 中，由全局 Simulink.Signal 对象 ''{1}'' 定义的全局数据存储分别由 Model 模块 ''{2}'' 和 ''{3}'' 引用的模型内的模块访问。但是，访问模块分别指定了不同采样时间 {4} 和 {5}。这可能会导致数据完整性问题。
+          &lt;actions exclusiveFixIts = "yes"&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt;
+                 &lt;arg&gt;{1}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="MultiTsGlobalDSMAccessedByDescExpFcnMdls2">
+      在模型 ''{0}'' 中，由全局 Simulink.Signal 对象 ''{1}'' 定义的全局数据存储由 Model 模块 ''{2}'' 引用的模型内的模块访问。但是，访问模块分别指定不同采样时间 {3} 和 {4}。这可能会导致数据完整性问题。
+         &lt;actions exclusiveFixIts = "yes"&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt;
+                 &lt;arg&gt;{1}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpFcnMdlPortGroupsErr">
+    In the model referenced by Model block ''{0}'', the function-call blocks driven by input ports ''{1}'' and ''{2}'' have a data transfer connection between them. However, they have different sample times {3} and {4}, which can lead to a data integrity issue.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Consider adjusting the sample times of function-call input signals.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+          &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpFcnMdlPortGroupsWarn">
+    In the model referenced by Model block ''{0}'', the function-call blocks driven by input ports ''{1}'' and ''{2}'' have a data transfer connection between them. However, they have different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of function-call input signals.
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpAndSLFcnPortGroupsErr">
+    In the model referenced by Model block ''{0}'', the function-call block triggered by &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port {1}&lt;/sldiag&gt; and the Simulink function ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Consider adjusting the sample times of function-call input signals.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+          &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenExpAndSLFcnPortGroupsWarn">
+    In the model referenced by Model block ''{0}'', the function-call block triggered by &lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;input port {1}&lt;/sldiag&gt; and the Simulink function ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of function-call input signals.
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenSLFcnPortGroupsErr">
+    In the model referenced by Model block ''{0}'', the Simulink functions ''{1}'' and ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of blocks which invoke these functions.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Consider adjusting the sample times of function-call input signals.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit"&gt;
+          &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+          &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultitaskRateTransitionBetweenSLFcnPortGroupsWarn">
+    In the model referenced by Model block ''{0}'', the Simulink functions ''{1}'' and ''{2}'' are connected. The two functions are invoked with different sample times {3} and {4}, which can lead to a data integrity issue. Consider adjusting the sample times of blocks which invoke these functions. Consider adjusting the sample times of function-call input signals.
+    </entry>
+    <entry key="UnionTsInputMultitaskRateTransMsgErr">
+      Input port ''{0}'' of Model block ''{1}'' is connected to function-call contexts driven by different sample times {2}, respectively. This can lead to a data integrity issue.
+      
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action type="suggestion"&gt;
+                  &lt;txt&gt;Alternatively, consider splitting this input port into multiple ports to feed each function-call context separately.&lt;/txt&gt;
+              &lt;/action&gt;
+              &lt;action type="fixit"&gt;
+                  &lt;cmd&gt;configset.internal.fixIt(''{3}'', ''MultiTaskRateTransMsg'', ''warning'')&lt;/cmd&gt;
+                  &lt;txt&gt;To disable this error message, set the parameter &lt;sldiag objui="configset" objparam="MultiTaskRateTransMsg"&gt;MultiTaskRateTransMsg&lt;/sldiag&gt; in the Configuration Parameters dialog to 'warning'.&lt;/txt&gt;
+              &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="UnionTsInputMultitaskRateTransMsgWarn">
+      Input port ''{0}'' of Model block ''{1}'' is connected to function-call contexts driven by different sample times {2}, respectively. This can lead to a data integrity issue. Consider splitting this input port into multiple ports to feed each function-call context separately.
+    </entry>
+    <entry key="UnionTsOutputMultitaskLoggingWarn">
+      Model 模块 ''{1}'' 的输出端口 ''{0}'' 的采样时间为 {2}，快于驱动该输出端口的以下函数调用发起方或 Simulink 函数的采样时间。当模型在多任务模式下执行时，在调用函数之前，输出信号的值会被下游模块记录或使用，从而导致延迟。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SolverMode'', ''SingleTasking'');&lt;/cmd&gt; &lt;txt&gt;清除配置参数 &lt;sldiag objui="configset" objparam="EnableMultiTasking" objname="{0}"&gt;'求解器' &gt; '将每个离散速率视为单独任务'&lt;/sldiag&gt; 选项以将模型 ''{3}'' 更改为在单任务模式下执行。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;或者，使用单个模块来调用驱动此输出端口的所有函数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnionTsOutputMultitaskLoggingWarnDetail1">
+      Function-call initiator ''{0}'' has a sample time {1}.
+    </entry>
+    <entry key="UnionTsOutputMultitaskLoggingWarnDetail2">
+      Simulink function ''{0}'' has a sample time {1}.
+    </entry>
+    <entry key="InvalidDstsForRootInportInDataPortGroup">
+      根级 Inport 模块 ''{0}'' 连接到非虚拟模块 ''{1}''，但后者不在任何导出的函数中。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;中，根级 Inport 模块必须连接到一个或多个导出的函数，或保持不连接。
+    </entry>
+    <entry key="InvalidSrcsForRootOutportInDataPortGroup">
+      The root-level Outport block ''{0}'' is driven by block ''{1}'', which is not in any exported function. In an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt;, a root-level Outport block must be driven by one or more exported functions or left unconnected.
+    </entry>
+    <entry key="InvalidSrcsForRootOutportInMultiFcnCallPortGroups">
+  根级 Outport 模块 ''{0}'' 由函数调用根级 Inport 模块 ''{1}'' 和 ''{2}'' 驱动。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;中，由多个函数调用根级 Inport 模块驱动的根级 Outport 模块的输入必须来自其源模块的整个输出区域。
+</entry>
+    <entry key="InvalidSrcsForRootOutportInMultiServerFcnCallPortGroups">
+  根级 Outport 模块 ''{0}'' 由 Simulink 函数 ''{1}'' 和 ''{2}'' 驱动。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;内，由多个 Simulink Function 模块驱动的根级 Outport 模块的输入必须来自其源模块的整个输出区域。
+</entry>
+    <entry key="InvalidSrcsForRootOutportInMixedFcnCallPortGroups">
+  根级 Outport 模块 ''{0}'' 由 Simulink 函数 ''{1}'' 和函数调用根级 Inport 模块 ''{2}'' 驱动。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;内，由 Simulink Function 模块和函数调用根级 Inport 模块驱动的根级 Outport 模块的输入必须来自其源模块的整个输出区域。
+</entry>
+    <entry key="NonVirtBusCreatorDrvRegularRootOutportInExpFcnMdl">
+      Bus Creator 模块 ''{1}'' 必须直接连接到根级 Out Bus Element 模块，因为 Bus Creator 模块创建非虚拟总线，并且位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级。请将 Outport 模块 ''{2}'' 替换为 Out Bus Element 模块。
+     </entry>
+    <entry key="NonVirtBusCreatorInvDstInExpFcnMdl">
+      Bus Creator 模块 ''{1}'' 必须直接连接到根级 Out Bus Element 模块，因为 Bus Creator 模块创建非虚拟总线，并且位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级。
+     </entry>
+    <entry key="NonVirtBusCreatorInMultiFcnsInExpFcnMdl">
+      Bus Creator 模块 ''{1}'' 的输入必须由相同的根级函数调用信号或 Simulink 函数驱动，因为 Bus Creator 模块创建非虚拟总线，并且位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级。
+    </entry>
+    <entry key="NonFcnCallBlkNotAllowedForExportFcn">
+      For nonvirtual block ''{1}'' of type ''{2}'' to be placed at the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', the block must have a constant sample time.
+    </entry>
+    <entry key="NonFcnCallBlkDisallowConstRateNotAllowedForExportFcn1">
+    不支持将类型为 ''{2}'' 的非虚拟模块 ''{1}'' 放置在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;从 ''{0}'' 的根级删除模块 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="NonFcnCallBlkDisallowConstRateNotAllowedForExportFcn2">
+    不支持将类型为 ''{2}'' 的非虚拟模块 ''{1}'' 放置在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;从 ''{0}'' 的根级删除模块 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;如果此模型不用作导出函数模型，请在模型 ''{0}'' 的根级打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ConstBlkNotAllowedForExportFcnWithNonConstRate">
+      要将 Constant 模块 ''{1}'' 放在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级，必须将此模块的 '采样时间' 参数设置为 'inf'。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SampleTime'', ''inf'');&lt;/cmd&gt; &lt;txt&gt;将 ''{1}'' 的 '采样时间' 参数设置为 'inf'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="NonVirtualSubsysNotAllowedForExportFcn">
+      要将非虚拟子系统 ''{1}'' 放在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级，该模块必须具有固定采样时间。
+    </entry>
+    <entry key="TunableConstTsBlkNotAllowedForExpFcnMdlWithSuggestion1">
+      In the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' has an input signal originated from Constant blocks with tunable run time parameters. Code generation is not supported for this case. Consider moving the block ''{1}'' into its destination function-call block ''{2}''.
+    </entry>
+    <entry key="TunableConstTsBlkNotAllowedForExpFcnMdlWithSuggestion2">
+      In the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' has an input signal originated from Constant blocks with tunable run time parameters. Code generation is not supported for this case. Since the block ''{1}'' does not drive any function-call blocks, consider removing this block ''{1}''.
+    </entry>
+    <entry key="TunableConstTsBlkNotAllowedForExpFcnMdlWithFix">
+      In the root level of &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' has an input signal originated from Constant blocks with tunable run time parameters. Code generation is not supported for this case.
+      &lt;actions exclusiveFixIts="yes"&gt;
+           &lt;action type="fixit"&gt;
+               &lt;cmd&gt;configset.internal.fixIt(''{0}'',''DefaultParameterBehavior'',''Inlined'')&lt;/cmd&gt;
+                   &lt;txt&gt;Select the option ''Default parameter behavior'' for the model ''{0}'' to 'Inlined'.&lt;/txt&gt;
+           &lt;/action&gt;
+           &lt;action type="suggestion"&gt;
+                   &lt;txt&gt;Move the block ''{1}'' into its destination function-call block ''{2}''.&lt;/txt&gt;
+           &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="TunableConstBlkNotAllowedToDrvMultiExportFcns">
+  在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级，Constant 模块 ''{1}'' 具有可调运行时参数。不支持代码生成，因为此模块分别以不同的采样时间 ''{6}'' 和 ''{7}'' 驱动模块 ''{3}'' 的&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;输入端口 {2,number,integer}&lt;/sldiag&gt; 和模块 ''{5}'' 的&lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;输入端口 {4,number,integer}&lt;/sldiag&gt;。请考虑创建模块 ''{1}'' 的副本并重新连接，以便此模块及其每个副本只有一个目标。
+</entry>
+    <entry key="TunableConstBlkNotAllowedToDrvMultiExportFcnsWithFix">
+  在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 的根级，Constant 模块 ''{1}'' 具有可调运行时参数。不支持代码生成，因为此模块分别以不同的采样时间 ''{6}'' 和 ''{7}'' 驱动模块 ''{3}'' 的&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;输入端口 {2,number,integer}&lt;/sldiag&gt; 和模块 ''{5}'' 的&lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;输入端口 {4,number,integer}&lt;/sldiag&gt;。请考虑采取以下一项或两项操作: &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''DefaultParameterBehavior'',''Inlined'')&lt;/cmd&gt; &lt;txt&gt;选择将模型 ''{0}'' 的选项 ''默认参数行为'' 设置为 '内联'。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;创建模块 ''{1}'' 的副本，并重新连接，使此模块及其每个副本只有一个目标。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="FcnCallSubsysMustBeDrvByRootFcnCallInportInExpFcnMdl1">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，模块 ''{1}'' 的函数调用输入端口 {2,number,integer} 必须由函数调用根级 Inport 模块驱动。
+    </entry>
+    <entry key="FcnCallSubsysMustBeDrvByRootFcnCallInportInExpFcnMdl2">
+    在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，模块 ''{1}'' 的函数调用输入端口 {2,number,integer} 必须由函数调用根级 Inport 模块驱动。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;从 ''{0}'' 的根级删除模块 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;如果此模型不用作导出函数模型，请在模型 ''{0}'' 的根级打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootInport">
+      ''{1}'' 和类型 ''{4}'' 的 ''{2}'' 的输入端口 {3,number,integer} 之间的连接无效。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，根级 Inport 模块必须连接到以下模块之一: 导出函数、Simulink Function、Initialize Function/Reset Function/Terminate Function 或 Terminator 模块。
+    </entry>
+    <entry key="RootOutportMustBeDrvByRootFcnCallInportInExpFcnMdl1">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，根级 Outport 模块 ''{1}'' 必须连接到由函数调用根级 Inport 模块驱动的函数调用模块、Simulink 函数或是仅由此类函数调用模块驱动的 Merge/Mux 模块。
+    </entry>
+    <entry key="RootOutportMustBeDrvByRootFcnCallInportInExpFcnMdl2">
+    在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，根级 Outport 模块 ''{1}'' 必须连接到由函数调用根级 Inport 模块驱动的函数调用模块、Simulink 函数或是仅由此类函数调用模块驱动的 Merge/Mux 模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;如果不想此模型用作导出函数模型，请在模型 ''{0}'' 的根级打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutport">
+      ''{1}'' 和类型 ''{4}'' 的 ''{2}'' 的输出端口 {3,number,integer} 之间的连接无效。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，根级 Outport 模块必须连接到以下模块之一: 导出函数、Simulink Function、Initialize Function/Reset Function/Terminate Function、由导出函数驱动的 Merge 或 Mux 模块，Ground 模块。
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutportDrvByVM">
+      ''{1}'' 和 ''{2}'' 之间的连接无效。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，根级 Outport 模块必须连接到以下模块之一: 导出函数、Simulink Function、Initialize Function/Reset Function/Terminate Function、由导出函数驱动的 Merge 或 Mux 模块，Ground 模块。
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutportDrvByMdlBlk">
+      模块 ''{0}'' 必须由具有离散或继承速率的信号或接地信号驱动，或不由信号驱动，因为 Model 模块 ''{1}'' 使用端口调度速率，对应的输出端口 ''{2}'' 连接到&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{3}'' 中的根级 Outport 或 Out Bus Element 模块。
+    </entry>
+    <entry key="InvExpFcnMdlDataPortGroupRootOutportDrvConstRate">
+      导出函数模型 ''{0}'' 不支持从 Model 模块 ''{2}'' 的输出端口 {3,number,integer} 继承恒定速率的根级 Outport 模块 ''{1}''。请将 ''{2}'' 中源模块的速率更改为非常量值，或断开 ''{1}'' 与其源模块的连接。
+    </entry>
+    <entry key="RootOutportMustBeDrivenByRootFcnCallInputForAsync">
+  在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，根级 Outport 模块 ''{1}'' 同时连接到由函数调用根级 Inport 模块触发的函数调用模块以及不由函数调用根级 Inport 模块触发的一个模块。不支持此操作。根级 Outport 模块 ''{1}'' 必须只连接到以下各项之一: \n\t1) 由函数调用根级 Inport 模块触发的一个函数调用模块。\n\t2) 仅由函数调用模块(如上面一项中提及的函数调用模块)驱动的一个 Merge 模块。\n\t3) 不由函数调用根级 Inport 模块驱动的一个模块。
+</entry>
+    <entry key="BEPInForExportFcn">
+      Model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;. Bus Element Inports (e.g. ''{1}'') are not supported at the root-level for such models. Consider using an Inport block instead.
+    </entry>
+    <entry key="BEPOutForExportFcn">
+  模型 ''{0}'' 具有函数调用根级 Outport 模块，或设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数&lt;/a&gt;。此类模型的根级不支持总线元素输出端口(例如 ''{1}'')。请考虑改用 Outport 模块。
+</entry>
+    <entry key="RootBEPNotSupportedIRTForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;, Bus Element port block ''{1}'' cannot be connected to Initialize, Reset or Terminate Function blocks.
+    </entry>
+    <entry key="RootInportCannotOutputVirtualBusForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;, the output signal of the root-level Inport block ''{1}'' cannot be a virtual bus. Consider replacing this Inport block with an In Bus Element block, or changing the output to a nonvirtual bus.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;set_param_action(''{1}'', ''BusOutputAsStruct'', ''on'');&lt;/cmd&gt;
+                   &lt;txt&gt;Select the option ''Output as nonvirtual bus'' for the root inport {1}&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+
+    </entry>
+    <entry key="RootOutportCannotAcceptVirtualBusForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;, the input signal to the root-level Outport block ''{1}'' cannot be a virtual bus. Consider replacing this Outport block with an Out Bus Element block, or making the input signal a nonvirtual bus.
+    </entry>
+    <entry key="StorageClassSpecOnBothRootOutportAndItsSourceBlockForExportFcn">
+      Model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export functions&lt;/a&gt;. The root-level Outport block ''{1}'' and the driving signal line both cannot have storage class specification in such a model.
+    </entry>
+    <entry key="PlatformServicesSpecOnBothRootOutportAndItsSourceBlockForExportFcn">
+      模型 ''{0}'' 具有函数调用根级 Inport 模块，或设置为导出函数(请参阅帮助中心)。在这种模型中，不支持将根级 Outport 模块 ''{1}'' 映射到发送方服务接口，也不支持将其驱动信号映射到测量服务接口。请从代码映射中删除映射到测量服务接口的驱动信号。
+    </entry>
+    <entry key="RootOutportCannotOutputVirtualBusForExportFcn">
+      When model ''{0}'' has function-call root-level Inport blocks, or is set up to &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt; export functions&lt;/a&gt;, the root-level Outport block ''{1}'' cannot have a virtual bus input signal, or output a virtual bus in the parent model if the model is being referenced when the incoming bus is nonvirtual. Consider either replacing this Outport block with an Out Bus Element block, or making the input signal a nonvirtual bus, and selecting the option ''Output as nonvirtual bus in parent model''.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                 &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;Simulink.ModelReference.internal.ModelRefFixes(''NonvirtualOutportForExpFcn'',''{1}'')&lt;/cmd&gt;
+                   &lt;txt&gt;Select the option ''Output as nonvirtual bus'' for the root outport {1}&lt;/txt&gt;
+                 &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="RootOutportCannotOutputVirtualBusForExportFcn_fix"> Executed the command
+    set_param(''{0}'',''BusOutputAsStruct'', ''on'') </entry>
+    <entry key="RootLevelSignalLoggingNotAllowedForExportFcn">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging or streaming root-level signal originating from &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of block ''{2}'' is not allowed.
+    </entry>
+    <entry key="RootLevelSignalLoggingNotAllowedForExportFcn2">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', logging or streaming root-level signal originating from block ''{1}'' is not allowed.
+    </entry>
+    <entry key="DatasetOutputLoggingNotAllowedForAsyncFcnCallMdl">
+      无法使用 'Dataset' 格式，因为模型 ''{0}'' 包含连接到 Asynchronous Task Specification 模块的函数调用根级 Inport 模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;删除所有 Asynchronous Task Specification 模块，并将此模型设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;如果此模型不用作导出函数模型，请在 "配置参数 &gt; 数据导入/导出 &gt; 保存到工作区或文件 &gt; 格式" 中指定不同选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvalidExpFcnMdlRootLevelSignalToLogOrView">
+  无法记录或查看模块 ''{0}'' 的输出信号。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;中，仅当根级数据信号来自函数调用子系统时，才可查看或以数据集格式记录该信号。
+</entry>
+    <entry key="InvalidExpFcnMdlRootLevelScopeSaveFormat">
+  要在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;中记录根级数据信号，''{0}'' 必须将对话框参数 '记录' &gt; '保存格式' 设置为 '数据集'。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''DataLoggingSaveFormat'', ''Dataset'');&lt;/cmd&gt; &lt;txt&gt;请将 ''{0}'' 中的 ''保存格式'' 设置为 ''数据集''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+  </entry>
+    <entry key="ExportFcnModelCannotExecConcurrently">不支持并发执行&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中的任务。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ConcurrentTasks'', ''off'');&lt;/cmd&gt; &lt;txt&gt;请在 "配置参数" 对话框中，取消选择 '求解器 &gt; 任务和采样时间选项 &gt; 允许任务在目标上并发执行' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+    </entry>
+    <entry key="SWArchMdlCannotExecConcurrently">在软件架构模型 ''{0}'' 中，无法选择 '配置参数' &gt; '允许任务在目标上并发执行'。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ConcurrentTasks'', ''off'');&lt;/cmd&gt; &lt;txt&gt;请清除 '配置参数' &gt; '允许任务在目标上并发执行' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+      </entry>
+    <entry key="ExportFcnModelInvalidSampleTimeConstraint">在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，'配置参数' &gt; '求解器' &gt; '任务和采样时间选项' 中的参数 '周期性采样时间约束' 必须设置为 '无约束'。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SampleTimeConstraint'', ''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt;请将 ''{0}'' 中的 ''周期性采样时间约束'' 设置为 ''无约束''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+</entry>
+    <entry key="SWArchMdlInvalidSampleTimeConstraint">在软件架构模型 ''{0}'' 中，'配置参数' &gt; '求解器' &gt; '任务和采样时间选项' 中的 '周期性采样时间约束' 参数必须设置为 '无约束'。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SampleTimeConstraint'', ''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt;请将 ''{0}'' 中的 ''周期性采样时间约束'' 设置为 ''无约束''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt; 
+    </entry>
+    <entry key="MuxLoggingAtRootLevelForExportFcn">
+      Signal logging is not supported for mux signals inside export-function models. Log signals at the input for block ''{0}'' instead.
+    </entry>
+    <entry key="RootFcnCallInportMustBeBuiltWithERT">The system target file must be set to ert.tlc in order to generate code because the model ''{0}'' contains a root-level Inport block ''{1}'' that outputs a function-call signal.
+    
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;configset.internal.fixIt(''{0}'',''SystemTargetFile'',''ert.tlc'')&lt;/cmd&gt;
+                &lt;txt&gt;Set system target file &lt;sldiag objui="configset" objparam="SystemTargetFile"&gt;SystemTargetFile&lt;/sldiag&gt; to ert.tlc.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="RootFcnCallInportDoesNotSupportClassicCallInterface">&lt;sldiag objui="configset" objparam="GRTInterface"&gt;Classic call interface&lt;/sldiag&gt; must be cleared in order to generate code because the model ''{0}'' contains a root-level Inport block ''{1}'' that outputs a function-call signal.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'',''GRTInterface'',''off'')&lt;/cmd&gt;
+            &lt;txt&gt;Clear &lt;sldiag objui="configset" objparam="GRTInterface"&gt;GRTInterface&lt;/sldiag&gt; parameter.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="RootFcnCallInportRequiresSampleERTMain">The option 'Configuration Parameters' &gt; 'Code Generation' &gt; 'Generate code only' must be checked because the model ''{0}'' contains a root-level Inport block ''{1}'' that outputs a function-call signal and the option 'Configuration Parameters' &gt; 'Code Generation' &gt; 'Templates' &gt; 'Custom templates' &gt; 'Generate an example main program' is unchecked.</entry>
+    <entry key="ExportFcnModelMustBeBuiltWithERT">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', the system target file must be set to ert.tlc to generate code.
+      
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action type="fixit"&gt;
+                  &lt;cmd&gt;configset.internal.fixIt(''{0}'',''SystemTargetFile'',''ert.tlc'')&lt;/cmd&gt;
+                  &lt;txt&gt;Set system target file &lt;sldiag objui="configset" objparam="SystemTargetFile"&gt;SystemTargetFile&lt;/sldiag&gt; to ert.tlc.&lt;/txt&gt;
+              &lt;/action&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SWArchMdlMustBeBuiltWithERT">
+      在软件架构模型 ''{0}'' 中，系统目标文件必须设置为 ert.tlc 才能生成代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''SystemTargetFile'',''ert.tlc'')&lt;/cmd&gt; &lt;txt&gt;请将系统目标文件 &lt;sldiag objui="configset" objparam="SystemTargetFile"&gt;SystemTargetFile&lt;/sldiag&gt; 设置为 ert.tlc。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="ExportFcnModelDoesNotSupportClassicCallInterface">In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', it is not allowed to select &lt;sldiag objui="configset" objparam="GRTInterface"&gt;'Classic call interface' parameter&lt;/sldiag&gt;.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'',''GRTInterface'',''off'')&lt;/cmd&gt;
+            &lt;txt&gt;Clear &lt;sldiag objui="configset" objparam="GRTInterface"&gt;GRTInterface&lt;/sldiag&gt; parameter.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="SWArchMdlDoesNotSupportClassicCallInterface">在软件架构模型 ''{0}'' 中，对 &lt;sldiag objui="configset" objparam="GRTInterface"&gt;'经典调用接口' 参数&lt;/sldiag&gt;的选择无效。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'',''GRTInterface'',''off'')&lt;/cmd&gt; &lt;txt&gt;请清除 &lt;sldiag objui="configset" objparam="GRTInterface"&gt;GRTInterface&lt;/sldiag&gt; 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelRequiresSampleERTMain">
+  在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'') 中，当未选中 '配置参数' &gt; '代码生成' &gt; '模板' &gt; '自定义模板' &gt; '生成示例主程序' 时，需要选中 '配置参数' &gt; '代码生成' &gt; '仅生成代码'。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenCodeOnly'', ''on'')&lt;/cmd&gt; &lt;txt&gt;请考虑选择参数 &lt;sldiag objui="configset" objparam="GenCodeOnly"&gt;'仅生成代码'&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenerateSampleERTMain'', ''on'')&lt;/cmd&gt; &lt;txt&gt;或者，选择参数 &lt;sldiag objui="configset" objparam="GenerateSampleERTMain"&gt;'生成示例主程序'&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnCallModelInvalidExecOrderInBranchFcnCall">
+      Model 模块 ''{0}'' 要求函数调用输入端口 ''{1}'' 在函数调用输入端口 ''{2}'' 之前执行。然而，这两个函数调用输入端口由源于发起方 ''{4}'' 的输出端口 {3,number,integer} 的分支函数调用信号驱动，并且连接到此分支函数调用信号的 Function-Call Split 模块指定了相反的执行顺序。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="EnableSchedulingChecks"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;要禁用此错误消息，请清除 "配置参数" 对话框的 "模型引用" 页中的参数 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'为引用模型启用严格调度检查'&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidExecOrderInTopModelSameTs">
+      The function-call input ports ''{0}'' and ''{1}'' of the Model block ''{2}'' are driven by different function-call initiators, ''{3}'' and ''{4}'', respectively. Since these two initiators have the same sample time, their relative execution order could be ambiguous and lead to different simulation results. Consider using a Function-Call Split block or a common function-call initiator block such as a Stateflow chart to schedule the function-calls for these two input ports in a deterministic order.
+    </entry>
+    <entry key="InvalidExecOrderInTopModelSameTs2">
+  Model 模块 ''{1}'' 的函数调用&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 分别由不同函数调用发起方 ''{2}'' 和 ''{3}'' 驱动。由于这两个发起方具有相同的采样时间，其相对执行顺序可能不明确，从而导致不同仿真结果。请考虑使用 Function-Call Split 模块或共同的函数调用发起方模块(如 Stateflow 图)以确定的顺序调度这两个输入端口的函数调用。
+</entry>
+    <entry key="InvalidExecOrderInTopModelPriorityEqualOrUnknown">
+  Model 模块 ''{2}'' 的函数调用输入端口 ''{0}'' 和 ''{1}'' 的采样时间的任务优先级相等或优先级关系未知。由于这两个函数调用输入端口分别由不同函数调用发起方 ''{3}'' 和 ''{4}'' 驱动，因此这些发起方的相对执行顺序可能不明确，并导致不同仿真结果。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;要禁用此错误消息，请清除 "配置参数" 对话框的 "模型引用" 页中的参数 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'为引用模型启用严格调度检查'&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;或者，考虑调整异步任务优先级，或使用 Function-Call Split 模块或一个共同的函数调用发起方模块(如 Stateflow 图)以确定的顺序调度这两个输入端口的函数调用。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+</entry>
+    <entry key="InvalidExecOrderInTopModelReversePriority">
+      Model 模块 ''{0}'' 要求函数调用输入端口 ''{1}'' 在函数调用输入端口 ''{2}'' 之前执行。但是，系统无法遵守此执行顺序，因为函数调用输入端口 ''{1}'' 的采样时间的任务优先级低于函数调用输入端口 ''{2}'' 的任务优先级。这两个函数调用输入端口分别由函数调用发起方模块 ''{3}'' 和 ''{4}'' 驱动。请考虑对函数调用输入端口 ''{1}'' 使用采样时间更快(优先级更高)或异步任务优先级更高的函数调用发起方。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;要禁用此错误消息，请清除 "配置参数" 对话框的 "模型引用" 页中的参数 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'为引用模型启用严格调度检查'&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;或者，考虑使用 Function-Call Split 模块或一个共同的函数调用发起方模块(如 Stateflow 图)以所需的顺序调度这两个输入端口的函数调用。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="FcnCallPortMustBeDrivenByFcnCallRootInportInExportFcnModel">
+  Model 模块 ''{1}'' 的函数调用&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 必须由函数调用根级 Inport 模块驱动，因为 Model 模块位于根级，父模型 ''{2}'' 是&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。
+</entry>
+    <entry key="InvalidExecOrderInParentExportFcnModel">
+      Model 模块 ''{0}'' 要求函数调用输入端口 ''{1}'' 在函数调用输入端口 ''{2}'' 之前执行。但是，系统无法遵守此执行顺序，因为驱动函数调用输入端口 ''{1}'' 的函数调用根级 Inport 模块 ''{3}'' 指定为在驱动函数调用输入端口 ''{2}'' 的函数调用根级 Inport 模块 ''{4}'' 后执行。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{5}'', ''EnableRefExpFcnMdlSchedulingChecks'', ''off'')&lt;/cmd&gt; &lt;txt&gt;要禁用此错误消息，请清除 "配置参数" 对话框的 "模型引用" 页中的参数 &lt;sldiag objui="configset" objparam="EnableRefExpFcnMdlSchedulingChecks"&gt;'为引用模型启用严格调度检查'&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;或者，考虑调整父模型 ''{5}'' 中函数调用根级 Inport 模块的执行顺序，以匹配引用模型 ''{6}'' 的执行顺序。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="NonExportFcnModelBlockNotAllowedInExportFcnModel">
+  不允许将 Model 模块 ''{0}'' 放在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{1}'' 中，因为引用模型 ''{2}'' 包含离散速率。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ShowModelPeriodicEventPorts'', ''on'');&lt;/cmd&gt; &lt;txt&gt;请考虑在 Model block ''{0}'' 上选择 &lt;sldiag objui="blockdlg" objparam="ShowModelPeriodicEventPorts"&gt;'调度速率'&lt;/sldiag&gt; 参数来&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''function_call_adaptation'')"&gt;调度引用模型中的离散速率以使之适合函数调用输入端口&lt;/a&gt;，并将它们连接到函数调用根级 Inport 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses elapsed time cannot be allowed inside a function-call subsystem driven by function-call root-level Inport block ''{2}'' with an inherited sample time (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;cmd&gt;Simulink.internal.OpenBlockParamsDialog(''{3}'', ''SampleTime'')&lt;/cmd&gt;
+        &lt;txt&gt;To fix this, set &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; on Inport block ''{3}'' to a discrete rate.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported2a">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses elapsed time cannot be placed in a triggered function-call subsystem ''{2}'' that is directly driven by function-call root-level Inport block ''{3}''.
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="fixit"&gt;
+        &lt;cmd&gt;set_param_action(''{4}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt;
+        &lt;txt&gt;Consider changing the dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{4}'' to 'periodic'.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported2b">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses elapsed time cannot be placed in a triggered function-call subsystem ''{2}'' that is directly driven by function-call root-level Inport block ''{3}''.
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;txt&gt;Consider changing the dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of ''{4}'' to 'periodic'.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported3a">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，模块 ''{1}'' 使用经过时间。此模块无法放在由触发的函数调用子系统 ''{2}'' 驱动的函数调用子系统中，因为 ''{3}'' 由函数调用根级 Inport 模块 ''{4}'' 直接驱动。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{5}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;请考虑将 ''{5}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 更改为 '周期性'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelElapsedTimeNotSupported3b">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，模块 ''{1}'' 使用经过时间。此模块无法放在由触发的函数调用子系统 ''{2}'' 驱动的函数调用子系统中，因为 ''{3}'' 由函数调用根级 Inport 模块 ''{4}'' 直接驱动。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请考虑将 ''{5}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 更改为 '周期性'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses absolute time cannot be allowed inside a function-call subsystem driven by function-call root-level Inport block ''{2}'' with an inherited sample time (-1).
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;cmd&gt;Simulink.internal.OpenBlockParamsDialog(''{3}'', ''SampleTime'')&lt;/cmd&gt;
+        &lt;txt&gt;To fix this, set &lt;sldiag objui="blockdlg" objparam="SampleTime"&gt;'Sample time'&lt;/sldiag&gt; on Inport block ''{3}'' to a discrete rate.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported2a">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses absolute time cannot be placed in a triggered function-call subsystem ''{2}'' that is directly driven by function-call root-level Inport block ''{3}''.
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="fixit"&gt;
+        &lt;cmd&gt;set_param_action(''{4}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt;
+        &lt;txt&gt;Consider changing the dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of  ''{4}'' to 'periodic'.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported2b">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', block ''{1}'' that uses absolute time cannot be placed in a triggered function-call subsystem ''{2}'' that is directly driven by function-call root-level Inport block ''{3}''.
+      
+      &lt;actions exclusiveFixIts="no"&gt;
+      &lt;action type="suggestion"&gt;
+        &lt;txt&gt;Consider changing the dialog parameter &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'Sample time type'&lt;/sldiag&gt; of  ''{4}'' to 'periodic'.&lt;/txt&gt;
+      &lt;/action&gt;
+      &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported3a">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，模块 ''{1}'' 使用绝对时间。此模块无法放在由触发的函数调用子系统 ''{2}'' 驱动的函数调用子系统中，因为 ''{3}'' 由函数调用根级 Inport 模块 ''{4}'' 直接驱动。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{5}'', ''SampleTimeType'', ''periodic'');&lt;/cmd&gt; &lt;txt&gt;请考虑将 ''{5}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 更改为 '周期性'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportFcnModelAbsoluteTimeNotSupported3b">
+      在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，模块 ''{1}'' 使用绝对时间。此模块无法放在由触发的函数调用子系统 ''{2}'' 驱动的函数调用子系统中，因为 ''{3}'' 由函数调用根级 Inport 模块 ''{4}'' 直接驱动。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请考虑将 ''{5}'' 的对话框参数 &lt;sldiag objui="blockdlg" objparam="SampleTimeType"&gt;'采样时间类型'&lt;/sldiag&gt; 更改为 '周期性'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ExportedAsyncJMAABBClockResolutionMismatch">
+        Block ''{0}'', triggered by the function-call input port ''{1,number,integer}'' of model block ''{2}'' uses absolute or elapsed time. The base timer resolution ''{3}'' of the model block ''{2}'' is different from the timer resolution ''{4}'' of the caller. The base timer resolution of the model block and the caller timer resolution must be the same.
+        
+    </entry>
+    <entry key="ExportFcnModelNonInlinedSFcnsNotSupported">
+      In the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'', code generation is not supported for the non-inlined S-function ''{1}''. Consider converting the non-inlined S-function to an inlined S-function by providing a corresponding TLC implementation, or connecting each function-call root-level Inport block to an Asynchronous Task Specification block, which will introduce asynchronous function-call behavior.
+    </entry>
+    <entry key="ExportFcnModelMatFileLoggingNotSupported">
+       在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 中，代码生成不支持 MAT 文件记录。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''MatFileLogging'', ''off'')&lt;/cmd&gt; &lt;txt&gt;清除配置参数 &lt;sldiag objui="configset" objparam="MatFileLogging"&gt;MatFileLogging&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SWArchMdlMatFileLoggingNotSupported">
+       在软件架构模型 ''{0}'' 中，代码生成不支持 MAT 文件记录。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''MatFileLogging'', ''off'')&lt;/cmd&gt; &lt;txt&gt;请清除配置参数 &lt;sldiag objui="configset" objparam="MatFileLogging"&gt;MatFileLogging&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MixedRootFcnCallInportToAsyncTaskSpecConnections1">
+        在模型 ''{0}'' 中，函数调用根级 Inport 模块 ''{1}'' 连接到 Asynchronous Task Specification 模块 ''{2}''，而另一个函数调用根级 Inport 模块 ''{3}'' 未连接到它。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on'');set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction''); set_param(''{2}'', ''Commented'', ''Through'');&lt;/cmd&gt; &lt;txt&gt;要将此模型设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，请注释直通或删除 Asynchronous Task Specification 模块 ''{2}''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;如果此模型不用作导出函数模型，请将 ''{3}'' 连接到 Asynchronous Task Specification 模块，并在此模型的根级打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MixedRootFcnCallInportToAsyncTaskSpecConnections2">
+        在模型 ''{0}'' 中，函数调用根级 Inport 模块 ''{1}'' 连接到 Asynchronous Task Specification 模块 ''{2}''，而另一个函数调用根级 Inport 模块 ''{3}'' 未连接到它。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;如果此模型不用作导出函数模型，请将 ''{3}'' 连接到 Asynchronous Task Specification 模块，并在此模型的根级打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on'');set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction''); set_param(''{2}'', ''Commented'', ''Through'');&lt;/cmd&gt; &lt;txt&gt;或者，要将此模型设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，请注释直通或删除 Asynchronous Task Specification 模块 ''{2}''。在此模型的根级，打开属性检查器。在 "执行" 选项卡上，选择 '设置执行域'，并将 '域' 设置为 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="FcnCallRootInportCannotDriveSimEventsGateway">
+  不允许函数调用根级 Inport 模块 ''{0}'' 驱动 SimEvents Gateway 模块 ''{1}''。
+</entry>
+    <entry key="MultiInstanceERTCodeNotSupportedForExpFcnMdl">&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{0}'' 不支持生成可重用代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''CodeInterfacePackaging'', ''Nonreusable function'')&lt;/cmd&gt; &lt;txt&gt;考虑在 '配置参数' &gt; '代码生成' &gt; '接口' 中将选项 &lt;sldiag objui="configset" objparam="CodeInterfacePackaging"&gt;'代码接口打包'&lt;/sldiag&gt; 设置为 '不可重用函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MergeConstantSampleTimeDisallowedInExpFcnMdl">At root level of export function model ''{0}'', source block ''{1}'' of Merge block ''{2}'' is not a function-call subsystem or subsystem that includes an Initialize Function, Terminate Function, Reinitialize Function, or Reset Function block. Connect ''{2}'' to a valid source block.</entry>
+    <entry key="MergeMdlBlkUnconnectedPortDisallowedInExpFcnMdl">模块 ''{1}'' 的输出端口 ''{2}'' 是 Merge 模块 ''{0}'' 的无效输入。在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;的根图中，驱动 Merge 模块输入的所有源必须由函数调用根级 Inport 模块、Simulink 函数或 Initialize Function、Reset Function 或 Terminate Function 模块来驱动。</entry>
+    <entry key="FcnCallerNotInFcnCallPortGroupInExpFcnMdl">Function Caller 模块 ''{0}'' 位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt; ''{1}'' 中。因此，它必须放在 Simulink Function 模块中，或由函数调用根级 Inport 模块驱动。但是，该模块位于子系统 ''{2}'' 内部，违反此规则。</entry>
+    <entry key="SLFcnHasInputFromCaller">Simulink 函数 ''{1}'' 的输入端口 {0,number,integer} 与模块 ''{3}'' 的&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 之间的连接无效。这种连接可能会导致意外的行为，因为在 ''{4}'' 执行时可能会调用 Simulink 函数。</entry>
+    <entry key="SLFcnInRefMdlHasInputFromCaller">通过 Model 模块 ''{2}'' 的输入端口 {1,number,integer} 到 Simulink 函数 ''{0}'' 的输入与模块 ''{4}'' 的&lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{4}"&gt;输出端口 {3,number,integer}&lt;/sldiag&gt; 之间的连接无效。这种连接可能会导致意外的行为，因为在 ''{5}'' 执行时可能会调用 Simulink 函数。</entry>
+    <entry key="FcnCallBlkShouldLatchInputFromSimulinkFcn">函数调用模块 ''{1}'' 的输入端口 {0,number,integer} 和 Simulink 函数 ''{3}'' 的输出端口 {2,number,integer} 之间的连接无效。这种连接可能会导致意外的行为，因为在 ''{4}'' 执行时可能会调用 Simulink 函数。请考虑在对应的输入之前放置 Function-Call Feedback Latch 模块，或在与 ''{6}'' 的&lt;sldiag objui="inport" objparam="{5,number,integer}" objname="{6}"&gt;输入端口 {5,number,integer}&lt;/sldiag&gt; 对应的 Inport 模块上选择 '针对函数调用子系统输出的反馈信号锁存输入' 参数。</entry>
+    <entry key="SLFcnConstTsUncalled">Simulink Coder does not generate code for uncalled Simulink function ''{0}'' defined by block ''{1}''.</entry>
+    <entry key="SLFcnUncalledInPossibleExpFcnMdl">Simulink Coder 不会为模块 ''{1}'' 定义的未调用 Simulink 函数 ''{0}'' 生成代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SetExecutionDomain'', ''on'');set_param_action(''{2}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;要为此函数生成代码，请将模型 ''{2}'' 指定为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。在该模型的根级，打开属性检查器。在 "执行" 选项卡上，选择 '设置执行域'，并将 '域' 设置为 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="SLFcnHasInvalidInputConnection">The connection between input port {0,number,integer} of scoped Simulink function ''{1}'' and &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;output port {2,number,integer}&lt;/sldiag&gt; of block ''{3}'' is invalid. The input of a scoped Simulink function called from outside the scoping subsystem must be connected to another Simulink function, Merge, Constant or an Inport block. </entry>
+    <entry key="SLFcnHasInvalidOutputConnection">The connection between output port {0,number,integer} of scoped Simulink function ''{1}'' and &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{3}"&gt;input port {2,number,integer}&lt;/sldiag&gt; of block ''{3}'' is invalid. The output of a scoped Simulink function called from outside the scoping subsystem must be connected to only one of the following blocks: Simulink Function, Outport, Terminator, Scope, Display, To Workspace, or To File. </entry>
+    <entry key="BadFcnCallStubInportNum">One or more Argument Inport blocks of Simulink function ''{0}'' are either missing or numbered incorrectly. Argument Inport blocks must be numbered consecutively starting with 1.</entry>
+    <entry key="BadFcnCallStubOutportNum">One or more Argument Outport blocks of  Simulink function ''{0}'' are either missing or numbered incorrectly. Argument Outport blocks must be numbered consecutively starting with 1.</entry>
+    <entry key="BadFcnCallStubStatusNum">There can be only one Function-Call Stub Status block in system ''{0}''.</entry>
+    <entry key="RootInportFcnCallNoAsyncTaskSpecBlk">An Asynchronous Task Specification block must be placed at the output port of Inport block ''{0}'' since the Inport block is configured to output a function-call signal.</entry>
+    <entry key="RootInportFcnCallNoAsyncTaskSpecBlkWithFix">
+    由于根级 Inport 模块 ''{0}'' 配置为输出函数调用信号，并且未连接到 Asynchronous Task Specification 模块，因此该模型应设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SetExecutionDomain'', ''on'');set_param_action(''{1}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;在模型 ''{1}'' 的根级，打开属性检查器。在 "执行" 选项卡上，选择 '设置执行域'，并将 '域' 设置为 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MdlWithRootSLFcnOnlyNotSetAsExpFcnMdl">
+    模型 ''{0}'' 仅包含根级 Simulink Function 模块。要导出 Simulink 函数，需要将 ''{0}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on''); set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;要将模型 ''{0}'' 设置为导出函数模型，请在此模型的根级选择 '属性检查器 &gt; 执行 &gt; 设置执行域'。从 '域' 列表中，选择 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MdlWithGlobalSLFcnMdlBlkNotSetAsExpFcnMdl">
+     要从 Model 模块 ''{1}'' 导出 Simulink 函数，必须将模型 ''{0}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on''); set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;要将模型 ''{0}'' 设置为导出函数模型，请在此模型的根级点击画布以从任何模块中清除所选内容。转至 '属性检查器 &gt; 执行 &gt; 设置执行域'。从 '域' 列表中，选择 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithNoRootFcnCallSetToExpFcns">
+    要设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，模型 ''{0}'' 必须在根级具有函数调用 Inport 模块或 Simulink 函数。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;在此模型的根级，打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithPotentialRootFcnCallInportSetToExpFcns">
+    要设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，模型 ''{0}'' 必须在根级具有函数调用 Inport 模块或 Simulink 函数。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''OutputFunctionCall'', ''on'');&lt;/cmd&gt; &lt;txt&gt;在 Inport 模块 ''{1}'' 上选择 '输出函数调用' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithRootCtrlPortSetToExpFcns">
+    由于模型包含根级控制端口 ''{0}''，因此无法将模型 ''{1}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;在模型 ''{1}'' 的根级，打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{0}'');&lt;/cmd&gt; &lt;txt&gt;删除 ''{1}'' 的根图中的控制端口 ''{0}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="MdlWithClientServerPortMustSetToExpFcns">
+    模型 ''{0}'' 必须设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，因为该模型包含函数端口 ''{1}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''SetExecutionDomain'', ''on'');set_param_action(''{0}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;要将此模型设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，请在此模型的根级打开属性检查器。在 "执行" 选项卡上，选择 '设置执行域'，并将 '域' 设置为 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvMdlWithAsyncTaskSpecSetToExpFcns">
+    无法将模型 ''{1}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，因为函数调用根级 Inport 模块 ''{0}'' 连接到 Asynchronous Task Specification 模块 ''{1}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'', ''Commented'', ''Through'');&lt;/cmd&gt; &lt;txt&gt;注释直通或删除 Asynchronous Task Specification 模块 ''{1}''，并重新连接函数调用根级 Inport 模块。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;如果此模型不用作导出函数模型，请在模型 ''{2}'' 的根级打开属性检查器。在 "执行" 选项卡上，清除 '设置执行域'，或选择 '导出函数' 以外的 '域' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="RootInportFcnCallWithAsyncTaskSpecBlkMultDsts">Inport 模块 ''{0}'' 的一个连接无效。由于一个 Asynchronous Task Specification 模块被放置在此 Inport 模块的输出端口处，该 Inport 模块的输出信号无法连接到任何其他模块(包括另一个 Asynchronous Task Specification 模块)。</entry>
+    <entry key="AsyncTaskSpecBlkNotDrivenByRootInportFcnCall">Asynchronous Task Specification block ''{0}'' must be directly connected to the output port of a root-level Inport block that has been configured to output a function-call signal.</entry>
+    <entry key="AsyncTaskSpecBlkUnconnectedOutput">Asynchronous Task Specification 模块 ''{0}'' 的输出不可无连接或连接到 Terminator 模块。</entry>
+    <entry key="ExpFcnSpecBlkNotDrivenByRootInportFcnCall">Export Function Specification 模块 ''{0}'' 必须直接连接到已配置为输出函数调用信号的根级 Inport 模块的输出端口。</entry>
+    <entry key="ExpFcnSpecBlkUnconnectedOutput">Export Function Specification 模块 ''{0}'' 的输出不可无连接或连接到 Terminator 模块。</entry>
+    <entry key="RootInportFcnCallInvalidDst">Inport 模块 ''{0}'' 已选择其对话框参数 '输出函数调用'。然而，它连接到 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt;，该端口无法接受函数调用信号。</entry>
+    <entry key="RootInportFcnCallNotAllowedWithRootControlPort">
+    无法配置 Inport 模块 ''{0}'' 输出一个函数调用信号，因为控制端口 ''{1}'' 位于模型的根级。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;删除控制端口模块 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     
+    </entry>
+    <entry key="SimulinkFunctionNotAllowedWithForEach">Simulink function ''{0}'' cannot be placed inside a For Each block.</entry>
+    <entry key="SimulinkFunctionGlobalNotAllowedInNonVirtualSS">Simulink function ''{0}'' defined by ''{1}'' is configured to be global, and must be placed either at the root level of a model or in a virtual subsystem hierarchy.</entry>
+    <entry key="RootInportFcnCallDuplicateNotAllowed">Duplicate Inport block ''{0}'' is not allowed because ''Output function call'' option is selected for the original Inport block ''{1}''.</entry>
+    <entry key="InvalidAsyncBlockWithinSimulinkFunction">Asynchronous block ''{0}'' is not allowed inside a Simulink Function block.</entry>
+    <entry key="DataRootInportDrvMultiFcnCallPortGroups">The root-level Inport block ''{0}'' is connected to input port {1,number,integer} of ''{2}'', which is driven by function-call root-level Inport block ''{3}'', and input port {4,number,integer} of ''{5}'', which is driven by another function-call root-level Inport block ''{6}''. All destinations of a root-level Inport block must be driven by the same function-call root-level Inport block. Consider splitting the root-level Inport block ''{7}'' into two Inport blocks to drive each destination separately.</entry>
+    <entry key="RateTransBlkDrvMultiFcnCallPortGroups">Rate Transition 模块 ''{0}'' 连接到 ''{2}'' 的输入端口 {1,number,integer} (由函数调用根 Inport 模块 ''{3}'' 驱动)和 ''{5}'' 的输入端口 {4,number,integer} (由另一个函数调用根级 Inport 模块 ''{6}'' 驱动)。Rate Transition 模块的所有目标必须由同一函数调用根级 Inport 模块驱动。请考虑使用两个 Rate Transition 模块分别驱动一个目标。</entry>
+    <entry key="RateTransBlkDrvDataAndFcnCallPortGroups">Rate Transition 模块 ''{0}'' 连接到 ''{2}'' 的输入端口 {1,number,integer} (由函数调用根 Inport 模块 ''{3}'' 驱动)和 ''{5}'' 的输入端口 {4,number,integer} (不由任何函数调用根级 Inport 模块驱动)。Rate Transition 模块的所有目标必须由同一函数调用根级 Inport 模块驱动。请考虑使用两个 Rate Transition 模块分别驱动一个目标。</entry>
+    <entry key="DataRootInportDrvFcnCallAndDataPortGroups">In a model with a root-level Inport block which outputs a function-call signal, all destinations of the root-level Inport block ''{0}'' must be either Simulink functions or driven by function-call root-level Inport blocks. However, ''{1}'' violates this rule.</entry>
+    <entry key="DataRootOutportInFcnCallAndDataPortGroups">In a model with a root-level Inport block which outputs a function-call signal, all sources of any root-level Outport block, such as ''{0}'', must be either Simulink functions or blocks driven by function-call root-level Inport blocks. However, ''{1}'' violates this rule.</entry>
+    <entry key="FcNodeInMultiFcnCallPortGroups">函数调用模块 ''{0}'' 由根级函数调用 Inport 模块 ''{1}'' 和 ''{2}'' 驱动。任何函数调用模块最多只能由一个函数调用根级 Inport 模块驱动。</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroups">The trigger to Function-Call Subsystem block ''{0}'' should be traced back to the same exported function initiator. The following triggers have different initiators:</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroupsCauseData">The non-exported initiator, ''{0}'' is driving the Function-Call Subsystem block.</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroupsCauseExpRoot">The exported root inport, ''{0}'' is driving the Function-Call Subsystem block.</entry>
+    <entry key="FcNodeInDataAndFcnCallPortGroupsCauseSimFcn">The exported Simulink Function, ''{0}'' is driving the Function-Call Subsystem block.</entry>
+    <entry key="FcnCallSysCalledByMultiFcnCallPorts">The function-call block ''{0}'' is driven by multiple function-call root-level Inport blocks. Any function-call block can only be directly or indirectly driven by at most one function-call root-level Inport block.</entry>
+    <entry key="InvFcnCallSysCalledByMultiFcnCallRootInports">
+    Inside an export-function model, when a function-call block ''{0}'' is indirectly driven by multiple function-call root-level Inport blocks, all its initiators must be driven by the same set of function-call root-level Inport blocks. However, ''{1}'' is invoked by function-call signals originating from ''{2}'' and ''{3}'' that violate this rule.</entry>
+    <entry key="InvExpFcnMdlCalledByMultiFcnCallRootInports">
+    当 Model 模块 ''{0}'' 引用&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;时，不支持将此 Model 模块的&lt;sldiag objui="inport" objparam="{1}" objname="{0}"&gt;输入端口''{1}''&lt;/sldiag&gt; 连接到多个函数调用根级 Inport 模块 ''{2}'' 和 ''{3}''。</entry>
+    <entry key="LoopCausedByNgSrcForExpFcnMdlInSingleTaskingHarness">
+      The function-call initiators invoking the export-function model referenced by Model block ''{0}'' must execute in the order of their sample times or task priorities. In a model with a single task, this implies that ''{1}'' must execute before ''{2}''. However, applying this rule caused a data dependency violation. Consider clearing the 'Configuration Parameters' &gt; 'Solver' &gt; 'Treat each discrete rate as a separate task' option or tracing the data connections between the blocks listed below to resolve the data dependency loop.
+    </entry>
+    <entry key="LoopCausedByNgSrcForExpFcnMdlInSingleTaskingHarnessDetail">
+      Block ''{0}'' is involved in the loop.
+    </entry>
+    <entry key="LoopCausedByMuxedFcnCaller">
+      ''{0}'' must execute before ''{1}'' because they both drive the same function-call block through Mux block ''{2}''. When a function-call block is called by multiple initiators in the same task muxing their function-call output signals, the one connected to the input port of lower index of the Mux block executes before the one connected to the input port of higher index of the Mux block.
+    </entry>
+    <entry key="FcnCallNumInOutArgsMismatchCallerSrcFcnDst">Function ''{2}'' defined by ''{1}'' differs in number of reusable arguments from its caller ''{0}''.</entry>
+    <entry key="FcnCallNumInOutArgsMismatchCallerSrcGenericDst">函数 ''{1}'' 与其调用方 ''{0}'' 的可重用参数数目不同。</entry>
+    <entry key="FcnCallNumInOutArgsMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{1}'' 与其调用方的可重用参数数目不同。</entry>
+    <entry key="FcnCallNumInOutArgsMismatchGenericSrcDst">函数 ''{0}'' 与其调用方的可重用参数数目不同。</entry>
+    <entry key="FcnCallNumInArgsMismatchCallerSrcFcnDst">Function ''{4}'', defined
+    by ''{1}'', was expecting {2,number,integer} input 
+    arguments, but was called by ''{0}'' with {3,number,integer}.</entry>
+    <entry key="FcnCallNumInArgsMismatchCallerSrcGenericDst">Function ''{3}''
+    was expecting {1,number,integer} input arguments, but was called by 
+    ''{0}'' with {2,number,integer}.</entry>
+    <entry key="FcnCallNumInArgsMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{3}'' 需要 {1,number,integer} 个输入参数，但调用时使用了 {2,number,integer} 个。</entry>
+    <entry key="FcnCallNumInArgsMismatchGenericSrcDst">函数 ''{2}'' 需要 {0,number,integer} 个输入参数，但调用该函数时使用了 {1,number,integer} 个。</entry>
+    <entry key="FcnCallInArgDTypeMismatchCallerSrcFcnDst">Function ''{5}'',
+    defined by ''{1}'', was expecting datatype ''{4}'' for input  
+    argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallInArgDTypeMismatchCallerSrcGenericDst">Function ''{4}''
+    was expecting datatype ''{3}'' for input argument {1,number,integer}, 
+    but was called by ''{0}'' with ''{2}''.</entry>
+    <entry key="FcnCallInArgDTypeMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{4}'' 需要输入参数 {1,number,integer} 的数据类型为 ''{3}''，但调用时使用了 ''{2}''。</entry>
+    <entry key="FcnCallInArgDTypeMismatchGenericSrcDst">函数 ''{3}'' 需要输入参数 {0,number,integer} 的数据类型 ID 为 {2,number,integer}，但调用时使用了 {1,number,integer}。</entry>
+    <entry key="FcnCallInArgCplxMismatchCallerSrcFcnDst">Function ''{5}'', 
+    defined by ''{1}'', was expecting complexity {4,number,integer} (0=real or
+    1=complex) for input argument {2,number,integer}, but was called by 
+    ''{0}'' with {3,number,integer}.</entry>
+    <entry key="FcnCallInArgCplxMismatchCallerSrcGenericDst">函数 ''{4}'' 需要输入参数 {1,number,integer} 的复/实性为 {3,number,integer} (0 = 实数，1 = 复数)，但由 ''{0}'' 调用时使用了 {2,number,integer}。</entry>
+    <entry key="FcnCallInArgCplxMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{4}'' 需要输入参数 {1,number,integer} 的复/实性为 {3,number,integer} (0 = 实数 而 1 = 复数)，但调用时使用了 {2,number,integer}。</entry>
+    <entry key="FcnCallInArgCplxMismatchGenericSrcDst">函数 ''{3}'' 需要输入参数 {0,number,integer} 的复/实性为 {2,number,integer} (0 = 实数 而 1 = 复数)，但调用时使用了 {1,number,integer}。</entry>
+    <entry key="FcnCallInArgDimsMismatchCallerSrcFcnDst">Function ''{5}'', 
+    defined by ''{1}'', was expecting dimensions ''{4}'' 
+    for input argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallInArgDimsMismatchCallerSrcGenericDst">函数 ''{4}'' 需要输入参数 {1,number,integer} 的维度为 ''{3}''，但由 ''{0}'' 调用时使用了 ''{2}''。</entry>
+    <entry key="FcnCallInArgDimsMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{4}'' 需要输入参数 {1,number,integer} 的维度为 ''{3}''，但调用时使用了 ''{2}''。</entry>
+    <entry key="FcnCallInArgDimsMismatchGenericSrcDst">函数 ''{3}'' 需要输入参数 {0,number,integer} 的维度为 ''{2}''，但调用时使用了 ''{1}''。</entry>
+    <entry key="FcnCallNumOutArgsMismatchCallerSrcFcnDst">Function ''{4}'', defined
+    by ''{1}'', was expecting {2,number,integer} output 
+    arguments, but was called by ''{0}'' with {3,number,integer}.</entry>
+    <entry key="FcnCallNumOutArgsMismatchCallerSrcGenericDst">函数 ''{3}'' 需要 {1,number,integer} 个输出参数，但由 ''{0}'' 调用时使用了 {2,number,integer} 个。</entry>
+    <entry key="FcnCallNumOutArgsMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{3}'' 需要 {1,number,integer} 个输出参数，但调用时使用了 {2,number,integer} 个。</entry>
+    <entry key="FcnCallNumOutArgsMismatchGenericSrcDst">函数 ''{2}'' 需要 {0,number,integer} 个输出参数，但调用时使用了 {1,number,integer} 个。</entry>
+    <entry key="FcnCallOutArgDTypeMismatchCallerSrcFcnDst">Function ''{5}'',
+    defined by ''{1}'', was expecting datatype ''{4}'' for output  
+    argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallOutArgDTypeMismatchCallerSrcGenericDst">Function ''{4}''
+    was expecting datatype ''{3}'' for output argument {1,number,integer}, 
+    but was called by ''{0}'' with ''{2}''.</entry>
+    <entry key="FcnCallOutArgDTypeMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{4}'' 需要输出参数 {1,number,integer} 的数据类型为 ''{3}''，但调用时使用了 ''{2}''。</entry>
+    <entry key="FcnCallOutArgDTypeMismatchGenericSrcDst">函数 ''{3}'' 需要输出参数 {0,number,integer} 的数据类型 ID 为 {2,number,integer}，但调用时使用了 {1,number,integer}。</entry>
+    <entry key="FcnCallOutArgCplxMismatchCallerSrcFcnDst">由 ''{1}'' 定义的函数 ''{5}'' 需要输出参数 {2,number,integer} 的复/实性为 {4,number,integer} (0 = 实数 而 1 = 复数)，但由 ''{0}'' 调用时使用了 {3,number,integer}。</entry>
+    <entry key="FcnCallOutArgCplxMismatchCallerSrcGenericDst">函数 ''{4}'' 需要输出参数 {1,number,integer} 的复/实性为 {3,number,integer} (0 = 实数，1 = 复数)，但由 ''{0}'' 调用时使用了 {2,number,integer}。</entry>
+    <entry key="FcnCallOutArgCplxMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{4}'' 需要输出参数 {1,number,integer} 的复/实性为 {3,number,integer} (0 = 实数 而 1 = 复数)，但调用时使用了 {2,number,integer}。</entry>
+    <entry key="FcnCallOutArgCplxMismatchGenericSrcDst">函数 ''{3}'' 需要输出参数 {0,number,integer} 的复/实性为 {2,number,integer} (0 = 实数 而 1 = 复数)，但调用时使用了 {1,number,integer}。</entry>
+    <entry key="FcnCallOutArgDimsMismatchCallerSrcFcnDst">Function ''{5}'', 
+    defined by ''{1}'', was expecting dimensions ''{4}'' 
+    for output argument {2,number,integer}, but was called by ''{0}'' with 
+    ''{3}''.</entry>
+    <entry key="FcnCallOutArgDimsMismatchCallerSrcGenericDst">函数 ''{4}'' 需要输出参数 {1,number,integer} 的维度为 ''{3}''，但由 ''{0}'' 调用时使用了 ''{2}''。</entry>
+    <entry key="FcnCallOutArgDimsMismatchGenericSrcFcnDst">由 ''{0}'' 定义的函数 ''{4}'' 需要输出参数 {1,number,integer} 的维度为 ''{3}''，但调用时使用了 ''{2}''。</entry>
+    <entry key="FcnCallOutArgDimsMismatchGenericSrcDst">函数 ''{3}'' 需要输出参数 {0,number,integer} 的维度为 ''{2}''，但调用时使用了 ''{1}''。</entry>
+    <entry key="ssCallSimulinkFunctionExecArgInvalid">S-Function block ''{0}'' passes an invalid argument to ''ssCallSimulinkFunction'' macro to call Simulink function ''{1}''. The argument {2,number,integer} (known as ''{3}'') must be a pointer to a valid array of ''_ssFcnCallExecArgInfo'' struct, and the struct field ''dataPtr'' must point to a pre-assigned memory buffer for each associated Simulink function argument.</entry>
+    <entry key="ssCallSimulinkFunctionFail">Memory access violation occurs when S-Function block ''{0}'' is using ''ssCallSimulinkFunction'' macro to call Simulink function ''{1}''. Ensure both the fourth and sixth argument (known as ''execInArg'' and ''execOutArg'') are a pointer to a valid array of ''_ssFcnCallExecArgInfo'' struct, and in each array element, the struct fields ''dataPtr'' and ''dataSize'' are associated with a pre-assigned memory buffer with data type and size matching the corresponding Simulink function argument.</entry>
+    <entry key="FcnCallSubsysInvalidRoutingBlock">The function-call signal
+      driving function-call input port of block ''{0}'' cannot be routed through
+      &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; of block ''{2}''. This function-call signal
+      can be routed through a From, Goto, Inport, Outport, or Subsystem
+      block.</entry>
+    <entry key="FcnCallBlockInvalidRoutingBlock">The function-call signal
+      driving &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of block ''{1}'' cannot be routed
+      through &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{3}"&gt;output port {2,number,integer}&lt;/sldiag&gt; of block ''{3}''. This
+      function-call signal can be routed through a From, Goto, Inport, Outport,
+      or Subsystem block.</entry>
+    <entry key="SlFcnCodeGenVarSizedSideIO">Block ''{0}'' contains a variable-sized signal which is being used within a Simulink Function to connect to local signals within the model, this is not supported for model reference code generation.</entry>
+    <entry key="StubPortBlockMustBeInFcnCallSubsys">无法为子系统 ''{0}'' 定义函数参数。只能为 Simulink 函数定义参数。</entry>
+    <entry key="StubPortBlockNotAllowedInRoot">Cannot define function arguments at the root level of a block diagram. Arguments may be defined only for a Simulink function.</entry>
+    <entry key="SimulinkFunctionInvDiagSettings">Configuration Parameters settings for the &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; ''{0}'' are invalid.</entry>
+    <entry key="SWArchMdlInvDiagSettings">软件架构模型 ''{0}'' 的配置参数设置无效。</entry>
+    <entry key="InvFcnCallName">变量 ''{0}'' 未提供有效的函数调用对象类型名称。</entry>
+    <entry key="FcnCallObjectSignature">签名:</entry>
+    <entry key="ResolveToFcnCallObjInMaskWorkspace">符号 ''{0}'' 解析为封装工作区中的函数签名对象；函数签名对象只应在基础工作区中创建</entry>
+    <entry key="ResolveToFcnCallObjInModelWorkspace">The symbol ''{0}'' resolved to a function signature object in the model workspace; Function  signature objects should only be created in the base workspace</entry>
+    <entry key="FcnCallEmptyArguments">函数签名对象 ''{0}'' 必须包含至少一个参数(输入或输出)。</entry>
+    <entry key="FcnCallPortArgMismatch">函数签名对象 ''{0}'' 所包含的参数数目(输入和输出)必须与函数调用子系统中 Inport 和 Outport 桩件的数目相同。</entry>
+    <entry key="FcnCallIncorrectComplexEntry">函数参数 ''{0}'' 的复/实性必须设置为 'auto'、'real' 或 'complex'。</entry>
+    <entry key="FcnCallIncorrectArgumentEntry">The argument provided should either be of type Simulink.FunctionArgument, Simulink.FunctionStatusArgument or a vector of these objects.</entry>
+    <entry key="FcnCallIncorrectDataTypeEntry">函数参数 ''{0}'' 的数据类型不能为函数签名对象。</entry>
+    <entry key="FcnCallIncorrectArgTypeEntry">函数参数 ''{0}'' 的参数类型必须设置为 'input'、'output' 或 'inout'。</entry>
+    <entry key="FcnCallIncorrectStatusArgEntry">函数签名对象 ''{0}'' 只能有一个状态参数集。</entry>
+    <entry key="FcnCallArgScope">范围:</entry>
+    <entry key="FcnCallArgument">参数</entry>
+    <entry key="FcnCallInputArg">输入参数</entry>
+    <entry key="FcnCallOutputArg">输出参数</entry>
+    <entry key="InvalidSimulinkFunctionName">Simulink Function 模块 ''{1}'' 的函数名称 ''{0}'' 必须为有效的 ANSI C 标识符。</entry>
+    <entry key="InvalidFunctionNameAtCaller"> Function name, ''{0}'', called by the Function Caller block ''{1}'' must be a valid ANSI C identifier.</entry>
+    <entry key="InvalidFunctionScopeName"> The block ''{0}'' contains Simulink functions, and the block name also represents the name of the scope for these Simulink functions. The block name specified, ''{1}'' is not a valid ANSI C identifier required for being a scope name. Valid identifiers start with an alphabetic or ''_'' character, followed by alphanumeric or ''_'' characters.</entry>
+    <entry key="InvalidFunctionCallerScopeName"> 模块 ''{0}'' 正在调用限定作用域的 Simulink 函数。指定的作用域名称 ''{1}'' 不是有效的 ANSI C 标识符，而作用域名称必须使用 ANSI C 标识符。有效标识符以字母或 ''_'' 字符开头，后跟字母数字或 ''_'' 字符。</entry>
+    <entry key="InvalidTriggerPortScopeName"> 作用域名称 ''{0}'' 为空或不是有效的 ANSI C 标识符，而作用域名称必须使用 ANSI C 标识符。有效标识符以字母或 ''_'' 字符开头，后跟字母数字或 ''_'' 字符。</entry>
+    <entry key="DuplicateInArgName"> Input argument names provided in the function prototype of block ''{0}'' must be unique.</entry>
+    <entry key="DuplicateOutArgName"> Output argument names provided in the function prototype of block ''{0}'' must be unique.</entry>
+    <entry key="FcnCallDuplicateServerBlock">两个模块 ''{0}'' 和 ''{1}'' 定义了相同的函数 ''{2}''。函数名称必须唯一。</entry>
+    <entry key="AmbiguousSourceModel">Global function ''{0}'' is defined in multiple models.</entry>
+    <entry key="FunctionIncludedBy">The function is included from model ''{0}'' for caller block ''{1}''.</entry>
+    <entry key="FunctionDefinedIn">The function is defined in model ''{0}'' by function block''{1}''.</entry>
+    <entry key="GlobalSimulinkFcnNotInExpFcnMdl">
+    Simulink function ''{0}'' must be in an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; to be called by block ''{2}'' from another model.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;At the root level of the model referenced by Model block ''{1}'', open the 'Property Inspector'. On the 'Execution' tab, select 'Set execution domain', and set 'Domain' to 'Export function'.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="GlobalSimulinkFcnNotInExpFcnMdlWithFix">
+    Simulink function ''{0}'' must be in an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; to be called by block ''{2}'' from another model. 
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{3}'', ''SetExecutionDomain'', ''on'');set_param_action(''{3}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt;
+            &lt;txt&gt;At the root level of model ''{3}'' referenced by Model block ''{1}'', open the 'Property Inspector'. On the 'Execution' tab, select 'Set execution domain', and set 'Domain' to 'Export function'.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="UndefinedFunctionBuilt">The function ''{0}'' called by block ''{1}'' has not been defined in the model.</entry>
+    <entry key="UnknownFunctionInvoked">找不到由模块 ''{1}'' 调用的函数 ''{0}'' 的定义。 </entry>
+    <entry key="UnknownFunctionSkipped">模块 ''{1}'' 没有从客户端端口 ''{2}'' 调用函数 ''{0}''，因为客户端端口没有连接到定义了有效函数元素 ''{0}'' 的服务器端口。</entry>
+    <entry key="UnknownServerReferred">Cannot find a Simulink function named ''{0}'' in the model.</entry>
+    <entry key="CallingUndeclaredFunction">Block ''{1}'' must declare the function prototype to call Simulink function ''{0}''. For S-Function block, use ''ssDeclareFunctionCaller'' macro to declare the function prototype.</entry>
+    <entry key="UnresolvedScopedFunctionCall">Block ''{0}'' is unable to call the function ''{1}'' with scope name ''{2}'' because the function definition is not found.
+    
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion" id="scopedFcn"&gt;
+            &lt;txt&gt;To call a scoped function, see &lt;a href="matlab:helpview(fullfile(docroot, 'simulink/ug/troubleshoot-block-unable-to-call-function.html'))"&gt;Resolve Error: Block is Unable to Call the Scoped Simulink Function&lt;/a&gt; for more information.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="fixit" id="fcnPort" retvalue="false"&gt;
+            &lt;cmd&gt;slprivate(''insertFunctionElementPort'', bdroot(''{0}''), ''{2}'', ''{1}'', true);&lt;/cmd&gt;
+            &lt;txt&gt;To call a port-scoped function outside the model, add a Function Element Call block ''{2}.{1}'' at the model root level.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="CallerScopeCannotBeCurrentModelName">模块 ''{0}'' 无法使用模型名称 ''{2}'' 作为作用域名称来调用函数 ''{1}''。请更正作用域名称和函数位置。要了解正确用法，请参阅&lt;a href="matlab:helpview(fullfile(docroot, 'simulink/ug/troubleshoot-block-unable-to-call-function.html'))"&gt;解决错误: 模块无法调用限定作用域的 Simulink 函数&lt;/a&gt;。
+    </entry>
+    <entry key="UnableToCallFunctionFromRef">引用模型中的模块 ''{0}'' 无法调用由模块 ''{2}'' 定义的限定作用域的 Simulink 函数 ''{1}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="setGlobal" retvalue="false"&gt; &lt;cmd&gt;set_param(''{3}'', ''FunctionVisibility'', ''global'');&lt;/cmd&gt; &lt;txt&gt;将模块 ''{3}'' 的 ''FunctionVisibility'' 参数设置为 ''global''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="moveFcnToRef"&gt; &lt;txt&gt;请将定义限定作用域的 Simulink 函数 ''{1}'' 的模块 ''{2}'' 移至引用模型(配置为导出函数模型)，并将该模型名称用作调用方模块 ''{0}'' 中的作用域名称。有关详细信息，请参阅&lt;a href="matlab:helpview(fullfile(docroot, 'simulink/ug/simulink-functions-in-referenced-models.html'))"&gt;引用模型中的 Simulink Function 模块&lt;/a&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnableToCallScopedFunctionFromRef">引用模型中的模块 ''{0}'' 无法使用作用域名称 ''{4}'' 调用由模块 ''{2}'' 定义的 Simulink 函数 ''{1}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="setGlobal" retvalue="false"&gt; &lt;cmd&gt;set_param(''{3}'', ''FunctionVisibility'', ''global''); set_param(''{0}'', ''FunctionPrototype'', regexprep(get_param(''{0}'', ''FunctionPrototype''), ''(\\w+)\\.'', ''''));&lt;/cmd&gt; &lt;txt&gt;请将模块 ''{3}'' 的 ''FunctionVisibility'' 参数设置为 ''global''，并删除调用方模块 ''{0}'' 中的作用域名称。&lt;/txt&gt; &lt;/action&gt; &lt;action_catalog id="Simulink:FcnCall:UnableToCallFunctionFromRef" ids="moveFcnToRef"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MultiInstanceIfCallScopeIsModelName">定义 Simulink 函数 ''{1}'' 的引用模型 ''{0}'' 有多个实例。模块 ''{2}'' 使用模型名称作为作用域名称来调用该函数，未指定实例。因此，该函数被解析为 Model 模块 ''{3}'' 中的一个实例。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="ChangeCallerScope" retvalue="false" enabled="true"&gt; &lt;cmd&gt;set_param(''{2}'', ''FunctionPrototype'', regexprep(get_param(''{2}'', ''FunctionPrototype''), ''(\\w+)\\.'', ''__ARG1__.''));&lt;/cmd&gt; &lt;cargs&gt; &lt;carg name="__ARG1__" type="text"&gt; &lt;txt_prompt&gt;&lt;/txt_prompt&gt; &lt;def_cmd&gt;"{4}"&lt;/def_cmd&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;在调用方模块 ''{2}'' 中，将作用域名称更改为 Model 模块(实例)名称: &lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="RemoveInstanceToOne" retvalue="false"&gt;&lt;txt&gt;仅保留一个引用 ''{0}'' 的 Model 模块，并删除其他 Model 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="RequireSingleInstanceIfCallScopeIsModelName">When generating code for the top model, reference model ''{0}'' that defines the Simulink function ''{1}'' only allows a single instance, because the function is called by block ''{2}'' using that model name ''{0}'' as the scope name which does not specify an instance. 
+    
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" id="AllowSingleInstance" retvalue="false"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''ModelReferenceNumInstancesAllowed'', ''Single'');&lt;/cmd&gt;
+            &lt;txt&gt;For model ''{0}'', set &lt;sldiag objui="configset" objparam="ModelReferenceNumInstancesAllowed"&gt;&lt;/sldiag&gt; parameter to ''Single''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="FcnCallArgumentCatalogMismatch">''{0}'' 的函数定义与其调用方之间的参数设定不匹配。</entry>
+    <entry key="FcnCallArgumentPrototypeInvalidDatatype">原型设定中在模块 ''{0}'' 处指定的数据类型 ''{1}'' 无效。</entry>
+    <entry key="FcnCallArgumentSpecificationMismatch">The number of input/output argument specifications provided, and the number of input/output arguments provided in the function prototype at block ''{0}'' must match.</entry>
+    <entry key="FcnCallArgumentSpecificationInvalid">在模块 ''{0}'' 处为输入/输出参数设定提供的表达式的计算结果必须为内置数据类型或 Simulink.NumericType 对象。</entry>
+    <entry key="FcnCallArgumentSpecificationINOUTMismatch">The input and output
+    argument specifications provided for argument ''{0}'' which is both an input
+    and output argument at block ''{1}'', must match.</entry>
+    <entry key="FcnCallArgsINOUTMismatch">The specifications of dimensions,
+    complexity and data type for the reusable input argument {0,number,integer},
+    and reusable output argument {1,number,integer} at block ''{2}'', must match.</entry>
+    <entry key="FcnCallNeedsNonvirtualBus">模块 ''{1}'' 要求其&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 处的总线是非虚拟总线。请考虑插入 Signal Conversion 模块以将总线转换为非虚拟总线。</entry>
+    <entry key="FcnCallArgNotShared">The data scope of data type ''{2}'' must be set to ''Imported'' or ''Exported''. This condition is required to be able to export the declaration of argument ''{0}'' of function ''{1}''.</entry>
+    <entry key="FcnCallPrototypeInvalid">为原型设定指定的字符向量 ''{0}'' 无效。</entry>
+    <entry key="FcnCallNeedsTimeAccess">Block ''{0}'' is not able to access absolute time because it is contained in a Simulink Function block. Consider changing your model such that time is passed in as an argument to the Simulink function.</entry>
+    <entry key="FunctionCallerNonSourceInheritedTs">Function Caller block ''{0}'' must specify inherited sample time (-1 is inherited) when the block is not a source.</entry>
+    <entry key="FunctionCallerNonNumericTypeInArgSpec">Input argument specifications at Function Caller block ''{0}'' must specify examples of built-in or user-defined data types. Examples of user-defined data types, including Bus, Fixed-point, Enumerations, and Alias types, may be provided with a Simulink.Parameter object.</entry>
+    <entry key="FunctionCallerNonNumericTypeOutArgSpec">Output argument specifications at Function Caller block ''{0}'' must specify examples of built-in or user-defined data types. Examples of user-defined data types, including Bus, Fixed-point, Enumerations, and Alias types, may be provided with a Simulink.Parameter object.</entry>
+    <entry key="FcnCallNeedsGlobalDWork">Function ''{0}'' may not be invoked concurrently because it contains block ''{1}'' which may access global data through its dwork vectors. This diagnostic is reported because ''Can be invoked concurrently'' option is selected in the AUTOSAR configuration for the Simulink Function block ''{2}''.</entry>
+    <entry key="FcnCallNeedsGlobalOutputs">Function ''{0}'' may not be invoked concurrently because it contains block ''{1}'' with persistent outputs. This diagnostic is reported because ''Can be invoked concurrently'' option is selected in the AUTOSAR configuration for Simulink Function block ''{2}''.</entry>
+    <entry key="SimulinkFunctionInvalidBusVarDims">Data type ''{0}'' of argument ''{1}'' of the function ''{2}'' defined in block ''{3}'' is a bus containing variable-size elements. Simulink does not support calling Simulink Functions with variable-sized arguments.</entry>
+    <entry key="SimulinkFunctionCycleMsg">Simulink does not support the execution of function-call cycles:</entry>
+    <entry key="CascadeSimulinkFunction">函数 ''{0}'' 包含调用 ''{2}'' 的模块 ''{1}''</entry>
+    <entry key="SimulinkFunctionInconsistentPrototype">函数 ''{0}'' 的参量必须在 ''{1}'' 和 ''{2}'' 之间使用一致的名称。</entry>
+    <entry key="SimulinkFunctionInvalidRootIOForCoder">Simulink function ''{0}'' defined in model ''{1}'' may not be connected to root Inport or root Outport blocks when the model is generating code as a model reference target.</entry>
+    <entry key="SimulinkFunctionInvalidScalarRootIOForCoder">The scalar root-level Inport block ''{0}'' defined in model ''{1}'' may not be connected to Simulink Function blocks when the model is generating code as a model reference target unless ''Configuration Parameters'' &gt; ''Model referencing'' &gt; ''Pass fixed-size scalar root inputs by value for code generation'' is deselected.</entry>
+    <entry key="SimulinkFunctionNonreusableCodeInterface">Model ''{0}'' may not generate reusable or C++ class code because it contains a global Simulink function defined in ''{1}''. Consider setting the option 'Code interface packaging' to 'Nonreusable function'.</entry>
+    <entry key="SingleInstScopedSimulinkFunctionNonreusableCodeInterface">Model ''{0}'' may not generate reusable code because it contains one or more Scoped Single Instance Simulink functions. Consider setting the option 'Code interface packaging' to 'Nonreusable function'.</entry>
+    <entry key="SimulinkFunctionInvalidLocation">定义 Simulink 函数 ''{1}'' 的模块 ''{0}'' 必须包含在模型的根级处或引用模型的根级内。</entry>
+    <entry key="SimulinkFunctionInRefMdlInvalidLocation">Inside the model referenced by Model block ''{0}'' there are global Simulink functions. Therefore, this Model block must be contained within the root level of a model or within a virtual subsystem hierarchy.</entry>
+    <entry key="SimulinkFunctionInSSInvalidAccess">The Simulink function ''{0}'' cannot be accessed by ''{2}'' because the function is scoped to a nonvirtual subsystem ''{1}''.</entry>
+    <entry key="SimulinkFunctionInAtomicSSInvalidAccess">The subsystem block ''{0}'' is atomic. Consider clearing the 'Treat as atomic unit' flag on the subsystem block dialog.</entry>
+    <entry key="SimulinkFunctionAndCallerDifferentRates">The sample time {0} of the function ''{1}'' defined by block ''{2}'' differs from the sample time {3} of its caller block ''{4}''.</entry>
+    <entry key="SimulinkFunctionAndCallerDifferentTasks">由模块 ''{1}'' 定义的函数 ''{0}'' 所在的任务不同于其调用方模块 ''{2}'' 的任务。</entry>
+    <entry key="SimulinkFunctionDrivenByDifferentRates">Function ''{0}'' defined by block ''{1}'' is invoked by multiple callers with different sample times. It is called by ''{2}'' with sample time {3} and by ''{4}'' with sample time {5}.</entry>
+    <entry key="FcnCallerNotSupportRateType">Sample time of block ''{0}'' must not be continuous because it contains a call to a Simulink function.</entry>
+    <entry key="FunctionCallerSvcIntrfArgMismatch">在 Function Caller 模块 ''{1}'' 和分配给客户端-服务器端口 ''{2}'' 的服务接口中指定的函数 ''{0}'' 的参数设定不匹配。 </entry>
+    <entry key="FunctionCallerUnspecifiedArgDims">请为 Function Caller 模块 ''{0}'' 提供输入参量设定和输出参量设定，因为无法在此层次结构、模型或任何引用模型中解析对应的 Simulink 函数。</entry>
+    <entry key="ClientPortUnspecifiedArgDims">通过为客户端-服务器端口 ''{0}'' 分配服务接口，为其提供参数设定，因为无法在此层次结构、模型或任何引用模型中解析对应的 Simulink 函数。或者，为 Function Caller 模块 ''{1}'' 提供输入参数设定和输出参数设定。</entry>
+    <entry key="FunctionCallerServicePortInvalidDataType">客户端-服务器端口 ''{0}'' 的数据类型无效。只能将服务接口分配给客户端-服务器端口。 </entry>
+    <entry key="StubInputPortBlockUnspecifiedDataType">The argument input block ''{0}'' must specify a data type.</entry>
+    <entry key="StubInputPortBlockUnspecifiedDimension">The argument input block''{0}'' must fully specify its dimension.</entry>
+    <entry key="StubInputPortBlockUnspecifiedSignalType">The argument input block ''{0}'' must specify a signal type.</entry>
+    <entry key="StubOutputPortBlockUnspecifiedDataType">The argument output block ''{0}'' must specify a data type.</entry>
+    <entry key="StubOutputPortBlockUnspecifiedDimension">The argument output block''{0}'' must fully specify its dimension.</entry>
+    <entry key="StubOutputPortBlockUnspecifiedSignalType">The argument output block ''{0}'' must specify a signal type.</entry>
+    <entry key="StubInputPortBlockGlobalVar">The signal leaving the argument input block ''{0}'' must not be testpointed or have a non-auto storage class.</entry>
+    <entry key="StubOutputPortBlockGlobalVar">进入参数输出模块 ''{0}'' 的信号不能用于测试点或具有非自动存储类。</entry>
+    <entry key="SimFunCallAcrossMdls">$PRODUCT$ does not support calls to Simulink Functions across model boundaries. Define the Simulink Function ''{0}'' within the same model as its caller.</entry>
+    <entry key="SimulinkFunctionSFcnAPIDataTypeInvalid">Block ''{0}'' defining Simulink Function ''{1}'', is providing an invalid data type ''{2,number,integer}'' for argument ''{3}''.</entry>
+    <entry key="SimulinkFunctionSFcnAPINotFound">Cannot find argument ''{0}'' of function ''{1}'' for ''{2}''.</entry>
+    <entry key="ServiceInterfaceTypeConflict">Interface name ''{0}'' for port ''{1}'' has been used for a different definition. Consider using a different name.</entry>
+    <entry key="ServiceInterfaceTypeAndSharedDataTypeConflict">Interface name ''{0}'' for port ''{1}'' has previously been declared as an exported type. Consider using a different name.</entry>
+    <entry key="CPPClassNotAllowedForFunctionCallsDefinedOutsideModel">Code generator cannot produce C++ class interface for model ''{0}''. Model contains block ''{1}'', which calls a Simulink function (''{2}'') that is defined outside the model hierarchy.</entry>
+    <entry key="CPPClassNotAllowedForFCSSCalledByNonInlinedSFcn">Code generator cannot produce C++ class interface for model ''{0}''. Model contains function-call subsystem ''{1}'', which is called by a non-inlined S-Function ''{2}''.</entry>
+    <entry key="NoMessageInport"> No message is passed to function-call block.</entry>
+    <entry key="InvalidInportNumberForMessageType"> Passing multiple messages into a function-call block is not allowed.</entry>
+    <entry key="InvalidOutportNumberForMessageType">Function Caller 模块 ''{0}'' 最多只能有一个输出，因为该模块配置为异步执行。</entry>
+    <entry key="PortScopedSimulinkFunctionMustBeAtRootLevel">Simulink Function block ''{0}'' must be placed at the root level of an &lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;export-function model&lt;/a&gt; because its function visibility is set to ''port''.
+    </entry>
+    <entry key="SimulinkFunctionProvidedNoServicePort">Because Simulink function ''{0}'' has function visibility set to ''port'', it must have an associated Function Element block ''{2}.{1}'' placed at the model root level.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" id="fcnPort" retvalue="false"&gt;
+            &lt;cmd&gt;slprivate(''insertFunctionElementPort'', bdroot(''{0}''), ''{2}'', ''{1}'', false);&lt;/cmd&gt;
+            &lt;txt&gt;Add a Function Element block ''{2}.{1}'' at the model root level.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="FunctionCallerRequestedNoServicePort">Function Caller 模块 ''{0}'' 调用了与 Function Element 模块 ''{3}'' 相关联的未定义的函数 ''{2}.{1}''。要调用作用域限定为外部端口的函数，请改用 Function Element Call 模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="fcnPort" retvalue="false"&gt; &lt;cmd&gt;slprivate(''insertFunctionElementPort'', bdroot(''{0}''), ''{2}'', ''{1}'', true);&lt;/cmd&gt; &lt;txt&gt;将模块 ''{3}'' 替换为放置在模型根级的 Function Element Call 模块 ''{2}.{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ClientPortNotAtRootLevel">模块 ''{0}'' 是函数元素调用端口，必须位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;的根级。</entry>
+    <entry key="ServerPortNotAtRootLevel">模块 ''{0}'' 是函数元素端口，必须位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;的根级。</entry>
+    <entry key="SimulinkFunctionProvidedNoServicePortTs">Simulink 函数 ''{0}'' 正在通过端口名称 ''{1}'' 为服务提供定义。此端口必须指定其采样时间。</entry>
+    <entry key="SimulinkFunctionDuplicateServiceName">模块 ''{0}'' 正在通过端口 ''{2}'' 定义服务 ''{1}''，但模块 ''{3}'' 也正在通过不同端口定义同名的服务。</entry>
+    <entry key="CannotCreateSubsystemFromClientServerPorts">无法从模块 ''{0}'' 创建子系统，因为该模块包含客户端-服务器端口。客户端-服务器端口必须位于模型的根级。</entry>
+    <entry key="ClientServerNoBranching">模块 ''{0}'' 正在通过端口号 {1,number,integer} 进行客户端调用。此端口必须连接到服务器端口，并且连接不能分支到多个客户端端口。</entry>
+    <entry key="ClientServerSyncExpFcnOnly">模块 ''{0}'' 正在通过输入端口 ''{1}'' 进行同步客户端调用，而且必须放在&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;中。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SetExecutionDomain'', ''on'');set_param_action(''{2}'', ''ExecutionDomainType'', ''ExportFunction'');&lt;/cmd&gt; &lt;txt&gt;要将模型 ''{2}'' 设置为&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;，请在此模型的根级打开属性检查器。在 "执行" 选项卡上，选择 '设置执行域'，并将 '域' 设置为 '导出函数'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ClientServerSyncSWArchOnly">模块 ''{0}'' 正在通过输入端口 ''{1}'' 进行同步客户端调用，而且必须将其置于软件架构模型中。
+    </entry>
+    <entry key="ClientServerNoAccel">不支持加速模式仿真，因为模型 ''{0}'' 包含异步客户端-服务器函数端口。</entry>
+    <entry key="ClientServerNoRapid">Rapid Accelerator mode simulation is not supported because model ''{0}'' contains client-server function ports.</entry>
+    <entry key="ClientServerNoSILPIL">模型 ''{0}'' 不支持当前目标 ''{1}'' 的软件在环(SIL)或处理器在环(PIL)仿真模式，因为该模型包含客户端/服务器函数端口。</entry>
+    <entry key="AsyncFunctionCallerNoLogging">不支持记录 Function Caller 模块 ''{0}'' 的输出，因为该模块配置为异步执行。</entry>
+    <entry key="AsyncFunctionCallerConnection">Function Caller 模块 ''{0}'' 的输出必须连接到位于模型 ''{1}'' 的根级的消息触发子系统，因为该模块配置为异步执行。</entry>
+    <entry key="AsyncCallerMsgTrigSubsysSetting">消息触发子系统 ''{0}'' 作为 Function Caller 模块 ''{1}'' 的异步响应函数时，必须将参数 ''TriggerTime'' 设置为 ''在消息可用时''，并将相关联 Trigger Port 模块中的参数 ''ScheduleAsAperiodic'' 设置为关闭。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''TriggerTime'', ''on message available''); set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''off'');&lt;/cmd&gt; &lt;txt&gt;对于模块 ''{2}''，将参数 &lt;sldiag objui="blockdlg" objparam="TriggerTime" objname="{2}"&gt;''触发时间''&lt;/sldiag&gt; 设置为 ''在消息可用时'' 并关闭参数 &lt;sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}"&gt;''作为非周期性分区调度''&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AsyncCallerMsgTrigSSMustBeAtRoot">消息触发子系统 ''{0}'' 作为 Function Caller 模块 ''{1}'' 的异步响应函数，必须放在模型 ''{2}'' 的根级。
+    </entry>
+    <entry key="AsyncFunctionNeedsMultiTasking">模块 ''{0}'' 包含异步函数 ''{1}''。为此，您必须设置 '配置参数' &gt; '求解器' &gt; '将每个离散速率视为单独任务' 选项。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''SolverMode'', ''MultiTasking'');&lt;/cmd&gt; &lt;txt&gt;设置配置参数 &lt;sldiag objui="configset" objparam="EnableMultiTasking" objname="{0}"&gt;'求解器' &gt; '将每个离散速率视为单独任务'&lt;/sldiag&gt; 选项以将模型 ''{2}'' 更改为在多任务模式下执行。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AsyncFunctionNeedsScheduleEditor">模块 ''{0}'' 包含异步函数 ''{1}''。模块必须放置在导出函数模型中，或您必须从 "模块参数" 对话框中将 '调度速率方式' 参数设置为 '调度编辑器'。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''ScheduleRatesWith'', ''Schedule Editor'');&lt;/cmd&gt; &lt;txt&gt;将 '调度速率方式' 更改为 '调度编辑器'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AsyncFunctionNeedsClientPort">当选中 '异步执行函数调用' 选项时，Function Caller 模块 ''{0}'' 必须解析为客户端端口。</entry>
+    <entry key="AsyncFunctionNeedsServerPort">当选中 '异步执行函数调用' 选项时，Simulink Function 模块 ''{0}'' 的端口作用域必须为服务器端口。</entry>
+    <entry key="AsyncFunctionDisallowPublicSimulinkFunctions">当模型包含作用域为端口的异步 Simulink 函数时，Simulink Function 模块 ''{0}'' 必须以下列两种方式之一进行配置: (1) 将可见性设置为 '限定作用域'，并将该模块置于虚拟子系统内，以便该函数专用于该模型。(2) 将可见性设置为 '端口'，并用一个 Function Element Out 模块对其进行配置。
+    </entry>
+    <entry key="AsyncFunctionDisallowInheritedFunctions">模型 ''{1}'' 中的函数 ''{0}'' 必须指定周期性采样时间，因为该模型包含限定作用域为一个或多个端口的函数。
+    </entry>
+    <entry key="AsyncFunctionDisallowInheritedFcnsSWArch">模型 ''{1}'' 中的函数 ''{0}'' 必须具有周期性采样时间，因为该模型包含作用域限定为一个或多个端口的函数。打开函数编辑器并编辑函数周期。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="openFunctionsEditor" retvalue="false"&gt; &lt;cmd&gt;swarch.internal.fixes.showArchitectureEditor(''{1}'')&lt;/cmd&gt; &lt;txt&gt;打开函数编辑器。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="AsyncSpecificationMismatch"> 对于 Simulink Function 和对应的 Function Caller 模块上的 '异步执行函数调用' 选项，通过服务器端口 ''{1}'' 限定作用域的函数 ''{0}'' 必须有匹配的设定。</entry>
+    <entry key="UnsupportedAsyncCodegenTargets">不支持为 Function Caller 模块 ''{0}'' 生成代码，因为该模块配置为异步执行。</entry>
+    <entry key="UnsupportedCGForAsyncFcnMultiOutputs">当模块配置为异步执行时，不支持为具有多个输出参数的 Function Caller 模块 ''{0}'' 生成代码。</entry>
+    <entry key="AsyncInterfaceMismatchAtCaller">
+    Simulink 行为中 Function Caller 模块 ''{2}'' 的函数调用执行的异步性必须与客户端端口 ''{1}'' 的接口中定义的函数 ''{0}'' 匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AsyncInterfaceMismatchAtCallerFix"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''AsynchronousCaller'', ''{3}'');&lt;/cmd&gt; &lt;txt&gt;设置 Function Caller 模块 ''{2}'' 的 'AsynchronousFunction' 参数以匹配函数 ''{0}'' 的接口的 'Asynchronous' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="AsyncInterfaceMismatchAtFunction">
+    Simulink 行为中 Trigger 模块 ''{2}'' 的函数调用执行的异步性必须与服务器端口 ''{1}'' 的接口中定义的函数 ''{0}'' 匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AsyncInterfaceMismatchAtFunctionFix"&gt; &lt;cmd&gt;set_param_action(''{2}'', ''AsynchronousFunction'', ''{3}'');&lt;/cmd&gt; &lt;txt&gt;设置 Trigger 模块 ''{2}'' 的 'AsynchronousFunction' 参数以匹配函数 ''{0}'' 的接口的 'Asynchronous' 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ArgBlockFcnArgMinMismatch">
+    在 ''{2}'' 中定义的函数 ''{1}'' 中函数参量 ''{0}'' 的 '最小值' 参数必须与参数块 ''{3}'' 的 'OutMin' 参数匹配&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="ArgBlockFcnArgMinMismatchFix"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''OutMin'', ''{4}'');&lt;/cmd&gt; &lt;txt&gt;设置参数块 ''{5}'' 的 'OutMin' 参数以匹配 ''{2}'' 中函数参数的 '最小值' 属性。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ArgBlockFcnArgMaxMismatch">
+    在 ''{2}'' 中定义的函数 ''{1}'' 中函数参量 ''{0}'' 的 '最大值' 参数必须与参数块 ''{3}'' 的 'OutMax' 参数匹配&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="ArgBlockFcnArgMaxMismatchFix"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''OutMax'', ''{4}'');&lt;/cmd&gt; &lt;txt&gt;设置参数块 ''{5}'' 的 'OutMax' 参数以匹配 ''{2}'' 中函数参数的 '最大值' 属性。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="AsyncInterfaceMismatchSelect">选择</entry>
+    <entry key="AsyncInterfaceMismatchDeselect">取消选择</entry>
+    <entry key="UnsupportedCGForAsyncFcnVoidOutput">当模块配置为异步执行时，不支持为没有输出参数的 Function Caller 模块 ''{0}'' 生成代码。</entry>
+    <entry key="InvalidFunctionOrder">在导出函数模型 ''{0}'' 中，函数 ''{1}'' 和 ''{2}'' 的顺序冲突。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param("{0}","OrderFunctionsByDependency","off"); tcg = sltp.TaskConnectivityGraph("{0}"); tcg.assignInputPortPrioritiesForModel();&lt;/cmd&gt; &lt;txt&gt;该模型已变得不一致。点击 ''修复'' 按钮来解决此问题。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="ClientPortDelegateUnsupported">
+      Model 模块 ''{1}'' 的函数端口 ''{0}'' 和数据端口 ''{2}'' 之间的连接无效。函数端口必须连接到另一个 Model 模块的导出函数端口。有关如何建模客户端-服务器通信的详细信息，请参阅 System Composer 文档中的&lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;编写客户端-服务器通信的服务接口&lt;/a&gt;。
+    </entry>
+    <entry key="ClientPortConnectionUnsupported">
+      Model 模块 ''{1}'' 和模块 ''{2}'' 的函数端口 ''{0}'' 之间的连接无效。函数端口必须连接到另一个 Model 模块的导出函数端口。有关如何建模客户端-服务器通信的详细信息，请参阅 System Composer 文档中的&lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;编写客户端-服务器通信的服务接口&lt;/a&gt;。
+    </entry>
+    <entry key="ServerPortDelegateUnsupported">
+      Model 模块 ''{1}'' 的导出函数端口 ''{0}'' 和数据端口 ''{2}'' 之间的连接无效。导出函数端口必须连接到另一个 Model 模块的函数端口。有关如何建模客户端-服务器通信的详细信息，请参阅 System Composer 文档中的&lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;编写客户端-服务器通信的服务接口&lt;/a&gt;。
+    </entry>
+    <entry key="ServerPortConnectionUnsupported">
+      Model 模块 ''{1}'' 和模块 ''{2}'' 的导出函数端口 ''{0}'' 之间的连接无效。导出函数端口必须连接到另一个 Model 模块的函数端口。有关如何建模客户端-服务器通信的详细信息，请参阅 System Composer 文档中的&lt;a href="matlab:helpview('systemcomposer', 'author-service-interfaces-for-client-server-communication')"&gt;编写客户端-服务器通信的服务接口&lt;/a&gt;。
+    </entry>
+    <entry key="ClientServerModelRefPortsMustHaveSameInterfaceForCG">
+      要进行代码生成，''{2}'' 的服务器端口 ''{0}'' (&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;link&lt;/sldiag&gt;)和 ''{5}'' 的客户端端口 ''{3}'' (&lt;sldiag objui="inport" objparam="{4,number,integer}" objname="{5}"&gt;link&lt;/sldiag&gt;)必须指定相同的服务接口；如果不使用服务接口，则它们必须具有相同的端口名称。要解决此问题，请更改引用模型中相关联的函数元素端口的数据类型或端口名称。
+    </entry>
+    <entry key="ClientServerDelegationPortsMustHaveSameInterfaceForCG">
+      要进行代码生成，连接的客户端或服务器端口，即 ''{2}'' 的 ''{0}'' 端口(''{1}'')和 ''{6}'' 的端口 ''{3}'' (&lt;sldiag objui="{4}" objparam="{5,number,integer}" objname="{6}"&gt;link&lt;/sldiag&gt;)必须指定相同的服务接口；如果不使用服务接口，则它们必须具有相同的端口名称。
+    </entry>
+    <entry key="SimulinkStateContainsFcnCallInAcceleratorMode">无法在加速模式下仿真模块 ''{0}''，因为它在 Stateflow 图中基于 Simulink 的状态内输出函数调用信号。</entry>
+    <entry key="CoreBlockCannotCallSFcnInAcceleratorMode">S-Function 模块 ''{0}'' 无法在加速模式下仿真，因为其函数调用输入端口 {1,number,integer} 由模块 ''{2}'' 驱动，而后者不是非内联的 S-Function。没有针对加速模式内联的函数调用发起方的示例有 Stateflow 图和 S-Function，它们不使用 TLC 和加速模式。</entry>
+    <entry key="ScopeToPortPrompt">&lt;选择或键入端口名称&gt;</entry>
+    <entry key="AddFunctionPortTitle">添加函数端口</entry>
+    <entry key="AddFunctionPortDialog">指定了新函数端口 ''{0}''。是否要立即创建此端口?</entry>
+    <entry key="AsyncCallerOnlySupportsExpFcnMdl">
+    
+    仅当模块 ''{0}'' 位于&lt;a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')"&gt;导出函数模型&lt;/a&gt;的函数内时，才支持从该模块异步执行函数。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SetToSync" retvalue="false"&gt; &lt;cmd&gt;set_param_action(''{0}'', ''AsynchronousCaller'', ''off'');&lt;/cmd&gt; &lt;txt&gt;请将模块 ''{0}'' 的参数 ''异步执行函数调用'' 设置为 ''off''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidArgumentDatatypeInServiceInterface">为服务接口 ''{3}'' 中函数元素 ''{2}'' 的参量 ''{1}'' 指定的数据类型 ''{0}'' 无效。</entry>
+    <entry key="MultiFunctionsSameNameInMdlRef">Model 模块 ''{0}'' 包含多个名为 ''{1}'' 的 Simulink 函数，当从以前版本引用受保护模型并在加速模式下仿真时不支持这种情况。请使用原始模型文件在此版本中创建或更新受保护模型。</entry>
+  </message>
+</rsccat>

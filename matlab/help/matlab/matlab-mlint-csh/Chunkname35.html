@@ -1,0 +1,14 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>It appears that the code never uses the indicated local function or nested
+                    function because:<ul><li><p>There is no obvious call of the function.</p></li><li><p>The code does not compute a function handle for the
+                                function.</p></li><li><p>The code does not include a character vector containing the name
+                                of the function.</p><p>If the code had such a character vector, Code Analyzer would not
+                                produce this message because it would indicate that the character
+                                vector might be passed to <code><a href="matlab:doc feval" target="_blank">feval</a></code> or a
+                                callback.</p></li></ul>Code Analyzer can present this message erroneously for several
+                    reasons, including:</p><ul><li><p>MATLAB used ways of calling the function that Code Analyzer cannot
+                            detect.</p></li><li><p> Although you intend to call the function eventually, you have not yet
+                            written the code that calls it.</p></li></ul><br/><strong>Suggested Action</strong><br/><p>If the message is correct, but the situation is temporary, consider placing
+                    the function definition within a block comment. This makes your intention clear
+                    and is easy to reverse.</p><p>If machine-generated files contain stubs or template functions that you must
+                    complete to obtain the behavior you want, consider keeping this message enabled
+                    as a reminder that you still have work to do.</p><p>If the message is wrong, suppress it, as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>. </p></body></html>

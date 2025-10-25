@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>MATLABCode Template</title>
+    <style>/*<![CDATA[*/ 
+
+        /* Default styles for MATLAB Code complexity table title. */
+        p.MATLABCodeTableTitle {
+            font-size: 12pt;
+            margin-top: 12pt;
+            margin-bottom: 7.3pt;
+            font-weight:bold;
+            white-space: pre;
+            color: black;
+        }
+
+        /* Default styles for MATLAB Code complexity table. */
+        table.MATLABCodeTable {
+            border-collapse:collapse;
+        }
+
+        /* Default styles for MATLAB Code complexity table content. */
+        table.MATLABCodeTable td {
+            border-style:solid;
+            border-width:1px;
+            border-collapse: collapse;
+            font-size: 16px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            line-height: normal;
+            text-align: start;
+            white-space: normal;
+        }
+
+        /* Default styles for MATLAB Code complexity table header. */
+        table.MATLABCodeTable th {
+            border-style:solid;
+            border-width:1px;
+            background-color:#E3E3E3;
+            font-weight: bold;
+            font-size: 16px;
+            font-style: normal;
+            font-variant: normal;
+            line-height: normal;
+            text-align: left;
+            white-space: normal;
+        }
+    
+        //]]>
+    </style>
+</head>
+<body>
+  <dplibrary>
+
+        <dptemplate name="MATLABCode">
+            <!-- filled with syntax-highlighted MATLAB code as DOM objects -->
+            <hole id="Content">CONTENT</hole>
+
+            <!-- filled with BaseTable with code complexity data -->
+            <hole id="Complexity">CODE_COMPLEXITY</hole>
+        </dptemplate>
+
+        <!-- hierarchical numbered template for the BaseTable title -->
+        <dptemplate name="MATLABCodeHierNumberedTitle">
+            <p class="MATLABCodeTableTitle" style="counter-increment:table"
+            ><hole id="NumberPrefix">NUMBER_PREFIX</hole
+                ><autonumber stream-name="h1" format="n"></autonumber
+                ><span>.</span
+                ><autonumber stream-name="table" format="n"></autonumber
+                ><hole id="NumberSuffix">NUMBER_SUFFIX</hole
+                ><hole id="Content">TITLE_TEXT</hole
+            ></p>
+        </dptemplate>
+
+        <!-- numbered template for the BaseTable title -->
+        <dptemplate name="MATLABCodeNumberedTitle">
+            <p class="MATLABCodeTableTitle" style="counter-increment:table"
+            ><hole id="NumberPrefix">NUMBER_PREFIX</hole
+                ><autonumber stream-name="table" format="n"></autonumber
+                ><hole id="NumberSuffix">NUMBER_SUFFIX</hole
+                ><hole id="Content">TITLE_TEXT</hole
+            ></p>
+        </dptemplate>
+
+  </dplibrary>
+</body>
+</html>

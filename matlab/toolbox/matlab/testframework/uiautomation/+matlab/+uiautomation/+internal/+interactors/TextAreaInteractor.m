@@ -1,0 +1,9 @@
+classdef TextAreaInteractor < ...
+        matlab.uiautomation.internal.interactors.AbstractComponentInteractor & ...
+        matlab.uiautomation.internal.interactors.mixin.TextTypable & ...
+        matlab.uiautomation.internal.interactors.mixin.ContextMenuable
+    % This class is undocumented and subject to change in a future release
+    
+    % Copyright 2016-2019 The MathWorks, Inc.
+    
+end

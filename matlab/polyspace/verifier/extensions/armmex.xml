@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Copyright 2023 The MathWorks, Inc.
+
+     Arm clang NEON built-ins support for mex-based applications.
+-->
+<compiler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="armmex" default="arm" xsi:noNamespaceSchemaLocation="extensions.xsd">
+  <clients>
+    <client name="matlab"/>
+  </clients>
+  <target name="arm">
+    <attributes>
+      <attribute name="__declspec" sig="(*)"/>
+      <attribute name="neon_vector_type" family="gnu" sig="(ci)" constraints="T" apply="apply_neon_vector_type_attr"/>
+      <attribute name="neon_polyvector_type" family="gnu" sig="(ci)" constraints="T" apply="apply_neon_vector_type_attr"/>
+    </attributes>
+    <options>
+      <option name="--half_float_types" value="1"/>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="armclang/tmw_builtins/armclang.h"/>
+    </options>
+  </target>
+</compiler>

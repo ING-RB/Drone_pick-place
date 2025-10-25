@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017-2024 The MathWorks, Inc. -->
+
+<ContextMenu ID="WSBContextMenu">        
+    <Context MatchContext="WorkspaceBrowser,DataVariable,Body" ID="Context1" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="OpenSave">  
+            <Action ID="WorkspaceBrowser.open" MessageID = "OpenVariableAction" Shortcut="ctrl+D" icon="open_selectedWorkspace"/> 
+            <Action ID="Variableeditor.struct.save" MessageID="SaveSelectedVariablesAction" icon="saveAs"/> 
+        </ActionGroup> 
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="CopyDuplicateDelete">             
+            <Action ID="DuplicateVariableAction" MessageID="DuplicateVariableAction" icon="duplicateWorkspace"/>
+            <Action ID="WorkspaceBrowser.delete" MessageID="DeleteVariableAction" Shortcut="delete" icon="delete_workspace"/>            
+        </ActionGroup>
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="WSBRenameActions">
+            <Action ID="VariableEditor.struct.rename" MessageID="RenameAction" Shortcut="F2" icon="edit_workspaceName"/>
+            <Action ID="EditAction" MessageID="EditValueAction" icon="edit_workspace"/>
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+    <Context MatchContext="WorkspaceBrowser,Body" ID="Context2" Expanded="True" ExactMatch="False">
+        <Action ID="WorkspaceBrowser.new" MessageID="NewDoubleVariableAction" icon="new_workspace"/> 
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="SaveClear">
+            <Action ID="WorkspaceBrowser.save" MessageID="SaveWorkspaceAction" icon="save_workspace" Shortcut="ctrl+S"/>
+            <Action ID="ClearWorkspaceAction" MessageID="ClearWorkspaceAction" icon="clear_workspace"/>
+            <Action ID="RefreshWorkspaceAction" MessageID="RefreshWorkspaceAction" Shortcut="F5" icon="revert"/>
+        </ActionGroup> 
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="EmptySpaceSelection">
+            <Action ID="VariableEditor.select-all" MessageID="SelectAllDataAction" Shortcut="ctrl+A" icon="select_table"/>
+        </ActionGroup> 
+    </Context>
+    <Context MatchContext="WorkspaceBrowser,DataVariable" ID="OnlyDataContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="Selection">
+            <Action ID="VariableEditor.select-all" MessageID="InvertSelection" menuID="InvertSelection" icon="convertTableSelection" />
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="WorkspaceBrowser,Body" ID="PrintContext" Expanded="True" ExactMatch="False">
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="Print">
+            <Action ID="Variableeditor.print" MessageID="PrintAction" icon="printer"/>
+        </ActionGroup> 
+    </Context>
+    <Context MatchContext="WorkspaceBrowser,Header,Column" ID="Context3" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="">
+           <Action ID="HeaderAction" MessageID="Name" menuID="Name" Checked="True"/> 
+            <Action ID="HeaderAction" MessageID="Value" menuID="Value" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Size" menuID="Size" Checked="True"/> 
+            <Action ID="HeaderAction" MessageID="Class" menuID="Class" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Min" menuID="Min" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Max" menuID="Max" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Range" menuID="Range" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Mean" menuID="Mean" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Median" menuID="Median" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Mode" menuID="Mode" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Var" menuID="Var" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Std" menuID="Std" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Bytes" menuID="Bytes" Checked="True"/>
+        </ActionGroup>
+    </Context>    
+</ContextMenu>

@@ -1,0 +1,39 @@
+function [data, info] = mecanumDriveControllerState
+%MecanumDriveControllerState gives an empty data for control_msgs/MecanumDriveControllerState
+
+% Copyright 2019-2021 The MathWorks, Inc.
+data = struct();
+data.MessageType = 'control_msgs/MecanumDriveControllerState';
+[data.header, info.header] = ros.internal.ros2.messages.std_msgs.header;
+info.header.MLdataType = 'struct';
+[data.front_left_wheel_velocity, info.front_left_wheel_velocity] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.back_left_wheel_velocity, info.back_left_wheel_velocity] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.back_right_wheel_velocity, info.back_right_wheel_velocity] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.front_right_wheel_velocity, info.front_right_wheel_velocity] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.reference_velocity, info.reference_velocity] = ros.internal.ros2.messages.geometry_msgs.twist;
+info.reference_velocity.MLdataType = 'struct';
+info.MessageType = 'control_msgs/MecanumDriveControllerState';
+info.constant = 0;
+info.default = 0;
+info.maxstrlen = NaN;
+info.MaxLen = 1;
+info.MinLen = 1;
+info.MatPath = cell(1,18);
+info.MatPath{1} = 'header';
+info.MatPath{2} = 'header.stamp';
+info.MatPath{3} = 'header.stamp.sec';
+info.MatPath{4} = 'header.stamp.nanosec';
+info.MatPath{5} = 'header.frame_id';
+info.MatPath{6} = 'front_left_wheel_velocity';
+info.MatPath{7} = 'back_left_wheel_velocity';
+info.MatPath{8} = 'back_right_wheel_velocity';
+info.MatPath{9} = 'front_right_wheel_velocity';
+info.MatPath{10} = 'reference_velocity';
+info.MatPath{11} = 'reference_velocity.linear';
+info.MatPath{12} = 'reference_velocity.linear.x';
+info.MatPath{13} = 'reference_velocity.linear.y';
+info.MatPath{14} = 'reference_velocity.linear.z';
+info.MatPath{15} = 'reference_velocity.angular';
+info.MatPath{16} = 'reference_velocity.angular.x';
+info.MatPath{17} = 'reference_velocity.angular.y';
+info.MatPath{18} = 'reference_velocity.angular.z';

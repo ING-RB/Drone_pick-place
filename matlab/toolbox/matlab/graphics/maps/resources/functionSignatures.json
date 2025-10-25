@@ -1,0 +1,343 @@
+{
+"geobasemap":
+{
+	"inputs":
+	[
+	    {"name":"gx", "kind":"ordered", "type":[["matlab.graphics.chart.GeographicBubbleChart"], ["matlab.graphics.axis.GeographicAxes"], ["globe.graphics.GeographicGlobe"]]},
+		{"name":"basemap", "kind":"required", "type":"choices=matlab.graphics.chart.internal.maps.basemapNames"}
+	],
+	"outputs":
+	[
+		{"name":"basemap", "type":"char"}
+	]
+},
+"geolimits":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":[["matlab.graphics.chart.GeographicBubbleChart"], ["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+		{"name":"latlim", "kind":"required", "type":[["single",">=-90","<=90","size=1,2"], ["double",">=-90","<=90","size=1,2"]]},
+		{"name":"lonlim", "kind":"required", "type":[["single","size=1,2"], ["double","size=1,2"]]}
+	],
+	"outputs":
+	[
+		{"name":"latlim", "type":"double"},
+		{"name":"lonlim", "type":"double"}
+	]
+},
+"geolimits":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":[["matlab.graphics.chart.GeographicBubbleChart"], ["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+		{"name":"mode", "kind":"ordered", "type":"choices={'auto', 'manual'}"}
+	],
+	"outputs":
+	[
+		{"name":"latlim", "type":"double"},
+		{"name":"lonlim", "type":"double"}
+	]
+},
+"geoaxes":
+{
+	"inputs":
+	[
+		{"name":"gx", "kind":"ordered", "type":"matlab.graphics.axis.GeographicAxes"}
+	],
+	"outputs":
+	[
+		{"name":"gx", "type":"matlab.graphics.axis.GeographicAxes"}
+	]
+},
+"geoaxes":
+{
+	"inputs":
+	[
+		{"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]]},
+		{"name":"Basemap", "kind":"namevalue", "type":"choices=matlab.graphics.chart.internal.maps.basemapNames"},
+		{"name":"TickLabelFormat", "kind":"namevalue", "type":"choices={'dd', 'dm', 'dms', '-dd', '-dm', '-dms'}"},
+		{"name":"options", "kind":"properties", "type":"matlab.graphics.axis.GeographicAxes"}
+	],
+	"outputs":
+	[
+		{"name":"gx", "type":"matlab.graphics.axis.GeographicAxes"}
+	]
+},
+"geotickformat":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+		{"name":"fmt", "kind":"required", "type":"choices={'dd', 'dm', 'dms', '-dd', '-dm', '-dms'}"}
+	],
+	"outputs":
+	[
+		{"name":"tickLabelFormat", "type":"char"}
+	]
+},
+"geoplot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+        {"repeating":true, "tuple":
+			[
+				{"name":"lat", "kind":"required", "type":"numeric"},
+        		{"name":"lon", "kind":"required", "type":"numeric"},
+        		{"name":"LineSpec", "kind":"ordered", "type":["char", "@matlab.graphics.internal.isLineSpec"]}
+			]
+		},
+        {"name":"LatitudeData", "kind":"namevalue", "type":"numeric"},
+        {"name":"LongitudeData", "kind":"namevalue", "type":"numeric"},
+        {"name":"LatitudeDataSource", "kind":"namevalue", "type":"char"},
+        {"name":"LongitudeDataSource", "kind":"namevalue", "type":"char"},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+	"outputs":
+	[
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"lat", "description":"MATLAB:graphics:visualizedatatask:LatitudeChannel"},
+                {"name":"lon", "description":"MATLAB:graphics:visualizedatatask:LongitudeChannel"},                
+                {"name":"LineStyle", "description":"MATLAB:graphics:visualizedatatask:LineStyleDesc", "type":"choices={'-','--',':','-.','none'}", "kind":"properties"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'none','o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram'}", "kind":"properties"},
+                {"name":"AlignVertexCenters", "description":"MATLAB:graphics:visualizedatatask:AlignVertexDesc", "type":"choices={'on','off'}", "kind":"properties"}
+            ],
+            "icon": "geoPlot",
+            "description": "MATLAB:plots:Tool_geoplot_Description",
+            "categories": "MATLAB:graphics:visualizedatatask:GeoPlotsLabel",
+            "codeFunction": "matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"geoplot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+        {"name":"tbl", "kind":"required", "type":["tabular","@(t) ~matlab.graphics.internal.maps.isgeotable(t)"]},
+        {"name":"latvar", "kind":"required", "type":[["numeric", ">=1"], ["logical"], ["cellstr"], ["string"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"lonvar", "kind":"required", "type":[["numeric", ">=1"], ["logical"], ["cellstr"], ["string"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Line"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.Line"}
+    ]
+},
+"geoscatter":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+		{"name":"lat", "kind":"required", "type":"numeric"},
+		{"name":"lon", "kind":"required", "type":"numeric"},
+		{"name":"A", "kind":"ordered", "type":"numeric"},
+		{"name":"C", "kind":"ordered", "type":
+			[
+				["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+				["numeric", "2d", "ncols=3", ">=0", "<=1"],
+				["numeric", "vector"],
+				["char", "@matlab.graphics.internal.isColorSpec"]
+			]
+		},
+		{"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+		{"name":"M", "kind":"flag", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+        {"name":"LatitudeData", "kind":"namevalue", "type":"numeric"},
+        {"name":"LongitudeData", "kind":"namevalue", "type":"numeric"},
+        {"name":"LatitudeDataSource", "kind":"namevalue", "type":"char"},
+        {"name":"LongitudeDataSource", "kind":"namevalue", "type":"char"},
+		{"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+	],
+	"outputs":
+	[
+		{"name":"S", "type":"matlab.graphics.chart.primitive.Scatter"}
+	],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"lat", "description":"MATLAB:graphics:visualizedatatask:LatitudeChannel"},
+                {"name":"lon", "description":"MATLAB:graphics:visualizedatatask:LongitudeChannel"},
+                {"name":"A", "description": "MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"C", "description": "MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram','none'}", "kind":"properties"}
+            ],
+            "icon":"geoScatterPlot",
+            "description":"MATLAB:plots:Tool_geoscatter_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:GeoPlotsLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"geoscatter":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.GeographicAxes"], ["map.graphics.axis.MapAxes"]]},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"latvar", "kind":"required", "type":[["numeric", ">=1"], ["logical"], ["cellstr"], ["string"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"lonvar", "kind":"required", "type":[["numeric", ">=1"], ["logical"], ["cellstr"], ["string"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ]
+},
+"geodensityplot":
+{
+    "inputs":
+    [
+        {"name":"gx", "kind":"ordered", "type":"matlab.graphics.axis.GeographicAxes"},
+        {"name":"lat", "kind":"required", "type":"numeric"},
+        {"name":"lon", "kind":"required", "type":"numeric"},
+        {"name":"weights", "kind":"ordered", "type":"numeric"},
+        {"name":"LatitudeData", "kind":"namevalue", "type":"numeric"},
+        {"name":"LongitudeData", "kind":"namevalue", "type":"numeric"},
+        {"name":"LatitudeDataSource", "kind":"namevalue", "type":"char"},
+        {"name":"LongitudeDataSource", "kind":"namevalue", "type":"char"},
+		{"name":"FaceAlpha", "kind":"namevalue", "type":
+			[
+				["char", "choices={'interp'}"],
+				["numeric", "scalar", ">=0", "<=1"]
+			]
+		},
+        {"name":"options", "kind":"properties", "type":"matlab.graphics.chart.primitive.DensityPlot"}
+    ],
+	"outputs":
+	[
+        {"name":"dp", "type":"matlab.graphics.chart.primitive.DensityPlot"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"lat", "description":"MATLAB:graphics:visualizedatatask:LatitudeChannel"},
+                {"name":"lon", "description":"MATLAB:graphics:visualizedatatask:LongitudeChannel"},   
+                {"name":"Weights"},
+                {"name":"Radius", "description":"MATLAB:graphics:geoscatter:RadiusLabel", "type":"numeric", "kind":"properties"}
+            ],
+            "icon":"geoDensityPlotWide",
+            "description":"MATLAB:plots:Tool_geodensityplot_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:GeoPlotsLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"geobubble":
+{
+	"inputs":
+	[
+		{"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]]},
+		{"name":"tbl", "kind":"required", "type":"tabular"},
+		{"name":"latvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["choices=tbl.Properties.VariableNames"]]},
+		{"name":"lonvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["char"], ["choices=setdiff(tbl.Properties.VariableNames,matlab.graphics.chart.internal.validateTableSubscript(tbl,latvar))"]]},
+		{"name":"LatitudeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["choices=tbl.Properties.VariableNames"]]},
+		{"name":"LongitudeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["choices=tbl.Properties.VariableNames"]]},
+		{"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["choices=tbl.Properties.VariableNames"]]},
+		{"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["choices=tbl.Properties.VariableNames"]]},
+		{"name":"MapCenter", "kind":"namevalue", "type":[["single"], ["double"]]},
+		{"name":"ZoomLevel", "kind":"namevalue", "type":["numeric", "scalar", ">=0"]},
+		{"name":"MapLayout", "kind":"namevalue", "type":"choices={'normal', 'maximized'}"},
+		{"name":"GridVisible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"ScalebarVisible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"Basemap", "kind":"namevalue", "type":"choices=matlab.graphics.chart.internal.maps.basemapNames"},
+		{"name":"SizeLimits", "kind":"namevalue", "type":["numeric", "vector", "ncols=2"]},
+		{"name":"BubbleWidthRange", "kind":"namevalue", "type":["numeric", "vector", "ncols=2"]},
+		{"name":"BubbleColorList", "kind":"namevalue", "type":[["char", "choices={'red', 'green', 'blue', 'white', 'cyan', 'magenta', 'yellow', 'black'}"],["cellstr"],["numeric", "vector", "ncols=3", ">=0", "<=1"]]},
+		{"name":"Title", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"LegendVisible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"SizeLegendTitle", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"ColorLegendTitle", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"Parent", "kind":"namevalue", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]]},
+		{"name":"Visible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"FontName", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"FontSize", "kind":"namevalue", "type":["numeric","scalar"]},
+		{"name":"HandleVisibility", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"Units", "kind":"namevalue", "type":"choices={'centimeters', 'characters', 'inches', 'normalized', 'pixels', 'points'}"},
+		{"name":"OuterPosition", "kind":"namevalue", "type":[["single"], ["double"]]}
+	],
+	"outputs":
+	[
+		{"name":"gb", "type":"matlab.graphics.chart.GeographicBubbleChart"}
+	]
+},
+"geobubble":
+{
+	"inputs":
+	[
+		{"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]]},
+		{"name":"lat", "kind":"required", "type":[["single"], ["double"]]},
+		{"name":"lon", "kind":"required", "type":[["single"], ["double"]]},
+		{"name":"sizedata", "kind":"ordered", "type":"numeric"},
+		{"name":"colordata", "kind":"ordered", "type":"categorical"},
+		{"name":"LatitudeData", "kind":"namevalue", "type":[["single"], ["double"]]},
+		{"name":"LongitudeData", "kind":"namevalue", "type":[["single"], ["double"]]},
+		{"name":"SizeData", "kind":"namevalue", "type":"numeric"},
+		{"name":"ColorData", "kind":"namevalue", "type":"categorical"},
+		{"name":"MapCenter", "kind":"namevalue", "type":[["single"], ["double"]]},
+		{"name":"ZoomLevel", "kind":"namevalue", "type":["numeric", "scalar", ">=0"]},
+		{"name":"MapLayout", "kind":"namevalue", "type":"choices={'normal', 'maximized'}"},
+		{"name":"GridVisible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"ScalebarVisible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"Basemap", "kind":"namevalue", "type":"choices=matlab.graphics.chart.internal.maps.basemapNames"},
+		{"name":"SizeLimits", "kind":"namevalue", "type":["numeric", "vector", "ncols=2"]},
+		{"name":"BubbleWidthRange", "kind":"namevalue", "type":["numeric", "vector", "ncols=2"]},
+		{"name":"BubbleColorList", "kind":"namevalue", "type":[["char", "choices={'red', 'green', 'blue', 'white', 'cyan', 'magenta', 'yellow', 'black'}"],["cellstr"],["numeric", "vector", "ncols=3", ">=0", "<=1"]]},
+		{"name":"Title", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"LegendVisible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"SizeLegendTitle", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"ColorLegendTitle", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"Parent", "kind":"namevalue", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]]},
+		{"name":"Visible", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"FontName", "kind":"namevalue", "type":[["string"], ["char"]]},
+		{"name":"FontSize", "kind":"namevalue", "type":["numeric","scalar"]},
+		{"name":"HandleVisibility", "kind":"namevalue", "type":"choices={'on', 'off'}"},
+		{"name":"Units", "kind":"namevalue", "type":"choices={'centimeters', 'characters', 'inches', 'normalized', 'pixels', 'points'}"},
+		{"name":"OuterPosition", "kind":"namevalue", "type":[["single"], ["double"]]}
+	],
+	"outputs":
+	[
+		{"name":"gb", "type":"matlab.graphics.chart.GeographicBubbleChart"}
+	],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"lat", "description":"MATLAB:graphics:visualizedatatask:LatitudeChannel"},
+                {"name":"lon", "description":"MATLAB:graphics:visualizedatatask:LongitudeChannel"},   
+                {"name":"sizedata", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"colordata", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Basemap", "description":"MATLAB:graphics:geobubble:BasemapLabel", "type":"choices=matlab.graphics.chart.internal.maps.basemapNames", "kind":"properties"},
+                {"name":"MapLayout", "description":"MATLAB:graphics:geobubble:MapLayoutLabel", "type":"choices={'normal','maximized'}","kind":"properties"},
+                {"name":"ScalebarVisible", "description":"MATLAB:graphics:geobubble:ScalebarVisibleLabel", "type":"choices={'on','off'}","kind":"properties"}
+            ],
+            "icon":"geoBubblePlot",
+            "description":"MATLAB:plots:Tool_geobubble_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:GeoPlotsLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+            "supportsOverlay": false
+        }
+    }
+}
+}

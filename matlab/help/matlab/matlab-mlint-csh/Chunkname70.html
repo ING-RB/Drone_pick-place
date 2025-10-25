@@ -1,0 +1,17 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>A call to <code>error</code> appears to use
+                        <code>sprintf</code> to construct the error message. Because you can
+                    call <code>error</code> in numerous ways (with or without error tags,
+                    with or without formats and extra arguments, and so on), sometimes Code Analyzer
+                    mistakenly produces this message when you use <code>sprintf</code> to
+                    produce an error tag or use it as an argument to an existing format
+                    specifier.</p><br/><strong>Suggested Action</strong><br/><p>Remove the <code><a href="matlab:doc sprintf" target="_blank">sprintf</a></code> call and pass the format specifier and arguments
+                    directly to the <code><a href="matlab:doc error" target="_blank">error</a></code> function. For example, replace code such as
+                    this:</p><p>
+                    <code>error('prog:input',&nbsp;...<br/>sprintf('Cannot&nbsp;open&nbsp;%s&nbsp;because&nbsp;%s\n',&nbsp;...<br/>filename,&nbsp;reason));</code>
+                </p><p>with this code:</p><p>
+                    <code>error('prog:input',&nbsp;...<br/>'Cannot&nbsp;open&nbsp;%s&nbsp;because&nbsp;%s\n',&nbsp;...<br/>filename,&nbsp;reason);</code>
+                </p><p>Note that MATLAB converts special characters (such as <code>\n</code>,
+                        <code>\t</code>, <code>%s</code>, and <code>%d</code>) in
+                    the error message only when you specify more than one input argument with
+                        <code>error</code>.</p><p> If Code Analyzer produced this message erroneously, you can suppress it, as
+                    described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

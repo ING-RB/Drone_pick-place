@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2018-2025 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+    <entry key="IncorrectConfigurationMSFunction">The MATLAB S-function ''{0}'' methods GetOperatingPoint/SetOperatingPoint and GetSimState/SetSimState cannot be used together. Use only one type of method to define operating point save and restore behavior.</entry>
+    <entry key="InvalidComplianceSettingMSFunction" note="stringDatatypeUpdate">The setting for OperatingPointCompliance in the MATLAB S-function ''{0}'' in block ''{1}'' is invalid. This setting should be one of the following character vectors: {2}</entry>
+    <entry key="CannotRestoreBlockOperatingPoint">Cannot restore the operating point of the block ''{0}''</entry>
+    <entry key="CannotRestoreStateOfBlock">Cannot restore the state value of the block ''{0}''.</entry>
+    <entry key="LoggedStateReadOnlyValue">Logged state value for {0} is read-only.</entry>
+    <entry key="ChecksumMisMatchInRapidAccelOperatingPointWarn">The model, ''{0}'', was changed after the operating point was saved. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="OnlyRestoringLoggedStateFromNormalOPWarn"> The ModelOperatingPoint object, which is provided as initial state, was saved in Normal/Accelerator mode simulation. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="PlatformMisMatchInRapidAccelOperatingPointWarn">Operating point for the model, ''{0}'', was saved in ''{1}'' platform. It cannot be restored in ''{2}'' platform. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="OnlyRestoringLoggedStateFromRaccelOPWarn">The ModelOperatingPoint object, which is provided as initial state, was saved in Rapid Accelerator mode simulation. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="StepSizeMisMatchInRapidAccelOperatingPointWarn">Fundamental step size({0}) in the provided ModelOperatingPoint is different from the compiled fundamental step size({1}). Simulink will only restore the available logged states. Simulation time may not match the snapshot time in OperatingPoint due to this mismatch.</entry>
+    <entry key="SolverMisMatchInRapidAccelOperatingPointWarn">Solver name ''{0}'' in the provided ModelOperatingPoint is different from the compiled solver name ''{1}''. The initial state of blocks will be restored from the specified operating point but the state of the solver will be discarded. The results of the current simulation may deviate from the results of the original simulation.</entry>
+    <entry key="CustomCodeInModelRapidAccelOperatingPointWarn">The model ''{0}'' has custom code. Restore OperatingPoint in Rapid Accelerator mode is not supported for such models. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="BlockReduced"><![CDATA[Blocks are reduced when saving operating point. This will cause a model checksum mismatch error when restoring this operating point object.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param_action(''{0}'','BlockReduction','off');</cmd>
+            <txt>Consider stopping the simulation, disabling BlockReduction, and saving again.</txt>
+          </action>
+      </actions>
+      ]]></entry>
+    <entry key="ModelSimStateDefaultDescription">Operating point of the model ''{0}'' at simulation time {1}.</entry>
+    <entry key="ModelSimStateStoppedDescription">Operating point of the model ''{0}'' at the time of simulation stop.</entry>
+    <entry key="PeriodicOPNotSupportedCannotSaveOP" context="error">Operating point logging is not supported for model "{0}".</entry>
+    <entry key="PeriodicOPCannotSaveOPRuntime" context="warning">Unable to save model operating point at t = {0}.</entry>
+    <entry key="PeriodicOPFileLocationNeededForMultiSim" context="error">MAT file location must be specified to log model operating points in multiple simulation workflows, such as configuring and running a set of simulations using an array of Simulink.SimulationInput objects.</entry>
+    <entry key="PeriodicOPFileLocationMustBeMATFile" context="error">Unable to create MAT file for operating point logging because the specified file location "{0}" is not a MAT file.</entry>
+    <entry key="PeriodicOPCannotCreateMATFile" context="diagnostic" note="0=Full file path for MAT-File">Unable to create or write to operating point logging MAT file "{0}". Check that the filename and location are valid and writable.</entry>
+    <entry key="PeriodicOPInvalidWallTimeInterval" context="error" note="0=User-specified wall clock time interval">Wall-clock time interval ("{0}") for operating point logging must be greater than or equal to 1 second.</entry>
+    <entry key="PeriodicOPInvalidSimulationTimeInterval" context="error" note="0=User-specified simulation time interval">Simulation time interval ("{0}") for operating point logging must be greater than 0.</entry>
+    <entry key="PeriodicOPInvalidMaxOperatingPoints" context="error" note="0=User-specified number of maximum points">Maximum number of operating points ("{0}") to log in simulation must be greater than 0 and less than or equal to 100.</entry>
+    <entry key="PeriodicOPNoTimes" context="error">Operating point logging times must be a nonempty vector, for logging at specified simulation times, or a real scalar number, for interval-based logging.</entry>
+    <entry key="PeriodicOPSomeTimesBeforeStartOrAfterStopTime" context="warning" note="0=Simulation start time, 1=Simulation Stop Time">One or more operating point logging times ignored because the specified time does not occur between the simulation start time ("{0}") and stop time ("{1}").</entry>
+    <entry key="PeriodicOPAllTimesBeforeStartOrAfterStopTime" context="error" note="0=Simulation start time, 1=Simulation Stop Time">At least one specified operating point logging time must occur between the simulation start time ("{0}") and stop time ("{1}").</entry>
+    <entry key="PeriodicOPIntervalLargerThanSimulationTime" context="error" note="0=Operating Point Logging Interval, 1=Simulation start time, 2=Simulation Stop Time">Operating point logging interval ("{0}") must be small enough to log at least one operating point between the simulation start time ("{1}") and stop time ("{2}").</entry>
+    <entry key="PeriodicOPTooManyTimeInterval" context="error">"OperatingPointLoggingTimes" value must be a real scalar number when the "OperatingPointLoggingMethod" value is "clock-interval" or "sim-interval".</entry>
+    <entry key="OperatingPointInterfaceChecksumMismatch"><![CDATA[Simulink cannot load the initial operating point because the configuration settings or the sample time list of the model ''{0}'' were changed after the operating point was saved. To allow interface checksum mismatch, set <sldiag objui="configset" objparam="OperatingPointInterfaceChecksumMismatchMsg">Operating point interface checksum mismatch</sldiag> to ''none'' or ''warning''.]]></entry>
+    <entry key="OperatingPointContentsChecksumMismatch" context="error" note="0=Top model name, 1=Name of operation point variable"><![CDATA[Unable to load complete operating point for model "{0}" because the model is different from the model that generated operating point "{1}".
+        <actions exclusiveFixIts="yes">
+          <action type="fixit" id="OperatingPointContentsChecksumMismatchErrorToWarn">
+            <cmd>set_param_action(''{0}'', 'OperatingPointContentsChecksumMismatchMsg', 'warning');</cmd>
+            <txt>To load as much of the operating point data as possible and get information about the differences in the model, set the "<sldiag objui="configset" objparam="OperatingPointContentsChecksumMismatchMsg">Operating point contents checksum mismatch</sldiag>" parameter value to “warning”.</txt>
+          </action>
+          <action type="fixit" id="OperatingPointContentsChecksumMismatchNewOP">
+            <txt>To load a complete operating point, save a new operating point for model "{0}".</txt>
+          </action>
+          <action type="fixit" id="OperatingPointContentsChecksumMismatchNoInitialState">
+            <cmd>set_param_action(''{0}'', 'LoadInitialState', 'off');</cmd>
+            <txt>To run the simulation from the start without an initial operating point, clear the "<sldiag objui="configset" objparam="LoadInitialState">Initial state</sldiag>" parameter.</txt>
+          </action>
+        </actions>
+    ]]></entry>
+    <entry key="OperatingPointContentsChecksumMismatchWarn" context="warning" note="0=Top model name, 1=Name of operating point variable"><![CDATA[Partial operating point loaded for model "{0}" because the model is different from the model that generated operating point "{1}". Simulation results might differ from the results of a simulation that runs from the start without an initial operating point.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit" id="OperatingPointContentsChecksumMismatchWarnToNone">
+            <cmd>set_param_action(''{0}'', 'OperatingPointContentsChecksumMismatchMsg', 'none');</cmd>
+            <txt>To suppress this warning, set the "<sldiag objui="configset" objparam="OperatingPointContentsChecksumMismatchMsg">Operating point contents checksum mismatch</sldiag>" parameter value to "none".</txt>
+          </action>
+          <action type="fixit" id="OperatingPointContentsChecksumMismatchWarnNewOP">
+            <txt>To load a complete operating point, save a new operating point for model "{0}".</txt>
+          </action>
+          <action type="fixit" id="OperatingPointContentsChecksumMismatchWarnNoInitialState">
+            <cmd>set_param_action(''{0}'', 'LoadInitialState', 'off');</cmd>
+            <txt>To run the simulation from the start without an initial operating point, clear the "<sldiag objui="configset" objparam="LoadInitialState">Initial state</sldiag>" parameter.</txt>
+          </action>
+        </actions>
+    ]]></entry>
+    <entry key="OperatingPointExtraBlockAdded" context="warning" note="0_List=List of block paths, 1=Name of operating point variable">Operating point "{1}" does not contain data for these blocks:
+    {0_List}</entry>
+    <entry key="OperatingPointInvalidBlockPath" context="warning" note="0_List=List of block paths, 1=Name of operating point variable, 2=Model name">No blocks in model "{2}" match these block paths in operating point "{1}":
+    {0_List}</entry>
+    <entry key="BlockStructuralChangeDetected" context="warning" note="0_List=List of block paths, 1=Name of operating point variable, 2=Model name">These blocks in model "{2}" match block paths in operating point "{1}" but the operating point data is invalid for the blocks in model "{2}" due to differences in the block type or block configuration:
+    {0_List}</entry>
+    <entry key="BlockStructuralChangeWithLoggedStatesSomeRestored" context="warning" note="0_List=List of restored states, 1_List=List of unrestored states, 2=Model name, 3=Name of operating point variable">These states were set using only logged states data in operating point "{3}" because the block operating point data is invalid due to differences in the block type or block configuration for blocks in model "{2}" that match paths in operating point "{3}":
+    {0_List}\nThese states were not set because both the block operating point data and the logged states data are invalid due to differences in the block type or block configuration for blocks in model "{2}" that match paths in operating point "{3}":
+    {1_List}</entry>
+    <entry key="BlockStructuralChangeWithLoggedStatesNoneRestored" context="warning" note="0_List=List of unrestored states, 1=Model name, 2=Name of operating point variable=">These states were not set because both the block operating point data and the logged states data are invalid due to differences in the block type or block configuration for blocks in model "{1}" that match paths in operating point "{2}":
+    {0_List}</entry>
+    <entry key="BlockStructuralChangeWithLoggedStatesAllRestored" context="warning" note="0_List=List of restored states, 1=Model name, 2=Name of operating point variable">These states were set using only logged states data in operating point "{1}" because the block operating point data is invalid due to differences in the block type or block configuration for blocks in model "{1}" that match paths in operating point "{2}":
+    {0_List}</entry>
+    <entry key="AdditionalInfoForDBIOError"> This error might occur when building a model on a network drive. Building the model on a local drive might prevent the error. </entry>
+    <entry key="OperatingPointSimTimeMismatch" context="warning" note="0=Operating Point Snapshot Time, 1=Sim time after restore, 2=Operating point variable name"><![CDATA[Simulation time after initialization ({1}) does not match the snapshot time ({0}) of model operating point "{2}" specified as the <sldiag objui="configset" objparam="InitialState">Initial state</sldiag>. Simulation results might not match exactly the results of a simulation that runs from the start without an initial operating point.]]></entry>
+    <entry key="PeriodicOPNotSupportedInMenuSim" context="warning">"OperatingPointLogging" is not supported in rapid accelerator menu simulation.</entry>
+    <entry key="OperatingPointLoggingFile">OperatingPointLoggingFile</entry>
+</message>
+</rsccat>

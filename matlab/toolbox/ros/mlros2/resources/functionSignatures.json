@@ -1,0 +1,443 @@
+{
+    "ros2":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"command", "kind":"required", "type":"choices={'msg'}"},
+                     {"mutuallyExclusiveGroup":
+                      [
+                          [
+                              {"name":"sub_command", "kind":"required", "type":"choices={'list'}"}
+                          ],
+                          [
+                              {"name":"sub_command", "kind":"required", "type":"choices={'show'}"},
+                              {"name":"option", "kind":"required", "type":"choices=ros2('msg', 'list')"}
+                          ]
+                      ]
+                     }
+                 ],
+                 [
+                     {"name":"command", "kind":"required", "type":"choices={'node'}"},
+                     {"name":"sub_command", "kind":"required", "type":"choices={'list'}"},
+                     {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+                 ],
+                 [
+                     {"name":"command", "kind":"required", "type":"choices={'topic'}"},
+                     {"name":"sub_command", "kind":"required", "type":"choices={'list'}"},
+                     {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+                 ],
+                 [
+                     {"name":"command", "kind":"required", "type":"choices={'service'}"},
+                     {"mutuallyExclusiveGroup":
+                      [
+                          [
+                              {"name":"sub_command", "kind":"required", "type":"choices={'list'}"},
+                              {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+                          ],
+                          [
+                              {"name":"sub_command", "kind":"required", "type":"choices={'type'}"},
+                              {"name":"option", "kind":"required", "type":"choices=ros2('service', 'list')"},
+                              {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+                          ]
+                      ]
+                     }
+                 ],
+                 [
+                     {"name":"command", "kind":"required", "type":"choices={'action'}"},
+                     {"mutuallyExclusiveGroup":
+                      [
+                          [
+                              {"name":"sub_command", "kind":"required", "type":"choices={'list'}"},
+                              {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+                          ],
+                          [
+                              {"name":"sub_command", "kind":"required", "type":"choices={'type'}"},
+                              {"name":"option", "kind":"required", "type":"choices=ros2('action', 'list')"},
+                              {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+                          ]
+                      ]
+                     }
+                 ],
+                 [
+                     {"name":"command", "kind":"required", "type":"choices={'bag'}"},
+                     {"name":"sub_command", "kind":"required", "type":"choices={'info'}"},
+                     {"name":"folder_path", "kind":"required", "type":[["folder"], ["file=*.db3,*.mcap"], ["matlabpathfile=*.db3,*.mcap"]]}
+                 ]
+             ]
+            }
+        ]
+    },
+    "ros2genmsg":
+    {
+        "inputs":
+        [
+            {"name":"folder_path", "kind":"required", "type":["char", "folder"]},
+            {"name":"BuildConfiguration", "kind":"namevalue", "type":"choices={'fasterbuilds', 'fasterruns'}"},
+            {"name":"CreateShareableFile", "kind":"namevalue", "type":[["logical", "scalar"]]}
+        ]
+    },
+    "ros2message":
+    {
+        "inputs":
+        [
+            {"name":"msg_type", "kind":"required", "type":"choices=ros2('msg', 'list')"}
+        ]
+    },
+    "ros2publisher":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":[["ros2node"]]},
+            {"name":"topic_name", "kind":"required", "type":[["char"], ["choices=ros2('topic', 'list', 'DomainID', node.ID)"]]},
+            {"name":"msg_type", "kind":"ordered", "type":[["char"], ["choices=ros2('msg', 'list')"]]},
+            {"name":"History", "kind":"namevalue", "type":[["char"], ["choices={'keeplast', 'keepall'}"]]},
+            {"name":"Depth", "kind":"namevalue", "type":["numeric", "scalar"]},
+            {"name":"Reliability", "kind":"namevalue", "type":[["char"], ["choices={'reliable', 'besteffort'}"]]},
+            {"name":"Durability", "kind":"namevalue", "type":[["char"], ["choices={'volatile', 'transientlocal'}"]]},
+            {"name":"Deadline", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Lifespan", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Liveliness", "kind":"namevalue", "type":[["char"], ["choices={'automatic'}"]]},
+            {"name":"LeaseDuration", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"DeadlineCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"LivelinessCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"IncompatibleQoSCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]}
+        ]
+    },
+    "ros2subscriber":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":[["ros2node"]]},
+            {"name":"topic_name", "kind":"required", "type":[["char"], ["choices=ros2('topic', 'list', 'DomainID', node.ID)"]]},
+            {"name":"msg_type", "kind":"ordered", "type":[["char"], ["choices=ros2('msg', 'list')"]]},
+            {"name":"callback", "kind":"ordered", "type":[["function_handle"], ["cell"]]},
+            {"name":"History", "kind":"namevalue", "type":[["char"], ["choices={'keeplast', 'keepall'}"]]},
+            {"name":"Depth", "kind":"namevalue", "type":["numeric", "scalar"]},
+            {"name":"Reliability", "kind":"namevalue", "type":[["char"], ["choices={'reliable', 'besteffort'}"]]},
+            {"name":"Durability", "kind":"namevalue", "type":[["char"], ["choices={'volatile', 'transientlocal'}"]]},
+            {"name":"Deadline", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Lifespan", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Liveliness", "kind":"namevalue", "type":[["char"], ["choices={'automatic'}"]]},
+            {"name":"LeaseDuration", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"DeadlineCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"LivelinessCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"IncompatibleQoSCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"MessageLostCallback", "kind":"namevalue", "type":[["function_handle"], ["cell"]]}
+        ]
+    },
+    "ros2svcclient":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":[["ros2node"]]},
+            {"name":"svc_name", "kind":"required", "type":[["char"], ["choices=ros2('service', 'list', 'DomainID', node.ID)"]]},
+            {"name":"svc_type", "kind":"required", "type":[["char"], ["choices=ros.ros2.internal.Introspection.getAllServiceTypesStatic"]]},
+            {"name":"History", "kind":"namevalue", "type":[["char"], ["choices={'keeplast', 'keepall'}"]]},
+            {"name":"Depth", "kind":"namevalue", "type":["numeric", "scalar"]},
+            {"name":"Reliability", "kind":"namevalue", "type":[["char"], ["choices={'reliable', 'besteffort'}"]]},
+            {"name":"Durability", "kind":"namevalue", "type":[["char"], ["choices={'volatile', 'transientlocal'}"]]},
+            {"name":"Deadline", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Lifespan", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Liveliness", "kind":"namevalue", "type":[["char"], ["choices={'automatic'}"]]},
+            {"name":"LeaseDuration", "kind":"namevalue", "type":["double", "scalar",">0"]}
+        ]
+    },
+    "ros2svcserver":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":[["ros2node"]]},
+            {"name":"svc_name", "kind":"required", "type":["char"]},
+            {"name":"svc_type", "kind":"required", "type":[["char"], ["choices=ros.ros2.internal.Introspection.getAllServiceTypesStatic"]]},
+            {"name":"callback", "kind":"required", "type":[["function_handle"], ["cell"]]},
+            {"name":"History", "kind":"namevalue", "type":[["char"], ["choices={'keeplast', 'keepall'}"]]},
+            {"name":"Depth", "kind":"namevalue", "type":["numeric", "scalar"]},
+            {"name":"Reliability", "kind":"namevalue", "type":[["char"], ["choices={'reliable', 'besteffort'}"]]},
+            {"name":"Durability", "kind":"namevalue", "type":[["char"], ["choices={'volatile', 'transientlocal'}"]]},
+            {"name":"Deadline", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Lifespan", "kind":"namevalue", "type":["double", "scalar",">0"]},
+            {"name":"Liveliness", "kind":"namevalue", "type":[["char"], ["choices={'automatic'}"]]},
+            {"name":"LeaseDuration", "kind":"namevalue", "type":["double", "scalar",">0"]}
+        ]
+    },
+    "ros2bagreader":
+    {
+        "inputs":
+        [
+            {"name":"folder_path", "kind":"required", "type":[["folder"], ["file=*.db3,*.mcap"], ["matlabpathfile=*.db3,*.mcap"]]}
+        ]
+    },
+    "ros2bagreader.select":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2bagreader"},
+            {"name":"Time", "kind":"namevalue", "type":["numeric","ncols=2","choices=num2cell(unique(obj.MessageList.Time))"]},
+            {"name":"Topic", "kind":"namevalue", "type":[["char"], ["string"], ["cell"], ["choices=unique(obj.AvailableTopics.Row)"]]},
+            {"name":"MessageType", "kind":"namevalue", "type":[["char"], ["string"], ["cell"], ["choices=unique(cellstr(obj.AvailableTopics.MessageType))"]]}
+        ]
+    },
+    "ros2bagwriter":
+    {
+        "inputs":
+        [
+        {"mutuallyExclusiveGroup":
+           [
+            [
+                {"name":"path", "kind":"required", "type":"char"},
+                {"name":"StorageFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'sqlite3'}"]]},
+                {"name":"CacheSize", "kind":"namevalue", "type":["double", "scalar", ">=0"]},
+                {"name":"SplitSize", "kind":"namevalue", "type":["numeric", "scalar", ">=86016"]},
+                {"name":"SplitDuration", "kind":"namevalue", "type":[["numeric"], ["struct"]]},
+                {"name":"CompressionFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'zstd'}"]]},
+                {"name":"CompressionMode", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'file', 'message'}"]]}
+            ],
+            [
+                {"name":"path", "kind":"required", "type":"char"},
+                {"name":"StorageFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'sqlite3'}"]]},
+                {"name":"CacheSize", "kind":"namevalue", "type":["double", "scalar", ">=0"]},
+                {"name":"SplitSize", "kind":"namevalue", "type":["numeric", "scalar", ">=86016"]},
+                {"name":"SplitDuration", "kind":"namevalue", "type":[["numeric"], ["struct"]]},
+                {"name":"CompressionFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none'}"]]},
+                {"name":"CompressionMode", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none'}"]]}
+            ],
+            [
+                {"name":"path", "kind":"required", "type":"char"},
+                {"name":"StorageFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'mcap'}"]]},
+                {"name":"CacheSize", "kind":"namevalue", "type":["double", "scalar", ">=0"]},
+                {"name":"SplitSize", "kind":"namevalue", "type":["numeric", "scalar", ">=86016"]},
+                {"name":"SplitDuration", "kind":"namevalue", "type":[["numeric"], ["struct"]]},
+                {"name":"CompressionFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'zstd'}"]]},
+                {"name":"CompressionMode", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'file'}"]]},
+                {"name":"StorageConfigurationProfile", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none', 'fastwrite', 'zstd_fast', 'zstd_small'}"]]}
+            ],
+            [
+                {"name":"path", "kind":"required", "type":"char"},
+                {"name":"StorageFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'mcap'}"]]},
+                {"name":"CacheSize", "kind":"namevalue", "type":["double", "scalar", ">=0"]},
+                {"name":"SplitSize", "kind":"namevalue", "type":["numeric", "scalar", ">=86016"]},
+                {"name":"SplitDuration", "kind":"namevalue", "type":[["numeric"], ["struct"]]},
+                {"name":"CompressionFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none'}"]]},
+                {"name":"CompressionMode", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none'}"]]},
+                {"name":"StorageConfigurationProfile", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none', 'fastwrite', 'zstd_fast', 'zstd_small'}"]]}
+            ],
+            [
+                {"name":"path", "kind":"required", "type":"char"},
+                {"name":"StorageFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'mcap'}"]]},
+                {"name":"CacheSize", "kind":"namevalue", "type":["double", "scalar", ">=0"]},
+                {"name":"SplitSize", "kind":"namevalue", "type":["numeric", "scalar", ">=86016"]},
+                {"name":"SplitDuration", "kind":"namevalue", "type":[["numeric"], ["struct"]]},
+                {"name":"CompressionFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'zstd'}"]]},
+                {"name":"CompressionMode", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'file'}"]]},
+                {"name":"StorageConfigurationProfile", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'custom'}"]]},
+                {"name":"StorageConfigurationFile", "kind":"namevalue", "type":"char"}
+            ],
+            [
+                {"name":"path", "kind":"required", "type":"char"},
+                {"name":"StorageFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'mcap'}"]]},
+                {"name":"CacheSize", "kind":"namevalue", "type":["double", "scalar", ">=0"]},
+                {"name":"SplitSize", "kind":"namevalue", "type":["numeric", "scalar", ">=86016"]},
+                {"name":"SplitDuration", "kind":"namevalue", "type":[["numeric"], ["struct"]]},
+                {"name":"CompressionFormat", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none'}"]]},
+                {"name":"CompressionMode", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'none'}"]]},
+                {"name":"StorageConfigurationProfile", "kind":"namevalue", "type":[["char"],["string"],["nonempty"],["choices={'custom'}"]]},
+                {"name":"StorageConfigurationFile", "kind":"namevalue", "type":"char"}
+            ]
+           ]
+        }
+      ]  
+    },
+    "ros2bagwriter.write":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2bagwriter"},
+            {"name":"topic", "kind":"required", "type":[["char"], ["cellstr"]]},
+            {"name":"timeStamp", "kind":"required","type":[["numeric"],["struct"],["cell"]]},
+            {"name":"ros2Message", "kind":"required","type":[["struct"],["cell"]]}
+        ]
+    },
+    "ros2node":
+    {
+        "inputs":
+        [
+            {"name":"node_name", "kind":"required", "type":["char"]},
+            {"name":"id", "kind":"ordered", "type":["numeric", "scalar", "integer", ">=0", "<=232"]},
+            {"name":"Parameters", "kind":"namevalue", "type":["struct"]}
+        ]
+    },
+    "ros2time":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"node", "kind":"required", "type":["ros2node"]},
+                     {"name":"op", "kind":"required", "type":"choices={'now'}"},
+                     {"name":"is_system", "kind":"ordered", "type":"choices={'system'}"}
+                 ],
+                 [
+                     {"name":"secs", "kind":"required", "type":"numeric"},
+                     {"name":"nsecs", "kind":"ordered", "type":"numeric"}
+                 ]
+             ]
+            }
+        ]
+    },
+    "ros2param":
+    {
+        "inputs":
+        [
+            {"name":"node_name", "kind":"required", "type":[["char"],["choices=ros2('node', 'list')"]]},
+            {"name":"DomainID", "kind":"namevalue", "type":["numeric", "scalar", "integer", ">=0", "<=232"]}
+        ]
+    },
+    "ros2tf":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":[["ros2node"]]},
+            {"name":"DynamicBroadcasterQoS", "kind":"namevalue", "type":["struct"]},
+            {"name":"StaticBroadcasterQoS", "kind":"namevalue", "type":["struct"]},
+            {"name":"DynamicListenerQoS", "kind":"namevalue", "type":["struct"]},
+            {"name":"StaticListenerQoS", "kind":"namevalue", "type":["struct"]}
+        ]
+    },
+    "ros2tf.getTransform":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2tf"},
+            {"name":"targetFrame", "kind":"required", "type":"choices=obj.AvailableFrames"},
+            {"name":"sourceFrame", "kind":"required", "type":"choices=obj.AvailableFrames"},
+            {"name":"sourceTime", "kind":"positional", "type":[["numeric"],["struct"],["ros2time"]]},
+            {"name":"Timeout", "kind":"namevalue", "type":["numeric", "scalar","nonempty","positive"]}
+        ]
+    },
+    "ros2tf.canTransform":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2tf"},
+            {"name":"targetFrame", "kind":"required", "type":"choices=obj.AvailableFrames"},
+            {"name":"sourceFrame", "kind":"required", "type":"choices=obj.AvailableFrames"},
+            {"name":"sourceTime", "kind":"positional", "type":[["numeric"],["struct"],["ros2time"]]}
+        ]
+    },
+    "ros2tf.sendTransform":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2tf"},
+            {"name":"tf", "kind":"required", "type":"struct"},
+            {"name":"UseStatic", "kind":"namevalue", "type":[["logical", "scalar"]]}
+        ]
+    },
+    "ros2tf.transform":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2tf"},
+            {"name":"targetFrame", "kind":"required", "type":"choices=obj.AvailableFrames"},
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"msgtime", "kind":"positional", "type":[["char"],["string"]]},
+            {"name":"sourceTime", "kind":"positional", "type":[["numeric"],["struct"],["ros2time"]]}
+        ]
+    },
+    "ros2actionclient":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":"ros2node"},
+            {"name":"act_name", "kind":"required", "type":[["char"],["string"]]},
+            {"name":"act_type", "kind":"required", "type":[["char"],["string"],["choices=ros.ros2.internal.Introspection.getAllActionTypesStatic"]]},
+            {"name":"GoalServiceQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"ResultServiceQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"CancelServiceQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"FeedbackTopicQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"StatusTopicQoS", "kind":"namevalue", "type":"struct"}
+        ]
+    },
+    "ros2actionclient.waitForServer":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"Timeout", "kind":"namevalue", "type":["numeric", "scalar","nonempty","positive"]}
+        ]
+    },
+    "ros2actionclient.sendGoal":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"goal_msg", "kind":"required", "type":"struct"},
+            {"name":"callback_fcns", "kind":"positional", "type":"ros2ActionSendGoalOptions"}
+        ]
+    },
+    "ros2actionclient.cancelGoal":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"goal_handle", "kind":"required", "type":"ros2ActionGoalHandle"},
+            {"name":"CancelFcn", "kind":"namevalue", "type":"function_handle"}
+        ]
+    },
+    "ros2actionclient.cancelGoalAndWait":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"goal_handle", "kind":"required", "type":"ros2ActionGoalHandle"},
+            {"name":"Timeout", "kind":"namevalue", "type":["numeric", "scalar","nonempty","positive"]}
+        ]
+    },
+    "ros2actionclient.cancelAllGoals":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"CancelFcn", "kind":"namevalue", "type":"function_handle"}
+        ]
+    },
+    "ros2actionclient.cancelAllGoalsAndWait":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"Timeout", "kind":"namevalue", "type":["numeric", "scalar","nonempty","positive"]}
+        ]
+    },
+    "ros2actionclient.cancelGoalsBeforeAndWait":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"ros2actionclient"},
+            {"name":"timestamp", "kind":"required", "type":"struct"},
+            {"name":"Timeout", "kind":"namevalue", "type":["numeric", "scalar","nonempty","positive"]}
+        ]
+    },
+    "ros2actionserver":
+    {
+        "inputs":
+        [
+            {"name":"node", "kind":"required", "type":"ros2node"},
+            {"name":"act_name", "kind":"required", "type":[["char"],["string"]]},
+            {"name":"act_type", "kind":"required", "type":[["char"],["string"],["choices=ros2type.getActionList"]]},
+            {"name":"ExecuteGoalFcn", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"ReceiveGoalFcn", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"CancelGoalFcn", "kind":"namevalue", "type":[["function_handle"], ["cell"]]},
+            {"name":"MultiGoalMode", "kind":"namevalue", "type":[["char"],["string"],["choices={'on','off'}"]]},
+            {"name":"GoalServiceQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"ResultServiceQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"CancelServiceQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"FeedbackTopicQoS", "kind":"namevalue", "type":"struct"},
+            {"name":"StatusTopicQoS", "kind":"namevalue", "type":"struct"}
+        ]
+    }
+}

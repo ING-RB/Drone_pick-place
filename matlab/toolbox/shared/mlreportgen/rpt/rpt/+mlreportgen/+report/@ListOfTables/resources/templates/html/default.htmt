@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style>/*<![CDATA[*/ 
+
+p.ListOfTablesTitle {
+    font-size: 12pt;
+    font-weight:bold;
+}
+
+
+/* LOT container */
+LOT {
+    display:none;
+}
+
+/* top-level LOT entries */
+ul.LOTItems {
+    background-color: #f2f2f2; /* light gray */
+    list-style-type:none; /* no bullets */
+    padding-left:1em;     /* Indent from left margin */
+}
+
+/* lower-level LOT entries */
+ul.LOTItems  ul {
+  list-style-type:none;
+  padding-left:1.2em;
+}
+
+/* Title of section targeted by this LOT entry */
+a.LOTItemTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight:bold;
+    color:blue;
+    text-decoration: underline;
+}                                                                            
+
+span.LOTHandle {
+    display:block;
+    float:left;
+    height:10px;
+    width:10px;
+    background-color: transparent;
+    border: 1px solid black;
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+    position:relative;
+    top:2px;  
+    margin-right:5pt;
+    cursor:default;
+}
+
+
+span.LOTHandleCollapsed {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAA/SURBVChTY/wPBAxEACYoDQcNDQ1gjA4wFOICRCsEuxGbVcgAJI9i4t+/f6EsTIDha5jp6LbQyDNQNh7AwAAA5zEb+KbHji8AAAAASUVORK5CYII=");
+}
+
+span.LOTHandleCollapsed:hover {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4AITER4u94/hZAAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAAOUlEQVQYla2PsQ0AMAjDoI87n9OJhQrBUI9RlMgOhC04NZBkkubierEFiAkg1oterVOkCv2Xea47Lig/Mlx+VwdyAAAAAElFTkSuQmCC");
+}
+
+span.LOTHandleExpanded {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAArSURBVChTY/wPBAxEACYoTRBQXyHYjQ0NDVAudgCSJ81EKBsvGDBfMzAAAFYzDwbo3WvaAAAAAElFTkSuQmCC");
+}
+
+span.LOTHandleExpanded:hover {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4AITER8sAJqxCQAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAAKUlEQVQYlWOsr6//z0AEYCJGEW0UsjAwMDA0NDTgVdTQ0EC8iYxDwNcAN3oIDWPkPuEAAAAASUVORK5CYII=");
+}
+    
+        //]]>
+    </style>
+</head>
+<body>
+  <dplibrary>
+    
+    <dptemplate name="ListOfTables">
+      <div>
+        <hole id="Title" default-style-name="ListOfTablesTitle">TITLE</hole>
+        <hole id="LOTObj" default-style-name="ListOfTablesLOTObj">LOT_OBJECT</hole>
+      </div>
+    </dptemplate>
+    
+    <!-- ListOfTables Title template used by the ListOfTables reporter -->       
+    <dptemplate name="ListOfTablesTitle">
+         <p class="ListOfTablesTitle">
+            <span 
+                class="LOTHandle LOTHandleCollapsed" 
+                id="LOTVisibilityHandle" 
+                onclick="util.toggleLOTVisibility(event,'LOTVisibilityHandle')"
+                style = "margin-top:3px;"
+            ></span>
+            <hole id="Content" default-style-name="ListOfTablesTitle"/>
+         </p> 
+         
+    </dptemplate>         
+          
+  </dplibrary>
+</body>
+</html>

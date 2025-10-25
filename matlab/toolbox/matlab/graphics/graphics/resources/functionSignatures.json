@@ -1,0 +1,1101 @@
+{
+"animatedline":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered",  "type":"matlab.graphics.axis.AbstractAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"x", "kind":"required", "type":"double"},
+                    {"name":"y", "kind":"required", "type":"double"},
+                    {"name":"z", "kind":"ordered", "type":"double"},
+                    {"name":"opts", "kind":"properties", "type":"matlab.graphics.animation.AnimatedLine"}
+                ],
+                [
+                    {"name":"opts", "kind":"properties", "type":"matlab.graphics.animation.AnimatedLine"}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"an", "type":"matlab.graphics.animation.AnimatedLine"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"}
+            ],
+            "icon":"linePlot",
+            "description":"MATLAB:plots:Tool_animatedline_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:AnimationLabel",
+            "supportsOverlay": true
+        }
+    }
+    
+},
+"bubblechart":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"x", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"sz", "kind":"required", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"}
+            ],
+            "icon":"bubbleChartPlot",
+            "description":"MATLAB:plots:Tool_bubblechart_Description",
+            "categories":["MATLAB:graphics:visualizedatatask:DataDistLabel","MATLAB:graphics:visualizedatatask:DiscreteDataLabel"],
+            "supportsOverlay": true
+        }
+    }
+},
+"bubblechart":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"sizevar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"cvar", "kind":"ordered", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ZVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ]
+},
+"bubblechart3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"x", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"sz", "kind":"required", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"}
+            ],
+            "icon":"bubbleChart3Plot",
+            "description":"MATLAB:plots:Tool_bubblechart3_Description",
+            "categories":["MATLAB:graphics:visualizedatatask:DataDistLabel","MATLAB:graphics:visualizedatatask:DiscreteDataLabel"],
+            "supportsOverlay": true
+        }
+    }
+},
+"bubblechart3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"zvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"sizevar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"cvar", "kind":"ordered", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ZVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ]
+},
+"bubblecloud":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"], ["matlab.graphics.layout.TiledChartLayout"]]},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"szvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["char"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+                    {"name":"labelvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["char"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+                    {"name":"groupvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"],["char"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]}
+                ],
+                [
+                    {"name":"szvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["char"], ["vartype"], ["pattern", "scalar"], ["choices=tbl.Properties.VariableNames"]]},
+                    {"name":"labelvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["char"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]}
+                ],
+                [
+                    {"name":"szvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["char"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]}
+                ]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.BubbleCloud"}
+    ],
+    "outputs":
+    [
+        {"name":"bc", "type":"matlab.graphics.chart.BubbleCloud"}
+    ]
+},
+"bubblecloud":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"], ["matlab.graphics.layout.TiledChartLayout"]]},
+        {"name":"sz", "kind":"required", "type":["numeric", "vector", ">=0"]},
+        {"name":"labels", "kind":"ordered", "type":[["string", "vector"],["cellstr", "vector"]]},
+        {"name":"groups", "kind":"ordered", "type":[
+            ["numeric", "vector"],
+            ["string", "vector"],
+            ["cellstr", "vector"],
+            ["logical", "vector"],
+            ["categorical", "vector"]
+            ]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.BubbleCloud"}
+    ],
+    "outputs":
+    [
+        {"name":"bc", "type":"matlab.graphics.chart.BubbleCloud"}
+    ]
+},
+"clim":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.graphics.chart.HeatmapChart"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                {"name":"limits", "kind":"required", "type":["numeric", "numel=2"]},
+                {"name":"'auto'", "kind":"required", "type":"choices={'auto'}"},
+                {"name":"'manual'", "kind":"required", "type":"choices={'manual'}"},
+                {"name":"'mode'", "kind":"required", "type":"choices={'mode'}"}
+            ]
+        }
+    ]
+},
+"clim":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":[["matlab.graphics.axis.AbstractAxes"], ["matlab.graphics.chart.HeatmapChart"]]}
+    ],
+    "outputs":
+    [
+        {"name":"limits", "type":["numeric", "numel=2"]}
+    ]
+},
+"close":
+{ 
+    "inputs": 
+    [ 
+        {"name":"fig", "kind":"required", "type":"matlab.ui.Figure"}, 
+        {"name":"option", "kind":"ordered", "type":["char", "choices={'hidden','force'}"]}
+     ], 
+    "outputs": 
+    [ 
+        {"name":"status", "type":"double"} 
+    ] 
+},
+"close": 
+{ 
+    "inputs": 
+    [ 
+        {"name":"'all'", "kind":"required", "type":["char", "choices={'all'}"]}, 
+        {"name":"option", "kind":"ordered", "type":["char", "choices={'hidden','force'}"]} 
+    ], 
+    "outputs": 
+    [ 
+        {"name":"status", "type":"double"}
+    ] 
+},
+"close": 
+{ 
+    "inputs": 
+    [ 
+        {"name":"name", "kind":"ordered", "type":["char", "@(x) ~ismember(lower(x),{'hidden','force','all'})"]}, 
+        {"name":"option", "kind":"ordered", "type":["char", "choices={'force'}"]} 
+    ], 
+    "outputs": 
+    [ 
+        {"name":"status", "type":"double"} 
+    ] 
+},
+"close": 
+{ 
+    "inputs": 
+    [ 
+        {"name":"option", "kind":"ordered", "type":["char", "choices={'force'}"]} 
+    ], 
+    "outputs": 
+    [ 
+        {"name":"status", "type":"double"} 
+    ] 
+},
+"constantplane":
+{
+    "inputs":
+    [
+        {"name": "ax", "kind": "ordered", "type": "matlab.graphics.axis.Axes"},
+        {"name": "normal", "kind": "required",
+            "type": [
+                ["choices={'x', 'y', 'z'}"],
+                ["numeric", "2d", "ncols=3"],
+                ["numeric", "2d", "nrows=3"]
+            ]
+        },
+        {"name": "offset", "kind": "required", "type": [["numeric", "vector"]]},
+        {"name": "opts", "kind": "properties", "type": "matlab.graphics.chart.decoration.ConstantPlane"}
+    ],
+    "outputs":
+    [
+        {"name": "cp", "type": "matlab.graphics.chart.decoration.ConstantPlane"}
+    ]
+},
+"compassplot":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"Z", "kind":"required", "type":[["numeric"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.PolarCompassPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"cp", "type":"matlab.graphics.chart.primitive.PolarCompassPlot"}
+    ],
+    "taskInfo":
+        {
+            "VisualizeTaskInfo":
+            {
+                "configuration":"MATLAB:graphics:visualizedatatask:SpecifyZ",
+                "params":
+                [
+                    {"name":"Z"}
+                ],
+                "icon":"compassPlot",
+                "description":"MATLAB:plots:Tool_compassplot_Description",
+                "categories":["MATLAB:graphics:visualizedatatask:PolarPlotsLabel","MATLAB:graphics:visualizedatatask:VectorFieldsLabel"],
+                "codeFunction":"matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+                "supportsOverlay": true
+            }
+        }
+},
+"compassplot":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"theta", "kind":"required", "type":[["numeric"]]},
+        {"name":"rho", "kind":"required", "type":[["numeric"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.PolarCompassPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"cp", "type":"matlab.graphics.chart.primitive.PolarCompassPlot"}
+    ],
+    "taskInfo":
+        {
+            "VisualizeTaskInfo":
+            {
+                "configuration":"MATLAB:graphics:visualizedatatask:SpecifyThetaRho",
+                "params":
+                [
+                    {"name":"theta", "description":"MATLAB:graphics:visualizedatatask:ThetaChannel"},
+                    {"name":"rho", "description":"MATLAB:graphics:visualizedatatask:RChannel"}
+                ]
+            }
+        }
+},
+"compassplot":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"thetavar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"rhovar", "kind":"ordered", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.PolarCompassPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"cp", "type":"matlab.graphics.chart.primitive.PolarCompassPlot"}
+    ]
+},
+"donutchart":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"], ["matlab.graphics.layout.TiledChartLayout"]]},
+        {"mutuallyExclusiveGroup":
+         [
+             [
+                 {"name":"data", "kind":"required", "type":[["numeric"],["duration"],["logical"]]},
+                 {"name":"names", "kind":"ordered", "type":[["string"]]}
+             ],
+             [
+                 {"name":"data", "kind":"required", "type":[["categorical"]]}
+             ],
+             [
+                {"name":"tbl", "kind":"required", "type":"tabular"},
+                {"name":"datavar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+                {"name":"namesvar", "kind":"ordered", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]}
+             ]
+         ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.DonutChart"}
+    ],
+    "outputs":
+    [
+        {"name":"dc", "type":"matlab.graphics.chart.DonutChart"}
+    ]
+},
+"figure":
+    {
+        "inputs":
+        [
+            {"name":"opts", "kind":"properties", "type":"matlab.ui.Figure"}
+        ]
+    },
+"figure":
+    {
+        "inputs":
+        [
+            {"name":"f", "kind":"ordered", "type":"matlab.ui.Figure"}
+        ]
+    },
+"figure":
+    {
+        "inputs":
+        [
+            {"name":"n", "kind":"ordered", "type":"numeric"}
+        ]
+    },
+"gca":
+{
+    "outputs":
+    [
+        {"name":"ax", "type":"matlab.graphics.axis.AbstractAxes"}
+    ]
+},
+"gcf":
+{
+    "outputs":
+    [
+        {"name":"ax", "type":"matlab.ui.Figure"}
+    ]
+},
+"matlab.graphics.axis.AbstractAxes.tightPosition":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"IncludeLabels", "kind":"namevalue", "type":["logical", "scalar"]},
+        {"name":"Units", "kind":"namevalue", "type":["char", "choices={'inches', 'centimeters', 'characters', 'normalized', 'points', 'pixels'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"Position", "type":"double"}
+    ]
+},
+"nexttile":
+{
+    "inputs":
+    [
+        {"name":"t", "kind":"ordered", "type":"matlab.graphics.layout.Layout", "purpose":"Parent layout"},
+        {"name":"tilelocation", "kind":"ordered", "type":["numeric","numel=1",">=1"], "purpose":"Tile number to place axes into"},
+        {"name":"span", "kind":"ordered", "type":["numeric","numel=2",">=1"], "purpose":"Span of axes to create (rows, columns)"}
+    ],
+    "outputs":
+    [
+        {"name":"ax", "type":"matlab.graphics.axis.AbstractAxes"}
+    ]
+    
+},
+"piechart":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"], ["matlab.graphics.layout.TiledChartLayout"]]},
+        {"mutuallyExclusiveGroup":
+         [
+             [
+                 {"name":"data", "kind":"required", "type":[["numeric"],["duration"],["logical"]]},
+                 {"name":"names", "kind":"ordered", "type":[["string"]]}
+             ],
+             [
+                 {"name":"data", "kind":"required", "type":[["categorical"]]}
+             ],
+             [
+                {"name":"tbl", "kind":"required", "type":"tabular"},
+                {"name":"datavar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+                {"name":"namesvar", "kind":"ordered", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]}
+             ]
+         ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.PieChart"}
+    ],
+    "outputs":
+    [
+        {"name":"pc", "type":"matlab.graphics.chart.PieChart"}
+    ]
+},
+"polarbubblechart":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"theta", "kind":"required", "type":"numeric"},
+        {"name":"rho", "kind":"required", "type":"numeric"},
+        {"name":"sz", "kind":"required", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"theta", "description":"MATLAB:graphics:visualizedatatask:ThetaChannel"},
+                {"name":"rho", "description":"MATLAB:graphics:visualizedatatask:RChannel"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"}
+            ],
+            "icon":"polarBubbleChartPlot",
+            "description":"MATLAB:plots:Tool_polarscatter_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:PolarPlotsLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"polarbubblechart":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"thetavar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"rhovar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"sizevar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"cvar", "kind":"ordered", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.BubbleChart"}
+    ]
+},
+"polarregion":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"thetas", "kind":"required", "type":[["numeric", "2d", "ncols=2"]]},
+                    {"name":"radii", "kind":"required", "type":[["numeric", "2d", "ncols=2"]]}
+                ],
+                [
+                    {"name":"thetas", "kind":"required", "type":[["numeric", "2d", "nrows=2"]]},
+                    {"name":"radii", "kind":"required", "type":[["numeric", "2d", "nrows=2"]]}
+                ]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.decoration.PolarRegion"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.decoration.PolarRegion"}
+    ]
+},
+"polarscatter":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"theta", "kind":"required", "type":"numeric"},
+        {"name":"rho", "kind":"required", "type":"numeric"},
+        {"name":"sz", "kind":"ordered", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"mkr", "kind":"flag", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"theta", "description":"MATLAB:graphics:visualizedatatask:ThetaChannel"},
+                {"name":"rho",  "description":"MATLAB:graphics:visualizedatatask:RChannel"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram','none'}", "kind":"properties"}
+            ],
+            "icon":"polarScatterPlot",
+            "description":"MATLAB:plots:Tool_polarscatter_Description",
+            "categories":"MATLAB:graphics:visualizedatatask:PolarPlotsLabel",
+            "codeFunction":"matlab.visualize.task.internal.codegen.generateGeoPolarVizCode",
+            "supportsOverlay": true
+        }
+    }
+},
+"polarscatter":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"thetavar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"rhovar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ]
+},
+"radiusregion":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"r1", "kind":"required", "type":[["numeric","vector"]]},
+                    {"name":"r2", "kind":"required", "type":[["numeric","vector"]]}
+                ],
+                [
+                    {"name":"R", "kind":"required", "type":[["numeric","vector"]]}
+                ]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.decoration.PolarRegion"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.decoration.PolarRegion"}
+    ]
+},
+"reset":
+{
+    "inputs":
+    [
+        {"name":"h", "type":"numeric"}
+            ]
+        },
+"scatter":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"x", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"sz", "kind":"ordered", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"mkr", "kind":"flag", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram','none'}", "kind":"properties"}
+            ],
+            "icon":"scatterPlot",
+            "description":"MATLAB:plots:Tool_scatter_Description",
+            "categories":["MATLAB:graphics:visualizedatatask:DataDistLabel","MATLAB:graphics:visualizedatatask:DiscreteDataLabel"],
+            "supportsOverlay": true
+        }
+    }
+},
+"scatter":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},        
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"ZVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ]
+},
+"scatter3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"X", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"S", "kind":"ordered", "type":"numeric"},
+        {"name":"C", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"markertype", "kind":"flag", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"},
+                {"name":"S", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"C", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram','none'}", "kind":"properties"}
+            ],
+            "icon":"scatter3Plot",
+            "description":"MATLAB:plots:Tool_scatter3_Description",
+            "categories":["MATLAB:graphics:visualizedatatask:DataDistLabel","MATLAB:graphics:visualizedatatask:DiscreteDataLabel"],
+            "supportsOverlay": true
+        }
+    }
+},
+"scatter3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"zvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ]
+},
+"slice":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered",  "type":"matlab.graphics.axis.Axes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"X", "kind":"required", "type":"numeric"},
+                    {"name":"Y", "kind":"required", "type":"numeric"},
+                    {"name":"Z", "kind":"required", "type":"numeric"},
+                    {"name":"V", "kind":"required", "type":["numeric","3d"]}
+                ],
+                [
+                    {"name":"V", "kind":"required", "type":["numeric","3d"]}
+                ]
+            ]
+        },
+        {"name":"xslice", "kind":"required", "type":"numeric"},
+        {"name":"yslice", "kind":"required", "type":"numeric"},
+        {"name":"zslice", "kind":"required", "type":"numeric"},
+        {"name":"method", "kind":"ordered", "type":"choices={'linear','cubic','nearest'}"}
+    ],
+    "outputs":
+    [
+        {"name":"s","type":"matlab.graphics.primitive.Surface"}
+    ]
+},
+"swarmchart":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"x", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"sz", "kind":"ordered", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"mkr", "kind":"flag", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram','none'}", "kind":"properties"}
+            ],
+            "icon":"swarmChartPlot",
+            "description":"MATLAB:plots:Tool_swarmchart_Description",
+            "categories":["MATLAB:graphics:visualizedatatask:DataDistLabel","MATLAB:graphics:visualizedatatask:DiscreteDataLabel"],
+            "supportsOverlay": true
+        }
+    }
+},
+"swarmchart":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"ZVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ]
+},
+"swarmchart3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"x", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"y", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+        {"name":"sz", "kind":"ordered", "type":"numeric"},
+        {"name":"c", "kind":"ordered", "type":
+            [
+                ["char", "choices={'yellow','magenta','cyan','red','green','blue','white','black'}"],
+                ["numeric", "2d", "ncols=3", ">=0", "<=1"],
+                ["numeric", "vector"],
+                ["char", "@matlab.graphics.internal.isColorSpec"]
+            ]
+        },
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"mkr", "kind":"flag", "type":["char", "choices={'o','+','*','.','x','square','s','^','>','v','<','d','diamond','p','pentagram','h','hexagram','none'}"]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "taskInfo":
+    {
+        "VisualizeTaskInfo":
+        {
+            "params":
+            [
+                {"name":"X"},
+                {"name":"Y"},
+                {"name":"Z"},
+                {"name":"sz", "description":"MATLAB:graphics:visualizedatatask:SizeChannel"},
+                {"name":"c", "description":"MATLAB:graphics:visualizedatatask:ColorChannel"},
+                {"name":"Marker", "description":"MATLAB:graphics:visualizedatatask:MarkerDesc", "type":"choices={'o','+','*','.','x','_','|','square','diamond','^','v','>','<','pentagram','hexagram','none'}", "kind":"properties"}
+            ],
+            "icon":"swarmChart3Plot",
+            "description":"MATLAB:plots:Tool_swarmchart3_Description",
+            "categories":["MATLAB:graphics:visualizedatatask:DataDistLabel","MATLAB:graphics:visualizedatatask:DiscreteDataLabel"],
+            "supportsOverlay": true
+        }
+    }
+},
+"swarmchart3":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"zvar", "kind":"required", "type":[["numeric", "scalar", ">=1"], ["logical"], ["cellstr"], ["string","scalar"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"'filled'", "kind":"flag", "type":"choices={'filled'}"},
+        {"name":"SizeVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"ColorVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"AlphaVariable", "kind":"namevalue", "type":[["numeric", "scalar", ">=1"], ["logical","scalar"], ["cellstr","scalar"], ["string","scalar"], ["vartype","scalar"], ["pattern","scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl,IncludeRowTimes=false)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.primitive.Scatter"}
+    ]
+},
+"thetaregion":
+{
+    "inputs":
+    [
+        {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"theta1", "kind":"required", "type":[["numeric","vector"]]},
+                    {"name":"theta2", "kind":"required", "type":[["numeric","vector"]]}
+                ],
+                [
+                    {"name":"T", "kind":"required", "type":[["numeric","vector"]]}
+                ]
+            ]
+        },
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.decoration.PolarRegion"}
+    ],
+    "outputs":
+    [
+        {"name":"s", "type":"matlab.graphics.chart.decoration.PolarRegion"}
+    ]
+},
+"tiledlayout":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]], "purpose":"Parent container"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"m", "kind":"required", "type":["numeric",">=1"], "purpose":"Number of rows"},
+                    {"name":"n", "kind":"required", "type":["numeric",">=1"], "purpose":"Number of columns"}
+                ],
+                [
+                    {"name":"'flow'", "kind":"ordered", "type":"choices={'flow'}", "purpose":"Flow tile arrangement"}
+                ],
+                [
+                    {"name":"'horizontal'", "kind":"required", "type":"choices={'horizontal'}", "purpose":"Horizontal tile arrangement"}
+                ],
+                [
+                    {"name":"'vertical'", "kind":"required", "type":"choices={'vertical'}", "purpose":"Vertical tile arrangement"}
+                ]
+            ]
+        },
+        {"name":"Options", "kind":"properties", "type":"matlab.graphics.layout.TiledChartLayout"}
+    ],
+    "outputs":
+    [
+        {"name":"Layout", "type":"matlab.graphics.layout.Layout"}
+    ]
+},
+"tiledlayout":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.Tab"]], "purpose":"Parent container"},
+        {"name":"Options", "kind":"properties", "type":"matlab.graphics.layout.TiledChartLayout"}
+    ],
+    "outputs":
+    [
+        {"name":"Layout", "type":"matlab.graphics.layout.Layout"}
+    ]
+},
+"uicontextmenu":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":"matlab.ui.Figure"},
+        {"name":"opts", "kind":"properties", "type":"matlab.ui.container.ContextMenu"}
+    ]
+},
+"uicontrol":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.ui.container.Panel"], ["matlab.ui.container.ButtonGroup"], ["matlab.ui.container.Tab"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.ui.control.UIControl"}
+    ]
+},
+"uimenu":
+{
+    "inputs":
+    [
+        {"name":"parent", "kind":"ordered", "type":[["matlab.ui.container.Menu"], ["matlab.ui.Figure"], ["matlab.ui.container.ContextMenu"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.ui.container.Menu"}
+    ]
+},
+"violinplot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"xgroupdata", "kind":"ordered", "type":[["numeric","2d"],["categorical","vector"]], "promotion":"primary"},
+        {"name":"ydata", "kind":"required", "type":[["numeric","2d"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ]
+},
+"violinplot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"xgroupdata", "kind":"ordered", "type":[["numeric","vector"],["categorical","vector"]], "promotion":"primary"},
+        {"name":"ydata", "kind":"required", "type":[["numeric","vector"]]},
+        {"name":"GroupByColor", "kind":"namevalue", "type":[["numeric","vector"], ["string","vector"], ["cell","vector"], ["categorical","vector"]]},        
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ]
+},
+"violinplot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"tbl", "kind":"required", "type":"tabular"},
+        {"name":"xvar", "kind":"ordered", "type":[["numeric","integer","scalar","positive"],["cellstr"], ["string","vector"], ["logical","vector"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"yvar", "kind":"required", "type":[["numeric","integer","scalar","positive"],["cellstr"], ["string","vector"], ["logical","vector"], ["vartype"], ["pattern", "scalar"], ["choices=matlab.graphics.chart.internal.tableVariablesForTabCompletion(tbl)"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ]
+},
+"violinplot":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"name":"EvaluationPoints", "kind":"namevalue", "type":[["double","2d","real"],["single","2d","real"]]},
+        {"name":"DensityValues", "kind":"namevalue", "type":[["double",">=0","2d"],["single", ">=0","2d"]]},
+        {"name":"opts", "kind":"properties", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ],
+    "outputs":
+    [
+        {"name":"h", "type":"matlab.graphics.chart.primitive.ViolinPlot"}
+    ]
+}
+}

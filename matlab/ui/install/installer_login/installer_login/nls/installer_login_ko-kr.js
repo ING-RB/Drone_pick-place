@@ -1,0 +1,3 @@
+define('installer_login/nls/installer_login_ko-kr',{
+'installer_login/l10n/nls/installer_login':{"connectionError":"연결 오류","connectionErrorMsg":"애플리케이션을 MathWorks에 연결할 수 없습니다. 문제 해결을 위한 자세한 내용은 <a target=\"_blank\" href=\"https://www.mathworks.com/mlf_err_${0}_${1}\">Q&A 게시물</a>을 참조하십시오.","cancel":"취소","tryAgain":"다시 시도","unexpectedError":"예기치 않은 오류","unexpectedErrorMsg":"예기치 않은 오류가 발생했습니다. 나중에 다시 시도하십시오.<br><br>문제가 계속 발생하면 MATLAB을 다시 시작하십시오. 도움이 필요하면 <a target=\"_blank\" href=\"https://www.mathworks.com/support/contact_us/?s_tid=sp_ban_cs\">지원팀에 문의</a>하십시오.","_localized":{}}
+});

@@ -1,0 +1,10 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Preallocation is a valuable tool for code that requires frequent memory
+                    reallocation. However, it is best to avoid using preallocated memory for a
+                    variable that is unused or whose value is reassigned, such as when you assign it
+                    output from another function.</p><p>For example, assume a function, <code>fetchData</code>, returns a
+                    100&#8211;element row vector, and the output is assigned to a variable with
+                    preallocated memory. The code might look like this:</p><code>myData&nbsp;=&nbsp;zeros(1,100);&nbsp;%&nbsp;preallocated&nbsp;vector&nbsp;populated&nbsp;with&nbsp;zeros<br/>myData&nbsp;=&nbsp;fetchData();</code><p>The <code>fetchData</code> function allocates memory for its output
+                    data. Therefore, a successful call to the <code>fetchData</code> function
+                    returns a replacement for the preallocated memory. Here, the memory is allocated
+                    twice and preallocation has no benefit.</p><br/><strong>Suggested Action</strong><br/><p>Avoid preallocating memory to a variable that is unused or assigned to the
+                    output of another function.</p></body></html>

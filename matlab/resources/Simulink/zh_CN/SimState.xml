@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="SimStateObjectInvalid">Operating point objects must be scalar, non-empty and of type Simulink.op.ModelOperatingPoint.</entry>
+    <entry key="BDIsLibrary">无法设置 ''{0}'' 的工作点，因为它是库。</entry>
+    <entry key="ArrayOfObjects">由 {0} 对象组成的数组</entry>
+    <entry key="SimStateExtraBlockAdded">The operating point for block ''{0}'' was not found in the given ModelOperatingPoint object.</entry>
+    <entry key="BlockSimStateObjectExpected">Expected a BlockOperatingPoint object</entry>
+    <entry key="BlockSimStateCannotSetUsingMethod">Cannot set the operating point of block ''{0}'' because it is read-only.</entry>
+    <entry key="BlockStructuralChangeDetected">Simulink has detected that block ''{0}'' has changed structurally from the time when its operating point was saved.</entry>
+    <entry key="CannotFindBlockUsingSID">Simulink 无法使用 SID ''{1}'' 找到模块 ''{0}'' 的工作点。</entry>
+    <entry key="CannotFindSimStateForBlock">The operating point for block ''{0}'' is not accessible. Try one or more  of the following:\n 1. Ensure the block path is valid.\n 2. Set operating point compliance setting of the block to 'Custom'.\n 3. Set operating point visibility setting of the block to 'on'.\n 4. If the block is inside of a referenced model, configure the model reference and the top model to be in normal mode.\n 5. If this is a built-in Simulink block, access logged states through 'loggedStates' property.</entry>
+    <entry key="NumberOfBlockSimStatesMismatch">Operating point for ''{0}'' must have data for {2,number,integer} iterations of subsystem ''{1}''.</entry>
+    <entry key="EmptyBlockSimStates">Cannot set operating point for block ''{0}'' to empty.</entry>
+    <entry key="CannotSaveSimStateForBlockWithPWork">Unable to save the simulation state for {0} block in ''{1}'' because it uses pointer work (PWork) vector.</entry>
+    <entry key="CannotSaveSimStateForModelWithPWork">Saving or restoring the operating point of Model block ''{0}'' is not supported because the Model block uses Accelerator mode and {1} block ''{2}'' stores pointers in its work vectors. To enable operating point, configure the Model block to use Normal mode.</entry>
+    <entry key="CannotSaveSimStateForModelWithDisallowedSimState">Saving or restoring the operating point of Model block ''{0}'' is not supported because {1} block ''{2}'' sets its operating point compliance to DISALLOW_OPERATING_POINT.</entry>
+    <entry key="CannotSaveSimStateForModelWithCustomSimState">Saving or restoring the operating point of Model block ''{0}'' is not supported because the Model block uses Accelerator mode and {1} block ''{2}'' sets its operating point compliance to USE_CUSTOM_OPERATING_POINT. To enable operating point, configure the Model block to use Normal mode.</entry>
+    <entry key="CannotSaveSimStateForModelWithStrings">不支持保存和还原工作点，因为 Model 模块 ''{1}'' 引用的模型 ''{0}'' 使用字符串数据并在加速模式下仿真。要保存和还原工作点，请配置 Model 模块以在普通模式下进行仿真。</entry>
+    <entry key="CannotSaveSimStateForModelOther">Saving or restoring the operating point of Model block ''{0}'' is not supported because the Model block uses Accelerator mode and {1} block ''{2}'' does not support operating point. To enable operating point, configure the Model block to use Normal mode.</entry>
+    <entry key="CannotSetSimStateUsingLoggedStateStruct">Simulink cannot set the logged states. The logged states must be a structure array with the following fields: ''{0}'', ''{1}'', ''{2}'', ''{3}'', and ''{4}'' or a Simulink.SimulationData.Dataset object with matching number of Simulink.SimulationData.State elements.</entry>
+    <entry key="DifferentNumberOfElementsInInputDataset">Simulink cannot set the 'loggedStates'. Number of elements in input dataset is not equal to number of elements in saved dataset. 'loggedStates' must be array of 'Simulink.SimulationData.State' type with following fields: ''{0}'', ''{1}'', ''{2}'' and ''{3}'' or a Simulink.SimulationData.Dataset object with matching number of Simulink.SimulationData.State elements</entry>
+    <entry key="InputTypeIsNotDataset">Simulink cannot set the 'loggedStates'. Input is not of 'Simulink.SimulationData.Dataset' type. 'loggedStates' must be array of 'Simulink.SimulationData.State' type with following fields: ''{0}'', ''{1}'', ''{2}'' and ''{3}'' or a Simulink.SimulationData.Dataset object with matching number of Simulink.SimulationData.State elements</entry>
+    <entry key="CannotSaveSimStateForModelWithFcnCallSSSrcInsideContext">Simulink cannot save the operating point for this model because the model contains function-call blocks whose inputs originate from their own function-call contexts. To see the details about this issue, use the command set_param(''{0}'',''FcnCallInpInsideContextMsg'',''error'') and restart the simulation.</entry>
+    <entry key="DescriptionFieldMustBeString">Description must be a character vector or a string.</entry>
+    <entry key="InvalidAlgLoopSimState">The specified simulation state for the algebraic loop starting at block ''{0}'' is invalid.</entry>
+    <entry key="InvalidSimLoopSimState">The specified operating point object is invalid. Simulink is unable to use it to restore the simulation state.</entry>
+    <entry key="LoadSimStateNotSupported2">只有普通、加速或快速加速模式下的模型以及普通或加速模式下的 Model 模块才支持指定初始工作点。</entry>
+    <entry key="ModelSimStateCannotRestoreSnapshotTime">提供的 ModelOperatingPoint 无法还原仿真时间。</entry>
+    <entry key="MoreThanOneBlockSimStateGiven">More than one BlockOperatingPoint object is found.</entry>
+    <entry key="SaveSimStateNotSupported2">Saving the operating point is only supported for models in Normal or Accelerator or Rapid Accelerator mode, and for Model blocks in Normal or Accelerator mode.</entry>
+    <entry key="SimStateErrorEval">Error evaluating the initial state ''{0}'' for model ''{1}''.</entry>
+    <entry key="SimStateFixedStepSizeHeuristicWarn">模型 ''{0}'' 的定步长由求解器自动选择。在还原针对此仿真保存的 ModelOperatingPoint 对象时，请使用相同的定步长值。</entry>
+    <entry key="SimStateInterfaceChecksumMisMatchWarn">在保存指定的初始工作点后，模型 ''{0}'' 的配置设置或采样时间列表发生了更改。模块的初始状态将从指定的工作点还原，但求解器的状态将被丢弃。当前仿真的结果可能会偏离原始仿真的结果。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SimStateInterfaceChecksumMisMatchWarnNone"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'OperatingPointInterfaceChecksumMismatchMsg', 'none');&lt;/cmd&gt; &lt;txt&gt;要禁用此警告，请设置为 ''无''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="SimStateInterfaceChecksumMisMatchWarnError"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'OperatingPointInterfaceChecksumMismatchMsg', 'error');&lt;/cmd&gt; &lt;txt&gt;要在模型接口校验和不匹配时禁止工作点还原，请设置为 ''错误''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="SimStateInvalidBlockPath">Cannot find the block ''{0}'' within the initial state operating point object.</entry>
+    <entry key="SimStateInvalidCallToBlockSimState">Invalid call to BlockOperatingPoint constructor.</entry>
+    <entry key="SimStateInvalidCallToModelSimState">Invalid call to ModelOperatingPoint constructor.</entry>
+    <entry key="SimStateInvalidContState">Invalid continuous state data found in operating point.</entry>
+    <entry key="SimStateInvalidContentCS">与针对提供的 ModelOperatingPoint 对象计算的内容校验和相比，基础工作区中存储的内容校验和详细信息发生了变化。</entry>
+    <entry key="SimStateInvalidDWorkData">Invalid work vector data found in the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateInvalidDiscreteDerivatives">Invalid discrete derivative signals found in the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateInvalidFieldInMiscData">Invalid field found in the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateInvalidFieldInSimLoopData">Invalid field found in simulation loop data of the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateInvalidFieldInMiscModelData">Invalid field found in miscellaneous model data of the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateInvalidMiscData">在加载的 ModelOperatingPoint 对象中发现无效的其他数据。</entry>
+    <entry key="SimStateInvalidSimLoopData">Invalid simulation loop data found in the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateInvalidZCData">Invalid zero-crossing data found in the loaded ModelOperatingPoint object.</entry>
+    <entry key="SimStateIsEmptyDesc">ModelOperatingPoint 快照为空。</entry>
+    <entry key="SimStateLoggedStateNotFound">在给定变量中找不到状态 {0,number,integer}。</entry>
+    <entry key="SimStateOverrideTStartWarn">The start time of the model ''{0}'' is different from the start time saved in the initial ModelOperatingPoint. The start time has been reset to {1}.</entry>
+    <entry key="SimStateParameterChecksumMisMatch">模型 ''{0}'' 的某些参数在 ModelOperatingPoint 保存后发生了更改。此仿真的第一个时间步将使用新参数，因此结果可能与最初的最后一个时间步不匹配。</entry>
+    <entry key="SimStateStopTimeWarn">模型 ''{0}'' 的仿真已停止，因为停止时间小于或等于初始 ModelOperatingPoint 中存储的快照时间。如果要从指定的 ModelOperatingPoint 对象继续仿真，请增大停止时间。</entry>
+    <entry key="SimStateUsedChecksumSettingChanged">The model structural checksum, which is required for ModelOperatingPoint restore, is missing from the given ModelOperatingPoint object.</entry>
+    <entry key="SimStateVersionIncompatible">The ModelOperatingPoint object, which is provided as initial state, was saved in a different version of Simulink. Change the option &lt;sldiag objui="configset" objparam="NonCurrentReleaseOperatingPointMsg"&gt;Operating point object from a different release&lt;/sldiag&gt; to 'warning' to enable restoring this ModelOperatingPoint.</entry>
+    <entry key="SimStateVersionIncompatibleWarning">The ModelOperatingPoint object, which is provided as initial state, was saved in a different version of Simulink. Simulink will only restore the available logged states from this ModelOperatingPoint object.</entry>
+    <entry key="StoppedSimStateCannotBeUsedInMdlAPI">Simulink cannot load the operating point of the model ''{0}'' because the model is compiled for model function and the provided ModelOperatingPoint object was saved at a simulation stop time other than the final stop time.</entry>
+    <entry key="StoppedDueToSimStateContentsChecksumMisMatch">Unable to compile model ''{0}'' because the model has been structurally modified since the Simulink.op.ModelOperatingPoint object specified as the initial state was created. To simulate the model from an initial operating point, disable the ''Initial state'' parameter and generate a new operating point for the modified model.
+        &lt;actions exclusiveFixIts="yes"&gt;
+          &lt;action type="fixit" id="SimStateInterfaceChecksumMisMatchWarnNone"&gt;
+            &lt;cmd&gt;set_param_action(''{0}'', ''LoadInitialState'', ''off'');&lt;/cmd&gt;
+            &lt;txt&gt;Disable the ''Initial state'' parameter for model ''{0}''.&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidSimStateCompliance">The S-function ''{0}'' declares operating point compliance as USE_EMPTY_OPERATING_POINT but registers continuous and/or discrete states and/or zero-crossing signals. Remove the registration of states and/or zero-crossing signals from the S-function or change the operating point compliance setting of the S-function to default.</entry>
+    <entry key="InvalidSimStateCompliancePWork">The S-function ''{0}'' declares operating point compliance as USE_EMPTY_OPERATING_POINT but registers continuous and/or discrete states and/or zero-crossing signals. Remove the registration of states and/or zero-crossing signals from the S-function or change the operating point compliance setting of the S-function to custom and implement operating point get/set methods.</entry>
+    <entry key="ObjectProperties">属性</entry>
+    <entry key="ObjectMethods">方法</entry>
+    <entry key="StringStateLoadingNotSupported">Loading states with string data types is not supported.</entry>
+  </message>
+</rsccat>

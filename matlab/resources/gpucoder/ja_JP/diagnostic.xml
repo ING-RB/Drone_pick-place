@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="gpucoder" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ZerosOrOnesUsedInsteadOfCoderNullCopy">変数がフルに書き込まれることが予測される場合は、coder.nullcopy() を使用して不要なメモリ初期化を回避してください。</entry>
+    <entry key="NoKernelFunPragma">関数 ''{0}'' に coder.gpu.kernelfun プラグマを追加して、自動カーネル作成を有効にすることを検討してください。</entry>
+    <entry key="NoKernelPragmasFound">エントリポイント関数内に coder.gpu.kernel プラグマまたは coder.gpu.kernelfun プラグマが見つかりません。最上位のエントリポイント関数に関する暗黙的な coder.gpu.kernelfun プラグマを指定してコード生成を実行します。</entry>
+    <entry key="GpucoderSortWarning">パフォーマンスを向上させるには、関数 gpucoder.sort の使用を検討してください。</entry>
+    <entry key="DiagnosticReportGenerated">コード生成中に警告が見つかりました。詳細については、レポートの [コードの洞察] タブと [すべてのメッセージ] タブを参照してください。</entry>
+    <entry key="LargeLocalMemoryUsagePerThread">カーネル ''{0}'' が大量のスレッド ローカル メモリを使用しています。ローカル変数を減らして MATLAB ループを書き換えることでパフォーマンスを改善できます。</entry>
+    <entry key="ResampleConstInputWarning">パフォーマンスを改善するには、入力信号 'x' 以外のすべての引数をコンパイル時定数にする必要があります。</entry>
+    <entry key="MemoryLoweringGlobalVarWarning">GPU のグローバル変数または永続変数にアクセスすると、結果として CPU と GPU 間で余分なデータ コピーが生じる場合があります。可能であれば、そのような変数の使用は避けてください。</entry>
+    <entry key="MemoryLoweringAliasedVarWarning">GPU Coder は、エイリアスが設定された変数に対して CPU と GPU 間にデータ コピーを効率的に挿入できません。最高のパフォーマンスを得るには、GPU 上のハンドル オブジェクトと動的サイズのデータへのアクセスを避けてください。</entry>
+    <entry key="MemoryLoweringTmpVarWarning">GPU Coder は、GPU に直接マッピングできないメモリ位置の GPU データを保存するために一時変数を作成しました。このような変数は実行時のパフォーマンスに影響を与える可能性があります。</entry>
+    <entry key="MemoryLoweringUnsupportedTypeError">GPU アクセスでサポートされていない型をもつ変数のため、GPU コード生成は失敗しました。</entry>
+    <entry key="GpucoderRectifyStereoImagesWarning">stereoParams 引数の GPU コード生成は最適化されていません。より良いコードを生成するには、射影変換の使用を検討してください。</entry>
+    <entry key="Ordfilt2InputVariableDimensions"> 可変入力サイズの GPU コード生成は最適化されません。代わりに CPU (C/C++) コードを生成します。GPU 最適化コードを生成するには、定数入力の使用を検討してください。</entry>
+    <entry key="Ordfilt2StackLimit">生成されたコードのパフォーマンスを改善するには、GPU 設定の StackLimitPerThread プロパティを Inf に設定することを検討してください。</entry>
+    <entry key="Ordfilt2DomainSize"> 11 行 11 列より大きいドメイン サイズでは GPU コード生成が最適化されません。</entry>
+    <entry key="MaxKernelPragmaDepthExceeded">カーネル起動の最大深度を超えるループにあるカーネル プラグマを使用してはいけません。</entry>
+    <entry key="ImadjustInputVardims"> 可変入力サイズの GPU コード生成は最適化されません。最適化された GPU コードを生成するには、固定サイズの入力を使用することを検討してください。</entry>
+    <entry key="Imreconstruct3DInput"> カスタム接続と 3 次元入力の GPU コード生成は最適化されません。</entry>
+    <entry key="ImwarpTransformationObjectNotConstant"> 最適化された GPU コードを生成するには、affine2d/projective2d 変換オブジェクトが定数でなければなりません。</entry>
+    <entry key="ImwarpVariableDimensions"> 可変入力サイズの GPU コード生成は最適化されません。最適化された GPU コードを生成するには、固定サイズの入力を使用することを検討してください。</entry>
+    <entry key="PcdownsampleUnsupportedMethod">nonUniformGridSample メソッドの GPU コード生成は最適化されていません。</entry>
+    <entry key="PcdownsampleUnsupportedRandomNumberGenerator">GPU コード生成では 'twister'、'combRecursive'、または 'philox' の乱数発生器がサポートされます。既定の乱数発生器 'philox' が使用されます。</entry>
+    <entry key="InvalidMessageIdentifier">メッセージ識別子が無効です。</entry>
+    <entry key="InvalidWarningLevel">警告レベルはゼロ以上の整数でなければなりません。</entry>
+    <entry key="UseGpuInput">入力 ''{0}'' が最初に GPU で使用されたため、CPU から GPU へのメモリ コピーが発生しています。入力を GPU タイプまたは gpuArray オブジェクトとして指定することでコピーを回避してください。</entry>
+    <entry key="KernelDiagnosticsNotEnoughParallelism">カーネルが合計実行時間のうちの ''{0}'' を使用し、少数のスレッドを起動しています。この起動パターンは、各スレッドが大量の計算を実行しており、カーネルで十分な並列処理が行われていないことを示します。</entry>
+    <entry key="MemoryDiagnosticsRepeatedMemoryCopyInsideLoop">生成されたコードは、ループの各反復において、CPU と GPU 間で変数 ''{0}'' をコピーします。この動作は GPU と CPU の同期を必要とするため、アプリケーションのパフォーマンスが低下します。</entry>
+    <entry key="LongRunningLoopUnknownReason">ループが CPU で実行され、アプリケーション時間のうちの ''{0}'' を使用しています。ループを並列化して GPU にオフロードし、パフォーマンスを改善することを検討してください。</entry>
+    <entry key="LongCPULoopHasLargeMemcpy">ループが CPU で実行され、ループ内で GPU と CPU の同期が強制されています。ループを並列化することで、GPU と CPU の同期が解除される可能性があります。</entry>
+    <entry key="LongRunningLoopLargeIteration">ループに ''{0}'' 回の反復があり、それが合計時間に大きな影響を与えています。ループを並列化することで、パフォーマンスが向上する可能性があります。 </entry>
+    <entry key="KernelLaunchOverheadLargeInLoop">ループによってオーバーヘッドが大きく、計算量が少ない、重要でないカーネルが多数起動されています。この状況は、入れ子にされたループ内で子ループが並列化されている場合に発生します。親ループを並列化することで、パフォーマンスが向上する可能性があります。</entry>
+    <entry key="DLNetworkSlow">深層学習ネットワークがアプリケーションの実行時間のうちの ''{0}'' を使用しています。詳細については、深層学習ダッシュボードを参照してください。</entry>
+    <entry key="DLNetworkEffcy">深層学習ネットワークは効率的に実行されています。提案はありません。</entry>
+    <entry key="DLLayerLowEffcyLowUt">層 ''{0}'' は、GPU 使用率が低い状態でネットワーク実行時間のうちの ''{1}'' を使用します。より多くの計算を GPU に移行することを検討してください。</entry>
+    <entry key="DLLayerLowEffcyHighUt">層 ''{0}'' にはネットワーク実行時間のうちの ''{1}'' が必要です。層は GPU を十分に利用していますが、GPU の計算がボトルネックになっています。</entry>
+  </message>
+</rsccat>

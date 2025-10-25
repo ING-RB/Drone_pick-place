@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2016-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="gpucoder">
+  <message>
+    <!-- Generic Message ID used for internal purposes. -->
+    <entry key="Explicit" translate="false" note="TranslateFalseBatch;">{0}</entry>
+
+    <!-- CUDA Runtime Errors/Warnings -->
+    <entry key="CUDAMEXRuntimeError">Error generated while running CUDA-enabled program: [{0},{1}] {2}</entry>
+    <entry key="CUDAMEXThinRuntimeErrorTerm">Error generated while running CUDA-enabled program: [{0},{1}] {2}. To generate additional debugging information, enable the ''{3}'' GPU code generation option.</entry>
+    <entry key="OlderToolkitVersionWarning">Generated code may be incompatible as an older CUDA toolkit version v{0} was found in system path. Minimum supported CUDA toolkit version is v{1}.</entry>
+
+        <!-- OpenCL Runtime Errors/Warnings -->
+        <entry key="OpenCLMEXRuntimeError">Error generated while running OpenCL-enabled program: [{0},{1}]\n{2}</entry>
+
+    <!-- General GPU Code Generation Errors/Warnings -->
+    <entry key="HalfLowComputeVersion">Half type found in function {0}. Compute capability of 5.3 or higher is required for generating and executing code with half-precision data types.</entry>
+    <entry key="HalfLowCudaVersion">Half type found in function {0}. CUDA version of 10.0 or higher is required for generating and executing code with half-precision data types.</entry>
+    <entry key="HalfUnsupportedMallocMode">Half type found in function {0}. MallocMode must be set to discrete for generating and executing code with half-precision data types.</entry>
+    <entry key="InvalidShape">Shape in a stencil function must be one of the values {0}.</entry>
+    <entry key="InvalidStencil">Neighborhood in a stencil function must be a constant, positive integer valued scalar, or vector with elements corresponding to each dimension of the input array.</entry>
+    <entry key="KernelPragmaInvalidDimType">Invalid kernel arguments in coder.gpu.kernel() pragma. Grid and block dimensions must be numeric.</entry>
+    <entry key="KernelPragmaInvalidDimSize">Invalid kernel arguments in coder.gpu.kernel() pragma. Grid and block dimension arguments must either be scalars or arrays of 3 elements.</entry>
+    <entry key="KernelPragmaInvalidMinBlocksPerSM">Invalid kernel arguments in coder.gpu.kernel() pragma. The minimum number of blocks per streaming multiprocessor must be a constant integer.</entry>
+    <entry key="KernelPragmaNoForLoop">Ignoring coder.gpu.kernel() pragma not placed immediately before a for loop.</entry>
+    <entry key="NoKernelPragmaNoForLoop">Ignoring coder.gpu.nokernel() pragma specified on an invalid statement.</entry>
+    <entry key="IterationsPragmaNoForLoop">Ignoring coder.gpu.iterations() pragma specified on while loop or a statement not supported.</entry>
+    <entry key="UnsupportedInputType">The input data type ''{0}'' to {1} is not supported. The input must be a numeric, logical, or character array. </entry>
+
+    <!-- Loop nest lowering -->
+    <entry key="LoopNestLowering_TooManyIterations">Total number of iterations of the nest of parallel loops exceeds the maximum limit of {0}. Loop nest will run on CPU.</entry>
+    <entry key="KernelPragmaInvalidBlockSize">Block size supplied to the coder.gpu.kernel() pragma is invalid or exceeds supported limits. A default size will be used.</entry>
+    <entry key="KernelPragmaInvalidGridSize">Grid size supplied to the coder.gpu.kernel() pragma is invalid or exceeds supported limits. A default size will be used.</entry>
+
+    <!-- gpucoder.matrixMatrixKernel -->
+    <entry key="MMKernelIncompatDims">Incompatible dimensions for inputs A and B to gpucoder.matrixMatrixKernel. Change dimensions of A or B to make them compatible.</entry>
+    <entry key="MMKernelUnsupportedType">Inputs to gpucoder.matrixMatrixKernel must be of numeric or logical data type.</entry>
+    <entry key="MMKernelIncompatTypes">Operands A and B in gpucoder.matrixMatrixKernel must be of the same data type.</entry>
+    <entry key="MMKernelInvalidFunctionHandle">First argument to gpucoder.matrixMatrixKernel must be a function handle.</entry>
+    <entry key="MMKernelInvalidFunctionHandleInputNum">Invalid user-defined function handle to gpucoder.matrixMatrixKernel. Expected the user-defined function to have 2 input arguments.</entry>
+    <entry key="MMKernelNonConstDim">Dimension {0} of argument {1} to gpucoder.matrixMatrixKernel must be a constant.</entry>
+    <entry key="MMKernelInvalidTrans">Invalid transpose argument to gpucoder.matrixMatrixKernel.  Transpose argument to gpucoder.matrixMatrixKernel must be one of {0}</entry>
+    <entry key="MMKernelWrongNumArgs">Invalid number of arguments to {0}.  Expected 3 or 4 arguments, but received {1}.</entry>
+    <entry key="MMKernelSizeTooLarge">Dimension {0} of argument {1} to gpucoder.matrixMatrixKernel is too large.</entry>
+    <entry key="MMKernelFunctionHandleOutputNonScalar">Invalid user-defined function handle to gpucoder.matrixMatrixKernel. Expected the user-defined function to output a scalar.</entry>
+    <entry key="MMKernelInvalidFunctionHandleOutputType">Invalid user-defined function handle to gpucoder.matrixMatrixKernel. Expected the user-defined function to output a scalar of the same data type as the input matrices.</entry>
+    <entry key="MMKernelScalarizedSim">Running gpucoder.matrixMatrixKernel in MATLAB may take very long time. To improve the performance, set vectorizedSim argument to true.</entry>
+
+    <!-- selectdata -->
+    <entry key="SelectdataInvalidPredicate">The predicate function argument must be a function handle that accepts one or two inputs and returns one output. The output of this function must be a logical scalar.</entry>
+    <entry key="SelectdataInvalidPostProcess">The postprocess function argument must be a function handle that accepts exactly one input and returns exactly one output. The output data type must be of numeric, logical, or char data type.</entry>
+
+    <entry key="ParForHasUnsupportedFunctions">Loop contains functions not supported for GPU code generation. Ignoring the coder.gpu.kernel() pragma specified on it.</entry>
+    <entry key="ParForHasUnsupportedFunctionsOrVariables">Loop contains functions or variables not supported for GPU code generation. Ignoring the coder.gpu.kernel() pragma specified on it.</entry>
+
+    <entry key="StencilInvalidFunctionHandle">Unexpected argument to stencil. Expected a function handle.</entry>
+    <entry key="StencilInvalidFunctionHandleInput">Invalid user-defined function handle to stencil. Expected the user-defined function to have {0} input arguments. Found {1} input argument(s) .</entry>
+    <entry key="StencilInvalidFunctionHandleOutput">Invalid user-defined function handle to stencil. The function must return a scalar output.</entry>
+    <entry key="StencilInvalidInput">Input for stencil function must be non-empty numeric or logical array of dimensions less than or equal to 2.</entry>
+    <entry key="NoValidGpuCoderToolchain">Unable to find a valid GPU Coder toolchain. Refer to the GPU Coder documentation for a list of supported GPU Coder compilers.</entry>
+    <entry key="NoValidMexGpuCompiler">Selected MEX compiler ''{0}'' is not supported for GPU code generation. Refer to the GPU Coder documentation for a list of supported GPU MEX compilers.</entry>
+    <entry key="StaticDeviceVariablesWarning">Generated code contains static variables inside device function. To successfully compile the generated code, CUDA toolkit 8.0 or later is required.</entry>
+
+    <!-- TODO: remove these once all design patterns are integrated into GpuAlgorithmLowering -->
+    <entry key="CallbackNotSupported">The {0} callback function provided to {1} is not supported. {2}</entry>
+    <entry key="CallbackNotGpuFriendly">The callback function contains code that is not executable in a GPU kernel.</entry>
+    <entry key="CallbackIsNested">The callback function must not reference a nested function. Consider using an anonymous function instead.</entry>
+    <entry key="CallbackWrongNumInputs">The callback function must have {0} input argument(s), but {1} arguments(s) were found. This can happen if the callback function has access to variables not explicitly passed as inputs, which can occur if the function is anonymous or nested.</entry>
+    <entry key="CallbackExtraArgBadType">The function has one or more implicit parameters that are not of supported type.</entry>
+
+    <entry key="LoopCarriedDependence">Unable to parallelize loop because of loop carried dependencies. Check the use of variable ''{0}''.</entry>
+    <entry key="LoopCarriedDependenceNoVarName">Unable to parallelize loop because of loop carried dependencies.</entry>
+    <entry key="GlobalAccessError">Unable to parallelize loop because of the use of global or persistent variables inside it.</entry>
+    <entry key="IndexVariableUseError">Unable to parallelize loop because the index variable is used outside the loop.</entry>
+    <entry key="ParallelLoopWithBreak">Unable to parallelize loops containing break or return statements.</entry>
+    <entry key="LoopFailedSanityChecks">Unable to parallelize loop because it failed sanity checks.</entry>
+
+    <!-- persistent memory pragma warnings -->
+    <entry key="PersistentMemPragmaIgnore">Ignoring coder.gpu.persistentMemory(). {0}</entry>
+    <entry key="PersistentMemPragmaInvalidVar">Invalid variable found for coder.gpu.persistentMemory() pragma.</entry>
+    <entry key="PersistentMemPragmaNotMLPersistent">Variable ''{0}'' with coder.gpu.persistentMemory() pragma is not a MATLAB persistent variable.</entry>
+    <entry key="PersistentMemVarDims">Variable-sized array ''{0}'' will not be moved to GPU persistent memory.</entry>
+    <entry key="PersistentMemMCOSNotSupported">Ignoring the coder.gpu.persistentMemory() pragma as it is not supported for MATLAB classes.</entry>
+    <entry key="PersistentMemNotUsed">Variable ''{0}'' specified by coder.gpu.persistentMemory may never be used on the GPU.</entry>
+    <entry key="PersistentMemUnsupportedAccess">Unable to move the variable to persistent GPU memory due to the variable being accessed in a non-supported manner.</entry>
+
+    <!-- constant memory pragma warnings -->
+    <entry key="ConstantMemPragmaIgnore">Ignoring coder.gpu.constantMemory(). {0}</entry>
+    <entry key="ConstantMemPragmaInvalidVar">Invalid variable found for coder.gpu.constantMemory() pragma.</entry>
+    <entry key="ConstantMemPragmaMissingLoops">coder.gpu.constantMemory() pragma was not specified within for-loops.</entry>
+    <entry key="ConstantMemPragmaVarDef">Variable with coder.gpu.constantMemory() pragma is not read-only in the device code.</entry>
+    <entry key="ConstantMemPragmaVarWritable">Variable with coder.gpu.constantMemory() pragma is not read-only. This could cause inefficient memory copies to the constant memory.</entry>
+    <entry key="ConstantMemMaxExceeded">Device constant memory limit {0} exceeded. Unable to use constant memory for variable ''{1}''.</entry>
+    <entry key="ConstantMemNotStaticMatrix">Variable with coder.gpu.constantMemory() pragma is not a matrix of fixed-size.</entry>
+    <entry key="ConstantMemPragmaUnsupportedType">Invalid data type for coder.gpu.constantMemory() pragma variable.</entry>
+
+    <!-- GPU Metrics Errors/Warnings -->
+    <entry key="GPUMetricsFileOpenFailure">Unable to open the GPU code generation metrics file {0}. Code generation data will not be saved.</entry>
+    <entry key="RegionErrorNoEnd">Unable to find corresponding region end.</entry>
+    <entry key="RegionErrorNoStart">Unable to find corresponding region start.</entry>
+    <entry key="RegionErrorNotValid">Invalid placement of region start and region end.</entry>
+    <entry key="RegionErrorOverlap">Found invalid code region overlap.</entry>
+    <entry key="RegionErrorInsideKernel">Placing region start or end inside a kernel is not supported.</entry>
+
+    <!-- leaky layer messages -->
+    <entry key="oneLineDisplay">leakyReLU</entry>
+    <entry key="Type">leakyReLU</entry>
+
+    <!-- Screener Errors/Warnings -->
+    <entry key="ErrorVarModifiedOnCpuAndGpu">GPU Coder does not support statements that concurrently write to a variable on both CPU and GPU.</entry>
+    <entry key="ErrorDisqualifiedGpuIOVar">GPU Coder does not support passing this variable as GPU input/output.</entry>
+    <entry key="ScreenerUnboundedVarSize">Found unbounded dynamically-sized  variable {0}. Unable to map variable to GPU.</entry>
+    <entry key="ScreenerCuBlasInParFor">cuBLAS replacement may be interfering with parallel kernel inference.  Consider disabling cuBLAS replacement to infer larger GPU kernels.</entry>
+    <entry key="ScreenerCuSolverInParFor">cuSolver replacement may be interfering with parallel kernel inference.  Consider disabling cuSOLVER replacement to infer larger GPU kernels.</entry>
+    <entry key="ScreenerCuFFTInParFor">cuFFT replacement may be interfering with parallel kernel inference.  Consider disabling cuFFT replacement to infer larger GPU kernels.</entry>
+    <entry key="ScreenerNonCoalescedAccess">Non-coalesced access to variable {0} detected.  Consider transposing variable or interchanging the surrounding loops, if possible.</entry>
+    <entry key="KernelFunLoopNotParallel">Loop not parallelized; coder.gpu.kernelfun() used on containing function, and dependence analysis failed to prove the loop is parallel.</entry>
+    <entry key="GpuLoweringImperfectLoop">Loop is not perfectly nested. Some loops in the loop-nest will not be parallelized.</entry>
+
+    <!-- GpuConfig parameter warnings/messages -->
+    <entry key="InvalidGpuConfigParameter">Error setting property {0} of class 'GpuConfig': Invalid value ''{1}''.\nAllowed values are:\n\t{2}</entry>
+    <entry key="ParameterMustBePowerOf2">Error setting property {0} of class 'GpuConfig'. Value must be a power of 2.</entry>
+    <entry key="MinMaxPoolSizeValues">Invalid GPU configuration parameter. 'MinPoolSize' must be less than 'MaxPoolSize'.</entry>
+
+    <!-- Config parameter warnings -->
+    <entry key="MultiInstanceCodeUnsupported">Generation of multi-instance, reentrant code is not supported by GPU Coder. Disabling this option for GPU code generation.</entry>
+    <entry key="CppPreserveClassesUnsupported">Generation of C++ classes for MATLAB classes is not supported by GPU Coder. Disabling this option for GPU code generation.</entry>
+    <entry key="DynamicMemoryAllocationForFixedSizeArraysUnSupported">Dynamic memory allocation for fixed-size arrays is not supported by GPU Coder. Disabling this option for GPU code generation.</entry>
+
+
+    <!-- BWDIST Errors/Warnings -->
+    <entry key="BwdistUnsupportedMultiDimImageError">GPU code generation not supported for embedded target when image dimension exceeds 3 with bwdist.</entry>
+    <entry key="BwdistUnsupportedInputMethodError">GPU code generation not supported for embedded target with Quasi-Euclidean distance metric with bwdist.</entry>
+    <entry key="BwdistUnsupportedMultiDimImage">GPU code generation for image dimensions exceeding 3 not supported with bwdist. Generating CPU (C/C++) code instead.</entry>
+    <entry key="BwdistUnsupportedInputMethod">GPU code generation for Quasi-Euclidean distance metric not supported with bwdist. Generating CPU (C/C++) code instead.</entry>
+
+    <!-- MATCHFEATURES Errors/Warnings -->
+    <entry key="MatchFeatureUnsupportedSearchMethod">GPU code generation for Approximate method not supported. Generating CPU (C/C++) code instead.</entry>
+    <entry key="MatchFeaturesDimensionMisMatchError">Expected FEATURES1 and FEATURES2 to have the same number of columns.</entry>
+    <entry key="MatchFeaturesEmptyFeatureSetError">Expected a non-empty feature set.</entry>
+    <entry key="MatchFeaturesVarDims">GPU code generation for variable input sizes is not optimized. Consider using bounded inputs for an optimized code generation.</entry>
+
+    <!-- IMFILTER Warnings -->
+    <entry key="ImfilterUnsupportedMultiDimImage">To generate GPU code, input images must be 1-D, 2-D or 3-D.</entry>
+    <entry key="ImfilterUnsupportedKernelDim">To generate GPU code, filter kernels must be 1-D or 2-D.</entry>
+    <entry key="ImfilterComplexInputImage">Invalid data type for GPU code generation. Input images must be of type real.</entry>
+
+
+    <!-- IMFILTER Errors-->
+    <entry key="ImfilterComplexKernelWithLogicalInputError">Invalid input combination. Input images of logical data type require filter kernels of real data type.</entry>
+
+    <!-- IMDILATEANDIMERODE Warnings -->
+    <entry key="MorphOpUnsupportedStructuringElementDim">GPU code generation for 3-D structuring elements is not optimized. Generating unoptimized code instead.</entry>
+    <entry key="MorphOpUnsupportedNChannel3DImage">GPU code generation for N-channel 3-D images, when N is greater than 3 is not optimized. Generating unoptimized code instead.</entry>
+    <entry key="MorphOpUnsupportedUnboundedInputs">GPU code generation for Variable input sizes is not optimized. Consider using bounded inputs for an optimized code generation.</entry>
+    <entry key="MorphOpUnsupportedStreltype"> GPU code generation for non-flat structuring elements is not optimized. Generating unoptimized code instead.</entry>
+
+    <!-- IMDILATEANDIMERODE Errors -->
+    <entry key="MorphOpUnsupportedInputDataError">Invalid input data. GPU code generation not supported for packed input data.</entry>
+
+    <!-- WAVEDECANDWAVEDEC2 Warnings -->
+    <entry key="WavedecLevelIsNotConstant">For optimized GPU code generation, level must be compile-time constant.</entry>
+    <entry key="Wavedec2LevelIsNotConstant">For optimized GPU code generation, level must be compile-time constant.</entry>
+
+    <!-- MDWTDEC Warnings -->
+    <entry key="MdwtdeclevelisNotConstant">For optimized GPU code generation, level must be compile-time constant.</entry>
+
+    <!-- REGIONFILL Warning -->
+        <entry key="RegionfillUnsupportedSyntax">GPU code generation specifying polygon vertices x and y is not optimized.</entry>
+
+    <!-- Atomic Operations -->
+    <entry key="UnsupportedTypeAtomic">Input of type {0} is not supported for {1} function.</entry>
+    <entry key="InputsNotOfSameTypeAtomic">Inputs to {0} function must be of the same data type.</entry>
+    <entry key="InputsNotScalarAtomic">Inputs to {0} function must be fixed-size scalar values.</entry>
+    <entry key="UnsupportedTypeComputeAtomic">Input of type {0} for the {1} function is supported only for devices with compute capability {2} and higher.</entry>
+    <entry key="CevalGpuDeviceFcnNoKernel">Found ceval('-gpudevicefcn', ...) call to function {0} that did not get mapped to a kernel. Device function calls are only allowed within GPU kernels.</entry>
+    <entry key="AtomicOpOnUnsupportedMemory">Unable to perform the atomic operation on the GPU. A call to an atomic function must only be applied to a variable or memory location that is shared by all iterations of the containing loop.</entry>
+    <entry key="AtomicOpOnCpu">This atomic function call did not get mapped to a GPU kernel. The operation will be performed on CPU.</entry>
+    <entry key="AtomicOpNotInLoop">This atomic function must be called directly inside a for-loop.</entry>
+    <entry key="AtomicOpNeedsKernelPragma">This atomic operation should be performed inside a loop tagged with the coder.gpu.kernel() pragma to ensure the operation is executed on GPU.</entry>
+
+    <entry key="Atomic64NotEnabled">Code generation for {1} with {0} data type requires 64-bit atomic operations. Set the EnableAtomic64 property of GpuConfig object to true.</entry>
+
+    <!-- Sort -->
+    <entry key="GpucoderIncorrectNumArgs">Incorrect number of input arguments to the {0} function. See 'help {0}' for usage information.</entry>
+    <entry key="GpucoderSortComplexInputs">Invalid data type. gpucoder.sort function does not support complex data types.</entry>
+
+    <!-- Reduce -->
+    <entry key="GpucoderReduceUnsupportedTypeForReduce">gpucoder.reduce can only process data of real numeric or logical types.</entry>
+    <entry key="GpucoderReduceDimensionTooLarge">The dimension argument to gpucoder.reduce must not be larger than the number of dimensions of the input.</entry>
+    <entry key="GpucoderReduceComplexInputs">gpucoder.reduce function does not support complex data type.</entry>
+    <entry key="GpucoderReduceExpectedPrepro">Fourth argument to gpucoder.reduce must be a function handle.</entry>
+    <entry key="GpucoderReduceInvalidPreprocessFcn">The preprocess function must be a unary function.</entry>
+    <entry key="GpucoderReducePreprocessFcnUnsupportedType">The output of the preprocess function must be a real scalar of numeric or logical data type.</entry>
+    <entry key="GpucoderReduceMultiplePreprocessFcn">gpucoder.reduce function does not support more than one preprocessing function.</entry>
+    <entry key="GpucoderReduceFuncHandleInput">Second argument to gpucoder.reduce must be a function handle or a row cell array of function handles.</entry>
+    <entry key="GpucoderReduceAnonymousFuncHandle">gpucoder.reduce does not support anonymous function handles.</entry>
+    <entry key="GpucoderReduceTooManyFuncHandles">gpucoder.reduce function does not support more than {0} function handles with output type ''{1}''.</entry>
+    <entry key="GpucoderReduceFuncHandleInvalid">''{0}'' function handle input to gpucoder.reduce must accept two inputs and return one output of the same data type.</entry>
+    <entry key="GpucoderReduceFuncHandleUnsupportedType">The output of ''{0}'' function handle must be a real scalar of numeric or logical data type.</entry>
+    <entry key="GpucoderReducePreprocessing">preprocessing</entry>
+    <entry key="GpucoderReduceReductionOperator">reduction operator</entry>
+    <entry key="GpucoderReducePreprocessingCallbackInvalid">The preprocessing function handle provided to gpucoder.reduce is not supported for GPU code generation. {0}</entry>
+
+    <!-- function handles used for design patterns -->
+    <entry key="FunctionHandleInvalid">The function handle provided to {0} is not supported for GPU code generation. {1}</entry>
+    <entry key="FunctorWritesThroughParam">The function handle writes to an input parameter by reference.</entry>
+    <entry key="FunctorNotQualifiedForGpu">The function handle contains code that is not executable in a GPU kernel.</entry>
+    <entry key="FunctorMayBeNested">This code may reference a nested function. For best performance, use anonymous function handles.</entry>
+
+    <!-- stencilfun -->
+    <entry key="StencilfunVarsizedWindowUnsupported">Non-constant window size is not supported when variable-size array support is disabled.</entry>
+    <entry key="StencilfunInvalidWindowSize">The window size argument must be a row vector of positive integers.</entry>
+    <entry key="StencilfunInvalidStride">The stride argument must be a constant numeric array whose elements are positive integers.</entry>
+    <entry key="StencilfunInputUnsupportedType">The input array must be of numeric or logical data type.</entry>
+    <entry key="StencilfunInvalidPaddingValue">The padding value must be a scalar with the same type as the input array.</entry>
+    <entry key="StencilfunInvalidPaddingValueComplexity">When generating code, the padding value can only be complex if the input array is complex.</entry>
+    <entry key="StencilfunInvalidPreprocess">The preprocess function argument must be a function handle that accepts exactly one input and returns exactly one output. The output must be a scalar of numeric or logical data type.</entry>
+    <entry key="StencilfunInvalidStencil">The stencil function argument must be a function handle of fixed arity that accepts one or more inputs. The outputs of this function must be scalars of numeric or logical data type.</entry>
+    <entry key="StencilfunInconsistentPreprocessTypes">The preprocess function may only return values of the single data type.</entry>
+    <entry key="StencilfunInconsistentOutputTypes">Each output array may only be assigned values of the single data type.</entry>
+    <entry key="StencilfunPreprocessingCallbackBad">The code generated for stencilfun may not be optimized because the preprocessing callback contains code that is not executable on the GPU.</entry>
+    <entry key="StencilfunStencilCallbackBad">The code generated for stencilfun may not be optimized because of how the stencil callback is written. It contains code that is not compatible with GPU execution or inefficiently accesses the window parameter.</entry>
+
+    <!-- Iterations Pragma -->
+    <entry key="IterationsPragmaOneInputArg">coder.gpu.iterations pragma requires one input argument which is the average loop bound.</entry>
+    <entry key="IterationsPragmaInputScalarNumeric">Input to coder.gpu.iterations pragma must be a numeric scalar value.</entry>
+    <entry key="IterationsPragmaInputIntegral">Input to coder.gpu.iterations pragma must be an integral value.</entry>
+
+    <!-- Batched BLAS -->
+    <entry key="BatchedBlasMatrixArgs">Function called with {0} input matrix argument(s). Amount of input matrix arguments must be divisible by {1}.</entry>
+    <entry key="BatchedBlasNumOutputMismatch">Number of batched multiplications in function call is less than number of output arguments. Batch count is {0}, but function was called expecting {1} output arguments.</entry>
+    <entry key="BatchedBlasNumArgs">This function takes exactly {0} or {1} arguments.</entry>
+    <entry key="BatchedBlasDataTypeMismatch">Argument {0} must be the same data type as argument {1}.</entry>
+    <entry key="BatchedBlasTransposeArg">Transpose argument must be 'N' (no transpose), 'T' (transpose), or 'C' (conjugate transpose).</entry>
+    <entry key="BatchedBlasMatrixDimMismatchRow">{0} has a dimension mismatch with {1}. Expected {2} row(s), got {3}.</entry>
+    <entry key="BatchedBlasMatrixDimMismatchCol">{0} has a dimension mismatch with {1}. Expected {2} column(s), got {3}.</entry>
+    <entry key="BatchedBlasNonUniformRowDims">Matrix {0} has a dimension mismatch, expected {2} row(s), got {3}. The dimensions of all {1} matrices must be the same.</entry>
+    <entry key="BatchedBlasNonUniformColDims">Matrix {0} has a dimension mismatch, expected {2} column(s), got {3}. The dimensions of all {1} matrices must be the same.</entry>
+    <entry key="StridedBlasMatrixDimMismatch">{0} must equal {1}.</entry>
+    <entry key="BatchedBlasMatrixWithAZeroDim">A matrix with a zero-sized dimension was provided. Use matrices where all dimensions are greater than or equal to 1.</entry>
+    <entry key="BatchedBlasNonMatrix">Argument {0} has too many dimensions ({1}). It must be a scalar or matrix.</entry>
+    <entry key="BatchedBlasIndexOverflow">Current parameters would cause indexing into unallocated memory. {0}: {1}, {2}: {3}.</entry>
+    <entry key="BatchedBlasNumArgsMod">This function takes exactly {0}+batchCount*{1} arguments.</entry>
+    <entry key="BatchedBlasUnknownNvp">Unrecognized parameter when parsing optional name value pair arguments: {0}.</entry>
+    <entry key="BatchedBlasTransposeStrMustBeConst">The transpose string must be a compile time constant. Consider using coder.Constant if passing this argument directly to the codegen invocation.</entry>
+    <entry key="BatchedBlasInvalidTransStrLen">Transpose string must have length 2, was {0}.</entry>
+    <entry key="BatchedBlasInvalidTransStrType">Transpose string must be either a character vector or a string.</entry>
+    <entry key="BatchedBlasNonNumericMatrix">Input argument {0} was of type {1}. Input matrices must be numeric.</entry>
+    <entry key="BatchedBlasVarDimsUnsupported">Input matrices with variable-sized dimensions are currently not supported for code generation.</entry>
+    <entry key="BatchedBlasAlphaBetaNonNumeric">Value for parameter {0} must be a numeric type, was {1}.</entry>
+    <entry key="BatchedBlasAlphaBetaNonScalar">Value for parameter {0} must be a scalar.</entry>
+    <entry key="BatchedBlasNoMatricesProvided">No matrices were provided.</entry>
+    <entry key="GpucoderLicenseError">Unable to check out GPU Coder license.</entry>
+    <entry key="PCTLicenseError">Unable to check out Parallel Computing Toolbox license.</entry>
+
+    <!-- LAPACK warning -->
+    <entry key="RTWLapackCallbackWarnInMO"><![CDATA[This mode of the ''{0}'' function is not fully supported by the NVIDIA cuSOLVER library. To generate code that uses the LAPACK library in addition to the cuSOLVER library, consider using the LAPACK callback class defined in <a href="matlab:open(''{1}'')">lapackCallback.m</a>]]></entry>
+    <entry key="RTWLapackCallbackWarn">This mode of the {0} function is not fully supported by the NVIDIA cuSOLVER library. To generate code that uses the LAPACK library in addition to the cuSOLVER library, consider providing a LAPACK callback class.</entry>
+
+    <!-- Profiling -->
+    <entry key="LargeProfilingTrace">The profiling trace has over {0} entries logged. Consider setting a threshold to reduce the amount of functions shown in the profiling trace.</entry>
+
+    <!-- Other -->
+    <entry key="HostUnifiedModeWarning">GPU code generation support for the unified malloc mode on the host will be deprecated in a future release. For host targets, use the discrete malloc mode.</entry>
+    <entry key="ProdDoesNotSupportLongLongMode">CUDA code generation requires the use of the long long data type. The production hardware does not support the use of the long long data type.</entry>
+    <entry key="TargetDoesNotSupportLongLongMode">CUDA code generation requires the use of the long long data type. The target hardware does not support the use of the long long data type.</entry>
+    <entry key="ProdLongLongModeError">CUDA code generation requires the use of the long long data type. Enable the 'Support long long' option in the Hardware Implementation pane or set the 'ProdLongLongMode' parameter.</entry>
+    <entry key="TargetLongLongModeError">CUDA code generation requires the use of the long long data type. Enable the 'Support long long' option in the Hardware Implementation pane or set the 'TargetLongLongMode' parameter.</entry>
+    <entry key="UnsupportedCMakeToolchain">Unable to use CMake toolchain, switching to default toolchain.</entry>
+    <entry key="SLCodegenNoGpuForGpuAccel">GPU Acceleration is on, but no supported GPUs can be found.
+    <![CDATA[<actions exclusiveFixIts="yes">
+        <action type="fixit">
+            <cmd>configset.internal.fixIt(''{0}'', ''GPUAcceleration'', ''off'')</cmd>
+            <txt>Disable <sldiag objui="configset" objparam="GPUAcceleration">'GPU Acceleration'</sldiag>.</txt>
+        </action>
+      </actions>]]>
+    </entry>
+    <entry key="InvalidGpuFeatureControlName">Invalid GPU feature name ''{0}''.</entry>
+  </message>
+</rsccat>

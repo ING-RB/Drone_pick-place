@@ -1,0 +1,1253 @@
+{
+    "family" : "dig",
+    "modelVersion" : "1.0",
+    "packages" : {
+        "config" : {
+            "enumerations" : {
+                "CommandType" : {
+                    "literals": {
+                        "Callback" : { "value" : 0 },
+                        "Script" : { "value" : 1 }
+                    }
+                },
+                "HorizontalAlignment" : {
+                    "literals": {
+                        "Left" : { "value" : 0 },
+                        "Center" : { "value" : 1 },
+                        "Right" : { "value" : 2 }
+                    }
+                },
+                "ResourceState" : {
+                    "literals": {
+                        "REGISTERED" : { "value" : 0 },
+                        "ENABLED" : { "value" : 1 },
+                        "DISABLED" : { "value" : 2 },
+                        "UNREGISTERED" : { "value" : 3 }
+                    }
+                },
+                "ResourceType" : {
+                    "literals": {
+                        "INVALID" : { "value" : 0 },
+                        "COMPONENT" : { "value" : 1 },
+                        "PLUGIN" : { "value" : 2 }
+                    }
+                }
+            },
+            "dataTypes" : {
+            "ComponentData" : {
+                "properties" : {
+                    "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "Path" : { "type" : "String","lower" : "1","upper" : "1", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                    "State" : { "type" : "ResourceState","lower" : "1","upper" : "1", "isTransient" : true, "isOrdered" : true, "isUnique" : true, "defaultValue" : "REGISTERED" },
+                    "Type" : { "type" : "ResourceType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "INVALID" }
+                }
+            }
+            },
+            "classes" : {
+                "Action" : {
+                    "properties" : {
+                        "Component" : { "type" : "Component","lower" : "0","upper" : "1", "opposite" : "Actions", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "Text" : { "type" : "model.DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Description" : { "type" : "model.DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Icon" : { "type" : "Icon","lower" : "0","upper" : "1", "opposite" : "Action", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "IconReference" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "CommandType" : { "type" : "CommandType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Callback" },
+                        "Command" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Control" : { "type" : "ActionControl","lower" : "0","upper" : "1", "opposite" : "Action", "isOrdered" : true, "isUnique" : true },
+                        "ModelAction" : { "type" : "model.Action","lower" : "0","upper" : "1", "isTransient" : true, "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Element",
+                    
+                    "isAbstract":false
+                },
+                "ActionControl" : {
+                    "properties" : {
+                        "Action" : { "type" : "Action","lower" : "0","upper" : "1", "opposite" : "Control", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "ActionReference" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Control",
+                    
+                    "isAbstract":true
+                },
+                "Column" : {
+                    "properties" : {
+                        "Width" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "HorizontalAlignment" : { "type" : "HorizontalAlignment","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Left" }
+                    },
+                    
+                    "superclass": "config.Container",
+                    
+                    "isAbstract":false
+                },
+                "CommandControl" : {
+                    
+                    
+                    "superclass": "config.ActionControl",
+                    
+                    "isAbstract":true
+                },
+                "Component" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Path" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ConfigName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Files" : { "type" : "File","lower" : "0","upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Widgets" : { "type" : "Widget","lower" : "0","upper" : "*", "opposite" : "Component", "qualifiedBy" : "_Id", "isOrdered" : true, "isUnique" : true },
+                        "Actions" : { "type" : "Action","lower" : "0","upper" : "*", "opposite" : "Component", "qualifiedBy" : "_Id", "isOrdered" : true, "isUnique" : true },
+                        "Icons" : { "type" : "Icon","lower" : "0","upper" : "*", "opposite" : "Component", "qualifiedBy" : "_Id", "isOrdered" : true, "isUnique" : true },
+                        "IsLoaded" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "IsDirty" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Config" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Components" : { "type" : "Component","lower" : "0","upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Container" : {
+                    "properties" : {
+                        "Children" : { "type" : "Widget","lower" : "0","upper" : "*", "opposite" : "Parent", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Widget",
+                    
+                    "isAbstract":true
+                },
+                "Control" : {
+                    
+                    
+                    "superclass": "config.Widget",
+                    
+                    "isAbstract":true
+                },
+                "DropDownButton" : {
+                    "properties" : {
+                        "PopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.ActionControl",
+                    
+                    "isAbstract":false
+                },
+                "Element" : {
+                    "properties" : {
+                        "_Id" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "File" : { "type" : "File","lower" : "0","upper" : "1", "opposite" : "Elements", "isTransient" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "EmptyControl" : {
+                    
+                    
+                    "superclass": "config.Control",
+                    
+                    "isAbstract":false
+                },
+                "File" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Path" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Elements" : { "type" : "Element","lower" : "0","upper" : "*", "opposite" : "File", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "Dirty" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Loaded" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "IsConfig" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Icon" : {
+                    "properties" : {
+                        "Component" : { "type" : "Component","lower" : "0","upper" : "1", "opposite" : "Icons", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "Icon16" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Icon24" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ModelIcon" : { "type" : "model.Icon","lower" : "0","upper" : "1", "isTransient" : true, "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "Action" : { "type" : "Action","lower" : "0","upper" : "1", "opposite" : "Icon", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Element",
+                    
+                    "isAbstract":false
+                },
+                "ListHeader" : {
+                    "properties" : {
+                        "Text" : { "type" : "model.DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Control",
+                    
+                    "isAbstract":false
+                },
+                "ListItem" : {
+                    "properties" : {
+                        "ShowDescription" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "config.CommandControl",
+                    
+                    "isAbstract":false
+                },
+                "ListItemWithCheckBox" : {
+                    "properties" : {
+                        "ShowDescription" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "config.ActionControl",
+                    
+                    "isAbstract":false
+                },
+                "ListItemWithPopup" : {
+                    "properties" : {
+                        "ShowDescription" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "PopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.ActionControl",
+                    
+                    "isAbstract":false
+                },
+                "ListSeparator" : {
+                    
+                    
+                    "superclass": "config.Control",
+                    
+                    "isAbstract":false
+                },
+                "Placeholder" : {
+                    "properties" : {
+                        "ReferenceName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Widget",
+                    
+                    "isAbstract":false
+                },
+                "PopupList" : {
+                    
+                    
+                    "superclass": "config.Container",
+                    
+                    "isAbstract":false
+                },
+                "PushButton" : {
+                    
+                    
+                    "superclass": "config.CommandControl",
+                    
+                    "isAbstract":false
+                },
+                "Section" : {
+                    "properties" : {
+                        "Title" : { "type" : "model.DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Container",
+                    
+                    "isAbstract":false
+                },
+                "SplitButton" : {
+                    "properties" : {
+                        "PopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.CommandControl",
+                    
+                    "isAbstract":false
+                },
+                "Tab" : {
+                    "properties" : {
+                        "Title" : { "type" : "model.DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Container",
+                    
+                    "isAbstract":false
+                },
+                "TabGroup" : {
+                    
+                    
+                    "superclass": "config.Container",
+                    
+                    "isAbstract":false
+                },
+                "ToggleButton" : {
+                    
+                    
+                    "superclass": "config.ActionControl",
+                    
+                    "isAbstract":false
+                },
+                "ToggleSplitButton" : {
+                    "properties" : {
+                        "PopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.ActionControl",
+                    
+                    "isAbstract":false
+                },
+                "Widget" : {
+                    "properties" : {
+                        "Component" : { "type" : "Component","lower" : "0","upper" : "1", "opposite" : "Widgets", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "Parent" : { "type" : "Container","lower" : "0","upper" : "1", "opposite" : "Children", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "ModelWidget" : { "type" : "model.Widget","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "config.Element",
+                    
+                    "isAbstract":true
+                }
+            }
+        },
+        "model" : {
+            "primitiveTypes" : {
+                "ActionCallback" : {},
+                "ActionRefresher" : {},
+                "DisplayString" : {},
+                "Range" : {},
+                "WidgetGenerator" : {}
+            },
+            "enumerations" : {
+                "DisplayState" : {
+                    "literals": {
+                        "Expanded" : { "value" : 0 },
+                        "Collapsed" : { "value" : 1 },
+                        "ExpandedOnTop" : { "value" : 2 },
+                        "Hidden" : { "value" : 3 }
+                    }
+                },
+                "EventDataType" : {
+                    "literals": {
+                        "None" : { "value" : 0 },
+                        "String" : { "value" : 1 },
+                        "Boolean" : { "value" : 2 },
+                        "Numeric" : { "value" : 3 },
+                        "Enumeration" : { "value" : 4 },
+                        "Color" : { "value" : 5 },
+                        "Any" : { "value" : 6 }
+                    }
+                },
+                "FunctionType" : {
+                    "literals": {
+                        "Action" : { "value" : 0 },
+                        "Schema" : { "value" : 1 }
+                    }
+                },
+                "ValidInBdType" : {
+                    "literals": {
+                        "ModelAndLibrary" : { "value" : 0 },
+                        "Model" : { "value" : 1 },
+                        "Library" : { "value" : 2 }
+                    }
+                },
+                "ViewMode" : {
+                    "literals": {
+                        "Normal" : { "value" : 0 },
+                        "Developer" : { "value" : 1 },
+                        "Inspector" : { "value" : 2 }
+                    }
+                }
+            },
+            "dataTypes" : {
+            "ActionEntry" : {
+                "properties" : {
+                    "value" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "text" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "DisplayStringUser" : {
+                "properties" : {
+                    "text" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            },
+            "WidgetOverride" : {
+                "properties" : {
+                    "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "parentName" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "visible" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "index" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "label" : { "type" : "DisplayString","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "actionId" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "popupName" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "footerName" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "textOverride" : { "type" : "DisplayString","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "descriptionOverride" : { "type" : "DisplayString","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "iconOverride" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showDescription" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showText" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "dropDownAlwaysEnabled" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "isFavorite" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "toolType" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "collapsePriority" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "columnCount" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showHeader" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "favoritesEnabled" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "qabEligible" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "reorderCategory" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "galleryItemRowCount" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "galleryItemWidth" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "galleryItemTextLineCount" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "displayState" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "scrollToSelection" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "width" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "height" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "horizontalAlignment" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "minColumnCount" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "maxColumnCount" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "galleryPopupName" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "textOverlay" : { "type" : "DisplayString","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "hideDisabledItems" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "selectedColor" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "closeOnColorSelected" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "autoColor" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "displayView" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showAuto" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showNone" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showFlat" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showInterp" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "showTexturemap" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "systemSelectorLayout" : { "type" : "Integer","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "referredName" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "dndEnabled" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "validInBdType" : { "type" : "ValidInBdType","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "hideWhenEmpty" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "listViewDisplayDensity" : { "type" : "String","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            }
+            },
+            "classes" : {
+                "Accelerator" : {
+                    "properties" : {
+                        "KeySequence" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ActionName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "IsPrimary" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "model.ConfigurableElement",
+                    
+                    "isAbstract":false
+                },
+                "Action" : {
+                    "properties" : {
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "label" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "value" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "selected" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "selectedItem" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "selectedColor" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "text" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "searchText" : { "type" : "DisplayString","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "description" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "icon" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "enabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "refresher" : { "type" : "Refresher","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "callback" : { "type" : "Callback","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "dropDownAlwaysEnabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "enabledProperty" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "boundProperties" : { "type" : "JsonValue","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "buttonGroupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "format" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "entries" : { "type" : "ActionEntry","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "placeholderText" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "optOutLocked" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "optOutBusy" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "optInPreventSpamExecute" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "optInAllowRefreshDuringCallback" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "isContainer" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "allowDeselectionInButtonGroup" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "qabEligible" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "isInQAB" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "errorText" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "warningText" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "validationState" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "eventDataType" : { "type" : "EventDataType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "None" },
+                        "validInBdType" : { "type" : "ValidInBdType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "ModelAndLibrary" },
+                        "minimum" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -20 },
+                        "maximum" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 20 },
+                        "steps" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 10 },
+                        "minorStepSize" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 5 },
+                        "majorStepSize" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 10 },
+                        "numberOfTicks" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 10 },
+                        "labels" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "editable" : { "type" : "Boolean","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "closePopupOnClick" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "model.ConfigurableElement",
+                    
+                    "isAbstract":false
+                },
+                "ActionItem" : {
+                    "properties" : {
+                        "action" : { "type" : "Action","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "pluginName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fileName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "App" : {
+                    "properties" : {
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "priority" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "categoryItemName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "contextProvider" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "defaultContextType" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "defaultTabName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "appActionName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "checksOutLicenses" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "AppItem" : {
+                    "properties" : {
+                        "app" : { "type" : "App","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "pluginName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fileName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "BooleanPropertyValue" : {
+                    "properties" : {
+                        "value" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.PropertyValue",
+                    
+                    "isAbstract":false
+                },
+                "Callback" : {
+                    "properties" : {
+                        "actionCallback" : { "type" : "ActionCallback","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.FunctionInfo",
+                    
+                    "isAbstract":false
+                },
+                "ColorPickerButton" : {
+                    "properties" : {
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "SelectedColor" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "#ff0000" },
+                        "CloseOnColorSelection" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "AutoColor" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "#000000" },
+                        "DisplayView" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "standard" },
+                        "ShowAuto" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "ShowNone" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "ShowFlat" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "ShowInterp" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "ShowTexturemap" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "Column" : {
+                    "properties" : {
+                        "Width" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "HorizontalAlignment" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "left" }
+                    },
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "ConfigurableElement" : {
+                    "properties" : {
+                        "feature" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "license" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "platform" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "Configuration" : {
+                    "properties" : {
+                        "plugins" : { "type" : "PluginItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "path" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "contexts" : { "type" : "ContextItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "widgets" : { "type" : "WidgetItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "actions" : { "type" : "ActionItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "icons" : { "type" : "IconItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "apps" : { "type" : "AppItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "properties" : { "type" : "DynamicPropertyItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Container" : {
+                    "properties" : {
+                        "Children" : { "type" : "Widget","lower" : "0","upper" : "*", "opposite" : "Parent", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "Context" : {
+                    "properties" : {
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "parentName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "actions" : { "type" : "JsonValue","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "widgets" : { "type" : "WidgetOverride","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "accelerators" : { "type" : "Accelerator","lower" : "0","upper" : "*", "qualifiedBy" : "KeySequence", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "model.ConfigurableElement",
+                    
+                    "isAbstract":false
+                },
+                "ContextItem" : {
+                    "properties" : {
+                        "context" : { "type" : "Context","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "pluginName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fileName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "actions" : { "type" : "JsonValue","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "widgets" : { "type" : "JsonValue","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "ContextState" : {
+                    "properties" : {
+                        "TypeName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Actions" : { "type" : "Action","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "TypeChain" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "Properties" : { "type" : "Property","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "DynamicProperty" : {
+                    "properties" : {
+                        "refresher" : { "type" : "Refresher","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.Property",
+                    
+                    "isAbstract":false
+                },
+                "DynamicPropertyItem" : {
+                    "properties" : {
+                        "property" : { "type" : "DynamicProperty","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "pluginName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fileName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "EditableGalleryPopup" : {
+                    "properties" : {
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.GalleryPopup",
+                    
+                    "isAbstract":false
+                },
+                "Footer" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "FooterCell" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "FunctionInfo" : {
+                    "properties" : {
+                        "gatewayName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "functionName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "userdata" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "functionType" : { "type" : "FunctionType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Action" }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "Gallery" : {
+                    "properties" : {
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "MinColumnCount" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 3 },
+                        "MaxColumnCount" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 7 },
+                        "GalleryPopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "TextOverlay" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "HideDisabledItems" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "GalleryCategory" : {
+                    "properties" : {
+                        "Label" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "DisplayState" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "icon_view" },
+                        "HideWhenEmpty" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "GalleryPanel" : {
+                    "properties" : {
+                        "Width" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "auto" },
+                        "Height" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "auto" }
+                    },
+                    
+                    "superclass": "model.GalleryPanelBase",
+                    
+                    "isAbstract":false
+                },
+                "GalleryPanelBase" : {
+                    "properties" : {
+                        "FooterName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ShowHeader" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "FavoritesEnabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "ReorderCategory" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "GalleryItemRowCount" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 1 },
+                        "GalleryItemTextLineCount" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 2 },
+                        "GalleryItemWidth" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "DisplayState" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "icon_view" },
+                        "ScrollToSelection" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "DndEnabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "ListViewDisplayDensity" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "default" }
+                    },
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "GalleryPopup" : {
+                    "properties" : {
+                        "ColumnCount" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "ColumnMajorLayout" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "QabEligible" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "model.GalleryPanelBase",
+                    
+                    "isAbstract":false
+                },
+                "Generator" : {
+                    "properties" : {
+                        "eventTriggers" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "widgetGenerator" : { "type" : "WidgetGenerator","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.FunctionInfo",
+                    
+                    "isAbstract":false
+                },
+                "Icon" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Path16px" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Path24px" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Path32px" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.ConfigurableElement",
+                    
+                    "isAbstract":false
+                },
+                "IconItem" : {
+                    "properties" : {
+                        "icon" : { "type" : "Icon","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "pluginName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fileName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "NumericPropertyValue" : {
+                    "properties" : {
+                        "value" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.PropertyValue",
+                    
+                    "isAbstract":false
+                },
+                "Panel" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "PluginItem" : {
+                    "properties" : {
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "path" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "PopupList" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "PopupListHeader" : {
+                    "properties" : {
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Label" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "Property" : {
+                    "properties" : {
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "value" : { "type" : "PropertyValue","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "PropertyValue" : {
+                    
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "QuickAccessBar" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "QuickAccessGroup" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "Reference" : {
+                    "properties" : {
+                        "ReferredName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "Refresher" : {
+                    "properties" : {
+                        "propertyTriggers" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "actionRefresher" : { "type" : "ActionRefresher","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.FunctionInfo",
+                    
+                    "isAbstract":false
+                },
+                "Section" : {
+                    "properties" : {
+                        "Label" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "CollapsePriority" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 }
+                    },
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "Separator" : {
+                    
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "Spacer" : {
+                    
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "State" : {
+                    "properties" : {
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "value" : { "type" : "JsonValue","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "StringPropertyValue" : {
+                    "properties" : {
+                        "value" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.PropertyValue",
+                    
+                    "isAbstract":false
+                },
+                "SystemSelector" : {
+                    "properties" : {
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "SystemSelectorLayout" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "Width" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "Tab" : {
+                    "properties" : {
+                        "Label" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Removable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "Contextual" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true }
+                    },
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "TabGroup" : {
+                    
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "Tool" : {
+                    "properties" : {
+                        "ToolType" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "PopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "FooterName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "TextOverride" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "IconOverride" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "DescriptionOverride" : { "type" : "DisplayString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ShowDescription" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "ShowText" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "DropDownAlwaysEnabled" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "IsFavorite" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "IconSize" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "OpenCallback" : { "type" : "Callback","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.Widget",
+                    
+                    "isAbstract":false
+                },
+                "ToolStrip" : {
+                    "properties" : {
+                        "DisplayState" : { "type" : "DisplayState","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Expanded" },
+                        "ActiveTab" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ActiveTabTS" : { "type" : "Integer64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "qabName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.Container",
+                    
+                    "isAbstract":false
+                },
+                "TypeChainInfo" : {
+                    "properties" : {
+                        "TypeChain" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "rootName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Actions" : { "type" : "ActionItem","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Widgets" : { "type" : "WidgetItem","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Accelerators" : { "type" : "Accelerator","lower" : "0","upper" : "*", "qualifiedBy" : "KeySequence", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "View" : {
+                    "properties" : {
+                        "Actions" : { "type" : "Action","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "TypeChain" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "Widgets" : { "type" : "Widget","lower" : "0","upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Root" : { "type" : "Widget","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "ShowWidgetInfoAsToolTip" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "DevMode" : { "type" : "ViewMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Normal" },
+                        "ChangeLevel" : { "type" : "UnlimitedNatural","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : 0 },
+                        "Locked" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "Busy" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "Blocked" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "isLibrary" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false },
+                        "spriteChecksum" : { "type" : "StdString","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Properties" : { "type" : "Property","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "States" : { "type" : "State","lower" : "0","upper" : "*", "qualifiedBy" : "name", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "UseThemeableIcons" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Widget" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ParentName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Visible" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "Index" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : -1 },
+                        "validInBdType" : { "type" : "ValidInBdType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "ModelAndLibrary" },
+                        "Parent" : { "type" : "Container","lower" : "1","upper" : "1", "opposite" : "Children", "isOrdered" : true, "isUnique" : true },
+                        "Generator" : { "type" : "Generator","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "model.ConfigurableElement",
+                    
+                    "isAbstract":true
+                },
+                "WidgetItem" : {
+                    "properties" : {
+                        "widget" : { "type" : "Widget","lower" : "1","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "pluginName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "fileName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "WidgetList" : {
+                    "properties" : {
+                        "widgets" : { "type" : "Widget","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "actions" : { "type" : "Action","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                }
+            },
+            "ownedEndpoints" : {
+                "getIcons" : {
+                    "millisecondTimeout": 60000,
+                    "type": "StdString",
+                    "lower": "1",
+                    "upper" : "1",
+                    "parameters": []
+                },
+                "acquireAction" : {
+                    "millisecondTimeout": 60000,
+                    "type": "UUID",
+                    "lower": "1",
+                    "upper" : "1",
+                    "parameters": [{
+                            "name": "name", 
+                            "type": "String", 
+                            "lower": "1",
+                            "upper" : "1"
+                        }]
+                },
+                "acquireActions" : {
+                    "millisecondTimeout": 60000,
+                    "type": "UUID",
+                    "lower": "0",
+                    "upper" : "*",
+                    "parameters": [{
+                            "name": "name", 
+                            "type": "String", 
+                            "lower": "0",
+                            "upper" : "*"
+                        }]
+                },
+                "releaseAction" : {
+                    "millisecondTimeout": 60000,
+                    "parameters": [{
+                            "name": "name", 
+                            "type": "String", 
+                            "lower": "1",
+                            "upper" : "1"
+                        }]
+                },
+                "clearConfigCache" : {
+                    "millisecondTimeout": 60000,
+                    "parameters": []
+                }
+            }
+        },
+        "prefs" : {
+            "classes" : {
+                "FavoriteCategory" : {
+                    "properties" : {
+                        "Label" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Tag" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "FavoriteCommand" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Label" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Category" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Type" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Code" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Icon" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "AddToQAB" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ShowQABLabel" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "FavoriteCommands" : {
+                    "properties" : {
+                        "LastId" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Commands" : { "type" : "FavoriteCommand","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Categories" : { "type" : "FavoriteCategory","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Icons" : { "type" : "Icon","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "GalleryState" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "DisplayState" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Categories" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "Favorites" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "Icon" : {
+                    "properties" : {
+                        "Label" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Path" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Tag" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "Preference" : {
+                    
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Preferences" : {
+                    "properties" : {
+                        "PathsRemembered" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false },
+                        "Toolstrip" : { "type" : "Toolstrip","lower" : "0","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "QAB" : {
+                    "properties" : {
+                        "Defaults" : { "type" : "QABItem","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "Custom" : { "type" : "QABItem","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "QABItem" : {
+                    "properties" : {
+                        "Name" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "ActionId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "PopupName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Type" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Index" : { "type" : "UInteger8","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "Visible" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : true },
+                        "ShowText" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : false }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                },
+                "Toolstrip" : {
+                    "properties" : {
+                        "DisplayState" : { "type" : "model.DisplayState","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Expanded" },
+                        "GalleryStates" : { "type" : "GalleryState","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "FavoriteCommands" : { "type" : "FavoriteCommands","lower" : "0","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "QAB" : { "type" : "QAB","lower" : "0","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "prefs.Preference",
+                    
+                    "isAbstract":false
+                }
+            }
+        }
+    }
+}

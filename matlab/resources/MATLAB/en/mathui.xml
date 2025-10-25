@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<!-- Copyright 2024 The MathWorks, Inc. -->
+<rsccat locale="en_US" product="MATLAB" version="1.0">
+    <message>
+        <!-- Labels required by Editor for Task Gallery -->
+        <entry key="Tool_SolveODETask_Label" context="uistring" note="Title of live editor task">Solve ODE</entry>
+        <entry key="Tool_SolveODETask_Description" context="uistring" note="Purpose/summary line of live editor task">Define and solve a system of ordinary differential equations</entry>
+        <!-- Labels, tooltips, and dropdown items for ODE LET -->
+        <entry key="AbsTol" context="uistring">Absolute tolerance</entry>
+        <entry key="AbsTolTooltip" context="uistring">The absolute error tolerance is a threshold below which the value of the solution becomes unimportant</entry>
+        <entry key="BDF" context="uistring">Use BDFs</entry>
+        <entry key="BDFTooltip" context="uistring">Use backward differentiation formulas. The default numerical differentiation formulas (NDFs) are generally more efficient than BDFs, but the two are closely related</entry>
+        <entry key="DetectStiffness" context="uistring">Detect stiffness</entry>
+        <entry key="DetectStiffnessTooltip" context="uistring">Incorporate a stiffness detection heuristic when selecting a solver. When selected, the solver is unknown until the generated code of the live task is run</entry>
+        <entry key="DisplayEvents" context="uistring">Display events</entry>
+        <entry key="DisplayEventsTooltip" context="uistring">Display any events that occur as vertical lines on the plot</entry>
+        <entry key="DisplayNone" context="uistring">No display</entry>
+        <entry key="DisplayPhas2" context="uistring">2-D phase plot</entry>
+        <entry key="DisplayPhas3" context="uistring">3-D phase plot</entry>
+        <entry key="DisplayPlot" context="uistring">Plot solution over time</entry>
+        <entry key="DisplaySensitivity" context="uistring">Display sensitivity</entry>
+        <entry key="DisplaySensitivityTooltip" context="uistring">Create plot of the normalized sensitivity functions over time</entry>
+        <entry key="DisplayTooltip" context="uistring">Select a type of plot</entry>
+        <entry key="DisplayTypeAfter" context="uistring">After solve</entry>
+        <entry key="DisplayTypeDuring" context="uistring">During solve</entry>
+        <entry key="DisplayTypeTooltip" context="uistring">Specify whether to animate while the solver iterates or display only after the solve is complete</entry>
+        <entry key="EventLabel" context="uistring">Event definition</entry>
+        <entry key="EventsButtonLabel" context="uistring">Events</entry>
+        <entry key="EventsButtonTooltip" context="uistring">Define expressions that trigger an event when they cross zero\n\nYou can specify the direction of the zero crossing and what to do when an event triggers, including the use of a callback function</entry>
+        <entry key="Extension" context="uistring">Extend solution</entry>
+        <entry key="ExtensionTooltip" context="uistring">Allow extending solution outside the time range</entry>
+        <entry key="FormatLabel" context="uistring">ODE type</entry>
+        <entry key="InitialSlopeButtonLabel" context="uistring">Initial slope</entry>
+        <entry key="InitialSlopeButtonTooltip" context="uistring">Initial value of dy/dt, specified as a vector. Used by some solvers for differential algebraic equations (DAEs)</entry>
+        <entry key="InitialSlopeVSTooltip" context="uistring">Initial value of dydt, specified as a vector or the name of workspace variable. Size must match the size of y0</entry>
+        <entry key="InitialStep" context="uistring">Initial step</entry>
+        <entry key="InitialStepTooltip" context="uistring">Upper bound on the magnitude of the first step size that the solver tries\n\nIf left unspecified, then the solver bases the initial step size on the slope of the solution at the initial time point</entry>
+        <entry key="InitialTime" context="uistring">Initial time</entry>
+        <entry key="InitialTimeTooltip" context="uistring">The time corresponding to the initial value of y</entry>
+        <entry key="InitialValue" context="uistring">Initial value</entry>
+        <entry key="InitialValueTooltip" context="uistring">Value of solution y at the initial time. Specify a scalar, a vector, or the name of a variable in the workspace. This value defines the number of equations in the system, so changing this value may reset other controls.</entry>
+        <entry key="InterpolateRefine" context="uistring">Specify number of interpolation points per step</entry>
+        <entry key="InterpolateSolutionFcn" context="uistring">Create function handle that interpolates solution</entry>
+        <entry key="InterpolateTooltip" context="uistring">Choose between a discrete result using data points or a continuous result using a function handle</entry>
+        <entry key="JacobianButtonLabel" context="uistring">Jacobian</entry>
+        <entry key="JacobianButtonTooltip" context="uistring">The Jacobian is a matrix of partial derivatives of f(t,y). Providing the Jacobian can improve the reliability and efficiency of the solver, particularly for stiff systems\n\nYou can choose to specify the Jacobian directly via a constant matrix or a function, or you can specify the sparsity pattern of the Jacobian matrix</entry>
+        <entry key="MassMatrixLabel" context="uistring">Mass matrix</entry>
+        <entry key="MassSparsityButtonLabel" context="uistring">Mass matrix sparsity</entry>
+        <entry key="MassSparsityButtonTooltip" context="uistring">Specify the mass matrix sparsity pattern. Not all solvers utilize this input, and it is only used when the state dependence is strong</entry>
+        <entry key="MassSparsityWSDDTooltip" context="uistring">Sparse matrix from workspace with size compatible to y0. Recommended if the ODE contains many equations with a strongly state-dependent mass matrix</entry>
+        <entry key="MaxOrder" context="uistring">Max order</entry>
+        <entry key="MaxOrderTooltip" context="uistring">The maximum order used in the numerical differentiation formulas (NDFs) or backward differentiation formulas (BDFs)</entry>
+        <entry key="MaxStep" context="uistring">Max step</entry>
+        <entry key="MaxStepTooltip" context="uistring">Upper bound on the size of any step taken by the solver\n\nIf left unspecified, then the solver bases the maximum step size on the time range</entry>
+        <entry key="MinStep" context="uistring">Min step</entry>
+        <entry key="MinStepTooltip" context="uistring">Lower bound on the size of any step taken by the solver\n\nSolver steps are limited by floating-point precision regardless of the value of the minimum step size</entry>
+        <entry key="MoreDetailsLabel" context="uistring">Select options</entry>
+        <entry key="NonNegVarsButtonLabel" context="uistring">Nonnegative components</entry>
+        <entry key="NonNegVarsButtonTooltip" context="uistring">Specify which elements of y the solver must keep nonnegative</entry>
+        <entry key="NonNegVarsVSTooltip" context="uistring">Which elements of y the solver must keep nonnegative, specified as a vector of indices</entry>
+        <entry key="NormControl" context="uistring">Norm control</entry>
+        <entry key="NormControlTooltip" context="uistring">Control error e at each step using the norm of the solution rather than its absolute value</entry>
+        <entry key="ODEFcnLabel" context="uistring">ODE function</entry>
+        <entry key="ODEFcnTooltip" context="uistring">Equations to solve, specified as a function that defines the system of differential equations to be integrated\n\nThe function must return a column vector that corresponds to f in the selected ODE type above. Click the New... button to see an example</entry>
+        <entry key="ODEFcnHelpTooltip" context="uistring">Open documentation for ODE function</entry>
+        <entry key="OutputSelection" context="uistring">Components to display</entry>
+        <entry key="OutputSelectionTooltip" context="uistring">Which elements of y should be displayed, specified as a vector of indices</entry>
+        <entry key="ParametersCBLabel" context="uistring">Use additional parameters</entry>
+        <entry key="ParametersCBTooltip" context="uistring">Specify a workspace variable as an optional additional input into all functions defined in the ODE</entry>
+        <entry key="ParametersTooltip" context="uistring">Variable in the workspace to be passed into the functions defined in this ODE. To pass multiple parameters, pack them into one variable using a struct or array</entry>
+        <entry key="ProblemFormatTooltip1" context="uistring">ODE does not contain a mass matrix M</entry>
+        <entry key="ProblemFormatTooltip2" context="uistring">ODE contains a constant mass matrix M which is defined in the workspace</entry>
+        <entry key="ProblemFormatTooltip3" context="uistring">ODE contains a time-dependent mass matrix M which is defined by a function</entry>
+        <entry key="ProblemFormatTooltip4" context="uistring">ODE contains a time- and state-dependent mass matrix M which is defined by a function</entry>
+        <entry key="RefineTooltip" context="uistring">A refinement factor by which the number of output points should increase in each step. If the refinement factor is greater than 1, then the solver subdivides each step into smaller intervals and interpolates the solution at each point</entry>
+        <entry key="RelTol" context="uistring">Relative tolerance</entry>
+        <entry key="RelTolTooltip" context="uistring">The relative error tolerance measures the error relative to the magnitude of each solution component. The relative error tolerance controls the number of correct digits in all solution components, except those smaller than the absolute tolerance</entry>
+        <entry key="SectionTitle1Define" context="uistring">Define ODE</entry>
+        <entry key="SectionTitle2Advanced" context="uistring">Specify advanced problem details</entry>
+        <entry key="SectionTitle3Solver" context="uistring">Specify solver options</entry>
+        <entry key="SectionTitle4Solve" context="uistring">Solve ODE</entry>
+        <entry key="SectionTitle5Display" context="uistring">Display results</entry>
+        <entry key="SensitivityButtonLabel" context="uistring">Calculate sensitivity</entry>
+        <entry key="SensitivityButtonTooltip" context="uistring">Compute forward sensitivity analysis on the parameters</entry>
+        <entry key="SolutionFcnHelpTooltip" context="uistring">Open documentation for the construct function option</entry>
+        <entry key="SolverAuto" context="uistring">Automatic</entry>
+        <entry key="SolverLabel" context="uistring">Solver</entry>
+        <entry key="SolverNonStiff" context="uistring">Automatic nonstiff</entry>
+        <entry key="SolverStiff" context="uistring">Automatic stiff</entry>
+        <entry key="SolverTooltip_auto" context="uistring">Automatically select an ODE solver based on problem definition</entry>
+        <entry key="SolverTooltip_cvodesstiff" context="uistring">Variable-order stiff ODE solver. Uses backward differentiation formulas, with order varying between 1 and 5</entry>
+        <entry key="SolverTooltip_cvodesnonstiff" context="uistring">Variable-order nonstiff ODE solver. Uses Adams-Moulton formulas, with order varying between 1 and 12</entry>
+        <entry key="SolverTooltip_idas" context="uistring">Variable-order, variable-coefficient ODE solver. Uses backward differentiation formulas, with order varying between 1 and 5</entry>
+        <entry key="SolverTooltip_nonstiff" context="uistring">Automatically select a nonstiff ODE solver based on problem definition</entry>
+        <entry key="SolverTooltip_ode113" context="uistring">Variable-order nonstiff ODE solver. Uses Adams-Bashforth-Moulton PECE formula, with order varying between 1 and 13</entry>
+        <entry key="SolverTooltip_ode15s" context="uistring">Variable order stiff ODE solver. Uses the numerical differentiation formulas of orders 1 to 5</entry>
+        <entry key="SolverTooltip_ode23" context="uistring">Low order nonstiff ODE solver. Uses a Runge-Kutta (2,3) pair</entry>
+        <entry key="SolverTooltip_ode23s" context="uistring">Low order stiff ODE solver. Uses a modified Rosenbrock formula of order 2</entry>
+        <entry key="SolverTooltip_ode23t" context="uistring">Moderately stiff ODE solver. Uses the trapezoidal rule</entry>
+        <entry key="SolverTooltip_ode23tb" context="uistring">Stiff ODE solver. Uses a trapezoidal rule step in its first stage and a backward differentiation formula of order 2 in its second stage</entry>
+        <entry key="SolverTooltip_ode45" context="uistring">Medium order nonstiff ODE solver. Uses the Runge-Kutta (4,5) pair</entry>
+        <entry key="SolverTooltip_ode78" context="uistring">High order nonstiff ODE solver. Uses the Runge-Kutta (7,8) pair with a 7th-order continuous extension</entry>
+        <entry key="SolverTooltip_ode89" context="uistring">High order nonstiff ODE solver. Uses the Runge-Kutta (8,9) pair with an 8th-order continuous extension</entry>
+        <entry key="SolverTooltip_stiff" context="uistring">Automatically select a stiff ODE solver based on problem definition</entry>
+        <entry key="SolveTypeFun" context="uistring">Construct function that interpolates solution</entry>
+        <entry key="SolveTypeRange" context="uistring">Start and end times</entry>
+        <entry key="SolveTypeTooltip" context="uistring">Return the solution over a time range and allow the solver to automatically choose times, or specify a vector of specific times</entry>
+        <entry key="SolveTypeVector" context="uistring">Vector of times</entry>
+        <entry key="SizePlaceholder" context="uistring" note="Referring to size of an iteration step">Size</entry>
+        <entry key="SummarySolveRange" context="uistring">Solution for {0} from {1} to {2}</entry>
+        <entry key="SummarySolveRangeAnon" context="uistring">Solution for anonymous function from {0} to {1}</entry>
+        <entry key="SummarySolveVector" context="uistring">Solution for {0} over a vector of times</entry>
+        <entry key="SummarySolveVectorAnon" context="uistring">Solution for anonymous function over a vector of times</entry>
+        <entry key="TimeRangeTooltip1" context="uistring">Initial time of the range for the solution</entry>
+        <entry key="TimeRangeTooltip2" context="uistring">Final time of the range for the solution</entry>
+        <entry key="TimeVectorTooltip" context="uistring">Solve the ODE for fixed times by specifying a vector of times or a valid workspace variable</entry>
+        <entry key="Vectorized" context="uistring">Vectorized</entry>
+        <entry key="VectorizedTooltip" context="uistring">The ODE function f accepts and returns vectors. That is, f(t,[y1 y2 y3...]) returns [f(t,y1) f(t,y2) f(t,y3) ...]</entry>
+        <!-- Code comments in generated script and generated examples -->
+        <entry key="CodeCommentDispInitialValue" context="uistring">Specify initial conditions for the ODE</entry>
+        <entry key="CodeCommentDispMassConstant" context="uistring">Specify mass matrix M from the workspace</entry>
+        <entry key="CodeCommentDispMassFunction" context="uistring">Select or create new mass matrix function M</entry>
+        <entry key="CodeCommentDispODEFcn" context="uistring">Select or create new ODE function f</entry>
+        <entry key="CodeCommentDispParameters" context="uistring">Specify parameters p from the workspace</entry>
+        <entry key="CodeCommentEventCallback" context="uistring">This function is called when an event occurs</entry>
+        <entry key="CodeCommentEventDefinition" context="uistring">Events occur when the output v is 0</entry>
+        <entry key="CodeCommentJacobian1" context="uistring">This function returns the Jacobian as a function of t and y</entry>
+        <entry key="CodeCommentJacobian2" context="uistring">The Jacobian is the matrix of derivatives of the ODE function f</entry>
+        <entry key="CodeCommentMassMatrix" context="uistring">This function returns the mass matrix M in the ODE: {0}</entry>
+        <entry key="CodeCommentMConstant" context="uistring">The mass matrix M must be defined in the workspace</entry>
+        <entry key="CodeCommentMFunction" context="uistring">The mass matrix {0} must be defined in a separate function</entry>
+        <entry key="CodeCommentODEFcn" context="uistring">This function returns the right-hand side of the ODE: {0}</entry>
+        <entry key="CodeCommentOutputFcn" context="uistring">OutputFcn for ode object</entry>
+        <entry key="CodeCommentPlotPhas2" context="uistring">Create 2-D phase plot</entry>
+        <entry key="CodeCommentPlotPhas2Anim" context="uistring">Create 2-D phase plot while solver is iterating</entry>
+        <entry key="CodeCommentPlotPhas2Title" context="uistring">2-D Phase Plot</entry>
+        <entry key="CodeCommentPlotPhas3" context="uistring">Create 3-D phase plot</entry>
+        <entry key="CodeCommentPlotPhas3Anim" context="uistring">Create 3-D phase plot while solver is iterating</entry>
+        <entry key="CodeCommentPlotPhas3Title" context="uistring">3-D Phase Plot</entry>
+        <entry key="CodeCommentPlotSensitivity" context="uistring">Plot normalized sensitivity over time</entry>
+        <entry key="CodeCommentPlotSensitivityTitle" context="uistring">Effect of Parameters on Solution over Time</entry>
+        <entry key="CodeCommentPlotSensitivityAxesLabel" context="uistring" note="Percent change due to each parameter">% Change Due to Each Parameter</entry>
+        <entry key="CodeCommentPlotSensitivityNoEffect" context="uistring">No effect</entry>
+        <entry key="CodeCommentPlotSolution" context="uistring">Plot solution over time</entry>
+        <entry key="CodeCommentPlotSolutionAnim" context="uistring">Plot solution over time while solver is iterating</entry>
+        <entry key="CodeCommentPlotSolutionTitle" context="uistring">Solution over Time</entry>
+        <entry key="CodeCommentPredPrey" context="uistring">Example: Lotka-Volterra predator-prey model</entry>
+        <entry key="CodeCommentSetupODE" context="uistring">Define ODE problem and specify solver options</entry>
+        <entry key="CodeCommentSolutionFcn" context="uistring">Generate solution function</entry>
+        <entry key="CodeCommentSolutionLabel" context="uistring">Solution</entry>
+        <entry key="CodeCommentSolveODE" context="uistring">Solve ODE problem</entry>
+        <entry key="CodeCommentTimeLabel" context="uistring">Time</entry>
+        <!-- Labels for EventOptions uicomponent -->
+        <entry key="EventOptionsAscending" context="uistring">Ascending</entry>
+        <entry key="EventOptionsBoth" context="uistring">Both</entry>
+        <entry key="EventOptionsCallback" context="uistring">Callback</entry>
+        <entry key="EventOptionsCallbackLabel" context="uistring">Callback function</entry>
+        <entry key="EventOptionsCallbackTooltip" context="uistring">The callback function is called when the solver reaches an event. Click the New... button to see an example</entry>
+        <entry key="EventOptionsDescending" context="uistring">Descending</entry>
+        <entry key="EventOptionsDirection" context="uistring">Direction</entry>
+        <entry key="EventOptionsDirectionTooltip" context="uistring">Direction of zero crossings to detect</entry>
+        <entry key="EventOptionsEventfunTooltip" context="uistring">Events occur when the scalar output of the event definition function is 0. Click the New... button to see an example</entry>
+        <entry key="EventOptionsHelpTooltip" context="uistring">Open documentation for events</entry>
+        <entry key="EventOptionsIconTooltip" context="uistring">Specify additional event details</entry>
+        <entry key="EventOptionsProceed" context="uistring">Proceed</entry>
+        <entry key="EventOptionsResponse" context="uistring">Response</entry>
+        <entry key="EventOptionsResponseTooltip" context="uistring">Solver response to triggered events</entry>
+        <entry key="EventOptionsStop" context="uistring">Stop</entry>
+        <entry key="EventOptionsTitle" context="uistring">Event details</entry>
+        <!-- Labels for MassMatrixOptions uicomponent -->
+        <entry key="MassMatrixOptionsFcnTooltip" context="uistring">The mass matrix M encodes linear combinations of derivatives on the left side of the equation. M must return a square matrix with height matching the number of elements of y. Click the New... button to see an example</entry>
+        <entry key="MassMatrixOptionsHelpTooltip" context="uistring">Open documentation for mass matrix inputs</entry>
+        <entry key="MassMatrixOptionsIconTooltip" context="uistring">Specify additional details for the mass matrix</entry>
+        <entry key="MassMatrixOptionsMaybe" context="uistring">Maybe</entry>
+        <entry key="MassMatrixOptionsNo" context="uistring">No</entry>
+        <entry key="MassMatrixOptionsSingular" context="uistring">Singular matrix</entry>
+        <entry key="MassMatrixOptionsSingularTooltip" context="uistring">Specify whether or not the mass matrix is singular</entry>
+        <entry key="MassMatrixOptionsStateDependence" context="uistring">State dependence</entry>
+        <entry key="MassMatrixOptionsStateDependenceTooltip" note= "'Weak' refers to message MassMatrixOptionsWeak" context="uistring">Specify "Weak" to use approximations when solving algebraic equations</entry>
+        <entry key="MassMatrixOptionsWSDDTooltip" context="uistring">Square mass matrix M defined in the workspace whose height is equal to the number of elements of y. This value defines the number of equations in the system, so changing this value may reset other controls.</entry>
+        <entry key="MassMatrixOptionsStrong" context="uistring">Strong</entry>
+        <entry key="MassMatrixOptionsTitle" context="uistring">Advanced mass matrix options</entry>
+        <entry key="MassMatrixOptionsWeak" context="uistring">Weak</entry>
+        <entry key="MassMatrixOptionsYes" context="uistring">Yes</entry>
+        <!-- Labels for JacobianOptions uicomponent -->
+        <entry key="JacobianFunction" context="uistring">Function</entry>
+        <entry key="JacobianFunctionTooltip" context="uistring">Specify the Jacobian as a function that returns the matrix of partial derivatives of f. It must return a square matrix with height equal to the number of elements of y. Click the New... button to see an example</entry>
+        <entry key="JacobianMatrix" context="uistring">Matrix</entry>
+        <entry key="JacobianMatrixTooltip" context="uistring">Matrix defining the partial derivatives of f. The square matrix must be defined in the workspace and have height equal to the number of elements of y</entry>
+        <entry key="JacobianSparsity" context="uistring">Sparsity</entry>
+        <entry key="JacobianSparsityTooltip" context="uistring">Matrix defining the sparsity pattern of the partial derivatives of f. The square matrix must be defined in the workspace and have height equal to the number of elements of y</entry>
+        <entry key="JacobianTypeTooltip" context="uistring">Specify the Jacobian df/dt directly as a constant matrix or function, or specify the sparsity pattern of the Jacobian matrix</entry>
+    </message>
+</rsccat>

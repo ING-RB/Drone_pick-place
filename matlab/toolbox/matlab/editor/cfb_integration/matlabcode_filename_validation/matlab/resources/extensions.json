@@ -1,0 +1,24 @@
+{
+    "mw.fileTypes.groups": {
+        "alphaNumericMatlabFiles": ["m", "mlx", "p", "mlapp", "slx", "ssc"],
+        "commandWindowDNDRunnableFiles" : ["m", "mlx", "p", "mlapp"]
+    },
+    "mw.fileTypes.filenameValidation": {
+        "groups.alphaNumericMatlabFiles": {
+            "errorRegexPatterns": [{
+                "pattern": "^.+$",
+                "flags": "ig", 
+                "errorLabel": "%editor_integration:filetype_validation:emptyFileName%"
+            }],
+            "warningRegexPatterns": [{
+                "pattern": "^[a-z][a-z0-9_]*$",
+                "flags": "ig",
+                "warningLabel": "%editor_integration:filetype_validation:invalidFileName%"
+            }, {
+                "pattern": "^.{0,2049}$",
+                "flags": "ig",
+                "warningLabel": "%editor_integration:filetype_validation:longFileName%"         
+            }] 
+        }
+    }
+}

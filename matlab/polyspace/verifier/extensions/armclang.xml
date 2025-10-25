@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<!-- Copyright 2018-2024 The MathWorks, Inc.
+
+     All definitions for the following ARM compilers:
+       - armclang v6.x 32bit
+       - armclang v6.x 64bit
+-->
+<compiler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="armclang" default="arm" xsi:noNamespaceSchemaLocation="extensions.xsd">
+  <clients>
+    <client name="polyspace"/>
+  </clients>
+  <asms>
+    <asm name="__asm"/>
+  </asms>
+  <options>
+    <option name="--clang"/>
+    <option name="--clang_version" value="160000"/>
+    <option name="--half_float_types" value="1"/>
+    <if feoption="--c\+\+">
+      <option name="--polyspace_define_macro" value="_NOEXCEPT=throw()"/>
+      <option name="--polyspace_define_macro" value="_NOEXCEPT_(x)="/>
+    </if>
+  </options>
+  <!-- the common defines for 32 and 64 bit -->
+  <defines>
+    <!-- Defines to allow parsing with generic header files. -->
+    <!-- These are normally set by edg.sml when -compiler not given when Gnu mode is set. -->
+    <define name="__MW_GNU__" value="1"/>
+    <define name="_GNU_SOURCE" value="1"/>
+    <define name="POLYSPACE_LIBC_NO_THROW" value="1"/>
+    <define name="__ARM_ACLE" value="200"/>
+    <define name="__ARM_ARCH" value="7"/>
+    <define name="__ARM_ARCH_PROFILE" value="'M'"/>
+    <define name="__ARMCC_VERSION" value="6060201"/>
+    <define name="__ARMCOMPILER_VERSION" value="6060201"/>
+    <define name="__ARMCOMPILER_LIBCXX" value="1"/>
+    <define name="__ATOMIC_ACQ_REL" value="4"/>
+    <define name="__ATOMIC_ACQUIRE" value="2"/>
+    <define name="__ATOMIC_CONSUME" value="1"/>
+    <define name="__ATOMIC_RELAXED" value="0"/>
+    <define name="__ATOMIC_RELEASE" value="3"/>
+    <define name="__ATOMIC_SEQ_CST" value="5"/>    
+    <define name="__CHAR_BIT__" value="8"/>
+    <define name="__DBL_DENORM_MIN__" value="4.9406564584124654e-324"/>
+    <define name="__DBL_DIG__" value="15"/>
+    <define name="__DBL_EPSILON__" value="2.2204460492503131e-16"/>
+    <define name="__DBL_HAS_DENORM__" value="1"/>
+    <define name="__DBL_HAS_INFINITY__" value="1"/>
+    <define name="__DBL_HAS_QUIET_NAN__" value="1"/>
+    <define name="__DBL_MANT_DIG__" value="53"/>
+    <define name="__DBL_MAX_10_EXP__" value="308"/>
+    <define name="__DBL_MAX_EXP__" value="1024"/>
+    <define name="__DBL_MAX__" value="1.7976931348623157e+308"/>
+    <define name="__DBL_MIN_10_EXP__" value="(-307)"/>
+    <define name="__DBL_MIN_EXP__" value="(-1021)"/>
+    <define name="__DBL_MIN__" value="2.2250738585072014e-308"/>
+    <define name="__ESCAPE__" value=""/>
+    <define name="__FLT_DENORM_MIN__" value="1.40129846e-45F"/>
+    <define name="__FLT_DIG__" value="6"/>
+    <define name="__FLT_EPSILON__" value="1.19209290e-7F"/>
+    <define name="__FLT_EVAL_METHOD__" value="0"/>
+    <define name="__FLT_HAS_DENORM__" value="1"/>
+    <define name="__FLT_HAS_INFINITY__" value="1"/>
+    <define name="__FLT_HAS_QUIET_NAN__" value="1"/>
+    <define name="__FLT_MANT_DIG__" value="24"/>
+    <define name="__FLT_MAX_10_EXP__" value="38"/>
+    <define name="__FLT_MAX_EXP__" value="128"/>
+    <define name="__FLT_MAX__" value="3.40282347e+38F"/>
+    <define name="__FLT_MIN_10_EXP__" value="(-37)"/>
+    <define name="__FLT_MIN_EXP__" value="(-125)"/>
+    <define name="__FLT_MIN__" value="1.17549435e-38F"/>
+    <define name="__FLT_RADIX__" value="2"/>
+    <define name="__GCC_ATOMIC_BOOL_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_CHAR16_T_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_CHAR32_T_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_CHAR_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_INT_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_LLONG_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_LONG_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_POINTER_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_SHORT_LOCK_FREE" value="2"/>
+    <define name="__GCC_ATOMIC_WCHAR_T_LOCK_FREE" value="2"/>
+    <define name="__GNUC_MINOR__" value="2"/>
+    <define name="__GNUC_PATCHLEVEL__" value="1"/>
+    <define name="__GNUC__" value="4"/>
+    <define name="__I__" value="1.0if"/>
+    <define name="__ORDER_BIG_ENDIAN__" value="4321"/>
+    <define name="__ORDER_LITTLE_ENDIAN__" value="1234"/>
+    <define name="__STDC_HOSTED__" value="1"/>
+    <define name="__STDC_UTF_16__" value="1"/>
+    <define name="__STDC_UTF_32__" value="1"/>
+    <define name="__STDC__" value="1"/>
+    <define name="__STDC_VERSION__" value="201112L"/>
+    <define name="_USE_STATIC_INLINE" value="1"/>
+    <define name="__WINT_TYPE__" value="int"/>
+    <define name="__LITTLE_ENDIAN__" value="1"/>
+    <define name="__BYTE_ORDER__" value="__ORDER_LITTLE_ENDIAN__"/>
+  </defines>
+  <attributes>
+    <attribute name="__declspec" sig="(*)"/>
+    <attribute name="neon_vector_type" family="gnu" sig="(ci)" constraints="T" apply="apply_neon_vector_type_attr"/>
+    <attribute name="neon_polyvector_type" family="gnu" sig="(ci)" constraints="T" apply="apply_neon_vector_type_attr"/>
+  </attributes>
+  <target name="arm">
+    <options>
+      <option name="--target" value="arm32"/>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="tmw_builtins/tmw_builtins.h"/>
+    </options>
+    <defines>
+      <define name="__ARM_32BIT_STATE" value="1"/>
+      <define name="__arm" value="1"/>
+      <define name="__arm__" value="1"/>
+    </defines>
+    <!-- type size and alignment -->
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_int"/>
+      <option name="--unsigned_chars"/>      
+    </options>
+    <defines>
+      <define name="__ARM_32BIT_STATE" value="1"/>
+      <define name="__ARM_EABI__" value="1"/>
+      <define name="__ARMEL__" value="1"/>
+      <define name="__ELF__" value="1"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_TYPE__" value="long long int"/>
+      <define name="__LDBL_DENORM_MIN__" value="4.9406564584124654e-324L"/>
+      <define name="__LDBL_DIG__" value="15"/>
+      <define name="__LDBL_EPSILON__" value="2.2204460492503131e-16L"/>
+      <define name="__LDBL_MANT_DIG__" value="53"/>
+      <define name="__LDBL_MAX_10_EXP__" value="308"/>
+      <define name="__LDBL_MAX_EXP__" value="1024"/>
+      <define name="__LDBL_MAX__" value="1.7976931348623157e+308L"/>
+      <define name="__LDBL_MIN_10_EXP__" value="(-307)"/>
+      <define name="__LDBL_MIN_EXP__" value="(-1021)"/>
+      <define name="__LDBL_MIN__" value="2.2250738585072014e-308L"/>
+      <define name="__SIZEOF_LONG__" value="4"/>
+      <define name="__SIZEOF_SIZE_T__" value="4"/>
+    </defines>
+  </target>
+  <target name="arm64">
+    <options>
+      <option name="--target" value="arm64"/>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="tmw_builtins/tmw_builtins.h"/>
+    </options>
+    <defines>
+      <define name="__ARM_64BIT_STATE" value="1"/>
+      <define name="__aarch64__" value="1"/>
+    </defines>
+    <!-- type size and alignment -->
+    <options>
+        <option name="--max_alignment"      value="16"/>
+        <option name="--char_bit"           value="8"/>
+        <option name="--sizeof_short"       value="2"/>
+        <option name="--sizeof_int"         value="4"/>
+        <option name="--sizeof_long"        value="8"/>
+        <option name="--sizeof_long_long"   value="8"/>
+        <option name="--sizeof_pointer"     value="8"/>
+        <option name="--sizeof_float"       value="4"/>
+        <option name="--sizeof_double"      value="8"/>
+        <option name="--sizeof_long_double" value="16"/>
+        <option name="--bits_for_long_double" value="128"/>
+        <option name="--size_t_is_unsigned_long"/>
+        <option name="--ptr_diff_is_long"/>
+        <option name="--wchar_t_is_unsigned_int"/>
+        <option name="--unsigned_chars"/>
+    </options>
+    <defines>
+      <define name="__ARM_64BIT_STATE" value="1"/>
+      <define name="__INT64_C_SUFFIX__" value="L"/>
+      <define name="__INT64_TYPE__" value="long int"/>
+      <define name="__LDBL_DENORM_MIN__" value="6.47517511943802511092443895822764655e-4966L"/>
+      <define name="__LDBL_DIG__" value="33"/>
+      <define name="__LDBL_EPSILON__" value="1.92592994438723585305597794258492732e-34L"/>
+      <define name="__LDBL_MANT_DIG__" value="113"/>
+      <define name="__LDBL_MAX_10_EXP__" value="4932"/>
+      <define name="__LDBL_MAX_EXP__" value="16384"/>
+      <define name="__LDBL_MAX__" value="1.18973149535723176508575932662800702e+4932L"/>
+      <define name="__LDBL_MIN_10_EXP__" value="(-4931)"/>
+      <define name="__LDBL_MIN_EXP__" value="(-16381)"/>
+      <define name="__LDBL_MIN__" value="3.36210314311209350626267781732175260e-4932L"/>
+      <define name="__SIZEOF_INT128__" value="16"/>
+      <define name="__sizeof_long" value="8"/>
+      <define name="__SIZEOF_LONG__" value="8"/>
+      <define name="__sizeof_ptr" value="8"/>
+      <define name="__SIZEOF_SIZE_T__" value="8"/>
+    </defines>
+  </target>
+</compiler>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0" locale="en_US" product="fixed" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!-- Block types -->
+      <entry key="BurstEulerType" translate="false">Burst Euler Transformation</entry>
+      <entry key="DivByConst" translate="false">Divide by Constant and Round</entry>
+      <entry key="ModByConst" translate="false">Modulo by Constant</entry>
+      <entry key="ModByConstHDL" translate="false">Modulo by Constant HDL Optimized</entry>
+    <!-- Block Descriptions (Edit Mask > Documentation > Description) -->
+      <entry key="BurstEulerDescr">This block performs Euler rotations using a shared CORDIC rotation kernel.</entry>
+      <entry key="DivByConstDescr">Divide input by a constant and round to integer.</entry>
+    <entry key="RealIdxCORDIC">This block performs the real CORDIC Givens rotation such that \n\n
+    yOut(k) = 0\n\nprovided that the coordinate [x(k), y(k)] lies in the right half-plane.\n
+    </entry>
+    <entry key="IterCounter">This block implements an HDL optimized counter used to drive iterative algorithms. The number of iterations in the counter is set using the parameter "Number of Iterations". It begins counting when "validIn" is pulled high. It then counts upward from 0, with the output at the "count" outport. The outport "countIsPositive" goes high when the value of "count" is greater than zero. The port "last" goes high on the final iteration to indicate that the next iteration of the loop is the final iteration. This will occur when "count" equals the Number of Iterations minus 1. Finally, "ready" goes high after all iterations are complete, and the block can accept another signal at "validIn".
+    </entry>
+    <entry key="RealDivideFullDescription">Given real inputs num and den, this block uses the CORDIC algorithm to compute y such that y = num/den.</entry>
+    <entry key="ComplexDivideFullDescription">Given complex inputs num and den, this block uses the CORDIC algorithm to compute y such that y = num/den.</entry>
+    <entry key="RealReciprocalFullDescription">Given real input, this block uses the CORDIC algorithm to compute y such that y = 1/u.</entry>
+    <entry key="NormalizedReciprocalFullDescription">Given real scalar u ~= 0, this block uses the CORDIC algorithm to compute y such that\n   0.5 &lt; |y| &lt;= 1,\nand e such that\n   (2^e)*y = 1/u.</entry>
+    <entry key="RealNormalizerFullDescription">Given real scalar u ~= 0, this block produces x such that\n   1 &lt;= x &lt; 2,\nand e such that\n   x = (2^e)*|u|,\nand isNegative = u&lt;0.</entry>
+    <entry key="RealCORDICReciprocalKernelFullDescription">Given real scalar x such that\n   1 &lt;= x &lt; 2\nthis block produces y such that\n   y = 1/x if isNegative = false\n   y = -1/x if isNegative = true\nand y is in the range\n   0.5 &lt; |y| &lt;= 1.</entry>
+    <entry key="PositiveNormalizedReciprocalFullDescription">Given real scalar u &gt; 0, this block produces y such that\n   0.5 &lt; y &lt;= 1\nand e such that\n   (2^e)*y = 1/u.</entry>
+    <entry key="PositiveRealNormalizerFullDescription">Given real scalar u &gt; 0, this block produces x such that\n   1 &lt;= x &lt; 2\nand e such that\n   x = (2^e)*u.</entry>
+    <entry key="PositiveRealCORDICReciprocalKernelFullDescription">Given real scalar x such that\n   1 &lt;= x &lt; 2\nthis block produces y such that\n   y = 1/x\nand y is in the range\n   0.5 &lt; y &lt;= 1.</entry>
+    <entry key="validInToReady"> This block checks that "validIn" is not high on the same cycle that ready is to ensure that the output of a calculation using this block is valid.
+    </entry>
+    <entry key="MemoryControllerDescription">This block manages the computational and I/O resources for the QR algorithm.
+        It controls the flow of data to and from computational resources, and indicates both when the block is ready for
+        new data, and when the results of the computation are valid.
+    </entry>
+    <entry key="RowRotationsFullDescription">This block performs CORDIC Givens rotations on inputs x and y such that
+        yOut(k) = 0. The same Givens rotations are applied to inputs u and v.
+    </entry>
+    <entry key="InverseCORDICGainDescription">This block performs a hardware efficient correction to the CORDIC growth factor.</entry>
+    <entry key="ComplexIdxCORDIC">This block performs CORDIC Givens rotations on complex valued inputs x and y such that
+        yOut(k) = 0. The same Givens rotations are applied to inputs u and v. </entry>
+    <entry key="ComplexRowRotationsFullDescription">This block performs the Givens rotations necessary to eliminate y(k)
+        against x(k). This is done in two steps. The first step rotates x(k) and y(k) to the real axis. In the next step, Givens rotations are applied to the vectors x and y such that yOut(k) = 0.
+    </entry>
+    <entry key="RotateFirstElementToRealDescription">This block performs CORDIC Givens rotation on x(k) such that
+        xOut(k) is real. The same Givens rotation is also applied to u.
+    </entry>
+    <entry key="FinalPivotActionDescription">Aligns the pivot element with the positive axis when necessary; otherwise, passes the data through.</entry>
+    <entry key="SetElementToZeroDescription">This block sets u(k) equal to zero.</entry>
+    <entry key="TanhDescription">Compute the hyperbolic tangent of input x, where x is a real, numeric and finite scalar value.</entry>
+    <entry key="ModByConstHDLDescription"> Perform modulo operation with a constant denominator using an HDL optimized architecture.
+    </entry>
+      <entry key="ModByConstDescription">Perform modulo operation with a constant denominator.</entry>
+    <entry key="DivByConstHDLDescription">Divide input by a constant, and round to an integer using an HDL optimized architecture.</entry>
+    <entry key="CORDICSquareRootHDLFullDescription">Given real input u >= 0, this block uses the CORDIC algorithm to compute the square root of u.</entry>
+      <entry key="CORDICSigmoidFullDescription">Given real input, this block uses the CORDIC algorithm to compute the sigmoid activation for u.</entry>  
+      <!-- Block prompts -->
+    <entry key="RowsInMatrices">Number of rows in matrices A and B:</entry>
+    <entry key="RowsInA">Number of rows in matrix A:</entry>
+    <entry key="ColumnsInARowsInB">Number of columns in matrix A and rows in matrix B:</entry>
+    <entry key="ColumnsInA">Number of columns in matrix A:</entry>
+    <entry key="ColumnsInB">Number of columns in matrix B:</entry>
+    <entry key="Denominator">Denominator</entry>
+    <entry key="DenominatorMod">Denominator for modulo: </entry>
+    <entry key="NumberOfCORDICIterations">Number of CORDIC iterations:</entry>
+    <entry key="OutputPrototype">Output data type:</entry>
+    <entry key="ForgettingFactor" note="This is a technical term used in recursive least-squares algorithms. It is a scalar real value greater than zero and less than one.  It means a factor that forgets.">Forgetting factor:</entry>
+    <entry key="RegularizationParameter">Regularization parameter:</entry>
+    <entry key="DimensionOfA">Dimension of matrix A:</entry>
+    <entry key="NumberOfJacobiIterations">Number of Jacobi iterations:</entry>
+    <entry key="RoundingMethodParam">Rounding method: </entry>
+    <entry key="SelectOutputs">Select outputs:</entry>
+    <entry key="SignalType">Signal type:</entry>
+    <entry key="NumberOfIterationsPerReg">Number of iterations per pipeline register:</entry>
+    <entry key="CORDICMaxShiftValue">CORDIC maximum shift value:</entry>
+    <entry key="AutoCORDICMaxShiftValue">Automatically select CORDIC maximum shift value based on input word length</entry>
+    <entry key="DivideByZeroPort">Show divide by zero port</entry>
+    <entry key="PipelineConfigurations">Pipeline Configurations</entry>
+    <entry key="TabMain">Main</entry>
+    <!-- Error Messages -->
+    <entry key="ArgMustBeCompileTimeConst">{0} must be a compile-time constant in {1}.</entry>
+    <entry key="HDLCodegenUnsupportedForFloat">HDL Code Generation for {0} is not supported for floating-point data with this function.</entry>
+    <entry key="IncompatibleInterfaces">Cannot add interface of type {0} to parent of type {1}.</entry>  
+    <entry key="InvalidMatrices">Invalid matrices.</entry>
+    <entry key="InputsMustBeNumeric">Inputs to {0} must be numeric</entry>
+    <entry key="InputMustBeScalar">Input {0} must be scalar.</entry>
+    <entry key="InputMustBeNumeric">Input {0} must be numeric.</entry>
+    <entry key="InputMustBeBinaryPointScaled">Fixed-point input {0} must be binary-point scaled.</entry>
+    <entry key="InputMustBeReal">Input {0} must be real valued.</entry>
+    <entry key="InputMustBeLogicalOrNumeric">Input {0} must be logical or numeric.</entry>
+    <entry key="InputMustBeFixedScaledDoubleOrFloat">Input {0} must be fixed-point, scaled-double, or floating-point.</entry>
+    <entry key="InputMustBeZeroOrBetweenOneAndTwo">Input {0} must be zero or greater than one and less than two.</entry>
+    <entry key="InputMustNotBePow2">Input {0} must not be an exact power of two.</entry>
+    <entry key="MatrixDimsPositiveInteger"> Input {0} must be a positive integer.</entry>
+    <entry key="MustBeTallAndSkinny">Number of rows of input {0} must be greater than or equal to the number of columns.</entry>    
+    <entry key="MustBeTallAndSkinnySizes">The number of rows, {0}, must be greater than or equal to the number of columns, {1}.</entry>    
+    <entry key="MustHaveSameNumberOfSamples">Matrices {0} and {1} must have the same number of samples. This is given by the size of the third dimension of the matrix. If the matrix is two-dimensional, the number of samples is 1.</entry>
+    <entry key="NfpNotSupported">Block {0} does not support native floating-point code generation. Consider using fixed-point types instead.</entry>
+    <entry key="NumColsGEOne">The number of columns in matrix {0} must be an integer greater than or equal to 1.</entry>
+    <entry key="NumColsGTOne">The number of columns in matrix {0} must be an integer greater than 1.</entry>
+    <entry key="NumRowsGTOne">The number of rows in matrix {0} must be an integer greater than 1.</entry>
+    <entry key="MustBeVector">Input {0} must be a vector</entry>
+    <entry key="InputMustMatchSizeParameter">Length of input {0} of {1, number, integer} must match input parameter {2} of {3, number, integer}.</entry>
+    <entry key="NumColsAShouldMatchNumRowsB">The number of columns in matrix {0} should be the same as the number of rows in matrix {1}.</entry>
+    <entry key="SameNumberOfRows">Matrices {0} and {1} must have the same number of rows.</entry>
+    <entry key="UnknownMatrixOperation">Operation {0} is not a valid operation for diagram construction.</entry>
+    <entry key="ValueDoesNotSatisfyConstraint">The value of input {0} must be {1}</entry>
+    <entry key="ValueNotRepresentableInInputType">The value of {0} is not representable in the input type ''{1}''.</entry>
+    <entry key="XYSameDatatype">Inputs {0} and {1} must have the same datatype</entry>
+    <entry key="DivideDimensionsShouldMatch">The number of elements in the numerator and denominator must be the same in block ''{0}''.</entry>
+    <entry key="InputOutputMustBeAllFixedOrFloat">Input data and Output data type must either be all floating-point or all fixed-point types.</entry>
+    <entry key="NonSquareSVDInputMustBeTallAndSkinny">Number of rows of input matrices must be greater than the number of columns. For square matrices, use the Square Jacobi SVD HDL Optimized block.</entry>  
+    <entry key="CORDICMaxShiftValMustBeSmallerThanWordlength">The CORDIC maximum shift value must be smaller than input wordlength.</entry>
+      <!-- Warning Messages -->
+    <entry key="PipelineMustBeZero">HDL Parameter {0} must equal 0. Setting to 0.</entry>
+    <entry key="nIterPerRegMustBeSmallerThanNTotalIter">The number of iterations per pipeline register exceeds the computed number of total iterations {0}. Setting the number of iterations per clock to number of total iterations.</entry>      
+    <entry key="ModByConstLatencyChanged24a">In R2024a, the latency of "Modulo by Constant HDL Optimized" was reduced from 9 to 4. Please be aware that this may change model behavior which depends precisely on the latency of this block.</entry>
+    <entry key="SqrtOfNegativeNumber">Found square root of a negative number, computing the square root of its absolute value.</entry>
+    <entry key="ReciprocalAndDivideLatencyChanged24b">In R2024b, the latency of "{0}" was changed to be determined by the pipeline configurations. Please be aware that this may change model behavior which depends precisely on the latency of this block.</entry>
+  </message>  
+</rsccat>
+<!-- Copyright 2018-2024 The MathWorks, Inc. -->

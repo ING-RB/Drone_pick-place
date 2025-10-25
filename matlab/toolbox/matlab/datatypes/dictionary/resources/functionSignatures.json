@@ -1,0 +1,120 @@
+{
+  "dictionary": {
+    "inputs": [
+        {"repeating": true, "tuple": [
+            {"name": "k", "kind": "required"},
+            {"name": "v", "kind": "required"}
+        ], "kind": "ordered"}
+    ],
+    "outputs": [{"name": "d", "type": "dictionary"}]
+  },
+  "dictionary._parenAssign": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.functionSignatureChoices(d)"], []]}
+     ]
+  },
+  "dictionary._parenReference": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.functionSignatureChoices(d)"], []]}
+     ]
+  },
+  "dictionary._curlyBraceAssign": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.curlyBraceKeyChoices(d)"], []]}
+     ]
+  }, 
+  "dictionary._curlyBraceReference": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.curlyBraceKeyChoices(d)"], []]}
+     ]
+  },
+  "dictionary.entries": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "format", "kind": "positional", "type": [["char", "choices={'struct','cell','table'}"]]}
+    ],
+    "outputs": [{"name": "e"}]
+  },
+  "dictionary.insert": {
+    "inputs": [
+        {"name": "d1", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.functionSignatureChoices(d1)"], []]},
+        {"name": "value", "kind": "required"},
+        {"name": "Overwrite", "kind": "namevalue", "type": ["logical", "scalar"]}
+    ],
+    "outputs": [{"name": "d2", "type": "dictionary"}]
+  },
+  "dictionary.isConfigured": {
+    "inputs": [{"name": "d", "kind": "required", "type": "dictionary"}],
+    "outputs": [{"name": "tf", "type": "logical"}]
+  },
+  "dictionary.isKey": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required"}
+    ],
+    "outputs": [{"name": "tf", "type": "logical"}]
+  },
+  "dictionary.keys": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "format", "kind": "positional", "type": [["char", "choices={'cell','uniform'}"]]}
+    ],
+    "outputs": [{"name": "k"}]
+  },
+  "dictionary.lookup": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.functionSignatureChoices(d)"], []]},
+        {"name": "FallbackValue", "kind": "namevalue"}
+     ],
+    "outputs": [{"name": "v"}]
+  },
+  "dictionary.numEntries": {
+    "inputs": [{"name": "d", "kind": "required", "type": "dictionary"}],
+    "outputs": [{"name": "n", "type": "double"}]
+  },
+  "dictionary.remove": {
+    "inputs": [
+        {"name": "d1", "kind": "required", "type": "dictionary"},
+        {"name": "key", "kind": "required", "type": [["char", "choices=matlab.internal.dictionary.functionSignatureChoices(d1)"], []]}
+    ],
+    "outputs": [{"name": "d2", "type": "dictionary"}]
+  },
+  "dictionary.types": {
+    "inputs": [{"name": "d", "kind": "required", "type": "dictionary"}],
+    "outputs": [
+        {"name": "keyType", "type": "string"},
+        {"name": "valueType", "type": "string"}
+    ]
+  },
+  "dictionary.values": {
+    "inputs": [
+        {"name": "d", "kind": "required", "type": "dictionary"},
+        {"name": "format", "kind": "positional", "type": [["char", "choices={'cell','uniform'}"]]}
+    ],
+    "outputs": [{"name": "v"}]
+  },
+  "configureDictionary": {
+    "inputs": [
+        {"name": "keyType", "kind": "required", "type": [["char"],["string", "scalar"]]},
+        {"name": "valueType", "kind": "required", "type": [["char"],["string", "scalar"]]}
+    ],
+    "outputs": [{"name": "d", "type": "dictionary"}]
+  },
+  "keyHash": {
+    "inputs": [{"name": "A", "kind": "required"}],
+    "outputs": [{"name": "h", "type": "uint64"}]
+  },
+  "keyMatch": {
+    "inputs": [
+        {"name": "A", "kind": "required"},
+        {"name": "B", "kind": "required"}
+    ],
+    "outputs": [{"name": "tf", "type": "logical"}]
+  }
+}

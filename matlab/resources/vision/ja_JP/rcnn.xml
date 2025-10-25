@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="vision" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="regionProposalFcnRequiredForMultiChannel">''RegionProposalFcn'' の既定値はマルチチャネル イメージでサポートされていません。カスタムの領域提案関数を指定してください。</entry>
+    <entry key="regionProposalBegin">--&gt; {0} 個の学習イメージから領域提案を抽出中...</entry>
+    <entry key="regionProposalEnd">完了。</entry>
+    <entry key="notEnoughObjectClasses">ネットワーク分類層にあるオブジェクト クラスの数は、入力 trainingData に定義されたクラスの数に "Background" クラスの 1 を加えた数と等しくなければなりません。</entry>
+    <entry key="rangesOverlap">''PositiveOverlapRange'' と ''NegativeOverlapRange'' はオーバーラップしないようにする必要があります。</entry>
+    <entry key="noPositiveSamples">これらのイメージ内には、ポジティブ学習サンプルとして使用する領域提案が見つかりません。\n\n{0}\nこれらは学習では使用されません。</entry>
+    <entry key="noNegativeSamples">これらのイメージ内には、ネガティブ学習サンプルとして使用する領域提案が見つかりません。\n\n{0}</entry>
+    <entry key="noTrainingSamples">ポジティブ学習サンプルとして使用する領域提案が見つかりません。PositiveOverlapRange の最初の値を小さくして、ポジティブ領域提案の数を増やしてください。</entry>
+    <entry key="proposalFcnInvalidNargin">領域提案関数には 1 つの入力が必要です。</entry>
+    <entry key="proposalFcnInvalidNargout">領域提案関数には 2 つの出力が必要です。</entry>
+    <entry key="proposalFcnErrorOccurred">{0} を使用した {1} の処理中にエラーが発生しました。 \n\n{2}\n\nこのイメージの領域は学習に使用されません。</entry>
+    <entry key="invalidBBox">領域提案関数の 1 番目の出力は、実数、有限かつ非スパースでなければなりません。</entry>
+    <entry key="invalidScores">領域提案関数の 2 番目の出力は、実数、有限かつ非スパースでなければなりません。</entry>
+    <entry key="invalidBBoxDim">領域提案関数の 1 番目の出力は、M 行 4 列の行列でなければなりません。</entry>
+    <entry key="invalidScoreDim">領域提案関数の 2 番目の出力は、M 行 1 列のベクトルでなければなりません。</entry>
+    <entry key="proposalInconsistentNumel">領域提案関数の 1 番目と 2 番目の出力の行数は同じでなければなりません。</entry>
+    <entry key="proposalInvalidWidthHeight">領域提案の境界ボックスの幅と高さは正でなければなりません。</entry>
+    <entry key="missingBackgroundClass">ネットワークの分類層には、''Background'' クラスが含まれていなければなりません。</entry>
+    <entry key="lastLayerNotClassificationLayer">ネットワークに分類層が 1 つ含まれていなければなりません。</entry>
+    <entry key="firstLayerNotImageInputLayer">The network must have only one image input layer, and it must be the first layer in the network.</entry>
+    <entry key="removingAugmentation">学習中に ''{0}'' データ拡張は適用されません。</entry>
+    <entry key="miniBatchSizeTooSmall">ネットワーク学習オプションでは、''MiniBatchSize'' を 4 に指定しなければなりません。</entry>
+    <entry key="bboxRegressionBegin">--&gt; オブジェクト クラスごとに境界ボックス回帰モデルの学習を実行中...</entry>
+    <entry key="bboxRegressionEnd">完了。</entry>
+    <entry key="trainNetworkBegin">--&gt; ニューラル ネットワークに学習データ内のオブジェクトを分類させるための学習を実行中...</entry>
+    <entry key="trainNetworkEnd">ネットワークの学習が完了しました。</entry>
+    <entry key="trainingHeader">次のオブジェクト クラスに対する R-CNN オブジェクト検出器の学習を実行中:</entry>
+    <entry key="trainingFooter">検出器の学習が完了しました。</entry>
+    <entry key="trainingFooterWithWarnings">検出器の学習が完了しました (警告あり):</entry>
+    <entry key="noConvLayerSkipBoxReg">ボックス回帰モデルの学習用の特徴層を自動的に検索できません。''BoxRegressionLayer'' を使用して層を手動で指定してください。</entry>
+    <entry key="dagUnableToFindLastFC">Unable to automatically find and replace the last fully-connected layer in the input network. Manually modify the input network so that the last fully connected layer has {0} outputs and replace the old classification layer with a new one using classificationLayer().</entry>
+    <entry key="networkMissingBBoxFeatureLayer">ネットワーク内のいずれかの層の名前を ''BoxRegressionLayer'' プロパティで指定しなければなりません。</entry>
+    <entry key="autoOrNoneNotAllowedAsLayerName">入力ネットワーク内の層に ''auto'' という名前を付けることはできません。''auto'' という層の名前を変更してください。</entry>
+    <entry key="removingInvalidTrainingData">{0}/{1} 個の学習イメージの無効な境界ボックスが削除されました。trainingData の次の行に無効な境界ボックス データがあります。\n\n{2}\n境界ボックスは、空ではなく、関連付けられているイメージ内に完全に含まれていて、正の幅と高さをもっている必要があります。</entry>
+    <entry key="noValidTrainingData">The input training data contains invalid bounding box data. Modify the training data to ensure all the bounding boxes are fully contained in the image, the bounding box [x y width height] or [xctr yctr width height yaw] values are greater than zero, and that there is at least one bounding box for each training image.</entry>
+    <entry key="networkTrainingLossHasNaNs">学習損失に NaN 値があります。検出器が適切に学習していない可能性があります。関数 trainingOptions を使用して ''InitialLearnRate'' を下げ、検出器の再学習を試みてください。</entry>
+    <entry key="fourStepTrainingLossHasNaNs">ステップ {0}: 学習損失に NaN 値があります。検出器が適切に学習していない可能性があります。関数 trainingOptions を使用して ''InitialLearnRate'' を下げ、検出器の再学習を試みてください。</entry>
+    <entry key="nonfiniteRCNNBoxRegressionData">ネットワークで抽出された学習の特徴に NaN が含まれます。関数 trainingOptions を使用して ''InitialLearnRate'' を下げ、検出器の再学習を試みてください。</entry>
+    <entry key="unableToBatchImages">MiniBatchSize が 1 より大きい場合、学習イメージは同じサイズでなければなりません。可変サイズのイメージで検出器を学習させるには、関数 trainingOptions を使用して ''MiniBatchSize'' を 1 に設定します。</entry>
+    <entry key="notMonoRGB">学習データが table の場合、R-CNN は RGB またはグレースケール イメージのみをサポートします。マルチチャネル イメージで学習を行うには、データ ストアを使用する学習データを指定してください。</entry>
+    <entry key="validationDataNotSupported">{0} は ValidationData 学習オプションをサポートしません。</entry>
+    <entry key="validationPlotsNotSupported">{0} は学習の進行状況プロットの学習オプションをサポートしていません。</entry>
+    <entry key="fourStepValidationPlotsNotSupported">4 ステップ学習メソッドは、学習の進行状況プロットの学習オプションをサポートしていません。</entry>
+    <entry key="fourStepOutputFcnNotSupported">The four-step training method does not support the OutputFcn training option.</entry>
+    <entry key="fourStepExperimentMonitorNotSupported">The four-step training method does not support the ExperimentMonitor option.</entry>
+    <entry key="GPULowOnMemory">GPU のメモリが低くなっています。メイン メモリを使用した追加のデータ転送により、パフォーマンスが低下する可能性があります。''SmallestImageDimension'' パラメーターを 400 から 600 の間に設定して、学習イメージのサイズを縮小してみてください。この警告は次のコマンドを実行しない限り、再び表示されることはありません: &lt;a href="matlab:warning(''on'',''vision:rcnn:GPULowOnMemory'')"&gt;warning(''on'',''vision:rcnn:GPULowOnMemory'')&lt;/a&gt;。</entry>
+    <entry key="mimoDAGNotSupported">複数の入力と出力をもつネットワークはサポートされていません。</entry>
+    <entry key="UseParallelMustBeTrueForParallelTraining">trainingOptions ''ExecutionEnvironment'' が ''multi-gpu'' または ''parallel'' の場合、Computer Vision Toolbox の基本設定を使用して並列計算サポートを有効にするか、''UseParallel'' の値を true に設定します。</entry>
+    <entry key="unableToFreezeBNLayer">ネットワークに初期化されていないバッチ正規化層があります。''FreezeBatchNormalization'' を false に設定してください。</entry>
+    <entry key="fastTrainingHeader">次のオブジェクト クラスに対する Fast R-CNN オブジェクト検出器の学習:</entry>
+    <entry key="fastTrainingFooter">Fast R-CNN の学習が完了しました。</entry>
+    <entry key="noClassificationLayers">ネットワークの最後の 3 つの層は、完全に接続された層、ソフトマックス層、分類層でなければなりません。</entry>
+    <entry key="noMaxPoolingLayer">ROI プーリング層をネットワークに追加できません。入力ネットワークには、ROI プーリング層に置き換えられる最大プーリングまたは平均プーリングがなければなりません。</entry>
+    <entry key="unsupportedNumChannelsForROIPooling">65535 チャネルを超える入力データはサポートされていません。</entry>
+    <entry key="BackwardProhibited">逆伝播はサポートされていません。</entry>
+    <entry key="invalidSizeSmoothL1">平滑 L1 損失層への入力は 3 つの次元をもたなければならず、3 番目の次元は 4 で割り切れなければなりません。</entry>
+    <entry key="imageScaleLTNetInput">''SmallestImageDimension'' は {0} 以上でなければなりません。</entry>
+    <entry key="resumeClassNameMismatch">trainingData 列の変数の順序は、detector.ClassNames の順序と一致しなければなりません。</entry>
+    <entry key="fasterTrainingBanner">次のオブジェクト クラスに対する Faster R-CNN オブジェクト検出器の学習:</entry>
+    <entry key="fasterStep1">手順 1/4: 領域提案ネットワーク (RPN) の学習。</entry>
+    <entry key="fasterStep2">手順 2/4: 手順 1 の RPN を使用した Fast R-CNN ネットワークの学習。</entry>
+    <entry key="fasterStep3">手順 3/4: 重みを Fast R-CNN と共有で使用した RPN の再学習。</entry>
+    <entry key="fasterStep4">手順 4/4: 更新された RPN を使用した Fast R-CNN の再学習。</entry>
+    <entry key="fasterTrainingDone">Faster R-CNN オブジェクト検出器の学習が終了しました。</entry>
+    <entry key="resumeTrainingAtStage">手順 {0} から学習を再開します。</entry>
+    <entry key="boxesRemovedByScaling">これらのイメージのグラウンド トゥルース ボックスは、イメージのスケーリング後に小さくなりすぎるため削除されました:\n\n{0}\n'ImageScale' パラメーターを大きくすることを検討してください。</entry>
+    <entry key="mismatchDetectorPyramidScale">''BoxPyramidScale'' は detector.BoxPyramidScale と一致しなければなりません。</entry>
+    <entry key="mismatchDetectorBoxSizes">''MinBoxSizes'' は detector.MinBoxSizes と一致しなければなりません。</entry>
+    <entry key="minBoxSizeTooSmall">''MinBoxSizes'' は detector.MinObjectSize より大きくなければなりません。</entry>
+    <entry key="mismatchDetectorNumPyramidLevels">''NumBoxPyramidLevels'' は detector.NumBoxPyramidLevels と一致しなければなりません。</entry>
+    <entry key="inconsistentExeEnv">4 つの ''options.ExecutionEnvironment'' はすべて同じでなければなりません。</entry>
+    <entry key="inconsistentResetNorm">4 つの ''options.ResetInputNormalization'' はすべて同じでなければなりません。</entry>
+    <entry key="unsupportedExeEnv"> ''options.ExecutionEnvironment'' の値は、''auto''、''cpu'' または ''gpu'' でなければなりません。''multi-gpu'' および ''parallel'' はサポートされません。</entry>
+    <entry key="notSupportedForLayerGraph">入力ネットワークが LayerGraph の場合、''{0}'' はサポートされていません。</entry>
+    <entry key="partiallyTrainedDetector">検出器の学習ステップが完了していません。関数 trainFasterRCNNObjectDetector を使用して、学習を再開しなければなりません。</entry>
+    <entry key="anchorBoxesList">RPN アンカー ボックス:\n{0}</entry>
+    <entry key="verboseColRPNAcc">RPN ミニバッチの精度</entry>
+    <entry key="verboseColRPNRmse">PRN ミニバッチ RMSE</entry>
+    <entry key="endToEndFromFourStageCheckpoint">'''four-step'' 学習メソッドを使用して作成された検出器チェックポイントから学習を再開するには、''TrainingMethod'' の値が ''four-step'' でなければなりません。</entry>
+    <entry key="inconsistentMiniBatchSize">''options.MiniBatchSize'' の 4 つの値はすべて同じでなければなりません。</entry>
+    <entry key="fourStepOverlapRangeUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the value of ''{0}'' is of size 4-by-2. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')"&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="fourStepOptionsUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the training options are defined as a four-element vector. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')"&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="fourStepNumRegionsUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the value of 'NumRegionsToSample' is a four-element vector. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')"&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="roiInputType">ROI 入力</entry>
+    <entry key="roiInputDesc">M x 4 の四角形 ROI</entry>
+    <entry key="rcnnBoxType">ボックス回帰出力</entry>
+    <entry key="rcnnBoxDesc">smooth-l1 損失</entry>
+    <entry key="rpnClsType">RPN 分類出力</entry>
+    <entry key="rpnClsDesc">'object' クラスおよび 'background' クラスのクロスエントロピー損失</entry>
+    <entry key="proposalType">領域提案</entry>
+    <entry key="proposalDescSingle">アンカー ボックス 1 個の領域提案</entry>
+    <entry key="proposalDesc">アンカー ボックス {0} 個の領域提案</entry>
+    <entry key="rpnSoftmaxDesc">rpn ソフトマックス</entry>
+    <entry key="rpnSoftmaxType">RPN ソフトマックス</entry>
+    <entry key="useTrainFastOrFaster">trainNetwork では {0} はサポートされていません。{0} を含むネットワークを学習するには、trainFastRCNNObjectDetector または trainFasterRCNNObjectDetector を使用してください。</entry>
+    <entry key="missingROIInputLayer">The network must contain one ROI input layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast R-CNN networks.</entry>
+    <entry key="missingROIMaxPoolingLayer">The network must contain one ROI max pooling layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="missingClassificationLayer">ネットワークに分類層が 1 つ含まれていなければなりません。Fast R-CNN または Faster R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="missingBoxRegressionLayerFast">ネットワークには、R-CNN ボックスの回帰層が 1 つ含まれなければなりません。Fast R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="invalidBoxRegressionLayerInputSize"> The input size must be {0}. This R-CNN box regression layer expects the third input dimension to be 4 times the number of object classes the network should detect ({1} classes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="invalidInputClassificationLayer">The input size must be {0}. The classification layer expects the third input dimension to be the number of object classes the network should detect ({1} classes) plus 1. The additional class is required for the "background" class. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="mustHaveOneImageInputLayer">The network must have one input layer and it must be an imageInputLayer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="mustHaveTwoBoxRegLayers">ネットワークには、R-CNN ボックスの回帰層が 2 つなければなりません。Faster R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="missingRegionProposalLayer">ネットワークには、領域提案層が 1 つ含まれなければなりません。Faster R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="missingRPNClassificationLayer">ネットワークに RPN 分類層が 1 つの含まれていなければなりません。Faster R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="missingRPNSoftmaxLayer">ネットワークには、RPN ソフトマックス層が 1 つ含まれなければなりません。Faster R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="missingBoxRegAfterROIPooling">R-CNN ボックスの回帰層は、ROI プーリング層の後に続く層のいずれかでなければなりません。Faster R-CNN ネットワーク作成の詳細については、&lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="incorrectInputRPNSoftmax">Invalid input size: {0}. Expected the size of the third input dimension to be 2 times the number of anchor boxes defined in the Region Proposal Layer ({1} anchor boxes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="incorrectInputRPNboxReg">Invalid input size: {0}. Expected the size of the third input dimension to be 4 times the number of anchor boxes defined in the Region Proposal Layer ({1} anchor boxes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')"&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="incorrectInputRegionProposal">Invalid input sizes: {0},{1}. Expected the size of the first two dimensions of the scores input size ({0}) and the box deltas input size ({1}) to be equal.</entry>
+    <entry key="incorrectInputROIPoolGridSize">Invalid input size: {0}. Expected the size of the first two dimensions to be at least equal to the grid size ({1}).</entry>
+    <entry key="incorrectInputROIPoolSecondInput">Invalid input size: {0}. Expected the size of the second dimension of the second input to be equal to 4 or 5.</entry>
+    <entry key="anchorBoxParamsNotSupportedForDatastore">学習データがデータストアの場合、MinBoxSizes、BoxPyramidScale、または NumBoxPyramidLevels オプションはサポートされていません。関数 estimateAnchorBoxes を使用してアンカー ボックスを推定し、関数 fasterRCNNLayers を使用して Faster R-CNN ネットワークを作成してください。</entry>
+    <entry key="scalingNotAllowedForDatastore">学習データがデータ ストアの場合、SmallestImageDimension オプションはサポートされません。イメージと境界ボックスをリサイズするには、IMRESIZE と BBOXRESIZE をもつデータ ストア変換メソッドを使用します。</entry>
+    <entry key="regionProposalBeginDatastore">--&gt; 学習データ ストアから領域提案を抽出中...</entry>
+    <entry key="networkMustBeLayerGraphForDatastore">学習データの入力がデータストアである場合、ネットワークの入力は layerGraph でなければなりません。関数 fasterRCNNLayers を使用して Faster R-CNN ネットワークを作成してください。</entry>
+  </message>
+</rsccat>

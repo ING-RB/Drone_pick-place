@@ -1,0 +1,72 @@
+@import "../variables";
+
+/* CSS Properties shared between TextField and TextArea */
+
+/* Input text styling */
+.mwDefaultVisualFamily.mwTextField .mwInputNode,
+.mwDefaultVisualFamily.mwTextArea .mwInputNode {
+  background-color: transparent; /* To avoid padding appearing over the border at 150% zoom */
+  color: var(--mw-color-primary, $mw-color-primary);
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+/* Background & border styling */
+.mwDefaultVisualFamily.mwTextField,
+.mwDefaultVisualFamily.mwTextArea {
+  background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--mw-borderColor-primary, $mw-borderColor-primary);
+}
+
+.mwDefaultVisualFamily.mwTextArea .mwInputNode,
+.mwDefaultVisualFamily.mwTextField .mwInputNode {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.mwDefaultVisualFamily.mwTextArea .mwInputNode {
+  padding-top: 3px;
+}
+
+/* Border color in hover & not error state */
+.mwDefaultVisualFamily.mwTextField.mwTextFieldHover:not(.mwValidationError),
+.mwDefaultVisualFamily.mwTextArea.mwTextAreaHover:not(.mwValidationError) {
+  border-color:  var(--mw-borderColor-hover, $mw-borderColor-hover);
+}
+
+/* Border color in focused & not error state */
+.mwDefaultVisualFamily.mwTextField.mwTextFieldInputNodeFocused:not(.mwValidationError),
+.mwDefaultVisualFamily.mwTextArea.mwTextAreaFocused:not(.mwValidationError) {
+  border-color: var(--mw-borderColor-focus, $mw-borderColor-focus);
+}
+
+/* Background color in `non-editable` state */
+.mwDefaultVisualFamily.mwTextField.mwNonEditable,
+.mwDefaultVisualFamily.mwTextArea.mwNonEditable {
+  background-color: var(--mw-backgroundColor-input-readonly, $mw-backgroundColor-input-readonly);
+}
+
+/* Text & background color in `selected` state (also focused) */
+.mwDefaultVisualFamily.mwTextField.mwWidget .mwInputNode::selection,
+.mwDefaultVisualFamily.mwTextArea.mwWidget .mwInputNode::selection {
+  background: var(--mw-backgroundColor-highlight-focus, $mw-backgroundColor-highlight-focus);
+  color: var(--mw-color-highlight, $mw-color-highlight);
+}
+
+/* Text & background color in `selected` state, but not focused (e.g. another window gets focused) */
+.mwDefaultVisualFamily.mwTextField.mwWidget:not(.mwTextFieldFocused) .mwInputNode::selection,
+.mwDefaultVisualFamily.mwTextArea.mwWidget:not(.mwTextAreaFocused) .mwInputNode::selection {
+  background: var(--mw-backgroundColor-highlight, $mw-backgroundColor-highlight);
+  color: var(--mw-color-highlight, $mw-color-highlight);
+}
+
+/* Placeholder text color */
+.mwDefaultVisualFamily.mwTextField .mwInputNode::placeholder,
+.mwDefaultVisualFamily.mwTextArea .mwInputNode::placeholder {
+  color: var(--mw-color-secondary, $mw-color-secondary);
+}

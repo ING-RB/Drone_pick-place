@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Authorization Redirect Page</title>
+</head>
+<body>
+    <p>Microsoft Authentication was successful, returning you home<p>
+    <script>
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop)
+        });
+        const code = params.code;
+        const message = {'AuthCode': code}
+        try {
+            // MSCS fix - infer target based on provided origin
+            const targetLocation = window.name ? window.name : window.opener.location.origin;
+            window.opener.postMessage(message, targetLocation);
+        } catch (err) {
+            console.log(err);
+        }
+        window.close();
+    </script>
+</body>
+</html>

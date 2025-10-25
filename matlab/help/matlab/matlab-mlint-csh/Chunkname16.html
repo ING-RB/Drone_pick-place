@@ -1,0 +1,12 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The code uses a <code>load</code> function within a <code><a href="matlab:doc parfor" target="_blank">parfor</a></code> loop to load
+                    variables. However, to classify variables correctly, the body of the
+                        <code>parfor</code> loop must be transparent. Transparency means
+                    that all references to variables must be visible in the text of the code. If a
+                        <code>load</code> function inside a <code>parfor</code> loop
+                    does not assign the MAT-file data to a MATLAB structure, variables that are not
+                    visible in the text of code might be loaded into the workspace.</p><p>For information on loading MAT-file data into a structure, see the help for
+                        <code><a href="matlab:doc load" target="_blank">load</a></code>. For information on
+                    transparency, see <a href="matlab:helpview('parallel-computing','SPMD_PARFOR_TRANSPARENCY')" target="_blank">Transparency</a>.</p><br/><strong>Suggested Action</strong><br/><p>Call <code>load</code> as a function, assigning the output argument to
+                    a variable. For example:</p><p>
+                    <code>x&nbsp;=&nbsp;load('myfile.mat')</code>
+                </p></body></html>

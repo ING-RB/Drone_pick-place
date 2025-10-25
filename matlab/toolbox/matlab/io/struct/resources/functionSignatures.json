@@ -1,0 +1,84 @@
+{
+    "readstruct":{
+        "inputs":[
+            {"mutuallyExclusiveGroup": [[
+                {"name":"filename","kind":"required","type":[["file=*.xml"],["matlabpathfile=*.xml"],["char","@(x) endsWith(x,matlab.io.internal.FileExtensions.XMLExtensions,'IgnoreCase',true)"]]},
+                {"name":"FileType","kind":"namevalue","type":["string","choices={'json', 'xml'}"]},
+                {"name":"StructNodeName","kind":"namevalue","type":"string"},
+                {"name":"StructSelector","kind":"namevalue","type":"string"},
+                {"name":"RegisteredNamespaces","kind":"namevalue","type":"string"},
+                {"name":"ImportAttributes","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AttributeSuffix","kind":"namevalue","type":"string","default":"'Attribute'"},
+                {"name":"DateLocale","kind":"namevalue","type":"string","default":"'system'"},
+                {"name":"WebOptions","kind":"namevalue","type":"weboptions"}
+            ],[
+                {"name":"filename","kind":"required","type":[["file=*.json"],["matlabpathfile=*.json"],["char","@(x) endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true)"]]},
+                {"name":"FileType","kind":"namevalue","type":["string","choices={'json', 'xml'}"]},
+                {"name":"StructNodeName","kind":"namevalue","type":"string"},
+                {"name":"StructSelector","kind":"namevalue","type":"string"},
+                {"name":"DateLocale","kind":"namevalue","type":"string","default":"'system'"},
+                {"name":"WebOptions","kind":"namevalue","type":"weboptions"},
+                {"name":"AllowComments","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AllowInfAndNaN","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AllowTrailingCommas","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"ParsingMode","kind":"namevalue","type":["string","choices={'strict','lenient'}"]}
+            ],[
+                {"name":"filename","kind":"required","type":["char","@(x) ~(endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true) || endsWith(x,matlab.io.internal.FileExtensions.XMLExtensions,'IgnoreCase',true))"]},
+                {"mutuallyExclusiveGroup":[[
+                    {"name":"FileType","kind":"namevalue","type":["string","choices={'json'}"]},
+                    {"name":"StructNodeName","kind":"namevalue","type":"string"},
+                    {"name":"StructSelector","kind":"namevalue","type":"string"},
+                    {"name":"DateLocale","kind":"namevalue","type":"string","default":"'system'"},
+                    {"name":"WebOptions","kind":"namevalue","type":"weboptions"},
+                    {"name":"AllowComments","kind":"namevalue","type":["logical","scalar"]},
+                    {"name":"AllowInfAndNaN","kind":"namevalue","type":["logical","scalar"]},
+                    {"name":"AllowTrailingCommas","kind":"namevalue","type":["logical","scalar"]},
+                    {"name":"ParsingMode","kind":"namevalue","type":["string","choices={'strict','lenient'}"]}
+                ],[
+                    {"name":"FileType","kind":"namevalue","type":["string","choices={'xml'}"]},
+                    {"name":"StructNodeName","kind":"namevalue","type":"string"},
+                    {"name":"StructSelector","kind":"namevalue","type":"string"},
+                    {"name":"RegisteredNamespaces","kind":"namevalue","type":"string"},
+                    {"name":"ImportAttributes","kind":"namevalue","type":["logical","scalar"]},
+                    {"name":"AttributeSuffix","kind":"namevalue","type":"string","default":"'Attribute'"},
+                    {"name":"DateLocale","kind":"namevalue","type":"string","default":"'system'"},
+                    {"name":"WebOptions","kind":"namevalue","type":"weboptions"}
+                ]]}
+            ]]}
+        ],
+        "outputs":[
+            {"name":"S","type":"struct"}
+        ],
+        "keywords":"json,xml,import"
+    },
+    "writestruct":{
+        "inputs":[
+            {"name":"S","kind":"required","type":"struct"},
+            {"mutuallyExclusiveGroup": [[
+                {"name":"filename","kind":"required","type":["char","@(x) endsWith(x,matlab.io.internal.FileExtensions.XMLExtensions,'IgnoreCase',true)"]},
+                {"name":"FileType","kind":"namevalue","type":["choices={'json', 'xml'}"]},
+                {"name":"StructNodeName","kind":"namevalue","type":"string"},
+                {"name":"PrettyPrint","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"AttributeSuffix","kind":"namevalue","type":"string","default":"'Attribute'"}
+            ],[
+                {"name":"filename","kind":"required","type":["char","@(x) endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true)"]},
+                {"name":"FileType","kind":"namevalue","type":["choices={'json', 'xml'}"]},
+                {"name":"PrettyPrint","kind":"namevalue","type":["logical","scalar"]},
+                {"name":"PreserveInfAndNaN","kind":"namevalue","type":["logical","scalar"]}
+            ],[
+                {"name":"filename","kind":"required","type":["char","@(x) ~(endsWith(x,matlab.io.internal.FileExtensions.JSONExtensions,'IgnoreCase',true) || endsWith(x,matlab.io.internal.FileExtensions.XMLExtensions,'IgnoreCase',true))"]},
+                {"mutuallyExclusiveGroup":[[
+                    {"name":"FileType","kind":"namevalue","type":["string","choices={'json'}"]},
+                    {"name":"PrettyPrint","kind":"namevalue","type":["logical","scalar"]},
+                    {"name":"PreserveInfAndNaN","kind":"namevalue","type":["logical","scalar"]}
+                ],[
+                    {"name":"FileType","kind":"namevalue","type":["string","choices={'xml'}"]},
+                    {"name":"StructNodeName","kind":"namevalue","type":"string"},
+                    {"name":"PrettyPrint","kind":"namevalue","type":["logical","scalar"]},
+                    {"name":"AttributeSuffix","kind":"namevalue","type":"string","default":"'Attribute'"}
+                ]]}
+            ]]}
+        ],
+        "keywords":"json,xml,export"
+    }
+}

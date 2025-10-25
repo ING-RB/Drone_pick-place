@@ -1,0 +1,14 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>MATLAB enables you to use <a href="matlab:helpview([docroot '/techdoc/learn_matlab/learn_matlab.map'],'mat_magicsq_subscripts')" target="_blank">logical arrays for indexing elements</a> in both arrays and cell arrays.
+                    This code calls <code>find</code> to create an array of indices from a
+                    logical vector, when you can probably use the logical vector directly instead.
+                    Using logical indexing directly is usually faster because it avoids the work
+                        <code>find</code> does when it creates a vector of indices.</p><p>Code Analyzer also reports this message when the subscript is an array of
+                    indices resulting from a call to <code>find</code> and the indicated
+                    subscript is the only use of this array of indices.</p><br/><strong>Suggested Action</strong><br/><p>To speed up and simplify the program, replace the call to <code><a href="matlab:doc find" target="_blank">find</a></code> with logical array indexing. If
+                    the logical array is not a vector, the shape of the output could change when you
+                    remove (or use Code Analyzer automatic fix feature to remove) the
+                        <code>find</code> call. To retain the same output shape, you might
+                    need to replace <code>find(L)</code> by <code>L(:)</code> or
+                        <code>L(:)'</code>. Even with these changes, it is faster than calling
+                        <code>find</code>.</p><p>If the argument to <code>find</code> is not a logical array, suppress
+                    this message, as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

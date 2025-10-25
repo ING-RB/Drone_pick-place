@@ -1,0 +1,259 @@
+{
+    "se3":
+        {
+            "inputs":
+                [
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "rotation",
+                                        "kind": "ordered",
+                                        "type": [
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "2d",
+                                                "size=3,3"
+                                            ],
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "3d",
+                                                "size=3,3,:"
+                                            ],
+                                            [
+                                                "so3"
+                                            ],
+                                            [
+                                                "quaternion"
+                                            ]
+                                        ]
+                                    },
+                                    {
+                                        "name": "translation",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "2d",
+                                                "size=:,3"
+                                            ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "transformation",
+                                        "kind": "ordered",
+                                        "type": [
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "2d",
+                                                "size=4,4"
+                                            ],
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "3d",
+                                                "size=4,4,:"
+                                            ],
+                                            [
+                                                "se3"
+                                            ],
+                                            [
+                                                "se2"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "rotation",
+                                        "kind": "required",
+                                        "type": [
+                                            "numeric",
+                                            "real"
+                                        ]
+                                    },
+                                    {
+                                        "name": "convtype",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "choices=se3.ValidConversionTypes"
+                                            ]
+                                    },
+                                    {
+                                        "name": "translation",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "2d",
+                                                "size=:,3"
+                                            ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "rotation",
+                                        "kind": "required",
+                                        "type": [
+                                            "numeric",
+                                            "real"
+                                        ]
+                                    },
+                                    {
+                                        "name": "convtype",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices='eul'"
+                                        ]
+                                    },
+                                    {
+                                        "name": "sequence",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "choices=robotics.internal.validation.supportedEulerSequences"
+                                            ]
+                                    },
+                                    {
+                                        "name": "translation",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "2d",
+                                                "size=:,3"
+                                            ]
+                                    }
+                                ]
+                            ]
+                    }
+                ]
+        },
+    "so3":
+        {
+            "inputs":
+                [
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "rotation",
+                                        "kind": "ordered",
+                                        "type": [
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "2d",
+                                                "size=3,3"
+                                            ],
+                                            [
+                                                "numeric",
+                                                "real",
+                                                "3d",
+                                                "size=3,3,:"
+                                            ],
+                                            [
+                                                "so3"
+                                            ],
+                                            [
+                                                "so2"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "rotation",
+                                        "kind": "required",
+                                        "type": [
+                                            "numeric",
+                                            "real"
+                                        ]
+                                    },
+                                    {
+                                        "name": "convtype",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "choices=so3.ValidConversionTypes"
+                                            ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "rotation",
+                                        "kind": "required",
+                                        "type": [
+                                            "numeric",
+                                            "real"
+                                        ]
+                                    },
+                                    {
+                                        "name": "convtype",
+                                        "kind": "required",
+                                        "type": [
+                                            "choices='eul'"
+                                        ]
+                                    },
+                                    {
+                                        "name": "sequence",
+                                        "kind": "ordered",
+                                        "type":
+                                            [
+                                                "choices=robotics.internal.validation.supportedEulerSequences"
+                                            ]
+                                    }
+                                ]
+                            ]
+                    }
+                ]
+        },
+    "matlabshared.spatialmath.internal.SE3Base.eul":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "transformation",
+                        "kind": "required",
+                        "type": "se3"
+                    },
+                    {
+                        "name": "sequence",
+                        "kind": "ordered",
+                        "type":
+                            [
+                                "choices=robotics.internal.validation.supportedEulerSequences"
+                            ]
+                    }
+                ]
+        },
+    "matlabshared.spatialmath.internal.SO3Base.eul":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "rotation",
+                        "kind": "required",
+                        "type": "so3"
+                    },
+                    {
+                        "name": "sequence",
+                        "kind": "ordered",
+                        "type":
+                            [
+                                "choices=robotics.internal.validation.supportedEulerSequences"
+                            ]
+                    }
+                ]
+        }
+}

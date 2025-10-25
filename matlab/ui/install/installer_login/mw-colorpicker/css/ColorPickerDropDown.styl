@@ -1,0 +1,145 @@
+/* Common CSS */
+/* ---------- */
+.mwColorPickerDropDown {
+    --widget-bg-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary); /* ColorPickerDropDown (CPDD) background color  */
+
+    --widget-bg-color-hover: var(--mw-backgroundColor-hover, $mw-backgroundColor-hover); /* CPDD background color on hover  */
+    --widget-box-shadow-hover: inset 0 1px 1px 0 #f0f0f0, 0 1px 0 0 #e6e6e6; /* CPDD box-shadow on hover  */
+
+    --widget-bg-color-active: var(--mw-backgroundColor-active, $mw-backgroundColor-active); /* CPDD background color on active  */
+
+    /* make sure the height and width of outer div matches that of the inner div */
+    display: inline-flex;
+    --swatch-bg-color: #ff0000; /* Color Swatch color  */
+}
+
+.mwColorPickerDropDown.mwColorPickerDropDownManualBgColor .mwDropDownButton .mwFocusNode {
+    background-color: var(--widget-bg-color);
+}
+
+.mwColorPickerDropDown.mwColorPickerDropDownManualBgColor .mwDefaultVisualFamily.mwDropDownButton:not(.mwDisabled) .mwFocusNode:hover {
+    background-color: var(--widget-bg-color-hover);
+    box-shadow: var(--widget-box-shadow-hover);
+}
+
+.mwColorPickerDropDown.mwColorPickerDropDownManualBgColor .mwDefaultVisualFamily.mwDropDownButton:not(.mwDisabled) .mwFocusNode:active {
+    background-color: var(--widget-bg-color-active);
+    box-shadow: rgba(0, 0, 0, .15) 0px 1px 0px 0px inset;
+}
+
+.mwColorPickerDropDown:not(.mwColorPickerDropDownManualBgColor) .mwDropDownButton .mwFocusNode {
+    background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+.mwColorPickerDropDown:not(.mwColorPickerDropDownManualBgColor) .mwDefaultVisualFamily.mwDropDownButton:not(.mwDisabled) .mwFocusNode:hover {
+    background-color: var(--mw-backgroundColor-hover, $mw-backgroundColor-hover);
+}
+
+.mwColorPickerDropDown:not(.mwColorPickerDropDownManualBgColor) .mwDefaultVisualFamily.mwDropDownButton:not(.mwDisabled) .mwFocusNode:active {
+    background-color: var(--mw-backgroundColor-active, $mw-backgroundColor-active);
+}
+
+.mwColorPickerDropDown .mwDropDownButton .mwColorPickerColorSwatch {
+    /* set color swatch color */
+    background-color: var(--swatch-bg-color);
+    background-repeat:  no-repeat;
+}
+
+.mwColorPickerDropDown .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwFocusNode .mwButtonNode {
+    padding: 2px;
+}
+
+.mwColorPickerDropDown .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwFocusNode .mwIconNode {
+    margin: 0px;
+}
+
+.tundra .dijitTooltipContainer {
+    background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+    color: var(--mw-color-primary); // fix for "Hex" text color in colorpicker dropdown
+}
+
+.dijitPopup .mwColorPickerTooltipDialog .dijitTooltipContainer .dijitTooltipContents {
+    background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+.dijitPopup .mwColorPickerTooltipDialog.mw-theme-dark .dijitTooltipConnector {
+    filter: invert(93%);
+}
+
+.dj_webkit .tundra .dijitTooltipContainer {
+    -webkit-box-shadow: none;
+}
+/* CSS to make sure styling is proper when NO icon is specified */
+/* ------------------------------------------------------------ */
+.mwColorPickerDropDown:not(.mwColorPickerDropDownWithIcon) .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwButtonContainerNode .mwIconNode,
+.mwColorPickerDropDown .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwButtonNode .mwButtonContainerNode .mwTextNode {
+    /* CPDD does not need the TextNode. Hence, setting its display to none. 
+    Even when text is empty the TextNode has a border which adds unnecessary space.
+    Also, the IconNode is not required when no icon is specified. */
+    display: none;
+}
+
+.mwColorPickerDropDown:not(.mwColorPickerDropDownWithIcon) .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwButtonNode {
+    /* Color Swatch occupies the whole buttonNode and is 16 x 16 px in size by default */
+    width:  16px;
+    height: 16px;
+}
+
+.mwColorPickerDropDown:not(.mwColorPickerDropDownWithIcon) .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwButtonContainerNode {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+
+.mwColorPickerDropDown:not(.mwColorPickerDropDownWithIcon) .mwDropDownButton .mwColorPickerColorSwatch {
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+    box-sizing: border-box;
+}
+
+/* CSS to make sure styling is proper when an icon is specified */
+/* ------------------------------------------------------------ */
+.mwColorPickerDropDown.mwColorPickerDropDownWithIcon .mwDropDownButton .mwColorPickerColorSwatch {
+    width: 100%;
+    height: 4px;
+}
+
+.mwColorPickerDropDown.mwColorPickerDropDownWithIcon .mwWidget.mwDefaultVisualFamily.mwDropDownButton .mwButtonContainerNode {
+    /* To align the color swatch immediately below the icon */
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* CSS for styling color styles - auto, none, flat, interp, texturemap */
+/* ------------------------------------------------------------------- */
+.mwColorPickerDropDown .mwDropDownButton .mwColorPickerColorSwatch.mwColorPickerauto {
+    background-position: center;
+    background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+}
+
+.mwColorPickerDropDown .mwDropDownButton .mwColorPickerColorSwatch.mwColorPickernone {
+    background-repeat:  repeat;
+    background-color:   var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+    background-image:   linear-gradient(45deg, var(--mw-color-gray400) 25%, transparent 25%, transparent 75%, var(--mw-color-gray400) 75%, var(--mw-color-gray400)),
+                        linear-gradient(45deg, var(--mw-color-gray400) 25%, transparent 25%, transparent 75%, var(--mw-color-gray400) 75%, var(--mw-color-gray400));
+    background-size:    10px 10px;
+    background-position: 0 0, 4px 4px;
+}
+
+.mwColorPickerDropDown .mwDropDownButton .mwColorPickerColorSwatch.mwColorPickerflat {
+    background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+    background-position: center;
+}
+
+.mwColorPickerDropDown .mwDropDownButton .mwColorPickerColorSwatch.mwColorPickerinterp {
+    background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+    background-position: center;
+}
+
+.mwColorPickerDropDown .mwDropDownButton .mwColorPickerColorSwatch.mwColorPickertexturemap {
+    background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+    background-position: center;
+}

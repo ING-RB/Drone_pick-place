@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!-- Copyright 2019-2022 The MathWorks, Inc.
+
+    All definitions for the Microchip compilers XC8:
+    Target pic: PIC12/14/16/17/18 families.
+-->
+<compiler name="microchip" default="pic"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+    <client name="matlab"/>
+  </clients>
+
+  <!-- Macros common to all targets -->
+  <defines>
+    <if feoption="--c">
+      <define name="__STDC__" value="1"/>
+    </if>
+
+    <if feoption="--c\+\+">
+    </if>
+    <define name="_NO_DEFINITIONS_IN_HEADER_FILES" value=""/>
+  </defines>
+
+  <options>
+    <option name="--clang"/>
+    <option name="--clang_version" value="40000"/>
+    <if feoption="--c">
+      <option name="--c99"/>
+      <option name="--set_flag" value="allow_anonymous_union_like_construct"/>
+    </if>
+    <option name="--allow_long_float"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--nonstd_anonymous_unions"/>
+    <option name="--enable_static_assert"/>
+    <option name="--extended_variadic_macros"/>
+    <option name="--enable_at_keywords"/>
+    <option name="--dollar"/>
+    <option name="--gnu_attributes"/>
+
+    <switch feoption="--signed_chars">
+      <case>
+      </case>
+      <default>
+        <option name="--unsigned_chars"/>
+      </default>
+    </switch>
+  </options>
+
+  <!--
+       Definitions for PIC target
+  -->
+  <target name="pic">
+
+    <options>
+      <option name="--max_alignment"      value="1"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="2"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="4"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--large_enums"/>
+      <option name="--wchar_t_is_signed_long"/>
+      <option name="--little_endian"/>
+
+      <option name="--polyspace_define_macro" value="__CLANG__=1"/>
+      <option name="--undefine_macro" value="__GNUC__"/>
+      <option name="--undefine_macro" value="__GNUC_MINOR__"/>
+      <option name="--undefine_macro" value="__GNUC_PATCHLEVEL__"/>
+
+      <option name="--polyspace_define_macro" value="__at(x)="/>
+      <option name="--polyspace_define_macro" value="__bank(x)="/>
+      <option name="--polyspace_define_macro" value="__bank0="/>
+      <option name="--polyspace_define_macro" value="__bank1="/>
+      <option name="--polyspace_define_macro" value="__bank2="/>
+      <option name="--polyspace_define_macro" value="__bank3="/>
+      <option name="--polyspace_define_macro" value="__deprecate="/>
+      <option name="--polyspace_define_macro" value="__interrupt(x)="/>
+      <option name="--polyspace_define_macro" value="__nonreentrant=__attribute__((nonreentrant))"/>
+      <option name="--polyspace_define_macro" value="__section(x)="/>
+    </options>
+
+    <asms>
+      <asm name="asm"/>
+      <asm name="__asm"/>
+    </asms>
+
+    <attributes kind="data">
+      <attribute name="@" sig="@"/>
+      <attribute name="__pack"/>
+      <attribute name="__persistent"/>
+      <attribute name="__ram"/>
+      <attribute name="__rom"/>
+      <attribute name="__xdata"/>
+      <attribute name="__ydata"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="inline" token="tok_inline"/>
+      <attribute name="__inline" token="tok_inline"/>
+      <attribute name="__inline__" token="tok_inline"/>
+      <attribute name="__nonreentrant"/>
+      <attribute name="__reentrant"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__const__"/>
+      <attribute name="__eeprom"/>
+      <attribute name="__far"/>
+      <attribute name="__invariant"/>
+      <attribute name="__near"/>
+      <attribute name="__persistent"/>
+      <attribute name="__stable"/>
+    </attributes>
+
+    <defines>
+      <define name="HI_TECH_C" value="1"/>
+      <define name="_MPC_" value="1"/>
+      <define name="_OMNI_CODE_" value="1"/>
+      <define name="__PICC__" value="1"/>
+      <define name="__XC8" value="1"/>
+      <define name="__XC8_VERSION" value="2050"/>
+      <define name="__XC8__" value="1"/>
+      <define name="__XC__" value="1"/>
+      <define name="_EEPROM_INT" value="1"/>
+      <define name="_NOREG_INT" value="0"/>
+      <define name="_EEREG_INT" value="1"/>
+      <define name="_NVMREG_INT" value="2"/>
+      <define name="_EEPROMSIZE" value="16"/>
+      <define name="__SIZEOF_LONG__" value="4"/>
+      <define name="__SIZEOF_LONG_LONG__" value="8"/>
+      <define name="__SIZEOF_FLOAT__" value="4"/>
+      <define name="__SIZEOF_DOUBLE__" value="4"/>
+      <define name="__SIZEOF_LONG_DOUBLE__" value="4"/>
+    </defines>
+
+    <types>
+      <type name="__bit" type_kind="bit" decl_specs="bit"/>
+      <type name="__int24" type_kind="int" decl_specs="long"/>
+      <type name="__uint24" type_kind="int" decl_specs="unsigned,long"/>
+    </types>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="microchip/tmw_builtins/pic.h"/>
+    </options>
+
+  </target>
+
+</compiler>

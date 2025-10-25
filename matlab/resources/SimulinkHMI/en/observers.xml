@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- Copyright 2011-2015 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="SimulinkHMI">
+    
+    <message>
+
+        <!-- SignalObserver errors -->
+        <entry key="SignalObserverCreateFailure">Unable to create the signal observer of type ''{0}''.</entry>
+        <entry key="RuntimeConnectToBus">Unable to connect to bus signal.</entry>
+    
+        <!-- SignalAdaptor errors -->
+        <entry key="SignalAdaptorCreateFailure">Unable to create the signal adaptor ''{0}''.</entry>
+        <entry key="SignalAdaptorInvalidType" note="stringDatatypeUpdate">The Signal Adaptor name is invalid. It must be a non-empty 
+        character vector. For example, adaptor = Simulink.HMI.SignalAdaptor(), adaptor.Name = 'some_name'</entry>
+        <entry key="SignalAdaptorInvalidParams">The Signal Adaptor parameters input is invalid. It must 
+        be a MATLAB structure. For example, adaptor = Simulink.HMI.SignalAdaptor(), 
+        adaptor.AdaptorParams = struct('name_of_param',value_of_param,...)</entry>
+        <entry key="SignalAdaptorCompositesUnsupported" translate="false">At least one signal observer has been 
+        configured to stream composite data structures, yet there is at least one signal adaptor for this observer 
+        which does not support composite data.</entry>
+
+        <!-- AsyncioQueue errors -->
+        <entry key="AsyncioQueueFindFailure">No valid asynchronous I/O queue was found for block ''{0}'' 
+        and port index {1,number,integer}.</entry>
+        <entry key="AsyncioQueueFindFailure_PossibleNVbusMatch">No valid asynchronous I/O queue was found 
+        for block ''{0}'', port index {1,number,integer}, and leaf signal path ''{2}'' (valid leaf signal paths 
+        include ''{3}''). If this is a non-virtual bus signal that is being observed, keep in mind that you must 
+        identify which specific leaf signal(s) you wish to observe in this bus.
+        </entry>
+
+        <!-- Non-Scope HMI components -->
+        <entry key="UnsupportedDataType">Signals of type ''{0}'' cannot be connected to HMI controls. Only
+        built-in data types, enumerations, and bus signals are supported.</entry>
+        <entry key="UnsupportedComplexity">Only real signals may be connected to HMI controls.</entry>
+        <entry key="UnsupportedDims">Only scalar signals may be connected to HMI controls.</entry>
+
+        <!-- General HMI errors -->
+        <entry key="TEST_HMIAssert">Assertion detected in file ''{0}'' at line ''{1}''.</entry>
+        
+        <!-- Test errors (TODO: Remove once logging backend is removed from signal streaming) -->
+        <entry key="TEST_RealDataOnly" translate="false">Complex signals cannot currently be observed.</entry>
+        <entry key="TEST_ScalarsOnly" translate="false">Non-scalar signals cannot currently be observed.</entry>
+    
+    </message>
+</rsccat>
+

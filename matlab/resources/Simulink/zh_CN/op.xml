@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="IncorrectConfigurationMSFunction">The MATLAB S-function ''{0}'' methods GetOperatingPoint/SetOperatingPoint and GetSimState/SetSimState cannot be used together. Use only one type of method to define operating point save and restore behavior.</entry>
+    <entry key="InvalidComplianceSettingMSFunction">The setting for OperatingPointCompliance in the MATLAB S-function ''{0}'' in block ''{1}'' is invalid. This setting should be one of the following character vectors: {2}</entry>
+    <entry key="CannotRestoreBlockOperatingPoint">无法还原模块 ''{0}'' 的工作点</entry>
+    <entry key="CannotRestoreStateOfBlock">Cannot restore the state value of the block ''{0}''.</entry>
+    <entry key="LoggedStateReadOnlyValue">Logged state value for {0} is read-only.</entry>
+    <entry key="ChecksumMisMatchInRapidAccelOperatingPointWarn">The model, ''{0}'', was changed after the operating point was saved. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="OnlyRestoringLoggedStateFromNormalOPWarn"> The ModelOperatingPoint object, which is provided as initial state, was saved in Normal/Accelerator mode simulation. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="PlatformMisMatchInRapidAccelOperatingPointWarn">Operating point for the model, ''{0}'', was saved in ''{1}'' platform. It cannot be restored in ''{2}'' platform. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="OnlyRestoringLoggedStateFromRaccelOPWarn">作为初始状态提供的 ModelOperatingPoint 对象保存在快速加速模式仿真中。Simulink 将仅从此 ModelOperatingPoint 对象还原可用的记录状态和仿真时间。</entry>
+    <entry key="StepSizeMisMatchInRapidAccelOperatingPointWarn">Fundamental step size({0}) in the provided ModelOperatingPoint is different from the compiled fundamental step size({1}). Simulink will only restore the available logged states. Simulation time may not match the snapshot time in OperatingPoint due to this mismatch.</entry>
+    <entry key="SolverMisMatchInRapidAccelOperatingPointWarn">Solver name ''{0}'' in the provided ModelOperatingPoint is different from the compiled solver name ''{1}''. The initial state of blocks will be restored from the specified operating point but the state of the solver will be discarded. The results of the current simulation may deviate from the results of the original simulation.</entry>
+    <entry key="CustomCodeInModelRapidAccelOperatingPointWarn">The model ''{0}'' has custom code. Restore OperatingPoint in Rapid Accelerator mode is not supported for such models. Simulink will only restore the available logged states and simulation time from this ModelOperatingPoint object.</entry>
+    <entry key="BlockReduced">保存工作点时，模块数已缩减。这将在还原此工作点对象时导致模型校验和不匹配错误。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'','BlockReduction','off');&lt;/cmd&gt; &lt;txt&gt;考虑停止仿真，禁用 BlockReduction，然后再次保存。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      </entry>
+    <entry key="ModelSimStateDefaultDescription">模型 ''{0}'' 在仿真时间 {1} 的工作点。</entry>
+    <entry key="ModelSimStateStoppedDescription">模型 ''{0}'' 在仿真停止时的工作点。</entry>
+    <entry key="PeriodicOPNotSupportedCannotSaveOP">模型 "{0}" 不支持工作点记录。</entry>
+    <entry key="PeriodicOPCannotSaveOPRuntime">无法保存 t = {0} 处的模型工作点。</entry>
+    <entry key="PeriodicOPFileLocationNeededForMultiSim" context="error">MAT file location must be specified to log model operating points in multiple simulation workflows, such as configuring and running a set of simulations using an array of Simulink.SimulationInput objects.</entry>
+    <entry key="PeriodicOPFileLocationMustBeMATFile" context="error">无法为工作点记录创建 MAT 文件，因为指定的文件位置 "{0}" 不是 MAT 文件。</entry>
+    <entry key="PeriodicOPCannotCreateMATFile" context="diagnostic">Unable to create or write to operating point logging MAT file "{0}". Check that the filename and location are valid and writable.</entry>
+    <entry key="PeriodicOPInvalidWallTimeInterval" context="error">Wall-clock time interval ("{0}") for operating point logging must be greater than or equal to 1 second.</entry>
+    <entry key="PeriodicOPInvalidSimulationTimeInterval" context="error">Simulation time interval ("{0}") for operating point logging must be greater than 0.</entry>
+    <entry key="PeriodicOPInvalidMaxOperatingPoints" context="error">Maximum number of operating points ("{0}") to log in simulation must be greater than 0 and less than or equal to 100.</entry>
+    <entry key="PeriodicOPNoTimes" context="error">Operating point logging times must be a nonempty vector, for logging at specified simulation times, or a real scalar number, for interval-based logging.</entry>
+    <entry key="PeriodicOPSomeTimesBeforeStartOrAfterStopTime" context="warning">一个或多个工作点记录时间被忽略，因为指定的时间不出现在仿真开始时间("{0}")和停止时间("{1}")之间。</entry>
+    <entry key="PeriodicOPAllTimesBeforeStartOrAfterStopTime" context="error">At least one specified operating point logging time must occur between the simulation start time ("{0}") and stop time ("{1}").</entry>
+    <entry key="PeriodicOPIntervalLargerThanSimulationTime" context="error">Operating point logging interval ("{0}") must be small enough to log at least one operating point between the simulation start time ("{1}") and stop time ("{2}").</entry>
+    <entry key="PeriodicOPTooManyTimeInterval" context="error">"OperatingPointLoggingTimes" value must be a real scalar number when the "OperatingPointLoggingMethod" value is "clock-interval" or "sim-interval".</entry>
+    <entry key="OperatingPointInterfaceChecksumMismatch">Simulink 无法加载初始工作点，因为在保存初始工作点后，模型 ''{0}'' 的配置设置或采样时间列表发生了更改。要允许接口校验和不匹配，请将&lt;sldiag objui="configset" objparam="OperatingPointInterfaceChecksumMismatchMsg"&gt;工作点接口校验和不匹配&lt;/sldiag&gt;设置为 ''无'' 或 ''警告''。</entry>
+    <entry key="OperatingPointContentsChecksumMismatch" context="error">无法加载模型 "{0}" 的完整工作点，因为该模型不同于生成工作点 "{1}" 的模型。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="OperatingPointContentsChecksumMismatchErrorToWarn"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'OperatingPointContentsChecksumMismatchMsg', 'warning');&lt;/cmd&gt; &lt;txt&gt;要加载尽可能多的工作点数据并获取有关模型差异的信息，请将 "&lt;sldiag objui="configset" objparam="OperatingPointContentsChecksumMismatchMsg"&gt;工作点内容校验和不匹配&lt;/sldiag&gt;" 参数值设置为 "警告"。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="OperatingPointContentsChecksumMismatchNewOP"&gt; &lt;txt&gt;要加载完整的工作点，请为模型 "{0}" 保存一个新工作点。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="OperatingPointContentsChecksumMismatchNoInitialState"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'LoadInitialState', 'off');&lt;/cmd&gt; &lt;txt&gt;要在没有初始工作点的情况下从头运行仿真，请清除 "&lt;sldiag objui="configset" objparam="LoadInitialState"&gt;初始状态&lt;/sldiag&gt;" 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="OperatingPointContentsChecksumMismatchWarn" context="warning">为模型 "{0}" 加载了部分工作点，因为该模型不同于生成工作点 "{1}" 的模型。仿真结果可能不同于在没有初始工作点的情况下从开始运行的仿真结果。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="OperatingPointContentsChecksumMismatchWarnToNone"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'OperatingPointContentsChecksumMismatchMsg', 'none');&lt;/cmd&gt; &lt;txt&gt;要隐藏此警告，请将 "&lt;sldiag objui="configset" objparam="OperatingPointContentsChecksumMismatchMsg"&gt;工作点内容校验和不匹配&lt;/sldiag&gt;" 参数值设置为 "无"。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="OperatingPointContentsChecksumMismatchWarnNewOP"&gt; &lt;txt&gt;要加载完整工作点，请为模型 "{0}" 保存新工作点。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="OperatingPointContentsChecksumMismatchWarnNoInitialState"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'LoadInitialState', 'off');&lt;/cmd&gt; &lt;txt&gt;要在没有初始工作点的情况下从开始运行仿真，请清除 "&lt;sldiag objui="configset" objparam="LoadInitialState"&gt;初始状态&lt;/sldiag&gt;" 参数。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="OperatingPointExtraBlockAdded" context="warning">工作点 "{1}" 不包含以下模块的数据: {0_List}</entry>
+    <entry key="OperatingPointInvalidBlockPath" context="warning">模型 "{2}" 中不存在与工作点 "{1}" 中的以下模块路径匹配的模块: {0_List}</entry>
+    <entry key="BlockStructuralChangeDetected" context="warning">模型 "{2}" 中的以下模块与工作点 "{1}" 中的模块路径匹配，但由于模块类型或模块配置存在差异，工作点数据对于模型 "{2}" 中的模块无效: {0_List}</entry>
+    <entry key="BlockStructuralChangeWithLoggedStatesSomeRestored" context="warning">以下状态仅使用工作点 "{3}" 中的记录状态数据来设置，因为模块工作点数据无效，这是由于模型 "{2}" 中与工作点 "{3}" 中的路径匹配的模块的模块类型或模块配置不同所致: {0_List}\n以下状态未设置，因为模块工作点数据和记录状态数据都无效，这是由于模型 "{2}" 中与工作点 "{3}" 中的路径匹配的模块的模块类型或模块配置不同所致: {1_List}</entry>
+    <entry key="BlockStructuralChangeWithLoggedStatesNoneRestored" context="warning">以下状态未设置，因为模块工作点数据和记录状态数据都无效，这是由于模型 "{1}" 中与工作点 "{2}" 中的路径匹配的模块的模块类型或模块配置不同所致: {0_List}</entry>
+    <entry key="BlockStructuralChangeWithLoggedStatesAllRestored" context="warning">以下状态仅使用工作点 "{1}" 中的记录状态数据来设置，因为模块工作点数据无效，这是由于模型 "{1}" 中与工作点 "{2}" 中的路径匹配的模块的模块类型或模块配置不同所致: {0_List}</entry>
+    <entry key="AdditionalInfoForDBIOError"> 在网络驱动器上编译模型时可能会出现此错误。在本地驱动器上编译模型可能会避免该错误。 </entry>
+    <entry key="OperatingPointSimTimeMismatch" context="warning">初始化后的仿真时间({1})与指定为&lt;sldiag objui="configset" objparam="InitialState"&gt;初始状态&lt;/sldiag&gt;的模型工作点 "{2}" 的快照时间({0})不匹配。仿真结果可能与在没有初始工作点的情况下从开始运行的仿真结果不精确匹配。</entry>
+    <entry key="PeriodicOPNotSupportedInMenuSim" context="warning">快速加速菜单仿真不支持 "OperatingPointLogging"。</entry>
+    <entry key="OperatingPointLoggingFile">OperatingPointLoggingFile</entry>
+  </message>
+</rsccat>

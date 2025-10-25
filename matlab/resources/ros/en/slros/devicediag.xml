@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!-- Copyright 2016-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="ros">
+  <message>
+      <!-- General diagnostic output flow -->
+      <!-- Warnings or errors contain suggested fixes -->
+      <!-- This uses the FixIt syntax (see http://inside.mathworks.com/wiki/FixIt_(Suggestions/Suppression/Doc)_cookbook) -->
+      
+      <entry key="DiagRunName">ROS Device Connection Test</entry>
+      
+      <!-- Messages related to pinging of ROS device -->
+      <entry key="PingDevice">Pinging device ''{0}''.</entry>
+      <entry key="PingDeviceSuccess">Successfully pinged device.</entry>
+      <entry key="PingDeviceFailure">Unable to ping device. Check the device address.</entry>     
+      
+      <!-- Messages related to establishing the connection to the ROS device -->
+      <entry key="ConnectDevice">Establishing connection to device ''{0}'' at SSH port {1,number,integer}. Connecting with username ''{2}''.</entry>
+      <entry key="ConnectDeviceSuccess">Successfully connected to device.</entry>
+      <entry key="ConnectDeviceFailure">Unable to connect to device. Check that the device address, username, and password are correct.</entry>      
+      
+      <!-- Messages related to the admin / sudo check -->
+      <entry key="SudoCheck">Testing privilege level of user ''{0}''.</entry>
+      <entry key="SudoWithPassword">sudo requires password.</entry>
+      <entry key="SudoWithoutPassword">passwordless sudo</entry>
+      <entry key="SudoCheckSuccess">The user has administrative privileges ({0}). Both single-tasking and multi-tasking models can be deployed to the device.</entry>      
+      <entry key="SudoCheckFailure"><![CDATA[
+ The user does not have administrative privileges. Deployment of multi-tasking models is not possible. The ''{0}'' model uses tasking mode ''{1}''. Click ''Open'' to see additional information.
+ <actions exclusiveFixIts="yes">
+    <action type="suggestion">
+        <cmd>helpview(fullfile(docroot, 'ros','ug','generate-a-standalone-ros-node-from-simulink.html'))</cmd>
+        <txt>Open help page with additional information on the tasking mode setting</txt>
+    </action>    
+ </actions>
+      ]]></entry>
+      
+      <!-- Messages related to the ROS installation folder check -->
+      <entry key="ROSFolder">Detecting installed ROS distribution.</entry>
+      <entry key="ROSFolderExist">Checking in folder ''{0}''.</entry>
+      <entry key="ROSFolderExistSuccess">Found ROS distribution ''{0}'' in folder ''{1}''.</entry>
+      <entry key="ROSFolderExistFailure"><![CDATA[
+ Unable to find ROS distribution in folder ''{0}''. Click one of the suggested ''Fix'' buttons.
+ <actions exclusiveFixIts="no">
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.recoverROSFolderFromWorkspace(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'', ''{6}'' )</cmd>
+        <txt>Recover ROS folder name from Catkin workspace ''{5}''</txt>
+    </action>    
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.recoverROSFolderFromStdLocation(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{6}'' )</cmd>
+        <txt>Search standard ROS installation folders</txt>
+    </action>
+ </actions>
+      ]]></entry>
+      <entry key="ROS2FolderExistFailure"><![CDATA[
+ Unable to find ROS 2 distribution in folder ''{0}''. Click one of the suggested ''Fix'' buttons.
+ <actions exclusiveFixIts="no">
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.recoverROS2FolderFromWorkspace(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'', ''{6}'' )</cmd>
+        <txt>Recover ROS folder name from ROS 2 workspace ''{5}''</txt>
+    </action>    
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.recoverROS2FolderFromStdLocation(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{6}'' )</cmd>
+        <txt>Search standard ROS 2 installation folders</txt>
+    </action>
+ </actions>
+      ]]></entry>      
+      <entry key="ROSFolderCatkinRecoveryFailure">Invalid Catkin workspace ''{0}'' or unable to recover ROS folder from workspace.</entry>
+      <entry key="ROS2FolderROS2WsRecoveryFailure">Invalid ROS 2 (colcon) workspace ''{0}'' or unable to recover ROS 2 folder from the workspace.</entry>
+      <entry key="ROSFolderStdRecoveryFailure">Unable to find any ROS distributions in the standard installation folders.</entry>      
+      <entry key="ROS2FolderStdRecoveryFailure">Unable to find any ROS 2 distributions in the standard installation folders.</entry>      
+      
+      <!-- The following entry is almost the same as ROSFolderExistFailure, but there is no option to get the folder from the Catkin workspace -->
+      <entry key="ROSFolderExistFailureNoCatkin"><![CDATA[
+ Unable to find ROS distribution in folder ''{0}''. Click the ''Fix'' button for additional help.
+ <actions exclusiveFixIts="yes">
+     <action type="fixit">
+        <cmd>ros.slros.internal.diag.recoverROSFolderFromStdLocation(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'' )</cmd>
+        <txt>Search standard ROS installation folders</txt>
+    </action>
+ </actions>
+      ]]></entry>
+      <!-- The following entry is almost the same as ROS2FolderExistFailure, but there is no option to get the folder from the ROS 2 workspace -->
+      <entry key="ROS2FolderExistFailureNoROS2Ws"><![CDATA[
+ Unable to find ROS 2 distribution in folder ''{0}''. Click the ''Fix'' button for additional help.
+ <actions exclusiveFixIts="yes">
+     <action type="fixit">
+        <cmd>ros.slros.internal.diag.recoverROS2FolderFromStdLocation(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'' )</cmd>
+        <txt>Search standard ROS 2 installation folders</txt>
+    </action>
+ </actions>
+      ]]></entry>      
+      <entry key="ROSFolderRecoverySuccess">Found ROS distribution ''{0}'' in folder ''{1}''. The ''ROS folder'' field in the connection dialog is set to ''{1}''.</entry>
+      <entry key="ROS2FolderRecoverySuccess">Found ROS 2 distribution ''{0}'' in folder ''{1}''. The ''ROS 2 folder'' field in the connection dialog is set to ''{1}''.</entry>
+      <entry key="ROSFolderRecoverySuccessNondefault">Found ROS distribution ''{0}'' in folder ''{1}''. To use this distribution, set the ''ROS folder'' field in the connection dialog to ''{1}''.</entry>
+      <entry key="ROS2FolderRecoverySuccessNondefault">Found ROS 2 distribution ''{0}'' in folder ''{1}''. If you wish to use this distribution, please set the ''ROS 2 folder'' field in the connection dialog to ''{1}''.</entry>
+      
+      <!-- Messages related to the Catkin workspace folder check -->
+      <entry key="CatkinWs">Verifying Catkin workspace in ''{0}''.</entry>
+      
+      <entry key="ROS2Ws">Verifying ROS 2 workspace in ''{0}''.</entry>
+
+      <!-- Only give option to create folder, but not the Catkin or ROS 2 workspace. -->
+      <entry key="FolderDoesNotExistNoCatkin"><![CDATA[
+ Folder ''{0}'' does not exist. Click ''Fix'' to create the folder.
+ <actions exclusiveFixIts="yes">
+     <action type="fixit">
+        <cmd>ros.slros.internal.diag.createFolderOnDevice(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{0}'')</cmd>
+        <txt>Create folder on device</txt>
+    </action>
+ </actions>
+      ]]></entry>
+      
+      <!-- Give option to create folder and the Catkin workspace. -->
+      <entry key="FolderDoesNotExistWithCatkin"><![CDATA[
+ Folder ''{0}'' does not exist. Click ''Fix'' to create the folder and initialize the Catkin workspace.
+ <actions exclusiveFixIts="yes">
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.createCatkinWorkspace(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'', ''{0}'')</cmd>
+        <txt>Create folder and initialize Catkin workspace on device</txt>
+    </action>
+ </actions>
+      ]]></entry>
+      <!-- Give option to create folder and the ROS 2 workspace. -->
+      <entry key="FolderDoesNotExistWithROS2Ws"><![CDATA[
+ Folder ''{0}'' does not exist. Click ''Fix'' to create the folder and initialize the ROS 2 workspace.
+ <actions exclusiveFixIts="yes">
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.createROS2Workspace(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'', ''{0}'')</cmd>
+        <txt>Create folder and initialize ROS 2 workspace on device</txt>
+    </action>
+ </actions>
+      ]]></entry>
+      <entry key="FolderCreateSuccess">Successfully created folder ''{0}''.</entry>
+      <entry key="CatkinWsSuccess">Successfully created Catkin workspace in ''{0}''.</entry>
+      <entry key="ROS2WsSuccess">Successfully created ROS 2 (colcon) workspace in ''{0}''.</entry>
+
+      <entry key="FolderExists">Folder exists.</entry>
+      <entry key="FolderWritableFailure">Folder is not writable by user ''{0}''. Change the folder permissions or select a different Catkin workspace.</entry>
+      <entry key="FolderWritableSuccess">Folder is writable.</entry>
+      
+      <entry key="CatkinWsNotValid"><![CDATA[
+ Folder ''{0}'' does not contain a valid Catkin workspace. Click the ''Fix'' button to initialize the Catkin workspace.
+ <actions exclusiveFixIts="yes">
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.createCatkinWorkspace(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'', ''{0}'')</cmd>
+        <txt>Initialize Catkin workspace in folder</txt>
+    </action>    
+ </actions>
+      ]]></entry>
+      <entry key="ROS2WsNotValid"><![CDATA[
+ Folder ''{0}'' does not contain a valid ROS 2 workspace. Click the ''Fix'' button to initialize the ROS 2 workspace.
+ <actions exclusiveFixIts="yes">
+    <action type="fixit">
+        <cmd>ros.slros.internal.diag.createROS2Workspace(''{1}'', {2,number,integer}, ''{3}'', ''{4}'', ''{5}'', ''{0}'')</cmd>
+        <txt>Initialize ROS 2 workspace in folder</txt>
+    </action>    
+ </actions>
+      ]]></entry>      
+      <entry key="CatkinWsNotValidNoROS">Folder ''{0}'' does not contain a valid Catkin workspace. Unable to automatically create a workspace, because the ''ROS folder'' setting is invalid. Manually create a Catkin workspace with ''catkin_init_workspace'' and ''catkin_make''.</entry>
+      <entry key="ROS2WsNotValidNoROS2">Folder ''{0}'' does not contain a valid ROS 2 workspace. Unable to automatically create a workspace, because the ''ROS 2 folder'' setting is invalid. Manually create a ROS 2 workspace and initialize with ''colcon build''.</entry>
+      <entry key="CatkinWsValid">Folder contains a valid Catkin workspace.</entry>
+      <entry key="ROS2WsValid">Folder contains a valid ROS 2 workspace.</entry>
+      
+      <entry key="Disconnect">Disconnecting from device ''{0}''.</entry>
+      <entry key="DiagnosticsDone">Done with connection test.</entry>
+  </message>
+</rsccat>

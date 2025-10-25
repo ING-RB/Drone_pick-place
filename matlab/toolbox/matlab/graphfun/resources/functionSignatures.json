@@ -1,0 +1,1287 @@
+{
+"graph.maxflow":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"source", "kind":"required", "type":[["char","choices=G.Nodes.Name"],["numeric","scalar"]]},
+                    {"name":"target", "kind":"required", "type":[["char","choices=G.Nodes.Name"],["numeric","scalar"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"source", "kind":"required", "type":[["char","choices=G.Nodes.Name"],["numeric","scalar"]]},
+                    {"name":"target", "kind":"required", "type":[["char","choices=G.Nodes.Name"],["numeric","scalar"]]},
+                    {"name":"algorithm", "kind":"ordered", "type":["char","choices={'searchtrees','augmentpath','pushrelabel'}"]}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"mf"},
+        {"name":"gf", "type":["digraph"]},
+        {"name":"cs"},
+        {"name":"ct"}
+    ]
+},
+"graph.centrality":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"type", "kind":"required", "type":["char","choices={'degree','pagerank','eigenvector'}"]},
+                    {"name":"Importance", "kind":"namevalue", "type":["numeric","vector"]},
+                    {"name":"FollowProbability", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"Tolerance", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"MaxIterations", "kind":"namevalue", "type":["numeric","scalar"]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"type", "kind":"required", "type":["char","choices={'closeness','betweenness'}"]},
+                    {"name":"Cost", "kind":"namevalue", "type":["numeric","vector"]},
+                    {"name":"FollowProbability", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"Tolerance", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"MaxIterations", "kind":"namevalue", "type":["numeric","scalar"]}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"c", "type":"vector"}
+    ]
+},
+"digraph.centrality":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"type", "kind":"required", "type":["char","choices={'outdegree','indegree','pagerank','hubs','authorities'}"]},
+                    {"name":"Importance", "kind":"namevalue", "type":["numeric","vector"]},
+                    {"name":"FollowProbability", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"Tolerance", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"MaxIterations", "kind":"namevalue", "type":["numeric","scalar"]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"type", "kind":"required", "type":["char","choices={'outcloseness','incloseness','betweenness'}"]},
+                    {"name":"Cost", "kind":"namevalue", "type":["numeric","vector"]},
+                    {"name":"FollowProbability", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"Tolerance", "kind":"namevalue", "type":["numeric","scalar"]},
+                    {"name":"MaxIterations", "kind":"namevalue", "type":["numeric","scalar"]}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"c", "type":"vector"}
+    ]
+},
+"graph.conncomp":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"OutputForm", "kind":"namevalue", "type":["char","choices={'vector','cell'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"bins", "type":[["double","vector"],["cell","vector"]]},
+        {"name":"binSize", "type":["double","vector"]}
+    ]
+},
+"digraph.conncomp":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"OutputForm", "kind":"namevalue", "type":["char","choices={'vector','cell'}"]},
+        {"name":"Type", "kind":"namevalue", "type":["char","choices={'strong','weak'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"bins", "type":[["double","vector"],["cell","vector"]]},
+        {"name":"binSize", "type":["double","vector"]}
+    ]
+},
+"graph.biconncomp":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"OutputForm", "kind":"namevalue", "type":["char","choices={'vector','cell'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"edgebins", "type":[["double","vector"],["cell","vector"]]},
+        {"name":"cutvert", "type":["double","vector"]}
+    ]
+},
+"graph.minspantree":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'dense','sparse'}"]},
+        {"name":"Type", "kind":"namevalue", "type":["char","choices={'tree','forest'}"]},
+        {"name":"Root", "kind":"namevalue", "type":[["char","choices=G.Nodes.Name"],["numeric","scalar"]]}
+    ],
+    "outputs":
+    [
+        {"name":"t", "type":["graph"]},
+        {"name":"pred", "type":["double","vector"]}
+    ]
+},
+"graph.simplify":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"pickmethod", "kind":"required", "type":["char","choices={'first', 'last'}"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"pickmethod", "kind":"required", "type":["char","choices={'min', 'max'}"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]},
+                    {"name":"PickVariable", "kind":"namevalue", "type":[["char","choices=setdiff(G.Edges.Properties.VariableNames, 'EndNodes')"],["cellstr"],["numeric","scalar"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"reducemethod", "kind":"required", "type":["char","choices={'sum', 'mean'}"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]},
+                    {"name":"AggregationVariables", "kind":"namevalue", "type":[["char","choices=setdiff(G.Edges.Properties.VariableNames, 'EndNodes')"],["cellstr"],["numeric","vector"],["logical","vector"],["function_handle"]]}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"gsimple", "type":["graph"]},
+        {"name":"edgeind", "type":["double","vector"]},
+        {"name":"edgecount", "type":["double","vector"]}
+    ]
+},
+"digraph.simplify":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"pickmethod", "kind":"required", "type":["char","choices={'first', 'last'}"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"pickmethod", "kind":"required", "type":["char","choices={'min', 'max'}"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]},
+                    {"name":"PickVariable", "kind":"namevalue", "type":[["char","choices=setdiff(G.Edges.Properties.VariableNames, 'EndNodes')"],["cellstr"],["numeric","scalar"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"reducemethod", "kind":"required", "type":["char","choices={'sum', 'mean'}"]},
+                    {"name":"selfLoops", "kind":"ordered", "type":["char","choices={'omitselfloops', 'keepselfloops'}"]},
+                    {"name":"AggregationVariables", "kind":"namevalue", "type":[["char","choices=setdiff(G.Edges.Properties.VariableNames, 'EndNodes')"],["cellstr"],["numeric","vector"],["logical","vector"],["function_handle"]]}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"gsimple", "type":["digraph"]},
+        {"name":"edgeind", "type":["double","vector"]},
+        {"name":"edgecount", "type":["double","vector"]}
+    ]
+},
+"graph.adjacency":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"weight", "kind":"ordered", "type":[["char","choices={'weighted'}"],["numeric","vector"],["logical","vector"]]}
+    ],
+    "outputs":
+    [
+        {"name":"A", "type":[["double","sparse"],["logical","sparse"]]}
+    ]
+},
+"digraph.adjacency":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"weight", "kind":"ordered", "type":[["char","choices={'weighted'}"],["numeric","vector"],["logical","vector"]]}
+    ],
+    "outputs":
+    [
+        {"name":"A", "type":[["double","sparse"],["logical","sparse"]]}
+    ]
+},
+"digraph.toposort":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"Order", "kind":"namevalue", "type":["char","choices={'fast','stable'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"pred", "type":["double","vector"]},
+        {"name":"t", "type":["digraph"]}
+    ]
+},
+"graph.isomorphism":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"G2", "kind":"required", "type":["graph"]},
+        {"name":"NodeVariables", "kind":"namevalue", "type":[["char","choices=intersect(G.Nodes.Properties.VariableNames, G2.Nodes.Properties.VariableNames)"],["cellstr"],["string","vector"]]},
+        {"name":"EdgeVariables", "kind":"namevalue", "type":[["char","choices=setdiff(intersect(G.Edges.Properties.VariableNames, G2.Edges.Properties.VariableNames), 'EndNodes')"],["cellstr"],["string","vector"]]} 
+    ],
+    "outputs":
+    [
+        {"name":"p", "type":["double","vector"]}
+    ]
+},
+"digraph.isomorphism":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"G2", "kind":"required", "type":["digraph"]},
+        {"name":"NodeVariables", "kind":"namevalue", "type":[["char","choices=intersect(G.Nodes.Properties.VariableNames, G2.Nodes.Properties.VariableNames)"],["cellstr"],["string","vector"]]},
+        {"name":"EdgeVariables", "kind":"namevalue", "type":[["char","choices=setdiff(intersect(G.Edges.Properties.VariableNames, G2.Edges.Properties.VariableNames), 'EndNodes')"],["cellstr"],["string","vector"]]}
+    ],
+    "outputs":
+    [
+        {"name":"p", "type":["double","vector"]}
+    ]
+},
+"graph.isisomorphic":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"G2", "kind":"required", "type":["graph"]},
+        {"name":"NodeVariables", "kind":"namevalue", "type":[["char","choices=intersect(G.Nodes.Properties.VariableNames, G2.Nodes.Properties.VariableNames)"],["cellstr"],["string","vector"]]},
+        {"name":"EdgeVariables", "kind":"namevalue", "type":[["char","choices=setdiff(intersect(G.Edges.Properties.VariableNames, G2.Edges.Properties.VariableNames), 'EndNodes')"],["cellstr"],["string","vector"]]}
+    ],
+    "outputs":
+    [
+        {"name":"isiso", "type":["logical","scalar"]}
+    ]
+},
+"digraph.isisomorphic":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"G2", "kind":"required", "type":["digraph"]},
+        {"name":"NodeVariables", "kind":"namevalue", "type":[["char","choices=intersect(G.Nodes.Properties.VariableNames, G2.Nodes.Properties.VariableNames)"],["cellstr"],["string","vector"]]},
+        {"name":"EdgeVariables", "kind":"namevalue", "type":[["char","choices=setdiff(intersect(G.Edges.Properties.VariableNames, G2.Edges.Properties.VariableNames), 'EndNodes')"],["cellstr"],["string","vector"]]}
+    ],
+    "outputs":
+    [
+        {"name":"isiso", "type":["logical","scalar"]}
+    ]
+},
+"graph.bfsearch":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"events", "kind":"ordered", "type":[["char","choices={'discovernode','finishnode','edgetonew','edgetodiscovered','edgetofinished','startnode','allevents'}"],["cellstr"],["string","vector"]]},
+        {"name":"Restart", "kind":"namevalue", "type":["logical"]}
+    ],
+    "outputs":
+    [
+        {"name":"t", "type":[["double","vector"],["cellstr","vector"],["table"]]}
+    ]
+},
+"digraph.bfsearch":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"events", "kind":"ordered", "type":[["char","choices={'discovernode','finishnode','edgetonew','edgetodiscovered','edgetofinished','startnode','allevents'}"],["cellstr"],["string","vector"]]},
+        {"name":"Restart", "kind":"namevalue", "type":["logical"]}
+    ],
+    "outputs":
+    [
+        {"name":"t", "type":[["double","vector"],["cellstr","vector"],["table"]]}
+    ]
+},
+"graph.dfsearch":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"events", "kind":"ordered", "type":[["char","choices={'discovernode','finishnode','edgetonew','edgetodiscovered','edgetofinished','startnode','allevents'}"],["cellstr"],["string","vector"]]},
+        {"name":"Restart", "kind":"namevalue", "type":["logical"]}
+    ],
+    "outputs":
+    [
+        {"name":"t", "type":[["double","vector"],["cellstr","vector"],["table"]]}
+    ]
+},
+"digraph.dfsearch":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"events", "kind":"ordered", "type":[["char","choices={'discovernode','finishnode','edgetonew','edgetodiscovered','edgetofinished','startnode','allevents'}"],["cellstr"],["string","vector"]]},
+        {"name":"Restart", "kind":"namevalue", "type":["logical"]}
+    ],
+    "outputs":
+    [
+        {"name":"t", "type":[["double","vector"],["cellstr","vector"],["table"]]}
+    ]
+},
+"graph.shortestpath":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"t", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive'}"]}
+
+    ],
+    "outputs":
+    [
+        {"name":"path", "type":[["double"],["cellstr"]]},
+        {"name":"d"}
+    ]
+},
+"digraph.shortestpath":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"t", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive','mixed','acyclic'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"path", "type":[["double"],["cellstr"]]},
+        {"name":"d"}
+    ]
+},
+"graph.allpaths":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"t", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"MaxNumPaths", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MaxPathLength", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MinPathLength", "kind":"namevalue", "type":["numeric","scalar"]}
+
+    ],
+    "outputs":
+    [
+        {"name":"paths", "type":["cell"]},
+        {"name":"edgepaths", "type":["cell"]}
+    ]
+},
+"digraph.allpaths":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"t", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"MaxNumPaths", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MaxPathLength", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MinPathLength", "kind":"namevalue", "type":["numeric","scalar"]}
+
+    ],
+    "outputs":
+    [
+        {"name":"paths", "type":["cell"]},
+        {"name":"edgepaths", "type":["cell"]}
+    ]
+},
+"graph.allcycles":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"MaxCycleLength", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MaxNumCycles", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MinCycleLength", "kind":"namevalue", "type":["numeric","scalar"]}
+
+    ],
+    "outputs":
+    [
+        {"name":"cycles", "type":["cell"]},
+        {"name":"edgecycles", "type":["cell"]}
+    ]
+},
+"digraph.allcycles":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"MaxCycleLength", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MaxNumCycles", "kind":"namevalue", "type":["numeric","scalar"]},
+        {"name":"MinCycleLength", "kind":"namevalue", "type":["numeric","scalar"]}
+
+    ],
+    "outputs":
+    [
+        {"name":"cycles", "type":["cell"]},
+        {"name":"edgecycles", "type":["cell"]}
+    ]
+},
+"graph.shortestpathtree":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"ordered", "type":[["char","choices={'all'}"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"ordered", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+   	        ],
+                [
+                    {"name":"s", "kind":"required", "type":[["char","choices={'all'}"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","scalar"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+                ]
+            ]
+        },
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive'}"]},
+        {"name":"OutputForm", "kind":"namevalue", "type":["char","choices={'tree','cell','vector'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"tree", "type":[["digraph"],["cell"],["double","vector"]]},
+        {"name":"d", "type":["vector"]}
+    ]
+},
+"digraph.shortestpathtree":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"ordered", "type":[["char","choices={'all'}"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"ordered", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["char","choices={'all'}"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","scalar"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+                ]
+            ]
+        },
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','acyclic','mixed','unweighted','positive'}"]},
+        {"name":"OutputForm", "kind":"namevalue", "type":["char","choices={'tree','cell','vector'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"tree", "type":[["digraph"],["cell"],["double","vector"]]},
+        {"name":"d", "type":["vector"]}
+    ]
+},
+"graph.distances":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"ordered", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"s", "kind":"ordered", "type":[["char","choices={'all'}"]]}
+                ]
+            ]
+        },
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"t", "kind":"ordered", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"t", "kind":"ordered", "type":[["char","choices={'all'}"]]}
+                ]
+            ]
+        },
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive'}"]}
+    ],   
+    "outputs":
+    [
+        {"name":"d", "type":["2d"]}
+    ]
+},
+"digraph.distances":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"ordered", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"s", "kind":"ordered", "type":[["char","choices={'all'}"]]}
+                ]
+            ]
+        },
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"t", "kind":"ordered", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"t", "kind":"ordered", "type":[["char","choices={'all'}"]]}
+                ]
+            ]
+        },
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive','mixed'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"d", "type":["2d"]}
+    ]
+},
+"graph.nearest":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"d", "kind":"required", "type":[["numeric","scalar"]]},
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"nodes", "type":[["double","vector"],["cellstr","vector"]]},
+        {"name":"d", "type":["vector"]}
+    ]
+},
+"digraph.nearest":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"s", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]},
+        {"name":"d", "kind":"required", "type":[["numeric","scalar"]]},
+        {"name":"Method", "kind":"namevalue", "type":["char","choices={'auto','unweighted','positive','mixed'}"]},
+        {"name":"Direction", "kind":"namevalue", "type":["char","choices={'outgoing','incoming'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"nodes", "type":[["double","vector"],["cellstr","vector"]]},
+        {"name":"d", "type":["vector"]}
+    ]
+},
+"graph.neighbors":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.predecessors":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.successors":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.outedges":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.outedges":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.inedges":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","scalar"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.findnode":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.findnode":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeID", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.rmnode":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"nodeIDs", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.rmnode":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeIDs", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.reordernodes":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"order", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.reordernodes":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"order", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.subgraph":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"nodeIDs", "kind":"required", "type":[["numeric","vector"],["logical","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.subgraph":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeIDs", "kind":"required", "type":[["numeric","vector"],["logical","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.addnode":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"nodeNames", "kind":"required", "type":[["cellstr","vector"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"N", "kind":"required", "type":[["numeric","scalar"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["graph"]},
+                    {"name":"NodeProps", "kind":"required", "type":[["table"]]}
+                ]
+            ]
+        }
+    ]
+},
+"digraph.addnode":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"nodeNames", "kind":"required", "type":[["cellstr","vector"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"N", "kind":"required", "type":[["numeric","scalar"]]}
+                ],
+                [
+                    {"name":"G", "kind":"required", "type":["digraph"]},
+                    {"name":"NodeProps", "kind":"required", "type":[["table"]]}
+                ]
+            ]
+        }
+    ]
+},
+"graph.degree":
+{
+    "inputs":
+    [   
+        {"name":"G", "kind":"required", "type":["graph"]},
+        {"name":"nodeIDs", "kind":"ordered", "type":[["numeric","scalar"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.outdegree":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeIDs", "kind":"ordered", "type":[["numeric","scalar"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.indegree":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":["digraph"]},
+        {"name":"nodeIDs", "kind":"ordered", "type":[["numeric","scalar"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.findedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"graph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"idx", "kind":"ordered", "type":[["numeric", "vector"]]}
+                ]
+            ]
+        }
+    ]
+},
+"digraph.findedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"idx", "kind":"ordered", "type":[["numeric", "vector"]]}
+                ]
+            ]
+        }
+    ]
+},
+"graph.rmedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"graph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"idx", "kind":"required", "type":[["numeric", "vector"]]}
+                ]
+            ]
+        }
+    ]
+},
+"digraph.rmedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"idx", "kind":"required", "type":[["numeric", "vector"]]}
+                ]
+            ]
+        }
+    ]
+},
+"digraph.flipedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                    {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+                ],
+                [
+                    {"name":"idx", "kind":"ordered", "type":[["numeric", "vector"]]}
+                ]
+            ]
+        }
+    ]
+},
+"graph.edgecount":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"graph"},
+        {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+        {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"digraph.edgecount":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"name":"s", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+        {"name":"t", "kind":"required", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+    ]
+},
+"graph.addedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"graph"},
+        {"name":"EdgeTable", "kind":"required", "type":["table"]}
+    ]
+},
+"graph.addedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"graph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["cellstr","vector"],["char","vector"],["numeric","vector"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["char","choices=G.Nodes.Name"]]}
+                ]
+             ]
+        },
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"t", "kind":"required", "type":[["cellstr","vector"],["char","vector"],["numeric","vector"]]}
+                ],
+                [
+                    {"name":"t", "kind":"required", "type":[["char","choices=G.Nodes.Name"]]}
+                ]
+             ]
+        },
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"w", "kind":"ordered", "type":[["numeric","vector"]]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"required", "type":["table"]}
+                ]
+             ]
+        }
+    ]
+},
+"digraph.addedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"name":"EdgeTable", "kind":"required", "type":["table"]}
+    ]
+},
+"digraph.addedge":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"s", "kind":"required", "type":[["cellstr","vector"],["char","vector"],["numeric","vector"]]}
+                ],
+                [
+                    {"name":"s", "kind":"required", "type":[["char","choices=G.Nodes.Name"]]}
+                ]
+             ]
+        },
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"t", "kind":"required", "type":[["cellstr","vector"],["char","vector"],["numeric","vector"]]}
+                ],
+                [
+                    {"name":"t", "kind":"required", "type":[["char","choices=G.Nodes.Name"]]}
+                ]
+             ]
+        },
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"w", "kind":"ordered", "type":[["numeric","vector"]]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"required", "type":["table"]}
+                ]
+            ]
+        }
+    ]
+},
+"graph.layoutcoords":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"graph"},
+        {"mutuallyExclusiveGroup":
+         [
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'auto'}"]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'circle'}"]},
+                 {"name":"Center", "kind":"namevalue", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=G.Nodes.Name"]]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'force'}"]},
+                 {"name":"Iterations", "kind":"namevalue", "type":["numeric","scalar"]},
+                 {"name":"WeightEffect", "kind":"namevalue", "type":["char", "choices={'direct', 'inverse', 'none'}"]},
+                 {"name":"UseGravity", "kind":"namevalue", "type":["char", "choices={'on', 'off'}"]},
+                 {"name":"XStart", "kind":"namevalue", "type":["numeric","vector"]},
+                 {"name":"YStart", "kind":"namevalue", "type":["numeric","vector"]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'force3'}"]},
+                 {"name":"Iterations", "kind":"namevalue", "type":["numeric","scalar"]},
+                 {"name":"WeightEffect", "kind":"namevalue", "type":["char", "choices={'direct', 'inverse', 'none'}"]},
+                 {"name":"UseGravity", "kind":"namevalue", "type":["char", "choices={'on', 'off'}"]},
+                 {"name":"XStart", "kind":"namevalue", "type":["numeric","vector"]},
+                 {"name":"YStart", "kind":"namevalue", "type":["numeric","vector"]},
+                 {"name":"ZStart", "kind":"namevalue", "type":["numeric","vector"]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'layered'}"]},
+                 {"name":"AssignLayers", "kind":"namevalue", "type":["char", "choices={'auto','asap','alap'}"]},
+                 {"name":"Direction", "kind":"namevalue", "type":["char", "choices={'left','right','up','down'}"]},
+                 {"name":"Sinks", "kind":"namevalue", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                 {"name":"Sources", "kind":"namevalue", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'subspace','subspace3'}"]},
+                 {"name":"Dimension", "kind":"namevalue", "type":["numeric","scalar"]}
+             ]
+         ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"nodeCoords", "type":["numeric","2d"]},
+        {"name":"edgeCoords", "type":["cell","vector"]}
+    ]
+},
+"digraph.layoutcoords":
+{
+    "inputs":
+    [
+        {"name":"G", "kind":"required", "type":"digraph"},
+        {"mutuallyExclusiveGroup":
+         [
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'auto'}"]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'circle'}"]},
+                 {"name":"Center", "kind":"namevalue", "type":[["numeric","scalar"],["cellstr","scalar"],["char","choices=G.Nodes.Name"]]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'force'}"]},
+                 {"name":"Iterations", "kind":"namevalue", "type":["numeric","scalar"]},
+                 {"name":"WeightEffect", "kind":"namevalue", "type":["char", "choices={'direct', 'inverse', 'none'}"]},
+                 {"name":"UseGravity", "kind":"namevalue", "type":["char", "choices={'on', 'off'}"]},
+                 {"name":"XStart", "kind":"namevalue", "type":["numeric","vector"]},
+                 {"name":"YStart", "kind":"namevalue", "type":["numeric","vector"]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'force3'}"]},
+                 {"name":"Iterations", "kind":"namevalue", "type":["numeric","scalar"]},
+                 {"name":"WeightEffect", "kind":"namevalue", "type":["char", "choices={'direct', 'inverse', 'none'}"]},
+                 {"name":"UseGravity", "kind":"namevalue", "type":["char", "choices={'on', 'off'}"]},
+                 {"name":"XStart", "kind":"namevalue", "type":["numeric","vector"]},
+                 {"name":"YStart", "kind":"namevalue", "type":["numeric","vector"]},
+                 {"name":"ZStart", "kind":"namevalue", "type":["numeric","vector"]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'layered'}"]},
+                 {"name":"AssignLayers", "kind":"namevalue", "type":["char", "choices={'auto','asap','alap'}"]},
+                 {"name":"Direction", "kind":"namevalue", "type":["char", "choices={'left','right','up','down'}"]},
+                 {"name":"Sinks", "kind":"namevalue", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]},
+                 {"name":"Sources", "kind":"namevalue", "type":[["numeric","vector"],["cellstr","vector"],["char","choices=G.Nodes.Name"]]}
+             ],
+             [
+                 {"name":"method", "kind":"required", "type":["char", "choices={'subspace','subspace3'}"]},
+                 {"name":"Dimension", "kind":"namevalue", "type":["numeric","scalar"]}
+             ]
+         ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"nodeCoords", "type":["numeric","2d"]},
+        {"name":"edgeCoords", "type":["cell","vector"]}
+    ]
+},
+"graph":
+{
+    "inputs":
+[
+],
+"outputs":
+[
+    {"name":"g", "type":["graph"]}
+]
+},
+"graph":
+{
+    "inputs":
+    [
+        {"name":"A", "kind":"required", "type":["logical","square"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"nodenames", "kind":"ordered", "type":["cellstr"]}
+                ],
+                [
+                    {"name":"NodeTable", "kind":"ordered", "type":["table"]}
+                ]
+             ]
+        },
+        {"name":"type", "kind":"flag", "type":["char","choices={'upper','lower'}"]},
+        {"name":"omit", "kind":"flag", "type":["char","choices={'omitselfloops'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["graph"]}
+    ]
+},
+"graph":
+{
+    "inputs":
+    [
+        {"name":"s", "kind":"required", "type":[["numeric"],["cellstr"]]},
+        {"name":"t", "kind":"required", "type":[["numeric"],["cellstr"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                ],
+                [
+                    {"name":"weight", "kind":"positional", "type":["numeric"]},
+                    {"name":"nodenames", "kind":"ordered", "type":["cellstr"]}
+                ],
+                [
+                    {"name":"weight", "kind":"positional", "type":["numeric"]},
+                    {"name":"NodeTable", "kind":"ordered", "type":["table"]}
+                ],
+                [
+                    {"name":"weight", "kind":"positional", "type":["numeric"]},
+                    {"name":"num", "kind":"ordered", "type":["numeric","scalar"]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"positional", "type":["table"]},
+                    {"name":"nodenames", "kind":"ordered", "type":["cellstr"]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"positional", "type":["table"]},
+                    {"name":"NodeTable", "kind":"ordered", "type":["table"]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"positional", "type":["table"]},
+                    {"name":"num", "kind":"ordered", "type":["numeric","scalar"]}
+                ]
+             ]
+        },
+        {"name":"'omitselfloops'", "kind":"flag", "type":["char","choices={'omitselfloops'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["graph"]}
+    ]
+},
+"graph":
+{
+    "inputs":
+    [
+        {"name":"EdgeTable", "kind":"required", "type":["table"]},
+        {"name":"NodeTable", "kind":"ordered", "type":["table"]},
+        {"name":"omit", "kind":"flag", "type":["char","choices={'omitselfloops'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["graph"]}
+    ]
+},
+"digraph":
+{
+    "inputs":
+    [
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["digraph"]}
+    ]
+},
+"digraph":
+{
+    "inputs":
+    [
+        {"name":"A", "kind":"required", "type":["logical","square"]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"nodenames", "kind":"ordered", "type":["cellstr"]}
+                ],
+                [
+                    {"name":"NodeTable", "kind":"ordered", "type":["table"]}
+                ]
+             ]
+        },
+        {"name":"omit", "kind":"flag", "type":["char","choices={'omitselfloops'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["digraph"]}
+    ]
+},
+"digraph":
+{
+    "inputs":
+    [
+        {"name":"s", "kind":"required", "type":[["numeric"],["cellstr"]]},
+        {"name":"t", "kind":"required", "type":[["numeric"],["cellstr"]]},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                ],
+                [
+                    {"name":"weight", "kind":"positional", "type":["numeric"]},
+                    {"name":"nodenames", "kind":"ordered", "type":["cellstr"]}
+                ],
+                [
+                    {"name":"weight", "kind":"positional", "type":["numeric"]},
+                    {"name":"NodeTable", "kind":"ordered", "type":["table"]}
+                ],
+                [
+                    {"name":"weight", "kind":"positional", "type":["numeric"]},
+                    {"name":"num", "kind":"ordered", "type":["numeric","scalar"]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"positional", "type":["table"]},
+                    {"name":"nodenames", "kind":"ordered", "type":["cellstr"]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"positional", "type":["table"]},
+                    {"name":"NodeTable", "kind":"ordered", "type":["table"]}
+                ],
+                [
+                    {"name":"EdgeTable", "kind":"positional", "type":["table"]},
+                    {"name":"num", "kind":"ordered", "type":["numeric","scalar"]}
+                ]
+             ]
+        },
+        {"name":"'omitselfloops'", "kind":"flag", "type":["char","choices={'omitselfloops'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["digraph"]}
+    ]
+},
+"digraph":
+{
+    "inputs":
+    [
+        {"name":"EdgeTable", "kind":"required", "type":["table"]},
+        {"name":"NodeTable", "kind":"ordered", "type":["table"]},
+        {"name":"omit", "kind":"flag", "type":["char","choices={'omitselfloops'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"g", "type":["digraph"]}
+    ]
+}
+}

@@ -1,0 +1,8 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>If the first input argument to the <code>warning</code> function is
+                    the identifier property of the <code>MException</code> class, then the
+                    second input argument is interpreted as unformatted text. Any slashes are
+                    treated as escape characters which is likely not intended.</p><br/><strong>Suggested Action</strong><br/><p>When using the <code>message</code> property of an
+                        <code>MException</code> object as the warning message, add the string
+                    format specifier to the warning function call.&nbsp; For example, create the
+                    following <code>MException</code> object.</p><code>E&nbsp;=&nbsp;MException('myComponent:myID','%s',pwd);</code><p>To correctly display the message, call the warning function as follows:</p><code>warning(E.identifier,'%s',E.message)</code><p>If you call the warning function without the specifier, MATLAB interprets the
+                    slashes in the current folder path as escape characters.</p></body></html>

@@ -1,0 +1,63 @@
+{
+    "gunzip":
+    {
+        "inputs":
+        [
+            {"name":"files", "kind":"required", "type":[["file=*.gz"], ["folder"], ["cellstr"], ["char"]]},
+            {"name":"outputdir", "kind":"ordered", "type":[["folder"], ["char"]]}
+        ]
+    },
+    "gzip":
+    {
+        "inputs":
+        [
+            {"name":"files", "kind":"required", "type":[["folder"], ["file"], ["cellstr"], ["string"]]},
+            {"name":"outputdir", "kind":"ordered", "type":[["folder"], ["char"]]}
+        ]
+    },
+    "tar":
+    {
+        "inputs":
+        [
+            {"name":"tarfilename", "kind":"required", "type":[["file=*.tar,*.tgz,*.gz"], ["char"]]},
+            {"name":"filenames", "kind":"required", "type":[["file"], ["folder"], ["cellstr"], ["char"]]},
+            {"name":"rootfolder", "kind":"ordered", "type":[["folder"], ["char"]]}
+        ]
+    },
+    "untar":
+    {
+        "inputs":
+        [
+            {"name":"tarfilename", "kind":"required", "type":[["file=*.tar,*.tgz,*.gz"], ["char"]]},
+            {"name":"outputdir", "kind":"ordered", "type":[["folder"], ["char"]]}
+        ]
+    },
+    "unzip":
+    {
+        "inputs":
+        [
+            {"name":"zipfilename", "kind":"required", "type":[["file=*.zip"], ["char"]]},
+            {"name":"outputdir", "kind":"ordered", "type":[["folder"], ["char"]]},
+            {"name":"Password", "kind":"namevalue", "type":"char"}
+        ]
+    },
+    "zip":
+    {
+        "inputs":
+        [
+            {"name":"zipfile", "kind":"required", "type":[["file=*.zip"], ["char"]]},
+            {"name":"files", "kind":"required", "type":[["folder"], ["file"], ["cellstr"], ["string"]]},
+            {"name":"rootfolder", "kind":"ordered", "type":"folder"},
+            {
+                "mutuallyExclusiveGroup":
+                [
+                    [
+                        {"name":"EncryptionMethod", "kind":"namevalue", "type":"choices={'aes-256','aes-128','zipcrypto'}", "platforms":"maci64,maca64,win64,win32"},
+                        {"name":"EncryptionMethod", "kind":"namevalue", "type":"choices={'zipcrypto'}", "platforms":"glnxa64"},
+                        {"name":"Password", "kind":"namevalue", "type":"char"}
+                    ]
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="SimulinkBlocks" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BlockDescription" context="uistring">
+        샘플링된 입력 신호(u)를 입력 지연 신호로 지정된 시간(dt)만큼 지연시킵니다.
+
+       
+    </entry>
+    <entry key="InitialOutput" context="uistring">초기 출력</entry>
+    <entry key="RunAtFixedTimeIntervals" context="uistring"> 고정 시간 간격으로 실행</entry>
+    <entry key="SampleTime" context="uistring">샘플 시간</entry>
+    <entry key="OutofBoundSamplingRate" context="error">
+      
+               Sample time for block ''{0}'' must be finite and greater than the smallest supported 
+               time resolution (128*eps).
+      
+    </entry>
+    <entry key="InvSamplingModeSetting" context="error">
+      
+               Block ''{0}'' is not configured to work with a fixed step solver.
+               &lt;actions exclusiveFixIts="yes"&gt;
+                   &lt;action type="fixit" retvalue="false"&gt;
+                       &lt;cmd&gt;set_param(''{0}'',''RunAtFixedTimeIntervals'',''on'')&lt;/cmd&gt;
+                       &lt;txt&gt;Enable the Run at fixed time intervals parameter for the block.&lt;/txt&gt;
+                   &lt;/action&gt;
+                   &lt;action type="fixit" retvalue="false"&gt;
+                       &lt;cmd&gt;set_param(''{1}'',''SolverType'',''Variable-step'')&lt;/cmd&gt;
+                       &lt;txt&gt;Change the solver type to variable step.&lt;/txt&gt;
+                   &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InputDelayNotFinite" context="error">
+      At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is not finite. Delay
+      values must be finite, positive, and greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBePositive" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than or equal
+        to the smallest supported time resolution (128*eps). The delay input must be finite, positive, and
+        greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasing" context="error">
+        At time {0}, the delay input (dt) for Propagation Delay block ''{2}'' results in a delayed output
+        time (t + dt) {1} that occurs at the same time or before the output time for the previous sample
+        {3}. Delayed output times must increase monotonically.
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasingInDiscreteMode" context="error">
+        시간 {0}에서 Propagation Delay 블록 ''{2}''에 대한 지연 입력(dt)이 만드는
+         지연된 출력 시간(t + dt)({1})이 이전 샘플의 출력 시간({3})과
+        동시에 발생하거나 그보다 전에 발생합니다. 지연된 출력 시간은 단조 증가해야 하며,
+        블록을 고정 시간 간격으로 실행하도록 구성하는 경우 지연된 출력 시간은
+        지정된 샘플 시간 ''{4}''의 정수 배수여야 합니다.
+    </entry>
+    <entry key="InputDelayMustBeGreaterThanSampleTime" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than the
+        specified sample time ''{3}''. When you configure the block to run at fixed time intervals, the
+        delay input must be positive and an integer multiple of the specified sample time.
+    </entry>
+    <entry key="InvalidDataType" context="error">
+        Data type {1} not supported for Propagation Delay block ''{0}''.
+    </entry>
+    <entry key="InputDelayTooLarge" context="error">
+        Propagation Delay 블록 ''{2}''의 지연 입력 {1}이(가) 현재 시뮬레이션 시간 {0}에 비해
+        너무 큽니다. 이 경우 부동소수점 정밀도 문제가 발생합니다.
+    </entry>
+    <entry key="InputDelayGreaterThanSizeTMax" context="error">
+        시간 {0}에서 Propagation Delay 블록 ''{2}''의 지연 입력은 {1}입니다. 블록을 샘플 시간이 ''{3}''인
+         고정 시간 간격으로 실행되도록 구성하는 경우 지원되는 최대 지연은 {4}입니다.
+    </entry>
+  </message>
+</rsccat>

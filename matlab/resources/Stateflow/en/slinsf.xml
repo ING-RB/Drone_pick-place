@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2009-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Stateflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+    <message>
+        <entry key="SaveInPrevVersion">This model contains a Simulink function call subsystem embedded in Stateflow. One such function is ''{0}'' contained in the chart ''{1}''. Such models cannot be saved in Simulink versions prior to R2008B when this feature was first introduced. This model will not work in the older version.</entry>
+        <entry key="ErrorSettingPortName">There was a problem setting the port names of the Simulink subsystem to match the names of the Stateflow function inputs/outputs. The names of inputs/outputs have therefore been adjusted to prevent name collisions with existing blocks inside the Simulink subsystem.</entry>
+        <entry key="AttemptFcnPortDeletion">Please do not attempt to delete function call trigger ports in Function-call subsystems contained inside a Stateflow chart.</entry>
+        <entry key="AttemptActionPortDeletion">Action Port blocks cannot be removed from a Simulink state contained inside of a Stateflow chart.</entry>
+        <entry key="BadSimulinkPortName">For Simulink subsystems contained inside Stateflow charts, the port names have to be identifiers. Therefore, the name of the port ''{0}'' has been changed to ''{1}''.</entry>
+        <entry key="NonContiguousError">One or more non-contiguous output ports found inside a Simulink function in a Stateflow chart. Stopping code generation.</entry>
+        <entry key="HolesInPortNumbers">The port numbers in the function call subsystem ''{0}'' have gaps. This is not allowed for function call subsystems inside a Stateflow chart. The next time this model is saved or updated, these gaps will be removed.</entry>
+        <entry key="UnsavedLibraryCopy">Please save the library before you attempt to copy a Simulink function. The Stateflow clipboard buffer has been flushed to prevent erroneous copies.</entry>
+        <entry key="UnsafeRenamingAttempt">Please do not attempt to rename Simulink functions inside Stateflow using the Model Explorer or set_param. The only safe way to rename a Simulink function is using the Stateflow editor.</entry>
+        <entry key="MalInheritedProp"><![CDATA[{0} requires port <a href="matlab:open_and_hilite_system(''{1}'')">''{2}''</a> to explicitly specify (not inherit) the values of the following properties: {3}.]]></entry>
+        <entry key="NameMismatch">Name mismatch</entry>
+        <entry key="TheTwoPortsAreNotConnected">The two ports are not connected.</entry>   
+        <entry key="InvalidMappingExpressionNonASCIIChar">Expression ''{0}'' contains a non-ASCII character. Only ASCII characters are supported.</entry>
+        <entry key="InvalidMappingExpressionDoubleMatlabIndex">Expression ''{0}'' contains invalid index ''{1}{2}''. Use a single pair of parentheses.</entry>
+        <entry key="InvalidMappingExpressionMixedIndex">The expression ''{0}'' contains both MATLAB-format index ''{1}'' and C-format index ''{2}''. Use a single index format.</entry>    
+        <entry key="InvalidMappingExpressionIndexValue">Expression ''{0}'' contains invalid index ''{1}''. All indices must be integers in the range [0,2^31-1].</entry>
+        <entry key="InvalidAutomaticPortBindingForInput"><![CDATA[<sldiag objui="inport" objparam="{0}" objname="{1}">Input port ''{0}''</sldiag> in {1} cannot be mapped to any
+                  input of the container chart {2} because it does not contain any input data with the same name.
+                 Fix it by 
+            <a href="matlab:Stateflow.SLINSF.SimulinkMan.propagatePortToSimulink({3,number,integer}, ''{4}'', ''Input'')">creating an input data 
+            of this name in the container chart</a>
+          or by <a href="matlab:Stateflow.SLINSF.SimulinkMan.openMappingsDialog({5,number,integer})">specifying a mapping for this port</a>.]]>
+        </entry>
+        <entry key="InvalidAutomaticPortBindingForOutput"><![CDATA[<sldiag objui="outport" objparam="{0}" objname="{1}">Output port ''{0}''</sldiag> in {1} cannot be mapped to any
+                  output of the container chart {2} because it does not contain any output data with the same name.
+                 Fix it by 
+            <a href="matlab:Stateflow.SLINSF.SimulinkMan.propagatePortToSimulink({3,number,integer}, ''{4}'', ''Output'')">creating an output data 
+            of this name in the container chart</a>
+          or by <a href="matlab:Stateflow.SLINSF.SimulinkMan.openMappingsDialog({5,number,integer})">specifying a mapping for this port</a>.]]>
+        </entry>
+        <entry key="InvalidAutomaticPortBinding"><![CDATA[Port ''{0}'' in {1} cannot be mapped to any
+                  data or event in the container chart {2} because it does not contain a compatible data or event with the same name. 
+                 Fix it by <a href="matlab:Stateflow.SLINSF.SubchartMan.openProps({3,number,integer})">specifying a mapping for this symbol</a>.]]>
+             </entry>
+             <entry key="InvalidDataOrEventBinding">
+                 <![CDATA[''{0}'' inside ''{1}'' cannot be mapped to ''{2}'' in ''{3}'' because their scopes are not compatible.]]>
+             </entry>
+        <entry key="InvalidBindingGeneral">
+            <![CDATA[The expression ''{0}'' does not resolve to a valid mapping for symbol ''{1}''. 
+            Please fix this by specifying a valid mapping for this variable in the "Mappings" section of the 
+          <a href="matlab:Stateflow.SLINSF.SubchartMan.openProps({2,number,integer})">properties</a> of state {3}.
+          ]]>
+        </entry>
+        <entry key="ParameterNameClash"><![CDATA[''{0}'' has a parameter ''{1}'' whose value is specified as ''{2}''. Non trivial parameter mappings are not allowed for parameters whose names clash with names of Simulink subsystem built-in parameters.\n\nTo see a list of all built-in Simulink subsystem parameters, execute the command:\n\n<a href="matlab:fieldnames(get_param('built-in/subsystem','ObjectParameters'))">fieldnames(get_param('built-in/subsystem','ObjectParameters'))</a>]]></entry>
+        <entry key="InvalidMappingForDSM"><![CDATA[''{0}'' has a Data Store Memory data ''{1}'' whose value is specified as ''{2}''. For Data Store Memory data, only mappings consisting of a single data name are allowed.]]></entry>
+        <entry key="BindingDialogExplanationAction">
+            The following tables list the mappings from the subsystem symbols 
+            (on the left) to the symbols in the main chart (on the right).
+            For every subsystem symbol, the drop-down provides the list of 
+            available symbols which that subsystem symbol can map to.
+        </entry>
+        <entry key="SubsystemSymbol">Subsystem Symbol</entry>
+        <entry key="EditMappingsMenuLabel">Mappings...</entry>
+        <entry key="InvalidBindingToContinuousTimeData"><![CDATA[{0} specifies a <a href="matlab:Stateflow.SLINSF.SimulinkMan.openMappingsDialog({1,number,integer})">mapping</a> to the main chart symbol {2} which has a continuous update method. This is not allowed.]]></entry>
+        <entry key="IllegalStateTypeInMooreSimulinkState">Simulink based states are not allowed in Moore charts.</entry>
+        <entry key="IllegalStateTypeInSimplifiedSimulinkState">Simulink based states are not allowed in Simplified charts.</entry>
+        <entry key="IllegalStateTypeInDesChartSimulinkState">Simulink based state {0} is not allowed in a Discrete Event chart.</entry>
+        <entry key="IllegalSuperStepSimulinkState">Simulink based states cannot be used in charts which have super step semantics enabled.</entry>
+        <entry key="UnmappedPortSimulinkEditTimeFixDescription">Create data with name ''{0}'' in the container chart.</entry>
+        <entry key="MismappedPortSimulinkEditTimeFixDescription">Port named ''{0}'' is incompatible with Stateflow data of scope ''{1}''.</entry>
+        <entry key="UnsupportedSimulinkStateMapping">"Data ''{0}'' of {1} is indirectly mapped to ''{2}'' in {3}. Simulink based state data may only be mapped to data of the same type and scope. Data may not be indirectly mapped to bus or array elements."</entry> 
+    </message>
+</rsccat>

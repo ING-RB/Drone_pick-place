@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Dividing a string into multiple elements by calling
+                        <code>strtok</code> in a <code>while</code> loop can be
+                    inefficient, especially if multiple calls to <code>strtok</code> are
+                    made. Generally, using one call to <code>split</code> is clearer and
+                    faster.</p><br/><strong>Suggested Action</strong><br/><p>Replace the <code><a href="matlab:doc while" target="_blank">while</a></code> loop that includes the call to the <code><a href="matlab:doc strtok" target="_blank">strtok</a></code> function with a
+                    single call to the <code><a href="matlab:doc split" target="_blank">split</a></code> function. For example, if you have this code that
+                    calls the <code>strtok</code> function in a <code>while</code>
+                    loop:</p><p>
+                    <code>while&nbsp;~isempty(remain)<br/>&nbsp;&nbsp;&nbsp;&nbsp;[token,remain]=strtok(remain,&nbsp;delimiter);<br/>end</code>
+                </p><p>Replace the code with a single call to the <code>split</code>
+                    function.</p><p>
+                    <code>tokens&nbsp;=&nbsp;split(str,delimiter)</code>
+                </p></body></html>

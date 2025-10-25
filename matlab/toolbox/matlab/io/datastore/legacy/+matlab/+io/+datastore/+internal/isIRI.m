@@ -1,0 +1,10 @@
+function tf = isIRI(inputPaths)
+%ISIRI   Returns true if the strings passed in are IRIs.
+%   tf = isIRI(STR) returns true if the string STR is an IRI.
+%   tf = isIRI(CELLSTRVEC) returns a logical array of the same shape as the
+%   as the cell vector of strings CELLSTRVEC. 
+%
+%   See also matlab.io.datastore.internal.pathLookup
+
+%   Copyright 2014-2020 The MathWorks, Inc.
+tf = matlab.io.internal.vfs.validators.isIRI(inputPaths);

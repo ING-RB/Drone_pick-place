@@ -1,0 +1,16 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>A call to <code>warning</code> appears to use
+                        <code>sprintf</code> to generate the warning message. Because you
+                    can call <code>warning</code> in numerous ways (with or without the
+                    warning tag, with or without a format specifier), sometimes Code Analyzer
+                    mistakenly produces this message when you use <code>sprintf</code> to
+                    generate the warning tag or as an argument to the <code>warning</code>
+                    format specifier.</p><br/><strong>Suggested Action</strong><br/><p>Remove the <code><a href="matlab:doc sprintf" target="_blank">sprintf</a></code> call and pass the arguments directly to the
+                            <code><a href="matlab:doc warning" target="_blank">warning</a></code> function. For example, replace code such as this: </p><p>
+                    <code>warning('prog:Nneg',&nbsp;sprintf('Input&nbsp;N=%d&nbsp;must&nbsp;be&nbsp;positive\n',N));</code>
+                </p><p>With this code: </p><p>
+                    <code>warning('progr:Nneg',&nbsp;'Input&nbsp;N=%d&nbsp;must&nbsp;be&nbsp;positive\n',N);</code>
+                </p><p>Note that MATLAB converts special characters (such as <code>\n</code>,
+                        <code>\t</code>, <code>%s</code>, and <code>%d</code>) in
+                    the warning message only when you specify more than one input argument with
+                        <code>warning</code>.</p><p>If Code Analyzer produced this message erroneously, you can suppress it, as
+                    described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

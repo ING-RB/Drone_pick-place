@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="AbsTimeNotSuppForTsDepAsyncBlk">The Model block ''{0}'' is triggered by an asynchronous function-call initiator. This configuration is not supported when the referenced model ''{1}'' needs absolute time.</entry>
+    <entry key="InportFCPortNotAllowAsyncRootOutportDrivenByRTB">''{0}'' cannot be driven by a Rate Transition block that has an asynchronous rate when the model has asynchronous function-call input port.</entry>
+    <entry key="InportFCPortNotAllowAsyncSfcnBlk">''{0}'' is an asynchronous function call initiator. Such blocks are not allowed in a model that has an asynchronous function-call input port.</entry>
+    <entry key="InportFCPortMustUseBuildInRTB">''{0}'' is not a Simulink Rate Transition block. When a model has an asynchronous function-call input port, use the Rate Transition block in Simulink library to handle rate transitions to or from an asynchronous function-call block.</entry>
+    <entry key="AsyncFCSSCannotBePeriodic">''{0}'' cannot be defined to be a periodic function-call block because it has an asynchronous rate.</entry>
+    <entry key="ConstSampleTimeAtAsyncInitiator">异步函数调用发起方 ''{0}'' 指定了常量(inf)采样时间。仿真中的异步函数调用发起方不支持常量(inf)采样时间。此采样时间将更改为继承(-1)。要消除此警告消息，请确保此模块指定常量(inf)之外的采样时间。如果此模块有 '模式' 选项，您可以通过选择仿真模式来实现此目的。</entry>
+    <entry key="AsyncSfcnInvalidDtype">Asynchronous task defined by S-function ''{0}'' specifies invalid data type for the timer associated with this asynchronous task.</entry>
+    <entry key="AsyncTsPriorityMustHigherThanBaseRate">The Asynchronous Task Specification block connected to root-level Inport block ''{0}'' specifies priority {1,number, integer}, but the periodic base rate priority is {2, number, integer}. Asynchronous task must specify a priority higher than periodic base rate.</entry>
+    <entry key="AsyncTIDSamePriorityAsSyncTID">The asynchronous task associated with the S-function ''{0}'', and the periodic task with sample time {1} share the same priority: {2,number,integer}. Either specify differing priorities, or set the Tasks with equal priority option in the Diagnostics page of the Configuration Parameters Dialog to "none" if tasks of equal priority can not preempt each other in the target system.</entry>
+    <entry key="AsyncTriggerInActionSys">Asynchronous subsystem ''{0}'' may not be put in an action or iterator subsystem.</entry>
+    <entry key="BlkFastestTsNotGCDOfInTs" context="diagnostic">无法确定模块 ''{0}'' 的采样时间。请指定此模块的采样时间(建议的速率为 {1}，即各输入速率的最大公约数)，或指定驱动此模块输入的模块的采样时间。</entry>
+    <entry key="BlkInputSampleTimeMismatch">Sample time mismatch. Sample time ({0}) of signal driving &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of ''{2}'' does not match the sample time ({3}) of the block.</entry>
+    <entry key="BlkWithUnsetTsInhSupLevel">The model reference sample time inheritance rule for block ''{0}'' is not set and the model is sample time independent. The generated code from the block might produce incorrect results if it is referenced by a Model block. For S-functions, specify the model reference sample time inheritance rule through the ssSetModelReferenceSampleTimeInheritanceRule macro. You can suppress the diagnostic by setting &lt;sldiag objui="configset" objparam="UnknownTsInhSupMsg"&gt;Unspecified inheritability of sample time&lt;/sldiag&gt; to 'none'.</entry>
+    <entry key="BlockTsNotAMultipleOfFixedStep">''{2}'' 的采样时间 {0} ({1})不是为模型指定的定步长({3})的整数倍。</entry>
+    <entry key="CompileNeededForBlockSampleTimes">必须执行更新图才能访问模块 ''{0}'' 的 ''SampleTimes'' 信息。</entry>
+    <entry key="ComputedStepSizeIsTooSmall" context="diagnostic">计算的定步长({0})比模型 ''{2}'' 中的所有离散采样时间小 {1} 倍。此定步长是根据模型中指定的离散采样时间({3})和传播的离散采样时间({4})计算得出的。要解决此错误，您可以切换到变步长求解器，或指定定步长，使得离散采样时间(包括周期和偏移量)是定步长的整数倍。</entry>
+    <entry key="ComputedStepSizeMayBeTooSmall">The computed fixed step size ({0}) is {1} times smaller than some of the discrete sample times in the model ''{2}''. This fixed step size has been computed based on the following specified discrete sample times:{3} and the following propagated discrete sample times:{4} in the model. You can disable this diagnostic either by specifying a fixed step size such that the discrete sample times (both periods and offsets) are integer multiples of the fixed step size, or by setting ''Automatic solver parameter selection'' diagnostic to ''none'' in the Diagnostics tab of the configuration parameters dialog.</entry>
+    <entry key="ConstantSampleTimeDescription">常量</entry>
+    <entry key="ConstantSampleTimeDescription_Advanced">不变量</entry>
+    <entry key="ParameterSampleTimeDescription">常量</entry>
+    <entry key="InvPrmSampleTimeDescription_Advanced">不变量</entry>
+    <entry key="ContinuousSTBlkHasFrames">虽然模块 ''{0}'' 具有连续采样时间，但此模块的一个或多个端口仍设置为基于帧。基于帧的信号应具有离散采样时间。</entry>
+    <entry key="ContSTOutPortIsFrameBased">虽然 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 具有连续采样时间，但其仍设置为基于帧。基于帧的信号应具有离散采样时间。</entry>
+    <entry key="SFcnNeedsContTsOrInhTsForCStates">''{1}'' 中的单速率 S-Function ''{0}'' 必须指定连续采样时间或继承的采样时间，因为它具有连续状态。</entry>
+    <entry key="SFcnNeedsContTs" context="diagnostic">''{1}'' 中的 S-Function {0} 必须具有连续采样时间，因为它具有连续状态。</entry>
+    <entry key="BlockNeedsContTs">Block {0} must have a continuous sample time since it has continuous states.</entry>
+    <entry key="DefaultFixedStepSizeMsg" context="diagnostic">模型 ''{0}'' 将根据开始和停止时间使用定步长({1})。您可以通过在 "配置参数" 对话框的 "诊断" 窗格的 "求解器" 组中将 ''自动求解器参数选择'' 诊断设置为 ''无'' 来禁用此诊断。\n</entry>
+    <entry key="DiscreteBecomingInf">The periodic sample time {0}, used in block ''{1}'', is too large for use in a model with a base rate of {2}. Either explicitly specify this sample time as inf, or specify a fixed step size large enough that this sample time divided by the fixed step size will not be inf within the limits of numerical precision.</entry>
+    <entry key="ErrorInParamInit">初始化参数时出错。</entry>
+    <entry key="ParamUpgradeNotification">如果此模型是在以前的版本中创建的，可能会出现升级问题并导致参数初始化问题。</entry>
+    <entry key="FasterTaskMustHaveHigherPriority">For synchronous tasks, faster tasks must have higher priority. Faster synchronous task whose sample time is {0} has priority {1,number,integer}. This priority is lower than the priority of slower task whose sample time is {2}. The slower task priority is: {3,number,integer}.</entry>
+    <entry key="FixedInMinorStepDescription">子步中不变</entry>
+    <entry key="FixedStepNEFundStep">模型 ''{1}'' 中定步长({0})的设置无效。模型中的所有采样时间必须为定步长的整数倍。</entry>
+    <entry key="FixedStepSizeHeuristicErr">无法基于模型 ''{0}'' 中的采样时间确定定步长，因为该模型没有任何离散采样时间。您可以通过在 "配置参数" 对话框的 "求解器" 窗格中显式指定定步长，或在 "配置参数" 对话框的 "诊断" 窗格的 "求解器" 组中将 ''自动求解器参数选择'' 诊断设置为 ''无'' 来禁用此诊断。</entry>
+    <entry key="FixedStepSizeHeuristicWarn">Unable to determine a fixed step size based on the sample times in the model ''{0}'', because the model does not have any discrete sample times. Picking a fixed step size of ({1}) based on simulation start and stop times. You can disable this diagnostic by explicitly specifying a fixed step size in the Solver pane of the Configuration Parameters dialog box, or setting the ''Automatic solver parameter selection'' diagnostic to ''none'' in the Solver group on the Diagnostics pane of the Configuration Parameters dialog box.</entry>
+    <entry key="FunctionalSampleTimesNotMatchSFcn">Number of functional sample times specified in block ''{0}'' does not match the number of sample times in this block. This can happen when you build an S-Function block from a variable-step model, and then use the S-Function block in a fixed-step model. You can fix this error by switching to a variable-step solver or regenerating the S-Function block with a fixed-step solver.</entry>
+    <entry key="FunctionalSampleTimesNotMatchMdlRef">Number of functional sample times specified in block ''{0}'' does not match the number of sample times in this block. This can happen when you drive two different function-call inputs of a Model block with the same Asynchronous function call initiator. You can fix this error by using two different function-call generators or by using only one function-call input inside the referenced model.</entry>
+    <entry key="IgnoringAsyncFlag">The SS_OPTION_ASYNCHRONOUS, SS_OPTION_ASYNCHRONOUS_INTERRUPT, or SS_OPTION_ASYNCHRONOUS_CUSTOM flag for S-function ''{0}'' is being ignored because the S-function does not meet all of the following criteria: number of sample times is 1, the sample time is inherited (-1), 1 output port, and all elements of the output port are configured to perform function calls.</entry>
+    <entry key="IllegalUnsupportedMultiRWRateTransWarn">检测到在 ''{0}'' 的 {1} 处和 ''{2}'' 的输出端口 {3,number,integer} 之间出现多次读写转换。Rate Transition 模块无法确保数据传输保护。
+    </entry>
+    <entry key="IllegalUnsupportedMultiRWRateTransErr">Multiple read and write transition detected ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}. Rate Transition block cannot ensure data transfer protection.
+    
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" id="MultiTaskRateTransMsgWarn"&gt;
+            &lt;cmd&gt;set_param(''{4}'', ''MultiTaskRateTransMsg'', ''warning'');&lt;/cmd&gt;
+            &lt;txt&gt;Set the ''Diagnostics &gt; Sample Time &gt; Multitask data transfer'' diagnostic to ''warning''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InconsistentPortBasedTs" context="diagnostic">Data integrity issue between &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of ''{0}'' and the signal driving this input port.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Insert a rate transition block to protect the data transfer.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InconsistentBlockBasedTs">采样时间不一致。''{1}'' 的采样时间({0})慢于输入端口 {3,number,integer} 上的采样时间({2})。这可能是因为存在模块循环，其中包含不指定采样时间的 ''{4}'' (所有均为继承(-1))。请要么指定此模块的采样时间，要么指定驱动此模块的输入的模块的采样时间。</entry>
+    <entry key="InconsistentAsyncPriority">模块 ''{0}'' 由指定冲突优先级的异步 S-Function 调用: ''{1}'' 指定 {2,number,integer}，而 ''{3}'' 指定 {4,number,integer}。</entry>
+    <entry key="InconsistentAsyncClockTickSize">函数调用模块 ''{0}'' 由指定冲突时钟计时单元大小的异步 S-Function 触发: ''{1}'' 指定 {2}，而 ''{3}'' 指定 {4}。</entry>
+    <entry key="InconsistentAsyncClockTickDType">函数调用模块 ''{0}'' 由指定冲突时钟计时单元数据类型的异步 S-Function 触发: ''{1}'' 指定 {2}，而 ''{3}'' 指定 {4}。</entry>
+    <entry key="JmaabbCannotCombineFunctionCalls" context="diagnostic">基于速率的模型不支持从多个函数调用输入端口触发函数调用模块 ''{0}''。</entry>
+    <entry key="AsyncCustomCannotCombineWithOtherAsyc">函数调用模块 ''{0}'' 由指定冲突的 SS_OPTION 的异步 S-Function 触发: ''{1}'' 和 ''{2}'' 之一指定 SS_OPTION_ASYNCHRONOUS_CUSTOM，其中另一个指定 SS_OPTION_ASYNCHRONOUS 或 SS_OPTION_ASYNCHRONOUS_INTERRUPT.}</entry>
+    <entry key="InputPortSampleTimeMismatch">Sample time mismatch. Sample time ({0}) of signal driving &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of ''{2}'' differs from the required sample time ({3}) at this input port.</entry>
+    <entry key="InvAsynSFuncLocation">All destinations of Asynchronous S-function ''{0}'' must be in the root system (i.e., destinations cannot be contained in conditionally executed subsystems).</entry>
+    <entry key="InvAsyncInterruptSFcnLoc">S-function ''{0}'' and its function-call destination block must be in the root system or atomic subsystems because it has indicated that it is executing the destination function-call block asynchronously via a hardware interrupt.</entry>
+    <entry key="InvalidAsyncTimeSourceCaller">The function-call block ''{0}'' is triggered by the asynchronous S-function ''{1}'', which specifies that it obtains its time from its caller. However, any asynchronous S-function triggering a function-call block that has multiple triggers may not specify that it obtains its time from its caller.</entry>
+    <entry key="InvBlkInPeriodicFCSS" context="diagnostic">''{0}'' 的采样时间无效。在周期函数调用模块 ''{2}'' 中，只允许固定(inf)、继承(-1)或周期性({1})采样时间。</entry>
+    <entry key="InvBlkInPeriodicAtomic">
+    模块 ''{0}'' 的采样时间 {1} 无效。周期性原子子系统 ''{2}'' 只能包含具有常量(inf)、继承(-1)或周期性({3})采样时间的模块。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''__ARG1__'');&lt;/cmd&gt; &lt;cargs&gt; &lt;carg translate="false" name="__ARG1__" type="menu"&gt; &lt;txt_prompt&gt;新采样时间&lt;/txt_prompt&gt; &lt;enum&gt;{3}&lt;/enum&gt; &lt;enum&gt;inf&lt;/enum&gt; &lt;enum&gt;-1&lt;/enum&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;将模块 ''{0}'' 的采样时间设置为周期性({3})、继承(-1)或常量(inf)。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'', 'SystemSampleTime', '-1');&lt;/cmd&gt; &lt;txt&gt;配置子系统 ''{2}'' 以继承采样时间。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+         
+    </entry>
+    <entry key="InvBlkWithNoSTPrmInPeriodicAtomic">
+      
+               模块 ''{0}'' 的采样时间 {1} 无效。周期性原子子系统 ''{2}'' 只能包含具有常量(inf)、继承(-1)或周期性({3})采样时间的模块。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'', 'SystemSampleTime', '-1');&lt;/cmd&gt; &lt;txt&gt;配置子系统 ''{2}'' 以继承采样时间。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvSubsysInPeriodicAtomic">
+    Subsystem ''{0}'' has an invalid sample time of {1}. Periodic atomic subsystem ''{2}'' may contain only subsystems that have inherited (-1), or periodic ({3}) sample times.
+        &lt;actions exclusiveFixIts = "yes"&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;set_param(''{0}'', 'SystemSampleTime', ''__ARG1__'');&lt;/cmd&gt;
+                &lt;cargs&gt;
+                    &lt;carg translate="false" name="__ARG1__" type="menu"&gt;
+                        &lt;txt_prompt&gt;New Sample Time&lt;/txt_prompt&gt;
+                        &lt;enum&gt;{3}&lt;/enum&gt;
+                        &lt;enum&gt;-1&lt;/enum&gt;
+                    &lt;/carg&gt;
+                &lt;/cargs&gt;
+                &lt;txt&gt;Set Sample Time of Subsystem ''{0}'' to periodic ({3}), or inherited (-1).&lt;/txt&gt;
+            &lt;/action&gt;
+            &lt;action type="fixit"&gt;
+                   &lt;cmd&gt;set_param(''{2}'', 'SystemSampleTime', '-1');&lt;/cmd&gt;
+                   &lt;txt&gt;Configure Subsystem ''{2}'' to inherit the sample time.&lt;/txt&gt;
+             &lt;/action&gt;
+         &lt;/actions&gt;
+     </entry>
+    <entry key="InvTs">''{1}'' 的采样时间 {0} 无效。</entry>
+    <entry key="InvPeriodOffsetPairFromSFcn">在 S-Function 模块 ''{2}'' 中指定的采样时间 [{0} {1}] 无效。采样时间必须为双精度实数标量(周期)或长度为 2 的双精度实数向量(周期, 偏移量)；其中，周期、偏移量必须为有限非负值，偏移量必须小于周期。</entry>
+    <entry key="InvTsInCaseSS">''{1}'' 的采样时间 {0} 与控制其执行的 SwitchCase 模块 ''{3}'' 的采样时间 {2} 不匹配。</entry>
+    <entry key="InvTsInIfActionSS">''{1}'' 的采样时间 {0} 与控制其执行的 If 模块 ''{3}'' 的采样时间 {2} 不匹配。</entry>
+    <entry key="InvDiscreteTsInCaseSS">The block ''{0}'' has a discrete sample time that does not match the sample time {1} of the SwitchCase block ''{2}'' controlling its execution.</entry>
+    <entry key="InvDiscreteTsInIfActionSS" context="diagnostic">模块 ''{0}'' 的离散采样时间与控制其执行的 If 模块 ''{2}'' 的采样时间 {1} 不匹配。</entry>
+    <entry key="InvTsInDiscreteCaseSS">Sample time {0} of ''{1}'' does not match the discrete sample time of the SwitchCase block ''{2}'' controlling its execution.</entry>
+    <entry key="InvTsInDiscreteIfActionSS">Sample time {0} of ''{1}'' does not match the discrete sample time of the If block ''{2}'' controlling its execution.</entry>
+    <entry key="InvTsParamSettingWithCause">在 ''{0}'' 中，因为附带的原因，参数 ''{1}'' 不是有效的采样时间。</entry>
+    <entry key="InvTsParamSetting_Constant">在 ''{0}'' 中，参数 ''{1}'' 必须为有限实数。不允许使用常量(inf)采样时间。</entry>
+    <entry key="InvTsParamSetting_First_Element">In ''{0}'', the first element of the parameter ''{1}'' is {2}; this value is not permitted.</entry>
+    <entry key="InvTsParamSetting_No_Continuous">模块 ''{0}'' 不允许对参数 ''{1}'' 使用连续采样时间(0 或 [0,0])。</entry>
+    <entry key="InvTsParamSetting_No_ZOHContinuous">The block ''{0}'' does not permit fixed-in-minor-step sample time ([0,1]) for the parameter ''{1}''.</entry>
+    <entry key="InvTsParamSetting_Inf">For ''{0}'', the first element of the parameter ''{1}'' is inf, so the second element must be zero.</entry>
+    <entry key="InvTsParamSetting_Vector">
+      对于 ''{0}''，参数 ''{1}'' 必须为双精度实数标量(周期)或长度为 2 的双精度实数向量(周期, 偏移量)。周期和偏移量必须为有限非负值；偏移量必须小于周期。
+    </entry>
+    <entry key="InvHybridIfactionSS">The block ''{0}'' is not allowed in an action subsystem because it has more than one sample time.</entry>
+    <entry key="InvalidInputPortTsInTrigSS">&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;Input port {0,number,integer}&lt;/sldiag&gt; of the block ''{1}'' has an improperly defined sample time when placed in the {2} subsystem ''{3}''. Only constant (inf) or inherited (-1) sample times are allowed.</entry>
+    <entry key="InvalidOutputPortTsInTrigSS" context="diagnostic">当放置在 {2} 子系统 ''{3}'' 中时，模块 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 的采样时间定义不正确。只允许使用固定(inf)或继承(-1)采样时间。</entry>
+    <entry key="AsyncDatasetLoggingForSimulinkFunctionInMdlRef">模型模块 ''{1}'' 中的 Simulink Function ''{0}'' 不支持以数据集格式记录输出信号，因为它是异步执行的。要解决此问题，请将 "格式" 配置参数更改为 "数组"、"结构体"或 "带时间的结构体"，并禁用信号记录。</entry>
+    <entry key="InvMRateBlkInPeriodicFCSS">''{0}'' has multiple sample times. Only constant (inf), inherited (-1), or periodic ({1}) sample times are allowed in the periodic function-call block ''{2}''.</entry>
+    <entry key="InvNonFiniteFundamentalStepSize">The fundamental sample time of model ''{0}'' is not finite.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{0}'',''FixedStep'',''__finiteStepSize__'');&lt;/cmd&gt;
+    &lt;cargs&gt;
+    &lt;carg name = "__finiteStepSize__" type="text"&gt;
+    &lt;txt_prompt&gt;Enter a finite value for the Fixed-step size (fundamental sample time) parameter of the model:
+    &lt;/txt_prompt&gt;
+    &lt;/carg&gt;
+    &lt;/cargs&gt;
+    &lt;txt&gt;Specify a finite value for the Fixed-step size (fundamental sample time) parameter of the model.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;
+    
+      </entry>
+    <entry key="InvMRateBlkInPeriodicAtomic">''{0}'' has multiple sample times. Only constant (inf), inherited (-1), or periodic ({1}) sample times are allowed in the periodic atomic subsystem ''{2}''.</entry>
+    <entry key="InvMRateBlkInTrigSubsys" context="diagnostic">''{0}'' 有多个采样时间。在 {1} 子系统 ''{2}'' 中只允许使用固定(inf)或继承(-1)采样时间。</entry>
+    <entry key="InvalidNegativeTsPeriod">指定的周期({0})和偏移量({1})不是有效的采样时间设定。周期不能为负值，除非它是 INHERITED_SAMPLE_TIME (-1)。</entry>
+    <entry key="InvalidNegativeTsPeriodAllowVariableTs">指定的周期({0})和偏移量({1})不是有效的采样时间设定。周期不能为负值，除非它是 INHERITED_SAMPLE_TIME (-1)或 VARIABLE_SAMPLE_TIME (-2)。</entry>
+    <entry key="InvBlkInAsyncFCSS" context="diagnostic">
+      ''{0}'' 的采样时间无效。在异步子系统 ''{1}'' 中只允许使用固定(inf)或继承(-1)采样时间。
+    </entry>
+    <entry key="InvBlkInTrigSubsys" context="error">
+      
+               ''{0}'' 具有采样时间 {1}。模块的采样时间必须为继承(-1)，因为触发子系统中的模块必须仅在触发子系统运行时运行。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;如果模块具有采样时间参数，考虑将模块 ''{0}'' 的采样时间设置为继承(-1)&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;替换 ''{2}'' 中的模块 ''{0}''&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvSigLogTSInTrigSubsys">Cannot honor data logging Sample time ''{0}'' specified in 'Signal Properties'' dialog of output signals of block ''{1}''. Only constant (inf) or inherited (-1) sample times are allowed in {2} subsystem ''{3}''.</entry>
+    <entry key="InvBlkInTrigModel" context="diagnostic">''{0}'' 具有采样时间 {1}。在 {2} 模型 ''{3}'' 中只允许使用固定(inf)或继承(-1)采样时间。</entry>
+    <entry key="InvPortBasedModelBlkInTrigSubsys">The Model block ''{0}'' referencing model ''{1}'' has been improperly placed in the {2} subsystem ''{3}''. The model being referenced must inherit a sample time. Set the ''Periodic sample time constraint'' parameter to ''Ensure sample time independent'' on the Solver page of the Configuration Parameters for the model ''{4}'' and update the diagram to see why it does not inherit a sample time.</entry>
+    <entry key="InvCallerTsForPeriodicFCSS">The caller ''{0}'' of function-call subsystem ''{1}'' has a sample time of {2} that does not match the periodic sample time {3} of the function-call subsystem.</entry>
+    <entry key="InvConstCompTs">''{0}'' has an invalid constant (inf) sample time. Discrete states, continuous states, and tunable parameters are not allowed with constant sample times.</entry>
+    <entry key="InvSFcnCallInitiatorTs">Invalid configuration at &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;input port {0,number,integer}&lt;/sldiag&gt; of  S-function block ''{1}''. The block specifies the sample time {2} which is different than the sample time of its function call initiator ''{3}''</entry>
+    <entry key="InvConstOffset">指定的周期({0})和偏移量({1})不是有效的采样时间设定。当周期为 CONSTANT_SAMPLE_TIME (inf)时，偏移量必须为 0。</entry>
+    <entry key="InvDiscOffsetTooBig">指定的周期({0})和偏移量({1})不是有效的采样时间设定。偏移量必须小于周期。</entry>
+    <entry key="InvNumTsForAsyncBlock">Invalid number of sample times registered by asynchronous ''{0}''.</entry>
+    <entry key="InvPortBasedSFcnBlkInTrigSubsys">''{0}'' has port-based sample times and has been improperly placed in the {1} subsystem ''{2}''. Port based sample time S-Functions may only be used in {3} subsystems if they specify the option SS_OPTION_ALLOW_PORT_SAMPLE_TIME_IN_TRIGSS.</entry>
+    <entry key="InvPortBasedBlkInTrigSubsys">''{0}'' has been placed in the {1} subsystem ''{2}'' but does not support this configuration. Move the block out of the {3} subsystem.</entry>
+    <entry key="InvInputPortTsInPeriodicFCSS">Port-based sample time block ''{0}'' has a sample time, {1}, on input port {2,number,integer} that does not align with the periodic sample time of function-call block ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the block.</entry>
+    <entry key="InvInputPortTsInPeriodicAtomic">Port-based sample time block ''{0}'' has a sample time, {1}, on &lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{0}"&gt;input port {2,number,integer}&lt;/sldiag&gt; that does not align with the periodic sample time of the atomic subsystem ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the subsystem.</entry>
+    <entry key="InvOutputPortTsInPeriodicFCSS">Port-based sample time block ''{0}'' has a sample time, {1}, on output port {2,number,integer} that does not align with the periodic sample time of function-call block ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the block.</entry>
+    <entry key="InvOutputPortTsInPeriodicAtomic">Port-based sample time block ''{0}'' has a sample time, {1}, on &lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{0}"&gt;output port {2,number,integer}&lt;/sldiag&gt; that does not align with the periodic sample time of the atomic subsystem ''{3}''. Only constant (inf), inherited (-1), or periodic ({4}) sample times are allowed in the subsystem.</entry>
+    <entry key="InvMRateBlkInContinuousAtomic" context="diagnostic">''{0}'' 有多个采样时间。在连续原子子系统 ''{2}'' 中，只允许固定(inf)、继承(-1)或连续({1})采样时间。</entry>
+    <entry key="InvInputPortTsInContinuousAtomic" context="diagnostic">基于端口的采样时间模块 ''{0}'' 在&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{0}"&gt;输入端口 {2,number,integer}&lt;/sldiag&gt; 上有采样时间 {1}，它与原子子系统 ''{3}'' 的连续采样时间不一致。子系统中只允许固定(inf)、继承(-1)或连续({4})采样时间。</entry>
+    <entry key="InvOutputPortTsInContinuousAtomic" context="diagnostic">基于端口的采样时间模块 ''{0}'' 在&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{0}"&gt;输出端口 {2,number,integer}&lt;/sldiag&gt; 上有采样时间 {1}，它与原子子系统 ''{3}'' 的连续采样时间不一致。子系统中只允许固定(inf)、继承(-1)或连续({4})采样时间。</entry>
+    <entry key="MultiTaskDSM" context="diagnostic">
+    模块 ''{0}'' 和 ''{1}'' 正在访问模型 ''{3}'' 中的数据存储内存 ''{2}''。这两个模块在不同任务中执行，这可能导致在一个多任务实时环境中缺乏数据完整性。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AutosarMultiTaskDSM" context="diagnostic">模块 ''{0}'' 和 ''{1}'' 访问数据存储内存 ''{2}'' 并在不同可运行实体中执行，导致实时环境中缺乏数据完整性。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;调整模块 ''{0}'' 和 ''{1}'' 的采样时间。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SolverMode'', ''SingleTasking'');&lt;/cmd&gt; &lt;txt&gt;或者，取消选择 '配置参数 &gt; 求解器 &gt; 将每个离散速率视为单独任务' 选项。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MultiTaskDSMSingleBlock">
+    模块 ''{0}'' 正在访问数据存储内存 ''{1}'' 并在多个任务中执行。这可能导致在多任务实时环境中缺乏数据完整性。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AutosarMultiTaskDSMSingleBlock" context="diagnostic">模块 ''{1}'' 访问数据存储内存 ''{0}'' 并在多个任务中执行。AUTOSAR 不支持此种方式，因为它会导致多任务实时环境中缺乏数据完整性。</entry>
+    <entry key="MultiTsGlobalDSM">
+    In model ''{0}'', blocks ''{1}'' and ''{2}'' are accessing a global data
+    store defined by the global Simulink.Signal object ''{3}''. The two blocks execute in different tasks,
+    which can lead to a lack of data integrity in a multi-tasking, real-time environment.
+         &lt;actions exclusiveFixIts = "yes"&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt;
+                 &lt;arg&gt;{2}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="AutosarMultiTsGlobalDSM" context="diagnostic">在模型 ''{0}'' 中，模块 ''{1}'' 和 ''{2}'' 正在访问由全局 Simulink.Signal 对象 ''{3}'' 定义的全局数据存储，AUTOSAR 不支持该方式。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;考虑使用局部 Data Store Memory 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MultiTsGlobalDSMSingleBlock">
+    Model block ''{1}'' is configured for multitasking and includes Data Store Read and Data Store Write blocks that share global data store defined by the Simulink.Signal ''{2}''. If you deploy the generated code in a multitasking real-time environment, data integrity issues can result.
+         &lt;actions exclusiveFixIts = "yes"&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt;
+                 &lt;arg&gt;{2}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+             &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt;
+                 &lt;arg&gt;{0}&lt;/arg&gt;
+             &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="AutosarMultiTsGlobalDSMSingleBlock" context="diagnostic">在模型 ''{0}'' 中，模块 ''{1}'' 正在访问由全局 Simulink.Signal 对象 ''{2}'' 定义的全局数据存储，AUTOSAR 不支持该方式。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;考虑使用局部 Data Store Memory 模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DSMErrMsgFixits">
+      
+               &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;考虑使采样时间和访问数据存储 ''{0}'' 的模块的任务一致。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="MultiTaskDSMMsgSetToNone"&gt; &lt;cmd&gt;set_param(''{0}'',''MultiTaskDSMMsg'',''none'');&lt;/cmd&gt; &lt;txt&gt;或者，如果使用原子操作访问数据存储，或如果涉及的任务不能在目标系统中相互抢占，则将 ''配置参数 &gt; 诊断 &gt; 数据有效性 &gt; 多任务数据存储'' 参数设置为 ''无''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MustUseVariableStepSolver">Fixed-step solver ''{0}'' cannot be used for hybrid block diagram ''{1}'' because it contains S-functions with variable sample times.</entry>
+    <entry key="MultirateSfcnWritesToGlobalDSM">The S-Function block ''{0}'' has multiple rates, yet accesses the global data store ''{1}''; S-Functions accessing global data stores must be single rate.</entry>
+    <entry key="MultiTrigWithoutPriority">函数调用模块 ''{0}'' 有多个未指定优先级的异步触发器。如果这些触发器可以相互抢占，将无法保持数据完整性。</entry>
+    <entry key="MuxedSyncAndAsyncTriggers">''{0}'' may not be used to combine an asynchronous function call with data or a synchronous function call.</entry>
+    <entry key="NoTsInhDueToPreSetBlkTs" context="diagnostic">此模型不会继承采样时间，因为采样时间已在模块 ''{0}'' 中显式设置。\n \n如果此模型不需要继承采样时间，请在 "配置参数" 对话框的 "求解器" 选项卡上将 "周期性采样时间约束" 更改为 "确保与采样时间无关" 以外的选项。</entry>
+    <entry key="InvalidExportPerodicConnection">Invalid connection starts with S-function ''{0}'', which is making a function call on output port element {1,number,integer}. A function call generator must drive a function call port of a subsystem or a Model block. </entry>
+    <entry key="NoTsBlockReduced">Since block ''{0}'' has been removed from the compiled version of the model, Simulink cannot access its sample time information. To obtain the sample time information for this block, search for ''Block reduction'' in the Configuration Parameters dialog box and clear the checkbox.</entry>
+    <entry key="NoMoreSampleTimeColors">The model has {0,number,integer} discrete rates, which is greater than the {1,number,integer} discrete sample time colors available. The {2,number,integer}th and slower rates have been marked using the orange sample time color.</entry>
+    <entry key="NoMultiTasking">模型 ''{0}'' 不包含多个采样时间。您必须将求解器模式指定为 "自动" 或单任务。</entry>
+    <entry key="NoMultiTaskingTid01eq">模型 ''{0}'' 不包含多个采样时间。此模型包含连续和离散采样时间，它们具有相同的速率。您必须将求解器模式指定为 "自动" 或 "单任务"。</entry>
+    <entry key="NoMultiTaskingWithIntegerRates">Model ''{0}'' is set to scale discrete rates. You must specify solver mode as SingleTasking.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit" id="MultiTaskingOff"&gt;
+    &lt;cmd&gt;set_param( ''{0}'', 'EnableMultiTasking', 'off');&lt;/cmd&gt;
+    &lt;txt&gt;Consider clearing the "Treat each discrete rate as a separate task" option.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="fixit" id="ScaleDiscreteRatesOff"&gt;
+    &lt;cmd&gt;set_param( ''{0}'', 'ScaleDiscreteRates', 'off');&lt;/cmd&gt;
+    &lt;txt&gt;Consider clearing the "Scale all discrete rates in the model" option.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="IntegerRatesDoesNotSupportCustomCode">缩放离散速率时，不支持自定义代码块 ''{0}''。</entry>
+    <entry key="NoRateCheckForMultiRateSFcn">无法检查 ''{1}'' 的 S-Function {0} 中的有效速率转换，因为它有多个基于模块的采样时间，并且没有端口采样时间。您应更新您的 S-Function 来指定端口采样时间。</entry>
+    <entry key="NotCombinableAsyncPeriodicTsAtBlk">A port of ''{0}'' is being invoked with asynchronous rate and periodic rate. Asynchronous rate can not be combined with other type of sample times. </entry>
+    <entry key="NotCombinableAsyncPeriodicTsInBlk">A Simulink function ''{0}'' in ''{1}'' is being called with an asynchronous rate and a periodic rate. Asynchronous rates can not be combined with other types of sample times. </entry>
+    <entry key="NotCombinableSignalAndMessagesRelatedTsAtBlk">''{0}'' 模块接受一个或多个 Simulink 消息有效负载和周期性速率信号类型的输入。此模块只能接受其中任一类型的输入。 </entry>
+    <entry key="NotCombinableForAsyncSfcnNotSpecifyPrioirty">由 S-Function ''{0}'' 发起的异步函数调用信号无法与其他异步速率组合，因为 S-Function 没有为异步速率设置优先级。</entry>
+    <entry key="NotCombinableForAsyncSfcnNotUsingBaseRateTimer">由 S-Function ''{0}'' 发起的异步函数调用信号无法与其他异步速率组合，因为 S-Function 没有将异步速率设置为使用基本速率计时器。</entry>
+    <entry key="UnionRateMergingNotAllowedWithoutBIMO" context="error">
+      
+               无法为输入端口 ''{0}'' 计算联合采样时间 {1} 和 {2} 的最大公约数(GCD)。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AllowMultipleTaskToAccessIOParamON" retvalue="false"&gt; &lt;cmd&gt;set_param(bdroot(''{0}''), 'AllowMultiTaskInputOutput','on');&lt;/cmd&gt; &lt;txt&gt;要允许使用联合采样时间，请将配置设置 '允许多个任务访问输入和输出' 设置为 'on'。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="SetDiscreteSpecOnBlock" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''__ARG1__'');&lt;/cmd&gt; &lt;cargs&gt; &lt;carg translate="false" name="__ARG1__" type="text"&gt; &lt;txt_prompt&gt;输入采样时间&lt;/txt_prompt&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;在模块 {0} 上指定离散采样时间&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NotCombinableContinuousAndOtherRates">
+        
+            ''{0}'' 模块无法基于连续采样时间生成联合采样时间。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;用合适的离散模块替换该模块。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="NotCombinableZOHContinuousAndOtherRates">
+    
+        ''{0}'' 模块无法基于子步中不变采样时间生成联合采样时间。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;用合适的离散模块替换该模块。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;使用定步长求解器运行。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="NotCombinableLegacyAsyncRates" context="error">
+      Combining asynchronous sample time {0} with another asynchronous sample time {1} is not supported for block {2}.
+    </entry>
+    <entry key="NoTsInhDueToAbsTimeUnknownSource">This model will not inherit a sample time because either at least one block requires absolute time or at least one signal in the model uses signal logging. \n \n If this model does not need to inherit a sample time, change the Configuration Parameters &gt; Solver &gt; Periodic sample time constraint parameter to an option other than "Ensure sample time independent".</entry>
+    <entry key="NoTsInhDueToBlock">This model will not inherit a sample time because the block ''{0}'' disallows it from doing so. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToBlkNeedsAbsTime">This model will not inherit a sample time because ''{0}'' uses absolute time. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToSpecifiedFixedStepSize">This model will not inherit a sample time because the fixed step size was explicitly set for the model.\n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToNoInsAndOnlyConstOuts">This model will not inherit a sample time because there are no input ports and all of the output ports have a constant (inf) sample time. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToResetEventInterface" context="diagnostic">此模型不支持继承采样时间，因为所有输入端口和输出端口都已重置或重新初始化事件采样时间。\n\n如果此模型不需要继承采样时间，请在 "配置参数" 对话框的 "求解器" 选项卡上将 "周期性采样时间约束" 参数更改为除 "确保与采样时间无关" 以外的参数。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SetTsConstraintToUnconstrained" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''SampleTimeConstraint'',''unconstrained'')&lt;/cmd&gt; &lt;txt&gt;将 ''配置参数 &gt; 求解器 &gt; 周期性采样时间约束'' 设置为 "无约束"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NoTsInhDueToMultiTs">This model will not inherit a sample time because there are multiple sample times in the model. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NoTsInhDueToContinuousTs">This model will not inherit a sample time because there is a continuous sample time in the model. \n \n If this model does not need to inherit a sample time, change the "Periodic sample time constraint" to something other than "Ensure sample time independent" on the Solver tab of the Configuration Parameters dialog.</entry>
+    <entry key="NvBusBlkInputSampleTimeMismatch" context="diagnostic">采样时间不匹配。当 Bus Creator 或 Bus Assignment 模块输出非虚拟总线时，驱动其输入端口的所有信号都必须具有相同的采样时间。即使定义总线的对象元素指定继承(-1)采样时间，此限制也适用。驱动 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;输入端口 {1,number,integer}&lt;/sldiag&gt; 的信号的采样时间({0})与模块的采样时间({3})不匹配。</entry>
+    <entry key="SfcnTimerOverFlow">Asynchronous timer defined in S-function ''{0}'' will overflow in {1} days. Considering choosing larger timer data type size or larger timer clocktick stepsize in the S-function or choosing a smaller value for the ''Application lifespan (days)'' option in the Optimization page of the Configuration Parameters Dialog. You can also consider disabling the message by choosing ''None'' for the (''Diagnostics'' &gt; ''Data Validity'' &gt; ''Signals'' &gt;) ''Wrap on overflow'' option in the Configuration Parameters dialog.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param_action(''{2}'',''IntegerOverflowMsg'',''None'');&lt;/cmd&gt;
+    &lt;txt&gt;Change the Diagnostic ''Wrap on overflow '' to ''None''.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;</entry>
+    <entry key="SfcnSpecifyTooLongTimerForIntegerOnlyCode">Asynchronous S-function block ''{0}'' specifies 64-bit timer. Generate code must support floating-point numbers to hold value of a 64-bit timer. Consider specifying smaller timer in Asynchronous S-function or checking Support ''Floating-point numbers'' option on Code Generation -&gt; Interface pane</entry>
+    <entry key="SharedAsyncPriority">函数调用模块 ''{0}'' 有多个指定了相同优先级的异步触发器。如果具有相同优先级的任务不能在目标系统中相互抢占，请将 "配置参数" 对话框的 "诊断" 页中的 "具有相同优先级的任务" 选项设置为 "无"。</entry>
+    <entry key="SigspecFixitsAndSuggestions">
+      
+        &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="ManuallyAddRTBInputPort"&gt; &lt;txt&gt;要处理采样时间不匹配的情况，请在 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 上插入 Rate Transition 模块。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="ManuallyAddRTBOutputPort"&gt; &lt;txt&gt;要处理采样时间不匹配的情况，请在 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;输出端口 ''{0}''&lt;/sldiag&gt; 上插入 Rate Transition 模块。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="SetSigSpecEnsureSampleTimeMsgNoneFixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{2}'', 'SigSpecEnsureSampleTimeMsg', 'None');&lt;/cmd&gt; &lt;txt&gt;要禁用诊断消息，请将配置参数 ''强制应用 Signal Specification 模块指定的采样时间'' 设置为 ''无''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="SignalObjectSuggestion"&gt; &lt;txt&gt;要解决此冲突，请更改信号对象属性或不匹配模块设置。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="BusObjectSuggestion"&gt; &lt;txt&gt;要解决此冲突，请更改总线元素属性或不匹配模块设置。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecInputSampleTimeMismatch">
+      
+          ''{1}'' 的&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;输出端口 ''{0}''&lt;/sldiag&gt; 的采样时间和 ''{2}'' 为此信号指定的采样时间必须匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort" enabled="true"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,SetSigSpecEnsureSampleTimeMsgNoneFixit" enabled="true"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;arg&gt;{5}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecOutputSampleTimeMismatch">
+      
+          ''{1}'' 的&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 的采样时间和 ''{2}'' 为此信号指定的采样时间必须匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort" enabled="true"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort,SetSigSpecEnsureSampleTimeMsgNoneFixit" enabled="true"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;arg&gt;{5}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecSignalObjectOutputPortCause">
+      
+          信号对象解析为 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 ''{0,number,integer}''&lt;/sldiag&gt;。
+      
+    </entry>
+    <entry key="SigspecSignalObjectInputPortCause">
+      
+          信号对象解析为 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 ''{0,number,integer}''&lt;/sldiag&gt;。
+      
+    </entry>
+    <entry key="ErrorCauseSignalObjectSampletime">
+      信号对象 ''{0}'' 的采样时间为 {1}。
+    </entry>
+    <entry key="ErrorCauseBusObjectSampleTime">
+      总线对象 ''{0}'' 中总线元素的采样时间为 {1}。
+    </entry>
+    <entry key="SigspecSignalObjectOutportCause">
+      信号对象解析为 Outport 模块 ''{0}''。
+    </entry>
+    <entry key="SigspecBusObjectCause">
+      总线对象解析为 ''{0}'' 的输出端口。
+    </entry>
+    <entry key="SigspecSignalObjectInputSampleTimeMismatch">
+      
+          ''{1}'' 的&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;输出端口 ''{0}''&lt;/sldiag&gt; 的采样时间和信号对象 ''{2}'' 为此信号指定的采样时间必须匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="SignalObjectSuggestion" enabled="true"&gt; &lt;arg&gt;&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecSignalObjectOutputSampleTimeMismatch">
+      
+          ''{1}'' 的&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 的采样时间与信号对象 ''{2}'' 为此信号指定的采样时间必须匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,SignalObjectSuggestion" enabled="true"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecBusObjectInputSampleTimeMismatch">
+      
+          ''{1}'' 的&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;输出端口 ''{0}''&lt;/sldiag&gt; 的采样时间与总线对象 ''{2}'' 中的总线元素为此信号指定的采样时间必须匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort" enabled="true"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,BusObjectSuggestion" enabled="true"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecBusObjectOutputSampleTimeMismatch">
+      
+          ''{1}'' 的&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;输入端口 ''{0}''&lt;/sldiag&gt; 的采样时间与总线对象 ''{2}'' 中的总线元素为此信号指定的采样时间必须匹配。&lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort" enabled="true"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;arg&gt;{1}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort,BusObjectSuggestion" enabled="true"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SlowEnableToFastSubsys">Sample time of enable signal feeding subsystem ''{0}'' is slower than sample times within the enabled subsystem. This can result in nondeterministic behavior in a multitasking real-time system. Consider adding a Rate Transition followed by a Signal Specification with a sample time equal to the enable signal rate.</entry>
+    <entry key="SourceInheritedTS">Source ''{0}'' specifies that its sample time (-1) is back-inherited. You should explicitly specify the sample time of sources. You can disable this diagnostic by setting the ''Source block specifies -1 sample time'' diagnostic to ''none'' in the Sample Time group on the Diagnostics pane of the Configuration Parameters dialog box.</entry>
+    <entry key="OutlinedRTBRequiresProtectedForAll">由于模型 ''{0}'' 的配置参数 ''Rate Transition 模块代码'' 设置为 ''函数''，因此模型中的所有 Rate Transition 模块都必须选择 ''确保数据传输期间的数据完整性'' 参数，但模块 ''{1}'' 未选择此参数。</entry>
+    <entry key="InheritedIndexedRateAfterProp">Block ''{0}'' should not have any inherited indexed sample times after sample time propagation.</entry>
+    <entry key="SpecifyTsPriorityForModelRef">Simulink does not allow explicit specification of sample time priority for model reference target ''{0}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param_action(''{0}'',''SampleTimeConstraint'',''Unconstrained'');&lt;/cmd&gt;
+    &lt;txt&gt;Change the Solver parameter ''Periodic sample time constraint'' to ''Unconstrained''.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;</entry>
+    <entry key="TmpModelDisallowTsInheritInRightClickBuild">Since the right click build subsystem is in a triggered or function call subsystem in original model, generated S-function block must inherit sample time to match its behavior. However, the subsystem disallows inherited sample time because of reasons reported in following error messages. Consider: \n - Removing blocks that disallow sample time inheritance; \n - Moving the subsystem out of the triggered subsystem in original model.</entry>
+    <entry key="OutputPortMixedSampleTime">子系统 ''{1}'' 的输出端口 {0,number,integer} 连接到具有混合采样时间的信号，因此不支持基于子系统的代码生成。</entry>
+    <entry key="TooLargeRatioBaseRateSubRate">不允许周期性采样时间 {0}，因为此采样时间与基本速率的比率({1})大于 uint32 的最大值。</entry>
+    <entry key="TooLongTimerForIntegerOnlyCode">Generated code doesn''t support floating-point numbers. Integer timer of TID {0,number,integer} will overflow during model ''Application life span (days)''. Consider choosing smaller value for ''Application life span(days)'' parameter specified in the Optimization page of the Configuration Parameters dialog, or checking support ''Floating-point numbers'' option on Code Generation &gt; Interface pane</entry>
+    <entry key="TsMismatchForTsDepModelBlk">The Model block ''{0}'' is triggered using a sample time {1}. This value is inconsistent with the sample time {2} specified by the referenced model ''{3}'' on the Solver tab of the Configuration Parameters dialog. These two sample times must be identical.</entry>
+    <entry key="TsPropEnabOutputsChangeNotAligned">Signal from outport ''{0}'', which is configured to reset when disabled, can change at times that do not align with the signal''s sample time due to the enable signal which is executing at a faster rate.</entry>
+    <entry key="TsRepeatedErr">Repeated (duplicate) sample times were registered by ''{0}''.</entry>
+    <entry key="TooManyContTs">More than one continuous sample time specified for ''{0}''.</entry>
+    <entry key="TsPropTsNotSet">Sample time for ''{0}'' output {1,number,integer} was not set.</entry>
+    <entry key="TSSpecifiedMisMatchPropTS">
+      
+               At least one sample time in the model is not found in the sample time
+               properties specified on the Solver page. The periodic sample time
+               constraints specified are: {0}, whereas the periodic sample times in the
+               model are: {1}.
+      
+    </entry>
+    <entry key="TSSpecifiesInWrongOrder">At least one sample time is specified in wrong order in the sample time properties on the Solver page. The periodic sample time {0} is slower than the sample time {1}. All sample times must be ordered from fast to slow.</entry>
+    <entry key="TwoAsyncTIDsAssignedSamePriority">
+      
+               Asynchronous tasks associated with S-functions ''{0}'' and ''{1}'' are assigned the
+               same priority: {2,number,integer} that can preempt each other.
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action type = "suggestion"&gt;
+               &lt;txt&gt;Consider modifying these S-functions to specify different priorities.&lt;/txt&gt;
+               &lt;/action&gt;
+               &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{3}'',''TasksWithSamePriorityMsg'',''none'')&lt;/cmd&gt;
+               &lt;txt&gt;Set the parameter ''Tasks with equal priority'' in the Diagnostics page of the Configuration Parameters
+               Dialog to "none" if tasks of equal priority cannot preempt each other in the target system.&lt;/txt&gt;
+               &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="TwoAsyncTaskSpecTIDsAssignedSamePriority">
+      
+               与 Asynchronous Task Specification 模块 ''{0}'' 和 ''{1}'' 相关联的异步任务被分配相同的优先级: {2,number,integer}，它们可以相互抢占。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type = "suggestion"&gt; &lt;txt&gt;考虑修改这些模块以指定不同优先级。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{3}'',''TasksWithSamePriorityMsg'',''none'')&lt;/cmd&gt; &lt;txt&gt;如果具有相同优先级的任务不能在目标系统中相互抢占，则将 "配置参数" 对话框的 "诊断" 页中的参数 "具有相同优先级的任务" 设置为 "无"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="TwoSyncTIDsAssignedSamePriority">Two periodic tasks may not share the same priority. The tasks with sample time {0} and sample time {1} are assigned the same priority: {2,number,integer}.</entry>
+    <entry key="VarSTOutPortIsFrameBased">虽然 ''{1}'' 的&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;输出端口 {0,number,integer}&lt;/sldiag&gt; 具有可变采样时间，但其仍设置为基于帧。基于帧的信号应具有离散采样时间。</entry>
+    <entry key="VariableSTBlkHasFrames">虽然模块 ''{0}'' 具有可变采样时间，但其一个或多个端口仍设置为基于帧。基于帧的信号应具有离散采样时间。</entry>
+    <entry key="VariableTsWithSFunctionTarget">''{0}'' has a variable sample time. Variable sample times are not supported by the S-Function Target.</entry>
+    <entry key="VariableStepTsNotAllowed">无法编译图 ''{0}''，因为它包含可变采样时间或 S-Function，并且正在使用定步长求解器。</entry>
+    <entry key="VariableSampleTimeDescription">可变 {0,number,integer}</entry>
+    <entry key="ControllableRateDescription">可控 {0,number,integer}</entry>
+    <entry key="TriggeredSampleTimeDescription">触发</entry>
+    <entry key="HybridSampleTimeDescription">混合</entry>
+    <entry key="MultipleSampleTimeDescription">多速率</entry>
+    <entry key="UnionSampleTimeDescription">并集 {0,number,integer}</entry>
+    <entry key="AsyncSampleTimeDescription">异步 {0,number,integer}</entry>
+    <entry key="MessageSampleTimeDescription">消息已触发 {0,number,integer}</entry>
+    <entry key="EventSampleTimeDescription">事件</entry>
+    <entry key="PowerUpSampleTimeDescription">初始化</entry>
+    <entry key="ResetSampleTimeDescription">重置</entry>
+    <entry key="ResetWithInitSampleTimeDescription">重新初始化</entry>
+    <entry key="PowerDownSampleTimeDescription">终止</entry>
+    <entry key="GenericAsyncSampleTimeDescription">异步混合</entry>
+    <entry key="PeriodicSampleTimeDescription">离散 {0,number,integer}</entry>
+    <entry key="ContinuousDescription">连续</entry>
+    <entry key="ExportInheritSampleTimeDescription"> 导出的继承 </entry>
+    <entry key="AperiodicExplicitPartitionSampleTimeDescription"> 显式 {0} </entry>
+    <entry key="AperiodicExplicitPartitionSampleTimeValue"> 继承 </entry>
+    <entry key="MessageSampleTimeValue"> 继承 </entry>
+    <entry key="ExportPeriodicSampleTimeDescription"> 导出的离散 </entry>
+    <entry key="ExportPeriodicPartitionSampleTimeDescription"> 显式 {0} </entry>
+    <entry key="DataDrivenSampleTimeDescription">数据驱动</entry>
+    <entry key="DataDrivenSampleTimeValue">不适用</entry>
+    <entry key="ReCompileSFcn"> To use block ''{0}'' in referenced models, recompile the S-function with the current version of Simulink.</entry>
+    <entry key="ModelWideEventWithUpdateFcn"> 模块 ''{0}'' 具有更新函数，并已被分配相同的时间 {1}。这些设置不兼容。将不会调用更新函数。</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasInherited"> In ''{0}'', the parameter ''{1}'' specified a sample time type of ''Periodic'', but the evaluated sample time type was ''Inherited''. Update the sample time type or the sample time value to ensure consistency.</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasParameter"> In ''{0}'', the parameter ''{1}'' specified a sample time type of ''Periodic'', but the evaluated sample time type was ''Parameter''. Update the sample time type or the sample time value to ensure consistency.</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasContinuous"> In ''{0}'', the parameter ''{1}'' specified a sample time type of ''Periodic'', but the evaluated sample time type was ''Continuous''. Update the sample time type or the sample time value to ensure consistency.</entry>
+    <entry key="SampleTimeTypePeriodicWithoutValidSampleTime"> In ''{0}'', ''{1}'' should be a positive finite number, but ''{2}'' was specified. Either specify a valid number, or change ''{3}'' to ''{4}''.</entry>
+    <entry key="SampleTimeTypeDisallowed"> In ''{0}'', the parameter ''{1}'' does not allow a sample time type of {2}.</entry>
+    <entry key="SampleTimeWidgetTypeParameter">参数</entry>
+    <entry key="SampleTimeWidgetTypeConstant">常量</entry>
+    <entry key="SampleTimeWidgetTypeUnresolved">&lt;从值&gt;</entry>
+    <entry key="SampleTimeWidgetTypeInherited">继承</entry>
+    <entry key="SampleTimeWidgetTypeContinuous">连续</entry>
+    <entry key="SampleTimeWidgetTypePeriodic">周期性</entry>
+    <entry key="SampleTimeWidgetTooltipCombobox">选择采样时间类型。要从变量中指定未知采样时间，请选择 ''{0}''。</entry>
+    <entry key="SampleTimeWidgetTooltipPeriodic">输入周期性采样时间。值可以是表示为正有限双精度的周期，也可以是包含周期和偏移量的二元素向量。</entry>
+    <entry key="SampleTimeWidgetTooltipUnresolved">输入采样时间。值可以是双精度值，也可以是由双精度值组成的二元素向量。</entry>
+    <entry key="SampleTimeWidgetTooltipOther">采样时间的当前整数值。</entry>
+    <entry key="GenericError">泛型错误 {0}。请将此错误报告为 Bug。</entry>
+    <entry key="InvalidBlockConnectToIRTInport">模块 ''{0}'' 输出端口连接到 Initialize Function 模块 ''{1}'' 输入端口 {2,number,integer}。仅允许虚拟模块(如 Inport、From 模块等)连接到 Initialize Function 模块的输入端口。</entry>
+    <entry key="InvalidBlockConnectToIRTInportMdlRef">Block ''{0}'' output port is connected to an Initialize Function block inside Model block ''{1}'' via input port ''{2}''. Only virtual blocks such as Inport, From blocks, etc., are allowed to connect to the input ports of an Initialize Function block. If the Model block resides in the topmost model hierarchy and is referencing an export function model saved in R2016b or later, you can select the option ''{3}'' for the Model block to remove this restriction.</entry>
+    <entry key="InvalidBlockConnectToIRTOutport">Block ''{0}'' input port {1,number,integer} is connected to a Terminate Function block ''{2}'' output port {3,number,integer}. Only virtual blocks such as Outport, Goto blocks, etc., are allowed to connect to the output ports of a Terminate Function block; Connections to Merge blocks are allowed within export function models.</entry>
+    <entry key="InvalidBlockConnectToIRTOutportMdlRef">Block ''{0}'' input port {1,number,integer} is connected to a Terminate Function block inside Model block ''{2}'' via output port {3,number,integer}. Only virtual blocks such as Outport, Goto blocks, etc., are allowed to connect to the output ports of a Terminate Function block; Connections to Merge blocks are allowed within export function models. If the Model block resides in the topmost model hierarchy and is referencing an export function model saved in R2016b or later, you can select the option ''{4}'', ''{5}'', or ''{6}'' for the Model block that corresponds to the function type to remove this restriction.</entry>
+    <entry key="InValidInterconnectionBetweenIRT">模块 ''{0}'' 连接到 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块 ''{1}''。在基于速率的模型中，仅允许 Outport 模块连接到 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块的输出端口。</entry>
+    <entry key="InValidInterconnectionBetweenIRTMdlRef">模块 ''{0}'' 连接到 Model 模块 ''{1}'' 内的 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块。仅允许 Outport 模块连接到 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块的输出端口；在导出函数模型中允许连接到 Merge 模块。如果 Model 模块位于模型层次结构的最顶层，并且它引用使用 R2016b 或更高版本保存的导出函数模型，则可以为对应于函数类型的 Model 模块选择选项 ''{2}''、''{3}''、''{4}'' 或 ''{5}'' 以取消此限制。</entry>
+    <entry key="InvalidIRTPropForProtectedModelBefore20bOrNeedVirtualBusExp"> Model 模块 ''{0}'' 具有带虚拟总线信号的输入或输出端口，并且引用在 R2020b 之前创建的包含 Initialize Function、Reset Function 或 Terminate Function 模块的受保护模型。不支持此情形。</entry>
+    <entry key="InValidMdlRefInitResetInportBranching">Model 模块 ''{0}'' 引用的模型包含一个根 Inport 模块，该模块连接到了多个目标，其中一个目标是 Initialize Function、Reinitialize Function 或 Reset Function 模块。如果不选择适当的 '模型事件仿真' 选项，此类 Model 模块不能用于基于速率的模型。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'', ''ShowModelReinitializePort'',''on'', ''ShowModelResetPorts'',''on'',''ShowModelTerminatePort'',''on'');&lt;/cmd&gt; &lt;txt&gt;为 Model 模块选择 ''显示模型初始化端口''、''显示模型重新初始化端口''、''显示模型重置端口'' 和 ''显示模型终止端口''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InValidMdlRefInitInportBranching">The Model block ''{0}'' is referencing a model with a root Inport block that is connected to multiple destinations, one of which is an Initialize Function block. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' options.
+    &lt;actions exclusiveFixIts="yes"&gt;
+             &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'');&lt;/cmd&gt;
+               &lt;txt&gt;Select ''Show model initialize port'' and ''Show model terminate port'' for the Model block.&lt;/txt&gt;
+             &lt;/action&gt;
+             &lt;/actions&gt;
+    </entry>
+    <entry key="InValidMdlRefResetInportBranching">The Model block ''{0}'' is referencing a model with a root Inport block that is connected to multiple destinations, one of which is a Reinitialize Function block or a Reset Function block. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' option.
+    &lt;actions exclusiveFixIts="yes"&gt;
+             &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{0}'',''ShowModelReinitializePorts'',''on'', ''ShowModelResetPorts'',''on'');&lt;/cmd&gt;
+               &lt;txt&gt;Select ''Show model reinitialize ports'' and ''Show model reset ports'' for the Model block.&lt;/txt&gt;
+             &lt;/action&gt;
+             &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidMdlRefUnionIRTInput" context="diagnostic">
+    
+    Input port ''{1}'' of Model block ''{0}'' is connected to multiple Initialize, Reset, or Terminate functions ''{2}'' and ''{3}'' inside the referenced model. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' options.
+       &lt;actions exclusiveFixIts="yes"&gt;
+             &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'',''ShowModelResetPorts'',''on'');&lt;/cmd&gt;
+               &lt;txt&gt;Select ''Show model initialize port'', ''Show model reset ports'', and ''Show model terminate port'' for the Model block.&lt;/txt&gt;
+             &lt;/action&gt;
+            &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt;
+                &lt;arg&gt;{4}&lt;/arg&gt;
+            &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidMdlRefUnionIRTOutput" context="diagnostic">
+        
+        不支持连接到多个 Initialize、Reset 或 Terminate 函数 ''{2}'' 和 ''{3}'' 的引用模型内具有输出端口 ''{1}'' 的 Model 模块 ''{0}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'',''ShowModelResetPorts'',''on'');&lt;/cmd&gt; &lt;txt&gt;为 Model 模块选择 ''显示模型初始化端口''、''显示模型重置端口'' 以及 ''显示模型终止端口''。&lt;/txt&gt; &lt;/action&gt; &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidInitResetTermInportBranchingWithSimulinkFunction">根 Inport 模块 ''{0}'' 连接到多个目标，其中一个是 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function。此类 Inport 模块无法连接到 Simulink Function 模块 ''{1}''。</entry>
+    <entry key="InValidIRTConnection1">Invalid connection from block ''{0}'' to block ''{1}''.</entry>
+    <entry key="InValidIRTConnection2">Invalid connection from block ''{0}'' to block ''{1}'' input port {2,number,integer}.</entry>
+    <entry key="InValidIRTConnection3">Invalid connection from block ''{0}'' &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; to block ''{2}''.</entry>
+    <entry key="InValidIRTConnection4">Invalid connection from block ''{0}'' &lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;output port {1,number,integer}&lt;/sldiag&gt; to block ''{2}'' input port {3,number,integer}.</entry>
+    <entry key="InvalidInitializeFunctionConnection">Initialize Function blocks cannot be connected to each other.</entry>
+    <entry key="InvalidTerminateFunctionConnection">Terminate Function blocks cannot be connected to each other.</entry>
+    <entry key="InvalidResetFunctionConnection">Reset Function blocks with the same identifier cannot be connected to each other.</entry>
+    <entry key="InvalidInitializeFunctionAsDst">Initialize Function 模块输入端口无法连接到 Reinitialize Function、Reset Function 或 Terminate Function 输出端口。</entry>
+    <entry key="InvalidTerminateFunctionAsSrc">Terminate Function 模块输出端口无法连接到 Initialize Function、Reinitialize Function 或 Reset Function 输入端口。</entry>
+    <entry key="InitResetTermEventMustMergeWithOtherRate">Merge 模块 ''{0}'' 的所有源都来自 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function。这是不允许的。</entry>
+    <entry key="InitTermFunctionDoesNotSupportCPPCodeGen">在包含 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块的模型中，不支持使用 C++ 接口生成代码。</entry>
+    <entry key="InitTermFunctionDoesNotSupportRsimAndAsap2Targets">在包含 Initialize Function、Reinitialize Function、Reset Function 或 Terminate Function 模块的 ''{0}'' 等模型中，不支持使用 rsim、asap2 或 RTW S-Function 目标生成代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;configset.internal.open(''{0}'',''SystemTargetFile'')&lt;/cmd&gt; &lt;txt&gt;将 ''系统目标文件'' 设置为不同于 rsim.tlc、rtwsfcn.tlc 或 asap2.tlc 的文件&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="PeriodicEventPortTsMismatch">Periodic event &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;input port ''{0}''&lt;/sldiag&gt; of Model block ''{1}'' has specified a discrete sample time {2}. Therefore, it must be driven by a signal with a discrete sample time that can provide enough resolution. However, it is driven by a sample time of {3}, and the specified sample time is not an integral multiple of it.
+    </entry>
+    <entry key="InvRateBlkInIRTSubsys">Block ''{0}'' has a sample time which is not permitted in ''{1}''.</entry>
+    <entry key="InvalidBlockRateinIRTSubsys">The block ''{0}'' has a sample time of ''{1}''. Only constant (inf) or inherited (-1) sample times are allowed in Initialize, Reinitialize, Reset or Terminate Functions.</entry>
+    <entry key="InitTermFunctionDoesNotSupportCustomCode">Addition of custom initialization and custom termination code using the 'Configuration Parameters &gt; Code Generation &gt; Custom Code' dialog is not supported in models containing the Initialize, Reinitialize, Reset or Terminate Function blocks.</entry>
+    <entry key="ModelBlockNoTerminatePortForTermInput">除了 Model 模块 ''{2}'' 的选项 ''{1}'' 之外，还必须选择选项 ''{0}''，因为其&lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{2}"&gt;输入端口 {3,number,integer}&lt;/sldiag&gt; 连接到引用模型内的一个 Terminate Function 模块。</entry>
+    <entry key="ModelBlockNoTerminatePortForTermOutput">除了 Model 模块 ''{2}'' 的选项 ''{1}'' 之外，还必须选择选项 ''{0}''，因为其&lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{2}"&gt;输出端口 {3,number,integer}&lt;/sldiag&gt; 连接到引用模型内的一个 Terminate Function 模块。</entry>
+    <entry key="BIMO" context="error">
+        
+          &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="EnableBIMOSetting" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', ''AllowMultiTaskInputOutput'', ''on'');&lt;/cmd&gt; &lt;txt&gt;对模型 ''{0}'' 启用配置参数 '允许多个任务访问输入和输出'。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="IRTInportBranching" context="diagnostic">
+        
+          Branching the output port of block ''{0}'' that is connected to Initialize Function ''{1}'' is not supported.
+          &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt;
+              &lt;arg&gt;{2}&lt;/arg&gt;
+            &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+        
+    </entry>
+    <entry key="RootInportBranchingToDifferentInitResetTermEvents" context="diagnostic">
+        Simultaneously connecting the root Inport block ''{0}'' to more than one Initialize, Reset or Terminate Function blocks that correspond to different events is not supported.
+          &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt;
+              &lt;arg&gt;{1}&lt;/arg&gt;
+            &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+        
+    </entry>
+    <entry key="InvalidResolutionForControllableSampleTime">The resolution of a controllable sample time should be a positive finite number, but in ''{0}'', ''{1}'' was specified.</entry>
+    <entry key="IRTInportMustInheritSampleTime">Block ''{0}'' connecting to Initialize, Reinitialize, Reset or Terminate Functions ''{1}'' must have an inherited (-1) sample time.</entry>
+    <entry key="IRTRootOutportMustInheritSampleTime">根 Outport 模块 ''{0}'' 必须具有继承的(-1)采样时间，因为它连接到 Initialize Function、Reset Function 或 Terminate Function 模块的输出。</entry>
+    <entry key="DisallowControllableSampleTimeOwnerInsideCondExecSubsys">Block ''{0}'' has a controllable sample time in the conditionally executed subsystem ''{1}''. Blocks having controllable sample time are not supported inside conditionally executed subsystems.</entry>
+    <entry key="DisallowControllableSampleTimeInheritedInsideCondExecSubsys">Block ''{0}'' in the conditionally executed subsystem ''{1}'' inherits a controllable sample time. Controllable sample time is not supported for driving blocks inside conditionally executed subsystems.</entry>
+    <entry key="ControllableSampleTimeOnlySupportSingleTaskingMode" context="diagnostic">模块 ''{0}'' 具有可控采样时间，但模型 ''{1}'' 没有使用单任务模式。当前，可控采样时间只能在单任务模式下使用。</entry>
+    <entry key="InvMergeConnMultAyncSrcTs">Inconsistent sample times detected for signals driving the Merge block ''{0}''. In this model, the Merge block cannot be driven by multiple asynchronous rates.</entry>
+    <entry key="ControllableSampleTimeOnlySupportSingleRateSFcn">S-function ''{0}'' specifies a controllable sample time. Currently, controllable sample time can only be used in a single rate S-function.</entry>
+    <entry key="ControllableSampleTimeOnlySupportFixedStepSolver">Block ''{0}'' has a controllable sample time, but the model ''{1}'' is using a variable-step solver. Currently, controllable sample times can only be used with a fixed-step solver.</entry>
+    <entry key="ControllableSampleTimeNotSupportCPPCodeGen">Block ''{0}'' specified a controllable sample time. Currently, code generation using the C++ interface is not supported in models containing a controllable sample time.</entry>
+    <entry key="ControllableSampleTimeNotSupportTopXILSimulation">Block ''{0}'' specified a controllable sample time. Currently, Top-model SIL or PIL simulation mode does not support controllable sample time.</entry>
+    <entry key="ControllableSampleTimeNotSupportMdlRefXILSimulation">The Model block ''{0}'' has controllable discrete sample times. Currently, when the Model block is in Software-in-the-Loop (SIL) or Processor-in-the-Loop (PIL) simulation mode, controllable sample time is not supported.</entry>
+    <entry key="ControllableSampleTimeCannotDriveSFcnInputPort">&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;Input port {0,number,integer}&lt;/sldiag&gt; of S-function ''{1}'' is driven by a controllable sample time. Currently, controllable sample time cannot be inherited by a S-function that has more than one sample time or uses PORT_BASED_SAMPLE_TIMES.</entry>
+    <entry key="ControllableSampleTimeCannotBeInheritedBySFcnOutputPort">&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;Output port {0,number,integer}&lt;/sldiag&gt; of S-function ''{1}'' inherits a controllable sample time. Currently, controllable sample time cannot be inherited by a S-function that has more than one sample time or uses PORT_BASED_SAMPLE_TIMES.</entry>
+    <entry key="UnionSampleTimeCannotDriveSFcnInputPort">Invalid hybrid sample time at &lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;Input port {0,number,integer}&lt;/sldiag&gt; of S-Function ''{1}''. Hybrid sample time is not supported by S-Functions that are multirate or use port-based sample times.</entry>
+    <entry key="UnionSampleTimeCannotBeInheritedBySFcnOutputPort">Invalid hybrid sample time at &lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;Output port {0,number,integer}&lt;/sldiag&gt; of S-Function ''{1}''. Hybrid sample time is not supported by S-Functions that are multirate or use port-based sample times.</entry>
+    <entry key="InvalidPeriodicSampletimeConstraintForControllableSampleTime">
+      
+               Block ''{0}'' has a controllable sample time, but the parameter "Periodic sample time
+               constraint" in model ''{1}'' is configured to "Ensure sample time independent" or "Specified", which
+               is not allowed.
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{1}'',''SampleTimeConstraint'',''unconstrained'')&lt;/cmd&gt;
+               &lt;txt&gt;Set ''Configuration Parameters &gt; Solver &gt; Periodic sample time constraint'' to "Unconstrained".&lt;/txt&gt;
+               &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="CtrlRateErrorStatus">以可控采样时间运行模块 ''{0}'' 时报告错误:\n{1}</entry>
+    <entry key="InvExecutionDomainContentsGeneric">时域 ''{0}'' 包含无效内容 ''{1}''。</entry>
+    <entry key="InvContinuousExecutionTypeInPeriodicAtomic">系统 ''{0}'' 的连续时域无效。连续时域在周期性原子子系统 ''{1}'' 中无效。</entry>
+    <entry key="InvContinuousExecutionTypeInExplicitPartition">对系统 ''{0}'' 指定了一个连续执行域。分区子系统 ''{1}'' 内部不允许连续执行域。</entry>
+    <entry key="InvExecutionTypeInSubsystemWithTriggerPort">''{0}'' 的连续时域设定无效，因为子系统 ''{1}'' 包含触发端口。</entry>
+    <entry key="InvVariableRateInsideContinuousDomainFixedStep">当使用定步长求解器时，连续域 ''{1}'' 内不支持具有可变采样时间的模块 ''{0}''。</entry>
+    <entry key="InvBlkInsideContinuousDomainFixedStep">当使用定步长求解器时，连续时域 ''{1}'' 内不支持模块 ''{0}''。</entry>
+    <entry key="IgnoreSpecifiedPriorityForSTModes">Model ''{0}'' is currently in Single Tasking Mode. The priority specified in the first rate will be used for all the rates specified in the 'SampleTimeProperty' parameter in the Model Configuration Parameters. The priorities from the other rates will be ignored.</entry>
+    <entry key="CtrlRateFeatureDisabled">初始化模块 ''{0}'' 时出错。''可控速率'' 功能已禁用</entry>
+    <entry key="InvContinuousStateInsideDiscreteDomain">Block ''{0}'' has continuous states. Only blocks with discrete states are valid inside discrete domain for ''{1}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{2}'',''ExecutionDomainType'',''Deduce'');&lt;/cmd&gt;
+    &lt;txt&gt;Set the execution domain 'Type' parameter for ''{2}'' to 'Deduce from contents.'&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{2}'',''SetExecutionDomain'',''Off'');&lt;/cmd&gt;
+    &lt;txt&gt;Clear the 'Set Domain Specification' parameter for ''{2}''&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="suggestion"&gt;
+    &lt;txt&gt;Replace the block ''{3}'' with a suitable discrete block.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;</entry>
+    <entry key="InvContinuousRateInsideDiscreteDomain" context="diagnostic">Block ''{0}'' has an invalid sample time setting for discrete time domain ''{1}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{1}'',''ExecutionDomainType'',''Deduce'');&lt;/cmd&gt;
+    &lt;txt&gt;Set the execution domain 'Type' parameter for ''{1}'' to 'Deduce from contents.'&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{1}'',''SetExecutionDomain'',''Off'');&lt;/cmd&gt;
+    &lt;txt&gt;Clear the 'Set Domain Specification' parameter for ''{1}''&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="suggestion"&gt;
+    &lt;txt&gt;Set the sample time for  ''{0}'' to a valid discrete sample time, if possible.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="InvContinuousRateInsideExplicitlyPartitionedDiscreteDomain" context="diagnostic">模块 ''{0}'' 的离散分区 ''{1}'' 的采样时间设置无效。</entry>
+    <entry key="InvContinuousDomainInsideDiscreteDomain">''{0}'' is located inside ''{1}'' which has a discrete domain. A continuous time domain for ''{2}'' is not allowed inside a discrete time domain. To avoid this error, set the 'Domain' parameter for ''{3}'' to 'Deduce from contents' or 'Discrete'.</entry>
+    <entry key="InvContinuousMdlRefInsideDiscreteDomain">Block ''{0}'' references a model that is configured as a continuous domain and is not allowed inside the discrete time domain ''{1}''.</entry>
+    <entry key="InvZOHBlkInsideDiscreteDomain">The Zero Order Hold Block ''{0}'' is not supported inside a domain ''{1}'' that is specified to 'Discrete'. To avoid this error, change the Domain parameter for ''{2}'' to 'Deduce from contents' or disable the 'Set execution domain' parameter.</entry>
+    <entry key="InvBlkInsideDiscreteDomain">Block ''{0}'' is not supported inside a domain ''{1}'' that is specified to 'Discrete'. To avoid this error, change the Domain parameter for ''{2}'' to 'Deduce from contents' or disable the 'Set execution domain' parameter.</entry>
+    <entry key="InvDiscreteStateInsideContinuousDomain">Block ''{0}'' has discrete states. Only blocks with continuous states are valid inside continuous domain for ''{1}''.</entry>
+    <entry key="InvDiscreteRateInsideContinuousDomain">Block ''{0}'' has an invalid sample time for continuous time domain ''{1}''.</entry>
+    <entry key="InvDiscreteRateInsideExplicitlyPartitionedContinuousDomain" context="diagnostic">模块 ''{0}'' 的连续分区 ''{1}'' 的采样时间无效。</entry>
+    <entry key="InvBlkDisallowContinuousInsideContinuousDomain">Block ''{0}'' is not configured to allow continuous sample time and is not supported inside a continuous time domain ''{1}''.</entry>
+    <entry key="InvDiscreteDomainInsideContinuousDomain">Discrete time domain for ''{0}'' is not allowed inside ''{1}'' with a continuous time domain.</entry>
+    <entry key="InvDiscreteMdlRefInsideContinuousDomain">Block ''{0}'' references a model that is configured as a discrete time domain and is not allowed inside the continuous time domain ''{1}''.</entry>
+    <entry key="InvExpFcnModelBlockInContinuousDomain">Block ''{0}'' references an export-function model and is not supported inside the continuous time domain ''{1}''.</entry>
+    <entry key="InvSampleTimeIndependentModelBlockInContinuousDomain">Block ''{0}'' references sample time independent model and is not allowed inside the continuous time domain ''{1}''.</entry>
+    <entry key="InvBlkInsideContinuousDomain">Block ''{0}'' is not supported inside a domain ''{1}'' that is specified to 'Continuous'. To avoid this error, change the Domain parameter for ''{2}'' to 'Deduce from contents' or disable the 'Set execution domain' parameter.</entry>
+    <entry key="DomainSpecificationReadOnlyBadge">域设定标记为只读，因为您不能为 ''{0}'' 指定域。有关详细信息，请参阅&lt;a href="matlab:helpview(fullfile(docroot,''simulink'',''ug'',''subsystem-domain-specification.html#read_only_badge''))"&gt;文档&lt;/a&gt;。</entry>
+    <entry key="ContinuousDomainNotSupported">Continuous time domain for ''{0}'' is not supported.</entry>
+    <entry key="InvOffsetWhenScalingDiscreteRates">Block ''{0}'' specifies an offset {1}. Offsets are not supported for a model when the "Scale discrete rates" is enabled on the configuration pane. Disable the "Scale discrete rates" option or modify the periodic sample times in the model to not have offsets.</entry>
+    <entry key="ScalingDiscreteRatesNotSupportedInExpFcnMdl"> 导出函数模型 {0} 不支持速率缩放。</entry>
+    <entry key="InvRootDataflowDomain">Dataflow domains are not supported at the root level of a block diagram.</entry>
+    <entry key="NoDataflowDomainAndControlBlocks">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported for subsystems with control blocks.</entry>
+    <entry key="NoDataflowDomainForObserver">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported in Observer subsystems.</entry>
+    <entry key="InvDataflowDomainForStateflow">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported for MATLAB Function blocks, Stateflow Charts, and Truth Tables.</entry>
+    <entry key="InvDataflowDomainForIRT">Invalid domain specification for subsystem ''{0}''. Dataflow domains are not supported for Initialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InvDataflowDomainInsideContinuousDomain">Dataflow domain for ''{0}'' is not allowed inside ''{1}'' with a continuous time domain.</entry>
+    <entry key="InvDiscreteDomainInsideDataflowDomain">''{0}'' is located inside ''{1}'' which has a dataflow domain. A discrete time domain for ''{2}'' is not allowed inside a dataflow domain. To avoid this error, set the 'Domain' parameter for ''{3}'' to 'Deduce from contents' or 'Dataflow'.</entry>
+    <entry key="InvContinuousDomainInsideDataflowDomain">Continuous time domain for ''{0}'' is not allowed inside ''{1}'' with a dataflow domain.</entry>
+    <entry key="InsertedSISOBlockAtInport">已在模块 ''{2}'' 之前插入 {0} 模块 ''{1}''。</entry>
+    <entry key="NotInsertedSISOBlockAtInport">未执行任何操作，因为已在模块 ''{1}'' 之前插入 {0} 模块。</entry>
+    <entry key="SignalConversionBlockInsertionNeededForIR"> 模块 ''{1}'' 的&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;输入端口 {0,number,integer}&lt;/sldiag&gt; 由多个来自 Initialize Function、Reinitialize Function 或 Reset Function 的输出驱动，需要信号转换。请在此输入端口前插入一个 Signal Conversion 模块。</entry>
+    <entry key="UnableToPropagateSampleTimeForContinuousExecutionDomain">
+    无法从具有执行域设定的 Subsystem 模块 ''{1}'' 的输出端口 {0,number,integer} 传播连续采样时间，因为模块 ''{2}'' 和 Outport 模块 ''{3}'' 之间的路径只有虚拟模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''insertSISOBlockAtInport'',''built-in/signalconversion'',''SC'',1,''{3}'');&lt;/cmd&gt; &lt;txt&gt;请在 Outport 模块 ''{3}'' 之前的 Subsystem 模块 ''{1}'' 中插入 Signal Conversion 模块。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;取消设置 Subsystem 模块 ''{1}'' 的执行域。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;在子系统 ''{2}'' 之外重排模块 ''{2}'' 和 Outport 模块 ''{3}'' 之间的路径。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="UnableToPropagateSampleTimeForDiscreteExecutionDomain">
+    无法从具有执行域设定的 Subsystem 模块 ''{1}'' 的输出端口 {0,number,integer} 传播离散采样时间，因为模块 ''{2}'' 和 Outport 模块 ''{3}'' 之间的路径只有虚拟模块。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''insertSISOBlockAtInport'',''built-in/signalconversion'',''SC'',1,''{3}'');&lt;/cmd&gt; &lt;txt&gt;请在 Outport 模块 ''{3}'' 之前的 Subsystem 模块 ''{1}'' 中插入 Signal Conversion 模块。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;取消设置 Subsystem 模块 ''{1}'' 的执行域。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;在子系统 ''{2}'' 之外重排模块 ''{2}'' 和 Outport 模块 ''{3}'' 之间的路径。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AdditionalEntryPointInCodegenForKnownBlock">
+    Simulink was unable to replace the Parameter Change Event sample time of block ''{0}'' during code generation of tunable parameters for model ''{1}'' with a sample time that exists during simulation.
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;set_param(''{0}'', ''SampleTime'', ''[-1,0]'');&lt;/cmd&gt;
+                &lt;txt&gt;Set the sample time of block ''{0}'' to Inherited ([-1,0]).&lt;/txt&gt;
+            &lt;/action&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;set_param(''{1}'', ''DefaultParameterBehavior'', ''Inlined'');&lt;/cmd&gt;
+                &lt;txt&gt;Set the ''Code Generation &gt; Optimization &gt; Default Parameter Behavior'' of model ''{1}'' to ''Inlined''&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    </entry>
+    <entry key="AdditionalEntryPointInCodegenForBlockInReferencedModel">
+    Simulink was unable to replace the Parameter Change Event sample time of block ''{0}'' in referenced model ''{1}'' during code generation of tunable parameters for model ''{2}'' with a sample time that exists during simulation because the fixed step sample time of the referenced model doesn't exist in the top model.
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;set_param(''{0}'', ''SampleTime'', ''[-1,0]'');&lt;/cmd&gt;
+                &lt;txt&gt;Set the sample time of block ''{0}'' to Inherited.&lt;/txt&gt;
+            &lt;/action&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;set_param(''{1}'', ''FixedStep'', get_param(''{2}'', ''FixedStep''));&lt;/cmd&gt;
+                &lt;txt&gt;Set the fixed step size of referenced model ''{1}'' the same as top model ''{2}''.&lt;/txt&gt;
+            &lt;/action&gt;
+            &lt;action type="suggestion"&gt;
+                &lt;txt&gt;Set the ''Solver &gt; Solver Details &gt; Tasking and sample time options &gt; Periodic sample time constraint'' to ''Unconstrained''.&lt;/txt&gt;
+            &lt;/action&gt;
+            &lt;action type="fixit"&gt;
+                &lt;cmd&gt;set_param(''{1}'', ''DefaultParameterBehavior'', ''Inlined'');set_param(''{2}'', ''DefaultParameterBehavior'', ''Inlined'');&lt;/cmd&gt;
+                &lt;txt&gt;Set the ''Code Generation &gt; Optimization &gt; Default Parameter Behavior'' of referenced ''{0}'' and top ''{1}'' models to ''Inlined''&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    </entry>
+    <entry key="InvSampleTimeScopeInExpFcnMdl">
+      
+               Scope block ''{0}'' has an invalid sample time. Scopes in an export function model should have inherited(-1) sample time.
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{0}'',''SampleTime'',''[-1]'')&lt;/cmd&gt;
+               &lt;txt&gt;Set sample time for block ''{0}'' to '-1'&lt;/txt&gt;
+               &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvalidFcnCallNameReservedImplicitSampleTime" context="error">根级函数调用 Inport 模块 ''{1}'' 必须使用除 ''{0}'' 之外的函数调用名称。以 _task 开头并后跟数字的名称为保留名称，用于采样时间分区。 </entry>
+    <entry key="InvalidOutputPortInPST" context="diagnostic">
+      
+        根 Outport 模块 ''{0}'' 具有固定采样时间，在具有可调参数的代码生成中不受支持。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit" id="InlineParams" retvalue="false"&gt; &lt;cmd&gt;set_param(bdroot, 'InlineParams', 'on');&lt;/cmd&gt; &lt;txt&gt;将默认参数行为设置为内联。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="DiscreteSampleTime" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''{1}'');&lt;/cmd&gt; &lt;txt&gt;将模块 ''{0}'' 的采样时间设置为离散采样时间 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidCoefficientSampleTime" context="diagnostic">Inconsistent sample times propagated to the input ports of block ''{0}''. Sample time {2} propagated to input port {1,number,integer} is less than the sample time {3} propagated to input port 1. Specify the sample time on the source blocks for input port {1,number,integer} to a value that is greater than or equal to sample time {3} propagated to input port 1. </entry>
+    <entry key="InvalidStorageClassWithTunableParameterRate" context="diagnostic">
+  
+        Simulink 模块 ''{0}'' 通过具有不可优化存储类的信号连接到多个目标模块。不支持将此配置用于具有可调参数的代码生成。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit" id="DiscreteSampleTime" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''{1}'');&lt;/cmd&gt; &lt;txt&gt;请将模块 ''{0}'' 的采样时间设置为离散采样时间 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="InvalidStorageClassWithParameterOrContRateDst" context="diagnostic">
+  
+        Simulink 模块 ''{0}'' 通过具有不可优化存储类的信号连接到具有连续或参数速率的目标模块。不支持将此配置用于具有可调参数的代码生成。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit" id="DiscreteSampleTime" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''{1}'');&lt;/cmd&gt; &lt;txt&gt;请将模块 ''{0}'' 的采样时间设置为离散采样时间 ''{1}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="SampleTimeValueNA" context="uistring">N/A</entry>
+    <entry key="SampleTimeValueInf" context="uistring">Inf</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2017-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="gpucoder">
+  <message>
+    <!-- Revised General GPU Code Generation Errors/Warnings -->
+    <entry key="ZerosOrOnesUsedInsteadOfCoderNullCopy">When the variable is expected to be fully written to, use coder.nullcopy() to avoid unnecessary memory initialization.</entry>
+    <entry key="NoKernelFunPragma">Consider adding the coder.gpu.kernelfun pragma to the function ''{0}'' to enable automatic kernel creation.</entry>
+    <entry key="NoKernelPragmasFound">Unable to find coder.gpu.kernel or coder.gpu.kernelfun pragma in the entry-point function. Performing code generation with an implicit coder.gpu.kernelfun pragma in the top-level entry-point function.</entry>
+    <entry key="GpucoderSortWarning">To improve performance, consider using the gpucoder.sort function.</entry> 
+    <entry key="DiagnosticReportGenerated">Found warnings during code generation. For more information, see 'Code Insights' and 'All Messages' tabs in the report.</entry>
+    <entry key="LargeLocalMemoryUsagePerThread">Kernel ''{0}'' uses a large amount of thread local memory. Rewriting the MATLAB loop with fewer local variables can improve the kernel performance.</entry> 
+    <entry key="ResampleConstInputWarning">For improved performance, all arguments except the input signal 'x' should be compile-time constants.</entry>   
+
+    <!-- Messages related to GPU memory lowering and memory performance -->
+    <entry key="MemoryLoweringGlobalVarWarning">Accessing global or persistent variables on GPU can result in superfluous data copies between CPU and GPU. Avoid using such variables if possible.</entry>
+    <entry key="MemoryLoweringAliasedVarWarning">GPU Coder is unable to efficiently insert data copies between CPU and GPU for variables that are aliased. For best performance, avoid accessing handle objects and dynamically-sized data on GPU.</entry>
+    <entry key="MemoryLoweringTmpVarWarning">GPU Coder has created a temporary variable to store GPU data of a memory location that is not directly mappable to the GPU. Such variables can impact runtime performance.</entry>
+    <entry key="MemoryLoweringUnsupportedTypeError">GPU code generation failed due to a variable with a type not supported for GPU access.</entry> 
+
+    <entry key="GpucoderRectifyStereoImagesWarning">GPU code generation for stereoParams argument is not optimized. Consider using projective transformations for better code generation.</entry>
+    
+    <entry key="Ordfilt2InputVariableDimensions">GPU code generation for variable input sizes is not optimized. Generating CPU (C/C++) code instead. To generate GPU optimized code, consider using constant inputs.</entry>
+    <entry key="Ordfilt2StackLimit">For better performance from the generated code, consider setting the StackLimitPerThread property in the GPU configuration to Inf.</entry>
+    <entry key="Ordfilt2DomainSize">GPU code generation is not optimized for domain sizes greater than 11-by-11.</entry>
+
+    <!-- Dynamic parallelism -->
+    <entry key="MaxKernelPragmaDepthExceeded">Kernel pragmas on loops that exceed the maximum kernel launch depth may not be honored.</entry>
+    
+    <!-- imadjust -->
+    <entry key="ImadjustInputVardims">GPU code generation for variable input sizes is not optimized. To generate optimized GPU code, consider using fixed-size inputs.</entry>
+
+    <entry key="Imreconstruct3DInput">GPU code generation is not optimized for custom connectivities and 3-D inputs.</entry>
+    
+    <entry key="ImwarpTransformationObjectNotConstant">affine2d/projective2d transformation object must be constant to generate optimized GPU code.</entry>
+    <entry key="ImwarpVariableDimensions">GPU code generation for variable input sizes is not optimized. To generate optimized GPU code, consider using fixed-size inputs.</entry>
+    
+    <!--- For pcdownsample -->
+    <entry key="PcdownsampleUnsupportedMethod">GPU code generation for nonUniformGridSample method is not optimized.</entry>
+    <entry key="PcdownsampleUnsupportedRandomNumberGenerator">GPU code generation supports 'twister', 'combRecursive', or 'philox' random number generators. Using the default random number generator 'philox'.</entry>
+    
+    <!-- Diagnostic errors -->
+    <entry key="InvalidMessageIdentifier">Invalid message identifier.</entry>
+    <entry key="InvalidWarningLevel">Warning level must be an integer that is greater than or equal to zero.</entry>
+  
+    <!-- PA Diagnostic -->
+      <entry key="UseGpuInput">First use of input ''{0}'' is on GPU, causing a memory copy from CPU to GPU. Avoid the copy by specifying the input as a GPU type or gpuArray object.</entry>
+      <entry key="KernelDiagnosticsNotEnoughParallelism">Kernel takes ''{0}'' of total execution time and launches few threads. This launch pattern indicates each thread performs extensive computation, and the kernel does not have enough parallelism.</entry>
+      <!-- loop -->
+      <entry key="MemoryDiagnosticsRepeatedMemoryCopyInsideLoop">Generated code copies variables ''{0}'' between the CPU and GPU in every iteration of the loop. This action requires GPU-CPU synchronization and reduces the application performance.</entry>
+      <entry key="LongRunningLoopUnknownReason">Loop runs on the CPU and contributes ''{0}'' to the application time. Consider parallelizing the loop to offload it to GPU and improve its performance.</entry>
+      <entry key="LongCPULoopHasLargeMemcpy">Loop runs on CPU forcing a GPU-CPU synchronization in the loop. Parallelizing the loop may remove GPU-CPU synchronization.</entry>
+      <entry key="LongRunningLoopLargeIteration">Loop has ''{0}'' iterations and significantly contributes to the total time. Parallelizing the loop may improve performance. </entry>
+      <entry key="KernelLaunchOverheadLargeInLoop">Loop launches a large number of trivial kernels with high overhead and low compute. This situation occurs when child loops are parallelized inside a nested loop. Parallelizing the parent loop may improve the performance.</entry>
+      <!-- DeepLearning Diagnostic -->
+      <entry key="DLNetworkSlow">Deep learning network takes ''{0}'' of the application runtime. For more information, refer to Deep Learning Dashboard.</entry>
+      <entry key="DLNetworkEffcy">Deep learning network is running efficiently, no suggestion found.</entry>
+      <entry key="DLLayerLowEffcyLowUt">Layer ''{0}'' takes ''{1}'' of the network execution time with low GPU utilization. Consider moving more of the computation to GPU.</entry>
+      <entry key="DLLayerLowEffcyHighUt">Layer ''{0}'' takes ''{1}'' of network execution time. The layer fully utilizes the GPU but GPU computation is the bottleneck.</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,27 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.desktop.editor.languageSupport": [{
+        "languageName": "Verilog",
+        "mimeType": "text/x-verilog",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["v", "sv"],
+        "commentStyle": {
+            "lineComment": "//"
+        },
+        "jsModule": "verilogLanguageRegistry"
+    }],
+    "mw.fileTypes": {
+        "groups": {
+            "verilogCodeFiles": ["v", "sv"]
+        },
+        "open": {
+            "groups.verilogCodeFiles": [{
+                "callback": "editor_open_action/openAction",
+                "callbackType": "jsModule"
+            }, {
+                "callback": "edit",
+                "callbackType": "matlab"
+            }]
+        }
+    }
+}

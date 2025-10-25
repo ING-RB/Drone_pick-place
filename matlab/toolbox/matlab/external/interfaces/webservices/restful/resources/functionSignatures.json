@@ -1,0 +1,78 @@
+{
+    "weboptions":
+    {
+      "inputs":
+      [
+        {"name":"name", "kind":"properties", "type":"weboptions"}
+      ]
+    },
+    "webread":
+    {
+      "inputs":
+      [
+        {"name":"url", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"repeating":true, "kind":"ordered", "tuple":
+          [
+            {"name":"QueryName", "type":[["char", "row"], ["string", "scalar"]]},
+            {"name":"QueryValue", "type":[["char", "row"], ["string", "scalar"]]}
+          ]
+        },
+        {"name":"options", "kind":"ordered", "type":["weboptions", "scalar"]}
+      ]
+    },
+    "webwrite":
+    {
+      "inputs":
+      [
+        {"name":"url", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"name":"data", "kind": "required"},
+        {"name":"options", "kind":"ordered", "type":["weboptions", "scalar"]}
+      ]
+    },
+    "webwrite":
+    {
+      "inputs":
+      [
+        {"name":"url", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"repeating":true, "kind":"required", "tuple":
+          [
+            {"name":"PostName", "type":[["char", "row"], ["string", "scalar"]]},
+            {"name":"PostValue", "type":[["char", "row"], ["string", "scalar"]]}
+          ]
+        },
+        {"name":"options", "kind":"ordered", "type":["weboptions", "scalar"]}
+      ]
+    },
+    "websave":
+    {
+      "inputs":
+      [
+        {"name":"filename", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"name":"url", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"name":"options", "kind":"ordered", "type":["weboptions", "scalar"]}
+      ],
+      "outputs":
+      [
+        {"name": "outfilename", "type":["char", "row"]}
+      ]
+    },
+    "websave":
+    {
+      "inputs":
+      [
+        {"name":"filename", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"name":"url", "kind":"required", "type":[["char", "row"], ["string", "scalar"]]},
+        {"repeating":true, "kind":"ordered", "tuple":
+          [
+            {"name":"QueryName", "type":[["char", "row"], ["string", "scalar"]]},
+            {"name":"QueryValue", "type":[["char", "row"], ["string", "scalar"]]}
+          ]
+        },
+        {"name":"options", "kind":"ordered", "type":["weboptions", "scalar"]}
+      ],
+      "outputs":
+      [
+        {"name": "outfilename", "type":["char", "row"]}
+      ]
+    }
+}

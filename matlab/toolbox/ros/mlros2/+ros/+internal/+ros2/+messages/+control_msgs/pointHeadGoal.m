@@ -1,0 +1,40 @@
+function [data, info] = pointHeadGoal
+%PointHeadGoal gives an empty data for control_msgs/PointHeadGoal
+
+% Copyright 2019-2021 The MathWorks, Inc.
+data = struct();
+data.MessageType = 'control_msgs/PointHeadGoal';
+[data.target, info.target] = ros.internal.ros2.messages.geometry_msgs.pointStamped;
+info.target.MLdataType = 'struct';
+[data.pointing_axis, info.pointing_axis] = ros.internal.ros2.messages.geometry_msgs.vector3;
+info.pointing_axis.MLdataType = 'struct';
+[data.pointing_frame, info.pointing_frame] = ros.internal.ros2.messages.ros2.char('string',1,NaN,0);
+[data.min_duration, info.min_duration] = ros.internal.ros2.messages.builtin_interfaces.duration;
+info.min_duration.MLdataType = 'struct';
+[data.max_velocity, info.max_velocity] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+info.MessageType = 'control_msgs/PointHeadGoal';
+info.constant = 0;
+info.default = 0;
+info.maxstrlen = NaN;
+info.MaxLen = 1;
+info.MinLen = 1;
+info.MatPath = cell(1,19);
+info.MatPath{1} = 'target';
+info.MatPath{2} = 'target.header';
+info.MatPath{3} = 'target.header.stamp';
+info.MatPath{4} = 'target.header.stamp.sec';
+info.MatPath{5} = 'target.header.stamp.nanosec';
+info.MatPath{6} = 'target.header.frame_id';
+info.MatPath{7} = 'target.point';
+info.MatPath{8} = 'target.point.x';
+info.MatPath{9} = 'target.point.y';
+info.MatPath{10} = 'target.point.z';
+info.MatPath{11} = 'pointing_axis';
+info.MatPath{12} = 'pointing_axis.x';
+info.MatPath{13} = 'pointing_axis.y';
+info.MatPath{14} = 'pointing_axis.z';
+info.MatPath{15} = 'pointing_frame';
+info.MatPath{16} = 'min_duration';
+info.MatPath{17} = 'min_duration.sec';
+info.MatPath{18} = 'min_duration.nanosec';
+info.MatPath{19} = 'max_velocity';

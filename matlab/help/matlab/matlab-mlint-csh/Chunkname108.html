@@ -1,0 +1,15 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer returns this message because it appears the code accesses the
+                    value of the named variable before it sets that variable. Sometimes, this
+                    message results from an error in the code logic or a typographical error. Other
+                    times, Code Analyzer generates this message incorrectly because MATLAB has
+                    functions, such as <code>load</code> and <code><a href="matlab:doc eval" target="_blank">eval</a></code>, which can set new
+                    variables in the workspace without Code Analyzer detecting it.</p><p>This message is incorrect more often than most messages. However, when it is
+                    correct, this message reveals problems that might otherwise cause obscure
+                    run-time bugs in your program.</p><br/><strong>User Action</strong><br/><p>If Code Analyzer generated this message as the result of an error in the code,
+                    fix the error. Otherwise, if Code Analyzer generated this message incorrectly,
+                    do one or more of the following:</p><ul><li><p>Give Code Analyzer (and anyone else reading the program) more
+                            information about where the variable gets set.</p><p> For example, sometimes initializing the variable can remove the
+                            message. </p></li><li><p>Be explicit about which variables are loaded through a <code><a href="matlab:doc load" target="_blank">load</a></code>
+                            command.</p></li><li><p>Simplify complicated program logic for the benefit of both Code
+                            Analyzer and human readers of the program.</p></li><li><p>Suppress the message as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.
+                        </p></li></ul></body></html>

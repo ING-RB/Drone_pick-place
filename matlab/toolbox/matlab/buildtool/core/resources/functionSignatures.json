@@ -1,0 +1,128 @@
+{
+    "buildplan":
+    {
+        "inputs":
+        [
+            {"name":"fcns", "kind":"ordered", "type":"cell"}
+        ],
+        "outputs":
+        [
+            {"name":"plan", "type":"matlab.buildtool.Plan"}
+        ]
+    },
+    "buildtool":
+    {
+        "inputs":
+        [
+            {"name":"taskName", "kind":"flag", "type":["string","choices=[matlab.buildtool.internal.TabCompletion.nameChoices()]"], "repeating":true},
+            {"name":"-continueOnFailure", "kind":"flag", "type":"choices={'-continueOnFailure'}"},
+            {"name":"-parallel", "kind":"flag", "type":"choices={'-parallel'}"},
+            {"name":"-skip", "kind":"flag", "type":"choices={'-skip'}", "repeating":true},
+            {"name":"-buildFile", "kind":"namevalue", "type":"file"},
+            {"name":"-verbosity", "kind":"namevalue", "type":[["choices=string(enumeration('matlab.automation.Verbosity'))"],["string"]]},
+            {"name":"-tasks", "kind":"namevalue", "type":"choices={'all'}"},
+            {"name":"-init", "kind":"flag", "type":"choices={'-init'}"}
+        ]
+    },
+    "matlab.buildtool.Plan._parenReference":
+    {
+        "inputs":
+        [
+            {"name":"plan", "kind":"required", "type":"matlab.buildtool.Plan"},
+            {"name":"taskName", "kind":"required", "type":["string","choices=[plan.allTasks().Name string.empty()]"]}
+        ],
+        "outputs":
+        [
+            {"name": "task", "type":"matlab.buildtool.Task"}
+        ]
+    },
+    "matlab.buildtool.Plan._parenAssign":
+    {
+        "inputs":
+        [
+            {"name":"plan", "kind":"required", "type":"matlab.buildtool.Plan"},
+            {"name":"taskName", "kind":"required", "type":[["string"],["choices=[plan.allTasks().Name string.empty()]"]]}
+        ],
+        "outputs":
+        [
+            {"name": "plan", "type":"matlab.buildtool.Plan"}
+        ]
+    },
+    "matlab.buildtool.Plan.load":
+    {
+        "inputs":
+        [
+            {"name":"fileName", "kind":"ordered", "type":"file=*.m"}
+        ],
+        "outputs":
+        [
+            {"name":"plan", "type":"matlab.buildtool.Plan"}
+        ]
+    },
+    "matlab.buildtool.internal.PlanExtension.files":
+    {
+        "inputs":
+        [
+            {"name":"plan", "kind":"required", "type":"matlab.buildtool.Plan"},
+            {"name":"paths", "kind":"required", "type":[["string"],["file"],["folder"]]}
+        ],
+        "outputs":
+        [
+            {"name":"f", "type":"matlab.buildtool.io.FileCollection"}
+        ] 
+    },
+    "matlab.buildtool.internal.PlanExtension.run":
+    {
+        "inputs":
+        [
+            {"name":"plan", "kind":"required", "type":"matlab.buildtool.Plan"},
+            {"name":"taskName", "kind":"ordered", "type":["string","choices=[plan.allTasks().Name string.empty()]"]},
+            {"name":"taskArgs", "kind":"ordered", "type":"cell"},
+            {"name":"ContinueOnFailure", "kind":"namevalue", "type":["logical","scalar"]},
+            {"name":"Skip", "kind":"namevalue", "type":["string","choices=[plan.allTasks().Name string.empty()]"]}
+        ],
+        "outputs":
+        [
+            {"name":"result", "type":"matlab.buildtool.BuildResult"}
+        ]
+    },
+    "matlab.buildtool.Task":
+    {
+        "inputs":
+        [
+            {"name":"Actions", "kind":"namevalue", "type":[["function_handle"],["matlab.buildtool.TaskAction"],["cell"]]},
+            {"name":"Dependencies", "kind":"namevalue", "type":"string"},
+            {"name":"Description", "kind":"namevalue", "type":"string"},
+            {"name":"Inputs", "kind":"namevalue", "type":[["string"],["file"],["folder"],["matlab.buildtool.io.FileCollection"]]},
+            {"name":"Outputs", "kind":"namevalue", "type":[["string"],["file"],["folder"],["matlab.buildtool.io.FileCollection"]]},
+            {"name":"DisableIncremental", "kind":"namevalue", "type":["logical","scalar"]}
+        ],
+        "outputs":
+        [
+            {"name":"task", "type":"matlab.buildtool.Task"}
+        ]
+    },
+    "matlab.buildtool.Task._dotAssign":
+    {
+        "inputs":
+        [
+            {"name":"task", "kind":"required", "type":"matlab.buildtool.Task"},
+            {"name":"Inputs", "kind":"namevalue", "type":[["string"],["file"],["folder"],["matlab.buildtool.io.FileCollection"]]},
+            {"name":"Outputs", "kind":"namevalue", "type":[["string"],["file"],["folder"],["matlab.buildtool.io.FileCollection"]]}
+        ]
+    },
+    "matlab.buildtool.TaskGroup":
+    {
+        "inputs":
+        [
+            {"name":"tasks", "kind":"ordered", "type":"matlab.buildtool.Task"},
+            {"name":"TaskNames", "kind":"namevalue", "type":"string"},
+            {"name":"Dependencies", "kind":"namevalue", "type":"string"},
+            {"name":"Description", "kind":"namevalue", "type":"string"}
+        ],
+        "outputs":
+        [
+            {"name":"group", "type":"matlab.buildtool.TaskGroup"}
+        ]
+    }
+}

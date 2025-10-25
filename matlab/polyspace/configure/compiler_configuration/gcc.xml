@@ -1,0 +1,451 @@
+<!--Copyright 2013-2025 The MathWorks, Inc. -->
+
+<compiler_configuration>
+  <compiler_names>
+    <name>(.*-)?([cgq]\+\+|[qg]?cc)(-.+)?</name>
+  </compiler_names>
+  <include_options>
+    <opt>-I</opt>
+    <opt>-iquote</opt>
+    <opt>-idirafter</opt>
+  </include_options>
+  <system_include_options>
+    <opt>-isystem</opt>
+    <opt>-Wp,-isystem,</opt> <!-- qcc -->
+  </system_include_options>
+  <preinclude_options>
+    <opt>-include</opt>
+  </preinclude_options>
+  <define_options>
+    <opt removePhases="instrum">-D</opt>
+  </define_options>
+  <undefine_options>
+    <opt>-U</opt>
+  </undefine_options>
+  <options_file_options>
+    <opt>@</opt>
+  </options_file_options>
+  <options_file_strategy>gcc</options_file_strategy>
+  <library_options>
+    <opt>-l</opt>
+    <opt>-l:</opt>
+  </library_options>
+  <library_path_options>
+    <opt>-L</opt>
+  </library_path_options>
+  <output_options>
+    <opt>-o</opt>
+    <opt>--output</opt>
+  </output_options>
+  <standard_options>
+    <std version="c90">-std=c90</std>
+    <std version="c99">-std=c99</std>
+    <std version="c11">-std=c11</std>
+    <std version="c17" c_default="1">-std=c17</std>
+    <std version="c++03">-std=c++03</std>
+    <std version="c++11">-std=c++11</std>
+    <std version="c++14" cpp_default="1">-std=c++14</std>
+    <std version="c++17">-std=c++17</std>
+    <std version="c++20">-std=c++20</std>
+  </standard_options>
+  <semantic_options>
+    <!-- coming from http://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html -->
+    <opt isPrefix="true">-A</opt>
+    <opt>-ansi</opt>
+    <opt numArgs="1">-aux-info</opt>
+    <opt isPrefix="true">-B</opt>
+    <opt>-C</opt>
+    <opt isIgnored="true" removePhases="build_config">-c</opt>
+    <opt>-CC</opt>
+    <opt>--coverage</opt>
+    <opt isPrefix="true">-d</opt>
+    <opt isPrefix="true">--d</opt>
+    <opt numArgs="1" isIgnored="true">-dumpbase</opt>
+    <opt isIgnored="true">--disable-mingw-wildcard</opt>
+    <opt isIgnored="true">--enable-mingw-wildcard</opt>
+    <opt isPrefix="true">-f</opt>
+    <opt isPrefix="true" isIgnored="true">-frandom-seed</opt>
+    <opt isPrefix="true" isIgnored="true">-fstack-reuse</opt>
+    <opt isPrefix="true" isIgnored="true">-fcall-saved-</opt>
+    <opt isPrefix="true" isIgnored="true">-fcall-used-</opt>
+    <opt isPrefix="true" isIgnored="true">-ffixed-</opt>
+    <opt isIgnored="true">-fdelete-dead-exceptions</opt>
+    <opt isIgnored="true">-fasynchronous-unwind-tables</opt>
+    <opt isIgnored="true">-fno-gnu-unique</opt>
+    <opt isIgnored="true">-finhibit-size-directive</opt>
+    <opt isIgnored="true">-fno-common</opt>
+    <opt isIgnored="true">-fpcc-struct-return</opt>
+    <opt>-fpic</opt>
+    <opt>-fPIC</opt>
+    <opt>-fpie</opt>
+    <opt>-fPIE</opt>
+    <opt isPrefix="true" isIgnored="true">-fprofile</opt>
+    <opt isIgnored="true">-fno-plt</opt>
+    <opt isIgnored="true">-fno-jump-tables</opt>
+    <opt isIgnored="true">-frecord-gcc-switches</opt>
+    <opt isIgnored="true">-freg-struct-return</opt>
+    <opt isIgnored="true">-fverbose-asm</opt>
+    <opt isIgnored="true">-ftrampolines</opt>
+    <opt isPrefix="true">-g</opt>
+    <opt>-H</opt>
+    <opt isPrefix="true">--help</opt>
+    <opt>-I-</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-imacros</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-imultilib</opt>
+    <opt numArgs="1" isIgnored="true">-iplugindir</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-iprefix</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-isysroot</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-Wc,-isysroot,</opt> <!-- qcc -->
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-iwithprefix</opt>
+    <opt isPrefix="true" numArgs="1" argsArePaths="true">-iwithprefixbefore</opt>
+    <opt>-lang-c</opt>   <!-- qcc -->
+    <opt>-lang-c++</opt> <!-- qcc -->
+    <opt isPrefix="true">-m</opt>
+    <opt numArgs="1">-msection-asm-name</opt> <!-- tricore-gcc exclusive option -->
+    <opt isIgnored="true">-M</opt>
+    <opt isIgnored="true">-MM</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config">-MD</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config">-MMD</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config" numArgs="1">-MF</opt>
+    <opt isIgnored="true">-MG</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config">-MP</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config" numArgs="1">-MQ</opt>
+    <opt isIgnored="true" removePhases="instrum,build_config" numArgs="1">-MT</opt>
+    <opt>-no-canonical-prefixes</opt>
+    <opt>-nostdinc</opt>
+    <opt>-nostdinc++</opt>    
+    <opt>-nostdlib</opt>
+    <opt>-nostdlib++</opt>
+    <opt>--no-sysroot-suffix</opt>
+    <opt isPrefix="true">-O</opt>
+    <opt>-p</opt>
+    <opt numArgs="1" isIgnored="true">--param</opt>
+    <opt>-pass-exit-codes</opt>
+    <opt isIgnored="true" removePhases="instrum">-pedantic</opt>
+    <opt>-pedantic-errors</opt>
+    <opt>-pg</opt>
+    <opt>-pie</opt>
+    <opt>-pipe</opt>
+    <opt isPrefix="true">-print</opt>
+    <opt>-pthread</opt>
+    <opt>-rdynamic</opt>
+    <opt>-remap</opt>
+    <opt>-S</opt>
+    <opt>-s</opt>
+    <opt isPrefix="true">-stdlib=</opt>  <!-- qcc -->
+    <opt isPrefix="true">-save-temps</opt>
+    <opt isPrefix="true">-shared</opt>
+    <opt numArgs="1">-specs</opt>
+    <opt isPrefix="true">-static</opt>
+    <opt numArgs="1">-std</opt>
+    <opt>-symbolic</opt>
+    <opt numArgs="1" argsArePaths="true">--sysroot</opt>
+    <opt>-target-help</opt>
+    <opt isPrefix="true">-time</opt>
+    <opt>-traditional</opt>
+    <opt>-traditional-cpp</opt>
+    <opt>-trigraphs</opt>
+    <opt>-undef</opt>
+    <opt>-v</opt>
+    <opt isPrefix="true">-V</opt> <!-- qcc -->
+    <opt>-EL</opt> <!-- qcc -->
+    <opt>-EB</opt> <!-- qcc -->
+    <opt numArgs="1">-N</opt> <!-- qcc -->
+    <opt isIgnored="true" removePhases="instrum" >-Wall</opt>
+    <opt isPrefix="true" isIgnored="true" removePhases="instrum" >-Werror</opt>
+    <opt isPrefix="true" isIgnored="true">-W</opt>
+    <opt>-w</opt>
+    <opt numArgs="1">-wrapper</opt>
+    <opt numArgs="1">-Xassembler</opt>
+    <opt numArgs="1">-Xlinker</opt>
+    <opt numArgs="1">-Xpreprocessor</opt>
+    <opt numArgs="1">-x</opt>
+    <opt numArgs="1">-z</opt>
+    <opt isIgnored="true">-###</opt>
+  </semantic_options>
+  <semantic_environment_variable_list>
+    <env>LANG</env>
+    <env>LC_CTYPE</env>
+    <env>LC_MESSAGES</env>
+    <env>LC_ALL</env>
+    <env>COMPILER_PATH</env>
+    <env>LIBRARY_PATH</env>
+    <env>CPATH</env>
+    <env>C_INCLUDE_PATH</env>
+    <env>CPLUS_INCLUDE_PATH</env>
+    <env>OBJC_INCLUDE_PATH</env>
+    <env>DEPENDENCIES_OUTPUT</env>
+    <env>SUNPRO_DEPENDENCIES</env>
+  </semantic_environment_variable_list>
+  <preprocess_options_list>
+    <opt>-E</opt>
+  </preprocess_options_list>
+  <preprocess_dollar_macros>yes</preprocess_dollar_macros>
+  <forbidden_macros_list>
+    <!-- The __BLOCKS__ macro is undefined, as macOS blocks are not supported. -->
+    <name>__BLOCKS__</name>
+  </forbidden_macros_list>
+  <compile_options_list>
+    <opt>-c</opt>
+  </compile_options_list>
+  <switch>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__arm__"/>
+          <not>
+            <macro_defined name="__aarch64__"/>
+          </not>
+        </and>
+      </condition>
+      <actions>
+        <target_name>arm</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_defined name="__aarch64__"/>
+      </condition>
+      <actions>
+        <target_name>arm64</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__riscv"/>
+          <not>
+            <macro_defined name="__LP64__"/>
+          </not>
+        </and>
+      </condition>
+      <actions>
+        <target_name>riscv</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__riscv"/>
+          <macro_defined name="__LP64__"/>
+        </and>
+      </condition>
+      <actions>
+        <target_name>riscv64</target_name>
+      </actions>
+    </case>
+  </switch>
+  <switch>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="13"/>
+      </condition>
+      <actions>
+        <compiler>gnu13.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="12"/>
+      </condition>
+      <actions>
+        <compiler>gnu12.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="11"/>
+      </condition>
+      <actions>
+        <compiler>gnu11.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="10"/>
+      </condition>
+      <actions>
+        <compiler>gnu10.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="9"/>
+      </condition>
+      <actions>
+        <compiler>gnu9.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="8"/>
+      </condition>
+      <actions>
+        <compiler>gnu8.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="7"/>
+      </condition>
+      <actions>
+        <compiler>gnu7.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="6"/>
+      </condition>
+      <actions>
+        <compiler>gnu6.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="5"/>
+      </condition>
+      <actions>
+        <compiler>gnu5.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_equal name="__GNUC__" value="4"/>
+          <macro_equal name="__GNUC_MINOR__" value="9"/>
+        </and>
+      </condition>
+      <actions>
+        <compiler>gnu4.9</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_equal name="__GNUC__" value="4"/>
+          <macro_equal name="__GNUC_MINOR__" value="8"/>
+        </and>
+      </condition>
+      <actions>
+        <compiler>gnu4.8</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_equal name="__GNUC__" value="4"/>
+          <macro_equal name="__GNUC_MINOR__" value="7"/>
+        </and>
+      </condition>
+      <actions>
+        <compiler>gnu4.7</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_equal name="__GNUC__" value="4"/>
+          <or>
+            <macro_equal name="__GNUC_MINOR__" value="6"/>
+            <macro_equal name="__GNUC_MINOR__" value="5"/>
+          </or>
+        </and>
+      </condition>
+      <actions>
+        <compiler>gnu4.6</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_equal name="__GNUC__" value="4"/>
+          <or>
+            <macro_equal name="__GNUC_MINOR__" value="4"/>
+            <macro_equal name="__GNUC_MINOR__" value="3"/>
+          </or>
+        </and>
+      </condition>
+      <actions>
+        <compiler>gnu4.4</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <and>
+          <macro_equal name="__GNUC__" value="4"/>
+          <or>
+            <macro_equal name="__GNUC_MINOR__" value="2"/>
+            <macro_equal name="__GNUC_MINOR__" value="1"/>
+            <macro_equal name="__GNUC_MINOR__" value="0"/>
+          </or>
+        </and>
+      </condition>
+      <actions>
+        <compiler>gnu4.2</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_equal name="__GNUC__" value="3"/>
+      </condition>
+      <actions>
+        <compiler>gnu3.4</compiler>
+      </actions>
+    </case>
+    <default>
+      <log severity="warning">GCC version not supported. Defaulting to gnu13.x</log>
+      <compiler>gnu13.x</compiler>
+    </default>
+  </switch>
+  <switch>
+    <case>
+      <condition>
+        <macro_defined name="__QNX__"/>
+      </condition>
+      <actions>
+        <undefine_macro>__EDG__</undefine_macro>
+        <!-- Qcc can use the from-compiler strategies but requires specific options -->
+        <default_macro_strategy>from-source-tokens</default_macro_strategy>
+        <include_strategy>sniff</include_strategy>
+      </actions>
+    </case>
+  </switch>
+  <src_extensions>
+    <ext>c</ext>
+    <ext>cc</ext>
+    <ext>cp</ext>
+    <ext>cxx</ext>
+    <ext>cpp</ext>
+    <ext>c++</ext>
+  </src_extensions>
+  <obj_extensions>
+    <ext>o</ext>
+  </obj_extensions>
+  <precompiled_header_extensions>
+    <ext>gch</ext>
+  </precompiled_header_extensions>
+  <from_compiler_include_strategy>
+    <input>
+      <opt>-E</opt>
+      <opt>-Xpreprocessor</opt>
+      <opt>-v</opt>
+      <empty_source_file>true</empty_source_file>
+    </input>
+    <output>
+      <regex>^\s((\/|[a-zA-Z]:[\\\/]|\\\\).*)$</regex>
+    </output>
+  </from_compiler_include_strategy>
+  <default_macro_strategy>from-compiler</default_macro_strategy>
+  <include_strategy>from-compiler</include_strategy>
+  <from_compiler_macro_strategy>
+    <input>
+      <opt>-dM</opt>
+      <opt>-E</opt>
+      <empty_source_file>true</empty_source_file>
+    </input>
+    <output>
+      <regex name_group="1" value_group="5">^#\s*define\s+(([^\s]*(\(.*\)))|([^\s]*))\s+(.*)?$</regex>
+    </output>
+  </from_compiler_macro_strategy>
+  <duplicate_include_strategy>gcc</duplicate_include_strategy>
+</compiler_configuration>

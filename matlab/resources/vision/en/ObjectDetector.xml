@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0" locale="en_US" product="vision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+    <message>
+        <entry key="invalidSize">{0} must be a 2-element vector.</entry>
+        <entry key="minSizeGTMaxSize">MaxSize value must be greater than MinSize value.</entry>
+        <entry key="modelMinSizeGTMaxSize">MaxSize value must be greater than [{0} {1}].</entry>
+        <entry key="minSizeLTTrainingSize">MinSize value must be greater than or equal to [{0} {1}].</entry>
+        <entry key="modelNotFound">Unable to find model {0}.</entry>
+        <entry key="modelNotFoundOnLoad">Unable to find model {0}.  The default classification model, {1}, will be loaded.</entry>
+        <entry key="trainingDataTableWidthLessThanTwo">Width of the training data table must be greater than or equal to 2.</entry>
+        <entry key="trainingDataFirstColumnNotFilename">First column of the training data must contain image filenames.</entry>
+        <entry key="detectionResultsTableWidthLessThanTwo">Width of the detection results table must be greater than or equal to 2.</entry>
+        <entry key="detectionResultsMustHaveLabels">Detections results table must contain labels in the third column when there are multiple classes in the ground truth data.</entry>
+        <entry key="invalidBboxInTrainingDataTable">Invalid bounding box in row {0}, column {1} of the ground truth data table: {2}.</entry>
+        <entry key="invalidBboxInDetectionTable">Invalid bounding box in row {0} of the detection results table: {1}.</entry>
+        <entry key="invalidScoreInDetectionTable">Invalid score value in row {0} of the detection results table: {1}.</entry>
+        <entry key="invalidLabelInDetectionTable">Invalid label value in row {0} of the detection results table: {1}.</entry>
+        <entry key="undefinedLabelInDetectionTable">Label value in row {0} of the detection results table must be one of the following categorical values: {1}.</entry>
+        <entry key="ROILessThanMinSize">Size of the input ROI, {0}, must be greater than ''MinSize'', {1}.</entry>
+        <entry key="ROILessThanModelSize">Size of the input ROI, {0}, must be greater than the size of the classification model, {1}.</entry>
+        <entry key="ImageLessThanMinSize">Size of the input image, {0}, must be greater than the ''MinSize'', {1}.</entry>
+        <entry key="ImageLessThanModelSize">Size of the input image, {0}, must be greater than the size of the classification model, {1}.</entry>
+        <entry key="invalidObjectSize">Size of the object is invalid.</entry>
+        <entry key="classHasNoBoxes">Training data for class {0} should have at least one bounding box.</entry>
+        <entry key="trainingDataHasNoBoxes">Training data must contain at least one bounding box.</entry>
+        <entry key="invalidBboxInBboxTable">Invalid bounding box in row {0} of the bounding box table: {1}.</entry>
+        <entry key="invalidLabelInBboxTable">Invalid label value in row {0} of the bounding box table: {1}.</entry>
+        <entry key="undefinedLabelInBboxTable">Label value in row {0} of the bounding box table is undefined. It must be one of the following categorical values: {1}.</entry>
+        <entry key="invalidInputImageChannelSize">Invalid input image channel size. Input image channel size {0,number,integer} must be the same as the network's input channel size {1,number,integer}.</entry>
+        <entry key="imageSmallerThanNetwork">Input image size must be greater than {0}.</entry>
+        <entry key="unSupportedInputClass">Input datatype must be uint8, uint16, int16, double or single.</entry>
+
+        <!-- evaluation metrics functions -->
+        <entry key="invalidEvaluationDatastoreInput">Evaluation ground truth data input must be a table or a datastore.</entry>
+        <entry key="evaluationReadOutputInvalidBboxNotInCell">Bounding box from the read method output of the datastore must be an M-by-1 cell array.</entry>
+        <entry key="evaluationReadOutputInvalidBbox">Invalid bounding box data from the datastore read method:\n{0} </entry>
+        <entry key="evaluationReadOutputInvalidLabel">Label from the read method output of the datastore must be an M-by-1 cell array containing elements of N-by-1 categorical, where N equals the number of bounding boxes.</entry>
+        <entry key="evaluationReadOutputInvalid">Output of the read method of the input datastore must be an M-by-3 or M-by-2 cell or table.</entry>
+
+        <!-- ###### Datastore input catalog BEGIN ####### -->
+
+        <entry key="invalidTrainingInput">Training data input must be a table or a datastore.</entry>
+        <entry key="readOutputNotCellTable">Read method of the training input datastore must return an M-by-3 cell or table.</entry>
+        <entry key="readOutputNotCellTwoOrThreeColTable">Read method of the training input datastore must return an M-by-3 or M-by-2 cell or table.</entry>
+        <entry key="readOutputInvalidBbox">Bounding box column from the read method output of the training input datastore must be an M-by-1 cell array, containing elements of N-by-4 double matrix, where N equals the number of bounding boxes.</entry>
+        <entry key="readOutputInvalidLabel">Labels column from the read method output of the training input datastore must be an M-by-1 cell array containing elements of N-by-1 categorical, where N equals the number of bounding boxes.\n\nThe categories of the categorical must contain all the label names for all of the training data.</entry>
+        <entry key="readOutputInvalidImage">Images column from the read method output of the training input datastore must be an M-by-1 cell array containing elements of N-by-P-by-Q images or N-by-P grayscale images.</entry>
+        <entry key="invalidBoxesInTrainingData">Training data from a read of the input datastore contains invalid bounding boxes. Bounding boxes must be non-empty, fully contained within their associated image and must have positive width and height. Use datastore transform method and remove invalid bounding boxes.</entry>
+        <entry key="invalidValidationData">Validation data must be a datastore, when training data is a datastore. The read method of the validation datastore must return an M-by-3 cell or table.</entry>
+        <entry key="validationDataMustBeDatastore">Validation data not supported when training data input is a table. Use a datstore as both validation data and the training data input.</entry>
+        <entry key="backgroundUnsupportedWithDatastore">Training option DispatchInBackground is not supported with datastore training data input. The value of ''options.DispatchInBackground'' must be 'false'.</entry>
+        <entry key="invalidReadDataFromFile">Training data associated with the following file is invalid:\n\n{0}\n</entry>
+        <entry key="tooManyClasses">Number of classes in the training data must be 1.</entry>
+
+        <entry key="readOutputInvalidBboxFileInfo">Bounding boxes returned by the input datastore read method must be an M-by-1 cell array that contains numeric N-by-4 matrices defining [x y width height] values of N boxes, and the width and height of all the boxes must be positive.</entry>
+        <entry key="readOutputInvalidImageClass">Class of the image data returned by the input datastore read method must be double, single, uint8, int16, uint16, or logical. The image data must also be non-empty, non-sparse, and real.</entry>
+        <entry key="readOutputInvalidRGBOrGrayscaleImage">Images returned by the input datastore read method must be RGB or grayscale and stored in an M-by-1 cell array, where M is the number of images.</entry>
+		<entry key="trainingDataBboxOutsideBounds">Bounding boxes associated with the following image were not all located within the image: {0}\n</entry>
+    
+        <!-- Detect method -->
+        <entry key="invalidDetectionInput">Input data must be a datastore.</entry>
+        <entry key="invalidDetectionDatastoreReadOutput">Read method of the input datastore must return a numeric array or an M-by-N cell or table containing elements of N-by-P-by-Q or N-by-P numeric arrays.</entry>
+        <entry key="unableToBatchImagesForDetect">Images must have the same size when the MiniBatchSize value is greater than 1. To detect objects in images of varying size, set the MiniBatchSize value to 1.</entry>
+        <entry key="noDataFromDatastore">Datastore input does not have any data. Every call to the read method returns empty.</entry>
+        <entry key="genericBaseMessageWithFilename">An error occurred while processing the following file from the input datastore:\n\n{0}</entry>
+        <entry key="genericBaseMessageWithoutFilename">An error occurred while processing data from the input datastore.</entry>
+
+        <!-- ###### Datastore input catalog END ####### -->
+
+        <!-- ###### Experiment Manager support BEGIN ####### -->
+        <entry key="nonEmptyMetricsInfoInExperimentMonitor">Metrics property of the Experiment Monitor input must be empty.</entry>
+        <entry key="unexpectedTypeForExperimentMonitor">Specified Experiment Monitor must be of type experiments.Monitor.</entry>
+        <entry key="trainingPlotWithExperimentMonitor">Training option "Plots" must be "none" when specifying the Experiment Monitor option.</entry>
+
+        <!-- ###### Experiment Manager support END ####### -->
+    </message>
+</rsccat>

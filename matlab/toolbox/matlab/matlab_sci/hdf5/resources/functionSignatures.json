@@ -1,0 +1,498 @@
+{
+    "h5create":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char",
+                                "@(x) endsWith(lower(x), '.h5')"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "datasetname",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "size",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Datatype",
+                        "kind": "namevalue",
+                        "type": "choices={'double', 'single', 'uint64', 'int64', 'uint32', 'int32', 'uint16', 'int16', 'uint8', 'int8','string'}"
+                    },
+                    {
+                        "name": "ChunkSize",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Deflate",
+                        "kind": "namevalue",
+                        "type": "choices=num2cell(0:9)"
+                    },
+                    {
+                        "name": "SZIPEncodingMethod",
+                        "kind": "namevalue",
+                        "type": "choices={'entropy', 'nearestneighbor', 'none'}"
+                    },
+                    {
+                        "name": "SZIPPixelsPerBlock",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "numeric",
+                                "scalar"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "FillValue",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "numeric",
+                                "scalar"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Fletcher32",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "logical",
+                                "scalar"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "Shuffle",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "logical",
+                                "scalar"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "CustomFilterID",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "numeric",
+                                "scalar"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "CustomFilterParameters",
+                        "kind": "namevalue",
+                        "type": [
+                            [
+                                "numeric",
+                                "vector"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "TextEncoding",
+                        "kind": "namevalue",
+                        "type": "choices={'system', 'UTF-8'}"
+                    }
+                ]
+        },
+    "h5disp":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "matlabpathfile=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "location",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "mode",
+                        "kind": "positional",
+                        "type": "choices={'min', 'simple'}"
+                    },
+                    {
+                        "name": "TextEncoding",
+                        "kind": "namevalue",
+                        "type": "choices={'system', 'UTF-8'}"
+                    }
+                ]
+        },
+    "h5info":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "matlabpathfile=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "location",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "TextEncoding",
+                        "kind": "namevalue",
+                        "type": "choices={'system', 'UTF-8'}"
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "info",
+                        "type": [
+                            [
+                                "struct",
+                                "scalar"
+                            ]
+                        ]
+                    }
+                ]
+        },
+    "h5read":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "matlabpathfile=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "datasetname",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "start",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "count",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "stride",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "info",
+                        "type": [
+                            [
+                                "numeric"
+                            ]
+                        ]
+                    }
+                ]
+        },
+    "h5readatt":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "matlabpathfile=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "location",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "attr",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    }
+                ],
+            "outputs":
+                [
+                    {
+                        "name": "attval"
+                    }
+                ]
+        },
+    "h5write":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "datasetname",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "data",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "start",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "count",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "stride",
+                        "kind": "positional",
+                        "type": [
+                            [
+                                "numeric",
+                                "row"
+                            ]
+                        ]
+                    }
+                ]
+        },
+    "h5writeatt":
+        {
+            "inputs":
+                [
+                    {
+                        "name": "filename",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "file=*.h5,*.hdf,*.hdf5"
+                            ],
+                            [
+                                "char"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "location",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "attname",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "attvalue",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "numeric"
+                            ],
+                            [
+                                "char",
+                                "row"
+                            ]
+                        ]
+                    },
+                    {
+                        "name": "TextEncoding",
+                        "kind": "namevalue",
+                        "type": "choices={'system', 'UTF-8'}"
+                    }
+                ]
+        },
+    "hdf5":
+        {
+            "inputs":
+                [
+                ],
+            "outputs":
+                [
+                ]
+        },
+    "hdf5info":
+        {
+            "inputs":
+                [
+                ],
+            "outputs":
+                [
+                ]
+        },
+    "hdf5read":
+        {
+            "inputs":
+                [
+                ],
+            "outputs":
+                [
+                ]
+        },
+    "hdf5write":
+        {
+            "inputs":
+                [
+                ],
+            "outputs":
+                [
+                ]
+        }
+}

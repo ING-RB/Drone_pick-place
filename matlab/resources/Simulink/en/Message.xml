@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2009-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+<!-- Message Connection -->
+    <entry key="Capacity">Capacity</entry>
+    <entry key="Observer">any observer</entry>
+    <entry key="SignalLogging">any signal logging</entry>
+    <entry key="SignalStreaming">any signal streaming</entry>
+    <entry key="InputPort">input port</entry>
+    <entry key="OutputPort">output port</entry>
+    <entry key="InvalidOutportMixedVirtualBus">''{0}'' block does not support virtual bus with signal and message elements.</entry>
+    <entry key="InvalidBusAssignmentBlk">''{0}'' block does not support messages.</entry>
+    <entry key="InvalidVirtualBusDuplicateLabel">''{0}'' contains duplicate bus element names, which is not supported for virtual bus with message element. Use unique message element names.</entry>
+    <entry key="RootInportBlkOutputMsgInVirtualBus">''{0}'' does not support virtual bus with message element. Replace it with In Bus Element block or check block parameter ''Output as nonvirtual bus''.</entry>
+    <entry key="RootOutportBlkOutputMsgInVirtualBus">''{0}'' does not support virtual bus with message element. Replace it with Out Bus Element block or check block parameter ''Output as nonvirtual bus in parent model''.</entry>
+    <entry key="NonvirtualBusInVirtualBusAtRootOutput">''{0}'' outputs messages that carry nonvirtual buses and they become elements of a virtual bus. This is not supported when they cross model boundary.</entry> 
+    <entry key="NonvirtualBusWithMsgElement">Block ''{0}'' does not support nonvirtual bus creation when it takes message inputs. Replace input messages with signals or create a virtual bus for the message elements.</entry>
+    <entry key="InvalidSendMsgConnectionMutiple"><![CDATA[ Invalid message connection at <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of ''{1}''. Message connections may not be branched and provided to multiple destinations. ]]></entry>
+    <entry key="MsgModePropError"><![CDATA[Invalid connection between message and signal ports. <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">Output port {0,number,integer}</sldiag> of ''{1}'' is not compatible with <sldiag objui="inport" objparam="{2,number,integer}" objname="{3}">input port {2,number,integer}</sldiag> of ''{3}''.]]></entry>
+    <entry key="InputPortDoesNotSupportMsg">Input port {0,number,integer} of ''{1}'' does not support message or a virtual bus contains a message.</entry>
+    <entry key="InvalidGraphicalConnectionBadgeTip">Invalid connection that mixes signals and messages.\nThe type of source and destination for this port are not compatible.\nClick to highlight source and destination.</entry>
+    <entry key="BranchedLineCrossesNonVirtualSubsystem"><![CDATA[The message line originating at <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}'' is being branched and crosses the boundary of the non-virtual subsystem ''{2}''. Branched message lines cannot cross non-virtual subsystem boundaries.]]></entry>
+    <entry key="DuplicateQueuesWithSameName">Duplicate message queue regions named ''{0}'' found. The first reference is in ''{1}''. The second reference is in ''{2}''. Message queues in a given non-virtual hierarchy must have unique names.</entry>
+    <entry key="QueueAccessBlockWithoutQueue">Message queue block with name ''{0}'' was not found for the block ''{1}''.</entry>
+    <entry key="QueueWithNoReadersOrWriters">No reader or writer blocks found for message queue block ''{0}'' with name ''{1}''.</entry>
+    <entry key="InvalidMessageSelfLoop">Error in block ''{0}''. This block is in a message self loop. A message self loop is formed by directly connecting a message output port and a message input port of the same block.\n\nRemove the loop connections and model the message reception inside the block.</entry>
+    <entry key="InvalidDirectMessageConn">''{0}'' block cannot connect to an Outport block or Out Bus Element block because it outputs messages in a non-virtual subsystem.</entry>
+    <entry key="UnsupportedPriorityLocalQueueWithBusOrVectorOrComplex">Invalid data attributes set for local queue {0,number,integer} of the ''{1}'' block. Local priority queues require real scalar message data of type double, single, int8, uint8, int16, uint16, int32, uint32, or boolean.</entry>
+    <entry key="MultiInputMessageTriggeredSubsystem">Message-triggered subsystem ''{0}'' must have one input port.</entry>
+    <entry key="MultiOutputMessageTriggeredSubsystem">Message-triggered subsystem ''{0}'' does not support more than one output port.</entry>
+    <entry key="MultiportObserverForMessage">The block ''{0}'' that is observing messages does not support more than one input port.</entry>
+    <entry key="MultiportObserverForDES">The block ''{0}'' that is observing statistics does not support more than one input port.</entry>
+    <entry key="MuxOrBusForDESNotSupported">Connecting the output port to a Bus Creator or Mux block ''{0}'' is not supported. To log or inspect these signals, consider streaming them to the Simulation Data Inspector or use one observation block per signal.</entry>
+    <entry key="MultiEventSignalsObserverForDES">The block ''{0}'' does not support the observation of multiple signals when used with SimEvents blocks. Either stream these signals to the Simulation Data Inspector or use one observation block for each signal.</entry>
+    <entry key="ObserverMultipleSources">Using the block ''{0}'' to observe a virtual bus with message elements is not supported.</entry>
+    <entry key="SDIOnMessageVirtualBus"><![CDATA[Simulation Data Inspector does not support observing a virtual bus with messages.
+	    <actions exclusiveFixIts="no">
+            <action type="suggestion">
+               <txt>Right click the <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}'' and select 'Stop Logging Selected Signals'.</txt>
+            </action>
+        </actions>
+    ]]></entry>
+    <entry key="UnmappedMsgSourceToSDI"><![CDATA[Invalid message connection at <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}'' to Simulation Data Inspector at <sldiag objui="outport" objparam="{2,number,integer}" objname="{3}">output port {2,number,integer}</sldiag> of block ''{3}''. Connect a message block at <sldiag objui="outport" objparam="{2,number,integer}" objname="{3}">output port {2,number,integer}</sldiag> of block ''{3}'' or disable Simulation Data Inspector.]]></entry>
+    <entry key="MessageLoopBreakBadgeTooltip">Reception delayed due to message loop</entry>
+    <entry key="MessageQueueBadgeTooltip">Queue of capacity 1 and last value semantic is inserted.\nPlace a Queue block to customize.</entry>
+    <entry key="MsgQueueBadgeTooltipForVBus">Queue is expanded to provide storage for each bus element.</entry>
+    <entry key="MsgQueueBadgeTooltipForVBusRefMdl">Each queue is configured inside of the component ''{0}''.</entry>
+    <entry key="MsgQueueBadgeTooltipForRefMdl">The queue is configured inside of the component ''{0}''.</entry>
+    <entry key="ComponentQueueAttrMeetExplicitQueue">The queue attributes specified by ''{0}'' in ''{1}'' are overridden by the storage block ''{2}''. To resolve this warning, either remove the storage block or check "Use default queue attributes" if ''{0}'' is an In Bus Element block.</entry>
+    <entry key="CannotLinearizeMessages"><![CDATA[Message <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}'' cannot be configured as a linearization point.]]></entry>
+    <entry key="CannotSendMsgToRootOutport">Top model is not configured for Outport block ''{0}'' to receive messages. Set ''System target file'' to autosar.tlc, autosar_adaptive.tlc, ert.tlc, or a system target file based on one of these system target files.  If system target file is ert.tlc or based on ert.tlc, also set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotSendMsgToRootOutportCpp">Top model is not configured for Outport block ''{0}'' to receive messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotSendMsgToMsgCustomizedRootOutport">Top model is not configured for customized message Outport block ''{0}'' to receive messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and unselect ''Generate an example main program''.</entry>
+    <entry key="CannotReceiveMsgFromRootInport">Top model is not configured for Inport block ''{0}'' to send messages. Set ''System target file'' to autosar.tlc, autosar_adaptive.tlc, ert.tlc, or a system target file based on one of these system target files.  If system target file is ert.tlc or based on ert.tlc, also set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotReceiveMsgFromRootInportCpp">Top model is not configured for Inport block ''{0}'' to send messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and select ''Generate an example main program''.</entry>
+    <entry key="CannotReceiveMsgFromMsgCustomizedRootInport">Top model is not configured for customized message Inport block ''{0}'' to send messages. Set model parameter ''Language'' to ''C++'', set ''Code interface packaging'' to ''C++ class'', and unselect ''Generate an example main program''.</entry>
+    <entry key="CannotCGMsgFromTop">Code generation not supported at root-level for referenced models that include messages crossing model boundaries. This is only allowed for AUTOSAR compliant modeling. Switch to the referenced model ''{0}'', set system target file to autosar.tlc or use an AUTOSAR compliant target file to generate component code.</entry>
+    <entry key="CannotCGMsgForReferencedAutosarModel">Code generation is not supported for referenced AUTOSAR compliant model ''{0}'', when messages cross model boundary. Open ''{0}'' as the top model to generate code for this model component.</entry>
+    <entry key="CannotCGExQueueRecv">Code generation not supported for ''{0}'' receiving messages from Inport block with AUTOSAR compliant modeling. Use Stateflow chart to receive messages from Inport block.</entry>
+    <entry key="CannotCGExQueueSend">Code generation not supported for ''{0}'' sending messages to Outport block with AUTOSAR compliant modeling. Use Stateflow chart to send messages to Outport block.</entry>
+    <entry key="CannotRapidAccelMsgFromTop">Rapid Accelerator mode at root-level for the referenced model ''{0}'' not supported. This referenced model includes messages crossing model boundaries. Switch to Normal mode or Accelerator mode at root-level.</entry>
+    <entry key="CannotRapidAccelExQueueRecv">Rapid Accelerator mode not supported for ''{0}'' receiving messages from Inport block. Switch to Normal mode or Accelerator mode.</entry>
+    <entry key="CannotRapidAccelExQueueSend">Rapid Accelerator mode not supported for ''{0}'' sending messages to Outport block. Switch to Normal mode or Accelerator mode.</entry>    
+    <entry key="CannotSILPILFromRootInport">Software-in-the-loop (SIL) or processor-in-the-loop (PIL) simulation is not supported when the Inport block ''{0}'' receives messages that cross model boundary. Change the simulation mode to 'Normal' or 'Accelerator' mode.</entry>
+    <entry key="CannotSILPILFromRootOutport">Software-in-the-loop (SIL) or processor-in-the-loop (PIL) simulation is not supported when the Outport block ''{0}'' outputs messages that cross model boundary. Change the simulation mode to 'Normal' or 'Accelerator' mode.</entry>    
+    <entry key="CannotSILPILFromModelBlock">Software-in-the-loop (SIL) or processor-in-the-loop (PIL) simulation is not supported when the Model block ''{0}'' outputs or receives messages that cross model boundary. Change the simulation mode to 'Normal' or 'Accelerator' mode.</entry>    
+    <entry key="CannotCreateSILPILBlockForRootIO">The 'SIL' or 'PIL' value for the configuration parameter 'CreateSILPILBlock' is not supported for code generation when messages cross model boundary. To resolve this issue, use 'set_param(model,'CreateSILPILBlock','none')'.</entry>
+    <entry key="InvalidMsgConnToModelReference">Invalid message connection to {0} {1,number,integer} of referenced model ''{2}''. Switch system target file to autosar.tlc or use an AUTOSAR compliant target file.</entry>
+    <entry key="InvalidMsgConnToSubsystem">Invalid message connection between block ''{0}'' and block ''{1}''. Block ''{1}'' requests to receive messages from block ''{0}''. However, block ''{0}'' is in subsystem ''{2}''. Request to receive messages from a conditionally executed subsystem is not supported.</entry>
+    <entry key="InvalidModelReference">Invalid use of referenced model ''{0}''. The referenced model includes messages that cross model boundaries. Switch system target file to autosar.tlc or use an AUTOSAR compliant target file.</entry>
+    <entry key="InvalidModelReferenceMultiLevel">Invalid use of referenced model ''{0}''. The referenced model containing messages crossing model boundaries must be at root-level.</entry>
+    <entry key="InvalidSLObserverPortMsgToRootOutport">Observer Port block ''{0}'' must not connect to an top-level Outport block or Out Bus Element block because it is observing messages.</entry>
+	<entry key="UnsupportedConnRootInport">Unsupported message connection between root-level Inport block ''{0}'' and ''{1}''. When using messages, the Inport block can only be connected to a Receive block or a Stateflow chart with the 'Use internal queue' checkbox cleared.</entry>
+    <entry key="UnsupportedConnInport">Unsupported message connection between Inport block ''{0}'' and block ''{1}''. Move block ''{1}'' to outside of subsystem ''{2}''.</entry>
+    <entry key="UnsupportedConnRootOutport">Unsupported message connection between block ''{0}'' and root-level Outport block ''{1}''. Connect a Message Send block or a Stateflow Chart to this Outport block.</entry>
+    <entry key="UnsupportedConnOutport">Unsupported message connection between block ''{0}'' and Outport block ''{1}''. Move block ''{0}'' to outside of subsystem ''{2}''.</entry>
+    <entry key="UnsupportedConnExternalQueue"><![CDATA[Invalid message connection between <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}'' and <sldiag objui="inport" objparam="{2,number,integer}" objname="{3}">input port {2,number,integer}</sldiag> of block ''{3}''. Connect a block with message storage between these two blocks (such as a Message Queue block).]]></entry>
+    <entry key="UnsupportedVariantBlock">Simulink Message and SimEvents blocks do not support block ''{0}''.</entry>
+    <entry key="UnsupportedCodeVariantSubsystem">Variant block ''{0}'' with message is not supported for any variant activation other than ''update diagram''. This parameter requires that you connect time-based signals to the variant block. To fix, consider setting the variant activation to ''update diagram''</entry>
+    <entry key="UnsupportedDataflowSubsystem">Messages cannot be sent or received from the Dataflow Subsystem ''{0}''.</entry>
+    <entry key="UnsupportedDiscreteEventModelRef">Entities cannot be sent or received from the referenced model ''{0}''. Convert the referenced model into Subsystem.</entry>
+    <entry key="UnSupportedDesignVerifierForMsgs">Simulink Message and SimEvents blocks do not support Simulink Design Verifier.</entry>
+    <entry key="SendMessageToFullQueue">Message queue connected to block ''{0}'' through port {1,number,integer} overflowed during the simulation.</entry>
+    <entry key="CannotObserveMessageOutOfAcceleratedModelReference">Messages output from port {0,number,integer} of block ''{1}'' cannot be observed because this Model block is configured for Accelerated mode simulation. Configure the Model block to simulate in Normal mode or remove the observer ''{2}'' from the message line.</entry>
+    <entry key="CannotObserveMessageCrossingModel"><![CDATA[Observation of message crossing model boundary not supported. Remove or disable {2} from <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}''.]]></entry>
+    <entry key="CannotObserveMessageArriveSSWithDifferentRate">Sample time changes through the subsystem boundary. Observing messages that cross the boundary of ''{0}'' and arrive at an Inport block is not supported when generating code. Remove or disable ''{1}'' block.</entry>
+    <entry key="LogEventRateMsgWithExplicitPartition"><![CDATA[Generating code is not supported when using ''{0}'' to log messages at <sldiag objui="outport" objparam="{2,number,integer}" objname="{1}">output port {2,number,integer}</sldiag> of block ''{1}'' with Event sample time because the block is connected to explicit partitions. Consider using the same partition or sample time for the signal sources.]]></entry>
+    <entry key="LogEventRateMsgForMultiTaskCodeGen"><![CDATA[
+    Generating multi-tasking code is not supported when using ''{0}'' to log messages at <sldiag objui="outport" objparam="{2,number,integer}" objname="{1}">output port {2,number,integer}</sldiag> of block ''{1}'' with Event sample time because the block is connected to multiple message sources with different sample times.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix1">
+                <cmd>set_param_action(bdroot(''{1}''), 'EnableMultiTasking', 'off');</cmd>
+                <txt>Consider setting <sldiag objui="configset" objparam="EnableMultiTasking">EnableMultiTasking</sldiag> option off.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="RootOutportWithEventRateCodeGen">Model ''{0}'' does not support model reference target build because root-level Outport block ''{1}'' has an Event sample time and receives messages from multiple sources with different sample times. Consider using the same sample time for the message sources.</entry>
+    <entry key="ObserveMessageReusableSubsystemCpp">Observing messages using block ''{0}'' in a code reuse subsystem does not support generating C++ code. Remove the block, or set ''Function packaging'' of subsystem ''{1}'' to ''Nonreusable function'' or ''Auto''.</entry>
+    <entry key="ObserveMessageNonInheritedSampleTime">Block ''{0}'' is not running under the same sample time as ''{1}'' for observing messages. To resolve the warning, set the sample time of ''{0}'' to '-1' or manually set the sample time to match ''{1}''.</entry>
+    <entry key="ScopeWithRapidAccel">During simulation in Rapid Accelerator mode, scope ''{0}'' connected to a SimEvents block displays incorrect data. However, the logged data on the scope is correct.</entry>
+    <entry key="MultirateQueueQueryingNumMsg">Querying the number of messages on block ''{0}'' in multitasking mode not supported. To switch to single-tasking mode, clear the checkbox in 'Configuration Parameters' > 'Solver' > 'Treat each discrete rate as a separate task'.</entry>
+    <entry key="MultirateQueueCanOnlyBeFIFO">The message queue block ''{0}'' is a multi-rate queue. Only FIFO type is supported for multi-rate queues when the 'Configuration Parameters' > 'Solver' > 'Treat each discrete rate as a separate task' option has been selected. Set all the readers and writers of the queue to have the same rate or change the queue into FIFO type or clear this option.</entry>
+    <entry key="InvalidImplicitPriorityQueueDataType"><![CDATA[Invalid data type propagated to <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of block ''{1}''. Priority queues require real scalar message data of type double, single, int8, uint8, int16, uint16, int32, uint32, or boolean.]]></entry>
+    <entry key="InvalidPriorityQueueDataType">Priority queue in block ''{0}'' requires non-bus real scalar.</entry>
+    <entry key="CannotAllocQueue">The total memory requested for one or more message queues is greater than {0,number,integer} bytes. Reduce queue capacities or message data sizes.</entry>
+    <entry key="QueueCapacityExceedsIntLimit">Message queue for block ''{0}'' in model ''{1}'' exceeds maximum size {2,number,integer} for code generation. The value of model parameter ''Largest atomic size: integer'' determines the maximum queue size and is set to {3,number,integer}.</entry>
+    <entry key="ExportedFcnMdlRootOutportLogging">Messages arriving at the top-level Outport block ''{1}'' can not be logged when the block ''{0}'' is in an export-function model. To resolve this issue, in Model Configuration Parameters, in 'Data Import/Export' category, disable 'Output'.</entry>
+    <entry key="ExportedSimulinkFunctionWithSFMsg">The model ''{0}'' includes exported Simulink Function block ''{1}'' that contains a Stateflow Chart with message ''{2}'', and is not supported for code generation. Consider setting ''Code interface packaging'' to ''Nonreusable function''. </entry>
+    <entry key="UnsupportedStringTypeModelSimAccelTgt">Messages crossing model boundary with string type data are not supported in model ''{0}'' for model reference simulation target build. To resolve this error, use 'Normal' as the simulation mode for both the top model and the referenced model.</entry>
+    <entry key="UnsupportedProtectedMessageModel">The model ''{0}'' was created in an older version of Simulink and does not support messages crossing model boundaries. Ensure that the protected model was created in R2022b or later.</entry>
+    <entry key="UnsupportedVirtualBusAtRootInport">Code generator does not support messages that cross model boundaries for virtual input buses. In model ''{0}'', configure block ''{1}'' as a nonvirtual bus by selecting block parameter ''Output as nonvirtual bus''.</entry>
+    <entry key="UnsupportedVirtualBusAtRootOutport">Code generator does not support messages that cross model boundaries for virtual output buses. In model ''{0}'', configure block ''{1}'' as a nonvirtual bus by selecting block parameter ''Output as nonvirtual bus in parent model''.</entry>  
+    <entry key="UnsupportedSignalObjectCG">Messages do not support signal object ''{0}'' when generating code. Remove or disable signal object at ''{1}'' output port {2,number,integer}.</entry>
+    <entry key="UnsupportedTestPointCG">Messages do not support test point when generating code. Disable test point at ''{0}'' output port {1,number,integer} to resolve this warning.</entry>   
+    <entry key="ReusableSubsystemConnectModelBoundary">Connecting a message line between an atomic subsystem, whose ''Function packaging'' parameter is set to ''Reusable function'', and a root-level Inport/Outport block, or a Model block is not supported when you generate multi-instance code. Set ''Function packaging'' of subsystem ''{0}'' to ''Auto'', or in the Configuration Parameters dialog box, set ''Code Interface packaging'' to ''Nonreusable function'' and ''Total number of instances allowed per top model'' to ''One''.</entry>
+    <entry key="FcnCallSubsystemConnectModelBoundary">Generating multi-instance code is not supported when a function-call subsystem sends or receives messages that cross model boundary and is called multiple times. Set the ''Function packaging'' of subsystem ''{0}'' to ''Inline'', or in the Configuration Parameters dialog box, set the ''Code Interface packaging'' to ''Nonreusable function'' and the ''Total number of instances allowed per top model'' to ''One''.</entry>
+    <entry key="UnsupportedBuildReusableSubsytem">Generating multi-instance code for messages with data type {0} and size {1} in a codereuse subsystem is not supported. Set ''Function packaging'' of subsystem ''{2}'' to ''Nonreusable function'' or ''Auto'', or in the Configuration Parameters of model ''{3}'', set ''Code Interface packaging'' to ''Nonreusable function'' and ''Total number of instances allowed per top model'' to ''One''.</entry>
+    <entry key="UnsupportedQueueInSSRequesterInMdl">Using a queue block inside a non-virtual subsystem is not supported for code generation when messages cross model boundary. Move ''{0}'' outside of the subsystem.</entry>
+    <entry key="UnsupportedInternalQueueInSSRequesterInMdl">Using an internal queue inside a non-virtual subsystem is not supported for code generation when messages cross model boundary. Clear the 'Use internal queue' checkbox for ''{0}'' to use a queue outside the subsystem.</entry>
+    <entry key="UnsupportedMultiWordTypeRowMajor">Row-major is not supported for messages with data type ''{0}'' in block ''{1}''. Change the message data type or set the model configuration parameter ''Array layout'' to ''Column-major''.</entry>
+    <entry key="RowMajorForBusWithMatrixField">Row-major is not supported for messages with bus type ''{0}'' in block ''{1}'' because the bus type contains matrix or string type fields. Change the message data type or set the model configuration parameter ''Array layout'' to ''Column-major''.</entry>
+    <entry key="ModelRefHasMessageWithUnsupportedEvent">Model block ''{1}'' in model ''{0}'' does not support generating code, because the referenced model ''{2}'' contains Model blocks with message ports, which are incompatible with event ''{3}''. Remove connections and signal logging on message ports of blocks in ''{2}'', or remove the blocks that create ''{3}'' events in the model hierarchy of ''{2}''.</entry>
+    <entry key="ModelRefHasMessageWithConstantRate">Model block ''{1}'' in model ''{0}'' does not support generating code, because the referenced model ''{2}'' contains Model blocks with message ports and blocks with constant sample time. Remove connections and signal logging on the message ports of Model blocks in ''{2}'', or use inherited (-1) sample time instead of constant (inf) sample time for blocks in the model hierarchy of ''{2}''.</entry>
+    <entry key="RowMajorVectorPayloadForConcurrent">Row-major is not supported for messages with nonscalar payload in block ''{0}''. 
+        <![CDATA[
+        <actions exclusiveFixIts="no">
+            <action type="fixit" id="use_column_major">
+               <cmd>set_param(bdroot(''{0}''),''Array layout'',''Column-major'');</cmd>
+               <txt>Change the message data type or set the model configuration parameter ''Array layout'' to ''Column-major''</txt>
+            </action>
+             <action type="fixit" id="turn_off_concurrent">
+               <cmd>set_param(bdroot(''{0}''),'ConcurrentTasks','off');</cmd>
+               <txt>Clear the 'Allow tasks to execute concurrently on target' parameter in Configuration Parameters &gt; Solver &gt; Solver details &gt; Tasking and sample time options.</txt>
+            </action>
+        </actions>
+        ]]>
+    </entry>
+    <entry key="UnsupportedBusSelectorOutputAsVirtualBus">Bus Selector block ''{0}'' does not support ''Output as virtual bus'' with message elements.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" id="turn_off_OutputAsBus" retvalue="false">
+					<cmd>set_param(''{0}'', ''OutputAsBus'', ''off'');</cmd>
+                    <txt>Clear ''Output as virtual bus''.</txt>
+                </action>    
+            </actions>
+        ]]>
+	</entry>
+    <entry key="NoStringPayloadForConcurrent">String payload is not supported for simulation when model ''{0}'' is configured for concurrent execution.
+        <![CDATA[
+        <actions exclusiveFixIts="no">
+             <action type="fixit" id="turn_off_concurrent">
+               <cmd>set_param(''{0}'','ConcurrentTasks','off');</cmd>
+               <txt>Clear the 'Allow tasks to execute concurrently on target' parameter in Configuration Parameters &gt; Solver &gt; Solver details &gt; Tasking and sample time options.</txt>
+            </action>
+        </actions>
+        ]]>
+    </entry>
+    <entry key="NoTsInhDueToPreSetBlkTs">Messages only support 'Unconstrained' as 'Periodic sample time constraint' parameter in Configuration Parameters dialog box. In model ''{0}'', either set the 'Solver > Solver details > Periodic sample time constraint > Unconstrained' or remove message blocks that output or receive messages that cross model boundary.</entry>
+    <entry key="ChartExternalQueueCannotUseLength"><![CDATA[For <sldiag objui="inport" objparam="{1,number,integer}" objname="{0}">input port {1,number,integer}</sldiag> of chart ''{0}'', the 'length' operator is not supported for input messages that use external queue. To use the 'length' operator, enable the 'Use internal queue' property for this message.]]></entry>
+    <entry key="ChartInvalidUseOverflowedAtInputPort"><![CDATA[For <sldiag objui="inport" objparam="{1,number,integer}" objname="{0}">input port {1,number,integer}</sldiag> of chart ''{0}'', the argument of the 'overflowed' operator is not supported. For its message-name argument, the 'overflowed' operator only takes input messages that use external queue outside of {2}, and the chart must be connected to a top-level Inport block.]]></entry>
+    <entry key="ChartInvalidUseOverflowedAtOutputPort"><![CDATA[For <sldiag objui="outport" objparam="{1,number,integer}" objname="{0}">output port {1,number,integer}</sldiag> of chart ''{0}'', the argument of the 'overflowed' operator is not supported. For its message-name argument, the 'overflowed' operator only takes output messages that use external queue outside of {2}, and the chart must be connected to a top-level Outport block.]]></entry>
+    <entry key="UnsupportedConnRootInportToReceive">Connecting the Receive block ''{1}'' with internal queue to a root-level Inport block ''{0}'' is not supported.
+        <![CDATA[
+        <actions exclusiveFixIts="no">
+            <action type="fixit">
+               <cmd>set_param(''{1}'','UseInternalQueue','off');</cmd>
+               <txt>Clear the 'Use internal queue' checkbox in the Receive block.</txt>
+            </action>
+        </actions>
+        ]]>
+    </entry>
+    <entry key="UnsupportedConcurrentTaskModelInputSampleTime"><![CDATA[Inconsistent sample times for referenced model taking messages. Sample time ({0}) of signal driving <sldiag objui="inport" objparam="{1,number,integer}" objname="{2}">input port {1,number,integer}</sldiag> of ''{2}'' differs from the expected sample time ({3}) at this input port. This has limitations in models configured for concurrent execution. 
+        <actions exclusiveFixIts="no">
+            <action type="fixit">
+               <cmd>set_param(''{4}'','ConcurrentTasks','off');</cmd>
+               <txt>Clear the 'Allow tasks to execute concurrently on target' parameter in Configuration Parameters &gt; Solver &gt; Solver details &gt; Tasking and sample time options.</txt>
+            </action>
+        </actions>
+        ]]></entry>
+    <entry key="UnsupportedConcurrentTaskMultirateQueue"><![CDATA[When the model is configured for concurrent execution, sending messages to the queue ''{0}'' and receiving messages from it with different rates is not supported.
+        <actions exclusiveFixIts="no">
+            <action type="fixit" retvalue="false" >
+               <cmd>set_param(bdroot(''{0}''),'ConcurrentTasks','off');</cmd>
+               <txt>Clear the 'Allow tasks to execute concurrently on target' parameter in Configuration Parameters &gt; Solver &gt; Solver details &gt; Tasking and sample time options.</txt>
+            </action>
+        </actions>
+        ]]></entry>
+    <entry key="UnsupportedConcurrentTaskMultirateSend"><![CDATA[When the model is configured for concurrent execution, sending messages to the queue ''{0}'' with different rates is not supported.
+        <actions exclusiveFixIts="no">
+            <action type="fixit" retvalue="false" >
+               <cmd>set_param(bdroot(''{0}''),'ConcurrentTasks','off');</cmd>
+               <txt>Clear the 'Allow tasks to execute concurrently on target' parameter in Configuration Parameters &gt; Solver &gt; Solver details &gt; Tasking and sample time options.</txt>
+            </action>
+        </actions>
+        ]]></entry>
+    <entry key="UnsupportedConcurrentSubsystem"><![CDATA[Messages cannot be sent or received inside subsystem ''{0}'' when model ''{1}'' is configured for concurrent execution. 
+        <actions exclusiveFixIts="no">
+            <action type="fixit">
+               <cmd>set_param(''{1}'','ConcurrentTasks','off');</cmd>
+               <txt>Clear the 'Allow tasks to execute concurrently on target' parameter in Configuration Parameters &gt; Solver &gt; Solver details &gt; Tasking and sample time options.</txt>
+            </action>
+        </actions>
+        ]]></entry>
+    <entry key="UnsupportedSignalRangeCheck"><![CDATA[Messages from ''{0}'' output port {1,number,integer} do not support signal range check. 
+        <actions exclusiveFixIts="no">
+            <action type="fixit">
+               <cmd>set_param(''{2}'','SignalRangeChecking','none');</cmd>
+               <txt>In 'Configuration Parameters' > 'Diagnostics' > 'Data Validity', set ''Simulation range checking'' to ''none'' to prevent this message.</txt>
+            </action>
+        </actions>
+        ]]></entry>
+    <entry key="UnsupportedSignalInfNanCheck"><![CDATA[Messages from ''{0}'' output port {1,number,integer} do not support signal Inf or Nan check. 
+        <actions exclusiveFixIts="no">
+            <action type="fixit">
+               <cmd>set_param(''{2}'','SignalInfNanChecking','none');</cmd>
+               <txt>In 'Configuration Parameters' > 'Diagnostics' > 'Data Validity', set ''Inf or Nan block output'' to ''none'' to prevent this message.</txt>
+            </action>
+        </actions>
+        ]]></entry>    
+    <entry key="InvalidPayloadDataTypeAtOutput"><![CDATA[Invalid data type propagated to <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of the "{1}" block. For message data types, use numeric types, enumeration, string, or bus type.]]></entry>
+    <entry key="VirtualBusRootOutputLoggingNotSupported">For model ''{0}'', root level output logging is not supported for virtual bus with message element.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" id="turn_off_SaveOutput" retvalue="false">
+                    <cmd>set_param_action(''{0}'', ''SaveOutput'', ''off'');</cmd>
+                    <txt>Clear ''Output'' to disable logging root level output data.</txt>
+                </action>    
+            </actions>
+        ]]>
+    </entry>
+    <entry key="MsgTrigSubsysPartitionNameNotUnique">The partition name ''{0}'' used for message triggered subsystem ''{1}'' must be unique, but it is also used for other blocks.
+    <![CDATA[<actions exclusiveFixIts="yes">
+        <action type="fixit" id="fix_1" retvalue="false">
+            <cmd>set_param(''{1}'',''Name'',''__ARG1__'')</cmd>  
+            <cargs>
+                <carg name="__ARG1__" type="text">
+                    <txt_prompt>New block name</txt_prompt>
+                    <def_cmd>"{0} 1"</def_cmd>
+                </carg>
+            </cargs>
+            <txt>Consider changing the block name of ''{1}'' on which the partition name is based.</txt>
+        </action>
+        <action type="fixit" id="fix_2" retvalue="false">
+            <cmd>cellfun(@(x) set_param(x, ''PartitionName'', ''__ARG1__''), &#123;{2}&#125;)</cmd>
+            <cargs>
+                <carg name="__ARG1__" type="text">
+                    <txt_prompt>New partition name</txt_prompt>
+                    <def_cmd>"{0}_1"</def_cmd>
+                </carg>
+            </cargs>
+            <txt>Consider changing the partition name ''{0}'' in block {2} if configurable.</txt>
+        </action>
+      </actions>]]>
+    </entry>
+    <entry key="MsgTrigSubsysModeRootInport">
+    <![CDATA[Connecting <sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}">trigger port</sldiag> of message triggered subsystem ''{0_SLObject}'' to a root-level Inport block ''{2_SLObject}'' is not supported with ''Schedule as aperiodic partition'' off in the Trigger Port block.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(''{3}'', ''ScheduleAsAperiodic'', ''on'');</cmd>
+                <txt>Turn on parameter <sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{3}">''Schedule as aperiodic partition''</sldiag> for block ''{3}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MsgTrigSubsysScheduledCodeGen">
+    <![CDATA[Message triggered subsystem ''{0_SLObject}'' with ''Schedule as aperiodic partition'' option on does not support code generation unless it is inside an <a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')">export-function model</a> and its <sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}">trigger port</sldiag> is connected to a root-level Inport block.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''off'');</cmd>
+                <txt>Turn off parameter <sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}">''Schedule as aperiodic partition''</sldiag> for block ''{2}''.</txt>
+            </action>
+            <action type="suggestion" id="fix_2">
+                <txt>Connect <sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}">trigger port</sldiag> to a root-level Inport block and convert model ''{3}'' to an <a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')">export-function model</a>.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MsgTrigSubsysScheduledModelRefCodeGen">
+    <![CDATA[Message triggered subsystem ''{0_SLObject}'' with ''Schedule as aperiodic partition'' option on does not support model reference target build.
+        <actions exclusiveFixIts="no">
+            <action type="suggestion" id="fix_1">
+                <txt>Open model ''{1}'' as the top model and build. Follow documentations to integrate the generated code with middleware.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MsgTrigImmediateFromModelBlkCppBuild">
+    <![CDATA[For C++ class build, message triggered subsystem ''{0}'' with ''Schedule as aperiodic partition'' option off does not support connecting its <sldiag objui="inport" objparam="{1,number,integer}" objname="{0}">trigger port</sldiag> to Model block ''{2}''.
+        <actions exclusiveFixIts="no">
+            <action type="fixit" id="fix_1">
+                <txt>Insert a Message Merge block (with single input) or a Queue block at <sldiag objui="inport" objparam="{1,number,integer}" objname="{0}">trigger port</sldiag> of message triggered subsystem ''{0}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MsgTrigSubsysScheduledExpFcnMdlAccel">
+    <![CDATA[Message triggered subsystem ''{0_SLObject}'' with ''Schedule as aperiodic partition'' option on does not support rapid accelerator or model reference accelerator build unless its <sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}">trigger port</sldiag> is connected to a root-level Inport block, because it is inside an <a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')">export-function model</a> ''{3}''.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''off'');</cmd>
+                <txt>Turn off <sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}">''Schedule as aperiodic partition''</sldiag> option for block ''{2}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MsgTrigInExpFcnMdlSimTarget">
+    <![CDATA[Model ''{0}'' does not support model reference simulation target build because it is an <a href="matlab:helpview([docroot ''/toolbox/simulink/helptargets.map''], ''export_function_models'')">export-function model</a> and the <sldiag objui="inport" objparam="{2,number,integer}" objname="{1}">input port {2,number,integer}</sldiag> of block ''{1}'' is message triggered.]]>
+    </entry>
+    <entry key="OnMsgAvailableWithEnabled"> Block ''{0}'' is not supported inside an enabled subsystem when its ''Trigger type'' and ''Trigger time'' parameters are set to ''message'' and ''on message available'', respectively.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(''{0}'', ''TriggerTime'', ''on sample time hit'');</cmd>
+                <txt>Consider changing parameter <sldiag objui="blockdlg" objparam="TriggerTime" objname="{0}">''trigger time''</sldiag> to ''on sample time hit'' for block ''{0}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MessageTriggerAtRootLevel">Setting parameter ''Trigger type'' to ''message'' is not supported when block ''{0}'' is placed at the root level of a model.</entry>
+    <entry key="StringTypeMsgTriggerNotSupport">
+    <![CDATA[Message triggered subsystem ''{0_SLObject}'' does not support string data type on <sldiag objui="inport" objparam="{1,number,integer}" objname="{0_SLObject}">trigger port</sldiag> when generating code.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(''{2}'', ''ScheduleAsAperiodic'', ''on'');</cmd>
+                <txt>For simulation target, consider turning on parameter <sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{2}">''Schedule as aperiodic partition''</sldiag> for block ''{2}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="ConnectSimEventsStroageBlockToMsgTrig">
+    <![CDATA[
+    Block ''{0}'' does not support connecting to a message triggered subsystem with 'Schedule as aperiodic partition' option on.
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion" id="fix_1" retvalue="false">
+                <txt>Consider connecting a Queue block between <sldiag objui="outport" objparam="{1,number,integer}" objname="{0}">output port {1,number,integer}</sldiag> of block ''{0}'' and <sldiag objui="inport" objparam="{3,number,integer}" objname="{2}">input port {3,number,integer}</sldiag> of block ''{2}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="NestedMessageTriggeredSubsystem">
+    <![CDATA[Message triggered subsystem ''{0}'' with 'Schedule as aperiodic partition' option on is not supported inside subsystem ''{2}''.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <txt>Consider moving message triggered subsystem ''{0}'' out of subsystem ''{2}''.</txt>
+            </action>
+            <action type="fixit" id="fix_2" retvalue="false">
+                <cmd>set_param_action(''{1}'', ''ScheduleAsAperiodic'', ''off'');</cmd>
+                <txt>Consider turning off <sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{1}">''Schedule as aperiodic partition''</sldiag> for block ''{1}''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="MsgTrigSubsysExpFcnMdlRootLevel">Message triggered subsystem ''{0}'' with 'Schedule as aperiodic partition' option on in an export-function model must be placed at the root level.</entry>
+    <entry key="MsgTrigSubsysWithExplicitPartition">
+    <![CDATA[
+    Generating code is not supported when connecting <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">trigger port</sldiag> of message triggered subsystem in immediate mode ''{1}'' to explicit partitions. Consider using the same partition or sample time for the signal sources.
+    ]]>
+    </entry>
+    <entry key="MsgTrigSubsysWithMultiTaskCodeGen">
+    <![CDATA[
+    Generating multi-tasking code is not supported when connecting <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">trigger port</sldiag> of message triggered subsystem in immediate mode ''{1}'' to sources with different sample times.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix1">
+                <cmd>set_param_action(bdroot(''{1}''), 'EnableMultiTasking', 'off');</cmd>
+                <txt>Consider setting <sldiag objui="configset" objparam="EnableMultiTasking">EnableMultiTasking</sldiag> option off.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+  </message>
+</rsccat>

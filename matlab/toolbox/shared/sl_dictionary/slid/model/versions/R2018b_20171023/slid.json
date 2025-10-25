@@ -1,0 +1,277 @@
+{
+    "family" : "slid",
+    "modelVersion" : "20171023",
+    "packages" : {
+        "slid" : {
+            "primitiveTypes" : {
+                "MFModel" : {}
+            },
+            "enumerations" : {
+                "Access" : {
+                    "literals": {
+                        "PRIVATE" : { "value" : 0 },
+                        "PUBLIC" : { "value" : 1 }
+                    }
+                },
+                "ComplexityKind" : {
+                    "literals": {
+                        "AUTO" : { "value" : 0 },
+                        "REAL" : { "value" : 1 },
+                        "COMPLEX" : { "value" : 2 }
+                    }
+                },
+                "Direction" : {
+                    "literals": {
+                        "INPUT" : { "value" : 0 },
+                        "OUTPUT" : { "value" : 1 },
+                        "INOUT" : { "value" : 3 }
+                    }
+                }
+            },
+            "classes" : {
+                "AbstractParameter" : {
+                    "superclass": "Data",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Interface" : { "type" : "Interface", "lower" : "0", "upper" : "1", "opposite" : "Parameter", "isTransient" : true, "isOrdered" : true },
+                        "Hierarchical" : { "type" : "Boolean", "lower" : "0", "upper" : "1", "isTransient" : true, "isOrdered" : true },
+                        "CoderGroup" : { "type" : "String", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "AliasType" : {
+                    "superclass": "ValueType",
+                    "properties" : {
+                        "BaseType" : { "type" : "ValueType", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "Argument" : {
+                    "superclass": "NamedElement",
+                    "properties" : {
+                        "Direction" : { "type" : "Direction", "lower" : "1", "upper" : "1", "isOrdered" : true, "defaultValue" : "INPUT" },
+                        "Type" : { "type" : "ValueType", "lower" : "0", "upper" : "1", "isOrdered" : true },
+                        "OwnedType" : { "type" : "ValueType", "lower" : "0", "upper" : "1", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "Block" : {
+                    "superclass": "Element",
+                    "properties" : {
+                        "System" : { "type" : "System", "lower" : "0", "upper" : "1", "opposite" : "Block", "isOrdered" : true },
+                        "Sid" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Signal" : { "type" : "Data", "lower" : "0", "upper" : "*", "qualifiedBy" : "Identifier", "isComposite" : true, "isOrdered" : true },
+                        "State" : { "type" : "Data", "lower" : "0", "upper" : "*", "qualifiedBy" : "Identifier", "isComposite" : true, "isOrdered" : true },
+                        "Parameter" : { "type" : "Data", "lower" : "0", "upper" : "*", "qualifiedBy" : "Identifier", "isComposite" : true, "isOrdered" : true },
+                        "Function" : { "type" : "Function", "lower" : "0", "upper" : "1", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "BooleanType" : {
+                    "superclass": "RealType"
+                },
+                "Breakpoint" : {
+                    "superclass": "AbstractParameter"
+                },
+                "BusElement" : {
+                    "superclass": "NamedElement",
+                    "properties" : {
+                        "Type" : { "type" : "Type", "lower" : "0", "upper" : "1", "isComposite" : true, "isOrdered" : true },
+                        "Description" : { "type" : "String", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "BusType" : {
+                    "superclass": "Type",
+                    "properties" : {
+                        "Element" : { "type" : "BusElement", "lower" : "0", "upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "CompositeService" : {
+                    "superclass": "Service",
+                    "properties" : {
+                        "Element" : { "type" : "Service", "lower" : "0", "upper" : "*", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "Data" : {
+                    "superclass": "Service",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Type" : { "type" : "DataType", "lower" : "0", "upper" : "1", "isComposite" : true, "isOrdered" : true },
+                        "InstanceSpecific" : { "type" : "Boolean", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Access" : { "type" : "Access", "lower" : "1", "upper" : "1", "isTransient" : true, "isOrdered" : true, "defaultValue" : "PRIVATE" }
+                    }
+                },
+                "DataStore" : {
+                    "superclass": "Variable"
+                },
+                "DataType" : {
+                    "superclass": "Element",
+                    "properties" : {
+                        "DesignMinimum" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "DesignMaximum" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "NumericType" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Unit" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Dimensions" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Complexity" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "Dictionary" : {
+                    "properties" : {
+                        "Path" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Reference" : { "type" : "Reference", "lower" : "0", "upper" : "*", "isComposite" : true }
+                    }
+                },
+                "Element" : {
+                    "isAbstract": "true"
+                },
+                "EnumerationLiteral" : {
+                    "superclass": "NamedElement",
+                    "properties" : {
+                        "Value" : { "type" : "Integer", "lower" : "1", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "EnumerationType" : {
+                    "superclass": "RealType",
+                    "properties" : {
+                        "Literal" : { "type" : "EnumerationLiteral", "lower" : "0", "upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "FixedPointType" : {
+                    "superclass": "RealType"
+                },
+                "FloatingPointType" : {
+                    "superclass": "RealType"
+                },
+                "Function" : {
+                    "superclass": "Service",
+                    "properties" : {
+                        "Interface" : { "type" : "Interface", "lower" : "0", "upper" : "1", "opposite" : "Function", "isTransient" : true, "isOrdered" : true },
+                        "Argument" : { "type" : "Signal", "lower" : "0", "upper" : "*", "isComposite" : true, "isOrdered" : true },
+                        "OwnedType" : { "type" : "FunctionType", "lower" : "0", "upper" : "1", "isComposite" : true, "isOrdered" : true },
+                        "Type" : { "type" : "FunctionType", "lower" : "0", "upper" : "1", "isOrdered" : true },
+                        "Visibility" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "FunctionType" : {
+                    "superclass": "Type",
+                    "properties" : {
+                        "Argument" : { "type" : "Argument", "lower" : "0", "upper" : "*", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "IntegerType" : {
+                    "superclass": "RealType"
+                },
+                "Interface" : {
+                    "superclass": "Element",
+                    "properties" : {
+                        "Parameter" : { "type" : "AbstractParameter", "lower" : "0", "upper" : "*", "opposite" : "Interface" },
+                        "Variable" : { "type" : "Variable", "lower" : "0", "upper" : "*", "opposite" : "Interface" },
+                        "Function" : { "type" : "Function", "lower" : "0", "upper" : "*", "opposite" : "Interface" },
+                        "Type" : { "type" : "Type", "lower" : "0", "upper" : "*", "opposite" : "Interface" }
+                    }
+                },
+                "LookupTable" : {
+                    "superclass": "AbstractParameter"
+                },
+                "NamedElement" : {
+                    "superclass": "Element",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Name" : { "type" : "String", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "OpaqueType" : {
+                    "superclass": "PrimitiveType"
+                },
+                "Parameter" : {
+                    "superclass": "AbstractParameter"
+                },
+                "PrimitiveType" : {
+                    "superclass": "ValueType",
+                    "isAbstract": "true"
+                },
+                "RealType" : {
+                    "superclass": "PrimitiveType",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Identifier" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true },
+                        "Minimum" : { "type" : "Real", "lower" : "0", "upper" : "1", "isOrdered" : true },
+                        "Maximum" : { "type" : "Real", "lower" : "0", "upper" : "1", "isOrdered" : true },
+                        "Complexity" : { "type" : "ComplexityKind", "lower" : "1", "upper" : "1", "isOrdered" : true, "defaultValue" : "AUTO" },
+                        "UnitExpression" : { "type" : "String", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "Reference" : {
+                    "superclass": "Element",
+                    "properties" : {
+                        "URL" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "Service" : {
+                    "superclass": "NamedElement",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Identifier" : { "type" : "String", "lower" : "1", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "Signal" : {
+                    "superclass": "Variable",
+                    "properties" : {
+                        "Direction" : { "type" : "Direction", "lower" : "1", "upper" : "1", "isOrdered" : true, "defaultValue" : "INPUT" }
+                    }
+                },
+                "State" : {
+                    "superclass": "Variable"
+                },
+                "StringType" : {
+                    "superclass": "PrimitiveType",
+                    "properties" : {
+                        "MaximumLength" : { "type" : "UInteger64", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "StructureElement" : {
+                    "superclass": "NamedElement",
+                    "properties" : {
+                        "Type" : { "type" : "ValueType", "lower" : "0", "upper" : "1", "isOrdered" : true },
+                        "Description" : { "type" : "String", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "StructureType" : {
+                    "superclass": "ValueType",
+                    "properties" : {
+                        "Element" : { "type" : "StructureElement", "lower" : "0", "upper" : "*", "isComposite" : true, "isOrdered" : true }
+                    }
+                },
+                "System" : {
+                    "superclass": "Element",
+                    "properties" : {
+                        "Interface" : { "type" : "Interface", "lower" : "1", "upper" : "1", "isComposite" : true, "isOrdered" : true },
+                        "Block" : { "type" : "Block", "lower" : "0", "upper" : "*", "opposite" : "System", "qualifiedBy" : "Sid", "isComposite" : true, "isOrdered" : true },
+                        "Parameter" : { "type" : "AbstractParameter", "lower" : "0", "upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true },
+                        "Function" : { "type" : "Function", "lower" : "0", "upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true },
+                        "Variable" : { "type" : "Variable", "lower" : "0", "upper" : "*", "qualifiedBy" : "Name", "isTransient" : true, "isComposite" : true, "isOrdered" : true },
+                        "Type" : { "type" : "Type", "lower" : "0", "upper" : "*", "qualifiedBy" : "Name", "isComposite" : true, "isOrdered" : true },
+                        "Handle" : { "type" : "Real", "lower" : "1", "upper" : "1", "isTransient" : true, "isOrdered" : true },
+                        "InPostLoad" : { "type" : "Boolean", "lower" : "1", "upper" : "1", "isTransient" : true, "isOrdered" : true, "defaultValue" : false },
+                        "Reference" : { "type" : "Reference", "lower" : "0", "upper" : "*", "isComposite" : true }
+                    }
+                },
+                "Type" : {
+                    "superclass": "NamedElement",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Interface" : { "type" : "Interface", "lower" : "0", "upper" : "1", "opposite" : "Type", "isTransient" : true, "isOrdered" : true },
+                        "Description" : { "type" : "String", "lower" : "0", "upper" : "1", "isOrdered" : true }
+                    }
+                },
+                "ValueType" : {
+                    "superclass": "Type",
+                    "isAbstract": "true"
+                },
+                "Variable" : {
+                    "superclass": "Data",
+                    "isAbstract": "true",
+                    "properties" : {
+                        "Interface" : { "type" : "Interface", "lower" : "0", "upper" : "1", "opposite" : "Variable", "isTransient" : true, "isOrdered" : true }
+                    }
+                }
+            }
+        }
+    }
+}

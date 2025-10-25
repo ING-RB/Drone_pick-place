@@ -1,0 +1,9 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>It appears that the index value of the indicated <code>for</code> loop
+                    changes inside the loop body. Often, this happens when loops nest and an inner
+                    loop reuses the name of an outer loop index. Because MATLAB resets the loop
+                    index to the next value when it returns to the top of the outer loop, it ignores
+                    any changes that took place within a nested loop. If the code does not to refer
+                    to the outer loop index value after the inner loop changes it, no problem
+                    results. However if you attempt to use the outer loop index value after the
+                    inner loop completes, it is likely to result in a bug.</p><br/><strong>Suggested Action</strong><br/><p>Change the name of one of the <code><a href="matlab:doc for" target="_blank">for</a></code> loop indexes. If you must keep them as is, add a
+                    comment documenting the need and suppress the message as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

@@ -1,0 +1,30 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.desktop.editor.languageSupport": [{
+        "languageName": "YAML",
+        "mimeType": "text/x-yaml",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["yaml", "yml"],
+        "commentStyle": {
+            "lineComment": "#"
+        },
+        "jsModule": "yamlLanguageRegistry"
+    }],
+    "mw.fileTypes": {
+        "groups": {
+            "yamlCodeFiles": ["yaml", "yml"]
+        },
+        "open": {
+            "groups.yamlCodeFiles": [{
+                "callback": "editor_open_action/openAction",
+                "callbackType": "jsModule"
+            }, {
+                "callback": "edit",
+                "callbackType": "matlab"
+            }]
+        },
+        "icons": {
+            "yamlCodeFiles": "yamlFT"
+        }
+    }
+}

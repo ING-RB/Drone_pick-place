@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <entry key="generateSFuncModelRefParamMismatch">Generation of an S-function
+    for a subsystem that contains one or more Model blocks detected a
+    configuration parameters mismatch.
+ 
+    \n\nThe mismatch is due to one of these causes:
+
+    \nA) Before S-function generation, there was a configuration parameter
+    mismatch in the model reference hierarchy of model ''{0}''.
+    
+    \nB) S-function generation setup changed configuration parameter settings.
+ 
+    \n\nTo determine which is the cause in this case, try building the model
+    ''{1}''.
+    
+    \n- If the build fails because of a configuration parameter mismatch, then
+    cause "A" applies.
+
+    \n- If the build succeeds, cause "B" applies.
+ 
+    \n\nTo address cause "A", make the configuration parameters listed below match
+    throughout the model hierarchy and try rebuilding model ''{2}'' until it
+    builds successfully. Once the model builds successfully, try generating the
+    S-Function again. If the S-Function generation fails, address cause "B".
+ 
+    \n\nTo address cause "B", adjust the parameters of your model hierarchy based on
+    the mismatches described below, so that your hierarchy matches the settings
+    of ''{3}''.</entry>
+
+    <entry key="incompatibleComponents">Configuration component ''{0}'' of model ''{1}'' and configuration component ''{2}'' of model ''{3}'' are not compatible. The error message returned by the comparison function is:\n{4}</entry>
+    <entry key="invalidMdlRefStatus">Invalid status in configure_model_reference_target_status</entry>
+    <entry key="invalidModelName">Model name parameter of one of the Model blocks in Model ''{0}'' is ''{1}''. Model name must be a valid Matlab identifier</entry>
+    <entry key="mdlRefLoopDetected">Detected model reference loop ''{0}''</entry>
+    <entry key="propertyMapping">{0} is mapped to ''{1}''</entry>
+    <entry key="paramNotInDataModel">Model Reference parent-child match behavior for the parameter {0} is not defined in the data model.</entry>
+    <entry key="removeIncludeModelReferenceSimulationTargets">''IncludeModelReferenceSimulationTargets'' has no effect and will be removed in a future release.</entry>
+    
+    <entry key="reportStateLoggingErr">The state logging option ({0} != {1})
+    which is computed as: (SaveState or SaveFinalState) and
+    MatFileLogging\n
+
+    - SaveState is mapped to ''{2}'' on ''{3}''\n
+
+    - SaveFinalState is mapped to ''{4}'' on ''{5}''\n
+
+    - MatFileLogging is mapped to ''{6}'' on ''{7}''\n
+    </entry>
+
+    <entry key="reportStateLoggingErrMatFileLoggingAlwaysOn">The state logging option ({0} != {1})
+    which is computed as: (SaveState or SaveFinalState) and
+    MatFileLogging\n
+
+    - SaveState is mapped to ''{2}'' on ''{3}''\n
+
+    - SaveFinalState is mapped to ''{4}'' on ''{5}''\n
+
+    - MatFileLogging is always ''on'' for this system target file\n
+    </entry>
+    <entry key="MismatchInLoggingParameters">Mismatch in logging parameters</entry>
+    <entry key="topChildMdlParamMismatchMsgUI"><![CDATA[\n\t{0} ({1}):\n
+    \t\t<a href="matlab:configset.internal.open(''{2}'',''{3}'');">Parent model setting</a>: {4}\n
+    \t\t<a href="matlab:configset.internal.open(''{5}'',''{6}'');">Referenced model setting</a>: {7}\n]]></entry>
+    <entry key="topChildMdlParamMismatchMsgNonUI"><![CDATA[\n\t{0} [Use set_param to change settings]:\n
+    \t\tParent setting: {1}\n
+    \t\tChild setting: {2}\n]]></entry>
+    <entry key="topChildMdlParamMismatch"><![CDATA[Some configuration parameter settings must be compatible between parent model ''{0}'' and referenced model ''{1}''. 
+    <a href="matlab:helpview([docroot,''/toolbox/simulink/ug/simulink_ug.map''],
+    ''about_configuration_references'');">Configuration references</a> can help avoid parameter mismatches.\n]]></entry>
+
+    <entry key="componentNotFound" translate="false">Internal Error: Expected component ''{0}'' is not found in ''{1}'' configuration set.</entry>
+    
+    <entry key="incompatibleConfigurationSets">Component ''{0} ({1})'' of model ''{2}'' does not exist for model ''{3}''</entry>
+    <entry key="unsavedChanges">Unable to update model reference target of ''{0}'' because it has unsaved changes.</entry>
+    <entry key="unsavedMdlRefs">Unable to update model reference target of ''{0}'' used in ''{1}'' because it has unsaved changes.
+      <![CDATA[
+      <actions exclusiveFixIts="yes">
+        <action type="fixit">
+            <cmd>Simulink.internal.fixUnsavedModel(''{0}'')</cmd>
+            <txt>Save ''{0}''</txt>
+        </action>
+      </actions>]]>
+    </entry>    
+    <entry key="unsavedMdlRefsSaved">''{0}'' saved.</entry>
+	<entry key="unsavedMdlRefsAllowed">Model ''{0}'' or its dependencies have unsaved changes, which increase the time required to compile the model hierarchy and check whether model reference targets are up to date. The unsaved changes also prevent parallel building of referenced models.</entry>	
+	<entry key="unsavedMdlLibCause">Library ''{0}'' has unsaved changes.
+	  <![CDATA[
+      <actions exclusiveFixIts="yes">
+        <action type="fixit">
+            <cmd>Simulink.internal.fixUnsavedModel(''{0}'')</cmd>
+            <txt>Save library ''{0}''.</txt>
+        </action>
+      </actions>]]>
+	</entry>    	
+	<entry key="unsavedMdlRefsCause">Model ''{0}'' has unsaved changes.
+      <![CDATA[
+      <actions exclusiveFixIts="yes">
+        <action type="fixit">
+            <cmd>Simulink.internal.fixUnsavedModel(''{0}'')</cmd>
+            <txt>Save model ''{0}''.</txt>
+        </action>
+      </actions>]]>
+    </entry>
+    <entry key="unsavedMdlRefsWorkspaceCause">The model workspace of referenced model ''{0}'' has unsaved changes.
+      <![CDATA[
+      <actions exclusiveFixIts="yes">
+        <action type="fixit">
+            <cmd>Simulink.internal.fixUnsavedModel(''{0}'')</cmd>
+            <txt>Save model ''{0}'' and its workspace.</txt>
+        </action>
+      </actions>]]>
+    </entry>
+	
+	
+    <entry key="rebuildSetToNever">Model reference Rebuild option is set to ''Never''. Assuming reference models are up to date.</entry>
+    <entry key="allSIMTargetsUpToDate">Model reference simulation targets are up to date.</entry>
+    <entry key="allCoderTargetsUpToDate">Model reference code generation targets are up to date.</entry>
+    <entry key="checkingStatusOfModelSIM">Checking status of model reference simulation target for model ''{0}''.</entry>
+    <entry key="checkingStatusOfModelCoder">Checking status of model reference code generation target for model ''{0}''.</entry>
+    <entry key="modelReferenceChecksumChanged">Checksum for referenced model ''{0}'' changed. Regenerate model reference target.</entry>
+    <entry key="skipPartOfRebuildManager">Skipping rebuild check for model ''{0}'' because it is part of Rebuild Manager Skiplist.</entry>
+    <entry key="skipNeverRebuildModel">Skipping rebuild for model ''{0}'' because it or its parent has ''NeverRebuildModel'' set to ''on''.</entry>
+
+    <entry key="rebuildSetToAlways">Rebuild option is set to ''Always''.</entry>
+
+    <entry key="modelReferenceSIMTargetUpToDate">Model reference simulation target for {0}
+    is up to date.</entry>
+    <entry key="modelReferenceCoderTargetUpToDate">Model reference code generation target for {0}
+    is up to date.</entry>
+
+    <entry key="checkingForStructuralChangesSIM">Checking for structural changes in
+    {0} because the model reference rebuild option is set to ''If changes
+    detected''. Structural changes cause the model reference simulation target to
+    be rebuilt.</entry>
+    <entry key="checkingForStructuralChangesCoder">Checking for structural changes in
+    {0} because the model reference rebuild option is set to ''If changes
+    detected''. Structural changes cause the model reference code generation target to
+    be rebuilt.</entry>
+
+    <entry key="targetSIMDoesNotExist">Model reference simulation target ({0}) for model
+    {1} was out of date. {2} did not exist.</entry>
+    <entry key="targetCoderDoesNotExist">Model reference code generation target ({0}) for model
+    {1} was out of date. {2} did not exist.</entry>
+
+    <entry key="buildInfoDotMatMissingCoder">Model reference code generation target
+    ({0}) for model {1} was out of date. buildInfo.mat file did not exist.</entry>
+    <entry key="buildInfoDotMatMissingSIM">Model reference simulation target
+    ({0}) for model {1} was out of date. buildInfo.mat file did not exist.</entry>
+
+    <entry key="binfoDoesNotExistCoder">Model reference code generation target
+    ({0}) for model {1} was out of date. Binary information cache
+    did not exist. slprj folder containing binary information cache
+    might have been removed.</entry>
+    <entry key="binfoDoesNotExistSIM">Model reference simulation target
+    ({0}) for model {1} was out of date. Binary information cache
+    did not exist. slprj folder containing binary information cache
+    might have been removed.</entry>
+    
+    <entry key="binfoNotHaveNecessaryInformationSIM">Model reference simulation target
+    ({0}) for model {1} was out of date. Binary information cache did
+    not contain necessary information. A previous build of this model might  
+    have failed.</entry>
+    <entry key="binfoNotHaveNecessaryInformationCoder">Model reference code generation target
+    ({0}) for model {1} was out of date. Binary information cache did
+    not contain necessary information. A previous build of this model might 
+    have failed.</entry>    
+    <entry key="userDependencyUpdatedSinceLastBuildSIM">Model reference simulation target
+    ({0}) for model {1} is out of date because {2} (dependency of model {3}) 
+    changed since last build.</entry>
+    <entry key="userDependencyUpdatedSinceLastBuildCoder">Model reference code generation target
+    ({0}) for model {1} is out of date because {2} (dependency of model {3}) 
+    changed since last build.</entry>
+
+    <entry key="mdlWkspaceDependencyUpdatedSinceLastBuildSIM">Model reference simulation target
+        ({0}) for model {1} is out of date. Model workspace data source ({2}) dependency
+         changed since last build.</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildSIMMCOSEnum">Model reference simulation target
+        ({0}) for model {1} is out of date. Enumeration class ({2}) dependency
+         changed since last build.</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildSIMRequirement">Model reference simulation target
+        ({0}) for model {1} is out of date. Requirements Toolbox set file ({2}) dependency
+         changed since last build.</entry>
+    <entry key="mdlWkspaceDependencyUpdatedSinceLastBuildCoder">Model reference code generation target
+        ({0}) for model {1} is out of date. Model workspace data source ({2}) dependency
+         changed since last build.</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildCoderMCOSEnum">Model reference code generation target
+        ({0}) for model {1} is out of date. Enumeration class ({2}) dependency
+         changed since last build.</entry>
+    <entry key="internalDependencyUpdatedSinceLastBuildCoderRequirement">Model reference code generation target
+        ({0}) for model {1} is out of date. Requirements Toolbox set file ({2}) dependency
+         changed since last build.</entry>
+
+    <entry key="referencedModelSIMTargetDoesNotExist">Model reference simulation target
+    ({0}) for model {1} was out of date. Target for referenced
+    model {2} ({3}) did not exist.</entry>
+    <entry key="referencedModelCoderTargetDoesNotExist">Model reference code generation target
+    ({0}) for model {1} was out of date. Target for referenced
+    model {2} ({3}) did not exist.</entry>
+
+    <entry key="targetFunctionLibraryChangedSIM">Model reference simulation target ({0})
+    for model {1} is out of date because code replacement library used in
+    model {2} changed since last build.</entry>
+    <entry key="targetFunctionLibraryChangedCoder">Model reference code generation target ({0})
+    for model {1} is out of date because code replacement library used in
+    model {2} changed since last build.</entry>
+
+    <entry key="previousBuildProtectedUnprotectedMismatchSIM">Model reference simulation
+    target ({0}) for model {1} is out of date because previous build was for
+    a protected model and this build is for an unprotected model, or vice
+    versa.</entry>
+    <entry key="previousBuildProtectedUnprotectedMismatchCoder">Model reference code generation
+    target ({0}) for model {1} is out of date because previous build was for
+    a protected model and this build is for an unprotected model, or vice
+    versa.</entry>
+
+    <entry key="stateflowExternalFileChangedSIM">Model reference simulation target ({0})
+    for model {1} is out of date because the following MATLAB files used by Stateflow blocks
+    or MATLAB Function blocks changed: {2}.</entry>
+    <entry key="stateflowExternalFileChangedCoder">Model reference code generation target ({0})
+    for model {1} is out of date because the following MATLAB files used by Stateflow blocks
+    or MATLAB Function blocks changed: {2}.</entry>
+
+    <entry key="matlabSystemExternalFileChangedSIM">Model reference simulation target ({0})
+    for model {1} is out of date because the following MATLAB files used by MATLAB System blocks
+    changed: {2}.</entry>
+    <entry key="matlabSystemExternalFileChangedCoder">Model reference code generation target ({0})
+    for model {1} is out of date because the following MATLAB files used by MATLAB System blocks
+    changed: {2}.</entry>
+    
+    <entry key="customCodeFileChangedSIM">Model reference simulation target ({0})
+    for model {1} is out of date because a custom code file used in model configuration set 
+     changed.</entry> 
+    <entry key="customCodeFileChangedCoder">Model reference code generation target ({0})
+    for model {1} is out of date because a custom code file used in model configuration set 
+     changed.</entry>
+
+    <entry key="dataflowNumCoresChanged">Model reference simulation target ''{0}'' for model ''{1}'' is out of date because number of CPU cores on development machine changed and a Dataflow domain needs to recompile for multithreaded simulation.</entry>
+    <entry key="dataflowProfilingChanged">Model reference simulation target ''{0}'' for model ''{1}'' is out of date because a Dataflow domain needs to recompile for simulation autotune profiling.</entry>
+    <entry key="dataflowPartitioningChanged">Model reference simulation target ''{0}'' for model ''{1}'' is out of date because a Dataflow domain needs to recompile for multithreaded simulation.</entry>
+    <entry key="dataflowCacheFolderChanged">Model reference simulation target ''{0}'' for model ''{1}'' is out of date because the simulation cache folder changed and a Dataflow domain needs to recompile for simulation autotune profiling.</entry>
+    
+    <entry key="simHardwareAccelerationChanged">Model reference simulation target ''{0}'' for model ''{1}'' is out of date because CPU on the development machine changed and Simulink needs to recompile for native simulation hardware acceleration.</entry>
+
+    <entry key="debugSILBuildMismatch">Model reference code generation target ({0})
+    for model {1} is out of date because "Enable source level debugging during
+    SIL simulations" setting changed.</entry>
+
+    <entry key="extModeXCPBuildMismatch">Model reference code generation target ({0})
+    for model {1} is out of date because 'ExtModeTransport' value changed.</entry>
+    
+<entry key="genCodeOnlyChanged">Model reference code generation target ''{0}'' for model ''{1}'' must be recompiled because genCodeOnly setting changed.</entry>
+
+    <entry key="ModelReferenceSIMTargetNeedsCompiling">Model reference simulation target ''{0}'' for model ''{1}'' must be compiled because this target has changed since the last build or has not been compiled.</entry>
+    <entry key="ModelReferenceCoderTargetNeedsCompiling">Model reference code generation target ''{0}'' for model ''{1}'' must be compiled because this target has changed since the last build or has not been compiled.</entry>
+
+    <entry key="modelWorkspaceChanged">Model reference simulation target ({0}) for model ''{1}'' must be recompiled because a change was detected in its model workspace.</entry>
+    <entry key="bsModelWorkspaceChanged">Change detected in model workspace for model ''{0}''.</entry>
+
+    <entry key="loggedSignalsChanged">Model reference simulation target ({0}) for model ''{1}'' must be recompiled because a change was detected in signal logging.</entry>
+    <entry key="bsLoggedSignalsChanged">Change detected in signal logging for model ''{0}''.</entry>
+    
+    <entry key="modelInformationCacheUpdatedSIM">Model reference simulation target ''{0}'' for model ''{1}'' might have been out of date. {2}</entry>
+    <entry key="modelInformationCacheUpdatedCoder">Model reference code generation target ''{0}'' for model ''{1}'' might have been out of date. {2}</entry>
+    
+    <entry key="buildDueToUnsavedChangesSIM">Model reference simulation target ''{0}''
+    for model ''{1}'' might be out of date because of unsaved changes. {2}</entry>
+    <entry key="buildDueToUnsavedChangesCoder">Model reference code generation target ''{0}''
+    for model ''{1}'' might be out of date because of unsaved changes. {2}</entry>
+
+    <entry key="referencedModelOutOfDateSIM">Model reference simulation target ''{0}'' 
+    for model ''{1}'' might be out of date because referenced model ''{2}'' was out of date.</entry>
+    <entry key="referencedModelOutOfDateCoder">Model reference code generation target ''{0}'' 
+    for model ''{1}'' might be out of date because the referenced model ''{2}'' was out of date.</entry>
+
+    <entry key="referencedModelSIMTargetUpdated">Model reference simulation target ''{0}''
+    for model ''{1}'' might be out of date because model reference simulation generation target
+    ''{3}'' for referenced model ''{2}'' changed since the last build.</entry>
+    <entry key="referencedModelCoderTargetUpdated">Model reference code generation target ''{0}''
+    for model ''{1}'' might be out of date because model reference code generation target
+    ''{3}'' for referenced model ''{2}'' has changed since the last build.</entry>
+
+    <entry key="referencedModelSIMTargetInterfaceUpdated">Model reference simulation target ''{0}''
+    for model ''{1}'' is out of date because the interface of model reference simulation target
+    ''{3}'' for referenced model ''{2}'' has changed since the last build.</entry>
+    <entry key="referencedModelCoderTargetInterfaceUpdated">Model reference code generation target ''{0}''
+    for model ''{1}'' is out of date because the interface of model reference code generation target
+    ''{3}'' for referenced model ''{2}'' has changed since the last build.</entry>
+
+    <entry key="resolveSignalsForAllNamedSIM">Model reference simulation target ({0}) for
+    model {1} might be out of date because model is configured to resolve
+    signal objects for named signal and states. To speed up code generation
+    and eliminate this message, set Configuration Parameters > Diagnostics/Data
+    Validity > Signal resolution to "Explicit only".</entry>
+    <entry key="resolveSignalsForAllNamedCoder">Model reference code generation target ({0}) for
+    model {1} might be out of date because model is configured to resolve
+    signal objects for named signal and states. To speed up code generation
+    and eliminate this message, set Configuration Parameters > Diagnostics/Data
+    Validity > Signal resolution to "Explicit only".</entry>
+
+    <entry key="incompatibleGlobalVariablesSIM">Model reference simulation target ({0})
+    for model {1} might be out of date because these global variables used by this model are
+    incompatible with variables that existed when 
+    target was generated: {2}.</entry>
+    <entry key="incompatibleGlobalVariablesCoder">Model reference code generation target ({0})
+    for model {1} might be out of date because these global variables used by this model are
+    incompatible with variables that existed when 
+    target was generated: {2}.</entry>
+
+    <entry key="incompatibleDynamicEnumTypeSIM">Model reference simulation target ({0})
+    for model {1} might be out of date because these dynamic enum types used by this model 
+    changed: {2}.</entry>
+    <entry key="incompatibleDynamicEnumTypeCoder">Model reference code generation target ({0})
+    for model {1} might be out of date because these dynamic enum types used by this model 
+    changed: {2}.</entry>
+
+    <entry key="ProtectedModelChangedSIM">Model reference simulation target (''{0}'')
+    for model ''{1}'' might be out of date because protected model ''{2}'' referenced by this model has changed.</entry>
+    <entry key="ProtectedModelChangedCoder">Model reference code generation target (''{0}'')
+    for model ''{1}'' might be out of date because protected model ''{2}'' referenced by this model has changed.</entry>
+
+    <entry key="SSCFileChangedSIM">Model reference simulation target (''{0}'')
+    for model ''{1}'' might be out of date because Simscape source file ''{2}'' used by this model has changed.</entry>
+    <entry key="SSCFileChangedCoder">Model reference code generation target (''{0}'')
+    for model ''{1}'' might be out of date because Simscape source file ''{2}'' used by this model has changed.</entry>
+
+    <entry key="MaskCallbackFileChangedSIM">Model reference simulation target (''{0}'')
+    for model ''{1}'' might be out of date because mask callback file ''{2}'' used by this model has changed or been removed.</entry>
+
+    <entry key="MaskCallbackFileChangedCoder">Model reference code generation target (''{0}'')
+    for model ''{1}'' might be out of date because mask callback file ''{2}'' used by this model has changed or been removed.</entry>
+
+    <entry key="customStorageClassChangedSIM">Model reference simulation target ({0}) for
+    model {1} is out of date because custom storage class definitions 
+    changed since model was previously compiled. This model uses global
+    variable(s): ''{2}''.</entry>
+    <entry key="customStorageClassChangedCoder">Model reference code generation target ({0}) for
+    model {1} is out of date because custom storage class definitions  
+    changed since model was previously compiled. This model uses global
+    variable(s): ''{2}''.</entry>
+
+    <entry key="sfunctionDoesNotExistSIM">Model reference simulation target ({0}) for
+    model {1} is out of date because S-function {2} (used in ''{3}'') could
+    not be found.</entry>
+    <entry key="sfunctionDoesNotExistCoder">Model reference code generation target ({0}) for
+    model {1} is out of date because S-function {2} (used in ''{3}'') could
+    not be found.</entry>
+
+    <entry key="sfunctionFileUpdatedSIM">Model reference simulation target ({0}) for model
+    {1} is out of date because the file {2} associated with S-function ''{3}''
+    (used in ''{4}'') changed since last build.</entry>
+    <entry key="sfunctionFileUpdatedCoder">Model reference code generation target ({0}) for model
+    {1} is out of date because the file {2} associated with S-function ''{3}''
+    (used in ''{4}'') changed since last build.</entry>
+
+    <entry key="modelRefSIMTargetNoCodeGenNeeded">Code for model reference
+    simulation target for model {0} is up to date because no functional changes were found
+    in referenced model.</entry>
+    <entry key="modelRefCoderTargetNoCodeGenNeeded">Code for the model reference
+    code generation target for model {0} is up to date because no functional changes were found
+    in referenced model.</entry>
+
+    <entry key="sfunctionFileDoesNotExist">File {0} associated with S-Function ''{1}'' (used in ''{2}'') does not exist.</entry>
+    <entry key="ignoringUnfoundDependency">Ignoring dependency ''{0}'' for model {1} because it could not be found.</entry>
+    <entry key="checkingDependency">Checking dependency ''{0}'' for model {1}.</entry>
+    <entry key="ignoringDirectoryDependency">Ignoring folder dependency ''{0}'' for model {1} because it has no files.</entry>
+    <entry key="parBuildInit">Initializing workers for parallel model reference build.</entry>    
+    <entry key="parBuildLoadTopModel">Loading ''{0}'' onto parallel workers.</entry>
+    <entry key="parBuildCopyWorkspace">Copying base workspace to parallel workers.</entry>    
+    <entry key="parBuildInitComplete">Parallel worker initialization complete.</entry>
+    <entry key="unknownAction">Unknown action ''{0}''.</entry>
+    <entry key="parBuildCleanup">Cleaning up parallel workers.</entry>
+    <entry key="parBuildStartSIM">Starting parallel model reference simulation build for: {0}.</entry>
+    <entry key="parBuildStartCoder">Starting parallel model reference code generation build for: {0}.</entry>
+    <entry key="parBuildFinishSIM">Finished parallel model reference simulation build for: {0}.</entry>
+    <entry key="parBuildFinishCoder">Finished parallel model reference code generation build for: {0}.</entry>
+    <entry key="parBuildErrorSIM">The following error occurred during parallel model reference simulation build for {0}:\n\n{1}.</entry>
+    <entry key="parBuildErrorCoder">The following error occurred during parallel model reference code generation build for {0}:\n\n{1}.</entry>
+    <entry key="parBuildVerifyManifestError">The following files are listed in manifest but are missing in {0}:\n\n{1}\n.</entry>
+    <entry key="parBuildCreateManifestError">Failed to create manifest. Temporary "*.dmr-journal" files exist in following folder:\n{0}.</entry>
+    <entry key="poolNotOpen">Model is configured for parallel model reference builds, but parallel pool is not open. See the documentation on parpool for information on opening a parallel pool.\n</entry>
+    <entry key="PoolNotAutoStarted">Unable to automatically create a parallel pool of MATLAB workers even though 'Enable parallel model reference builds' is selected for top model. Parallel Computing Toolbox preference 'Automatically create a parallel pool' might not be selected. Referenced models are built serially.</entry>
+    <entry key="poolArchInconsistent">To perform parallel model reference builds, all parallel pool workers must have same architecture as MATLAB session client.\n</entry>
+    <entry key="PCTNotAvailable">Model is configured for parallel building of referenced models, but Parallel Computing Toolbox is not available. A serial build is used.</entry>    
+    <entry key="startingParallelTestModeSIMBuild">Starting parallel simulation build in test mode.</entry>
+    <entry key="startingParallelTestModeCoderBuild">Starting parallel code generation build in test mode.</entry>
+    <entry key="startingParallelSIMBuild">Starting parallel simulation build.</entry>
+    <entry key="startingParallelCoderBuild">Starting parallel code generation build.</entry>
+    <entry key="startingSerialSIMBuild">Starting serial model build.</entry>
+    <entry key="startingSerialCoderBuild">Starting serial code generation build.</entry>
+    <entry key="ParBuildLicenseNotAvailable">One or more workers could not get a {0} license. Check the consistency of parallel pool of workers.</entry>
+    <entry key="threadPoolNotSupported">Parallel building of referenced models with a thread-based parallel pool is not supported.</entry>    
+    <entry key="CoverageParallelBuild">Model {0} is configured to collect code coverage measurements. However, code coverage is not supported for parallel model reference build.</entry>
+    <entry key="RemoteParallelBuild">Model {0} specifies toolchain ''{1}'' to build generated code remotely, which does not support parallel building of referenced models.</entry>
+    <entry key="parallelFileSystemInaccessible">Current root build folder "{0}" is not accessible by one or more of the parallel workers. Verify that workers can write to this location.</entry>
+    <entry key="parWorkerConfigError">The following error occurred when trying to configure parallel workers for target.\n{0}</entry>
+    <entry key="advisorWarning">Code Generation Advisor detected potential issues with model settings, and "Check model before generating code"  parameter is set to "On (stop for warnings)". Address issues found by Code Generation Advisor or set "Check model before generating code"  parameter to "Off".</entry>
+    <entry key="advisorWarning2">Value of ''ObjectivePriorities'' parameter in active configuration set changed to ''Unspecified''.\nPrevious value ''{0}'' is available only when using ERT-based system target files.</entry>
+   <entry key="AccelTargetFileNotAllowedForModelRefTarget">Cannot build model reference code generation target for model ''{0}'', because its ''System target file'' is set to ''accel.tlc''. Change ''System target file'' parameter to a value other than ''accel.tlc''.</entry>
+    <entry key="BuildFolderDoesNotExist">Path for ''{0}'' must exist, however path specified (''{1}'') does not exist. Enter a valid folder or use Browse button to select desired folder.</entry>
+    <entry key="CacheFolderLbl">Simulation cache folder:</entry>
+    <entry key="CacheFolderToolTip">Root folder where build artifacts used for simulation are placed.</entry>
+    <entry key="CodeGenFolderLbl">Code generation folder:</entry>
+    <entry key="CodeGenFolderToolTip">Root folder where code generation files are placed.</entry>
+    <entry key="CodeGenFolderStructureLbl">Code generation folder structure:</entry>
+    <entry key="CodeGenFolderStructureToolTip">Folder structure where code generation files are placed.</entry>
+    <entry key="FileGenFolderOptions">Folders for Generated Files</entry>
+    <entry key="CacheFolderBrowseTitle">Select a root folder for Simulink cache.</entry>
+    <entry key="CodeGenFolderBrowseTitle">Select a root folder for code generation.</entry>
+    <entry key="ForceBuildOnModelRefTarget">''{0}'' can only be used with top model or standalone model builds.</entry>
+    <entry key="NoCodeGenForSimOnly">Cannot generate code for deployment because model ''{0}'' is configured for simulation only. If current model is intended for code generation (for example, is not a test harness or plant model), in Embedded Coder app, change selection in toolstrip Output menu to an output type other than Simulation Only. Otherwise, change focus of coder app to another model by opening a model intended for code deployment.</entry>
+    <entry key="BrowseButtonText">Browse...</entry>
+    <entry key="XcodeLicenseNotAccepted">Xcode license (for GM or Beta version) was not accepted. Run Xcode and accept its license agreement.</entry>
+
+
+    <!-- minfo resave reasons -->
+    <entry key="minfoResaveDifferentPlatform">Previous build was performed on ''{0}'' platform and this platform is ''{1}''.</entry>
+    <entry key="minfoResaveLastSaveWhenDirtyModel">Previous build was performed when model or linked library was dirty.</entry>
+    <entry key="minfoResaveModelDirty">Model or linked library ''{0}'' is dirty.</entry>
+    <entry key="minfoResaveProtectionChange">Model block ''{0}'' previously referenced ''{1}'' but now references ''{2}''.</entry>
+    <entry key="minfoResaveModelAdded">Model or library ''{0}'' was not found in previous build.</entry>
+    <entry key="minfoResaveMissingLibrary">Library ''{0}'' is missing.</entry>
+    <entry key="minfoResaveModelChanged">Model or library ''{0}'' changed.</entry>
+    <entry key="minfoResaveVariantEvaluateError">Variant control ''{0}'' did not evaluate to a logical value.</entry>
+    <entry key="minfoResaveVariantValueChange">Value of variant control ''{0}'' changed from ''{1}'' to ''{2}''.</entry>
+    <entry key="minfoResaveConfigSetChanged">Configuration reference ''{0}'' changed.</entry>
+    <entry key="minfoResaveCompilerInfoChanged">Current compiler configuration for ''{0}'' is different from previous build compiler configuration for ''{1}''.</entry>
+    <entry key="minfoResaveSharedCoderDictChanged">Shared Embedded Coder Dictionary ''{0}'' changed.</entry>
+    <entry key="minfoResaveSILVerificationChange1">Verification mode used by SIL/PIL Manager changed from normal, accelerator, or rapid accelerator simulation to SIL or PIL simulation.</entry>
+    <entry key="minfoResaveSILVerificationChange2">Verification mode used by SIL/PIL Manager changed from SIL or PIL simulation to normal, accelerator, or rapid accelerator simulation.</entry>   
+
+    <entry key="compileInfoRegenMsg">Regenerating model reference interface information because:</entry>
+    <entry key="binfoCacheUpdated">Saving binary information cache.</entry>
+    
+    <!-- rebuild reasons harvestor -->
+    <entry key="rrhSearchStart">Searching for binfo files in {0}.</entry>
+    <entry key="rrhHarvestStart">Harvesting rebuild reasons from {0,number,integer} files.</entry>
+    <entry key="rrhDone">Done.</entry>
+    <entry key="rrhWritingFile">Writing data to {0}.</entry>
+    <entry key="rrhNoReason">No rebuild reason recorded.</entry>
+    <entry key="rrhModel" translate="false" note="Variable Names">Model</entry>
+    <entry key="rrhTarget" translate="false" note="Variable Names">Target</entry>
+    <entry key="rrhDate" translate="false" note="Variable Names">Date</entry>
+    <entry key="rrhReason" translate="false" note="Variable Names">Reason</entry>
+    <entry key="rrhCodeGen">Code generation</entry>
+    <entry key="rrhSimulation">Simulation</entry>
+    
+    <!-- build summary -->
+    <!-- build summary for modelref status 3 -->
+    <entry key="bs3MissingTarget">Target ({0}) did not exist.</entry>
+    <entry key="bs3MissingBinfo">Information cache folder or artifacts were missing.</entry>
+    <entry key="bs3InvalidBinfo">Some artifacts were invalid.</entry>
+    <entry key="bs3MissingBuildInfoDotMat">Build information file did not exist.</entry>
+    <entry key="bs3UserDependencyChange">User-specified dependency {0} changed.</entry>
+    <entry key="bs3MCOSEnumDependencyChange">Enumeration class {0} changed.</entry>
+    <entry key="bs3RequirementDependencyChange">Requirements Toolbox set file {0} changed.</entry>
+    <entry key="bs3CSCChange">Custom storage class definitions changed.</entry>
+    <entry key="bs3MissingSubModelTarget">Target {0} of referenced model {1} did not exist.</entry>
+    <entry key="bs3MissingSFunction">S-function {0} did not exist.</entry>
+    <entry key="bs3SFunctionDependencyChange">Dependency {0} of S-function {1} changed.</entry>
+    <entry key="bs3CRLChange">Code replacement library changed.</entry>
+    <entry key="bs3SILChange">SIL debugging setting changed from {0} to {1}.</entry>
+    <entry key="bs3MFileChange">MATLAB file {0} changed.</entry>
+    <entry key="bs3ExtModeChange">Transport layer parameter value changed from {0} to {1}.</entry>
+    <entry key="bs3CustomCodeChange">Custom code file used in model configset changed.</entry>
+    <entry key="bs3DataflowChange">Dataflow partitioning changed.</entry>
+    <entry key="bs3SimHardwareAccelerationCPU">Sim hardware acceleration CPU changed.</entry>
+    <!-- build summary for modelref status 2 -->
+    <entry key="bs2mdlWkspaceDependencyChange">Model workspace data source file {0} changed.</entry>
+    <entry key="bs2PlatformChange">Build platform changed from {0} to {1}.</entry>
+    <entry key="bs2ModelDirty">Model or library was dirty in previous build.</entry>
+    <entry key="bs2LibraryDirty">Model or library {0} is dirty.</entry>
+    <entry key="bs2ProtectionChange">Model block {0} reference changed from {1} to {2}.</entry>
+    <entry key="bs2MissingModel">Model or library {0} was not found in previous build.</entry>
+    <entry key="bs2MissingLibrary">Library {0} is not found.</entry>
+    <entry key="bs2ModelChange">Model or library {0} changed.</entry>
+    <entry key="bs2VariantChange">Variant control {0} value changed from {1} to {2}.</entry>
+    <entry key="bs2CompilerInfoChange">Compiler configuration changed.</entry>
+    <entry key="bs2ConfigSetRefChange">Configuration reference {0} changed.</entry>
+    <entry key="bs2SharedCoderDictChange">Shared Embedded Coder Dictionary ''{0}'' changed.</entry>
+    <entry key="bs2SILVerificationChange1">Verification mode of SIL/PIL Manager changed to SIL or PIL simulation.</entry>
+    <entry key="bs2SILVerificationChange2">Verification mode of SIL/PIL Manager changed to normal, accelerator, or rapid accelerator simulation.</entry>
+    <!-- build summary for modelref status 1 -->
+    <entry key="bs1GlobalVarChange">Global variable {0} changed.</entry>
+    <entry key="bs1ModelRefOutOfDate">Referenced model ''{0}'' was out of date.</entry>
+    <entry key="bs1ModelRefInterfaceOutOfDate">Interface of referenced model ''{0}'' was out of date.</entry>
+    <entry key="bs1UnresolvedSignals">Signal objects must be resolved.</entry>
+    <entry key="bs1GenCodeOnlyChange">Generate code only parameter value changed from {0} to {1}.</entry>
+    <entry key="bs1CodeInstrChange">Code instrumentation settings changed.</entry>
+    <entry key="bs1DynamicEnumTypeChange">Dynamic enum type {0} changed.</entry>
+    <entry key="bs1ProtectedModelChange">Referenced SLXP file ''{0}'' has changed.</entry>
+    <entry key="bs1SSCFileChange">Simscape source file ''{0}'' has changed.</entry>
+    <entry key="bs1MaskCallbackFileChange">Mask callback file ''{0}'' has changed or been removed.</entry>
+    <!-- build summary target types -->
+    <entry key="bsTargetModelRefSim">Model reference simulation</entry>
+    <entry key="bsTargetModelRefCoder">Model reference code generation</entry>
+    <entry key="bsTargetTopCoder">Code generation</entry>
+    <entry key="bsTargetRapidAccel">Rapid accelerator</entry>
+    <entry key="bsTargetSimAccel">Simulink accelerator</entry>
+    <!-- build summary actions -->
+    <entry key="bsCodeGen">Code generated.</entry>
+    <entry key="bsCodeCompile">Code compiled.</entry>
+    <entry key="bsCodeGenAndCompile">Code generated and compiled.</entry>
+    <!-- build summary top model target cause -->
+    <entry key="bsTopCodeOutOfDate">Generated code was out of date.</entry>
+    <entry key="bsTopCompileArtifactsOutOfDate">Compilation artifacts were out of date.</entry>
+    <entry key="bsTopForced">ForceTopModelBuild was enabled.</entry>
+    <entry key="bsTopUnsuccessfulBuild">Previous build was unsuccessful.</entry>
+    <entry key="bsTopDDMoved">Data dictionary design data relocated from {0} to {1}.</entry>
+    <entry key="bsTopSimAccel">Accelerator MEX file is out of date.</entry>
+    <entry key="bsTopTLCParamOn">{0} setting is {1}.</entry>
+    <entry key="bsTopIncrementalChecksumMissing">Incremental checksum is empty.</entry>
+    <entry key="bsTopIncrementalChecksumChange">Incremental checksum changed.</entry>
+    <entry key="bsTopBuildDirMissing">Build folder does not exist.</entry>
+    <entry key="bsTopBuildDirEmpty">Build folder is empty.</entry>
+    <entry key="bsTopBuildInfoMissing">buildInfo.mat does not exist.</entry>
+    <entry key="bsTopIncompatibleBuildLocation">Build artifacts are incompatible with current location.</entry>
+    <entry key="bsTopMdlRefsUpdated">Referenced models were updated.</entry>
+    <entry key="bsTopEnableAccessToBaseWorkspaceChanged">EnableAccessToBaseWorkspace changed to {0}.</entry>    
+    <!-- build summary table -->
+    <entry key="bsBuildSummaryTitle">Build Summary</entry>
+    <entry key="bsSimTargetsBuilt">Model reference simulation targets:</entry>
+    <entry key="bsCoderTargetsBuilt">Model reference code generation targets:</entry>
+    <entry key="bsTopModelTargetsBuilt">Top model targets:</entry>
+    <entry key="bsTopModelAcceleratorTargetsBuilt">Top model accelerator targets:</entry>
+    <entry key="bsTopModelRapidAcceleratorTargetsBuilt">Top model rapid accelerator targets:</entry>
+    <entry key="bsModelHeader">Model</entry>
+    <entry key="bsActionHeader">Status</entry>
+    <entry key="bsReasonsHeader">Build Reason</entry>
+    <entry key="bsBuildTimeHeader">Build Duration</entry>
+    <entry key="bsModelsBuilt">{0} of {1} models built ({2} models already up to date)</entry>
+    <entry key="bsBuildDuration">Build duration: {0}</entry>
+    <entry key="bsActionFailed">Failed to build. For more information, see build log.</entry>
+    <entry key="bsActionRebuilt">Rebuilt</entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  xml UTF SIL slprj resaved Bullseye utils Skiplist dmr binfo autotune parpool Xcode
+     LocalWords:  configsets harvestor
+-->
+
+<!-- Copyright 2009-2025 The MathWorks, Inc. -->

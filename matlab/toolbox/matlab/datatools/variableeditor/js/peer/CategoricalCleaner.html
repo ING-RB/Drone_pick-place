@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CatCleaner Remote Showcase Page</title>
+</head>
+
+<body>
+
+    <!-- Load dojo -->
+    <script src="release/variableeditor_peer/dojoConfig-release-global.js"></script>
+
+    <!-- Include dojo release build -->
+    <script src="release/bundle.index.js"></script>
+
+    <!-- Load css -->
+    <link rel="stylesheet" href="release/index-css.css"/>
+
+    <script type="text/javascript">
+        var openVar, closeVar;
+        require(['variableeditor_peer/CategoricalCleaner/RemoteCategoricalCleanerMock',
+            'variableeditor_peer/PeerManagerFactory',
+            'variableeditor_peer/ViewManifest'
+        ],
+        function (RemoteCategoricalCleanerMock, PeerManagerFactory, ViewManifest) {
+            RemoteCategoricalCleanerMock.startup();
+            openVar = function () {
+            RemoteCategoricalCleanerMock.openCatCleaner();
+            };
+            closeVar = function () {
+            RemoteCategoricalCleanerMock.closeCatCleaner();
+            };
+        });
+
+    </script>
+    </head>
+
+    <body class="tundra" style="margin:10pt;overflow:auto;" id="theBody">
+        <input type="button" id="closeButton" value="Close Variable" onclick="closeVar();" style="margin-left:5px;" />
+        <input type="button" id="openButton" value="open Variable" onclick="openVar();" style="margin-right: 5px; margin-left:5px;" />
+    </body>
+</body>
+
+</html>

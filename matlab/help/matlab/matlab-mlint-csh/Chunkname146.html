@@ -1,0 +1,12 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><tmw_trademark class="registered">MATLAB</tmw_trademark> does not support using this
+                    syntax to compare <code>b</code> to <code>a</code> and
+                        <code>c</code> using logical operators, e.g. <code>&lt;</code>,
+                        <code>&gt;=</code>, <code>==</code>, etc.</p><p>Instead, MATLAB evaluates operators of equal precedence from left to right.
+                    This means that the statement, <code>a &lt; b &lt; c</code>, is equivalent
+                    to the statement <code>(a &lt; b) &lt; c</code>, comparing the logical
+                    result of <code>a &lt; b</code> (either <code>0</code> or
+                        <code>1</code>) to the value <code>c</code>. Statements using
+                    this type of interval testing rarely yield useful results.</p><br/><strong>Suggested Action</strong><br/><p>Break the comparison, <code>a &lt; b &lt; c</code>, into a series of
+                    binary comparisons. If all arguments are numeric scalars, use the
+                    form:<code>(a&nbsp;&lt;&nbsp;b)&nbsp;&amp;&amp;&nbsp;(b&nbsp;&lt;&nbsp;c)</code>Otherwise,
+                    use the form:<code>(a&nbsp;&lt;&nbsp;b)&nbsp;&amp;&nbsp;(b&nbsp;&lt;&nbsp;c)</code></p><p>For more information, see <a href="../matlab_prog/operator-precedence.html" class="a">Operator Precedence</a>. </p></body></html>

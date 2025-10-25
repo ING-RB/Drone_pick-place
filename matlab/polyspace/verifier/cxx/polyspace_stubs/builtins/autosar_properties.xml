@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 The MathWorks, Inc. -->
+<!-- Mapping of atomic checks to AUTOSAR RTE API -->
+<!-- see for more info: https://confluence.mathworks.com/x/MafkD -->
+<!-- For example the definition: -->
+
+<!-- <tag id="Autosar_Rte_Write" kind="function" user_name="Rte_Write*" > -->
+<!--   <properties> -->
+<!--     <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property> -->
+<!--     <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1</property> -->
+<!--   </properties> -->
+<!-- </tag> -->
+
+<!-- This means that for all functions whose name corresponds to the regular expression "Rte_Write*", a -->
+<!-- check that the argument 1 of the function is initialized will be performed. This unit check will -->
+<!-- be added to a BugFinder violation and/or a codeProver RTE check of type AUTOSAR_USE. This for all -->
+<!-- the call sites of the function. -->
+
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <file_scope>
+    <parameter name="force_polyspace_semantics_for_this_file" value="1"/>
+    <parameter name="only_if_library" value="autosar"/>
+  </file_scope>
+  <named_properties>
+    <properties name="skip_body"><!-- Skip body if present -->
+      <property kind="skip_body"/>
+    </properties>
+    <properties name="check_in_arg_1" ><!-- Check first argument is non-null, allocated, initialized -->
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1</property>
+      <property kind="check">ARGUMENT_IS_ALLOCATED</property>
+      <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@1</property>
+      <property kind="check">ARGUMENT_IS_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_INITIALIZED@arg@1</property>
+      <property kind="check">ARGUMENT_IS_IN_RANGE</property>
+      <property kind="check">name@ARGUMENT_IS_IN_RANGE@arg@1</property>
+    </properties>
+    <properties name="check_in_arg_2" ><!-- Check second argument is non-null, allocated, initialized -->
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@2</property>
+      <property kind="check">ARGUMENT_IS_ALLOCATED</property>
+      <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@2</property>
+      <property kind="check">ARGUMENT_IS_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_INITIALIZED@arg@2</property>
+      <property kind="check">ARGUMENT_IS_IN_RANGE</property>
+      <property kind="check">name@ARGUMENT_IS_IN_RANGE@arg@2</property>
+    </properties>
+    <properties name="return_vector" ><!-- Function returns an array of 255 elements -->
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED@arg@0</property>
+    </properties>
+    <properties name="return_vector_1" ><!-- Make the function returning a vector of one element -->
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED_1</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED_1@arg@0</property>
+    </properties>
+    <properties name="return_vector_size" ><!-- Make the function returning 255 -->
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED_VECTOR_SIZE</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED_VECTOR_SIZE@arg@0</property>
+    </properties>
+    <properties name="check_out_arg_1" ><!-- Check first argument is non-null and allocated. Function side-effect initializes the value pointed to by the first argument. -->
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1</property>
+      <property kind="check">ARGUMENT_IS_ALLOCATED</property>
+      <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@1</property>
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED@arg@1</property>
+    </properties>
+    <properties name="check_out_arg_2" ><!-- Check second argument is non-null and allocated. Function side-effect initializes the value pointed to by the second argument. -->
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@2</property>
+      <property kind="check">ARGUMENT_IS_ALLOCATED</property>
+      <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@2</property>
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED@arg@2</property>
+    </properties>
+    <properties name="check_out_arg_3" >
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@3</property>
+      <property kind="check">ARGUMENT_IS_ALLOCATED</property>
+      <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@3</property>
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED@arg@3</property>
+    </properties>
+    <properties name="check_out_transformer_error" ><!-- Check last argument is non-null and allocated. Function side-effect initializes the value pointed to by the last argument. -->
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@-1</property>
+      <property kind="check">ARGUMENT_IS_ALLOCATED</property>
+      <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@-1</property>
+      <property kind="check">ARGUMENT_IS_OUT_INITIALIZED</property>
+      <property kind="check">name@ARGUMENT_IS_OUT_INITIALIZED@arg@-1</property>
+    </properties>
+    <properties name="check_instance" ><!-- Check first argument is non-null. -->
+      <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property>
+      <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1</property>
+    </properties>
+    <properties name="return_Std_ReturnType" ><!-- Function returns a valid Autosar RTE Std_ReturnType value -->
+      <property kind="check">RETURN_STD_RETURNTYPE</property>
+    </properties>
+    <properties name="return_boolean" >
+      <property kind="check">RETURN_AUTOSAR_BOOLEAN</property>
+    </properties>
+  </named_properties>
+
+  <!-- 5.6.1 Rte_Ports -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.1 -->
+  <tag id="Autosar_Rte_Ports" kind="function" user_name="Rte_Ports_*_R"
+       other_names="Rte_Ports_*_P,Rte_Ports_*_PR,Rte_Byps_Ports_*_R,Rte_Byps_Ports_*_P,Rte_Byps_Ports_*_PR"
+       first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_Ports_instance" kind="function" user_name="Rte_Ports_*_R"
+       other_names="Rte_Ports_*_P,Rte_Ports_*_PR,Rte_Byps_Ports_*_R,Rte_Byps_Ports_*_P,Rte_Byps_Ports_*_PR"
+       first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.2 RTE_Nports -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.2 -->
+  <tag id="Autosar_Rte_NPorts" kind="function" user_name="Rte_NPorts_*_R"
+       other_names="Rte_NPorts_*_P,Rte_NPorts_*_PR,Rte_Byps_NPorts_*_R,Rte_Byps_NPorts_*_P,Rte_Byps_NPorts_*_PR"
+       first_arg_is_autosar_rte_instance="false" last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector_size"/>
+  </tag>
+  <tag id="Autosar_Rte_NPorts_instance" kind="function" user_name="Rte_NPorts_*_R"
+       other_names="Rte_NPorts_*_P,Rte_NPorts_*_PR,Rte_Byps_NPorts_*_R,Rte_Byps_NPorts_*_P,Rte_Byps_NPorts_*_PR"
+       first_arg_is_autosar_rte_instance="true" last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector_size"/>
+  </tag>
+
+  <!-- 5.6.3 Rte_Port -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.3 -->
+  <tag id="Autosar_Rte_Port" kind="function" user_name="Rte_Port_*_R"
+       other_names="Rte_Port_*_P,Rte_Port_*_PR,Rte_Byps_Port_*_R,Rte_Byps_Port_*_P,Rte_Byps_Port_*_PR"
+       first_arg_is_autosar_rte_instance="false" last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector_1"/>
+  </tag>
+  <tag id="Autosar_Rte_Port_instance" kind="function" user_name="Rte_Port_*_R"
+       other_names="Rte_Port_*_P,Rte_Port_*_PR,Rte_Byps_Port_*_R,Rte_Byps_Port_*_P,Rte_Byps_Port_*_PR"
+       first_arg_is_autosar_rte_instance="true" last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector_1"/>
+  </tag>
+
+  <!-- 5.6.4 Rte_Write -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.4 -->
+  <tag id="Autosar_Rte_Write" kind="function" user_name="Rte_Write_*_*"
+       other_names="Rte_Byps_Write_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Write_instance" kind="function" user_name="Rte_Write_*_*"
+       other_names="Rte_Byps_Write_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Write_error" kind="function" user_name="Rte_Write_*_*"
+       other_names="Rte_Byps_Write_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Write_instance_error" kind="function" user_name="Rte_Write_*_*"
+       other_names="Rte_Byps_Write_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.5 Rte_Send -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.5 -->
+  <tag id="Autosar_Rte_Send" kind="function" user_name="Rte_Send_*_*"
+       other_names="Rte_Byps_Send_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Send_instance" kind="function" user_name="Rte_Send_*_*"
+       other_names="Rte_Byps_Send_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Send_error" kind="function" user_name="Rte_Send_*_*"
+       other_names="Rte_Byps_Send_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Send_instance_error" kind="function" user_name="Rte_Send_*_*"
+       other_names="Rte_Byps_Send_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.6 Rte_Switch -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.6 -->
+  <tag id="Autosar_Rte_Switch" kind="function" user_name="Rte_Switch_*_*"
+       other_names="Rte_Byps_Switch_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Switch_instance" kind="function" user_name="Rte_Switch_*_*"
+       other_names="Rte_Byps_Switch_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.7 Rte_Invalidate -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.5 -->
+  <tag id="Autosar_Rte_Invalidate" kind="function" user_name="Rte_Invalidate_*_*"
+       other_names="Rte_Byps_Invalidate_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Invalidate_instance" kind="function" user_name="Rte_Invalidate_*_*"
+       other_names="Rte_Byps_Invalidate_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Invalidate_error" kind="function" user_name="Rte_Invalidate_*_*"
+       other_names="Rte_Byps_Invalidate_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Invalidate_instance_error" kind="function" user_name="Rte_Invalidate_*_*"
+       other_names="Rte_Byps_Invalidate_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.8 Rte_Feedback -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.8 -->
+  <tag id="Autosar_Rte_Feedback" kind="function" user_name="Rte_Feedback_*_*"
+       other_names="Rte_Byps_Feedback_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Feedback_instance" kind="function" user_name="Rte_Feedback_*_*"
+       other_names="Rte_Byps_Feedback_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.9 Rte_SwitchAck -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.9 -->
+  <tag id="Autosar_Rte_SwitchAck" kind="function" user_name="Rte_SwitchAck_*_*"
+       other_names="Rte_Byps_SwitchAck_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_SwitchAck_instance" kind="function" user_name="Rte_SwitchAck_*_*"
+       other_names="Rte_Byps_SwitchAck_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.10 Rte_Read -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.10 -->
+  <tag id="Autosar_Rte_Read" kind="function" user_name="Rte_Read_*_*"
+       other_names="Rte_Byps_Read_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_arg_1"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Read_instance" kind="function" user_name="Rte_Read_*_*"
+       other_names="Rte_Byps_Read_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_arg_2"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Read_error" kind="function" user_name="Rte_Read_*_*"
+       other_names="Rte_Byps_Read_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_arg_1"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Read_instance_error" kind="function" user_name="Rte_Read_*_*"
+       other_names="Rte_Byps_Read_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_arg_2"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.11 Rte_DRead -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.11 -->
+  <tag id="Autosar_Rte_DRead" kind="function" user_name="Rte_DRead_*_*"
+       other_names="Rte_Byps_DRead_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_DRead_instance" kind="function" user_name="Rte_DRead_*_*"
+       other_names="Rte_Byps_DRead_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_DRead_error" kind="function" user_name="Rte_DRead_*_*"
+       other_names="Rte_Byps_DRead_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_DRead_instance_error" kind="function" user_name="Rte_DRead_*_*"
+       other_names="Rte_Byps_DRead_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.12 Rte_Receive -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.12 -->
+  <tag id="Autosar_Rte_Receive" kind="function" user_name="Rte_Receive_*_*"
+       other_names="Rte_Byps_Receive_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_arg_1"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Receive_instance" kind="function" user_name="Rte_Receive_*_*"
+       other_names="Rte_Byps_Receive_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_arg_2"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Receive_error" kind="function" user_name="Rte_Receive_*_*"
+       other_names="Rte_Byps_Receive_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_arg_1"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Receive_instance_error" kind="function" user_name="Rte_Receive_*_*"
+       other_names="Rte_Byps_Receive_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_arg_2"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.13 Rte_Call is not supported -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.13	 -->
+  <!-- here as an example: NOT YET IMPLEMENTED  -->
+  <!-- range meaning: -->
+  <!-- 1..-1 : from the first parameter to the last -->
+  <!-- 2..-1 : from the second parameter to the last -->
+  <!-- 1..-2 : from the first parameter to the second last -->
+  <!-- 2..-2 : from the second  parameter to the second last -->
+  <!-- <tag id="Autosar_Rte_Call" kind="function" user_name="Rte_Call_*_*" -->
+  <!--      other_names="Rte_Byps_Call_*_*" first_arg_is_autosar_rte_instance="false" -->
+  <!--      last_arg_is_autosar_transformer_error="false"> -->
+  <!--   <use_properties name="skip_body"/> -->
+  <!--   <properties> -->
+  <!--     <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1..-1</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_ALLOCATED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@1..-1</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_INITIALIZED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_INITIALIZED@arg@1..-1</property> -->
+  <!--   </properties> -->
+  <!-- </tag> -->
+  <!-- <tag id="Autosar_Rte_Call_error" kind="function" user_name="Rte_Call_*_*" -->
+  <!--      other_names="Rte_Byps_Call_*_*" first_arg_is_autosar_rte_instance="false" -->
+  <!--      last_arg_is_autosar_transformer_error="true"> -->
+  <!--   <use_properties name="skip_body"/> -->
+  <!--   <properties> -->
+  <!--     <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1..-2</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_ALLOCATED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@1..-2</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_INITIALIZED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_INITIALIZED@arg@1..-2</property> -->
+  <!--   </properties> -->
+  <!-- </tag> -->
+  <!-- <tag id="Autosar_Rte_Call_instance" kind="function" user_name="Rte_Call_*_*" -->
+  <!--      other_names="Rte_Byps_Call_*_*" first_arg_is_autosar_rte_instance="true" -->
+  <!--      last_arg_is_autosar_transformer_error="false"> -->
+  <!--   <use_properties name="skip_body"/> -->
+  <!--   <properties> -->
+  <!--     <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@1..-1</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_ALLOCATED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@1..-1</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_INITIALIZED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_INITIALIZED@arg@1..-1</property> -->
+  <!--   </properties> -->
+  <!-- </tag> -->
+  <!-- <tag id="Autosar_Rte_Call_instance_error" kind="function" user_name="Rte_Call_*_*" -->
+  <!--      other_names="Rte_Byps_Call_*_*" first_arg_is_autosar_rte_instance="true" -->
+  <!--      last_arg_is_autosar_transformer_error="true"> -->
+  <!--   <use_properties name="skip_body"/> -->
+  <!--   <properties> -->
+  <!--     <property kind="check">ARGUMENT_IS_NOT_NULLPTR</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_NOT_NULLPTR@arg@2..-2</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_ALLOCATED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_ALLOCATED@arg@2..-2</property> -->
+  <!--     <property kind="check">ARGUMENT_IS_INITIALIZED</property> -->
+  <!--     <property kind="check">name@ARGUMENT_IS_INITIALIZED@arg@2..-2</property> -->
+  <!--   </properties> -->
+  <!-- </tag> -->
+
+  <!-- 5.6.14 Rte_Result is not supported -->
+
+  <!-- 5.6.15 Rte_Pim -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.15 -->
+  <tag id="Autosar_Rte_Pim" kind="function" user_name="Rte_Pim_*"
+       other_names="Rte_Byps_Pim_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_Pim_instance" kind="function" user_name="Rte_Pim_*"
+       other_names="Rte_Byps_Pim_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.16 Rte_CData -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.16 -->
+  <tag id="Autosar_Rte_CData" kind="function" user_name="Rte_CData_*"
+       other_names="Rte_Byps_CData_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_CData_instance" kind="function" user_name="Rte_CData_*"
+       other_names="Rte_Byps_CData_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.17 Rte_Prm -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.17 -->
+  <tag id="Autosar_Rte_Prm" kind="function" user_name="Rte_Prm_*_*"
+       other_names="Rte_Byps_Prm_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_Prm_instance" kind="function" user_name="Rte_Prm_*_*"
+       other_names="Rte_Byps_Prm_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.18 Rte_IRead -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.18 -->
+  <tag id="Autosar_Rte_IRead" kind="function" user_name="Rte_IRead_*_*_*"
+       other_names="Rte_Byps_IRead_*_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_IRead_instance" kind="function" user_name="Rte_IRead_*_*_*"
+       other_names="Rte_Byps_IRead_*_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.19 Rte_IWrite -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.19 -->
+  <tag id="Autosar_Rte_IWrite" kind="function" user_name="Rte_IWrite_*_*_*"
+       other_names="Rte_Byps_IWrite_*_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+  </tag>
+  <tag id="Autosar_Rte_IWrite_instance" kind="function" user_name="Rte_IWrite_*_*_*"
+       other_names="Rte_Byps_IWrite_*_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+  </tag>
+
+  <!-- 5.6.20 Rte_IWriteRef -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.20 -->
+  <tag id="Autosar_Rte_IWriteRef" kind="function" user_name="Rte_IWriteRef_*_*_*"
+       other_names="Rte_Byps_IWriteRef_*_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector_1"/>
+  </tag>
+  <tag id="Autosar_Rte_IWriteRef_instance" kind="function" user_name="Rte_IWriteRef_*_*_*"
+       other_names="Rte_Byps_IWriteRef_*_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector_1"/>
+  </tag>
+
+  <!-- 5.6.21 Rte_IInvalidate -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.21 -->
+  <tag id="Autosar_Rte_IInvalidate" kind="function" user_name="Rte_IInvalidate_*_*_*"
+       other_names="Rte_Byps_IInvalidate_*_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="Autosar_Rte_IInvalidate_instance" kind="function" user_name="Rte_IInvalidate_*_*_*"
+       other_names="Rte_Byps_IInvalidate_*_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+  </tag>
+
+
+  <!-- 5.6.22 Rte_IStatus -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.22 -->
+  <tag id="Autosar_Rte_IStatus" kind="function" user_name="Rte_IStatus_*_*_*"
+       other_names="Rte_Byps_IStatus_*_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_IStatus_instance" kind="function" user_name="Rte_IStatus_*_*_*"
+       other_names="Rte_Byps_IStatus_*_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_IStatus_error" kind="function" user_name="Rte_IStatus_*_*_*"
+       other_names="Rte_Byps_IStatus_*_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_IStatus_instance_error" kind="function" user_name="Rte_IStatus_*_*_*"
+       other_names="Rte_Byps_IStatus_*_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_transformer_error"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.23 Rte_IrvIRead -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.23 -->
+  <tag id="Autosar_Rte_IrvIRead" kind="function" user_name="Rte_IrvIRead_*_*"
+       other_names="Rte_Byps_IrvIRead_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvIRead_instance" kind="function" user_name="Rte_IrvIRead_*_*"
+       other_names="Rte_Byps_IrvIRead_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.24 Rte_IrvIWrite -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.24 -->
+  <tag id="Autosar_Rte_IrvIWrite" kind="function" user_name="Rte_IrvIWrite_*_*"
+       other_names="Rte_Byps_IrvIWrite_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvIWrite_instance" kind="function" user_name="Rte_IrvIWrite_*_*"
+       other_names="Rte_Byps_IrvIWrite_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+  </tag>
+
+  <!-- 5.6.25 Rte_IrvIWriteRef -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.25 -->
+  <tag id="Autosar_Rte_IrvIWriteRef" kind="function" user_name="Rte_IrvIWriteRef_*_*"
+       other_names="Rte_Byps_IrvIWriteRef_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvIWriteRef_instance" kind="function" user_name="Rte_IrvIWriteRef_*"
+       other_names="Rte_Byps_IrvIWriteRef_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.26 Rte_IrvRead -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.26 -->
+  <tag id="Autosar_Rte_IrvRead" kind="function" user_name="Rte_IrvRead_*_*"
+       other_names="Rte_Byps_IrvRead_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvRead_instance" kind="function" user_name="Rte_IrvRead_*_*"
+       other_names="Rte_Byps_IrvRead_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvRead_void" kind="function" user_name="Rte_IrvRead_*_*"
+       other_names="Rte_Byps_IrvRead_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_arg_1"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvRead_instance_void" kind="function" user_name="Rte_IrvRead_*_*"
+       other_names="Rte_Byps_IrvRead_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_arg_2"/>
+  </tag>
+
+  <!-- 5.6.27 Rte_IrvWrite -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.27 -->
+  <tag id="Autosar_Rte_IrvWrite" kind="function" user_name="Rte_IrvWrite_*_*"
+       other_names="Rte_Byps_IrvWrite_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_in_arg_1"/>
+  </tag>
+  <tag id="Autosar_Rte_IrvWrite_instance" kind="function" user_name="Rte_IrvWrite_*_*"
+       other_names="Rte_Byps_IrvWrite_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_in_arg_2"/>
+  </tag>
+
+  <!-- 5.6.28 Rte_Enter -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.28 -->
+  <tag id="Autosar_Rte_Enter" kind="function" user_name="Rte_Enter_*"
+       other_names="Rte_Byps_Enter_*"
+       first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="Autosar_Rte_Enter_instance" kind="function" user_name="Rte_Enter_*"
+       other_names="Rte_Byps_Enter_*"
+       first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+  </tag>
+
+  <!-- 5.6.29 Rte_Exit -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.29 -->
+  <tag id="Autosar_Rte_Exit" kind="function" user_name="Rte_Exit_*"
+       other_names="Rte_Byps_Exit_*"
+       first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="Autosar_Rte_Exit_instance" kind="function" user_name="Rte_Exit_*"
+       other_names="Rte_Byps_Exit_*"
+       first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+  </tag>
+
+  <!-- 5.6.30 Rte_Mode -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.30 -->
+  <tag id="Autosar_Rte_Mode" kind="function" user_name="Rte_Mode_*_*"
+       other_names="Rte_Byps_Mode_*_*" first_arg_is_autosar_rte_instance="false"
+       nb_args="0">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_Mode_instance" kind="function" user_name="Rte_Mode_*_*"
+       other_names="Rte_Byps_Mode_*_*" first_arg_is_autosar_rte_instance="true"
+       nb_args="1">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.31 Enhanced Rte_Mode -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.31 -->
+  <tag id="Autosar_Rte_Mode2" kind="function" user_name="Rte_Mode_*_*"
+       other_names="Rte_Byps_Mode_*_*" first_arg_is_autosar_rte_instance="false"
+       nb_args="2">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_arg_1"/>
+    <use_properties name="check_out_arg_2"/>
+    <use_properties name="return_vector"/>
+  </tag>
+  <tag id="Autosar_Rte_Mode_instance3" kind="function" user_name="Rte_Mode_*_*"
+       other_names="Rte_Byps_Mode_*_*" first_arg_is_autosar_rte_instance="true"
+       nb_args="3">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_arg_2"/>
+    <use_properties name="check_out_arg_3"/>
+    <use_properties name="return_vector"/>
+  </tag>
+
+  <!-- 5.6.32 Rte_Trigger -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.32 -->
+  <tag id="Autosar_Rte_Trigger" kind="function" user_name="Rte_Trigger_*_*"
+       other_names="Rte_Byps_Trigger_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false" return_type_is_void="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Trigger_instance" kind="function" user_name="Rte_Trigger_*_*"
+       other_names="Rte_Byps_Trigger_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false" return_type_is_void="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_Trigger_void" kind="function" user_name="Rte_Trigger_*_*"
+       other_names="Rte_Byps_Trigger_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="false" return_type_is_void="true">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="Autosar_Rte_Trigger_instance_void" kind="function" user_name="Rte_Trigger_*_*"
+       other_names="Rte_Byps_Trigger_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="false" return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+  </tag>
+  <tag id="Autosar_Rte_Trigger_error_void" kind="function" user_name="Rte_Trigger_*_*"
+       other_names="Rte_Byps_Trigger_*_*" first_arg_is_autosar_rte_instance="false"
+       last_arg_is_autosar_transformer_error="true" return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_out_transformer_error"/>
+  </tag>
+  <tag id="Autosar_Rte_Trigger_instance_instance_error_void" kind="function" user_name="Rte_Trigger_*_*"
+       other_names="Rte_Byps_Trigger_*_*" first_arg_is_autosar_rte_instance="true"
+       last_arg_is_autosar_transformer_error="true" return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="check_out_transformer_error"/>
+  </tag>
+
+  <!-- 5.6.33 Rte_IrTrigger -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.33 -->
+  <tag id="Autosar_Rte_IrTrigger" kind="function" user_name="Rte_IrTrigger_*_*"
+       other_names="Rte_Byps_IrTrigger_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_IrTrigger_instance" kind="function" user_name="Rte_IrTrigger_*_*"
+       other_names="Rte_Byps_IrTrigger_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_IrTrigger_void" kind="function" user_name="Rte_IrTrigger_*_*"
+       other_names="Rte_Byps_IrTrigger_*_*" first_arg_is_autosar_rte_instance="false"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="Autosar_Rte_IrTrigger_instance_void" kind="function" user_name="Rte_IrTrigger_*_*"
+       other_names="Rte_Byps_IrTrigger_*_*" first_arg_is_autosar_rte_instance="true"
+       return_type_is_void="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+  </tag>
+
+  <!-- 5.6.34 Rte_IFeedback -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.34 -->
+  <tag id="Autosar_Rte_IFeedback" kind="function" user_name="Rte_IFeedback_*_*"
+       other_names="Rte_Byps_IFeedback_*_*" first_arg_is_autosar_rte_instance="false">
+    <use_properties name="skip_body"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+  <tag id="Autosar_Rte_IFeedback_instance" kind="function" user_name="Rte_IFeedback_*_*"
+       other_names="Rte_Byps_IFeedback_*_*" first_arg_is_autosar_rte_instance="true">
+    <use_properties name="skip_body"/>
+    <use_properties name="check_instance"/>
+    <use_properties name="return_Std_ReturnType"/>
+  </tag>
+
+  <!-- 5.6.35 Rte_IsUpdated -->
+  <!-- https://www.autosar.org/fileadmin/user_upload/standards/classic/4-3/AUTOSAR_SWS_RTE.pdf#subsection.5.6.35 -->
+  <tag id="Autosar_Rte_IsUpdated" kind="function" user_name="Rte_IsUpdated_*_*"
+       other_names="Rte_Byps_IsUpdated_*_*" first_arg_is_autosar_rte_instance="false">
+    <properties>
+      <property kind="skip_body"></property>
+    </properties>
+    <use_properties name="return_boolean"/>
+  </tag>
+  <tag id="Autosar_Rte_IsUpdated_instance" kind="function" user_name="Rte_IsUpdated_*_*"
+       other_names="Rte_Byps_IsUpdated_*_*" first_arg_is_autosar_rte_instance="true">
+    <properties>
+      <property kind="skip_body"></property>
+    </properties>
+    <use_properties name="check_instance"> </use_properties>
+    <use_properties name="return_boolean"/>
+  </tag>
+
+  <!-- 5.6.36 Rte_PBCon is a macro: no support needed -->
+</tags>

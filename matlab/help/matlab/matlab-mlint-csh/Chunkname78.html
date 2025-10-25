@@ -1,0 +1,10 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The code applies the <code><a href="matlab:doc isempty" target="_blank">isempty</a></code> function to the entire result of a
+                            <code><a href="matlab:doc find" target="_blank">find</a></code>
+                    operation. It is sufficient to request a single output from
+                        <code>find</code>, and then apply <code>isempty</code> to that
+                    single output. </p><br/><strong>Suggested Action</strong><br/><p>Replace code such as <code>isempty(find(A))</code> with code such as
+                        <code>isempty(find(A,1))</code> where A is an arbitrary expression
+                    giving a logical value.</p><p>If A is a vector, use the simpler and faster form, <code>~any(A)</code>.
+                    If A is an arbitrary matrix, another good alternative is
+                        <code>~any(A(:))</code>. </p><p>In general, Code Analyzer does not know the shape of <code>A</code>, so
+                    it does not offer these alternatives as automatic fixes.</p></body></html>

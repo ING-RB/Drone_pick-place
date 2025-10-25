@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2016-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="vision" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <entry key="regionProposalFcnRequiredForMultiChannel">The default value of ''RegionProposalFcn'' is not supported for multi-channel images. Specify a custom region proposal function.</entry>
+    <entry key="regionProposalBegin">--> Extracting region proposals from {0} training images...</entry>    
+    <entry key="regionProposalEnd">done.</entry>  
+    <entry key="notEnoughObjectClasses">The number of object classes in the network classification layer must be equal to the number of classes defined in the input trainingData plus 1 for the "Background" class.</entry>
+    <entry key="rangesOverlap">Expected ''PositiveOverlapRange'' and ''NegativeOverlapRange'' to not overlap.</entry>
+    <entry key="noPositiveSamples">Unable to find any region proposals to use as positive training samples in these images:\n\n{0}\nThey will not be used for training.</entry>
+    <entry key="noNegativeSamples">Unable to find any region proposals to use as negative training samples in these images:\n\n{0}</entry>
+    <entry key="noTrainingSamples">Unable to find any region proposals to use as positive training samples. Lower the first value of PositiveOverlapRange to increase the number of positive region proposals.</entry>
+    <entry key="proposalFcnInvalidNargin">Expected the region proposal function to have 1 input.</entry>
+    <entry key="proposalFcnInvalidNargout">Expected the region proposal function to have 2 outputs.</entry>    
+    <entry key="proposalFcnErrorOccurred">An error occurred while using {0} to process {1}: \n\n{2}\n\nRegions from this image will not be used for training.</entry>
+    <entry key="invalidBBox">The first output of the region proposal function  must be real, finite, and non-sparse.</entry>
+    <entry key="invalidScores">The second output of the region proposal function must be real, finite, and non-sparse.</entry>
+    <entry key="invalidBBoxDim">The first output of the region proposal function must be an M-by-4 matrix.</entry>
+    <entry key="invalidScoreDim">The second output of the region proposal function must be an M-by-1 vector.</entry>
+    <entry key="proposalInconsistentNumel">The first and second output of the region proposal function must have the same number of rows.</entry>
+    <entry key="proposalInvalidWidthHeight">The width and height of the region proposal bounding boxes must be positive.</entry>
+    <entry key="missingBackgroundClass">The network's classification layer must have a ''Background'' class.</entry>
+    <entry key="lastLayerNotClassificationLayer">The network must contain one classification layer.</entry>
+    <entry key="firstLayerNotImageInputLayer">The network must have only one image input layer, and it must be the first layer in the network.</entry>
+    <entry key="removingAugmentation">The ''{0}'' data augmentation will not be applied during training.</entry>
+    <entry key="miniBatchSizeTooSmall">The network training options must specify a ''MiniBatchSize'' of 4.</entry>  
+    <entry key="bboxRegressionBegin">--> Training bounding box regression models for each object class...</entry>
+    <entry key="bboxRegressionEnd">done.</entry>
+    <entry key="trainNetworkBegin">--> Training a neural network to classify objects in training data...</entry>
+    <entry key="trainNetworkEnd">Network training complete.</entry>
+    <entry key="trainingHeader">Training an R-CNN Object Detector for the following object classes:</entry>
+    <entry key="trainingFooter">Detector training complete.</entry>
+    <entry key="trainingFooterWithWarnings">Detector training complete (with warnings):</entry>
+    <entry key="noConvLayerSkipBoxReg">Unable to automatically find a feature layer for training the box regression model. Manually specify a layer using ''BoxRegressionLayer''.</entry>    
+    <entry key="dagUnableToFindLastFC">Unable to automatically find and replace the last fully-connected layer in the input network. Manually modify the input network so that the last fully connected layer has {0} outputs and replace the old classification layer with a new one using classificationLayer().</entry>
+    <entry key="networkMissingBBoxFeatureLayer">One of the layers in Network must have the name specified in the ''BoxRegressionLayer'' property.</entry>
+    <entry key="autoOrNoneNotAllowedAsLayerName">None of the layers in the input network can be named ''auto''. Please rename any layers named ''auto''.</entry>
+    <entry key="removingInvalidTrainingData">Invalid bounding boxes from {0} out of {1} training images were removed. The following rows in trainingData have invalid bounding box data:\n\n{2}\nBounding boxes must be non-empty, fully contained within their associated image, and have positive width and height.</entry>
+    <entry key="noValidTrainingData">The input training data contains invalid bounding box data. Modify the training data to ensure all the bounding boxes are fully contained in the image, the bounding box [x y width height] or [xctr yctr width height yaw] values are greater than zero, and that there is at least one bounding box for each training image.</entry>
+    <entry key="networkTrainingLossHasNaNs">The training loss has NaN values. The detector may not be properly trained. Try to lower the ''InitialLearnRate'' using the trainingOptions function and retrain the detector.</entry>
+    <entry key="fourStepTrainingLossHasNaNs">Step {0}: The training loss has NaN values. The detector may not be properly trained. Try to lower the ''InitialLearnRate'' using the trainingOptions function and retrain the detector.</entry>
+    <entry key="nonfiniteRCNNBoxRegressionData">Training features extracted by the network contain NaNs. Try to lower the ''InitialLearnRate'' using the trainingOptions function and retrain the detector.</entry>
+    
+    <!-- shared fast faster -->        
+    <entry key="unableToBatchImages">The training images must have the same size when the MiniBatchSize is greater than 1. To train a detector with images of varying size, set ''MiniBatchSize'' to 1 using the trainingOptions function.</entry>
+    <entry key="notMonoRGB">R-CNN only supports RGB or grayscale images when training data is a table. Specify the training data using a datastore to train with multi-channel images.</entry>
+    <entry key="validationDataNotSupported">{0} does not support the ValidationData training option.</entry>
+    <entry key="validationPlotsNotSupported">{0} does not support the training-progress Plots training option.</entry> 
+    <entry key="fourStepValidationPlotsNotSupported">The four-step training method does not support the training-progress Plots training option.</entry> 
+    <entry key="fourStepOutputFcnNotSupported">The four-step training method does not support the OutputFcn training option.</entry> 
+    <entry key="fourStepExperimentMonitorNotSupported">The four-step training method does not support the ExperimentMonitor option.</entry> 
+    <entry key="GPULowOnMemory">GPU is low on memory, which can slow performance due to additional data transfers with main memory. Try setting the ''SmallestImageDimension'' parameter between 400 and 600 to reduce the size of the training images. This warning will not appear again unless you run the command: &lt;a href=&quot;matlab:warning(''on'',''vision:rcnn:GPULowOnMemory'')&quot;&gt;warning(''on'',''vision:rcnn:GPULowOnMemory'')&lt;/a&gt;.</entry>
+    <entry key="mimoDAGNotSupported">A network with multiple inputs and outputs is not supported.</entry>
+    <entry key="UseParallelMustBeTrueForParallelTraining">Enable parallel computing support using the Computer Vision Toolbox Preferences or set the value of ''UseParallel'' to true when trainingOptions ''ExecutionEnvironment'' is ''multi-gpu'' or ''parallel''.</entry>
+    <entry key="unableToFreezeBNLayer">The network contains a batch normalization layer that is not initialized. Set ''FreezeBatchNormalization'' to false.</entry>
+   
+    <!-- Fast R-CNN -->
+    <entry key="fastTrainingHeader">Training a Fast R-CNN Object Detector for the following object classes:</entry>
+    <entry key="fastTrainingFooter">Fast R-CNN training complete.</entry>
+    <entry key="noClassificationLayers">The last three layers of the network must be a fully connected layer, a softmax layer, and a classification layer.</entry>
+    <entry key="noMaxPoolingLayer">Unable to add ROI Pooling layer to network. The input network must have a max or average pooling that can be replaced with a ROI pooling layer.</entry>
+    <entry key="unsupportedNumChannelsForROIPooling">Input data with more than 65535 channels is not supported.</entry>
+    <entry key="BackwardProhibited">Backprop is not supported.</entry>
+    <entry key="invalidSizeSmoothL1">The input to the smooth L1 loss layer must have 3 dimensions and the third dimension must be divisible by 4.</entry>    
+    <entry key="imageScaleLTNetInput">''SmallestImageDimension'' must be greater than or equal to {0}.</entry>    
+    <entry key="resumeClassNameMismatch">The order of the trainingData column variables must match the order of the detector.ClassNames.</entry>    
+    
+    <!-- Faster R-CNN -->
+    <entry key="fasterTrainingBanner">Training a Faster R-CNN Object Detector for the following object classes:</entry>
+    <entry key="fasterStep1">Step 1 of 4: Training a Region Proposal Network (RPN).</entry>
+    <entry key="fasterStep2">Step 2 of 4: Training a Fast R-CNN Network using the RPN from step 1.</entry>
+    <entry key="fasterStep3">Step 3 of 4: Re-training RPN using weight sharing with Fast R-CNN.</entry>
+    <entry key="fasterStep4">Step 4 of 4: Re-training Fast R-CNN using updated RPN.</entry>
+    <entry key="fasterTrainingDone">Finished training Faster R-CNN object detector.</entry>
+    <entry key="resumeTrainingAtStage">Resuming training from step {0}.</entry>   
+    <entry key="boxesRemovedByScaling">Ground truth boxes from these images were removed because they are too small after image scaling:\n\n{0}\nConsider increasing the 'ImageScale' parameter.</entry>
+    <entry key="mismatchDetectorPyramidScale">''BoxPyramidScale'' must match detector.BoxPyramidScale.</entry>
+    <entry key="mismatchDetectorBoxSizes">''MinBoxSizes'' must match detector.MinBoxSizes.</entry>
+    <entry key="minBoxSizeTooSmall">''MinBoxSizes'' must be bigger than detector.MinObjectSize.</entry>
+    <entry key="mismatchDetectorNumPyramidLevels">''NumBoxPyramidLevels'' must match detector.NumBoxPyramidLevels.</entry>    
+    <entry key="inconsistentExeEnv">All four ''options.ExecutionEnvironment'' must be the same.</entry>    
+    <entry key="inconsistentResetNorm">All four ''options.ResetInputNormalization'' must be the same.</entry>
+    <entry key="unsupportedExeEnv"> The value of ''options.ExecutionEnvironment'' must be ''auto'', ''cpu'', or ''gpu''. ''multi-gpu'' and ''parallel'' are not supported.</entry>   
+    <entry key="notSupportedForLayerGraph">''{0}'' is not supported when the input network is a LayerGraph.</entry>
+    <entry key="partiallyTrainedDetector">The training steps for the detector were not completed. You must resume training using the trainFasterRCNNObjectDetector function.</entry>
+    <entry key="anchorBoxesList">RPN Anchor Boxes:\n{0}</entry>
+    <entry key="verboseColRPNAcc">RPN Mini-batch Accuracy</entry>
+    <entry key="verboseColRPNRmse">RPN Mini-batch RMSE</entry>
+    <entry key="endToEndFromFourStageCheckpoint">''TrainingMethod'' value must be ''four-step'' to resume training from a detector checkpoint created using the ''four-step'' training method.</entry>
+    <entry key="inconsistentMiniBatchSize">All four values of ''options.MiniBatchSize'' must be the same.</entry>
+    <entry key="fourStepOverlapRangeUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the value of ''{0}'' is of size 4-by-2. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')&quot;&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="fourStepOptionsUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the training options are defined as a four-element vector. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')&quot;&gt;release notes&lt;/a&gt; for more information.</entry>
+    <entry key="fourStepNumRegionsUsedForEndToEnd">The 'TrainingMethod' value must be 'four-step' when the value of 'NumRegionsToSample' is a four-element vector. The 'end-to-end' 'TrainingMethod' is recommended. See &lt;a href="matlab: helpview('vision','e2e19bReleaseNote')&quot;&gt;release notes&lt;/a&gt; for more information.</entry>
+    
+    <!-- Layer strings -->
+    <entry key="roiInputType">ROI Input</entry>
+    <entry key="roiInputDesc">M-by-4 rectangular ROIs</entry>
+    <entry key="rcnnBoxType">Box Regression Output</entry>
+    <entry key="rcnnBoxDesc">smooth-l1 loss</entry>
+    <entry key="rpnClsType">RPN Classification Output</entry>
+    <entry key="rpnClsDesc">cross-entropy loss with 'object' and 'background' classes</entry>
+    <entry key="proposalType">Region Proposal</entry>
+    <entry key="proposalDescSingle">region proposal with 1 anchor box</entry>
+    <entry key="proposalDesc">region proposal with {0} anchor boxes</entry>
+    <entry key="rpnSoftmaxDesc">rpn softmax</entry>
+    <entry key="rpnSoftmaxType">RPN Softmax</entry>
+    <entry key="useTrainFastOrFaster">{0} is not supported by trainNetwork. Use trainFastRCNNObjectDetector or trainFasterRCNNObjectDetector to train a network that contains {0}.</entry>
+  
+    <!-- Network validation -->     
+    <entry key="missingROIInputLayer">The network must contain one ROI input layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast R-CNN networks.</entry>
+    <entry key="missingROIMaxPoolingLayer">The network must contain one ROI max pooling layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="missingClassificationLayer">The network must contain one classification layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="missingBoxRegressionLayerFast">The network must contain one R-CNN box regression layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast R-CNN networks.</entry>    
+    <entry key="invalidBoxRegressionLayerInputSize"> The input size must be {0}. This R-CNN box regression layer expects the third input dimension to be 4 times the number of object classes the network should detect ({1} classes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="invalidInputClassificationLayer">The input size must be {0}. The classification layer expects the third input dimension to be the number of object classes the network should detect ({1} classes) plus 1. The additional class is required for the "background" class. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="mustHaveOneImageInputLayer">The network must have one input layer and it must be an imageInputLayer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Fast or Faster R-CNN networks.</entry>
+    <entry key="mustHaveTwoBoxRegLayers">The network must have two R-CNN box regression layers. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="missingRegionProposalLayer">The network must contain one region proposal layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="missingRPNClassificationLayer">The network must contain one RPN classification layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="missingRPNSoftmaxLayer">The network must contain one RPN softmax layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>    
+    <entry key="missingBoxRegAfterROIPooling">An R-CNN Box Regression Layer must be one of the layers that follows the ROI Pooling layer. See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>    
+    <entry key="incorrectInputRPNSoftmax">Invalid input size: {0}. Expected the size of the third input dimension to be 2 times the number of anchor boxes defined in the Region Proposal Layer ({1} anchor boxes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>    
+    <entry key="incorrectInputRPNboxReg">Invalid input size: {0}. Expected the size of the third input dimension to be 4 times the number of anchor boxes defined in the Region Proposal Layer ({1} anchor boxes). See the &lt;a href="matlab:helpview('vision','rcnnConcept')&quot;&gt;documentation&lt;/a&gt; for more details about creating Faster R-CNN networks.</entry>
+    <entry key="incorrectInputRegionProposal">Invalid input sizes: {0},{1}. Expected the size of the first two dimensions of the scores input size ({0}) and the box deltas input size ({1}) to be equal.</entry>
+    <entry key="incorrectInputROIPoolGridSize">Invalid input size: {0}. Expected the size of the first two dimensions to be at least equal to the grid size ({1}).</entry>
+    <entry key="incorrectInputROIPoolSecondInput">Invalid input size: {0}. Expected the size of the second dimension of the second input to be equal to 4 or 5.</entry>
+
+    <!-- ###### Datastore input catalog ####### -->
+
+    <entry key="anchorBoxParamsNotSupportedForDatastore">The MinBoxSizes, BoxPyramidScale, or NumBoxPyramidLevels option is not supported when the training data is a datastore. Use estimateAnchorBoxes function to estimate anchor boxes and use fasterRCNNLayers function to create a Faster R-CNN network.</entry>
+    <entry key="scalingNotAllowedForDatastore">The SmallestImageDimension option is not supported when the training data is a datastore. Use the datastore transform method with IMRESIZE and BBOXRESIZE to resize images and bounding boxes.</entry>
+    <entry key="regionProposalBeginDatastore">--> Extracting region proposals from training datastore...</entry>
+    <entry key="networkMustBeLayerGraphForDatastore">The network input must be a layerGraph when training data input is a datastore. Use fasterRCNNLayers function to create a Faster R-CNN network.</entry>
+
+    <!-- ###### Datastore input catalog END ####### -->
+   </message> 
+</rsccat>

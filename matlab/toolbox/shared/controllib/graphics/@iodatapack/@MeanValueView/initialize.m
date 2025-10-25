@@ -1,0 +1,19 @@
+function initialize(this,Axes)
+%INITIALIZE  Initialization for @MeanValueView class.
+
+%  Copyright 2013-2015 The MathWorks, Inc.
+sz = size(Axes);  % Ny+Nu-by-1/2
+nr = sz(1); nc = sz(2);
+Points = repmat(wrfc.createDefaultHandle,[nr,nc]);
+for ct = 1:nr*nc
+   % Plot characteristic line (horizontal dotted line)
+   Points(ct) = handle(line(NaN,NaN,5,...
+      'Parent',Axes(ct),...
+      'XlimInclude','off',...
+      'YlimInclude','off',...
+      'Visible','on',...
+      'LineStyle','-.',...
+      'Tag','CharPoint'));
+end
+this.Points = Points;
+this.PointTips = cell(nr,nc);

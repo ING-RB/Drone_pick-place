@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="SimulinkBlocks" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="MatrixParameterError">
+    模块 ''{1}'' 中的参数 ''{0}'' 不正确。
+ </entry>
+    <entry key="MultipleMatrixParametersError">
+    模块 ''{2}'' 中的参数 ''{0}'' 和 ''{1}'' 不正确。
+ </entry>
+    <entry key="MatrixRuntimeParameterError">
+    A change in parameter ''{0}'' for block ''{1}'' is not allowed when
+    the simulation is running.
+  </entry>
+    <entry key="PatternChangeAtRuntime">
+检测到矩阵参数的模式变化。矩阵中的一个零条目在第 {0,number,integer} 行更改为一个非零数字。不能在运行时更改矩阵模式，因为此参数在内部表示为稀疏矩阵。
+  </entry>
+    <entry key="NumberOfNonZerosChangedAtRuntime">
+    Number of non-zero entries in the matrix parameter changed. Matrix pattern
+    cannot be changed at run time because this parameter is internally
+    represented as a sparse matrix.
+  </entry>
+    <entry key="NumberOfNonZerosInDChangedAtRuntime">
+   D matrix changed from zero to non-zero at runtime. This is not allowed at
+   runtime because the simulation was started with a zero D matrix implying no
+   direct dependency of output on the block input.
+ </entry>
+    <entry key="NumberOfNonZerosInRowChangedAtRuntime">
+    Number of non-zero entries in row {0, number, integer} for the matrix
+    parameter changed at run time. Matrix pattern cannot be changed at run time
+    because the block is using this parameter as a sparse matrix.
+  </entry>
+    <entry key="MatrixShapeChanged">
+更新后的矩阵参数中的行数和列数不同于矩阵的原始维度。
+  </entry>
+    <entry key="MatrixIsNonFinite">
+参数中的一个或多个条目不是有限值。 
+  </entry>
+    <entry key="MatrixIsNotReal">
+参数不是实数值矩阵或向量。 
+  </entry>
+    <entry key="AIsNonSquare">
+    Matrix A of a state-space system must be square.
+  </entry>
+    <entry key="BIsNotConsistentWithA">
+    Matrix B of a state-space system must have the same number of rows as matrix
+    A.
+  </entry>
+    <entry key="CIsNotConsistentWithA">
+    Matrix C of a state-space system must have the same number of columns as
+    matrix A.
+  </entry>
+    <entry key="DIsNotConsistentWithBC">
+    Matrix D of a state-space system must have the same number of columns as
+    matrix B and the same number of rows as matrix C.
+  </entry>
+    <entry key="ZeroColumnsInBD">
+    矩阵 B 和 D 都为 0 列。矩阵 B 和 D 中有至少一个矩阵必须有 1 列或更多列。
+  </entry>
+    <entry key="ZeroRowsInCD">
+    Matrices C and D both have 0 rows. At least one of matrices C and D must
+    have 1 or more rows.
+  </entry>
+    <entry key="ICIsNotConsistent">
+    Initial condition must be either a scalar or a vector with a length that
+    matches the number of rows in matrix A.
+  </entry>
+    <entry key="AIsUndefined">
+没有针对该模块定义矩阵 A。Simulink 无法完全确定有效的状态空间系统。
+  </entry>
+    <entry key="DimensionsHigherThanTwo">
+模块 ''{1}'' 中矩阵 ''{0}'' 的维数高于 2。
+  </entry>
+    <entry key="DataFormatChanged">
+    A change in parameter value from sparse to dense matrix or vice versa is not allowed for State-space block ''{0}'' when the simulation is running.
+  </entry>
+    <entry key="DIsNotTunable">
+模块 ''{0}'' 的参数 D 设置为稀疏矩阵，该矩阵没有非零值，并且参数 ''{1}'' 处于启用状态。零稀疏矩阵无法在运行时更改为非零矩阵。将 D 设置为稀疏零矩阵时，请禁用 ''{1}''。
+  </entry>
+    <entry key="GeneralRealizationIgnored">
+    Block ''{0}'' will ignore parameter setting ''{1}'' of the ''{2}'' parameter because ''{3}'' is set to ''{4}'' which conflicts General realization setting. Set ''{3}'' to ''{5}'' or ''{6}'' and ''{2}'' to ''{1}'' if General realization behavior is desired.
+  </entry>
+    <entry key="AllowTunableDMatrixNotValid">模块 ''{0}'' 的参数 ''{1}'' 设置为 ''on''，因此要求 D 矩阵的零到非零可调性。但是，''{2}'' 设置为 ''{3}''，这与 D 矩阵可调性请求冲突。如果需要 D 矩阵能够从零矩阵调整为非零矩阵，请将 ''{2}'' 设置为 ''{4}'' 或 ''{5}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AutoTunability" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Auto'');&lt;/cmd&gt; &lt;txt&gt; 将 ''{2}'' 设置为 ''{4}'' &lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="UnconstrainedTunability" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt; 将 ''{2}'' 设置为 ''{5}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="TunabilityOptimizedCannotBeWritten">无法使用 Parameter Writer 模块写入模块 ''{0}'' 的参数 ''{1}''，因为 ''{1}'' 设置为 ''{2}''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AutoTunability1" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Auto'');&lt;/cmd&gt; &lt;txt&gt; 请将 ''{1}'' 设置为 ''{3}''。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="UnconstrainedTunability1" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''ParameterTunability'',''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt; 将 ''{1}'' 设置为 ''{4}''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="ZeroToNonZeroNotAllowedDBeenWritten">无法使用 Parameter Writer 模块写入模块 ''{0}'' 的参数 ''{1}''，因为 ''{1}'' 没有非零值，并且 ''{2}'' 设置为 ''off''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="TunableD" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''AllowTunableDMatrix'',''on'');&lt;/cmd&gt; &lt;txt&gt; 请将 ''{2}'' 设置为 ''on''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="SparseMatrixParamCannotBeWritten">
+      无法使用 Parameter Writer 模块写入模块 ''{0}'' 的参数 ''{1}''，因为 ''{1}'' 设置为稀疏矩阵。
+   </entry>
+    <entry key="AutoAbsoluteToleranceCannotBeWritten">
+       无法使用 Parameter Writer 模块写入模块 ''{0}'' 的参数 ''{1}''，因为 ''{1}'' 设置为 ''auto''。
+   </entry>
+  </message>
+</rsccat>

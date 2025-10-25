@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Additional Information</strong><br/><p><code>parsrule</code> has been removed. Use <a href="matlab:helpview([docroot '/fuzzy/mamfis.addrule.html'])" target="_blank"><code>addRule</code></a> instead.</p><p>If you previously added rules using linguistic or symbolic expressions with
+                        <code>parsrule</code>, you can specify rules using the same
+                    expressions with <code>addrule</code>. <code>addRule</code>
+                    automatically detects the format of the strings or character vectors in your
+                    rule list. Therefore, it is no longer necessary to specify the rule format. To
+                    add a rule list using <code>addRule</code>, use the following
+                    command:</p><code>fis&nbsp;=&nbsp;addRule(fis,rules);</code><p>Previously, you could add rules using indexed expressions with
+                        <code>parsrule</code>.</p><code>rule1&nbsp;=&nbsp;"1&nbsp;2,&nbsp;1&nbsp;4&nbsp;(1)&nbsp;:&nbsp;1";<br/>rule2&nbsp;=&nbsp;"-1&nbsp;1,&nbsp;3&nbsp;2&nbsp;(1)&nbsp;:&nbsp;1";<br/>rules&nbsp;=&nbsp;[rule1&nbsp;rule2];<br/>fis&nbsp;=&nbsp;parsrule(fis,rules,'Format','indexed');</code><p>Now, specify these rules using arrays of indices.</p><code>rule1&nbsp;=&nbsp;[1&nbsp;2&nbsp;1&nbsp;4&nbsp;1&nbsp;1];<br/>rule2&nbsp;=&nbsp;[-1&nbsp;1&nbsp;3&nbsp;2&nbsp;1&nbsp;1];<br/>rules&nbsp;=&nbsp;[rule1;&nbsp;rule2];<br/>fis&nbsp;=&nbsp;addRule(fis,rules);</code><p>If you previously specified rules using the <code>'Language'</code>
+                    name-value pair argument with <code>parsrule</code>, this functionality
+                    has been removed and there is no replacement. Specify your rules using
+                        <code>addRule</code> with a different rule format.</p><p>Previously, <code>parsrule</code> replaced the entire rule list in your
+                    fuzzy system. <code>addRule</code> appends your specified rules to the
+                    rule list.</p><br/></body></html>

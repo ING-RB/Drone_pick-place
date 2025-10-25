@@ -1,0 +1,196 @@
+{
+    "bpsEncoder":
+        {
+            "inputs":
+                [
+                    {
+                        "mutuallyExclusiveGroup":
+                            [
+                                [
+                                    {
+                                        "name": "arrangement",
+                                        "kind": "positional",
+                                        "type": "choices={'uniform-ball'}"
+                                    },
+                                    {
+                                        "name": "encodingSize",
+                                        "kind": "positional",
+                                        "type": [
+                                            "numeric",
+                                            "scalar",
+                                            "integer",
+                                            "positive"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Center",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "@(x) all(isfinite(x))",
+                                            "size=1,2"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Radius",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "scalar",
+                                            "positive"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "arrangement",
+                                        "kind": "positional",
+                                        "type": "choices={'uniform-ball-3d'}"
+                                    },
+                                    {
+                                        "name": "encodingSize",
+                                        "kind": "positional",
+                                        "type": [
+                                            "numeric",
+                                            "scalar",
+                                            "integer",
+                                            "positive"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Center",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "@(x) all(isfinite(x))",
+                                            "size=1,3"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Radius",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "scalar",
+                                            "positive"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "arrangement",
+                                        "kind": "positional",
+                                        "type": "choices={'rectangular-grid'}"
+                                    },
+                                    {
+                                        "name": "encodingSize",
+                                        "kind": "positional",
+                                        "type": [
+                                            "numeric",
+                                            "integer",
+                                            "positive",
+                                            "size=1,2"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Center",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "@(x) all(isfinite(x))",
+                                            "size=1,2"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Dimensions",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "positive",
+                                            "@(x) all(isfinite(x))",
+                                            "size=1,2"
+                                        ]
+                                    }
+                                ],
+                                [
+                                    {
+                                        "name": "arrangement",
+                                        "kind": "positional",
+                                        "type": "choices={'rectangular-grid-3d'}"
+                                    },
+                                    {
+                                        "name": "encodingSize",
+                                        "kind": "positional",
+                                        "type": [
+                                            "numeric",
+                                            "integer",
+                                            "positive",
+                                            "size=1,3"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Center",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "@(x) all(isfinite(x))",
+                                            "size=1,3"
+                                        ]
+                                    },
+                                    {
+                                        "name": "Dimensions",
+                                        "kind": "namevalue",
+                                        "type": [
+                                            "numeric",
+                                            "real",
+                                            "positive",
+                                            "@(x) all(isfinite(x))",
+                                            "size=1,3"
+                                        ]
+                                    }
+                                ]
+                            ]
+                    }
+                ]
+        },
+    "bpsEncoder.encode":
+        {
+            "inputs":
+                [
+
+                    {
+                        "name": "obj",
+                        "kind": "required",
+                        "type": "bpsEncoder"
+                    },
+                    {
+                        "name": "environment",
+                        "kind": "required",
+                        "type": [
+                            [
+                                "occupancyMap"
+                            ],
+                            [
+                                "binaryOccupancyMap"
+                            ],
+                            [
+                                "meshtsdf"
+                            ],
+                            [
+                                "numeric",
+                                "real",
+                                "@(x) all(isfinite(x), 'all')",
+                                "size=4,:"
+                            ]
+                        ]
+                    }
+                ]
+        }
+}

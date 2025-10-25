@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Copyright 2016-2023 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="nav">
+  <message>
+    <entry key="PurePursuitTitle">
+      Pure Pursuit
+    </entry>
+    <entry key="PurePursuitDescription">
+      Compute linear and angular velocity control commands for
+      following a path using a set of waypoints and the current pose of a
+      differential drive robot.\n\nThe input port Pose accepts a
+      three-element state vector of xy-positions and vehicle heading,
+      [x y theta]. The input port Waypoints accepts an N-by-2 matrix as
+      xy-coordinates. The output ports Linear Velocity and Angular Velocity
+      return linear and angular velocities as scalar values, respectively. 
+      The Target Direction port outputs an angle with respect to the 
+      forward direction of the robot with positive angles measured 
+      counter-clockwise. \n\nSet the Lookahead distance to tune how closely
+      the robot follows the path. A smaller Lookahead distance improves 
+      path tracking but can lead to instability.
+    </entry>
+    
+    <entry key="DataTypeMismatch">
+      Data type mismatch. Expected inputs to be of the same data type.
+      Input port Pose is of data type ''{0}'', while input port Waypoints is of data type ''{1}''.
+    </entry>
+    
+    <entry key="ExpectedPositive">Expected {0} input port value to be positive.</entry>
+    
+    <!-- Parameter names -->
+    <entry key="DesiredLinearVelocityPortPrompt">Specify desired linear velocity from input port</entry>
+    <entry key="DesiredLinearVelocityPrompt">Desired linear velocity (m/s)</entry>
+    <entry key="MaxAngularVelocityPrompt">Maximum angular velocity (rad/s)</entry>
+    <entry key="LookaheadDistancePortPrompt">Specify lookahead distance from input port</entry>
+    <entry key="LookaheadDistancePrompt">Lookahead distance (m)</entry>
+    <entry key="TargetDirPortPrompt">Show Target Direction output port</entry>
+
+    <!-- Previous version errors -->
+    <entry key="EmptySubsystemNewFeatures">Pure Pursuit supported in {0}</entry>
+    <entry key="NewFeaturesNotAvailable">Lookahead Distance and Desired Linear Velocity input ports are not supported for this block in this version of Simulink. Update to R2024a or disable these input ports.</entry>
+  </message>
+</rsccat>

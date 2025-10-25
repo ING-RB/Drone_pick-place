@@ -1,0 +1,138 @@
+{
+  "parallel.Future.afterAll":
+  {
+      "inputs":
+      [
+          {"name":"F","kind":"required","type":"parallel.Future"},
+          {"name":"fcn","kind":"required","type":"function_handle"},
+          {"name":"nout","kind":"required","type":["numeric","scalar"]},
+          {"name":"PassFuture","kind":"namevalue","type":["logical","scalar"]}
+      ],
+      "outputs":
+      [
+          {"name":"f2","type":["parallel.Future","scalar"]}
+      ]
+  },
+  "parallel.Future.afterEach":
+  {
+      "inputs":
+      [
+          {"name":"F","kind":"required","type":"parallel.Future"},
+          {"name":"fcn","kind":"required","type":"function_handle"},
+          {"name":"nout","kind":"required","type":["numeric","scalar"]},
+          {"name":"PassFuture","kind":"namevalue","type":["logical","scalar"]}
+      ],
+      "outputs":
+      [
+          {"name":"f2","type":["parallel.Future","scalar"]}
+      ]
+  },
+  "parallel.Future.cancel":
+  {
+      "inputs":
+      [
+          {"name":"F","kind":"required", "type":"parallel.Future"}
+      ],
+      "outputs":
+      [
+      ]
+  },
+  "parallel.Future.fetchNext":
+  {
+      "inputs":
+      [
+          {"name":"F","kind":"required","type":"parallel.Future"},
+          {"name":"timeout", "kind":"ordered","type":["numeric","scalar"]}
+      ],
+      "outputs":
+      [
+          {"name":"idx","type":["numeric","scalar"]},
+          {"name":"B","repeating":true}
+      ]
+  },
+  "parallel.Future.fetchOutputs":
+  {
+      "inputs":
+      [
+          {"name":"F","kind":"required","type":"parallel.Future"},
+          {"name":"UniformOutput","kind":"namevalue","type":["logical","scalar"]}
+      ],
+      "outputs":
+      [
+          {"name":"B","repeating":true}
+      ]
+  },
+  "parallel.Future.wait":
+  {
+      "inputs":
+      [
+          {"name":"F","kind":"required","type":"parallel.Future"},
+          {"name":"state","kind":"positional","type":"choices={'running','finished'}"},
+          {"name":"timeout", "kind":"ordered","type":["numeric","scalar"]}
+      ],
+      "outputs":
+      [
+          {"name":"ok","type":["logical","scalar"]}
+      ]
+  },
+  "parallel.Pool.partition":
+  {
+      "inputs":
+      [
+          {"name":"aPool","kind":"required","type":"parallel.Pool"},
+          {"name":"partitionMethod","kind":"required", "type":"choices=parallel.internal.partition.PartitionMethods.listMethods()"},
+          {"name":"partitionArgument", "kind":"required"}
+      ],
+      "outputs":
+      [
+          {"name":"newPool","type":["parallel.Pool"]},
+          {"name":"remainingPool","type":["parallel.Pool"]}
+      ]
+  },
+  "parfeval":
+  {
+      "inputs":
+      [
+          {"name":"P","kind":"ordered","type":"parallel.Pool"},
+          {"name":"fcn","kind":"required","type":"function_handle"},
+          {"name":"numout","kind":"required","type":["numeric","scalar"]},
+          {"name":"in","kind":"ordered","repeating":true}
+      ],
+      "outputs":
+      [
+          {"name":"F","type":"parallel.FevalFuture"}
+      ]
+  },
+  "parfevalOnAll":
+  {
+      "inputs":
+      [
+          {"name":"P","kind":"ordered","type":"parallel.Pool"},
+          {"name":"fcn","kind":"required","type":"function_handle"},
+          {"name":"numout","kind":"required","type":["numeric","scalar"]},
+          {"name":"in","kind":"ordered","repeating":true}
+      ],
+      "outputs":
+      [
+          {"name":"F","type":"parallel.FevalOnAllFuture"}
+      ]
+  },
+  "parforOptions":
+  {
+    "inputs":
+    [
+      {"name":"executor","kind":"required","type":[["parallel.Pool", "scalar"],["parallel.Cluster", "scalar"]]},
+      {"name":"RangePartitionMethod", "kind":"namevalue", "type":[["char", "choices={'auto','fixed'}"], ["function_handle"]]},
+      {"name":"SubrangeSize", "kind":"namevalue", "type":["numeric", "scalar", ">0", "integer"]},
+      {"name":"AutoAddClientPath", "kind":"namevalue", "type":["logical", "scalar"]},
+      {"name":"AdditionalPaths", "kind":"namevalue", "type":[["folder"], ["char"], ["cellstr"]]},
+      {"name":"AutoAttachFiles", "kind":"namevalue", "type":["logical", "scalar"]},
+      {"name":"AttachedFiles", "kind":"namevalue", "type":[["file=*.m,*.mat"], ["char"], ["cellstr"]]},
+      {"name":"MaxNumWorkers", "kind":"namevalue", "type":["numeric", "scalar", ">0", "integer"]}
+    ],
+    "outputs":
+    [
+      {"name":"opts","type":"parallel.parfor.Options"}
+    ]
+  }
+}

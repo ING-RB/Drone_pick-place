@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="shared_robotics" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="WaypointSourcePrompt">ウェイポイント ソース</entry>
+    <entry key="ParameterSourcePrompt">パラメーター ソース</entry>
+    <entry key="WaypointsSectionTitle">ウェイポイント</entry>
+    <entry key="ParametersSectionTitle">パラメーター</entry>
+    <entry key="TimePointsPrompt">時間点</entry>
+    <entry key="TimeIntervalPrompt">時間間隔</entry>
+    <entry key="WaypointsPrompt">ウェイポイント</entry>
+    <entry key="PolynomialTitle">Polynomial Trajectory</entry>
+    <entry key="PolynomialDescription">
+  複数のウェイポイントを通る多項式軌跡を生成します。 \n \nP 個のウェイポイントに対する [N 行 P 列] の行列を指定します。これらのパラメーターをブロック入力として指定するには、[ウェイポイント ソース] パラメーターを [External] に設定します。 \n \n[メソッド] パラメーターを [Cubic Polynomial]、[Quintic Polynomial]、または [B-spline] 軌跡に設定します。3 次多項式と 5 次多項式では、ブロックは、[時間点] で P 要素ベクトルとして指定した時間にウェイポイントを通過する多項式軌跡を生成します。軌跡は、[N 行 P 列] の行列として与えられた指定の境界条件を使用します。B スプライン多項式では、ブロックは、[時間点] で 2 要素ベクトルとして指定した時間に最初と最後のウェイポイントを通過する B スプライン軌跡を生成します。生成された軌跡は、ウェイポイントによって定義される制御多角形の凸包に収まります。 \n \n初期値と最終値は、[時間点] で定義される時間範囲外で一定に保たれます。</entry>
+    <entry key="PolynomialMethodPrompt">メソッド</entry>
+    <entry key="PolynomialVelocityBCPrompt">速度境界条件</entry>
+    <entry key="PolynomialAccelerationBCPrompt">加速度境界条件</entry>
+    <entry key="TrapVelTrajTitle">Trapezoidal Velocity Profile Trajectory</entry>
+    <entry key="TrapVelTrajDescription">
+  台形速度プロファイルを使用して、複数のウェイポイントを通る軌跡を生成します。 \n \nN 個の座標軸をもつ P 個のウェイポイントから成る [N 行 P 列] の行列を指定し、台形速度パラメーターを使用して、P 個のウェイポイントを通過する軌跡を生成します。[ウェイポイント ソース] を [External] に設定し、これらをブロックの入力として受け入れます。[パラメーター数] ポップアップを使用してパラメーターの総数を選択し、次にパラメーター 1 とパラメーター 2 のポップアップを使用してパラメーターを指定します。対応するパラメーター値は、スカラー、N 行 1 列のベクトル、または [N 行 (P-1) 列] の行列として指定できます。スカラーは、同じパラメーターを N 個の座標軸と P 個のウェイポイントすべてに適用します。ベクトルは、N 個のパラメーターを N 個の座標軸すべてに適用します。行列は、軌跡の N 個の座標軸と P-1 個のセグメントそれぞれにパラメーター セットを適用します。 \n \n軌跡が完成した後、最終値は一定に保たれます。</entry>
+    <entry key="TrapVelTrajNumParamsPrompt">パラメーター数</entry>
+    <entry key="TrapVelTrajParameter1Prompt">パラメーター 1</entry>
+    <entry key="TrapVelTrajParameter2Prompt">パラメーター 2</entry>
+    <entry key="TrapVelTrajVelocityPrompt">ピーク速度</entry>
+    <entry key="TrapVelTrajAccelerationPrompt">加速度</entry>
+    <entry key="TrapVelTrajEndTimePrompt">終了時間</entry>
+    <entry key="TrapVelTrajAccelTimePrompt">加速時間</entry>
+    <entry key="RotTrajTitle">Rotation Trajectory</entry>
+    <entry key="RotTrajDescription">
+  2 つの方向の間の軌跡を生成します。 \n \nブロックは、ブロックの [時間入力] (スカラーまたはベクトル) で指定された時間に回転を出力します。初期値と最終値は、[時間間隔] の外で一定に保たれます。 \n \n軌跡は、球面線形内挿 (SLERP) を使用して計算され、点の間の最短経路を見つけます。[カスタム時間スケーリングを使用] チェック ボックスをオンにし、カスタム時間スケーリングを使用して計算します。カスタム時間スケーリングは、時間スケーリング ベクトルと最初の 2 つの微分に関する 3 行 P 列の行列として指定します。ブロックは、既定で線形時間スケーリングを使用します。
+</entry>
+    <entry key="RotTrajFormatPrompt">回転形式</entry>
+    <entry key="RotTrajR0Prompt">初期回転</entry>
+    <entry key="RotTrajRFPrompt">最終回転</entry>
+    <entry key="TransformTrajTitle">Transform Trajectory</entry>
+    <entry key="TransformTrajDescription">
+  2 つの同次変換の間の軌跡を生成します。 \n \n[初期変換] と [最終変換] で、4 行 4 列の 2 つの同次変換行列を指定します。ブロックは、[時間間隔] パラメーターで指定された時間範囲にわたって、これらの変換の間の軌跡を計算します。ブロックは、ブロックの [時間入力] (スカラーまたはベクトル) で指定された時間に変換を出力します。初期値と最終値は、[時間間隔] の外で一定に保たれます。 \n \n軌跡は、位置については線形内挿を、回転については球面線形内挿 (SLERP) を使用して計算されます。[カスタム時間スケーリングを使用] チェック ボックスをオンにし、カスタム時間スケーリングを使用して計算します。カスタム時間スケーリングは、時間スケーリング ベクトルと最初の 2 つの微分に関する 3 行 P 列の行列として指定します。ブロックは、既定で線形時間スケーリングを使用します。
+</entry>
+    <entry key="TransformTrajT0Prompt">初期変換</entry>
+    <entry key="TransformTrajTFPrompt">最終変換</entry>
+    <entry key="CustomTimeScalingPrompt">カスタム時間スケーリングを使用</entry>
+    <entry key="CustomTimeScalingTimePrompt">時間スケーリングの時間</entry>
+    <entry key="CustomTimeScalingValuesPrompt">時間スケーリング値</entry>
+    <entry key="TimeScalingInputError">与えられた時間スケーリングが有効ではありません。時間スケーリング行列の最初の行は、0 ～ 1 の値に制限しなければなりません。</entry>
+    <entry key="TimeScalingIntervalDimensionError">時間スケーリングの時間値の次元が、[時間入力] または [時間間隔] の値の次元と一致しません。時間スケーリングの時間には、(1) 入力時間信号と一致する単一の値、または (2) 時間間隔にわたる値のベクトルの 2 つの形式があります。</entry>
+    <entry key="TimeScalingIntervalInterpError">時間スケーリングの時間の値が [時間入力] または [時間間隔] の値と一致しません。時間スケーリングの時間には、(1) 入力時間信号と一致する単一の値、または (2) 時間間隔にわたる値のベクトルの 2 つの形式があります。</entry>
+    <entry key="SourceInternalPopup">
+        Internal
+    </entry>
+    <entry key="SourceExternalPopup">
+        External
+    </entry>
+    <entry key="PolynomialCubicPopup">
+        Cubic Polynomial
+    </entry>
+    <entry key="PolynomialQuinticPopup">
+        Quintic Polynomial
+    </entry>
+    <entry key="PolynomialBSplinePopup">
+        B-Spline
+    </entry>
+    <entry key="TrapVelTrajPeakVelocityPopup">
+        Peak Velocity
+    </entry>
+    <entry key="TrapVelTrajAccelPopup">
+        Acceleration
+    </entry>
+    <entry key="TrapVelTrajEndTimePopup">
+        End Time
+    </entry>
+    <entry key="TrapVelTrajAccelTimePopup">
+        Acceleration Time
+    </entry>
+    <entry key="RotTrajFormatQuaternionPopup">
+        Quaternion
+    </entry>
+    <entry key="RotTrajFormatRotMatPopup">
+        Rotation Matrix
+    </entry>
+  </message>
+</rsccat>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2010-2021 The MathWorks, Inc. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="MatFileEditScript" type="matfileeditscript"/>
+    <xs:complexType name="matfileeditscript">
+        <xs:sequence>
+            <xs:element name="LeftLocation" type="location"/>
+            <xs:element name="RightLocation" type="location"/>
+            <xs:any minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="difftype" type="xs:string" use="required"/>
+        <xs:attribute name="mergingEnabled" type="xs:string" use="required"/>
+        <xs:attribute name="ActionMsg" type="xs:string" use="required"/>
+        <xs:attribute name="ClassMsg" type="xs:string" use="required"/>
+        <xs:attribute name="ChangedColor" type="xs:string" use="required"/>
+        <xs:attribute name="BackgroundColor" type="xs:string" use="required"/>
+        <xs:attribute name="ContainerDifferenceOnlyMsg" type="xs:string" use="required"/>
+        <xs:attribute name="LeftFileMsg" type="xs:string" use="required"/>
+        <xs:attribute name="RightFileMsg" type="xs:string" use="required"/>
+        <xs:attribute name="SizeMsg" type="xs:string" use="required"/>
+        <xs:attribute name="StatusMsg" type="xs:string" use="required"/>
+        <xs:attribute name="VarNameMsg" type="xs:string" use="required"/>
+        <xs:attribute name="classesDifferText" type="xs:string" use="required"/>
+        <xs:attribute name="clickToSort" type="xs:string" use="required"/>
+        <xs:attribute name="compareLinkText" type="xs:string" use="required"/>
+        <xs:attribute name="compareVarsMessage" type="xs:string" use="required"/>
+        <xs:attribute name="deleteRightLinkTitle" type="xs:string" use="required"/>
+        <xs:attribute name="deleteLeftLinkTitle" type="xs:string" use="required"/>
+        <xs:attribute name="mergeLeftLinkTitle" type="xs:string" use="required"/>
+        <xs:attribute name="mergeRightLinkTitle" type="xs:string" use="required"/>
+        <xs:attribute name="reportTitle" type="xs:string" use="required"/>
+        <xs:attribute name="LearnMoreTitle" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="location">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ShortName" type="xs:string" use="required"/>
+                <xs:attribute name="Readable" type="xs:string" use="required"/>
+                <xs:attribute name="Backup" type="xs:string" use="optional"/>
+                <xs:attribute name="ColumnHeader" type="xs:string" use="required"/>
+                <xs:attribute name="ReadableNeutral" type="xs:string" use="required"/>
+                <xs:attribute name="leftLoadFileLinkMessage" type="xs:string" use="optional"/>
+                <xs:attribute name="leftLoadFileLinkOnClickStr" type="xs:string" use="optional"/>    
+                <xs:attribute name="rightLoadFileLinkMessage" type="xs:string" use="optional"/>
+                <xs:attribute name="rightLoadFileLinkOnClickStr" type="xs:string" use="optional"/> 
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="oneside">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="contentsColor" type="xs:string" use="optional"/>
+                <xs:attribute name="statusSummary" type="xs:string" use="optional"/>
+                <xs:attribute name="tableSummary" type="xs:string" use="optional"/>
+                <xs:attribute name="class" type="xs:string" use="required"/>
+                <!-- number or "unknown" -->
+                <xs:attribute name="size" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="bothsides">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="contentsColor" type="xs:string" use="optional"/>
+                <xs:attribute name="statusSummary" type="xs:string" use="optional"/>
+                <xs:attribute name="contentsMatch" type="matchtype" use="required"/>
+                <xs:attribute name="leftclass" type="xs:string" use="required"/>
+                <xs:attribute name="rightclass" type="xs:string" use="required"/>
+                <!-- number or "unknown" -->
+                <xs:attribute name="leftsize" type="xs:string" use="required"/>
+                <xs:attribute name="rightsize" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="matchtype">
+        <!-- There is a fixed set of allowed "contentsMatch" strings -->
+        <xs:restriction base="xs:string">
+            <xs:pattern value="yes|no|classesdiffer"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="difftype">
+        <!-- Can only be one of the strings "identical", container" or "contents" -->
+        <xs:restriction base="xs:string">
+            <xs:pattern value="identical|container|contents"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Variable" type="bothsides"/>
+    <xs:element name="LeftVariable" type="oneside"/>
+    <xs:element name="RightVariable" type="oneside"/>
+</xs:schema>

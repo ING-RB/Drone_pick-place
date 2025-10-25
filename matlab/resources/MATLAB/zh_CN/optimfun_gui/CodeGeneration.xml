@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="MATLAB" xsi:noNamespaceSchemaLocation="../../../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="Example">示例:</entry>
+    <entry key="EditCodeComment">编辑以下行以添加您的计算方法</entry>
+    <entry key="singleObjExampleProblem">最小化罗森布罗克函数</entry>
+    <entry key="nlsqObjExampleProblem">最小化 ||F(x,y,z)||^2，其中</entry>
+    <entry key="lsqCfObjExampleProblem">最小化 ||F(c1,c2,lambda1,lambda2,xdata) - ydata||^2，其中 xdata 是长度为 k 的向量，并且</entry>
+    <entry key="fsolveObjExampleProblem">求解 F(x,y) = 0，其中</entry>
+    <entry key="surrogateObjExampleProblem">最小化罗森布罗克函数</entry>
+    <entry key="multiObjExampleProblem">最小化 F(x,y)，其中</entry>
+    <entry key="scalarFcnObjExampleProblem">在闭值域内，最小化关于标量 x 的 sin(x)</entry>
+    <entry key="scalarEqObjExampleProblem">求关于标量 x 的 cos(x) = 0</entry>
+    <entry key="nonlConstrExampleProblem">将解约束到区域</entry>
+    <entry key="nonlConstrExtraComments">注意，如果没有不等式约束，请指定 c = []\n注意，如果没有等式约束，请指定 ceq = []</entry>
+    <entry key="anonymousFcnComment">% 将固定参数传递给</entry>
+    <entry key="solveComment">% 求解</entry>
+    <entry key="clearComment">% 清除变量</entry>
+    <entry key="OptionsComment">% 设置非默认求解器选项</entry>
+    <entry key="selectMessage">请选择:</entry>
+    <entry key="objFcnFixedInputs">所有目标函数固定输入</entry>
+    <entry key="nonlconFcnFixedInputs">所有非线性约束函数固定输入</entry>
+    <entry key="unsetSummary" context="uistring">最小化具有或不具有约束的函数</entry>
+    <entry key="setSummary" context="uistring">使用 {1} 求解器最小化 {0}</entry>
+    <entry key="fgoalattainSummary" context="uistring">使用 `fgoalattain` 求解器最小化 norm({0} - {1}, Inf)</entry>
+    <entry key="fminimaxSummary" context="uistring">使用 `fminimax` 求解器最小化 max({0})</entry>
+    <entry key="fsolveSummary" context="uistring">使用 `fsolve` 求解器求解 {0}</entry>
+    <entry key="linprogSummary" context="uistring">使用 {1} 求解器最小化 {0}'*x</entry>
+    <entry key="lsqcurvefitSummary" context="uistring">使用 `lsqcurvefit` 求解器最小化 norm({0} - {1})^2</entry>
+    <entry key="llsSummary" context="uistring">使用 {2} 求解器最小化 norm({0}*x - {1})^2</entry>
+    <entry key="lsqnonlinSummary" context="uistring">使用 `lsqnonlin` 求解器最小化 norm({0})^2</entry>
+    <entry key="quadprogSummary" context="uistring">使用 `quadprog` 求解器最小化 0.5*x'*{0}*x + {1}'*x</entry>
+    <entry key="singleObjHeaderCode">function f = objectiveFcn(optimInput)</entry>
+    <entry key="singleObjVariableCode">x = optimInput(1)\ny = optimInput(2)</entry>
+    <entry key="singleObjExampleCode">f = 100*(y - x^2)^2 + (1 - x)^2</entry>
+    <entry key="nlsqObjHeaderCode">function F = lsqnonlinObjFcn(optimInput)</entry>
+    <entry key="nlsqObjVariableCode">x = optimInput(1)\ny = optimInput(2)\nz = optimInput(3)</entry>
+    <entry key="nlsqObjExampleCode">F(1) = x^2 + y*z\nF(2) = sin(x + 2*y - 3*z)</entry>
+    <entry key="lsqCfObjHeaderCode">function F = lsqcurvefitObjFcn(optimInput,xdata)</entry>
+    <entry key="lsqCfObjVariableCode">c1 = optimInput(1)\nc2 = optimInput(2)\nlambda1 = optimInput(3)\nlambda2 = optimInput(4)</entry>
+    <entry key="lsqCfObjExampleCode">F(k) = c1*exp(-lambda1*xdata(k)) + c2*exp(-lambda2*xdata(k))</entry>
+    <entry key="fsolveObjHeaderCode">function F = fsolveEqnFcn(optimInput)</entry>
+    <entry key="fsolveObjVariableCode">x = optimInput(1)\ny = optimInput(2)</entry>
+    <entry key="fsolveObjExampleCode">F(1) = exp(-exp(-x-y)) - y*(1 + x^2)\nF(2) = x*cos(y) + x*sin(x) - 1/2</entry>
+    <entry key="surrogateObjHeaderCode">function f = objConstrFcn(optimInput)</entry>
+    <entry key="surrogateObjVariableCode">x = optimInput(1)\ny = optimInput(2)</entry>
+    <entry key="surrogateObjExampleCode">100*(y - x^2)^2 + (1 - x)^2\nsubject to\n(x - 1/3)^2 + (y - 1/3)^2 &lt;= (1/3)^2</entry>
+    <entry key="multiObjHeaderCode">function F = multiObjFcn(optimInput)</entry>
+    <entry key="multiObjVariableCode">x = optimInput(1)\ny = optimInput(2)</entry>
+    <entry key="multiObjExampleCode">F(1) = x^2 + y^2\nF(2) = 2 + 0.5*((x-2)^2 + (y+1)^2)</entry>
+    <entry key="scalarFcnObjHeaderCode">function f = fminbndObjFcn(x)</entry>
+    <entry key="scalarFcnObjVariableCode"/>
+    <entry key="scalarFcnObjExampleCode">f = sin(x)</entry>
+    <entry key="scalarEqObjHeaderCode">function f = fzeroEqnFcn(x)</entry>
+    <entry key="scalarEqObjVariableCode"/>
+    <entry key="scalarEqObjExampleCode">f = cos(x)</entry>
+    <entry key="nonlConstrHeaderCode">function [c,ceq] = constraintFcn(optimInput)</entry>
+    <entry key="nonlConstrVariableCode">x = optimInput(1)\ny = optimInput(2)</entry>
+    <entry key="nonlConstrExampleCode">x^2 + y^2 &lt;= 5\nx^2 + y^2 &gt;= 2\ny = x^3</entry>
+    <entry key="nonlConstrRunnableCode">c(1) = x^2 + y^2 - 5\nc(2) = 2 - x^2 - y^2\nceq = y - x^3</entry>
+    <entry key="ObjectiveFcn">objfun</entry>
+    <entry key="NonlinearConstraintFcn">confun</entry>
+    <entry key="solverOutput1">solution</entry>
+    <entry key="solverOutput2">objectiveValue</entry>
+  </message>
+</rsccat>

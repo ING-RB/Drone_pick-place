@@ -1,0 +1,14 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer has detected a call to <code><a href="matlab:doc inv" target="_blank">inv</a></code> in a multiplication
+                    operation.</p><p>For solving a system of linear equations, the inverse of a matrix is primarily
+                    of theoretical value. Never use the inverse of a matrix to solve a linear system
+                        <code>Ax=b</code> with <code>x=inv(A)*b</code>, because it is
+                    slow and inaccurate. </p><br/><strong>Suggested Action</strong><br/><p>Instead of multiplying by the inverse, use matrix right division
+                        (<code>/</code>) or matrix left division (<code>\</code>). That is:<ul><li><p>Replace <code>inv(A)*b</code> with
+                                <code>A\b</code></p></li><li><p>Replace <code>b*inv(A)</code> with
+                                <code>b/A</code></p></li></ul></p><p>In longer expressions, parentheses might be necessary to preserve the order of
+                    operations. For example, replace <code>A*inv(B)*C</code> with
+                        <code>A*(B\C)</code>.</p><p>Frequently, an application needs to solve a series of related linear systems
+                        <code>Ax=b</code>, where <code>A</code> does not change, but
+                        <code>b</code> does. In this case, use <code><a href="matlab:doc lu" target="_blank">lu</a></code>, <code><a href="matlab:doc chol" target="_blank">chol</a></code>, or <code><a href="matlab:doc qr" target="_blank">qr</a></code> instead of
+                            <code><a href="matlab:doc inv" target="_blank">inv</a></code>,
+                    depending on the matrix type.</p></body></html>

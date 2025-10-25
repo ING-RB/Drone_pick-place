@@ -1,0 +1,559 @@
+{
+    "family" : "slexec_mm_sto",
+    "modelVersion" : "R2025a_202404151030",
+    "packages" : {
+        "sto" : {
+            "enumerations" : {
+                "BuiltInDTypeId" : {
+                    "literals": {
+                        "SS_DOUBLE" : { "value" : 0 },
+                        "SS_SINGLE" : { "value" : 1 },
+                        "SS_INT8" : { "value" : 2 },
+                        "SS_UINT8" : { "value" : 3 },
+                        "SS_INT16" : { "value" : 4 },
+                        "SS_UINT16" : { "value" : 5 },
+                        "SS_INT32" : { "value" : 6 },
+                        "SS_UINT32" : { "value" : 7 },
+                        "SS_BOOLEAN" : { "value" : 8 }
+                    }
+                },
+                "ClockType" : {
+                    "literals": {
+                        "Timer" : { "value" : 0 },
+                        "DependentTimer" : { "value" : 1 },
+                        "Event" : { "value" : 2 },
+                        "DependentEvent" : { "value" : 3 },
+                        "LogicalClock" : { "value" : 4 }
+                    }
+                },
+                "ElementType" : {
+                    "literals": {
+                        "TaskGroup" : { "value" : 0 },
+                        "Task" : { "value" : 1 }
+                    }
+                },
+                "EventMultiSendPolicy" : {
+                    "literals": {
+                        "Unspecified" : { "value" : 0 },
+                        "QueueAllRequests" : { "value" : 1 },
+                        "SingleRun" : { "value" : 2 }
+                    }
+                },
+                "EventType" : {
+                    "literals": {
+                        "EXTERNAL_RUNTIME_EVENT" : { "value" : 0 },
+                        "SL_MESSAGES" : { "value" : 1 },
+                        "ASYNCHRONOUS" : { "value" : 2 },
+                        "ASYNCHRONOUS_INTERRUPT" : { "value" : 3 },
+                        "ASYNCHRONOUS_CUSTOM" : { "value" : 4 },
+                        "SIM_EVENT" : { "value" : 5 },
+                        "PLAIN_EVENT" : { "value" : 6 },
+                        "EXPORT_ASYNCHRONOUS" : { "value" : 7 },
+                        "DATA_FLOW" : { "value" : 8 },
+                        "RUNTIME_EVENT" : { "value" : 9 },
+                        "POWER_UP_EVENT" : { "value" : 10 },
+                        "POWER_DOWN_EVENT" : { "value" : 11 },
+                        "RESET_EVENT" : { "value" : 12 },
+                        "RESET_WITH_INIT_EVENT" : { "value" : 13 },
+                        "PARAMETER_CHANGE_EVENT" : { "value" : 14 },
+                        "UNSPECIFIED_EVENT_SOURCE" : { "value" : 15 }
+                    }
+                },
+                "ExecutionSpec" : {
+                    "literals": {
+                        "UseForExecution" : { "value" : 0 },
+                        "NotForExecution" : { "value" : 1 },
+                        "Undetermined" : { "value" : 2 }
+                    }
+                },
+                "LogicalOperation" : {
+                    "literals": {
+                        "Or" : { "value" : 0 },
+                        "And" : { "value" : 1 },
+                        "Custom" : { "value" : 2 }
+                    }
+                },
+                "OrderingImpact" : {
+                    "literals": {
+                        "NotImpacted" : { "value" : 0 },
+                        "Impacted" : { "value" : 1 },
+                        "Unknown" : { "value" : 2 }
+                    }
+                },
+                "RateType" : {
+                    "literals": {
+                        "Continuous" : { "value" : 0 },
+                        "ZOHContinuous" : { "value" : 1 },
+                        "FastestPeriodicDiscrete" : { "value" : 2 },
+                        "ClassicPeriodicDiscrete" : { "value" : 3 },
+                        "ParameterizedDiscrete" : { "value" : 4 },
+                        "Controllable" : { "value" : 5 },
+                        "ContinuousVariable" : { "value" : 6 },
+                        "LegacyGenericAsync" : { "value" : 7 },
+                        "LegacyAsync" : { "value" : 8 },
+                        "Composite" : { "value" : 9 },
+                        "Union" : { "value" : 10 },
+                        "Inherited" : { "value" : 11 },
+                        "ModelWideInitializeEvent" : { "value" : 12 },
+                        "ModelWideTerminateEvent" : { "value" : 13 },
+                        "ModelWideResetEvent" : { "value" : 14 },
+                        "ModelWideParameterChangeEvent" : { "value" : 15 },
+                        "ModelWideInvariantParameter" : { "value" : 16 },
+                        "Constant" : { "value" : 17 },
+                        "Triggered" : { "value" : 18 },
+                        "Unspecified" : { "value" : 19 }
+                    }
+                },
+                "TaskPriorityDirection" : {
+                    "literals": {
+                        "HighNumberFirst" : { "value" : 0 },
+                        "HighNumberLast" : { "value" : 1 }
+                    }
+                },
+                "TaskingMode" : {
+                    "literals": {
+                        "ClassicSingleTasking" : { "value" : 0 },
+                        "ClassicMultiTasking" : { "value" : 1 },
+                        "ExplicitTasking" : { "value" : 2 },
+                        "Unspecified" : { "value" : 3 }
+                    }
+                },
+                "TimeAdvanceMode" : {
+                    "literals": {
+                        "VariableStep" : { "value" : 0 },
+                        "FixedStep" : { "value" : 1 },
+                        "Unspecified" : { "value" : 2 },
+                        "None" : { "value" : 3 }
+                    }
+                }
+            },
+            "dataTypes" : {
+            "TaskHierarchyElementId" : {
+                "properties" : {
+                    "clockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                    "id" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                }
+            }
+            },
+            "classes" : {
+                "ClassicPeriodicDiscreteRate" : {
+                    "properties" : {
+                        "multiplier" : { "type" : "UInteger64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockData" : {
+                    "properties" : {
+                        "id" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "ClientClockDataSet" : {
+                    "properties" : {
+                        "set" : { "type" : "ClientClockData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockIndexedData" : {
+                    "properties" : {
+                        "dataId" : { "type" : "Integer64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "linkedSet" : { "type" : "ClientClockIndexedDataSet","lower" : "0","upper" : "1", "opposite" : "dSet", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientClockData",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockIndexedDataMultiSet" : {
+                    "properties" : {
+                        "cSet" : { "type" : "ClientClockMultiIndexedData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false, "isQualificationUnique" : false },
+                        "dSet" : { "type" : "ClientClockMultiIndexedData","lower" : "0","upper" : "*", "opposite" : "linkedSet", "qualifiedBy" : "dataId", "isOrdered" : true, "isUnique" : true, "isQualificationUnique" : false }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockIndexedDataSet" : {
+                    "properties" : {
+                        "cSet" : { "type" : "ClientClockIndexedData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "dSet" : { "type" : "ClientClockIndexedData","lower" : "0","upper" : "*", "opposite" : "linkedSet", "qualifiedBy" : "dataId", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockMultiIndexedData" : {
+                    "properties" : {
+                        "dataId" : { "type" : "Integer64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "linkedSet" : { "type" : "ClientClockIndexedDataMultiSet","lower" : "0","upper" : "1", "opposite" : "dSet", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientClockData",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockNamedData" : {
+                    "properties" : {
+                        "dataName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "linkedSet" : { "type" : "ClientClockNamedDataSet","lower" : "0","upper" : "1", "opposite" : "dSet", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientClockData",
+                    
+                    "isAbstract":false
+                },
+                "ClientClockNamedDataSet" : {
+                    "properties" : {
+                        "cSet" : { "type" : "ClientClockNamedData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "dSet" : { "type" : "ClientClockNamedData","lower" : "0","upper" : "*", "opposite" : "linkedSet", "qualifiedBy" : "dataName", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "ClientDataRegistry" : {
+                    "properties" : {
+                        "dataSets" : { "type" : "ClientDataSet","lower" : "0","upper" : "*", "qualifiedBy" : "tag", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "ClientDataSet" : {
+                    "properties" : {
+                        "tag" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "ClientTaskHierarchyElementData" : {
+                    "properties" : {
+                        "id" : { "type" : "TaskHierarchyElementId","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "ClientTaskHierarchyElementDataSet" : {
+                    "properties" : {
+                        "set" : { "type" : "ClientTaskHierarchyElementData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "ClientTaskHierarchyElementIndexedData" : {
+                    "properties" : {
+                        "dataId" : { "type" : "Integer64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "linkedSet" : { "type" : "ClientTaskHierarchyElementIndexedDataSet","lower" : "0","upper" : "1", "opposite" : "dSet", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientTaskHierarchyElementData",
+                    
+                    "isAbstract":false
+                },
+                "ClientTaskHierarchyElementIndexedDataSet" : {
+                    "properties" : {
+                        "tSet" : { "type" : "ClientTaskHierarchyElementIndexedData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "dSet" : { "type" : "ClientTaskHierarchyElementIndexedData","lower" : "0","upper" : "*", "opposite" : "linkedSet", "qualifiedBy" : "dataId", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "ClientTaskHierarchyElementNamedData" : {
+                    "properties" : {
+                        "dataName" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "linkedSet" : { "type" : "ClientTaskHierarchyElementNamedDataSet","lower" : "0","upper" : "1", "opposite" : "dSet", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientTaskHierarchyElementData",
+                    
+                    "isAbstract":false
+                },
+                "ClientTaskHierarchyElementNamedDataSet" : {
+                    "properties" : {
+                        "tSet" : { "type" : "ClientTaskHierarchyElementNamedData","lower" : "0","upper" : "*", "qualifiedBy" : "id", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "dSet" : { "type" : "ClientTaskHierarchyElementNamedData","lower" : "0","upper" : "*", "opposite" : "linkedSet", "qualifiedBy" : "dataName", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.ClientDataSet",
+                    
+                    "isAbstract":false
+                },
+                "Clock" : {
+                    "properties" : {
+                        "clockType" : { "type" : "ClockType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Timer" },
+                        "identifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "cNum" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "rates" : { "type" : "Rate","lower" : "0","upper" : "*", "opposite" : "clock", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "clockRegistry" : { "type" : "ClockRegistry","lower" : "0","upper" : "1", "opposite" : "clocks", "isTransient" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "ClockRegistry" : {
+                    "properties" : {
+                        "timeAdvanceMode" : { "type" : "TimeAdvanceMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "VariableStep" },
+                        "clocks" : { "type" : "Clock","lower" : "0","upper" : "*", "opposite" : "clockRegistry", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "registry" : { "type" : "Registry","lower" : "0","upper" : "1", "opposite" : "clockRegistry", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "ContinuousRate" : {
+                    
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "ContinuousVariableRate" : {
+                    "properties" : {
+                        "uid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "ControllableRate" : {
+                    "properties" : {
+                        "uid" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "referenceRate" : { "type" : "Rate","lower" : "0","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "DependentEvent" : {
+                    "properties" : {
+                        "parentClockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "masterClockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "increment" : { "type" : "UInteger64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.Event",
+                    
+                    "isAbstract":false
+                },
+                "DependentTimer" : {
+                    "properties" : {
+                        "parentClockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "masterClockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "multiplier" : { "type" : "UInteger64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.Timer",
+                    
+                    "isAbstract":false
+                },
+                "Event" : {
+                    "properties" : {
+                        "eventType" : { "type" : "EventType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "EXTERNAL_RUNTIME_EVENT" },
+                        "clientId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "multiSendPolicy" : { "type" : "EventMultiSendPolicy","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Unspecified" },
+                        "dependentEvents" : { "type" : "DependentEvent","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "sto.Clock",
+                    
+                    "isAbstract":false
+                },
+                "LegacyAsyncRate" : {
+                    
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "LogicalClock" : {
+                    "properties" : {
+                        "operation" : { "type" : "LogicalOperation","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Or" },
+                        "referenceClockIds" : { "type" : "String","lower" : "0","upper" : "*", "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "sto.Clock",
+                    
+                    "isAbstract":false
+                },
+                "ModelWideEventRate" : {
+                    
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "ParameterizedDiscreteRate" : {
+                    
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                },
+                "Rate" : {
+                    "properties" : {
+                        "clockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "taskId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "annotation" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "description" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "colorIndex" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "rateIdx" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "useForExecution" : { "type" : "ExecutionSpec","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "UseForExecution" },
+                        "clock" : { "type" : "Clock","lower" : "0","upper" : "1", "opposite" : "rates", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "rateSpec" : { "type" : "RateSpec","lower" : "0","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "RateSpec" : {
+                    "properties" : {
+                        "period" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "offset" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "rateType" : { "type" : "RateType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "Continuous" }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Registry" : {
+                    "properties" : {
+                        "identifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "executionSpec" : { "type" : "ExecutionSpec","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "UseForExecution" },
+                        "clockRegistry" : { "type" : "ClockRegistry","lower" : "0","upper" : "1", "opposite" : "registry", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "taskRegistry" : { "type" : "TaskRegistry","lower" : "0","upper" : "1", "opposite" : "registry", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "SerializedConnectionProperties" : {
+                    "properties" : {
+                        "isInternal" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "constrainsSourceThenDest" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "orderingImpact" : { "type" : "OrderingImpact","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "NotImpacted" },
+                        "targetTaskIdentifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "targetClockIdentifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "SerializedTaskConnectionList" : {
+                    "properties" : {
+                        "taskIdentifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "clockIdentifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "serializedConnectionProperties" : { "type" : "SerializedConnectionProperties","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Task" : {
+                    "properties" : {
+                        "tNum" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "isExplicit" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "isExecutable" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "schedulingClockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "timeKeeperClockId" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "orderIndex" : { "type" : "UInteger64","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "rates" : { "type" : "Rate","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "sto.TaskHierarchyElement",
+                    
+                    "isAbstract":false
+                },
+                "TaskGroup" : {
+                    "properties" : {
+                        "childTaskHierarchyElement" : { "type" : "TaskHierarchyElement","lower" : "0","upper" : "*", "opposite" : "parent", "isComposite" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    "superclass": "sto.TaskHierarchyElement",
+                    
+                    "isAbstract":false
+                },
+                "TaskHierarchyElement" : {
+                    "properties" : {
+                        "priority" : { "type" : "Integer","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "identifier" : { "type" : "String","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "elementType" : { "type" : "ElementType","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "TaskGroup" },
+                        "parent" : { "type" : "TaskGroup","lower" : "0","upper" : "1", "opposite" : "childTaskHierarchyElement", "isTransient" : true, "isOrdered" : true, "isUnique" : true },
+                        "taskRegistry" : { "type" : "TaskRegistry","lower" : "0","upper" : "1", "opposite" : "rootTaskHierarchyElements", "isTransient" : true, "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":true
+                },
+                "TaskRegistry" : {
+                    "properties" : {
+                        "taskingMode" : { "type" : "TaskingMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "ClassicSingleTasking" },
+                        "taskPriorityDirection" : { "type" : "TaskPriorityDirection","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "HighNumberFirst" },
+                        "hasUnknownEdges" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "rootTaskHierarchyElements" : { "type" : "TaskHierarchyElement","lower" : "0","upper" : "*", "opposite" : "taskRegistry", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "taskDependencyGraph" : { "type" : "SerializedTaskConnectionList","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false },
+                        "registry" : { "type" : "Registry","lower" : "0","upper" : "1", "opposite" : "taskRegistry", "isOrdered" : true, "isUnique" : true }
+                    },
+                    
+                    
+                    
+                    "isAbstract":false
+                },
+                "Timer" : {
+                    "properties" : {
+                        "timeAdvanceMode" : { "type" : "TimeAdvanceMode","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "VariableStep" },
+                        "computedFundamentalDiscretePeriod" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "resolution" : { "type" : "Real","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "clockTickDataTypeId" : { "type" : "BuiltInDTypeId","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true, "defaultValue" : "SS_DOUBLE" },
+                        "transformPeriodicRateSpecToInteger" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "isDefaultTimer" : { "type" : "Boolean","lower" : "1","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "baseRate" : { "type" : "Rate","lower" : "0","upper" : "1", "isComposite" : true, "isOrdered" : true, "isUnique" : true },
+                        "fastestDiscreteRate" : { "type" : "Rate","lower" : "0","upper" : "1", "isOrdered" : true, "isUnique" : true },
+                        "dependentTimers" : { "type" : "DependentTimer","lower" : "0","upper" : "*", "isComposite" : true, "isOrdered" : true, "isUnique" : false }
+                    },
+                    
+                    "superclass": "sto.Clock",
+                    
+                    "isAbstract":false
+                },
+                "ZOHContinuousRate" : {
+                    
+                    
+                    "superclass": "sto.Rate",
+                    
+                    "isAbstract":false
+                }
+            }
+        }
+    }
+}

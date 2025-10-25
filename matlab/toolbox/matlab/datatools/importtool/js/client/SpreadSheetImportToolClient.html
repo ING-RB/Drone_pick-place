@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Spreadsheet Import Tool Client Only Showcase Page</title>
+    <!-- Load css -->
+    <link rel="stylesheet" href="release/index-css.css"/>
+    <style>
+        #openButton,
+        #closeButton,
+        #deleteLogs,
+        #createRenderer,
+        #deleteRenderer {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 30px;
+            display: inline-block
+        }
+
+        #rowCount,
+        #colCount,
+        #datatype {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            display: inline-block
+        }
+
+        .pageControls,
+        .count {
+            display: block
+        }
+
+        #Logs {
+            width: 500px;
+            height: 200px;
+            border: 1px solid black;
+            margin-left: 30px;
+            overflow: auto;
+        }
+
+        .importToolWrapper {
+            margin-left: 50px;
+            margin-top: 25px;
+            width: 500px;
+            height: 500px;
+        }
+
+        #rendererDom {
+            margin: 10px;
+            width: 100px;
+            box-sizing: border-box;
+            text-align: left;
+            min-width: 82px;
+            position: relative;
+            resize: none;
+            white-space: nowrap;
+            display: block;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 15px;
+            border: 1px solid #bfbfbf;
+            font-size: 9px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.5);
+            cursor: default;
+            min-height: 22px;
+        }
+
+        .SpreadSheetTabContainer {
+            position: relative;
+            border-top: solid gray 1px;
+            width: 800px;
+            height: 300px;
+        }
+
+        .multiHeaderCheckbox {
+            margin-left: 50px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body class="tundra">
+
+<!-- Load dojo -->
+<script src="release/importtool_client/dojoConfig-release-global.js"></script>
+<script src="release/bundle.index.js"></script>
+
+<div class="pageControls">
+    <input type="button" id="openButton" value="Launch Import Tool" onclick="launchImportTool();"/>
+    <input type="button" id="closeButton" value="Close Import Tool" onclick="closeVariable();"/>
+    <input type="button" id="deleteLogs" value="Clear logs" onclick="deleteLog();"/>
+    <input type="button" id="createRenderer" value="Create custom renderer" onclick="createRenderer();"/>
+    <input type="button" id="deleteRenderer" value="Delete renderer" onclick="deleteRenderer();"/>
+</div>
+
+<!--<div class="multiHeaderCheckbox">
+    <input type="checkbox" id="SetHeaderRenderer" value="SetHeaderRenderer" onclick="updateHeaders();"/>
+    <label for="SetHeaderRenderer">Turn on Multi Headers</label>
+</div>-->
+
+<div class="count">
+
+    RowCount:<input type="text" id="rowCount"/>
+    ColCount:<input type="text" id="colCount"/>
+    type:<select id="datatype">
+    <option value="double">Double</option>
+    <option value="datetime">Datetime</option>
+    <option value="string">String</option>
+
+</select>
+    sheet name:<input type="text" id="sheetName"/>
+     <!--
+     This is intentionally kept empty because when we pointed it to the release version, the import tool did not open up
+	 for the first time when you click launch button. For a temporary patch up fix, we have left the callback for onclick empty because the tests depnd on it
+     and called it inside the launchImportool function so that the import tool opens up all the time -->
+    <input type="button" id="createSheet" value="Create Sheet" onclick=""/>
+
+</div>
+
+<div class="logContainer" id="Logs">
+</div>
+
+<div class="renderer" id="rendererDom">
+</div>
+
+
+<script type="text/javascript">
+
+    var showHeaders = true;
+
+    var createRenderer = function () {
+        require([
+            "importtool_client/renderers/HeaderRenderer"
+        ], function (HeaderRenderer) {
+            var config = {
+                excelHeader: "A",
+                headerName: "This is a long header name",
+                columnClass: "Text"
+            };
+            var headerRenderer = new HeaderRenderer(config);
+            var headerDom = headerRenderer.getDomNode();
+            var renderer = document.getElementById("rendererDom");
+            renderer.appendChild(headerDom);
+        });
+    };
+
+    var deleteRenderer = function () {
+        var renderer = document.getElementById("rendererDom");
+        if (renderer && renderer.firstElementChild) {
+            renderer.removeChild(renderer.firstElementChild);
+        }
+    }
+
+
+    var spreadsheetWidget = null;
+    var dataSources = [];
+    var sheetNames = [];
+    var logChildren = [];
+
+    var createSheet = function () {
+        var rows = document.getElementById("rowCount").value || 4;
+        var columns = document.getElementById("colCount").value || 10;
+        var datatype = document.getElementById("datatype").value || "double";
+        var sheetName = document.getElementById("sheetName").value;
+        if (!sheetName) {
+            createLog("Please provide a valid sheet name");
+            return;
+        }
+        ;
+        var isDuplicate = sheetNames.some(function (name) {
+            return name === sheetName;
+        })
+        if (isDuplicate) {
+            createLog("This is a duplicate sheetId");
+            return;
+        }
+        dataSources.push(createTabularDataSource(rows, columns, datatype));
+        sheetNames.push(sheetName);
+
+        document.getElementById("rowCount").value = "";
+        document.getElementById("colCount").value = "";
+        document.getElementById("datatype").value = "";
+        document.getElementById("sheetName").value = "";
+
+        var message = sheetName + " created with " + rows + " rows and " + columns + " columns";
+        createLog(message);
+    }
+
+    var createLog = function (message) {
+        var logContainer = document.getElementById("Logs");
+        var newLog = document.createElement("div");
+        newLog.innerText = message;
+        logChildren.push(newLog);
+        logContainer.appendChild(newLog);
+    }
+
+    var deleteLog = function () {
+        var logContainer = document.getElementById("Logs");
+        logChildren.forEach(function (child) {
+            logContainer.removeChild(child);
+        });
+        logChildren = [];
+    }
+
+    var closeVariable = function () {
+        destroyWidget();
+
+        sheetNames = [];
+        dataSources = [];
+        deleteLog();
+    }
+
+    var destroyWidget = function () {
+        if (spreadsheetWidget) {
+            spreadsheetWidget.destroy();
+        }
+        var importToolDocument = document.getElementsByClassName("importToolWrapper");
+        if (importToolDocument && importToolDocument[0]) {
+            document.body.removeChild(importToolDocument[0]);
+        }
+    }
+
+    var launchImportTool = function () {
+        require([
+            "importtool_client/TabularImportDataSource",
+            "importtool_client/MultiTableImportWidget",
+            "dojo/dom-construct",
+            "dojo/on"
+        ], function (TabularImportDataSource, MultiTableImportWidget, domConstruct, on) {
+
+            createSheet();
+            var spreadsheetDataSource = new TabularImportDataSource(dataSources, {}, true, sheetNames);
+            if (spreadsheetWidget && spreadsheetWidget.domNode) {
+                destroyWidget();
+            }
+            spreadsheetWidget = new MultiTableImportWidget({dataSource: spreadsheetDataSource});
+            var outerWrapper = domConstruct.toDom("<div class='importToolWrapper'></div>");
+            domConstruct.place(spreadsheetWidget.domNode, outerWrapper);
+            document.body.appendChild(outerWrapper);
+            on.emit(spreadsheetWidget.domNode, "startup", {
+                bubbles: false,
+                cancelable: true
+            });
+        });
+    };
+
+
+    function createTabularDataSource(rows, columns, datatype) {
+        var tabularDataSource = null;
+        require([
+            "importtool_client/InMemoryTabularDataImportSource"
+        ], function (InMemoryTabularDataImportSource) {
+
+            var data = makeTableData(rows, columns, datatype);
+            var config = {
+                headerRow: createHeaderRow(columns),
+                selection: {},
+                columnData: createColumnData(columns, datatype)
+            };
+            tabularDataSource = new InMemoryTabularDataImportSource(data, config)
+        });
+        return tabularDataSource;
+    };
+
+
+    // create mock data
+    function makeTableData(rows, cols, type) {
+        var tableData = [];
+        SEED = cols * cols;
+        for (var r = 0; r < rows; r++) {
+            var row = [];
+            for (var c = 0; c < cols; c++) {
+                var cellVal = {};
+                if (type === "double") {
+                    var randomValue = random(cols * cols);
+                    cellVal.value = randomValue.toFixed(3);
+                    cellVal.editValue = randomValue.toString();
+                    cellVal.valueType = "replacedBy";
+                } else if (type === "datetime") {
+                    cellVal.value = "15-Apr-2007 08:02:29";
+                    cellVal.valueType = "replacedBy";
+                } else {
+                    cellVal.value = "a" + r + ":" + c + ";";
+                    cellVal.valueType = "None";
+                }
+                cellVal.isMetaData = "0";
+                cellVal.tooltipValue = cellVal.value + " Converted to [type: Text, value: ?]";
+                row.push(cellVal);
+            }
+            tableData.push(row);
+        }
+        return tableData;
+    }
+
+    function random(maxNum) {
+        var m = 1048577;
+        SEED = (131071 * SEED + 1013) % m;
+        return SEED * maxNum / m;
+    }
+
+    var startCol = "A";
+
+    function createColumnData(columns, datatype) {
+        var columnHeaderName = 'Table Column ';
+        var columnModel = [];
+        require(["importtool_client/main"], function () {
+
+            for (var i=0; i<columns; i++) {
+                var colConfig = {label: columnHeaderName + i, dataIndex: i, "class": datatype, "ColumnNumber": i + 1};
+                if (showHeaders) {
+                    colConfig.excelHeader = String.fromCharCode(startCol.charCodeAt(0) + i);
+                    colConfig.HeaderName = columnHeaderName;
+                    colConfig.columnVariableType = datatype === "string" ? "text" : (datatype === "double" ? "Number" : datatype);
+                }
+                columnModel.push(colConfig);
+            }
+        });
+        return columnModel;
+    }
+
+    function createHeaderRow(columns) {
+        return [];
+    }
+
+</script>
+</body>
+</html>
+
+

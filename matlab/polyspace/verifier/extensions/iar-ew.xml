@@ -1,0 +1,1657 @@
+<?xml version="1.0"?>
+<!-- Copyright 2017-2024 The MathWorks, Inc.
+
+    All definitions for the IAR Embedded Workbench targets:
+    - iccarm   (CPU family: ARM)
+    - iccavr   (CPU family: Atmel AVR)
+    - iccrh850 (CPU family: Renesas RH850)
+    - iccriscv (CPU family: RISC-V)
+    - iccrl78  (CPU family: Renesas RL78)
+    - icc430   (CPU family: Texas Instruments MSP430)
+-->
+<compiler name="iar-ew" default="arm"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+    <client name="matlab"/>
+  </clients>
+
+  <!-- Macros common to all targets -->
+  <defines>
+    <if feoption="--c">
+      <define name="__STDC__" value="1"/>
+    </if>
+    <define name="_NO_DEFINITIONS_IN_HEADER_FILES" value=""/>
+  </defines>
+
+  <options>
+    <if feoption="--c">
+      <option name="--set_flag" value="allow_anonymous_union_like_construct"/>
+      <option name="--allow_anonymous_unions"/>
+    </if>
+    <option name="--allow_const_scalar_expressions"/>
+    <option name="--allow_long_float"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--enable_is_destructible"/>
+    <option name="--enable_static_assert"/>
+    <option name="--extended_variadic_macros"/>
+    <option name="--enable_at_keywords"/>
+    <option name="--dollar"/>
+    <option name="--gnu_attributes"/>
+    <option name="--nonstd_anonymous_unions"/>
+    <option name="--pragma_operator_allowed"/>
+
+    <switch feoption="--signed_chars">
+      <case>
+      </case>
+      <default>
+        <option name="--unsigned_chars"/>
+      </default>
+    </switch>
+  </options>
+
+  <asms>
+    <asm name="asm"/>
+    <asm name="__asm"/>
+  </asms>
+
+  <attributes kind="data">
+    <attribute name="@" sig="@"/>
+    <if feoption="--c\+\+">
+      <attribute name="__memory_of" sig="(*)"/>
+    </if>
+  </attributes>
+
+
+  <!--
+       Definitions for ARM
+  -->
+  <target name="arm">
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_signed_short"/>
+      <option name="--little_endian"/>
+      <option name="--half_float_types"/>
+      <option name="--polyspace_define_macro" value="__CODE_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAP_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAPND_MEMORY_LIST1__()="/>
+      <if feoption="--c\+\+">
+        <option name="--allow_c11_atomic"/>
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++03"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__absolute"/>
+      <attribute name="__big_endian"/>
+      <attribute name="__code"/>
+      <attribute name="__data"/>
+      <attribute name="__little_endian"/>
+      <attribute name="__no_alloc"/>
+      <attribute name="__no_alloc16"/>
+      <attribute name="__no_init"/>
+      <attribute name="__packed" alias="gnu:packed" constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|d|Wv|Wp|Wr|Wt"/>
+      <attribute name="__pcrel"/>
+      <attribute name="__ro_placement"/>
+      <attribute name="__sbrel"/>
+      <attribute name="__spec_string"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__arm"/>
+      <attribute name="__fiq"/>
+      <attribute name="__interwork"/>
+      <attribute name="__intrinsic"/>
+      <attribute name="__irq"/>
+      <attribute name="__monitor"/>
+      <attribute name="__nested"/>
+      <attribute name="__noreturn"/>
+      <attribute name="__nounwind"/>
+      <attribute name="__ramfunc"/>
+      <attribute name="__softfp"/>
+      <attribute name="__stackless"/>
+      <attribute name="__swi"/>
+      <attribute name="__task"/>
+      <attribute name="__thumb"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__root"/>
+      <attribute name="__weak" alias="gnu:weak"/>
+      <attribute name="__weak__" alias="gnu:weak"/>
+    </attributes>
+
+    <qualifiers>
+      <qualifier name="__restrict" token="tok_restrict"/>
+    </qualifiers>
+
+    <defines>
+      <define name="__BOOL_SIZE__" value="1"/>
+      <define name="__BOOL_TYPE__" value="unsigned char"/>
+      <define name="__BUILD_NUMBER__" value="11947"/>
+      <define name="__CHAR_ALIGN__" value="1"/>
+      <define name="__CHAR_BITS__" value="8"/>
+      <define name="__CHAR_MAX__" value="0xff"/>
+      <define name="__CHAR_MIN__" value="0"/>
+      <define name="__CHAR_SIZE__" value="1"/>
+      <define name="__DEF_PTR_MEM__" value="__data"/>
+      <define name="__DEF_PTR_SIZE__" value="4"/>
+      <define name="__DEF_HEAP_MEM__" value="__data"/>
+      <define name="__DOUBLE_ALIGN__" value="8"/>
+      <define name="__DOUBLE_SIZE__" value="8"/>
+      <define name="__FLOAT_ALIGN__" value="4"/>
+      <define name="__FLOAT_SIZE__" value="4"/>
+      <define name="__INT16_C_SUFFIX__"/>
+      <define name="__INT16_SIZE_PREFIX__" value="h"/>
+      <define name="__INT16_T_MAX__" value="32767"/>
+      <define name="__INT16_T_MIN__" value="(-__INT16_T_MAX__-1)"/>
+      <define name="__INT16_T_TYPE__" value="signed short int"/>
+      <define name="__INT32_C_SUFFIX__"/>
+      <define name="__INT32_SIZE_PREFIX__" value=""/>
+      <define name="__INT32_T_MAX__" value="2147483647"/>
+      <define name="__INT32_T_MIN__" value="(-__INT32_T_MAX__-1)"/>
+      <define name="__INT32_T_TYPE__" value="signed int"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT64_T_MIN__" value="(-__INT64_T_MAX__-1)"/>
+      <define name="__INT64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT8_C_SUFFIX__"/>
+      <define name="__INT8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT8_T_MAX__" value="127"/>
+      <define name="__INT8_T_MIN__" value="(-__INT8_T_MAX__-1)"/>
+      <define name="__INT8_T_TYPE__" value="signed char"/>
+      <define name="__INTMAX_C_SUFFIX__" value="LL"/>
+      <define name="__INTMAX_SIZE_PREFIX__" value="ll"/>
+      <define name="__INTMAX_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INTMAX_T_MIN__" value="(-__INTMAX_T_MAX__-1)"/>
+      <define name="__INTMAX_T_TYPE__" value="signed long long int"/>
+      <define name="__INTPTR_SIZE_PREFIX__" value="l"/>
+      <define name="__INTPTR_T_MAX__" value="2147483647L"/>
+      <define name="__INTPTR_T_MIN__" value="(-__INTPTR_T_MAX__-1)"/>
+      <define name="__INTPTR_T_TYPE__" value="signed long int"/>
+      <define name="__INT_ALIGN__" value="4"/>
+      <define name="__INT_FAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST16_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST16_T_MIN__" value="(-__INT_FAST16_T_MAX__-1)"/>
+      <define name="__INT_FAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST32_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST32_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST32_T_MIN__" value="(-__INT_FAST32_T_MAX__-1)"/>
+      <define name="__INT_FAST32_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_FAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_FAST64_T_MIN__" value="(-__INT_FAST64_T_MAX__-1)"/>
+      <define name="__INT_FAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_FAST8_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST8_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST8_T_MIN__" value="(-__INT_FAST8_T_MAX__-1)"/>
+      <define name="__INT_FAST8_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST16_SIZE_PREFIX__" value="h"/>
+      <define name="__INT_LEAST16_T_MAX__" value="32767"/>
+      <define name="__INT_LEAST16_T_MIN__" value="(-__INT_LEAST16_T_MAX__-1)"/>
+      <define name="__INT_LEAST16_T_TYPE__" value="signed short int"/>
+      <define name="__INT_LEAST32_SIZE_PREFIX__" value=""/>
+      <define name="__INT_LEAST32_T_MAX__" value="2147483647"/>
+      <define name="__INT_LEAST32_T_MIN__" value="(-__INT_LEAST32_T_MAX__-1)"/>
+      <define name="__INT_LEAST32_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_LEAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_LEAST64_T_MIN__" value="(-__INT_LEAST64_T_MAX__-1)"/>
+      <define name="__INT_LEAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_LEAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_LEAST8_T_MAX__" value="127"/>
+      <define name="__INT_LEAST8_T_MIN__" value="(-__INT_LEAST8_T_MAX__-1)"/>
+      <define name="__INT_LEAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_SIZE__" value="4"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE__" value="unsigned long long int"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS__" value="8"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__LONG_ALIGN__" value="4"/>
+      <define name="__LONG_DOUBLE_ALIGN__" value="8"/>
+      <define name="__LONG_DOUBLE_SIZE__" value="8"/>
+      <define name="__LONG_LONG_ALIGN__" value="8"/>
+      <define name="__LONG_LONG_SIZE__" value="8"/>
+      <define name="__LONG_SIZE__" value="4"/>
+      <define name="__NAN_HAS_HIGH_MANTISSA_BIT_SET__" value="0"/>
+      <define name="__PTRDIFF_T_MAX__" value="2147483647"/>
+      <define name="__PTRDIFF_T_MIN__" value="(-__PTRDIFF_T_MAX__-1)"/>
+      <define name="__PTRDIFF_T_TYPE__" value="signed int"/>
+      <define name="__SHORT_ALIGN__" value="2"/>
+      <define name="__SHORT_SIZE__" value="2"/>
+      <define name="__SIGNED_CHAR_MAX__" value="127"/>
+      <define name="__SIGNED_CHAR_MIN__" value="(-__SIGNED_CHAR_MAX__-1)"/>
+      <define name="__SIGNED_INT_MAX__" value="2147483647"/>
+      <define name="__SIGNED_INT_MIN__" value="(-__SIGNED_INT_MAX__-1)"/>
+      <define name="__SIGNED_LONG_LONG_MAX__" value="9223372036854775807LL"/>
+      <define name="__SIGNED_LONG_LONG_MIN__" value="(-__SIGNED_LONG_LONG_MAX__-1)"/>
+      <define name="__SIGNED_LONG_MAX__" value="2147483647L"/>
+      <define name="__SIGNED_LONG_MIN__" value="(-__SIGNED_LONG_MAX__-1)"/>
+      <define name="__SIGNED_SHORT_MAX__" value="32767"/>
+      <define name="__SIGNED_SHORT_MIN__" value="(-__SIGNED_SHORT_MAX__-1)"/>
+      <define name="__SIZE_T_MAX__" value="0xffffffffU"/>
+      <define name="__SIZE_T_TYPE__" value="unsigned int"/>
+      <define name="__SUBNORMAL_FLOATING_POINTS__" value="1"/>
+      <define name="__TID__" value="0xcf60"/>
+      <define name="__UINT16_C_SUFFIX__"/>
+      <define name="__UINT16_T_MAX__" value="0xffff"/>
+      <define name="__UINT16_T_TYPE__" value="unsigned short int"/>
+      <define name="__UINT32_C_SUFFIX__" value="U"/>
+      <define name="__UINT32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT64_C_SUFFIX__" value="ULL"/>
+      <define name="__UINT64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT8_C_SUFFIX__"/>
+      <define name="__UINT8_T_MAX__" value="0xff"/>
+      <define name="__UINT8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINTMAX_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINTPTR_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_FAST16_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_FAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_FAST8_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST8_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST16_T_MAX__" value="0xffff"/>
+      <define name="__UINT_LEAST16_T_TYPE__" value="unsigned short int"/>
+      <define name="__UINT_LEAST32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_LEAST32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_LEAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_LEAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_LEAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UNSIGNED_CHAR_MAX__" value="0xff"/>
+      <define name="__UNSIGNED_INT_MAX__" value="0xffffffffU"/>
+      <define name="__UNSIGNED_LONG_LONG_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UNSIGNED_LONG_MAX__" value="0xffffffffUL"/>
+      <define name="__UNSIGNED_SHORT_MAX__" value="0xffff"/>
+      <define name="__WCHAR_T_MAX__" value="0xffff"/>
+      <define name="__WCHAR_T_SIZE__" value="2"/>
+      <define name="__WCHAR_T_TYPE__" value="unsigned short int"/>
+      <define name="__CODE_MEM0__" value="__code"/>
+      <define name="__PRAGMA_PACK_ON__" value="1"/>
+      <define name="__MULTIPLE_INHERITANCE__" value="1"/>
+      <define name="__MEMORY_ORDER_RELAXED__" value="0"/>
+      <define name="__MEMORY_ORDER_CONSUME__" value="1"/>
+      <define name="__MEMORY_ORDER_ACQUIRE__" value="2"/>
+      <define name="__MEMORY_ORDER_RELEASE__" value="3"/>
+      <define name="__MEMORY_ORDER_ACQ_REL__" value="4"/>
+      <define name="__MEMORY_ORDER_SEQ_CST__" value="5"/>
+      <define name="__ARM4TM__" value="4"/>
+      <define name="__ARM5TM__" value="5"/>
+      <define name="__ARM5T__" value="5"/>
+      <define name="__ARM5__" value="5"/>
+      <define name="__ARM6MEDIA__" value="6"/>
+      <define name="__ARM6M__" value="11"/>
+      <define name="__ARM6SM__" value="12"/>
+      <define name="__ARM6T2__" value="6"/>
+      <define name="__ARM6__" value="6"/>
+      <define name="__ARM7EM__" value="13"/>
+      <define name="__ARM7M__" value="7"/>
+      <define name="__ARM7__" value="7"/>
+      <define name="__ARM_ARCH" value="7"/>
+      <define name="__CORE__" value="__ARM7EM__"/>
+      <define name="__CPU_MODE__" value="1"/>
+      <define name="__IAR_SYSTEMS_ICC__" value="8"/>
+      <define name="__ICCARM__" value="1"/>
+      <define name="__INTERWORKING__" value="1"/>
+      <define name="__PLAIN_INT_BITFIELD_IS_SIGNED__" value="0"/>
+      <define name="__HAS_WEAK__" value="1"/>
+      <define name="__HAS_PACKED__" value="1"/>
+      <define name="__HAS_JOINED_TYPES__" value="1"/>
+      <define name="__HAS_LOCATED_DECLARATION__" value="1"/>
+      <define name="__HAS_LOCATED_WITH_INIT__" value="1"/>
+      <define name="__IAR_COMPILERBASE__" value="595456"/>
+      <define name="__STDC_HOSTED__" value="1"/>
+      <define name="_DLIB_CONFIG_FILE_HEADER_NAME" value="&quot;DLib_Config_Normal.h&quot;"/>
+      <define name="_DLIB_CONFIG_FILE_STRING" value="&quot;DLib_Config_Normal.h&quot;"/>
+      <define name="__VERSION__" value="&quot;IAR ANSI C/C++ Compiler V7.80.2.11947/W32 for ARM&quot;"/>
+      <define name="__VER__" value="7080002"/>
+    </defines>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="iar-ew/tmw_builtins/arm.h"/>
+    </options>
+
+  </target>
+
+  <!--
+       Definitions for Atmel AVR
+  -->
+  <target name="avr">
+
+    <options>
+      <option name="--max_alignment"      value="1"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="2"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="4"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--little_endian"/>
+      <option name="--polyspace_define_macro" value="__CODE_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAP_MEMORY_LIST1__()="/>
+      <if feoption="--c\+\+">
+        <option name="--allow_c11_atomic"/>
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++03"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__eeprom"/>
+      <attribute name="__ext_io"/>
+      <attribute name="__far"/>
+      <attribute name="__farflash"/>
+      <attribute name="__flash"/>
+      <attribute name="__generic"/>
+      <attribute name="__huge"/>
+      <attribute name="__hugeflash"/>
+      <attribute name="__io"/>
+      <attribute name="__near"/>
+      <attribute name="__no_alloc"/>
+      <attribute name="__no_alloc16"/>
+      <attribute name="__no_init"/>
+      <attribute name="__no_init_volatile"/>
+      <attribute name="__no_runtime_init"/>
+      <attribute name="__regvar"/>
+      <attribute name="__ro_placement"/>
+      <attribute name="__tiny"/>
+      <attribute name="__tinyflash"/>
+      <attribute name="__ubdef"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__C_task"/>
+      <attribute name="__farfunc"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__intrinsic"/>
+      <attribute name="__monitor"/>
+      <attribute name="__nearfunc"/>
+      <attribute name="__nested"/>
+      <attribute name="__noreturn"/>
+      <attribute name="__nounwind"/>
+      <attribute name="__raw"/>
+      <attribute name="__task"/>
+      <attribute name="__trap"/>
+      <attribute name="__version_1"/>
+      <attribute name="__version_2"/>
+      <attribute name="__version_3"/>
+      <attribute name="__version_4"/>
+      <attribute name="__x"/>
+      <attribute name="__x_z"/>
+      <attribute name="__z"/>
+      <attribute name="__z_x"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__root"/>
+    </attributes>
+
+    <defines>
+      <define name="__BUILD_NUMBER__" value="1079"/>
+      <define name="__CORE__" value="4"/>
+      <define name="__CPU__" value="4"/>
+      <define name="__IAR_COMPILERBASE__" value="594953"/>
+      <define name="__IAR_SYSTEMS_ICC__" value="8"/>
+      <define name="__ICCAVR__" value="1"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE__" value="unsigned char"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS__" value="22"/>
+      <define name="__SUBVERSION__" value="6"/>
+      <define name="__TID__" value="0x5a42"/>
+      <define name="__VERSION__" value="&quot;IAR C/C++ Compiler V6.80.6.1079 for Atmel AVR&quot;"/>
+      <define name="__VER__" value="680"/>
+
+      <define name="__BOOL_SIZE__" value="1"/>
+      <define name="__BOOL_TYPE__" value="unsigned char"/>
+      <define name="__CHAR_ALIGN__" value="1"/>
+      <define name="__CHAR_BITS__" value="8"/>
+      <define name="__CHAR_MAX__" value="0xff"/>
+      <define name="__CHAR_MIN__" value="0"/>
+      <define name="__CHAR_SIZE__" value="1"/>
+      <define name="__DEF_HEAP_MEM__" value="__tiny"/>
+      <define name="__DEF_PTR_MEM__" value="__tiny"/>
+      <define name="__DEF_PTR_SIZE__" value="2"/>
+      <define name="__DOUBLE_ALIGN__" value="1"/>
+      <define name="__DOUBLE_SIZE__" value="4"/>
+      <define name="__FLOAT_ALIGN__" value="1"/>
+      <define name="__FLOAT_SIZE__" value="4"/>
+      <define name="__INT16_C_SUFFIX__" value=""/>
+      <define name="__INT16_SIZE_PREFIX__" value=""/>
+      <define name="__INT16_T_MAX__" value="32767"/>
+      <define name="__INT16_T_MIN__" value="(-__INT16_T_MAX__-1)"/>
+      <define name="__INT16_T_TYPE__" value="signed int"/>
+      <define name="__INT32_C_SUFFIX__" value="L"/>
+      <define name="__INT32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT32_T_MAX__" value="2147483647L"/>
+      <define name="__INT32_T_MIN__" value="(-__INT32_T_MAX__-1)"/>
+      <define name="__INT32_T_TYPE__" value="signed long int"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT64_T_MIN__" value="(-__INT64_T_MAX__-1)"/>
+      <define name="__INT64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT8_C_SUFFIX__" value=""/>
+      <define name="__INT8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT8_T_MAX__" value="127"/>
+      <define name="__INT8_T_MIN__" value="(-__INT8_T_MAX__-1)"/>
+      <define name="__INT8_T_TYPE__" value="signed char"/>
+      <define name="__INTMAX_C_SUFFIX__" value="LL"/>
+      <define name="__INTMAX_SIZE_PREFIX__" value="ll"/>
+      <define name="__INTMAX_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INTMAX_T_MIN__" value="(-__INTMAX_T_MAX__-1)"/>
+      <define name="__INTMAX_T_TYPE__" value="signed long long int"/>
+      <define name="__INTPTR_SIZE_PREFIX__" value=""/>
+      <define name="__INTPTR_T_MAX__" value="32767"/>
+      <define name="__INTPTR_T_MIN__" value="(-__INTPTR_T_MAX__-1)"/>
+      <define name="__INTPTR_T_TYPE__" value="signed int"/>
+      <define name="__INT_ALIGN__" value="1"/>
+      <define name="__INT_FAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST16_T_MAX__" value="32767"/>
+      <define name="__INT_FAST16_T_MIN__" value="(-__INT_FAST16_T_MAX__-1)"/>
+      <define name="__INT_FAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT_FAST32_T_MAX__" value="2147483647L"/>
+      <define name="__INT_FAST32_T_MIN__" value="(-__INT_FAST32_T_MAX__-1)"/>
+      <define name="__INT_FAST32_T_TYPE__" value="signed long int"/>
+      <define name="__INT_FAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_FAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_FAST64_T_MIN__" value="(-__INT_FAST64_T_MAX__-1)"/>
+      <define name="__INT_FAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_FAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_FAST8_T_MAX__" value="127"/>
+      <define name="__INT_FAST8_T_MIN__" value="(-__INT_FAST8_T_MAX__-1)"/>
+      <define name="__INT_FAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_LEAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_LEAST16_T_MAX__" value="32767"/>
+      <define name="__INT_LEAST16_T_MIN__" value="(-__INT_LEAST16_T_MAX__-1)"/>
+      <define name="__INT_LEAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT_LEAST32_T_MAX__" value="2147483647L"/>
+      <define name="__INT_LEAST32_T_MIN__" value="(-__INT_LEAST32_T_MAX__-1)"/>
+      <define name="__INT_LEAST32_T_TYPE__" value="signed long int"/>
+      <define name="__INT_LEAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_LEAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_LEAST64_T_MIN__" value="(-__INT_LEAST64_T_MAX__-1)"/>
+      <define name="__INT_LEAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_LEAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_LEAST8_T_MAX__" value="127"/>
+      <define name="__INT_LEAST8_T_MIN__" value="(-__INT_LEAST8_T_MAX__-1)"/>
+      <define name="__INT_LEAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_SIZE__" value="2"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE__" value="unsigned char"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS__" value="21"/>
+      <define name="__LONG_ALIGN__" value="1"/>
+      <define name="__LONG_DOUBLE_ALIGN__" value="1"/>
+      <define name="__LONG_DOUBLE_SIZE__" value="4"/>
+      <define name="__LONG_LONG_ALIGN__" value="1"/>
+      <define name="__LONG_LONG_SIZE__" value="8"/>
+      <define name="__LONG_SIZE__" value="4"/>
+      <define name="__NAN_HAS_HIGH_MANTISSA_BIT_SET__" value="1"/>
+      <define name="__PTRDIFF_T_MAX__" value="32767"/>
+      <define name="__PTRDIFF_T_MIN__" value="(-__PTRDIFF_T_MAX__-1)"/>
+      <define name="__PTRDIFF_T_TYPE__" value="signed int"/>
+      <define name="__SHORT_ALIGN__" value="1"/>
+      <define name="__SHORT_SIZE__" value="2"/>
+      <define name="__SIGNED_CHAR_MAX__" value="127"/>
+      <define name="__SIGNED_CHAR_MIN__" value="(-__SIGNED_CHAR_MAX__-1)"/>
+      <define name="__SIGNED_INT_MAX__" value="32767"/>
+      <define name="__SIGNED_INT_MIN__" value="(-__SIGNED_INT_MAX__-1)"/>
+      <define name="__SIGNED_LONG_LONG_MAX__" value="9223372036854775807LL"/>
+      <define name="__SIGNED_LONG_LONG_MIN__" value="(-__SIGNED_LONG_LONG_MAX__-1)"/>
+      <define name="__SIGNED_LONG_MAX__" value="2147483647L"/>
+      <define name="__SIGNED_LONG_MIN__" value="(-__SIGNED_LONG_MAX__-1)"/>
+      <define name="__SIGNED_SHORT_MAX__" value="32767"/>
+      <define name="__SIGNED_SHORT_MIN__" value="(-__SIGNED_SHORT_MAX__-1)"/>
+      <define name="__SIZE_T_MAX__" value="0xffffU"/>
+      <define name="__SIZE_T_TYPE__" value="unsigned int"/>
+      <define name="__SUBNORMAL_FLOATING_POINTS__" value="1"/>
+      <define name="__UINT16_C_SUFFIX__" value="U"/>
+      <define name="__UINT16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT32_C_SUFFIX__" value="UL;"/>
+      <define name="__UINT32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT64_C_SUFFIX__" value="ULL"/>
+      <define name="__UINT64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT8_C_SUFFIX__" value=""/>
+      <define name="__UINT8_T_MAX__" value="0xff"/>
+      <define name="__UINT8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINTMAX_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINTPTR_T_MAX__" value="0xffffU"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_FAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT_FAST32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_FAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_FAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_FAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_FAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINT_LEAST16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_LEAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT_LEAST32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_LEAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_LEAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_LEAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_LEAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UNSIGNED_CHAR_MAX__" value="0xff"/>
+      <define name="__UNSIGNED_INT_MAX__" value="0xffffU"/>
+      <define name="__UNSIGNED_LONG_LONG_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UNSIGNED_LONG_MAX__" value="0xffffffffUL"/>
+      <define name="__UNSIGNED_SHORT_MAX__" value="0xffffU"/>
+      <define name="__WCHAR_T_MAX__" value="0xffffU"/>
+      <define name="__WCHAR_T_SIZE__" value="2"/>
+      <define name="__WCHAR_T_TYPE__" value="unsigned short int"/>
+    </defines>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="iar-ew/tmw_builtins/avr.h"/>
+    </options>
+
+  </target>
+
+  <!--
+       Definitions for Texas Instruments MSP430
+  -->
+  <target name="msp430">
+
+    <options>
+      <option name="--max_alignment"      value="2"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="2"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="4"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--little_endian"/>
+      <option name="--polyspace_define_macro" value="__CODE_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAP_MEMORY_LIST1__()="/>
+      <if feoption="--c\+\+">
+        <option name="--allow_c11_atomic"/>
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++03"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__code"/>
+      <attribute name="__data16"/>
+      <attribute name="__data20"/>
+      <attribute name="__no_alloc"/>
+      <attribute name="__no_alloc16"/>
+      <attribute name="__no_init"/>
+      <attribute name="__persistent"/>
+      <attribute name="__regvar"/>
+      <attribute name="__ro_placement"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__cc_version1"/>
+      <attribute name="__cc_version2"/>
+      <attribute name="__code20"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__intrinsic"/>
+      <attribute name="__monitor"/>
+      <attribute name="__noreturn"/>
+      <attribute name="__nounwind"/>
+      <attribute name="__no_pic"/>
+      <attribute name="__ramfunc"/>
+      <attribute name="__raw"/>
+      <attribute name="__save_reg20"/>
+      <attribute name="__task"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__root"/>
+    </attributes>
+
+    <defines>
+      <define name="__430X_CORE__" value="1"/>
+      <define name="__430X__" value="1"/>
+      <define name="__430_CORE__" value="0"/>
+      <define name="__430__" value="0"/>
+      <define name="__BUILD_NUMBER__" value="967"/>
+      <define name="__IAR_COMPILERBASE__" value="594957"/>
+      <define name="__IAR_SYSTEMS_ICC" value="__IAR_SYSTEMS_ICC__"/>
+      <define name="__IAR_SYSTEMS_ICC__" value="8"/>
+      <define name="__ICC430__" value="1"/>
+      <define name="__SUBVERSION__" value="1"/>
+      <define name="__TID__" value="0xab00"/>
+      <define name="__VERSION__" value="&quot;IAR C/C++ Compiler V6.50.1.967/W32 for MSP430&quot;"/>
+      <define name="__VER__" value="650"/>
+
+      <define name="__CODE_MODEL_LARGE__" value="1"/>
+      <define name="__CODE_MODEL_SMALL__" value="0"/>
+      <define name="__CODE_MODEL__" value="__CODE_MODEL_SMALL__"/>
+      <define name="__CORE__" value="__430__"/>
+      <define name="__DATA_MODEL_LARGE__" value="2"/>
+      <define name="__DATA_MODEL_MEDIUM__" value="1"/>
+      <define name="__DATA_MODEL_SMALL__" value="0"/>
+      <define name="__DATA_MODEL__" value="__DATA_MODEL_SMALL__"/>
+      <define name="_DLIB_SMALL_TARGET" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__MULTIPLIER_16S__" value="2"/>
+      <define name="__MULTIPLIER_16__" value="1"/>
+      <define name="__MULTIPLIER_32__" value="3"/>
+      <define name="__MULTIPLIER_NONE__" value="0"/>
+      <define name="__MULTIPLIER__" value="__MULTIPLIER_NONE__"/>
+      <define name="__PLAIN_INT_BITFIELD_IS_SIGNED__" value="1"/>
+      <define name="__REGISTER_FREE__" value="0"/>
+      <define name="__REGISTER_LOCKED__" value="1"/>
+      <define name="__REGISTER_MODEL_REG16__" value="0"/>
+      <define name="__REGISTER_MODEL_REG20__" value="1"/>
+      <define name="__REGISTER_MODEL__" value="__REGISTER_MODEL_REG16__"/>
+      <define name="__REGISTER_R4__" value="__REGISTER_FREE__"/>
+      <define name="__REGISTER_R5__" value="__REGISTER_FREE__"/>
+      <define name="__REGISTER_REGVAR__" value="2"/>
+
+      <define name="__BOOL_SIZE__" value="1"/>
+      <define name="__BOOL_TYPE__" value="unsigned char"/>
+      <define name="__CHAR_ALIGN__" value="1"/>
+      <define name="__CHAR_BITS__" value="8"/>
+      <define name="__CHAR_MAX__" value="0xff"/>
+      <define name="__CHAR_MIN__" value="0"/>
+      <define name="__CHAR_SIZE__" value="1"/>
+      <define name="__DEF_HEAP_MEM__" value="__data16"/>
+      <define name="__DEF_PTR_MEM__" value="__data16"/>
+      <define name="__DEF_PTR_SIZE__" value="2"/>
+      <define name="__DOUBLE_ALIGN__" value="2"/>
+      <define name="__DOUBLE_SIZE__" value="4"/>
+      <define name="__FLOAT_ALIGN__" value="2"/>
+      <define name="__FLOAT_SIZE__" value="4"/>
+      <define name="__INT16_C_SUFFIX__" value=""/>
+      <define name="__INT16_SIZE_PREFIX__" value=""/>
+      <define name="__INT16_T_MAX__" value="32767"/>
+      <define name="__INT16_T_MIN__" value="(-__INT16_T_MAX__-1)"/>
+      <define name="__INT16_T_TYPE__" value="signed int"/>
+      <define name="__INT32_C_SUFFIX__" value="L"/>
+      <define name="__INT32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT32_T_MAX__" value="2147483647L"/>
+      <define name="__INT32_T_MIN__" value="(-__INT32_T_MAX__-1)"/>
+      <define name="__INT32_T_TYPE__" value="signed long int"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT64_T_MIN__" value="(-__INT64_T_MAX__-1)"/>
+      <define name="__INT64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT8_C_SUFFIX__" value=""/>
+      <define name="__INT8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT8_T_MAX__" value="127"/>
+      <define name="__INT8_T_MIN__" value="(-__INT8_T_MAX__-1)"/>
+      <define name="__INT8_T_TYPE__" value="signed char"/>
+      <define name="__INTMAX_C_SUFFIX__" value="LL"/>
+      <define name="__INTMAX_SIZE_PREFIX__" value="ll"/>
+      <define name="__INTMAX_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INTMAX_T_MIN__" value="(-__INTMAX_T_MAX__-1)"/>
+      <define name="__INTMAX_T_TYPE__" value="signed long long int"/>
+      <define name="__INTPTR_SIZE_PREFIX__" value=""/>
+      <define name="__INTPTR_T_MAX__" value="32767"/>
+      <define name="__INTPTR_T_MIN__" value="(-__INTPTR_T_MAX__-1)"/>
+      <define name="__INTPTR_T_TYPE__" value="signed int"/>
+      <define name="__INT_ALIGN__" value="2"/>
+      <define name="__INT_FAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST16_T_MAX__" value="32767"/>
+      <define name="__INT_FAST16_T_MIN__" value="(-__INT_FAST16_T_MAX__-1)"/>
+      <define name="__INT_FAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT_FAST32_T_MAX__" value="2147483647L"/>
+      <define name="__INT_FAST32_T_MIN__" value="(-__INT_FAST32_T_MAX__-1)"/>
+      <define name="__INT_FAST32_T_TYPE__" value="signed long int"/>
+      <define name="__INT_FAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_FAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_FAST64_T_MIN__" value="(-__INT_FAST64_T_MAX__-1)"/>
+      <define name="__INT_FAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_FAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_FAST8_T_MAX__" value="127"/>
+      <define name="__INT_FAST8_T_MIN__" value="(-__INT_FAST8_T_MAX__-1)"/>
+      <define name="__INT_FAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_LEAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_LEAST16_T_MAX__" value="32767"/>
+      <define name="__INT_LEAST16_T_MIN__" value="(-__INT_LEAST16_T_MAX__-1)"/>
+      <define name="__INT_LEAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT_LEAST32_T_MAX__" value="2147483647L"/>
+      <define name="__INT_LEAST32_T_MIN__" value="(-__INT_LEAST32_T_MAX__-1)"/>
+      <define name="__INT_LEAST32_T_TYPE__" value="signed long int"/>
+      <define name="__INT_LEAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_LEAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_LEAST64_T_MIN__" value="(-__INT_LEAST64_T_MAX__-1)"/>
+      <define name="__INT_LEAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_LEAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_LEAST8_T_MAX__" value="127"/>
+      <define name="__INT_LEAST8_T_MIN__" value="(-__INT_LEAST8_T_MAX__-1)"/>
+      <define name="__INT_LEAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_SIZE__" value="2"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE__" value="unsigned short int"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS__" value="10"/>
+      <define name="__LONG_ALIGN__" value="2"/>
+      <define name="__LONG_DOUBLE_ALIGN__" value="2"/>
+      <define name="__LONG_DOUBLE_SIZE__" value="4"/>
+      <define name="__LONG_LONG_ALIGN__" value="2"/>
+      <define name="__LONG_LONG_SIZE__" value="8"/>
+      <define name="__LONG_SIZE__" value="4"/>
+      <define name="__PTRDIFF_T_MAX__" value="32767"/>
+      <define name="__PTRDIFF_T_MIN__" value="(-__PTRDIFF_T_MAX__-1)"/>
+      <define name="__PTRDIFF_T_TYPE__" value="signed int"/>
+      <define name="__SHORT_ALIGN__" value="2"/>
+      <define name="__SHORT_SIZE__" value="2"/>
+      <define name="__SIGNED_CHAR_MAX__" value="127"/>
+      <define name="__SIGNED_CHAR_MIN__" value="(-__SIGNED_CHAR_MAX__-1)"/>
+      <define name="__SIGNED_INT_MAX__" value="32767"/>
+      <define name="__SIGNED_INT_MIN__" value="(-__SIGNED_INT_MAX__-1)"/>
+      <define name="__SIGNED_LONG_LONG_MAX__" value="9223372036854775807LL"/>
+      <define name="__SIGNED_LONG_LONG_MIN__" value="(-__SIGNED_LONG_LONG_MAX__-1)"/>
+      <define name="__SIGNED_LONG_MAX__" value="2147483647L"/>
+      <define name="__SIGNED_LONG_MIN__" value="(-__SIGNED_LONG_MAX__-1)"/>
+      <define name="__SIGNED_SHORT_MAX__" value="32767"/>
+      <define name="__SIGNED_SHORT_MIN__" value="(-__SIGNED_SHORT_MAX__-1)"/>
+      <define name="__SIZE_T_MAX__" value="0xffffU"/>
+      <define name="__SIZE_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT16_C_SUFFIX__" value="U"/>
+      <define name="__UINT16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT32_C_SUFFIX__" value="UL"/>
+      <define name="__UINT32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT64_C_SUFFIX__" value="ULL"/>
+      <define name="__UINT64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT8_C_SUFFIX__" value=""/>
+      <define name="__UINT8_T_MAX__" value="0xff"/>
+      <define name="__UINT8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINTMAX_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINTPTR_T_MAX__" value="0xffffU"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_FAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT_FAST32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_FAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_FAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_FAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_FAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINT_LEAST16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_LEAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT_LEAST32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_LEAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_LEAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_LEAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_LEAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UNSIGNED_CHAR_MAX__" value="0xff"/>
+      <define name="__UNSIGNED_INT_MAX__" value="0xffffU"/>
+      <define name="__UNSIGNED_LONG_LONG_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UNSIGNED_LONG_MAX__" value="0xffffffffUL"/>
+      <define name="__UNSIGNED_SHORT_MAX__" value="0xffffU"/>
+      <define name="__WCHAR_T_MAX__" value="0xffffU"/>
+      <define name="__WCHAR_T_SIZE__" value="2"/>
+      <define name="__WCHAR_T_TYPE__" value="unsigned short int"/>
+    </defines>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="iar-ew/tmw_builtins/msp430.h"/>
+    </options>
+
+  </target>
+
+  <!--
+       Definitions for Renesas RH850
+  -->
+  <target name="rh850">
+    <options>
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_signed_short"/>
+      <option name="--little_endian"/>
+      <option name="--polyspace_define_macro" value="__CODE_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAP_MEMORY_LIST1__()="/>
+      <if feoption="--c\+\+">
+        <option name="--allow_c11_atomic"/>
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++03"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__brel"/>
+      <attribute name="__brel23"/>
+      <attribute name="__code"/>
+      <attribute name="__huge"/>
+      <attribute name="__near"/>
+      <attribute name="__no_alloc"/>
+      <attribute name="__no_alloc16"/>
+      <attribute name="__no_bit_access"/>
+      <attribute name="__no_init"/>
+      <attribute name="__no_init_volatile"/>
+      <attribute name="__no_runtime_init"/>
+      <attribute name="__ro_placement"/>
+      <attribute name="__saddr"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__callt"/>
+      <attribute name="__cc_version1"/>
+      <attribute name="__db_int"/>
+      <attribute name="__ei_int"/>
+      <attribute name="__fe_int"/>
+      <attribute name="__fetrap"/>
+      <attribute name="__flat"/>
+      <attribute name="__hvcall"/>
+      <attribute name="__hvtrap"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__intrinsic"/>
+      <attribute name="__monitor"/>
+      <attribute name="__noreturn"/>
+      <attribute name="__nounwind"/>
+      <attribute name="__syscall"/>
+      <attribute name="__task"/>
+      <attribute name="__trap"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__root"/>
+      <attribute name="__weak" alias="gnu:weak"/>
+      <attribute name="__weak__" alias="gnu:weak"/>
+    </attributes>
+
+    <qualifiers>
+      <qualifier name="__restrict" token="tok_restrict"/>
+    </qualifiers>
+
+    <defines>
+      <define name="__BUILD_NUMBER__" value="667"/>
+      <define name="__CORE_RH850__" value="6"/>
+      <define name="__CORE_V850E2H__" value="5"/>
+      <define name="__CORE_V850E2K__" value="4"/>
+      <define name="__CORE_V850E2M__" value="3"/>
+      <define name="__CORE_V850E2__" value="2"/>
+      <define name="__CORE_V850E__" value="1"/>
+      <define name="__CORE_V850__" value="0"/>
+      <define name="__CORE__" value="__CORE_RH850__"/>
+      <define name="__IAR_COMPILERBASE__" value="594445"/>
+      <define name="__IAR_RH850_LIBRARY_MEMORY" value="__brel"/>
+      <define name="__IAR_SYSTEMS_ICC__" value="8"/>
+      <define name="__ICCRH850__" value="1"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__SUBVERSION__" value="66"/>
+      <define name="__TID__" value="0xd562"/>
+      <define name="__VERSION__" value="&quot;IAR C/C++ Compiler V1.30.2.667 for RH850&quot;"/>
+      <define name="__VER__" value="130"/>
+
+      <define name="__BOOL_SIZE__" value="1"/>
+      <define name="__BOOL_TYPE__" value="unsigned char"/>
+      <define name="__CHAR_ALIGN__" value="1"/>
+      <define name="__CHAR_BITS__" value="8"/>
+      <define name="__CHAR_MAX__" value="0xff"/>
+      <define name="__CHAR_MIN__" value="0"/>
+      <define name="__CHAR_SIZE__" value="1"/>
+      <define name="__DATA_MODEL_LARGE__" value="4"/>
+      <define name="__DATA_MODEL_MEDIUM__" value="6"/>
+      <define name="__DATA_MODEL_SMALL__" value="2"/>
+      <define name="__DATA_MODEL_TINY__" value="0"/>
+      <define name="__DATA_MODEL__" value="__DATA_MODEL_SMALL__"/>
+      <define name="__DEF_HEAP_MEM__" value="__huge"/>
+      <define name="__DEF_PTR_MEM__" value="__huge"/>
+      <define name="__DEF_PTR_SIZE__" value="4"/>
+      <define name="__DOUBLE_ALIGN__" value="4"/>
+      <define name="__DOUBLE_SIZE__" value="8"/>
+      <define name="__DOUBLE__" value="64"/>
+      <define name="__FLOAT_ALIGN__" value="4"/>
+      <define name="__FLOAT_SIZE__" value="4"/>
+      <define name="__FPU_DOUBLE__" value="2"/>
+      <define name="__FPU_NONE__" value="0"/>
+      <define name="__FPU_SINGLE__" value="1"/>
+      <define name="__FPU__" value="__FPU_NONE__"/>
+      <define name="__INT16_C_SUFFIX__" value=""/>
+      <define name="__INT16_SIZE_PREFIX__" value="h"/>
+      <define name="__INT16_T_MAX__" value="32767"/>
+      <define name="__INT16_T_MIN__" value="(-__INT16_T_MAX__-1)"/>
+      <define name="__INT16_T_TYPE__" value="signed short int"/>
+      <define name="__INT32_C_SUFFIX__" value=""/>
+      <define name="__INT32_SIZE_PREFIX__" value=""/>
+      <define name="__INT32_T_MAX__" value="2147483647"/>
+      <define name="__INT32_T_MIN__" value="(-__INT32_T_MAX__-1)"/>
+      <define name="__INT32_T_TYPE__" value="signed int"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT64_T_MIN__" value="(-__INT64_T_MAX__-1)"/>
+      <define name="__INT64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT8_C_SUFFIX__" value=""/>
+      <define name="__INT8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT8_T_MAX__" value="127"/>
+      <define name="__INT8_T_MIN__" value="(-__INT8_T_MAX__-1)"/>
+      <define name="__INT8_T_TYPE__" value="signed char"/>
+      <define name="__INTMAX_C_SUFFIX__" value="LL"/>
+      <define name="__INTMAX_SIZE_PREFIX__" value="ll"/>
+      <define name="__INTMAX_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INTMAX_T_MIN__" value="(-__INTMAX_T_MAX__-1)"/>
+      <define name="__INTMAX_T_TYPE__" value="signed long long int"/>
+      <define name="__INTPTR_SIZE_PREFIX__" value="l"/>
+      <define name="__INTPTR_T_MAX__" value="2147483647L"/>
+      <define name="__INTPTR_T_MIN__" value="(-__INTPTR_T_MAX__-1)"/>
+      <define name="__INTPTR_T_TYPE__" value="signed long int"/>
+      <define name="__INT_ALIGN__" value="4"/>
+      <define name="__INT_FAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST16_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST16_T_MIN__" value="(-__INT_FAST16_T_MAX__-1)"/>
+      <define name="__INT_FAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST32_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST32_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST32_T_MIN__" value="(-__INT_FAST32_T_MAX__-1)"/>
+      <define name="__INT_FAST32_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_FAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_FAST64_T_MIN__" value="(-__INT_FAST64_T_MAX__-1)"/>
+      <define name="__INT_FAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_FAST8_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST8_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST8_T_MIN__" value="(-__INT_FAST8_T_MAX__-1)"/>
+      <define name="__INT_FAST8_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST16_SIZE_PREFIX__" value="h"/>
+      <define name="__INT_LEAST16_T_MAX__" value="32767"/>
+      <define name="__INT_LEAST16_T_MIN__" value="(-__INT_LEAST16_T_MAX__-1)"/>
+      <define name="__INT_LEAST16_T_TYPE__" value="signed short int"/>
+      <define name="__INT_LEAST32_SIZE_PREFIX__" value=""/>
+      <define name="__INT_LEAST32_T_MAX__" value="2147483647"/>
+      <define name="__INT_LEAST32_T_MIN__" value="(-__INT_LEAST32_T_MAX__-1)"/>
+      <define name="__INT_LEAST32_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_LEAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_LEAST64_T_MIN__" value="(-__INT_LEAST64_T_MAX__-1)"/>
+      <define name="__INT_LEAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_LEAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_LEAST8_T_MAX__" value="127"/>
+      <define name="__INT_LEAST8_T_MIN__" value="(-__INT_LEAST8_T_MAX__-1)"/>
+      <define name="__INT_LEAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_SIZE__" value="4"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE__" value="unsigned int"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS__" value="13"/>
+      <define name="__LONG_ALIGN__" value="4"/>
+      <define name="__LONG_DOUBLE_ALIGN__" value="4"/>
+      <define name="__LONG_DOUBLE_SIZE__" value="8"/>
+      <define name="__LONG_LONG_ALIGN__" value="4"/>
+      <define name="__LONG_LONG_SIZE__" value="8"/>
+      <define name="__LONG_SIZE__" value="4"/>
+      <define name="__NAN_HAS_HIGH_MANTISSA_BIT_SET__" value="1"/>
+      <define name="__PTRDIFF_T_MAX__" value="2147483647L"/>
+      <define name="__PTRDIFF_T_MIN__" value="(-__PTRDIFF_T_MAX__-1)"/>
+      <define name="__PTRDIFF_T_TYPE__" value="signed long int"/>
+      <define name="__SHORT_ALIGN__" value="2"/>
+      <define name="__SHORT_SIZE__" value="2"/>
+      <define name="__SIGNED_CHAR_MAX__" value="127"/>
+      <define name="__SIGNED_CHAR_MIN__" value="(-__SIGNED_CHAR_MAX__-1)"/>
+      <define name="__SIGNED_INT_MAX__" value="2147483647"/>
+      <define name="__SIGNED_INT_MIN__" value="(-__SIGNED_INT_MAX__-1)"/>
+      <define name="__SIGNED_LONG_LONG_MAX__" value="9223372036854775807LL"/>
+      <define name="__SIGNED_LONG_LONG_MIN__" value="(-__SIGNED_LONG_LONG_MAX__-1)"/>
+      <define name="__SIGNED_LONG_MAX__" value="2147483647L"/>
+      <define name="__SIGNED_LONG_MIN__" value="(-__SIGNED_LONG_MAX__-1)"/>
+      <define name="__SIGNED_SHORT_MAX__" value="32767"/>
+      <define name="__SIGNED_SHORT_MIN__" value="(-__SIGNED_SHORT_MAX__-1)"/>
+      <define name="__SIZE_T_MAX__" value="0xffffffffUL"/>
+      <define name="__SIZE_T_TYPE__" value="unsigned long int"/>
+      <define name="__SUBNORMAL_FLOATING_POINTS__" value="1"/>
+      <define name="__UINT16_C_SUFFIX__" value=""/>
+      <define name="__UINT16_T_MAX__" value="0xffff"/>
+      <define name="__UINT16_T_TYPE__" value="unsigned short int"/>
+      <define name="__UINT32_C_SUFFIX__" value="U"/>
+      <define name="__UINT32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT64_C_SUFFIX__" value="ULL"/>
+      <define name="__UINT64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT8_C_SUFFIX__" value=""/>
+      <define name="__UINT8_T_MAX__" value="0xff"/>
+      <define name="__UINT8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINTMAX_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINTPTR_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_FAST16_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_FAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_FAST8_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST8_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST16_T_MAX__" value="0xffff"/>
+      <define name="__UINT_LEAST16_T_TYPE__" value="unsigned short int"/>
+      <define name="__UINT_LEAST32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_LEAST32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_LEAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_LEAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_LEAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UNSIGNED_CHAR_MAX__" value="0xff"/>
+      <define name="__UNSIGNED_INT_MAX__" value="0xffffffffU"/>
+      <define name="__UNSIGNED_LONG_LONG_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UNSIGNED_LONG_MAX__" value="0xffffffffUL"/>
+      <define name="__UNSIGNED_SHORT_MAX__" value="0xffff"/>
+      <define name="__WCHAR_T_MAX__" value="0xffff"/>
+      <define name="__WCHAR_T_SIZE__" value="2"/>
+      <define name="__WCHAR_T_TYPE__" value="unsigned short int"/>
+    </defines>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="iar-ew/tmw_builtins/rh850.h"/>
+    </options>
+
+    </target>
+
+  <!--
+       Definitions for RISC-V
+  -->
+  <target name="riscv">
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_int"/>
+      <option name="--little_endian"/>
+      <option name="--polyspace_define_macro" value="__CODE_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAP_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAPND_MEMORY_LIST1__()="/>
+
+      <if feoption="--c">
+        <option name="--c17"/>
+      </if>
+      <if feoption="--c\+\+">
+        <option name="--allow_c11_atomic"/>
+        <option name="--no_exceptions"/>
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++17"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__data32"/>
+      <attribute name="__no_alloc"/>
+      <attribute name="__no_alloc16"/>
+      <attribute name="__no_alloc_str"/>
+      <attribute name="__no_alloc_str16"/>
+      <attribute name="__no_init"/>
+      <attribute name="__packed" alias="gnu:packed" constraints="cL{specifier:post_tag_def,prefix:post_tag_def}|e|d|Wv|Wp|Wr|Wt"/>
+      <attribute name="persistent"/>
+      <attribute name="__persistent"/>
+      <attribute name="__ro_placement"/>
+      <attribute name="__spec_string"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__code32"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__intrinsic"/>
+      <attribute name="__machine"/>
+      <attribute name="__monitor"/>
+      <attribute name="__noreturn"/>
+      <attribute name="__nounwind"/>
+      <attribute name="__supervisor"/>
+      <attribute name="task"/>
+      <attribute name="__user"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__root"/>
+      <attribute name="__weak" alias="gnu:weak"/>
+      <attribute name="__weak__" alias="gnu:weak"/>
+    </attributes>
+
+    <qualifiers>
+      <qualifier name="__restrict" token="tok_restrict"/>
+    </qualifiers>
+
+    <defines>
+      <define name="__IAR_SYSTEMS_ICC__" value="9"/>
+      <define name="__ICCRISCV__" value="1"/>
+      <define name="__riscv" value="1"/>
+      <define name="_DLIB_CONFIG_FILE_HEADER_NAME" value="&quot;DLib_Config_Normal.h&quot;"/>
+      <define name="_DLIB_CONFIG_FILE_STRING" value="&quot;DLib_Config_Normal.h&quot;"/>
+      <define name="__VERSION__" value="&quot;IAR C/C++ Compiler V1.30.1.1067 for RISC-V&quot;"/>
+      <define name="__VER__" value="130"/>
+
+      <define name="__ATOMIC_BOOL_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_CHAR16_T_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_CHAR32_T_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_CHAR_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_INT_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_LLONG_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_LONG_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_POINTER_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_SHORT_LOCK_FREE" value="0"/>
+      <define name="__ATOMIC_WCHAR_T_LOCK_FREE" value="0"/>
+      <define name="__CHAR_BITS__" value="8"/>
+      <define name="__CHAR_MAX__" value="0xff"/>
+      <define name="__CHAR_MIN__" value="0"/>
+      <define name="__DOUBLE_SIZE__" value="8"/>
+      <define name="__FLOAT_SIZE__" value="4"/>
+      <define name="__HAS_WEAK__" value="1"/>
+      <define name="__INT16_C_SUFFIX__" value=""/>
+      <define name="__INT16_SIZE_PREFIX__" value="h"/>
+      <define name="__INT16_T_MAX__" value="32767"/>
+      <define name="__INT16_T_MIN__" value="(-__INT16_T_MAX__-1)"/>
+      <define name="__INT16_T_TYPE__" value="signed short int"/>
+      <define name="__INT32_C_SUFFIX__" value=""/>
+      <define name="__INT32_SIZE_PREFIX__" value=""/>
+      <define name="__INT32_T_MAX__" value="2147483647"/>
+      <define name="__INT32_T_MIN__" value="(-__INT32_T_MAX__-1)"/>
+      <define name="__INT32_T_TYPE__" value="signed int"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT64_T_MIN__" value="(-__INT64_T_MAX__-1)"/>
+      <define name="__INT64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT8_C_SUFFIX__" value=""/>
+      <define name="__INT8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT8_T_MAX__" value="127"/>
+      <define name="__INT8_T_MIN__" value="(-__INT8_T_MAX__-1)"/>
+      <define name="__INT8_T_TYPE__" value="signed char"/>
+      <define name="__INTMAX_C_SUFFIX__" value="LL"/>
+      <define name="__INTMAX_SIZE_PREFIX__" value="ll"/>
+      <define name="__INTMAX_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INTMAX_T_MIN__" value="(-__INTMAX_T_MAX__-1)"/>
+      <define name="__INTMAX_T_TYPE__" value="signed long long int"/>
+      <define name="__INTPTR_SIZE_PREFIX__" value=""/>
+      <define name="__INTPTR_T_MAX__" value="2147483647"/>
+      <define name="__INTPTR_T_MIN__" value="(-__INTPTR_T_MAX__-1)"/>
+      <define name="__INTPTR_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST16_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST16_T_MIN__" value="(-__INT_FAST16_T_MAX__-1)"/>
+      <define name="__INT_FAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST32_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST32_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST32_T_MIN__" value="(-__INT_FAST32_T_MAX__-1)"/>
+      <define name="__INT_FAST32_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_FAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_FAST64_T_MIN__" value="(-__INT_FAST64_T_MAX__-1)"/>
+      <define name="__INT_FAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_FAST8_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST8_T_MAX__" value="2147483647"/>
+      <define name="__INT_FAST8_T_MIN__" value="(-__INT_FAST8_T_MAX__-1)"/>
+      <define name="__INT_FAST8_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST16_SIZE_PREFIX__" value="h"/>
+      <define name="__INT_LEAST16_T_MAX__" value="32767"/>
+      <define name="__INT_LEAST16_T_MIN__" value="(-__INT_LEAST16_T_MAX__-1)"/>
+      <define name="__INT_LEAST16_T_TYPE__" value="signed short int"/>
+      <define name="__INT_LEAST32_SIZE_PREFIX__" value=""/>
+      <define name="__INT_LEAST32_T_MAX__" value="2147483647"/>
+      <define name="__INT_LEAST32_T_MIN__" value="(-__INT_LEAST32_T_MAX__-1)"/>
+      <define name="__INT_LEAST32_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_LEAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_LEAST64_T_MIN__" value="(-__INT_LEAST64_T_MAX__-1)"/>
+      <define name="__INT_LEAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_LEAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_LEAST8_T_MAX__" value="127"/>
+      <define name="__INT_LEAST8_T_MIN__" value="(-__INT_LEAST8_T_MAX__-1)"/>
+      <define name="__INT_LEAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_SIZE__" value="4"/>
+      <define name="__INTPTR_T_TYPE__" value="signed long int"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned long int"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__LONG_DOUBLE_SIZE__" value="8"/>
+      <define name="__LONG_LONG_SIZE__" value="8"/>
+      <define name="__LONG_SIZE__" value="4"/>
+      <define name="__MEMORY_ORDER_ACQUIRE__" value="2"/>
+      <define name="__MEMORY_ORDER_ACQ_REL__" value="4"/>
+      <define name="__MEMORY_ORDER_CONSUME__" value="1"/>
+      <define name="__MEMORY_ORDER_RELAXED__" value="0"/>
+      <define name="__MEMORY_ORDER_RELEASE__" value="3"/>
+      <define name="__MEMORY_ORDER_SEQ_CST__" value="5"/>
+      <define name="__PTRDIFF_T_MAX__" value="2147483647"/>
+      <define name="__PTRDIFF_T_MIN__" value="(-__PTRDIFF_T_MAX__-1)"/>
+      <define name="__PTRDIFF_T_TYPE__" value="signed int"/>
+      <define name="__riscv" value="1"/>
+      <define name="__riscv_xlen" value="32"/>
+      <define name="__SHORT_SIZE__" value="2"/>
+      <define name="__SIGNED_CHAR_MAX__" value="127"/>
+      <define name="__SIGNED_CHAR_MIN__" value="(-__SIGNED_CHAR_MAX__-1)"/>
+      <define name="__SIGNED_INT_MAX__" value="2147483647"/>
+      <define name="__SIGNED_INT_MIN__" value="(-__SIGNED_INT_MAX__-1)"/>
+      <define name="__SIGNED_LONG_LONG_MAX__" value="9223372036854775807LL"/>
+      <define name="__SIGNED_LONG_LONG_MIN__" value="(-__SIGNED_LONG_LONG_MAX__-1)"/>
+      <define name="__SIGNED_LONG_MAX__" value="2147483647L"/>
+      <define name="__SIGNED_LONG_MIN__" value="(-__SIGNED_LONG_MAX__-1)"/>
+      <define name="__SIGNED_SHORT_MAX__" value="32767"/>
+      <define name="__SIGNED_SHORT_MIN__" value="(-__SIGNED_SHORT_MAX__-1)"/>
+      <define name="__SIZE_T_MAX__" value="0xffffffffU"/>
+      <define name="__SIZE_T_TYPE__" value="unsigned int"/>
+      <define name="__STDC_HOSTED__" value="1"/>
+      <define name="__STDC_UTF_16__" value="1"/>
+      <define name="__STDC_UTF_32__" value="1"/>
+      <define name="__SUBNORMAL_FLOATING_POINTS__" value="1"/>
+      <define name="__UINT16_C_SUFFIX__" value=""/>
+      <define name="__UINT16_T_MAX__" value="0xffff"/>
+      <define name="__UINT16_T_TYPE__" value="unsigned short int"/>
+      <define name="__UINT32_C_SUFFIX__" value="U"/>
+      <define name="__UINT32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT64_C_SUFFIX__" value="ULL"/>
+      <define name="__UINT64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT8_C_SUFFIX__" value=""/>
+      <define name="__UINT8_T_MAX__" value="0xff"/>
+      <define name="__UINT8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINTMAX_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINTPTR_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST16_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_FAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_FAST8_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_FAST8_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST16_T_MAX__" value="0xffff"/>
+      <define name="__UINT_LEAST16_T_TYPE__" value="unsigned short int"/>
+      <define name="__UINT_LEAST32_T_MAX__" value="0xffffffffU"/>
+      <define name="__UINT_LEAST32_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_LEAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_LEAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_LEAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UNSIGNED_CHAR_MAX__" value="0xff"/>
+      <define name="__UNSIGNED_INT_MAX__" value="0xffffffffU"/>
+      <define name="__UNSIGNED_LONG_LONG_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UNSIGNED_LONG_MAX__" value="0xffffffffUL"/>
+      <define name="__UNSIGNED_SHORT_MAX__" value="0xffff"/>
+      <define name="__WCHAR_T_MAX__" value="0xffffffffU"/>
+      <define name="__WCHAR_T_SIZE__" value="4"/>
+      <define name="__WCHAR_T_TYPE__" value="unsigned int"/>
+    </defines>
+
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="iar-ew/tmw_builtins/riscv.h"/>
+    </options>
+
+  </target>
+
+  <!--
+       Definitions for Renesas RL78
+  -->
+  <target name="rl78">
+
+    <options>
+      <option name="--max_alignment"      value="2"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="2"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="4"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--small_enums"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--little_endian"/>
+      <option name="--polyspace_define_macro" value="__DATA_PTR_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__DATA_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__HEAP_MEMORY_LIST1__()="/>
+      <option name="--polyspace_define_macro" value="__CODE_PTR_MEMORY_LIST1__()="/>
+      <if feoption="--c\+\+">
+        <option name="--allow_c11_atomic"/>
+        <ifnot feoption="--c\+\+03">
+          <ifnot feoption="--c\+\+11">
+            <ifnot feoption="--c\+\+14">
+              <ifnot feoption="--c\+\+17">
+                <ifnot feoption="--c\+\+20">
+                  <option name="--c++03"/>
+                </ifnot>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </if>
+    </options>
+
+    <attributes kind="data">
+      <attribute name="__far"/>
+      <attribute name="__huge"/>
+      <attribute name="__near"/>
+      <attribute name="__no_alloc"/>
+      <attribute name="__no_alloc16"/>
+      <attribute name="__no_bit_access"/>
+      <attribute name="__no_init"/>
+      <attribute name="__ro_placement"/>
+      <attribute name="__saddr"/>
+      <attribute name="__sfr"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute name="__banked"/>
+      <attribute name="__callf"/>
+      <attribute name="__callt"/>
+      <attribute name="__far_func"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__intrinsic"/>
+      <attribute name="__monitor"/>
+      <attribute name="__near_func"/>
+      <attribute name="__non_banked"/>
+      <attribute name="__noreturn"/>
+      <attribute name="__nounwind"/>
+      <attribute name="__no_save"/>
+      <attribute name="__task"/>
+    </attributes>
+
+    <attributes>
+      <attribute name="__root"/>
+      <attribute name="__weak" alias="gnu:weak"/>
+      <attribute name="__weak__" alias="gnu:weak"/>
+    </attributes>
+
+    <qualifiers>
+      <qualifier name="__restrict" token="tok_restrict"/>
+    </qualifiers>
+
+    <defines>
+      <define name="__BUILD_NUMBER__" value="1833"/>
+      <define name="__IAR_COMPILERBASE__" value="594952"/>
+      <define name="__IAR_SYSTEMS_ICC__" value="8"/>
+      <define name="__ICCRL78__" value="1"/>
+      <define name="__RL78_0__" value="5"/>
+      <define name="__RL78_1__" value="3"/>
+      <define name="__RL78_2__" value="4"/>
+      <define name="__S1__" value="5"/>
+      <define name="__S2__" value="3"/>
+      <define name="__S3__" value="4"/>
+      <define name="__SUBVERSION__" value="1"/>
+      <define name="__TID__" value="0x5742"/>
+      <define name="__VERSION__" value="&quot;IAR C/C++ Compiler V2.21.1.1833 for RL78&quot;"/>
+      <define name="__VER__" value="221"/>
+      <define name="_DLIB_CONFIG_FILE_HEADER_NAME" value="&quot;DLib_Config_Normal.h&quot;"/>
+      <define name="_DLIB_CONFIG_FILE_STRING" value="&quot;DLib_Config_Normal.h&quot;"/>
+
+      <define name="__BOOL_SIZE__" value="1"/>
+      <define name="__BOOL_TYPE__" value="unsigned char"/>
+      <define name="__CALLING_CONVENTION__" value="2"/>
+      <define name="__CC_V1__" value="1"/>
+      <define name="__CC_V2__" value="2"/>
+      <define name="__CHAR_ALIGN__" value="1"/>
+      <define name="__CHAR_BITS__" value="8"/>
+      <define name="__CHAR_MAX__" value="0xff"/>
+      <define name="__CHAR_MIN__" value="0"/>
+      <define name="__CHAR_SIZE__" value="1"/>
+      <define name="__DEF_PTR_MEM__" value="__near"/>
+      <define name="__DEF_PTR_SIZE__" value="2"/>
+      <define name="__DOUBLE_ALIGN__" value="2"/>
+      <define name="__DOUBLE_SIZE__" value="4"/>
+      <define name="__FAR_RUNTIME_ATTRIBUTE__" value="__near_func"/>
+      <define name="__FLOAT_ALIGN__" value="2"/>
+      <define name="__FLOAT_SIZE__" value="4"/>
+      <define name="__INT16_C_SUFFIX__" value=""/>
+      <define name="__INT16_SIZE_PREFIX__" value=""/>
+      <define name="__INT16_T_MAX__" value="32767"/>
+      <define name="__INT16_T_MIN__" value="(-__INT16_T_MAX__-1)"/>
+      <define name="__INT16_T_TYPE__" value="signed int"/>
+      <define name="__INT32_C_SUFFIX__" value="L"/>
+      <define name="__INT32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT32_T_MAX__" value="2147483647L"/>
+      <define name="__INT32_T_MIN__" value="(-__INT32_T_MAX__-1)"/>
+      <define name="__INT32_T_TYPE__" value="signed long int"/>
+      <define name="__INT64_C_SUFFIX__" value="LL"/>
+      <define name="__INT64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT64_T_MIN__" value="(-__INT64_T_MAX__-1)"/>
+      <define name="__INT64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT8_C_SUFFIX__" value=""/>
+      <define name="__INT8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT8_T_MAX__" value="127"/>
+      <define name="__INT8_T_MIN__" value="(-__INT8_T_MAX__-1)"/>
+      <define name="__INT8_T_TYPE__" value="signed char"/>
+      <define name="__INTMAX_C_SUFFIX__" value="LL"/>
+      <define name="__INTMAX_SIZE_PREFIX__" value="ll"/>
+      <define name="__INTMAX_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INTMAX_T_MIN__" value="(-__INTMAX_T_MAX__-1)"/>
+      <define name="__INTMAX_T_TYPE__" value="signed long long int"/>
+      <define name="__INTPTR_SIZE_PREFIX__" value="l"/>
+      <define name="__INTPTR_T_MAX__" value="2147483647L"/>
+      <define name="__INTPTR_T_MIN__" value="(-__INTPTR_T_MAX__-1)"/>
+      <define name="__INTPTR_T_TYPE__" value="signed long int"/>
+      <define name="__INT_ALIGN__" value="2"/>
+      <define name="__INT_FAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST16_T_MAX__" value="32767"/>
+      <define name="__INT_FAST16_T_MIN__" value="(-__INT_FAST16_T_MAX__-1)"/>
+      <define name="__INT_FAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_FAST32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT_FAST32_T_MAX__" value="2147483647L"/>
+      <define name="__INT_FAST32_T_MIN__" value="(-__INT_FAST32_T_MAX__-1)"/>
+      <define name="__INT_FAST32_T_TYPE__" value="signed long int"/>
+      <define name="__INT_FAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_FAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_FAST64_T_MIN__" value="(-__INT_FAST64_T_MAX__-1)"/>
+      <define name="__INT_FAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_FAST8_SIZE_PREFIX__" value=""/>
+      <define name="__INT_FAST8_T_MAX__" value="32767"/>
+      <define name="__INT_FAST8_T_MIN__" value="(-__INT_FAST8_T_MAX__-1)"/>
+      <define name="__INT_FAST8_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST16_SIZE_PREFIX__" value=""/>
+      <define name="__INT_LEAST16_T_MAX__" value="32767"/>
+      <define name="__INT_LEAST16_T_MIN__" value="(-__INT_LEAST16_T_MAX__-1)"/>
+      <define name="__INT_LEAST16_T_TYPE__" value="signed int"/>
+      <define name="__INT_LEAST32_SIZE_PREFIX__" value="l"/>
+      <define name="__INT_LEAST32_T_MAX__" value="2147483647L"/>
+      <define name="__INT_LEAST32_T_MIN__" value="(-__INT_LEAST32_T_MAX__-1)"/>
+      <define name="__INT_LEAST32_T_TYPE__" value="signed long int"/>
+      <define name="__INT_LEAST64_SIZE_PREFIX__" value="ll"/>
+      <define name="__INT_LEAST64_T_MAX__" value="9223372036854775807LL"/>
+      <define name="__INT_LEAST64_T_MIN__" value="(-__INT_LEAST64_T_MAX__-1)"/>
+      <define name="__INT_LEAST64_T_TYPE__" value="signed long long int"/>
+      <define name="__INT_LEAST8_SIZE_PREFIX__" value="hh"/>
+      <define name="__INT_LEAST8_T_MAX__" value="127"/>
+      <define name="__INT_LEAST8_T_MIN__" value="(-__INT_LEAST8_T_MAX__-1)"/>
+      <define name="__INT_LEAST8_T_TYPE__" value="signed char"/>
+      <define name="__INT_SIZE__" value="2"/>
+      <define name="__JMP_BUF_ELEMENT_TYPE__" value="short int"/>
+      <define name="__JMP_BUF_NUM_ELEMENTS__" value="5"/>
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__LONG_ALIGN__" value="2"/>
+      <define name="__LONG_DOUBLE_ALIGN__" value="2"/>
+      <define name="__LONG_DOUBLE_SIZE__" value="4"/>
+      <define name="__LONG_LONG_ALIGN__" value="2"/>
+      <define name="__LONG_LONG_SIZE__" value="8"/>
+      <define name="__LONG_SIZE__" value="4"/>
+      <define name="__NAN_HAS_HIGH_MANTISSA_BIT_SET__" value="1"/>
+      <define name="__PTRDIFF_T_MAX__" value="32767"/>
+      <define name="__PTRDIFF_T_MIN__" value="(-__PTRDIFF_T_MAX__-1)"/>
+      <define name="__PTRDIFF_T_TYPE__" value="signed int"/>
+      <define name="__SHORT_ALIGN__" value="2"/>
+      <define name="__SHORT_SIZE__" value="2"/>
+      <define name="__SIGNED_CHAR_MAX__" value="127"/>
+      <define name="__SIGNED_CHAR_MIN__" value="(-__SIGNED_CHAR_MAX__-1)"/>
+      <define name="__SIGNED_INT_MAX__" value="32767"/>
+      <define name="__SIGNED_INT_MIN__" value="(-__SIGNED_INT_MAX__-1)"/>
+      <define name="__SIGNED_LONG_LONG_MAX__" value="9223372036854775807LL"/>
+      <define name="__SIGNED_LONG_LONG_MIN__" value="(-__SIGNED_LONG_LONG_MAX__-1)"/>
+      <define name="__SIGNED_LONG_MAX__" value="2147483647L"/>
+      <define name="__SIGNED_LONG_MIN__" value="(-__SIGNED_LONG_MAX__-1)"/>
+      <define name="__SIGNED_SHORT_MAX__" value="32767"/>
+      <define name="__SIGNED_SHORT_MIN__" value="(-__SIGNED_SHORT_MAX__-1)"/>
+      <define name="__SIZE_T_MAX__" value="0xffffU"/>
+      <define name="__SIZE_T_TYPE__" value="unsigned int"/>
+      <define name="__SUBNORMAL_FLOATING_POINTS__" value="1"/>
+      <define name="__UINT16_C_SUFFIX__" value="U"/>
+      <define name="__UINT16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT32_C_SUFFIX__" value="UL"/>
+      <define name="__UINT32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT64_C_SUFFIX__" value="ULL"/>
+      <define name="__UINT64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT8_C_SUFFIX__" value=""/>
+      <define name="__UINT8_T_MAX__" value="0xff"/>
+      <define name="__UINT8_T_TYPE__" value="unsigned char"/>
+      <define name="__UINTMAX_C_SUFFIX__" value="ULL"/>
+      <define name="__UINTMAX_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINTMAX_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINTPTR_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINTPTR_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_FAST16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_FAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_FAST32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT_FAST32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_FAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_FAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_FAST8_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_FAST8_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST16_T_MAX__" value="0xffffU"/>
+      <define name="__UINT_LEAST16_T_TYPE__" value="unsigned int"/>
+      <define name="__UINT_LEAST32_T_MAX__" value="0xffffffffUL"/>
+      <define name="__UINT_LEAST32_T_TYPE__" value="unsigned long int"/>
+      <define name="__UINT_LEAST64_T_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UINT_LEAST64_T_TYPE__" value="unsigned long long int"/>
+      <define name="__UINT_LEAST8_T_MAX__" value="0xff"/>
+      <define name="__UINT_LEAST8_T_TYPE__" value="unsigned char"/>
+      <define name="__UNSIGNED_CHAR_MAX__" value="0xff"/>
+      <define name="__UNSIGNED_INT_MAX__" value="0xffffU"/>
+      <define name="__UNSIGNED_LONG_LONG_MAX__" value="0xffffffffffffffffULL"/>
+      <define name="__UNSIGNED_LONG_MAX__" value="0xffffffffUL"/>
+      <define name="__UNSIGNED_SHORT_MAX__" value="0xffffU"/>
+      <define name="__WCHAR_T_MAX__" value="0xffffU"/>
+      <define name="__WCHAR_T_SIZE__" value="2"/>
+      <define name="__WCHAR_T_TYPE__" value="unsigned short int"/>
+    </defines>
+
+      <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="iar-ew/tmw_builtins/rl78.h"/>
+    </options>
+
+  </target>
+
+</compiler>

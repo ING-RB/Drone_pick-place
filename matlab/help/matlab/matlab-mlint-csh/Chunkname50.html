@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>A <code><a href="matlab:doc try" target="_blank">try</a></code> statement
+                    appears with no corresponding <code><a href="matlab:doc catch" target="_blank">catch</a></code> block; therefore, the code will not capture the
+                    error. Although this is valid code, it is not recommended, even if you know what
+                    the error is or are not concerned with what it is.</p><br/><strong>Suggested Action</strong><br/><p>
+                    <ol><li><p>Use a <code>catch</code> block and place an identifier
+                                after the <code>catch</code> keyword. </p><p>When the <code>catch</code> block executes, the identifier
+                                is set to an object that contains the message, message ID, and call
+                                stack. </p></li><li><p>Perform error cleanup, if needed.</p></li><li><p>Use the message ID as an argument to the
+                                    <code>rethrow</code> function. </p><p>Ideally, check the message ID for all errors (including those you
+                                want to ignore, so as to avoid masking serious low-level errors). </p><p>(For more information see the documentation for <code><a href="matlab:doc rethrow" target="_blank">rethrow</a></code>
+                                and <code><a href="matlab:doc mexception" target="_blank">MException</a></code>.)</p></li></ol>
+                </p><p>To disregard this suggestion, suppress the warning message, as described in
+                        <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

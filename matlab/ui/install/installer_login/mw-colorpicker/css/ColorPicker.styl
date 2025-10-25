@@ -1,0 +1,177 @@
+.mwDisableSelection {
+    /* Disable Selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.mwEnableSelection {
+    /* ENABLE Selection */
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+
+/* ColorPicker */
+.mwColorPicker {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: initial;
+    vertical-align: initial;
+    width: 226px;
+    max-height: 480px;
+    overflow: hidden;
+    background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+
+/* Title and toggle buttons */
+
+.mwColorPicker .mwColorPickerHeaderContainer{
+    margin: 6px 10px 3px 10px; /* To keep illusion of 10px spacing around the icons */
+    height: 24px;
+    width: 206px;
+    display: flex;
+    align-items: center;
+}
+
+.mwColorPicker .mwColorPickerTitle,
+.mwColorPicker .mwColorPickerPreview span {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--mw-color-primary, $mw-color-primary);
+}
+
+.mwColorPicker .mwColorPickerTitle {
+    padding-top: 7px; /* To keep 10px spacing between title and palette */
+}
+
+/* For toggle buttons */
+.mwColorPicker .mwColorPickerToggleButtonContainer{
+    width: 48px;
+    height: 24px;
+    margin-left: auto; /* To keep the buttons right aligned */
+}
+
+.mwColorPicker .mwColorPickerToggleButton{
+    display: inline-block;
+}
+
+.mwColorPicker .mwColorPickerViewHidden {
+    display: none;
+}
+
+/* Standard Colors section */
+
+.mwColorPicker .mwColorPickerPalette {
+    border: none;
+}
+
+.mwColorPicker .mwColorPickerMiddle {
+    color: var(--mw-color-primary, $mw-color-primary); /* $color-text-ui = $color-darkgray1-transparent */
+}
+
+/* Preview section */
+
+.mwColorPicker .mwColorPickerPreview {
+    border: none;
+    padding: 5px 10px 10px 10px;
+}
+
+.mwColorPicker .mwColorPickerPreview .mwColorPickerPreviewColor{
+    width: 204px;
+    height: 30px;
+    margin-top: 4px;
+    border: 1px solid var(--mw-borderColor-primary, $mw-borderColor-primary);
+    border-radius: 1px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mw-color-black);
+}
+
+.mwColorPicker .mwColorPickerPreview .mwColorPickerPreviewColor.mwColorPickerPreviewNone{
+    background-repeat: repeat;
+    background-color: var(--mw-backgroundColor-input, $mw-backgroundColor-input);
+    background-image: linear-gradient(45deg, var(--mw-color-gray400) 25%, transparent 25%, transparent 75%, var(--mw-color-gray400) 75%, var(--mw-color-gray400)), 
+                      linear-gradient(45deg, var(--mw-color-gray400) 25%, transparent 25%, transparent 75%, var(--mw-color-gray400) 75%, var(--mw-color-gray400));
+    background-size: 17px 17px;
+    border: 1px solid var(--mw-color-gray400);
+    background-position: 0 0, 8px 8px;
+}
+
+.mwColorPicker .mwColorPickerPreview .mwColorPickerPreviewColor.mwColorPickerPreviewColorStyle{
+    background-image: none;
+    background-color: var(--mw-color-gray300);
+}
+
+/* Recent colors */
+.mwColorPicker .mwColorPickerRecent{
+    padding: 8px 0px 3px 0px;
+}
+
+/* ColorStyles */
+.mwColorPicker .mwColorPickerStylesContainer{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 226px; /* Needed for IE issue not recognizing wrap */
+    margin-left: 7px;
+    color: var(--mw-color-primary, $mw-color-primary);
+}
+
+/* Color Gradient */
+.mwColorPicker .mwColorPickerGradientContainer {
+    margin: 5px 0px 3px 11px;
+}
+
+/* ColorPickerWithButtons */
+.mwColorPickerOKCancel {
+    background-color: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary);
+}
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons {
+    position: relative;
+    padding: 5px;
+    width: 216px;
+}
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons:before {
+    content:'';
+    width: 206px;
+    height: 1px;
+    position: absolute;
+    top: 2px;
+    margin-left: 5px;
+}
+
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons .dijitButton {
+    margin: 5px;
+}
+
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons .dijitButton .dijitButtonNode * {
+    cursor: default;
+    color: var(--mw-color-primary, $mw-color-primary) /* text color */
+}
+
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons .dijitButton .dijitButtonNode {
+    cursor: default;
+    width: 88px;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: var(--mw-borderColor-primary, $mw-borderColor-primary); /* $color-mediumgray3 */
+    background: var(--mw-backgroundColor-primary, $mw-backgroundColor-primary); /* $color-lightgray2 */
+}
+
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons .dijitButton.dijitButtonHover .dijitButtonNode {
+    border-color: var(--mw-borderColor-hover, $mw-borderColor-hover); /* $color-mediumgray4 */
+    background: var(--mw-backgroundColor-hover, $mw-backgroundColor-hover); /* $color-lightgray1 */;
+}
+
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons .dijitButton.dijitButtonFocused .dijitButtonNode {
+    border-color: var(--mw-borderColor-focus, $mw-borderColor-focus); /* $color-selection  */
+}
+
+.mwColorPickerOKCancel .mwColorPickerOKCancelButtons .dijitButton.dijitButtonActive .dijitButtonNode {
+    border-color: var(--mw-borderColor-primary, $mw-borderColor-primary); /* $color-mediumgray4 */
+    background: var(--mw-backgroundColor-active, $mw-backgroundColor-active); /* $color-lightgray5 */;
+}

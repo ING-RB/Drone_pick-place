@@ -1,0 +1,23 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><code>svmsmoset</code> has been removed. </p><br/><strong>Suggested Action</strong><br/><p>Replace all instances of <code>svmsmoset</code> with the corresponding
+                    name-value pair argument to <code>fitcsvm</code>.</p><ul><li><p>Instead of
+                                    <code>svmsmoset('TolKKT',value)</code>
+                            use
+                                    <code>fitcsvm(X,Y,'DeltaGradientTolerance',value)</code>.
+                            For equivalent functionality, the <code>'Solver'</code> must have
+                            a value of <code>'SMO'</code>.</p></li><li><p>Instead of
+                                    <code>svmsmoset('MaxIter',value)</code>
+                            use
+                                    <code>fitcsvm(X,Y,'IterationLimit',value)</code>.
+                        </p></li><li><p>Instead of
+                                    <code>svmsmoset('Display',value)</code>
+                            use
+                                    <code>fitcsvm(X,Y,'Verbose',value)</code>.
+                            The values for <code>'Verbose'</code> do not directly correspond
+                            to the values for <code>'Display'</code>.</p></li><li><p>There is no replacement for
+                                    <code>svmsmoset('KKTViolationLevel',value)</code>.</p></li><li><p>Instead of
+                                    <code>svmsmoset('KernelCacheLimit',value)</code>
+                            use
+                                    <code>fitcsvm(X,Y,'CacheSize',value)</code>.
+                            The values for <code>'CacheSize'</code> do not directly correspond
+                            to the values for <code>'KernelCacheLimit'</code>.</p></li></ul><p>For more information, see the <code>fitcsvm</code> reference page in
+                    the Statistics and Machine Learning Toolbox documentation.</p></body></html>

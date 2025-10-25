@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019-2024 The MathWorks, Inc. -->
+<!-- Mapping of stdlib builtin to a Polyspace Backend semantic -->
+<!-- For example the definition: -->
+<!-- <tag id="malloc" kind="function" user_name="malloc" > -->
+<!--   <properties> -->
+<!--     <property kind="alloc">malloc</property> -->
+<!--      <property kind="alloc">0</property> -->
+<!--      <property kind="alloc">1</property> -->
+<!--   </properties> -->
+<!-- </tag> -->
+<!-- means that the function named malloc will be flagged as an alloc functions that has the
+semantic of malloc. The next property is the position of return memory pointer
+argument (0 for the return value), the next
+property is the position of the sizeof parameter. -->
+<!-- Property "allocates_memory" : this property is used to flag functions that
+     do dynamic allocations or deallocations of memory.
+     Example for "malloc":
+      <property kind="allocates_memory"/>
+
+     The property "allocates_memory" may accept a value "auto" that means that the function
+     automatically manages the allocated memory in the meaning of MISRA C++ 2023.
+     Example for "std::make_unique":
+     <property kind="allocates_memory">auto</property>
+-->
+<!-- The user has the possibility to flag his own function with one of these rules.
+For checker A18-5-7 -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <named_properties>
+    <properties name="skip_body">
+      <property kind="skip_body"/>
+    </properties>
+  </named_properties>
+  <tag id="malloc" kind="function" user_name="malloc" type="void* (__edg_size_type__)">
+    <properties>
+      <property kind="alloc">malloc</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">1</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@1</property>
+      <property kind="rule">PS_INTERNAL_NON_CONSTRUCTED_CLASS</property>
+    </properties>
+  </tag>
+  <tag id="calloc" kind="function" user_name="calloc" type="void* (__edg_size_type__,__edg_size_type__)">
+    <properties>
+      <property kind="alloc">calloc</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">2</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@count@1</property>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@2</property>
+    </properties>
+  </tag>
+  <tag id="realloc" kind="function" user_name="realloc" type="void* (void*,__edg_size_type__)">
+    <properties>
+      <property kind="alloc">realloc</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">2</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@2</property>
+    </properties>
+  </tag>
+  <tag id="valloc" kind="function" user_name="valloc" type="void* (__edg_size_type__)">
+    <properties>
+      <property kind="alloc">valloc</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">1</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@1</property>
+    </properties>
+  </tag>
+  <!-- Same as valloc -->
+  <tag id="pvalloc" kind="function" user_name="pvalloc" type="void* (__edg_size_type__)">
+    <properties>
+      <property kind="alloc">valloc</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">1</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@1</property>
+    </properties>
+  </tag>
+  <tag id="alloca" kind="function" user_name="alloca" type="void* (__edg_size_type__)">
+    <properties>
+      <property kind="alloc">alloca</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">1</property>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <!-- Deallocation functions -->
+  <!-- free -->
+  <tag id="free" kind="function" user_name="free" other_names="std::free">
+    <properties>
+      <property kind="stdlib_builtin">free</property>
+      <property kind="dealloc">free</property>
+    </properties>
+  </tag>
+  <tag id="aligned_alloc" kind="function" user_name="aligned_alloc" type="void* (__edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="alloc">malloc</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">2</property>
+      <property kind="allocates_memory"/>
+      <!-- g2334578 For security Analysis, prefer aligned_alloc to malloc -->
+      <property kind="security">aligned_alloc</property>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@2</property>
+    </properties>
+  </tag>
+  <!-- Same as alloca -->
+  <tag id="__builtin_alloca" kind="function" user_name="__builtin_alloca" type="void* (__edg_size_type__)">
+    <properties>
+      <property kind="alloc">alloca</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">1</property>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="posix_memalign" kind="function" user_name="posix_memalign" type="int (void **, __edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="alloc">posix_memalign</property>
+      <property kind="alloc">1</property>
+      <property kind="alloc">3</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@3</property>
+    </properties>
+  </tag>
+  <tag id="memalign" kind="function" user_name="memalign" type="void *(__edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="alloc">memalign</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">2</property>
+      <property kind="allocates_memory"/>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@2</property>
+    </properties>
+  </tag>
+  <tag id="win_aligned_malloc" kind="function" user_name="_aligned_malloc" type="void *(__edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@1</property>
+    </properties>
+  </tag>
+  <tag id="win_aligned_offset_malloc" kind="function" user_name="_aligned_offset_malloc" type="void *(__edg_size_type__, __edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@1</property>
+    </properties>
+  </tag>
+  <tag id="win_aligned_realloc" kind="function" user_name="_aligned_realloc" type="void *(void*, __edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@2</property>
+    </properties>
+  </tag>
+  <tag id="win_aligned_offset_realloc" kind="function" user_name="_aligned_offset_realloc" type="void *(void*, __edg_size_type__, __edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@2</property>
+    </properties>
+  </tag>
+  <tag id="win_aligned_recalloc" kind="function" user_name="_aligned_recalloc" type="void *(void*, __edg_size_type__, __edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@count@2</property>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@3</property>
+    </properties>
+  </tag>
+  <tag id="win_aligned_offset_recalloc" kind="function" user_name="_aligned_offset_recalloc" type="void *(void*, __edg_size_type__, __edg_size_type__, __edg_size_type__, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@count@2</property>
+      <property kind="rule">PS_INTERNAL_ZERO_LENGTH_ALLOCATION@size@3</property>
+    </properties>
+  </tag>
+  <tag id="memcpy" kind="function" user_name="memcpy" other_names="std::memcpy">
+    <properties>
+      <property kind="stdlib_builtin">memcpy</property>
+      <!-- PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR : marking destination, source and size argument positions -->
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@destination@1</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@source@2</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@size@3</property>
+    </properties>
+  </tag>
+  <tag id="mempcpy" kind="function" user_name="mempcpy" other_names="wmempcpy">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@destination@1</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@source@2</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@size@3</property>
+    </properties>
+  </tag>
+  <tag id="memset" kind="function" user_name="memset" other_names="std::memset">
+    <properties>
+      <property kind="stdlib_builtin">memset</property>
+    </properties>
+  </tag>
+  <tag id="memmove" kind="function" user_name="memmove" other_names="std::memmove">
+    <properties>
+      <property kind="stdlib_builtin">memmove</property>
+    </properties>
+  </tag>
+  <tag id="bcopy" kind="function" user_name="bcopy" other_names="std::bcopy">
+    <properties>
+      <property kind="stdlib_builtin">bcopy</property>
+    </properties>
+  </tag>
+  <tag id="bzero" kind="function" user_name="bzero" other_names="std::bzero">
+    <properties>
+      <property kind="stdlib_builtin">bzero</property>
+    </properties>
+  </tag>
+  <tag id="strncpy" kind="function" user_name="strncpy" other_names="strlcpy,strncat,wcsncpy,wcpncpy,wcslcpy,wcsncat,wcslcat">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@destination@1</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@source@2</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@size@3</property>
+    </properties>
+  </tag>
+  <tag id="strcpy" kind="function" user_name="strcpy" other_names="wcscpy,wcpcpy,stpcpy,lstrcpy,StrCpy">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@destination@1</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@source@2</property>
+      <property kind="rule">PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION@destination@1</property>
+      <property kind="rule">PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION@source@2</property>
+      <property kind="rule">PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION@copy</property>
+    </properties>
+  </tag>
+  <tag id="_strcat" kind="function" user_name="strcat" other_names="strcat,wcscat,lstrcat,StrCat">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@destination@1</property>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@source@2</property>
+      <property kind="rule">PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION@destination@1</property>
+      <property kind="rule">PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION@source@2</property>
+      <property kind="rule">PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION@concatenate</property>
+    </properties>
+  </tag>
+  <!-- PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR : marking if function has format argument -->
+  <tag id="scanf" kind="function" user_name="scanf" other_names="scanf_s,printf,printf_s,sprintf,sprintf_s,snprintf,snprintf_s">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR@format</property>
+    </properties>
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="wscanf" kind="function" user_name="wscanf" other_names="swscanf,fwscanf">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="sscanf" kind="function" user_name="fscanf">
+    <use_properties name="skip_body"/>
+  </tag>
+  <tag id="fscanf" kind="function" user_name="fscanf" other_names="fscanf_s,vfscanf,vfscanf_s">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@set@file@0</property>
+    </properties>
+  </tag>
+  <tag id="ungetc" kind="function" user_name="ungetc">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@ungetc</property>
+    </properties>
+  </tag>
+  <tag id="fopen2" kind="function" user_name="fopen">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@fopen</property>
+    </properties>
+  </tag>
+  <tag id="fseek" kind="function" user_name="fseek">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@fseek</property>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@set@file@0</property>
+    </properties>
+  </tag>
+  <tag id="rewind" kind="function" user_name="rewind">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@reset@file@0</property>
+    </properties>
+  </tag>
+  <tag id="fread" kind="function" user_name="fread">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@set@file@3</property>
+    </properties>
+  </tag>
+  <tag id="fgetc" kind="function" user_name="fgetc" other_names="fgetwc">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@set@file@0</property>
+    </properties>
+  </tag>
+  <tag id="fgets" kind="function" user_name="fgets" other_names="fgetws">
+    <properties>
+      <property kind="rule">PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION@reset@file@2</property>
+    </properties>
+  </tag>
+  <!-- C++/VxWorks: bcopy/bzero takes char* -->
+  <!--
+  <tag id="bcopy_vxworks" kind="function" user_name="bcopy" type="void (const char*, char*, __edg_size_type__)">
+    <properties>
+      <property kind="stdlib_builtin">bcopy</property>
+    </properties>
+  </tag>
+  <tag id="bzero_vxworks" kind="function" user_name="bzero" type="void (char*, __edg_size_type__)">
+    <properties>
+      <property kind="stdlib_builtin">bzero</property>
+    </properties>
+  </tag>
+  -->
+  <tag id="__ps_meminit" kind="function" user_name="__ps_meminit">
+    <properties>
+      <property kind="stdlib_builtin">__ps_meminit</property>
+    </properties>
+  </tag>
+  <tag id="memzero" kind="function" user_name="memzero">
+    <properties>
+      <property kind="stdlib_builtin">memzero</property>
+    </properties>
+  </tag>
+  <tag id="allocates_memory" kind="function" user_name="malloc">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::make_unique" kind="function" user_name="std::make_unique">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::unique_ptr::release" kind="function" user_name="std::unique_ptr::release">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::vector::vector" kind="function" user_name="std::vector::vector">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::vector::reserve" kind="function" user_name="std::vector::reserve">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::vector::emplace" kind="function" user_name="std::vector::emplace">
+    <properties>
+      <property kind="rule">PS_INTERNAL_CONTAINER_EMPLACE_THROWS</property>
+    </properties>
+  </tag>
+  <tag id="std::deque::deque" kind="function" user_name="std::deque::deque">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::deque::emplace" kind="function" user_name="std::deque::emplace">
+    <properties>
+      <property kind="rule">PS_INTERNAL_CONTAINER_EMPLACE_THROWS</property>
+    </properties>
+  </tag>
+  <tag id="std::forward_list::forward_list" kind="function" user_name="std::forward_list::forward_list">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::list::list" kind="function" user_name="std::list::list">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::set::set" kind="function" user_name="std::set::set">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::map::map" kind="function" user_name="std::map::map">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::multiset::multiset" kind="function" user_name="std::multiset::multiset">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::multimap::multimap" kind="function" user_name="std::multimap::multimap">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::unordered_set::unordered_set" kind="function" user_name="std::unordered_set::unordered_set">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::unordered_map::unordered_map" kind="function" user_name="std::unordered_map::unordered_map">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::unordered_multiset::unordered_multiset" kind="function" user_name="std::unordered_multiset::unordered_multiset">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::unordered_multimap::unordered_multimap" kind="function" user_name="std::unordered_multimap::unordered_multimap">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::string::string" kind="function" user_name="std::basic_string::basic_string">
+    <properties>
+      <property kind="allocates_memory">auto</property>
+    </properties>
+  </tag>
+  <tag id="std::__new_allocator::allocate" kind="function" user_name="std::__new_allocator::allocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::__new_allocator::deallocate" kind="function" user_name="std::__new_allocator::deallocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::scoped_allocator_adaptor::allocate" kind="function" user_name="std::scoped_allocator_adaptor::allocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::scoped_allocator_adaptor::deallocate" kind="function" user_name="std::scoped_allocator_adaptor::deallocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::pmr::memory_resource::allocate" kind="function" user_name="std::pmr::memory_resource::allocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::pmr::memory_resource::deallocate" kind="function" user_name="std::pmr::memory_resource::deallocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::pmr::polymorphic_allocator::allocate" kind="function" user_name="std::pmr::polymorphic_allocator::allocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <tag id="std::pmr::polymorphic_allocator::deallocate" kind="function" user_name="std::pmr::polymorphic_allocator::deallocate">
+    <properties>
+      <property kind="allocates_memory"/>
+    </properties>
+  </tag>
+  <!-- PS_INTERNAL_MISSING_ERRNO_RESET -->
+  <!-- ISO C standard functions promising setting errno in case of errors -->
+  <tag id="ftell" kind="function" user_name="ftell" other_names="std::ftell">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="fgetpos" kind="function" user_name="fgetpos" other_names="std::fgetpos">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="fsetpos" kind="function" user_name="fsetpos" other_names="std::fsetpos">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="_signal" kind="function" user_name="signal" other_names="signal,std::signal" >
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="fgetwc" kind="function" user_name="fgetwc" other_names="std::fgetwc">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="fputwc" kind="function" user_name="fputwc" other_names="std::fputwc">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtoimax" kind="function" user_name="strtoimax" other_names="std::strtoimax">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtoumax" kind="function" user_name="strtoumax" other_names="std::strtoumax">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtol" kind="function" user_name="strtol" other_names="std::strtol">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtoul" kind="function" user_name="strtoul" other_names="std::strtoul">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtoll" kind="function" user_name="strtoll" other_names="std::strtoll">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtoull" kind="function" user_name="strtoull" other_names="std::strtoull">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtof" kind="function" user_name="strtof" other_names="std::strtof">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtod" kind="function" user_name="strtod" other_names="std::strtod">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="strtold" kind="function" user_name="strtold" other_names="std::strtold">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstoimax" kind="function" user_name="wcstoimax" other_names="std::wcstoimax">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstoumax" kind="function" user_name="wcstoumax" other_names="std::wcstoumax">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstol" kind="function" user_name="wcstol" other_names="std::wcstol">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstoul" kind="function" user_name="wcstoul" other_names="std::wcstoul">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstoll" kind="function" user_name="wcstoll" other_names="std::wcstoll">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstoull" kind="function" user_name="wcstoull" other_names="std::wcstoull">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstof" kind="function" user_name="wcstof" other_names="std::wcstof">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstod" kind="function" user_name="wcstod" other_names="std::wcstod">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcstold" kind="function" user_name="wcstold" other_names="std::wcstold">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcrtomb" kind="function" user_name="wcrtomb" other_names="std::wcrtomb">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="c16rtomb" kind="function" user_name="c16rtomb" other_names="std::c16rtomb">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="c32rtomb" kind="function" user_name="c32rtomb" other_names="std::c32rtomb">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="wcsrtombs" kind="function" user_name="wcsrtombs" other_names="std::wcsrtombs">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="mbrtoc16" kind="function" user_name="mbrtoc16" other_names="std::mbrtoc16">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="mbrtoc32" kind="function" user_name="mbrtoc32" other_names="std::mbrtoc32">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="mbrtowc" kind="function" user_name="mbrtowc" other_names="std::mbrtowc">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="mbsrtowcs" kind="function" user_name="mbsrtowcs" other_names="std::mbsrtowcs">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <!-- POSIX C functions promising setting errno in case of errors -->
+  <tag id="setkey" kind="function" user_name="setkey" other_names="std::setkey">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+  <tag id="encrypt" kind="function" user_name="encrypt" other_names="std::encrypt">
+    <properties>
+      <property kind="rule">ERRNO_SETTING_FUNCTION</property>
+    </properties>
+  </tag>
+</tags>

@@ -1,0 +1,261 @@
+{
+    "ftp":
+    {
+        "inputs":
+        [
+            {"name":"host", "kind":"required", "type":[["char"], ["string"]]},
+            {"name":"username", "kind":"optional", "type":[["char"], ["string"]]},
+            {"name":"password", "kind":"optional", "type":[["char"], ["string"]]},
+            {"name":"LocalDataConnectionMethod", "kind":"namevalue", "type":"choices=[\"passive\", \"active\"]"},
+            {"name":"Mode", "kind":"namevalue", "type":["char", "choices={'binary', 'ascii'}"]},
+            {"name":"System", "kind":"namevalue", "type":"choices=[\"unix\", \"Windows\"]"},
+            {"name":"ServerLocale", "kind":"namevalue", "type":[["choices=matlab.internal.datetime.functionSignatures.localeChoices()"], ["char","row"]]},
+            {"name":"DirParserFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"ConnectionTimeout", "kind":"namevalue", "type":["duration"]},
+            {"name":"TransferTimeout", "kind":"namevalue", "type":["duration"]},
+            {"name":"TLSMode", "kind":"namevalue", "type":["string", "choices={'none', 'opportunistic', 'strict'}"]},
+            {"name":"CertificateFilename", "kind":"namevalue", "type":[["string"],["file"]]}
+        ]
+    },
+    "matlab.io.ftp.FTP":
+    {
+        "inputs":
+        [
+            {"name":"host", "kind":"required", "type":[["char"], ["string"]]},
+            {"name":"username", "kind":"optional", "type":[["char"], ["string"]]},
+            {"name":"password", "kind":"optional", "type":[["char"], ["string"]]},
+            {"name":"LocalDataConnectionMethod", "kind":"namevalue", "type":"choices=[\"passive\", \"active\"]"},
+            {"name":"Mode", "kind":"namevalue", "type":["char", "choices={'binary', 'ascii'}"]},
+            {"name":"System", "kind":"namevalue", "type":"choices=[\"unix\", \"Windows\"]"},
+            {"name":"ServerLocale", "kind":"namevalue", "type":[["choices=matlab.internal.datetime.functionSignatures.localeChoices()"], ["char","row"]]},
+            {"name":"DirParserFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"ConnectionTimeout", "kind":"namevalue", "type":["duration"]},
+            {"name":"TransferTimeout", "kind":"namevalue", "type":["duration"]},
+            {"name":"TLSMode", "kind":"namevalue", "type":["string", "choices={'none', 'opportunistic', 'strict'}"]},
+            {"name":"CertificateFilename", "kind":"namevalue", "type":[["string"],["file"]]}
+        ]
+    },
+    "matlab.io.ftp.FTP.cd":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"folder", "kind":"optional", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, folder, true, false)"]]}
+        ],
+        "outputs":
+        [
+            {"name":"newFolder", "type":"char"}
+        ]
+    },
+    "matlab.io.ftp.FTP.delete":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"filename", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, filename, false, true)"]]}
+        ]
+    },
+    "matlab.io.ftp.FTP.dir":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"folder", "kind":"optional", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, folder)"]]},
+            {"name":"ParseOutput", "kind":"namevalue", "type":["logical","scalar"], "default":"true"}
+        ],
+        "outputs":
+        [
+            {"name":"listing", "type":"cell"}
+        ]
+    },
+    "matlab.io.FTP.mget":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.FTP"},
+            {"name":"contents", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, contents)"]]},
+            {"name":"target", "kind":"optional", "type":[["string"],["folder"]]}
+        ],
+        "outputs":
+        [
+            {"name":"downloadPaths", "type":"cell"}
+        ]
+    },
+    "matlab.io.ftp.FTP.mkdir":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"folder", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, folder, true, false)"]]}
+        ]
+    },
+    "matlab.io.ftp.FTP.mput":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"contents", "kind":"required", "type":[["string"],["file"],["folder"]]}
+        ],
+        "outputs":
+        [
+            {"name":"uploadPaths", "type":"cell"}
+        ]
+    },
+    "matlab.io.ftp.FTP.rename":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"oldname", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, oldname, false, true)"]]},
+            {"name":"newname", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, newname, false, true)"]]}
+        ]
+    },
+    "matlab.io.ftp.FTP.rmdir":
+    {
+        "inputs":
+        [
+            {"name":"ftpobj", "kind":"required", "type":"matlab.io.ftp.FTP"},
+            {"name":"folder", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(ftpobj, folder, true, false)"]]}
+        ]
+    },
+    "sftp":
+    {
+        "inputs":
+        [
+            {"name":"host", "kind":"required", "type":[["char"], ["string"]]},
+            {"name":"username", "kind":"required", "type":[["char"], ["string"]]},
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"Password", "kind":"namevalue", "type":[["char"], ["string"]]},
+                    {"name":"ServerSystem", "kind":"namevalue", "type":"choices=[\"unix\", \"Windows\"]"},
+                    {"name":"ServerLocale","kind":"namevalue", "type":[["choices=matlab.internal.datetime.functionSignatures.localeChoices()"], ["char","row"]]},
+                    {"name":"DatetimeType", "kind":"namevalue", "type":["char", "choices={'datetime', 'text'}"]},
+                    {"name":"DirParserFcn", "kind":"namevalue", "type":"function_handle"},
+                    {"name":"StartingFolder", "kind":"namevalue", "type":[["char"], ["string"]]},
+                    {"name":"ConnectionTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"TransferTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"CertificateFilename", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"PrivateKeyPassphrase", "kind":"namevalue", "type":[["string"]]}
+                ],
+                [
+                    {"name":"PublicKeyFile", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"PrivateKeyFile", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"ServerSystem", "kind":"namevalue", "type":"choices=[\"unix\", \"Windows\"]"},
+                    {"name":"ServerLocale","kind":"namevalue", "type":[["choices=matlab.internal.datetime.functionSignatures.localeChoices()"], ["char","row"]]},
+                    {"name":"DatetimeType", "kind":"namevalue", "type":["char", "choices={'datetime', 'text'}"]},
+                    {"name":"DirParserFcn", "kind":"namevalue", "type":"function_handle"},
+                    {"name":"StartingFolder", "kind":"namevalue", "type":[["char"], ["string"]]},
+                    {"name":"ConnectionTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"TransferTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"CertificateFilename", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"PrivateKeyPassphrase", "kind":"namevalue", "type":[["string"]]}
+                ]
+            ]}
+        ]
+    },
+    "matlab.io.sftp.SFTP":
+    {
+        "inputs":
+        [
+            {"name":"host", "kind":"required", "type":[["char"], ["string"]]},
+            {"name":"username", "kind":"required", "type":[["char"], ["string"]]},
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"Password", "kind":"namevalue", "type":[["char"], ["string"]]},
+                    {"name":"ServerSystem", "kind":"namevalue", "type":"choices=[\"unix\", \"Windows\"]"},
+                    {"name":"ServerLocale","kind":"namevalue", "type":[["choices=matlab.internal.datetime.functionSignatures.localeChoices()"], ["char","row"]]},
+                    {"name":"DatetimeType", "kind":"namevalue", "type":["char", "choices={'datetime', 'text'}"]},
+                    {"name":"DirParserFcn", "kind":"namevalue", "type":"function_handle"},
+                    {"name":"StartingFolder", "kind":"namevalue", "type":[["char"], ["string"]]},
+                    {"name":"ConnectionTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"TransferTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"CertificateFilename", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"PrivateKeyPassphrase", "kind":"namevalue", "type":[["string"]]}
+                ],
+                [
+                    {"name":"PublicKeyFile", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"PrivateKeyFile", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"ServerSystem", "kind":"namevalue", "type":"choices=[\"unix\", \"Windows\"]"},
+                    {"name":"ServerLocale","kind":"namevalue", "type":[["choices=matlab.internal.datetime.functionSignatures.localeChoices()"], ["char","row"]]},
+                    {"name":"DatetimeType", "kind":"namevalue", "type":["char", "choices={'datetime', 'text'}"]},
+                    {"name":"DirParserFcn", "kind":"namevalue", "type":"function_handle"},
+                    {"name":"StartingFolder", "kind":"namevalue", "type":[["char"], ["string"]]},
+                    {"name":"ConnectionTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"TransferTimeout", "kind":"namevalue", "type":["duration"]},
+                    {"name":"CertificateFilename", "kind":"namevalue", "type":[["string"],["file"]]},
+                    {"name":"PrivateKeyPassphrase", "kind":"namevalue", "type":[["string"]]}
+                ]
+            ]}
+        ]
+    },
+    "matlab.io.sftp.SFTP.cd":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"folder", "kind":"optional", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, folder, true, false)"]]}
+        ],
+        "outputs":
+        [
+            {"name":"newFolder", "type":"char"}
+        ]
+    },
+    "matlab.io.sftp.SFTP.delete":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"filename", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, filename, false, true)"]]}
+        ]
+    },
+    "matlab.io.sftp.SFTP.dir":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"folder", "kind":"optional", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, folder)"]]},
+            {"name":"ParseOutput", "kind":"namevalue", "type":["logical","scalar"], "default":"true"}
+        ],
+        "outputs":
+        [
+            {"name":"listing", "type":"cell"}
+        ]
+    },
+    "matlab.io.sftp.SFTP.mkdir":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"folder", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, folder, true, false)"]]}
+        ]
+    },
+    "matlab.io.sftp.SFTP.mput":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"contents", "kind":"required", "type":[["string"],["file"],["folder"]]}
+        ],
+        "outputs":
+        [
+            {"name":"uploadPaths", "type":"cell"}
+        ]
+    },
+    "matlab.io.sftp.SFTP.rename":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"oldname", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, oldname, false, true)"]]},
+            {"name":"newname", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, newname, false, true)"]]}
+        ]
+    },
+    "matlab.io.sftp.SFTP.rmdir":
+    {
+        "inputs":
+        [
+            {"name":"sftpobj", "kind":"required", "type":"matlab.io.sftp.SFTP"},
+            {"name":"folder", "kind":"required", "type":[["string"],["choices=matlab.io.ftp.generatePathCompletion(sftpobj, folder, true, false)"]]}
+        ]
+    }
+}

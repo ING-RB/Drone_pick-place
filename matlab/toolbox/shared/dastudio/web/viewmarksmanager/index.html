@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Viewmarks Manager</title>
+    <link rel="stylesheet" href="release/index-css.css"/>
+    <link id=viewMarksDir href="/addons/ViewMarks/" type="text/xml">
+    <link id=ModelViewMarks href="/addons/ModelViewMarks/" type="text/xml">
+    <style>
+
+    </style>
+    <script>
+        manageMode = 0;
+        globalview = 1;
+        var deleteGrpConfirmationMsg = "";
+        var urlParams = new URLSearchParams(location.search);
+        var ModelViewMarksDir = '/addons/ModelViewMarks' + (urlParams.get('snc') || urlParams.get('dk')) + '/'; 
+
+        var deleteMultiSelConfirmationMsg = "";
+        var manageButtonText = "";
+        var manageButton2Text = "";
+        var manageModeDisabledToolTip = "";
+        var manageModeEnabledToolTip = "";
+        document.fullyLoaded = false;
+        // DO NOT CHANGE THIS!
+        // CLIENT DATA HAS BEEN SAVED THAT RELIES ON THIS BEING EXACTLY
+        // "_N_E_W_L_I_N_E_"
+        // "_S_I_N_G_L_E_Q_U_O_T_E_"
+        var NEWLINE_STANDIN = "_N_E_W_L_I_N_E_";
+        var NEWLINE_STANDIN_REGEX = new RegExp(NEWLINE_STANDIN, "g");
+        var SINGLE_QUOTE_STANDIN = "_S_I_N_G_L_E_Q_U_O_T_E_";
+        var SINGLE_QUOTE_STANDIN_REGEX = new RegExp(SINGLE_QUOTE_STANDIN, "g");
+        // SERIOUSLY, DON'T CHANGE IT!
+
+        var VIEWBOX_X_WIDTH = 570;
+        var VIEWBOX_Y_WIDTH = 365;
+        var SVG_ASPECT_RATIO = VIEWBOX_Y_WIDTH / VIEWBOX_X_WIDTH;
+
+        var SCROLL_RESPONSE_DELAY_MS = 200;
+
+        // this specifies how much percentage of width each viewmark has when there are x (x = 1,2,3,4,5,6)
+        // viewmarks per row on the manager UI
+        var RATIO_SET = [];
+        RATIO_SET[1] = "80%";
+        RATIO_SET[2] = "46%";
+        RATIO_SET[3] = "32%";
+        RATIO_SET[4] = "23%";
+        RATIO_SET[5] = "19%";
+        RATIO_SET[6] = "15%";
+
+        var ratioIndex = 0;
+
+        var numberPerRow   = 3;
+        var viewmarkHeight = 0;
+        var viewportHeight = 0;
+        var pageLoaded     = false;
+
+        var onloadSVGResizeBegin = 0;
+        var onloadSVGResizeEnd   = 0;
+
+        var idForDelete = 0;
+        var groupForDelete = '';
+        var collapsedViewmarks = 0;
+
+        var groups;
+        var groupStates;
+
+        var rowPerViewPort;
+        var viewmarksPerViewport;
+
+        var showSpinnerHandle = null;
+        var totalChecked = 0;
+        var totalChecked_global = 0;
+        var totalChecked_model = 0;
+        var globalview = 1;
+        var windowYOffset = 0;
+        var windowYOffsetModel = 0;
+        var hiddenViewmarkWidth = 0;
+
+        var DEFAULT_ANCHOR_ID = "vdp";
+        var lenSvg = 0;
+        var lenSvgModel = 0;
+        var watermark_value = 0;
+        var DEFAULT_ANCHOR_ID = "";
+        var svgPath = [];
+        var canvases = [];
+
+        // Load viewmarks
+        var xmlObject = 0;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                loadViewmarks(this);
+            }
+        };
+        xhttp.open("GET", "/addons/ViewMarks/Simulink_ViewMark.xml", true);
+        if(xhttp !== 0)
+          xhttp.send();
+        function loadViewmarks(xml) {
+            xmlObject = xml.responseXML;
+        }
+
+        // Load model viewmarks
+        var model_xmlObject = 0;
+        var model_xhttp = new XMLHttpRequest();
+        model_xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                loadModelViewMarks(this);
+            }
+        };
+        model_xhttp.open("GET", ModelViewMarksDir + 'Simulink_ViewMark.xml', true);
+        if(model_xhttp !== 0)
+          model_xhttp.send();
+        function loadModelViewMarks(xml) {
+            model_xmlObject = xml.responseXML;
+        }
+
+        var pageWidth = 929;
+        var pageHeight = 727;
+        var VIEWMARK_FIRST_TOLOAD_INDEX = 3;
+        var MAX_DESCRIPTION_LEN = 2000;
+        var backgroundFileName = viewMarksDir + "background547.png";
+        if (!window.myFn) {
+            window.myFn = function(message) {};
+        };
+        function updateRefreshButton(name) {
+            allThumbnailGroups = document.getElementsByClassName("viewmarkerframe_mdlname");
+            if(allThumbnailGroups.length === 0) {
+                return;
+            }
+            var lcadidate = allThumbnailGroups[index];
+            for(var index = 0; index <= allThumbnailGroups.length; ++index ) {
+                if( allThumbnailGroups[index].id === name ) {
+                    lcadidate = allThumbnailGroups[index];
+                    break;
+                }
+            }
+            thumbnailContainer = lcadidate.nextSibling;
+            thumbnails = thumbnailContainer.children;
+             for(var index = 0; index < thumbnails.length; ++index ) {
+
+                var aLink = document.createElement('a');
+                aLink.setAttribute('href', 'matlab:slprivate(\'slsfviewmark\', bdroot, \'refresh\', \'' + thumbnails[index].id + '\', \'global\');');
+                    var inputRefreshButton =  document.createElement('input');
+                    inputRefreshButton.setAttribute('class', 'refreshButton');
+                    inputRefreshButton.setAttribute('src', 'selectCheckbox');
+                    inputRefreshButton.setAttribute('type', 'image');
+                    inputRefreshButton.setAttribute('title', refreshTitleText);
+                    inputRefreshButton.setAttribute('src', 'release/images/reload.png');
+                    aLink.appendChild( inputRefreshButton );
+                thumbnails[index].getElementsByClassName("deleteButton")[0].after(aLink);
+                thumbnails[index].getElementsByClassName("editButton")[0].style.right = "51px";
+            }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div id="hidePage"></div>
+
+    <div class="outermost hideCanvas">
+        <div class="spacer"></div>
+
+        <div class="global_viewmarks">
+            <div class="globalViewmarks_Introduction" style="margin-top: 0px;display: none;">
+                <br>
+                <div class="introductionTitle" id="globalViewmarks_Introduction_title"></div>
+                <div class="introductionDetails">
+                <ol>
+                        <li id="l1"></li>
+                        <li id="l2"></li>
+                        <li id="l3"></li>
+                        <li id="l4"></li>
+                </ol>
+                </div>
+                <br>
+                <div class="introductionTitle" id="globalViewmarks_Introduction_title_lower"></div>
+            </div>
+        </div>
+
+        <div class="currentmdl_viewmark hidden">
+            <div class="intro_model" style="margin-top: 0px;display: none;">
+                <br>
+                <div class="introductionTitle" id="modelViewmarks_Introduction_title"></div>
+                <div class="introductionDetails_model_1" id="introductionDetails_model_1"></div>
+                <br>
+                <div class="introductionTitle" id="modelViewmarks_Introduction_title_1"></div>
+                <div class="introductionDetails">
+                    <ol>
+                        <li id="l5"></li>
+                        <li id="l6"></li>
+                        <li id="l7"></li>
+                        <li id="l8"></li>
+                        <li id="l9"></li>
+                        <li id="l0"></li>
+                </div>
+                <br>
+                <div class="introductionTitle" id="modelViewmarks_Introduction_title_lower"></div>
+            </div>
+        </div>
+
+        <a href="matlab:slprivate('slsfviewmark', bdroot, 'closeUI', 'slsfviewmark_manager_ui');">
+            <input class="closeLink" type="image" src="release/images/closelink.png">
+        </a>
+
+        <div class="dialog deleteGroupConfirmationPane">
+            <div class="dialogTitle deleteGroupConfirmationPaneTitle" id="deleteGroupConfirmationPaneTitle"></div>
+            <div class="dialogContent deleteGroupConfirmationPaneContent"> </div>
+            <div class="dialogButtons">
+                <button class="button OKButtonDeleteGroup" id="OKButtonDeleteGroup"></button>
+                <button class="button stopDeleteButtonDeleteGroup" id="stopDeleteButtonDeleteGroup"></button>
+            </div>
+        </div>
+        <div class="dialog spinner">
+
+            <div class="dialogTitle spinner_title" id="spinner_title"></div>
+            <div class="dialogContent spinner_text"><img class="spinner_image" src="release/images/spinner.gif">
+                <div class="spinner_text_loading" id="spinner_text_loading"></div>
+            </div>
+            <div class="dialogContent spinner_warning" id="spinner_warning"></div>
+            <div class="dialogButtons">
+                <button class="button OKButtonForUnavailable" id="OKButtonForUnavailable"></button>
+
+                <button class="button CancelButtonForUnavailable" id="CancelButtonForUnavailable"></button>
+
+            </div>
+        </div>
+
+        <div class="dialog warningDescLen">
+
+            <div class="dialogTitle warningDescLenTitle" id="warningDescLenTitle"></div>
+            <div class="dialogContent warningDescLenContent" id="warningDescLenContent"></div>
+            <div class="dialogButtons">
+                <button class="button OKButtonForWarningDescLen" id="OKButtonForWarningDescLen"></button>
+
+            </div>
+        </div>
+
+        <div class="titlebar">
+            <div class="titlebartext">VIEWMARKS</div>
+        </div>
+
+        <div class="controlpanel">
+            <div class="controlpanel_left">
+                <button class="globalVMButton" id="globalVMButton" >Personal</button>
+                <button class="modelVMButton" id="modelVMButton" >Model</button>
+            </div>
+            <div class="controlpanel_right">
+                <div class="buttonContainer">
+                    <input class="copyVMButton" type="image" src="release/images/copy.png " id="copyVMButton">
+                    <input class="multiSelDeleteButton" type="image" src="release/images/delete.png " id="multiSelDeleteButton">
+                </div>
+                <button class="manageModeButton" id="manageModeButton"></button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript"  src="release/viewmarksmanager/dojoConfig-release-global.js"></script>
+    <!-- Include dojo release build -->
+    <script type="text/javascript" src="release/bundle.index.js"></script>
+</body>
+
+</html>

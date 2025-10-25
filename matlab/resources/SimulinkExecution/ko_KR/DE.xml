@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="SimulinkExecution" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="JacobianFunctionEvaluationFailure">
+  야코비 행렬 실행을 위한 함수를 실행하려는 중 오류가 발생했습니다.
+</entry>
+    <entry key="DerivativeIsNonFinite">
+      Derivative of continuous state {0,number,integer} is non-finite
+    </entry>
+    <entry key="StateIsNonFinite">연속 상태 {0,number,integer}이(가) non-finite입니다.
+</entry>
+    <entry key="ProjectedStateIsNonFinite">연속 상태 {0,number,integer}이(가) 투영 후 non-finite입니다.
+</entry>
+    <entry key="DerivativeConsistencyCheckFailure">
+  계산된 도함수와 솔버에 캐시된 도함수가 시간 {0_Double}에서 일치하지 않습니다. 이는 도함수에 불연속성이 있음을 암시합니다.\n {1}
+</entry>
+    <entry key="StateConsistencyCheckFailure"> 
+  방정식 상태와 솔버 상태가 시간 {0_Double}에서 서로 일치하지 않습니다. 이는 방정식 상태가 솔버 재설정 없이 변경되었을 수 있음을 의미합니다. \n {1}
+</entry>
+    <entry key="IntegrationAbortedDueToInterrupt"> 
+      Solver aborted integration due to an interrupt.
+    </entry>
+    <entry key="InternalSolverResetRequestWasDenied">
+  스텝 크기가 hmin으로 축소된 상태에서 비선형 반복이 수렴하지 않습니다. 솔버를 재설정하고 새로 일치하는 초기 조건을 계산하는 데 성공하지 못했습니다.  
+</entry>
+    <entry key="MaxConsecutiveMinStepsViolated">
+      Solver was unable to reduce the step size without violating the minimum 
+      step size value of {0_Double} for {1,number,integer} consecutive times at time 
+      {2_Double}. This usually may be caused by the high stiffness of the system. 
+      Please check the system or increase the solver &lt;sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep"&gt;Number of consecutive min steps&lt;/sldiag&gt; 
+      violation parameter. 
+      </entry>
+    <entry key="MaxConsecutiveMinStepsViolatedForDAE">솔버가 시간 {2_Double}에서 {1,number,integer}개의 연속된 시간 동안 {0_Double}의 최소 스텝 크기 값을 위반하지 않고는 스텝 크기를 줄일 수 없습니다. 대개 이 현상은 연립미분대수방정식의 대수 제약 조건을 위반하거나 시스템의 높은 경직성으로 인해 발생할 수 있습니다. 오차 허용오차 및/또는 모순 없는 조건 계산을 위한 허용오차를 더 엄격한 값으로 조정해 보십시오. 문제가 지속되는 경우 시스템을 확인하거나 솔버 &lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;연속 최소 스텝 수&lt;/sldiag&gt; 위반 파라미터를 늘려 보십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;solverprofiler.launchSolverProfiler&lt;/cmd&gt; &lt;txt&gt;솔버 프로파일러를 열어 이러한 문제를 확인하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="MaxNumMinStepsViolated">
+      최소 스텝 크기({0_Double})를 갖는 스텝 수가 시간 {1_Double}에 지정된 최댓값에 도달했습니다. 전체 시뮬레이션에 대해 최소 스텝 크기를 갖는 스텝의 최대 개수를 지정하는 것은 권장되지 않습니다. 대신, 연속 최소 스텝 수 파라미터를 사용하여 최소 스텝 크기를 갖는 연속 스텝의 최대 개수를 지정하십시오. &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="RemoveLimitOfMaxNumMinSteps"&gt; &lt;cmd&gt;set_param(bdroot, ''MaxNumMinSteps'', ''-1'');&lt;/cmd&gt; &lt;txt&gt;최소 스텝 크기를 갖는 스텝의 총 개수에 대한 제한을 제거하십시오\n&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="OpenMaxConsecutiveMinStepInConfig"&gt; &lt;cmd&gt;configset.internal.open(bdroot, ''MaxConsecutiveMinStep'');&lt;/cmd&gt; &lt;txt&gt;최소 스텝 크기를 갖는 연속 스텝 수에 대한 제한을 지정하십시오&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="MinStepError">
+  솔버가 시간 {1_Double}에서 최소 스텝 크기 {0_Double}을(를) 위반하지 않고는 스텝 크기를 줄일 수 없습니다.
+</entry>
+    <entry key="MinStepCausedByShapePreservationError">
+  솔버가 시간 {1_Double}에서 최소 스텝 크기 {0_Double}을(를) 위반하지 않고는 상태 형태 보존 제약 조건을 충족하도록 스텝 크기를 줄일 수 없습니다.
+</entry>
+    <entry key="MinStepCausedByShapePreservationWarning">
+  솔버가 시간 {1_Double}에서 최소 스텝 크기 {0_Double}을(를) 위반하지 않고는 상태 형태 보존 제약 조건을 충족하도록 스텝 크기를 줄일 수 없습니다. 솔버는 상태 형태 보존 제약 조건을 충족하도록 스텝 크기를 {2_Double}(으)로 제한한 상태에서 1차 오일러 적분 방법을 사용하여 시뮬레이션을 계속합니다.
+</entry>
+    <entry key="MinStepSizeWarning">       
+      Solver was unable to reduce the step size without violating minimum step
+      size of {0_Double} for {1,number,integer} consecutive times at time {2_Double}.  Solver
+      will continue simulation with the step size restricted to {3_Double} and using an
+      effective relative error tolerance of {4_Double}, which is greater than the
+      specified relative error tolerance of {5_Double}. This usually may be caused by the
+      high stiffness of the system. Please check the system or increase the solver 
+      &lt;sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep"&gt;Number of consecutive min steps&lt;/sldiag&gt; violation 
+      parameter.
+      </entry>
+    <entry key="MinStepSizeForDAEWarning">솔버가 시간 {2_Double}에서 {1,number,integer}개의 연속된 시간 동안 최소 스텝 크기 {0_Double}을(를) 위반하지 않고는 스텝 크기를 줄일 수 없습니다. 솔버는 스텝 크기를 {3_Double}(으)로 제한하고 지정된 상대 오차 허용오차 {5_Double}보다 큰 유효 상대 오차 허용오차 {4_Double}을(를) 사용하여 시뮬레이션을 계속합니다. 대개 이 현상은 연립미분대수방정식의 대수 제약 조건을 위반하거나 시스템의 높은 경직성으로 인해 발생할 수 있습니다. 오차 허용오차 및/또는 모순 없는 조건 계산을 위한 허용오차를 더 엄격한 값으로 조정해 보십시오. 문제가 지속되는 경우 시스템을 확인하거나 솔버 &lt;sldiag objui="configset" objparam="MaxConsecutiveMinStep"&gt;연속 최소 스텝 수&lt;/sldiag&gt; 위반 파라미터를 늘려 보십시오. &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;solverprofiler.launchSolverProfiler&lt;/cmd&gt; &lt;txt&gt;솔버 프로파일러를 열어 이러한 문제를 확인하십시오.&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  </entry>
+    <entry key="NewtonIterationFailure">
+      Nonlinear iteration is not converging with step size reduced to hmin ({0_Double})
+      at time {1_Double}.  Try reducing the minimum step size and/or relax the relative
+      error tolerance.
+    </entry>
+    <entry key="SolverSolvesOnlyLinearlyImplicitForm">
+      Solver ''{0}'' only solves linearly implicit form of differential
+      equation. Hence, mass matrix and Jacobian functions need to be specified.
+    </entry>
+    <entry key="SolverDoesNotSolveDAE">
+  연립미분대수방정식이 감지되었습니다. 솔버 ''{0}''은(는) 연립미분대수방정식에 사용할 수 없습니다. 가변 스텝 시뮬레이션에는 ODE15s 또는 ODE23t를 사용하고 고정 스텝 시뮬레이션에는 ODE14x를 사용해 보십시오.
+</entry>
+    <entry key="SolverRequiresJacobian">
+  솔버 ''{0}''에는 야코비 행렬이 필요합니다. 구성된 방정식에는 야코비 행렬이 지정되어 있지 않습니다.
+</entry>
+    <entry key="SolverDoesNotSupportInterpolation">
+  솔버 ''{0}''은(는) 시간 스텝 간의 상태 보간을 지원하지 않습니다.
+</entry>
+    <entry key="SolverDoesNotSupportHigherOrderInterpolation">
+  솔버는 시간 스텝 간의 {0, number, integer} 차수 보간을 지원하지 않습니다.
+</entry>
+    <entry key="SolverInterpolantNotAvailable">
+  솔버 보간 함수는 재설정 전과 통합 중에는 사용할 수 없습니다.
+</entry>
+    <entry key="SolverInterpolantIncorrectVectorSize">
+      솔버 보간 함수에 전달된 벡터의 크기가 {0_Double}입니다. 보간 함수에 전달된 벡터의 크기는 상태 개수 {1_Double}과(와) 동일해야 합니다.
+    </entry>
+    <entry key="SolverRegisteredWithExistingName">
+  이름 {0}(으)로 등록된 솔버가 이미 있습니다. 다른 이름을 사용하십시오.
+</entry>
+    <entry key="SolverImplementationRegisteredWithExistingName">
+  이름 {0}(으)로 등록된 솔버 구현이 이미 있습니다. 다른 이름을 사용하십시오.
+</entry>
+    <entry key="UnknownSolver">
+      There is no solver registered as {0}.
+    </entry>
+    <entry key="CreateSolverFailed">
+  솔버 이름 {0}이(가) 유효하지 않거나 추상이거나 솔버 레지스트리 외부의 요소이므로 생성할 수 없습니다.
+</entry>
+    <entry key="ExternalSolverNotFound">
+      Solver {0} creation failure: library {1} wasn't loaded successfully.  Error: {2}
+    </entry>
+    <entry key="AutoSolverHighNx">
+        The stiffness check in auto solver is not supported for this model because the 
+        number of continuous states ''{0}'' is  greater than the threshold value ''{1}''. 
+        To change the threshold value, set the ''NumStatesForStiffnessChecking'' model 
+        parameter at the MATLAB command line.
+    </entry>
+    <entry key="ShapePreservationNotSupported">
+    솔버 {0}이(가) 음함수 시스템에 대해 이 옵션을 지원하지 않으므로 형태 보존 설정을 무시합니다.
+</entry>
+    <entry key="ShapePreservationNotSupportedForSolver">
+    솔버 {0}이(가) 이 옵션을 지원하지 않으므로 형태 보존 설정을 무시합니다.
+</entry>
+    <entry key="SolverNotAvailable">
+      Solver ''{0}'' is not available. Select one of available
+      &lt;sldiag objui="configset" objparam="Solver"&gt;solvers&lt;/sldiag&gt;
+    </entry>
+    <entry key="ODENInvalidIntegrationMethodForImplicitSystem">
+      Integration method for odeN is set to incorrect value ''{0}'' for implicit system of equations. Valid methods are ''ode14x'', and ''ode1be''.
+    </entry>
+    <entry key="ODENCannotSwitchExplicitToImplicit">
+      Changing odeN integration method from explicit method ''{0}'' to implicit method ''{1}'' is not supported while the model is running or fast restart is enabled. Use one of the following explicit odeN integration methods: \n
+      "ode1"    \n
+      "ode2"    \n
+      "ode3"    \n
+      "ode4"    \n
+      "ode5"    \n
+      "ode8"    \n
+    </entry>
+    <entry key="ODENCannotSwitchImplicitToExplicit">
+      Changing odeN integration method from implicit method ''{0}'' to explicit method ''{1}'' is not supported while the model is running or fast restart is enabled. Use one of the following implicit odeN integration methods: \n
+      "ode14x"    \n
+      "ode1be"    \n 
+    </entry>
+    <entry key="InvalidPerturbationBound">
+      There is no valid perturbation bound to be selected between numjac setting and block setting.
+    </entry>
+  </message>
+</rsccat>

@@ -1,0 +1,117 @@
+<!--Copyright 2018-2024 The MathWorks, Inc. -->
+<compiler_configuration>
+  <compiler_names>
+    <name>armclang</name>
+  </compiler_names>
+  <compiler_xml>
+    <name>armclang</name>
+    <opt numArgs="1">--target</opt>
+    <target pattern="_" value="arm"/> <!-- Will match arm-arm-none-eabi -->
+    <target pattern="aarch64-arm-none-eabi" value="arm64"/>
+  </compiler_xml>
+  <include_options>
+    <opt>-I</opt>
+    <opt>--include-directory</opt>
+  </include_options>
+  <system_include_options>
+    <opt>-isystem</opt>
+  </system_include_options>
+  <preinclude_options>
+    <opt>-include</opt>
+    <opt>--include</opt>
+  </preinclude_options>
+  <define_options>
+    <opt>-D</opt>
+    <opt>--define-macro</opt>
+  </define_options>
+  <undefine_options>
+    <opt>-U</opt>
+    <opt>--undefine-macro</opt>
+  </undefine_options>
+  <options_file_options>
+    <opt>@</opt>
+  </options_file_options>
+  <output_options>
+    <opt>-o</opt>
+    <opt>--output</opt>
+  </output_options>
+  <standard_options>
+    <!--Default is -std=gnu11-->
+    <std version="c90">-std=c90</std>
+    <std version="c99">-std=c99</std>
+    <std version="c11">-std=c11</std>
+    <std version="c17">-std=c17</std>
+    <!--Default is -std=gnu++14-->
+    <std version="c++03">-std=c++03</std>
+    <std version="c++11">-std=c++11</std>
+    <std version="c++14">-std=c++14</std>
+    <std version="c++17">-std=c++17</std>
+    <std version="c++20">-std=c++20</std>
+  </standard_options>
+  <semantic_options>
+    <opt isIgnored="true" removePhases="build_config">-c</opt>
+    <opt isIgnored="true">-E</opt>
+    <opt isPrefix="true">-f</opt>
+    <opt isPrefix="true" isIgnored="true">-frandom-seed</opt>
+    <opt isPrefix="true" isIgnored="true">-g</opt>
+    <opt numArgs="1" isIgnored="true">-L</opt>
+    <opt numArgs="1" isIgnored="true">-l</opt>
+    <opt isPrefix="true" isIgnored="true">-M</opt>
+    <opt isPrefix="true">-m</opt>
+    <opt isPrefix="true" isIgnored="true">-O</opt>
+    <opt isIgnored="true">-P</opt>
+    <opt isIgnored="true">-S</opt>
+    <opt isIgnored="true">-save-temps</opt>
+    <opt isPrefix="true">-std</opt>
+    <opt isPrefix="true">--target</opt>
+    <opt numArgs="1" isIgnored="true">-u</opt>
+    <opt isIgnored="true">-v</opt>
+    <opt isIgnored="true">--version</opt>
+    <opt isIgnored="true">--version_number</opt>
+    <opt isIgnored="true">--vsn</opt>
+    <opt isPrefix="true" isIgnored="true">-W</opt>
+    <opt numArgs="1" isIgnored="true">-Xlinker</opt>
+    <opt numArgs="1">-x</opt>
+    <opt isIgnored="true">-###</opt>
+  </semantic_options>
+  <preprocess_options_list>
+    <opt>-E</opt>
+  </preprocess_options_list>
+  <preprocess_dollar_macros>yes</preprocess_dollar_macros>
+  <forbidden_macros_list>
+    <name>__has_builtin</name>
+    <name>__has_feature</name>
+    <name>__has_extension</name>
+    <name>__has_attribute</name>
+    <name>__has_warning</name>
+  </forbidden_macros_list>
+  <compile_options_list>
+    <opt>-c</opt>
+  </compile_options_list>
+  <compiler>armclang</compiler>
+  <src_extensions>
+    <ext>c</ext>
+    <ext>cc</ext>
+    <ext>cp</ext>
+    <ext>cxx</ext>
+    <ext>cpp</ext>
+    <ext>c++</ext>
+  </src_extensions>
+  <obj_extensions>
+    <ext>obj</ext>
+    <ext>o</ext>
+  </obj_extensions>
+  <include_strategy>sniff</include_strategy>
+  <default_macro_strategy>from-compiler</default_macro_strategy>
+  <from_compiler_macro_strategy>
+    <input>
+      <opt>-dM</opt>
+      <opt>-E</opt>
+      <empty_source_file>true</empty_source_file>
+    </input>
+    <output>
+      <regex name_group="1" value_group="5">^#\s*define\s+(([^\s]*(\(.*\)))|([^\s]*))\s+(.*)?$</regex>
+    </output>
+  </from_compiler_macro_strategy>
+  <polyspace_extra_options_list></polyspace_extra_options_list>
+</compiler_configuration>

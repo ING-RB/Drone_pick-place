@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2016-2023 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <entry key="CustomCodeParsingFailed">Failed to parse custom code. If your custom code uses C++ language syntax, ensure that "Language" is set to "C++". Parser error messages: {0}</entry>
+    <entry key="NonwritableFolder">Unable to write to current working directory ''{0}''.  Change your current working directory to a directory that is not write-protected.</entry>
+    <entry key="CustomCodeInstrumBuildFailed">Failed to build custom code. Specified custom code is not compatible with the coverage.</entry>
+    <entry key="CustomCodeParsingError">Error while parsing custom code for model ''{0}''. Fix the errors in your custom code or disable ''{1}'' if your custom code has incompatibilities. If your custom code uses C++ language syntax, ensure that ''Language'' is set to ''C++'' in Model Configuration Parameters > Simulation Target.</entry>
+    <entry key="CustomCodeParsingDiagnostic">In {0}{1},\n{2}:\n{3}</entry>
+    <entry key="CustomCodeSnippet">the custom code</entry>
+    <entry key="CustomCodeParsingUnknownException">Unknown exception.</entry>
+	<entry key="BlockCustomCodeParsingError">Error while parsing custom code for block ''{0}''. Fix the errors in your custom code. If your custom code uses C++ language syntax, ensure that ''Language'' is set to ''C++'' in Model Configuration Parameters > Simulation Target.</entry>
+    <entry key="CallTheFunction">Call the function: {0}.</entry>
+    <entry key="CustomCodeLibBuildError">Errors encountered while building custom code simulation target for model ''{0}''. Fix the errors in your custom code or disable ''{1}'' if your custom code has incompatibilities.</entry>
+    <entry key="CustomCodeLibBuildErrorCause" translate="false" note="translate=false set due no translatable content">{0}</entry>
+    <entry key="CustomCodeLibLoadFailed">Failed to load custom code simulation library:{0}</entry>
+    <entry key="CustomCudeParseSuccessful">Parsing custom code in model ''{0}'' successful.</entry>
+    <entry key="CustomCodeBuildSuccessful">Successfully built custom code for model ''{0}''.</entry>
+    <entry key="CustomCudeParseSuccessfulWithImport">Parsing custom code in model ''{0}'' successful.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion" btn="apply">
+                    <cmd>Simulink.importExternalCTypes(''{0}'',''Names'',{3});</cmd>
+                    <txt>Function ''{1}'' has the following custom data types at its interface: \n\n{2}\nTo manually import them into the base workspace as Simulink.AliasType, Simulink.Bus, or Simulink enumeration class objects, use the command:\n<a href="matlab:doc('Simulink.importExternalCTypes')">Simulink.importExternalCTypes</a>(''{0}'',''Names'',{3});\nTo automatically import, click Apply.</txt>
+                </action>
+			</actions>
+        ]]>
+    </entry>
+    <entry key="CustomCodeUndefinedFcnMsg">The following functions are undefined in specified custom code source files or library files.\n{0}</entry>
+    <entry key="CustomCodeUndefinedVarMsg">The following variables are undefined in specified custom code source files or library files.\n{0}</entry>
+    <entry key="CustomCodeUndefinedFcnFilteredOut">The specified function ''{1}'' in C Caller block ''{0}'' is filtered out because it is undefined in custom code source files or library files.</entry>
+    <entry key="UnsupportedCustomCodeVarAccess">
+    <![CDATA[Unable to access custom code variable ''{0}''. Custom code variable access is not supported in these cases:
+    <ul>
+    <li> Custom code source or library files do not define the variable. Specify how Simulink handles undefined functions and variables by adjusting the ''Undefined function handling'' parameter</li>
+    <li> The variable data type is not supported. Reference, union, anonymous structures or enumerations, and class as value types are not supported</li>
+    </ul>]]></entry>
+    <entry key="AmbiguousCustomType">Simulink type ''{0}'' must be imported into the Architectural Data section of the Simulink Data Dictionary with the ''C++ Namespace'' parameter value set explicitly because Simulink type ''{0}'' matches names of multiple types in the custom code associated with model ''{1}''. Otherwise, the generated code may be incorrect because of unintentional use of namespace.</entry>
+    
+    <entry key="SLCCBlockDoesNotSupportMultiExecInstances">The block ''{0}'' inside subsystem is not supported ''{1}'' because the subsystem contains a For Each block ''{2}'' and the block calls custom code that may not have deterministic outputs. 
+            <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion">
+                    <cmd>load_system(''{3}'');configset.highlightParameter(''{3}'','DefaultCustomCodeDeterministicFunctions');</cmd>
+                    <txt>Enable support for multiple execution instances for custom code by selecting to assume the outputs to be stateless and deterministic. ''{3}'' \nIf the block is a C Function block that depends on block custom code, set ''CustomCodeIsMultiInstantiable'' to ''on''.</txt>
+                </action>
+            </actions>
+        ]]> </entry>
+		
+	<entry key="NoAvailableFunctionsInFilterOutMode">No available functions to have in C Caller block ''{0}''. Undefined functions are filtered out by default. See ''{1}'' for details. </entry>
+    <entry key="CustCodeSrcFiles">custom source files string</entry>
+    <entry key="CustCodeLibFiles">custom library files string</entry>
+    <entry key="CustCodeIncludeDirs">custom include directory paths string</entry>
+    <entry key="TokenizeError">Error resolving Custom Code.</entry>
+    <entry key="MismatchedDollars">Mismatched $ characters. Failed to proceed with substitution in {0}.</entry>
+    <entry key="CustCodeFileNotFoundInSRootDir">''{0}'' specified in {1} does not exist relative to model directory: {2}</entry>
+    <entry key="InvalidDollarString">'$' encapsulated token ''{0}'' does not evaluate to a string in the base workspace for substitution in the expression ''{1}''.</entry>
+    <entry key="CustCodeFileNotFoundInSearchDirs">{0} specified in {1} does not exist in any of the following search directories:\n{2}</entry>
+    <entry key="ErrorInDollarString">Unable to evaluate ''$'' encapsulated token ''{0}'' in base workspace for substitution in {1}.</entry>
+    <entry key="SizeFcnInInputArgDims">Unable to determine the dimension for argument ''{0}''. A size() expression can only be used in an output argument dimension specification.</entry>
+    <entry key="SizeFcnIncorrectInputs">Unable to determine the dimension for argument ''{0}''. A size() expression can only accept one or two arguments.</entry>
+    <entry key="SizeFcnInvalidSymbolName">Unable to determine the dimension for argument ''{0}''. The first argument of a size() expression must refer to an input.</entry>
+    <entry key="SizeFcnOnlyInputInOutputOrParameter">Failed to use ''{0}'' to specify the dimension of ''{1}''. Specify the value of a parameter or the dimension of an output.</entry>
+    <entry key="DataMustBeInSizeFcn">Unable to determine the dimension for argument ''{0}''. ''{1}'' must be used in a size() expression.</entry>
+    <entry key="SizeFcnInvalidDimension">Unable to determine the dimension for argument ''{0}''. The second input of a size() expression must be a dimension.</entry>
+    <entry key="SizeComputationFailedGeneric">Failed to compute dimension. Check for syntax errors in dimension specifications using the "size()" expression.</entry>
+    <entry key="SizeComputationFailed">Failed to compute dimension. Check for syntax errors in the dimension specification of ''{0}''.</entry>
+    <entry key="SizeComputationFailedInCBlock">Unable to resolve port dimensions for ''{0}''. Check for syntax errors in dimension specifications. Input and InputOutput ports only support inherited size. Output ports support size() expression. </entry>
+    <entry key="SizeComputationFailedInPyBlock">Unable to resolve port dimensions for ''{0}''. Check for syntax errors in dimension specifications. Input ports only support inherited size. Output ports support size() expression. </entry>
+    <entry key="SizeComputationInvalidDimensionShapeOrValue">Failed to evaluate the dimension for argument ''{0}''. Dimension specification must evaluate to a scalar or a vector of integer values. The length of each dimension must be between 1 and {1, number, integer}.</entry>
+    <entry key="SizeExpressionMustBeBuiltInNumeric"> A size() expression must be built-in numeric type. Unable to resolve the type specified ''{0}''.</entry>
+    <entry key="TypeImporterModelHeaderFieldEmpty">Unable to resolve specified custom code in model ''{0}''.</entry>
+    <entry key="TypeImporterParamValueOutputDirInvalid">Unable to find the specified output directory ''{0}''.</entry>
+    <entry key="TypeImporterModelHasNoConfigurationParameters">Invalid configuration parameter in the model ''{0}''.</entry>
+    <entry key="TypeImporterArgumentShadowed">Unable to set the property ''{0}'' because it is shadowed by model's configuration parameter.</entry>
+    <entry key="TypeImporterParamValueIsNotString">''{0}'' value must be a nonempty string or character vector.</entry>
+    <entry key="TypeImporterParamValueIsNotStringOrStringArray">''{0}'' value must be a nonempty string or string array.</entry>
+    <entry key="TypeImporterParamValueIsNotHardwareImplementation">''{0}'' value must be an instance of "coder.HardwareImplementation" or "Simulink.ConfigSet".</entry>
+    <entry key="TypeImporterParamNotSupportSimultaneously">Unable to use properties ''{0}'' and ''{1}'' simultaneously.</entry>
+    <entry key="TypeImporterParamDataDictionaryAndEnumClassConflict">Unable to set property "EnumClass" to "MATLAB file" while using "DataDictionary".</entry>
+    <entry key="TypeImporterBusTypeImported">''{0}'' from file ''{1}'' is imported as a Simulink.Bus object.</entry>
+    <entry key="TypeImporterEnumTypeImported">''{0}'' from file ''{1}'' is imported as an enumeration class.</entry>
+    <entry key="TypeImporterAliasTypeImported">''{0}'' from file ''{1}'' is imported as a Simulink.AliasType object.</entry>
+    <entry key="TypeImporterExistingBusType">Unable to re-import ''{0}'' from file ''{1}''. A consistent Simulink.Bus object of the same name exists.</entry>
+    <entry key="TypeImporterExistingEnumType">Unable to re-import ''{0}'' from file ''{1}''. A consistent enumeration class of the same name exists.</entry>
+    <entry key="TypeImporterExistingAliasType">Unable to re-import ''{0}'' from file ''{1}''. A consistent Simulink.AliasType object of the same name exists.</entry>
+    <entry key="TypeImporterInconsistentBusType">Unable to re-import ''{0}'' from file ''{1}''. It is inconsistent with existing Simulink.Bus object.</entry>
+    <entry key="TypeImporterInconsistentAliasType">Unable to re-import ''{0}'' from file ''{1}''. It is inconsistent with existing Simulink.AliasType object.</entry>
+    <entry key="TypeImporterInconsistentEnumTypeEnumNames">Unable to import ''{0}'' from file ''{1}''. Enumeration names are inconsistent with existing enumeration class.</entry>
+    <entry key="TypeImporterInconsistentEnumTypeEnumValues">''{0}'' from file ''{1}'' is not imported. Enumeration values are inconsistent with existing enumeration class.</entry>
+    <entry key="TypeImporterInconsistentNotValidBusType">Unable to import ''{0}'' from file ''{1}''. Invalid Simulink.Bus object exist with the same variable name.</entry>
+    <entry key="TypeImporterInconsistentNotValidAliasType">Unable to import ''{0}'' from file ''{1}''. Invalid Simulink.AliasType object exists with the same variable name.</entry>
+    <entry key="TypeImporterInconsistentBusTypeElementField">''{0}'' from file ''{1}'' is inconsistent in {0}.Elements({2, number, integer}).{3} with existing Simulink.Bus object.</entry>
+    <entry key="TypeImporterInconsistentBusTypeNewElement">''{0}'' from file ''{1}'' has new Elements({2, number, integer}) compared with existing Simulink.Bus object.</entry>
+    <entry key="TypeImporterNonImportableBusType">Unable to import ''{0}'' from file ''{1}''. It is empty or has a field whose type is unsupported in Simulink.</entry>
+    <entry key="TypeImporterInvalidVariableName">Unable to import ''{0}'' from file ''{1}''. It is not a valid MATLAB variable name.</entry>
+    <entry key="TypeImporterInvalidFieldName">Unable to import ''{0}'' from file ''{1}'' due to an invalid field name.</entry>
+    <entry key="TypeImporterAmbiguousType">Unable to import ''{0}'' from file ''{1}'' because there are multiple types of the same name under different namespaces. Specify only one type using "Names" option with the namespace qualified type name.</entry>
+    <entry key="TypeImporterEnumStorageType64Bits">Unable to import ''{0}'' from file ''{1}'' because enumeration storage type is 64 bits.</entry>
+    <entry key="TypeImporterFailToCreateEnumTypeFile">Unable to open enum file for enum type ''{0}''. \n{1}</entry>
+    <entry key="TypeImporterDataDictionaryNeededForDataDictioanrySection">A valid value of ''DataDictionary'' option is required when specifying a value for ''DataDictionarySection'' option.</entry>
+    <entry key="TypeImporterInconsistentTypeNamespace">Unable to reimport ''{0}'' from file ''{1}''. Type ''{0}'' exists in Simulink data dictionary and its C++ namespace is different from the existing type's code generation C++ namespace.</entry>
+    <entry key="TypeImporterInconsistentTargetDataSection">Unable to reimport ''{0}'' from file ''{1}''. Type ''{0}'' exists in Simulink data dictionary and the specified ''DataDictionarySection'' is different from the existing type's data section.</entry>
+    <entry key="TypeImporterFailToCreateEnumTypeBecauseOfConflict">Failed to create enumeration type ''{0}'' because an enumeration with the same name already exists in the path or has been loaded in another data dictionary.</entry>
+    <entry key="CFcnCallerDefaultFunctionName" translate="false">&lt;FunctionName&gt;</entry>
+    <entry key="CFcnCallerBlkFcnNotExist">Unable to call function ''{1}'' from C Caller block ''{0}''. Function is not defined in custom code or is of a type not supported by C Caller block.</entry>
+    <entry key="CFcnCallerSyncToolTip">Refresh custom code.</entry>
+    <entry key="CFcnCallerGotoFcnDefNoFcnDlgErrTitle">Custom Code Error</entry>
+    <entry key="CustomCodeGenericError">Custom Code Error</entry>
+    <entry key="CFcnCallerGotoFcnDefNoFcn">Unable to find the selected function ''{0}''. Click the refresh button.</entry>
+    <entry key="CFcnCallerGotoFcnDefToolTip">Go to function.</entry>
+    <entry key="CFcnCallerConfigSetToolTip">Configure custom code settings.</entry>
+    <entry key="InvalidTypeForInport"><![CDATA[Unable to resolve ''{0}'' to a valid type for <sldiag objui="inport" objparam="{1, number, integer}" objname="{2}">input port {1, number, integer}</sldiag> of ''{2}''.]]></entry>
+    <entry key="InvalidTypeForOutport"><![CDATA[Unable to resolve ''{0}'' to a valid type for <sldiag objui="outport" objparam="{1, number, integer}" objname="{2}">output port {1, number, integer}</sldiag> of ''{2}''.]]></entry>
+    <entry key="InvalidTypeForParam">Unable to resolve ''{0}'' to a valid type for block parameter or constant ''{1}'' of ''{2}''.</entry>
+    <entry key="ParsingTypeFailed">Failed to parse type string ''{0}'' for argument ''{1}''.</entry>
+    <entry key="CCallerParameterRegisterError">Unable to register parameters for C Caller block ''{0}''.</entry>
+    <entry key="ParameterCFcnDimensionMismatch">Parameter data size mismatch. Block parameter ''{0}'' of specified dimension ''{1}'' does not match size of evaluated parameter ''{2}''.</entry>
+    <entry key="ParameterValueCannotBeEmptyMatrix">The value of block parameter ''{0}'' is set to be an empty matrix. Parameter value that is an input to a C Function cannot be an empty matrix.</entry>
+    <entry key="ParsingTypeFailedDetail" translate="false" note="translate=false set due no translatable content">{0}</entry>
+    <entry key="PortSpec_Prompt">Port specification:</entry>
+    <entry key="CFunctionPortSpec_Prompt">Ports and Parameters</entry>
+    <entry key="PortSpec_ArgName">Name</entry>
+    <entry key="PortSpec_Scope">Scope</entry>
+    <entry key="PortSpec_Index" note="port number. text displays on UI table column header. abbreviated to save space">Port</entry>
+    <entry key="PortSpec_Label">Label</entry>
+    <entry key="PortSpec_Type" note ="Simulink data type corresponding to C function parameter type.">Type</entry>
+    <entry key="PortSpec_Size">Dimensions</entry>
+    <entry key="CSPortSpec_Size" note ="C Function block Dimension expression for data size or value of constant.">Dimensions</entry>
+    <entry key="NameColumnForClassTooltip">Instantiate an object of the class with a name. For example, "obj" or "obj()".\nTo pass arguments to the class constructor, you can use constants \nas well as expressions with constant and parameter symbols defined in this table.\nFor example, "obj(10)" or "obj(aParam[0])".</entry>
+    <entry key="NameColumnTooltip">Port or parameter variable name</entry>
+    <entry key="LabelColumnTooltipInputOutput">Port label string</entry>
+    <entry key="LabelColumnTooltipParam">Parameter dialog prompt</entry>
+    <entry key="LabelColumnTooltipConstant">Expression to be evaluated as the value of the constant symbol</entry>
+    <entry key="FailToRegisterCustomType">Failed to register custom type ''{0}''.</entry>
+    <entry key="CustomTypeNameCollision">Failed to register custom type with name ''{0}'' as another type with the same name has been registered already.</entry>
+    <entry key="ContinuousSampleTimeNotAllowed">Continuous sample time is not supported by C Caller block "{0}" because the block calls custom code that may have nondeterministic outputs. 
+        <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion">
+                <cmd>load_system(''{1}'');configset.highlightParameter(''{1}'','DefaultCustomCodeDeterministicFunctions');</cmd>
+                <txt>Enable continuous sample time support for custom code by specifying functions that are deterministic.</txt>
+            </action>
+        </actions>
+    ]]> </entry>
+    <entry key="ContinuousTimeNotAllowedForNonDeterministic">C Function block ''{0}'' does not support continuous sample time because the block uses custom code that may have nondeterministic outputs. 
+        <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion">
+                <cmd>load_system(''{1}'');configset.highlightParameter(''{1}'','DefaultCustomCodeDeterministicFunctions');</cmd>
+                <txt>Enable continuous sample time support for custom code by specifying functions that are deterministic.</txt>
+            </action>
+        </actions>
+    ]]> </entry>
+    <entry key="EmptyCustomCodeSetting">C Caller block ''{0}'' requires model to have associated importable custom code. There is no custom code specified, or ''{1}'' is disabled.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion">
+                    <cmd>load_system(''{2}'');configset.highlightParameter(''{2}'','SimCustomHeaderCode');</cmd>
+                    <txt>You may add custom code dependency to model ''{2}''</txt>
+                </action>
+                <action type="suggestion">
+                    <cmd>load_system(''{2}'');configset.highlightParameter(''{2}'',''SimParseCustomCode'');</cmd>
+                    <txt>Enable ''{1}'' for model ''{2}''</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+
+    <entry key="CFcnCallerBlockFcnOutputArgSizeNotSpecified">Specify size of output argument ''{0}'' for C Caller block ''{1}'' or select "Simulate custom code in a separate process" in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="CCallerParseTypeError">Unable to parse argument types for C Caller block ''{0}''.</entry>
+    <entry key="UnexpectedExtension">Unexpected extension for Custom Code Source/Header file: ''{0}''</entry>
+    <entry key="NonConstCPointerInputNotGoodAsInputOrParameter">In C Caller block ''{0}'', function argument ''{1}'' is passed in as a pointer without the ''const'' qualifier. However it is specified as block ''{2}'' in the port specification table, which is meant for read-only arguments. Verify that function ''{3}'' does not write to argument ''{1}'' through pointer.</entry>
+    <entry key="AddDeleteGIOErrorWithAutoInfer"> Error using ''addGlobalArg'' or ''deleteGlobalArg'' function with ''Automatically infer global variables as function interfaces'' parameter selected. To use those functions, in the model Configuration Parameters dialog box, deselect 'Simulation Target > Import settings > Automatically infer global variables as function interfaces'.</entry>
+
+    <!-- C Caller and Function Block errors -->	
+    <entry key="CCallerName">C Caller block</entry>
+    <entry key="CCallerPort">argument</entry>
+    <entry key="CFunctionName">C Function block</entry>
+    <entry key="CFunctionPort">symbol</entry>
+    <entry key="SimulinkTypeIncompatibleWithCustomCodeType">Simulink data type specified for argument ''{0}'' for C Caller block ''{1}'' is incompatible with the argument's type in the custom code. Ensure that a compatible Simulink data type is specified for argument ''{0}''.</entry>
+	<!-- {3} is argument/symbol for {4} - C Caller block/C Function block for the following messages -->
+    <entry key="BusTypeNameMismatch">Bus type specified for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the structure definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeFieldNameMismatch">Bus type field name specified for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the structure definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeFieldTypeMismatch">Field type specified in bus for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the structure definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeElementEnumNameMismatch">Enumeration name specified for Bus field type of {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the enumeration definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeElementEnumFieldValueMismatch">Value of enumeration elements specified for Bus field type of {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the enumeration definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeFieldNumMismatch">Number of fields specified for the bus type for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the structure definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeElementEnumFieldNumMismatch">Number of enumeration elements specified for Bus field type of {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the enumeration definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="BusTypeElementCPPEnumStorageTypeMismatch">Simulink enumeration storage type specified for bus field type of {3} ''{0}'' for {4} ''{1}'' does not match the underlying type of C++ enum type {2} in custom code.</entry>
+    <entry key="EnumTypeNameMismatch">Enumeration type specified for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the enumeration definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="EnumTypeFieldNumMismatch">Number of enumeration elements specified for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the enumeration definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="EnumTypeFieldValueMismatch">Value of enumeration elements specified for {3} ''{0}'' for {4} ''{1}'' does not match the {3}'s type in the custom code. Check the enumeration definition for {2} in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="CPPEnumStorageTypeMismatch">Simulink enumeration storage type specified for {3} ''{0}'' for {4} ''{1}'' does not match the underlying type of C++ enum type {2} in custom code.</entry>
+    
+	
+    <entry key="MultiWordFixptNotSupported">Simulink data type specified for argument ''{0}'' for C Caller block ''{1}'' is a multiword fixed-point type on the current target. Using multiword fixed-point types is not supported for C Caller block. Only fixed-point types with maximum word length of {2,number,integer} can be used on the current target.</entry>
+    <entry key="PortSpecConsistencyError"> {0} of argument ''{1}'' for function ''{2}'' is specified as ''{4}'' in C Caller block {3} and ''{5}'' in C Caller block {6}. C Caller blocks that call the same function must specify the same argument {0}. </entry> 
+    <entry key="PortSpecInconsistencyTopError">Inconsistent port specifications detected between two C Caller blocks that are calling the same custom code function.</entry>
+    <entry key="CCallerInvalidArgumentType">Invalid type ''{0}'' for argument ''{1}''.</entry>
+    <entry key="UnableToCallFunctionWithNDArrayCPP">Unable to call custom code function ''{0}'' in block ''{1}'' because one of the function arguments is a multidimensional array and the simulation target or code generation language is set to ''C++''.</entry>
+	<entry key="UnableToCallFunctionWithNDArrayCPP_SF">Unable to call custom code function ''{0}'' because one of the function arguments is a multidimensional array and the simulation target or code generation language is set to ''C++''.</entry>
+    <entry key="InputArgumentSizeMismatchWarning">Size of input parameter passed to custom code function ''{1}'' for argument ''{0}'' in block ''{2}'' does not match the size expected by the custom code function.</entry>
+    <entry key="GIOWriteOnlyAsInputWarning">Invalid scope settings for global argument ''{0}'' in block ''{2}''. The argument is set to ''Input'' scope in the block but the global variable is only written in the custom code function ''{1}'' indicating it is ''Output''.</entry>
+    <entry key="InputArgumentSizeMismatchWarningCFunctionBlk">Size of input parameter passed to custom code function ''{1}'' for argument [{0, number, integer}] in block ''{2}'' does not match the size expected by the custom code function.</entry>
+	<entry key="CCallerRowMajorFunctionWithStructInColumnMajorCodegen">C Caller block ''{0}'' calls row-major custom code function ''{1}'' that has a struct with non-scalar field as an input or output which is not supported in column-major code generation.</entry>
+	<entry key="DynamicSLStringAsOutput">Simulink string type specified for argument ''{0}'' must specify a maximum string length for C Caller block ''{1}''. Specify maximum string length for Output and InputOutput ports using "stringtype".</entry>
+	<entry key="StdStringToNonConstFcnArg">Unable to generate C++ code for C Caller block ''{0}'' calling custom code function ''{1}'' because the model is configured to generate ''std::string'' for input ''{2}''. Non-const qualified function argument ''{2}'' does not support std::string. Consider adding const-qualifier to the function argument ''{2}''.</entry>
+	<entry key="ParameterScopeNotSupportedForSLString">Parameter scope does not support Simulink string for argument ''{0}''.</entry>
+	<entry key="GlobalSLStringVar">C Caller block ''{1}'' does not support Simulink string for Global variable ''{0}''.</entry>
+
+    <!-- C Function Block -->
+    <entry key="CFunctionBlockParsingFailed">Parsing ''{0}'' code in C Function block ''{2}'' failed with the messages:\n{1}</entry>
+	<entry key="CFunctionBlockParsingFailedAddOn"><![CDATA[Consider turning on <a href="matlab:doc('c function')">''Generate code as-is''</a> under the code generation tab.]]></entry>
+    <entry key="CFunctionBlockParsingFailedWithImportCustomCodeOff">Parsing C Function block ''{3}'' failed. If the C Function block uses external code, ''{0}'' must be enabled. Parsing {1} failed with the messages:\n{2}</entry>
+    <entry key="SymbolTableBlockParameterCannotBeEmpty">The value of block parameter ''{0}'' is set to an empty matrix. Parameter value that is an input in {2} ''{1}'' cannot be an empty matrix.</entry>
+    <entry key="SymbolTableBlockParameterDimensionMismatch">Parameter data size mismatch in {3} ''{2}''. Block parameter ''{0}'' of specified dimension ''{1}'' does not match size of the evaluated parameter ''{0}''.</entry>
+    <entry key="SymbolTableBlockInvalidTypeForInputPort"><![CDATA[Unable to resolve ''{0}'' to a valid type for <sldiag objui="inport" objparam="{1, number, integer}" objname="{2}">input port {1, number, integer}</sldiag> of ''{2}''.]]></entry>
+    <entry key="SymbolTableBlockInvalidTypeForOutputPort"><![CDATA[Unable to resolve ''{0}'' to a valid type for <sldiag objui="outport" objparam="{1, number, integer}" objname="{2}">output port {1, number, integer}</sldiag> of ''{2}''.]]></entry>
+    <entry key="CFunctionFunctionPointerError">Function pointer ''{0}'' in C Function block ''{1}'' is not supported.</entry>
+    <entry key="StaticDeclaration"> Declaring static variable {0} in C Function block ''{1}'' is not allowed. Declare it in Port Specification as 'Persistent' scope in the block.</entry>
+    <entry key="DuplicateDeclaration"> Variable {0} is declared in multiple places. Delete or rename it on the C Function block ''{1}'' or at the C code.</entry>
+    <entry key="WritingToInputVar"> Writing to read-only input or parameter symbol ''{0}'' in C Function block ''{1}''.</entry>
+    <entry key="ArgumentNameConflict"> Another symbol with name ''{0}'' already exists in the {2} ''{1}''. Select a different name for your new symbol. </entry>
+    <entry key="CFunctionInvalidAccessToArraySymbol"> Invalid access to symbol ''{0}'' of array type in C Function block ''{1}''. </entry>
+    <entry key="CFunctionReadOnlyAddressEscaping"> Assigning read-only input or parameter symbol ''{0}'' address to non "const" qualified pointer target type is not recommended in the C Function block ''{1}'' and may cause build failure during code generation.</entry>
+    <entry key="CFunctionProhibitedConstantAddress"> Writing to or getting address of constant symbol ''{0}'' is not allowed in the C Function block ''{1}''. </entry>
+    <entry key="SymbolTableBlockInvalidArgumentName"> The symbol ''{0}'' in the block ''{1}'' is not a valid variable name. </entry>
+    <entry key="CFunctionBlockModelColumnMajorityMismatch"> C Function block ''{0}'' has Row-major configuration and does not support column major code generation. </entry>
+    <entry key="CFunctionBlockModelRowMajorityMismatch"> C Function block ''{0}'' has Column-major configuration and does not support row major code generation. </entry>	
+    <entry key="CFunctionBlockInvalidArgumentType"> Data type ''{0}'' is invalid. </entry>
+    <entry key="SymbolTableBlockOutputArgSizeNotSpecified"> Inherited size "-1" is not supported for output symbols. Specify the exact size of the output symbol ''{0}'' for the {2} ''{1}'' </entry>
+    <entry key="SymbolTableBlockCodeParsingTypeFailed">Parsing type string ''{0}'' for symbol ''{1}'' failed in the {3} ''{2}''.</entry>
+    <entry key="CFunctionIntrinsicMismatchedInputs">Mismatched inputs to ''{0}'' in the C Function block ''{1}''. The function ''{0}'' takes [{2, number, integer}] inputs, found [{3, number, integer}] instead.</entry>
+    <entry key="CFunctionUnsupportedLibraryFunctionCall"><![CDATA[Error with unsupported call to function ''{0}'' in C Function block ''{1}''. Calling C library functions directly in C Function block is not supported. To see a list of supported Simulink library functions in C Function block, view the <a href="matlab:doc('c function')">documentation</a>.]]></entry>
+    <entry key="CFunctionFunctionNotFound">Undeclared function ''{0}'' specified in the C Function block ''{1}''. The function ''{0}'' may be filtered out, because it is undefined in custom code source files or library files.</entry>
+    <entry key="CFunctionVariableNotFound">Undeclared variable ''{0}'' specified in the C Function block ''{1}''. The variable ''{0}'' may be filtered out, because it is undefined in custom code source files or library files.</entry>
+    <entry key="CFunctionBlockPassByRefOutputDirectPass">Unable to call function ''{0}'' in C Function block ''{1}''. Using the output of a function as a reference is not supported.</entry>
+    <entry key="CFunctionBlockUnsupportedFcnCalled">Unable to call function ''{0}'' from C Function block ''{1}'' because function is of a type not supported by C Function block. </entry>
+    <entry key="CFunctionBlockOverloadedFcnCalled">Unable to call overloaded function ''{0}'' from C Function block ''{1}''. </entry>
+    <entry key="CFunctionIntrinsicTypeVariantUnsupported">Calling ''{0}'' specified in the C Function block ''{2}'' is not supported. Use ''{1}'' instead.</entry>
+    <entry key="CFunctionInvalidAdditionalType">Unable to resolve ''{0}'' to a valid type for ''{1}'' in the C Function block ''{2}''.</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInInputDims">Error determining sizes for symbol ''{0}'' in the {2} ''{1}''. An input or inputoutput symbol dimension specification can only be an inherited size "-1" or the exact size.</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInOutputDims">Error determining sizes for symbol ''{0}'' in the {2} ''{1}''. An output symbol dimension specification can only be the exact size or a size() expression.</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInParameterDims">Error determining sizes for symbol ''{0}'' in the {2} ''{1}''. A parameter symbol dimension specification can only be an inherited size "-1" or the exact size.</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInPersistentDims">Error determining sizes for symbol ''{0}'' in the {2} ''{1}''. A persistent symbol dimension specification can only be a positive integer.</entry>
+    <entry key="SymbolTableBlockEmptySizeFcnInArgDims">The size specification of symbol ''{0}'' in the {2} ''{1}'' cannot be empty.</entry>
+    <entry key="CFunctionBlockMatrixSymbol">Symbol ''{0}'' in C Function block ''{1}'' cannot be a matrix or contain matrices. Only scalar and vector symbols are supported with a C Function block.</entry>
+    <entry key="CFunctionBlockMatrixVar">Local variable ''{0}'' in C Function block ''{1}'' cannot be a matrix or contain matrices. Only vector variable is supported with a C Function block.</entry>
+    <entry key="CFunctionMemcpyNDUnsupported">Passing a matrix or multidimensional array to memcpy or memset is not supported in C Function block ''{0}''.</entry>
+    <entry key="CFunctionAliasTypeMismatch">Alias Type for symbol ''{0}'' specified on the Symbols table does not match parsed Alias typedef in C Function block ''{1}''. Please check the type definition for ''{2}'' in Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="CFunctionBlockMatrixCustomCodeVar">Custom code variable ''{0}'' used in the C Function block ''{1}'' cannot be a matrix or contain matrices. Only vector custom code variables are supported with a C Function block.</entry>
+    <entry key="SymbolTableBlockMatrixPersistent">The symbol ''{0}'' in the {2} ''{1}'' cannot be a matrix. Only scalar or vector is supported with 'Persistent' scope for a {2}.</entry>
+    <entry key="SymbolTableBlockOpaquePtrMustBeScalar">The symbol ''{0}'' in the {3} ''{1}'' must have a size of '1'. Only scalars are supported with 'Persistent' scope symbol that has type ''{2}''.</entry>
+    <entry key="SymbolTableBlockOpaquePtrNotAllowed">The symbol ''{0}'' in the {3} ''{1}'' cannot be of type ''{2}''. Only symbols with 'Persistent' scope can have a type ''{2}''.</entry>
+	<entry key="SymbolTableBlockStringTypeNotAllowed">The symbol ''{0}'' in the {2} ''{1}'' cannot be of type Simulink string. 'Parameter' scope does not support Simulink strings.</entry>
+    <entry key="CFunctionBlockMatrixIndexOutOfRange">Subscript [{0, number, integer}] is out of range for matrix ''{1}'' in the C Function block ''{4}''. Valid subscript range is {2, number, integer}...{3, number, integer}.</entry>
+    <entry key="CFunctionBlockMatrixElementAddressEscape">Taking the address of a matrix element is not supported in the C Function block ''{0}''. Revise the block code to avoid taking the address of a matrix element.</entry>
+    <entry key="CFunctionBlockMatrixElementAddressEscapeToCustomCodeCall">Passing the address of a non-first element of a matrix to an external function is not supported in the C Function block ''{0}''. Revise the block code to only pass the address of the first element of a matrix to an external function.</entry>
+    <entry key="CFunctionBlockMatrixPartialAccess">Partial access to a matrix is not allowed in the C Function block ''{0}''. Only element accesses of a matrix are supported in a C Function block.</entry>
+	<entry key="CFunctionBlockUnionFieldAccess">Accessing fields of unions is not allowed in the C Function block ''{0}''.</entry>
+    <entry key="CFunctionBlockFunctionMajorityNotSpecifiedInRowMajorCodegen">C Function block ''{0}'' calls custom code function ''{1}'' that has 'Not specified' as the function array layout. Specify a function array layout for ''{1}'' on Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="CFunctionBlockRowMajorFunctionWithStructInColumnMajorCodegen">C Function block ''{0}'' calls row-major custom code function ''{1}'' that has a struct with non-scalar field as an input or output. Calling a row-major custom code function that has struct with non-scalar field input or output is not supported in column-major code generation .</entry>
+    <entry key="CFunctionBlockUninitializedlocalVarUsage">Local variable ''{0}'' in the C Function block ''{1}'' is used before it is initialized. </entry>
+    <entry key="FixedPointNumBitMismatch">Fixed point data type mismatch in argument ''{0, number, integer}'' passed to function ''{1}'' in C Function block ''{2}''.</entry>
+    <entry key="CFunctionBlockDiagSourceLocation">Occurred in line:\n\t{0}</entry>
+    <entry key="CFunctionIncompatiblePointerArgument">Passing argument {0, number, integer} of external C function ''{1}'' in the C Function block ''{2}'' from incompatible pointer type. Ensure the pointer argument is compatible with the external C function's parameter type.</entry>
+    <entry key="CFunctionBlockPointerConversionNotSupported">Conversion between pointer type and non-pointer type is not supported in the C Function block ''{0}''. Revise the block code to avoid implicit or explicit conversion between pointer type and non-pointer type.</entry>
+    <entry key="CFunctionVariadicFunctionNotSupported">External function ''{0}'' in the C Function block ''{1}'' is a variadic function. Calling variadic functions is not supported in a C Function block.</entry>
+    <entry key="SymbolTableBlockScaledDoubleNotSupported">Invalid type specified for symbol ''{0}'' in {2} ''{1}''. Scaled Double types are not supported for {2}.</entry>
+    <entry key="IncludeFoundInScript"> '#include' directive found in C Function block ''{0}''. Includes can only be added in the Configuration Parameters. \n{1} </entry>
+    <entry key="InputVarUsedInMethod"> Error using Input or InputOutput symbol ''{0}'' in Start, InitializeConditions or Terminate code in C Function block ''{1}''. Input and InputOutput symbols can only be accessed from inside ''Output Code''. </entry>
+    <entry key="CFunctionBlockUnsupportedVarTypes">Data type of local or global variable ''{0}'' is not supported in C Function block ''{1}''.</entry>
+	<entry key="CFunctionBlockLocalVarOfStructWithNDTypeNotSupported">Local variable ''{0}'' has struct containing matrix field type. Local variables of struct with matrix type is not supported in C Function block ''{1}'' when the type of the variable is defined inside the custom code.</entry>
+	<entry key="ClassDefinitionInScript">Defining class type ''{0}'' inside C Function block ''{1}'' is not supported.</entry>
+    <entry key="SymbolTableBlockUnsupportedParameterComplex">Parameter symbol ''{0}'' in the {2} ''{1}'' is evaluated to a complex number. Complex value is not supported in {2}.</entry>
+    <entry key="SymbolTableBlockMultiWordNotSupported">The symbol ''{0}'' in the {3} ''{1}'' is a multi-word type on the current target. Only integer types with maximum word length of {2,number,integer} can be used on the current target with the {3}.</entry>
+    <entry key="ConstantEvalFailed">Error evaluating 'Constant' expression ''{0}'' for symbol ''{1}'' in ''{2}''. Check for syntax errors or undefined variable name in the 'Constant' specification of ''{0}''. 'Constant' expression must evaluate to a built-in numeric scalar.</entry>
+    <entry key="SizeComputationConstantNotScalar">Error evaluating symbol ''{0}'' in expression ''{1}''. Constant Scope value with size expression must evaluate to a built-in numeric scalar.</entry>
+    <entry key="SizeComputationConstantOutOfRange">Error evaluating symbol ''{0}'' in expression ''{1}''. Constant Scope value with size expression must evaluate to an integer between {2, number, integer} and {3, number, integer}.</entry>
+    <entry key="SizeComputationConstantEvalFailedInBlock">Error evaluating 'Constant' values in ''{0}''. Check for syntax errors in 'Constant' expression. For size expressions, only size of Inputs are allowed. </entry>
+    <entry key="SizeComputationConstantEvalFailed">'Constant' expression evaluation failed. Check for syntax errors in the 'Constant' specification of ''{0}''.</entry>
+    <entry key="SizeComputationConstantEvalFailedGeneric">'Constant' expression evaluation failed. Check for syntax errors or type mismatches in 'Constant' specification.</entry>
+    <entry key="ConstantSizeFcnIncorrectInputs">Error evaluating 'Constant' value for argument ''{0}''. A size() expression can only accept one or two arguments.</entry>
+    <entry key="ConstantSizeFcnInvalidSymbolName">Error evaluating 'Constant' value for argument ''{0}''. The first argument of a size() expression must refer to an input.</entry>
+    <entry key="ConstantSizeFcnOnlyInputInOutputOrParameter">''{0}'' cannot be used to specify the 'Constant' value of ''{1}''. Specify the value of a parameter or the size expression of an input. Constant Scope value must evaluate to a built-in numeric scalar.</entry>
+    <entry key="DataMustBeInConstantSizeFcn">Error evaluating 'Constant' value for argument ''{0}''. ''{1}'' must be used in a size() expression.</entry>
+    <entry key="ConstantSizeFcnInvalidExpression">Error evaluating 'Constant' value for argument ''{0}''. The second input of a size() expression must be a dimension.</entry>
+    <entry key="CFunctionUseCustomCodeFunctionWithImportCustomCodeOff">C Function block ''{0}'' calls custom code functions. It requires ''{1}'' to be enabled.</entry>
+    <entry key="ContinuousSampleTimeNotAllowedSymbolTable">Continuous sample time is not supported by {1} "{0}" because it has persistent variables. Set the 'Sample time' block parameter to a discrete or fixed-in-minor-step value.</entry>
+    <entry key="CFunctionBlockCodeParsingWarnings">Parsing {0} of C Function block ''{1}'' generated the following warning messages:\n</entry>
+    <entry key="CFunctionBlockUnsupportBusOfSymbolicDimsInitCodegen">Persistent or output symbol ''{1}'' in C Function block ''{0}'' has bus type containing elements with symbolic dimensions, which is not supported in C Function block for code generation using the Embedded Real-Time target. To disable symbolic dimension, search for ''Allow symbolic dimension specification'' in the Configuration Parameters dialog box and clear the checkbox.</entry>
+	<entry key="InCompatiableSimulinkAndCustomCodeTypes"> Simulink data type ''{0}'' of symbol ''{1}'' in C Function block ''{2}'' is inconsistent with the custom code type ''{3}''. Custom code data types must match equivalent Simulink data types.</entry>
+	<entry key="PortVarAddressEscaping">Taking address of symbol ''{0}'' of struct type is not allowed in C Function Block ''{1}''.</entry>
+    <entry key="AddressEscapeForTypeContainingND">Assigning the address of multidimensional array to a variable is not supported inside C Function block ''{0}''.</entry>
+	<entry key="CFcnBlkBusWithSLString">Bus containing Simulink strings is not supported for symbol ''{0}'' in C Function block ''{1}''.</entry>
+	<entry key="NonExtendedASCIIString">String contains unsupported characters. Only Extended-ASCII characters (ISO-8859-1) are supported.</entry>
+    <!-- C Function Block Class Support-->
+    <entry key="ClassTypeNotSupported">Invalid type ''{0}'' specified for symbol ''{1}'' in Symbols table of C Function block ''{2}''. The C Function block does not support C++ class types.</entry>
+    <entry key="ClassTypeNotFound">Undeclared class type ''{0}'' specified for symbol ''{1}'' in Symbols table of C Function block ''{2}'', or class type is not supported. Check the custom code included in the Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="ClassTypeNotInPersistentScope">Invalid Class type ''{0}'' specified for symbol ''{1}'' in Symbols table of C Function block ''{2}''. Only Persistent symbols can have Class type.</entry>
+    <entry key="AccessingNonPublicClassData">Error accessing field ''{0}'' of class ''{1}'' in C Function block ''{2}''. Only public class members are accessible.</entry>
+    <entry key="AccessingClassDataOfPrivateType">Error accessing field ''{0}'' of class ''{1}'' in C Function block ''{2}''. The class member of private or protected type is not accessible.</entry>
+    <entry key="OpOverloadDisallowed">Calling overloaded operator ''{0}'' is not supported inside C Function block ''{1}''.</entry>
+    <entry key="ExplicitDestructorCallError"> Explicitly calling the destructor of class ''{0}'' in C Function block ''{1}'' is not supported. </entry>    
+    <entry key="CFunctionBlockClassPassedByValueOrReturnByRef"> C Function block ''{0}'' calls custom code method ''{1}'' that takes in a class by value or returns a class by value or reference. Passing class instances by value or returning class instance by value or reference is not supported in C Function block.</entry>
+	<entry key="CFunctionBlockFcnReturnsPtr2ND"> C Function block ''{0}'' calls custom code function ''{1}'' that returns pointer to multidimensional array. Returning pointer to multidimensional array is not supported in C Function block.</entry> 
+    <entry key="CFunctionBlockUnsupportedArg"> C Function block ''{0}'' calls custom code method ''{1}'' that takes in an unsupported argument. </entry>    	
+    <entry key="NoMatchingConstructor">No matching public constructor for input argument(s) ''{2}'' found for symbol ''{0}'' of type ''Class: {1}'' in C Function block ''{3}''</entry>
+	<entry key="ConstructorResolutionMessage">Constructor resolution failed with the following message:\n {0}</entry>
+    <entry key="AbstractClassError">Unable to instantiate symbol ''{0}'' of abstract class type ''{1}'' used in C Function block ''{2}''. </entry>
+    <entry key="StaticMemberAccessUnsupported">Invalid access of static class data member ''{0}'' in C Function block ''{1}''. Accessing static class data members is not supported.</entry>
+    <entry key="CFunctionUnsupportedClassAccess">Class ''{0}'' accessed in C Function block ''{1}'' is not supported.</entry>
+    <entry key="TemplateClassSymbolError">Unable to instantiate symbol ''{0}'' of class type with template parameters ''{1}'' used in C Function block ''{2}''. </entry>
+    <entry key="PrivateConstructorError">Unable to instantiate symbol ''{0}'' used in C Function block ''{1}'' since class type ''{2}'' does not have a valid public constructor.</entry>
+    <entry key="PrivateDestructorError"> Unable to destroy symbol ''{0}'' used in C Function block ''{1}'' since class type ''{2}'' does not have a valid public destructor. </entry>
+    <entry key="InvalidVariableInConstructorArgs">Invalid variable ''{0}'' specified in the class constructor argument for symbol ''{1}'' in C Function block ''{2}''. Class constructor arguments must have Parameter or Constant scope.</entry>
+    <entry key="FcnCalledInConstructorArgs">Invalid function call ''{0}'' specified in the class constructor argument for symbol ''{1}'' in C Function block ''{2}''. Constructor arguments cannot call other functions.</entry>
+    <entry key="IllegalConstructorArgument">Invalid expression ''{0}'' specified in the class constructor argument for symbol ''{1}'' in C Function block ''{2}''.</entry>
+    
+    <entry key="CFunctionBlockIncorrectRTWLangForCPP">Invalid setting for code generation using custom code specified in C Function block ''{0}'' because the code is parsed using C++. In model Configuration Parameters, set ''Code Generation > Language'' to ''C++''.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion">
+                <cmd>load_system(''{1}'');configset.highlightParameter(''{1}'','TargetLang');</cmd>
+                <txt>Change code generation language setting to ''C++''.</txt>
+            </action>
+        </actions>
+    ]]></entry>
+	
+	<entry key="CFunctionBlockIncorrectSimLangForCPP">Invalid setting for simulation using custom code specified in C Function block ''{0}'' because the code is parsed using C++. In model Configuration Parameters, set ''Simulation Target > Language'' to ''C++''.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion">
+                <cmd>load_system(''{1}'');configset.highlightParameter(''{1}'','SimTargetLang');</cmd>
+                <txt>Change simulation target language setting to ''C++''.</txt>
+            </action>
+        </actions>
+    ]]></entry>
+	
+	<entry key="CFcnLocalVarOfClassType">Local variable ''{0}'' of class type is not supported in C Function block ''{1}''.</entry>
+	<entry key="CopyAssignmentDisallowed">Assignment to class symbol is not supported in C Function block ''{0}''.</entry>
+	<entry key="NDDataMemberAccessDisallowed">Error accessing field ''{0}'' of class ''{1}'' in C Function block ''{2}''. Accessing matrix class members is not supported.</entry>
+    <entry key="DisallowPointerToClassArrayDataMemberAccess">Unable to access field ''{0}'' of class ''{1}'' in C Function block ''{2}''. Accessing data members of type pointer to class array is not supported.</entry>
+    <entry key="DisallowDirectClassArrayDataMemberAccess">Unable to access field ''{0}'' of class ''{1}'' directly in C Function block ''{2}''. Accessing data members of type class array without indexing is not supported.</entry>
+    <entry key="CFunctionBlockGlobalClassTypeUnsupported">Accessing custom code global variable {0} of C++ class type is not supported in C Function block ''{1}''.</entry>
+    <entry key="CFunctionBlockInvalidInitialization">Unable to initialize symbol "{0}" in C Function block ''{1}''. Initialization in Symbols table is supported only for Persistent symbols of C++ class types.</entry>
+    <entry key="ColMajorMethodConst">Invalid function array layout setting for ''{0}''. Function array layout setting for class methods and constructors must be 'Row-major' or 'Any'.</entry>
+    <entry key="ClassArgumentToColMajorFcn">Passing class object to Column-major function ''{0}'' is not supported.</entry>
+    <entry key="MatchingMethodNotFoundInCustomCode">Internal error in C Function block ''{0}'': Failed to find matching overloaded function in custom code for function call ''{1}''. Report this bug to MathWorks Technical Support.</entry>
+    <entry key="CFunctionBlockUnsupportedLocalNestedClassType">Nested class type ''{0}'' is not supported in C Function block ''{1}''.</entry>
+    <entry key="CFunctionBlockSlError">Error occurred at line {0, number, integer} in simulation ''{1}'' code of C Function block ''{2}'':\n{3}\n\n''{4}''</entry>
+    <entry key="CFunctionBlockSlWarning">Warning occurred at line {0, number, integer} in simulation ''{1}'' code of C Function block ''{2}'':\n{3}\n\n''{4}''</entry>
+    
+    <!-- C Function block Class OOP Support -->
+    <entry key="OOPUnsupportedClassDataMemberAccess">Unable to access data member ''{0}'' of class ''{1}''. Accessing data members other than class type and class vector type is not supported when simulating custom code in a separate process. </entry>
+    <entry key="OOPUnsupportedClassMemberFunctionAccess">
+    <![CDATA[Unable to call member function ''{0}'' of class ''{1}''. Accessing member functions with the following return and function argument types is not supported when simulating custom code in a separate process:
+    <ul>
+    <li> Return types: Non-class pointer and multilevel pointer to class</li>
+    <li> Function argument types: Void pointer type, array of pointers, multilevel pointer to class type, complex type, and union type</li>
+    </ul>]]></entry>
+    
+    <!-- C Function Block UI -->
+    <entry key="CFunctionBlockUINoSelectionForRemove">Select a row on the table to remove symbol.</entry>
+    <entry key="CFunctionBlockDialogText">Enter your code to integrate custom C/C++ algorithm</entry>
+    <entry key="CFunctionBlockDialogStatementDesc"> Enter {0} to be executed. </entry>
+    <entry key="CFunctionBlockDialogSimTabTitle">Simulation</entry>
+    <entry key="CFunctionBlockUseSameCodeAsSimPrompt">Use same code as simulation</entry>
+    <entry key="CFunctionBlockDialogWidgetCodegenCodeChkBoxToolTip">Specify whether to use same code and custom code settings as those for Simulation</entry>
+    <entry key="CFunctionBlockGenCodeAsIsPrompt">Generate code as-is</entry>
+    <entry key="CFunctionBlockArrayLayout">Array layout:</entry>
+    <entry key="CFunctionBlockLanguageLevel">Language Support Level:</entry>
+    <entry key="CFunctionLanguageLevelManaged">Subset of C/C++ (Analysis enabled)</entry>
+    <entry key="CFunctionLanguageLevelFull">Full (Use code as-is)</entry>
+    <entry key="CFunctionBlockDialogWidgetGenCodeAsIsChkBox">Generate code as-is (optimizations off)</entry>
+    <entry key="CFunctionBlockDialogWidgetGenCodeAsIsToolTip">Specify whether to inline code as-is without any parser based optimizations such as macro expansion.</entry>
+    <entry key="CFunctionBlockDialogCodegenCodeTabTitle">Code generation</entry>
+    <entry key="CFunctionBlockDialogcScriptName">Output</entry>
+    <entry key="CFunctionBlockDialogstartScriptName">Start</entry>
+    <entry key="CFunctionBlockDialogtermScriptName">Terminate</entry>
+    <entry key="CFunctionBlockDialogAddButtonName">Add</entry>
+    <entry key="CFunctionBlockDialogDeleteButtonName">Delete</entry>
+    <entry key="CFunctionBlockDialoginitScriptName">Initialize Conditions</entry>    
+
+    <!-- Simulink Interface dialog -->
+    <entry key="SimulinkInterfaceDialogOutputCodeDesc">Enter C code to be executed at each time step during simulation.\nFor example, "y = classObject.process(u);"\ny, classObject and u are defined in the Symbols table.</entry>
+    <entry key="SimulinkInterfaceDialogInitCodeDesc">Enter C code to be executed at the start of simulation.\nFor example, "classObject.initialize(param);"\nclassObject and param are defined in the Symbols table.</entry>
+    <entry key="SimulinkInterfaceDialogTermCodeDesc">Enter C code to be executed at the end of simulation.\nFor example, "classObject.cleanup();"\nclassObject is defined in the Symbols table.</entry>
+
+     <!-- Deterministic By Function Dialog -->
+    <entry key="DeterministicFunctionsDlgDescriptionTitle">Description</entry>
+    <entry key="DeterministicFunctionsDlgDescription">Use add and remove buttons to specify deterministic custom code functions.</entry>
+    <entry key="DeterministicFunctionsDlgTitle">List of custom code deterministic functions</entry>
+    <entry key="DeterministicFunctionsDlgSSFcnNameColHeader">Function Name</entry>
+    <entry key="DeterministicFunctionsDlgSSFcnNameEditHint" translate="false">functionName</entry>
+    <entry key="DeterministicFunctionsDlgAddButtonTooltip">Add custom code functions that are deterministic.</entry>
+    <entry key="DeterministicFunctionsDlgDeleteButtonTooltip">Remove selected function from list of deterministic custom code functions.</entry>
+    <entry key="DeterministicFunctionsInvalidCharacterNames">Invalid characters in function name ''{0}''.Function names must be valid C identifiers</entry>
+    
+    <!-- Error messages related to Symbol Table block (C Function and Python Code) API -->
+    <entry key="SymbolTableBlockAPIIncorrectPortIndex"> Port Number of the symbol ''{0}'' in {4} ''{3}'' must be an integer value between ''{1}'' and ''{2}''. </entry>
+    <entry key="SymbolTableBlockAPIMethodInputIsNotString"> Input of the method ''{0}'' in {2} ''{1}'' must be a character array/string. </entry>
+    <entry key="SymbolTableBlockAPIMethodUnexpectedInputArgument"> The ''{0}'' method requires no input. </entry>
+    <entry key="SymbolTableBlockAPIMethodUnexpectedOutputArgument"> The ''{0}'' method requires no output. </entry>
+    <entry key="SymbolTableBlockAPIMethodLessThanTwoInputOnly"> The ''{0}'' method supports at most one symbol name as an input. </entry>
+    <entry key="SymbolTableBlockAPIMethodInputNotFound"> Symbol ''{0}'' in {2} ''{1}'' does not exist. </entry>
+    <entry key="SymbolTableBlockAPIMethodInputNumInvalid"> The ''{0}'' method requires only one symbol name as an input. </entry>
+    <entry key="LockedSymbolTableBlock">The SymbolSpec object cannot be modified because the library containing the {1} ''{0}'' is locked. Unlock the library to make changes to the block.</entry>
+    <entry key="LinkedSymbolTableBlock">The SymbolSpec object cannot be modified because the {1} ''{0}'' is currently linked to a library. Modify the block from the library or break the link to modify this block.</entry>
+    <entry key="ModelIsExecutingSymbolTableBlock">The SymbolSpec object of the {1} ''{0}'' cannot be modified while the model is running.</entry>
+    <entry key="DeletedSymbolTableBlock">The SymbolSpec object cannot be retrieved because the block is deleted.</entry>
+    <entry key="CFunctionBlockIndexReadOnly">The Port Number of the 'Persistent' and 'Constant' scopes in the C Function block ''{0}'' are read-only.</entry>
+    <entry key="PythonFunctionBlockIndexReadOnly">The Port Number of the 'Persistent' scope in the Python Code block ''{0}'' is read-only.</entry>
+    <entry key="CFunctionBlockAPIArrayLayoutReadOnly">Cannot modify the value for block parameter ''{0}'' when 'LanguageLevel' is 'subset' for C Function block ''{1}''.</entry>
+    <entry key="CFunctionBlockAPILangLevelReadOnly">Cannot modify the value for block parameter ''{0}'' when 'CustomCodeSettingsLocation' is 'Model Configuration Parameters' for C Function block ''{1}''.</entry>
+    <entry key="CFunctionBlockAPISizeReadOnly">The Size of the 'Constant' symbol and the 'Persistent' VoidPointer symbol in the C Function block ''{0}'' are read-only.</entry>
+    <entry key="PythonFunctionBlockAPISizeReadOnly">The Size of the 'Persistent' PythonObject symbol in the Python Function block ''{0}'' is read-only.</entry>
+	<entry key="CFunctionBlockAPIGenCodeAsIsReadOnly">Cannot modify the value for block parameter ''{0}'' when 'Use same code as Simulation' is off for C Function block ''{1}''.</entry>
+	<entry key="CFunctionBlockAPICodegenCodeReadOnly">Cannot modify the value for block parameter ''{0}'' when 'Use same code as Simulation' is on for C Function block ''{1}''.</entry>
+    
+    <!-- Function Majority Dialog -->
+    <entry key="MajorityDlgDescriptionTitle">Description</entry>
+    <entry key="MajorityDlgDescription">Use add and remove buttons to specify array layout exceptions for custom code functions.</entry>
+    <entry key="MajorityDlgTitle">Array Layout for Custom Code Functions</entry>
+    <entry key="MajorityDlgSSFcnNameColHeader">Function Name</entry>
+    <entry key="MajorityDlgSSFcnNameEditHint" translate="false">functionName</entry>
+    <entry key="MajorityDlgSSSettingColHeader">Array Layout</entry>
+    <entry key="MajorityDlgAddButtonTooltip">Add a custom code function that has a function array layout exception.</entry>
+    <entry key="MajorityDlgDeleteButtonTooltip">Remove selected function array layout settings.</entry>
+
+    <!-- Function Majority Customization ConfigSet Parameter Diagnostics -->
+    <entry key="FunctionArrayLayoutWrongFormat"
+           note="Texts 'CustomCodeFunctionArrayLayout', 'FunctionName' and 'ArrayLayout' are used in command line operations and do not need to be translated.">
+      Invalid data type. Parameter 'CustomCodeFunctionArrayLayout' must be a 1-by-n structure with 'FunctionName' and 'ArrayLayout' fields.
+    </entry>
+    <entry key="FunctionArrayLayoutEmptyNames">Invalid function names. Function names must be nonempty.</entry>
+    <entry key="FunctionArrayLayoutNamesWithWhitespace">Invalid function names {0}. Function names must not contain whitespace characters.</entry>
+    <entry key="FunctionArrayLayoutDuplicateNames">Invalid function names {0}. Duplicate function names not supported.</entry>
+    <entry key="FunctionArrayLayoutInvalidSetting"
+           note="Texts 'Column-major', 'Row-major' and 'Any' are used in command line operations and do not need to be translated.">
+      Invalid function array layout setting. Function array layout setting must be 'Column-major', 'Row-major' or 'Any'.
+    </entry>
+
+    <!-- Row Major Custom Code Functions Diagnostics -->
+    <entry key="FunctionMajorityNotSpecifiedInRowMajorCodegen">C Caller block ''{0}'' calls custom code function ''{1}'' that has 'Not specified' as the function array layout. Specify a function array layout for ''{1}'' on Configuration Parameters > Simulation Target pane.</entry>
+    <entry key="FunctionArrayLayoutIgnored">Custom code function ''{0}'' has all scalar input/output arguments. The array layout setting for custom code function ''{0}'' is ignored. To remove this warning message, delete array layout setting for ''{0}'' from "Configuration Parameters > Simulation Target > Exception by function..."</entry>
+    <entry key="FunctionArrayLayoutOverrideForSNDF">Custom code function ''{0}'' containing struct with matrix field as input/output arguments must have 'Row-major' array layout. The array layout setting of ''{1}'' for custom code function ''{0}'' is ignored. To remove this warning message, specify array layout setting as 'Row-major' for ''{0}'' from "Configuration Parameters > Simulation Target > Exception by function..."</entry>
+	<entry key="FunctionArrayLayoutOverrideForPtrToArr">Custom code function ''{0}'' containing pointer to matrix as input arguments must have 'Row-major' array layout. The array layout setting of ''{1}'' for custom code function ''{0}'' is ignored. To remove this warning message, specify array layout setting as 'Row-major' for ''{0}'' from "Configuration Parameters > Simulation Target > Exception by function..."</entry>	
+    <!-- Model Reference Diagnostics -->
+    <entry key="BlockUsedInModelReferenceSimTargetCustomCodeUnchecked">{3} ''{0}'' is used in referenced model which cannot simulate in accelerator mode with ''{1}'' disabled.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion">
+                    <cmd>open_system(''{2}'');configset.highlightParameter(''{2}'','SupportModelReferenceSimTargetCustomCode');</cmd>
+                    <txt>You may enable ''{1}'' in model ''{2}'' and resave the model.</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+
+    <!-- Error messages related to broker/adapter infrastructure -->
+    <!-- The messages will be refactored/moved in 19a. G1825828-->
+    <entry key="UnrecognizedFileFormat">Only config sets in .slx file format can be read via the SLXConfigSetAdapter</entry>
+    <entry key="FileNotFound">There is no file located in the provided location</entry>
+    <entry key="NoWriteForFunctions">Write operation is not supported for functions in config sets.</entry>
+    <entry key="SegVOccurredInOOP">Segmentation fault occurred when simulating custom code in separate process with ID ''{0}''. </entry>
+    <entry key="ErrorCauseSegVInOOP">\nSegmentation fault occurred. This could happen when program tries to read or write outside the memory that is allocated for it, or to write memory that can only be read.</entry>
+    <entry key="ErrorCauseAbortInOOP">\nAbort occurred. This could happen when program calls abort.</entry>
+    <entry key="ErrorCauseIllegalInstructionInOOP">\nIllegal instruction detected. This could happen when program tries to execute garbage or a privileged instruction.</entry>
+    <entry key="ErrorCauseArithmeticErrorInOOP">\nFatal arithmetic error occurred. Typical arithmetic errors include division by zero and overflow.</entry>
+    <entry key="ProcessCrashedInOOP">Process with ID ''{0}'' crashed during simulating custom code in a separate process. {1}</entry>
+    <entry key="SegVStackTraceInfo">Process with ID ''{0}'' crashed. Stack trace information at the time of crash:\n{1}</entry>
+    <entry key="ComplexParamNotSupportedInOOP">The parameter ''{0}'' of C Caller block ''{1}'' evaluates to a complex number. Out-of-process execution for C Caller blocks supports only real parameters.</entry>
+    <entry key="CustomTypeUnsupportedInOOP">Custom function ''{0}'' contains arguments with custom data type. Custom data types are not supported when simulating custom code in a separate process.</entry>
+    <entry key="ComplexTypeUnsupportedInOOP">Custom function ''{0}'' contains complex arguments. Complex arguments are not supported when simulating custom code in a separate process.</entry>
+    <entry key="OOPExeBuildFailure">Error occurred when generating separate executable for custom code associated with model ''{0}''.</entry>
+    <entry key="FcnNotFoundInCustomCode">''{0}'' is not found in custom code executable ''{1}''.</entry>
+    <entry key="LoadLibFailure">Failed to load library ''{0}''.</entry>
+    <entry key="MemoryInconsistentBetweenSimulinkAndOOP">Inconsistent data detected when calling custom function ''{0}'' in process with ID ''{1}''. This could be caused by indexing out of bounds in custom code.</entry>
+    <entry key="UnKnownResponseFromSeparateProcess">Unknown response received from the process when simulating custom code in a separate process.</entry>
+    <entry key="LibNotRegisteredWithOOPForModel">Custom code library associated with model ''{0}'' is not registered with simulating custom code in a separate process.</entry>
+    <entry key="LibNotRegisteredWithOOPForBlock">Custom code library associated with block ''{0}'' is not registered with simulating custom code in a separate process.</entry>
+    <entry key="LibNotRegisteredWithOOP">Custom code library with ID ''{0}'' is not registered with simulating custom code in a separate process.</entry>
+    <entry key="ProcessNotRunning">Process with ID ''{0}'' is not running.</entry>
+    <entry key="CrashOccurredInOOP">Process with ID ''{0}'' crashed during simulating custom code in a separate process.</entry>
+    <entry key="IncompatibleEnumTypeInOOP">Enum type ''{0}'' is not supported with simulating custom code in a separate process. It requires that all enum types be capable of converting to ''int32'' without loss of precision.</entry>
+    <entry key="UnsupportedDataTypeError">Data type ''{0}'' is not supported with simulating custom code in a separate process.</entry>
+    <entry key="BlockRunningInOOPModeMsg">The block ''{0}'' is running in debug mode by using a separate process with ID ''{1}''.</entry>
+    <entry key="InitTermCodeNotSupportedInOOP">The custom code setting associated with model ''{0}'' contains initialize and/or terminate functions. Out-of-process execution does not support this scenario.</entry>
+    <entry key="LibMustBeLoaded">The library ''{0}'' must be loaded to import custom code in model ''{1}''. </entry>
+    <entry key="AtLeastOneLibraryMustBeLinked">The model ''{0}'' should link to at least one Simulink library containing imported custom code.</entry>
+    <entry key="MultipleLibrariesAreLinked">The model ''{0}'' links to multiple Simulink libraries ''{1}'' for imported custom code which is not allowed.</entry>
+	
+    <!-- Error messages related to C Caller block API -->
+    <entry key="EditDisabledProperty">The property ''{0}'' of argument ''{1}'' cannot be edited. </entry>
+    <entry key="IncorrectScopeForArgument">''{0}'' is not a valid scope value for argument ''{1}''.</entry>
+    <entry key="InvalidFunctionName">''{0}'' is not a recognized function. Use get_param(gcb,''AvailableFunctions'') to display a list of valid function name(s) to which the C Caller block can be mapped.</entry>
+    <entry key="LockedCCaller">The FunctionPortSpecification object cannot be modified because the library containing the C Caller block is locked. Unlock the library to make changes to the block.</entry>
+    <entry key="LinkedCCaller">The FunctionPortSpecification object cannot be modified because the C Caller block is currently linked to a library. Modify the block from the library or break the link to modify this block.</entry>
+    <entry key="ModelIsExecuting">The FunctionPortSpecification object cannot be modified while the model is executing.</entry>
+	<entry key="IndexExceedsDimsLinear">Index exceeds the number of array elements.</entry>
+    <entry key="LinkedCCallerFcnName">Function Name cannot be modified because the C Caller block is currently linked to a library. Modify the block from the library or break the link to modify this block.</entry>	
+    <!-- Error messages related to C Caller block Global IO API -->
+	<entry key="NonexistentGlobalArgument">''{0}'' is not a valid global argument.</entry>
+	<entry key="AddNonexistentGlobalArgument">''{0}'' is not a valid global argument to add.</entry>
+	<entry key="RemoveNonexistentGlobalArgument">''{0}'' is not a valid global argument to remove.</entry>
+	<entry key="InvalidNumberOfInputsForAPIMethod"> The ''{0}'' method requires one global argument name as an input. </entry>
+	<entry key="CCallerGlobalIOAPIMethodInvalidInput"> Input of the method ''{0}'' must be a character vector or scalar string. </entry>
+	<entry key="AddDuplicateGlobalArgument"> Global argument ''{0}'' already exists. </entry> 
+	<entry key="GlobalIOParsingError"> Error(s) encountered while performing global variable analysis for model ''{0}''. Fix the errors in your custom code or disable ''{1}'' if global variables are not used as function interface. </entry> 
+	<entry key="GlobalIOParsingErrorCause" translate="false" note="translate=false set due no translatable content">{0}</entry>
+	<entry key="GlobalInputTooltip"> Global variable as Input </entry>
+	<entry key="GlobalOutputTooltip"> Global variable as Output </entry>
+	<entry key="GlobalInputOutputTooltip"> Global variable as Input and Output </entry>
+	<entry key="GlobalNonInterfaceTooltip"> Global variable is not a block interface.</entry>
+	<entry key="GlobalVariableUsageWarning"> Global variable {0} is read in {1} and written in {2}. If the execution order is not defined properly, changes made in {0} could cause unexpected results in another block.</entry>
+	<entry key="InvalidOrDeletedObject">Invalid or deleted 'FunctionPortSpecification' object.</entry>
+    <entry key="GlobalArgsTotalCountMismatchError">The total number of global arguments for function ''{0}'' is {1} in C Caller block ''{2}'' and {3} in C Caller block ''{4}''. These C Caller blocks that call the same function don't have the same number of global arguments. </entry>
+    <entry key="GlobalArgNotFoundError">Global argument ''{0}'' for function ''{1}'' is in C Caller block ''{2}'' but is not in C Caller block ''{3}''. These C Caller blocks that call the same function don't use the same arguments.</entry>
+    <!-- Error messages related FixCustomCodeCevalScope -->
+    <entry key="IncompatibleArgument">Passing incompatible type for argument {0, number, integer} of external C function ''{1}'' with coder.ceval.</entry>
+    <entry key="IncompatiblePointerArgument">Passing incompatible pointer type for argument {0, number, integer} of external C function ''{1}'' with coder.ceval.</entry>
+    <entry key="MatrixArgumentDifferentElements">Passing matrix with a different number of elements for argument {0, number, integer} of external C function ''{1}'' with coder.ceval.</entry>
+    <entry key="CustomCodeUndefinedCevalFcn">External C function ''{0}'' with coder.ceval is filtered out because it is undefined in custom code source files or library files.</entry>
+    <entry key="CppReferenceNotSupportedCeval">coder.ceval does not support C++ references as custom code arguments or return values. Modify the custom code to accept or return pointers.</entry>
+    
+    <!-- Error messages related AddCustomCodeGlobalVarAccessFcnsForOutOfProcess -->
+    <entry key="GlobalVarPointerTypeUnsupportedForOOP">Custom code global variable ''{0}'' is pointer type. Pointer type global variable is not supported when simulating custom code in a separate process.</entry>
+    <entry key="GlobalVarUnsupportedTypeForOOP">Type of custom code global variable ''{0}'' is not supported. The following C/C++ types are not supported when simulating custom code in a separate process: void pointer, array of pointers, complex type, and union type.</entry>
+    <entry key="CustomCodeFcnCallParamTypeUnsupportedForOOP">In custom function ''{0}'', type of argument ''{1}'' is not supported. The following C/C++ types are not supported when simulating custom code in a separate process: void pointer type, array of pointers, complex type, and union type.</entry>
+    <entry key="GlobalVarAddressEscapeOOP">Assigning address of global variable ''{0}'' to a non-const pointer is not supported in C Function block when simulating custom code in a separate process.</entry>
+    <entry key="CustomCodeFcnCallUnsupportedForOOP"><![CDATA[Unable to call custom code function ''{0}''. Accessing functions with the following return and function argument types is not supported when simulating custom code in a separate process:
+    <ul>
+    <li> Return types: pointer type, complex type, class type, and union type</li>
+    <li> Function argument types: Void pointer type, array of pointers, multi-level pointer, class type, complex type, and union type</li>
+    </ul>]]></entry>
+    <entry key="CustomCodeFcnCallPassingNullptrForOOP">In custom function ''{0}'', passing an empty array or matrix for argument ''{1}'' is not supported when simulating custom code in a separate process.</entry>
+    <entry key="CustomCodeVariadicFcnUnsupportedForOOP">Variadic function ''{0}'' is not supported when simulating custom code in a separate process.</entry>
+    <entry key="CustomCodeDebugExecutionError">Error occurred in ''{0}'' when simulating custom code in a separate process.</entry>
+    <entry key="CustomCodeDebugExecutionErrorWithDebugger">Error occurred in ''{0}'' when simulating custom code in a separate process.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="suggestion" id="launchDebuggerFromDV" retvalue="false">
+                    <cmd>SLCC.OOP.LaunchDebuggerForOOP(''{0}'');</cmd>
+                    <txt>Launch external debugger to debug your external custom code.</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    <entry key="CustomCodeDebugExecutionErrorInInit">Error occurred in initialize function when simulating custom code in a separate process for model ''{0}''.</entry>
+    <entry key="CustomCodeDebugExecutionErrorInTerm">Error occurred in terminate function when simulating custom code in a separate process for model ''{0}''.</entry>
+    <entry key="CustomCodeDebugExecutionDebuggerLaunchingStatusTip">Launching external debugger. This usually takes up to a minute. Do not click ''Open'' button more than once.</entry>
+    <entry key="OOPExeDebuggingFailure">Error occurred when debugging custom code associated with model ''{0}''.</entry>
+    <entry key="MatrixElementAddressEscapeToCustomCodeFcnCallForOOP">Passing the address of a non-first element of a matrix to an external custom function ''{0}'' is not supported when simulating custom code in a separate process.</entry>
+    <entry key="OOPExeDebuggerLaunchFailure">Failed to launch debugger for custom code associated with model ''{0}''. No debug information is found.</entry>
+    <entry key="OOPExeDebuggerLaunchMissingExecutable">Failed to locate ''{0}''.</entry>
+	
+    <entry key="MacroFunctionUnsupportedForOOP">C macro ''{0}'' that expands to a function call is not supported when simulating custom code in a separate process.</entry>
+    <entry key="OOPExeLaunchFailure">Failed to launch executable in ''{0}''.</entry>
+    <entry key="OOPExeDebuggerNoCustomCodeWithModel">Model ''{0}'' does not have any custom code for debugging.</entry>
+    <entry key="OOPExeDebuggerNonExistSrcFile">Src file ''{0}'' does not exist for custom function ''{1}''.</entry>
+    <entry key="ExternalDebuggerLaunchFailure">Error occurred when launching external debugger.</entry>
+    <entry key="ExternalDebuggerUnsupported">Current compiler selected for external code is ''{0}'', which is unsupported for external code debugging. Use ''mex -setup'' to select a compatible compiler.</entry>
+    <entry key="ExternalDebuggerUnsupportedOnMacWithOOP">Custom code debugging in a separate process is not supported on Mac OS platform.</entry>
+    <entry key="ExternalDebuggerVSCodeNotSupportedInProcess">VSCode debugging for custom code is only supported for simulation in a separate process.</entry>
+    <entry key="ExternalDebuggerVSCodeNotSupportedInProcess_FixIt">Enable simulate custom code in a separate process for model or library ''{0}''.</entry>
+    <entry key="ExternalDebuggerNoCustomCode">Unable to launch external debugger. No custom code is debuggable for model ''{0}''. Check if model ''{0}'' specifies any custom code for debugging and ''{1}'' option is enabled in model Configuration Parameters.</entry>
+    <entry key="ExternalDebuggerNotLaunchForOOP">Custom code functions might have been filtered out if they are not compatible with ''{0}''.</entry>
+    <entry key="ExternalDebuggerLaunchedMSVC">External debugger is ready. To start the debugging session, set breakpoints in external debugger and simulate the model.</entry>
+    <entry key="ExternalDebuggerLaunchedUnix">External debugger is ready. Breakpoints at all custom code function entry points are set in external debugger. To start the debugging session, simulate the model. To end the debugging session, detach the process before closing external debugger.</entry>
+    <entry key="ExternalDebuggerAlreadyLaunched">External debugger is already launched. External debugger window might be minimized or behind other application windows.</entry>
+    <entry key="ExternalDebuggerStatusBarInfo">Debugging custom code: calling function ''{0}''</entry>
+    <entry key="ExternalDebuggerMSVCDLLLimit">Maximum number of loaded modules in Visual Studio debugger is currently at ''{0}''. Breakpoints might not be hit due to unloaded custom code modules beyond this limit. To debug custom code within Simulink, it is recommended that you set the maximum loaded modules limit to 4096 or higher. Related Documentation.</entry>
+    <entry key="ExternalDebuggerSessionEnd">Custom code debugging session has ended. To start a new debugging session, launch debugger from Simulink toolstrip.</entry>
+    <entry key="ExternalDebuggerLaunchingStatusTip">Launching external debugger</entry>
+    <entry key="ExternalDebuggerLaunchingWarnDlgMsgUnix">\\bf Caution: \\rm Do not execute a ''kill'' command in the external debugger. Doing so will terminate MATLAB without any notice. To end the debugging session, use a ''detach'' command.</entry>
+    <entry key="ExternalDebuggerDebuggingWithMinGW">To use MinGW for custom code debugging, install {0} support package.</entry>
+	<entry key="MexDebuggingWithVSCodeError">VS Code debugging is not supported for MEX Debugging. </entry>
+    
+    <entry key="PrebuildFailed">Failed to build custom code simulation executable for model ''{0}''.</entry>
+    <entry key="PrebuildInterfaceHeaderUnsuccessful">Failed to generate interface header from specified custom code.</entry>
+    
+    <!-- Error messages/dialogues related to Auto-infer headers and Parse Custom Code Btn -->
+    <entry key="InferringHeadersFailed">Failed to auto-fill header information.</entry>
+    <entry key="InferredHeadersEmpty">Header information is empty. Check the source files and include directories specifications or explicitly specify the header files.</entry>
+    <entry key="EmptyCustomCodeHeader"><![CDATA[No header file specified for model ''{0}''. Specify <sldiag objui="configset" objparam="SimCustomHeaderCode">Header file</sldiag> before parsing.]]></entry>
+    <entry key="EmptyCustomCodeSource"><![CDATA[No source file specified for model ''{0}''. Specify <sldiag objui="configset" objparam="SimUserSources">Source files</sldiag> before parsing.]]></entry>    
+    <entry key="ValidateCustomCode">Validating custom code for model: {0}</entry>
+    <entry key="InferHdrConfirmationDlgTitle">Auto-fill Header files</entry>
+    <entry key="InferHdrConfirmationDlgMsg">Replace previous values in ''{0}'' with auto-filled headers?</entry>
+    <entry key="InferHdrConfirmationDlgYesLabel">Yes</entry>
+    <entry key="InferHdrConfirmationDlgNoLabel">No</entry>
+    <entry key="InferHdrUnappliedChanges">Auto-filling header files requires that there be no unapplied changes in the Configuration Parameters dialog for model ''{0}''.
+      <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion" id="apply" btn="apply">
+                <cmd>configset.internal.util.applyChanges(''{0}'');</cmd>
+                <txt>Apply changes</txt>
+            </action>
+      </actions>]]>
+    </entry>
+    <entry key="ValidateCCUnappliedChanges">Validating custom code requires that there be no unapplied changes in the Configuration Parameters dialog for model ''{0}''.
+      <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion" id="apply" btn="apply">
+                <cmd>configset.internal.util.applyChanges(''{0}'');</cmd>
+                <txt>Apply changes</txt>
+            </action>
+      </actions>]]>
+    </entry>
+    <!-- Error messages related to Python Code Block -->
+    <entry key="PythonBlockInferenceFail">Failed to infer Python function input and output types ''{0}''</entry>
+    <entry key="UnsupportedPythonTypeToMATLABTypeConversionError">Conversion from ''{1}'' to ''{0}'' not supported.</entry>
+    <entry key="OutputDictionaryKeysDoNotContainBusField">Unable to find ''{0}'' in output dictionary keys. Output dictionary keys must contain all fields of output Simulink.Bus object.</entry>
+    <entry key="UnsupportedPythonTypeToSimulinkTypeConversion">Unable to convert from Python function output type to specified Simulink type.</entry>
+    <entry key="PythonRuntimeError">Python Error:\n{0}</entry>
+    <entry key="PythonBufferWrongNDims">The number of dimensions of the array or matrix returned from python must match the number of dimensions specified in Simulink.</entry>
+    <entry key="PythonBufferWrongType">The type of the array or matrix returned from python must match the type expected by Simulink.</entry>
+    <entry key="PythonBufferWrongShape">The dimensions of the array or matrix returned from Python must match the dimensions specified in Simulink.</entry>        
+    <entry key="PythonBusElementNameNotDictKey">The name of the bus element ''{0}'' does not exist as a key of type string in the dictionary returned by python.</entry>
+    <entry key="PythonDictBusMismatch">The number of elements in the dictionary returned by python must be greater than or equal to the number of elements in the bus</entry>
+    <entry key="PythonAccessNonTupleAsTuple">The object returned by python was expected to be a tuple.</entry>
+    <entry key="PythonBoolMarshaling">The object returned by python must be a boolean.</entry>
+    <entry key="PythonIdxOutOfRange">The index exceeds the number of sequence elements.</entry>
+    <entry key="PythonListToNdArray">Conversion from a Python list to a multidimensional simulink array is not supported.</entry>
+    <entry key="PythonUnsupportedTypeEnum">Enum types are not compatible with Python for code generation based execution. Enum name: ''{0}'' </entry>
+    <entry key="PythonUnsupportedTypeComplex">Complex types are not compatible with Python for code generation based execution.</entry>
+    <entry key="PythonFloatToIntMayLosePrecision">Converting a Python float to a Simulink integer may lose precision.</entry>
+    <entry key="PythonOOPExecutionMLSB">Code generation based execution of Python is not supported for ''{0}'' when the Python environment in MATLAB is set to Out-of-Process. Change the MATLAB Python environment to In-Process or change the block simulation mode to interpreted execution.</entry>
+    <entry key="PythonOOPExecutionPyCode">Code generation based execution of Python is not supported for ''{0}'' when the Python environment in MATLAB is set to Out-of-Process. Change the MATLAB Python environment to In-Process.</entry>
+    <entry key="PythonNotConfigured">Python Function Block requires MATLAB to be configured to use Python.</entry>
+    <entry key="PythonCodeBlockInDataflow">Python Code block ''{0}'' cannot be inside a dataflow subsystem. </entry>
+    <entry key="PythonCodeBlockArrayOfBusInput">Blocks which use Code generation based execution of Python code do not support input arrays containing bus types.</entry>
+    <entry key="PythonCodeBlockArrayOfBusOutput">Blocks which use Code generation based execution of Python code do not support output arrays containing bus types.</entry>
+    <entry key="PythonStringCppCodegen">Python Code block ''{0}'' can not generate C++ code when using the simulink string data type</entry>
+    <entry key="PythonRapidAccelForEach">Python Code block ''{0}'' can not execute with rapid accelerator inside a for each subsystem</entry>
+    <entry key="PythonHeaderNotFound">Unable to find Python.h header file. Ensure that Python development headers are installed along with the verison of Python used by MATLAB.</entry>
+
+
+
+
+    <!-- UI strings related Python Code Block -->
+    <entry key="PythonFunctionMaskDialogText">Enter your Python code to integrate a custom Python algorithm</entry>
+    <entry key="PythonFunctionName">Python Code block</entry>
+    <!-- Bus imported from custom code -->
+	<entry key="MultiWordBusFieldRequiresLongLong">The bus object ''{0}'' imported from custom code contains multi-word field. Enable the 'Support long long' option in the Hardware Implementation pane.
+	  <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="rtw_fixit" retvalue="false">
+                <cmd>set_param(''{1}'',''ProdLongLongMode'',''on'');</cmd>
+                <txt>Set <sldiag objui="configset" objparam="ProdLongLongMode">Support long long</sldiag> to ''on''</txt>
+            </action>
+      </actions>]]>
+	</entry>
+	<entry key="StructWithNDInGRTCodegen">Code generation target for block diagram ''{1}'' is not supported because bus object ''{0}'' imported from custom code has elements of matrix types. Only ERT-based target is supported when model has imported bus objects containing matrix fields.</entry>
+	<entry key="NdIndexingMismatchCustomCodeExpectsUnflattenedType">Block diagram ''{1}'' has imported bus containing matrix fields in custom code, which requires enabling element dimension preservation. Change PreserveElementDimensions property of ''{0}'' for block diagram ''{1}''.</entry>
+	<entry key="NdIndexingMismatchCustomCodeExpectsFlattenedType">Block diagram ''{1}'' has imported bus containing vector fields in custom code, which requires disabling bus element dimension preservation. Change PreserveElementDimensions property of ''{0}'' for block diagram ''{1}''.</entry>
+	
+	<!-- Block Custom Code Majority Specification -->
+	<entry key="IncorrectUseOfMajorityFunction">Incorrect use of majority specification function ''{0}''. Fully qualified custom code function name must be passed as a string input to the majority specification function.</entry>
+	<entry key="CannotFindMajorityFunction">Unable to find custom code function ''{0}'' specified in the majority specification function ''{1}''. Majority can be set for the following functions: ''{2}''.</entry>
+	<entry key="NoFcnInCCCanTakeMajority">No function in {0} custom code specification can take majority. To remove this warning message, delete the majority specification function call from the block code.</entry>
+	<entry key="FunctionArrayLayoutOverrideForSNDF_BlockCC">Custom code function ''{0}'' containing struct with matrix field as input/output arguments must have 'Row-major' array layout. The array layout setting of ''{1}'' for custom code function ''{0}'' is ignored. To remove this warning message, specify array layout setting as 'Row-major' for ''{0}'' using ''slSetRowMajor'' function in the block code.</entry>
+	<entry key="FunctionArrayLayoutOverrideForPtrToArr_BlockCC">Custom code function ''{0}'' containing pointer to matrix as input arguments must have 'Row-major' array layout. The array layout setting of ''{1}'' for custom code function ''{0}'' is ignored. To remove this warning message, specify array layout setting as 'Row-major' for ''{0}'' using ''slSetRowMajor'' function in the block code.</entry>
+	
+	<!-- Block Custom Code Multi_Instance-->
+	<entry key="CFunctionBlockLibMultiInstanceError">Generating code from the model, simulating the model in rapid accelerator mode, or simulating the model using model reference in accelerator mode is not supported since multiple instances of library block ''{0}'' are used and ''CustomCodeIsMultiInstantiable'' is set to ''off''.</entry>
+	<entry key="CFunctionBlockMultiInstanceError">Generating code from the model, simulating the model in rapid accelerator mode, or simulating the model using model reference in accelerator mode is not supported since blocks ''{0}'' and ''{1}'' have the same block custom code and ''CustomCodeIsMultiInstantiable'' is set to ''off''.</entry>
+	<entry key="ContinuousSampleTimeNotAllowForNonDeterministicBlockCC">C Function block ''{0}'' does not support continuous sample time because the block uses custom code that may have nondeterministic outputs. To enable continuous sample time support for the block, set ''CustomCodeIsMultiInstantiable'' to ''on'' if the included custom code behavior is deterministic.</entry>
+	<!-- Block Custom Code-->
+	<entry key="CFcnHeaderFiles">Headers</entry>
+	<entry key="CFcnSourceFiles">Sources</entry>
+	<entry key="CFcnSearchDirs">Search Directories</entry>
+	<entry key="CFcnLibraries">Libraries</entry>
+	<entry key="CFcnDefines">Defines</entry>
+	<entry key="CFcnCompilerFlags">Compiler Flags</entry>
+	<entry key="CFcnLinkerFlags">Linker Flags</entry>
+	<entry key="CFcnAdvancedSettings">Advanced</entry>
+	<entry key="CFcnMultiInstance">Block specified custom code supports multiple instances</entry>
+	<entry key="CFcnLocalCustomCode">Use Block Custom Code</entry>
+	<entry key="CFcnConfigSetCustomCode">Use Configuration Parameters Custom Code</entry>
+	<entry key="CFcnSimulationCC">Simulation Custom Code </entry>
+	<entry key="CFcnCodeGenCC">Code Generation Custom Code</entry>
+	<entry key="CFcnDependencyPromp">Specify block custom code dependency</entry>
+	<entry key="CFunctionBlockLocalCCInDataflow">C Function block ''{0}'' uses local custom code and cannot be inside a dataflow subsystem. </entry>
+	<entry key="OOPExeBuildFailureBlockCC">Error occurred when building custom code associated with block ''{0}''.</entry>
+
+    <!-- Export to previous version diagnostics -->
+    <entry key="ExportingTargetCodegenToPrvsRelease">C Function block ''{0}'' specifies different code for simulation and code generation using the newly added Code generation section for the block. Because this feature was introduced in R2024a, code generation code will be removed during export.</entry>
+    <entry key="ExportingLocalCCToPrvsRelease">C Function block ''{0}'' has custom code settings specified on the block. This capability is added for releases R2024a and above and is not compatible with older releases. Block will be removed during export.</entry>
+    <entry key="ExportingFullLangToPrvsRelease">C Function block ''{0}'' has 'LanguageLevel' set to 'full' on the block. This capability is added for releases R2025b and above and is not compatible with older releases.</entry>
+ 
+    </message>
+</rsccat>
+
+<!-- LocalWords: -->

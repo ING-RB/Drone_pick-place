@@ -1,0 +1,84 @@
+<!--Copyright 2020 The MathWorks, Inc. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../../../static/help/customdoc/includes/product/css/helpwin.css">
+    <script>
+      (function () {
+         var currentUrl = document.location.href;
+         var urlObj = new URL(currentUrl);
+         var docviewer = urlObj.searchParams.get("docviewer");
+         if (docviewer && docviewer === "ml_online") {
+            document.cookie = "MW_Doc_Template=ONLINE||||||||||";
+         }
+      })();
+    </script>
+    <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="../../../static/help/customdoc/includes/product/scripts/jquery/jquery-latest.js"></script>
+    <script type="text/javascript" src="../../../static/help/customdoc/includes/shared/scripts/helpservices.js"></script>
+    <!-- The custom title his has to be set in a vue element -->
+    <title>helpwin - MATLAB File Help</title>
+</head>
+<body style="">
+    <script src="release/helpwin-ui/dojoConfig-release-global.js"></script>
+    <script src="release/bundle.index.js"></script>
+    
+<div id="app">
+    <helpwin-page></helpwin-page>
+</div>
+
+<template id="helpwin-template">
+  <div>
+    <helpwin-header
+      v-if="!loading"
+      v-bind:header="helpWinData.helpActions"
+    ></helpwin-header>
+    <helpwin-body
+      v-if="!loading"
+      v-bind:body="helpWinData.body"
+    ></helpwin-body>
+    <helpwin-footer
+      v-if="!loading"
+      v-for="footer in helpWinData.footers"
+      v-bind:footer="footer"
+    ></helpwin-footer>
+    <helpwin-cldetail
+      v-if="!loading"
+      v-if="helpWinData.helpActions.classinfo"
+      v-bind:cldetail="helpWinData.helpActions.classinfo.classdetails"
+    ></helpwin-cldetail>
+    <helpwin-clconstructor
+      v-if="!loading"
+      v-if="helpWinData.helpActions.classinfo"
+      v-bind:clconstructor="helpWinData.helpActions.classinfo.constructors"
+    ></helpwin-clconstructor>
+    <helpwin-cldetaillist
+      v-if="!loading"
+      v-if="helpWinData.helpActions.classinfo"
+      v-bind:cldetaillist="helpWinData.helpActions.classinfo.enumeration"
+    ></helpwin-cldetaillist>
+    <helpwin-cldetaillist
+      v-if="!loading"
+      v-if="helpWinData.helpActions.classinfo"
+      v-bind:cldetaillist="helpWinData.helpActions.classinfo.properties"
+    ></helpwin-cldetaillist>
+    <helpwin-clmethod
+      v-if="!loading"
+      v-if="helpWinData.helpActions.classinfo"
+      v-bind:clmethod="helpWinData.helpActions.classinfo.methods"
+    ></helpwin-clmethod>
+    <helpwin-cldetaillist
+      v-if="!loading"
+      v-if="helpWinData.helpActions.classinfo"
+      v-bind:cldetaillist="helpWinData.helpActions.classinfo.events"
+    ></helpwin-cldetaillist>
+  </div>
+</template>
+
+<div id="helpwin_error">
+</div>
+
+</body>
+</html>

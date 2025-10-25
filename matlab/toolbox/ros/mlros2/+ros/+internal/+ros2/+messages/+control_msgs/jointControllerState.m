@@ -1,0 +1,42 @@
+function [data, info] = jointControllerState
+%JointControllerState gives an empty data for control_msgs/JointControllerState
+
+% Copyright 2019-2021 The MathWorks, Inc.
+data = struct();
+data.MessageType = 'control_msgs/JointControllerState';
+[data.header, info.header] = ros.internal.ros2.messages.std_msgs.header;
+info.header.MLdataType = 'struct';
+[data.set_point, info.set_point] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.process_value, info.process_value] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.process_value_dot, info.process_value_dot] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.error, info.error] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.time_step, info.time_step] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.command, info.command] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.p, info.p] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.i, info.i] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.d, info.d] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.i_clamp, info.i_clamp] = ros.internal.ros2.messages.ros2.default_type('double',1,0);
+[data.antiwindup, info.antiwindup] = ros.internal.ros2.messages.ros2.default_type('logical',1,0);
+info.MessageType = 'control_msgs/JointControllerState';
+info.constant = 0;
+info.default = 0;
+info.maxstrlen = NaN;
+info.MaxLen = 1;
+info.MinLen = 1;
+info.MatPath = cell(1,16);
+info.MatPath{1} = 'header';
+info.MatPath{2} = 'header.stamp';
+info.MatPath{3} = 'header.stamp.sec';
+info.MatPath{4} = 'header.stamp.nanosec';
+info.MatPath{5} = 'header.frame_id';
+info.MatPath{6} = 'set_point';
+info.MatPath{7} = 'process_value';
+info.MatPath{8} = 'process_value_dot';
+info.MatPath{9} = 'error';
+info.MatPath{10} = 'time_step';
+info.MatPath{11} = 'command';
+info.MatPath{12} = 'p';
+info.MatPath{13} = 'i';
+info.MatPath{14} = 'd';
+info.MatPath{15} = 'i_clamp';
+info.MatPath{16} = 'antiwindup';

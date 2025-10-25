@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Spreadsheet Import Tool Peer Showcase Page</title>
+    <!-- Load css -->
+    <link rel="stylesheet" href="importtool_peer/css/main.css"  type="text/css" />
+
+    <style>
+        #openButton,
+        #closeButton {
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:30px;
+            display:inline-block
+        }
+        .pageControls{
+            display:block
+        }
+
+        .fileContainer{
+            margin-left: 50px;
+            margin-top: 25px;
+            width: 500px;
+            height:500px;
+        }
+
+        #warningFile{
+            border:none;
+        }
+        #warningFile.hide {
+            display:none;
+        }
+        #warningFile.show {
+            display:inline;
+            color:red;
+            width: 300px;
+        }
+        #SpreadSheetTabContainer {
+            position: relative;
+            border-top: solid gray 1px;
+            width: 800px;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body class="tundra">
+
+<!-- Load dojo -->
+<script src="/derived/ui/generated/datatools/importtool_js_peer/importtool_peer/generatedDojoConfig.js"></script>
+<script type="text/javascript" src="../../../../../../../derived/3p/ui/dojo/dojo.js"></script>
+
+
+
+<div class="pageControls">
+    <input type="button" id="openButton" value="Launch Import Tool" onclick="launchImportTool();" style="margin-left:5px;"/>
+    <input type="button" id="closeButton" value="Close Import Tool" onclick="closeVariable();" style="margin-left:5px;"/>
+    <input type="file" id="chooseFile" value="File Picker"/>
+    <input type="text" id="warningFile" class="hide"/>
+</div>
+
+
+
+<script type="text/javascript">
+
+    var peerImportTool = null;
+    var spreadsheetWidget = null;
+    var fileName = null;
+    var fileChooser = document.getElementById("chooseFile");
+    // Only one file will be chosen for now.
+    fileChooser.addEventListener("change", function(event) {
+        require([
+            "dojo/dom-class"
+        ], function(domClass) {
+            if (event.target.files && event.target.files.length > 0) {
+                fileName = event.target.files[0].name;
+                var warningText = document.getElementById("warningFile");
+                domClass.remove(warningText, "show");
+                domClass.add(warningText, "hide");
+            } else {
+                fileName = null;
+            }
+        });
+
+    });
+
+    var closeVariable = function () {
+
+        if (spreadsheetWidget) {
+            peerImportTool.removeDataSource(spreadsheetWidget);
+        }
+        var importToolDocument = document.getElementsByClassName("fileContainer");
+        document.body.removeChild(importToolDocument[0]);
+    }
+
+    var launchImportTool = function () {
+        require([
+            "importtool_peer/PeerImportTool",
+            "mw-messageservice/MessageService",
+            "importtool_client/SpreadsheetTableViewModel",
+            "importtool_peer/RemoteImportToolManager",
+            'importtool_peer/ViewManifest',
+            "dojo/dom-construct",
+            "dojo/dom-class",
+            "dojo/on"
+        ], function(PeerImportTool, MessageService, SpreadsheetTableViewModel, ImportToolPeerManager, ViewManifest, domConstruct, domClass, on) {
+
+            /*1. Create Manager Factory*/
+            var messageService = MessageService.messageService;
+            messageService.start();
+            if (fileName) {
+                // 2. Import File
+                if (!peerImportTool) {
+                    peerImportTool = new PeerImportTool("/ImportToolManager");
+                    // Start up the server
+                    peerImportTool.start(true);
+                }
+
+                spreadsheetWidget = peerImportTool.createDataSource({
+                    messageService : messageService,
+                    ignoreUpdates: false,
+                    editable: true,
+                    cssSpecifier: 'ImportToolDiv',
+                    fileName: fileName,
+                    fileType: "spreadsheet"
+                });
+
+
+                 // 3. Create wrapper document
+                var fileContainer = domConstruct.toDom("<div class='fileContainer'></div>");
+                document.body.appendChild(fileContainer);
+
+                // 4. On sheetAded, add listeners to viewAdded
+                fileContainer.appendChild(spreadsheetWidget.domNode);
+
+                on.emit(spreadsheetWidget.domNode, "startup", {
+                    bubbles: false,
+                    cancelable: true
+                });
+
+
+            } else {
+                 var warningText = document.getElementById("warningFile");
+                domClass.add(warningText, "show");
+                warningText.value = "Please Select a file from MATLAB Root";
+            }
+        });
+    };
+
+</script>
+</body>
+</html>

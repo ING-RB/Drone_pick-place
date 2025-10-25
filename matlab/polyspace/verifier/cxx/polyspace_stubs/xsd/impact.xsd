@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<!-- Copyright 2021 The MathWorks, Inc. -->
+<!-- sub schema for impact specifications -->
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+
+<xs:complexType name="ImpactSourceType">
+    <xs:annotation>
+        <xs:documentation>
+            Source program-element specification for the Impact Analysis.
+
+            ### Examples
+
+            **Select the locations pointed-to by the variable:**
+
+            `&lt;impact-source id="points to source" event="onRead" memory="(Indirect (Variable))" /&gt;`
+
+            **Select the values returned by the function:**
+
+            `&lt;impact-source id="return is source" event="onCall" memory="(Return (Function))" /&gt;`
+
+            **Select the second argument of the function as a source in the body:**
+
+            `&lt;impact-source id="second arg is source" event="onCall" memory="(Argument (Function) 1)" /&gt;`
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:attribute name="id" type="xs:string" >
+        <xs:annotation>
+            <xs:documentation>Custom identifier or description that may appear in results to refer to this rule.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="event" use="required">
+        <xs:annotation>
+            <xs:documentation>
+                Describe events in the source code where the init/observable should be matched.
+
+                - `onRead`: whenever the associated memory area (see attribute `memory`) is read
+
+                - `onWrite`: whenever the associated memory area (see attribute `memory`) is written
+
+                - `onReadOrWrite`: whenever the associated memory area (see attribute `memory`) is either read or written
+
+                - 'onCallEntry' : whenever the associated function is being called
+
+                - 'onCallReturn' : whenever the call to the function returns
+
+                - 'onStart' : whenever a function starts
+
+                - 'onReturn' : whenever a function returns
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="onRead"/>
+                <xs:enumeration value="onWrite"/>
+                <xs:enumeration value="onReadOrWrite"/>
+                <xs:enumeration value="onCallEntry"/>
+                <xs:enumeration value="onCallReturn"/>
+                <xs:enumeration value="onStart"/>
+                <xs:enumeration value="onReturn"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name="memory" type="ProgramElementDSLExpr">
+        <xs:annotation>
+            <xs:documentation>
+                A Program-Element DSL expression to express the memory area of interest.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+</xs:complexType>
+
+<xs:complexType name="ImpactSinkType">
+    <xs:annotation>
+        <xs:documentation>
+            Observable (i.e. sink) specification for the Impact Analysis.
+
+            ### Examples
+
+            **Select the whole variable, report on both usage and assignment:**
+
+            `&lt;impact-sink id="is a sink" event="onReadAndWrite" memory="(Variable)" dependency="data" /&gt;`
+
+            **Select `16` bits ranging from offset `64` of the variable:**
+
+            `&lt;impact-sink id="is a sink" event="onWrite" memory="(Range (Variable) (Constant 64) (Constant 16))" dependency="data" /&gt;`
+
+            **Select the first parameter of the function as a sink at every call-site:**
+
+            `&lt;impact-sink id="first param is a sink" event="onCall" memory="(Parameter (Function) 0)" dependency="data" /&gt;`
+        </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+        <xs:extension base="ImpactSourceType">
+            <xs:attribute name="dependency" default="dataOrControl">
+                <xs:annotation>
+                    <xs:documentation>
+                        Describes whether we want to check for data and/or control dependencies.
+
+                        - `data`: check whether the data stored in the described memory area (see `memory`) is impacted
+
+                        - `control`: check whether the fact that the event (described by `event`) occurs or not is impacted
+
+                        - `dataOrControl`: any of the above
+                    </xs:documentation>
+                </xs:annotation>
+
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="data"/>
+                        <xs:enumeration value="control"/>
+                        <xs:enumeration value="dataOrControl"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:extension>
+    </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ImpactFlowType">
+    <xs:annotation>
+        <xs:documentation>
+            Flow specification to model a function for the Impact Analysis.
+
+            ### Examples
+
+            **If the first parameter of a function is somehow impacted, then make all bits of the returned value impacted:**
+
+                &lt;impact-flow id="impact from first arg to return"
+                    from-memory="(Parameter (Function) 0)"
+                    from-memory="(Return (Function))"
+                    kind="full"
+                /&gt;
+
+            **If the first bit of the first parameter of a function is somehow impacted, then make the three first bits of the returned value impacted:**
+
+                &lt;impact-flow id="impact from first arg [0] to return [0..2]"
+                    from-memory="(Range (Parameter (Function) 0) (Constant 0) (Constant 1) )"
+                    from-memory="(Range (Return (Function)) (Constant 0) (Constant 3))"
+                    kind="full"
+                /&gt;
+
+            **Bitwise-copy the impact of the value pointed-to by the second argument to the value pointed-to by the first argument:**
+
+                &lt;impact-flow id="impact from *src to *dst"
+                    from-memory="(Indirect (Parameter (Function) 1) )"
+                    from-memory="(Indirect (Parameter (Function) 0) )"
+                    kind="bitwise"
+                /&gt;
+
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:attribute name="id" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Custom identifier or description that may appear in results to refer to this rule.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="from-memory" type="ProgramElementDSLExpr">
+        <xs:annotation>
+            <xs:documentation>A Program-Element DSL expression that refine the entry point of the impact flow.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="to-memory" type="ProgramElementDSLExpr">
+        <xs:annotation>
+            <xs:documentation>A Program-Element DSL expression that refine the exit point of the impact flow.</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="kind" default="full">
+        <xs:annotation>
+            <xs:documentation>Select the impact flow semantics. Default </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="bitwise"/>
+                <xs:enumeration value="full"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="ExpectImpactType">
+    <xs:attribute name="source" type="xs:string" use="required">
+        <xs:annotation>
+            <xs:documentation>
+                A custom identifier a source as a reference to this `expect-no-impact` element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="sink" type="xs:string" use="required">
+        <xs:annotation>
+            <xs:documentation>
+                A custom identifier a sink as a reference to this `expect-no-impact` element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+</xs:complexType>
+
+<xs:simpleType name="ProgramElementDSLExpr">
+    <xs:annotation>
+        <xs:documentation>
+            # Program-Element DSL
+
+            An expression of the Program-Element domain-specific language.
+
+            Given a program variable or a program function, this DSL refine the exact memory location that
+            must be considered (either for an impact source or a sink).
+
+            ## Grammar
+
+            ### Program elements
+
+                program-element ::= "(" "Variable" ")"
+                                  | "(" "Argument" "Function" unsigned ")"
+                                  | "(" "Return" "Function" ")"
+                                  | "(" "Parameter" "Function" unsigned ")"
+                                  | "(" "Function" ")"
+                                  .
+
+            The `(Variable)` expression selects the whole memory footprint of the program variable, that is
+            the `(8 * sizeof(variable))` bits of the variable starting from bit at offset `0`.
+
+            The `(Argument i)` expression selects the the variable that is bound to the i-th parameter within a function's body.
+
+            The `(Parameter i)` expression selects the the i-th parameter of a function at every call-site where that function is a callee.
+
+            ### Locations
+
+                locations ::= program-element
+                            | "(" "Indirect" locations ")"
+                            | "(" "Range" locations offset size ")"
+                            .
+
+            The `(Indirect locs)` expression selects all the locations that `locs` may be pointing at.
+
+            The `(Range locs o s)` exprssion restricts the locations selected by `locs` to the `s` bits starting from offset `o` in `locs`.
+
+            ## Offsets
+
+                offset ::= "(" "Constant" unsigned ")" .
+
+            The `(Constant c)` expression evaluates to a constant offset of `c` bits.
+
+            ## Sizes
+
+                size ::= "(" "Constant" unsigned ")"
+                       | "(" "Mult" size size ")"
+                       | "(" "SizeOfArg" unsigned ")"
+                       | "(" "ValueOfArg" unsigned ")"
+                       | "(" "Top" ")"
+                       .
+
+            The `(Constant s)` expression evaluates to a constant size of `s` bits.
+
+            The `(Mult l r)` expression evaluates to the size `l` multiplied by size `r`, in bits.
+
+            The `(SizeOfArg i)` expression evaluates to the size of the function's i-th parameter, in bits.
+            The size of the i-th parameter is equivalent to C/C++ `sizeof(Ti)` where `Ti` is the type of the parameter.
+
+            The `(ValueOfArg i)` expression represents the statically-computed value of the `i-th` argument at a call-site where the function is the callee.
+            The exact value may be call-site context-sensitive. It may also be over-approximated to `Top` when the exact value cannot be infered.
+
+            The `(Top)` expression represents the worst over-approximation of an unknown size, "all possible sizes".
+
+        </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+</xs:simpleType>
+
+</xs:schema>
+

@@ -1,0 +1,133 @@
+{
+    "name": "appDesigner",
+    "description": "Metadata for user authored components",
+    "type": "object",
+
+    "properties": {
+        "schema":{
+            "type": "string",
+            "description": "version of schema for appDesigner.json",
+            "default": 3.0
+        },
+        "matlabVersion": {
+            "type": "string",
+            "description": "version of MATLAB that last updated appDesigner.json",
+            "default": "R2021a"
+        },
+        "licenseName": {
+            "type": "string",
+            "description": "license name for internal toolbox components",
+            "default": ""
+        },
+        "components": {
+            "description": "List of registered user authored component",
+            "type": "array",
+            "items": {
+                "type":"object",
+                "properties": {
+                    "componentName": {
+                        "type": "string",
+                        "description": "Name of the UAC",
+                        "default": "Custom Component"
+                    },
+                    "version": {
+                        "type": "number",
+                        "description": "Version of UAC in Major.Minor format",
+                        "default": 1.0
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of what UAC does",
+                        "default": "This is a custom component created by MATLAB user"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category of UAC in Component Library",
+                        "default": "My Category"
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "Base64 encoded icon image",
+                        "default": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsSAAALEgHS3X78AAABGUlEQVRIiWNsaGj4z0ACqK+vZwSp7ujouPPz509lbDrZ2dnvVlRUqIDYLAwQTUTZsHz5cjgbZDgufY2NjXCLWWAMR0cnnAbv378Pq/i3b98IOgpuAS5DcAFQMHR3d+MMIpJ8gM0BsDCmmQ9IimQGMuKA5Egm1QcMpEYyqXFALBgcqQib5TRPRcQCiuKA1bUVazn2e3c1I9V80NWRicIvq5iOwmdRU1NDKcSoDVgiIyMZaWY6AwMDEy0NBwHG9vZ2nGUKCCCXKyCgWMaJNWIrV//Bqp8FX5kCAsjlCgy0Fbeh8Kt6q8B0SOsUFPE11TmQVERMmUIuoHkc0NwCFnyFFgggF1wwAAtzdAAKc3TA+P8/Sa0W0gADAwMAacOCsonAW8UAAAAASUVORK5CYII="
+                    },
+                    "authorName": {
+                        "type":"string",
+                        "description": "Name of the UAC author",
+                        "default": ""
+                    },
+                    "authorEmail": {
+                        "type":"string",
+                        "description": "Contact information of UAC author",
+                        "default": ""
+                    },
+                    "className": {
+                        "type":"string",
+                        "description": "Full classname of the UAC",
+                        "default": ""
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "description": "Base64 encoded icon image",
+                        "default": ""
+                    },
+                    "avatarDark": {
+                        "type": "string",
+                        "description": "Base64 encoded icon image",
+                        "default": ""
+                    },
+                    "defaultPosition": {
+                        "type":"array",
+                        "items":{
+                            "type":"number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "default": "[100 100 100 100]"
+                    },
+                    "propertyValues": {
+                        "description": "Default values and children data for enabling the client side loading of User component",
+                        "type":"object",
+                        "items":{
+                            "type":"object",
+                            "properties": {
+                                "IsClientDriven": {
+                                    "type": "boolean",
+                                    "description": "Determines if the user component widget can be created at client"
+                                },
+                                "InternalComponentsDefault": {
+                                    "type": "array",
+                                    "description": "Default values of the user component children",
+                                    "items":{
+                                        "type":"object",
+                                        "properties": {
+                                            "Type": {
+                                                "type": "string",
+                                                "description": "Component Type"
+                                            },
+                                            "PropertyValues": {
+                                                "type": "object",
+                                                "description": "Default property values of the component"
+                                            },
+                                            "InplaceEditorData": {
+                                                "type": "object",
+                                                "description": "Enables in-place editing for the component in design environment"
+                                            },
+                                            "Children": {
+                                                "type": "array",
+                                                "description": "Child components"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "additionalProperties": true,
+                "required":["componentName", "version", "description", "category", "icon", "authorName", "authorEmail", "className", "avatar", "avatarDark", "defaultPosition"]
+            }
+        }
+    },
+
+    "required": ["components", "schema", "MATLABRelease"]  
+}

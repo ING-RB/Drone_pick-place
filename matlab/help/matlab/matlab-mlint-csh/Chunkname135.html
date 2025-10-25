@@ -1,0 +1,12 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>When you use <code>isa</code>, MATLAB returns <code>true</code>
+                    if the class name of the first input argument is either the specified class, or
+                    a subclass of the specified class. When you use <code><a href="matlab:doc strcmp" target="_blank">strcmp</a></code>, MATLAB returns
+                        <code>true</code> only if the input arguments match, and therefore
+                    subclasses are not considered a match.</p><br/><strong>Suggested Action</strong><br/><p>If you want a comparison to return <code>true</code> only if the input
+                    arguments match, leave your code as is. </p><p>If you want a comparison to return <code>true</code> if the class of the
+                    first input argument matches, or is a subclass of the specified class, use
+                            <code><a href="matlab:doc isa" target="_blank">isa</a></code>.</p><p>For example, change code such as this,</p><p>
+                    <code>strcmp(class(x),'className');</code>
+                </p><p>to this:</p><p>
+                    <code>isa(x,'className');</code>
+                </p></body></html>

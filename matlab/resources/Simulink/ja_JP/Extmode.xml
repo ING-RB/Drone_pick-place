@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ErrorWritingWSData">変数 ''{0}'' をワークスペースに書き込み中にエラー: {1}</entry>
+    <entry key="SkippingFiObjectUpload">ターゲット アプリケーションからの固定小数点オブジェクトのアップロードはサポートされていません。変数 ''{0}'' に対するデータのアップロードをスキップしています。</entry>
+    <entry key="SkippingNonBaseVariableUpload">Simulink がターゲット アプリケーションからアップロードできるのは、ベース ワークスペース内にある変数のみです。変数 ''{0}'' に対するデータのアップロードをスキップしています。</entry>
+    <entry key="SkippingVariantObjectUpload">ターゲット アプリケーションからの Simulink.VariantVariable オブジェクトおよび Simulink.VariantControl オブジェクトのアップロードはサポートされていません。変数 ''{0}'' に対するデータのアップロードをスキップしています。</entry>
+    <entry key="ReturnWorkspaceOutputsNotSupportedInExtmode">エクスターナル モードのシミュレーション出力を単一のオブジェクトとして保存することはサポートされていません。これは、ワークスペース変数 ''{0}'' が、モデルのコード実行中に作成されないためです。この警告を非表示にするには、''ReturnWorkspaceOutputs'' を ''off'' にしてください。</entry>
+    <entry key="CannotStartIfTargetNotConnected">ターゲットとホストの接続が失われたため、Simulink はエクスターナル モードで動作しているモデル ''{0}'' に開始パケットを送信できません。</entry>
+    <entry key="OneClickExternalModeNotSupported">
+エクスターナル モードのシミュレーションは ''{0}'' ハードウェアにサポートされていません。
+ただし、このハードウェアにモデルを展開することは可能です。
+モデル ウィンドウで [ハードウェアに展開] ボタンをクリックします。
+</entry>
+    <entry key="OneClickPrepareModel">''{0}'' で実行するためにモデルを準備しています...</entry>
+    <entry key="OneClickDownloadToHardware">''{0}'' にモデルをダウンロード中...</entry>
+    <entry key="OneClickConnectingToHardware">''{0}'' に接続中...</entry>
+    <entry key="OneClickRunningOnHardware">''{0}'' でモデルを実行中...</entry>
+    <entry key="OneClickFailedToRunOnHardware">ハードウェアでのモデルの実行に失敗しました。</entry>
+    <entry key="OneClickConnectFailed">''{1}'' の ''{0}'' ターゲットに接続できません。</entry>
+    <entry key="OneClickModelIsConfiguredNotificationMsg">モデルは ''{0}'' ハードウェアで実行できるように準備されています。</entry>
+    <entry key="OneClickDisconnectNotificationMsg">Simulink を停止せずにターゲットから切断するには、&lt;a href="matlab:Simulink.ExtMode.CtrlPanel.createExtModeCtrlPanelForModel(''{0}'');"&gt;[コード]、[エクスターナル モード コントロール パネル]&lt;/a&gt; を開き、[切断] をクリックします。</entry>
+    <entry key="OneClickGenCodeOnly">モデル "{0}" はコードのみを生成するように構成されています。モデルがコードのみを生成するように構成されている場合、エクスターナル モードのシミュレーションは許可されません。 &lt;actions&gt; &lt;action type="fixit" id="disableGenCodeOnly"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenCodeOnly'', ''off'')&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="configset" objparam="GenCodeOnly"&gt;[コード生成のみ]&lt;/sldiag&gt; を無効にする。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="OneClickModelConfiguringModelMsg">ターゲット ハードウェアで実行するために ''{0}'' を準備しています...</entry>
+    <entry key="OneClickModelConfiguringModelTitle">モデル設定</entry>
+    <entry key="OneClickExtModeIsNotHonouredForDeploy">''{0}'' の ''ExtMode'' パラメーターは、ビルド プロセスによって無視されます。エクスターナル モードのシミュレーションを実行するには、Simulink エディターのツール バーでシミュレーション モードを [エクスターナル] に設定して、[実行] ボタンをクリックします。この警告を非表示にするには、set_param(''{1}'', ''ExtMode'', ''off'') を実行してください。 </entry>
+    <entry key="ExtModeTransportNotAvailable">ExtModeTransport {0} はこのシステム ターゲット ファイルには使用できません。
+</entry>
+    <entry key="ExtModeRowMajor">Model ''{0}'' is configured for external mode and row-major code generation, which is not supported.
+        
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;configset.internal.fixIt(''{0}'',''ExtMode'',''off'')&lt;/cmd&gt;
+                    &lt;txt&gt;Disable &lt;sldiag objui="configset" objparam="ExtMode"&gt;external mode&lt;/sldiag&gt;.&lt;/txt&gt;
+                &lt;/action&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;set_param(''{0}'', ''ArrayLayout'',''Column-major'')&lt;/cmd&gt;
+                    &lt;txt&gt;Disable row-major ordering in code generation.&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+         
+    </entry>
+    <entry key="ExtModeInconsistentTransportSettings">The current ''{0}'' value, ''{1}'', does not match ''{2}'', which is the value expected by the current external mode transport layer, ''{3}''. This transport layer is specified by the 'ExtModeTransport' value, ''{4}''. This error can occur when you change the way you register external mode transport layers in Simulink.
+    
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit" retvalue="false" id="ResetTransport"&gt;
+                &lt;cmd&gt;Simulink.ExtMode.Transports.resetExtModeTransportForModel(''{5}'')&lt;/cmd&gt;
+                &lt;txt&gt;Reset external mode transport.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="TooManyTargetConnectivityConfig"> "{0}" が複数の接続構成に適合しています。これらのモデル コンフィギュレーション パラメーターの互換性が、登録済みの接続構成に対してチェックされました (''SystemTargetFile''、''TemplateMakefile'' または ''Toolchain''、''TargetHWDeviceType''、''HardwareBoard'')。複数の一致が見つかりました。モデルが必ず 1 つの接続構成にのみ一致するようにするには、競合している接続構成を更新してください。 </entry>
+    <entry key="NoTargetConnectivityConfigLauncher">"{0}" の起動ツールを取得できません。このモデルのコンフィギュレーション パラメーターは、登録された接続構成をどれもサポートしません。モデル コンフィギュレーション パラメーターを更新するか、サポートされている接続構成を作成してください。詳細については、「&lt;a href="matlab:helpview(fullfile(docroot,'toolbox','ecoder','helptargets.map'),'create_connect_config_for_target')"&gt;Create a Connectivity Configuration for a Target&lt;/a&gt;」を参照してください。</entry>
+    <entry key="TargetApplicationNotRunning">ターゲット アプリケーションはターゲット上で実行されていません。ターゲット アプリケーションを展開します。</entry>
+    <entry key="ExtModeLogAllOverriddenForXCP">モデル {0} の ''ExtModeLogAll'' パラメーターの ''off'' 値は無視されます。XCP ベースのエクスターナル モード シミュレーションは、ターゲット アプリケーションからアップロードする個別のブロック信号の選択をサポートしていません。&lt;actions exclusiveFixIts="yes"&gt;&lt;action type="fixit"&gt;&lt;cmd&gt;set_param(''{0}'', ''ExtModeLogAll'',''on'')&lt;/cmd&gt;&lt;txt&gt;"{0}" 内のブロックがエクスターナル モードをサポートする場合は、ターゲット アプリケーションからすべての信号をアップロードする。&lt;/txt&gt;&lt;/action&gt;&lt;/actions&gt;
+ 
+</entry>
+    <entry key="LauncherNeedsToProvideGetApplicationStatusMethod">Simulink は、エクスターナル モードのターゲット アプリケーションが実行されているかどうかを判定できません。カスタムのターゲット アプリケーション起動ツール "{0}" が ''getApplicationStatus'' メソッドを実装しないか、または実装が ''UNKNOWN'' を返します。接続を試みる前に、アプリケーションがターゲットに展開されていることを確認してください。</entry>
+    <entry key="LauncherFailedToDetectApplicationStart">{0} 秒経過後、Simulink は、エクスターナル モードのターゲット アプリケーションが実行されているかどうかを判定できません。アプリケーションが起動しなかったか、ターゲット アプリケーション起動ツールの "{1}.getApplicationStatus()" が {0} 秒以内に RUNNING を返しませんでした。ターゲット アプリケーションがターゲット ハードウェアに展開されていることを確認してください。</entry>
+    <entry key="LauncherGetApplicationStatusMethodTooSlow">"{0}" アプリケーション実行マネージャーによって定義されている "getApplicationStatus" メソッドの実行にかかる時間が {1} 秒を超えました。これは、"{0}" が使用中の場合の MATLAB の応答性に影響を与えることがあります。</entry>
+    <entry key="DefaultHostBasedTargetRunsOnHostPC">既定のホストベースのターゲット アプリケーションは Simulink と同じコンピューター上で実行されます。この警告を表示しないようにするには、[MEX ファイルの引数] フィールド (''ExtModeMexArgs'') でターゲット プロセッサのネットワーク名を ''localhost'' または ''127.0.0.1'' に設定します。あるいは、接続構成を登録することで、カスタムの起動ツールを提供します。</entry>
+    <entry key="DefaultHostBasedTargetCannotUsePortZeroWithConfigSetRef">''ExtModeMexArgs'' に無効な端子番号が指定されました。モデルがコンフィギュレーション セットの参照 (Simulink.ConfigSetRef) を使用している場合、既定のホストベースのターゲット アプリケーションは端子 0 を使用できません。256 ～ 65535 の端子番号を選択してください。</entry>
+    <entry key="DefaultHostBasedTargetMustUseLocalHostWithConfigSetRef">''ExtModeMexArgs'' で指定されたターゲット プロセッサのネットワーク名が無効です。モデルは、Simulink コンピューター上でホストベースのターゲット アプリケーションを実行するように構成されています。モデルでコンフィギュレーション セット参照 (Simulink.ConfigSetRef) を使用する場合、ネットワーク名を ''localhost'' または ''127.0.0.1'' に設定してください。</entry>
+    <entry key="MaxStopTimeExceededForPurelyIntegerCode">''PurelyIntegerCode'' が ''on'' のとき、''StopTime'' は {0} を超えてはなりません。''StopTime'' により小さい値を指定するか、''inf'' に設定してください。</entry>
+    <entry key="ParameterWithoutTargetMapFileHit">パラメーター {0} はエクスターナル モードでは処理されません。生成されたコードでパラメーターをアドレス指定不可能にする bitfield、define、GetSet などのストレージ クラスがパラメーターに含まれている可能性があります。</entry>
+    <entry key="XCPExtModeUnspecifiedEndianess">Byte ordering is unspecified for model "{0}".  XCP-based external mode simulations require byte ordering to be specified.  Set the 'Byte ordering' configuration parameter to ''Little Endian' or ''Big Endian''.</entry>
+    <entry key="XCPExtModeHostMustBeLittleEndian">モデル "{0}" のバイト順は [ビッグ エンディアン] ですが、選択されているツールチェーンは MATLAB 開発コンピューターをターゲットとしています。組み込みハードウェア用のツールチェーンを選択するか、コンフィギュレーション パラメーター [バイト順] を [リトル エンディアン] に設定するか、コンフィギュレーション パラメーター [移植可能なワード サイズを有効にする] をオンにしてください。</entry>
+    <entry key="StartedExecutable">ターゲット アプリケーションを起動しました: {0}</entry>
+    <entry key="StoppedExecutable">ターゲット アプリケーションを停止しました</entry>
+    <entry key="InvalidTFCommunicationInterface">ハードウェア ボード "{1}" に関連付けられているエクスターナル モード トランスポート "{0}" には、"Channel" プロパティが "{2}" に設定された単一の target.CommunicationInterface オブジェクトが必要です。"{3}" target.Board の定義を更新してください。</entry>
+    <entry key="ExtModeTransportOutOfRange">'ExtModeTransport' の値 "{0}" が、現在登録されているエクスターナル モードのトランスポート層のいずれとも一致しません。このエラーは、システム ターゲット ファイルに対して Simulink で登録されているエクスターナル モードのトランスポート層またはハードウェア ボードを変更したときに発生する可能性があります。最新の設定を表示するには、[コンフィギュレーション パラメーター] ダイアログ ボックスの [トランスポート層] または [ハードウェア ボード] で、必要な値を再度選択します。</entry>
+    <entry key="XCPExtModeUnsupportedNativeWordAddressable">For model "{0}", the specified number of bits for type char is {1} and the native word size is {2}.  When the native word size is greater than 32 bits, XCP-based external mode simulations do not support targets that are not byte addressable.  On the Configuration Parameters &gt; Hardware implementation pane, set the number of bits per char to 8 or set the native word size to 8, 16, or 32.</entry>
+    <entry key="LauncherCannotDetermineExecutableExtension">Unable to start the target application, {0}, because the toolchain information is missing. To learn how to configure a toolchain, see &lt;a href="matlab:helpview('rtw','toolchain_approach')"&gt;Configure Toolchain (ToolchainInfo) or Template Makefile Build Process.&lt;/a&gt;</entry>
+    <entry key="OneClickNotSupportedWithoutToolchain">ツールチェーン情報がない場合、ワンクリック エクスターナル モードはサポートされません。ツールチェーンの設定方法については、&lt;a href="matlab:helpview('rtw','toolchain_approach')"&gt;ツールチェーン (ToolchainInfo) またはテンプレート makefile のビルド プロセスの設定&lt;/a&gt;を参照してください。</entry>
+    <entry key="ExtModeUploadBlockUnsupportedModelRefSignal">Simulink は、パスが ''{0}''' で端子インデックスが ''{2}'' 内の {1, number, integer} である信号を ''{3}'' にアップロードできません。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="EnableLoggingForChild" retvalue="false"&gt; &lt;cmd&gt;if ~bdIsLoaded(''{4}''),load_system(''{4}''),end;set(get_param(''{0}'', ''LineHandles'').Outport({1, number, integer}), 'DataLogging', true)&lt;/cmd&gt; &lt;txt&gt;パス ''{0}''、端子インデックス {1, number, integer} の信号のログを有効にする。&lt;/txt&gt; &lt;/action&gt; &lt;action type = "suggestion" id="ViewInSDI" btn="open" retvalue="false"&gt; &lt;cmd&gt;Simulink.sdi.view&lt;/cmd&gt; &lt;txt&gt;ログに記録された信号データをシミュレーション データ インスペクターで表示する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="TFLauncherStdoutOnStart">### 実行ツール起動コマンドからの標準出力 (stdout) メッセージ:</entry>
+    <entry key="TFLauncherStderrOnStart">### 実行ツール起動コマンドからの標準エラー (stderr) メッセージ:</entry>
+    <entry key="TFLauncherStdoutOnStop">### 実行ツール停止コマンドからの標準出力 (stdout) メッセージ:</entry>
+    <entry key="TFLauncherStderrOnStop">### 実行ツール停止コマンドからの標準エラー (stderr) メッセージ:</entry>
+  </message>
+</rsccat>

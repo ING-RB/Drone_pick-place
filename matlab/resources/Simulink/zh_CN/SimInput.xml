@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="FromwksNoExtrapWithoutInterp">模块 ''{0}'' 的配置无效。无法在最终工作区数据值后外插输出值，因为未启用插值。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="FromwksNoExtrapWithoutInterpFix"&gt; &lt;cmd&gt;set_param_action(''{0}'', 'Interpolate', 'on');&lt;/cmd&gt; &lt;txt&gt;启用插值。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="FromwksUnsupportedDimensions">无法在指定为模块 ''{0}'' 的输入数据的结构体 ''{1}'' 中加载数据。结构体 ''{1}'' 的 signals.values 字段中每个采样的维数({2})必须与 signals.dimensions 字段中指定的维数(''{3}'')匹配。</entry>
+    <entry key="FromwksDifferentNumRows">''{1}'' 中，指定为 {0} 输入的结构体格式变量无效。时间和数据值必须具有相同的行数。</entry>
+    <entry key="FromwksDifferentNumRows2">''{1}'' 中，指定为 {0} 输入的结构体格式变量无效。valueDimensions 字段中的值和数据值必须具有相同的行数。</entry>
+    <entry key="FromwksDifferentNumTSteps">''{1}'' 中，指定为 {0} 输入的结构体格式变量无效。每个 ''signals.values'' 字段的最后一个维度必须与 ''time'' 字段中的行数相同。</entry>
+    <entry key="BlockNotSupportedWithDictionary">此模型不能包含 {0} 模块 ''{1}''，因为该模型链接到数据字典。对于测试框架模型，将其配置为使用基础工作区而不是数据字典。否则，请用根输入端口或其他源模块替换此模块。</entry>
+    <entry key="FromwksDifferentNumTSteps2">Invalid structure-format variable specified as {0} input in ''{1}''. The last dimension of each ''signals.values'' field must be the same as the number of rows in the ''valueDimensions'' field.</entry>
+    <entry key="FromwksVarDimsNumDimsMismatch">Invalid structure-format variable specified as {0} input in ''{1}''. The number of columns of values in the ''valueDimensions'' field does not match the number of dimensions specified by signal data.</entry>
+    <entry key="FromwksInvTimeValues">在 ''{2}'' 中指定为 {1} 输入的工作区变量 ''{0}'' 无效。时间值必须为实数向量。</entry>
+    <entry key="FromwksInvMatrixParam">在 ''{1}'' 中指定为 {0} 输入的矩阵变量无效。矩阵数据必须具有两个维度并至少两列的数据，其数据必须为双精度实数。第一列必须包含时间值，其余列包含数据值。矩阵值不能为 Inf 或 NaN。</entry>
+    <entry key="FromwksNonMontonicTime_ss">在 ''{1}'' 中指定为 {0} 输入的工作区变量无效。时间值必须是非递减的。</entry>
+    <entry key="FromwksCyclicOnlyWithNoTime">当为数据显式指定时间向量时，无法在 ''{0}'' 中指定循环重复。仅当数据采用具有空时间向量的结构体形式时，才支持循环选项。</entry>
+    <entry key="FromwksUnsupportedDataType">''{1}'' 中，指定为 {0} 输入的结构体格式变量无效。仅支持数值、逻辑和枚举值。数据必须为有限值(不能是 Inf 或 NaN)。 </entry>
+    <entry key="FromwksInfValueInParam">''{1}'' 中指定为 {0} 输入的变量中的数据值无效。数据值既不能为 Inf 也不能为 NaN。此外，应使用既不为空也不稀疏的矩阵来指定值。</entry>
+    <entry key="FromwksDiscCannotInterp">''{1}'' 中参数 ''{0}'' 的设置无效。当未在 ''{2}'' 参数中指定时间字段时，必须关闭插值，且不能选择外插选项来形成最终数据值后的输出。</entry>
+    <entry key="FromwksVarDimsCannotInterpWithTime">''{1}'' 中参数 ''{0}'' 的设置无效。当工作区包含可变大小信号时，请取消选中 "数据插值" 复选框，并且只能将参数 "最终数据值之后的输出" 设置为 "保持最终值"。</entry>
+    <entry key="FromwksVarDimsCannotInterpWithoutTime">''{1}'' 中参数 ''{0}'' 的设置无效。当工作区包含可变大小信号时，请取消选中 "数据插值" 复选框，并且只能将参数 "最终数据值之后的输出" 设置为 "保持最终值" 或 "循环重复"。</entry>
+    <entry key="FromwksVarDimsCannotZeroCrossing">''{1}'' 中参数 ''{0}'' 的设置无效。当工作区包含可变大小信号时，请取消选中 "启用过零检测" 复选框。</entry>
+    <entry key="FromwksVarDimsFinalValWithTime">''{1}'' 中参数 ''{0}'' 的设置无效。当工作区包含可变大小信号时，只能将参数 "最终数据值之后的输出" 设置为 "保持最终值"。</entry>
+    <entry key="FromwksVarDimsFinalValWithoutTime">Invalid setting for parameter ''{0}'' in ''{1}''. When the workspace contains a variable-size signal, the "Form output after final data value by" parameter can only be set to "Hold final value" or "Cyclic repetition".</entry>
+    <entry key="FromwksCannotInterpFiOrEnum">''{1}'' 中参数 ''{0}'' 的设置无效。无法对变量 ''{2}'' 进行插值。当 ''{3}'' 参数引用一个包含定点、枚举或字符串数据的工作区变量时，必须关闭插值，且不能选择外插选项来形成最终数据值后的输出。</entry>
+    <entry key="FromWksCannotInterpFiEnumString">变量 ''{0}'' 包含字符串、枚举或定点数据。要加载数据，请禁用插值并指定一个非外插选项来形成最终数据值之后的输出。</entry>
+    <entry key="FromwksNonScalarStructure">Invalid structure-format variable specified as {0} input in ''{1}''. The input structure must be scalar.</entry>
+    <entry key="FromwksUndefinedDataField">''{1}'' 中，指定为 {0} 输入的结构体格式变量无效。如果输入信号是总线信号，变量必须为 MATLAB 时间序列对象的结构体。否则，变量必须包括 ''时间'' 和 ''信号'' 字段，并且 ''信号'' 字段必须为具有 ''值'' 字段的结构体。</entry>
+    <entry key="FromwksMultipleSignals">Invalid structure-format variable specified as {0} input in ''{1}''. The ''signals'' structure has {2,number,integer} elements instead of {3,number,integer} elements.</entry>
+    <entry key="FromwksTsArrayNotSupported">Invalid TsArray object specified as input to ''{0}''. The From Workspace block does not support TsArray objects.</entry>
+    <entry key="FromwksTimeseriesStructNotSupported">指定为 ''{0}'' 的输入的结构体无效。From Workspace 模块不支持由时间序列对象组成的结构体。</entry>
+    <entry key="FromwksNotSupportedFormat">From Workspace 模块 ''{0}'' 的输入格式不受支持。输入数据必须使用支持的格式，如时间序列或时间表，并且不能包含 Inf 或 NaN 值。</entry>
+    <entry key="FromwksOnlyDiscSampleTime">为 ''{0}'' 指定的连续采样时间无效。当来自工作区的输入是不带时间数据的结构体时，不允许连续采样时间。要消除此错误，请选择离散采样时间或更改输入数据以包含时间数据。</entry>
+    <entry key="FromWksDataTypeMismatch">From Workspace 模块 ''{0}'' 的数据类型不一致。工作区变量的数据类型为 ''{1}''。此数据类型与为此模块设置的数据类型 ''{2}'' 不一致。请将输入数据的数据类型更改为 ''{3}''，或将此模块的 "输出数据类型" 更改为 ''继承: 自动''。</entry>
+    <entry key="FromWksFastRestartDimensionsMismatch">The dimensions of data for block ''{0}'' specified for this Fast Restart run are different from the dimensions used in the previous Fast Restart run. To run in Fast Restart mode again, use data with dimensions that match those of the From Workspace output signal. Otherwise, exit Fast Restart mode and start a new simulation.</entry>
+    <entry key="FromWksFastRestartComplexityMismatch">The complexity of data for block ''{0}'' specified for this Fast Restart run is different from the complexity used in the previous Fast Restart run. To run in Fast Restart mode again, use data with the same complexity as the From Workspace output signal. Otherwise, exit Fast Restart mode and start a new simulation.</entry>
+    <entry key="FromWksBlkDescr">
+从 MATLAB 工作区、模型工作区或封装工作区读取以时间序列、矩阵或结构体格式指定的数据值。\n\nMATLAB 时间序列格式可用于任何数据类型、复/实性或固定维度。要为总线信号加载数据，请使用与总线层次结构匹配的 MATLAB 结构体，并为每个叶信号指定时间序列。\n\n对于矩阵格式，矩阵的每行在第一列中有一个时间戳，在随后的列中有包含对应数据采样的向量。\n\n对于结构体格式，请使用以下类型的结构体:\n var.time=[TimeValues]\n var.signals.values=[DataValues]\n var.signals.dimensions=[DimValues]\n
+    </entry>
+    <entry key="FromWksStringMode">From Workspace block ''{0}'' loads string data. From Workspace blocks can only load string data in normal and accelerator modes.</entry>
+    <entry key="FromWksStringModeMdlRef">From Workspace block ''{0}'' loads string data. From Workspace blocks in referenced models can only load string data when the referenced model is simulated in normal mode.</entry>
+    <entry key="FromWksStrNonScalar">From Workspace block ''{0}'' cannot load non-scalar string data.</entry>
+    <entry key="FromWksStrMissing">From Workspace block ''{0}'' cannot load string data that contains missing values.</entry>
+    <entry key="FromWksStrNonAscii">From Workspace block ''{0}'' cannot load string data that contains non-ASCII characters.</entry>
+    <entry key="FromWksStrLenExceedsMax">From Workspace block ''{0}'' cannot load a string whose length exceeds the maximum string length, ''{1}'', as specified on the port.</entry>
+    <entry key="FromWksNonDoublePortLoadingMatrix">From Workspace 模块 ''{0}'' 配置为加载 ''{1}'' 矩阵。From Workspace 模块仅支持加载双精度矩阵。要加载非双精度数据，请考虑使用结构体或时间序列格式。</entry>
+    <entry key="FromwksEmpty">Data loaded by From Workspace block "{0}" must contain at least one signal value for all supported data formats and must contain at least one time value for all data formats except Structure without time.</entry>
+    <entry key="MdlUTNotSupportedFormat">Input format not supported. Available formats include: (1) a Simulink.SimulationData.Dataset object, (2) a double non-complex matrix, (3) a structure with or without time, (4) a MATLAB timeseries object, (5) a timetable object, (6) a matlab.io.datastore.SimulationDatastore object, (7) a structure with MATLAB timeseries objects, timetable objects, matlab.io.datastore.SimulationDatastore objects (or some mixture of these) at all leaves (for bus input). All formats require the data to be finite (not Inf or NaN).</entry>
+    <entry key="MdlUTNonScalarDataset">A non-scalar Simulink.SimulationData.Dataset object used for external input. When using a Simulink.SimulationData.Dataset object for external input, even though it may contain multiple elements, the object itself must be a scalar.</entry>
+    <entry key="MdlUTNonScalarDatasetRef">A non-scalar Simulink.SimulationData.DatasetRef object used for external input. When using a Simulink.SimulationData.DatasetRef object for external input, even though it may reference a Dataset with multiple elements, the object itself must be a scalar.</entry>
+    <entry key="MdlUTSimulinkAndMatlabTimeseries">Model input cannot combine Simulink.Timeseries or Simulink.TsArray formats with MATLAB timeseries formats (including structure of MATLAB timeseries).</entry>
+    <entry key="TimeseriesUnsupportedDataType">不支持将时间序列对象 ''{0}'' 中的数据指定为模块 ''{2}'' 的 {1} 输入。数据不能包含 Inf 或 NaN 值，并且必须具有内置的数值、逻辑、定点或枚举数据类型。</entry>
+    <entry key="TimeseriesUnsupportedIsTimeFirst">无法加载在 ''{2}'' 中指定为 {1} 输入的时间序列变量 ''{0}''。对于此时间序列，不支持 IsTimeFirst 属性和 Data 属性的维度的组合。要为此输入加载数据，请更新时间序列对象的 Data 属性的维度:\n - 如果信号是标量或一维向量，时间必须为第一个维度。\n - 如果信号有 1 个以上的维度，时间必须为最后一个维度。
+    </entry>
+    <entry key="SimTimeseriesUnsupportedDataType">Invalid Simulink.Timeseries variable specified as {0} input in ''{1}''. The Data property must be a built-in numeric, logical, fixed point or enumerated type. The dimensions of the Data property must be non-zero.</entry>
+    <entry key="InportDiscSampleTime">根级端口 ''{0}'' 的采样时间无效。由于对应于输入端口的外部输入未指定任何时间值，采样时间必须是离散的。</entry>
+    <entry key="InportInvalidMatrixDataLoading">在模型 {0} 的 "配置参数" 对话框的 "数据导入/导出" 页的 ''输入'' 字段中输入的矩阵变量无效。对于此模型，输入变量必须为结构体。仅当连接到根输入端口的所有信号均为双精度实(非复)向量时，才能使用矩阵输入。</entry>
+    <entry key="InportDataTypeMismatch">Invalid data type for root level port ''{0}''. The model is configured to load its root level ports from the workspace.  These external inputs have data type ''{1}''.  This data type does not agree with the data type, ''{2}'', that is being set for this root level port.
+        
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="suggestion"&gt;
+                    &lt;txt&gt;Change the data type of the input data to type ''{3}''&lt;/txt&gt;
+                &lt;/action&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;slprivate(''simulinkfixes'',''InportDataTypeMismatch'',''{0}'')&lt;/cmd&gt;
+                    &lt;txt&gt;Turn off external input loading.&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+        
+    </entry>
+    <entry key="InportDataTypeMismatchFix">已执行命令 'set_param(model, 'LoadExternalInput', 'off')'</entry>
+    <entry key="FcnCallInportDataTypeMismatch">Invalid workspace data format for root Inport ''{0}''. The model is configured to load its root level ports from the workspace. This root Inport is configured to output a function call. Use one of these approaches: \n\t1) For the workspace data to be loaded, use a column vector of monotonically non-decreasing time values; \n\t2) For this root Inport, clear the ''Output function call'' block parameter; \n\t3) Turn off loading of external inputs by clearing the Configuration Parameters -&gt; Data Import/Export -&gt; Input parameter.</entry>
+    <entry key="NonFcnCallInportDataTypeMismatch">无法加载顶层 Inport 模块 ''{0}'' 的输入数据，因为只有配置为产生函数调用输出的模块才支持加载列向量。其他类型信号的输入数据必须同时包括时间值和信号值。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;请使用其他格式(如时间表或时间序列)指定输入数据。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;将数据格式化为二维矩阵，其中第一列包含时间值，后续列包含每个时间值的信号值。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;要加载函数调用数据，请为此模块选择 ''输出函数调用''，并检查模型是否配置为导出函数模型。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="InvalidTsForFcnCallInportWithSpecifiedTs">Invalid workspace data for root-level Inport ''{0}''. Because the Inport is configured to output a function call with a discrete sample time of {1}, the time vector must be empty if any of the function-call subsystems it drives are configured to execute periodically. Consider using one of these approaches: \n\t1) For the workspace data to be loaded, use an empty vector []; \n\t2) Configure every function-call subsystem this Inport drives to a triggered function-call subsystem, by setting 'Sample time type' parameter of the Trigger Port block inside the function-call subsystem to 'triggered'; \n\t3) For this Inport, specify the ''Sample time' to inherited (-1); \n\t4) Turn off loading of external inputs by clearing the Configuration Parameters -&gt; Data Import/Export -&gt; Input parameter.</entry>
+    <entry key="InportArrayNonDblDataType">Inport 模块 ''{0}'' 指定了 ''{1}'' 数据类型，但接收到 'double' 类型的外部输入数据。要加载非双精度数据类型的外部数据，请使用结构体、时间序列或时间表格式。</entry>
+    <entry key="InportComplexityMismatch">Invalid signal type for port ''{0}''. Although the external inputs specified for the block diagram indicate that the data is complex, the port is not set to complex.</entry>
+    <entry key="InportDiscCannotInterp">''{0}'' 中参数 ''插值'' 的设置无效。当在对应于根级端口的工作区变量中未指定时间字段时，必须关闭插值。</entry>
+    <entry key="InportDataMustBeFinite">The root level port ''{0}'' is configured to load data from variable ''{1}'' that contains Inf or NaN. Data must be finite (not Inf or NaN).</entry>
+    <entry key="InportTimeDiffMustBeLessThanDoubleMax">Unable to interpolate external input data ''{1}'' using Inport block ''{0}'' because the data contains consecutive times that differ by more than the largest possible double value. To load the data, clear the interpolation setting for Inport block ''{0}''.</entry>
+    <entry key="InportCannotInterpFiOrEnum">Unable to interpolate fixed-point, string, or enumeration data loaded by block ''{0}'' using variable ''{1}''. To load the data, disable interpolation for block ''{0}''.</entry>
+    <entry key="InportInvalidSpecifiedFcnCallTime">根级端口 ''{0}'' 配置为从包含函数调用时间数据的变量加载数据。此变量指定的时间值({1})与端口上指定的偏移量({3})之间的差值不是端口上指定的步长({2})的整数倍。</entry>
+    <entry key="InportInvalidSpecifiedFcnCallTimeNoOffset">根级端口 ''{0}'' 配置为从包含函数调用时间数据的变量加载数据。此变量指定的时间值({1})不是端口上指定的步长({2})的整数倍。</entry>
+    <entry key="InportInvalidFcnCallTime">根级端口 ''{0}'' 配置为从包含函数调用时间数据的变量加载数据。此变量指定的时间值({1})不是模型的定步长({2})的整数倍。</entry>
+    <entry key="InportPortDimsMismatch">Invalid port dimensions for port ''{0}''. The external inputs specified for the block diagram indicate that the port dimensions should be {1}. Instead, the port dimensions are being set to {2}.</entry>
+    <entry key="InportPortDimsMismatchAOB">输入数据 {3} 的维度 {1} 与端口 ''{0}'' 的维度 {2} 不一致。输入维度数必须小于或等于端口维度数，输入数据的每个维度必须小于或等于对应的端口维度。</entry>
+    <entry key="InportPortDimsMismatchAOBForHier">端口 ''{0}'' 的输入数据 {3} 的维度 {1} 与总线对象 {4} 的维度 {2} 不一致。输入维度数必须小于或等于总线对象维度数，输入数据的每个维度必须小于或等于对应的总线对象维度。</entry>
+    <entry key="InportNonScalarTimeseries">The external input data for model ''{0}'' is of type Simulink.SimulationData.Dataset. The input data element {1} for port ''{2}'' is a non-scalar timeseries array. External input loading supports input from timeseries objects within a Simulink.SimulationData.Dataset instance only if it is a scalar timeseries object.</entry>
+    <entry key="InportNonScalarSimulationDatastore">The external input data for model ''{0}'' is of type Simulink.SimulationData.Dataset. The input data element {1} for port ''{2}'' is a non-scalar SimulationDatastore (matlab.io.datastore.SimulationDatastore) array. External input loading supports input from SimulationDatastore objects within a Dataset instance only if it is a scalar SimulationDatastore object.</entry>
+    <entry key="InportNonMatFileBackedSimulationDatastore">The external input data for model ''{0}'' is of type Simulink.SimulationData.Dataset. The input data element {1} for port ''{2}'' specifies a SimulationDatastore that is backed by a MAT file.</entry>
+    <entry key="InportInvalidNumberOfSamplesTimeseries">The external input data for model ''{0}'' is of type Simulink.SimulationData.Dataset. The input data element {1} for port ''{2}'' is a timeseries instance. External input loading supports input from timeseries objects within a Dataset instance only if each timeseries in the dataset contains a non-zero number of data points.</entry>
+    <entry key="InportInvalidNumberOfSamplesSimulationDatastore">The external input data for model ''{0}'' is of type Simulink.SimulationData.Dataset.  The input data element {1} for port ''{2}'' is a SimulationDatastore (matlab.io.datastore.SimulationDatastore) instance. External input loading supports input from SimulationDatastore objects within a Dataset instance only if each SimulationDatastore in the Dataset contains a non-zero number of data points.</entry>
+    <entry key="RootInportDimsModeMismatch1">根级 Inport 模块 ''{0}'' 加载的工作区数据包含可变大小信号，但该模块的 '可变大小信号' 参数设置为 '否'。</entry>
+    <entry key="RootInportDimsModeMismatch2">根级 Inport 模块 ''{0}'' 加载的是固定大小信号的数据，但 '可变大小信号' 参数设置为 '是'。</entry>
+    <entry key="RootInportNonVirtBusDimsModeMismatch">''{0}'' 上指定的总线对象包含大小可变的总线元素。但是，对应于此根输入端口的工作区数据不包含针对该总线元素的 ''valueDimensions'' 字段。请修复总线对象的 ''DimensionsMode'' 字段以匹配工作区数据。</entry>
+    <entry key="FrmWksNonVirtBusDimsModeMismatch">''{0}'' 上指定的总线对象包含大小可变的总线元素。From Workspace 模块不支持为可变大小的总线元素加载数据。</entry>
+    <entry key="BlockDataValuesType">The variable specified as {0} input in ''{1}'' contains an unsupported Values property.  The Values property must be a scalar timeseries, MATLAB structure with timeseries at the leaves, timetable, or MATLAB structure with timetables at the leaves.</entry>
+    <entry key="DatasetEmpty">''{1}'' 中指定为 {0} 输入的变量包含不带元素的数据集。请使用 addElement 方法为此数据集添加元素以进行加载。</entry>
+    <entry key="DatasetNestedElements">在 ''{1}'' 中指定为 {0} 输入的数据集变量在元素 {2,number,integer} 处包含嵌套数据集。要使用数据集对象加载外部输入，请使用 addElement 方法创建元素的扁平列表。</entry>
+    <entry key="MultipleDatasets">Multiple external inputs are using Dataset objects. To load external
+    input data using a Simulink.SimulationData.Dataset object, you must add all inputs to a single Dataset.</entry>
+    <entry key="MultipleDatasetRefs">Multiple external inputs are using DatasetRef objects. To load external
+    input data using a Simulink.SimulationData.DatasetRef object, you must have all inputs in a single DatasetRef object.</entry>
+    <entry key="ExtraTriggerData">模型 ''{0}'' 为触发端口指定了外部输入数据，但未包含任何根级触发端口。 </entry>
+    <entry key="ExtraEnableData">模型 ''{0}'' 为使能端口指定了外部输入数据，但未包含任何根级使能端口。 </entry>
+    <entry key="InportNonDoubleTimeValues">Invalid data type. Time values for input data ''{0}'' loaded by block ''{1}'' must be double scalars.</entry>
+    <entry key="InportNonDoubleTimeValuesStruct">数据类型无效。输入数据 ''{0}'' 的时间值必须为双精度标量。</entry>
+    <entry key="DatasetExtInputInvalidElementContents">The external input data for model ''{0}'' is of type Simulink.SimulationData.Dataset. Simulink supports external input of this type only if each of the dataset elements is one of the following: a double real matrix of kind [time data] containing a sequence of non-decreasing values in the first column, a double real column vector containing a sequence of non-decreasing values (used only for function call signal loading), a scalar timeseries object, a structure of scalar timeseries objects, a scalar timetable object, a structure of scalar timetable objects, or an object derived from Simulink.SimulationData.BlockData with the Values property being a scalar timeseries or matlab.io.datastore.SimulationDatastore object or a structure of scalar timeseries or matlab.io.datastore.SimulationDatastore objects.</entry>
+    <entry key="ExtInputSparseInvalidElementContents">Loading sparse matrix data into block ''{0}'' not supported. </entry>
+    <entry key="RootInportResumeInvalidFile">File {0} containing external input data was deleted or modified between pause and resume. This is an invalid file for the current simulation.</entry>
+    <entry key="TimetableUnsupportedDataType">Invalid variable ''{0}'' specified as input in ''{1}''. The input is a Dataset with elements containing timetables. The Data property of the timetable must be a built-in numeric, logical, fixed point or enumerated type. Data must be finite (not Inf or NaN).</entry>
+    <entry key="TimetableUnsupportedDataTypeNonDs">''{1}'' 中指定为输入的变量 ''{0}'' 无效。输入是时间表或包含时间表元素的数据集。时间序列或时间表的 Data 属性必须为内置的数值、逻辑值、定点或枚举类型。数据必须为有限值(不能是 Inf 或 NaN)。</entry>
+    <entry key="TimetableUnsupportedDataTypeFromWks">Data property of timetable input ''{0}'' for ''{1}'' must have a built-in, fixed-point, or enumerated data type and must not contain Inf or NaN values.</entry>
+    <entry key="TimetableUnsupportedTimeFormat">Invalid variable ''{0}'' specified as input in ''{1}''. Time must be a Duration vector.</entry>
+    <entry key="TimetableRILDecreasing">Invalid variable ''{0}'' specified as input in ''{1}''. Time must be non-decreasing.</entry>
+    <entry key="TimetableRILOneVar">''{1}'' 中指定为输入的变量 ''{0}'' 无效。仿真输入的时间表不能有多个变量。</entry>
+    <entry key="RootInportTimeExpressionRapid">Unable to load external input data ''{0}''. Rapid accelerator mode does not support loading time expressions.</entry>
+    <entry key="InportDataNonBusDataForBus">根级端口 ''{0}'' 指定了总线对象，但外部输入工作区变量 ''{1}'' 与总线不兼容。要为总线端口加载外部输入，请使用包含 MATLAB 时间序列对象的结构体，或修改 "配置参数" 对话框中 "数据导入/导出" 页的 ''输入'' 字段。</entry>
+    <entry key="FrmWksDataNonBusDataForBus"> 无法使用 From Workspace 模块 ''{0}'' 以 Simulink.Bus 对象指定的数据类型加载变量 ''{1}''。要使用 From Workspace 模块加载总线数据，请以结构体形式提供输入数据，该结构体包含总线中每个信号对应的时间序列或时间表对象。</entry>
+    <entry key="FrmWksAobBusLeafFormat">''{0}'' 必须为时间序列、时间表或空 MATLAB 数组。</entry>
+    <entry key="InportDataTypeNotBus">The root level port ''{0}'' is configured to load a TsArray object from the workspace but its data type ''{1}'' is not a Bus data type. Modify the ''Input'' field of the Data Import/Export page of the Configuration Parameters dialog.</entry>
+    <entry key="InportStructDataTypeNotBus">The root level port ''{0}'' is configured to load a structure of timeseries objects from the workspace but its data type ''{1}'' is not a Bus data type. Modify the ''Input'' field of the Data Import/Export page of the Configuration Parameters dialog.</entry>
+    <entry key="FrmWksStructDataTypeNotBus">From Workspace 模块 ''{0}'' 配置为从工作区加载由时间序列对象组成的结构体，但其数据类型 ''{1}'' 不是总线数据类型。要在 From Workspace 模块中加载总线数据，请将 "输出数据类型" 设置为 ''总线: BusObjectName''。</entry>
+    <entry key="InportBusDataTypeMismatch">Invalid data type for root level inport ''{0}''. Element {1,number,integer} of the TsArray input object specified for this block indicates that the data type is ''{2}''. This data type does not agree with the data type ''{3}'' that is being set by the BusObject. To find the appropriate element in the input TsArray, execute object.flatten in the MATLAB command window and index into the resulting cell array</entry>
+    <entry key="InportBusComplexityMismatch">Invalid signal type for inport ''{0}''. Element {1,number,integer} of the TsArray input object specified for this block indicates that the data should be complex. Instead, the corresponding element in the BusObject is set to real. To find the appropriate element in the input TsArray, execute object.flatten in the MATLAB command window and index into the resulting cell array.</entry>
+    <entry key="InportBusDimsMismatch">Invalid port dimensions for inport ''{0}''. Element {1,number,integer} of the TsArray input object specified for this block indicates that the dimensions should be {2}. Instead, the element dimensions is specified to be {3} by the BusObject. To find the appropriate element in the input TsArray, execute object.flatten in the MATLAB command window and index into the resulting cell array.</entry>
+    <entry key="FromWksArrayOfSubBus">From Workspace 模块 ''{0}'' 指定了包含非标量子总线的总线对象。不支持为总线数组加载外部数据。要避免此错误，请为每个标量总线使用一个单独的 From Workspace 模块，并使用一个 Vector Concatenate 模块。</entry>
+    <entry key="FromWksNotSupportArrayOfBus">Unable to load nonscalar structure data ''{1}'' using From Workspace block ''{0}''. To load data for an array of buses using a From Workspace block, the block must be in a top model simulated in normal or accelerator mode or in a referenced model that executes in normal mode.</entry>
+    <entry key="InportBusStructDataTypeMismatch">Inconsistent data type for {0} input to ''{1}''. Field ''{2}'' of the input structure specified for this block indicates that the data type is ''{3}''. This data type does not agree with the data type ''{4}'' that is being set by the bus object.</entry>
+    <entry key="InportBusStructComplexityMismatch">''{1}'' 的 {0} 输入的信号类型不一致。为此模块指定的输入结构体的字段 ''{2}'' 指示数据为复数。总线对象中的对应元素设置为实数。</entry>
+    <entry key="InportBusStructDimsMismatch">Inconsistent port dimensions for {0} input to ''{1}''. Field ''{2}'' of the input structure specified for this block indicates that the dimensions are {3}. The element dimensions are set to {4} by the bus object.</entry>
+    <entry key="InportDataTSAndBusTypeDoNotMatch">The bus data type specified by the root level Inport ''{0}'' does not match the TsArray object in the workspace. The TsArray object must contain the same number of TimeSeries elements as specified by the BusObject.</entry>
+    <entry key="InportDataHierStructForNonBus">根级输入端口 ''{0}'' 指定的总线数据类型与工作区中的输入变量结构体不匹配。结构体的字段 ''{1}'' 必须为时间序列对象。</entry>
+    <entry key="FrmWksDataHierStructForNonBus">From Workspace 模块 ''{0}'' 指定的总线数据类型与工作区中的输入变量结构体不匹配。结构体的字段 ''{1}'' 必须为时间序列对象。</entry>
+    <entry key="InportDataHierStructLeafForBus">根级输入端口 ''{0}'' 指定的总线数据类型与工作区中的输入变量结构体不匹配。结构体的字段 ''{1}'' 是时间序列对象，但总线对象指示此总线元素为总线。</entry>
+    <entry key="FrmWksDataHierStructLeafForBus">From Workspace 模块 ''{0}'' 指定的总线数据类型与工作区中的输入变量结构体不匹配。结构体的字段 ''{1}'' 是时间序列对象，但总线对象指示此总线元素为总线。</entry>
+    <entry key="InportDataEmptyHierStructForBus">为根输入端口 ''{0}'' 指定的外部输入包含不带字段的总线数据。要对此输入端口使用接地值，请将变量 ''{1}'' 更改为空 MATLAB 数组(即 "[]")。</entry>
+    <entry key="FrmWksDataEmptyHierStructForBus">为 From Workspace 模块 ''{0}'' 指定的工作区数据为空。</entry>
+    <entry key="InportDataHierStructExtraField">根级输入端口 ''{0}'' 指定的总线数据类型与工作区中的输入变量结构体不匹配。结构体的字段 ''{1}'' 不是总线的元素。</entry>
+    <entry key="FrmWksDataHierStructExtraField">The Bus data type specified by the From Workspace block ''{0}'' does not match the structure of the input variable in the workspace. Field ''{1}'' of the structure is not an element of the bus.</entry>
+    <entry key="InportStrLenExceedsMax">The length of the string being loaded in the root input port ''{0}'' exceeds the maximum string length, ''{1}'', as specified on the port.</entry>
+    <entry key="InportStrNonScalar">The root-level port ''{0}'' is configured to load data from variable ''{1}'' that contains a non-scalar MATLAB string.</entry>
+    <entry key="InportStrMissing">The root-level port ''{0}'' is configured to load data from variable ''{1}'' that contains missing MATLAB strings.</entry>
+    <entry key="InportStrInterp">The root-level port ''{0}'' is configured to load data from variable ''{1}'' that contains MATLAB string data. Interpolation must be turned off.</entry>
+    <entry key="InportStrNonAscii">The root-level port ''{0}'' is configured to load string data from variable ''{1}'' that contains non-ASCII characters.</entry>
+    <entry key="InportEmpty">时间表必须包含至少一个行时间和一个数据值。</entry>
+    <entry key="InvalidCreateStructTsArrayArg">To construct a hierarchy from a Simulink.TsArray object, only 1 argument is permitted.</entry>
+    <entry key="InvalidCreateStructBusObjArg">To construct a MATLAB structure from a bus object, the first argument must be the name of a bus object. The optional second argument can be either a cell array of MATLAB timeseries objects, or a structure of timeseries objects. If you specify a cell array of timeseries objects, you can use a third argument that specifies the dimension of the resulting structure. If you specify a structure of timeseries objects, that structure must have the same hierarchy as the bus object. However, the names of the fields in the structure of timeseries can be different from the nodes defined in the bus object.</entry>
+    <entry key="InvalidCreateStructArg">第一个参数必须为 Simulink.TsArray 对象或基础工作区中的有效 Simulink.Bus 对象的名称。</entry>
+    <entry key="InvalidCreateStructBusObj">无法确定总线层次结构。请验证第一个参数是基础工作区中有效总线对象的名称。</entry>
+    <entry key="InvalidCreateStructDataNumData">Invalid argument for structure timeseries initialization. The number of leaf elements in the first and second arguments do not match.</entry>
+    <entry key="InvalidCreateBusSignalName">Simulink.TsArray contains field ''{0}'' that is not a MATLAB-valid identifier. Structure format requires all bus signals to use valid MATLAB identifiers.</entry>
+    <entry key="InvalidCreateStructDataElement">Invalid argument for structure timeseries initialization. Cell array must contain only MATLAB timeseries or Simulink.Timeseries objects.</entry>
+    <entry key="InvalidCreateStructDataType">Invalid argument for structure timeseries initialization.  Element {0,number,integer} is of type {1} but the bus object requires type {2}.</entry>
+    <entry key="InvalidCreateStructFiMismatch">Invalid argument for structure timeseries initialization.  Element {0,number,integer} is a fixed point type but does not match Bus object fixed point settings.</entry>
+    <entry key="InvalidCreateStructDataComplexity">Invalid argument for structure timeseries initialization.  Element {0,number,integer} is complex but the bus object requires real data.</entry>
+    <entry key="InvalidCreateStructDataDims">Invalid argument for structure timeseries initialization.  Element {0,number,integer} contains ''Data'' of dimension {1} but the bus object requires dimension {2}.</entry>
+    <entry key="ConvertTimeseriesFrames">Simulink.Timeseries cannot be converted to MATLAB timeseries because this Timeseries contains frames.</entry>
+    <entry key="InvalidCreateStructFromStruct">To construct a MATLAB structure from a bus object, if the second argument is a structure of MATLAB timeseries objects, then the structure of timeseries must have the same hierarchy as the bus object. However, the names of the fields in the structure of timeseries can be different from the nodes defined in the bus object.</entry>
+    <entry key="InportLegacyFormatLoading">The input data ''{1}'' for model ''{0}'' is of a format that is no longer supported.  Please use MATLAB timeseries in place of Simulink.Timeseries and structures of MATLAB timeseries objects in place of Simulink.TsArray.</entry>
+    <entry key="DatasetRootInportError">使用数据集格式将外部输入数据加载到模型 ''{1}'' 中的根级 Inport 模块 {0} 时出错。</entry>
+    <entry key="NonDatasetRootInportError">将外部输入数据加载到模型 ''{1}'' 中的根级 Inport 模块 {0} 时出错。</entry>
+    <entry key="FlexibleFromWorkspaceError">Error loading data into Flexible Source Block ''{0}'' in model ''{1}''.</entry>
+    <entry key="FromWorkspaceError">将数据加载到模型 ''{1}'' 中的 From Workspace 模块 ''{0}'' 时出错。</entry>
+    <entry key="SignalEditorError">Error loading data into Signal Editor block ''{0}''.</entry>
+    <entry key="LoadingSparseMatrix">Variable ''{0}'' contains a sparse matrix.</entry>
+    <entry key="LoadingBlockDataValuesType">Variable ''{0}'' contains an unsupported Values property.  The Values property must be a scalar matlab.io.datastore.SimulationDatastore, scalar timeseries, timetable, MATLAB structure with matlab.io.datastore.SimulationDatastore, timeseries, or timetables at the leaves.</entry>
+    <entry key="LoadingInvalidElementContents">Invalid data type supplied. For a list of supported data types, see &lt;a href="matlab:helpview(fullfile(docroot,'simulink','helptargets.map'), 'formsofinputdata')"&gt;Forms of Input Data&lt;/a&gt; in the root Inport loading documentation.</entry>
+    <entry key="LoadingStructDataTypeNotBus">模块配置为将总线数据加载为以叶表示信号数据的结构体，但数据类型设置为 ''{0}''。要加载总线数据，必须将数据类型设置为总线数据类型。</entry>
+    <entry key="LoadingDataHierStructExtraField">The bus data type does not match the structure of the input variable in the workspace. Field ''{0}'' of the structure is not an element of the bus.</entry>
+    <entry key="LoadingNonScalarTimeseries">Invalid data type. Input timeseries data ''{0}'' must be scalar.</entry>
+    <entry key="LoadingInvalidNumberOfSamplesTimeseries">Input timeseries data ''{0}'' must contain a non-zero number of data and time points.</entry>
+    <entry key="LoadingNonDoubleTimeValues">Invalid data type. The time values of input data ''{0}'' must be of type double.</entry>
+    <entry key="LoadingVariableUnsupportedDataType">The Data property of timeseries variable ''{0}'' must be a built-in numeric, logical, fixed point or enumerated type and all data values must be finite (not Inf or NaN).</entry>
+    <entry key="LoadingNonScalarSimulationDatastore">Input ''{0}'' must be scalar.</entry>
+    <entry key="LoadingNonMatFileBackedSimulationDatastore">输入 ''{0}'' 指定了 MAT 文件不支持的 SimulationDatastore。</entry>
+    <entry key="LoadingInvalidNumberOfSamplesSimulationDatastore">输入 ''{0}'' 中的数据点数必须大于零。</entry>
+    <entry key="LoadingCannotInterpFiOrEnum">Loaded variable contains enumeration data. To load enumeration data, turn off interpolation by clearing the ''Interpolate Data'' option.</entry>
+    <entry key="LoadingTimetableUnsupportedTimeFormat">Time in timetable variable ''{0}'' must be a Duration vector.</entry>
+    <entry key="LoadingTimetableRILOneVar">Timetable input ''{0}'' cannot contain more than one variable.</entry>
+    <entry key="LoadingTimeDecreasing">Time in variable ''{0}' must be non-decreasing and must be finite (not Inf or Nan).</entry>
+    <entry key="LoadingInportStrMissing">Variable ''{0}'' contains ''missing'' MATLAB strings. To identify ''missing'' values on an array of strings, use the ismissing function.</entry>
+    <entry key="LoadingInportStrMissingBus">String data being loaded at field ''{0}'' of the input structure specified for the block contains ''missing'' MATLAB strings.</entry>
+    <entry key="LoadingStrInterp">Variable ''{0}'' contains MATLAB string data. To load string data, turn off interpolation by unchecking the ''Interpolate Data'' checkbox on the block.</entry>
+    <entry key="LoadingStrLenExceedsMax">The length of the string loaded in variable ''{0}'' exceeds the maximum string length, ''{1}'', expected by the block.</entry>
+    <entry key="LoadingStrLenExceedsMaxBus">The length of the string loaded at field ''{0}'' of the input structure specified for the block exceeds the maximum string length, ''{1}'', expected by the bus object.</entry>
+    <entry key="LoadingStrLenExceedsAbsoluteMax">The length of the string being loaded in variable ''{0}'' exceeds the upper limit of ''{1}''.</entry>
+    <entry key="LoadingStrLenExceedsAbsoluteMaxBus">The length of the string being loaded at field  ''{0}'' of the input structure specified for the block exceeds the upper limit of ''{1}''.</entry>
+    <entry key="LoadingStrNonAscii">String data in variable ''{0}'' contains non-ASCII characters.</entry>
+    <entry key="LoadingStrNonAsciiBus">String data at field ''{0}'' of the input structure specified for the block contains non-ASCII characters.</entry>
+    <entry key="LoadingStrNonScalar">Variable ''{0}'' contains a non-scalar MATLAB string.</entry>
+    <entry key="LoadingStrNonScalarBus">Field ''{0}'' of the input structure specified for the block  contains a non-scalar MATLAB string.</entry>
+    <entry key="LoadingStrInStruct">采用带时间和不带时间的结构体格式的外部输入都不能包含字符串或字符向量数据。</entry>
+    <entry key="LoadingDataMustBeFinite">变量 ''{0}'' 包含 Inf 或 NaN 值。数据必须为有限值(不能是 Inf 或 NaN)。</entry>
+    <entry key="LoadingInvalidTsForFcnCallInportWithSpecifiedTs">Because the Inport is configured to output a function call with a discrete sample time of {0}, the time vector must be empty if any of the function-call subsystems it drives are configured to execute periodically. Consider using one of these approaches: \n\t1) For the workspace data to be loaded, use an empty vector []; \n\t2) Configure every function-call subsystem this Inport drives to a triggered function-call subsystem, by setting 'Sample time type' parameter of the Trigger Port block inside the function-call subsystem to 'triggered'; \n\t3) For this Inport, specify the ''Sample time' to inherited (-1); \n\t4) Turn off loading of external inputs by clearing the Configuration Parameters -&gt; Data Import/Export -&gt; Input parameter.</entry>
+    <entry key="LoadingFcnCallInportDataTypeMismatch">Invalid data loaded for Inport configured with a function call output. Use one of these solutions: \n\t1) To load workspace data, use a column vector of monotonically non-decreasing time values; \n\t2) Clear the 'Output function call' parameter of the Inport; \n\t3) Turn off external input loading.</entry>
+    <entry key="LoadingNonFcnCallInportDataTypeMismatch">Loading a column vector is supported only for Inport blocks configured to produce a function-call output. Input data for other types of signals must include both time and signal values.
+    
+             &lt;actions exclusiveFixIts="yes"&gt;
+             &lt;action type="suggestion"&gt;
+             &lt;txt&gt;Specify the input data using another format, such as timetable or timeseries.&lt;/txt&gt;
+             &lt;/action&gt;
+             &lt;action type="suggestion"&gt;
+             &lt;txt&gt;Format the data as a 2-D matrix where the first column contains time values and subsequent columns contain the signal value for each time value.&lt;/txt&gt;
+             &lt;/action&gt;
+             &lt;action type="suggestion"&gt;
+             &lt;txt&gt;To load function-call data, select ''Output function call'' for this block and check that the model is configured as an export-function model.&lt;/txt&gt;
+             &lt;/action&gt;
+             &lt;/actions&gt;
+    
+    </entry>
+    <entry key="LoadingDataTypeMismatch">数据类型无效。该模型配置为从工作区加载其根级端口。这些外部输入具有数据类型 ''{1}''。此数据类型与为此根级端口设置的数据类型 ''{2}'' 不一致。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;将输入数据的数据类型更改为类型 ''{3}''&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''simulinkfixes'',''LoadingDataTypeMismatch'',''{0}'')&lt;/cmd&gt; &lt;txt&gt;关闭外部输入加载。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="LoadingDataTypeMismatchFix">已执行命令 'set_param(model, 'LoadExternalInput', 'off')'</entry>
+    <entry key="Loading64BitDataTypeMismatch">External input data loaded in this port is of type ''{0}'' whereas the inherited data type for this block is ''{1}''. When the port is configured to load data of type int64 or uint64, the loaded input data must be fixed-point and must be compatible with the inherited data type.</entry>
+    <entry key="LoadingBusStruct64BitDataTypeMismatch">External input data loaded in field ''{0}'' of the input structure is of type ''{1}'' whereas the inherited data type for this bus element is ''{2}''. When the port is configured to load leaf bus data of type int64 or uint64, the loaded input data must be fixed-point and must be compatible with the inherited data type.</entry>
+    <entry key="LoadingBusStructDataTypeMismatch">Data type of the input structure specified for the block is ''{1}''. Field ''{0}'' of the input structure must match data type ''{2}'' specified by the bus object.</entry>
+    <entry key="LoadingBusStructDimsMismatch">为此模块指定的输入结构体的字段 ''{0}'' 指示维度为 {1}。总线对象将元素维度设置为 {2}。</entry>
+    <entry key="LoadingPortDimsMismatch">The external inputs specified for the block diagram indicate that the port dimensions should be {0}. Instead, the port dimensions are being set to {1}.</entry>
+    <entry key="LoadingBusStructComplexityMismatch">Complexity of field ''{0}'' in the input structure must be compatible with the complexity specified by the corresponding element of the bus object.</entry>
+    <entry key="LoadingComplexityMismatch">Inport expects real data but receives complex data.</entry>
+    <entry key="LoadingDataNonBusDataForBus">该模块需要总线数据，但接收到不表示总线数据的工作区变量 ''{0}''。要加载总线数据，请使用在叶中混合了时间序列、时间表和 matlab.io.datastore.SimulationDatastore 对象的结构体。</entry>
+    <entry key="LoadingDataHierStructLeafForBus">输入变量结构体必须与模块指定的总线数据类型相匹配。总线对象指示对应于字段 ''{0}'' 的元素是总线，但输入结构体的字段 ''{0}'' 不是总线。</entry>
+    <entry key="LoadingPortDimsMismatchAOB">The dimensions {0} of the input data {2} are inconsistent with the dimensions {1} of the port. When loading array of bus data, the number of input dimensions must be smaller than or equal to the number of port dimensions, and each dimension of input data must be smaller than or equal to the corresponding port dimension.</entry>
+    <entry key="LoadingPortDimsMismatchAOBForHier">The dimensions {0} of input data {2} for the block are inconsistent with the dimensions {1} of bus object {3}. The number of input dimensions must be smaller than or equal to the number of bus object dimensions, and each dimension of input data must be smaller than or equal to the corresponding bus object dimension.</entry>
+    <entry key="LoadingStructUnsupportedDataType">The values field of structure variable ''{0}'' must be a built-in numeric, logical, fixed-point, or enumerated type, and the data must be finite (not Inf or NaN).</entry>
+    <entry key="LoadingStructEmptyUnsupportedDataType">The values field of structure variable ''{0}'' must not be empty.</entry>
+    <entry key="LoadingVardimOnBlkButNotData">模块加载固定大小信号的数据，但 '可变大小信号' 参数设置为 '是'。</entry>
+    <entry key="LoadingVardimOnDataButNotBlk">模块加载的工作区数据包含可变大小信号，但该模块的 '可变大小信号' 参数设置为 '否'。</entry>
+    <entry key="LoadingInportInvalidMatrixData">When loading a matrix input, the blocks loading the corresponding data columns of the matrix must specify dimension using a scalar.</entry>
+    <entry key="LoadingUnsupportedDimensions">The dimensions field of structure variable ''{0}'' must be a scalar or a vector with two elements and must match the dimensions of the signal stored in the values field.</entry>
+    <entry key="LoadingInvalidValueDimensions">The value of the dimensions field of structure variable ''{0}'' is out of range for the 'Port dimensions' specified for the block. The valueDimensions for structure variable ''{0}'' must be in the range of 0 to {1,number,integer} ('Port dimensions' specified in the block).</entry>
+    <entry key="LoadingDifferentNumTSteps">Invalid structure format. The last dimension of each values field must be the same as the number of rows in the valueDimensions field.</entry>
+    <entry key="LoadingVarDimsNumDimsMismatch">The number of value columns in the valueDimensions field does not match the number of dimensions of the signal.</entry>
+    <entry key="LoadingDiscCannotInterp">Invalid setting for 'Interpolate' block parameter. When a workspace variable does not specify time, turn off interpolation for the corresponding block.</entry>
+    <entry key="LoadingDiscSampleTime">根级 Inport 模块的 '采样时间' 无效。如果对应于 Inport 模块的外部输入未指定时间值，'采样时间' 必须是离散的。</entry>
+    <entry key="LoadingDifferentNumRows">为结构体变量 ''{0}'' 指定的格式无效。时间和数据值的行数必须匹配。</entry>
+    <entry key="LoadingInvNumSignalsInStructFormat">加载的结构体变量 ''{0}'' 中的信号数量与根级输入模块的数量不匹配，根级输入模块包括 '触发类型' 设置为 "上升沿"、"下降沿" 或 "任一沿" 的 Enable 模块和 Trigger 模块。请将外部输入数据指定为以逗号分隔的结构体变量列表，或更新结构体，使信号数量与模型中根级 Inport 模块数量匹配。</entry>
+    <entry key="LoadingInvalidFcnCallNoOffsetTime">端口配置为从包含函数调用时间数据的变量加载数据。此变量指定的时间值({0})不是端口上指定的定步长({1})的整数倍。</entry>
+    <entry key="LoadingInvalidFcnCallTime">端口配置为从包含函数调用时间数据的变量加载数据。此变量指定的时间值({0})与端口上指定的偏移量({1})之间的差值不是端口上指定的定步长({2})的整数倍。</entry>
+    <entry key="LoadingInvalidFcnCallTimeBaseRate">端口配置为从包含函数调用时间数据的变量加载数据。此变量指定的时间值({0})不是模型的定步长({1})的整数倍。</entry>
+    <entry key="LoadingSimDatastoreStr">Input data ''{0}'' uses string data type, which is not supported when loading matlab.io.datastore.SimulationDatastore objects.</entry>
+    <entry key="LoadingMultiColumnTimetablePortMismatch">The number of variables in external input timetable ''{0}'' must match the number of root-level Inport blocks, {1}.</entry>
+    <entry key="LoadingMultiColumnTimetableVarsMismatch">Too many input arguments. When a timetable maps to multiple input ports, the timetable must be the only item specified as the external input.</entry>
+    <entry key="LoadingMultiColumnTimetableLeafMismatch">The number of variables in timetable ''{0}'' must match the number of leaves in the bus specified by root-level Input block ''{1}''.</entry>
+    <entry key="LoadingNonScalarBlockData">Simulink.SimulationData.BlockData 类型的输入数据 ''{0}'' 必须为标量。</entry>
+    <entry key="FlexibleFromWksDstOnly">Flexible From Workspace block only supports loading matlab.io.datastore.SimulationDatastore objects.</entry>
+    <entry key="BusElementPortOverspecified">输入数据 ''{0}'' 不对应于任何总线元素端口。</entry>
+    <entry key="BusElementPortNonSupportedStruct">Input data (''{0}'') loaded by In Bus Element block ''{1}'' must be a scalar structure with scalar SimulationDatastore, timeseries, or timetable objects at the leaf nodes or an object derived from Simulink.SimulationData.BlockData whose Values field is a structure that meets those requirements.</entry>
+    <entry key="BusElementPortNonLeafElement">In Bus Element block ''{0}'' must specify an individual (nonbus) signal based on external input data.</entry>
+    <entry key="BusElementPortInvalidStructForPartialSpec">In Bus Element block ''{0}'' selects bus element ''{1}''. The input data structure (''{2}'') for this block must partially or fully match the signal hierarchy of the bus element.</entry>
+    <entry key="BusElementPortTimeExpression">Unable to load external input data ’{0}’. In Bus Element blocks do not support loading time expressions.</entry>
+    <entry key="MessageInportNotEmpty">Inport 模块 ''{0}'' 配置为生成消息，并且只能加载空([])外部输入数据。</entry>
+    <entry key="LegacyFormatPhaseOut">在以后的版本中，将不支持将下列数据类型作为仿真输入进行加载: Simulink.Timeseries、Simulink.TsArray、Simulink.SubsysDataLogs、ScopeDataLogs 和 StateflowDataLogs。</entry>
+    <entry key="LegacyFormatNotSupported">Loading these data types as simulation input is not supported: Simulink.Timeseries, Simulink.TsArray, Simulink.SubsysDataLogs, ScopeDataLogs, and StateflowDataLogs.</entry>
+    <entry key="FunctionHitTimeEvalErr">函数 ''{1}'' 的 '命中时间' 属性的值 ''{0}'' 无效。</entry>
+  </message>
+</rsccat>

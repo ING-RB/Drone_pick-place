@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="rich_text_component" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="persistentTooltipMessage">变量 '\{0}' 的作用域会应用于同一函数的所有调用。</entry>
+    <entry key="persistentExtendedTooltipMessage">&lt;strong&gt;附加信息&lt;/strong&gt;&lt;br/&gt;&lt;p&gt;声明为持久变量的变量是声明它的函数的局部变量；然而，MATLAB 在多次调用该函数的过程中，会将它的值保留在内存中。持久变量仅对声明它们的函数可知。这可以防止其他函数或 MATLAB 命令行更改持久变量的值。&lt;/p&gt;&lt;p&gt;当您清除或修改内存中的函数时，MATLAB 会同时清除该函数声明的所有持久变量。要在 MATLAB 退出之前将函数保留在内存中，请使用 &lt;code&gt;&lt;a href=\"matlab:doc mlock\" target=\"_blank\"&gt;mlock&lt;/a&gt;&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;在以下情况下，MATLAB 将返回错误:&lt;ul&gt;&lt;li&gt;&lt;p&gt;您尝试将变量声明为持久变量，而当前工作区中存在另一个同名变量。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;您将某个变量指定为函数输入或输出参数，然后尝试将该变量声明为同一函数内的持久变量。例如，以下持久变量声明无效: &lt;/p&gt;&lt;p&gt;&lt;code&gt;function&amp;nbsp;myfun(argA)&lt;br/&gt;persistent&amp;nbsp;argA&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p&gt;有关变量和工作区的详细信息，请参阅&lt;a href=\"matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'persistent_variables')\" target=\"_blank\"&gt;持久变量&lt;/a&gt;。&lt;/p&gt;&lt;br/&gt;</entry>
+    <entry key="usedAcrossFunctionsTooltipMessage">变量 '\{0}' 的作用域跨多个函数。</entry>
+    <entry key="usedAcrossFunctionsExtendedTooltipMessage">&lt;strong&gt;附加信息&lt;/strong&gt;&lt;br/&gt;&lt;p&gt;嵌套函数内的变量不仅仅可供其直接函数访问。您在某嵌套函数中赋值或使用的变量 &lt;code&gt;x&lt;/code&gt; 位于包含该嵌套函数并访问 &lt;code&gt;x&lt;/code&gt; 的最外层函数的工作区中。因此，&lt;code&gt;x&lt;/code&gt; 的作用域是此工作区所属的函数，以及嵌套在该函数内的任何级别的所有函数。&lt;/p&gt;&lt;p&gt;如果您是有意以这种方式使用变量，则不是问题。例如，请参阅关于嵌套函数的 MATLAB 编程演示。&lt;/p&gt;&lt;p&gt;但如果您不是有意以这种方式使用变量，则可能会导致意外行为。如果高亮显示指示一个变量的作用域跨多个函数，但这不是您预期的使用方式，请考虑:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;重命名嵌套函数变量，使其与外部函数变量名称不匹配。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;将变量作为输入参数传递给函数，而不是直接在嵌套函数中使用该变量。&lt;/p&gt;&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;有关详细信息，请参阅&lt;a href=\"matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'nested_functions_scope')\" target=\"_blank\"&gt;嵌套函数中的变量作用域&lt;/a&gt;。&lt;/p&gt;&lt;br/&gt;</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,345 @@
+{
+"matlabshared.rotations.internal.quaternionBase.angvel":
+{
+    "inputs": [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"deltaTime", "kind":"required", "type":[["double"], ["single"]]},
+        {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"},
+        {"name":"initialQuat", "kind":"optional", "type":["quaternion", "scalar"]}
+    ],
+    "outputs": [
+        {"name":"angularVelocity","kind":"required", "type":[["double"], ["single"]]},
+        {"name":"finalQuat", "kind":"optional", "type":["quaternion", "scalar"]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.cat":
+{
+    "inputs": [
+        {"name":"dim", "kind":"required", "type":["numeric", "scalar", ">=1"]},
+        {"name":"quatA","kind":"required","type":"quaternion"},
+        {"name":"quatB","kind":"required","type":"quaternion"}
+    ],
+    "outputs": [
+        {"name":"quatC","kind":"required","type":"quaternion"}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.classUnderlying":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"underlyingClass", "kind":"required", "type":"char"}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.compact":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"matrix", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.conj":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"quatConjugate", "kind":"required", "type":"quaternion"}
+    ]
+},
+"quaternion.ctranspose":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"quatTransposed", "kind":"required", "type":"quaternion"}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.dist":
+{
+    "inputs":
+    [
+        {"name":"quatA", "kind":"required", "type":"quaternion"},
+        {"name":"quatB", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"distance", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.euler":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"rotationSequence", "kind":"required", "type":"choices={'YZY', 'YXY', 'ZYZ', 'ZXZ','XYX', 'XZX', 'XYZ', 'YZX', 'ZXY', 'XZY', 'ZYX', 'YXZ'}"},
+        {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"}
+    ],
+    "outputs":
+    [
+        {"name":"eulerAngles", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.eulerd":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"rotationSequence", "kind":"required", "type":"choices={'YZY', 'YXY', 'ZYZ', 'ZXZ','XYX', 'XZX', 'XYZ', 'YZX', 'ZXY', 'XZY', 'ZYX', 'YXZ'}"},
+        {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"}
+    ],
+    "outputs":
+    [
+        {"name":"eulerAnglesDegrees", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.interp1":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup": [ 
+            [
+                {"name":"v", "kind":"required", "type":"quaternion"},
+                {"name":"xq", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"method", "kind":"optional", "type":"choices={'slerp-short', 'slerp-natural', 'squad-natural', 'nearest', 'next', 'previous'}"},
+                {"name":"extrapolation", "kind":"optional", "type":["quaternion", "scalar"]}
+            ],
+            [
+                {"name":"x", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"v", "kind":"required", "type":"quaternion"},
+                {"name":"xq", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"method", "kind":"optional", "type":"choices={'slerp-short', 'slerp-natural', 'squad-natural', 'nearest', 'next', 'previous'}"},
+                {"name":"extrapolation", "kind":"optional", "type":["quaternion", "scalar"]}
+            ]
+        ]}
+    ],
+    "outputs":
+    [
+        {"name":"intp", "kind":"required", "type":"quaternion"}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.meanrot":
+{
+     "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"dim", "kind":"ordered", "type":["numeric","integer", "scalar", ">0"]},
+        {"name":"nanflag", "kind":"flag", "type":["char", "choices={'includenan','omitnan'}"], "default":"'includenan'"}
+    ],
+    "outputs":
+    [
+        {"name":"M"}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.norm":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"N", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.norm":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"N", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.normalize":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"quatNormalized", "kind":"required", "type":"quaternion"}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.parts":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"a", "kind":"required", "type":[["double"], ["single"]]},
+        {"name":"b", "kind":"required", "type":[["double"], ["single"]]},
+        {"name":"c", "kind":"required", "type":[["double"], ["single"]]},
+        {"name":"d", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"quaternion.permute":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"order", "kind":"required", "type":[["double"], ["single"]]}
+    ],
+    "outputs":
+    [
+        {"name":"quatPermuted", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.prod":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"dim", "kind":"ordered", "type":[["double"], ["single"]]}
+    ],
+    "outputs":
+    [
+        {"name":"quatProd", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"quaternion":
+{
+    "inputs":
+    [
+        {"mutuallyExclusiveGroup": [
+            [
+                {"name":"A", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"B", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"C", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"D", "kind":"required", "type":[["double"], ["single"]]}
+            ],
+            [
+                {"name":"matrix", "kind":"required", "type":[["double"], ["single"]]}
+            ],
+            [
+                {"name":"RV", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"'rotvec'", "kind":"required", "type":"choices={'rotvec'}"}
+            ],
+            [
+                {"name":"RVD", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"'rotvecd'", "kind":"required", "type":"choices={'rotvecd'}"}
+            ],
+            [
+                {"name":"RM", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"'rotmat'", "kind":"required", "type":"choices={'rotmat'}"},
+                {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"}
+            ],
+            [
+                {"name":"E", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"'euler'", "kind":"required", "type":"choices={'euler'}"},
+                {"name":"CV", "kind":"required", "type":"choices={'YZY', 'YXY', 'ZYZ', 'ZXZ','XYX', 'XZX', 'XYZ', 'YZX', 'ZXY', 'XZY', 'ZYX', 'YXZ'}"},
+                {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"}
+            ],
+            [
+                {"name":"ED", "kind":"required", "type":[["double"], ["single"]]},
+                {"name":"'eulerd'", "kind":"required", "type":"choices={'eulerd'}"},
+                {"name":"CV", "kind":"required", "type":"choices={'YZY', 'YXY', 'ZYZ', 'ZXZ','XYX', 'XZX', 'XYZ', 'YZX', 'ZXY', 'XZY', 'ZYX', 'YXZ'}"},
+                {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"}
+            ]
+        ]}
+
+    ],
+    "outputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ]
+},
+"quaternion.reshape":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"sz", "kind":"required", "type":[["double"], ["single"]]}
+    ],
+    "outputs":
+    [
+        {"name":"quatReshaped", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.rotateframe":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"cartesianPoints", "kind":"required", "type":[["double"], ["single"]]}
+    ],
+    "outputs":
+    [
+        {"name":"rotationResult", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.rotatepoint":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"cartesianPoints", "kind":"required", "type":[["double"], ["single"]]}
+    ],
+    "outputs":
+    [
+        {"name":"rotationResult", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.rotmat":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"},
+        {"name":"rotationType", "kind":"required", "type":"choices={'point', 'frame'}"}
+    ],
+    "outputs":
+    [
+        {"name":"rotationMatrix", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.rotvec":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"rotationVector", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"matlabshared.rotations.internal.quaternionBase.rotvecd":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"rotationVectorDegrees", "kind":"required", "type":[["double"], ["single"]]}
+    ]
+},
+"quaternion.transpose":
+{
+    "inputs":
+    [
+        {"name":"quat", "kind":"required", "type":"quaternion"}
+    ],
+    "outputs":
+    [
+        {"name":"Y", "kind":"required", "type":"quaternion"}
+    ]
+}
+}

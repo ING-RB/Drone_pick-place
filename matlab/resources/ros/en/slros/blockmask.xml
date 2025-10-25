@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<!-- Copyright 2014-2023 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="ros">
+  <message>
+
+    <!-- Common to all blocks -->
+    <entry key="MessageTypePrompt">Message type:</entry>
+    <entry key="TopicSourcePrompt">Topic source:</entry>
+    <entry key="TopicSourceFromNetwork">Select from ROS network</entry>
+    <entry key="TopicSourceSpecifyOwn">Specify your own</entry>
+    <entry key="TopicPrompt">Topic:</entry>
+    <entry key="SelectPrompt">Select</entry>
+    <entry key="SampleTimePrompt">Sample time:</entry>
+    <entry key="WorkspaceStreamPrompt">Workspace stream:</entry>
+    <entry key="ModelNamePrompt">Model name:</entry>
+    <entry key="ConfigNetworkAddrLinkText">Configure network addresses</entry>
+    <entry key="CodeGenTabTitle">Code Generation</entry>
+
+    <entry key="InvalidTopicName">
+      "{0}" is not a valid ROS topic name.
+      The first character should be alphabetical (a-z) or a forward slash (/).
+      Remaining characters should be alphanumerics (a-z, 0-9), underscores (_), or forward slashes (/).
+    </entry>
+
+    <!-- Blank Message block only -->
+    <entry key="TypePrompt" note="Message type of ROS message">Type:</entry>
+    <entry key="FullTypePrompt">Fully resolved type:</entry>
+    <entry key="MessageClassPrompt">Class:</entry>
+
+    <entry key="BlankMsgDescription">
+      Create a blank message with the specified message or service type.
+      \n
+      \nThe Msg block output is a blank ROS message (bus signal). Set the
+      Class parameter to select between ROS messages, service request, and
+      service response messages. Use a Bus assignment block to modify
+      specific fields in the bus signal.
+      \n
+      \nThe bus signal is initialized to zero value (ground).
+    </entry>
+
+    <!-- Subscriber block only -->
+    <entry key="SubscriberMaskTitle">ROS Subscriber</entry>
+    <entry key="SubscriberMsgQueuePrompt">Length of subscribe callback queue:</entry>
+    <entry key="SubscriberInputStreamPrompt">Input stream workspace variable:</entry>
+
+    <entry key="SubscriberDescription">
+      Receive messages from ROS network.
+      \n
+      \nThe Msg block output is a ROS message (bus signal). Use a Bus Selector
+      block to extract signals you want to work with. The IsNew block output is
+      a boolean indicating whether a message was received during the previous time step.
+      When IsNew is true, Msg holds the newly-received message. When IsNew is false,
+      Msg holds the last received message.
+      \n
+      \nTo select from a list of topics available in an active ROS network,
+      set the Topic source parameter to "Select from ROS network" and use
+      the "Select" button. You must be connected to a ROS network to
+      get a list of active topics. The message type for the selected
+      topic is set automatically.
+      \n
+      \nTo enter a custom topic without an active ROS connection, set
+      Topic source to "Specify your own". Use the Topic parameter to
+      specify the name, and the "Select" button to
+      select the message type.
+    </entry>
+
+    <!-- Publisher block only -->
+    <entry key="PublisherMaskTitle">ROS Publisher</entry>
+    <entry key="PublisherMsgQueuePrompt">Length of publish queue:</entry>
+    <entry key="PublisherOutputStreamPrompt">Output stream workspace variable:</entry>
+
+    <entry key="PublisherDescription">
+      Send messages to a ROS network.
+      \n
+      \nThe Msg block input accepts a ROS message (bus signal).
+      \n
+      \nTo select from a list of topics available in an active ROS
+      network, set the Topic source parameter to "Select from ROS
+      network" and use the "Select" button. You must be connected to
+      a ROS network to get a list of active topics. The message type
+      for the selected topic is set automatically.
+      \n
+      \nTo enter a custom topic without an active ROS connection, set
+      Topic source to "Specify your own". Use the Topic parameter to
+      specify the name, and the "Select" button to
+      select the message type.
+    </entry>
+
+
+    <!-- Common to parameter blocks -->
+    <entry key="ParameterSourcePrompt" note="Source means, a format of providing input to the Simulink block; either from an input port or from an edit area on the block mask dialog.">Source:</entry>
+    <entry key="ParameterNamePrompt">Name:</entry>
+    <entry key="ParameterDataTypePrompt">Data type:</entry>
+    <entry key="ParameterInitialValuePrompt">Initial value:</entry>
+    <entry key="ShowErrorCodePrompt">Show ErrorCode output port</entry>
+    <entry key="ROSParameterPrompt">ROS Parameter</entry>
+    <entry key="ParametersHeadingPrompt">Parameters</entry>
+
+    <!-- Get Parameter block only -->
+    <entry key="GetParameterTitle">ROS Get Parameter</entry>
+    <entry key="GetParameterDescription">
+      Get values from ROS parameter server.
+      \n
+      \nThe Value port outputs the value of the retrieved ROS parameter.
+      The ErrorCode port outputs the retrieval status of the ROS parameter
+      as an integer value.
+      \n
+      \nSet the Source parameter to "Select from ROS Network" and press
+      "Select" to choose from a list of existing ROS parameters.
+      You must be connected to a ROS network to get a list of
+      parameters. Set the Source parameter to "Specify your own" to
+      manually specify the Name and Data type of the ROS parameter.
+    </entry>
+
+    <!-- Set Parameter block only -->
+    <entry key="SetParameterTitle">ROS Set Parameter</entry>
+    <entry key="SetParameterDescription">
+      Set values on ROS parameter server.
+      \n
+      \nThe Value port contains the value of the ROS parameter. This
+      value will be sent to the ROS parameter server to be updated.
+      \n
+      \nSet the Source parameter to "Select from ROS Network" and press
+      "Select" to choose from a list of existing ROS parameters. You
+      must be connected to a ROS network to get a list of parameters.
+      Set the Source parameter to "Specify your own" to manually specify
+      the Name and Data type of the ROS parameter.
+    </entry>
+
+    <!-- Common to Read X blocks -->
+    <entry key="VariableSizeOutputsPrompt">Output variable-size signals</entry>
+    <entry key="ConfigureUsingROSLabel">Configure using ROS</entry>
+    <entry key="OutputSettingsPrompt">Output settings</entry>
+
+    <!-- Read Image block only -->
+    <entry key="ReadImageTitle">ROS Read Image</entry>
+    <entry key="ReadImageDescription">
+      Extract image signal from ROS image message.
+      \n
+      \nThe Msg port accepts a ROS message (bus signal) representing
+      an image. The Image port outputs an [MxN] array for grayscale images
+      or an [MxNx3] array for color images. The Alpha port outputs an
+      [MxN] array for images that specify an alpha (transparency) channel.
+      The ErrorCode port outputs the image conversion status as an integer
+      value.
+      \n
+      \nPress "Configure using ROS" to set the Maximum image size and
+      Image encoding based on the contents of a ROS topic.
+    </entry>
+    <entry key="ImagePropertiesPrompt">Image settings</entry>
+    <entry key="MaximumImageSizePrompt">Maximum image size:</entry>
+    <entry key="ImageEncodingPrompt">Image encoding:</entry>
+    <entry key="ShowAlphaOutputPortPrompt">Show Alpha output port</entry>
+
+    <!-- Read Point Cloud block only -->
+    <entry key="ReadPointCloudTitle">ROS Read Point Cloud</entry>
+    <entry key="ReadPointCloudDescription">
+      Extract point cloud data from ROS point cloud message.
+      \n
+      \nThe Msg port accepts a ROS message (bus signal)
+      representing a point cloud. If Preserve point cloud structure is
+      unchecked (the default), the XYZ port outputs the Cartesian
+      coordinates of the points as a [Px3] array, where P is the number of
+      points in the incoming point cloud. Otherwise, the XYZ port outputs
+      the Cartesian coordinates for the points as an [MxNx3] array, where M
+      and N are the height and width of the incoming point cloud
+      respectively. The ErrorCode port outputs the image conversion status
+      as an integer value.
+      \n
+      \nSpecify the Maximum point cloud size expected as [height, width].
+      Press "Configure using ROS" to set Maximum point cloud size from a
+      topic on a live ROS Network.
+    </entry>
+    <entry key="PointCloudPropertiesPrompt">Point cloud settings</entry>
+    <entry key="PreserveStructurePrompt">Preserve point cloud structure</entry>
+    <entry key="MaximumPointCloudSizePrompt">Maximum point cloud size:</entry>
+    <entry key="PointCloudDataTypePrompt">Point cloud data type:</entry>
+    <entry key="ShowRGBOutputPrompt">Show RGB output port</entry>
+    <entry key="ShowIntensityOutputPrompt">Show Intensity output port</entry>
+
+    <!-- Read Scan block only -->
+    <entry key="ReadScanTitle">ROS Read Scan</entry>
+    <entry key="ScanPropertiesPrompt">Scan settings</entry>
+    <entry key="MaximumArrayLengthPrompt">Maximum array length:</entry>
+    <entry key="ReadScanDescription">
+      Extract scan data from a ROS laser scan message.
+      \n
+      \nThe Msg port accepts a ROS message (bus signal) representing
+      a laser scan. The output ports for Angles, Intensities, and
+      ErrorCode can be toggled on and off using the Output settings.
+      The Ranges, Angles, and Intensities ports output the corresponding
+      [Nx1] arrays from the ROS message. The ErrorCode port outputs the
+      read scan status as an integer value.
+      \n
+      \nSpecify the Maximum array length expected as a scalar value. Press
+      "Configure using ROS" to set Maximum array length from a topic on
+      a live ROS Network.
+    </entry>
+
+    <entry key="ShowAnglesOutputPrompt">Show Angles output port</entry>
+
+    <!-- Write Image block only -->
+    <entry key="WriteImageTitle">ROS Write Image</entry>
+    <entry key="WriteImageDescription">
+      Write a ROS message from image data.
+      \n
+      \nThe Image port requires an [MxN] array for single-channel images
+      and an [MxNxC] array for multi-channel images. The Alpha port
+      requires an [MxN] array for images that specify an alpha
+      (transparency) channel. The image encoding is specified in the
+      Image settings. The output is a ROS message (bus signal)
+      representing an image.
+    </entry>
+
+    <!-- Write Point Cloud block only -->
+    <entry key="WritePointCloudTitle">ROS Write Point Cloud</entry>
+    <entry key="WritePointCloudDescription">
+      Write a ROS message from point cloud data.
+      \n
+      \nThe XYZ port specifies the Cartesian coordinates of the points as
+      either a [Px3] array, where P is the number of points, or an
+      [MxNx3] array, where M and N are the height and width of the point
+      cloud respectively. If selected, the RGB and Alpha ports specify
+      the color and transparency respectively. If XYZ is a [Px3] array, then RGB must be
+      a [Px3] array and Alpha must be a [Px1] array. If XYZ is an [MxNx3]
+      array, then RGB must be an [MxNx3] array and Alpha must be an [MxN]
+      array. The color field is specified in the Input settings. The
+      output is a ROS message (bus signal) representing a point cloud.
+    </entry>
+    <entry key="ShowRGBInputPortPrompt">Show RGB input port</entry>
+    <entry key="SelectRGBInputPrompt">Select color field</entry>
+    <entry key="InputConfiguration">Input Settings:</entry>
+
+    <!-- Write Image block and Write Point Cloud-->
+    <entry key="ShowAlphaInputPortPrompt">Show Alpha input port</entry>
+
+    <!--- Drop-down items -->
+    <entry key="MessageType_Msg">Message</entry>
+    <entry key="MessageType_SrvReq">Service Request</entry>
+    <entry key="MessageType_SrvResp">Service Response</entry>
+    <entry key="MessageType_ActFb">Action Feedback</entry>
+    <entry key="MessageType_ActGoal">Action Goal</entry>
+    <entry key="MessageType_ActRes">Action Result</entry>
+
+    <!-- Header Assignment block only -->
+    <entry key="SetFrameIdPrompt">Set Frame ID:</entry>
+    <entry key="SetTimestampPrompt">Set Timestamp</entry>
+    <entry key="SetHdrFldNamePrompt">Header field name:</entry>
+    <entry key="HdrFldNameDefault">Use the default Header field name</entry>
+    <entry key="HdrFldNameSpecifyOwn">Specify your own</entry>
+    <entry key="HdrAssignDescription">
+        Update the fields of the ROS message Header.
+        \n
+        \nThe block input accepts ROS message bus and the block output
+        emits the same type of ROS message bus with updated fields.
+        \n
+        \nUse the Set Frame ID checkbox to set the FrameId field in the
+        ROS message header. Use the Set Timestamp checkbox to update 
+        the time stamp of the ROS message. Set the Header field name 
+        to "Use the default header field name" to set your ROS message's 
+        header field name to "Header". Set the Header field name to "Specify 
+        your own" to manually specify the Header field name of your ROS
+        message.
+    </entry>
+
+    <!-- Header Assignment block entries -->
+    <entry key="InvalidHdrFldError">The input ROS message does not have a field, "{0}".</entry>
+    <entry key="ShortFrameIdError">The frame ID has {0} characters, but the
+    bus element has a maximum size of {1}. Reduce the length of the frame ID
+    or increase the maximum length of the FrameId property in std_msgs/Header.</entry>
+    <entry key="WriteIntensityFieldPrompt">Write to Intensity field</entry>
+
+    <!-- ROS Get Transform block entries -->
+      <entry key="GetTransformMaskTitle" translate="false">ROS Get Transform</entry>
+      <entry key="FrameSourcePrompt">Frame source:</entry>
+      <entry key="TargetPrompt">Target:</entry>
+      <entry key="SourcePrompt">Source:</entry>
+      <entry key="OutputFormatPrompt">Output format:</entry>
+      <entry key="GetTransformDescription">
+        Get transform from ROS network
+        \n
+        \nThe IsAvail port outputs a boolean value indicating whether 
+        the specified transform is available. The Value port outputs a 
+        message bus or a double 4x4 matrix based on selection of output format.
+      </entry>
+
+      <!-- ROS Apply Transform block entries -->
+      <entry key="ApplyTransformMaskTitle" translate="false">ROS Apply Transform</entry>
+      <entry key="EntityMsgPrompt">Entity message type:</entry>
+      <entry key="ApplyTransformDescription">
+        Apply forward transform to input entity message
+        \n
+        \nThe TFMsg port accepts a geometry_msgs/TransformStamped message, while the
+        Entity port accepts one of the following types of message:
+        \n    \u2022 geometry_msgs/QuaternionStamped
+        \n    \u2022 geometry_msgs/Vector3Stamped
+        \n    \u2022 geometry_msgs/PointStamped
+        \n    \u2022 geometry_msgs/PoseStamped
+        \nAfter applying the transform, TFEntity port outputs the same type of message bus as the input Entity message.
+      </entry>
+  </message>
+</rsccat>

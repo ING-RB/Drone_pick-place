@@ -1,0 +1,18 @@
+function qName = qualifyName(pth)
+% qualifyName Turn a path into a qualified name by changing /@ and /+ , then
+% any remaining /s, into .
+%
+% TODO: Is regexprep faster?
+
+%   Copyright 2014-2020 The MathWorks, Inc.
+
+    fs = matlab.depfun.internal.requirementsConstants.FileSep;
+    qName = strrep(pth, [fs '@'], '.');
+    qName = strrep(qName, [fs '+'], '.');
+    qName = strrep(qName, fs, '.');
+
+    % Finally chop off any leading + or @
+    if qName(1) == '+' || qName(1) == '@'
+        qName = qName(2:end);
+    end
+end

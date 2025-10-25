@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Spreadsheet Import Tool Peer Showcase Page</title>
+    <!-- Load css -->
+    <link rel="stylesheet" href="importtool_peer/css/main.css"  type="text/css" />
+
+        <style>
+        #openButton,
+        #closeButton {
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:30px;
+            display:inline-block
+        }
+
+        .pageControls {
+            display:block;
+            height: 150px;
+        }
+
+        .fileContainer {
+            margin-left: 0px;
+            margin-top: 50px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            top: 200px;
+        }
+
+        #textImportTool {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+
+        #spreadsheetImportTool {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body class='tundra' style='margin:10pt;overflow:auto;display:inline-flex'>
+
+<!-- Load dojo -->
+<script src="/derived/ui/generated/datatools/importtool_js_peer/importtool_peer/generatedDojoConfig.js"></script>
+<script type="text/javascript" src="../../../../../../../derived/3p/ui/dojo/dojo.js"></script>
+
+<div class="pageControls">
+    <input type="button" id="openButton" value="Launch Import Tool" onclick="launchImportTool();" style="margin-left:5px;"/>
+    <input type="button" id="closeButton" value="Close Import Tool" onclick="closeVariable();" style="margin-left:5px;"/>
+    <input type="file" id="chooseFile" value="File Picker"/>
+    <input type="text" id="warningFile" class="hide"/>
+    Range:<input type="text" id="Range">
+    Variable Names Row:<input type="text" id="VariableNamesRow">
+</div>
+
+<script type="text/javascript">
+    var fileName = 'AllNumbers.xlsx';
+    let container = null;
+    var fileChooser = document.getElementById("chooseFile");
+    // Only one file will be chosen for now.
+    fileChooser.addEventListener("change", function(event) {
+        require([
+            "dojo/dom-class"
+        ], function(domClass) {
+            if (event.target.files && event.target.files.length > 0) {
+                fileName = event.target.files[0].name;
+                var warningText = document.getElementById("warningFile");
+                domClass.remove(warningText, "show");
+                domClass.add(warningText, "hide");
+            } else {
+                fileName = null;
+            }
+        });
+    });
+
+    var closeVariable = function () {
+        if (container) {
+            // destroy the import tab in the container
+            let d = container.getDocuments();
+            d = d[0];
+            d.widget.destroy();
+            container._selectionManager._lastSelectedChild = null;
+        }
+    }
+
+    var launchImportTool = function () {
+        require([
+            'mw-html-utils/HtmlUtils',
+            'mw-messageservice/MessageService',
+            'dojo/dom-construct',
+            'MW/uiframework/UIContainer',
+            'mw-remote/Remote',
+            'importtool_peer/PeerImportToolWidget',
+            'mw-overlay-utils/BusyOverlay',
+            'MW/layout/LayoutContainerEvent'
+        ], function(HtmlUtils, MessageService, domConstruct, UIContainer, Remote,
+            PeerImportToolWidget, BusyOverlay, LayoutContainerEvent) {
+
+            // startup the message service
+            var messageService = MessageService.messageService;
+            messageService.start();
+
+            var channel = '/DebugImport';
+            if (fileName) {
+                // initiate the import
+                var eventArgs = {
+                    name: '/Import',
+                    filename: fileName,
+                    debug: true,
+                    importType: 'spreadsheet',
+                    channel: channel
+                };
+
+                m = MessageService.publish('/Import', eventArgs);
+            }
+
+            var fileContainer = domConstruct.toDom('<div class="fileContainer"></div>');
+            var wrapper = domConstruct.toDom('<div id="' + 'spreadsheet' + 'ImportTool"></div>');
+            fileContainer.appendChild(wrapper);
+            document.body.appendChild(fileContainer);
+
+            // Determine the title.  If it was passed in as a query parameter, use it, otherwise
+            // default to Import Tool
+            var title = 'Import Tool';
+
+            // create uicontainer and add toolstrip
+            container = new UIContainer('spreadsheet' + 'ImportTool', {
+                title: title,
+                hasMnemonics: true,
+                importScope: '',
+                reserveDocumentSpace: true
+            });
+
+            // register import document type along with toolstrip config info
+            var peerImportWidget = new PeerImportToolWidget();
+            peerImportWidget.registerImportDocumentType(container, 'spreadsheet', channel);
+            container.startup();
+        });
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2023 The MathWorks, Inc.
+
+     All definitions for the following Texas Instruments targets:
+       - cl2000 -v28  (CPU family: TI C28x); referred to here as cl28
+       - c24x         (CPU family: TI C24x)
+       - c5000, cl55  (CPU family: TI C5000); referred to here as cl55
+       - c6000, cl6x  (CPU family: TI C6000)
+       - armcl        (CPU family: TI ARM, or TMS470)
+       - cl430        (CPU family: TI TMS430)
+
+     This file is intended for inclusion in a <compilers> node.
+-->
+<compiler name="ti" default="c28x"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>   
+    <client name="matlab"/>
+  </clients>
+  
+  <options>
+    <option name="--lean_gnu_mode"/>
+    <option name="--gnu_version" value="50300"/>
+    <option name="--preinclude" value="__polyspace_common.h"/>
+    <option name="--pp_number_not_allowed"/>
+    <option name="--enable_ti_stdarg"/>
+
+    <if feoption="--c\+\+">
+      <option name="--ignore_pragma_define_type_info"/>
+      <ifnot feoption="--c\+\+03">
+        <ifnot feoption="--c\+\+11">
+          <ifnot feoption="--c\+\+14">
+            <ifnot feoption="--c\+\+17">
+              <ifnot feoption="--c\+\+20">
+                <option name="--c++03"/>
+              </ifnot>
+            </ifnot>
+          </ifnot>
+        </ifnot>
+      </ifnot>
+    </if>
+    <if feoption="--c">
+      <option name="--c99"/>
+      <option name="--allow_references"/>
+    </if>
+  </options>
+
+  <defines>
+    <!-- GNU compatibilities -->
+    <define name="__MW_GNU__" value="1"/>
+    <define name="PST_GNU" value="1"/>
+    <define name="_GNU_SOURCE" value="1"/>
+    <define name="POLYSPACE_LIBC_NO_THROW" value="1"/>
+
+    <define name="__edg_front_end__" value="1"/>
+    <define name="__VERSION__" value="1"/>
+    <define name="__TI_COMPILER_VERSION__"      value="6000002"/>  
+    <define name="__COMPILER_VERSION__"         value="6000002"/>
+
+    <if feoption="--c">
+      <define name="__GNUC_GNU_INLINE__" value="1"/>
+    </if>
+    <define name="__GNUC_MINOR__" value="3"/>
+    <define name="__GNUC_PATCHLEVEL__" value="0"/>
+    <if feoption="--c\+\+">
+      <!-- Macros for C++ Polyspace Libraries. -->
+      <define name="_LIBCPP_COMPILER_GENERIC_POLYSPACE" value="1"/>
+    </if>
+  </defines>
+
+  <target name="c28x">
+    <!-- Options and defines based on output of: cl2000 -v28 \-\-preproc_macros foo.c (output in foo.pp) -->
+    <options>
+      <option name="--signed_chars"/>
+      <option name="--max_alignment"      value="2"/>
+      <option name="--char_bit"           value="16"/> <!-- The C28x is a 16-bit CPU: char is 16 bits. -->
+      <option name="--sizeof_short"       value="1"/>
+      <option name="--sizeof_int"         value="1"/>
+      <option name="--sizeof_long"        value="2"/>
+      <option name="--alignof_long"       value="2"/>
+      <option name="--sizeof_long_long"   value="4"/>
+      <option name="--alignof_long_long"  value="2"/>
+      <option name="--sizeof_pointer"     value="2"/>
+      <option name="--sizeof_float"       value="2"/>
+      <option name="--alignof_float"      value="2"/>
+      <option name="--sizeof_double"      value="2"/>
+      <option name="--alignof_double"     value="2"/>
+      <option name="--sizeof_long_double" value="4"/>
+      <option name="--alignof_long_double" value="2"/>
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--ptr_diff_is_long"/>
+      <option name="--wchar_t_is_unsigned_int"/>
+      <option name="--little_endian"/>
+      <option name="--restrict"/>
+      <option name="--no_allow_float128"/>
+      <!-- Avoid conflict with polyspace libc  -->
+      <option name="--polyspace_define_macro" value="__LIBC_SECOND_NAME(y)=__pst_libc##y"/>
+
+      <option name="--preinclude" value="ti/tmw_builtins/c28x.h"/>
+    </options>
+
+    <defines>
+      <define name="__TI_COMPILER_VERSION__"      value="21006000"/>
+      <define name="__COMPILER_VERSION__"         value="21006000"/>
+      <define name="__TI_GNU_ATTRIBUTE_SUPPORT__" value="1"/>
+      <define name="__TI_C99_COMPLEX_ENABLED__"   value="1"/>
+      <define name="__SIZE_T_TYPE__"              value="unsigned long"/>
+      <define name="__PTRDIFF_T_TYPE__"           value="long"/>
+      <define name="__WCHAR_T_TYPE__"             value="unsigned int"/>
+      <define name="__TI_WCHAR_T_BITS__"          value="16"/>       <!-- From CCS version 6 onwards -->
+      <define name="__signed_chars__"             value="1"/>
+      <define name="__little_endian__"            value="1"/>
+      <define name="__TMS320C2000__"              value="1"/>
+      <define name="_TMS320C2000"                 value="1"/>
+      <define name="__TMS320C28XX__"              value="1"/> <!-- When invoked with -v27: name="__TMS320C27XX__". Similar for next 3 defines. -->
+      <define name="_TMS320C28XX"                 value="1"/>
+      <define name="__TMS320C28X__"               value="1"/>
+      <define name="_TMS320C28X"                  value="1"/>
+    </defines>
+
+    <asms>
+      <asm name="asm"/>
+      <asm name="__asm"/>
+    </asms>
+
+    <attributes>
+      <attribute name="interrupt"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__cregister"/>
+      <attribute name="cregister"/>
+      <attribute name="near"/>
+      <attribute name="__near"/>
+      <attribute name="far"/>
+      <attribute name="__far"/>
+      <attribute name="ioport"/>
+      <attribute name="__ioport"/>
+    </attributes>
+
+    <qualifiers>
+      <qualifier name="__restrict" token="tok_restrict"/>
+    </qualifiers>
+  </target>
+
+  <target name="c24x" explicit="true" supportedby="matlab">
+    <!-- The compiler executable is actually called 'dspcl' but that name
+         is shared with compilers (1990s vintage) for other TI CPUs.
+    -->
+    <!-- The C24x is an old CPU series - the documentation is from 1999 -
+         and the compiler has a different "options logic" from more recent
+         TI compilers. In particular, it does not have an option to list
+         the macros in effect (- -preproc_macros or - -ppm on recent compilers),
+         so we have to rely on the documentation for that. The header files
+         refer only to predefined symbols _INLINE and __cplusplus (although
+         the compiler does not support C++).
+    -->
+    <!-- CodeComposerStudio 3.3, <CCS root>/C2400/cgtools/bin/dspcl -v2xx -->
+    <options>
+      <option name="--signed_chars"/>
+      <option name="--max_alignment"      value="1"/>
+      <option name="--char_bit"           value="16"/> <!-- The C24x is a 16-bit CPU: char is 16 bits. -->
+      <option name="--sizeof_short"       value="1"/>
+      <option name="--sizeof_int"         value="1"/>
+      <option name="--sizeof_long"        value="2"/>
+      <option name="--sizeof_long_long"   value="4"/>
+      <option name="--sizeof_pointer"     value="1"/>
+      <option name="--sizeof_float"       value="2"/>
+      <option name="--sizeof_double"      value="2"/>
+      <option name="--sizeof_long_double" value="2"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--little_endian"/>
+      <!-- Missing options (proposing names here):
+             - -allow_global_register_declarations (normally 'register' can only be used on function arguments and local variables).
+      -->
+    </options>
+
+    <defines>
+      <define name="_dsp"        value="1"/>
+      <define name="_TMS320C2XX" value="1"/>
+      <define name="_INLINE"     value="1"/> <!-- Enabled by dspcl's -x and -x2 options. -->
+    </defines>
+
+    <asms>
+      <asm name="asm"/>
+    </asms>
+
+    <attributes>
+      <ifnot feoption="--c\+\+">
+        <!-- Allow the front-end to parse C24x code/headers in C++ mode even though the C24x does not support C++. -->
+        <attribute name="inline"/>
+      </ifnot>
+      <attribute name="interrupt"/>
+      <attribute name="ioport"/>
+    </attributes>
+  </target>
+
+  <target name="c5400,cl500" supportedby="matlab">
+    <!-- From compiler/c5400/bin/cl500 - -preproc_macros: -->
+    <options>
+      <option name="--signed_chars"/>
+      <option name="--max_alignment"      value="1"/>
+      <option name="--char_bit"           value="16"/> <!-- The C54x is a 16-bit CPU: char is 16 bits. -->
+      <option name="--sizeof_short"       value="1"/>
+      <option name="--sizeof_int"         value="1"/>
+      <option name="--sizeof_long"        value="2"/>
+      <option name="--sizeof_long_long"   value="4"/>
+      <option name="--sizeof_pointer"     value="1"/>
+      <option name="--sizeof_float"       value="2"/>
+      <option name="--sizeof_double"      value="2"/>
+      <option name="--sizeof_long_double" value="2"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_int"/>
+      <option name="--big_endian"/>
+      <option name="--restrict"/>
+    </options>
+
+    <defines>
+      <define name="__TI_COMPILER_VERSION__" value="4002000"/>
+      <define name="__COMPILER_VERSION__"    value="4002000"/>
+      <define name="__SIZE_T_TYPE__"         value="unsigned"/>
+      <define name="__PTRDIFF_T_TYPE__"      value="int"/>
+      <define name="__WCHAR_T_TYPE__"        value="unsigned int"/>
+      <define name="__NO_LONG_LONG"          value="1"/>
+      <define name="__signed_chars__"        value="1"/>
+      <define name="__big_endian__"          value="1"/>
+      <define name="_TMS320C5XX"             value="1"/>
+      <define name="__TMS320C5XX__"          value="1"/>
+      <define name="_C_MODE"                 value="1"/> <!-- Also in (Embedded) C++ mode (when -pe given or any other C++ related option) -->
+      <define name="_LEAD"                   value="1"/>
+      <define name="__rtti_enabled__"        value="1"/> <!-- Enabled by - -rtti and - -exceptions. -->
+
+      <!-- The following symbols are defined for use with headers provided by EDG.
+           However, they are already set by the EDG front-end when needed so we do not define them here:
+             __ARRAY_OPERATORS
+             __EDG_RUNTIME_USES_NAMESPACES
+             __EXCEPTIONS                  - Enabled by - -exceptions.
+             __PLACEMENT_DELETE            - Enabled by - -exceptions.
+      -->
+    </defines>
+
+    <asms>
+      <asm name="asm"/>
+      <asm name="__asm"/> <!-- Not sure! -->
+    </asms>
+
+    <attributes>
+      <attribute name="ioport"/>
+      <attribute name="__inline"/>
+      <attribute name="interrupt"/>
+      <attribute name="__interrupt"/>
+      <attribute name="near"/>
+      <attribute name="__far"/>
+    </attributes>
+  </target>
+
+  <target name="c55x" supportedby="matlab">
+    <!-- The C55XX has many models, see cl55 -v list -->
+    <!-- I have not tried them all, but e.g. - -memory_model <model> depends on the actual CPU model. -->
+    <!-- From compiler/c5500/bin/cl55 - -preproc_macros: -->
+    <options>
+      <option name="--signed_chars"/>
+      <option name="--max_alignment"      value="1"/>
+      <option name="--char_bit"           value="16"/> <!-- The C55xx is a 16-bit CPU: char is 16 bits. -->
+      <option name="--sizeof_short"       value="1"/>
+      <option name="--sizeof_int"         value="1"/>
+      <option name="--sizeof_long"        value="2"/>
+      <option name="--sizeof_long_long"   value="4"/> <!-- Actually, long long is 40 bits; should we choose 3? -->
+      <option name="--sizeof_pointer"     value="1"/> <!-- Actually, pointers come in 16 and 23/24 bits (23 data far pointer, 24 function pointer). -->
+      <option name="--sizeof_float"       value="2"/>
+      <option name="--sizeof_double"      value="2"/>
+      <option name="--sizeof_long_double" value="2"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_int"/>
+      <option name="--big_endian"/>
+      <option name="--restrict"/>
+    </options>
+
+    <defines>
+      <define name="__TI_COMPILER_VERSION__"      value="4004000"/>
+      <define name="__COMPILER_VERSION__"         value="4004000"/>
+      <define name="__TI_GNU_ATTRIBUTE_SUPPORT__" value="0"/>
+      <define name="__SIZE_T_TYPE__"              value="unsigned"/>
+      <define name="__PTRDIFF_T_TYPE__"           value="int"/>
+      <define name="__WCHAR_T_TYPE__"             value="unsigned int"/>
+      <define name="__TI_WCHAR_T_BITS__"          value="16"/>
+      <define name="__TI_STRICT_FP_MODE__"        value="1"/>
+      <define name="__signed_chars__"             value="1"/>
+      <define name="__big_endian__"               value="1"/>
+      <define name="__TMS320C55XX__"              value="1"/>
+      <define name="__TMS320C55X__"               value="1"/>
+      <define name="__SMALL_MODEL__"              value="1"/> <!-- When - -memory_model=small given, or by default (all CPU models?) -->
+      <define name="__LARGE_MODEL__"              value="1"/> <!-- When - -memory_model=large given. -->
+      <define name="__HUGE_MODEL__"               value="1"/> <!-- When - -memory_model=huge given; requires -v cpu:3 or the 55xx number of a 'huge' cpu model. -->
+      <define name="__LEAD3__"                    value="1"/>
+    </defines>
+
+    <asms>
+      <asm name="asm"/>
+      <asm name="__asm"/>
+    </asms>
+
+    <attributes>
+      <attribute name="ioport"/>
+      <attribute name="onchip"/>
+      <attribute name="__onchip"/>
+      <attribute name="__inline"/>
+      <attribute name="interrupt"/>
+      <attribute name="__interrupt"/>
+    </attributes>
+  </target>
+
+  <target name="c6000">
+    <!-- I didn't look at the effect of options here. -->
+    <!-- According to the doc, "common CPU version options include" -mv6200, -mv6700, -mv6700+, -mv6400+, -mv6740, -mv6600 -->
+    <!-- From compiler/c6000/bin/cl6x - -preproc_macros: -->
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/> 
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--signed_chars"/>
+      <option name="--little_endian"/>
+      <option name="--restrict"/>
+
+      <option name="--preinclude" value="ti/tmw_builtins/c6000.h"/>
+
+      <option name="--polyspace_define_macro" value="_amem2(X)=(*(unsigned short *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amem2_const(X)=(*(const unsigned short *)(X))"/>
+      <option name="--polyspace_define_macro" value="_mem2(X)=(*(unsigned short *)(X))"/>
+      <option name="--polyspace_define_macro" value="_mem2_const(X)=(*(const unsigned short *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amem4(X)=(*(unsigned int *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amem4_const(X)=(*(const unsigned int *)(X))"/>
+      <option name="--polyspace_define_macro" value="_mem4(X)=(*(unsigned int *)(X))"/>
+      <option name="--polyspace_define_macro" value="_mem4_const(X)=(*(const unsigned int *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amem8(X)=(*(long long *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amem8_const(X)=(*(const long long *)(X))"/>
+      <option name="--polyspace_define_macro" value="_mem8(X)=(*(long long *)(X))"/>
+      <option name="--polyspace_define_macro" value="_mem8_const(X)=(*(const long long *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amemd8(X)=(*(double *)(X))"/>
+      <option name="--polyspace_define_macro" value="_amemd8_const(X)=(*(const double *)(X))"/>
+      <option name="--polyspace_define_macro" value="_memd8(X)=(*(double *)(X))"/>
+      <option name="--polyspace_define_macro" value="_memd8_const(X)=(*(const double *)(X))"/>
+    </options>
+
+    <defines>
+      <define name="__TI_COMPILER_VERSION__"      value="7003001"/>
+      <define name="__COMPILER_VERSION__"         value="7003001"/>
+      <define name="__TI_GNU_ATTRIBUTE_SUPPORT__" value="1"/>
+      <define name="__TI_C99_COMPLEX_ENABLED__"   value="1"/>
+      <define name="__TI_EABI__"                  value="1"/>
+      <define name="__TI_ELFABI__"                value="1"/>
+      <define name="__TI_TLS__"                   value="1"/>
+      <define name="__SIZE_T_TYPE__"              value="unsigned"/>
+      <define name="__PTRDIFF_T_TYPE__"           value="int"/>
+      <define name="__WCHAR_T_TYPE__"             value="unsigned short"/>
+      <define name="__TI_INT40_T__"               value="1"/>
+      <define name="__TI_WCHAR_T_BITS__"          value="16"/>
+      <define name="__TI_32BIT_LONG__"            value="1"/>
+      <define name="__signed_chars__"             value="1"/>
+      <define name="_LITTLE_ENDIAN"               value="1"/>
+      <define name="__little_endian__"            value="1"/>
+      <define name="_TMS320C6X"                   value="1"/>
+      <define name="__TMS320C6X__"                value="1"/>
+      <define name="_TMS320C6400"                 value="1"/>
+      <define name="_TMS320C64_PLUS"              value="1"/>
+      <define name="_TMS320C6400_PLUS"            value="1"/>
+    </defines>
+
+    <types>
+      <type name="__int40_t" type_kind="int" decl_specs="long_long"/> 
+    </types>
+
+    <asms>
+      <asm name="__asm"/>
+    </asms>
+
+    <attributes>
+      <attribute name="interrupt"/>
+      <attribute name="__interrupt"/>
+      <attribute name="__cregister"/>
+      <attribute name="cregister"/>
+      <attribute name="near"/>
+      <attribute name="__near"/>
+      <attribute name="far"/>
+      <attribute name="__far"/>
+    </attributes>
+  </target>
+
+  <target name="arm">
+    <!-- From compiler/arm_5.1.5/bin/armcl - -preproc_macros (from ccsv6_linux), no - -silicon_version defaults to 4: -->
+    <!-- Note that armcl (default silicon_version) corresponds with tms470/bin/cl470 in CCS v5.1. Hence the various names. -->
+    <!-- Note also that there *are* some differences: cl470 does not support -mv=6M0, armcl does. -->
+
+    <target_options>
+      <target_option pattern="(--\w+)=(.*)" option="\1" value="\2"/>
+      <target_option pattern="-mv(.*)" option="-mv" value="\2"/>
+    </target_options>
+
+    <options>
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_short"/>
+      <option name="--unsigned_chars"/>
+      <option name="--small_enums"/>
+      <ifnot option="--little_endian">
+        <ifnot option="--big_endian">
+          <option name="--big_endian"/>
+        </ifnot>
+      </ifnot>
+      <option name="--restrict"/>
+
+      <option name="--preinclude" value="ti/tmw_builtins/arm.h"/>
+    </options>
+
+    <defines>
+      <define name="__TI_COMPILER_VERSION__"      value="5001005"/>
+      <define name="__COMPILER_VERSION__"         value="5001005"/>
+      <define name="__TI_GNU_ATTRIBUTE_SUPPORT__" value="1"/>
+      <define name="__TI_C99_COMPLEX_ENABLED__"   value="1"/>
+      <define name="__eabi__"                     value="1"/>
+      <define name="__TI_EABI_SUPPORT__"          value="1"/>
+      <define name="__TI_EABI__"                  value="1"/>
+      <define name="__TI_VFPLIB_SUPPORT__"        value="1"/>
+      <define name="__SIZE_T_TYPE__"              value="unsigned"/>
+      <define name="__PTRDIFF_T_TYPE__"           value="int"/>
+      <define name="__WCHAR_T_TYPE__"             value="unsigned short"/>
+      <define name="__TI_WCHAR_T_BITS__"          value="16"/>
+      <define name="__unsigned_chars__"           value="1"/>
+      <switch option="--little_endian">
+        <case>
+          <define name="__little_endian__"        value="1"/>
+        </case>
+        <default>
+          <define name="__big_endian__"           value="1"/>
+        </default>
+      </switch>
+    </defines>
+
+    <!-- Gcc extensions support -->
+    <switch option="--gcc">
+      <case>
+        <options>
+          <!-- Set Gnu version.
+               Gnu version is 3.0 on CCS v5 and earlier, but 4.3 on CCS 6.
+               However, we can't test the CCS version so assume Gnu version 4.3.
+               Actually, armcl on CCS_v5.1 sets the Gnu version to 3.0
+               (__GNUC__=3 and __GNUC_MINOR__=0), but EDG only accepts >= 3.2.
+          -->
+          <ifnot option="--gnu_version">
+            <option name="--gnu_version" value="40300"/>
+          </ifnot>
+        </options>
+        <defines>
+          <define name="__GNUC_GNU_INLINE__"     value="1"/>
+        </defines>
+      </case>
+      <default>
+      </default>
+    </switch>
+
+    <!-- Various silicon_versions: allowed are 4 (default), 5e, 6, 6M0, 7R3, 7R4, 7M4 -->
+
+    <defines>
+      <define name="__TI_ARM__" value="1"/>
+      <define name="__TMS470__" value="1"/>
+      <switch option="--silicon_version|-mv">
+        <case value="5e">
+          <define name="__TI_TMS470_V5__"   value="1"/>
+          <define name="__TI_ARM_V5__"      value="1"/>
+          <switch option="--code_state">
+            <case value="16">
+              <define name="__16bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__32bis__"      value="1"/>
+            </default>
+          </switch>
+        </case>
+
+        <case value="6">
+          <define name="__TI_TMS470_V6__"   value="1"/>
+          <define name="__TI_ARM_V6__"      value="1"/>
+          <switch option="--code_state">
+            <case value="16">
+              <define name="__16bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__32bis__"      value="1"/>
+            </default>
+          </switch>
+        </case>
+
+        <case value="6M0">
+          <define name="__TI_ARM_V6M0__"    value="1"/>
+          <define name="__16bis__"          value="1"/> <!-- The 6M0 does not accept code_state. -->
+        </case>
+
+        <case value="7A8">
+          <define name="__TI_TMS470_V7__"   value="1"/>
+          <define name="__TI_ARM_V7__"      value="1"/>
+          <define name="__TI_TMS470_V7A8__" value="1"/>
+          <define name="__TI_ARM_V7A8__"    value="1"/>
+          <switch option="--code_state">
+            <case value="16">
+              <define name="__16bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__32bis__"      value="1"/>
+            </default>
+          </switch>
+        </case>
+
+        <case value="7M3">
+          <define name="__TI_TMS470_V7__"   value="1"/>
+          <define name="__TI_ARM_V7__"      value="1"/>
+          <define name="__TI_TMS470_V7M3__" value="1"/>
+          <define name="__TI_ARM_V7M3__"    value="1"/>
+          <switch option="--code_state">
+            <case value="32">
+              <define name="__32bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__16bis__"      value="1"/>
+            </default>
+          </switch>
+        </case>
+
+        <case value="7M4">
+          <define name="__TI_TMS470_V7__"   value="1"/>
+          <define name="__TI_ARM_V7__"      value="1"/>
+          <define name="__TI_TMS470_V7M4__" value="1"/>
+          <define name="__TI_ARM_V7M4__"    value="1"/>
+          <switch option="--code_state">
+            <case value="32">
+              <define name="__32bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__16bis__"      value="1"/>
+            </default>
+          </switch>
+        </case>
+
+        <case value="7R4">
+          <define name="__TI_TMS470_V7__"   value="1"/>
+          <define name="__TI_ARM_V7__"      value="1"/>
+          <define name="__TI_TMS470_V7R4__" value="1"/>
+          <define name="__TI_ARM_V7R4__"    value="1"/>
+          <switch option="--code_state">
+            <case value="16">
+              <define name="__16bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__32bis__"      value="1"/>
+            </default>
+          </switch>
+        </case>
+
+        <default> <!-- silicon_version=4 and absent silicon_version. -->
+          <define name="__TI_TMS470_V4__"   value="1"/>
+          <define name="__TI_ARM_V4__"      value="1"/>
+          <switch option="--code_state">
+            <case value="16">
+              <define name="__16bis__"      value="1"/>
+            </case>
+            <default>
+              <define name="__32bis__"      value="1"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+
+      <switch option="--float_support">
+        <case value="vfplib">
+          <define name="__TI_VFPLIB_SUPPORT__"     value="1"/>
+        </case>
+        <!-- The following float_support values are specific for the various
+             silicon_versions. True fundamentalists would check that the right
+             silicon_version is used but that seems unnecessary because the
+             values will normally be obtained from the sniffer.
+        -->
+        <case value="VFPv2"> <!-- For silicon_version=5e or 6. -->
+          <define name="__TI_VFPV2_SUPPORT__"      value="1"/>
+          <define name="__TI_VFP_SUPPORT__"        value="1"/>
+        </case>
+        <case value="VFPv3"> <!-- For silicon_version=7A8. -->
+          <define name="__TI_VFPV3_SUPPORT__"      value="1"/>
+          <define name="__TI_VFP_SUPPORT__"        value="1"/>
+        </case>
+        <case value="VFPv3D16"> <!-- For silicon_version=7R4. -->
+          <define name="__TI_VFPV3D16_SUPPORT__"   value="1"/>
+          <define name="__TI_VFP_SUPPORT__"        value="1"/>
+        </case>
+        <case value="FPv4SPD16"> <!-- For silicon_version=7M4. -->
+          <define name="__TI_FPv4SPD16_SUPPORT__"  value="1"/>
+          <define name="__TI_VFP_SUPPORT__"        value="1"/>
+        </case>
+        <case value="fpalib">
+          <define name="__TI_FPALIB_SUPPORT__"     value="1"/>
+        </case>
+        <default> <!-- Fpalib is the default on all silicon_versions, except 7M4. -->
+          <switch option="--silicon_version|-mv">
+            <case value="7M4">
+              <define name="__TI_FPv4SPD16_SUPPORT__" value="1"/>
+              <define name="__TI_VFP_SUPPORT__"       value="1"/>
+            </case>
+            <default>
+              <define name="__TI_FPALIB_SUPPORT__"    value="1"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+
+      <switch option="--abi">
+        <case value="ti_arm9_abi|tiabi">
+          <!-- No defines. -->
+        </case>
+        <case value="eabi">
+          <define name="__eabi__"            value="1"/>
+          <define name="__TI_EABI_SUPPORT__" value="1"/>
+          <define name="__TI_EABI__"         value="1"/>
+        </case>
+        <default>
+          <if option="--silicon_version|-mv" value="7M4">
+            <ifnot option="--float_support" value="fpalib">
+              <define name="__eabi__"            value="1"/>
+              <define name="__TI_EABI_SUPPORT__" value="1"/>
+              <define name="__TI_EABI__"         value="1"/>
+            </ifnot>
+          </if>
+        </default>
+      </switch>
+    </defines>
+
+    <asms>
+      <asm name="asm"/>
+      <asm name="__asm"/>
+    </asms>
+
+    <attributes>
+      <attribute name="interrupt"/>
+      <attribute name="__interrupt"/>
+
+      <!-- Gnu-style attributes: __attribute__((...)) -->
+      <attribute name="unpacked" family="gnu" cond="gxi" constraints="e|Wc|Wd|Wv|Wp|Wr|Wt" apply="apply_unpacked_attr"/>
+    </attributes>
+  </target>
+
+  <target name="msp430">
+    <!-- From compiler/msp430_4.2.1/bin/cl430.exe [-vmspx] -ppm (from CCS_v5.5\ccsv5), no -v defaults to -vmsp: -->
+    <options>
+      <option name="--max_alignment"      value="2"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="2"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="2"/>   <!-- On MSPX function pointers are 20 bits, data pointers also when in large memory model -->
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+      <option name="--wchar_t_is_unsigned_int"/>
+      <option name="--unsigned_chars"/>                 <!-- Unless - -plain_char=signed given -->
+      <option name="--restrict"/>
+
+      <option name="--preinclude" value="ti/tmw_builtins/msp430.h"/>
+    </options>
+
+    <defines>
+      <define name="__TI_COMPILER_VERSION__"      value="4002001"/>
+      <define name="__COMPILER_VERSION__"         value="4002001"/>
+      <define name="__TI_C99_COMPLEX_ENABLED__"   value="1"/>
+      <define name="__TI_GNU_ATTRIBUTE_SUPPORT__" value="1"/>
+      <if define="__PST_polyspace">
+        <define name="__TI_EABI__"                value="1"/>
+      </if>
+      <define name="__SIZE_T_TYPE__"              value="unsigned"/>
+      <define name="__PTRDIFF_T_TYPE__"           value="int"/>
+      <define name="__WCHAR_T_TYPE__"             value="unsigned int"/>
+      <define name="__TI_WCHAR_T_BITS__"          value="16"/>
+      <define name="__unsigned_chars__"           value="1"/>   <!-- Don't believe the doc! ==> __signed_chars__ if - -plain_char=signed given -->
+      <define name="__little_endian__"            value="1"/>
+      <define name="__MSP430__"                   value="1"/>
+    </defines>
+
+    <asms>
+      <asm name="asm"/>
+      <asm name="__asm"/>
+    </asms>
+
+    <attributes>
+      <attribute name="interrupt"/>
+      <attribute name="__interrupt"/>
+    </attributes>
+  </target>
+
+</compiler>
+

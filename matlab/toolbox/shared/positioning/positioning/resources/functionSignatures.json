@@ -1,0 +1,585 @@
+{
+    "accelcal":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"XUP", "kind":"required", "type":"double"},
+                    {"name":"XDOWN", "kind":"required", "type":"double"},
+                    {"name":"YUP", "kind":"required", "type":"double"},
+                    {"name":"YDOWN", "kind":"required", "type":"double"},
+                    {"name":"ZUP", "kind":"required", "type":"double"},
+                    {"name":"ZDOWN", "kind":"required", "type":"double"},
+                    {"name":"Gravity", "kind":"namevalue", "type":"double"}
+               ],
+                [
+                    {"name":"D", "kind":"required", "type":"double"},
+                    {"name":"Gravity", "kind":"namevalue", "type":"double"}
+                ]
+            ]}
+        ]
+    },
+    "accelparams":
+    {
+        "inputs":
+        [
+            {"name":"MeasurementRange", "kind":"namevalue", "type":["numeric", "scalar", "positive"]},
+            {"name":"Resolution", "kind":"namevalue", "type":["numeric", "scalar", ">=0"]},
+            {"name":"ConstantBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"AxesMisalignment", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"],["numeric", "real", "2d", "nrows=3", "ncols=3"]]},
+            {"name":"NoiseDensity", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"BiasInstability", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"RandomWalk", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"NoiseType", "kind":"namevalue", "type":"choices={'double-sided','single-sided'}"},
+            {"name":"BiasInstabilityCoefficients", "kind":"namevalue", "type":"numeric"},
+            {"name":"TemperatureBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"TemperatureScaleFactor", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]}
+        ]
+    },
+    "allanvar":
+    {
+        "inputs":
+        [
+            {"name":"omega", "kind":"required", "type":[["double"], ["single"]]}, 
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"m", "kind":"optional", "type":"numeric"}
+                ],
+                [
+                    {"name":"mstr", "kind":"optional", "type":"choices={'octave', 'decade'}"}
+                ]
+            ]},
+            {"name":"Fs", "kind":"optional", "type":["numeric","scalar"]} 
+        ]
+    },
+    "complementaryFilter":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"name":"SampleRate", "kind":"namevalue", "type":["numeric","scalar","real","positive","finite"]},
+            {"name":"AccelerometerGain", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"MagnetometerGain", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"HasMagnetometer", "kind":"namevalue", "type":["logical","scalar"]},
+            {"name":"OrientationFormat", "kind":"namevalue", "type":"choices={'quaternion', 'Rotation matrix'}"},
+            {"kind":"varargin","type":["complementaryFilter"]}
+        ]
+    },
+    "fractalcoef":
+    {
+        "inputs":
+        [
+            {"name":"numPoles", "kind":"positional", "type":[["double", "scalar", "positive", "integer"], ["single", "scalar", "positive", "integer"]]},
+            {"name":"alpha", "kind":"positional", "type":[["double", "scalar", ">0", "<2"], ["single", "scalar"]]}
+        ]
+    },
+    "magcal":
+    {
+        "inputs":
+        [
+            {"name":"d", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"kind","kind":"positional","type":"choices={'eye','diag', 'sym', 'auto'}"}
+        ]
+    },
+    "altimeterSensor":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["altimeterSensor"]}
+        ]
+    },
+    "fusion.internal.INSFilterESKF.pose":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required","type":"fusion.internal.INSFilterESKF"},
+            {"name":"Format", "kind":"optional", "type":"choices={'quaternion', 'rotmat'}"}
+        ],
+        "outputs":
+        [
+            {"name":"Orientation", "kind":"required", "type":"quaternion"},
+            {"name":"Position", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "fusion.internal.NHConstrainedIMUGPSFuserBase.correct":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required", "type":["fusion.internal.NHConstrainedIMUGPSFuserBase"]},
+            {"name":"idx", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"z", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"R", "kind":"required", "type":[["double"], ["single"]]}
+        ]
+    },
+    "fusion.internal.NHConstrainedIMUGPSFuserBase.fusegps":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required", "type":["fusion.internal.NHConstrainedIMUGPSFuserBase"]},
+            {"name":"gpsLLA", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"Rpos", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"gpsVel", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"Rvel", "kind":"required", "type":[["double"], ["single"]]}
+        ]
+    },
+    "fusion.internal.INSFilterEKF.pose":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required", "type":["fusion.internal.INSFilterEKF"]},
+            {"name":"format", "kind":"optional", "type":"choices={'quaternion', 'rotmat'}"}
+        ],
+        "outputs":
+        [
+            {"name":"orient", "type":[["quaternion"], ["double"], ["single"]]}, 
+            {"name":"pos", "type":[["double"], ["single"]]}
+        ]
+    },
+    "fusion.internal.NHConstrainedIMUGPSFuserBase.predict":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required", "type":["fusion.internal.NHConstrainedIMUGPSFuserBase"]},
+            {"name":"accelMeas", "kind":"required", "type":[["double"], ["single"]]},
+            {"name":"gyroMeas", "kind":"required", "type":[["double"], ["single"]]}
+        ]
+    },
+    "fusion.internal.NHConstrainedIMUGPSFuserBase.reset":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required", "type":["fusion.internal.NHConstrainedIMUGPSFuserBase"]}
+        ]
+    },
+    "insfilterNonholonomic.stateinfo":
+    {
+        "inputs":
+        [
+            {"name":"filt", "kind":"required", "type":["insfilterNonholonomic"]}
+        ]
+    },
+    "gyroparams":
+    {
+        "inputs":
+        [
+            {"name":"AccelerationBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"MeasurementRange", "kind":"namevalue", "type":["numeric", "scalar", "positive"]},
+            {"name":"Resolution", "kind":"namevalue", "type":["numeric", "scalar", ">=0"]},
+            {"name":"ConstantBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"AxesMisalignment", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"],["numeric", "real", "2d", "nrows=3", "ncols=3"]]},
+            {"name":"NoiseDensity", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"BiasInstability", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"RandomWalk", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"NoiseType", "kind":"namevalue", "type":"choices={'double-sided','single-sided'}"},
+            {"name":"BiasInstabilityCoefficients", "kind":"namevalue", "type":"numeric"},
+            {"name":"TemperatureBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"TemperatureScaleFactor", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]}
+        ]
+    },
+    "imuSensor":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["imuSensor"]}
+        ]
+    },
+    "imuSensor":
+    {
+        "inputs":
+        [
+            {"name":"IMUType","kind":"positional","type":"choices={'accel-gyro','accel-mag', 'accel-gyro-mag'}"},
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["imuSensor"]}
+        ]
+    },
+    "imuSensor.loadparams":
+    {
+        "inputs":
+        [
+            {"name":"IMU","kind":"required","type":["imuSensor"]},
+            {"name":"PartsFile", "kind":"required","type":[["char"], ["filepath=*.json"]]},
+            {"name":"Part", "kind":"required","type":"choices=fusion.internal.SensorParamLoader.getPartsInFile(PartsFile)"}
+        ]
+    },
+    "insfilterAsync":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["insfilterAsync"]}
+        ]
+    },
+    "insfilterErrorState":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["insfilterErrorState"]}
+        ]
+    },
+    "insfilterMARG":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["insfilterMARG"]}
+        ]
+    },
+    "insfilterNonholonomic":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["insfilterNonholonomic"]}
+        ]
+    },
+    "magparams":
+    {
+        "inputs":
+        [
+            {"name":"MeasurementRange", "kind":"namevalue", "type":["numeric", "scalar", "positive"]},
+            {"name":"Resolution", "kind":"namevalue", "type":["numeric", "scalar", ">=0"]},
+            {"name":"ConstantBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"AxesMisalignment", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"],["numeric", "real", "2d", "nrows=3", "ncols=3"]]},
+            {"name":"NoiseDensity", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"BiasInstability", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"RandomWalk", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"NoiseType", "kind":"namevalue", "type":"choices={'double-sided','single-sided'}"},
+            {"name":"BiasInstabilityCoefficients", "kind":"namevalue", "type":"numeric"},
+            {"name":"TemperatureBias", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]},
+            {"name":"TemperatureScaleFactor", "kind":"namevalue", "type":[["numeric", "real", "scalar"],["numeric", "real", "vector", "numel=3"]]}
+        ]
+    },
+    "ecompass":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"Acceleration", "kind":"required", "type":"double"},
+                    {"name":"MagneticField", "kind":"required", "type":"double"},
+                    {"name":"Format", "kind":"optional", "type":"choices={'quaternion', 'rotmat'}"}
+                ],
+                [
+                    {"name":"Acceleration", "kind":"required", "type":"double"},
+                    {"name":"MagneticField", "kind":"required", "type":"double"},
+                    {"name":"Format", "kind":"required", "type":"choices={'quaternion', 'rotmat'}"},
+                    {"name":"ReferenceFrame", "kind":"namevalue", "type":"choices={'NED','ENU'}"}
+                ]
+        ]}
+        ]
+    },
+    "imufilter":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["imufilter"]}
+        ]
+        
+    },
+    "fusion.internal.IMUFilterBase.residual":
+    {
+        "inputs":
+        [
+            {"name":"imufilter","kind":"required","type":"fusion.internal.IMUFilterBase"},
+            {"name":"Acceleration", "kind":"required","type":["numeric","size=:,3"]},
+            {"name":"AngularVelocity", "kind":"required","type":["numeric","size=:,3"]}
+        ],
+        "outputs":
+        [
+            {"name":"Residual", "kind":"required","type":["numeric","size=:,3"]},
+            {"name":"ResidualCovariance", "kind":"required","type":["numeric","size=3,3,:"]}
+        ]
+    },
+    "ahrsfilter":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["ahrsfilter"]}
+        ]
+    },
+    "fusion.internal.AHRSFilterBase.residual":
+    {
+        "inputs":
+        [
+            {"name":"ahrsfilter","kind":"required","type":"fusion.internal.AHRSFilterBase"},
+            {"name":"Acceleration", "kind":"required","type":["numeric","size=:,3"]},
+            {"name":"AngularVelocity", "kind":"required","type":["numeric","size=:,3"]},
+            {"name":"MagneticField", "kind":"required","type":["numeric","size=:,3"]}
+        ],
+        "outputs":
+        [
+            {"name":"Residual", "kind":"required","type":["numeric","size=:,6"]},
+            {"name":"ResidualCovariance", "kind":"required","type":["numeric","size=6,6,:"]}
+        ]
+    },
+    "ahrs10filter":
+    {
+        "inputs":
+        [
+            {"name":"ReferenceFrame","kind":"namevalue","type":"choices={'NED','ENU'}"},
+            {"kind":"varargin","type":["ahrs10filter"]}
+        ]
+    },
+    "fusion.internal.IMUBasicEKF.correct":
+    {
+        "inputs":
+        [
+            {"name":"ahrs10filter", "kind":"required","type":"fusion.internal.IMUBasicEKF"},
+            {"name":"StateIndex", "kind":"required","type":"numeric"},
+            {"name":"Measurement", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AHRS10FilterBase.pose":
+    {
+        "inputs":
+        [
+            {"name":"ahrs10filter", "kind":"required","type":"fusion.internal.AHRS10FilterBase"},
+            {"name":"Format", "kind":"optional", "type":"choices={'quaternion', 'rotmat'}"}
+        ],
+        "outputs":
+        [
+            {"name":"Orientation", "kind":"required", "type":"quaternion"},
+            {"name":"Altitude", "kind":"required", "type":"numeric"},
+            {"name":"Velocity", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "fusion.internal.AHRS10FilterBase.predict":
+    {
+        "inputs":
+        [
+            {"name":"ahrs10filter", "kind":"required","type":"fusion.internal.AHRS10FilterBase"},
+            {"name":"Acceleration", "kind":"required","type":"numeric"},
+            {"name":"AngularVelocity", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AHRS10FilterBase.fusemag":
+    {
+        "inputs":
+        [
+            {"name":"ahrs10filter", "kind":"required","type":"fusion.internal.AHRS10FilterBase"},
+            {"name":"MagneticField", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AHRS10FilterBase.fusealtimeter":
+    {
+        "inputs":
+        [
+            {"name":"ahrs10filter", "kind":"required","type":"fusion.internal.AHRS10FilterBase"},
+            {"name":"Altitude", "kind":"required","type":"numeric"},
+            {"name":"AltitudeMeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.correct":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterAsync"},
+            {"name":"StateIndex", "kind":"required","type":"numeric"},
+            {"name":"Measurement", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.pose":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterAsync"},
+            {"name":"Format", "kind":"optional", "type":"choices={'quaternion', 'rotmat'}"}
+        ],
+        "outputs":
+        [
+            {"name":"Orientation", "kind":"required", "type":"quaternion"},
+            {"name":"Position", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.predict":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterAsync"},
+            {"name":"dt", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.fuseaccel":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterAsync"},
+            {"name":"Acceleration", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.fusegyro":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterAsync"},
+            {"name":"AngularVelocity", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.fusemag":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterAsync"},
+            {"name":"MagneticField", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.AsyncMARGGPSFuserBase.fusegps":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterMARG"},
+            {"name":"LLA", "kind":"required","type":"numeric"},
+            {"name":"PositionMeasurementNoise", "kind":"required","type":"numeric"},
+            {"name":"Velocity", "kind":"required","type":"numeric"},
+            {"name":"VelocityMeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.MARGGPSFuserBase.correct":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterMARG"},
+            {"name":"StateIndex", "kind":"required","type":"numeric"},
+            {"name":"Measurement", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.MARGGPSFuserBase.pose":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterMARG"},
+            {"name":"Format", "kind":"optional", "type":"choices={'quaternion', 'rotmat'}"}
+        ],
+        "outputs":
+        [
+            {"name":"Orientation", "kind":"required", "type":"quaternion"},
+            {"name":"Position", "kind":"required", "type":"numeric"}
+        ]
+    },
+    "fusion.internal.MARGGPSFuserBase.predict":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterMARG"},
+            {"name":"Acceleration", "kind":"required","type":"numeric"},
+            {"name":"AngularVelocity", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.MARGGPSFuserBase.fusemag":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterMARG"},
+            {"name":"MagneticField", "kind":"required","type":"numeric"},
+            {"name":"MeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "fusion.internal.MARGGPSFuserBase.fusegps":
+    {
+        "inputs":
+        [
+            {"name":"insfilter", "kind":"required","type":"insfilterMARG"},
+            {"name":"LLA", "kind":"required","type":"numeric"},
+            {"name":"PositionMeasurementNoise", "kind":"required","type":"numeric"},
+            {"name":"Velocity", "kind":"required","type":"numeric"},
+            {"name":"VelocityMeasurementNoise", "kind":"required","type":"numeric"}
+        ],
+        "outputs":
+        []
+    },
+    "poseplot":
+    {
+        "inputs":
+        [
+            {"name":"parent", "kind":"optional", "type":["matlab.graphics.Graphics", "scalar"]},
+            {"name":"orientdata", "kind":"optional"},
+            {"name":"posdata", "kind":"optional"},
+            {"name":"refframe", "kind":"optional", "type":"choices={'NED','ENU'}"},
+            {"name":"MeshFileName", "kind":"namevalue", "type":[["char"], ["filepath=*.stl"]]},
+            {"kind":"varargin","type":["positioning.graphics.chart.PosePatch"]}
+        ]
+    },
+    "tunerconfig":
+    {
+        "inputs":
+        [
+            {"name":"filter", "kind":"required", "type":"choices={'imufilter', 'ahrsfilter', 'ahrs10filter', 'insfilterAsync', 'insfilterErrorState', 'insfilterMARG', 'insfilterNonholonomic'}"},
+            {"name":"TunableParameters", "kind":"namevalue", "type":[["string"], ["cellstr"], ["char"]]}, 
+            {"name":"StepForward", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"StepBackward", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"MaxIterations", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"ObjectiveLimit", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"FunctionTolerance", "kind":"namevalue", "type":["numeric","scalar","real","finite"]},
+            {"name":"Display", "kind":"namevalue", "type":"choices={'iter', 'none'}"}, 
+            {"name":"Cost", "kind":"namevalue", "type":"choices={'RMS', 'Custom'}"}, 
+            {"name":"CustomCostFcn", "kind":"namevalue", "type":["function_handle"]},
+            {"name":"OutputFcn", "kind":"namevalue", "type":"choices={'tunerPlotPose'}"}
+        ]
+    },
+    "tunernoise":
+    {
+        "inputs":
+        [
+            {"name":"filter", "kind":"required", "type":"choices={'ahrs10filter', 'insfilterAsync', 'insfilterErrorState', 'insfilterMARG', 'insfilterNonholonomic'}"}
+        ],
+        "outputs":
+        [
+            {"name":"measNoise", "kind":"required", "type":"struct"}
+        ]
+
+    },
+    "transformMotion":
+    {
+        "inputs":
+        [
+            {"name":"posSFromP", "kind":"required", "type":[["double"], ["single"]]}, 
+            {"name":"orientSFromP", "kind":"required", "type":[["quaternion"], ["double"], ["single"]]},
+            {"name":"posP", "kind":"positional", "type":[["double"], ["single"]]},
+            {"name":"orientP", "kind":"positional", "type":[["quaternion"], ["double"], ["single"]]},
+            {"name":"velP", "kind":"positional", "type":[["double"], ["single"]]},
+            {"name":"accP", "kind":"positional", "type":[["double"], ["single"]]},
+            {"name":"angvelP", "kind":"positional", "type":[["double"], ["single"]]}
+        ]
+    }
+
+}
+

@@ -1,0 +1,76 @@
+%mlreportgen.dom.HAlign Horizontal alignment of a document object
+%   align = HAlign() aligns an object to the left size of its container.
+%
+%   align = HAlign('value') aligns an object as specified by 'value'.
+%
+%   VALUE    DESCRIPTION
+%   'center' Center object between sides of container
+%   'left'   Align object to the left side of container
+%   'right'  Align object to the right side of container
+%
+%   HAlign properties:
+%       Id    - Id of this object
+%       Tag   - Tag of this object
+%       Value - Alignment of an object relative to its container's sides
+%
+%   See also mlreportgen.dom.VALign, mlreportgen.dom.Hyphenate
+%
+%   Example:
+% 
+%   import mlreportgen.dom.*
+%   d = Document('text_justified','pdf');
+%   open(d);
+% 
+%   p1 = Paragraph([ ...
+%       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do' ...
+%       'eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ' ...
+%       'enim ad minim veniam, quis nostrud exercitation ullamco ' ...
+%       'laboris nisi ut aliquip ex ea commodo consequat. Duis aute ' ...
+%       'irure dolor in reprehenderit in voluptate velit esse cillum ' ...
+%       'dolore eu fugiat nulla pariatur. Excepteur sint occaecat ' ...
+%       'cupidatat non proident, sunt in culpa qui officia deserunt ' ...
+%       'mollit anim id est laborum.']);
+%   p1.Style = [p1.Style {Hyphenate, HAlign('justify')}];
+%   append(d,p1);
+% 
+%   p2 = Paragraph([ ...
+%       'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. ' ...
+%       'Nullam varius, turpis et commodo pharetra, est eros bibendum ' ...
+%       'elit, nec luctus magna felis sollicitudin mauris. Integer in ' ...
+%       'mauris eu nibh euismod gravida. Duis ac tellus et risus ' ...
+%       'vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. ' ...
+%       'Ut ullamcorper, ligula eu tempor congue, eros est euismod ' ...
+%       'turpis, id tincidunt sapien risus a quam. Maecenas fermentum ' ...
+%       'consequat mi. Donec fermentum. Pellentesque malesuada nulla a ' ...
+%       'mi. Duis sapien sem, aliquet nec, commodo eget, consequat ' ...
+%       'quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis ' ...
+%       'nisl adipiscing sapien, sed malesuada diam lacus eget erat. ' ...
+%       'Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. ' ...
+%       'Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, ' ...
+%       'nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, ' ...
+%       'orci. In hac habitasse platea dictumst.']);
+%   p2.Style = [p2.Style {Hyphenate, HAlign('left')}];
+%   append(d,p2);
+% 
+%   close(d);
+%   rptview(d);
+
+%   Copyright 2014-2020 Mathworks, Inc.
+%   Built-in class
+
+%{
+properties
+    %Value Alignment of an object relative to its container's sides
+    %
+    %    VALUE     DESCRIPTION
+    %    'center'  Center object between sides of container
+    %    'left'    Align object to the left side of container
+    %    'right'   Align object to the right side of container
+    %    'justify' Align text to the left and right sides of container,
+    %              adjusting word and letter spacing and hyphenating as
+    %              necessary (if hyphenation is enabled).
+    %
+    % See also mlreportgen.dom.Hyphenate
+    Value;
+end
+%}

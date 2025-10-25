@@ -1,0 +1,26 @@
+.dc-variablebrowser-group {
+    height: 100%;
+    width: 100%;
+
+    /* Hide scrollbars that appear when the disabled banner appears.
+       The disabled banner pushes the UIVariableEditor down, which would
+       make a scrollbar appear without overflow being hidden. */
+    overflow: hidden;
+}
+
+.dc-variablebrowser-attach-point {
+    height: 100%;
+    width: 100%;
+    background-color: var(--mw-backgroundColor-input, #fff); /* Same bg color as the UIVariableEditor */
+}
+
+.dc-variablebrowser-disabled {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* g3232995: Make the Variable Browser UIVariableEditor take up the panel's height.
+   This rule is 4 levels deep so it can take precedence over other CSS rules. */
+#dataCleaner_ui .dc-variablebrowser-attach-point [id$=PopOutHandlerBody] .lightWeightView.ClientViewDiv {
+    height: 100%;
+}

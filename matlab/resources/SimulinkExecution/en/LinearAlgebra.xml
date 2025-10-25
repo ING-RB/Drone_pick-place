@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0"
+        locale="en_US"
+        product="SimulinkExecution"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../schema/.xsd">
+
+  <message>
+
+    <entry key="UMFPACKSymbolicInitializationFailed">
+      Solver failed to create UMFPACK symbolic data.
+    </entry>
+
+    <entry key="UMFPACKNumericInitializationFailed">
+      Solver failed to create UMFPACK symbolic data.
+    </entry>
+
+    <entry key="IterationSolutionFailure">
+     Solver could not solve the iteration matrix. Iteration matrix may be singular.
+    </entry>
+
+    <entry key="IterationSolutionFailureVS">
+     Solver could not solve the system of algebraic equations because a singular
+     iteration matrix was encountered. Consider providing more accurate initial
+     conditions. If the problem persists, check the model structure and values
+     of parameters.
+    </entry>
+
+    <entry key="IterationSolutionFailureFS">
+     Solver could not solve the system of algebraic equations because a singular
+     iteration matrix was encountered. Consider reducing the fixed step size
+     and/or providing more accurate initial conditions. If the problem persists,
+     check the model structure and values of parameters.
+    </entry>
+
+    <entry key="ErrorInEigenValueComputation">
+     An error occurred while computing the eigen values for stiffness calculation 
+     by auto solver : {0}.
+    </entry>
+
+    <entry key="MemoryAllocationFailureDuringSparseMxArrayOperation">
+      Allocation of memory failed / errored out while performing the sparse mxArray operation
+    </entry>
+
+    <entry key="AnalyticalJacobianTooLarge">
+      <![CDATA[
+               Unable to construct analytical Jacobian matrix because required size exceeds the specified maximum array size limit {0}GB ({1}% of total RAM).
+               <actions exclusiveFixIts="no">
+               <action type="fixit">
+               <cmd>set_param(gcs,''SolverJacobianMethodControl'',''SparsePerturbation'');</cmd>
+               <txt>Change the ''Solver Jacobian Method'' parameter value to ''Sparse Perturbation''.
+               </txt>
+               </action>
+               <action type="suggestion">
+               <txt>Adjust the maximum array size in the Workspace section of the MATLAB Preferences.
+               </txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+
+  </message>
+
+</rsccat>

@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+{% if (false) %}
+# Copyright 2021-2022 The MathWorks, Inc.
+{% endif %}
+
+#  Code generated for Simulink model '{%ModelName%}'.
+#  Generated on : {% datestr(now,'ddd mmm dd HH:MM:SS YYYY') %}
+
+{% var dynParamDtypes = unique(arrayfun(@(x)x.cfg,[DynamicParams.DataType],'UniformOutput',false)) %}
+{% var boolValues = {'True','False'} %}
+{% var boolValueIdx = {'1','0'} %}
+
+PACKAGE = '{%ProjectName%}'
+
+from dynamic_reconfigure.parameter_generator_catkin import ParameterGenerator{% sprintf(', %s',dynParamDtypes{:}) %}
+
+gen = ParameterGenerator()
+{% for k=numel(DynamicParams) %}
+gen.add("{%DynamicParams(k).Name%}",{%DynamicParams(k).DataType.cfg%},0, "{%DynamicParams(k).Description%}"
+  {% if isequal('bool_t',DynamicParams(k).DataType.cfg) %}
+  ,{% boolValues{strcmpi(boolValueIdx,DynamicParams(k).DefaultValue)} %}
+  {% endif %}
+  {% if ~isequal('bool_t',DynamicParams(k).DataType.cfg) %}
+  ,{%DynamicParams(k).DefaultValue%}
+  {% endif %}
+  {% if ~isempty(DynamicParams(k).MinVal) && ~isempty(DynamicParams(k).MaxVal) %}
+  , {%DynamicParams(k).MinVal%}, {%DynamicParams(k).MaxVal%}, 
+  {% endif %}
+  )
+{% endfor %}
+
+exit(gen.generate(PACKAGE, "{%ProjectName%}", "{%ClassName%}"))
+
+# [EOF]
+

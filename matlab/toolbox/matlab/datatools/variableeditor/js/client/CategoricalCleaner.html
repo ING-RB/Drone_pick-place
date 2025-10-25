@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <title></title>
+    </head>
+    <body>
+
+        <!-- Load dojo -->
+        <script src='release/variableeditor_client/dojoConfig-release-global.js'></script>
+
+        <!-- Include release build -->
+        <script src='release/bundle.index.js'></script>
+
+        <!-- Load css -->
+        <link rel='stylesheet' href='release/index-css.css' />
+
+        <script type='text/javascript'>
+            var openVar = function () {
+                require(['variableeditor_client/CategoricalCleaner/CategoricalCleanerMock'], function (CategoricalCleanerMock) {
+                    CategoricalCleanerMock.startup();
+                });
+            }
+        </script>
+        <input type='button' id='openButton' value='Open Categorical Cleaner' onclick='openVar();' style='margin-left:5px;'/>
+    </body>
+</html>

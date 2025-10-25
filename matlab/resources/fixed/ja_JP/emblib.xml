@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="fixed" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BurstEulerDescr">このブロックは、共有 CORDIC 回転モード カーネルを使用してオイラー回転を実行します。</entry>
+    <entry key="DivByConstDescr">入力を定数で除算して、整数に丸めます。</entry>
+    <entry key="RealIdxCORDIC">このブロックは、座標 [x(k), y(k)] が右半平面にある場合、\n\n yOut(k) = 0\n\nとなるような実数 CORDIC ギブンス回転を実行します。\n
+</entry>
+    <entry key="IterCounter">このブロックは、反復アルゴリズムの駆動に使用される、HDL 用に最適化したカウンターを実装します。カウンターの反復回数は、パラメーター [反復回数] を使用して設定されます。"validIn" が高く引き上げられると同時にカウントを開始します。その後、0 から高い方にカウントし、"count" 出力端子に出力します。"count" の値が 0 より大きい場合、出力端子 "countIsPositive" は高くなります。最終反復において端子 "last" は高くなり、ループの次の反復が最終反復であることが示されます。これは、"count" が反復回数から 1 を差し引いた値に等しい場合に発生します。最後に、すべての反復が完了した後 "ready" が高くなり、ブロックは "validIn" から別の信号を受け入れることができます。
+</entry>
+    <entry key="RealDivideFullDescription">実数入力 num および den に対し、このブロックは CORDIC アルゴリズムを使用して y = num/den となる y を計算します。</entry>
+    <entry key="ComplexDivideFullDescription">複素数入力 num および den に対し、このブロックは CORDIC アルゴリズムを使用して y = num/den となる y を計算します。</entry>
+    <entry key="RealReciprocalFullDescription">実数入力に対し、このブロックは CORDIC アルゴリズムを使用して y = 1/u となる y を計算します。</entry>
+    <entry key="NormalizedReciprocalFullDescription">実数スカラー u ~= 0 に対し、このブロックは CORDIC アルゴリズムを使用して\n 0.5 &lt; |y| &lt;= 1 となる y\nおよび\n (2^e)*y = 1/u となる e を計算します。</entry>
+    <entry key="RealNormalizerFullDescription">実数スカラー u ~= 0 の場合、このブロックは以下となる x、\n 1 &lt;= x &lt; 2\nおよび、以下となる e を生成し、\n x = (2^e)*|u| \nかつ isNegative = u &lt; 0 になります。</entry>
+    <entry key="RealCORDICReciprocalKernelFullDescription">以下となる実数スカラー x の場合、\n   1 &lt;= x &lt; 2 \nこのブロックは以下となる y を生成し、\n   isNegative = false のときに y = 1/x、\n   isNegative = true のときに y = -1/x、\nかつ y が以下の範囲内にあるようにします。\n    0.5 &lt; |y| &lt;= 1</entry>
+    <entry key="PositiveNormalizedReciprocalFullDescription">実数スカラー u &gt; 0 の場合、このブロックは以下となる y、\n   0.5 &lt; y &lt;= 1\nおよび、以下となる e を生成します。\n   (2^e)*y = 1/u</entry>
+    <entry key="PositiveRealNormalizerFullDescription">'実数スカラー u &gt; 0 の場合、このブロックは以下となる x、\n   1 &lt;= x &lt; 2\nおよび、以下となる e を生成します。\n   x = (2^e)*u</entry>
+    <entry key="PositiveRealCORDICReciprocalKernelFullDescription">以下となる実数スカラー x の場合、\n   1 &lt;= x &lt; 2\nこのブロックは以下となる y を生成し、\n   y = 1/x\nかつ y が以下の範囲内にあるようにします。\n   0.5 &lt; y &lt;= 1 </entry>
+    <entry key="validInToReady"> このブロックは、ready が高いサイクルと同じサイクル上で "validIn" が高くないことをチェックして、このブロックを使用した計算の出力が有効であることを確認します。
+</entry>
+    <entry key="MemoryControllerDescription">このブロックは、QR アルゴリズムの計算リソースおよび I/O リソースを管理します。計算リソースとの間のデータのフローを制御し、新しいデータに対するブロックの準備が整ったことと、計算の結果が有効なことを示します。
+</entry>
+    <entry key="RowRotationsFullDescription">このブロックは、yOut(k) = 0 となるように、入力 x および y に対し CORDIC ギブンス回転を実行します。同じギブンス回転が入力 u および v に適用されます。
+</entry>
+    <entry key="InverseCORDICGainDescription">このブロックは、CORDIC 成長係数に対してハードウェア効率の高い補正を実行します。</entry>
+    <entry key="ComplexIdxCORDIC">このブロックは、yOut(k) = 0 となるように、複素数値の入力 x および y に対し CORDIC ギブンス回転を実行します。同じギブンス回転が入力 u および v に適用されます。 </entry>
+    <entry key="ComplexRowRotationsFullDescription">このブロックは、x(k) に対して y(k) を削除するために必要なギブンス回転を実行します。これは 2 ステップで行われます。最初のステップでは、x(k) と y(k) を実軸に対し回転します。次のステップでは、yOut(k) = 0 となるように、ベクトル x および y にギブンス回転が適用されます。
+</entry>
+    <entry key="RotateFirstElementToRealDescription">このブロックは、xOut(k) が実数となるように、x(k) に対し CORDIC ギブンス回転を実行します。同じギブンス回転が u にも適用されます。
+</entry>
+    <entry key="FinalPivotActionDescription">必要に応じてピボット要素を正の軸と揃えます。そうしない場合は、データをそのまま渡します。</entry>
+    <entry key="SetElementToZeroDescription">このブロックは u(k) をゼロと等しくなるよう設定します。</entry>
+    <entry key="TanhDescription">入力 x の双曲線正接を計算します。ここで、x は有限の実数スカラー値です。</entry>
+    <entry key="ModByConstHDLDescription"> HDL 用に最適化したアーキテクチャを使用して、定数分母での剰余演算を実行します。
+    </entry>
+    <entry key="ModByConstDescription">定数分母での剰余演算を実行します。</entry>
+    <entry key="DivByConstHDLDescription">入力を定数で除算し、HDL 用に最適化したアーキテクチャを使用して整数に丸めます。</entry>
+    <entry key="CORDICSquareRootHDLFullDescription">実数入力 u &gt;= 0 に対し、このブロックは CORDIC アルゴリズムを使用して u の平方根を計算します。</entry>
+    <entry key="CORDICSigmoidFullDescription">実数入力に対し、このブロックは CORDIC アルゴリズムを使用して u のシグモイド活性化を計算します。</entry>
+    <entry key="RowsInMatrices">行列 A および B の行数:</entry>
+    <entry key="RowsInA">行列 A の行数:</entry>
+    <entry key="ColumnsInARowsInB">行列 A の列数と行列 B の行数:</entry>
+    <entry key="ColumnsInA">行列 A の列数:</entry>
+    <entry key="ColumnsInB">行列 B の列数:</entry>
+    <entry key="Denominator">分母</entry>
+    <entry key="DenominatorMod">剰余演算の分母: </entry>
+    <entry key="NumberOfCORDICIterations">CORDIC の反復回数:</entry>
+    <entry key="OutputPrototype">出力データ型:</entry>
+    <entry key="ForgettingFactor">忘却係数:</entry>
+    <entry key="RegularizationParameter">正則化パラメーター:</entry>
+    <entry key="DimensionOfA">行列 A の次元:</entry>
+    <entry key="NumberOfJacobiIterations">ヤコビ法の反復数:</entry>
+    <entry key="RoundingMethodParam">丸め方法: </entry>
+    <entry key="SelectOutputs">出力を選択:</entry>
+    <entry key="SignalType">信号タイプ:</entry>
+    <entry key="NumberOfIterationsPerReg">パイプライン レジスタあたりの反復回数:</entry>
+    <entry key="CORDICMaxShiftValue">CORDIC の最大シフト値:</entry>
+    <entry key="AutoCORDICMaxShiftValue">入力の語長に基づいて CORDIC の最大シフト値を自動選択</entry>
+    <entry key="DivideByZeroPort">ゼロ除算端子を表示</entry>
+    <entry key="PipelineConfigurations">パイプライン構成</entry>
+    <entry key="TabMain">メイン</entry>
+    <entry key="ArgMustBeCompileTimeConst">{0} は {1} のコンパイル時の定数でなければなりません。</entry>
+    <entry key="HDLCodegenUnsupportedForFloat">{0} の HDL コード生成は、この関数での浮動小数点データではサポートされていません。</entry>
+    <entry key="IncompatibleInterfaces">タイプ {1} の親にタイプ {0} のインターフェイスを追加することはできません。</entry>
+    <entry key="InvalidMatrices">無効な行列です。</entry>
+    <entry key="InputsMustBeNumeric">{0} への入力は数値でなければなりません</entry>
+    <entry key="InputMustBeScalar">入力 {0} はスカラーでなければなりません。</entry>
+    <entry key="InputMustBeNumeric">入力 {0} は数値でなければなりません。</entry>
+    <entry key="InputMustBeBinaryPointScaled">固定小数点入力 {0} は 2 進数でスケーリングしなければなりません。</entry>
+    <entry key="InputMustBeReal">入力 {0} は実数値でなければなりません。</entry>
+    <entry key="InputMustBeLogicalOrNumeric">入力 {0} は、logical または数値でなければなりません。</entry>
+    <entry key="InputMustBeFixedScaledDoubleOrFloat">入力 {0} は、固定小数点、スケーリングされた double、または浮動小数点でなければなりません。</entry>
+    <entry key="InputMustBeZeroOrBetweenOneAndTwo">入力 {0} はゼロ、または 1 より大きく 2 より小さくなければなりません。</entry>
+    <entry key="InputMustNotBePow2">入力 {0} は 2 の正確なべき乗であってはなりません。</entry>
+    <entry key="MatrixDimsPositiveInteger"> 入力 {0} は正の整数でなければなりません。
+	</entry>
+    <entry key="MustBeTallAndSkinny">入力 {0} の行数は、列数以上でなければなりません。</entry>
+    <entry key="MustBeTallAndSkinnySizes">行数 {0} は、列数 {1} 以上でなければなりません。</entry>
+    <entry key="MustHaveSameNumberOfSamples">行列 {0} と行列 {1} のサンプル数は同じでなければなりません。これは、行列の 3 番目の次元のサイズで指定されます。行列が 2 次元の場合、サンプル数は 1 です。</entry>
+    <entry key="NfpNotSupported">ブロック {0} は、ネイティブ浮動小数点のコード生成をサポートしていません。代わりに固定小数点型の使用を検討してください。</entry>
+    <entry key="NumColsGEOne">行列 {0} の列数は 1 以上の整数でなければなりません。</entry>
+    <entry key="NumColsGTOne"> 行列 {0} の列数は 1 より大きい整数でなければなりません。</entry>
+    <entry key="NumRowsGTOne"> 行列 {0} の行数は 1 より大きい整数でなければなりません。
+</entry>
+    <entry key="MustBeVector">入力 {0} はベクトルでなければなりません</entry>
+    <entry key="InputMustMatchSizeParameter">入力 {0} の長さ ({1, number, integer}) は、入力パラメーター {2} ({3, number, integer}) と一致していなければなりません。</entry>
+    <entry key="NumColsAShouldMatchNumRowsB">行列 {0} の列数は行列 {1} の行数と同じでなければなりません。</entry>
+    <entry key="SameNumberOfRows">行列 {0} と行列 {1} は同じ行数でなければなりません。</entry>
+    <entry key="UnknownMatrixOperation">演算 {0} は、ダイアグラム作成の有効な演算ではありません。</entry>
+    <entry key="ValueDoesNotSatisfyConstraint">入力 {0} の値は {1} でなければなりません</entry>
+    <entry key="ValueNotRepresentableInInputType">{0} の値は入力の型 ''{1}'' で表現できません。</entry>
+    <entry key="XYSameDatatype">入力 {0} と {1} のデータ型は同じでなければなりません</entry>
+    <entry key="DivideDimensionsShouldMatch">ブロック ''{0}'' 内で、分子と分母の要素数は同じでなければなりません。</entry>
+    <entry key="InputOutputMustBeAllFixedOrFloat">入力データ型と出力データ型は、すべて浮動小数点型か、すべて固定小数点型のいずれかでなければなりません。</entry>
+    <entry key="NonSquareSVDInputMustBeTallAndSkinny">入力行列の行数は、列数より大きくなければなりません。正方行列の場合は、Square Jacobi SVD HDL Optimized ブロックを使用してください。</entry>
+    <entry key="CORDICMaxShiftValMustBeSmallerThanWordlength">CORDIC の最大シフト値は入力の語長より小さくなければなりません。</entry>
+    <entry key="PipelineMustBeZero">HDL パラメーター {0} は 0 に等しくなければなりません。0 に設定しています。</entry>
+    <entry key="nIterPerRegMustBeSmallerThanNTotalIter">パイプライン レジスタあたりの反復回数が、計算した総反復回数 {0} を超えています。クロックあたりの反復回数を総反復回数に設定します。</entry>
+    <entry key="ModByConstLatencyChanged24a">R2024a では、"Modulo by Constant HDL Optimized" のレイテンシが 9 から 4 に削減されました。これにより、このブロックのレイテンシに厳密に依存するモデル動作が変化する可能性があることに注意してください。</entry>
+    <entry key="SqrtOfNegativeNumber">負の数の平方根が見つかりました。その絶対値の平方根を計算します。</entry>
+    <entry key="ReciprocalAndDivideLatencyChanged24b">R2024b では、"{0}" のレイテンシはパイプライン構成によって決定されるように変更されました。これにより、このブロックのレイテンシに厳密に依存するモデル動作が変化する可能性があることに注意してください。</entry>
+    <entry key="BurstEulerType">Burst Euler Transformation</entry>
+    <entry key="DivByConst">Divide by Constant and Round</entry>
+    <entry key="ModByConst">Modulo by Constant</entry>
+    <entry key="ModByConstHDL">Modulo by Constant HDL Optimized</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="en" product="SimulinkBlock" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BadSetParamValue">Invalid setting in {0} ''{1}'' for parameter ''{2}''</entry>
+    <entry key="BadSetParamValueGeneral">Invalid setting for {0} parameter ''{1}''</entry>
+    <entry key="BlockDataTypeError">Data type error reported from block ''{0}''</entry>
+    <entry key="BadSetParamValueInvalidNumber">Invalid value in ''{0}'' for parameter ''{1}''. Value ''{2}'' should be a valid number.</entry>
+    <entry key="BadSetParamValueInvalidInteger">Invalid value in ''{0}'' for parameter ''{1}''. Value should be a valid integer.</entry>
+    <entry key="BadSetParamValueOutsideRange">Invalid value in ''{0}'' for parameter ''{1}''. Value ''{2}'' is out of range.</entry>
+    <entry key="FXP_ComplexInLimits">Invalid data type settings: When block ''{0}'' performs operations on complex signals, each input''s Bias must be 0.0 and each input''s Slope must be a power of 2.</entry>
+    <entry key="FXP_ComplexOutLimits">Invalid data type settings: When block ''{0}'' performs operations on complex signals, each output''s Bias must be 0.0 and each output''s Slope must be a power of 2.</entry>
+    <entry key="FXP_ComplexProdBlockInheritLimits">Invalid data type settings: The block {0} has an output type set to ''{1}'' and is operating on at least two complex elements which may result in reduced accuracy. For better results, manually specify a type or use the Fixed-Point Tool to aid in type selection.</entry>
+    <entry key="FXP_ComplexGainBlockInheritLimits">Invalid data type settings: The Gain block {0} has an output type set to ''{1}'' and is multiplying a complex input by a complex gain which may result in reduced accuracy. For better results, manually specify a type or use the Fixed-Point Tool to aid in type selection.</entry>
+    <entry key="FXP_NonZeroBiasProdBlockInheritLimits">Invalid data type settings: The block {0} has an output type set to ''{1}'' which supports only input data types with zero bias. Set the bias of each input to 0, or follow the suggested action.
+    <![CDATA[<actions exclusiveFixIts="yes"><action type="fixit" id="InternalRule" retvalue="false"><cmd>set_param(''{0}'',''OutDataTypeStr'',''Inherit: Inherit via internal rule'');</cmd><txt>
+    Set the output type to Inherit via internal rule\n
+    set_param(''{0}'',''OutDataTypeStr'',''Inherit: Inherit via internal rule'');
+    </txt></action> </actions> ]]> </entry>
+    <entry key="FXP_NonZeroBiasGainBlockInheritLimits">Invalid data type settings: The Gain block {0} has an output type set to ''{1}'' which supports only input and gain data types with zero bias. Set the bias of the input and gain to 0, or follow the suggested action.
+    <![CDATA[<actions exclusiveFixIts="yes"><action type="fixit" id="InternalRule" retvalue="false"><cmd>set_param(''{0}'',''OutDataTypeStr'',''Inherit: Inherit via internal rule'');</cmd><txt>
+    Set the output type to Inherit via internal rule\n
+    set_param(''{0}'',''OutDataTypeStr'',''Inherit: Inherit via internal rule'');
+    </txt></action> </actions> ]]> </entry>
+    <entry key="FXP_NumElementsMulDivInheritLimits">Invalid data type settings: The block {0} has an output type set to ''{1}'' and is operating over more than two elements or is collapsing a dimension of a matrix input, which may result in reduced accuracy. Specify an output type or follow the suggested actions.
+    <![CDATA[<actions exclusiveFixIts="yes"><action type="fixit" id="Single" retvalue="false"><cmd>set_param(''{0}'',''OutDataTypeStr'',''single'');</cmd><txt>
+    Set the output type to single precision\n
+    set_param(''{0}'',''OutDataTypeStr'',''single'');
+    </txt></action><action type="fixit" id="Double" retvalue="false"><cmd>set_param(''{0}'',''OutDataTypeStr'',''double'');</cmd><txt>
+    Set the output type to double precision\n
+    set_param(''{0}'',''OutDataTypeStr'',''double'');
+    </txt></action> </actions> ]]> </entry>
+    <entry key="FXP_DivInheritLimits">Invalid data type settings: The block {0} has an output type set to ''{1}'' which supports only division cases of ''*/'' and ''/*''. Specify a type or follow the suggested action.
+    <![CDATA[<actions exclusiveFixIts="yes"><action type="fixit" id="InternalRule" retvalue="false"><cmd>set_param(''{0}'',''OutDataTypeStr'',''Inherit: Inherit via internal rule'');</cmd><txt>
+    Set the output type to Inherit via internal rule\n
+    set_param(''{0}'',''OutDataTypeStr'',''Inherit: Inherit via internal rule'');
+    </txt></action> </actions> ]]> </entry>
+    <entry key="FXP_IntSizes128">Error in "Production hardware" settings for model ''{0}'': C integer  data type specifies a length greater than 128 bits. Valid lengths  of C integer data types are from 1 to 128 bits. On the "Hardware  Implementation" pane of the Configuration Parameters dialog box,  specify valid lengths for C integer data types under the "Number  of bits" parameters.</entry>
+    <entry key="FXP_UnknownIntSizes">Cannot retrieve Production Hardware Characteristics.  Unable to  determine valid sizes for C integer types in block diagram ''{0}''</entry>
+    <entry key="FXP_UnsupportedType">Invalid setting for data type in ''{0}'': Only numeric data types are supported</entry>
+    <entry key="FXP_UnsupportedTypeWithoutBlock">Invalid setting for data type. Only numeric data types are supported</entry>
+    <entry key="InvBuiltinPortDType">{0} does not accept signals of data type ''{1}''. ''{2}'' only accepts the ''boolean'', ''uint8'', ''uint16'', ''uint32'', ''int8'', ''int16'', ''int32'', ''single'', ''double'' data types</entry>
+    <entry key="InvConvertBetweenForPortDType">The input signal(s) of ''{0}'' are not being successfully converted from type ''{1}'' to ''{2}''{3}{4}</entry>
+    <entry key="InvDWorkName">Invalid name ''{0}'' specified by ''{1}'' for data type work vector {2,number,integer}. Data type work vector name must be a valid MATLAB name and must be less than {3,number,integer} characters long. In addition, the following names are reserved for built-in work vectors: ''DWORK'', ''MODE'', ''RWORK'', ''IWORK'', ''PWORK'' or ''DSTATE''</entry>
+    <entry key="InvFixptAndBuiltinPortDType">"{0}" does not accept signals of data type ''{1}''. It only accepts ''boolean'', ''uint8'', ''uint16'', ''uint32'', ''int8'', ''int16'', ''int32'', ''single'', ''double'', and fixed-point data types</entry>
+    <entry key="InvFixptAndNonBoolBuiltinPortDType">"{0}" does not accept signals of data type ''{1}''. It only accepts ''uint8'', ''uint16'', ''uint32'', ''int8'', ''int16'', ''int32'', ''single'', ''double'', and fixed-point data types</entry>
+    <entry key="InvFixptBoolPortDType">{0} does not accept ''boolean'' signals. The input and output signal(s) of ''{1}'' must be ''uint8'', ''uint16'', ''uint32'', ''int8'', ''int16'', ''int32'', ''single'', ''double'', or one of the fixed-point data types</entry>
+    <entry key="InvIntExpr">Invalid expression ''{0}'' for defining integer </entry>
+    <entry key="InvListExpr" note="stringDatatypeUpdate">Parameter value must be a struct of character vectors or []</entry>
+    <entry key="InvNumericOrEnumPortDType">Block ''{0}'' does not accept signals of data type ''{1}''. Use numeric and enumerated data types.</entry>
+    <entry key="InvRealExpr">Invalid expression ''{0}'' for defining real </entry>
+    <entry key="InvVectorExpr">"Invalid expression ''{0}'' for defining vector"</entry>
+    <entry key="ListExprContainsWrongWord" note="stringDatatypeUpdate">Parameter value cannot contain a field ''ListType''</entry>
+    <entry key="InvPointExpr">Invalid expression ''{0}'' for defining point</entry>
+    <entry key="InvStringExpr">Parameter value must be character vector or string.</entry>
+    <entry key="InvalidOption">Option specified is not valid.</entry>
+    <entry key="InvalidRange">Invalid range specified for parameter ''{0}''. Minimum value should be less than maximum value.</entry>
+    <entry key="InvalidRangeInf">Invalid range specified for parameter ''{0}''. Minimum and maximum values should not be infinite.</entry>
+    <entry key="InvalidRangeNan">Invalid range specified for parameter ''{0}''. Minimum and maximum values should be a valid number.</entry>
+    <entry key="InvalidRangeSize">Invalid range specified for parameter ''{0}''. Range should be of size two.</entry>
+    <entry key="InvalidRangeType">Invalid range specified for parameter ''{0}''. Minimum and maximum values should not be decimal numbers.</entry>
+    <entry key="InvalidRangeParameterValue">Invalid parameter value in ''{0}'' for parameter ''{1}''. Input ''{2}'' is invalid. Input must be a valid number or a variable name.</entry>
+    <entry key="InvalidStepSize">Invalid step size specified for parameter ''{0}''. Step size for a spinbox parameter should be a valid integer not exceeding the range.</entry>
+    <entry key="MaskPopupUnmatchedParen">Missing or unmatched parenthesis in mask dialog-type popup specifier</entry>
+    <entry key="MemoryAllocErr">Memory allocation error</entry>
+    <entry key="NonMonotonicErr">Parameter values of {0} in ''{1}'' must be monotonically increasing before and after conversion to its run-time data type</entry>
+    <entry key="PreLookupEvenSpacingMsg">Breakpoint data ''{0}'' of ''{1}'' must be evenly spaced to the last bit of precision before and after conversion to its run-time data type; either change data to even spacing or select another search method.  See help for tips on creating evenly spaced data</entry>
+    <entry key="LookupNonMonotonicErrDialogParam">Data for ''{0}'' of block "{1}" must be strictly monotonically increasing. Its values become not strictly monotonically increasing starting at element {2,number,integer}. Please change the breakpoint data values to be strictly monotonically increasing.</entry>
+    <entry key="LookupNonMonotonicErrRuntimeParam">Data for "{0}" of block "{1}" must be strictly monotonically increasing after conversion to its run-time data type ''{2}''. Its values become not strictly monotonically increasing at element {3,number,integer}. Please apply any of the following methods to correct the problem: (a) Change the breakpoint data values. (b) Choose ''Inherit: Inherit from ''Breakpoint data'''' or a different breakpoint data type. (c) Use the Data Type Assistant to specify a word length and select ''Best precision'' for the breakpoint data type.</entry>
+    <entry key="PrmDesignMinMaxShouldBeDoubleScalar">Parameter ''{0}'' for ''{1}'' must be a double scalar value</entry>
+    <entry key="SetParamWriteOnly">{0} parameter ''{1}'' is write-only</entry>
+    <entry key="SignedOnlyPortDType">{0} does not accept ''boolean'', ''unsigned'' or ''enumerated'' data types. The input and output data type(s) of ''{1}'' must be ''int8'', ''int16'', ''int32'', ''int64'', ''single'', or ''double'', or one of the signed fixed-point data types</entry>
+    <entry key="StateAttrInvName">State name specified for block ''{0}'' is invalid. A valid state name should be a dot-delimited sequence of Matlab identifiers.</entry>
+    <entry key="StateAttrInvNumElements">The number of the continuous state names of block ''{0}'' is invalid. The given state name has {1,number,integer} elements, which does not divide the compiled continuous state width {2,number,integer}.</entry>
+    <entry key="StateAttrInvPath" note="stringDatatypeUpdate">State path Alias for block ''{0}'' is invalid. A valid path alias should be either a scalar non-missing string or a character vector</entry>
+    <entry key="StateAttrInvStruct" note="stringDatatypeUpdate">State name field for block ''{0}''  is invalid. The state name field should be a scalar non-missing string, a character vector or a structure array with three fields: width, name and pathAlias</entry>
+    <entry key="StateAttrInvTotalWidth">Invalid state width of the state attribute of block ''{0}''. The sum of the state width in the attribute structure is {1,number,integer}, which does not match the compiled continuous state width {2,number,integer}.</entry>
+    <entry key="StateAttrInvWidth">Invalid width field in the state attribute of block ''{0}'', the width of the state attribute should be a double real scalar.</entry>
+    <entry key="StateAttrNameClash">State names for block ''{0}'' must be unique. The name ''{1}'' is used for more than once (for states {2,number,integer} and {3,number,integer}).</entry>
+    <entry key="StateAttrNameEmpty">Invalid state names of block ''{0}''. The name of state {1,number,integer} cannot be empty when more than one state exists in the block.</entry>
+    <entry key="StateAttrNeverError" note="stringDatatypeUpdate">A valid state attribute should be a non-missing string array, a character vector, a cell array or a valid MATLAB structure.</entry>
+    <entry key="UdtEmptyDataType">Parameter ''{0}'' cannot be empty.</entry>
+    <entry key="UdtInvBuiltin">''{0}'' specifies a built-in data type for parameter ''{1}'' which does not support it.</entry>
+    <entry key="UdtInvBusName">''{0}'' does not provide a valid bus data type name for parameter ''{1}''.</entry>
+    <entry key="UdtInvValueTypeName">Invalid Simulink.ValueType object name ''{0}'' specified for parameter ''{1}''.</entry>
+    <entry key="UdtInvEnumName">''{0}'' does not provide a valid enumerated data type name for parameter ''{1}''.</entry>
+    <entry key="UdtInvFixdt">''{0}'' specifies a fixed-point data type for parameter ''{1}'', but the syntax of the expression is incorrect.</entry>
+    <entry key="UdtInvInherit">''{0}'' specifies an inheritance rule for parameter ''{1}'' which does not support it.</entry>
+    <entry key="UdtInvalidValue">Invalid data type specification in ''{0}''.</entry>
+    <entry key="UdtNoBus">''{0}'' specifies an unsupported bus data type for parameter ''{1}''.</entry>
+    <entry key="UdtNoValueType">Simulink.ValueType object ''{0}'' not supported for parameter ''{1}''.</entry>
+    <entry key="UdtNoEnum">''{0}'' specifies an unsupported enumerated data type for parameter ''{1}''</entry>
+    <entry key="Unevaluated_String_Parameter">Parameter ''{1}'' of ''{0}'' cannot be evaluated. Input ''{2}'' is invalid. Input must be a valid number.</entry>
+    <entry key="UnifiedInputPortSameDataType">All inputs of ''{0}'' are required to have the same data type</entry>
+    <entry key="ValueOutsideRange">Value is outside the specified range for parameter ''{0}''. Setting the value to default</entry>
+    <entry key="DataTypeParameterDeprecatedGetSet">The block parameter ''{0}'' on ''{1}'' has been deprecated. Getting/Setting the value of this parameter is no longer allowed. You can get/set the data type using parameter ''{2}'' instead.</entry>
+    <entry key="DataTypeParameterDeprecatedGetSetWarnOnce">The block parameter ''{0}'' on ''{1}'' has been deprecated. Getting/Setting the value of this parameter is no longer allowed. You can get/set the data type using parameter ''{2}'' instead. During model compilation, similar warnings for the same model are reported only once.</entry>
+    <entry key="BadPortSetParamValue">Invalid setting in ''{0}'' {1} port {2,number,integer} for parameter ''{3}''.</entry>
+    <entry key="RuntimeAccessInvalidPort">Run-time access of signal data requires a handle to a valid block output port</entry>
+    <entry key="RuntimeAccessInvalidBD">Run-time access of signal data requires an actively simulating model.</entry>
+    <entry key="RuntimeAccessInvalidSource"><![CDATA[There is no data available for <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of ''{1}''; check if this block is commented out or invariant. To assure this signal is available, consider marking the signal for logging. ]]> </entry>
+    <entry key="RuntimeAccessInvalidSourceType">Run-time access is not supported for action signals, function calls, and state ports.</entry>
+    <entry key="RuntimeAccessInvalidMergeSource">Run-time access is not supported for signals that feed into a Merge block.</entry>
+    <entry key="RuntimeAccessInvalidBlockType">Unable to create run-time listener of type ''{0}''. Make sure this is a valid block type.</entry>
+    <entry key="RuntimeAccessInvalidMdlRefMode">Unable to create run-time listener for model reference signal because ''{0}'' is not in Normal mode.</entry>
+    <entry key="CrashDialogNamePrompt">MATLAB Crash Reporter</entry>
+    <entry key="CrashDialogDiagnosticPrompt">Diagnostic:</entry>
+    <entry key="CrashDialogSuggestedActionPrompt">Suggested Actions:</entry>
+    <entry key="CrashDialogMoreInfoPrompt">More Info</entry>
+    <entry key="CrashDialogApplyPrompt">Apply Suggested Actions</entry>
+    <entry key="CrashDialogClosePrompt">Close</entry>
+  </message>
+</rsccat>

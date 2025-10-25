@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- Copyright 2016-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="polyspace">
+  <message>
+    <!-- Short description for analysis assumptions -->
+    <entry key="BoundExternalArraySize" note="value is an integer">Size of all arrays of unspecified size is bounded by {0}</entry>
+    <entry key="BoundAllExternalArraySize" note="">External arrays of unspecified size can be safely accessed at any index</entry>
+    <entry key="BoundGeneratedMainLoopIterations" note="value is an integer">Number of iterations of generated main loop is bounded by {0}</entry>
+    <entry key="DereferenceOfStackPointersIsValid" note="">Stack pointers can be safely dereferenced even outside the pointed variable's scope</entry>
+    <entry key="ExternalPointersAreValid" note="">External pointers cannot be null. They point to allocated data of sufficient size for safe dereference</entry>
+    <entry key="FunctionsHaveOnlyOneScope" note="">All local variables declared in a function belong to the top scope of this function</entry>
+    <entry key="ValidAbsoluteAddresses" note="">Absolute addresses can be safely dereferenced</entry>
+    <entry key="VolatileFieldsAreNotVolatile" note="">Structure fields are not volatile unless the entire structure is volatile-qualified</entry>
+    <entry key="RoundingFloatResultsToNearest" note="">Results of floating-point arithmetic are rounded following the IEE754 rule: round to nearest, ties to even</entry>
+    <entry key="IgnoreStandardInitializationOfGlobals" note="">Global and static variables are uninitialized</entry>
+    <entry key="IgnoreNonFiniteFloats" note="">Nonfinite floats (infinities and NaNs) are not considered</entry>
+    <entry key="IgnoreConstantOverflows" note="">Computations involving compile-time constants do not overflow</entry>
+    <entry key="IgnoreSignedIntegerOverflows" note="">Computations involving signed integers do not overflow</entry>
+    <entry key="IgnoreUnsignedIntegerOverflows" note="">Computations involving unsigned integers do not overflow</entry>
+    <entry key="NonBlockingCheckProtectingAnotherOne" note="">Only first of similar overflows is shown even in wrap-around mode</entry>
+    <entry key="IgnoreAssemblyCode" note="">Assembly code is ignored</entry>
+    <!-- deprecated assumptions, but must be kept for backward compatibility of UI -->
+    <entry key="IgnoreCastsToPointerOnFields" note="">Structure fields that are not declared as pointers cannot point to another variable</entry>
+    <entry key="IgnoreCastsToPointerOnGlobals" note="">Global variables that are not declared as pointers cannot point to another variable</entry>
+
+    <!-- Explanation for how to change the above assumptions -->
+    <entry key="BoundExternalArraySize_how_to" note="">Consider unsafe all read of external arrays with unspecified size.</entry>
+    <entry key="BoundAllExternalArraySize_how_to" note="">Consider external array access as unsafe when array size is not specified (-consider-external-array-access-unsafe): Enable this option.</entry>
+    <entry key="BoundGeneratedMainLoopIterations_how_to" note="">Bound number of iterations of generated main loop (-main-generator-bounded-loop): Give another bound, or remove this option to let the loop infinite.</entry>
+    <entry key="DereferenceOfStackPointersIsValid_how_to" note="">Detect stack pointer dereference outside scope (-detect-pointer-escape): Enable this option.</entry>
+    <entry key="ExternalPointersAreValid_how_to" note="">Consider environment pointers as unsafe (-stubbed-pointers-are-unsafe): Enable this option.</entry>
+    <entry key="FunctionsHaveOnlyOneScope_how_to" note="">Assumed when detecting stack pointer dereference outside scope (-detect-pointer-escape).</entry>
+    <entry key="IgnoreAssemblyCode_how_to" note="">Assume assembly code can modify all local variables (-ignore-assembly-code): Remove this option.</entry>
+    <entry key="IgnoreConstantOverflows_how_to" note="">Ignore overflowing computations on constants (-ignore-constant-overflows): Remove this option.</entry>
+    <entry key="IgnoreNonFiniteFloats_how_to" note="">Consider non finite floats (-allow-non-finite-floats): Enable this option.</entry>
+    <entry key="IgnoreSignedIntegerOverflows_how_to" note="">Detect overflows on signed integers (-signed-integer-overflows): Choose 'forbid' or 'warn-with-wrap-around' for this option.</entry>
+    <entry key="IgnoreStandardInitializationOfGlobals_how_to" note="">Ignore default initialization of global variables (-no-def-init-glob): Remove this option.</entry>
+    <entry key="IgnoreUnsignedIntegerOverflows_how_to" note="">Detect overflows on unsigned integers (-unsigned-integer-overflows): Choose 'forbid' or 'warn-with-wrap-around' for this option.</entry>
+    <entry key="NonBlockingCheckProtectingAnotherOne_how_to" note="">Show all overflows in wrap-around mode (-show-similar-overflows): Add this option.</entry>
+    <entry key="RoundingFloatResultsToNearest_how_to" note="">Consider all possible rounding for floating-point arithmetic (-float-rounding-mode): Choose 'all' for this option.</entry>
+    <entry key="ValidAbsoluteAddresses_how_to" note="">Consider all absolute addresses as unsafe (-no-assumption-on-absolute-addresses): Add this option.</entry>
+    <entry key="VolatileFieldsAreNotVolatile_how_to" note="">Consider volatile qualifier on fields (-consider-volatile-qualifier-on-fields): Enable this option.</entry>
+    <!-- deprecated assumptions, but must be kept for backward compatibility of UI -->
+    <entry key="IgnoreCastsToPointerOnFields_how_to" note="">Respect types in fields (-respect-types-in-fields): Remove this option.</entry>
+    <entry key="IgnoreCastsToPointerOnGlobals_how_to" note="">Respect types in global variables (-respect-types-in-globals): Remove this option.</entry>
+
+</message>
+
+</rsccat>

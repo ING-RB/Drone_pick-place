@@ -1,0 +1,275 @@
+{
+"monovslam":
+{
+    "inputs":
+    [
+        {"name":"intrinsics","kind":"required","type":["cameraIntrinsics","scalar"]},
+		{"name":"ScaleFactor","kind":"namevalue","type":[[">=1","scalar","numeric"]]},
+		{"name":"NumLevels","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"MaxNumPoints","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"TrackFeatureRange","kind":"namevalue","type":[["positive","integer","size=1,2","numeric"]]},
+        {"name":"SkipMaxFrames","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"LoopClosureThreshold","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"CustomBagOfFeatures","kind":"namevalue","type":[["bagOfFeaturesDBoW","scalar"]]},
+        {"name":"Verbose", "kind":"namevalue", "type":["logical","scalar"]},
+        {"name":"CamToIMU", "kind":"namevalue", "type":["rigidtform3d","scalar"]},
+        {"name":"NumPosesThreshold", "kind":"namevalue", "type":["scalar","positive","integer"]},
+        {"name":"AlignmentFraction", "kind":"namevalue", "type":["numeric","positive"]},
+        {"name":"MaxAlignmentError", "kind":"namevalue", "type":["numeric","positive"]}
+    ]
+},
+
+"monovslam.addFrame":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"},
+        {"name":"I","kind":"required","type":[["uint8"],["uint16"],["int16"],["double"],["single"],["logical"]]},
+        {"name":"gyro","kind":"ordered","type":[["numeric"]]},
+        {"name":"accel","kind":"ordered","type":[["numeric"]]}
+    ]
+},
+
+"monovslam.hasNewKeyFrame":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"}
+    ]
+},
+
+"monovslam.checkStatus":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"}
+    ]
+},
+
+"monovslam.isDone":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"}
+    ]
+},
+
+"monovslam.mapPoints":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"}
+    ]
+},
+
+"monovslam.poses":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"}
+    ]
+},
+
+"monovslam.reset":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"}
+    ]
+}, 
+
+"monovslam.plot":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"monovslam"},
+        {"name":"MarkerSize","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+		{"name":"MarkerColor","kind":"namevalue","type":[["choices={'blue','green','cyan','red','magenta','black','white','yellow'}"],["vector","numeric","numel=3"]]},
+        {"name":"ColorSource","kind":"namevalue","type":"choices={'X', 'Y', 'Z', 'MarkerColor'}"},
+        {"name":"CameraSize","kind":"namevalue","type":[["scalar","numeric"]]},
+		{"name":"CameraColor","kind":"namevalue","type":[["choices={'blue','green','cyan','red','magenta','black','white','yellow'}"],["vector","numeric","numel=3"]]},
+        {"name":"Parent","kind":"namevalue","type":"matlab.graphics.axis.Axes"}
+    ]
+},
+
+"rgbdvslam":
+{
+    "inputs":
+    [
+        {"name":"intrinsics","kind":"required","type":["cameraIntrinsics","scalar"]},
+        {"name":"depthScaleFactor","kind":"ordered","type":["positive","scalar","numeric"]},
+		{"name":"ScaleFactor","kind":"namevalue","type":[[">=1","scalar","numeric"]]},
+		{"name":"NumLevels","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"MaxNumPoints","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"DepthRange","kind":"namevalue","type":[["positive","size=1,2","numeric"]]},
+        {"name":"TrackFeatureRange","kind":"namevalue","type":[["positive","integer","size=1,2","numeric"]]},
+        {"name":"SkipMaxFrames","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"LoopClosureThreshold","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"CustomBagOfFeatures","kind":"namevalue","type":[["bagOfFeaturesDBoW","scalar"]]},
+        {"name":"Verbose", "kind":"namevalue", "type":["logical","scalar"]}
+    ]
+},
+
+"rgbdvslam.addFrame":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"},
+        {"name":"colorImage","kind":"required","type":[["uint8"],["uint16"],["int16"],["double"],["single"],["logical"]]},
+        {"name":"depthImage","kind":"required","type":[["uint8"],["uint16"],["int16"],["double"],["single"]]}
+    ]
+},
+
+"rgbdvslam.hasNewKeyFrame":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"}
+    ]
+},
+
+"rgbdvslam.checkStatus":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"}
+    ]
+},
+
+"rgbdvslam.isDone":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"}
+    ]
+},
+
+"rgbdvslam.mapPoints":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"}
+    ]
+},
+
+"rgbdvslam.poses":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"}
+    ]
+},
+
+"rgbdvslam.reset":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"}
+    ]
+}, 
+
+"rgbdvslam.plot":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"rgbdvslam"},
+        {"name":"MarkerSize","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+		{"name":"MarkerColor","kind":"namevalue","type":[["choices={'blue','green','cyan','red','magenta','black','white','yellow'}"],["vector","numeric","numel=3"]]},
+        {"name":"ColorSource","kind":"namevalue","type":"choices={'X', 'Y', 'Z', 'MarkerColor'}"},
+        {"name":"CameraSize","kind":"namevalue","type":[["scalar","numeric"]]},
+		{"name":"CameraColor","kind":"namevalue","type":[["choices={'blue','green','cyan','red','magenta','black','white','yellow'}"],["vector","numeric","numel=3"]]},
+        {"name":"Parent","kind":"namevalue","type":"matlab.graphics.axis.Axes"}
+    ]
+},
+
+"stereovslam":
+{
+    "inputs":
+    [
+        {"name":"input1","kind":"required","type":[["cameraIntrinsics","scalar"],["numeric","size=4,4"]]},
+        {"name":"input2","kind":"required","type":[["numeric","scalar"],["numeric","size=1,2"]]},
+        {"name":"DisparityRange","kind":"namevalue","type":["numeric","integer","size=1,2"]},
+        {"name":"UniquenessThreshold","kind":"namevalue","type":["numeric","scalar","integer","positive"]},
+		{"name":"ScaleFactor","kind":"namevalue","type":[[">=1","scalar","numeric"]]},
+		{"name":"NumLevels","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"MaxNumPoints","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"TrackFeatureRange","kind":"namevalue","type":[["positive","integer","size=1,2","numeric"]]},
+        {"name":"SkipMaxFrames","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"LoopClosureThreshold","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+        {"name":"CustomBagOfFeatures","kind":"namevalue","type":[["bagOfFeaturesDBoW","scalar"]]},
+        {"name":"Verbose", "kind":"namevalue", "type":["logical","scalar"]}
+    ]
+},
+
+"stereovslam.addFrame":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"},
+        {"name":"I1","kind":"required","type":[["uint8"],["uint16"],["int16"],["double"],["single"],["logical"]]},
+        {"name":"I2","kind":"required","type":[["uint8"],["uint16"],["int16"],["double"],["single"],["logical"]]}
+    ]
+},
+
+"stereovslam.hasNewKeyFrame":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"}
+    ]
+},
+
+"stereovslam.checkStatus":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"}
+    ]
+},
+
+"stereovslam.isDone":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"}
+    ]
+},
+
+"stereovslam.mapPoints":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"}
+    ]
+},
+
+"stereovslam.poses":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"}
+    ]
+},
+
+"stereovslam.reset":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"}
+    ]
+}, 
+
+"stereovslam.plot":
+{
+    "inputs":
+    [
+        {"name":"vslam","kind":"required","type":"stereovslam"},
+        {"name":"MarkerSize","kind":"namevalue","type":[["positive","integer","scalar","numeric"]]},
+		{"name":"MarkerColor","kind":"namevalue","type":[["choices={'blue','green','cyan','red','magenta','black','white','yellow'}"],["vector","numeric","numel=3"]]},
+        {"name":"ColorSource","kind":"namevalue","type":"choices={'X', 'Y', 'Z', 'MarkerColor'}"},
+        {"name":"CameraSize","kind":"namevalue","type":[["scalar","numeric"]]},
+		{"name":"CameraColor","kind":"namevalue","type":[["choices={'blue','green','cyan','red','magenta','black','white','yellow'}"],["vector","numeric","numel=3"]]},
+        {"name":"Parent","kind":"namevalue","type":"matlab.graphics.axis.Axes"}
+    ]
+}
+}

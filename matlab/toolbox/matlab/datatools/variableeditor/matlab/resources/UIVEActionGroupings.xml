@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021-2025 The MathWorks, Inc. -->
+
+<ContextMenu ID="VEContextMenu">
+    <Context MatchContext="VariableEditor,Struct,isScalar,Header,Column" ID="Context1" Expanded="True" ExactMatch="True">
+        <ActionGroup Expanded="True" ID="">
+            <Action ID="HeaderAction" MessageID="Field" menuID="Name" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Value" menuID="Value" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Size" menuID="Size" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Class" menuID="Class" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Min" menuID="Min" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Max" menuID="Max" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Range" menuID="Range" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Mean" menuID="Mean" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Median" menuID="Median" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Mode" menuID="Mode" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Var" menuID="Var" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Std" menuID="Std" Checked="True"/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,Struct,isScalar,DataVariable,Body" ID="ScalarStructContext" Expanded="True" ExactMatch="True">
+         <ActionGroup Expanded="False" ID="Expand" ActionID="ExpandCollapseAction" MessageID="Expand" menuID="Expand">
+            <Action ID="ExpandCollapseAction" MessageID="ExpandCollapseField" menuID="ExpandField" />
+            <Action ID="ExpandCollapseAction" MessageID="ExpandCollapseAllInField" menuID="ExpandAllInField"/>
+            <Action ID="ExpandCollapseAction" MessageID="ExpandCollapseAll" menuID="ExpandAll"/>
+        </ActionGroup>
+        <ActionGroup Expanded="False" ID ="Collapse" ActionID="ExpandCollapseAction" MessageID="Collapse" menuID="Collapse">
+            <Action ID="ExpandCollapseAction" MessageID="ExpandCollapseField" menuID="CollapseField" />
+            <Action ID="ExpandCollapseAction" MessageID="ExpandCollapseAllInField" menuID="CollapseAllInField"/>
+            <Action ID="ExpandCollapseAction" MessageID="ExpandCollapseAll" menuID="CollapseAll"/>
+        </ActionGroup>
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="crudActions">
+            <Action ID="DuplicateAction" MessageID="DuplicateVariableAction" icon="duplicateWorkspace"/>
+            <Action ID="InsertAction" MessageID="InsertVariableAction" icon="insertRowBefore"/>
+            <Action ID="VariableEditor.struct.delete" MessageID="DeleteVariableAction" Shortcut="Delete" icon="delete_row"/>
+        </ActionGroup>
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="editRenameActions">
+            <Action ID="VariableEditor.struct.rename" MessageID="RenameAction" Shortcut="F2" icon="edit_workspaceName" keyPressEnabled="false"/>
+            <Action ID="EditAction" MessageID="EditValueAction" icon="edit_workspace" />
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,Struct,isScalar,EmptySpace,Body" ID="Context3" Expanded="True" ExactMatch="True">
+        <ActionGroup Expanded="True" ID="InsertActionGroup">
+            <Action ID="InsertAction" MessageID="NewDoubleVariableAction" icon="new_workspace"/>
+        </ActionGroup>
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="SelectionActionGroup">
+            <Action ID="VariableEditor.select-all" MessageID="SelectAllDataAction" Shortcut="ctrl+A" icon="select_table"/>
+            <Action ID="VariableEditor.select-all" MessageID="InvertSelection" icon="convertTableSelection"/>
+        </ActionGroup>
+    </Context>
+
+    <Context MatchContext="VariableEditor,Object,isScalar,Header,Column" ID="Context4" Expanded="True" ExactMatch="True">
+        <ActionGroup Expanded="True" ID="">  ​
+            <Action ID="HeaderAction" MessageID="Property" menuID="Name" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Value" menuID="Value" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Size" menuID="Size" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Class" menuID="Class" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Min" menuID="Min" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Max" menuID="Max" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Range" menuID="Range" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Mean" menuID="Mean" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Median" menuID="Median" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Mode" menuID="Mode" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Var" menuID="Var" Checked="True"/>
+            <Action ID="HeaderAction" MessageID="Std" menuID="Std" Checked="True"/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,Object,isScalar,DataVariable,Body" ID="Context5" Expanded="True" ExactMatch="True">
+        <MenuSeparator/>
+        <ActionGroup Expanded="True" ID="editRenameObjActions">
+            <Action ID="EditAction" MessageID="EditValueAction" icon="open_selectedWorkspace"/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,tabular,Header,Column" ID="TableColumnHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="SortDeleteTable">
+            <Action ID="DeleteData" MessageID="DeleteColumnVariable" menuID="DeleteColumn" icon="delete_column"/>
+            <MenuSeparator/>
+            <Action ID="SortAction" MessageID="SortAscending" menuID="SortAscending" icon="sortAtoZ" default="True"/>
+            <Action ID="SortAction" MessageID="SortDescending" menuID="SortDescending" icon="sortZtoA"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,tabular,Header,Column,SingleColumn" ID="TableSingleColumnContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="False" ID="DataTypeConversionGroup" MessageID="ConvertTo" icon="convertDatatype">
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+    <Context MatchContext="VariableEditor,tabular,Header,Column,SingleColumn,UngroupColumn" ID="TableUngroupColumnContext" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="TableUngroupingAction">
+            <Action ID="GroupingAction" MessageID="UngroupColumnVariable" menuID="UngroupColumnVariable"/>
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+    <Context MatchContext="VariableEditor,tabular,Header,Column,GroupColumn" ID="TableGroupColumnContext" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="TableGroupingAction">
+            <Action ID="GroupingAction" MessageID="GroupColumnVariable" menuID="GroupColumnVariable"/>
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+    <Context MatchContext="VariableEditor,tabular,Header,Row" ID="Context9" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="DeleteRow">
+            <Action ID="DeleteData" MessageID="DeleteRowVariable" menuID="DeleteRow" icon="delete_row"/>
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+    <Context MatchContext="VariableEditor,base,Header,Column" ID="BaseColHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="NumericInsertAndSort">
+            <Action ID="InsertRowColumn" MessageID="InsertColumnLeft" menuID="InsertColumnLeft" icon="insertColumnBefore"/>
+            <Action ID="InsertRowColumn" MessageID="InsertColumnRight" menuID="InsertColumnRight" icon="insertColumnAfter"/>
+            <Action ID="DeleteData" MessageID="DeleteColumn" menuID="DeleteColumn" icon="delete_column"/>
+            <MenuSeparator/>
+            <Action ID="SortAction" MessageID="SortAscending" menuID="SortAscending" icon="sortAtoZ" default="True"/>
+            <Action ID="SortAction" MessageID="SortDescending" menuID="SortDescending" icon="sortZtoA"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+   <Context MatchContext="VariableEditor,base,Header,Row" ID="BaseRowHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="ColumnTextOptions">
+            <Action ID="InsertRowColumn" MessageID="InsertRowAbove" menuID="InsertRowAbove" icon="insertRowBefore"/>
+            <Action ID="InsertRowColumn" MessageID="InsertRowBelow" menuID="InsertRowBelow" icon="insertRowAfter"/>
+            <Action ID="DeleteData" MessageID="DeleteRow" menuID="DeleteRow" icon="delete_row"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,base,Grid" ID="BaseGridContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="TransposeBaseType">
+            <Action ID="Transpose" MessageID="Transpose" menuID="Transpose" icon="rowToColumn"/>
+        </ActionGroup>
+        <MenuSeparator />
+    </Context>
+    <Context MatchContext="VariableEditor,base,numeric,Grid" ID="NumericGridContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="EmptyValReplace" icon="swap_workspace">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithZero" menuID="ReplaceWithEmptyNumeric"/>
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+    <Context MatchContext="VariableEditor,base,cell,Grid" ID="CellGridContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="EmptyValReplace">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithEmpty" menuID="ReplaceWithEmpty"/>
+        </ActionGroup>
+        <MenuSeparator/>
+    </Context>
+
+    <Context MatchContext="VariableEditor,text,Header,Column" ID="TextColHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="textColHeader">
+            <Action ID="DeleteData" MessageID="DeleteColumn" menuID="DeleteColumn" icon="delete_column"/>
+            <Action ID="SortAction" MessageID="SortAscending" menuID="SortAscending" icon="sortAtoZ" default="True"/>
+            <Action ID="SortAction" MessageID="SortDescending" menuID="SortDescending" icon="sortZtoA"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,calendarDuration,Header,Column" ID="CalendarDurationColHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="CalDurationColHeader">
+            <Action ID="DeleteData" MessageID="DeleteColumn" menuID="DeleteColumn" icon="delete_column"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,calendarDuration,Header,Row" ID="CalendarDurationRowHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="CalDurationRowHeader">
+            <Action ID="DeleteData" MessageID="DeleteRow" menuID="DeleteRow" icon="delete_row"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+   <Context MatchContext="VariableEditor,text,Header,Row" ID="TextRowHeaderContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="ColumnTextOptions">
+            <Action ID="DeleteData" MessageID="DeleteRow" menuID="DeleteRow" icon="delete_row"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,text,Grid" ID="TextGridContext" Expanded="True" ExactMatch="False" groupID="NewFromSelection">
+        <ActionGroup Expanded="True" ID="TransposeTextType">
+            <Action ID="Transpose" MessageID="Transpose" menuID="Transpose" icon="rowToColumn"/>
+        </ActionGroup>
+        <MenuSeparator />
+    </Context>
+    <Context MatchContext="VariableEditor,calendarDuration,Grid" ID="CalendarDurationGridContext" Expanded="True" ExactMatch="False" groupID="NewFromSelection">
+        <ActionGroup Expanded="True" ID="TransposeCalDurType">
+            <Action ID="Transpose" MessageID="Transpose" menuID="Transpose" icon="rowToColumn"/>
+        </ActionGroup>
+    </Context>
+
+     <Context MatchContext="VariableEditor,text,string,Grid" ID="StringGridContext" baseID="AcrossTextTypeContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="EmptyValReplace">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithMissing" menuID="ReplaceWithEmpty"/>
+        </ActionGroup>
+    </Context>
+
+    <Context MatchContext="VariableEditor,text,datetime,Grid" ID="DatetimeGridContext" baseID="AcrossTextTypeContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="EmptyValReplace">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithEmpty" menuID="ReplaceWithEmpty"/>
+        </ActionGroup>
+    </Context>
+
+    <Context MatchContext="VariableEditor,text,duration,Grid" ID="DurationGridContext" baseID="AcrossTextTypeContext" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="EmptyValReplace">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithEmpty" menuID="ReplaceWithEmpty"/>
+        </ActionGroup>
+    </Context>
+
+    <Context MatchContext="VariableEditor,char,Grid" ID="CharGridContext" baseID="AcrossBaseTypeContext" Expanded="True" ExactMatch="False">
+         <ActionGroup Expanded="True" ID="CharGrid">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithEmpty" menuID="ReplaceWithEmpty"/>
+            <MenuSeparator />
+            <Action ID="Transpose" MessageID="Transpose" menuID="Transpose" icon="rowToColumn"/>
+        </ActionGroup>
+    </Context>
+
+    <Context MatchContext="VariableEditor,struct,isRowOrColumnVector,Header,Column" ID="StructVectorColHeader" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="NumericInsertAndSort">
+            <Action ID="DeleteData" MessageID="DeleteField" menuID="DeleteColumn" icon="delete_column"/>
+            <MenuSeparator/>
+            <Action ID="SortAction" MessageID="SortAscending" menuID="SortAscending" icon="sortAtoZ" default="True"/>
+            <Action ID="SortAction" MessageID="SortDescending" menuID="SortDescending" icon="sortZtoA"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+   <Context MatchContext="VariableEditor,struct,isRowOrColumnVector,Header,Row" ID="StructVectorRowHeader" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="ColumnTextOptions">
+            <Action ID="DeleteData" MessageID="DeleteRow" menuID="DeleteRow" icon="delete_row"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,struct,isRowOrColumnVector,Grid" ID="StructVectorGrid" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="EmptyValReplace">
+            <Action ID="VariableEditor.delete" MessageID="ReplaceWithEmpty" menuID="ReplaceWithEmpty"/>
+        </ActionGroup>
+        <Action ID="Transpose" MessageID="Transpose" menuID="Transpose" icon="rowToColumn"/>
+        <MenuSeparator />
+    </Context>
+    <Context MatchContext="VariableEditor,object,Header,Column,Grid" ID="ObjectHeaderCol" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="NumericInsertAndSort">
+            <Action ID="DeleteData" MessageID="DeleteColumn" menuID="DeleteColumn" icon="delete_column"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+   <Context MatchContext="VariableEditor,object,Header,Row,Grid" ID="ObjectHeaderRow" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="ColumnTextOptions">
+            <Action ID="DeleteData" MessageID="DeleteRow" menuID="DeleteRow" icon="delete_row"/>
+            <MenuSeparator/>
+        </ActionGroup>
+    </Context>
+    <Context MatchContext="VariableEditor,object,Grid" ID="ObjectGrid" Expanded="True" ExactMatch="False">
+        <ActionGroup Expanded="True" ID="TransposeBaseType">
+            <Action ID="Transpose" MessageID="Transpose" menuID="Transpose" icon="rowToColumn"/>
+        </ActionGroup>
+    </Context>
+</ContextMenu>

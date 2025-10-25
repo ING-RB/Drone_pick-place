@@ -1,0 +1,37 @@
+{
+    "mustBeInRange": {
+        "inputs": [
+            {"name":"value", "kind":"required"},
+            {"name":"lowerBound", "kind":"required"},
+            {"name":"upperBound", "kind":"required"},
+            {"name":"inclusiveFlags", "kind":"flag", "repeating":true, "type":["char", "choices={'inclusive', 'exclusive', 'exclude-lower', 'exclude-upper'}"]}
+        ]
+    },
+    "mustBeBetween":
+    {
+        "inputs":
+        [
+            {"name":"A", "kind":"required", "type":[["numeric"],["logical"],["datetime"],["duration"],["char"],["string"],["categorical"]]},
+            {"name":"lower", "kind":"required", "type":[["numeric"],["logical"],["datetime"],["duration"],["char"],["string"],["categorical"]]},
+            {"name":"upper", "kind":"required", "type":[["numeric"],["logical"],["datetime"],["duration"],["char"],["string"],["categorical"]]},
+            {"name":"intervalType", "kind":"positional", "type":["choices={'open' 'closed' 'openleft' 'openright' 'closedleft' 'closedright'}"], "default":"closed"}
+        ]
+    },
+    "mustBeBetween":
+    {
+        "inputs":
+        [
+            {"name":"A", "kind":"required", "type":["tabular"]},
+            {"name":"lower", "kind":"required", "type":[["numeric"],["logical"],["datetime"],["duration"],["char"],["categorical"],["tabular"]]},
+            {"name":"upper", "kind":"required", "type":[["numeric"],["logical"],["datetime"],["duration"],["char"],["categorical"],["tabular"]]},
+            {"name":"intervalType", "kind":"positional", "type":["choices={'open' 'closed' 'openleft' 'openright' 'closedleft' 'closedright'}"], "default":"closed"},
+            {"name":"DataVariables", "kind":"namevalue", "type":[["char", "choices=x.Properties.VariableNames"], ["numeric","integer",">0"], ["logical"], ["cellstr"], ["function_handle"], ["vartype"]]}
+        ]
+    },
+    "mustBeVector": {
+        "inputs": [
+            {"name":"A", "kind":"required"},
+            {"name":"allowEmpty", "kind":"ordered", "type":["char", "choices={'allow-all-empties'}"]}
+        ]
+    }
+}

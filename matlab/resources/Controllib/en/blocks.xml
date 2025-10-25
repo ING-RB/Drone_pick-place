@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0" locale="en_US" product="Controllib" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+    <message>
+        <!-- Entries for the Kalman Filter block-->
+        <!-- Mask Prompts -->
+        <entry key="maskPromptKFTitle" translate="false" note="TranslateFalseBatch;">Kalman Filter</entry>     
+        <entry key="maskPromptKFDescription">Estimate the states of a 
+            discrete-time or continuous-time linear system. Time-varying systems 
+        are supported.</entry>
+        <entry key="maskPromptKFContainerFilterSettings">Filter Settings</entry>
+        <entry key="maskPromptKFTabModelParameters">Model Parameters</entry>
+        <entry key="maskPromptKFContainerSystemModel">System Model</entry>
+        <entry key="maskPromptKFContainerInitialEstimates">Initial 
+        Estimates</entry>
+        <entry key="maskPromptKFContainerNoiseCharacteristics">Noise 
+        Characteristics</entry>
+        <entry key="maskPromptKFContainerAdditionalInports">Additional Inports</entry>
+        <entry key="maskPromptKFContainerAdditionalOutports">Additional Outports</entry>
+        <entry key="maskPromptKFTabOptions">Options</entry>
+        <entry key="maskPromptKFTimeDomain">Time domain:</entry>
+        <entry key="maskPromptKFTimeDomainDT">Discrete-Time</entry>
+        <entry key="maskPromptKFTimeDomainCT">Continuous-Time</entry>
+        <entry key="maskPromptKFX0DT">Initial states x[0]:</entry>
+        <entry key="maskPromptKFX0CT">Initial states x(0):</entry>
+        <entry key="maskPromptKFModelSource">Model source:</entry>
+        <entry key="maskPromptKFSource">Source:</entry>
+        <entry key="maskPromptKFSourceDialog">Dialog</entry>
+        <entry key="maskPromptKFSourceInport">Input port</entry>
+        <entry key="maskPromptKFModelSourceLTIObject">LTI 
+        State-Space Variable</entry>
+        <entry key="maskPromptKFModelSourceMatrices">Individual 
+        A, B, C, D matrices</entry>    
+        <entry key="maskPromptKFModelSourceVariable" note="As in the name of a MATLAB variable">Variable:</entry>
+        <entry key="maskPromptKFA" translate="false" note="TranslateFalseBatch;">A:</entry>
+        <entry key="maskPromptKFB" translate="false" note="TranslateFalseBatch;">B:</entry>
+        <entry key="maskPromptKFC" translate="false" note="TranslateFalseBatch;">C:</entry>
+        <entry key="maskPromptKFD" translate="false" note="TranslateFalseBatch;">D:</entry>
+        <entry key="maskPromptKFNumberOfStates">Number of states:</entry>
+        <entry key="maskPromptKFNumberOfInputs">Number of inputs:</entry>
+        <entry key="maskPromptKFNumberOfProcessNoiseInputs">Number of process noise inputs:</entry>
+        <entry key="maskPromptKFNumberOfOutputs">Number of outputs:</entry>
+        <entry key="maskPromptKFUseGH">Use G and H matrices (default G=I and 
+        H=0)</entry>
+        <entry key="maskPromptKFUseK">Use the Kalman Gain K from the model variable</entry>
+        <entry key="maskPromptKFG" translate="false" note="TranslateFalseBatch;">G:</entry>
+        <entry key="maskPromptKFH" translate="false" note="TranslateFalseBatch;">H:</entry>
+        <entry key="maskPromptKFQ" translate="false" note="TranslateFalseBatch;">Q:</entry>
+        <entry key="maskPromptKFR" translate="false" note="TranslateFalseBatch;">R:</entry>
+        <entry key="maskPromptKFN" translate="false" note="TranslateFalseBatch;">N:</entry>
+        <entry key="maskPromptKFP0DT">State estimation error covariance P[0]</entry>
+        <entry key="maskPromptKFP0CT">State estimation error covariance P(0)</entry>
+        <entry key="maskPromptKFTimeInvariantG">Time-invariant G</entry>
+        <entry key="maskPromptKFTimeInvariantH">Time-invariant H</entry>
+        <entry key="maskPromptKFTimeInvariantQ">Time-invariant Q</entry>
+        <entry key="maskPromptKFTimeInvariantR">Time-invariant R</entry>
+        <entry key="maskPromptKFTimeInvariantN">Time-invariant N</entry>
+        <entry key="maskPromptKFOutputEstimatedY">Output estimated model output y</entry>
+        <entry key="maskPromptKFOutputP">Output state estimation error covariance P</entry>
+        <entry key="maskPromptKFOutputPZ">Output state estimation error covariance Z</entry>
+        <entry key="maskPromptKFAddEnablePort">Add input port Enable to control measurement updates</entry>
+        <entry key="maskPromptKFAddInputPort">Add input port u</entry>
+        <entry key="maskPromptKFUseCurrentMeasurement">Use the current 
+        measurement y[n] to improve xhat[n]</entry>
+        <entry key="maskPromptKFTs">Sample time (-1 for inherited):</entry>
+        <!-- Error messages for the block dialog-->
+        <entry key="errorInternal">Internal error: {0}</entry>
+        <entry key="KFErrorInvalidModelObject">Error in system model. 
+        The system model variable must be a state-space model.</entry>
+        <entry key="KFErrorInvalidModelDims">Error in system model. The LTI 
+            state-space variable must be a single model. Arrays of models 
+        are not supported.</entry>
+        <entry key="KFErrorDescriptorSingularE">Error in system model. 
+        Descriptor systems with singular E matrices are not supported.</entry>
+        <entry key="KFErrorNoDelaySupportCT">Error in system model. 
+            Continuous-time models with delays are not supported. Use the "pade"
+        command to approximate delays.</entry>
+        <entry key="KFErrorNoDelaySupportDT">Error in system model. 
+            Discrete-time models with delays are not supported. Use the "absorbDelay"
+        command to replace delays by poles at z=0.</entry>        
+        <entry key="KFErrorNeedAtLeast1State">Error in system model. The system 
+        must have at least one state.</entry>
+        <entry key="KFErrorNeedAtLeast1Output">Error in system model. The system 
+        must have at least one output.</entry>
+        <entry key="KFErrorNeedAtLeast1Input">Error in system model. The system 
+            must have at least one input when the "Add input port u" check 
+        box in the "Options" tab of the block dialog is checked.</entry>
+        <entry key="KFErrorSystemHasInputs">Error in system model and block 
+            configuration. The system model has inputs (non-empty B and D matrix),
+            however the "Add input port u" check box in the "Options" tab of 
+        the block dialog is not checked.</entry>
+        <entry key="KFErrorInvalidA">The A matrix must be numeric, real and
+        consist of finite values.</entry>
+        <entry key="KFErrorInvalidADims">The A matrix must be square.</entry>
+        <entry key="KFErrorInvalidB">The B matrix must be numeric, real and 
+        consist of finite values.</entry>
+        <entry key="KFErrorInvalidBDims">The A and B matrices must have 
+        the same number of rows.</entry>
+        <entry key="KFErrorInvalidC">The C matrix must be numeric, real and 
+        consist of finite values.</entry>
+        <entry key="KFErrorInvalidCDims">The A and C matrices must have the 
+        same number of columns.</entry>
+        <entry key="KFErrorInvalidD">The D matrix must be numeric, real and 
+        consist of finite values.</entry>
+        <entry key="KFErrorInvalidDDims">The matrix D must have the same 
+            number of rows with the C matrix. It must also have the same 
+        number of columns with the B matrix.</entry>        
+        <entry key="KFErrorInvalidNumberOfStates">The 'Number of states'
+        must be a positive integer.</entry>
+        <entry key="KFErrorInvalidNumberOfProcessNoiseInputs">The 'Number 
+        of process noise inputs' must be a non-negative integer.</entry>        
+        <entry key="KFErrorInvalidNumberOfInputs">The 'Number of inputs' 
+            must be a positive integer. If the model does not have inputs         
+            uncheck the "Add input port u" check box in the "Options" tab of 
+        the block dialog.</entry>
+        <entry key="KFErrorInvalidNumberOfOutputs">The 'Number of outputs'
+        must be a positive integer.</entry>
+        <entry key="KFErrorP0RealFinite">The 'State estimation 
+        error covariance P0' must be numeric, real and contain finite values.</entry>
+        <entry key="KFErrorP0InvalidScalar">The 'State estimation 
+        error covariance P0' must be positive when specified as a scalar.</entry>    
+        <entry key="KFErrorP0InvalidVector">The 'State estimation error 
+            covariance P0' must not contain negative values or be all zeros
+            when specified as a vector. Its length must be equal to the number 
+        of states in the model: {0}</entry>
+        <entry key="KFErrorP0InvalidMatrix">The 'State estimation error 
+            covariance P0' matrix must have the dimensions [{0}x{1}] 
+        based on the number of states in the system.</entry>
+        <entry key="KFErrorP0NotPosDef">The 'State estimation error 
+        covariance P0' matrix must be positive definite.</entry>        
+        <entry key="KFErrorP0InvalidType">The 'State estimation error 
+            covariance P0' must be specified as a scalar, vector or a 
+        matrix.</entry>
+        <entry key="KFErrorQRealFinite">'Q' must be numeric, real and 
+        consist of finite elements.</entry>
+        <entry key="KFErrorQInvalidScalar">'Q' must be positive when 
+        specified as a scalar.</entry>
+        <entry key="KFErrorQInvalidVector">'Q' must not contain negative 
+            values or be all zeros when specified as a vector. Its length must 
+        be equal to the number of states in the model: {0}</entry>
+        <entry key="KFErrorQInvalidMatrix">The matrix 'Q' must have the 
+            dimensions [{0}x{1}] based on the number of process noise inputs 
+        in the system.</entry>
+        <entry key="KFErrorQNotPosSemiDef">The matrix 'Q' must be positive 
+        semi-definite.</entry>
+        <entry key="KFErrorQInvalidType">'Q' must be specified as a scalar, 
+        vector or a matrix.</entry>
+        <entry key="KFErrorRRealFinite">'R' must be numeric, real and 
+        consist of finite elements.</entry>
+        <entry key="KFErrorRInvalidScalar">'R' must be positive when 
+        specified as a scalar.</entry>
+        <entry key="KFErrorRInvalidVector">'R' must not contain negative 
+            values or be all zeros when specified as a vector. Its length must 
+        be equal to the number of outputs in the model: {0}</entry>
+        <entry key="KFErrorRInvalidMatrix">The matrix 'R' must have the 
+        dimensions [{0}x{1}] based on the number of outputs in the system.</entry>
+        <entry key="KFErrorRNotPosDef">The matrix 'R' must be positive 
+        definite.</entry>
+        <entry key="KFErrorRInvalidType">'R' must be specified as a 
+        scalar, vector or a matrix.</entry>
+        <entry key="KFErrorNRealFinite">'N' must be numeric, real and 
+        consist of finite elements.</entry>
+        <entry key="KFErrorNInvalidType">'N' must be either the scalar zero, 
+            or a matrix with as many rows as the number of process noise inputs
+            in the system ({0}) and as many columns as the number of outputs in 
+        the system ({1}).</entry>
+        <entry key="KFErrorInvalidX0">Initial state estimate 'X0' must be 
+        numeric, real and finite.</entry>
+        <entry key="KFErrorInvalidX0Dims">Initial state estimate 'X0' must 
+            be a scalar or a vector. If it is specified as a vector its length 
+        must match the number of states in the model: {0}</entry>
+        <entry key="KFErrorInvalidG">The G matrix must be numeric, real and 
+        consist of finite elements.</entry>
+        <entry key="KFErrorInvalidGDims">The matrix G must have as many 
+            rows as the number of states ({0}) and as many columns as the 
+        number of process noise inputs in the system ({1}).</entry>
+        <entry key="KFErrorInvalidH">The H matrix must be numeric, real and 
+        consist of finite elements.</entry>
+        <entry key="KFErrorInvalidHDims">The matrix H must have as many 
+            rows as the number of system outputs ({0}) and as many columns as the 
+        number of process noise inputs in the system ({1}).</entry>
+        <entry key="KFErrorInvalidTsDT">The sample time must be a real, 
+            finite scalar. Its value must either be -1 (inherited) or positive 
+        for the discrete-time Kalman filter.</entry>
+        <entry key="KFErrorModelUndefinedTs">The sample time of the system 
+            model variable "{0}" is undefined. You must set the sample time of 
+        this model explicitly, e.g. {1}.Ts=1.</entry>
+        <entry key="KFErrorTimeDomainMismatch1">Time-domain mismatch. The 
+            option chosen in the block dialog is discrete-time while the supplied 
+        model variable is continuous-time.</entry>
+        <entry key="KFErrorTimeDomainMismatch2">Time-domain mismatch. The 
+            option chosen in the block dialog is continuous-time while the supplied 
+        model variable is discrete-time.</entry>
+        <entry key="KFErrorRbarNotPosDef">The matrix H*Q*H.'+H*N+N.'*H.'+R 
+        must be positive definite.</entry>
+        <entry key="KFErrorQRNNotPosSemiDef">The matrix [Q N; N.' R] must be 
+            positive semi-definite. The N matrix is the most likely cause of this 
+        problem.</entry>
+        <entry key="KFErrorQRNbarNotPosSemiDef">The matrix [Qbar Nbar; Nbar.' Rbar] 
+            where Qbar=G*Q*G.', Rbar=H*Q*H.'+H*N+N.'*H.'+R, Nbar=G*Q*H.'+G*N must 
+            be positive semi-definite. The G and H matrices are the
+        most likely cause of this problem.</entry>
+        <entry key="KFErrorRicattiConvergence">The block could not compute 
+            a convergent Kalman estimator for this plant model and covariance 
+            data. To remedy the problem:\n1. Make sure that all unstable poles 
+            of A are observable through C (use MINREAL to check)\n2. Modify the 
+            weights Q, R and N to make [G 0;H I]*[Q N;N'' R]*[G 0;H I]'' positive 
+        definite (use EIG to check).</entry>
+        <entry key="KFErrorUseKOutputPConflict">The "Output state 
+            estimation error covariance P" setting in the "Options" tab 
+            cannot be selected with the "Use the Kalman Gain K from the model 
+            variable" setting located in the "Model Parameters" tab. The "Output 
+            state estimation error covariance P" option is being unselected 
+        automatically.</entry>
+        <!-- Errors from SL -->
+        <entry key="KFErrorInvalidDims">Error in port widths or dimensions. 
+            The signal connected to the "{0}" inport of the "{1}" block must have 
+        the dimensions [{2,number,integer}x{3,number,integer}].</entry>
+        <entry key="KFErrorInvalidDimsScalarExpansion">Error in port widths 
+            or dimensions. The signal connected to the "{0}" inport of the "{1}" 
+            block must have the dimensions [1x1], [{2,number,integer}x1] or 
+        [{3,number,integer}x{4,number,integer}].</entry>        
+        <entry key="KFErrorDataTypeUnsupportedCT">Error in data types. The 
+            "{1}" inport has the data type ({2}). The block "{0}" only supports 
+            the data type (double) when estimating continuous-time states. It 
+            supports (double) and (single) when estimating discrete-time states.
+        </entry>
+        <entry key="KFErrorDataTypeUnsupportedDT">Error in data types. The 
+            block "{0}" only supports the data types (double) or (single). The 
+        "{1}" inport has the data type ({2}).</entry>
+        <entry key="KFErrorDataTypeUnsupportedEnableReset"><![CDATA[Error in data 
+            types. The <sldiag objui="inport" objparam="{1}" objname="{0}">inport {1}</sldiag> of block "{0}" only supports (double), 
+            (single), (boolean) or integer data types. The current data type is
+        ({2}).]]></entry>        
+        <entry key="KFErrorDataTypeMismatch">Error in data types. All 
+            inports of the block "{0}" must have the data type of its "y" 
+            inport ({1}). The "{2}" inport has the data type ({3}). Consider 
+        using a "Data Type Conversion" block on this signal.</entry>
+        <entry key="KFErrorPortSampleTimeInvalidDT">Error in port sample 
+            time of the "{0}" inport of the "{1}" block. The block is 
+            estimating discrete-time states but the signal connected to the 
+            inport has a continuous-time sample time. Consider using a 
+        "Rate Transition" block.</entry>
+        <entry key="KFErrorPortSampleTimeInvalidCT">Error in port sample 
+            time of the "{0}" inport of the "{1}" block. The block is 
+            estimating continuous-time states but the signal connected to the 
+            inport is not continuous-time. Consider using a "Rate Transition" 
+        block.</entry>        
+        <entry key="KFErrorPortSampleTimeMismatchDT">Error in port sample 
+            time of the "{0}" inport of the "{1}" block. All block inports must 
+            have the same discrete sample time. The inport "{2}" has the sample 
+            and offset times [{3}, {4}] whereas the "y" inport has [{5},{6}]. 
+            Consider using a "Rate Transition" block on this signal and 
+        explicitly specifying its output port sample time.</entry>
+        <entry key="KFErrorPortAndBlockSampleTimeMismatchDT">Error in port 
+            sample time of the "{0}" inport of the "{1}" block. The sample time 
+            of the signal connected to the inport ({2}) must match with the        
+        sample time Ts={3} specified for the block.</entry>   
+        <entry key="KFErrorComplexSignal"><![CDATA[Complex signal mismatch. The 
+            <sldiag objui="inport" objparam="{0}" objname="{1}">inport {0}</sldiag> of "{1}" expects a signal of numeric type real. 
+            However, it is driven by a signal of numeric type complex.
+        ]]></entry>
+        <entry key="KFErrorInvalidKalmanGainFromSystemModel">Error in the 
+            Kalman Gain K that was stored in the system model variable. It must 
+            be a real, nonzero matrix with finite elements.
+        </entry>
+        <!-- RLS block mask. Some are also used by Recursive Polynomial Model Estimator blk -->
+        <entry key="recursiveEstimationMaskRLSTitle">Recursive Least Squares Estimator</entry>
+        <entry key="recursiveEstimationMaskRLSDescription">Solve the linear least squares regression problem.</entry>
+        <entry key="recursiveEstimationMaskTabModelParameters">Model Parameters</entry>
+        <entry key="recursiveEstimationMaskTabAlgorithm">Algorithm and Block Options</entry>
+        <entry key="recursiveEstimationMaskGroupModelDescription">Model Description</entry>
+        <entry key="recursiveEstimationMaskGroupAlgorithmOpts">Algorithm Options</entry>
+        <entry key="recursiveEstimationMaskGroupBlockOpts">Block Options</entry>
+        <entry key="recursiveEstimationMaskSampleTime">Sample Time (-1 for inherited):</entry>
+        <entry key="recursiveEstimationMaskInitialEstimate">Initial Estimate:</entry>
+        <entry key="recursiveEstimationMaskInitialEstimateNone">None</entry>
+        <entry key="recursiveEstimationMaskInitialEstimateInternal">Internal</entry>
+        <entry key="recursiveEstimationMaskInitialEstimateExternal">External</entry>
+        <entry key="recursiveEstimationMaskNumberOfParameters">Number of Parameters:</entry>
+        <entry key="recursiveEstimationMaskInitialParameterValues">Initial Parameter Values:</entry>        
+        <entry key="recursiveEstimationMaskParameterCovariance">Parameter Covariance Matrix:</entry>
+        <entry key="recursiveEstimationMaskEstimationMethod">Estimation Method:</entry>
+        <entry key="recursiveEstimationMaskEstimationMethodFF" note="gerund+noun">Forgetting Factor</entry>
+        <entry key="recursiveEstimationMaskEstimationMethodKF">Kalman Filter</entry>
+        <entry key="recursiveEstimationMaskEstimationMethodNG">Normalized Gradient</entry>
+        <entry key="recursiveEstimationMaskEstimationMethodUG">Gradient</entry>
+        <entry key="recursiveEstimationMaskAdaptationParameterFF" note="gerund+noun">Forgetting Factor:</entry>
+        <entry key="recursiveEstimationMaskAdaptationParameterNCM">Process Noise Covariance:</entry>
+        <entry key="recursiveEstimationMaskAdaptationParameterAG">Adaptation Gain:</entry>    
+        <entry key="recursiveEstimationMaskAdaptationParameterNormalizationBias">Normalization Bias:</entry>    
+        <entry key="recursiveEstimationMaskOutputError">Output estimation error</entry>
+        <entry key="recursiveEstimationMaskOutputCovariance">Output parameter covariance matrix</entry>
+        <entry key="recursiveEstimationMaskInputEnable">Add enable port</entry> 
+        <entry key="recursiveEstimationMaskTimeVarying">Time-varying</entry>
+        <entry key="recursiveEstimationMaskInputProcessing">Input Processing:</entry>
+        <entry key="recursiveEstimationMaskFrameBased">Frame-based</entry>
+        <entry key="recursiveEstimationMaskSampleBased">Sample-based</entry>
+        <entry key="recursiveEstimationMaskHistory">History:</entry>
+        <entry key="recursiveEstimationMaskInfinite">Infinite</entry>
+        <entry key="recursiveEstimationMaskFinite">Finite</entry>
+        <entry key="recursiveEstimationMaskWindowLength">Window Length:</entry>
+        <entry key="recursiveEstimationMaskInitialRegressors">Initial Regressors:</entry>
+        <entry key="recursiveEstimationMaskInitialOutputs">Initial Outputs:</entry>
+        <entry key="recursiveEstimationMaskInitialInputs">Initial Inputs:</entry>
+        <!-- RLS block mask init errors. Some are also used by Recursive Polynomial Model Estimator blk -->
+        <entry key="recursiveEstimationTsInvalid">"Sample Time" must be a positive scalar or -1 (inherited).</entry>
+        <entry key="recursiveEstimationNoiseCovarianceScalarNotPosSemidef">"Process Noise Covariance", when specified as a scalar, must be non-negative.</entry>
+        <entry key="recursiveEstimationNoiseCovarianceVectorDim">'"Process Noise Covariance", when specified as a vector, must contain {0} elements (the number of estimated parameters).</entry>
+        <entry key="recursiveEstimationNoiseCovarianceVectorNotPosSemidef">"Process Noise Covariance", when specified as a vector, must have all its elements non-negative.</entry>
+        <entry key="recursiveEstimationNoiseCovarianceMatrixDim">"Process Noise Covariance", when specified as a matrix, must be square with {0} rows and columns (the number of estimated parameters).</entry>
+        <entry key="recursiveEstimationNoiseCovarianceMatrixNotPosSemidef">"Process Noise Covariance", when specified as a matrix, must be symmetric and positive semi-definite.</entry>
+        <entry key="recursiveEstimationNoiseCovarianceMatrixInvalid">"Process Noise Covariance" must be a scalar, a vector or a 2-dimensional matrix.</entry>
+        <entry key="recursiveEstimationParameterCovarianceMatrixScalarNotPosDef">"Parameter Covariance Matrix", when specified as a scalar, must be positive.</entry>
+        <entry key="recursiveEstimationParameterCovarianceMatrixVectorDim">"Parameter Covariance Matrix", when specified as a vector, must have {0} elements (number of estimated model parameters).</entry>
+        <entry key="recursiveEstimationParameterCovarianceMatrixVectorNotPosDef">"Parameter Covariance Matrix", when specified as a vector, must have all its elements positive.</entry>
+        <entry key="recursiveEstimationParameterCovarianceMatrixMatrixDim">"Parameter Covariance Matrix" must be square with {0} rows and columns (number of estimated model parameters).</entry>
+        <entry key="recursiveEstimationParameterCovarianceMatrixMatrixNotPosDef">"Parameter Covariance Matrix" must be square, symmetric and positive-definite.</entry>
+        <entry key="recursiveEstimationParameterCovarianceMatrixMatrixInvalidType">"Parameter Covariance Matrix" must be a scalar, a vector or a 2-dimensional matrix.</entry>
+        <entry key="recursiveEstimationWindowShorterThanNumParams">"Window Length" must be equal to or greater than {0,number,integer} (the number of estimated parameters).</entry>
+        <!-- RLS and Recursive Polynomial Model Estimator blocks
+        These are the errors thrown from C++ SFcns -->
+        <entry key="recursiveEstimationCheckSignalDimensionRLSRegressors1">Error in port widths or dimensions. The signal connected to the "Regressors" port of the "{0}" block must be a vector signal of size {1,number,integer}. Check the signal and the "Number of Parameters" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionRLSRegressors2">Error in port widths or dimensions. The signal connected to the "Regressors" port of the "{0}" block must be a vector signal of size {1,number,integer}. This is because the "Initial Parameter Values" setting in the block dialog has {2,number,integer} elements.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionRLSRegressors3">Error in port widths or dimensions. The "Regressors" port of the "{0}" block expects a 2-dimensional signal, but found a {1,number,integer} dimensional signal. Check the signal and the "Input Processing" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionRLSRegressors4">Error in port widths or dimensions. The "Regressors" port of the "{0}" block expects a 2-dimensional signal with {1,number,integer} columns, but found {2,number,integer} columns.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyModelInputs1">Error in port widths or dimensions. The signal connected to the "Inputs" port of the "{0}" block must be a vector signal of size {1,number,integer}. This is because the estimated model has {2,number,integer} inputs. Check the signal and the number of elements in the "Number of Parameters in B(q) (nb)" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyModelInputs2">Error in port widths or dimensions. The signal connected to the "Inputs" port of the "{0}" block must be a vector signal of size {1,number,integer}. This is because the estimated model has {2,number,integer} inputs. Check the signal and the "Initial B(q)" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyInitialParameterA">Error in port widths or dimensions. The signal "A" in the "InitialParameters" input bus port of the block "{0}" must be a matrix signal of size [1x{1,number,integer}], where the second dimension is number of estimated parameters in A(q) plus one (na+1).</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyInitialParameterC">Error in port widths or dimensions. The signal "C" in the "InitialParameters" input bus port of the block "{0}" must be a matrix signal of size [1x{1,number,integer}], where the second dimension is number of estimated parameters in C(q) plus one (nc+1).</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyInitialParameterD">Error in port widths or dimensions. The signal "D" in the "InitialParameters" input bus port of the block "{0}" must be a matrix signal of size [1x{1,number,integer}], where the second dimension is number of estimated parameters in D(q) plus one (nd+1).</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyInitialParameterB">Error in port widths or dimensions. The signal "B" in the "InitialParameters" input bus port of the block "{0}" must be a matrix signal of size [{1,number,integer}x{2,number,integer}]. The first dimension is the number of inputs in the estimated model. The second dimension is the maximum of the sum of the "Number of Parameters in B(q) (nb)" and "Input Delay (nk)" settings in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyInitialParameterF">Error in port widths or dimensions. The signal "F" in the "InitialParameters" input bus port of the block "{0}" must be a matrix signal of size [{1,number,integer}x{2,number,integer}]. The first dimension is the number of inputs in the estimated model. The second dimension is the maximum of the sum of the "Number of Parameters in F(q) (nf)" setting plus one in the block dialog.</entry>    
+        <entry key="recursiveEstimationCheckSignalDimensionNotScalar">Error in port widths or dimensions. The "{0}" port of the "{1}" block expects a scalar signal.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionNotColumnVector">Error in port widths or dimensions. The "{0}" port of the "{1}" expects a column vector signal. Check the signal and the "Input Processing" setting on the block dialog.</entry>
+        <entry key="recursiveEstimationInvalidSignalDimension">The "{0}" port of "{1}" expects a signal with dimensions [{2,number,integer}x{3,number,integer}].</entry>
+        <entry key="recursiveEstimationCheckSignalNotDiscrete">Error in port sample time. The signal connected to the "{0}" port of the "{1}" block must be a discrete-time signal.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionPolyInitialCovariance">Error in port widths or dimensions. The dimensions of the signal connected to the "InitialCovariance" port of the "{0}" block must be one of the following: scalar, [{1,number,integer}x1] vector or [{2,number,integer}x{3,number,integer}] matrix.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionRLSInitialParameters">Error in port widths or dimensions. The signal connected to the "InitialParameters" port of the "{0}" block must be a vector signal of size {1,number,integer}. Check the signal and the "Number of Parameters" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDimensionRLSInitialCovariance">Error in port widths or dimensions. The dimensions of the signal connected to the "InitialCovariance" port of the "{0}" block must be one of the following: scalar, [{1,number,integer}x1] vector or [{2,number,integer}x{3,number,integer}] matrix. This is based on the "Number of Parameters" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalComplexity">Error in port complexity: The signal connected to the "{0,number,integer}" port of the "{1}" block must be real. This port does not accept complex signals.</entry>
+        <entry key="recursiveEstimationCheckSignalTsMismatch">Error in port sample or offset times. The sample and offset times for the "{0}" and "{1}" ports of the "{2}" block must be equal. Consider inserting a "Rate Transition" block on one of the signals entering these ports.</entry>
+        <entry key="recursiveEstimationCheckSignalInheritedTsMismatch">The input and output ports of the "{0}" block have inherited mismatching sample or offset times. Consider specifying the desired sample time in the block, or using "Signal Specification" blocks.</entry>
+        <entry key="recursiveEstimationCheckSignalTsMismatchPort">Error in port sample time. The sample time specified in the block dialog of the "{0}" block and the sample time of the signal connected to its "{1}" port must be equal. Consider inserting a "Rate Transition" block on one of these signals.</entry>
+        <entry key="recursiveEstimationCheckSignalTsUndetermined">Error in port sample time. The "{0}" block must operate at a discrete sample time. Either connect discrete-time signals to the "{1}" and "{2}" input ports of the block or explicitly provide a discrete time in the "Sample Time" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationCheckSignalDataTypeMismatch">Error in data types. The data type of the "{0}" input port ({1}) and the "{2}" input port ({3}) of the "{4}" block must be the same.</entry>
+        <entry key="recursiveEstimationCheckSignalDataTypeUnsupported">Error in data types. The data type of the "{0}" and "{1}" inports of the "{2}" block must be single or double.</entry>
+        <entry key="recursiveEstimationFiniteHistoryUnsupportedModelStructure">Finite history estimation is only supported for the AR, ARX and OE model structures.</entry>
+        <entry key="recursiveEstimationFrameInputNotMatrixSL">The "Inputs" port of {0} expects a 2-dimensional signal (a matrix), but found {1,number,integer} dimensions. Check the signal and the "Input Processing" setting in the block dialog.</entry>
+        <entry key="recursiveEstimationFrameInputWrongColDim">The "Inputs" port of {0} expects a signal with {1,number,integer} columns (number of inputs in the model), but found {2,number,integer} columns.</entry>        
+        <!-- Warnings from SL -->
+        <entry key="recursiveEstimationACDFLeadingCoefficientNot1">Error in initial model estimate provided for the block "{0}". The "{1}" vector signal connected to the "InitialParameters" inport must have its first element 1. Its value is ignored and is assumed to be 1.</entry>
+        <entry key="recursiveEstimationExportToPreviousVersionNormalizationBias">The NormalizationBias parameter in "{0}" is different than the default value eps. This parameter is not available before Simulink 2015b. The exported model can behave different than the original.</entry>
+        <entry key="recursiveEstimationExportToPreviousVersionHasTimeVaryingAdaptationParameter">HasTimeVaryingAdaptationParameter parameter in "{0}" is not available before Simulink 2017b. The exported model can behave different than the original.</entry>
+        <entry key="recursiveEstimationExportToPreviousVersionUnsupportedModelStructure">The model structure {0} estimated in "{1}" is not available before Simulink 2014b. The parameter ModelStructure is reverted to its default value ARX. Unsupported parameters D0 and F0 are removed. The exported model can behave different than the original.</entry>
+        <entry key="recursiveEstimationSingularInitializationLS">Initialization data in "{0}" does not contain sufficient information to uniquely determine parameter estimates. Consider providing or changing InitialRegressors and InitialOutputs.</entry>
+        <entry key="recursiveEstimationSingularInitializationPoly">Initialization data in "{0}" does not contain sufficient information to uniquely determine parameter estimates. Consider providing or changing InitialInputs and InitialOutputs.</entry>
+        <entry key="recursiveEstimationSingularEstimation">Data provided to "{0}" does not contain sufficient information to uniquely determine a parameter estimate. Consider providing informative data, or disabling parameter adaptation while this is not possible.</entry>
+    </message>
+</rsccat>
+
+<!-- LocalWords:  xhat Qbar Nbar Rbar nb na nc nd nk
+-->

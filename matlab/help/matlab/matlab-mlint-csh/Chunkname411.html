@@ -1,0 +1,20 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><code>imtool</code> will be removed in a future release. </p><br/><strong>Suggested Action</strong><br/><p>Use the Image Viewer app. This example shows how to open an image in Image
+                    Viewer instead of the Image tool. </p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>I&nbsp;=&nbsp;imread("cameraman.tif");<br/>imtool(I)&nbsp;</code>
+                                </td><td>
+                                    <code>I&nbsp;=&nbsp;imread("cameraman.tif");<br/>imageViewer(I)&nbsp;</code>
+                                </td></tr></tbody></table></div><p>When you want to set the display range or the colormap, rewrite your code to
+                    specify the <code>DisplayRange</code> or <code>Colormap</code>
+                    name-value argument, respectively. This example shows how to fix code that sets
+                    the display range using a positional argument.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>I&nbsp;=&nbsp;imread("cameraman.tif");<br/>imtool(I,[5&nbsp;250])&nbsp;</code>
+                                </td><td>
+                                    <code>I&nbsp;=&nbsp;imread("cameraman.tif");<br/>imageViewer(I,DisplayRange=[5&nbsp;250])&nbsp;</code>
+                                </td></tr></tbody></table></div><p>If you want to return the figure that contains the Image tool, then use
+                        the<code> images.compatibility.imtool.r2023b.imtool</code> function
+                    instead. This example shows how to return the figure containing the Image
+                    tool.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>I&nbsp;=&nbsp;imread("cameraman.tif");<br/>htool&nbsp;=&nbsp;imtool(I);</code>
+                                </td><td>
+                                    <code>I&nbsp;=&nbsp;imread("cameraman.tif");<br/>htool&nbsp;=&nbsp;images.compatibility.imtool.r2023b.imtool(I);</code>
+                                </td></tr></tbody></table></div></body></html>

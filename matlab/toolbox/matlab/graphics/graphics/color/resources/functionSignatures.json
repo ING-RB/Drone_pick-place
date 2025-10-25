@@ -1,0 +1,165 @@
+{
+"colororder":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.Graphics"},
+        {"name":"newcolors", "kind":"required", "type":
+            [
+                ["cellstr", "vector"],
+                ["string", "vector"],
+                ["numeric", "ncols=3"]
+            ]
+        }
+     ]
+},
+"colororder":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.Graphics"},
+        {"name":"name", "kind":"required", "type":["choices={'gem','gem12','glow','glow12','dye', 'earth', 'meadow', 'reef', 'sail','default'}"]
+        }
+     ]
+},
+"colororder":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.Graphics"}
+     ],
+    "outputs":
+    [
+        {"name":"C", "type":["double", "ncols=3"]}
+    ]
+},
+"orderedcolors":
+{
+    "inputs":
+    [
+        {"name":"name", "kind":"required", "type":["choices={'gem','gem12','glow','glow12','dye', 'earth', 'meadow', 'reef', 'sail'}"]}
+     ],
+    "outputs":
+    [
+        {"name":"C", "type":["double", "ncols=3"]}
+    ]
+},
+"linestyleorder":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":"matlab.graphics.Graphics"},
+        {"name":"newlinestyles", "kind":"required", "type":
+            [
+                ["cellstr", "vector"],
+                ["string", "vector"],
+                ["choices={'mixedmarkers','mixedstyles'}"]
+            ]
+        },
+        {"name":"cyclingmethod", "kind":"ordered", "type":["choices={'withcolor','aftercolor','beforecolor'}"]}
+     ]
+},
+"colormap":
+{
+    "inputs":
+    [
+        {"name":"target", "kind":"ordered", "type":[["matlab.ui.Figure"], ["matlab.graphics.axis.AbstractAxes"], ["matlab.graphics.chart.HeatmapChart"]]},
+        {"name":"map", "kind":"required", "type":
+            [
+                ["choices={'parula','turbo','hsv','hot','cool','spring','summer','autumn','winter','gray','bone','copper','pink','sky','abyss','nebula','jet','lines','colorcube','prism','flag','white','default'}"],
+                ["numeric", "ncols=3"]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"cmap", "type":["numeric", "ncols=3"]}
+    ]
+},
+"validatecolor":
+{
+    "inputs":
+    [
+        {"name":"colors", "kind":"required", "type":
+            [
+                ["cellstr", "vector"],
+                ["string", "vector"],
+                ["numeric", "ncols=3"]
+            ]
+        },
+        {"name":"sz", "kind":"flag", "type":["char", "choices={'one','multiple'}"]}
+     ],
+    "outputs":
+    [
+        {"name":"RGB", "type":["double", "ncols=3"]}
+    ]
+},
+"rgb2hex":
+{
+    "inputs":
+    [
+        {"name":"RGB", "kind":"required", "type":
+            [
+                ["double", "ncols=3"],
+                ["single", "ncols=3"],
+                ["uint8", "ncols=3"],
+                ["uint16", "ncols=3"]
+            ]
+        },
+        {"name":"Shorthand", "kind":"namevalue", "type":["logical","scalar"]}
+    ],
+    "outputs":
+    [
+        {"name":"HEX", "type":["string", "vector"]}
+    ]
+},
+"hex2rgb":
+{
+    "inputs":
+    [
+        {"name":"hexStr", "kind":"required", "type":
+            [
+                ["cellstr", "vector"],
+                ["string", "vector"]
+            ]
+        },
+        {"name":"OutputType", "kind":"namevalue", "type":["char", "choices={'double','single','uint8','uint16'}"]}
+    ],
+    "outputs":
+    [
+        {"name":"RGB", "type":
+            [
+                ["double", "ncols=3"],
+                ["single", "ncols=3"],
+                ["uint8", "ncols=3"],
+                ["uint16", "ncols=3"]
+            ]
+        }
+    ]
+},
+"fliplightness":
+{
+    "inputs":
+    [
+        {"name": "rgb", "kind":"required", "type":
+            [
+                ["numeric", "ncols=3"],
+                ["numeric", "size=:,:,3"],
+                ["string", "vector"],
+                ["cellstr", "vector"]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name": "newrgb", "type":
+            [
+                ["numeric", "ncols=3"],
+                ["numeric", "size=:,:,3"],
+                ["string", "vector"],
+                ["cellstr", "vector"]
+            ]
+        }
+    ]
+}
+}

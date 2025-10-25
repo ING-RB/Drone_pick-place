@@ -1,0 +1,68 @@
+{
+    "matchScans":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+             [
+                 [
+                     {"name":"currRanges", "kind":"required", "type":"numeric"},
+                     {"name":"currAngles", "kind":"required", "type":"numeric"},
+                     {"name":"refRanges", "kind":"required", "type":"numeric"},
+                     {"name":"refAngles", "kind":"required", "type":"numeric"}
+                 ],
+                 [
+                     {"name":"currScan", "kind":"required", "type":"lidarScan"},
+                     {"name":"refScan", "kind":"required", "type":"lidarScan"}
+                 ]
+             ]
+            },
+            {"name":"SolverAlgorithm", "kind":"namevalue", "type":[["char"], ["choices={'trust-region','fminunc'}"]]},
+            {"name":"InitialPose", "kind":"namevalue", "type":"numeric"},
+            {"name":"CellSize", "kind":"namevalue", "type":"numeric"},
+            {"name":"MaxIterations", "kind":"namevalue", "type":"numeric"},
+            {"name":"ScoreTolerance", "kind":"namevalue", "type":"numeric"}
+        ]
+    },
+    "matchScansGrid":
+    {
+        "inputs":
+        [
+            {"name":"currScan", "kind":"required", "type":"lidarScan"},
+            {"name":"refScan", "kind":"required", "type":"lidarScan"},
+            {"name":"InitialPose", "kind":"namevalue", "type":"numeric"},
+            {"name":"Resolution", "kind":"namevalue", "type":"numeric"},
+            {"name":"MaxRange", "kind":"namevalue", "type":"numeric"},
+            {"name":"TranslationSearchRange", "kind":"namevalue", "type":"numeric"},
+            {"name":"RotationSearchRange", "kind":"namevalue", "type":"numeric"}
+        ]
+    },
+    "matchScansLine":
+    {
+        "inputs":
+        [
+            {"name":"currScan", "kind":"required", "type":"lidarScan"},
+            {"name":"refScan", "kind":"required", "type":"lidarScan"},
+            {"name":"initialRelPose", "kind":"required", "type":"numeric"},
+            {"name":"SmoothnessThreshold", "kind":"namevalue", "type":"numeric"},
+            {"name":"MinPointsPerLine", "kind":"namevalue", "type":"numeric"},
+            {"name":"CompatibilityScale", "kind":"namevalue", "type":"numeric"},
+            {"name":"MinCornerProminence", "kind":"namevalue", "type":"numeric"},
+            {"name":"LineMergeThreshold", "kind":"namevalue", "type":"numeric"}
+        ]
+    },
+    "transformScan":
+    {
+        "inputs":
+        [
+            {"name":"ranges", "kind":"required", "type":[["numeric","@(x)isempty(x)"],["numeric","vector","real"]]},
+            {"name":"angles", "kind":"required", "type":[["numeric","@(x)isempty(x)"],["numeric","vector","real"]]},
+            {"name":"relPose", "kind":"required", "type":["numeric","vector","numel=3","real"]}
+        ],
+        "outputs":
+        [
+            {"name":"transRanges", "type":"inferredFrom=ranges"},
+            {"name":"transAngles", "type":"inferredFrom=angles"}
+        ]
+    }
+}

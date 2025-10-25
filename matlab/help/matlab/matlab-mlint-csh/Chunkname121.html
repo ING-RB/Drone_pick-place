@@ -1,0 +1,25 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><code><a href="matlab:doc strmatch" target="_blank">strmatch</a></code> is not
+                    recommended. Use <code><a href="matlab:doc strncmp" target="_blank">strncmp</a></code>
+                    instead.</p><br/><strong>Suggested Action</strong><br/><p>To find exact matches for a character vector, use <code><a href="matlab:doc strcmp" target="_blank">strcmp</a></code>. For example, if
+                    your code currently contains lines such as these:</p><p>
+                    <code>list&nbsp;=&nbsp;{'max','minimax','maximum','max'}&nbsp;<br/>x&nbsp;=&nbsp;strmatch('max',list,'exact')</code>
+                </p><p>Then, MATLAB returns the following to indicate that the first and fourth array
+                    elements are the only exact matches for <code>max</code>:</p><p>
+                    <code>x&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</code>
+                </p><p>Replace the original code with this:</p><p>
+                    <code>list&nbsp;=&nbsp;{'max','minimax','maximum','max'}<br/>x&nbsp;=&nbsp;strcmp(list,'max')</code>
+                </p><p>MATLAB now returns the following logical array. MATLAB returns
+                        <code>true</code> (logical <code>1</code>) to indicate that the
+                    first and fourth <code>list</code> elements are <code>max</code> and
+                        <code>false</code> (logical <code>0</code>) to indicate that the
+                    second and third <code>list</code> elements are not
+                    <code>max</code>.</p><p>
+                    <code>x&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</code>
+                </p><p>If you prefer for MATLAB to return the numeric indices of
+                        <code>list</code>, use <code><a href="matlab:doc find" target="_blank">find</a></code>, as follows:</p><p>
+                    <code>list&nbsp;=&nbsp;{'max','minimax','maximum','max'}<br/>x&nbsp;=&nbsp;find(strcmp(list,'max'))</code>
+                </p><p>Now, MATLAB returns the following to indicate that the first and fourth array
+                    elements are the only exact matches for <code>max</code>:</p><p>
+                    <code>x&nbsp;=<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4</code>
+                </p><p>To find values that contain a given character vector, rather than those that
+                    are an exact match, use <code><a href="matlab:doc strncmp" target="_blank">strncmp</a></code>.</p></body></html>

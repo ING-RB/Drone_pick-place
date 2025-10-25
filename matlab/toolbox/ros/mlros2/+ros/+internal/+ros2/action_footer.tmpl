@@ -1,0 +1,123 @@
+
+class {%upper(msgInfo.pkgName)%}_EXPORT ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action : public ROS2MsgElementInterfaceFactory {
+  public:
+    virtual ~ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action(){}
+    virtual std::shared_ptr<MATLABPublisherInterface> generatePublisherInterface(ElementType type);
+    virtual std::shared_ptr<MATLABSubscriberInterface> generateSubscriberInterface(ElementType type);
+    virtual std::shared_ptr<MATLABActClientInterface> generateActClientInterface();
+    virtual std::shared_ptr<MATLABActServerInterface> generateActServerInterface();
+    virtual matlab::data::StructArray generateMLMessage(ElementType type, 
+                                                    void*  msgPtr ,
+                                                    MultiLibLoader  loader ,
+                                                    std::map<std::string,std::shared_ptr<MATLABROS2MsgInterfaceBase>>* commonObjMap);
+    virtual std::shared_ptr<void> generateCppMessage(ElementType type, 
+                                           const matlab::data::StructArray& arr,
+                                           MultiLibLoader loader,
+                                           std::map<std::string,std::shared_ptr<MATLABROS2MsgInterfaceBase>>* commonObjMap);
+};  
+  std::shared_ptr<MATLABPublisherInterface> 
+          ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action::generatePublisherInterface(ElementType type){
+      
+    std::shared_ptr<MATLABPublisherInterface> ptr;
+    if(type == eGoal){
+        ptr = std::make_shared<ROS2PublisherImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common>>();
+    }else if(type == eFeedback){
+        ptr = std::make_shared<ROS2PublisherImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common>>();
+    }else if(type == eResult){
+        ptr = std::make_shared<ROS2PublisherImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common>>();
+    }else{
+        throw std::invalid_argument("Wrong input, Expected 'Goal' or 'Feedback' or 'Result'");
+    }
+    return ptr;
+  }
+  std::shared_ptr<MATLABSubscriberInterface> 
+         ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action::generateSubscriberInterface(ElementType type){
+    std::shared_ptr<MATLABSubscriberInterface> ptr;
+    if(type == eGoal){
+        ptr = std::make_shared<ROS2SubscriberImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common>>();
+    }else if(type == eFeedback){
+        ptr = std::make_shared<ROS2SubscriberImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common>>();
+    }else if(type == eResult){
+        ptr = std::make_shared<ROS2SubscriberImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common>>();
+    }else{
+        throw std::invalid_argument("Wrong input, Expected 'Goal' or 'Feedback' or 'Result'");
+    }
+    return ptr;
+  }
+  std::shared_ptr<MATLABActClientInterface> 
+          ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action::generateActClientInterface(){
+      return std::make_shared<ROS2ActClientImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%},{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal,{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback::ConstSharedPtr,{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result::ConstSharedPtr,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common>>();
+  }
+  std::shared_ptr<MATLABActServerInterface> 
+          ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action::generateActServerInterface(){
+      return std::make_shared<ROS2ActServerImpl<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%},{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback,{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result,{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal::ConstSharedPtr,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common,{%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common>>();
+  }
+  std::shared_ptr<void> ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action::generateCppMessage(ElementType type, 
+                                           const matlab::data::StructArray& arr,
+                                           MultiLibLoader loader,
+                                           std::map<std::string,std::shared_ptr<MATLABROS2MsgInterfaceBase>>* commonObjMap){
+    if(type == eGoal){
+        auto msg = std::make_shared<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal>();
+        {%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common commonObj;
+        commonObj.mCommonObjMap = commonObjMap;
+        commonObj.copy_from_struct(msg.get(), arr[0], loader);
+        return msg;
+    }else if(type == eFeedback){
+        auto msg = std::make_shared<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback>();
+        {%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common commonObj;
+        commonObj.mCommonObjMap = commonObjMap;
+        commonObj.copy_from_struct(msg.get(), arr[0], loader);
+        return msg;
+    }else if(type == eResult){
+        auto msg = std::make_shared<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result>();
+        {%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common commonObj;
+        commonObj.mCommonObjMap = commonObjMap;
+        commonObj.copy_from_struct(msg.get(), arr[0], loader);
+        return msg;
+    
+   }else{
+        throw std::invalid_argument("Wrong input, Expected 'Goal' or 'Feedback' or 'Result'");
+    }
+  }
+ matlab::data::StructArray ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action::generateMLMessage(ElementType type, 
+                                                    void*  msgPtr ,
+                                                    MultiLibLoader  loader ,
+                                                    std::map<std::string,std::shared_ptr<MATLABROS2MsgInterfaceBase>>* commonObjMap){
+    if(type == eGoal){
+	    {%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common commonObj;	
+        commonObj.mCommonObjMap = commonObjMap;
+	    MDFactory_T factory;
+	    return commonObj.get_arr(factory, ({%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal*)msgPtr, loader);
+    }else if(type == eResult){
+        {%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common commonObj;	
+        commonObj.mCommonObjMap = commonObjMap;
+	    MDFactory_T factory;
+	    return commonObj.get_arr(factory, ({%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result*)msgPtr, loader);
+    }else if(type == eFeedback){
+        {%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common commonObj;
+        commonObj.mCommonObjMap = commonObjMap;
+	    MDFactory_T factory;
+	    return commonObj.get_arr(factory, ({%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback*)msgPtr, loader);
+    }
+     
+     else{
+        throw std::invalid_argument("Wrong input, Expected 'Goal' or 'Feedback' or 'Result'");
+    }
+  }
+
+
+#include "class_loader/register_macro.hpp"
+// Register the component with class_loader.
+// This acts as a sort of entry point, allowing the component to be discoverable when its library
+// is being loaded into a running process.
+CLASS_LOADER_REGISTER_CLASS({%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Goal_common, MATLABROS2MsgInterface<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Goal>)
+CLASS_LOADER_REGISTER_CLASS({%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Feedback_common, MATLABROS2MsgInterface<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Feedback>)
+CLASS_LOADER_REGISTER_CLASS({%msgInfo.pkgName%}_msg_{%msgInfo.actionName%}Result_common, MATLABROS2MsgInterface<{%msgInfo.pkgName%}::action::{%msgInfo.actionName%}::Result>)
+CLASS_LOADER_REGISTER_CLASS(ros2_{%msgInfo.pkgName%}_{%msgInfo.actionName%}_action, ROS2MsgElementInterfaceFactory)
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#else
+#pragma GCC diagnostic pop
+#endif //_MSC_VER
+//gen-1

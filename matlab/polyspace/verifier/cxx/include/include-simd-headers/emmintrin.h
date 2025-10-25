@@ -1,0 +1,75 @@
+/* Copyright 2024 The MathWorks, Inc. */
+#include <stdint.h>
+typedef void* __m128;
+typedef void* __m128i;
+typedef void* __m128d;
+typedef int8_t int8;
+typedef int16_t int16;
+typedef int32_t int32;
+typedef int64_t int64;
+typedef uint32_t uint32;
+
+//SSE2 --> emmintrin.h
+__m128d   _mm_add_pd( __m128d u1, __m128d u2  );
+
+__m128d   _mm_and_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmpeq_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmpge_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmpgt_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmple_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmplt_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmpord_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cmpneq_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_cvtps_pd( __m128 u1  );
+
+__m128d   _mm_div_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_loadu_pd( const double* u1  );
+__m128d   _mm_max_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_min_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_mul_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_or_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_set1_pd( double u1  );
+__m128d   _mm_set_pd( double u1, double u2  );
+__m128d   _mm_shuffle_pd( __m128d u1, __m128d u2, uint32 u3  );
+__m128d   _mm_sqrt_pd( __m128d u1  );
+__m128d   _mm_sub_pd( __m128d u1, __m128d u2  );
+__m128d   _mm_xor_pd( __m128d u1, __m128d u2  );
+__m128i   _mm_add_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_add_epi32( __m128i u1, __m128i u2  );
+__m128i   _mm_add_epi64( __m128i u1, __m128i u2  );
+__m128i   _mm_add_epi8( __m128i u1, __m128i u2  );
+__m128i   _mm_and_si128( __m128i u1, __m128i u2  );
+__m128i   _mm_cmpeq_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_cmpeq_epi32( __m128i u1, __m128i u2  );
+__m128i   _mm_cmpeq_epi8( __m128i u1, __m128i u2  );
+__m128i   _mm_cmpgt_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_cmpgt_epi32( __m128i u1, __m128i u2  );
+__m128i   _mm_cmpgt_epi8( __m128i u1, __m128i u2  );
+__m128i   _mm_cmplt_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_cmplt_epi32( __m128i u1, __m128i u2  );
+__m128i   _mm_cmplt_epi8( __m128i u1, __m128i u2  );
+__m128i   _mm_cvtps_epi32( __m128 u1  );
+__m128i   _mm_cvttps_epi32( __m128 u1  );
+__m128i   _mm_loadu_si128( const __m128i* u1  );
+__m128i   _mm_max_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_min_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_mullo_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_or_si128( __m128i u1, __m128i u2  );
+__m128i   _mm_set1_epi16( int16 u1  );
+__m128i   _mm_set1_epi32( int32 u1  );
+__m128i   _mm_set1_epi64x( int64 u1  );
+__m128i   _mm_set1_epi8( int8 u1  );
+__m128i   _mm_set_epi16( int16 u1, int16 u2, int16 u3, int16 u4, int16 u5, int16 u6, int16 u7, int16 u8  );
+__m128i   _mm_set_epi32( int32 u1, int32 u2, int32 u3, int32 u4  );
+__m128i   _mm_set_epi64x( int64 u1, int64 u2  );
+__m128i   _mm_set_epi8( int8 u1, int8 u2, int8 u3, int8 u4, int8 u5, int8 u6, int8 u7, int8 u8, int8 u9, int8 u10, int8 u11, int8 u12, int8 u13, int8 u14, int8 u15, int8 u16  );
+__m128i   _mm_sub_epi16( __m128i u1, __m128i u2  );
+__m128i   _mm_sub_epi32( __m128i u1, __m128i u2  );
+__m128i   _mm_sub_epi64( __m128i u1, __m128i u2  );
+__m128i   _mm_sub_epi8( __m128i u1, __m128i u2  );
+__m128i   _mm_xor_si128( __m128i u1, __m128i u2  );
+__m128   _mm_castsi128_ps( __m128i u1  );
+__m128   _mm_cvtpd_ps( __m128d u1  );
+__m128   _mm_cvtepi32_ps( __m128i u1  );
+void _mm_storeu_pd( double* u1, __m128d u2  );
+void _mm_storeu_si128( __m128i* u1, __m128i u2  );

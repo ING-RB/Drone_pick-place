@@ -1,0 +1,19 @@
+function [data, view, dataprops] = createdataview(this, Nresp, ViewClass)
+%  CREATEDATAVIEW  Abstract Factory method to create @respdata and
+%                  @respview "product" objects to be associated with
+%                  a @response "client" object H.
+
+%  Copyright 1986-2021 The MathWorks, Inc.
+if nargin < 3
+    ViewClass = 'resppack.DirectionalIndexView';
+end
+for ct = Nresp:-1:1
+  % Create @respdata objects
+  data(ct,1) = resppack.DirectionalIndexData;
+  % Create @respview objects
+  view(ct,1) = feval(ViewClass);
+end
+set(view,'AxesGrid',this.AxesGrid) 
+% Return list of data-related properties of data object
+dataprops = [data(1).findprop('Frequency'); ...
+      data(1).findprop('IndexValues')];

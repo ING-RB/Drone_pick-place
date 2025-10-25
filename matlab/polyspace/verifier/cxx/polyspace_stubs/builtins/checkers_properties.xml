@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018-2024 The MathWorks, Inc. -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+
+  <tag id="strlen" kind="function" user_name="strlen" other_names="std::strlen">
+    <properties>
+      <property kind="rule">PS_INTERNAL_INEFFICIENT_BASIC_STRING_LENGTH</property>
+    </properties>
+  </tag>
+
+  <tag id="wcslen" kind="function" user_name="wcslen" other_names="std:wcslen">
+    <properties>
+      <property kind="rule">PS_INTERNAL_INEFFICIENT_BASIC_STRING_LENGTH</property>
+      <property kind="rule">WIDE_STRING</property>
+    </properties>
+  </tag>
+
+  <tag id="strcmp_rule" kind="function" user_name="strcmp" other_names="std::strcmp">
+    <properties>
+      <property kind="rule">INEFFICIENT_BASIC_STRING_COMPARE</property>
+    </properties>
+  </tag>
+
+  <tag id="wcscmp" kind="function" user_name="wcscmp" other_names="std::wcscmp">
+    <properties>
+      <property kind="rule">INEFFICIENT_BASIC_STRING_COMPARE</property>
+      <property kind="rule">WIDE_STRING</property>
+    </properties>
+  </tag>
+
+  <tag id="strcpy_rule" kind="function" user_name="strcpy" other_names="std::strcpy">
+    <properties>
+      <property kind="rule">INEFFICIENT_BASIC_STRING_COPY</property>
+      <property kind="rule">STRTOK_CHANGES_PARSE_STRING_COPY</property>
+    </properties>
+  </tag>
+
+  <tag id="strncpy_rule" kind="function" user_name="strncpy" other_names="std::strncpy">
+    <properties>
+      <property kind="rule">STRTOK_CHANGES_PARSE_STRING_COPY</property>
+    </properties>
+  </tag>
+
+  <tag id="strdup" kind="function" user_name="strdup" other_names="std::strdup">
+    <properties>
+      <property kind="rule">STRTOK_CHANGES_PARSE_STRING_DUPLICATE</property>
+    </properties>
+  </tag>
+
+  <tag id="strndup" kind="function" user_name="strndup" other_names="std::strndup">
+    <properties>
+      <property kind="rule">STRTOK_CHANGES_PARSE_STRING_DUPLICATE</property>
+    </properties>
+  </tag>
+
+  <tag id="wcscpy" kind="function" user_name="wcscpy" other_names="std::wcscpy">
+    <properties>
+      <property kind="rule">INEFFICIENT_BASIC_STRING_COPY</property>
+      <property kind="rule">WIDE_STRING</property>
+    </properties>
+  </tag>
+
+  <tag id="sprintf" kind="function" user_name="sprintf" >
+    <properties>
+      <property kind="rule">PS_INTERNAL_INEFFICIENT_SPRINTF</property>
+    </properties>
+  </tag>
+
+  <!-- Random -->
+  <tag id="rand_checkers" kind="function" user_name="rand" other_names="std::rand">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RAND_USE</property>
+    </properties>
+  </tag>
+
+  <!-- Random functions from stdlib -->
+  <tag id="rand_checkers_stdlib" kind="function" user_name="rand" decl_header="stdlib.h" header="stdlib.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RAND_USE_STDLIB</property>
+    </properties>
+  </tag>
+
+  <tag id="srand_checkers_stdlib" kind="function" user_name="srand" decl_header="stdlib.h" header="stdlib.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RAND_USE_STDLIB</property>
+    </properties>
+  </tag>
+
+  <tag id="gets_checkers_stdio" kind="function" user_name="gets" decl_header="stdio.h" header="stdio.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_USE_GETS_STDIO_H</property>
+    </properties>
+  </tag>
+
+  <!-- The vprintf family -->
+  <tag id="vprintf" kind="function" user_name="vprintf" other_names="std::vprintf,vwprintf" >
+    <properties>
+      <property kind="rule">VPRINTF</property>
+    </properties>
+  </tag>
+
+  <tag id="vfprintf" kind="function" user_name="vfprintf" other_names="std::vfprintf,vfwprintf" >
+    <properties>
+      <property kind="rule">VPRINTF</property>
+    </properties>
+  </tag>
+
+  <tag id="vsprintf" kind="function" user_name="vsprintf" other_names="std::vsprintf,vswprintf" >
+    <properties>
+      <property kind="rule">VPRINTF</property>
+    </properties>
+  </tag>
+
+  <tag id="vsnprintf" kind="function" user_name="vsnprintf" other_names="std::vsnprintf,vsnwprintf" >
+    <properties>
+      <property kind="rule">VPRINTF</property>
+    </properties>
+  </tag>
+
+  <tag id="time_t" kind="type" user_name="time_t" >
+    <properties>
+      <property kind="rule">time_t</property>
+    </properties>
+  </tag>
+
+  <tag id="dlsym_dynamic_memory" kind="function" user_name="dlsym" header="dlfcn.h" >
+    <properties>
+      <property kind="rule">PS_INTERNAL_DLSYM_USE</property>
+    </properties>
+  </tag>
+  <tag id="atexit" kind="function" user_name="atexit" other_names="std::atexit" >
+    <properties>
+      <property kind="rule">ATEXIT</property>
+    </properties>
+  </tag>
+
+  <tag id="at_quick_exit" kind="function" user_name="at_quick_exit" other_names="std::at_quick_exit" >
+    <properties>
+      <property kind="rule">ATEXIT</property>
+    </properties>
+  </tag>
+
+  <tag id="realloc_checkers" kind="function" user_name="realloc" type="void* (void*, __edg_size_type__)">
+    <properties>
+      <property kind="rule">PS_INTERNAL_RETURN_ERASE_POINTER_REALLOC</property>
+    </properties>
+  </tag>
+
+  <!-- gcc/clang exception handling builtins -->
+  <tag id="cxa_allocate_exception" kind="function" user_name="__cxa_allocate_exception">
+    <properties>
+      <property kind="rule">EXCEPTION_HANDLING</property>
+    </properties>
+  </tag>
+  <tag id="cxa_throw" kind="function" user_name="__cxa_throw">
+    <properties>
+      <property kind="rule">EXCEPTION_HANDLING</property>
+    </properties>
+  </tag>
+  <tag id="cxa_free_exception" kind="function" user_name="__cxa_free_exception">
+    <properties>
+      <property kind="rule">EXCEPTION_HANDLING</property>
+    </properties>
+  </tag>
+  <tag id="cxa_begin_catch" kind="function" user_name="__cxa_begin_catch">
+    <properties>
+      <property kind="rule">EXCEPTION_HANDLING</property>
+    </properties>
+  </tag>
+  <tag id="cxa_end_catch" kind="function" user_name="__cxa_end_catch">
+    <properties>
+      <property kind="rule">EXCEPTION_HANDLING</property>
+    </properties>
+  </tag>
+  <tag id="stack_unwind" kind="function" user_name="_Unwind_*">
+    <properties>
+      <property kind="rule">EXCEPTION_HANDLING</property>
+    </properties>
+  </tag>
+
+  <tag id="uncertain_memory_cleaning_memset" kind="function" user_name="memset">
+    <properties>
+      <property kind="rule">UNCERTAIN_MEMORY_CLEANING</property>
+    </properties>
+  </tag>
+
+  <!-- PADDING_INFO_READ/PADDING_INFO_WRITE -->
+
+  <tag id="padding_info_write_memset" kind="function" user_name="memset">
+    <properties>
+      <property kind="rule">PADDING_INFO_WRITE@1</property>
+    </properties>
+  </tag>
+
+  <tag id="padding_info_write_memcpy" kind="function" user_name="memcpy">
+    <properties>
+      <property kind="rule">PADDING_INFO_WRITE@1</property>
+      <property kind="rule">PADDING_INFO_WRITE@2</property>
+      <property kind="rule">STRTOK_CHANGES_PARSE_STRING_COPY</property>
+      <property kind="rule">mem_cpy_cmp_move</property>
+    </properties>
+  </tag>
+
+  <tag id="padding_info_write_memmove" kind="function" user_name="memmove">
+    <properties>
+      <property kind="rule">PADDING_INFO_WRITE@1</property>
+      <property kind="rule">PADDING_INFO_WRITE@2</property>
+      <property kind="rule">mem_cpy_cmp_move</property>
+    </properties>
+  </tag>
+
+  <tag id="padding_info_read_memcmp" kind="function" user_name="memcmp">
+    <properties>
+      <property kind="rule">PADDING_INFO_READ@1</property>
+      <property kind="rule">PADDING_INFO_READ@2</property>
+      <property kind="rule">mem_cpy_cmp_move</property>
+    </properties>
+  </tag>
+
+  <tag id="std_comparison_equal_to" kind="function" user_name="std::equal_to::operator()">
+    <properties>
+      <property kind="rule">STD_COMPARISON</property>
+    </properties>
+  </tag>
+
+  <tag id="std_comparison_not_equal_to" kind="function" user_name="std::not_equal_to::operator()">
+    <properties>
+      <property kind="rule">STD_COMPARISON</property>
+    </properties>
+  </tag>
+
+  <tag id="std_comparison_less" kind="function" user_name="std::less::operator()">
+    <properties>
+      <property kind="rule">STD_COMPARISON</property>
+    </properties>
+  </tag>
+
+  <tag id="std_comparison_less_equal" kind="function" user_name="std::less_equal::operator()">
+    <properties>
+      <property kind="rule">STD_COMPARISON</property>
+    </properties>
+  </tag>
+
+  <tag id="std_comparison_greater" kind="function" user_name="std::greater::operator()">
+    <properties>
+      <property kind="rule">STD_COMPARISON</property>
+    </properties>
+  </tag>
+
+  <tag id="std_comparison_greater_equal" kind="function" user_name="std::greater_equal::operator()">
+    <properties>
+      <property kind="rule">STD_COMPARISON</property>
+    </properties>
+  </tag>
+
+  <tag id="open" kind="function" user_name="open">
+    <properties>
+      <property kind="rule">RESOURCE_LEAK_OPEN</property>
+    </properties>
+  </tag>
+  <tag id="close" kind="function" user_name="close">
+    <properties>
+      <property kind="rule">RESOURCE_LEAK_CLOSE</property>
+    </properties>
+  </tag>
+  <tag id="resource_leak_fdopen" kind="function" user_name="fdopen" other_names="_fdopen">
+    <properties>
+      <property kind="rule">RESOURCE_LEAK_CLOSE</property>
+    </properties>
+  </tag>
+
+  <tag id="CreateFileA" kind="function" user_name="CreateFileA">
+    <properties>
+      <property kind="rule">RESOURCE_LEAK_OPEN</property>
+    </properties>
+  </tag>
+  <tag id="CloseHandle" kind="function" user_name="CloseHandle">
+    <properties>
+      <property kind="rule">RESOURCE_LEAK_CLOSE</property>
+    </properties>
+  </tag>
+
+  <tag id="int_least8_t" kind="type" user_name="int_least8_t" decl_header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="int_least16_t" kind="type" user_name="int_least16_t" decl_header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="int_least32_t" kind="type" user_name="int_least32_t" decl_header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="int_least64_t" kind="type" user_name="int_least64_t" decl_header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="int_fast8_t" kind="type" user_name="int_fast8_t" header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="int_fast16_t" kind="type" user_name="int_fast16_t" header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="int_fast32_t" kind="type" user_name="int_fast32_t" header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="int_fast64_t" kind="type" user_name="int_fast64_t" header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="uint_least8_t" kind="type" user_name="uint_least8_t" header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="uint_least16_t" kind="type" user_name="uint_least16_t" header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="uint_least32_t" kind="type" user_name="uint_least32_t" header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="uint_least64_t" kind="type" user_name="uint_least64_t" header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="uint_fast8_t" kind="type" user_name="uint_fast8_t" header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="uint_fast16_t" kind="type" user_name="uint_fast16_t" header="stdint.h">
+    <properties>
+      <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+    </properties>
+  </tag>
+  <tag id="uint_fast32_t" kind="type" user_name="uint_fast32_t" header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+  <tag id="uint_fast64_t" kind="type" user_name="uint_fast64_t" header="stdint.h">
+      <properties>
+          <property kind="rule">PS_INTERNAL_MISRA_D4_6_TYPE_NOT_ALLOWED_STDINT</property>
+      </properties>
+  </tag>
+
+</tags>

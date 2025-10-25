@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020-2023 The MathWorks, Inc. -->
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="en_US" product="polyspace" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!-- Common message -->
+    <entry key="ReturnFromFcn" translate="false">Exiting function "{0}"</entry>
+    <!-- shared with BlockKind.sml -->
+    <!-- Exception checkers message  -->
+    <entry key="ConstructorNotNoExcept" translate="false">Constructor not declared as noexcept</entry>
+    <entry key="ThrowToken" translate="false">Exception thrown</entry>
+    <entry key="RethrowToken" translate="false">Exception rethrown</entry>
+    <entry key="NoExceptFalseMayThrow" translate="false">Function is declared as noexcept(false) and may throw</entry>
+    <entry key="StandardNewMayThrow" translate="false">Operator new may throw std::bad_alloc exception</entry>
+    <entry key="DynamicCastMayThrow" translate="false">dynamic_cast operator may throw std::bad_cast exception</entry>
+    <entry key="VirtualCall" translate="false">Virtual function "{0}" called</entry>
+    <entry key="ThrownClassLikeMultipleTimes" translate="false">Class, struct or union constructed as {0} is thrown multiple times.</entry>
+    <entry key="ThrownEnumValueMultipleTimes" translate="false">Enum value {0} is thrown multiple times.</entry>
+    <entry key="ThrownIntegerMultipleTimes" translate="false">Integer {0} is thrown multiple times.</entry>
+    <entry key="ThrownStringLiteralMultipleTimes" translate="false">String literal "{0}" is thrown multiple times.</entry>
+    <entry key="SameValueThrownHere" translate="false">Same value is thrown here</entry>
+    <entry key="NothrowThrows" translate="false">Function declaration has attribute nothrow but throws.</entry>
+    <entry key="NoexceptThrows" translate="false">Function is declared as noexcept.</entry>
+    <entry key="NoTryCatch" translate="false">No Try-Catch region</entry>
+    <entry key="NoUnexceptedCatch" translate="false">Unexpected exceptions are not caught</entry>
+    <entry key="NoStdExceptionCatch" translate="false">std::exception are not caught explicitly</entry>
+    <entry key="CatchAllButThrow" translate="false">Catch-all found, but function still throws</entry>
+    <entry key="NoexceptDeleteWithExceptSpec" translate="false">Replacement "{0}" implementation throws exceptions.\nThis replacement operator must not throw according to the required behavior specifications of the Standard.</entry>
+    <entry key="ExceptNewWithNoexecptSpec" translate="false">Replacement "{0}" implementation throws no exception.\nThis replacement operator must throw a std::bad_alloc exception on allocation failure according to the required behavior specifications of the Standard.</entry>
+    <entry key="NothrowNewWithExceptSpec" translate="false">Replacement "{0}" implementation throws exceptions.\nThis replacement operator must not throw according to the required behavior specifications of the Standard.</entry>
+    <entry key="NoexceptNewDeleteWithThrowInBody" translate="false">Replacement "{0}" implementation throws exceptions directly or indirectly.\nThis replacement operator must not throw according to the required behavior specifications of the Standard.</entry>
+    <entry key="NullOrPossibleNullToken" translate="false">Null or possible null</entry>
+    <entry key="ReachingNoexceptFunction" translate="false">Reaching end of noexcept function</entry>
+    <entry key="ReachingMainFunction" translate="false">Reaching end of main function</entry>
+    <entry key="ReachingTaskMainFunction" translate="false">Reaching end of task main function</entry>
+    <entry key="ReachingCatchAll" translate="false">Reaching generic exception handler</entry>
+    <entry key="AtexitHandlerRegisteredHere" translate="false">Termination handler registered here</entry>
+    <entry key="NoexceptUnsatisfied" translate="false">An exception might occur in a noexcept function, causing an abrupt termination of the program.</entry>
+    <entry key="ExceptBeforeStartup" translate="false">An exception might occur before program start-up, causing an abrupt termination of the program.</entry>
+    <entry key="ThrowThrows" translate="false">An exception might occur while constructing a thrown object, causing an abrupt termination of the program.</entry>
+    <entry key="ConstructorNotNoexceptBeforeStartup" translate="false">This operation calls a non-noexcept constructor before the program finishes startup. Such a call might lead to unhandled exceptions, resulting in abrupt termination of the program.</entry>
+    <!-- PS_INTERNAL_FORBIDDEN_ARITHMETIC_ON_PTR_TYPE -->
+    <entry key="ForbiddenArithmeticOnPtrTypeMessage" translate="false">Pointer on array is out of boundaries.</entry>
+    <!-- PS_INTERNAL_FORBIDDEN_ARITHMETIC_ON_NON_ARRAY_TYPE -->
+    <entry key="ForbiddenArithmeticOnNonArrayTypeMessage" translate="false">Pointer arithmetic on a non-array object.</entry>
+    <!-- PS_INTERNAL_REF_PARAMETER_XXX -->
+    <entry key="ParameterCouldBeConst" translate="false">Parameter {0} could be const.</entry>
+    <entry key="ParameterCompletelyReplaced" translate="false">Parameter {0} is completely replaced.</entry>
+    <entry key="CheapReturnedByReference" translate="false">Output parameter {0} can be returned by value.</entry>
+    <entry key="ImpossibleToCopyPassByReference" translate="false">Input parameter {0} is impossible to copy and can be passed by value.</entry>
+    <!-- VVIR checker messages  -->
+    <entry key="OwnedPtrStoreByReset" translate="false">{0_symbol} replaces managed pointer with a pointer that is already owned by an unrelated smart pointer.\nThis might result in a double-free vulnerability.</entry>
+    <entry key="OwnedPtrStoreByCtor" translate="false">{0_symbol} stores a pointer that is already owned by an unrelated smart pointer.\nThis might result in a double-free vulnerability.\nTo fix:\n1. Use std:make_shared or std::make_unique to construct new smart pointers.\n2. Use copy construction to create related smart pointers.</entry>
+    <entry key="SmartPtrOwningPtr" translate="false">Owning smart pointer</entry>
+    <entry key="SmartPtrResetOwningPtr" translate="false">Already-owned replacement pointer</entry>
+    <entry key="SmartPtrGetOwnedPtr" translate="false">Getting already-owned pointer</entry>
+    <entry key="SmartPtrOwnedPtrIndirection" translate="false">Already-owned pointer indirection</entry>
+    <entry key="SmartPtrCastTransfer" translate="false">Already-owned pointer cast from source to destination</entry>
+    <entry key="MovedFromAccessByFuncThis" translate="false">"{0_symbol}" attempts to access a moved-from object (*this).\nAccessing a moved-from object results in unspecified behavior.</entry>
+    <entry key="MovedFromAccessByFuncArg" translate="false">"{0_symbol}" attempts to access a moved-from object (argument #{1,number,integer}).\nAccessing a moved-from object results in unspecified behavior.</entry>
+    <entry key="MovedFromReuse" translate="false">Reuse of a moved-from object.\nAccessing a moved-from object results in unspecified behavior.</entry>
+    <entry key="MoveLvalueRefParameter" translate="false">"{0_symbol}" attempts to move the lvalue reference parameter "{1_symbol}".\nAny access in the caller to the moved-from argument results in unspecified behavior.</entry>
+    <!-- PS_INTERNAL_RESTRICT_PTR_TO_RESTRICT_PTR -->
+    <entry key="NotOuterToInnerAssignRestrictedPointers" translate="false">Restrict pointer "{0}" has been assigned a value from a restrict pointer defined in the same or an inner scope.</entry>
+    <entry key="AssignOverlappingRestrictedPointersDefault" translate="false">Assigning restrict overlapping objects.</entry>
+    <entry key="AssignOverlappingRestrictedPointers" translate="false">Restrict object "{0}" is assigned to overlapping restrict object "{1}".</entry>
+    <entry key="ModifyingOverlappingRestrictedPointersLibFunction" translate="false">Library function "{0}" modifies overlapping objects.</entry>
+    <entry key="ModifyingOverlappingRestrictedConstPointers" translate="false">Function "{0}" may modify restrict argument #{1,number,integer} with overlapping restrict const-qualified argument #{2,number,integer}.</entry>
+    <entry key="ModifyingOverlappingConstPointers" translate="false">Function "{0}" may modify argument number #{1,number,integer} with overlapping const-qualified argument number #{2,number,integer}.</entry>
+    <!-- PS_INTERNAL_STATIC_STORED_OBJECT_ID_REUSED_XXX -->
+    <entry key="VariableReused" translate="false">Variable {0_symbol} is reused in {1_filename} at line {2,number,integer}.</entry>
+    <entry key="NonMemberStaticObjectReused" translate="false">Non-member static object {0_symbol} is reused in {1_filename} at line {2,number,integer}.</entry>
+    <entry key="NonMemberStaticFunctionReused" translate="false">Non-member static function {0_symbol} is reused in {1_filename} at line {2,number,integer}.</entry>
+    <entry key="NonMemberStaticObjectReusedInSameNamespace" translate="false">Non-member static object {0_symbol} is reused in the same namespace in {1_filename} at line {2,number,integer}.</entry>
+    <entry key="NonMemberStaticFunctionReusedInSameNamespace" translate="false">Non-member static function {0_symbol} is reused in the same namespace in {1_filename} at line {2,number,integer}.</entry>
+    <entry key="IdentifierReusedOnThisLine" translate="false">{0_symbol} reused on this line</entry>
+    <!-- PS_INTERNAL_ZERO_LENGTH_ALLOCATION -->
+    <entry key="SizeArgumentOfFuncMaybeZero" translate="false">Size argument of "{0}" may be zero.\nZero-length allocation results in implementation-defined behavior.\nCheck size for non-zero values before memory allocation.</entry>
+    <entry key="SizeOrNumberElmtArgumentOfFuncMaybeZero" translate="false">Size or number of elements argument of "{0}" may be zero.\nZero-length allocation results in implementation-defined behavior.\nCheck size and number of elements for non-zero values before memory allocation.</entry>
+    <!-- PS_INTERNAL_REALLOC_DATA_WITHOUT_REINITIALIZATION -->
+    <entry key="ReallocChangingTypeEvent" translate="false">Reallocation from a different pointer type</entry>
+    <entry key="AccessToNonReinitializedMemoryOfRealloc" translate="false">Accessed memory is reallocated from an object of a different type but not reinitialized afterwards.</entry>
+    <!-- PS_INTERNAL_RESULT_DEPENDS_ON_ORDER_OF_EVALUATION -->
+    <entry key="VariableWrittenAndReused" translate="false">Variable {0_symbol} is written and reused within this expression.</entry>
+    <entry key="GlobalVariableWrittenAndReused" translate="false">Global variable {0_symbol} is written and reused within this expression.</entry>
+    <entry key="VolatileWrittenTwice" translate="false">Volatile variables are written twice within this expression.</entry>
+    <entry key="VolatileReadTwice" translate="false">Volatile variables are read twice within this expression.</entry>
+    <entry key="VariableWrittenHere" translate="false">Variable written</entry>
+    <entry key="VariableReusedHere" translate="false">Variable reused</entry>
+    <entry key="GlobalVariableWrittenHere" translate="false">Global variable written</entry>
+    <entry key="GlobalVariableReusedHere" translate="false">Global variable reused</entry>
+    <entry key="VolatileWrittenHere" translate="false">Volatile variable written</entry>
+    <entry key="VolatileReadHere" translate="false">Volatile variable read</entry>
+    <!-- PS_INTERNAL_BAD_CHECKED_EXCEPTION_DEFINITION -->
+    <entry key="ExcNotDeclaredInComments" translate="false">Function {0_symbol} throws checked exceptions that are not documented before the function declaration.</entry>
+    <entry key="ExcNotDeclaredInCommentsEvent" translate="false">Type {0_symbol} is not documented before function {1_symbol} declaration.</entry>
+    <entry key="ExcDeclaredCheckedException" translate="false">{0_symbol} is specified as checked exception.</entry>
+    <entry key="DeclaredExnInCommentsNotThrown" translate="false">The function does not raise at least one documented checked exception.</entry>
+    <entry key="DeclaredExnInCommentsNotThrownEvent" translate="false">The function does not raise the documented exception {0_symbol}.</entry>
+    <entry key="DeclaredExnInCommentsNotChecked" translate="false">At least one type of documented exception is not specified as a checked exception.</entry>
+    <entry key="ExcDeclaredInCommentsEvent" translate="false">Type {0_symbol} is documented as an exception for function {1_symbol}.</entry>
+    <entry key="DeclaredExnInCommentsNotCheckedEvent" translate="false">The exception {0_symbol} is not specified as a checked exception.</entry>
+    <entry key="ThrownException" translate="false">Exception {0_symbol} is thrown.</entry>
+    <!-- PS_INTERNAL_BAD_REALLOC -->
+    <entry key="ReallocFreeOnSymbol" translate="false">Buffer {0_symbol} used with realloc was not allocated dynamically.</entry>
+    <entry key="ReallocFree" translate="false">Buffer used with realloc was not allocated dynamically.</entry>
+    <entry key="ReallocSizeFree" translate="false">Call to realloc. If size is zero, realloc might free memory.</entry>
+    <!-- PS_INTERNAL_USE_NON_RT_ALLOC_IN_RT_PHASE -->
+    <entry key="NonRTAllocUsedInRTPhase" translate="false">Use of non-real time memory allocation function {0_symbol} in real time phase is prohibited.</entry>
+    <entry key="NonRTDeallocUsedInRTPhase" translate="false">Use of non-real time memory deallocation function {0_symbol} in real time phase is prohibited.</entry>
+    <entry key="NonRTMemManagementUsedInRTPhase" translate="false">Use of non-real time memory management function {0_symbol} in real time phase is prohibited.</entry>
+    <!-- PS_INTERNAL_ILLEGAL_POINTER_TO_MEMBER -->
+    <entry key="PointerToMemberMightBeNull" translate="false">Right operand of pointer to member operator might be a nullptr.</entry>
+    <!-- PS_INTERNAL_CATCH_FOR_GENERIC_EXCEPTION -->
+    <entry key="OverlyBroadCatch" translate="false">Catching overly broad exceptions might result in security vulnerabilities.</entry>
+    <!-- PS_INTERNAL_INTERNAL_STATE_MODIFIED_BEFORE_THROW -->
+    <entry key="InternalStateModifiedHere" translate="false">The data structures of the object is modified in this operation.</entry>
+    <entry key="ThrownExceptionHereSmart" translate="false">Exception {0_symbol} is thrown here.</entry>
+    <entry key="ThrownExceptionHere" translate="false">Exception is thrown here.</entry>
+    <entry key="MaybeThrownExceptionHereSmart" translate="false">Exception {0_symbol} may be thrown here.</entry>
+    <entry key="MaybeThrownExceptionHere" translate="false">Exception may be thrown here.</entry>
+    <entry key="ClassIvariantViolated" translate="false">The state of the object is modified before an exception is raised.</entry>
+    <!-- PS_INTERNAL_THROW_FOR_GENERIC_EXCEPTION -->
+    <entry key="OverlyBroadThrow" translate="false">Specifying overly broad exceptions might result in security vulnerabilities.</entry>
+    <entry key="OverlyBroadThrowExpr" translate="false">Throwing overly broad exceptions might result in security vulnerabilities.</entry>
+    <!-- PS_INTERNAL_STATE_DEPENDENT_PREDICATE -->
+    <entry key="StateDependentOperatorHere" translate="false">Operator modifying predicate object field defined here</entry>
+    <entry key="ClassMemberWrittenHere" translate="false">Class member modified here</entry>
+    <entry key="NonConstClassMethodCalledHere" translate="false">Non-const class method called here</entry>
+    <!-- PS_INTERNAL_CONTAINER_EMPLACE_THROWS -->
+    <entry key="ContainerTemplateThrows">The function {0_symbol} calls the constructor {1_symbol}, which might throw an exception.\nException during the construction might leave the container in an invalid state.</entry>
+    <entry key="ConstructorThrows">Constructor {0_symbol} can throw.</entry>
+    <entry key="ClassHasThrowingCtor">Class {0_symbol} has constructor that throws.</entry>
+    <!-- PS_INTERNAL_UNCERTAIN_MEMORY_CLEANING -->
+    <entry key="UncertainMemoryCleaningSummary">The {0_symbol} call to clear the buffer might be removed by the compiler.</entry>
+    <entry key="UncertainMemoryCleaningRisk">Sensitive data might still exist in memory after the call.</entry>
+    <entry key="UncertainMemoryCleaningFix">Use {0_symbol} to force memory cleaning.</entry>
+    <!-- PS_INTERNAL_EXPENSIVE_ALLOC_IN_LOOP -->
+    <entry key="ExpensiveAllocInLoop_InputConstantExpression" translate="false">This constant expression is passed to {0_symbol}</entry>
+    <entry key="ExpensiveAllocInLoop_DeallocateCall" translate="false">This {0_symbol} call releases a constant amount of memory every loop iteration</entry>
+    <entry key="ExpensiveAllocInLoop_AllocateCall" translate="false">{0_symbol} and {1_symbol} called in a loop with a constant buffer size.\nMoving these calls outside the loop will avoid unnecessary work.</entry>
+    <!-- PS_INTERNAL_UNCAUGHT_EXCEPTION -->
+    <entry key="UncaughtExceptionHere" translate="false">An uncaught Exception might be thrown.</entry>
+    <entry key="UncaughtExceptionHereSmart" translate="false">An uncaught {0_symbol} might be thrown.</entry>
+    <entry key="ExceptionAlsoThrownFromHere" translate="false">Exception might also be thrown from here.</entry>
+    <entry key="ExceptionHere" translate="false">An Exception might be thrown.</entry>
+    <!-- PS_INTERNAL_EXCEPTION_THROWN_ACROSS_BOUNDARIES -->
+    <entry key="ExceptionThrownAcrossBoundariesSmart" translate="false">A {0_symbol} exception is thrown in a function that might be part of a library interface.</entry>
+    <entry key="ExceptionThrownAcrossBoundaries" translate="false">An exception is thrown in a function that might be part of a library interface.</entry>
+    <entry key="ExceptionThrownAcrossBoundariesNoexceptFalse" translate="false">An exception might be thrown by a noexcept(false) function that is part of a library interface.</entry>
+    <entry key="FunctionDeclaredHere" translate="false">Function declared here.</entry>
+    <entry key="ClassDeclaredHere" translate="false">Class declared here.</entry>
+    <entry key="DeleteArrayOnBaseClass" translate="false">Delete array used on downcasted object.</entry>
+    <!-- PS_INTERNAL_SHARED_PTR_USED_INSTEAD_OF_UNIQUE_PTR -->
+    <entry key="SharedPtrAloneUsedInsteadOfUniquePtr" translate="false">{0_symbol} does not share the ownership of the managed object.\nFor more reliable and efficient code, use a unique_ptr instead.</entry>
+    <entry key="SharedPtrCopiedOnceToOne" translate="false">{0_symbol} shares the ownership of the managed object with {1_symbol}.\nFor more reliable and efficient code, define both as a unique_ptr and use a move operation to construct {1_symbol}.</entry>
+    <entry key="SharedPtrCopiedOnceToTmp" translate="false">{0_symbol} is used as the argument of a function call only once in each execution path.\nFor more reliable and efficient code,\n1. Modify the called functions to accept a unique_ptr argument and define {0_symbol} as unique_ptr .\n2. If modifying the function is not possible, create unnamed temporary objects by using make_shared() and pass the temporary objects directly to the functions.</entry>
+    <entry key="SharedPtrUsedInsteadOfUniquePtr" translate="false">{0_symbol} shares the ownership with {1_symbol} by sequential copying.\nFor more reliable and efficient code, define all of them as a unique_ptr and use a move operation to construct {1_symbol}.</entry>
+    <!-- PS_INTERNAL_BAD_PTR_UPSCALING_VVIR -->
+    <entry key="ScaledTypeValue" translate="false">{0_symbol} has scaled type {1}.</entry>
+    <entry key="ScaledTypeValueDefault" translate="false">Symbol has scaled type size_t.</entry>
+    <entry key="NonBytePointerArithmeticImplicitlyUpscaled" translate="false">Pointer arithmetic with non-char* type is implicitly upscaled.</entry>
+    <entry key="PointerArithmeticImplicitlyScaled" translate="false">Pointer arithmetic is implicitly scaled.</entry>
+    <!-- PS_INTERNAL_SMART_PTR_PARAM_WITHOUT_LIFETIME_SEMANTICS -->
+    <entry key="UniquePtrParamLifetimeNotAffectedWithinFunction" translate="false">unique_ptr parameter {0_symbol} is passed to a function that does not affect the lifetime of the object that the pointer manages.\nIf you do not intend to affect the lifetime of the managed object, pass that object by reference or as a raw pointer.</entry>
+    <entry key="SharedPtrParamLifetimeNotAffectedWithinFunction" translate="false">shared_ptr parameter {0_symbol} is passed to a function that does not affect the lifetime of the object that the pointer manages.\nIf you do not intend to affect the lifetime of the managed object, pass that object by reference or as a raw pointer.</entry>
+    <!-- PS_INTERNAL_UNIQUE_PTR_PARAM_UNEXPECTED_LIFETIME_SEMANTICS -->
+    <entry key="UniquePtrParamConstRR" translate="false">unique_ptr parameter {0_symbol} is a const rvalue reference.</entry>
+    <entry key="UniquePtrParamConstRRCannotBeMoved" translate="false">unique_ptr parameter {0_symbol} is a const rvalue reference.\nIf you intend to move the object into another unique_ptr inside the function, remove the const keyword.</entry>
+    <entry key="UniquePtrParamRRNotMoved" translate="false">unique_ptr parameter {0_symbol} is passed as an rvalue reference, which is allowed only if {0_symbol} is moved-from in the function.</entry>
+    <entry key="UniquePtrParamConstLRCannotBeReplaced" translate="false">unique_ptr parameter {0_symbol} is a const lvalue reference and the object it manages cannot be replaced.\nIf you do not intend to replace the managed object, consider passing the object as a reference or raw pointer, otherwise remove the const keyword.</entry>
+    <entry key="UniquePtrParamLRNotReplaced" translate="false">unique_ptr parameter {0_symbol} is passed as an lvalue reference but the object it manages is not replaced.\nIf you do not intend to replace the managed object or to transfer ownership of the object, consider passing the object as a reference or raw pointer.</entry>
+    <!-- PS_INTERNAL_SHARED_PTR_PARAM_UNEXPECTED_LIFETIME_SEMANTICS -->
+    <entry key="SharedPtrParamConstRR" translate="false">shared_ptr parameter {0_symbol} is passed as a const rvalue reference.</entry>
+    <entry key="SharedPtrParamConstRRCannotBeMoved" translate="false">shared_ptr parameter {0_symbol} is a const rvalue reference.\nIf you intend to move the object into another shared_ptr inside the function, remove the const keyword.</entry>
+    <entry key="SharedPtrParamRRNotMoved" translate="false">shared_ptr parameter {0_symbol} is passed as an rvalue reference, which is allowed only if {0_symbol} is moved-from in the function.</entry>
+    <entry key="SharedPtrParamLRNotReplaced" translate="false">shared_ptr parameter {0_symbol} is passed as an lvalue reference but the object it managed is not replaced.\nIf you do not intend to replace the managed object, transfer ownership of the object, or retain a reference count in the function, pass the object as a reference or raw pointer.</entry>
+    <entry key="SharedPtrParamConstLRNotRetained" translate="false">shared_ptr parameter {0_symbol} is passed as a const lvalue reference but no reference count is retained in the function.\nIf you do not intend to replace the managed object, transfer ownership of the object, or retain a reference count in the function, pass the object as a reference or raw pointer.</entry>
+    <!-- PS_INTERNAL_RECURSIVE_INITIALIZATION_OF_STATIC -->
+    <entry key="DirectRecursionOfStaticVariableInitialization" translate="false">Initializer of static variable {0_symbol} contains direct recursive call to {1_symbol}.\nCycles during initialization of static objects might cause undefined behavior.</entry>
+    <entry key="IndirectRecursionOfStaticVariableInitialization" translate="false">Initializer of static variable {0_symbol} contains indirect recursive call to {1_symbol}.\nCycles during initialization of static objects might cause undefined behavior.</entry>
+    <!-- PS_INTERNAL_UNDETERMINED_INITIALIZATION_ORDER_OF_GLOBAL -->
+    <entry key="UndeterminedOrderOfGlobalVariableInitialization" translate="false">Initialization of global variable {0_symbol} depends on the initialization of {1_symbol} in another file.\nUndetermined order during initialization of objects in different translation units might cause unspecified behavior.</entry>
+    <!-- PS_INTERNAL_PADDING_INFO_READ / PS_INTERNAL_PADDING_INFO_WRITE -->
+    <entry key="ComparingPaddingBits" translate="false">This operation compares padding bits.</entry>
+    <entry key="ComparingVtableBits" translate="false">This operation compares vtable bits.</entry>
+    <entry key="OverwritingVtableBits" translate="false">This operation overwrites vtable bits.</entry>
+    <entry key="EventPaddingBitsAfterField" translate="false">Padding bits after this field</entry>
+    <entry key="EventClassWithVtable" translate="false">Class with a vtable</entry>
+    <entry key="EventWithinField" translate="false">Within this field</entry>
+    <!-- PS_INTERNAL_INSUFFICIENT_STRING_SIZE_ALLOCATION -->
+    <entry key="InsufficientStringSizeAllocation" translate="false">Destination buffer might not have enough space to hold all the characters from the source buffer and the null terminator.</entry>
+    <entry key="InsufficientStringSizeAllocationDestArg" translate="false">Destination buffer {0_symbol} might not have enough space to hold all the characters from the source buffer and the null terminator.</entry>
+    <entry key="InsufficientStringSizeAllocationSourceArg" translate="false">Destination buffer might not have enough space to hold all the characters from the source buffer {0_symbol} and the null terminator.</entry>
+    <entry key="InsufficientStringSizeAllocationDestArgSourceArg" translate="false">Destination buffer {0_symbol} might not have enough space to hold all the characters from the source buffer {1_symbol} and the null terminator.</entry>
+    <!-- PS_INTERNAL_INCOMPATIBLE_ITERATOR_OPERATION -->
+    <entry key="ContainerConstruction" translate="false">Container constructed</entry>
+    <entry key="IteratorReturned" translate="false">Iterator returned here</entry>
+    <!-- PS_INTERNAL_MISSING_CONTAINER_RESERVE -->
+    <entry key="MissingContainerReserve_PushBackCall" translate="false">This {0_symbol} call happens without a preceding {1_symbol} call</entry>
+    <entry key="MissingContainerReserve_ContainerDeclaration" translate="false">This container does not allocate memory before the first insertion</entry>
+    <!-- PS_INTERNAL_USELESS_INCLUDE -->
+    <entry key="IncludeNeverUsed" translate="false">Included file is never used.</entry>
+    <!-- PS_INTERNAL_DUPLICATED_CODE / PS_INTERNAL_ALMOST_DUPLICATED_CODE / COPY_PASTE_ERROR -->
+    <entry key="DuplicatedCodeSummary" translate="false">This section of code seems to be duplicated in other places.</entry>
+    <entry key="DuplicatedCodeRisk" translate="false">Sections of code that do the same operations require unnecessary additional maintenance.</entry>
+    <entry key="DuplicatedCodeFix" translate="false">Refactor the sections of code into a dedicated function.</entry>
+    <entry key="AlmostDuplicatedCodeSummary" translate="false">This section of code seems to be duplicated in other places with very minor changes.</entry>
+    <entry key="AlmostDuplicatedCodeRisk" translate="false">Sections of code that do very similar operations might require unnecessary additional maintenance.</entry>
+    <entry key="AlmostDuplicatedCodeFix" translate="false">Try to refactor the sections of code into a dedicated function.</entry>
+    <entry key="CopyPasteErrorSummary" translate="false">This section of code seems to be duplicated in other places with one very minor change.</entry>
+    <entry key="CopyPasteErrorRisk" translate="false">Sections of code that differ only slightly can indicate a previously duplicated code block. Maybe you updated one block but forgot to update the other.</entry>
+    <entry key="CopyPasteErrorFix" translate="false">Check if you need to fix a programming error. If possible, try to refactor the code to avoid duplication.</entry>
+    <entry key="CopyPasteEventBegin" translate="false">Beginning of duplicate section #{0,number,integer}</entry>
+    <entry key="CopyPasteEventEnd" translate="false">End of duplicate section #{0,number,integer}</entry>
+    <entry key="CopyPasteEventFunctionCallDifference" translate="false">Section #1 differs in function call here</entry>
+    <entry key="CopyPasteEventOperatorDifference" translate="false">Section #1 differs in operator here</entry>
+    <entry key="CopyPasteEventOperandsDifference" translate="false">Section #1 differs in operands here</entry>
+    <entry key="CopyPasteEventVariableNameDifference" translate="false">Section #1 differs in variable name here</entry>
+    <entry key="CopyPasteEventValueDifference" translate="false">Section #1 differs in value here</entry>
+    <entry key="CopyPasteEventTypeDifference" translate="false">Section #1 differs in at least one variable type here</entry>
+    <entry key="CopyPasteEventFromSection" translate="false">... from section #{0,number,integer}</entry>
+    <!-- PS_INTERNAL_DANGEROUS_CPP_STD_CIN -->
+    <entry key="DangerousCppStdCin" translate="false">Using {0_symbol} can cause the destination buffer to overflow.\n{1_symbol} cannot control the length of input from the console.\nLimit the input length or use a {2_symbol} as the destination.</entry>
+    <!-- PS_INTERNAL_PSTUNIT_MISUSE  -->
+    <entry key="SuiteNotDeclaredNorDefined" translate="false">Suite {0_symbol} not declared nor defined</entry>
+    <entry key="SuiteForwardDeclaredButNotDefined" translate="false">Suite {0_symbol} is forward declared but not defined</entry>
+    <entry key="TestDeclaredButNoBody" translate="false">Test {0_symbol} is declared but test body not found</entry>
+    <entry key="MockAccessOutsideTestBody" translate="false">Access to mock outside of test body or its callees</entry>
+    <entry key="SuiteTestFixtureAccessInSuiteScope" translate="false">Access to suite-test fixture at suite scope</entry>
+    <entry key="TestFixtureAccessInSuiteScope" translate="false">Access to test fixture at suite scope</entry>
+    <entry key="TestFixtureAccessInSuiteTestScope" translate="false">Access to test fixture at suite-test scope</entry>
+    <entry key="HighOrderCallInSuiteConfig" translate="false">Call via function pointer in suite {0_symbol} configuration</entry>
+    <entry key="TestSetupInSuiteConfig" translate="false">Test setup in suite {0_symbol} configuration</entry>
+    <entry key="TestTeardownInSuiteConfig" translate="false">Test teardown in suite {0_symbol} configuration</entry>
+    <entry key="HighOrderCallInTestConfig" translate="false">Call via function pointer in test {0_symbol} configuration</entry>
+    <entry key="SuiteSetupInTestConfig" translate="false">Suite setup in test {0_symbol} configuration</entry>
+    <entry key="SuiteTestSetupInTestConfig" translate="false">Suite-test setup in test {0_symbol} configuration</entry>
+    <entry key="SuiteTeardownInTestConfig" translate="false">Suite teardown in suite {0_symbol} configuration</entry>
+    <entry key="SuiteTestTeardownInTestConfig" translate="false">Suite-test teardown in suite {0_symbol} configuration</entry>
+    <entry key="NoTestInSuite" translate="false">Suite {0_symbol} contains no test</entry>
+    <entry key="TestNotRegistered" translate="false">Test {0_symbol} not registered</entry>
+    <entry key="TestRegisteredButNotDefinedNorDeclared" translate="false">Test {0_symbol} not defined nor declared</entry>
+    <entry key="ConfigurationOf" translate="false">Configuration of {0_symbol}</entry>
+    <entry key="FunctionCall" translate="false">Call to {0_symbol}</entry>
+    <entry key="SuiteSetupFunction" translate="false">Call to {0_symbol} (suite setup function)</entry>
+    <entry key="SuiteTestSetupFunction" translate="false">Call to {0_symbol} (suite test setup function)</entry>
+    <entry key="TestSetupFunction" translate="false">Call to {0_symbol} (test setup function)</entry>
+    <entry key="SuiteTeardownFunction" translate="false">Call to {0_symbol} (suite teardown function)</entry>
+    <entry key="SuiteTestTeardownFunction" translate="false">Call to {0_symbol} (suite test teardown function)</entry>
+    <entry key="TestTeardownFunction" translate="false">Call to {0_symbol} (test teardown function)</entry>
+    <!-- PS_INTERNAL_CONTAINER_NEGATIVE_POSITION -->
+    <entry key="ContainerNegativePosition" translate="false">Container index might be negative or explicitly cast from a negative value.\nUsing this index might result in out-of-range access.\nTo fix:\n * Check the index for nonnegative values.\n * Use the member function {0_symbol} to check if the index is within a valid range.</entry>
+    <!-- PS_INTERNAL_POLYMORPHIC_PTR_ARITHMETIC -->
+    <!-- defect -->
+    <entry key="PolymorphicObjectArithmetic" translate="false">Pointer points to an array of derived class objects. However, the offset is scaled using the base class size.\nPointer arithmetic might result in undefined behavior.</entry>
+    <!-- events -->
+    <entry key="PolymorphicObjectArray2Pointer" translate="false">Cast from array to pointer</entry>
+    <entry key="PolymorphicObjectAllocateArray" translate="false">Allocating array of objects</entry>
+    <entry key="PolymorphicObjectUpcast" translate="false">Pointer upcast</entry>
+    <entry key="PolymorphicObjectRelax" translate="false">Relaxing polymorphic attribute for destination pointer</entry>
+    <!-- PS_INTERNAL_RESOURCE_LEAK -->
+    <entry key="PotentialResourceLeak" translate="false">Potential resource leak because resource is not closed.</entry>
+    <entry key="PotentialResourceLeakEvent" translate="false">Resource opened here</entry>
+    <!-- PS_INTERNAL_UNNECESSARY_CONSTRUCTION_BEFORE_ASSIGNMENT -->
+    <entry key="UnnecessaryConstructionBeforeAssignment_Construction" translate="false">The construction of {0_symbol} is unnecessary because it is immediately reassigned.</entry>
+    <entry key="UnnecessaryConstructionBeforeAssignment_Reassignment" translate="false">The immediate reassignment of {0_symbol} makes the preceding construction unnecessary.</entry>
+    <entry key="UnnecessaryConstructionBeforeAssignment_ReassignedVariable" translate="false">Directly constructing {0_symbol} here might be more efficient than immediately reassigning to an already constructed object.</entry>
+    <!-- PS_INTERNAL_NONSTANDARD_LAYOUT_ACROSS_EXEC_BOUNDARIES -->
+    <entry key="NonStandardLayoutAcrossExecutionBoundaries" translate="false">Because the function {1_symbol} might be implemented in a library, the nonstandard layout object {0_symbol} might pass across the execution boundary.</entry>
+    <!-- PS_INTERNAL_PUBLIC_DATA_ASSIGN_TO_PRIVATE_PTR_TYPE -->
+    <entry key="PublicDataAssignToPrivatePtrType" translate="false">Assigning a public pointer to the private pointer field {0_symbol} gives public access to the private field.</entry>
+    <entry key="PublicDataAssignToProtecredPtrType" translate="false">Assigning a public pointer to the protected pointer field {0_symbol} gives public access to the protected field.</entry>
+    <!-- PS_INTERNAL_UNCHECKED_STR_TO_NUMERIC_ERROR -->
+    <!-- defect messages -->
+    <entry key="UncheckedFmtNumericErrorWithException" translate="false">Numeric value from {0_symbol} is not validated in case of exceptions.\nUse try-catch to handle conversion errors.</entry>
+    <entry key="UncheckedFmtNumericErrorSequence" translate="false">Numeric value from {0_symbol} might be invalid before the current input.\nUse {1_symbol} to check the conversion state.</entry>
+    <entry key="UncheckedNumGetErrorSequence" translate="false">Numeric value from {0_symbol} might be invalid before the current input.\nCheck {1_symbol} for errors.</entry>
+    <entry key="UncheckedFmtNumericError" translate="false">Numeric value from {0_symbol} might be invalid.\nUse {1_symbol} to check the conversion state.</entry>
+    <entry key="UncheckedNumGetError" translate="false">Numeric value from {0_symbol} might be invalid.\nCheck {1_symbol} for errors.</entry>
+    <!-- event messages -->
+    <entry key="EnablingNumericConversionException" translate="false">Enabling numeric conversion exceptions</entry>
+    <entry key="DisablingNumericConversionException" translate="false">Disabling numeric conversion exceptions</entry>
+    <entry key="CallingStrToNumericConversion" translate="false">Calling numeric conversion</entry>
+    <!-- PS_INTERNAL_PRIVATE_MEMBER_ESCAPED -->
+    <entry key="PrivateMemberEscaped" translate="false">Private member becomes mutable outside its trust boundary.</entry>
+    <entry key="ProtectedMemberEscaped" translate="false">Protected member becomes mutable outside its trust boundary.</entry>
+    <!-- PS_INTERNAL_CAST_TO_ENUM_OVFL -->
+    <entry key="CastToEnumOvflExpectedValue" translate="false">{0_range_int}</entry>
+    <entry key="CastToEnumOvflRisk" translate="false">Out-of-range cast causes unspecified or undefined behavior.</entry>
+    <entry key="CastToEnumOvflWithUnderlyingSummary" translate="false">Value might be out-of-range for the underlying type of the enum.</entry>
+    <entry key="CastToEnumOvflWithUnderlyingFix" translate="false">Check that the value is within the valid range before the cast.</entry>
+    <entry key="CastToEnumOvflWithoutUnderlyingSummary" translate="false">Value might be out-of-range for the enum.</entry>
+    <entry key="CastToEnumOvflWithoutUnderlyingFix" translate="false">Use a scoped enum or define an unscoped enum with a fixed underlying type. Alternatively, check that the value is within a valid range before the cast.</entry>
+    <!-- PS_INTERNAL_MISSING_UNLOCK_WITH_EXCEPTION -->
+    <!-- defect messages -->
+    <entry key="UnlockDeviatedByException" translate="false">Mutex {0_symbol} might remain locked if an exception is thrown before the call to {1_symbol}.</entry>
+    <entry key="MissingUnlockWithException" translate="false">Mutex {0_symbol} might still be locked when program reaches {1_symbol}.</entry>
+    <entry key="MissingUnlockWithExceptionInHandler" translate="false">Mutex {0_symbol} might still be locked when program reaches {1_symbol} if exception thrown in try-block is caught by current exception handler.</entry>
+    <!-- event messages -->
+    <entry key="CallingLockFunction" translate="false">{0} locks mutex</entry>
+    <entry key="CallingFunctionThrowing" translate="false">Callee {0} might throw</entry>
+    <entry key="CallingUnlockFunction" translate="false">{0} unlocks mutex</entry>
+    <!-- PS_INTERNAL_CPP_IO_INTERLEAVING -->
+    <!-- defect messages -->
+    <entry key="CppIoInterleavingForWt" translate="false">{0_symbol} performs a write operation on a stream that has been read from without being repositioned.</entry>
+    <entry key="CppIoInterleavingForRd" translate="false">{0_symbol} performs a read operation on a stream that has been written on without being repositioned.</entry>
+    <!-- event messages -->
+    <entry key="WtChangingPositionForRd" translate="false">Write on stream</entry>
+    <entry key="RdChangingPositionForWt" translate="false">Read from stream</entry>
+    <!-- PS_INTERNAL_MISSING_ERRNO_RESET -->
+    <!-- defect messages -->
+    <entry key="MissingErrnoReset" translate="false">{0_symbol} is not initialized to zero before call to {1_symbol} and can contain values from a previous call.</entry>
+    <!-- PS_INTERNAL_UNCONTROLLED_RECURSION -->
+    <!-- defect messages -->
+    <entry key="UncontrolledSelfCall" translate="false">Function does not update its parameters before the recursive call.</entry>
+    <entry key="UncontrolledSelfCallRisk" translate="false">Recursion might result in non-terminating calls or issues such as excessive memory consumption or stack overflow.</entry>
+    <entry key="UncontrolledSelfCallFix" translate="false">Check that you have a reachable base case and that the parameters that you pass to the recursive function are correctly updated.</entry>
+    <!-- event messages -->
+    <entry key="UncontrolledSelfCallEvent" translate="false">Uncontrolled self-call</entry>
+    <entry key="UncontrolledReturnBeforeSelfCallEvent" translate="false">Return in uncontrolled branch before uncontrolled self-call</entry>
+    <!-- PS_INTERNAL_REALLOC_ZERO -->
+    <entry key="ReallocZero" translate="false">Invoking realloc with a size argument equal to zero is an obsolescent feature.</entry>
+    <!-- PS_INTERNAL_UNGETC_ON_BINARY_WITH_ZERO_POSITION -->
+    <entry key="UngetcZero" translate="false">The use of ungetc on a binary stream where the file position indicator is zero prior to the call is an obsolescent feature.</entry>
+    <!-- PS_INTERNAL_CLOSED_RESOURCE_ASSIGN -->
+    <entry key="ClosedResourceAssign" translate="false">Previously closed stream {0_symbol} is assigned.</entry>
+    <!-- PS_INTERNAL_PRECISE_TRIGONOMETRY -->
+    <entry key="OutOfBoundAngle" translate="false">First argument is outside the range [-𝛑,𝛑].</entry>
+    <entry key="OutOfBoundAngleInVar" translate="false">{0_symbol} is outside the range [-𝛑,𝛑].</entry>
+    <!-- PS_INTERNAL_INCORRECT_UNION_MEMBER -->
+    <entry key="IncorrectActiveMemberAccess" translate="false">Possible access of nonactive union member.</entry>
+    <entry key="PreviousUnionMemberAssignment" translate="false">Active union member accessed</entry>
+    <!-- PS_INTERNAL_STRTOK_CHANGES_PARSE_STRING -->
+    <!-- defect messages -->
+    <entry key="StrtokChangesParseString" translate="false">Call to function strtok() changes the first argument.</entry>
+    <entry key="StrtokChangesParseStringVar" translate="false">Call to function strtok() changes the string variable {0_symbol}.</entry>
+    <!-- event messages -->
+    <entry key="StringIsAssigned" translate="false">String is assigned</entry>
+  </message>
+</rsccat>

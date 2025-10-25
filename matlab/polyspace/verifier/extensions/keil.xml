@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015-2016 The MathWorks, Inc.
+
+     All definitions for the following Keil targets:
+       - c51, cx51  (CPU family: 8051) See http://www.keil.com/support/man/docs/c51/
+       - ccarm      (CPU family: ARM)  See http://www.keil.com/support/man/docs/armcc/
+
+     This file is intended for inclusion in a <compilers> node.
+
+     Note: this compiler has lang="c" because Keil's 'using' attribute
+     is not compatible with C++.
+-->
+<compiler name="keil" lang="c"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <pragmas>
+    <pragma name="asm" end="endasm"/>
+  </pragmas>
+
+  <ppdirects>
+    <ppdirect name="message"/>
+  </ppdirects>
+
+  <library>
+    <options>
+      <option id="keil.option.bit_access" name="--keil_bit_access"/>
+    </options>
+
+    <asms>
+      <asm id="keil.asm" name="__asm"/>
+    </asms>
+
+    <types>
+      <!-- Keil introduces types: sfr, sfr16, bit, sbit
+             sfr   P0 = 0x80;
+             sfr16 T2 = 0xCC;
+             sbit  name = sfr-name ^ bit-position;
+             sbit  name = sfr-address ^ bit-position;
+             sbit  name = sbit-address;
+             bit   name;
+      -->
+      <type id="keil.type.bit"   name="bit"     type_kind="bit"  decl_specs="bit"/>
+      <type id="keil.type.sbit"  name="sbit"    type_kind="bit"  decl_specs="sbit"/>
+      <type id="keil.type.sfr"   name="sfr"     type_kind="char" decl_specs="sfr,volatile,unsigned"/>
+      <type id="keil.type.sfr16" name="sfr16"   type_kind="int"  decl_specs="sfr,volatile,unsigned,short"/>
+
+      <!-- armcc: -->
+      <type id="keil.type.int64" name="__int64" type_kind="int"  decl_specs="long_long"/>
+    </types>
+
+    <attributes>
+      <attribute id="keil.attr.at" name="_at_" sig="@"/>
+    </attributes>
+
+    <attributes kind="data">
+      <attribute id="keil.attr.bdata" name="bdata"/>
+      <attribute id="keil.attr.code"  name="code"/>
+      <attribute id="keil.attr.data"  name="data"/>
+      <attribute id="keil.attr.far"   name="far"/>
+      <attribute id="keil.attr.idata" name="idata"/>
+      <attribute id="keil.attr.pdata" name="pdata"/>
+      <attribute id="keil.attr.xdata" name="xdata"/>
+
+      <!-- armcc: -->
+      <attribute id="keil.attr.packed"     name="__packed"/>
+      <attribute id="keil.attr.writeonly"  name="__writeonly"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute id="keil.attr.small"     name="small"/>
+      <attribute id="keil.attr.compact"   name="compact"/>
+      <attribute id="keil.attr.large"     name="large"/>
+      <attribute id="keil.attr.using"     name="using"     sig="@"/> <!-- using n -->
+      <attribute id="keil.attr.interrupt" name="interrupt" sig="@"/> <!-- interrupt n -->
+      <attribute id="keil.attr.reentrant" name="reentrant"/>
+      <attribute id="keil.attr.alien"     name="alien"/>
+      <attribute id="keil.attr.task"      name="_task_"     sig="@"/> <!-- _task_ num -->
+      <attribute id="keil.attr.priority"  name="_priority_" sig="@"/> <!-- _priority_ pri -->
+
+      <!-- armcc: -->
+      <attribute id="keil.attr.forceinline"     name="__forceinline"/>
+      <attribute id="keil.attr.irq"             name="__irq"/>
+      <attribute id="keil.attr.pure"            name="__pure"/>
+      <attribute id="keil.attr.smc"             name="__smc"/>
+      <attribute id="keil.attr.softfp"          name="__softfp"/>
+      <attribute id="keil.attr.svc"             name="__svc"/>
+      <attribute id="keil.attr.value_in_regs"   name="__value_in_regs"/>
+      <attribute id="keil.attr.svc_indirect"    name="__svc_indirect"/>
+      <attribute id="keil.attr.svc_indirect_r7" name="__svc_indirect_r7"/>
+    </attributes>
+
+    <attributes> <!-- Both data and functions -->
+      <!-- armcc: -->
+      <attribute id="keil.attr.weak"     name="__weak"/>
+      <attribute id="keil.attr.declspec" name="__declspec"/>
+    </attributes>
+
+    <storage_classes>
+      <storage_class id="keil.ssclass.global_reg" name="__global_reg" args="()"/>
+    </storage_classes>
+  </library>
+
+  <!--
+       Compiler: c51, cx51
+  -->
+  <target name="c51,cx51">
+    <options>
+      <option idref="keil.option.bit_access"/>
+    </options>
+
+    <defines>
+      <define name="__C51__"   value="701"/> <!-- Version 7.01 of the compiler. -->
+      <define name="__CX51__"  value="701"/>
+      <define name="__MODEL__" value="0"/> <!-- 0=small, 1=compact, 2=large -->
+    </defines>
+
+    <types>
+      <type idref="keil.type.bit"/>
+      <type idref="keil.type.sbit"/>
+      <type idref="keil.type.sfr"/>
+      <type idref="keil.type.sfr16"/>
+    </types>
+
+    <attributes>
+      <attribute idref="keil.attr.at"/>
+    </attributes>
+    <attributes kind="data">
+      <attribute idref="keil.attr.bdata"/>
+      <attribute idref="keil.attr.code"/>
+      <attribute idref="keil.attr.data"/>
+      <attribute idref="keil.attr.far"/>
+      <attribute idref="keil.attr.idata"/>
+      <attribute idref="keil.attr.pdata"/>
+      <attribute idref="keil.attr.xdata"/>
+    </attributes>
+    <attributes kind="function">
+      <attribute idref="keil.attr.small"/>
+      <attribute idref="keil.attr.compact"/>
+      <attribute idref="keil.attr.large"/>
+      <attribute idref="keil.attr.using"/>
+      <attribute idref="keil.attr.interrupt"/>
+      <attribute idref="keil.attr.reentrant"/>
+      <attribute idref="keil.attr.alien"/>
+      <attribute idref="keil.attr.task"/>
+      <attribute idref="keil.attr.priority"/>
+    </attributes>
+  </target>
+
+  <!--
+       Compiler: armcc
+  -->
+  <target name="armcc">
+    <defines>
+      <!-- See http://www.keil.com/support/man/docs/armcc/ Navigate to: Compiler-specific Features > Predefined macros -->
+      <define name="__arm__"/>
+      <define name="__ARMCC_VERSION__" value="504001"/>
+    </defines>
+
+    <asms>
+      <asm idref="keil.asm"/>
+    </asms>
+
+    <types>
+      <type idref="keil.type.int64"/>
+    </types>
+
+    <attributes kind="data">
+      <attribute idref="keil.attr.packed"/>
+      <attribute idref="keil.attr.writeonly"/>
+    </attributes>
+
+    <attributes kind="function">
+      <attribute idref="keil.attr.forceinline"/>
+      <attribute idref="keil.attr.irq"/>
+      <attribute idref="keil.attr.pure"/>
+      <attribute idref="keil.attr.smc"/>
+      <attribute idref="keil.attr.softfp"/>
+      <attribute idref="keil.attr.svc"/>
+      <attribute idref="keil.attr.svc_indirect"/>
+      <attribute idref="keil.attr.svc_indirect_r7"/>
+      <attribute idref="keil.attr.value_in_regs"/>
+    </attributes>
+
+    <attributes> <!-- Both data and functions -->
+      <attribute idref="keil.attr.weak"/>
+      <attribute idref="keil.attr.declspec"/>
+    </attributes>
+
+    <storage_classes>
+      <storage_class idref="keil.ssclass.global_reg"/>
+    </storage_classes>
+  </target>
+
+</compiler>

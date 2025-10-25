@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright 2015-2024 The MathWorks, Inc. -->
+<compiler_configuration>
+  <compiler_names>
+    <name>dcc</name>
+    <name>dplus</name>
+  </compiler_names>
+  <compiler_xml>
+    <opt isPrefix="true" numArgs="1">-t</opt>
+    <target pattern="PPC.*LP64.*" value="powerpc64"/>
+    <target pattern="PPC[^LE].*|MPC.*|SPC.*|MGT.*|P\d+.*|PA6T.*|PX.*" value="powerpc"/>
+    <target pattern="ARM.*64.*" value="arm64"/>
+    <target pattern="ARM.*" value="arm"/>
+    <target pattern="MCORE.*|CK.*" value="mcore"/>
+    <target pattern="MCF.*" value="coldfire"/>
+    <target pattern="BCM.*|MIPS.*|R\d+.*|RM9K.*" value="mips"/>
+    <target pattern="SH.*" value="superh"/>
+    <target pattern="TC.*" value="tricore"/>
+    <target pattern="RH850.*|V850.*" value="rh850"/>
+    <target pattern="X86.*" value="i386"/>
+  </compiler_xml>
+  <include_strategy>from-compiler</include_strategy>
+  <from_compiler_include_strategy>
+    <input>
+      <opt>-H5</opt>
+      <empty_source_file>true</empty_source_file>
+    </input>
+    <output>
+      <regex>^[^[:word:]]((\/|[a-zA-Z]:[\\]|\\\\).*)[^[:word:]]$</regex>
+    </output>
+  </from_compiler_include_strategy>
+  <revert_system_includes>1</revert_system_includes>
+  <include_options>
+    <opt>-I</opt>
+  </include_options>
+  <system_include_options/>
+  <preinclude_options>
+    <opt>-include</opt>
+  </preinclude_options>
+  <define_options>
+    <opt>-D</opt>
+  </define_options>
+  <undefine_options>
+    <opt>-U</opt>
+  </undefine_options>
+  <options_file_options>
+    <opt>@</opt>
+    <opt>-@</opt>
+    <opt>-@@</opt>
+  </options_file_options>
+  <output_options>
+    <opt>-o</opt>
+  </output_options>
+  <standard_options>
+    <std version="c90">-Xdialect-c89</std>
+    <std version="c99" c_default="1">-Xdialect-c99</std>
+    <std version="c11">-Xdialect-c11</std>
+    <std version="c++03" cpp_default="1"></std>
+    <std version="c++14">-Xdialect-c++14</std>
+  </standard_options>
+  <semantic_options>
+    <opt isIgnored="true" removePhases="build_config">-c</opt>
+    <opt isIgnored="true">-e</opt>
+    <opt isIgnored="true">-g</opt>
+    <opt isIgnored="true">-g3</opt>
+    <opt isIgnored="true" isPrefix="1">-L</opt>
+    <opt isIgnored="true" isPrefix="1">-l</opt>
+    <opt isIgnored="true" isPrefix="1">-O</opt>
+    <opt isPrefix="true" numArgs="1">-t</opt>
+    <opt isPrefix="true">-W</opt>
+    <opt isPrefix="true">-X</opt>
+    <opt isIgnored="true">-Xclib-optim-off</opt>
+    <opt isPrefix="true" isIgnored="true">-Xmake-dependency</opt>
+    <opt isPrefix="true" isIgnored="true">-Xmake-dependency-savefile</opt>
+    <opt isIgnored="true">-#</opt>
+    <opt isIgnored="true">-Wa,-#</opt>
+    <opt isIgnored="true">-XO</opt>
+    <opt isPrefix="true" isIgnored="true">-@E=</opt>
+    <opt isPrefix="true" isIgnored="true">-@E+</opt>
+    <opt isPrefix="true" isIgnored="true">-@O=</opt>
+    <opt isPrefix="true" isIgnored="true">-@O+</opt>
+  </semantic_options>
+  <semantic_environment_variable_list>
+    <env>DCONFIG</env>
+    <env>DTARGET</env>
+    <env>DOBJECT</env>
+    <env>DFP</env>
+    <env>DENVIRON</env>
+    <env>DFLAGS</env>
+    <env>DIABLIB</env>
+  </semantic_environment_variable_list>
+  <preprocess_options_list>
+    <opt>-E</opt>
+  </preprocess_options_list>
+  <preprocess_dollar_macros>no</preprocess_dollar_macros>
+  <forbidden_macros_list></forbidden_macros_list>
+  <compile_options_list>
+    <opt>-c</opt>
+  </compile_options_list>
+  <switch>
+    <case>
+      <condition>
+        <macro_equal name="__clang_major__" value="15"/>
+      </condition>
+      <actions>
+        <log severity="info">This version of Diab is based on the Clang/LLVM compiler.</log>
+        <compiler>clang15.x</compiler>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_defined name="__clang__"/>
+      </condition>
+      <actions>
+        <log severity="info">This version of Diab is based on the Clang/LLVM compiler.</log>
+        <compiler>clang16.x</compiler>
+      </actions>
+    </case>
+  </switch>
+  <switch>
+    <case>
+      <condition>
+        <and>
+          <macro_defined name="__arm__"/>
+          <not>
+            <macro_defined name="__aarch64__"/>
+          </not>
+        </and>
+      </condition>
+      <actions>
+        <target_name>arm</target_name>
+      </actions>
+    </case>
+  </switch>
+  <compiler>diab</compiler>
+  <src_extensions>
+    <ext>c</ext>
+    <ext>cc</ext>
+    <ext>cp</ext>
+    <ext>cxx</ext>
+    <ext>cpp</ext>
+    <ext>c++</ext>
+  </src_extensions>
+  <obj_extensions>
+    <ext>o</ext>
+  </obj_extensions>
+  <precompiled_header_extensions/>
+</compiler_configuration>

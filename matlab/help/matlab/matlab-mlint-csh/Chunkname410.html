@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>MATLAB cannot perform any performance optimization on statements called by
+                        <code>eval</code>. This can cause code to run less efficiently.
+                        <code>eval</code> statements make code less clear and cause issues
+                    with sharing and maintaining code. One use of the <code>eval</code>
+                    function is to create sets of variables such as A1, A2, ..., An, but this
+                    approach does not use the array processing power of MATLAB.</p><br/><strong>Suggested Action</strong><br/><p>The preferred method is to store related data in a single array. If the data
+                    sets are of different types or sizes, use a structure or cell array.</p><p>For example, create a cell array that contains 10 elements, where each element
+                    is a numeric array:</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>eval(['A',&nbsp;int2str(n),'&nbsp;=&nbsp;magic(n)'])</code>
+                                </td><td>
+                                    <code>numArrays&nbsp;=&nbsp;10;<br/>A&nbsp;=&nbsp;cell(numArrays,1);<br/><br/>for&nbsp;n&nbsp;=&nbsp;1:numArrays<br/>&nbsp;&nbsp;&nbsp;&nbsp;A{n}&nbsp;=&nbsp;magic(n);<br/>end</code>
+                                </td></tr></tbody></table></div><p>Access the data in the cell array by indexing with curly braces. For example,
+                    display the fifth element of <code>A</code>:</p><code>A{5}</code><code>ans&nbsp;=<br/>&nbsp;&nbsp;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;15<br/>&nbsp;&nbsp;&nbsp;&nbsp;23&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;16<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;22<br/>&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br/>&nbsp;&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9</code><p>For more information see <a href="matlab:helpview([docroot '/matlab/matlab_prog/string-evaluation.html'])" target="_blank">Alternatives to the eval Function</a>.</p></body></html>

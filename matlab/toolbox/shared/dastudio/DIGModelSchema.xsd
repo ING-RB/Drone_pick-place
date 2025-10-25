@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			Schema for Toolsets defined in DIG.
+			Copyright 2013 The MathWorks Inc.
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<!-- Definition of NonEmptyStringType -->
+	<xsd:simpleType name="NonEmptyStringType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value=".+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- Definition of ActionTypeEnumType -->
+	<xsd:simpleType name="ActionTypeEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="dynamic" />
+			<xsd:enumeration value="TextAction" />
+			<xsd:enumeration value="ChoiceAction" />
+			<xsd:enumeration value="RangeAction" />
+			<xsd:enumeration value="ButtonAction" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- Definition of CommaDelimitedStringType -->
+	<xsd:simpleType name="CommaDelimitedStringType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[^,]+(,[^,]+)*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<!-- Definition of GeneratorType -->
+	<xsd:complexType name="GeneratorType">
+		<xsd:attribute name="gateway" type="NonEmptyStringType" />
+		<xsd:attribute name="function" type="NonEmptyStringType" use="required" />
+		<xsd:attribute name="userdata" type="NonEmptyStringType" />
+	</xsd:complexType>
+	
+	<!-- Definition of ActionType -->
+	<xsd:complexType name="ActionType">
+		<xsd:all>
+			<xsd:element name="generator" type="GeneratorType" /> 
+			<xsd:element name="accels" type="CommaDelimitedStringType" minOccurs="0" />
+			<xsd:element name="domains" type="CommaDelimitedStringType" minOccurs="0" />
+		</xsd:all>		
+		<xsd:attribute name="id" type="NonEmptyStringType" use="required" />
+		<xsd:attribute name="type" type="ActionTypeEnumType" use="required" />
+		<xsd:attribute name="feature" type="CommaDelimitedStringType" />
+		<xsd:attribute name="feature_value" type="CommaDelimitedStringType" />
+		<xsd:attribute name="platform" type="CommaDelimitedStringType" />
+	</xsd:complexType>
+	
+	<!-- Definition of SubmenuType -->
+	<xsd:complexType name="SubmenuType">
+		<xsd:all>
+			<xsd:element name="generator" type="GeneratorType" />
+			<xsd:element name="domains" type="CommaDelimitedStringType" minOccurs="0" />
+		</xsd:all>
+		<xsd:attribute name="id" type="NonEmptyStringType" use="required" />
+		<xsd:attribute name="type" type="ActionTypeEnumType" use="required" />
+		<xsd:attribute name="feature" type="CommaDelimitedStringType" />
+		<xsd:attribute name="feature_value" type="CommaDelimitedStringType" />
+		<xsd:attribute name="platform" type="CommaDelimitedStringType" />
+	</xsd:complexType>
+	
+	<!-- Definition of IconType -->
+	<xsd:complexType name="IconType">
+		<xsd:simpleContent>
+			<xsd:extension base="NonEmptyStringType">
+				<xsd:attribute name="id" type="NonEmptyStringType" use="required" />
+				<xsd:attribute name="size" type="xsd:nonNegativeInteger" />
+				<xsd:attribute name="feature" type="CommaDelimitedStringType" />
+				<xsd:attribute name="feature_value" type="CommaDelimitedStringType" />
+				<xsd:attribute name="platform" type="CommaDelimitedStringType" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	<!-- Definition of FeatureType -->
+	<xsd:complexType name="FeatureType">
+		<xsd:attribute name="id" type="NonEmptyStringType" use="required" />
+		<xsd:attribute name="function" type="NonEmptyStringType" use="required" />
+		<xsd:attribute name="params" type="CommaDelimitedStringType" />
+	</xsd:complexType>
+	
+	<!-- Definition of <toolset> element -->
+	<xsd:element name="dig">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="action" type="ActionType" />
+				<xsd:element name="submenu" type="SubmenuType" />
+				<xsd:element name="icon" type="IconType" />
+				<xsd:element name="feature" type="FeatureType" />
+				<xsd:element name="include" type="NonEmptyStringType" />				
+			</xsd:choice>
+			<xsd:attribute name="licenseFcn" type="NonEmptyStringType" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema> 

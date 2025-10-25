@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer has identified a reference to a second property within a set
+                    method for a non-dependent property. If the set method of one property accesses
+                    another non-dependent property, initialization of the property can fail because
+                    MATLAB does not guarantee the initialization order.</p><br/><strong>Suggested Action</strong><br/><p>When MATLAB loads an object, the order in which the properties are set is not
+                    guaranteed. If a property is not set when your code expects it, a reference to
+                    that property can fail. For techniques to overcome this type of dependency, see
+                        <a href="matlab:helpview([docroot '/techdoc/matlab_oop/matlab_oop.map'],'avoiding_property_initialization_order_dependency')" target="_blank">Avoiding Property Initialization Order Dependency</a>.</p><p>If the property that your set method is accessing is a transient property,
+                    order dependency problems still might occur during load. Make your property
+                        <code>Dependent</code> or <code>Transient</code> in order to
+                    avoid order dependencies. For more information, see <a href="matlab:helpview([docroot '/techdoc/matlab_oop/matlab_oop.map'],'property_attributes')" target="_blank">Property Attributes</a>.</p><p>It is not recommended that you suppress this Code Analyzer message, as others
+                    might attempt to save and reload objects from this class and see errors or get
+                    unpredictable results. A class definition with this warning may fail to load
+                    correctly in future versions of MATLAB.</p></body></html>

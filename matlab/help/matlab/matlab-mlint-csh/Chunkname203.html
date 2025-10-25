@@ -1,0 +1,17 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Additional Information</strong><br/><p>In general, use <code>websave</code> instead of
+                        <code>urlwrite</code>. For example, use
+                        <code>websave(name,url)</code> instead of
+                        <code>urlwrite(url,name)</code>. </p><p>However, the decision to use <code>websave</code> or
+                        <code>webwrite</code> depends on the Name-Value arguments in the
+                    function call. For example,</p><ul><li><p>Instead of
+                                <code>urlwrite(url,filename,'Get',{name,value},...)</code> use
+                                <code>websave(filename,url,name,value)</code>.</p></li><li><p>Instead of the name-value pair arguments <code>'Charset'</code>,
+                                <code>'Timeout'</code>, <code>'Username'</code>, or
+                                <code>'Password'</code> use <code>websave</code> with an
+                            appropriately configured <code>weboptions</code> object. For
+                            example, instead of
+                                <code>urlwrite(url,filename,'Timeout',t)</code> use
+                                <code>websave(filename,url,weboptions('Timeout',t))</code>.</p></li><li><p>Instead of
+                                <code>urlwrite(url,filename,'Post',{name1,value1},...)</code>
+                            use code similar to the following.
+                            <code>data&nbsp;=&nbsp;webwrite(url,name1,value1,...,weboptions('ContentType',binary));&nbsp;<br/>f&nbsp;=&nbsp;fopen(name,'w');&nbsp;<br/>fwrite(data);&nbsp;<br/>fclose(f);</code></p></li></ul><br/></body></html>

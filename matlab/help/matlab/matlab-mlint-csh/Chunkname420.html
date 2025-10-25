@@ -1,0 +1,9 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code>CheckGradients</code> option in
+                        <code>optimoptions</code> will be removed in a future release. With
+                    appropriate code changes, use the <code>checkGradients</code> function
+                    instead.</p><p>For additional information, see <a href="matlab:helpview([docroot '/optim/ug/checkgradients.html'])" target="_blank"><code>checkGradients</code></a>.</p><br/><strong>Suggested Action</strong><br/><p>Update existing code to use <code>checkGradients</code> instead. For
+                    example:</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><thead><tr><th>Old</th><th>New</th></tr></thead><tbody><tr><td>
+                                    <code>opts&nbsp;=&nbsp;optimoptions("fmincon",SpecifiObjectiveGradient=true,...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CheckGradients=true);<br/>x&nbsp;=&nbsp;fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,opts);</code>
+                                </td><td>
+                                    <code>tf&nbsp;=&nbsp;checkGradients(fun,&nbsp;x0);</code>
+                                </td></tr></tbody></table></div></body></html>

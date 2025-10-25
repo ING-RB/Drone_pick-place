@@ -1,0 +1,725 @@
+{
+    "matlabshared.sensors.sensorBoard.read":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "matlabshared.sensors.sensorUnit.read":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "matlabshared.sensors.sensorUnit.flush":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "matlabshared.sensors.sensorBoard.flush":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "matlabshared.sensors.sensorBoard.stop":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "matlabshared.sensors.sensorUnit.stop":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "matlabshared.sensors.accelerometer.readAcceleration":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.accelerometer"}
+        ]
+    },
+    "matlabshared.sensors.gyroscope.readAngularVelocity":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.gyroscope"}
+        ]
+    },
+    "matlabshared.sensors.magnetometer.readMagneticField":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.magnetometer"}
+        ]
+    },
+    "matlabshared.sensors.TemperatureSensor.readTemperature":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.TemperatureSensor"}
+        ]
+    },
+    "matlabshared.sensors.PressureSensor.readPressure":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.PressureSensor"}
+        ]
+    },
+    "matlabshared.sensors.HumiditySensor.readHumidity":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.HumiditySensor"}
+        ]
+    },
+    "matlabshared.sensors.VoltageSensor.readVoltage":
+    {
+        "inputs":
+        [
+            {"name":"sensorObject", "kind":"required", "type":"matlabshared.sensors.VoltageSensor"},
+            {"name":"hardwareobject", "kind":"required", "type":[["char","choices = {'ADC1','ADC2','ADC3'}"]]}
+        ]
+    },    
+    "lsm9ds1":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "lsm9ds1":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "mpu9250":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "mpu9250":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "icm20948":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "icm20948":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "bno055":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"},
+            {"name":"OperatingMode", "kind":"namevalue", "type":"choices={'ndof','amg'}"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "bno055":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"},
+            {"name":"OperatingMode", "kind":"namevalue", "type":"choices={'ndof','amg'}"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "bmi160":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "bmi160":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "mpu6050":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "mpu6050":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6ds3":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6ds3":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6ds3h":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6ds3h":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dsl":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dsl":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dsm":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dsm":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dsr":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dsr":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dso":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm6dso":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lsm303c":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "lsm303c":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorBoard"}
+        ]
+    },
+    "lps22hb":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lps22hb":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "bmp280":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "bmp280":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "adxl345":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lis3dh":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "lis3dh":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "adxl345":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"I2CAddress", "kind":"namevalue", "type":[["char"],["cell"],["numeric"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "hts221":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":"matlabshared.sensors.MultiStreamingUtilities"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareObject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "hts221":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.i2c.controller"],["matlabshared.sensors.I2CSensorUtilities"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableI2CBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+    "sensors.internal.gpsdev.read":
+    {
+        "inputs":
+        [
+            {"name":"obj", "kind":"required", "type":"sensors.internal.gpsdev"}
+        ]
+    },
+    "sensors.internal.gpsdev.stop":
+    {
+        "inputs":
+        [
+            {"name":"gpsdev", "kind":"required", "type":"sensors.internal.gpsdev"}
+        ]
+    },
+    "sensors.internal.gpsdev.flush":
+    {
+        "inputs":
+        [
+            {"name":"gpsdev", "kind":"required", "type":"sensors.internal.gpsdev"}
+        ]
+    },
+    "sensors.internal.gpsdev.writeBytes":
+    {
+        "inputs":
+        [
+            {"name":"gpsdev", "kind":"required", "type":"sensors.internal.gpsdev"}
+        ]
+    },
+    "matlabshared.sensors.GPSUtilities.gpsdev":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.serial.controller"],["matlabshared.sensors.GPSUtilities"]]},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"SerialPort", "kind":"namevalue", "type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableSerialPorts(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"sensors.internal.gpsdev"}
+        ]
+    },
+     "adis16505":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.spi.controller"],["matlabshared.sensors.MultiStreamingUtilities"]]},
+            {"name":"SPIChipSelectPin", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelperSPI.getAvailableSPIChipSelectPins(hardwareobject)"},
+            {"name":"SampleRate", "kind":"namevalue", "type":"numeric"},
+            {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+            {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+            {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableSPIBusIDs(hardwareobject)"},
+            {"name":"NumTapsBartlettFilter", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getBartlettFilterTaps()"}  
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    },
+     "adis16505":
+    {
+        "inputs":
+        [
+            {"name":"hardwareobject", "kind":"required", "type":[["matlabshared.spi.controller"],["matlabshared.sensors.SPISensorUtilities"]]},
+            {"name":"Bus", "kind":"namevalue","type":"choices=matlabshared.sensors.internal.TabCompletionHelper.getAvailableSPIBusIDs(hardwareobject)"}
+        ],
+        "outputs":
+        [
+            {"name":"obj", "type":"matlabshared.sensors.sensorUnit"}
+        ]
+    }
+}

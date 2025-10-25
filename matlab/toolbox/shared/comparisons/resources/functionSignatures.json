@@ -1,0 +1,25 @@
+{
+"comparisons.Comparison.filter":
+{
+    "inputs":
+    [
+        {"name":"comparison", "kind":"required", "type":"comparisons.Comparison"},
+        {"name":"filter", "kind":"required", "type":"choices={'default', 'unfiltered'}"}
+    ]
+},
+"comparisons.Comparison.publish":
+{
+    "inputs":
+    [
+        {"name":"comparison", "kind":"required", "type":"comparisons.Comparison"},
+        {"name":"Format", "kind":"namevalue", "type":"choices={'html', 'docx', 'pdf'}"},
+        {"name":"Name", "kind":"namevalue", "type":"char"},
+        {"name":"OutputFolder", "kind":"namevalue", "type":[["folder"], ["char"]]},
+        {"name":"options", "kind":"ordered", "type":"struct"}
+    ],
+    "outputs":
+    [
+        {"name":"file", "type":"char"}
+    ]
+}
+}

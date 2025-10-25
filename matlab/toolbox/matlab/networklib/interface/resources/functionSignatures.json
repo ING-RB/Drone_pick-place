@@ -1,0 +1,366 @@
+{
+    "echotcpip": {
+        "inputs": [
+            {
+                "name": "State",
+                "kind": "required",
+                "type": "choices={'on','off'}"
+            },
+            {
+                "name": "PortNumber",
+                "kind": "ordered",
+                "type": [ "scalar", "integer", "<=65535", ">=1" ]
+            }
+        ]
+    },
+    "tcpclient": {
+        "inputs": [
+            {
+                "name": "Address",
+                "kind": "required",
+                "type": "char"
+            },
+            {
+                "name": "Port",
+                "kind": "required",
+                "type": [ "numeric", "<=65535", ">=1" ]
+            },
+            {
+                "name": "Timeout",
+                "kind": "namevalue",
+                "type": [ "numeric", "<2147483647", ">=0" ]
+            },
+            {
+                "name": "Tag",
+                "kind": "namevalue",
+                "type": [
+                    [ "scalar", "string" ],
+                    [ "char" ]
+                ]
+            },
+            {
+                "name": "ConnectTimeout",
+                "kind": "namevalue",
+                "type": [ "numeric", ">=0" ]
+            },
+            {
+                "name": "EnableTransferDelay",
+                "kind": "namevalue",
+                "type": [ "logical", "scalar" ]
+            },
+            {
+                "name": "ByteOrder",
+                "kind": "namevalue",
+                "type": "choices={'little-endian', 'big-endian'}"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "t",
+                "type": "tcpclient"
+            }
+        ]
+    },
+    "tcpclient.write": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "data",
+                "kind": "required",
+                "type": [
+                    [ "numeric" ],
+                    [ "char" ],
+                    [ "string" ]
+                ]
+            },
+            {
+                "name": "precision",
+                "kind": "ordered",
+                "type": "choices= tcpclient.AllSupportedPrecision"
+            }
+        ]
+    },
+    "tcpclient.writeline": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "data",
+                "kind": "required",
+                "type": [ "char", "string" ]
+            }
+        ]
+    },
+    "tcpclient.writebinblock": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "data",
+                "kind": "required",
+                "type": [
+                    [ "numeric" ],
+                    [ "char" ],
+                    [ "string" ]
+                ]
+            },
+            {
+                "name": "precision",
+                "kind": "required",
+                "type": "choices= tcpclient.AllSupportedPrecision"
+            }
+        ]
+    },
+    "tcpclient.writeread": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "command",
+                "kind": "required",
+                "type": [ "char", "string" ]
+            }
+        ],
+        "outputs": [
+            {
+                "name": "response",
+                "type": [ "char", "string" ]
+            }
+        ]
+    },
+    "tcpclient.read": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "size",
+                "kind": "positional",
+                "type": [ "integer", "scalar", "positive" ]
+            },
+            {
+                "name": "datatype",
+                "kind": "ordered",
+                "type": "choices= tcpclient.AllSupportedPrecision"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "data",
+                "type": [
+                    [ "numeric" ],
+                    [ "char" ],
+                    [ "string" ]
+                ]
+            }
+        ]
+    },
+    "tcpclient.readline": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "data",
+                "type": "string"
+            }
+        ]
+    },
+    "tcpclient.readbinblock": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "precision",
+                "kind": "ordered",
+                "type": "choices= tcpclient.AllSupportedPrecision"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "data",
+                "type": [
+                    [ "double" ],
+                    [ "char" ],
+                    [ "string" ]
+                ]
+            }
+        ]
+    },
+    "tcpclient.flush": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "buffer",
+                "kind": "ordered",
+                "type": "choices={'input','output'}"
+            }
+        ]
+    },
+    "tcpclient.configureCallback": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "mode",
+                "kind": "required",
+                "type": "choices={'off','byte','terminator'}"
+            },
+            {
+                "name": "count",
+                "kind": "positional",
+                "type": [ "integer", "scalar", ">0" ]
+            },
+            {
+                "name": "callbackfcn",
+                "kind": "positional",
+                "type": [ "function_handle", "scalar" ]
+            }
+        ]
+    },
+    "tcpclient.configureTerminator": {
+        "inputs": [
+            {
+                "name": "obj",
+                "kind": "required",
+                "type": "tcpclient"
+            },
+            {
+                "name": "terminator",
+                "kind": "required",
+                "type": [
+                    [ "integer", "scalar", ">=0", "<=255" ],
+                    [ "choices={'LF', 'CR', 'CR/LF'}" ]
+                ]
+            },
+            {
+                "name": "writeTerminator",
+                "kind": "optional",
+                "type": [
+                    [ "integer", "scalar", ">=0", "<=255" ],
+                    [ "choices={'LF', 'CR', 'CR/LF'}" ]
+                ]
+            }
+        ]
+    },
+    "tcpclientfind": {
+        "inputs": [
+            {
+                "name": "Tag",
+                "kind": "namevalue",
+                "type": [
+                    [ "scalar", "string" ],
+                    [ "char" ]
+                ]
+            },
+            {
+                "name": "Address",
+                "kind": "namevalue",
+                "type": [
+                    [ "scalar", "string" ],
+                    [ "char" , "vector" ]
+                ]
+            },
+            {
+                "name": "Port",
+                "kind": "namevalue",
+                "type": [ "numeric", "<=65535", ">=1" ]
+            },
+            {
+                "name": "Timeout",
+                "kind": "namevalue",
+                "type": [ "numeric", ">=0" ]
+            },
+            {
+                "name": "ConnectTimeout",
+                "kind": "namevalue",
+                "type": [ "numeric", ">=0" ]
+            },
+            {
+                "name": "EnableTransferDelay",
+                "kind": "namevalue",
+                "type": [ "scalar", "logical" ]
+            },
+            {
+                "name": "NumBytesAvailable",
+                "kind": "namevalue",
+                "type": [ "numeric", "scalar" ]
+            },
+            {
+                "name": "NumBytesWritten",
+                "kind": "namevalue",
+                "type": [ "numeric", "scalar" ]
+            },
+            {
+                "name": "Terminator",
+                "kind": "namevalue",
+                "type": "choices = matlabshared.transportlib.internal.TabCompletionUtility.Terminator"
+            },
+            {
+                "name": "ByteOrder",
+                "kind": "namevalue",
+                "type": "choices = matlabshared.transportlib.internal.TabCompletionUtility.ByteOrder"
+            },
+            {
+                "name": "BytesAvailableFcnMode",
+                "kind": "namevalue",
+                "type": "choices = matlabshared.transportlib.internal.TabCompletionUtility.BytesAvailableFcnMode"
+            },
+            {
+                "name": "BytesAvailableFcnCount",
+                "kind": "namevalue",
+                "type": [ "numeric", ">=0" ]
+            },
+            {
+                "name": "BytesAvailableFcn",
+                "kind": "namevalue",
+                "type": [ "function_handle", "scalar" ]
+            },
+            {
+                "name": "ErrorOccurredFcn",
+                "kind": "namevalue",
+                "type": [ "function_handle", "scalar" ]
+            },
+            {
+                "name": "UserData",
+                "kind": "namevalue",
+                "type": []
+            }
+        ],
+        "outputs": [
+            {
+                "name": "t",
+                "type": "tcpclient"
+            }
+        ]
+    }
+}

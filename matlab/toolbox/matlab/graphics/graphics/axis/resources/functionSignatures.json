@@ -1,0 +1,205 @@
+{
+    "axes":
+    {
+        "inputs":
+        [
+            {"name":"cax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"}
+        ]
+    },
+    "axes":
+    {
+        "inputs":
+        [
+            {"name":"parent", "kind":"ordered", "type":"matlab.ui.internal.mixin.CanvasHostMixin"},
+            {"name":"properties", "kind":"properties", "type":"matlab.graphics.axis.Axes"}
+        ],
+        "outputs":
+        [
+            {"name":"ax", "type":"matlab.graphics.axis.Axes"}
+        ]
+    },
+    "polaraxes":
+    {
+        "inputs":
+        [
+            {"name":"pax_in", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+        ]
+    },
+    "polaraxes":
+    {
+        "inputs":
+        [
+            {"name":"parent", "kind":"ordered", "type":"matlab.ui.internal.mixin.CanvasHostMixin"},
+            {"name":"properties", "kind":"properties", "type":"matlab.graphics.axis.PolarAxes"}
+        ],
+        "outputs":
+        [
+            {"name":"pax", "type":"matlab.graphics.axis.PolarAxes"}
+        ]
+    },
+    "uiaxes":
+    {
+        "inputs":
+        [
+            {"name":"parent", "kind":"ordered", "type":"matlab.ui.internal.mixin.CanvasHostMixin"},
+            {"name":"properties", "kind":"properties", "type":"matlab.ui.control.UIAxes"}
+        ],
+        "outputs":
+        [
+            {"name":"ax", "type":"matlab.ui.control.UIAxes"}
+        ]
+    },
+    "axis":
+    {
+        "inputs":
+        [
+            {"name":"ax", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"}, 
+            {"mutuallyExclusiveGroup":
+                [
+                    {"name":"limits", "kind":"required", "type":[["numeric", "vector", "numel=4"], ["numeric", "vector", "numel=6"], ["numeric", "vector", "numel=8"]]},
+                    {"name":"style", "kind":"required", "type":["char", "choices={'tight','normal','manual','padded','tickaligned','auto','auto x','auto y','auto xy'}"]},
+                    {"name":"visibility", "kind":"required", "type":["char", "choices={'on','off'}"], "default":"'on'"}
+                ]
+            }
+        ]
+    },
+    "axis":
+    {
+        "inputs":
+        [
+            {"name":"ax", "kind":"ordered", "type":[["matlab.graphics.axis.Axes"], ["matlab.graphics.chart.Chart"]]}, 
+            {"mutuallyExclusiveGroup":
+                [
+                    {"name":"style", "kind":"required", "type":["char", "choices={'fill','equal','image','square','vis3d','auto z','auto xz','auto yz'}"]},
+                    {"name":"ydirection", "kind":"required", "type":["char", "choices={'xy','ij'}"], "default":"'xy'"}
+                ]
+            }
+        ]
+    },
+    "axis":
+    {
+        "inputs":
+        [
+            {"name":"ax", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"} 
+        ],
+        "outputs":
+        [
+            {"name":"limits", "type":["numeric", "vector"]}
+        ]
+    },
+    "grid":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"},
+            {"name":"", "kind":"flag", "type":["char", "choices={'on','off','minor'}"]}
+        ]
+    },
+    "hold":
+    {
+        "inputs":
+        [
+            {"name":"ax", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"},
+            {"name":"", "kind":"flag", "type":["char", "choices={'on','off'}"]}
+        ]
+    },
+    "yyaxis":
+    {
+        "inputs":
+        [
+            {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+            {"name":"side", "kind":"required", "type":["char", "choices={'left','right'}"]}
+        ]
+    },
+    "title":
+    {
+        "inputs":
+        [
+            {"mutuallyExclusiveGroup":
+                [
+                    [
+                        {"name":"target", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"},
+                        {"name":"titletext", "kind":"required", "type":"char"},
+                        {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+                    ],
+                    [
+                        {"name":"target", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"},
+                        {"name":"titletext", "kind":"required", "type":"char"},
+                        {"name":"subtitletext", "kind":"required", "type":"char"},
+                        {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+                    ]
+                ]
+            }
+        ],
+        "outputs":
+        [
+            {"name":"h", "type":"matlab.graphics.primitive.Text"}
+        ]
+    },
+    "title":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"required", "type":"matlab.graphics.illustration.Legend"},        
+            {"name":"titletext", "kind":"required", "type":"char"},
+            {"name":"opts", "kind":"properties", "type":"matlab.graphics.illustration.legend.Text"}
+        ],
+        "outputs":
+        [
+            {"name":"h", "type":"matlab.graphics.illustration.legend.Text"}
+        ]
+    },
+    "subtitle":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"ordered", "type":"matlab.graphics.mixin.CurrentAxes"},
+            {"name":"txt", "kind":"required", "type":"char"},
+            {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+        ],
+        "outputs":
+        [
+            {"name":"h", "type":"matlab.graphics.primitive.Text"}
+        ]
+    },
+    
+    "xlabel":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"ordered", "type":[["matlab.graphics.mixin.CurrentAxes"], ["matlab.graphics.illustration.ColorBar"]]},
+            {"name":"txt", "kind":"required", "type":"char"},
+            {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+        ],
+        "outputs":
+        [
+            {"name":"h", "type":"matlab.graphics.primitive.Text"}
+        ]
+    },
+    "ylabel":
+    {
+        "inputs":
+        [
+            {"name":"target", "kind":"ordered", "type":[["matlab.graphics.mixin.CurrentAxes"], ["matlab.graphics.illustration.ColorBar"]]},
+            {"name":"txt", "kind":"required", "type":"char"},
+            {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+        ],
+        "outputs":
+        [
+            {"name":"h", "type":"matlab.graphics.primitive.Text"}
+        ]
+    },
+    "zlabel":
+    {
+        "inputs":
+        [
+            {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+            {"name":"txt", "kind":"required", "type":"char"},
+            {"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+        ],
+        "outputs":
+        [
+            {"name":"h", "type":"matlab.graphics.primitive.Text"}
+        ]
+    }
+}

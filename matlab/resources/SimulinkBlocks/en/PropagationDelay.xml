@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright 2009-2021 The MathWorks, Inc. -->
+<rsccat version="1.0" locale ="en_US" product="SimulinkBlocks" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+    <!--Description -->
+    <entry key="BlockDescription" context="uistring">
+        Delay a sampled input signal (u) by the time specified by the input delay signal (dt).
+
+       
+    </entry>
+    
+    <!--Block Parameters -->
+    <entry key="InitialOutput" context="uistring">Initial output</entry>
+    <entry key="RunAtFixedTimeIntervals" context="uistring"> Run at fixed time intervals</entry>
+    <entry key="SampleTime" context="uistring">Sample time</entry>
+    
+    <!--Diagnostics -->
+    
+    <entry key="OutofBoundSamplingRate" context="error">
+      <![CDATA[
+               Sample time for block ''{0}'' must be finite and greater than the smallest supported 
+               time resolution (128*eps).
+      ]]>
+    </entry>
+    <entry key="InvSamplingModeSetting" context="error">
+      <![CDATA[
+               Block ''{0}'' is not configured to work with a fixed step solver.
+               <actions exclusiveFixIts="yes">
+                   <action type="fixit" retvalue="false">
+                       <cmd>set_param(''{0}'',''RunAtFixedTimeIntervals'',''on'')</cmd>
+                       <txt>Enable the Run at fixed time intervals parameter for the block.</txt>
+                   </action>
+                   <action type="fixit" retvalue="false">
+                       <cmd>set_param(''{1}'',''SolverType'',''Variable-step'')</cmd>
+                       <txt>Change the solver type to variable step.</txt>
+                   </action>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="InputDelayNotFinite" context="error">
+      At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is not finite. Delay
+      values must be finite, positive, and greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBePositive" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than or equal
+        to the smallest supported time resolution (128*eps). The delay input must be finite, positive, and
+        greater than the smallest supported time resolution (128*eps).
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasing" context="error">
+        At time {0}, the delay input (dt) for Propagation Delay block ''{2}'' results in a delayed output
+        time (t + dt) {1} that occurs at the same time or before the output time for the previous sample
+        {3}. Delayed output times must increase monotonically.
+    </entry>
+    <entry key="InputDelayMustBeMonotonicallyIncreasingInDiscreteMode" context="error">
+        At time {0}, the delay input (dt) for Propagation Delay block ''{2}'' results in a delayed output
+        time (t + dt) {1} that occurs at the same time or before the output time for the previous sample
+        {3}. Delayed output times must increase monotonically, and when you configure the block to run at
+        fixed time intervals, the delayed output time must be an integer multiple of the specified sample
+        time ''{4}''.
+    </entry>
+    <entry key="InputDelayMustBeGreaterThanSampleTime" context="error">
+        At time {0}, the delay input {1} for Propagation Delay block ''{2}'' is less than the
+        specified sample time ''{3}''. When you configure the block to run at fixed time intervals, the
+        delay input must be positive and an integer multiple of the specified sample time.
+    </entry>
+    <entry key="InvalidDataType" context="error">
+        Data type {1} not supported for Propagation Delay block ''{0}''.
+    </entry>
+    <entry key="InputDelayTooLarge" context="error">
+        Delay input {1} for the Propagation Delay block ''{2}'' is too large compared to
+        the current simulation time {0}, which causes floating-point precision issues.
+    </entry>
+    <entry key="InputDelayGreaterThanSizeTMax" context="error">
+        At time {0}, the delay input for the Propagation Delay block ''{2}'' is {1}. When you configure the block
+        to run at fixed time intervals with a sample time of ''{3}'', the maximum supported delay is {4}.
+    </entry>
+  </message>
+</rsccat>

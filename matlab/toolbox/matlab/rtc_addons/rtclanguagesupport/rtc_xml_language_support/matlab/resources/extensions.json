@@ -1,0 +1,42 @@
+{
+    "jsModules": "./generatedModuleDef.json",
+    "mw.desktop.editor.languageSupport": [{
+        "languageName": "XML",
+        "mimeType": "text/xml",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["xml", "xsd", "xsl", "wsdl", "arxml", "x3d"],
+        "jsModule": "xmlLanguageRegistry"
+    }, {
+        "languageName": "HTML",
+        "alias": "XML",
+        "mimeType": "text/html",
+        "languagePriority": "COMMON",
+        "defaultSupportedFileTypes": ["html", "htm", "shtml"],
+        "jsModule": "htmlLanguageRegistry"
+    }],
+    "mw.fileTypes": {
+        "groups": {
+            "htmlLikeCodeFiles": ["html", "htm", "shtml"],
+            "xmlLikeCodeFiles": ["xml", "xsl", "wsdl", "arxml", "xsd"]
+        },
+        "open": {
+            "groups.htmlLikeCodeFiles": [{
+                "callback": "openhtml",
+                "callbackType": "matlab"
+            }],
+            "groups.xmlLikeCodeFiles": [{
+                "callback": "editor_open_action/openAction",
+                "callbackType": "jsModule"
+            }, {
+                "callback": "edit",
+                "callbackType": "matlab"
+            }]
+        },
+        "icons": {
+            "groups.htmlLikeCodeFiles": "webFT",
+            "xml": "webFT",
+            "xsd": "webFT",
+            "xsl": "webFT"
+        }
+    }
+}

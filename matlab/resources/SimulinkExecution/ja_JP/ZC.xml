@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="SimulinkExecution" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="AttributeConversionFailed">
+  列挙型にターゲット属性が含まれているため、方向の任意の組み合わせを含めることはできません。そのため、''{0}'' 形式から ''{1}'' 形式へのゼロクロッシング属性の変換は失敗しました。
+</entry>
+    <entry key="ZeroCrossingConsistencyCheckFailed">
+評価されたゼロクロッシング ベクトルとソルバーでキャッシュされたゼロクロッシング ベクトルが一致しません。\n{0}
+</entry>
+    <entry key="ConsecutiveZeroCrossingsLimitExceeded">
+  時間 {0} から開始し、ゼロクロッシング信号 #{1,number,integer} により、{3} の時間範囲内に {2,number,integer} 個の連続イベントが発生しました。短い時間範囲にこのような連続イベントが多すぎると、シミュレーションの速度が低下したり、シミュレーションがハングします。
+</entry>
+    <entry key="ConsecutiveZeroCrossingEventsLimitExceeded">
+  時間 {0} から開始し、ゼロクロッシング信号 {1,number,integer} により、{3} の時間範囲内に {2,number,integer} 個の連続イベントが発生しました。この期間にわたってゼロクロッシング信号の振幅は {4} より低いままでした。短い時間範囲にこのような連続イベントが多すぎると、シミュレーションの速度が低下したり、シミュレーションがハングします。
+</entry>
+    <entry key="ZeroCrossingNotBracketedDueToConsecutiveEvents">
+  時間 {0} から開始し、{2} の時間間隔内に {1,number,integer} 個の連続ゼロクロッシングが検出されました。シミュレーションをハングさせずに続行するために、適応ゼロクロッシング検出アルゴリズムは現在のステップ サイズ ({3}) をこれ以上小さくせずに受け入れます。
+</entry>
+    <entry key="ZeroCrossingNotBracketedDueToSmallSignalValues">
+  時間 {0} とステップ サイズ {1} で、{2,number,integer} 個のゼロクロッシングが検出されました。しかし、このタイム ステップではゼロクロッシングのある信号の振幅が許容誤差 ({3}) より小さいため、適応ゼロクロッシング検出アルゴリズムによってステップ サイズがそれ以上小さくされることはありません。
+</entry>
+    <entry key="SomeZeroCrossingNotBracketedDueToSmallSignalValues">
+  時間 {0} とステップ サイズ {1} で、{2,number,integer} 個のゼロクロッシングが検出されました。しかし、信号の振幅が許容誤差 ({4}) より小さいため、適応ゼロクロッシング検出アルゴリズムは {3,number,integer} 個の信号によるゼロクロッシングを囲い込みません。
+</entry>
+    <entry key="TooManyConsecutiveZeroCrossings">
+  時間 {0} に、{1,number,integer} 個のゼロクロッシング信号が連続イベントの最大数 {2,number,integer} を超過しました。これらのゼロクロッシングを無視してシミュレーションを続行するには、適応ゼロクロッシング検出アルゴリズムの使用を検討してください。
+</entry>
+    <entry key="DetectedMaskedZeroCrossings">
+  シミュレーション タイム ステップ {0} から {1} までの間 (ステップ サイズ = {2}) に、#{3,number,integer} のマスクされたゼロクロッシング、すなわち偶数のゼロクロッシングをもつ信号が検出されました。検索アルゴリズムがこれらのゼロクロッシングのみを検出したのは、このタイム ステップに他のゼロクロッシングが存在するためです。マスクされたゼロクロッシングは、現在のタイム ステップ内に偶数のゼロクロッシングをもつゼロクロッシング信号が 1 つ以上あることにより発生します。マスクされたゼロクロッシングはすべての場合に検出されるとは限りません。
+</entry>
+    <entry key="MaxNumberOfBracketingIterationsExceeded">
+  シミュレーション タイム ステップ {0} から {1} までの間に、シミュレーションがゼロクロッシングの検索を停止しました。これは、最大である {2, number, integer} 回の反復後でも、ゼロクロッシング検出アルゴリズムが元の時間間隔を、幅が時間許容誤差以下でゼロクロッシングを含む収束された時間間隔に短縮できなかったためです。シミュレーションは、現在の時間間隔でのゼロクロッシングを検出アルゴリズム内でレポートして続行します。
+</entry>
+    <entry key="StateMismatchInZcConsistencyCheck">
+  時間 {0} に、ゼロクロッシングの整合性チェックで状態が一致しませんでした。\n x (左端) : {1} \n x (再評価): {2} 
+</entry>
+    <entry key="FixedStepDiscreteSolverWithZc">
+            Model ''{0}'' has fixed-step zero-crossing detection enabled but does not contain continuous states. Using fixed-step zero-crossing detection in models that do not contain continuous states is not recommended except when required for consistency for generating code from a model hierarchy that contains another model with continuous states. \n
+                     &lt;actions exclusiveFixIts="yes"&gt;
+                     &lt;action type="fixit"&gt;
+                     &lt;cmd&gt;set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt;
+                     &lt;txt&gt;Turn off zero-crossing detection for fixed-step simulation.&lt;/txt&gt;
+                     &lt;/action&gt;
+                     &lt;/actions&gt;
+        </entry>
+    <entry key="FixedStepZCNotSupportedForRTCodeGen">
+        ブロック線図 "{0}" は、固定ステップのゼロクロッシングが有効な場合にコードを生成できません。\n &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param( ''{0}'', ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt; &lt;txt&gt;固定ステップ シミュレーションのゼロクロッシング検出をオフにする。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="FixedStepZc_NonInlinedSFcnsNotSupported">
+            ブロック ''{0}'' はインラインでない S-Function を使用しますが、これは、固定ステップ ソルバーでのゼロクロッシング検出を使用するモデルからのコード生成ではサポートされません。 \n &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param( bdroot(''{0}''), ''EnableFixedStepZeroCrossing'', ''off'');&lt;/cmd&gt; &lt;txt&gt;固定ステップ シミュレーションでのゼロクロッシング検出を無効にする。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        </entry>
+  </message>
+</rsccat>

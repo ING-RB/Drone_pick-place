@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><code>matlabpool</code> has been removed. Use <code>parpool</code>
+                    instead. </p><p><code>parpool</code> creates a pool of workers on the current cluster
+                    and connects the MATLAB client. It enables the full functionality of the MATLAB
+                    parallel language features including <code>parfor</code>,
+                        <code>spmd</code>, and the <code>distributed</code>
+                    function.</p><br/><strong>Suggested Action</strong><br/><p>Replace occurrences of <code>matlabpool</code> with
+                        <code>parpool</code>. In some instances, <code>parpool</code>
+                    uses a different syntax than <code>matlabpool</code>. For example:</p><ul><li><p>To start a pool using the current cluster profile, replace
+                                <code>matlabpool</code> with
+                            <code>parpool</code>.</p></li><li><p>To query whether a pool exists, replace <code>matlabpool('size') ==
+                                0</code> with <code>isempty(gcp('nocreate'))</code>.</p></li><li><p>To close the current pool, replace <code>matlabpool close</code>
+                            or <code>matlabpool('close')</code> with
+                                <code>delete(gcp('nocreate'))</code>.</p></li></ul><p>For further information, see the <code><a href="matlab:doc parpool" target="_blank">parpool</a></code> and <code><a href="matlab:doc parallel.Pool" target="_blank">parallel.Pool</a></code> reference pages.</p></body></html>

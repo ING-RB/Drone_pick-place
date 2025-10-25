@@ -1,0 +1,106 @@
+{
+    "imageDatastore":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file=*.jpg,*.jpeg,*.png,*.tif,*.tiff,*.bmp,*.gif"], ["matlabpathfile=*.jpg,*.jpeg,*.png,*.tif,*.tiff,*.bmp,*.gif"], ["cell"], ["char"], ["matlab.io.datastore.DsFileSet"], ["matlab.io.datastore.FileSet"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]},
+            {"name":"ReadFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"ReadSize", "kind":"namevalue", "type":"numeric"},
+            {"name":"LabelSource", "kind":"namevalue", "type":"choices={'foldernames', 'none'}"},
+            {"name":"Labels", "kind":"namevalue", "type":[["cell"], ["logical"], ["categorical"]]}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":"matlab.io.datastore.ImageDatastore"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.ImageDatastore":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file=*.jpg,*.jpeg,*.png,*.tif,*.tiff,*.bmp,*.gif"], ["matlabpathfile=*.jpg,*.jpeg,*.png,*.tif,*.tiff,*.bmp,*.gif"], ["cell"], ["char"], ["matlab.io.datastore.DsFileSet"], ["matlab.io.datastore.FileSet"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]},
+            {"name":"ReadFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"ReadSize", "kind":"namevalue", "type":"numeric"},
+            {"name":"LabelSource", "kind":"namevalue", "type":"choices={'foldernames', 'none'}"},
+            {"name":"Labels", "kind":"namevalue", "type":[["cell"], ["logical"], ["categorical"]]}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":"matlab.io.datastore.ImageDatastore"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.ImageDatastore.subset":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.ImageDatastore"},
+			{"name":"indices", "kind":"required", "type":[["numeric", "vector", "integer", "positive"], ["logical", "vector"]]}
+        ],
+        "outputs":
+        [
+            {"name":"subds", "type":"matlab.io.datastore.ImageDatastore"}
+        ]
+    }
+	,
+    "matlab.io.datastore.ImageDatastore.numobservations":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.ImageDatastore"}
+        ],
+        "outputs":
+        [
+            {"name":"n", "type":["numeric", "scalar", "integer"]}
+        ]
+    }
+	,
+    "matlab.io.datastore.ImageDatastore.countEachLabel":
+    {
+        "inputs":
+        [
+			{"name":"imds", "kind":"required", "type":"matlab.io.datastore.ImageDatastore"}
+        ],
+        "outputs":
+        [
+            {"name":"T", "type":"table"}
+        ]
+    }
+	,
+    "matlab.io.datastore.ImageDatastore.splitEachLabel":
+    {
+        "inputs":
+        [
+			{"name":"imds", "kind":"required", "type":"matlab.io.datastore.ImageDatastore"},
+			{"name":"p", "kind":"required", "repeating": true, "type":["double", "scalar"]},
+			{"name":"randomized", "kind":"flag", "type":["char", "choices={'randomized'}"]},
+            {"name":"Include", "kind":"namevalue", "type":[["logical"], ["numeric"], ["categorical"], ["string"], ["cell"]]},
+            {"name":"Exclude", "kind":"namevalue", "type":[["logical"], ["numeric"], ["categorical"], ["string"], ["cell"]]}
+        ],
+        "outputs":
+        [
+            {"name":"imds", "type":"matlab.io.datastore.ImageDatastore", "repeating": true}
+        ]
+    }
+	,
+    "matlab.io.datastore.ImageDatastore.readimage":
+    {
+        "inputs":
+        [
+			{"name":"imds", "kind":"required", "type":"matlab.io.datastore.ImageDatastore"},
+			{"name":"I", "kind":"required", "type":["double", "scalar", "integer", "positive"]}
+        ],
+        "outputs":
+        [
+            {"name":"img"},
+            {"name":"fileinfo"}
+        ]
+    }
+}

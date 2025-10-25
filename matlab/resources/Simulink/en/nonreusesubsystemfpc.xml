@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2020 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <entry key="OutputUpdateNotCombined">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is supported only when Output and Update functions are combined. Select the "ForceCombineOutputUpdateInSim" configuration parameter to combine these functions. If "ForceCombineOutputUpdateInSim" is already selected, then subsystem is multirate subsystem or it is necessary to have separate update and output to get the correct simulation results. Disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="SubsysWithConstSampleTime">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is not supported when a subsystem block has constant sample time. Ensure that ''{0}'' does not have constant sample time or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="SubsysWithResetEvent">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is not supported when a subsystem contains reset or reinit output function. Make sure that the subsystem has a single output function or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter setting for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="MultiTaskSystem">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is not supported  when subsystem is multitask subsystem. Uncheck the model configuration parameter "EnableMultiTasking" to disable multitasking or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="FPCChangedToBeReusableForMultiInstanceCode">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is not supported  when ''{0}'' is changed to a reusable function in order to generate multi-instance reusable code. Consider changing the model configuration parameter "CodeInterfacePackaging" to "Nonreusable function" or disable  "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="FPCChangedToBeReusableInsideServer">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is not supported  when ''{0}'' is changed to a reusable function because it is within Simulink Function block. Disable  "Allow arguments (Match graphical interface)" parameter for ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="FPCChangedToBeReusable">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" parameter is not supported  when ''{0}'' is changed to a reusable function. Disable  "Allow arguments (Match graphical interface)" parameter for ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>    
+    <entry key="VariableSizeSignalNotSupported">
+    <![CDATA[
+        Port ''{1}'' has a variable-size signal, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Specify fixed-size signals on all input and output ports of ''{0}'' or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="ConstantSampleTimeSignalNotSupported">
+    <![CDATA[
+        Port ''{1}'' has constant sample time, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Ensure that signal does not have constant sample time or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="DisconnectedSignalNotSupported">
+    <![CDATA[
+        Port ''{1}'' has no destination in model, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Please connect the ''{1}'' to valid destination or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="InputsConnectedToNoArgumentFunction">
+    <![CDATA[
+        ''{0}'' is directly connected to ''{1}'' subsystem which has no function arguments or is inside subsystem with no function arguments. This is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Insert a Signal Conversion block after ''{2}'' and check "Exclude this block from 'Block reduction' optimization" block parameter or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="OutputsConnectedToNoArgumentFunction">
+    <![CDATA[
+        ''{0}'' is directly connected to ''{1}'' subsystem which has no function arguments or is inside subsystem with no function arguments. This is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Insert a Signal Conversion block after ''{2}'' and check "Exclude this block from 'Block reduction' optimization" block parameter or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="VirtualBusSignalNotSupported">
+    <![CDATA[
+        Port ''{1}'' is connected to a virtual bus, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Use Mux block instead of virtual bus or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <!-- Buffer Insertion Error Messages OutputSide-->
+    <entry key="MessageModeOnPort">
+    <![CDATA[
+        Port ''{1}'' has a message mode, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Remove message mode on output ports of ''{0}'' or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="PortHasFunctionCall">
+    <![CDATA[
+        Port ''{1}'' contains a function call, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Remove function call on output ports of ''{0}'' or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="EnsureVirtualPortEnabled">
+    <![CDATA[
+        "EnsureOutportIsVirtual" parameter is enabled for Port ''{1}'', which is not supported for parent subsystem ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Ensure that "EnsureOutportIsVirtual" parameter is not enabled for any output ports of subsystem ''{0}'' or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <!-- Buffer Insertion Error Messages Inputside-->
+    <entry key="AlgebraicLoopInBufInsertion">
+    <![CDATA[
+        Algebraic loop is detected at Port ''{1}'', which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Insert a Signal Conversion block before ''{1}'' to diagnose the cause of algebraic loop or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="ContainsIRTSignal">
+    <![CDATA[
+        Port ''{1}'' contains IRT rate signals, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Ensure that ''{1}'' this does not have any IRT signals or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="InputSigFeededToMergeBlock">
+    <![CDATA[
+        Port ''{1}'' has a discontinuous signal which is connected to Merge block which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Insert a Signal Conversion block after ''{1}'' or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="AsyncRateTransSig">
+    <![CDATA[
+        Port ''{1}'' is connected to Async Rate Transition block, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Ensure that source is not connected to Async Rate Transition block or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="NestedStateflowChartFPC">
+    <![CDATA[
+        ''{0}'' is within a Stateflow chart subsystem, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="VirtualBusDuringBufferInsertion">
+    <![CDATA[
+        Port ''{1}'' is connected to virtual bus, which is not supported for ''{0}'' with "Allow arguments (Match graphical interface)" parameter enabled. Use Mux block instead of virtual bus or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter settings for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="VariantChoiceWithDefaultCondition">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" function interface is not supported on Variant Subsystem block ''{0}'' with any variant choices that have "Variant Control Expression" set to "(default)". Specify all non-default variant control expressions or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter setting for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="MultiRateInput">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" function interface is not supported for Subsystem block ''{0}'' because its Inport ''{1}'' is multi-rate. Insert a Rate Transition block before the Inport or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter setting for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+    <entry key="MultiRateOutput">
+    <![CDATA[
+        "Allow arguments (Match graphical interface)" function interface is not supported for Subsystem block ''{0}'' because its outport ''{1}'' is multi-rate. Insert a Rate Transition block before the outport or disable "Allow arguments (Match graphical interface)" parameter on ''{0}''.
+        <actions exclusiveFixIts="yes">
+          <action type="fixit">
+            <cmd>set_param(''{0}'',''FunctionInterfaceSpec'',''Allow arguments (Optimized)'')</cmd>
+            <txt>Change "FunctionInterfaceSpec" parameter setting for ''{0}'' to "Allow arguments (Optimized)".</txt>
+          </action>
+        </actions>
+      ]]>
+    </entry>
+  </message>
+  
+  
+</rsccat>
+
+<!-- LocalWords:  pregenerated Func
+-->

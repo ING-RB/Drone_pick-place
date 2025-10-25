@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!-- Copyright 2022-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="transportapp">
+    <message>
+        <!--DEVICE DESCRIPTOR-->
+        <entry key="DescriptorName">Configure New VISA Resource</entry>
+        <entry key="DescriptorTooltip">Create a new VISA connection</entry>
+
+        <!--Resource Types-->
+        <entry key="VXI11">TCP/IP VXI-11</entry>
+        <entry key="Socket">TCP/IP Socket</entry>
+        <entry key="HiSlip">TCP/IP HiSLIP</entry>
+        <entry key="USB">USB</entry>
+        <entry key="GPIB">GPIB</entry>
+        <entry key="Serial">Serial</entry>
+        <entry key="VXI">VXI</entry>
+        <entry key="PXI">PXI</entry>
+
+        <!--Section Header-->
+        <entry key="InterfaceSection">INTERFACE</entry>
+        <entry key="ResourceSection">RESOURCE</entry>
+        <entry key="TestConnectionSection">TEST CONNECTION</entry>
+
+        <!--Field Strings Values-->
+        <entry key="Interface">Interface</entry>
+        <entry key="GenerateResourceName">Generate\nResource Name</entry>
+        <entry key="ResourceName">Resource Name</entry>
+        <entry key="TestConnection">Test\nConnection</entry>
+        <entry key="Model">Model</entry>
+        <entry key="VendorID">Vendor</entry>
+        <entry key="ConnectionStatus">Connection Status</entry>
+
+        <!--Error Strings -->
+        <entry key="EmptyTestField">Failed to test connection.\n{0} must be specified.</entry>
+        <entry key="EmptyModalDialog">The modal dialog is empty. The "Closeable" property cannot be queried on the ModalDialog object.</entry>
+        <entry key="ValueMustBePositiveInteger">{0} must be a positive integer.</entry>
+        <entry key="NoSurroundingQuotesInCustomHeader">Binblock custom header text must be specified without single or double quotes surrounding it.</entry>
+        <entry key="CustomHeaderSingleDoubleQuotesMixed">Binblock custom header text must not contain a combination of single and double quotes.</entry>
+
+        <!--Modal Dialog Strings -->
+        <entry key="VXI11Resource">TCP/IP VXI-11</entry>
+        <entry key="SocketResource">TCP/IP Socket</entry>
+        <entry key="HiSlipResource">TCP/IP HiSLIP</entry>
+
+        <entry key="FigureWindowName">{0} - Generate Resource and Test Connection</entry>
+        <entry key="GenerateResourcePanelName">Generate Resource Name</entry>
+        <entry key="TestConnectionPanelName">Validate and Test Connection</entry>
+
+        <entry key="BoardNumberName">Board Index</entry>
+        <entry key="BoardNumberTooltip">Specify the index number of the network board associated with the instrument (e.g. 0 for TCPIP0)</entry>
+
+        <entry key="IPAddressName">Host Name or IP Address</entry>
+        <entry key="IPAddressTooltip">Specify the instrument's TCP/IP address</entry>
+
+        <entry key="DeviceIDName">Device ID</entry>
+        <entry key="DeviceIDTooltip">Specify the LAN device name ID (e.g. 0 for inst0 or hislip0)</entry>
+
+        <entry key="GenerateButtonName">Generate Resource</entry>
+        <entry key="GenerateButtonTooltip">Generate VISA resource name using the specified values</entry>
+
+        <entry key="PortName">Port</entry>
+        <entry key="PortTooltip">Specify the port number for given TCP/IP address</entry>
+
+        <entry key="IdentificationName">Identification Command</entry>
+        <entry key="IdentificationTooltip">Command to query instrument for identification</entry>
+        <entry key="DefaultIdentificationString" translate="false">*IDN?</entry>
+
+        <entry key="ModelName">Model</entry>
+        <entry key="ModelTooltip">Instrument model</entry>
+
+        <entry key="VendorIDName">Vendor</entry>
+        <entry key="VendorIDTooltip">Instrument manufacturer</entry>
+
+        <entry key="ConnectionStatusName">Status</entry>
+        <entry key="ConnectionStatusTooltip">Status of connection test</entry>
+
+        <entry key="ResourceNameName">Resource Name</entry>
+        <entry key="ResourceNameTooltip">Generated VISA resource name</entry>
+
+        <entry key="ConnectionSuccessLabelName">Test successful. Connection established.</entry>
+        <entry key="ConnectionFailedLabelName">Test failed. Unable to connect.</entry>
+
+        <entry key="ConnectionSuccessful">Connection successful.</entry>
+        <entry key="ConnectionSuccessfulIdentificationFailed">Instrument did not respond to identification command. Ensure that the identification command is valid.</entry>
+        <entry key="ConnectionFailed">Connection failed. {0}</entry>
+        <entry key="Success">Successful</entry>
+        <entry key="Failed">Failed</entry>
+
+        <entry key="TestConnectionButtonName">Test Connection</entry>
+        <entry key="TestConnectionButtonTooltip">Test connection to generated resource name</entry>
+        <entry key="ConfirmButtonName">Confirm</entry>
+        <entry key="ConfirmButtonTooltip">Use this resource name</entry>
+        <entry key="CancelButtonName">Cancel</entry>
+        <entry key="CancelButtonTooltip">Close</entry>
+
+        <entry key="ModalDialogNotSet">Cannot get the modal dialog handle if not previously set.</entry>
+
+        <!--VISA APP-->
+        <entry key="DisplayName">VISA Explorer</entry>
+        <entry key="TransportName">visadev</entry>
+        <entry key="TransportInstance">visadevObj</entry><!--TransportInstance is the name of the visadev object used in the MATLAB Code Log, and in the default value for the Workspace Variable edit field in the Export section of the toolstrip-->
+        <entry key="ConstructorComment">Create a VISA connection using the resource name or alias.</entry>
+
+        <!-- Binblock Custom Header -->
+        <entry key="HeaderLabel">Binblock Custom Header</entry>
+        <entry key="HeaderTooltip">Specify a custom header that is appended before the binblock header and data</entry>
+
+        <!--WriteRead Button-->
+        <entry key="WriteReadButtonLabel" note="An atomic action of writing a command followed by receiving its response" translate="false">WriteRead</entry>
+        <entry key="WriteReadButtonTooltip">Write a command and read the response</entry>
+        <entry key="WriteReadFormatInvalid">Data Format must be "ASCII-Terminated String" for WriteRead operations.</entry>
+
+        <!--Startup Error Strings -->
+        <entry key="ICTLicenseRequired">VISA Explorer app requires an Instrument Control Toolbox license.</entry>
+        <entry key="LinuxNoSupport">VISA Explorer app is not supported on Linux.</entry>
+        <entry key="VISAInstallationError">Unable to open VISA Explorer because there is an issue with VISA library installation.\n\n&lt;a href="matlab:helpview(''instrument'',''visaTroubleshooting'')"&gt;Related documentation&lt;/a&gt;</entry>
+
+        <!-- Error String for invalid StopBits/DataBits configuration -->
+        <entry key="InvalidStopBits">StopBits value must be {0} or {1} when DataBits value is set to {2}.</entry>
+
+        <!-- App Gallery Label/Description -->
+        <entry key="Tool_visaExplorer_Label">VISA Explorer</entry>
+        <entry key="Tool_visaExplorer_Description">Connect to and communicate with instruments over VISA (visaExplorer)</entry>
+
+        <!-- Property Inspector Text-->
+        <!-- Group ID -->
+        <entry key="PropertyInspectorCommunicationGroupID">Communication</entry>
+        <entry key="PropertyInspectorGPIBGroupID">GPIB</entry>
+        <entry key="PropertyInspectorPXIGroupID">PXI</entry>
+        <entry key="PropertyInspectorSerialGroupID">Serial</entry>
+        <entry key="PropertyInspectorSocketGroupID">Socket</entry>
+        <entry key="PropertyInspectorTCPIPGroupID">TCPIP</entry>
+        <entry key="PropertyInspectorUSBGroupID">USB</entry>
+        <entry key="PropertyInspectorVXIGroupID">VXI</entry>
+        <entry key="PropertyInspectorIdentificationGroupID">Identification</entry>
+
+        <!-- Group Name -->
+        <entry key="PropertyInspectorGPIBGroupName">GPIB Specific</entry>
+        <entry key="PropertyInspectorPXIGroupName">PXI Specific</entry>
+        <entry key="PropertyInspectorSerialGroupName">Serial Specific</entry>
+        <entry key="PropertyInspectorSocketGroupName">Socket Specific</entry>
+        <entry key="PropertyInspectorTCPIPGroupName">TCP/IP Specific</entry>
+        <entry key="PropertyInspectorUSBGroupName">USB Specific</entry>
+        <entry key="PropertyInspectorVXIGroupName">VXI Specific</entry>
+    </message>
+</rsccat>

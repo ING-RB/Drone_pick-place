@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- Copyright 2014-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="ros">
+  <message>    
+    <entry key="Int64NotSupported">The property "{0}" in ROS message type "{1}" with data type ({2}) is converted to data type ({3}) in the Simulink Bus.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" retvalue="false">
+                    <cmd>ros.slros.internal.bus.Util.setInt64SLBusMode(''{4}'',true);set_param(''{4}'','SimulationCommand','update');</cmd> 
+                    <txt>Remove conversion of ROS message properties with "{2}" data type to "{3}" in the Simulink Bus.</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    
+    <entry key="TruncatedArray">
+        The array property "{0}" in ROS message "{1}" can have a maximum of {2,number,integer} items in Simulink, but the received message has {3,number,integer} items. The array property in the Simulink bus will be truncated to {4,number,integer} items.
+        <![CDATA[
+            <actions exclusiveFixIts="yes">
+                <action type="fixit" retvalue="false">
+                    <cmd>ros.slros.internal.bus.Util.setMaxLength(''{5}'',''{1}'',''{0}'',{3,number,integer});</cmd> 
+                    <txt>Increase the maximum array number of items of the "{0}" property in "{1}" to {3,number,integer}.</txt>
+                </action>
+                <action type="suggestion" retvalue="false">
+                    <cmd>ros.slros.internal.dlg.ArraySizeManager.launch(''{5}'');</cmd>  
+                    <txt>Adjust the maximum array sizes for this model.</txt>
+                </action>
+            </actions>
+        ]]>
+    </entry>
+    
+    <entry key="ArrayLengthIncreased">
+        Maximum length increased to {0,number,integer} items.
+    </entry>
+  </message>
+</rsccat>

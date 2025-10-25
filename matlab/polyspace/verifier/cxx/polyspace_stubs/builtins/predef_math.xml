@@ -1,0 +1,2007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018-2024 The MathWorks, Inc. -->
+<!-- Mapping of math builtin to a Polyspace Backend semantic -->
+<!-- For example the definition: -->
+<!-- <tag id="cosf" kind="function" user_name="cosf" type="double (float)" > -->
+<!--   <properties> -->
+<!--     <property kind="predef">cos</property> -->
+<!--     <property kind="predef">f</property> -->
+<!--   </properties> -->
+<!-- </tag> -->
+<!-- means that the user function double cosf(float) will be flagged as a "predef" builtin and gets the -->
+<!-- attribute "cos" as property1 and "f" as property2 in the IL (in its definition). If the type is not compatible, -->
+<!-- then the user function is not flagged as a polyspace builtin  -->
+
+
+<!-- ("predef_fe", "name") property is used to force using the EDG folding constant when translating -->
+<!-- into VVIR. If a backing expression is a call to a builtin with that property, the backing -->
+<!-- expression is ignored by Polyspace. This because EDG constant folding will be more accurate -->
+<!-- than the polyspace backend that is full range for such builtins. -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+<tag id="acos" kind="function" user_name="acos" type="double (double)" other_names="std::acos,__builtin_acos">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">acos</property>
+    </properties>
+</tag>
+
+<tag id="acosf" kind="function" user_name="acosf" type="float (float)" other_names="std::acosf,std::acos,__builtin_acosf,acos">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">acos</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="acosl" kind="function" user_name="acosl" type="long double (long double)" other_names="std::acosl,std::acos,__builtin_acosl,acos">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">acos</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="acosh" kind="function" user_name="acosh" type="double (double)" other_names="std::acosh,__builtin_acosh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">acosh</property>
+    </properties>
+</tag>
+
+<tag id="acoshf" kind="function" user_name="acoshf" type="float (float)" other_names="std::acoshf,std::acosh,__builtin_acoshf,acosh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">acosh</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="acoshl" kind="function" user_name="acoshl" type="long double (long double)" other_names="std::acoshl,std::acosh,__builtin_acoshl,acosh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">acosh</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="asin" kind="function" user_name="asin" type="double (double)" other_names="std::asin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">asin</property>
+    </properties>
+</tag>
+
+<tag id="asinf" kind="function" user_name="asinf" type="float (float)" other_names="std::asinf,std::asin,__builtin_asinf,asin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">asin</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="asinl" kind="function" user_name="asinl" type="long double (long double)" other_names="std::asinl,std::asin,__builtin_asinl,asin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">asin</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="asinh" kind="function" user_name="asinh" type="double (double)" other_names="std::asinh,__builtin_asinh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">asinh</property>
+    </properties>
+</tag>
+
+<tag id="asinhf" kind="function" user_name="asinhf" type="float (float)" other_names="std::asinhf,std::asinh,__builtin_asinhf,asinh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">asinh</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="asinhl" kind="function" user_name="asinhl" type="long double (long double)" other_names="std::asinhl,std::asinh,__builtin_asinhl,asinh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">asinh</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="atan" kind="function" user_name="atan" type="double (double)" other_names="std::atan,__builtin_atan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atan</property>
+    </properties>
+</tag>
+
+<tag id="atanf" kind="function" user_name="atanf" type="float (float)" other_names="std::atanf,std::atan,__builtin_atanf,atan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atan</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="atanl" kind="function" user_name="atanl" type="long double (long double)" other_names="std::atanl,std::atan,__builtin_atanl,atan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atan</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="atan2" kind="function" user_name="atan2" type="double (double, double)" other_names="std::atan2,__builtin_atan2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atan2</property>
+    </properties>
+</tag>
+
+<tag id="atan2f" kind="function" user_name="atan2f" type="float (float, float)" other_names="std::atan2f,std::atan2,__builtin_atan2f,atan2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atan2</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="atan2l" kind="function" user_name="atan2l" type="long double (long double, long double)" other_names="std::atan2l,std::atan2,__builtin_atan2l,atan2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atan2</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="atanh" kind="function" user_name="atanh" type="double (double)" other_names="std::atanh,__builtin_atanh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atanh</property>
+    </properties>
+</tag>
+
+<tag id="atanhf" kind="function" user_name="atanhf" type="float (float)" other_names="std::atanhf,std::atanh,__builtin_atanhf,atanh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atanh</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="atanhl" kind="function" user_name="atanhl" type="long double (long double)" other_names="std::atanhl,std::atanh,__builtin_atanhl,atanh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">atanh</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="cbrt" kind="function" user_name="cbrt" type="double (double)" other_names="std::cbrt,__builtin_cbrt">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cbrt</property>
+    </properties>
+</tag>
+
+<tag id="cbrtf" kind="function" user_name="cbrtf" type="float (float)" other_names="std::cbrtf,std::cbrt,__builtin_cbrtf,cbrt">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cbrt</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="cbrtl" kind="function" user_name="cbrtl" type="long double (long double)" other_names="std::cbrtl,std::cbrt,__builtin_cbrtl,cbrt">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cbrt</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="ceil" kind="function" user_name="ceil" type="double (double)" other_names="std::ceil,__builtin_ceil">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ceil</property>
+    </properties>
+</tag>
+
+<tag id="ceilf" kind="function" user_name="ceilf" type="float (float)" other_names="std::ceilf,std::ceil,__builtin_ceilf,ceil">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ceil</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="ceill" kind="function" user_name="ceill" type="long double (long double)" other_names="std::ceill,std::ceil,__builtin_ceill,ceil">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ceil</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="chgsign" kind="function" user_name="chgsign" type="double (double)" other_names="std::chgsign,__builtin_chgsign">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">chgsign</property>
+    </properties>
+</tag>
+
+<tag id="chgsignf" kind="function" user_name="chgsignf" type="float (float)" other_names="std::chgsignf,std::chgsign,__builtin_chgsignf,chgsign">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">chgsign</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="chgsignl" kind="function" user_name="chgsignl" type="long double (long double)" other_names="std::chgsignl,std::chgsign,__builtin_chgsignl,chgsign">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">chgsign</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="cos" kind="function" user_name="cos" type="double (double)" other_names="std::cos,__builtin_cos">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cos</property>
+    </properties>
+</tag>
+
+<tag id="cosf" kind="function" user_name="cosf" type="float (float)" other_names="std::cosf,std::cos,__builtin_cosf,cos">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cos</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="cosl" kind="function" user_name="cosl" type="long double (long double)" other_names="std::cosl,std::cos,__builtin_cosl,cos">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cos</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="cosh" kind="function" user_name="cosh" type="double (double)" other_names="std::cosh,__builtin_cosh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cosh</property>
+    </properties>
+</tag>
+
+<tag id="coshf" kind="function" user_name="coshf" type="float (float)" other_names="std::coshf,std::cosh,__builtin_coshf,cosh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cosh</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="coshl" kind="function" user_name="coshl" type="long double (long double)" other_names="std::coshl,std::cosh,__builtin_coshl,cosh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">cosh</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="erf" kind="function" user_name="erf" type="double (double)" other_names="std::erf,__builtin_erf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">erf</property>
+    </properties>
+</tag>
+
+<tag id="erff" kind="function" user_name="erff" type="float (float)" other_names="std::erff,std::erf,__builtin_erff,erf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">erf</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="erfl" kind="function" user_name="erfl" type="long double (long double)" other_names="std::erfl,std::erf,__builtin_erfl,erf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">erf</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="erfc" kind="function" user_name="erfc" type="double (double)" other_names="std::erfc,__builtin_erfc">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">erfc</property>
+    </properties>
+</tag>
+
+<tag id="erfcf" kind="function" user_name="erfcf" type="float (float)" other_names="std::erfcf,std::erfc,__builtin_erfcf,erfc">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">erfc</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="erfcl" kind="function" user_name="erfcl" type="long double (long double)" other_names="std::erfcl,std::erfc,__builtin_erfcl,erfc">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">erfc</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="exp" kind="function" user_name="exp" type="double (double)" other_names="std::exp,__builtin_exp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">exp</property>
+    </properties>
+</tag>
+
+<tag id="expf" kind="function" user_name="expf" type="float (float)" other_names="std::expf,std::exp,__builtin_expf,exp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">exp</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="expl" kind="function" user_name="expl" type="long double (long double)" other_names="std::expl,std::exp,__builtin_expl,exp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">exp</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="exp2" kind="function" user_name="exp2" type="double (double)" other_names="std::exp2,__builtin_exp2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">exp2</property>
+    </properties>
+</tag>
+
+<tag id="exp2f" kind="function" user_name="exp2f" type="float (float)" other_names="std::exp2f,std::exp2,__builtin_exp2f,exp2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">exp2</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="exp2l" kind="function" user_name="exp2l" type="long double (long double)" other_names="std::exp2l,std::exp2,__builtin_exp2l,exp2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">exp2</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="expm1" kind="function" user_name="expm1" type="double (double)" other_names="std::expm1,__builtin_expm1">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">expm1</property>
+    </properties>
+</tag>
+
+<tag id="expm1f" kind="function" user_name="expm1f" type="float (float)" other_names="std::expm1f,std::expm1,__builtin_expm1f,expm1">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">expm1</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="expm1l" kind="function" user_name="expm1l" type="long double (long double)" other_names="std::expm1l,std::expm1,__builtin_expm1l,expm1">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">expm1</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fabs" kind="function" user_name="fabs" type="double (double)" other_names="std::fabs,__builtin_fabs">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fabs</property>
+    </properties>
+</tag>
+
+<tag id="fabsf" kind="function" user_name="fabsf" type="float (float)" other_names="std::fabsf,std::fabs,__builtin_fabsf,fabs">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fabs</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fabsl" kind="function" user_name="fabsl" type="long double (long double)" other_names="std::fabsl,std::fabs,__builtin_fabsl,fabs">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fabs</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fdim" kind="function" user_name="fdim" type="double (double, double)" other_names="std::fdim,__builtin_fdim">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fdim</property>
+    </properties>
+</tag>
+
+<tag id="fdimf" kind="function" user_name="fdimf" type="float (float, float)" other_names="std::fdimf,std::fdim,__builtin_fdimf,fdim">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fdim</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fdiml" kind="function" user_name="fdiml" type="long double (long double, long double)" other_names="std::fdiml,std::fdim,__builtin_fdiml,fdim">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fdim</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="floor" kind="function" user_name="floor" type="double (double)" other_names="std::floor,__builtin_floor">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">floor</property>
+    </properties>
+</tag>
+
+<tag id="floorf" kind="function" user_name="floorf" type="float (float)" other_names="std::floorf,std::floor,__builtin_floorf,floor">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">floor</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="floorl" kind="function" user_name="floorl" type="long double (long double)" other_names="std::floorl,std::floor,__builtin_floorl,floor">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">floor</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fma" kind="function" user_name="fma" type="double (double, double, double)" other_names="std::fma,__builtin_fma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fma</property>
+    </properties>
+</tag>
+
+<tag id="fmaf" kind="function" user_name="fmaf" type="float (float, float, float)" other_names="std::fmaf,std::fma,__builtin_fmaf,fma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fma</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fmal" kind="function" user_name="fmal" type="long double (long double, long double, long double)" other_names="std::fmal,std::fma,__builtin_fmal,fma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fma</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fmax" kind="function" user_name="fmax" type="double (double, double)" other_names="std::fmax,__builtin_fmax">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmax</property>
+    </properties>
+</tag>
+
+<tag id="fmaxf" kind="function" user_name="fmaxf" type="float (float, float)" other_names="std::fmaxf,std::fmax,__builtin_fmaxf,fmax">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmax</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fmaxl" kind="function" user_name="fmaxl" type="long double (long double, long double)" other_names="std::fmaxl,std::fmax,__builtin_fmaxl,fmax">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmax</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fmin" kind="function" user_name="fmin" type="double (double, double)" other_names="std::fmin,__builtin_fmin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmin</property>
+    </properties>
+</tag>
+
+<tag id="fminf" kind="function" user_name="fminf" type="float (float, float)" other_names="std::fminf,std::fmin,__builtin_fminf,fmin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmin</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fminl" kind="function" user_name="fminl" type="long double (long double, long double)" other_names="std::fminl,std::fmin,__builtin_fminl,fmin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmin</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fmod" kind="function" user_name="fmod" type="double (double, double)" other_names="std::fmod,__builtin_fmod">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmod</property>
+    </properties>
+</tag>
+
+<tag id="fmodf" kind="function" user_name="fmodf" type="float (float, float)" other_names="std::fmodf,std::fmod,__builtin_fmodf,fmod">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmod</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fmodl" kind="function" user_name="fmodl" type="long double (long double, long double)" other_names="std::fmodl,std::fmod,__builtin_fmodl,fmod">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fmod</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="fpclassify" kind="function" user_name="fpclassify" type="int (double)" other_names="std::fpclassify,__builtin_mw_fpclassify,__builtin_fpclassify">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fpclassify</property>
+    </properties>
+</tag>
+
+<tag id="fpclassifyf" kind="function" user_name="fpclassifyf" type="int (float)" other_names="std::fpclassify,fpclassify,__builtin_mw_fpclassifyf,__builtin_fpclassifyf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fpclassify</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="fpclassifyl" kind="function" user_name="fpclassifyl" type="int (long double)" other_names="std::fpclassify,fpclassify,__builtin_mw_fpclassifyl,__builtin_fpclassifyl">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">fpclassify</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="frexp" kind="function" user_name="frexp" type="double (double, int*)" other_names="std::frexp,__builtin_mw_frexp,__builtin_frexp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">frexp</property>
+    </properties>
+</tag>
+
+<tag id="frexpf" kind="function" user_name="frexpf" type="float (float, int*)" other_names="std::frexpf,std::frexp,frexp,__builtin_mw_frexpf,__builtin_frexpf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">frexp</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="frexpl" kind="function" user_name="frexpl" type="long double (long double, int*)" other_names="std::frexpl,std::frexp,frexp,__builtin_mw_frexpl,__builtin_frexpl">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">frexp</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="hypot" kind="function" user_name="hypot" type="double (double, double)" other_names="std::hypot,__builtin_hypot">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">hypot</property>
+    </properties>
+</tag>
+
+<tag id="hypotf" kind="function" user_name="hypotf" type="float (float, float)" other_names="std::hypotf,std::hypot,__builtin_hypotf,hypot">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">hypot</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="hypotl" kind="function" user_name="hypotl" type="long double (long double, long double)" other_names="std::hypotl,std::hypot,__builtin_hypotl,hypot">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">hypot</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="ilogb" kind="function" user_name="ilogb" type="int (double)" other_names="std::ilogb,__builtin_ilogb">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ilogb</property>
+    </properties>
+</tag>
+
+<tag id="ilogbf" kind="function" user_name="ilogbf" type="int (float)" other_names="std::ilogbf,std::ilogb,__builtin_ilogbf,ilogb">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ilogb</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="ilogbl" kind="function" user_name="ilogbl" type="int (long double)" other_names="std::ilogbl,std::ilogb,__builtin_ilogbl,ilogb">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ilogb</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="isfinitecpp" kind="function" user_name="isfinite" type="bool (double)" other_names="std::isfinite">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isfinite</property>
+    </properties>
+</tag>
+
+<tag id="__finite" kind="function" user_name="isfinite" type="int (double)" other_names="std::isfinite,__finite,__builtin_mw_isfinite,__builtin_isfinite">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isfinite</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isfinite</property>
+    </properties>
+</tag>
+
+<tag id="isfinitecppf" kind="function" user_name="isfinite" type="bool (float)" other_names="std::isfinite">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isfinite</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="__finitef" kind="function" user_name="isfinitef" type="int (float)" other_names="std::isfinite,__finitef,__builtin_mw_isfinitef,__builtin_isfinitef,isfinite">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isfinite</property>
+        <property kind="predef">f</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isfinite</property>
+    </properties>
+</tag>
+
+<tag id="isfinitecppl" kind="function" user_name="isfinite" type="bool (long double)" other_names="std::isfinite">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isfinite</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="__finitel" kind="function" user_name="isfinitel" type="int (long double)" other_names="std::isfinite,__finitel,__builtin_mw_isfinitel,__builtin_isfinitel,isfinite">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isfinite</property>
+        <property kind="predef">l</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isfinite</property>
+    </properties>
+</tag>
+
+<tag id="stdisinf" kind="function" user_name="std::isinf" type="bool (double)" other_names="isinf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isinf</property>
+    </properties>
+</tag>
+
+<tag id="isinf" kind="function" user_name="isinf" type="int (double)" other_names="std::isinf,__isinf,__builtin_mw_isinf,__builtin_isinf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isinf</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isinf</property>
+    </properties>
+</tag>
+
+<tag id="stdisinff" kind="function" user_name="std::isinf" type="bool (float)" other_names="isinf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isinf</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="isinff" kind="function" user_name="isinff" type="int (float)" other_names="std::isinff,std::isinf,__isinff,__builtin_mw_isinff,__builtin_isinff,isinf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isinf</property>
+        <property kind="predef">f</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isinf</property>
+    </properties>
+</tag>
+
+<tag id="stdisinfl" kind="function" user_name="std::isinf" type="bool (long double)" other_names="isinf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isinf</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="isinfl" kind="function" user_name="isinfl" type="int (long double)" other_names="std::isinfl,std::isinf,__isinfl,__builtin_mw_isinfl,__builtin_isinfl,isinf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isinf</property>
+        <property kind="predef">l</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isinf</property>
+    </properties>
+</tag>
+
+<tag id="stdisnan" kind="function" user_name="std::isnan" type="bool (double)" other_names="isnan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isnan</property>
+    </properties>
+</tag>
+
+<tag id="isnan" kind="function" user_name="isnan" type="int (double)" other_names="std::isnan,__isnan,__builtin_mw_isnan,__builtin_isnan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isnan</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isnan</property>
+    </properties>
+</tag>
+
+<tag id="stdisnanf" kind="function" user_name="std::isnan" type="bool (float)" other_names="isnan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isnan</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="isnanf" kind="function" user_name="isnanf" type="int (float)" other_names="std::isnan,__isnanf,__builtin_mw_isnanf,__builtin_isnanf,isnan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isnan</property>
+        <property kind="predef">f</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isnan</property>
+    </properties>
+</tag>
+
+<tag id="stdisnanl" kind="function" user_name="std::isnan" type="bool (long double)" other_names="isnan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isnan</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="isnanl" kind="function" user_name="isnanl" type="int (long double)" other_names="std::isnan,__isnanl,__builtin_mw_isnanl,__builtin_isnanl,isnan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">isnan</property>
+        <property kind="predef">l</property>
+        <property kind="behavior">NO_TMP_WHEN_CALLED</property>
+        <property kind="stdlib_builtin">__builtin_mw_isnan</property>
+    </properties>
+</tag>
+
+<tag id="ldexp" kind="function" user_name="ldexp" type="double (double, int)" other_names="std::ldexp,__builtin_ldexp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ldexp</property>
+    </properties>
+</tag>
+
+<tag id="ldexpf" kind="function" user_name="ldexpf" type="float (float, int)" other_names="std::ldexpf,std::ldexp,__builtin_ldexpf,ldexp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ldexp</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="ldexpl" kind="function" user_name="ldexpl" type="long double (long double, int)" other_names="std::ldexpl,std::ldexp,__builtin_ldexpl,ldexp">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">ldexp</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="lgamma" kind="function" user_name="lgamma" type="double (double)" other_names="std::lgamma,__builtin_lgamma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">lgamma</property>
+    </properties>
+</tag>
+
+<tag id="lgammaf" kind="function" user_name="lgammaf" type="float (float)" other_names="std::lgammaf,std::lgamma,__builtin_lgammaf,lgamma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">lgamma</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="lgammal" kind="function" user_name="lgammal" type="long double (long double)" other_names="std::lgammal,std::lgamma,__builtin_lgammal,lgamma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">lgamma</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="log" kind="function" user_name="log" type="double (double)" other_names="std::log,__builtin_mw_log,__builtin_log">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log</property>
+    </properties>
+</tag>
+
+<tag id="logf" kind="function" user_name="logf" type="float (float)" other_names="std::logf,std::log,log,__builtin_logf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="logl" kind="function" user_name="logl" type="long double (long double)" other_names="std::logl,std::log,__builtin_logl,log">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="log10" kind="function" user_name="log10" type="double (double)" other_names="std::log10,__builtin_mw_log10,__builtin_log10">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log10</property>
+    </properties>
+</tag>
+
+<tag id="log10f" kind="function" user_name="log10f" type="float (float)" other_names="std::log10f,std::log10,__builtin_log10f,log10">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log10</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="log10l" kind="function" user_name="log10l" type="long double (long double)" other_names="std::log10l,std::log10,__builtin_log10l,log10">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log10</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="log1p" kind="function" user_name="log1p" type="double (double)" other_names="std::log1p,__builtin_log1p">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log1p</property>
+    </properties>
+</tag>
+
+<tag id="log1pf" kind="function" user_name="log1pf" type="float (float)" other_names="std::log1pf,std::log1p,__builtin_log1pf,log1p">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log1p</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="log1pl" kind="function" user_name="log1pl" type="long double (long double)" other_names="std::log1pl,std::log1p,__builtin_log1pl,log1p">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log1p</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="log2" kind="function" user_name="log2" type="double (double)" other_names="std::log2,__builtin_mw_log2,__builtin_log2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log2</property>
+    </properties>
+</tag>
+
+<tag id="log2f" kind="function" user_name="log2f" type="float (float)" other_names="std::log2f,std::log2,__builtin_log2f,log2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log2</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="log2l" kind="function" user_name="log2l" type="long double ( long double)" other_names="std::log2l,std::log2,__builtin_log2l,log2">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">log2</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="logb" kind="function" user_name="logb" type="double (double)" other_names="std::logb,__builtin_logb">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">logb</property>
+    </properties>
+</tag>
+
+<tag id="logbf" kind="function" user_name="logbf" type="float (float)" other_names="std::logbf,std::logb,__builtin_logbf,logb">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">logb</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="logbl" kind="function" user_name="logbl" type="long double (long double)" other_names="std::logbl,std::logb,__builtin_logbl,logb">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">logb</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="modf" kind="function" user_name="modf" type="double (double, double*)" other_names="std::modf,__builtin_modf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">modf</property>
+    </properties>
+</tag>
+
+<tag id="modff" kind="function" user_name="modff" type="float (float, float*)" other_names="std::modff,std::modf,__builtin_modff,modf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">modf</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="modfl" kind="function" user_name="modfl" type="long double (long double, long double*)" other_names="std::modfl,std::modf,__builtin_modfl,modf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">modf</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="nearbyint" kind="function" user_name="nearbyint" type="double (double)" other_names="std::nearbyint,__builtin_nearbyint">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nearbyint</property>
+    </properties>
+</tag>
+
+<tag id="nearbyintf" kind="function" user_name="nearbyintf" type="float (float)" other_names="std::nearbyintf,std::nearbyint,__builtin_nearbyintf,nearbyint">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nearbyint</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="nearbyintl" kind="function" user_name="nearbyintl" type="long double (long double)" other_names="std::nearbyintl,std::nearbyint,__builtin_nearbyintl,nearbyint">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nearbyint</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="nextafter" kind="function" user_name="nextafter" type="double (double, double)" other_names="std::nextafter,__builtin_nextafter">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nextafter</property>
+    </properties>
+</tag>
+
+<tag id="nextafterf" kind="function" user_name="nextafterf" type="float (float, float)" other_names="std::nextafterf,std::nextafter,__builtin_nextafterf,nextafter">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nextafter</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="nextafterl" kind="function" user_name="nextafterl" type="long double (long double, long double)" other_names="std::nextafterl,std::nextafter,__builtin_nextafterl,nextafter">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nextafter</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="nexttoward" kind="function" user_name="nexttoward" type="double (double, long double)" other_names="std::nexttoward,__builtin_nexttoward">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nexttoward</property>
+    </properties>
+</tag>
+
+<tag id="nexttowardf" kind="function" user_name="nexttowardf" type="float (float, long double)" other_names="std::nexttowardf,std::nexttoward,__builtin_nexttowardf,nexttoward">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nexttoward</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="nexttowardl" kind="function" user_name="nexttowardl" type="long double (long double, long double)" other_names="std::nexttowardl,std::nexttoward,__builtin_nexttowardl,nexttoward">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">nexttoward</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="pow" kind="function" user_name="pow" type="double (double, double)" other_names="std::pow,__builtin_pow">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">pow</property>
+    </properties>
+</tag>
+
+<tag id="powf" kind="function" user_name="powf" type="float (float, float)" other_names="std::powf,std::pow,__builtin_powf,pow">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">pow</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="powl" kind="function" user_name="powl" type="long double (long double, long double)" other_names="std::powl,std::pow,__builtin_powl,pow">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">pow</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="remainder" kind="function" user_name="remainder" type="double (double, double)" other_names="std::remainder,__builtin_remainder">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">remainder</property>
+    </properties>
+</tag>
+
+<tag id="remainderf" kind="function" user_name="remainderf" type="float (float, float)" other_names="std::remainderf,std::remainder,__builtin_remainderf,remainder">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">remainder</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="remainderl" kind="function" user_name="remainderl" type="long double (long double, long double)" other_names="std::remainderl,std::remainder,__builtin_remainderl,remainder">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">remainder</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="rint" kind="function" user_name="rint" type="double (double)" other_names="std::rint,__builtin_rint">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">rint</property>
+    </properties>
+</tag>
+
+<tag id="rintf" kind="function" user_name="rintf" type="float (float)" other_names="std::rintf,std::rint,__builtin_rintf,rint">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">rint</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="rintl" kind="function" user_name="rintl" type="long double (long double)" other_names="std::rintl,std::rint,__builtin_rintl,rint">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">rint</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="round" kind="function" user_name="round" type="double (double)" other_names="std::round,__builtin_round">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">round</property>
+    </properties>
+</tag>
+
+<tag id="roundf" kind="function" user_name="roundf" type="float (float)" other_names="std::roundf,std::round,__builtin_roundf,round">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">round</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="roundl" kind="function" user_name="roundl" type="long double (long double)" other_names="std::roundl,std::round,__builtin_roundl,round">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">round</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="sin" kind="function" user_name="sin" type="double (double)" other_names="std::sin,__builtin_sin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sin</property>
+    </properties>
+</tag>
+
+<tag id="sinf" kind="function" user_name="sinf" type="float (float)" other_names="std::sinf,std::sin,__builtin_sinf,sin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sin</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="sinl" kind="function" user_name="sinl" type="long double (long double)" other_names="std::sinl,std::sin,__builtin_sinl,sin">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sin</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="sinh" kind="function" user_name="sinh" type="double (double)" other_names="std::sinh,__builtin_sinh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sinh</property>
+    </properties>
+</tag>
+
+<tag id="sinhf" kind="function" user_name="sinhf" type="float (float)" other_names="std::sinhf,std::sinh,__builtin_sinhf,sinh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sinh</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="sinhl" kind="function" user_name="sinhl" type="long double (long double)" other_names="std::sinhl,std::sinh,__builtin_sinhl,sinh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sinh</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="sqrt" kind="function" user_name="sqrt" type="double (double)" other_names="std::sqrt,__builtin_sqrt">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sqrt</property>
+    </properties>
+</tag>
+
+<tag id="sqrtf" kind="function" user_name="sqrtf" type="float (float)" other_names="std::sqrtf,std::sqrt,sqrt,__builtin_sqrtf">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sqrt</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="sqrtl" kind="function" user_name="sqrtl" type="long double (long double)" other_names="std::sqrtl,std::sqrt,sqrt,__builtin_sqrtl">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">sqrt</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="tan" kind="function" user_name="tan" type="double (double)" other_names="std::tan,__builtin_tan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tan</property>
+    </properties>
+</tag>
+
+<tag id="tanf" kind="function" user_name="tanf" type="float (float)" other_names="std::tanf,std::tan,__builtin_tanf,tan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tan</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="tanl" kind="function" user_name="tanl" type="long double (long double)" other_names="std::tanl,std::tan,__builtin_tanl,tan">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tan</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="tanh" kind="function" user_name="tanh" type="double (double)" other_names="std::tanh,__builtin_tanh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tanh</property>
+    </properties>
+</tag>
+
+<tag id="tanhf" kind="function" user_name="tanhf" type="float (float)" other_names="std::tanhf,std::tanh,__builtin_tanhf,tanh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tanh</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="tanhl" kind="function" user_name="tanhl" type="long double (long double)" other_names="std::tanhl,std::tanh,__builtin_tanhl,tanh">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tanh</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="tgamma" kind="function" user_name="tgamma" type="double (double)" other_names="std::tgamma,__builtin_tgamma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tgamma</property>
+    </properties>
+</tag>
+
+<tag id="tgammaf" kind="function" user_name="tgammaf" type="float (float)" other_names="std::tgammaf,std::tgamma,__builtin_tgammaf,tgamma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tgamma</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="tgammal" kind="function" user_name="tgammal" type="long double (long double)" other_names="std::tgammal,std::tgamma,__builtin_tgammal,tgamma">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">tgamma</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<tag id="trunc" kind="function" user_name="trunc" type="double (double)" other_names="std::trunc,__builtin_trunc">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">trunc</property>
+    </properties>
+</tag>
+
+<tag id="truncf" kind="function" user_name="truncf" type="float (float)" other_names="std::truncf,std::trunc,__builtin_truncf,trunc">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">trunc</property>
+        <property kind="predef">f</property>
+    </properties>
+</tag>
+
+<tag id="truncl" kind="function" user_name="truncl" type="long double (long double)" other_names="std::truncl,std::trunc,__builtin_truncl,trunc">
+    <match>
+        <match-function>
+            <match-included-definition-header regex="math\.h|cmath" />
+        </match-function>
+    </match>
+    <properties>
+        <property kind="predef">trunc</property>
+        <property kind="predef">l</property>
+    </properties>
+</tag>
+
+<!-- Builtin handled by VVIR pass ModelEmbeddedCoderLookupTablePass,
+    force a stdlib builtin to hide wrong FE warnings (g3330207) -->
+  <tag id="__ps_lookup_table_clip" kind="function" user_name="__ps_lookup_table_clip">
+    <properties>
+      <property kind="stdlib_builtin">__ps_lookup_table_clip</property>
+    </properties>
+  </tag>
+
+</tags>

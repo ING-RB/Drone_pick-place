@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2020-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="polyspace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!-- project options -->
+
+    <!-- mostly moved from pstestmgr.xml, except that OptionHelpIncludePatterns has been updated -->
+    <entry key="OptionNameProjectName">Name</entry>
+    <entry key="OptionNameProjectLanguage">Language</entry>
+    <entry key="OptionNameProjectCreated">Created</entry>
+    <entry key="OptionNameProjectLastModified">Last modified</entry>
+    <entry key="OptionNameProjectAuthor">Author</entry>
+    <entry key="OptionNameApplicationSourceFolders">Application Source Folders</entry>
+    <entry key="OptionHelpApplicationSourceFolders">Source folders explicitly added to project.</entry>
+    <entry key="OptionNameApplicationSourceFiles">Application Source Files</entry>
+    <entry key="OptionHelpApplicationSourceFiles">Source files explicitly added to project.</entry>
+    <entry key="OptionNamePSTUnitTestSourceFolders">Polyspace xUnit Test Folders</entry>
+    <entry key="OptionHelpPSTUnitTestSourceFolders">Folders containing Polyspace Test xUnit tests explicitly added to project.</entry>
+    <entry key="OptionNamePSTUnitTestSourceFiles">Polyspace xUnit Test Files</entry>
+    <entry key="OptionHelpPSTUnitTestSourceFiles">Files containing Polyspace Test xUnit tests explicitly added to project.</entry>
+    <entry key="OptionNameExternalTestSourceFolders">External Test Folders</entry>
+    <entry key="OptionHelpExternalTestSourceFolders">Folders containing external tests explicitly added to project.</entry>
+    <entry key="OptionNameExternalTestSourceFiles">External Test Files</entry>
+    <entry key="OptionHelpExternalTestSourceFiles">Files containing external tests explicitly added to project.</entry>
+    <entry key="OptionNameProjectVariables">Project Variables</entry>
+    <entry key="OptionHelpProjectVariables">Variable names to be used as shorthands in project settings. To refer to these variables, enclose them in $(). For instance, you can set a variable ROOTPATH to a root folder path and enter folder paths elsewhere starting with $(ROOTPATH).</entry>
+    <entry key="OptionNameIncludePatterns">Include File Name Patterns</entry>
+    <entry key="OptionHelpIncludePatterns">Patterns that identify source files to add to the project from the specified folders. Use wildcards such as * and ? to cover multiple files.</entry>
+    <entry key="OptionNameExcludePatterns">Exclude Patterns</entry>
+    <entry key="OptionHelpExcludePatterns">Files and folders permanently excluded from project. If you exclude a file, for instance, refreshing the parent source folder does not add the file back to the project. Note that you cannot exclude a file or folder explicitly added to project.</entry>
+    <entry key="OptionNameArtifactPath">Artifacts Directory</entry>
+    <entry key="OptionHelpArtifactPath">Folder storing project artifacts such as generated test code and build information. If you set the environment variable POLYSPACE_ARTIFACTS_DIR, it overrides this option.</entry>
+
+    <!-- static analysis options -->
+    <entry key="OptionNameAllowNegativeOperandInShift">Allow negative operand for left shifts</entry>
+    <entry key="OptionHelpAllowNegativeOperandInShift">The ANSI/ISO C-90 standard does not allow a shift operation on a negative number. By default, the verification stops.&lt;br&gt;&lt;br&gt;For example, the code &lt;i&gt; -2 &lt;&lt; 2 &lt;/i&gt; causes the verification to stop.&lt;br&gt;However, if you select this option, Polyspace considers the operation valid and produces the result: -2 &lt;&lt; 2 = -8</entry>
+    <entry key="OptionNameAllowNonFiniteFloats">Consider non finite floats</entry>
+    <entry key="OptionHelpAllowNonFiniteFloats">Incorporate Inf and NaN in the verification. For instance: &lt;BR&gt; &lt;ul&gt;  &lt;li&gt;Allow Inf and NaN from floating point operations. &lt;li&gt;Assume that floating point variables with unknown values can be infinite or NaN. &lt;/ul&gt; Using the option alone effectively disables many numerical checks on floating point&lt;BR&gt;operations. If you have generally accounted for infinities and NaNs, but you are not sure&lt;BR&gt;that you have considered all situations, set the options Infinities and NaNs to warn-first.&lt;br&gt;&lt;br&gt;In Bug Finder, use this option if the analysis flags comparisons with infinities and NaNs as dead code.</entry>
+    <entry key="OptionNameAllowPtrArithOnStruct">Enable pointer arithmetic across fields</entry>
+    <entry key="OptionHelpAllowPtrArithOnStruct">Allow pointer arithmetic across bounds of structure fields - not ANSI/ISO C-90 behavior.</entry>
+    <entry key="OptionNameAllowedPragmas">Allowed pragmas</entry>
+    <entry key="OptionHelpAllowedPragmas">Specify pragmas for checking of: &lt;ul&gt;&lt;li&gt;MISRA-C and MISRA AC AGC rule 3.4 &lt;/li&gt; &lt;li&gt;MISRA C++ rule 16-6-1&lt;/li&gt;&lt;/ul&gt; The rule checker will consider the pragmas documented and not flag violations of these rules.</entry>
+    <entry key="OptionNameAutosarMultitasking">ARXML files selection</entry>
+    <entry key="OptionHelpAutosarMultitasking">Specify the list of ARXML files containing the description of the AUTOSAR multitasking configuration.</entry>
+    <entry key="OptionNameBooleanTypes">Effective boolean types</entry>
+    <entry key="OptionHelpBooleanTypes">Use this option to specify data types that you want Polyspace to consider as Boolean.&lt;BR&gt;Only data types defined by a typedef statement are supported.</entry>
+    <entry key="OptionNameCheckGlobalsInit">Check that global variables are initialized after warm reboot</entry>
+    <entry key="OptionHelpCheckGlobalsInit">Check that global variables are assigned a value in designated initialization code.&lt;BR&gt;When verifying whole application, initialization code is beginning of 'main' to pragma 'polyspace_end_of_init'.&lt;BR&gt;When verifying a module or library, initialization code is the sequence of initialization functions.</entry>
+    <entry key="OptionNameCheckInfinite">Infinities</entry>
+    <entry key="OptionHelpCheckInfinite">Detect operations that result in infinities (Inf-s).&lt;BR&gt;&lt;ul&gt;&lt;li&gt;allow: Do not produce a check on the operation.&lt;BR&gt;&lt;/li&gt;&lt;li&gt;warn-first: Produce a check on the operation only if the operands are not infinite.&lt;BR&gt;Continue verification even if the check is red.&lt;BR&gt;This mode highlights only the first occurrence of an infinite value.&lt;/li&gt;&lt;li&gt;forbid: Produce a check on the operation.&lt;BR&gt;Stop verification if the check is red.&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameCheckNan">NaNs</entry>
+    <entry key="OptionHelpCheckNan">Detect operations that result in NaN-s.&lt;BR&gt;&lt;ul&gt;&lt;li&gt;allow: Do not produce a check on the operation.&lt;BR&gt;&lt;/li&gt;&lt;li&gt;warn-first: Produce a check on the operation only if the operands are not NaN.&lt;BR&gt;Continue verification even if the check is red.&lt;BR&gt;This mode highlights only the first occurrence of a NaN.&lt;/li&gt;&lt;li&gt;forbid: Produce a check on the operation.&lt;BR&gt;Stop verification if the check is red.&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameCheckSubnormal">Subnormal detection mode</entry>
+    <entry key="OptionHelpCheckSubnormal">Detect operations that result in subnormal floating point values.&lt;BR&gt;&lt;ul&gt;&lt;li&gt;allow: Do not produce a check on the operation.&lt;BR&gt;&lt;/li&gt;&lt;li&gt;warn-first: Produce a check on the operation only if the operands are not subnormal.&lt;BR&gt;Continue verification even if the check is red.&lt;BR&gt;This mode highlights only the first occurrence of a subnormal value.&lt;/li&gt;&lt;li&gt;warn-all: Produce a check on the operation even if the operands are subnormal.&lt;BR&gt;Continue verification even if the check is red.&lt;BR&gt;This mode highlights all occurrences of subnormal values.&lt;/li&gt;&lt;li&gt;forbid: Produce a check on the operation.&lt;BR&gt;Stop verification if the check is red.&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameCheckersActivationFile">Checkers activation file</entry>
+    <entry key="OptionHelpCheckersActivationFile">Select checkers (defects and coding rules). When you save your changes, your selection is saved as an XML and the path to the XML file specified for this option.</entry>
+    <entry key="OptionNameChecksUsingSystemInputValues">Run stricter checks considering all values of system inputs</entry>
+    <entry key="OptionHelpChecksUsingSystemInputValues">Consider all possible values for: &lt;ul&gt;&lt;li&gt;Global variables&lt;/li&gt; &lt;li&gt;Reads of volatile variables&lt;/li&gt; &lt;li&gt;Returns of stubbed functions&lt;/li&gt; &lt;li&gt;Function inputs specified with &quot;Consider inputs to these functions&quot;&lt;/li&gt;&lt;/ul&gt; The stricter static analysis detects issues that can result from numerical edge cases, &lt;BR&gt;and provide example values that can lead to the detected defect.&lt;BR&gt; &lt;BR&gt; The stricter analysis is performed for functions specified with option &quot;Consider inputs to these functions&quot; (-system-inputs-from).</entry>
+    <entry key="OptionNameClassAnalyzer">Class</entry>
+    <entry key="OptionHelpClassAnalyzer">Enter the list of classes used to generate the main:&lt;ul&gt;&lt;li&gt;none: no class&lt;BR&gt;&lt;li&gt;all: every classes&lt;BR&gt;&lt;li&gt;custom: list of given classes.&lt;BR&gt;Selected member functions (defined by &apos;Functions to call within the specified classes&apos;) of the given class list will be called by generated main.&lt;BR&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameClassAnalyzerCalls">Functions to call within the specified classes</entry>
+    <entry key="OptionHelpClassAnalyzerCalls">Verify eligible methods of the classes specified by the option -class-analyzer. Eligible methods are static, public and protected methods of the specified classes.&lt;ul&gt;&lt;li&gt;all: Generated main calls all public and protected methods of the specified classes. Members inherited from a parent class are not called.&lt;BR&gt;&lt;li&gt;all-public: Generated main calls all methods except protected methods.&lt;BR&gt;&lt;li&gt;inherited-all: Generated main calls all public and protected methods of specified classes and their parents.&lt;BR&gt;&lt;li&gt;inherited-all-public: Generated main calls all public methods of specified classes and their parents.&lt;BR&gt;&lt;li&gt;unused: Default. Generated main calls all methods that are not called within the specified classes.&lt;BR&gt;&lt;li&gt;unused-public: With the exception of protected methods, generated main calls all methods that are not called within the specified classes.&lt;BR&gt;&lt;li&gt;inherited-unused: Generated main calls all public and protected methods of specified classes and their parents that are not called by another method.&lt;BR&gt;&lt;li&gt;inherited-unused-public: Generated main calls all public methods of specified classes and their parents that are not called by another method.&lt;BR&gt;&lt;li&gt;custom=list_of_methods: Generated main calls methods that you provide in list_of_methods.&lt;BR&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameClassOnly">Analyze class content only</entry>
+    <entry key="OptionHelpClassOnly">Analyze only the code contained in the classes specified by the Class (-class-analyzer) option.&lt;BR&gt;Any function defined outside the classes will be stubbed, even if you give Polyspace the source code.</entry>
+    <entry key="OptionNameCodeMetrics">Calculate Code Metrics</entry>
+    <entry key="OptionHelpCodeMetrics">Calculate Code Metrics.</entry>
+    <entry key="OptionNameConsiderVolatileQualifierOnFields">Consider volatile qualifier on fields</entry>
+    <entry key="OptionHelpConsiderVolatileQualifierOnFields">Do not ignore volatile qualifier on fields of structure.&lt;br&gt;If you turn on this option, the software makes the following assumptions:&lt;ul&gt;&lt;li&gt;If one field of a structure is volatile, the structure is volatile as a whole.&lt;br&gt;All fields are volatile even when they do not have the volatile qualifier.&lt;/li&gt;&lt;li&gt;Each field of the volatile structure has full range of values at any point in the code.&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameContextSensitivity">Sensitivity context</entry>
+    <entry key="OptionHelpContextSensitivity">Add calling context information for checks contained in the given functions.&lt;br&gt;For example, if one call to the function results in a red check, and another call results in a green check, the calling information and color for both will be contained within the check.&lt;br&gt;&lt;br&gt;Select one of the following values:&lt;ul&gt;&lt;li&gt;none - No context sensitivity&lt;br&gt;&lt;li&gt;auto - Automatically select the functions that context sensitivity will be applied to&lt;br&gt;&lt;li&gt;custom - Provide the functions that context sensitivity will be applied to&lt;/li&gt;</entry>
+    <entry key="OptionNameCriticalSection">Critical section details</entry>
+    <entry key="OptionHelpCriticalSection">Specify the list of routines beginning and ending critical sections. Each critical section has a beginning and ending.&lt;BR&gt;When you want to model protection of shared resources, use these critical sections.</entry>
+    <entry key="OptionNameCyclicTasks">Cyclic tasks</entry>
+    <entry key="OptionHelpCyclicTasks">Specify the list of the cyclic tasks to be analyzed. These tasks must not take parameters.&lt;BR&gt;If your tasks are functions with parameters, you can encapsulate&lt;BR&gt;them in functions with no parameters and pass parameters through global variables.</entry>
+    <entry key="OptionNameDataRangeSpecifications">Constraint setup</entry>
+    <entry key="OptionHelpDataRangeSpecifications">Specify data constraints for global variables, pointers and function parameters.&lt;BR&gt;Click the &quot;Edit&quot; button to open a wizard that guides you through the constraint setup. Alternatively, specify a constraint template file in the field.&lt;BR&gt;&lt;BR&gt;The specified constraints override values extracted from a Simulink model.</entry>
+    <entry key="OptionNameDetectPointerEscape">Detect stack pointer dereference outside scope</entry>
+    <entry key="OptionHelpDetectPointerEscape">Find cases where a function returns a pointer to one of its local variables, causing undefined behavior.</entry>
+    <entry key="OptionNameDisableInitializationChecks">Disable checks for non-initialization</entry>
+    <entry key="OptionHelpDisableInitializationChecks">Disable the checks:&lt;ul&gt;&lt;li&gt;Non-initialized local variable&lt;br&gt;&lt;li&gt;Non-initialized variable&lt;br&gt;&lt;li&gt;Non-initialized pointer&lt;br&gt;&lt;li&gt;Initialized return value&lt;/i&gt;&lt;/ul&gt;If you turn on this option, at declaration, variables are considered full range and pointers are null or pointing to a memory block at an unknown offset.</entry>
+    <entry key="OptionNameDoNotGenerateResultsFor">Do not generate results for</entry>
+    <entry key="OptionHelpDoNotGenerateResultsFor">Specify files on which you do not want analysis results. &lt;ul&gt;&lt;li&gt;include-folders: Headers in Include folders &lt;/li&gt; &lt;li&gt;all-headers: Headers in Include folders, headers in same folders as Source files &lt;/li&gt; &lt;li&gt;custom: Files that you specify, or files in folders that you specify &lt;/li&gt;&lt;/ul&gt; The option applies to coding rules, code metrics and Polyspace Bug Finder defects only.</entry>
+    <entry key="OptionNameDos">Code from DOS or Windows file system</entry>
+    <entry key="OptionHelpDos">Use this option when code comes from a &lt;B&gt;DOS or Windows&lt;/B&gt; file system.&lt;BR&gt;The option helps with upper/lower cases sensitivity and control character issues.</entry>
+    <entry key="OptionNameEnableBatchBugFinder">Run Bug Finder analysis on a remote cluster</entry>
+    <entry key="OptionHelpEnableBatchBugFinder">Send Polyspace analysis jobs to a remote cluster configured with MATLAB Distributed Computing Server and Polyspace Bug Finder Server.</entry>
+    <entry key="OptionNameEnableBatchCodeProver">Run Code Prover analysis on a remote cluster</entry>
+    <entry key="OptionHelpEnableBatchCodeProver">Send Polyspace analysis jobs to a remote cluster configured with MATLAB Distributed Computing Server and Polyspace Code Prover Server.</entry>
+    <entry key="OptionNameEnableCheckersActivationFile">Use custom checkers file</entry>
+    <entry key="OptionHelpEnableCheckersActivationFile">Specify that checkers must be specified using a checkers activation XML file.</entry>
+    <entry key="OptionNameEnableConcurrencyDetection">Enable automatic concurrency detection for Code Prover</entry>
+    <entry key="OptionHelpEnableConcurrencyDetection">Automatically recognize certain concurrency primitives such as pthread_create.&lt;BR&gt; &lt;ul&gt; &lt;li&gt;Code Prover: Use this option for multitasking applications that contain the concurrency primitives.&lt;br&gt;Your application must have a ‘main’ function. &lt;li&gt;Bug Finder: The option is not necessary. Bug Finder recognizes the concurrency primitives by default. &lt;/ul&gt;Click &apos;More Help&apos; for list of primitives that can be detected.</entry>
+    <entry key="OptionNameEnableExternalMultitasking">Specify multitasking configuration using file</entry>
+    <entry key="OptionHelpEnableExternalMultitasking">Specify that Polyspace must extract the multitasking description from external files.</entry>
+    <entry key="OptionNameEnableMain">Verify whole application</entry>
+    <entry key="OptionHelpEnableMain">Specify that your application contains a 'main' function. Code Prover uses this 'main' function as the starting point of verification.</entry>
+    <entry key="OptionNameEnableMultitasking">Configure multitasking manually</entry>
+    <entry key="OptionHelpEnableMultitasking">Specify tasks, interrupts, shared variable protection, and other multitasking constructs.</entry>
+    <entry key="OptionNameEnableKLimiting">Set depth of verification inside structures</entry>
+    <entry key="OptionHelpEnableKLimiting">Specify that depth of verification inside structures must be specified.</entry>
+    <entry key="OptionNameEnableReportGeneration">Generate report</entry>
+    <entry key="OptionHelpEnableReportGeneration">Generate report from static analysis results.</entry>
+    <entry key="OptionNameEntryPoints">Tasks</entry>
+    <entry key="OptionHelpEntryPoints">Specify the list of tasks to be analyzed. These entry points must not take parameters.&lt;BR&gt;If your task entry points are functions with parameters, you can encapsulate&lt;BR&gt;them in functions with no parameters and pass parameters through global variables.</entry>
+    <entry key="OptionNameExternalMultitaskingType">External file for multitasking</entry>
+    <entry key="OptionHelpExternalMultitaskingType">Specify OSEK OIL files or AUTOSAR ARXML files for multitasking.</entry>
+    <entry key="OptionNameFastAnalysis">Use fast analysis mode for Bug Finder</entry>
+    <entry key="OptionHelpFastAnalysis">Run Bug Finder in fast analysis mode. Only modified files are analyzed.&lt;BR&gt;Note: Fast-analysis mode checks only a subset of the Bug Finder defects and coding rules.</entry>
+    <entry key="OptionNameFloatRoundingMode">Float rounding mode</entry>
+    <entry key="OptionHelpFloatRoundingMode">Specify the rounding modes to consider when determining the results of floating point arithmetic. &lt;BR&gt; &lt;ul&gt;  &lt;li&gt;to-nearest: Consider the round-to-nearest mode and no extended precision. &lt;li&gt;all: Consider all rounding modes and extended precision. &lt;/ul&gt;</entry>
+    <entry key="OptionNameFunctionsCalledAfterLoop">Termination functions</entry>
+    <entry key="OptionHelpFunctionsCalledAfterLoop">Specify the functions called by the generated main after the cyclic loop.</entry>
+    <entry key="OptionNameFunctionsCalledBeforeMain">Initialization functions</entry>
+    <entry key="OptionHelpFunctionsCalledBeforeMain">Specify the initialization functions.&lt;br&gt;Functions called before other functions by the automatically generated main.</entry>
+    <entry key="OptionNameFunctionsToStub">Functions to stub</entry>
+    <entry key="OptionHelpFunctionsToStub">Specify functions that you want Polyspace to stub.</entry>
+    <entry key="OptionNameGenerateResultsFor">Generate results for sources and</entry>
+    <entry key="OptionHelpGenerateResultsFor">Specify header files on which you want analysis results. &lt;ul&gt;&lt;li&gt;source-headers: Headers in same folders as Source files &lt;/li&gt; &lt;li&gt;all-headers: Headers in same folders as Source files, headers in Include folders &lt;/li&gt; &lt;li&gt;custom: Files that you specify, or files in folders that you specify &lt;/li&gt;&lt;/ul&gt; The option applies to coding rules, code metrics and Polyspace Bug Finder defects only.</entry>
+    <entry key="OptionNameIgnoreAssemblyCode">Ignore assembly code</entry>
+    <entry key="OptionHelpIgnoreAssemblyCode">Ignore all assembly code.&lt;br&gt;Unless you turn on this option, the software assumes that assembly code can modify C/C++ variables.</entry>
+    <entry key="OptionNameInitOnlyMode">Verify initialization code only</entry>
+    <entry key="OptionHelpInitOnlyMode">Check initialization section of code for run-time errors and other issues.&lt;BR&gt;When verifying whole application, initialization code is beginning of 'main' to pragma 'polyspace_end_of_init'.&lt;BR&gt;When verifying a module or library, initialization code is the sequence of initialization functions.</entry>
+    <entry key="OptionNameInline">Inline</entry>
+    <entry key="OptionHelpInline">Create, for each listed procedure, a clone of the procedure for every call.&lt;br&gt;This inlining reduces the number of aliases in a given procedure, and may improve precision.&lt;br&gt;&lt;br&gt;&lt;b&gt;Warning:&lt;/b&gt; Extensive use of this option may result in excessive code duplication and lead to scaling problems.</entry>
+    <entry key="OptionNameInternalOther" note="placeholder">InternalOther</entry>
+    <entry key="OptionHelpInternalOther" note="placeholder"></entry>
+    <entry key="OptionNameInterrupts">Interrupts</entry>
+    <entry key="OptionHelpInterrupts">Specify the list of the interrupts in the system. Interrupts are cyclic tasks that cannot be preempted.</entry>
+    <entry key="OptionNameKLimiting">Depth of verification inside structures</entry>
+    <entry key="OptionHelpKLimiting">Limit the number of fields in a structure that the pointer analysis distinguishes, that is, specify the depth of analysis inside structures.&lt;br&gt;&lt;br&gt;WARNING: Should be used with a value greater than or equal to 2. Otherwise, the verification could take longer or be less accurate.</entry>
+    <entry key="OptionNameLibrary">Libraries used</entry>
+    <entry key="OptionHelpLibrary">Specify libraries that you use in your program.&lt;BR&gt;The analysis uses smart stubs for functions from those libraries instead of generic stubs (and does not attempt to check the function implementations).&lt;BR&gt;Using this option enables faster analysis without losing precision and triggers library-specific checks on library function calls.</entry>
+    <entry key="OptionNameMain">Main entry point</entry>
+    <entry key="OptionHelpMain">Use existing &apos;main&apos; function as starting point of verification.</entry>
+    <entry key="OptionNameMainGenerator">Verify module or library</entry>
+    <entry key="OptionHelpMainGenerator">Automatically generate a &apos;main&apos; function.</entry>
+    <!-- Radio button uses MainGenerator ID, text shown only in MBD mode -->
+    <entry key="OptionNameMainGeneratorMBD">Verify model generated code</entry>
+    <entry key="OptionHelpMainGeneratorMBD">Specify that the code being analyzed is generated from a model. This option is automatically set when you start a Polyspace verification from Simulink.</entry>
+    <entry key="OptionNameMainGeneratorCalls">Functions to call</entry>
+    <entry key="OptionHelpMainGeneratorCalls">Specify the functions considered public.&lt;BR&gt;Functions called in random order by the automatically generated main.</entry>
+    <!-- saved in MainGeneratorCalls in the data model -->
+    <entry key="OptionNameFunctionsCalledInLoop">Step functions</entry>
+    <entry key="OptionHelpFunctionsCalledInLoop">Specify the set of functions called in the loop:&lt;BR&gt;&lt;li&gt;none - Use this option when no subprogram is called.&lt;BR&gt;&lt;li&gt;unused - Generated main only calls functions that are not called within the files.&lt;BR&gt;&lt;li&gt;all - Generated main calls all functions. For example, if a function 'f' is called by 'g', then generated main also calls 'f' with random values for each parameter.&lt;BR&gt;&lt;li&gt;custom - Specify list of functions to be called by generated main.</entry>
+    <entry key="OptionNameMainGeneratorWritesVariables">Variables to initialize</entry>
+    <entry key="OptionHelpMainGeneratorWritesVariables">Specify how the generated main will initialize global variables:&lt;BR&gt;&lt;li&gt;uninit - main generator writes random on not initialized global variables&lt;BR&gt;&lt;li&gt;none - no global variable will be written by the main&lt;BR&gt;&lt;li&gt;public - every variable except static and const variables are assigned a &quot;random&quot; value, representing the full range of possible values&lt;BR&gt;&lt;li&gt;all - every variable is assigned a &quot;random&quot; value, representing the full range of possible values&lt;BR&gt;&lt;li&gt;custom - only variables present in the list are assigned a &quot;random&quot; value, representing the full range of possible values</entry>
+    <!-- saved in MainGeneratorWritesVariables in the data model -->
+    <entry key="OptionNameVariablesWrittenBeforeLoop">Parameters</entry>
+    <entry key="OptionHelpVariablesWrittenBeforeLoop">Specify the set of variables considered parameters of the cyclic system.&lt;BR&gt;Variables written by generated main before the cyclic loop.</entry>
+    <entry key="OptionNameMisra3AgcMode">Use generated code requirements for MISRA C:2012</entry>
+    <entry key="OptionHelpMisra3AgcMode">Check MISRA C:2012 in the context of automatic code generation.</entry>
+    <entry key="OptionNameMisraC2023AgcMode">Use generated code requirements for MISRA C:2023</entry>
+    <entry key="OptionHelpMisraC2023AgcMode">Check MISRA C:2023 in the context of automatic code generation.</entry>
+    <entry key="OptionNameModulesPrecision">Specific precision</entry>
+    <entry key="OptionHelpModulesPrecision">Specify list of compilation units to be analyzed with a precision that differs from the specified &quot;Precision level&quot; (-O).&lt;BR&gt;&lt;BR&gt;By default, verification uses the same precision for all compilation units.&lt;BR&gt;Compilation units are .c files only.</entry>
+    <entry key="OptionNameNoCodeMetrics" note="placeholder">no-code-metrics</entry>
+    <entry key="OptionHelpNoCodeMetrics" note="placeholder"></entry>
+    <entry key="OptionNameNoConstructorsInitCheck">Skip member initialization check</entry>
+    <entry key="OptionHelpNoConstructorsInitCheck">Tell the generated main to not check whether all class fields are initialized.</entry>
+    <entry key="OptionNameNoDefInitGlob">Ignore default initialization of global variables</entry>
+    <entry key="OptionHelpNoDefInitGlob">Specify that global variables are treated as non-initialized by default. &lt;BR&gt; - &apos;on&apos;: Polyspace ignores implicit initialization of global variables. &lt;BR&gt;A Non initialized variable error is generated if a global variable is read before being written.&lt;BR&gt; - &apos;off&apos;: Polyspace considers global variables to be initialized according to ANSI C (ISO C++) standards. &lt;BR&gt; Default initialization values are 0.0 for float and 0 for int and char.</entry>
+    <entry key="OptionNameNoExtern_C">Ignore link errors</entry>
+    <entry key="OptionHelpNoExtern_C">Make no difference between C-linkage and C++-linkage.</entry>
+    <entry key="OptionNameOsekMultitasking">OIL files selection</entry>
+    <entry key="OptionHelpOsekMultitasking">Specify the list of OIL files containing the description of the OSEK multitasking configuration. &lt;ul&gt;&lt;li&gt;auto: Polyspace will look for OIL files in the folders containing a source or header file.&lt;/li&gt; &lt;li&gt;custom: Specify OIL files or folders containing the OIL files. Polyspace will look for OIL files in the given folders and sub-folders.&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameOtherPolyspaceOptions">Other</entry>
+    <entry key="OptionHelpOtherPolyspaceOptions">Specify additional command-line flags for static analysis.</entry>
+    <entry key="OptionNamePathSensitivityDelta">Improve precision of interprocedural analysis</entry>
+    <entry key="OptionHelpPathSensitivityDelta">Improve precision of interprocedural analysis.&lt;br&gt;&lt;br&gt;WARNING: Should be used with a value less than or equal to 3.&lt;br&gt;Otherwise, the verification could take longer.</entry>
+    <entry key="OptionNamePermissiveFunctionPointer">Permissive function pointer calls</entry>
+    <entry key="OptionHelpPermissiveFunctionPointer">By default, Polyspace allows a function pointer to call a function only if both the function pointer and function types are identical.&lt;br&gt;For example, a function with type:&lt;br&gt;&lt;i&gt;int f(int*)&lt;/i&gt;&lt;br&gt;cannot be called by a function pointer of type:&lt;br&gt;&lt;i&gt;int fptr(void*).&lt;/i&gt;&lt;br&gt;If this option is set, Polyspace allows such calls.&lt;br&gt;With applications that use function pointers extensively, this option can cause a significant loss in performance and a higher number &lt;br&gt;of orange checks as Polyspace has to consider more execution paths.</entry>
+    <entry key="OptionNamePostAnalysisCommand">Command/script to apply after the end of the code verification</entry>
+    <entry key="OptionHelpPostAnalysisCommand">Specify command or file that must be run after code verification is complete.</entry>
+    <entry key="OptionNamePostPreprocessingCommand">Command/script to apply to preprocessed files</entry>
+    <entry key="OptionHelpPostPreprocessingCommand">Run the given command after the preprocessing phase on each source file.&lt;BR&gt;&lt;BR&gt;It is important to specify the absolute path and filename for the command file.&lt;BR&gt;The command should be designed to read from its standard input and produce its results to the standard output.</entry>
+    <entry key="OptionNamePreAnalysisCommand" note="placeholder">pre-analysis-command</entry>
+    <entry key="OptionHelpPreAnalysisCommand" note="placeholder"></entry>
+    <entry key="OptionNamePrecisionLevel">Precision level</entry>
+    <entry key="OptionHelpPrecisionLevel">Specify a precision level for Code Prover analysis. Higher precision results in longer verification times, but fewer orange checks.</entry>
+    <entry key="OptionNameReportOutputFormat">Output format</entry>
+    <entry key="OptionHelpReportOutputFormat">Specify output format of report.</entry>
+    <entry key="OptionNameReportTemplateBugFinder">Report template (Bug Finder)</entry>
+    <entry key="OptionHelpReportTemplateBugFinder">Specify template for generating report from Bug Finder analysis results.</entry>
+    <entry key="OptionNameReportTemplateCodeProver">Report template (Code Prover)</entry>
+    <entry key="OptionHelpReportTemplateCodeProver">Specify template for generating report from Code Prover analysis results.</entry>
+    <entry key="OptionNameRoutineInterrupts">Disabling all interrupts</entry>
+    <entry key="OptionHelpRoutineInterrupts">Enter the routine to disable and enable interrupts for Bug Finder analysis.&lt;BR&gt;&lt;ul&gt; &lt;li&gt;Calling the disabling routine prevents preemption of a task by other tasks and interrupts.&lt;li&gt;Calling the enabling routine reenables preemption of a task by other tasks and interrupts, if previously disabled.&lt;/ul&gt;</entry>
+    <entry key="OptionNameSharedVariablesMode">Show global variable sharing and usage only</entry>
+    <entry key="OptionHelpSharedVariablesMode">Run a faster analysis to determine global variable sharing and usage.&lt;BR&gt;&lt;BR&gt;The analysis results contain:&lt;BR&gt;&lt;ul&gt;&lt;li&gt;Global variables (shared, unshared, used, unused)&lt;li&gt;Coding rules if enabled&lt;li&gt;Code metrics if enabled&lt;/ul&gt;&lt;BR&gt;The Variable Access view also shows read and write operations on all global variables.</entry>
+    <entry key="OptionNameSignedIntegerOverflows">Overflow mode for signed integer</entry>
+    <entry key="OptionHelpSignedIntegerOverflows">Specify Code Prover behavior when a signed integer computation results in out-of-range values (range determined by data type):&lt;ul&gt;&lt;li&gt;allow - Code Prover does not flag overflows. Overflowing results are wrapped around.&lt;br&gt;For instance, result of MAX_INT + 1 wraps to MIN_INT.&lt;br&gt;&lt;li&gt;forbid (default) - Code Prover flags overflows. Values that cause overflow do not propagate to subsequent operations.&lt;br&gt; This behavior conforms to the ANSI C (ISO C++) standard.&lt;br&gt;&lt;li&gt;warn-with-wrap-around - Code Prover flags overflows. Overflowing results are wrapped around.</entry>
+    <entry key="OptionNameSizeInBytes">Allow partial allocation of structures</entry>
+    <entry key="OptionHelpSizeInBytes">Allow partial memory allocation from &lt;i&gt;malloc&lt;/i&gt; or &lt;i&gt;cast&lt;/i&gt; statements.</entry>
+    <entry key="OptionNameImpactAnalysis">Enable impact analysis</entry>
+    <entry key="OptionHelpImpactAnalysis">Check for presence or absence of impact between program elements designated as sources and sinks.</entry>
+    <entry key="OptionNameImpactSpecifications">Specify sources and sinks</entry>
+    <entry key="OptionHelpImpactSpecifications">Specify XML file that identifies program elements as sources and sinks for impact analysis.</entry>
+    <entry key="OptionNameImpactAnalysisOnly">Show impact analysis results only</entry>
+    <entry key="OptionHelpImpactAnalysisOnly">Skip regular Code Prover checks for run-time errors, and perform impact analysis only.</entry>
+    <entry key="OptionNameStackUsage">Calculate Stack Usage</entry>
+    <entry key="OptionHelpStackUsage">Compute and display estimated stack usage</entry>
+    <entry key="OptionNameStopIfCompileError">Stop analysis if a file does not compile</entry>
+    <entry key="OptionHelpStopIfCompileError">Use this option to resolve all compilation errors and ensure that all files are analyzed.&lt;BR&gt;By default, files with compilation errors are not analyzed. Functions in those files are stubbed for the remaining analysis.</entry>
+    <entry key="OptionNameStubEmbeddedCoderLookupTableFunctions">Generate stubs for Embedded Coder lookup tables</entry>
+    <entry key="OptionHelpStubEmbeddedCoderLookupTableFunctions">Check this option to generate stubs for Embedded Coder lookup tables automatically</entry>
+    <entry key="OptionNameStubbedPointersAreUnsafe">Consider environment pointers as unsafe</entry>
+    <entry key="OptionHelpStubbedPointersAreUnsafe">Specify that environment pointers may be NULL unless constrained otherwise.&lt;br&gt;Environment pointers can be one of the following:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Global or extern,&lt;/li&gt;&lt;li&gt;Return values of stubbed functions,&lt;/li&gt;&lt;li&gt;Parameters of user-defined functions whose calls are generated.&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;Unless you use this option, environment pointers are considered safe and not NULL by default.&lt;br&gt;</entry>
+    <entry key="OptionNameSystemInputsFrom">Consider inputs to these functions</entry>
+    <entry key="OptionHelpSystemInputsFrom">Specify the functions for which the analysis considers all possible input values. &lt;ul&gt;&lt;li&gt;auto: Main function and tasks if any, or uncalled functions with at least one callee (when main does not exist)&lt;/li&gt; &lt;li&gt;uncalled: All uncalled functions&lt;/li&gt; &lt;li&gt;all: All functions&lt;/li&gt; &lt;li&gt;custom: User specified functions&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameTemporalExclusions">Temporally exclusive tasks</entry>
+    <entry key="OptionHelpTemporalExclusions">Specify tasks that cannot execute concurrently.</entry>
+    <entry key="OptionNameTimeout">Verification time limit</entry>
+    <entry key="OptionHelpTimeout">Stop verification if verification is not completed within specified time limit X[.Y], where X represents hours and Y (optional) represents a fraction of an hour. &lt;br&gt;&lt;br&gt;For example:&lt;ul&gt;&lt;li&gt;A timeout of 5.75 specifies a time limit of 5 hours and 45 minutes.&lt;br&gt;&lt;li&gt;A timeout of 3.5 specifies a time limit of 3 hours and 30 minutes.&lt;/ul&gt;If the verification is not completed within the specified time limit, it is considered to have failed.</entry>
+    <entry key="OptionNameVerificationLevel">Verification level</entry>
+    <entry key="OptionHelpVerificationLevel">Specify verification level. A higher verification level increases the selectivity rate.&lt;br&gt;A higher verification level also causes verification time to increase.</entry>
+    <entry key="OptionNameUncalledFunctionChecks">Detect uncalled functions</entry>
+    <entry key="OptionHelpUncalledFunctionChecks">Detect functions that are not called directly or indirectly from main or another entry point during run-time.&lt;br&gt; &lt;li&gt;none - Do not detect uncalled functions.&lt;br&gt;&lt;li&gt;  never-called - Detect functions that are defined but never called.&lt;br&gt;  If a function func is identified as never-called, all functions called from func only are also identified as never-called.&lt;br&gt;&lt;li&gt;  called-from-unreachable - Detect functions that are defined and called from an unreachable part of the code.&lt;br&gt;  If a function func is identified as called-from-unreachable, all functions called from func only are also identified as called-from-unreachable.&lt;br&gt;&lt;li&gt;  all - Detect all uncalled functions</entry>
+    <entry key="OptionNameUnitByUnit">Verify files independently</entry>
+    <entry key="OptionHelpUnitByUnit">Create a separate verification job for each source file in the project.&lt;br&gt;Each file is compiled and then verified individually.</entry>
+    <entry key="OptionNameUnitByUnitCommonSource">Common source files</entry>
+    <entry key="OptionHelpUnitByUnitCommonSource">Specify a list of files to include with each file verification.&lt;br&gt;Functions not included in this list are stubbed.</entry>
+    <entry key="OptionNameUnsignedIntegerOverflows">Overflow mode for unsigned integer</entry>
+    <entry key="OptionHelpUnsignedIntegerOverflows">Specify Code Prover behavior when an unsigned integer computation results in out-of-range values (range determined by data type):&lt;ul&gt;&lt;li&gt;allow (default) - Code Prover does not flag overflows. Overflowing results are wrapped around.&lt;br&gt;For instance, result of MAX_INT + 1 wraps to MIN_INT.&lt;br&gt; This behavior conforms to the ANSI C (ISO C++) standard.&lt;br&gt;&lt;li&gt;forbid - Code Prover flags overflows. Values that cause overflow do not propagate to subsequent operations.&lt;br&gt;&lt;li&gt;warn-with-wrap-around - Code Prover flags overflows. Overflowing results are wrapped around.</entry>
+    <entry key="OptionNameVariablesWrittenInLoop">Inputs</entry>
+    <entry key="OptionHelpVariablesWrittenInLoop">Specify the set of variables considered inputs of the cyclic system.&lt;BR&gt;Variables reset by generated main at each iteration of the cyclic loop.</entry>
+
+    <!-- build options -->
+
+    <entry key="OptionNameArithmeticSignedIntegerRightShift">Shift right on signed integers as arithmetic shift</entry>
+    <entry key="OptionHelpArithmeticSignedIntegerRightShift">Specify that your compiler implements right shifts on signed integers as arithmetic shifts (sign bit preserved). Most compilers do this.</entry>
+    <entry key="OptionNameBoardName">Target board name (Testing)</entry>
+    <entry key="OptionHelpBoardName">Specify the hardware board on which to execute tests. The option applies to testing only.</entry>
+    <entry key="OptionNameIntegerDivisionRounding">Round down results of negative integer division</entry>
+    <entry key="OptionHelpIntegerDivisionRounding">Specify that your compiler rounds down a negative quotient from dividing two integers (such that it heads towards negative infinity). For instance, -5/3 rounds to -2.</entry>
+    <entry key="OptionNameEnablePortableWordSizes">Enable portable word sizes</entry>
+    <entry key="OptionHelpEnablePortableWordSizes">Allow compilation of code on host computer while retaining word sizes of target processor on which code is intended to run.</entry>
+    <entry key="OptionNameNoUliterals">Specify that char16/32_t types are defined in code</entry>
+    <entry key="OptionHelpNoUliterals">Specify that your compiler does not define types char16_t and char32_t as built-in types, instead defines them through explicit typedef-s. Use this option if you get type redeclaration errors for types char16_t and char32_t. The option prevents Polyspace definitions of these types.</entry>
+    <entry key="OptionNamePackAlignmentValue">Pack alignment value</entry>
+    <entry key="OptionHelpPackAlignmentValue">Specify packing alignment (in bytes) for structures, unions and other aggregate types.</entry>
+    <entry key="OptionNameExternalSymbols">External symbols</entry>
+    <entry key="OptionHelpExternalSymbols">Provide declarations for symbols (variables, functions and so on) that are not in code. This option applies to testing only.</entry>
+    <entry key="OptionNameStaticAnalysisCompilerName">Compilation toolchain (Static analysis)</entry>
+    <entry key="OptionHelpStaticAnalysisCompilerName">Specify the compiler that you use to build your source code. The option applies to static analysis only. To specify a compilation toolchain for testing, specify the option 'Compilation toolchain (Testing)'.</entry>
+    <entry key="OptionNameSfrTypes">SFR types and sizes</entry>
+    <entry key="OptionHelpSfrTypes">Specify SFR (Special Function Register) types along with sizes in bits (8, 16 or 32).</entry>
+    <entry key="OptionNameToolchainName">Compilation toolchain (Testing)</entry>
+    <entry key="OptionHelpToolchainName">Specify the compiler that you use to build your source code. The option applies to testing only. To specify a compilation toolchain for static analysis, specify the option 'Compilation toolchain (Static analysis)'.</entry>
+    <entry key="OptionNameEnableCustomOptions">Enable toolchain customization</entry>
+    <entry key="OptionHelpEnableCustomOptions">Override default toolchain specification.</entry>
+    <entry key="OptionNameToolchainOptions">Toolchain options</entry>
+    <entry key="OptionHelpToolchainOptions">Specify toolchain options such as compiler, linker, and so on.</entry>
+    <entry key="OptionNameCStandard">C standard version</entry>
+    <entry key="OptionHelpCStandard">Specify C standard version used in compilation.</entry>
+    <entry key="OptionNameCppStandard">C++ standard version</entry>
+    <entry key="OptionHelpCppStandard">Specify C++ standard version used in compilation.</entry>
+    <entry key="OptionNameDefines">Preprocessor definitions</entry>
+    <entry key="OptionHelpDefines">Specify definitions for macros in the form name=value. For instance, int32_t=int replaces all occurrences of int32_t with int in preprocessed code. If you leave the value empty, the macro is removed from preprocessed code. You can also enter a name only (without the =value part). In this case, the macro is replaced with 1.</entry>
+    <entry key="OptionNameImplicitCompilerDefinesC">Implicit C compiler defines</entry>
+    <entry key="OptionHelpImplicitCompilerDefinesC">Preprocessor definitions coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameImplicitCompilerDefinesCpp">Implicit C++ compiler defines</entry>
+    <entry key="OptionHelpImplicitCompilerDefinesCpp">Preprocessor definitions coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameImplicitCompilerDefinesAsm">Implicit Asm compiler defines</entry>
+    <entry key="OptionHelpImplicitCompilerDefinesAsm">Preprocessor definitions coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameImplicitCompilerIncludePathsC">Implicit C compiler include paths</entry>
+    <entry key="OptionHelpImplicitCompilerIncludePathsC">Include paths coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameImplicitCompilerIncludePathsCpp">Implicit C++ compiler include paths</entry>
+    <entry key="OptionHelpImplicitCompilerIncludePathsCpp">Include paths coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameImplicitCompilerIncludePathsAsm">Implicit Asm compiler include paths</entry>
+    <entry key="OptionHelpImplicitCompilerIncludePathsAsm">Include paths coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameIncludePaths">Include paths</entry> <!-- project level include path and other -->
+    <entry key="OptionHelpIncludePaths">Specify paths to folders containing include files. Polyspace looks in these folders for header files included with #include statements in sources.</entry>
+    <entry key="OptionNameExternalIncludePaths">Include paths for external tests</entry>
+    <entry key="OptionHelpExternalIncludePaths">Specify paths to folders containing include files for external tests. Polyspace looks in these folders for header files included with #include statements in external tests.</entry>
+    <entry key="OptionNameAdditionalIncludePaths">Additional include paths</entry>
+    <entry key="OptionHelpAdditionalIncludePaths">Specify paths to folders containing additional include files. Polyspace includes these files in addition to include files specified in Project tab of configuration.</entry> <!-- include path in BuildOptions, used in addition to project include path. Only meaningful when multi-configuration is supported -->
+    <entry key="OptionNamePreIncludes">Forced includes</entry>
+    <entry key="OptionHelpPreIncludes">Specify files to be #include-d by every source file. These #include-s are added before preprocessing but the original sources are not modified. Use these files to define types, etc. that are not defined in the source code. This option applies to static analysis only.</entry>
+    <entry key="OptionNameUndefines">Disabled preprocessor definitions</entry>
+    <entry key="OptionHelpUndefines">Specify macros that must be considered as undefined.</entry>
+    <entry key="OptionNameCoverageCompactMode">Enable compact mode for coverage calculation</entry>
+    <entry key="OptionHelpCoverageCompactMode">Use this option to reduce the amount of memory required to run the test executable.</entry>
+    <entry key="OptionNameCoverageMetricLevel">Coverage metrics</entry>
+    <entry key="OptionHelpCoverageMetricLevel">Specify a level of coverage metric calculation: &lt;BR&gt;&lt;li&gt;Statement &lt;li&gt; Decision &lt;li&gt; Condition &lt;li&gt; MC/DC. &lt;BR&gt; Each level includes metrics from the previous level.</entry>
+    <entry key="OptionNameRelationalBoundary">Enable relational boundary coverage</entry>
+    <entry key="OptionHelpRelationalBoundary">Specify if source code must be instrumented for relational boundary coverage.</entry>
+    <entry key="OptionNameRelationalBoundaryAbsTol">Absolute tolerance</entry>
+    <entry key="OptionHelpRelationalBoundaryAbsTol">Specify absolute tolerance for relational boundary coverage.</entry>
+    <entry key="OptionNameRelationalBoundaryRelTol">Relative tolerance</entry>
+    <entry key="OptionHelpRelationalBoundaryRelTol">Specify relative tolerance for relational boundary coverage.</entry>
+    <entry key="OptionNameExcludeFor" note="placeholder">ExcludeFor</entry>
+    <entry key="OptionHelpExcludeFor" note="placeholder"></entry>
+    <entry key="OptionNameLibraries">Libraries</entry>
+    <entry key="OptionHelpLibraries">Specify precompiled libraries for building tests.</entry>
+    <entry key="OptionNameExternalLibraries">Libraries for external tests</entry>
+    <entry key="OptionHelpExternalLibraries">Specify precompiled libraries for building external tests.</entry>
+    <entry key="OptionNameLibraryPaths">Library paths</entry>
+    <entry key="OptionHelpLibraryPaths">Specify folders containing precompiled libraries for building tests.</entry>
+    <entry key="OptionNameExternalLibraryPaths">Library paths for external tests</entry>
+    <entry key="OptionHelpExternalLibraryPaths">Specify folders containing precompiled libraries for building external tests.</entry>
+    <entry key="OptionNamePath">Path</entry> <!-- generic item -->
+    <entry key="OptionHelpPath" note="placeholder"></entry>
+    <entry key="OptionNameAlignment">Alignment</entry>
+    <entry key="OptionHelpAlignment">Specify the largest alignment (in bits) of members of aggregate types such as structures. For instance, if the alignment is 8 bits, even the member with the smallest data type is aligned, and the structure can be stored without member and end padding.</entry>
+    <entry key="OptionNameAtomicFloatSize" note="placeholder">AtomicFloatSize</entry>
+    <entry key="OptionHelpAtomicFloatSize" note="placeholder"></entry>
+    <entry key="OptionNameAtomicIntegerSize" note="placeholder">AtomicIntegerSize</entry>
+    <entry key="OptionHelpAtomicIntegerSize" note="placeholder"></entry>
+    <entry key="OptionNameCharBitsSize">Size of char</entry>
+    <entry key="OptionHelpCharBitsSize">Specify size of 'char' data type (in bits).</entry>
+    <entry key="OptionNameDoubleBitsSize">Size of double</entry>
+    <entry key="OptionHelpDoubleBitsSize">Specify size of 'double' data type (in bits).</entry>
+    <entry key="OptionNameEndianess">Byte ordering</entry>
+    <entry key="OptionHelpEndianess">Specify if byte ordering (endianness) is Little Endian (least significant byte first) or Big Endian (most significant byte first).</entry>
+    <entry key="OptionNameEnumTypeDefinition">Underlying type of enum</entry>
+    <entry key="OptionHelpEnumTypeDefinition">Specify how the underlying type of enum is determined.</entry>
+    <entry key="OptionNameFloatBitsSize">Size of float</entry>
+    <entry key="OptionHelpFloatBitsSize">Specify size of 'float' data type (in bits).</entry>
+    <entry key="OptionNameHalfBitsSize" note="placeholder">HalfBitsSize</entry>
+    <entry key="OptionHelpHalfBitsSize" note="placeholder"></entry>
+    <entry key="OptionNameIntBitsSize">Size of int</entry>
+    <entry key="OptionHelpIntBitsSize">Specify size of 'int' data type (in bits).</entry>
+    <entry key="OptionNameIsHalfSupported" note="placeholder">IsHalfSupported</entry>
+    <entry key="OptionHelpIsHalfSupported" note="placeholder"></entry>
+    <entry key="OptionNameIsLongLongSupported">Support long long</entry>
+    <entry key="OptionHelpIsLongLongSupported">Specify whether your compiler supports the data type 'long long'. Most C99 compilers support this data type.</entry>
+    <entry key="OptionNameLongBitsSize">Size of long</entry>
+    <entry key="OptionHelpLongBitsSize">Specify size of 'long' data type (in bits).</entry>
+    <entry key="OptionNameLongDoubleBitsSize">Size of long double</entry>
+    <entry key="OptionHelpLongDoubleBitsSize">Specify size of 'long double' data type (in bits).</entry>
+    <entry key="OptionNameLongLongBitsSize">Size of long long</entry>
+    <entry key="OptionHelpLongLongBitsSize">Specify size of 'long long' data type (in bits).</entry>
+    <entry key="OptionNameManufacturer">Processor manufacturer</entry>
+    <entry key="OptionNameConfigMode">Configuration Mode</entry>
+    <entry key="OptionHelpConfigMode">Show the kind of configuration (read-only).</entry>
+    <!-- There could be multiple contextual help texts depending where it is shown. May need updates later -->
+    <entry key="OptionHelpManufacturer">Processor manufacturer</entry>
+    <entry key="OptionNameProcessorName">Processor name</entry>
+    <entry key="OptionHelpProcessorName">Processor name</entry>
+    <entry key="OptionNamePointerBitsSize">Size of pointers</entry>
+    <entry key="OptionHelpPointerBitsSize">Specify size of pointer data types (in bits).</entry>
+    <entry key="OptionNamePtrDiffT">Type of ptrdiff_t</entry>
+    <entry key="OptionHelpPtrDiffT">Specify underlying type of data type 'ptrdiff_t'.</entry>
+    <entry key="OptionNameShortBitsSize">Size of short</entry>
+    <entry key="OptionHelpShortBitsSize">Specify size of 'short' data type (in bits).</entry>
+    <entry key="OptionNameSignedChar">Plain char is signed</entry>
+    <entry key="OptionHelpSignedChar">Specify that the 'char' data type is signed.</entry>
+    <entry key="OptionNameSizeT">Type of size_t</entry>
+    <entry key="OptionHelpSizeT">Specify underlying type of data type 'size_t'.</entry>
+    <entry key="OptionNameSpecificOptions" note="placeholder">SpecificOptions</entry>
+    <entry key="OptionHelpSpecificOptions" note="placeholder"></entry>
+    <entry key="OptionNameStructureMinAlignment">Minimum alignment of structures</entry>
+    <entry key="OptionHelpStructureMinAlignment">Specify a minimum alignment (in bytes) for variables of type struct or union.</entry>
+    <entry key="OptionNameWCharT">Type of wchar_t</entry>
+    <entry key="OptionHelpWCharT">Specify underlying type of data type 'wchar_t'.</entry>
+    <entry key="OptionNameWordSize">Native word size</entry>
+    <entry key="OptionHelpWordSize">Specify the number of bits that the processor of test hardware can process at one time.</entry>
+
+    <entry key="OptionNameExtraAsmFlags">Extra assembler flags</entry>
+    <entry key="OptionHelpExtraAsmFlags">Specify flags for building assembly code. These flags are not used during static analysis.</entry>
+    <entry key="OptionNameExtraCFlags">Extra C flags</entry>
+    <entry key="OptionHelpExtraCFlags">Specify C compilation flags required for building project. Use this option to enter compiler flags that you cannot enter through the other options. These flags are not used during static analysis.</entry>
+    <entry key="OptionNameExtraCppFlags">Extra C++ flags</entry>
+    <entry key="OptionHelpExtraCppFlags">Specify C++ compilation flags required for building project. Use this option to enter compiler flags that you cannot enter through the other options. These flags are not used during static analysis.</entry>
+    <entry key="OptionNameExtraLinkFlags">Extra flags for linking</entry>
+    <entry key="OptionHelpExtraLinkFlags">Specify linker flags required for building project. These flags are not used during static analysis.</entry>
+    <entry key="OptionNameLanguage">Source code language</entry>
+    <entry key="OptionHelpLanguage">Specify source code language for project:&lt;BR&gt;&lt;li&gt; C for C source code&lt;li&gt; C++ for C++ source code &lt;li&gt; C-CPP for mixed source code</entry>
+    <entry key="OptionNameTarget" note="placeholder">Target</entry>
+    <entry key="OptionHelpTarget" note="placeholder"></entry>
+    <entry key="OptionNameFileSpecificLanguage" note="placeholder">Source code language</entry>
+    <entry key="OptionHelpFileSpecificLanguage" note="placeholder">Specify source code language for selected file</entry>
+    <entry key="OptionNameFileSpecificExtraFlags" note="placeholder">Extra flags</entry>
+    <entry key="OptionHelpFileSpecificExtraFlags" note="placeholder">Specify extra flags for selected file</entry>
+    <entry key="OptionNameFileSpecificImplicitCompilerDefines">Implicit compiler defines</entry>
+    <entry key="OptionHelpFileSpecificImplicitCompilerDefines">Preprocessor definitions for selected file coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameFileSpecificImplicitCompilerIncludePaths">Implicit compiler include paths</entry>
+    <entry key="OptionHelpFileSpecificImplicitCompilerIncludePaths">Include paths for selected file coming from your compiler. This option is automatically set if you create a Polyspace project from a build command.</entry>
+    <entry key="OptionNameOverrideOp" note="placeholder">Override</entry>
+    <entry key="OptionHelpOverrideOp" note="placeholder"></entry>
+
+    <!-- profiling options -->
+    <entry key="OptionNameCodegenDir">Folder for storing generated test code</entry>
+    <entry key="OptionHelpCodegenDir">Specify a folder to store code generated from graphically authored tests.</entry>
+    <entry key="OptionNameProfilingSelection">Type of profiling</entry>
+    <entry key="OptionHelpProfilingSelection">Specify whether you want code coverage or execution profiling. Based on your selection, the source code is instrumented for calculation of code coverage or execution times.</entry>
+    <entry key="OptionNameDirToIgnore">Folders to ignore</entry>
+    <entry key="OptionHelpDirToIgnore">Specify folders to exclude from source code instrumentation.</entry>
+    <entry key="OptionNameDirToInstrument">Folders to profile</entry>
+    <entry key="OptionHelpDirToInstrument">Specify folders containing sources to be instrumented for code profiling. &lt;BR&gt; By default, all sources are instrumented. Use this option to reduce list of sources to instrument.</entry>
+    <entry key="OptionNameProfilingExtraOptions">Additional options</entry>
+    <entry key="OptionHelpProfilingExtraOptions">Specify additional options for code profiling.</entry>
+    <entry key="OptionNameFunCallToIgnore">Function call to ignore</entry>
+    <entry key="OptionHelpFunCallToIgnore">Specify function calls to exclude from source code instrumentation.</entry>
+    <entry key="OptionNameFileToIgnore">Files to ignore</entry>
+    <entry key="OptionHelpFileToIgnore">Specify files to exclude from source code instrumentation.</entry>
+    <entry key="OptionNameFunToIgnore">Functions to ignore</entry>
+    <entry key="OptionHelpFunToIgnore">Specify functions to exclude from source code instrumentation.</entry>
+
+    <!-- execution options -->
+    <entry key="OptionNameCommandOptions" note="placeholder">Command options</entry>
+    <entry key="OptionHelpCommandOptions" note="placeholder">Command options to be specified to the test executable.</entry>
+    <entry key="OptionNameExtraCommandOptions" note="placeholder">Additional execution options</entry>
+    <entry key="OptionHelpExtraCommandOptions" note="placeholder">Additional options to be specified to the test executable.</entry>
+    <entry key="OptionNameFiltersSeparator" note="placeholder">Filters separator</entry>
+    <entry key="OptionHelpFiltersSeparator" note="placeholder">The string to be used as separator when concatenating test filters.</entry>
+
+    <!-- Processor -->
+    <!-- generic option -->
+    <entry key="OptionNameBuildConfigProcessor">Processor</entry>
+
+    <entry key="OptionHelpBuildConfigProcessor">Select the processor for the current build configuration</entry>
+
+    <!-- target options -->
+    <!-- some of the strings are not translated to be consistent with command line API -->
+    <entry key="DefinedByCompiler" translate="false">defined-by-compiler</entry>
+    <entry key="Unspecified" translate="false">Unspecified</entry>
+    <entry key="LittleEndian" translate="false">Little endian</entry>
+    <entry key="BigEndian" translate="false">Big endian</entry>
+
+    <!-- toolchain management -->
+    <entry key="ManageBoards">Manage Boards</entry>
+    <entry key="AvailableBoards">Available boards</entry>
+    <entry key="RegisterTargetPackage">Register a target</entry>
+    <entry key="SelectTargetRegistrationScript">Select target registration script</entry>
+    <entry key="RegisteringTarget">Registering new target</entry>
+    <entry key="FailedToRegisterTargetTitle">Failed to register new target</entry>
+    <entry key="FailedToRegisterTargetDetails" note="0 is error message">Failed to register new target:\n\n{0}</entry>
+    <entry key="UnregisterTargetPackage">Unregister a target</entry>
+    <entry key="UnregisteringTarget">Unregistering a target</entry>
+    <entry key="FailedToUnregisterTargetTitle">Failed to unregister target</entry>
+    <entry key="FailedToUnregisterTargetDetails" note="0 is error message">Failed to unregister target:\n\n{0}</entry>
+    <entry key="SelectTargetUnregistrationScript">Select target unregistration script</entry>
+
+    <entry key="ManageProcessors">Manage Processors</entry>
+    <entry key="ManageProcessorsCurrentProject">Manage processors added to the current project</entry>
+    <entry key="DuplicateProcessorName">Processor ''{0}'' already exists in the project</entry>
+    <entry key="EditProcessor">Edit Processor ''{0}''</entry>
+    <entry key="EditProcessorTooltip">Edit Processor</entry>
+    <entry key="DeleteProcessorTooltip">Delete Processor</entry>
+    <entry key="CannotDeleteProcessorTooltip">''Host Computer'' cannot be deleted</entry>
+    <entry key="AvailableProcessors">Available processors</entry>
+    <entry key="AddingNewProcessor">Adding new processor</entry>
+    <entry key="FailedToAddNewProcessor">Failed to add new processor</entry>
+    <entry key="FailedToEditProcessor">Failed to edit processor</entry>
+    <entry key="FailedToRemoveProcessor">Failed to remove processor</entry>
+    <entry key="ProcessorInUse">The processor cannot be removed, because it is currently used in the following build configuration variant(s):\n\n{0}</entry>
+    <entry key="AddAProcessor">Add a processor</entry>
+    <entry key="SelectAManufacturer">Select a manufacturer</entry>
+    <entry key="ProcessorName">Processor name</entry>
+
+    <entry key="HostComputer" translate="false">Host Computer</entry>
+    <entry key="Custom" note="context is 'Custom Processor'">Custom</entry>
+
+    <entry key="DetectAutomatically" translate="false" note="detect toolchain automatically">Detect automatically</entry>
+
+    <entry key="InvalidToolchain">Toolchain ''{0}'' is not registered.</entry>
+    <entry key="InvalidBoard">Cannot find board ''{0}'' from target repository.</entry>
+
+    <entry key="CannotConfigureBoardTitle">Cannot configure board connection</entry>
+    <entry key="CannotConfigureBoardMessage">There are no configurable connection options for this board.</entry>
+    <entry key="ConfigureBoardConnectionTooltip">Configure board connection</entry>
+    <entry key="ConfigureBoardConnection">Configure board connection for ''{0}''</entry>
+
+    <entry key="ConfigureToolchainTitle">Configure toolchain options for ''{0}''</entry>
+    <entry key="ConfigureCustomToolchainOptionsDescription">Configure custom toolchain options</entry>
+
+    <entry key="OptionNameIPAddress">IP Address</entry>
+    <entry key="OptionNamePort">Port</entry>
+    <entry key="OptionNameBaudRate">Baud rate</entry>
+    <entry key="OptionNameParity">Parity</entry>
+
+    <!-- project level options -->
+    <entry key="OptionNameIgnoreUnusedExternalSymbols">Ignore unused external Symbols when parsing code (Testing)</entry>
+    <entry key="OptionHelpIgnoreUnusedExternalSymbols" note="placeholder"></entry>
+    <entry key="OptionNameCheckUndefinedSymbols">Check undefined symbols</entry>
+    <entry key="OptionHelpCheckUndefinedSymbols">Check for undefined symbols in project before starting the build process. \n Disable this option if some symbol definitions in your project are available only at build time.</entry>
+    <entry key="OptionNameSourceEncoding">Source code encoding</entry>
+    <entry key="OptionHelpSourceEncoding">Specify the encoding of your source files. You might need to change the value of this option if your code does not compile or renders incorrectly in the user interface because of non-ASCII characters.</entry>
+
+    <!-- External test run options -->
+    <entry key="OptionNameUseGoogleTest">Use GoogleTest</entry>
+    <entry key="OptionHelpUseGoogleTest">Select this option if you want to run GoogleTest tests without additional options.</entry>
+    <entry key="OptionNameUseGoogleTestNonDefault">Use GoogleTest with non-default options</entry>
+    <entry key="OptionHelpUseGoogleTestNonDefault">Select this option if you want to run GoogleTest tests with additional options.</entry>
+    <entry key="OptionNameUseGenericExternalTestFramework">Use generic test framework</entry>
+    <entry key="OptionHelpUseGenericExternalTestFramework">Select this option if:
+&lt;br&gt;&lt;ul&gt;&lt;li&gt;You use a testing framework other than GoogleTest&lt;/li&gt;&lt;li&gt;You use GoogleTest, but run the tests with specific options.&lt;/li&gt;&lt;/ul&gt;</entry>
+    <entry key="OptionNameGenericExternalTestOutputOptions">Test output options</entry>
+    <entry key="OptionHelpGenericExternalTestOutputOptions">Enter the command-line option that you use with your test executable to specify a test result file.&lt;br&gt;You can enter the variable $(TESTOUTPUT) as option argument if you do not want to explicitly specify a results path.</entry>
+    <entry key="OptionNameGenericExternalTestImplicitOutputFile">Specify test output file explicitly</entry>
+    <entry key="OptionHelpGenericExternalTestImplicitOutputFile">Specify path to test output file.&lt;br&gt;Unless you use the variable $(TESTOUTPUT) in test output options, you must explicitly specify the location of the test output file.</entry>
+    <entry key="OptionNameGenericExternalTestOutputFile">Test output file</entry>
+    <entry key="OptionHelpGenericExternalTestOutputFile">Enter the full path to the file that contains your test results.</entry>
+    <entry key="OptionNameGenericExternalTestAdditionalOptions">Additional options</entry>
+    <entry key="OptionHelpGenericExternalTestAdditionalOptions">Enter command-line options that you use with your test executable.</entry>
+
+    <entry key="OptionNameGenericExternalTestOutputIsXML">Output file is in XML format</entry>
+    <entry key="OptionHelpGenericExternalTestOutputIsXML">Select this option if your test output is in XML format.</entry>
+    <entry key="OptionNameGenericExternalTestOutputIsNotXML">Output file is not in XML format</entry>
+    <entry key="OptionHelpGenericExternalTestOutputIsNotXML">Select this option if your test output is not in XML format.</entry>
+    <entry key="OptionNameGenericExternalTestNoOutputConversion">XML file uses Pst-xUnit format, do not use conversion</entry>
+    <entry key="OptionHelpGenericExternalTestNoOutputConversion">Select this option if your test output XML uses the same XML markup as Polyspace Test xUnit results.</entry>
+    <entry key="OptionNameGenericExternalTestConvertOutputUsingXSLT">Transform output using XSLT</entry>
+    <entry key="OptionHelpGenericExternalTestConvertOutputUsingXSLT">Select this option to convert your XML test results to the Polyspace Test xUnit format using an XSLT transformation.</entry>
+    <entry key="OptionNameGenericExternalTestConversionXSLTFile">XSLT File</entry>
+    <entry key="OptionHelpGenericExternalTestConversionXSLTFile">Specify XSLT transformation file for converting your XML test results to the Polyspace Test xUnit format.</entry>
+    <entry key="OptionNameGenericExternalTestConvertOutputUsingCmd">Transform output using command line</entry>
+    <entry key="OptionHelpGenericExternalTestConvertOutputUsingCmd">Select this option to convert your XML test results to the Polyspace Test xUnit format using a command.</entry>
+    <entry key="OptionNameGenericExternalTestConversionCmd">Command line</entry>
+    <entry key="OptionHelpGenericExternalTestConversionCmd">Select this option to convert your test results to the Polyspace Test xUnit format (XML) using a command.</entry>
+
+    <!-- tabs -->
+    <entry key="OptionTabProject">Project</entry>
+    <entry key="OptionTabBuild">Build</entry>
+    <entry key="OptionTabStatic">Static Analysis</entry>
+    <entry key="OptionTabTestingProfiling">Testing &amp; Profiling</entry>
+
+    <!-- pages -->
+    <entry key="OptionPageProject">Project</entry>
+    <entry key="OptionPageExternalTestsExecutionOptions">External Tests</entry>
+    <entry key="OptionPageEnvironmentSettings">Environment Settings</entry>
+    <entry key="OptionPageInputsStubbing">Inputs &amp; Stubbing</entry>
+    <entry key="OptionPageMultitasking">Multitasking</entry>
+    <entry key="OptionPageBugFinderAnalysis">Defects and Coding Standards</entry>
+    <entry key="OptionPageCheckersBehavior">Checkers Behavior</entry>
+    <entry key="OptionPageCodeProverVerification">Run Time Errors</entry>
+    <entry key="OptionPageVerificationAssumption">Verification Assumption</entry>
+    <entry key="OptionPageChecksBehavior">Check Behavior</entry>
+    <entry key="OptionPagePrecision">Precision</entry>
+    <entry key="OptionPageScaling">Scaling</entry>
+    <entry key="OptionPageReporting">Reporting</entry>
+    <entry key="OptionPageComputingSettings">Computing Settings</entry>
+    <entry key="OptionPageAdvanced">Advanced</entry>
+    <entry key="OptionPageTargetCompiler">Target &amp; Compiler</entry>
+    <entry key="OptionPageExternalTestBuildOptions" note="placeholder">External Tests</entry>
+    <entry key="OptionPageFileSpecificOptions" note="placeholder">File Specific Options</entry>
+    <entry key="OptionPageTesting">Testing</entry>
+    <entry key="OptionPageProfiling">All Profiling</entry>
+    <entry key="OptionPageCoverage">Code Coverage</entry>
+    <entry key="OptionPageExecutionProfiling">Execution Time</entry> <!-- not currently used -->
+
+    <!-- project options -->
+    <!-- mostly moved from pstestmgr.xml -->
+    <entry key="UnableToExcludeFolder">Excluding a parent folder of added folders/files is not supported.</entry>
+    <entry key="SelectFolder">Select Folder</entry>
+    <entry key="AddingExcludePattern">Adding Exclude Pattern</entry>
+    <entry key="SelectSourceFolder">Select Source Folder</entry>
+    <entry key="MoveToPSTUnitFolders">Move to Polyspace xUnit Test Folders section</entry>
+
+    <entry key="MoveToExternalTestFolders">Move to External Test Folders</entry>
+    <entry key="MoveToPSTUnitFiles">Move to Polyspace xUnit Test Files section</entry>
+    <entry key="MoveToExternalTestFiles">Move to External Test Files section</entry>
+    <entry key="ExcludePatternColumn">Pattern</entry>
+    <entry key="ExcludeForColumn">Exclude For</entry>
+    <entry key="ExcludePatterns">Exclude paths</entry>
+
+    <entry key="PatternConcrete">Concrete</entry>
+    <entry key="PatternGlob">Glob</entry>
+    <entry key="ExcludeForStaticAnalysis">Static analysis</entry>
+    <entry key="ExcludeForTest">Test</entry>
+    <entry key="ExcludeForAll">All</entry>
+
+    <!-- path validation -->
+
+    <entry key="NonExistentPath">File/folder ''{0}'' does not exist</entry>
+    <entry key="UnableToExpandPath">Unable to expand path</entry>
+    <entry key="UnableToExpandCommand">Unable to expand command</entry>
+    <entry key="UnableToValidateInput">Unable to validate input</entry>
+
+    <!-- include path -->
+
+    <entry key="IncludeSubfolders">Subfolders</entry>
+
+    <!-- override operations -->
+    <entry key="OverrideOpAppend">Append</entry>
+    <entry key="OverrideOpPrepend">Prepend</entry>
+    <entry key="OverrideOpReplace">Replace</entry>
+
+    <entry key="OverrideOpAppendIncludePaths">Append to project include paths</entry>
+    <entry key="OverrideOpPrependIncludePaths">Prepend project include paths</entry>
+    <entry key="OverrideOpReplaceIncludePaths">Replace project include paths</entry>
+
+    <!-- modules precision -->
+    <entry key="ModulesPrecisionColumn1">File name</entry>
+    <entry key="ModulesPrecisionColumn2">Precision</entry>
+
+    <!-- SFR Types -->
+    <entry key="SfrTypesColumn1">Name</entry>
+    <entry key="SfrTypesColumn2">Size</entry>
+
+    <!-- help strings -->
+
+    <entry key="AutosarMainGeneratorMessage">This project was generated from AUTOSAR specifications. In AUTOSAR-based projects, you cannot modify the options in the Run Time Errors group.</entry>
+    <entry key="ExternalTestsUnsupportedOptionMessage">The project contains an unsupported external tests execution configuration. Select one of the options to reset.</entry>
+
+    <!-- file specific options -->
+    <entry key="SelectAFile">Select a file to view file specific options</entry>
+    <entry key="NoFileDataAvailable">File specific options are not available for this build configuration.</entry>
+    <entry key="FileSpecificOptionInfo">File specific options are populated when creating a project from a build command (or importing from a .psprj file). The options are readonly.</entry>
+    <entry key="UseGlobalSettings">Use global settings</entry>
+
+    <!-- function/class dialogs -->
+
+    <!-- function pair -->
+    <entry key="Remove">Remove</entry>
+    <entry key="RemoveSelectedRows">Remove Selected Rows</entry>
+
+    <!-- function selection -->
+    <entry key="DetectedFunctions">Detected functions</entry>
+    <entry key="AddSelectedFunctions">add selected functions</entry>
+    <entry key="RemoveSelectedFunctions">remove selected functions</entry>
+    <entry key="AvailableFunctionsCount" note="0 and 1 are numbers">{0} out of {1} functions</entry>
+
+    <!-- class selection -->
+    <entry key="DetectedClasses">Detected classes</entry>
+    <entry key="AddSelectedClasses">add selected classes</entry>
+    <entry key="RemoveSelectedClasses">remove selected classes</entry>
+    <entry key="AvailableClassesCount" note="0 and 1 are numbers">{0} out of {1} classes</entry>
+
+    <!-- function/class filtering -->
+    <entry key="CaseSensitive">case sensitive</entry>
+    <entry key="WholeWord">whole word</entry>
+    <entry key="UseRegularExpression">use regular expression</entry>
+    <entry key="InvalidRegularExpression">invalid regular expression</entry>
+
+    <!-- function pair selection -->
+
+    <!-- critical section -->
+
+    <entry key="CriticalSectionColumn1" note="">Starting routine</entry>
+    <entry key="CriticalSectionColumn2" note="">Ending routine</entry>
+    <entry key="AddStartingCriticalSectionText" note="">Starting</entry>
+    <entry key="AddEndingCriticalSectionText" note="">Ending</entry>
+    <entry key="AddStartingCriticalSectionTooltip" note="">Add function starting a critical section</entry>
+    <entry key="AddEndingCriticalSectionTooltip" note="">Add function ending a critical section</entry>
+
+    <!-- routine interrupts -->
+
+    <entry key="RoutineDisableInterruptsColumn1" note="">Disabling routine</entry>
+    <entry key="RoutineDisableInterruptsColumn2" note="">Enabling routine</entry>
+    <entry key="AddEnablingInterruptText" note="">Enabling</entry>
+    <entry key="AddDisablingInterruptText" note="">Disabling</entry>
+    <entry key="AddEnablingInterruptTooltip" note="">Add function enabling all interrupts</entry>
+    <entry key="AddDisablingInterruptTooltip" note="">Add function disabling all interrupts</entry>
+
+    <!-- middle panel texts -->
+
+    <entry key="ToSelectedRow">To selected row</entry>
+    <entry key="ToNewRow">To a new row</entry>
+
+    <!-- exclusive tasks -->
+    <entry key="AppendToSelectedText">Selected</entry>
+    <entry key="AppendToSelectedTooltip" note="placeholder">Selected</entry>
+    <entry key="NewRowText">New Row</entry>
+    <entry key="NewRowTooltip" note="placeholder">New Row</entry>
+
+    <!-- dialogs -->
+    <entry key="SelectAFolder">Select a folder</entry>
+    <entry key="SelectingFolder">Selecting folder</entry>
+    <entry key="SelectingFiles">Selecting files</entry>
+    <entry key="GettingFunctionList">Getting function list</entry>
+    <entry key="GettingClassList">Getting class list</entry>
+    <entry key="SelectOsekFiles">Select osek files</entry>
+    <entry key="SelectAutosarFiles">Select AUTOSAR files</entry>
+    <entry key="SelectImpactSpecificationsFile">Select impact specifications file</entry>
+    <entry key="SelectPreincludeFiles">Select preinclude files</entry>
+    <entry key="SelectScript">Select a script file</entry>
+    <entry key="SelectCFiles">Select C files</entry>
+    <entry key="AddIncludePath">Add include path</entry>
+    <entry key="AddLibraryPath">Add library path</entry>
+    <entry key="SelectExternalTestOutputFile">Select output file</entry>
+    <entry key="SelectExternalTestXSLTFile">Select XSLT file</entry>
+
+    <!-- configuration variant management -->
+    <entry key="SwitchConfigTooltip">Switch to a different configuration</entry>
+    <entry key="RenameConfiguration">Rename configuration</entry>
+
+    <!-- active -->
+    <entry key="Active" note="as in active configuration. used in the 'badge' as status">Active</entry>
+    <entry key="Inactive" note="as in inactive configuration. used in the 'badge' as status">Inactive</entry>
+    <entry key="ActiveBuildConfig">Active Build configuration</entry>
+    <entry key="ActiveBuildConfigTooltip">The active build configuration is ''{0}''.</entry>
+    <entry key="ActiveStaticAnalysisConfig">Active Static Analysis Configuration</entry>
+    <entry key="ActiveStaticAnalysisConfigTooltip">The active static analysis configuration is ''{0}''.</entry>
+    <entry key="ActiveTestingConfig">Active Testing Configuration</entry>
+    <entry key="ActiveTestingConfigTooltip">The active testing configuration is ''{0}''.</entry>
+    <entry key="UpdatingActiveConfig">Updating active configuration</entry>
+    <entry key="MakeActiveConfig">Make Active</entry>
+    <entry key="MakeActiveConfigTooltip">Make the current configuration active</entry>
+    <entry key="SetAsActiveConfig">''{0}'' is set as the active configuration.</entry>
+    <entry key="ActiveConfigName" note="0 is the name">{0} (Active)</entry>
+
+    <!-- build command -->
+    <entry key="AutoGenerated" note="automatically generated configuration.">Auto-generated</entry>
+    <entry key="AutoGeneratedProjectTooltip">The current project is auto-generated from a build command. Any change to application sources and include paths will be overwritten when you update the project.</entry>
+    <entry key="AutoGeneratedBuildConfigTooltip">The current build configuration ''{0}'' is auto-generated from a build command. Any change to this build configuration will be overwritten when you update the project.</entry>
+    <entry key="AutoGeneratedActiveConfigName" note="0 is the name">{0} (Auto-generated, Active)</entry>
+    <entry key="AutoGeneratedConfigName" note="0 is the name">{0} (Auto-generated)</entry>
+
+    <!-- duplicate -->
+    <entry key="ConfigDuplicate">Duplicate</entry>
+    <entry key="ConfigDuplicateTooltip">Duplicate the current configuration</entry>
+    <entry key="ConfigDuplicating">Duplicating configuration</entry>
+    <entry key="ConfigDuplicated" note="0 and 1 are names">Configuration ''{0}'' is duplicated as ''{1}''.</entry>
+    <entry key="ConfigDuplicatedConfigure" note="0 and 1 are names">Configuration ''{0}'' is duplicated as ''{1}''. Options autogenerated from a build command (implicit compiler and file-specific options) have been removed.</entry>
+
+    <!-- rename -->
+    <entry key="RenameVariantTitle">Rename</entry>
+    <entry key="RenameVariantPrompt">Enter new name</entry>
+
+    <!-- import -->
+    <entry key="ConfigImportTooltip">Import configuration from files</entry>
+    <entry key="ConfigImported">Configuration import is complete</entry>
+    <entry key="ConfigImportItem" note="0 is path and 1 is name">Configuration file ''{0}'' is imported as ''{1}''.</entry>
+    <entry key="ConfigImportInvalidElement">Cannot load config file {0}. This file does not contain configuration variant data.</entry>
+    <entry key="CannotImportConfigFileError">Cannot load config file {0}. This file does not exist or is corrupted.</entry>
+    <entry key="ConfigImportDialogTitle">Select configuration files for import</entry>
+    <entry key="ConfigImporting">Importing configurations into current project</entry>
+
+    <!-- export -->
+    <entry key="ConfigExportCurrentTooltip">Export current configuration to file</entry>
+    <entry key="ConfigExportActive">Export Active Configurations</entry>
+    <entry key="ConfigExportActiveTooltip">Export active configurations to files</entry>
+    <entry key="ConfigExportAll">Export All Configurations</entry>
+    <entry key="ConfigExportAllTooltip">Export all configurations to files</entry>
+    <entry key="ConfigExported">Configuration export is complete</entry>
+    <entry key="ConfigExportItem" note="0 is path and 1 is name">Configuration ''{0}'' is exported to ''{1}''.</entry>
+    <entry key="ConfigExportItemConfigure" note="0 is path and 1 is name">Configuration ''{0}'' is exported to ''{1}''. Options autogenerated from a build command (implicit compiler and file-specific options) have been removed.</entry>
+    <entry key="CannotExportConfigFileError">Cannot write to config file {0}.</entry>
+    <entry key="ConfigExportCurrentDialogTitle">Select file for exporting current configuration</entry>
+    <entry key="ConfigExportManyDialogTitle">Select folder for exporting configurations</entry>
+    <entry key="ConfigExporting">Exporting configuration</entry>
+
+    <!-- new -->
+    <entry key="CreateNewConfigurationTooltip">Create new configuration of the current type</entry>
+    <entry key="NewBuildConfiguration">New Build Configuration</entry>
+    <entry key="NewStaticAnalysisConfiguration">New Static Analysis Configuration</entry>
+    <entry key="NewTestingProfilingConfiguration">New Testing and Profiling Configuration</entry>
+    <entry key="CreateNewBuildConfigurationTooltip">Create new build configuration</entry>
+    <entry key="CreateNewStaticAnalysisConfigurationTooltip">Create new static analysis configuration</entry>
+    <entry key="CreateNewTestingProfilingConfigurationTooltip">Create new testing and profiling configuration</entry>
+    <entry key="CreatingNewBuildConfiguration">Creating new build configuration</entry>
+    <entry key="CreatingNewStaticAnalysisConfiguration">Creating new static analysis configuration</entry>
+    <entry key="CreatingNewTestingProfilingConfiguration">Creating new testing and profiling configuration</entry>
+    <entry key="CreatedNewBuildConfiguration">Created new build configuration ''{0}''</entry>
+    <entry key="CreatedNewStaticAnalysisConfiguration">Created new static analysis configuration ''{0}''</entry>
+    <entry key="CreatedNewTestingProfilingConfiguration">Created new testing and profiling configuration ''{0}''</entry>
+
+    <!-- remove -->
+    <entry key="CannotRemoveActiveBuildConfigError">Cannot delete active build config.</entry>
+    <entry key="CannotRemovePSConfigureBuildConfigError">Cannot delete build configuration created from a build command.</entry>
+    <entry key="CannotRemoveActiveStaticAnalysisConfigError">Cannot delete active static analysis config.</entry>
+    <entry key="CannotRemoveActiveTestingProfilingConfigError">Cannot delete active testing config.</entry>
+    <entry key="ConfigRemoveTooltip">Delete current configuration</entry>
+    <entry key="ConfigRemoving">Deleting configuration</entry>
+    <entry key="ConfigRemoved">Configuration ''{0}'' is deleted.</entry>
+
+    <!-- value validation -->
+    <entry key="ListCannotBeEmpty">List cannot be empty</entry>
+    <entry key="NoEmptyValueInList">List cannot contain empty values</entry>
+    <entry key="ValueCannotBeEmpty">Value cannot be empty</entry>
+    <entry key="DuplicateValueFound">Duplicate value found: ''{0}''</entry>
+    <entry key="ValueAlreadyExists">''{0}'' already exists</entry>
+    <entry key="OneOrMoreInvalidPath">One or more paths are invalid</entry>
+    <entry key="DuplicateProjectVariableKey">Duplicate project variable key: {0}</entry>
+    <entry key="ProjectVariableKeyExists">Project variable key ''{0}'' already exists</entry>
+    <entry key="PathMustBeProvided">A file path must be provided</entry>
+    <entry key="CommandMustBeProvided">A command must be provided</entry>
+    <entry key="InvalidFormat">Invalid format</entry>
+    <entry key="HasValidationErrors">One or more options have validation errors</entry>
+    <entry key="HasStrayExcludePattern">One or more exclude patterns exist, but the project does not contain any source/test files or folders.</entry>
+    <entry key="VariableNotAllowedInArtifactPath">Artifact path does not support project variables.</entry>
+    <entry key="EnvironmentVariableOverridingArtifactPath">The environment variable ''{0}'' is set to ''{1}''. It will be used instead of the value provided here</entry> <!-- shown when artifact path is not empty -->
+    <entry key="EnvironmentVariableArtifactPathWillBeUsed">The artifact path ''{0}'' specified by the environment variable ''{1}'' will be used</entry> <!-- shown when artifact path is empty -->
+
+    <!-- other -->
+    <entry key="LoadingPlaceholder">Loading...</entry>
+    <entry key="Add">Add</entry>
+    <entry key="Cancel">Cancel</entry>
+    <entry key="ClickToAddDescription">Click to add description</entry>
+    <entry key="TestConnectivity" note="connectivity as in connecting to another hardware">Test Connection</entry>
+    <entry key="RunningConnectivityTests">Testing connection...</entry>
+    <entry key="RunningConnectivityTestsDetail">Testing connection to board ''{0}'' and toolchain ''{1}''</entry>
+    <entry key="RunningConnectivityTest">Running connectivity test ''{0}''</entry>
+    <entry key="ConnectivityTestPassed">Connectivity test ''{0}'' passed</entry>
+    <entry key="ConnectivityValidationError">Connectivity test ''{0}'' failed. Examine the logs for more details.</entry>
+    <entry key="AllConnectivityTestsPassed">All connectivity tests passed.</entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  pstestmgr ROOTPATH Ns pragmas AGC apos pthread MBD uninit interprocedural fptr
+     LocalWords:  reenables func redeclaration toolchain Asm ptrdiff wchar endian unregistration
+     LocalWords:  TESTOUTPUT Pst psprj osek preinclude
+-->

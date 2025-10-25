@@ -1,0 +1,11 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer has identified a variable that appears to be a
+                        <code>struct</code>. It also appears that this
+                        <code>struct</code> variable had one or more fields changed, but the
+                    code never uses the variable, nor is the variable returned. This scenario
+                    indicates that the assignment to the variable has no effect. </p><br/><strong>Suggested Action</strong><br/><p>Although Code Analyzer generates this message conservatively, it is possible
+                    for Code Analyzer to identify the variable incorrectly as a <code><a href="matlab:doc struct" target="_blank">struct</a></code> when it actually
+                    is an object. It is possible for an assignment to an object property to have
+                    side effects that make this assignment appropriate. If the object is a handle
+                    object, this usage is not only appropriate, but common. </p><p> If the message is appropriate, you can either:<ul><li><p> Remove the assignment, if it is not useful</p></li><li><p>Correct the program so that it either assigns or returns the
+                                value</p></li></ul></p><p> If the message is inappropriate, do one of the following:<ul><li><p>Suppress the message for this assignment.</p></li><li><p>Suppress the message for the entire file.</p></li><li><p>Suppress this message for all files, if your programming style is
+                                such that this message frequently appears inappropriately.</p></li></ul>For details, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

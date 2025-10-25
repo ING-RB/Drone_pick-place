@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="ErrorWritingWSData">Error writing variable ''{0}'' to workspace: {1}</entry>
+    <entry key="SkippingFiObjectUpload">不支持从目标应用程序上传定点对象。跳过变量 ''{0}'' 的数据上传。</entry>
+    <entry key="SkippingNonBaseVariableUpload">Simulink 只能从目标应用程序上传基础工作区中的变量。跳过变量 ''{0}'' 的数据上传。</entry>
+    <entry key="SkippingVariantObjectUpload">不支持从目标应用程序上传 Simulink.VariantVariable 和 Simulink.VariantControl 对象。跳过变量 ''{0}'' 的数据上传。</entry>
+    <entry key="ReturnWorkspaceOutputsNotSupportedInExtmode">Saving external mode simulation output as a single object is not supported because the workspace variable ''{0}''  is not created during model code execution. To suppress the warning, set ''ReturnWorkspaceOutputs'' to ''off''.</entry>
+    <entry key="CannotStartIfTargetNotConnected">Simulink cannot send a start packet to the model ''{0}'' running in external mode, as the target has lost its connection with the host.</entry>
+    <entry key="OneClickExternalModeNotSupported">
+        External mode simulation is not supported for the ''{0}'' hardware. 
+        However, you can deploy the model on this hardware. From the model window, 
+        click the "Deploy to Hardware" button.
+    </entry>
+    <entry key="OneClickPrepareModel">正在准备在 ''{0}'' 上运行模型...</entry>
+    <entry key="OneClickDownloadToHardware">正在将模型下载到 ''{0}''...</entry>
+    <entry key="OneClickConnectingToHardware">正在连接到 ''{0}''...</entry>
+    <entry key="OneClickRunningOnHardware">正在 ''{0}'' 上运行模型...</entry>
+    <entry key="OneClickFailedToRunOnHardware">无法在硬件上运行模型。</entry>
+    <entry key="OneClickConnectFailed">无法连接到 ''{1}'' 的 ''{0}'' 目标。</entry>
+    <entry key="OneClickModelIsConfiguredNotificationMsg">准备在 ''{0}'' 硬件上运行模型。</entry>
+    <entry key="OneClickDisconnectNotificationMsg">要断开 Simulink 与目标的连接而不停止它，请打开&lt;a href="matlab:Simulink.ExtMode.CtrlPanel.createExtModeCtrlPanelForModel(''{0}'');"&gt;代码 &gt; 外部模式控制面板&lt;/a&gt;，然后点击 "断开连接"。</entry>
+    <entry key="OneClickGenCodeOnly">模型 "{0}" 配置为仅生成代码。如果模型配置为仅生成代码，则不允许外部模式仿真。&lt;actions&gt; &lt;action type="fixit" id="disableGenCodeOnly"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''GenCodeOnly'', ''off'')&lt;/cmd&gt; &lt;txt&gt;禁用&lt;sldiag objui="configset" objparam="GenCodeOnly"&gt;仅生成代码&lt;/sldiag&gt;。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="OneClickModelConfiguringModelMsg">正在准备在目标硬件上运行 ''{0}''...</entry>
+    <entry key="OneClickModelConfiguringModelTitle">模型配置</entry>
+    <entry key="OneClickExtModeIsNotHonouredForDeploy">''{0}'' 中的 ''ExtMode'' 参数被编译过程忽略。要运行外部模式仿真，请在 Simulink 编辑器工具栏上将仿真模式设置为 ''外部''，然后点击 ''运行'' 按钮。要隐藏警告，请运行 set_param(''{1}'', ''ExtMode'', ''off'')。 </entry>
+    <entry key="ExtModeTransportNotAvailable">ExtModeTransport {0} is not available for this
+        system target file.
+    </entry>
+    <entry key="ExtModeRowMajor">Model ''{0}'' is configured for external mode and row-major code generation, which is not supported.
+        
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;configset.internal.fixIt(''{0}'',''ExtMode'',''off'')&lt;/cmd&gt;
+                    &lt;txt&gt;Disable &lt;sldiag objui="configset" objparam="ExtMode"&gt;external mode&lt;/sldiag&gt;.&lt;/txt&gt;
+                &lt;/action&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;set_param(''{0}'', ''ArrayLayout'',''Column-major'')&lt;/cmd&gt;
+                    &lt;txt&gt;Disable row-major ordering in code generation.&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+         
+    </entry>
+    <entry key="ExtModeInconsistentTransportSettings">The current ''{0}'' value, ''{1}'', does not match ''{2}'', which is the value expected by the current external mode transport layer, ''{3}''. This transport layer is specified by the 'ExtModeTransport' value, ''{4}''. This error can occur when you change the way you register external mode transport layers in Simulink.
+    
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="fixit" retvalue="false" id="ResetTransport"&gt;
+                &lt;cmd&gt;Simulink.ExtMode.Transports.resetExtModeTransportForModel(''{5}'')&lt;/cmd&gt;
+                &lt;txt&gt;Reset external mode transport.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+    
+    </entry>
+    <entry key="TooManyTargetConnectivityConfig"> "{0}" is compatible with multiple connectivity configurations. These model configuration parameters were checked for compatibility against registered connectivity configurations: ''SystemTargetFile'', ''TemplateMakefile'' or ''Toolchain'', ''TargetHWDeviceType'', ''HardwareBoard''. Multiple matches were found. To ensure that the model matches only a single connectivity configuration, update the conflicting connectivity configurations. </entry>
+    <entry key="NoTargetConnectivityConfigLauncher">Unable to retrieve a launcher for "{0}". The configuration parameters for this model do not support any registered connectivity configuration.
+        Update the model configuration parameters or create a supported connectivity configuration. For details, see &lt;a href="matlab:helpview(fullfile(docroot,'toolbox','ecoder','helptargets.map'),'create_connect_config_for_target')"&gt;Create a Connectivity Configuration for a Target&lt;/a&gt;.</entry>
+    <entry key="TargetApplicationNotRunning">Target application is not running on the target. Deploy target application.</entry>
+    <entry key="ExtModeLogAllOverriddenForXCP">In model {0}, ''off'' value for ''ExtModeLogAll'' parameter is ignored. 
+    XCP-based external mode simulations do not support selection of individual block signals to upload from the target application.
+    
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="fixit"&gt;
+                    &lt;cmd&gt;set_param(''{0}'', ''ExtModeLogAll'',''on'')&lt;/cmd&gt;
+                    &lt;txt&gt;For blocks in "{0}" that support external mode, upload all signals from the target application.&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+     
+    
+</entry>
+    <entry key="LauncherNeedsToProvideGetApplicationStatusMethod">Simulink is unable to determine whether the external mode target application is running.  Custom target application launcher "{0}" does not implement the ''getApplicationStatus'' method, or the implementation returns ''UNKNOWN''.  Ensure that the application is deployed to the target before attempting to connect.</entry>
+    <entry key="LauncherFailedToDetectApplicationStart">等待 {0} 秒后，Simulink 无法确定外部模式目标应用程序是否正在运行。应用程序未启动，或目标应用程序启动程序的 "{1}.getApplicationStatus()" 未在 {0} 秒内返回 RUNNING。请检查目标应用程序是否部署到目标硬件。</entry>
+    <entry key="LauncherGetApplicationStatusMethodTooSlow">由 "{0}" 应用程序执行管理器定义的 "getApplicationStatus" 方法的执行时间超出了 {1} 秒。当正在使用 "{0}" 时，这可能会影响 MATLAB 的响应能力。</entry>
+    <entry key="DefaultHostBasedTargetRunsOnHostPC">Default host-based target application runs on the same computer as Simulink. To suppress this warning, in ''MEX-file arguments'' field (''ExtModeMexArgs''), set the network name of your target processor to ''localhost'' or ''127.0.0.1''. Alternatively, provide a custom launcher by registering a connectivity configuration.</entry>
+    <entry key="DefaultHostBasedTargetCannotUsePortZeroWithConfigSetRef">Invalid port number specified in ''ExtModeMexArgs''. Default host-based target application cannot use port 0 if the model uses a configuration set reference (Simulink.ConfigSetRef). Select a port number between 256 and 65535.</entry>
+    <entry key="DefaultHostBasedTargetMustUseLocalHostWithConfigSetRef">Network name of target processor specified in ''ExtModeMexArgs'' is invalid. The model is configured to run a host-based target application on the Simulink computer. Set the network name to ''localhost'' or ''127.0.0.1'' if the model uses a configuration set reference (Simulink.ConfigSetRef).</entry>
+    <entry key="MaxStopTimeExceededForPurelyIntegerCode">When ''PurelyIntegerCode'' is ''on'', ''StopTime'' must not exceed {0}. Specify a smaller value for ''StopTime'' or set it to ''inf''.</entry>
+    <entry key="ParameterWithoutTargetMapFileHit">外部模式不会处理参数 {0}。这可能是由于该参数具有 bitfield、define 或 GetSet 等存储类，使得它在生成的代码中不可寻址。</entry>
+    <entry key="XCPExtModeUnspecifiedEndianess">Byte ordering is unspecified for model "{0}".  XCP-based external mode simulations require byte ordering to be specified.  Set the 'Byte ordering' configuration parameter to ''Little Endian' or ''Big Endian''.</entry>
+    <entry key="XCPExtModeHostMustBeLittleEndian">对于模型 "{0}"，字节顺序是大端，但所选工具链是针对 MATLAB 开发计算机的。请为您的嵌入式硬件选择工具链，或将 ''字节顺序'' 配置参数设置为 ''小端''，或选择 ''启用可移植字长'' 配置参数。</entry>
+    <entry key="StartedExecutable">已启动目标应用程序: {0}</entry>
+    <entry key="StoppedExecutable">已停止目标应用程序</entry>
+    <entry key="InvalidTFCommunicationInterface">与硬件板 "{1}" 关联的外部模式传输 "{0}" 需要 ''通道'' 属性设置为 "{2}" 的单一 target.CommunicationInterface 对象。请更新 "{3}" target.Board 定义。</entry>
+    <entry key="ExtModeTransportOutOfRange">'ExtModeTransport' value "{0}" does not match any of the currently registered external mode transport layers. This error can occur when you change the external mode transport layers that are registered in Simulink for your system target file or hardware board. To refresh the setting, in the Configuration Parameters dialog box, reselect the required value for 'Transport layer' or 'Hardware board'.</entry>
+    <entry key="XCPExtModeUnsupportedNativeWordAddressable">For model "{0}", the specified number of bits for type char is {1} and the native word size is {2}.  When the native word size is greater than 32 bits, XCP-based external mode simulations do not support targets that are not byte addressable.  On the Configuration Parameters &gt; Hardware implementation pane, set the number of bits per char to 8 or set the native word size to 8, 16, or 32.</entry>
+    <entry key="LauncherCannotDetermineExecutableExtension">Unable to start the target application, {0}, because the toolchain information is missing. To learn how to configure a toolchain, see &lt;a href="matlab:helpview('rtw','toolchain_approach')"&gt;Configure Toolchain (ToolchainInfo) or Template Makefile Build Process.&lt;/a&gt;</entry>
+    <entry key="OneClickNotSupportedWithoutToolchain">缺失工具链信息时，不支持一键外部模式。要了解如何配置工具链，请参阅&lt;a href="matlab:helpview('rtw','toolchain_approach')"&gt;配置工具链(ToolchainInfo)或模板联编文件编译过程。&lt;/a&gt;</entry>
+    <entry key="ExtModeUploadBlockUnsupportedModelRefSignal">Simulink 无法将路径为 ''{0}''、端口索引为 {1, number, integer} 的信号从 ''{2}'' 上传到 ''{3}''。&lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="EnableLoggingForChild" retvalue="false"&gt; &lt;cmd&gt;if ~bdIsLoaded(''{4}''),load_system(''{4}''),end;set(get_param(''{0}'', ''LineHandles'').Outport({1, number, integer}), 'DataLogging', true)&lt;/cmd&gt; &lt;txt&gt;为具有路径 ''{0}'' 和端口索引 {1, number, integer} 的信号启用记录。&lt;/txt&gt; &lt;/action&gt; &lt;action type = "suggestion" id="ViewInSDI" btn="open" retvalue="false"&gt; &lt;cmd&gt;Simulink.sdi.view&lt;/cmd&gt; &lt;txt&gt;在仿真数据检查器中查看记录的信号数据。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="TFLauncherStdoutOnStart">### 来自执行工具启动命令的标准输出(stdout)消息:</entry>
+    <entry key="TFLauncherStderrOnStart">### 来自执行工具启动命令的标准错误(stderr)消息:</entry>
+    <entry key="TFLauncherStdoutOnStop">### 来自执行工具停止命令的标准输出(stdout)消息:</entry>
+    <entry key="TFLauncherStderrOnStop">### 来自执行工具停止命令的标准错误(stderr)消息:</entry>
+  </message>
+</rsccat>

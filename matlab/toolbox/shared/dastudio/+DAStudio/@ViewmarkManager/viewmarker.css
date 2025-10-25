@@ -1,0 +1,869 @@
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: Arial, san-serif;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size: 100%;
+    margin: 0;
+    -webkit-user-select: none;
+}
+
+label {
+    font-weight: bold
+}
+
+
+input {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+  
+iframe {
+    border: 0;
+    left: 10px;
+    overflow: hidden;  /* had to also set scrolling="no" on the iframe itself for QtWebKit to be happy - 20140205 */
+    position: relative;
+}
+
+.outermost {
+    background: rgba(48,48,48,0.70);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    min-height: 98%;
+}
+
+.titlebar {
+    background: rgba(48,48,48, 0.9);
+    color: rgb(192,192,192);
+    font-family: Arial;
+    font-size: 120%;
+    font-weight: bold;
+    padding: 3px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 30px;
+    text-decoration: none;
+	z-index: 3000;
+}
+
+.controlpanel {
+    padding:0px;
+    position:fixed;
+    width:100%;
+    left:0px;
+    top:35px;
+    z-index:2500;
+}
+
+.controlpanel_left {
+    clear:both;
+    background-color: #6E6E6E;
+    color: rgb(192,192,192);
+    font-family: Arial;
+    font-size: 90%;
+    padding: 0px;
+    position: relative;
+    display:inline;
+    left: 0px;
+    float: left;
+    width: 251px;
+    height: auto;
+    text-decoration: none;
+    z-index: 3000;
+}
+
+.controlpanel_left .globalVMButton {
+    clear:both;
+    background-color: #6E6E6E;
+    border-left: none;
+    border-bottom: none;
+	border-top: none;
+	border-right: none;
+    color: #F0F0F0;
+    display: inline-block;
+    font-weight: bolder;
+    height: 34px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: arrow;
+	outline: none;
+	padding: none;
+    top: 0px;
+    width: 123px;
+}
+
+.controlpanel_left .modelVMButton {
+    background-color: #4A4A4A;
+    border-left: 1px solid #7B7B7B;
+    border-bottom: 1px solid #7B7B7B;
+	border-top: 1px solid #7B7B7B;
+	border-right: none;
+	color: #F0F0F0;
+    display: inline-block;
+    height: 35px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: arrow;         
+	outline: none;
+	padding: none;
+    top: 0px;
+    width: 123px;
+}
+
+.controlpanel_right {
+    background: rgba(70,70,70, 0.9);
+    border-left: 1px solid #7B7B7B;
+    border-bottom: 1px solid #7B7B7B;
+    border-top: none;
+    border-right: none;
+    color: rgb(192,192,192);
+    font-family: Arial;
+    font-size: 85%;
+    font-weight: bold;
+    padding: 3px;
+    position: relative;
+    display:inline-block;
+    float: left;
+    width: calc(100% - 260px);
+    min-width:160px;
+    height: 28px;
+    text-decoration: none;
+    z-index: 3000;
+}
+
+.controlpanel_right .manageModeButton {
+    border-radius: 3px;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(222, 223, 224)), to(rgb(175, 177, 180)));
+    color: #777;
+    display: inline-block;
+    height: 23px;
+    margin-left: 10px;
+    margin-right: 1px;
+    cursor: arrow;
+    width: 80px;
+}
+
+.controlpanel_right .manageModeButton {
+    position: relative;
+    float:right;
+    top: 4px;
+    color: rgb(68, 68, 68);
+    cursor: pointer;         
+    margin-left: 1px;
+    width: 80px;
+    right: 5px;
+}
+
+.controlpanel_right .copyVMButton {
+    position: relative;
+    display: none;
+    height: 20px;
+    cursor: arrow;         
+    top: 5px;
+    left:3px;
+}
+
+.controlpanel_right .multiSelDeleteButton {
+    position: relative;
+    display: none;
+    height: 20px;
+    cursor: arrow;         
+    top: 5px;
+    left:3px;
+}
+
+.global_viewmarks, .currentmdl_viewmark {
+    pisition:relative;
+}
+
+.introductionButtonTip1 {
+    color: white;
+    display: block;
+    font-family: "Arial";
+    font-size: 100%;
+    font-weight: bold;
+    padding: 3px;
+    position: fixed;
+    width: 100%;
+    bottom: 55px;
+    height: 30px;
+    text-decoration: none;
+}
+
+.introductionButtonTip2 {
+    color: white;
+    display: block;
+    font-family: "Arial";
+    font-size: 100%;
+    font-weight: bold;
+    padding: 3px;
+    position: fixed;
+    width: 100%;
+    bottom: 20px;
+    height: 30px;
+    text-decoration: none;
+}
+
+.titlebar .titlebartext {
+    margin-top: 4px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.closeLink  {                
+    background: url("closelink.png");
+    border: 1px solid rgb(192,192,192); 
+    border-radius: 5px;      
+    background: black;       
+    top: 6px;               
+    color: white;            
+    cursor: pointer;         
+    font-family: "Arial Black";
+    font-size: 100%;         
+    padding-left:  5px;      
+    padding-right: 5px;      
+    margin-top:  1px;      
+    margin-bottom: 1px;      
+    position: fixed;         
+    right: 10px;             
+    text-decoration: none;   
+    padding: 3px;
+    z-index: 4000;
+}                            
+
+.deletegroup  {                
+    border: 1px solid transparent;
+    border-radius: 5px;      
+    background: transparent;
+    color: white;            
+    cursor: pointer;         
+    font-family: "Arial";
+    font-size: 90%;         
+    padding-left:  5px;      
+    padding-right: 5px;      
+    padding-top: 2px;
+    text-decoration: none;   
+    text-align: center;
+    display: none;
+    position: absolute;
+	z-index: 3000;
+}
+
+.imgframe {
+    margin-top: 3%;
+    height: 94%;
+    position: relative;
+    width: 98%;
+}
+
+a {
+    outline: none;
+}
+  
+.spacer{
+    height: 65px;
+    margin-top: 10px;
+}
+
+.introductionTitle {
+    color: white;
+    display: block;
+    font-family: Arial;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.introductionDetails {
+    color: white;
+    display: block;
+    font-family: "Arial";
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.introductionDetails_model_1 {
+    color: white;
+    display: block;
+    font-family: "Arial";
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.glass {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+  
+.viewmarkerframe_outer {
+    border: 0px solid black;
+    display: inline-block;
+    margin: 5px;
+    position: relative;  /* needed so that absolutely positioned children are positions relative to this instead of the browser */
+    width: 98%;  /* indirectly determines how many viewmarkers per row */
+    background: transparent;
+}
+
+.viewmarkerframe_outer_model {
+    border: 0px solid black;
+    display: inline-block;
+    margin: 5px;
+    position: relative;  /* needed so that absolutely positioned children are positions relative to this instead of the browser */
+    width: 98%;  /* indirectly determines how many viewmarkers per row */
+    background: transparent;
+}
+
+.viewmarkerframe_mdlname {
+    font-weight: bold;
+    color: white;
+    margin-top: 11px;
+    width: 100%;
+    margin-left: 0px;
+    display:block;
+    overflow: hidden;
+}
+
+.viewmarkerframe_mdlname_model {
+    font-weight: bold;
+    color: white;
+    margin-top: 11px;
+    width: 100%;
+    margin-left: 0px;
+    display:block;
+    overflow: hidden;
+}
+
+.viewmarkerframe_mdlname_text {
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-left: 0px;
+    margin-right: 20px;
+    display:inline-block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.viewmarkerframe_mdlname:hover .deletegroup {
+    display: inline-block;
+}
+
+.viewmarkerframe_mdlname_model:hover .deletegroup {
+    display: inline-block;
+}
+
+.viewmarkerframe {
+    background: white;
+    border: 1px solid #2B1B17;
+    box-shadow: 2px 2px 2px #666362;
+    display: inline-block;
+    margin: 6px;
+    overflow: hidden;
+    position: relative;  /* needed so that absolutely positioned children are positions relative to this instead of the browser */
+    width: 32%;  /* indirectly determines how many viewmarkers per row */
+    z-index: 1000;
+}
+
+.viewmarkerframe:hover {
+    background: white;
+    border: 1px solid #7ab7ff;
+    box-shadow: 0 0 10px 4px #55a1ff;
+    display: inline-block;
+    margin: 6px;
+    overflow: hidden;
+    position: relative;  /* needed so that absolutely positioned children are positions relative to this instead of the browser */
+}
+
+.viewmarkerframe.stateflow:hover {
+    background: #fff5e1;
+    border: 1px solid #7ab7ff;
+    box-shadow: 0 0 10px 4px #55a1ff;
+    display: inline-block;
+    margin: 6px;
+    overflow: hidden;
+    position: relative;  /* needed so that absolutely positioned children are positions relative to this instead of the browser */
+}
+
+.viewmarkerframe.unavailableFrame:hover {
+    background: rgba(153,153,153, 1);
+    border: 1px solid #7ab7ff;
+    box-shadow: 0 0 10px 4px #55a1ff;
+    display: inline-block;
+    margin: 6px;
+    overflow: hidden;
+    position: relative;  /* needed so that absolutely positioned children are positions relative to this instead of the browser */
+}
+
+.open {}   /* Used in JS */
+.closed {} /* Used in JS */
+
+.modelGroupIcon {
+    background: url("arrow_down.png");
+    background-repeat: no-repeat;
+    background-position:center; 
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    position: relative;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.closed .modelGroupIcon {
+    background: url("arrow_right.png");
+    background-repeat: no-repeat;
+    background-position:center; 
+}
+
+.hidden {
+    display: none;
+}
+
+.stateflow {
+    background: #fff5e1;
+}
+
+.unavailableFrame{
+    background: rgba(153,153,153, 1);
+}
+
+.unavailable_svg{
+    opacity: 0.3;
+}
+
+.viewmarkerframe_new {
+    box-shadow: 0 0 10px 4px rgba(85, 161, 255, 1);
+    position: absolute;
+    left: -500px;
+}
+
+.deleteButton,
+.refreshButton,
+.editButton {
+    border-radius: 1px;
+    background-color: rgb(153, 153, 153);
+    border: 3px solid white;  /* */
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+}
+
+.refreshButton {
+    right: 28px;
+}
+
+.editButton {
+    right: 51px;
+}
+
+.selectCheckbox {
+    display: none;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    padding: 2px;    
+}
+
+.editButtonMoveOver {
+    right: 28px;
+}
+
+.viewmarkerframe:hover .deleteButton,
+.viewmarkerframe:hover .refreshButton,
+.viewmarkerframe:hover .editButton {
+    display: block;
+}
+
+.lockControls .viewmarkerframe:hover .deleteButton,
+.lockControls .viewmarkerframe:hover .refreshButton,
+.lockControls .viewmarkerframe:hover .editButton {
+    display: none;
+}
+
+.deleteButton_model,
+.refreshButton_model,
+.editButton_model {
+    border-radius: 1px;
+    background-color: rgb(153, 153, 153);
+    border: 3px solid white;  /* */
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+}
+
+.refreshButton_model {
+    right: 28px;
+}
+
+.editButton_model {
+    right: 51px;
+}
+
+.editButtonMoveOver_model {
+    right: 28px;
+}
+
+.viewmarkerframe:hover .deleteButton_model,
+.viewmarkerframe:hover .refreshButton_model,
+.viewmarkerframe:hover .editButton_model {
+    display: block;
+}
+
+.lockControls .viewmarkerframe:hover .deleteButton_model,
+.lockControls .viewmarkerframe:hover .refreshButton_model,
+.lockControls .viewmarkerframe:hover .editButton_model {
+    display: none;
+}
+
+.viewmarkerframe_inner {
+    height: 250px;
+    overflow: hidden;
+    padding-bottom: 1em;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.viewmarker_lower_sec {
+    background: rgb(200, 200, 200);
+    padding-bottom: 30px;  
+}
+
+.active {
+    background-color: #eeeeee;
+}
+
+.nameLabel {
+    bottom: 5px;
+    font-size: 80%;
+    left: 15px;
+    position: absolute;
+    width: 90%;
+}
+
+.inactive.nameLabel:hover {
+    background-color: #eeeeee;
+}
+
+.lockControls .inactive.nameLabel:hover {
+    background-color: white;
+    cursor: default;
+}
+
+.lockControls .glass {
+    cursor: default;
+}
+
+.editPane {
+    border: none;
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    background-color: rgb(200, 200, 200);
+}
+
+.editPane textarea {
+    font-family: Arial;
+    font-size: 80%;
+    left: 3px;
+    resize: none;
+    right: 3px;
+    position: absolute;
+    top: 3px;
+    bottom: 30px
+}
+
+.editPane .closeButton {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: white;
+    bottom: 10px;
+    color: black;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 70%;
+    padding: 1px;
+    position: absolute;
+    text-decoration: none;
+    right: 13px;
+    bottom: 4px;
+    width: 50px;
+}
+
+.editPane .closeButton:hover  {
+    background: #eee;
+}
+
+.dialog {
+    -webkit-box-shadow: rgb(102, 102, 102) 0px 5px 10px 0px;
+    background: white;
+    border: 1px solid rgb(145, 145, 145); 
+    position: fixed;
+    z-index: 950;
+}    
+
+.deleteGroupConfirmationPane {
+    width: 377px;
+    display: none;
+    /*left: 30%;*/
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    top: 40%;
+    height: 112px;
+	z-index: 3000;
+}
+
+.warningDescLen {
+    width: 425px;
+    display: none;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right:auto;
+    top: 40%;
+    height: 112px;
+    z-index: 3000;
+}
+
+.warningDescLenContent {
+    height: 16px;
+    width: 100%;
+}
+
+.dialogTitle {
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(222, 223, 224)), to(rgb(175, 177, 180)));
+    border-bottom: 0.8px solid rgb(153, 153, 153);
+    color: rgb(68, 68, 68);
+    cursor: default;
+    display: block;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-left: 6px;
+    height: 28px;
+    width: calc(100% - 6px);
+}
+
+.dialogContent {
+    border-top: 0.8px solid rgb(211, 211, 211);
+    color: rgb(68, 68, 68);
+    display: block;
+    padding: 10px;
+}
+
+.deleteGroupConfirmationPaneContent {
+    height: 16px;
+    width: 100%;
+}
+
+.dialogButtons {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+}
+
+.dialogButtons .button {
+    border-radius: 3px;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(222, 223, 224)), to(rgb(175, 177, 180)));
+    color: rgb(68, 68, 68);
+    display: inline-block;
+    height: 26px;
+    margin-right: 10px;
+    width: 100px;
+}
+
+.spinner {
+    display: none;
+    left: 0;
+    right:0;
+    margin-left: auto;
+    margin-right:auto;
+    top: 40%;
+    width: 200px;
+    z-index: 3000;
+}
+
+.spinner_text_loading {
+    position: absolute;
+    left: 60px;
+    top: 17px;
+}
+
+.spinner.spinner_msg {
+    display: block;
+    width: 350px;
+}
+
+.spinner_msg .spinner_inner {
+    display: none;
+}
+
+.spinner.spinner_msg .OKButtonForUnavailable,
+.spinner.spinner_msg .CancelButtonForUnavailable {
+    display: inline-block;
+}
+
+.no_model {
+    border: 2px solid black;
+    border-radius: 0px;
+    background: white;
+    display: none;
+    left: 40%;
+    padding-bottom: 5%;
+    position: fixed;
+    top: 40%;
+    width: 200px;
+    height: 40px;    
+}
+
+.spinner_inner {
+    position: absolute;
+    left: 30px;
+    top: 30px;  
+}
+
+.spinner .OKButtonForUnavailable,
+.spinner .CancelButtonForUnavailable {
+    display: none;
+}
+
+.spinner .OKButtonForUnavailable:hover,
+.spinner .CancelButtonForUnavailable:hover {
+    background: #eee;
+}
+
+.spinner_text {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 90%;
+    position: relative;
+}
+
+.spinner_warning {
+    height: 75px;
+}
+
+.spinner_image{
+    position: relative;
+    left: 0px;
+}
+
+#hidePage {
+    background: white;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.canvas_image {
+    display: inline;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.introIconDiv {
+    display:  inline;
+}
+
+.introIcon {
+    position: relative;
+    top: 3px;
+}
+
+.doclink {
+    color: white;
+}
+
+.customTooltip {
+    background: -webkit-linear-gradient(#FFF, #CCC);
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline;
+    font-family: Arial;
+    left: 0;
+    opacity: 0;
+    padding: 2px 5px 2px 5px;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.7s;
+    visibility: hidden;
+    z-index: 3000;
+}
+
+.DragBox, .OverDragBox, .DragDragBox, .miniDragBox {
+	cursor: pointer;
+}
+
+.OverDragContainer {
+	/* background-color: #eee; */
+}
+
+.OverDragBox, .DragDragBox {
+  /* background-color: white; */
+}
+
+.DragDragBox {
+  filter: alpha(opacity=50);
+  /* background-color: white; */
+}
+
+.History {
+  font-size: 10px;
+  overflow: auto;
+  width: 100%;
+  font-family: verdana, tahoma, arial;
+  height: 160px;
+  pointer-events: none;
+}
+
+.DragContainer {
+  /* border: #669999 1px solid;*/
+  /* padding: 5px 0 0 5px */
+  /* width: 110px; */
+  /* height: 40px; */
+}
+
+.miniDragBox {
+  float: left;
+  margin: 0 5px 5px 0;
+  width: 20px;
+  height: 20px;
+}
+
+.unHighlightViewmark {
+    border:1px solid #2B1B17;
+    box-shadow:2px 2px 2px #666362;
+}

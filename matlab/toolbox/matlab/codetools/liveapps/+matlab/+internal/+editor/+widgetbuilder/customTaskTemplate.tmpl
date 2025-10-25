@@ -1,0 +1,69 @@
+classdef %1$s < matlab.task.LiveTask
+    properties(Access = private, Transient)
+        %2$s
+    end 
+
+    properties(Dependent)
+        State
+        Summary
+    end
+
+    methods(Access = protected)
+        function setup(%3$s)
+            createComponents(%3$s);
+        end
+    end
+
+    methods
+        function createComponents(%5$s)
+            %6$s
+        end
+
+        function [code,outputs] = generateCode(task)
+            outputs = {%12$s};
+            codeTemplate = [%7$s];
+            code = join(string(codeTemplate), newline);
+        end
+
+        function summary = get.Summary(~)
+            summary = "%11$s";
+        end
+
+        function state = get.State(task)
+            state = struct;
+            %8$s
+        end
+
+        function set.State(task, state)
+            %9$s
+        end
+
+        function reset(task)
+            %10$s
+        end
+    end
+    
+    %4$s
+    
+    methods(Access = private)
+    function out = extractValue(~, widget)
+        value = widget.Value;
+        type = class(value);
+        
+        if isfield(widget.UserData, 'sourceLiveControlData')
+            type = widget.UserData.sourceLiveControlData.valueType;
+        end
+
+        switch (type)
+            case "string"
+                out = append('"', replace(value, '"', '""'), '"');
+            case "double"
+                out = string(value);
+            case "char"
+                out = append("'", replace(value, "'", "''"), "'");
+            otherwise
+                out = value;
+        end
+    end
+    end
+end

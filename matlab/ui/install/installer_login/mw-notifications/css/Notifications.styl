@@ -1,0 +1,129 @@
+/* Alert and Confirm Dialog */
+
+.mwAlertDialog.mwDialog .mwDialogBody,
+.mwConfirmDialog.mwDialog .mwDialogBody,
+.mwProgressDialog.mwDialog .mwDialogBody {
+    overflow: hidden;
+    max-width: 400px;
+    box-sizing: content-box;
+}
+
+/*mw-dialog sets min-height to be 160px of dialogs.
+Changing min-height to keep look similar to earlier version.*/
+.mwProgressDialog.mwDialog {
+    min-height: 0px;
+}
+
+.mwProgressDialog.mwDialog .mwDialogBody,
+.mwProgressDialog.mwDialog .mwDialogBody.mwNoButtons {
+    overflow: hidden;
+    min-height: 0px;
+}
+
+.mwAlertDialog .mwIconAndMessageWidget,
+.mwConfirmDialog .mwIconAndMessageWidget,
+.mwProgressDialog .mwIconAndMessageWidget {
+    overflow: hidden;
+}
+
+.mwAlertDialog .mwIconAndMessageWidgetIcon,
+.mwConfirmDialog .mwIconAndMessageWidgetIcon,
+.mwProgressDialog .mwIconAndMessageWidgetIcon,
+// set styles for custom icons
+// .mwAlertDialog .mwIconAndMessageWidgetIcon img,
+// .mwConfirmDialog .mwIconAndMessageWidgetIcon img,
+// .mwProgressDialog .mwIconAndMessageWidgetIcon img
+{
+    float: left;
+    padding: 1px;
+    max-width: 32px;
+    max-height: 32px;
+    padding-right: 10px;
+}
+
+.mwAlertDialog .mwIconAndMessageWidgetMessage,
+.mwConfirmDialog .mwIconAndMessageWidgetMessage,
+.mwProgressDialog .mwIconAndMessageWidgetMessage {
+    overflow: auto;
+    word-wrap: break-word;
+    font-size: 14px;
+    /* ENABLE Selection */
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+
+// apply green color to success icon validatedRecolorUI. (this is temporarily removed after g3118255). 
+// .mwAlertDialog .mwIconAndMessageWidgetIcon svg[data-test-id="validatedRecolorUI"]{
+//     --mw-icon-object-primary: var(--mw-color-success);
+// }
+
+/* Progress Dialog */
+
+.mwProgressDialog .mwIconAndMessageWidget {
+    min-width: 360px;
+}
+
+.mwProgressDialog .mwProgressDialogProgressBar {
+    margin-top: 15px;
+}
+
+.mwProgressDialog .mwProgressDialogMessage {
+    overflow: auto;
+    max-height: 140px;
+    font-size: 13px;
+}
+
+
+/* Banner Widget (experimental) */
+.mwBanner {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 900;
+}
+
+.mwBannerContainer {
+    font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+    border: 1px solid var(--mw-borderColor-primary);
+    width: 90%;
+    margin: auto;
+    background: var(--mw-backgroundColor-primary);
+    max-height: 70px;
+    overflow: auto;
+}
+
+.mwBanner .mwBannerTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: var(--mw-backgroundColor-primary);
+    color: var(--mw-color-primary);
+    border-bottom: 1px solid var(--mw-borderColor-primary);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+/* Alert Banner (experimental) */
+.mwAlertBanner .mwIconAndMessageWidget {
+    padding: 5px;
+    overflow: hidden;
+}
+
+.mwAlertBanner .mwIconAndMessageWidgetIcon {
+    float: left;
+    max-width: 16px;
+    max-height: 16px;
+    padding: 1px;
+    padding-right: 10px;
+}
+
+.mwAlertBanner .mwIconAndMessageWidgetMessage {
+    overflow: auto;
+    word-wrap: break-word;
+    font-size: 12px;
+}

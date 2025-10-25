@@ -1,0 +1,8 @@
+prefix=$${ROS1_INSTALL_DIR}
+
+Name: rosconsole
+Description: Description of rosconsole
+Version: 1.14.3
+Cflags: -I${prefix}/include -I$${BOOST_INSTALL_DIR}/include
+Libs: -L${prefix}/lib -lrosconsole -lrosconsole_print -lrosconsole_backend_interface $${BOOST_INSTALL_DIR}/lib/libmwboost_regex.so $${BOOST_INSTALL_DIR}/lib/libmwboost_system.so $${BOOST_INSTALL_DIR}/lib/libmwboost_thread.so -lpthread $${BOOST_INSTALL_DIR}/lib/libmwboost_chrono.so $${BOOST_INSTALL_DIR}/lib/libmwboost_atomic.so
+Requires: cpp_common rostime

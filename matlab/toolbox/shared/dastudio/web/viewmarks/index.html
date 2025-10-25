@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+       <meta charset="utf-8">
+       <meta http-equiv="cache-control" content="no-cache">
+       <meta http-equiv="pragma" content="no-cache">
+       <meta http-equiv="expires" content="-1">
+       <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+      <title>Viewmark popup</title>
+      <link rel="stylesheet" href="release/index-css.css"/>
+      <style>
+      .outermost {
+            background: rgba(48,48,48,0.70);
+            min-height: 98%
+      }
+      </style>
+      <script type="text/javascript">
+         var viewMarksDir = "/addons/ViewMarks/";
+         var xmlObject;
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               storeXMLContent(this);
+            }
+         };
+         xhttp.open("GET", "/addons/ViewMarks/Simulink_ViewMark.xml", true);
+         xhttp.send();
+         function storeXMLContent(xml) {
+            xmlObject = xml.responseXML;
+         }
+      </script>
+   </head>
+   <body class="tundra">
+      <div id="hidePage"></div>
+      <div class="viewmarkerframe"  id="">
+         <div class="viewmarkerframe_inner">
+            <div class="svgframe">
+               <iframe class="svg_image" scrolling="no" fill="rgba(124,240,10,0.5)"></iframe>
+               <div title="" class="glass"></div>
+            </div>
+         </div>
+         <input class="viewMarkerId" type="hidden" value="225">
+         <div class="viewmarker_lower_sec"><input class="nameLabel inactive" type="text" name="225" value=""></div>
+         <input class="deleteButton" type="image" src="release/images/delete.png" title="Delete">
+         <input class="editButton" type="image" src="release/images/document.png" title="Description">
+         <div class="editPane">
+            <textarea maxlength="2000" ></textarea>
+            <div class="closeButton">Close</div>
+         </div>
+      </div>
+      <script type="text/javascript"  src="release/viewmarks/dojoConfig-release-global.js"></script>
+      <!-- Include dojo release build -->
+      <script type="text/javascript" src="release/bundle.index.js"></script>
+   </body>
+</html>
+

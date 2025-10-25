@@ -9,12 +9,23 @@ cp ./4013_gz_x500_lidar_2d /home/ros_workspace/PX4-Autopilot/ROMFS/px4fmu_common
 cd /home/ros_workspace/PX4-Autopilot
 make px4_sitl
 
-cd /home/ros_workspace/LI-SLAM/build/graph_based_slam/CMakeFiles/graph_based_slam_component.dir/src
-unzip graph_based_slam_component.cpp.zip
-
-cd /home/ros_workspace/LI-SLAM/build/scanmatcher/CMakeFiles/scanmatcher_component.dir/src
-unzip scanmatcher_component.cpp.zip
+cd /home/ros_workspace/LI-SLAM
+colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 cd /home/ros_workspace
 wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl-x86_64.AppImage
 chmod +x QGroundControl-x86_64.AppImage
+
+
+cd /home/ros_workspace/Micro-XRCE-DDS-Agent
+mkdir build
+cd build
+cmake ..
+make
+make install 
+ldconfig /usr/local/lib/ 
+
+cd /usr/local/MATLAB/R2025a/sys/mwds/glnxa64/packages/glnxa64
+7z x mathworksservicehost.enc.zip
+cd /usr/local/MATLAB/R2025a/bin/glnxa64
+7z x libcef.zip

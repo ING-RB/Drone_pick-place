@@ -1,0 +1,203 @@
+#!/bin/bash
+
+arg0_=$0
+
+check_archlist () { # Sets ARCH. If first argument contains a valid
+  # arch then ARCH is set to that value else
+        # an empty string. If there is a second argument
+  # do not output any warning message. The most
+  # common forms of the first argument are:
+  #
+  #     ARCH=arch
+  #     MATLAB_ARCH=arch
+  #     argument=-arch
+  #
+                    # Always returns a 0 status.
+                    #
+                    # usage: check_archlist arch=[-]value [noprint]
+                    #
+if [ $# -gt 0 ]; then
+  arch_in=`expr "$1" : '.*=\(.*\)'`
+  if [ "$arch_in" != "" ]; then
+      ARCH=`echo "$ARCH_LIST EOF $arch_in" | awk '
+#-----------------------------------------------------------------------
+{ for (i = 1; i <= NF; i = i + 1)
+    if ($i == "EOF")
+  narch = i - 1
+for (i = 1; i <= narch; i = i + 1)
+if ($i == $NF || "-" $i == $NF) {
+    print $i
+    exit
+}
+}'`
+#-----------------------------------------------------------------------
+     if [ "$ARCH" = "" -a $# -eq 1 ]; then
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo ' '
+echo "    Warning: $1 does not specify a valid architecture - ignored . . ."
+echo ' '
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     fi
+  else
+ARCH=""
+  fi
+else
+  ARCH=""
+fi
+#
+return 0
+}
+
+#========================== getrootdir.sh (start) ============================
+# Copyright 2020 The MathWorks, Inc.
+  get_root_dir () {
+#
+#   Determine the path of the MATLAB root directory - always one directory
+#   up from the path to this command.
+#
+    filename=$1
+#
+# Now it is either a file or a link to a file.
+#
+    cpath=`pwd`
+#
+# Follow up to 8 links before giving up. Same as BSD 4.3
+#
+    n=1
+    maxlinks=8
+    while [ $n -le $maxlinks ]
+    do
+#
+# Get directory correctly!
+#
+        newdir=`echo "$filename" | awk '
+                        { tail = $0
+                          np = index (tail, "/")
+                          while ( np != 0 ) {
+                             tail = substr (tail, np + 1, length (tail) - np)
+                             if (tail == "" ) break
+                             np = index (tail, "/")
+                          }
+                          head = substr ($0, 1, length ($0) - length (tail))
+                          if ( tail == "." || tail == "..")
+                             print $0
+                          else
+                             print head
+                        }'`
+        if [ ! "$newdir" ]; then
+            newdir="."
+        fi
+        (cd "$newdir") > /dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            #describe internal_error_1 >&2
+            #cleanup
+            exit 1
+        fi
+        cd "$newdir"
+#
+# Need the function pwd - not the built in one
+#
+        newdir=`/bin/pwd`
+#
+        newbase=`expr //"$filename" : '.*/\(.*\)' \| "$filename"`
+        lscmd=`ls -l "$newbase" 2>/dev/null`
+        if [ ! "$lscmd" ]; then
+            #describe internal_error_2 >&2
+            #cleanup
+            exit 1
+        fi
+#
+# Check for link portably
+#
+        if [ `expr "$lscmd" : '.*->.*'` -ne 0 ]; then
+            filename=`echo "$lscmd" | awk '{ print $NF }'`
+        else
+#
+# It's a file
+#
+            dir="$newdir"
+            command="$newbase"
+#
+            cd "$dir"/..
+            MATLAB=`/bin/pwd`; export MATLAB
+            break
+        fi
+        n=`expr $n + 1`
+    done
+    if [ $n -gt $maxlinks ]; then
+        #describe internal_error_3 >&2
+        #cleanup
+        exit 1
+    fi
+#
+    cd "$cpath"
+}
+
+get_arch () {
+  if [ "$ARCH" = "" ]; then # No command line override given
+if [ ! -f $MATLAB/bin/util/arch.sh ]; then
+    #describe no_util_scripts >&2
+    #cleanup
+    exit 1
+fi
+
+. $MATLAB/bin/util/arch.sh
+
+if [ "$Arch" = "unknown" ]; then
+    #describe unknown_architecture >&2
+    #      cleanup
+    exit 1
+fi
+  else # Use command line override
+Arch=$ARCH
+  fi
+  if [ ! -f $MATLAB/bin/util/oscheck.sh ]; then
+      #describe no_util_scripts >&2
+      #cleanup
+      exit 1
+  fi
+  if [ "$verbose" = "1" ]; then
+      . $MATLAB/bin/util/oscheck.sh
+      if [ "$oscheck_status" = "1" ]; then
+          cleanup
+          exit 1
+      fi
+  fi
+}
+
+smart_quote () {
+#
+# Return a quoted version of the input string if it has spaces/equality sign in it.
+#
+  if [ $# -gt 1 ]; then
+      echo \"$*\"
+  else
+  if echo $1 | grep -E '[="]' >/dev/null; then
+    echo \"$1\"
+  else
+    echo $1
+  fi
+  fi
+}
+# end get_arch ()
+
+if [ ! "$MATLAB" ]; then            # If no MATLAB='' was used
+    get_root_dir $arg0_
+fi
+
+ARCH=
+get_arch    # Call $MATLAB/bin/util/arch.sh
+
+if [ "$ARCH" = "maci64" ] || [ "$ARCH" = "maci" ]; then
+    $MATLAB/bin/maci64/matlab_jenv "$@";
+elif [ "$ARCH" = "maca64" ]; then
+    $MATLAB/bin/maca64/matlab_jenv "$@";
+elif [ "$ARCH" = "glnxa64" ]; then
+    export LD_LIBRARY_PATH="$MATLAB/sys/os/glnxa64:$LD_LIBRARY_PATH"
+    test -e /usr/bin/ldd &&  /usr/bin/ldd --version |  grep -q "(GNU libc) 2\.17"  \
+    && export MW_GLIBC_SHIM="$MATLAB/bin/glnxa64/glibc-2.17_shim.so" \
+    && export LD_PRELOAD="$LD_PRELOAD:$MATLAB/bin/glnxa64/glibc-2.17_shim.so"
+    $MATLAB/bin/glnxa64/matlab_jenv "$@";
+else
+    echo 'Error: Invalid machine architecture ' $ARCH;
+fi

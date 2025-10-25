@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019-2020 The MathWorks, Inc. -->
+<!-- Mapping of stdlib builtin to a Polyspace Backend semantic for visual allocation routines -->
+<!-- For example the definition: -->
+<!-- <tag id="GlobalAlloc" user_name="GlobalAlloc" type="void* (unsigned int, __edg_size_type__)"> -->
+<!--   <properties> -->
+<!--     <property kind="alloc">malloc</property> -->
+<!--     <property kind="alloc">f</property> -->
+<!--     <property kind="alloc">0</property> -->
+<!--     <property kind="alloc">2</property> -->
+<!--   </properties> -->
+<!-- </tag> -->
+<!-- means that the function named GlobalAlloc will be flagged as a malloc functions that has the
+semantic of malloc. 'f' means that this is a fundamental (non-extended) allocation function. The
+next property is the position of return memory pointer, the next the size argument. 0 Means the
+return value -->
+
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <tag id="GlobalAlloc" kind="function" user_name="GlobalAlloc" type="void* (unsigned int, __edg_size_type__)">
+    <properties>
+      <!-- main semantic -->
+      <property kind="alloc">malloc</property>
+      <!-- memory pointer position -->
+      <property kind="alloc">0</property>
+      <!-- sizeof position -->
+      <property kind="alloc">2</property>
+    </properties>
+  </tag>
+  <tag id="GlobalReAlloc" kind="function" user_name="GlobalReAlloc" type="void* (void*, __edg_size_type__, unsigned int)">
+    <properties>
+      <property kind="alloc">realloc</property>
+      <!-- memory pointer position -->
+      <property kind="alloc">0</property>
+      <!-- sizeof position -->
+      <property kind="alloc">2</property>
+    </properties>
+  </tag>
+  <tag id="LocalAlloc" kind="function" user_name="LocalAlloc" type="void* (unsigned int, __edg_size_type__)">
+    <properties>
+      <property kind="alloc">malloc</property>
+      <!-- memory pointer position -->
+      <property kind="alloc">0</property>
+      <!-- sizeof position -->
+      <property kind="alloc">2</property>
+    </properties>
+  </tag>
+  <tag id="LocalReAlloc" kind="function" user_name="LocalReAlloc" type="void* (void*, __edg_size_type__, unsigned int)">
+    <properties>
+      <property kind="alloc">realloc</property>
+      <!-- memory pointer position -->
+      <property kind="alloc">0</property>
+      <!-- sizeof position -->
+      <property kind="alloc">2</property>
+    </properties>
+  </tag>
+  <tag id="_alloca" kind="function" user_name="_alloca" type="void* (__edg_size_type__)" >
+    <properties>
+      <property kind="fundamental"></property>
+      <property kind="alloc">alloca</property>
+      <property kind="alloc">0</property>
+      <property kind="alloc">1</property>
+    </properties>
+  </tag>
+</tags>

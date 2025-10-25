@@ -1,0 +1,77 @@
+.dc-grid-row {
+    display: flex;
+    flex: 1 0 0;
+    align-items: stretch;
+    flex-direction: column;
+
+    min-height: 0;
+    min-width: 0;
+}
+
+.dc-grid-col {
+    display: flex;
+    flex: 1 0 0;
+    align-items: stretch;
+    flex-direction: column;
+
+    min-height: 0;
+    min-width: 0;
+}
+
+.dc-border {
+    border-style: solid;
+    border-width: 3px;
+    box-sizing: border-box; /* Include margin and content */
+}
+
+.dc-widget-group {
+    margin: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: solid;
+    border-width: 1px;
+    border-color: var(--mw-borderColor-primary, var(--mw-color-gray600, #7d7d7d));
+}
+
+.dc-grid-layout-col {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    min-height: 0;
+    min-width: 0;
+    background-color: var(--mw-color-quaternary);
+}
+
+.dc-grid-layout-row {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    background-color: var(--mw-color-quaternary);
+
+}
+
+.dc-grid-widget-label {
+    width: 100%;
+    height: 18px; /* This height is necessary when paired with a plot view */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.UIVEAttachPoint {
+    height: calc(100% - 32px);
+    width: 100%;
+}
+
+/* Force the UIVariableEditor widget to take up all available space of their parent container. */
+div[id$="_PopOutHandlerBody"] {
+    width: 100%;
+    /* The UIVariableEditor has a 4 pixel bottom margin, so if we set the height to
+       100%, we'll see a double scrollbar. We take this margin into account so only
+       the UIVariableEditor scrollbar appears. */
+    height: calc(100% - 4px);
+}

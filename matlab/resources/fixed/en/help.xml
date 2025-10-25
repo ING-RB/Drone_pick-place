@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0" locale="en_US" product="fixed" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+<!-- Copyright 2020-2023 The MathWorks, Inc. -->
+<!-- Help text -->
+  <message>
+    <!-- Block Descriptions (Edit Mask > Documentation > Description) -->
+    <!-- Systolic QR -->
+    <entry key="SystolicQRDescription">Given matrices A and B in the equation AX = B, this block returns
+        the economy size QR decomposition R and C=Q'B
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the Systolic implementation to minimize system latency and increase the throughput. Systolic implementations require more hardware resources than burst or partial-systolic implementations.
+    </entry>      
+    <!-- Partial-Systolic QR -->
+    <entry key="ComplexPartialSystolicQRDescription">Given the rows of 
+        complex matrices A and B in the equation AX = B, this block returns
+        the economy size QR decomposition R and C=Q'B.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the economy size QR decomposition of\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="RealPartialSystolicQRDescription">Given the rows of
+        real matrices A and B in the equation AX = B, this block returns
+        the economy size QR decomposition R and C=Q'B.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the economy size QR decomposition of\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="ComplexPartialSystolicQlessQRDescription">Given the rows of complex matrix A, this block returns the
+    upper-triangular matrix R of the economy size QR decomposition.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the economy size QR decomposition of\n
+    \n[lambda*eye(n);A]\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="RealPartialSystolicQlessQRDescription">Given the rows of real matrix A, this block returns the
+    upper-triangular matrix R of the economy size QR decomposition.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the economy size QR decomposition of\n
+    \n[lambda*eye(n);A]\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="ComplexPartialSystolicQlessQRwithForgettingFactorDescription">This block updates an upper-triangular matrix given a new complex data vector.
+    This block is equivalent to a Q-less QR decomposition of an infinitely tall matrix with a forgetting factor applied after each row of the matrix is factored.
+    The output is the forgetting factor multiplied by the updated upper-triangular R.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R to lambda*eye(n).\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="RealPartialSystolicQlessQRwithForgettingFactorDescription">This block updates an upper-triangular matrix given a new real data vector.
+    This block is equivalent to a Q-less QR decomposition of an infinitely tall matrix with a forgetting factor applied after each row of the matrix is factored.
+    The output is the forgetting factor multiplied by the updated upper-triangular R.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R to lambda*eye(n).\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <!-- Burst QR -->
+    <entry key="ComplexBurstQRDescription">Given the rows of complex matrices A and B in the equation AX = B, this block returns the rows
+        of the economy sized QR decomposition R and C=Q'B. Here, R is an upper-triangular matrix, and C is a matrix with the
+        same number of rows.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the economy size QR decomposition of\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstQRDescription">Given the rows of real matrices A and B in the equation AX = B, this block returns the rows
+        of the economy sized QR decomposition R and C=Q'B. Here, R is an upper-triangular matrix, and C is a matrix with the
+        same number of rows.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the economy size QR decomposition of\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="ComplexBurstQlessQRDescription">Given the rows of complex matrix A, this block returns the rows of the
+    upper-triangular matrix R of the economy size QR decomposition.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the economy size QR decomposition of\n
+    \n[lambda*eye(n);A]\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="ComplexBurstQlessQRWholeROutputDescription">Given the rows of complex matrix A, this block returns the
+    upper-triangular matrix R of the economy size QR decomposition.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the economy size QR decomposition of\n
+    \n[lambda*eye(n);A]\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstQlessQRDescription">Given the rows of real matrix A, this block returns the rows of the
+    upper-triangular matrix R of the economy size QR decomposition.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the economy size QR decomposition of\n
+    \n[lambda*eye(n);A]\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstQlessQRWholeROutputDescription">Given the rows of real matrix A, this block returns the
+    upper-triangular matrix R of the economy size QR decomposition.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the economy size QR decomposition of\n
+    \n[lambda*eye(n);A]\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="ComplexBurstQlessQRwithForgettingFactorDescription">This block updates an upper-triangular matrix given a new complex data vector.
+    This block is equivalent to a Q-less QR decomposition of an infinitely tall matrix with a forgetting factor applied after each row of the matrix is factored.
+    The output is the forgetting factor multiplied by the updated upper-triangular R.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R to lambda*eye(n).\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstQlessQRwithForgettingFactorDescription">This block updates an upper-triangular matrix given a new real data vector.
+    This block is equivalent to a Q-less QR decomposition of an infinitely tall matrix with a forgetting factor applied after each row of the matrix is factored.
+    The output is the forgetting factor multiplied by the updated upper-triangular R.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R to lambda*eye(n).\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <!-- Burst matrix solve -->
+    <entry key="ComplexBurstMatrixSolveDescription">Compute the value of X in the equation AX = B, where A and B are complex-valued matrices.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the value of X in the equation\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstMatrixSolveDescription">Compute the value of X in the equation AX = B, where A and B are real-valued matrices.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the value of X in the equation\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+	\nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="ComplexBurstQlessQRMatrixSolveDescription">Compute the value of X in the equation A'AX = B, where A and B are complex-valued matrices.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the value of X in the equation
+    \n(lambda^2*eye(n) + A'A)X = B\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="ComplexBurstAsynchronousQlessQRMatrixSolveDescription">Compute the value of X in the equation A'AX = B, where A and B are complex-valued matrices.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the value of X in the equation
+    \n(lambda^2*eye(n) + A'A)X = B\n
+    \nThis block operates asynchronously. The forward- and backward-substitution and Q-less QR decomposition run independently using the latest R and B matrices.\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstQlessQRMatrixSolveDescription">Compute the value of X in the equation A'AX = B, where A and B are real-valued matrices.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the value of X in the equation
+    \n(lambda^2*eye(n) + A'A)X = B\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstAsynchronousQlessQRMatrixSolveDescription">Compute the value of X in the equation A'AX = B, where A and B are real-valued matrices.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the value of X in the equation
+    \n(lambda^2*eye(n) + A'A)X = B\n
+    \nThis block operates asynchronously. The forward- and backward-substitution and Q-less QR decomposition run independently using the latest R and B matrices.\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="ComplexBurstQlessQRMatrixSolveWithForgettingFactorDescription">Compute the value of X in the equation A'AX = B, where A and B are complex-valued matrices.
+    The solution is updated as each row of A is input indefinitely with a forgetting factor applied after each row of the matrix is factored.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R of A to lambda*eye(n).\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <entry key="RealBurstQlessQRMatrixSolveWithForgettingFactorDescription">Compute the value of X in the equation A'AX = B, where A and B are real-valued matrices.
+    The solution is updated as each row of A is input indefinitely with a forgetting factor applied after each row of the matrix is factored.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R of A to lambda*eye(n).\n
+    \nUse the burst implementation to minimize required hardware resources. The burst implementation results in increased system latency therefore reducing the throughput of the block.
+    </entry>
+    <!-- Partial systolic matrix solve -->
+    <entry key="ComplexPartialSystolicMatrixSolveDescription">Compute the value of X in the equation AX = B, where A and B are complex-valued matrices.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the value of X in the equation\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="RealPartialSystolicMatrixSolveDescription">Compute the value of X in the equation AX = B, where A and B are real-valued matrices.\n
+	\nIf the regularization parameter lambda is non-zero, then this block 
+        computes the value of X in the equation\n
+	\n[lambda*eye(n);A]X = [zeros(n,p);B],\n
+	\nwhere A is m-by-n and B is m-by-p.\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="ComplexPartialSystolicQlessQRMatrixSolveDescription">Compute the value of X in the equation A'AX = B, where A and B are complex-valued matrices.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the value of X in the equation
+    \n(lambda^2*eye(n) + A'A)X = B\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="RealPartialSystolicQlessQRMatrixSolveDescription">Compute the value of X in the equation A'AX = B, where A and B are real-valued matrices.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    computes the value of X in the equation
+    \n(lambda^2*eye(n) + A'A)X = B\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="ComplexPartialSystolicQlessQRMatrixSolveWithForgettingFactorDescription">Compute the value of X in the equation A'AX = B, where A and B are complex-valued matrices.
+    The solution is updated as each row of A is input indefinitely with a forgetting factor applied after each row of the matrix is factored.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R of A to lambda*eye(n).\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <entry key="RealPartialSystolicQlessQRMatrixSolveWithForgettingFactorDescription">Compute the value of X in the equation A'AX = B, where A and B are real-valued matrices.
+    The solution is updated as each row of A is input indefinitely with a forgetting factor applied after each row of the matrix is factored.\n
+    \nIf the regularization parameter lambda is non-zero, then this block 
+    initializes the upper triangular factor R of A to lambda*eye(n).\n
+    \nUse the partial-systolic implementation to minimize system latency and increase the throughput. Partial systolic-implementations require more hardware resources than burst implementations.
+    </entry>
+    <!-- Systolic matrix solve -->  
+    <entry key="SystolicMatrixSolveDescription">Compute the value of X in the equation AX = B, where A and B are matrices. A is m-by-n and B is m-by-p.\n
+    \nUse the Systolic implementation to minimize system latency and increase the throughput. Systolic implementations require more hardware resources than burst or partial-systolic implementations.
+    </entry>
+    <!-- Forward and Backward substitute -->
+    <entry key="BackSubstituteDescription">Compute the value of X in the equation RX = C using back substitution, where R is a upper triangular matrix.</entry>
+    <entry key="RealBackSubstituteDescription">Compute the value of X in the equation RX = C using back substitution, where R is a real-valued upper triangular matrix and C is any real-valued matrix.</entry>
+    <entry key="ComplexBackSubstituteDescription">Compute the value of X in the equation RX = C using back substitution, where R is a complex-valued upper triangular matrix and C is any complex-valued matrix.</entry>
+    <entry key="RealForwardSubstituteDescription">Compute the value of X in the equation LX = C using forward substitution, where L is a real-valued lower triangular matrix and C is any real-valued matrix.</entry>
+    <entry key="ComplexForwardSubstituteDescription">Compute the value of X in the equation LX = C using forward substitution, where L is a complex-valued lower triangular matrix and C is any complex-valued matrix.</entry>
+    <entry key="RealForwardBackwardSubstituteDescription">Compute the value of X in the equation R'RX = B, where R is a real-valued upper triangular matrix and B is any real-valued matrix. </entry>
+    <entry key="ComplexCombinedSubstituteDescription">Compute the value of X in the equation R'RX = B, where R is a complex-valued upper triangular matrix and B is any complex-valued matrix.</entry>
+    <!-- Square Jacobi SVD -->
+      <entry key="SquareJacobiSVDDescriptionDescription">Given a square matrix A, this block uses the two-sided Jacobi method to produce a vector s of nonnegative elements, and unitary matrices U and V so that A = U*diag(s)*V'.</entry>
+    <!-- Non-Square Jacobi SVD -->
+      <entry key="NonSquareJacobiSVDDescriptionDescription">Given a matrix A with more rows than columns, this block uses the two-sided Jacobi method to produce a vector s of nonnegative elements, and unitary matrices U and V so that A = U*diag(s)*V'.</entry>
+    <!-- Euler NED Transformation -->
+      <entry key="EulerNEDTransformation">Rotate a 3-by-1 vector U In by angles Angle In. Angle In is a 3-by-1 real vector specifying the angles of rotation about the x-axis, y-axis, and z-axis, respectively.</entry>
+  </message>
+</rsccat>

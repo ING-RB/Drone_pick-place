@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright 2009-2021 The MathWorks, Inc. -->
+<rsccat version="1.0" locale ="en_US" product="SimulinkBlocks" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+    <entry key="DataTypesTab">Data Types</entry>
+    <entry key="AlgorithmTab">Algorithm</entry>
+    <entry key="AlgorithmType">Method: </entry>
+    <entry key="AlgorithmMethod">Algorithm method: </entry>
+    <entry key="BreakPointsMin">Breakpoints minimum {0,number,integer}:</entry>
+    <entry key="BreakPointsMax">Breakpoints maximum {0,number,integer}:</entry>
+    <entry key="INTERMEDIATE_UNIFIEDDATATYPE">Intermediate results data type:</entry>
+    <entry key="NumberOfIterations">Number of iterations:</entry>
+    <entry key="NumberOfDataPoints">Number of data points:</entry>
+    <entry key="OutputWordLength">Output word Length:</entry>
+    <entry key="DisallowWideOutput">Disallow wide output</entry>
+    <entry key="BmathfcnOutSignalType">Output signal type:</entry>
+    <entry key="BmathfcnOperator">Function:</entry>
+    <entry key="PolynomialCoefficients">Polynomial Coefficients:</entry>
+    <entry key="SL_DSCPT_SHIFT">This block can arithmetically shift the bits and/or the binary point of a signal.\nThe effect of these actions can be interpreted as a combination of a multiplication by a power of two and a change in scaling.  For instance, when the bit shift direction is ''Right'', the power of two multiplication term is\n   2^( BinPtShiftNumber - BitShiftNumber )\nWhen the direction of bit shift is ''Bidirectional'', negative values indicate left shifts. For ''Left'' or ''Right'' directions, always use positive values for bit shift.\nIf the input is a floating point type, the power of two multiplication is carried out, but no change in scaling is applied.</entry>
+    <entry key="SL_DSCPT_ASSIGNMENT_SKIP_INIT">For vector mode:\n\tY(E) = U1\nFor matrix mode:\n\tY(R,C) = U1\nwhere\nU1 = second input port, E = elements, R = rows, and C = columns and E, R, and C may be specified either in the block''s dialog or through an external input port.</entry>
+    <entry key="SL_DSCPT_IMPLICIT_ASSIGNMENT">Assign result from one iteration to Implicit Iterator Output which is a concatenation of all iterations.</entry>
+    <entry key="SL_DSCPT_SUBSYSTM">Select the settings for the subsystem block.</entry>
+    <entry key="SL_DSCPT_DTF">The numerator coefficient can be a vector or matrix expression. The denominator coefficient must be a vector. The output width equals the number of rows in the numerator coefficient. You should specify the coefficients in descending order of powers of z. </entry>
+    <entry key="SL_DSCPT_DPULSEGEN">Output pulses:\n\n if (t &gt;= PhaseDelay) &amp;&amp; Pulse is on\n   Y(t) = Amplitude\n else\n   Y(t) = 0\n end\n\nPulse type determines the computational technique used. \n\nTime-based is recommended for use with a variable step solver, while Sample-based is recommended for use with a fixed step solver or within a discrete portion of a model using a variable step solver.</entry>
+    <entry key="SL_DSCPT_FOH">First order hold.</entry>
+    <entry key="SL_DSCPT_ZOH">Zero-order hold.</entry>
+    <entry key="SL_DSCPT_DERIV">Numerical derivative:  &#x394;u/&#x394;t.</entry> <!--&#394 is the Unicode of Greek letter Delta-->
+    <entry key="SL_DSCPT_DOT">Dot (inner) product of inputs.\ny = sum(conj(u1).*u2)</entry>
+    <entry key="SL_DSCPT_MATGAIN">Matrix gain. y = Ku</entry>
+    <entry key="SL_DSCPT_SLIDEGAIN" translate="false">N/A</entry>
+    <entry key="SL_DSCPT_ABSVAL" translate="false">y = |u|</entry>
+    <entry key="SL_DSCPT_BACKLASH">Model backlash where the deadband width specifies the amount of play in the system.</entry>
+    <entry key="SL_DSCPT_BIAS">Add bias to input,\n  Y = U + Bias.</entry>
+    <entry key="SL_DSCPT_CMBLOGIC">Look up the elements of the input vector (treated as boolean values) in the truth table and output the corresponding row of the ''Truth table'' parameter.  The input side of the truth table is implicit.</entry>
+    <entry key="SL_DSCPT_FRICTION">Simple model of coulomb and viscous friction.\ny = sign(x)*(Gain*abs(x)+Offset).</entry>
+    <entry key="SL_DSCPT_DEADZONE">Output zero for inputs within the dead zone.  Offset input signals by either the Start or End value when outside of the dead zone.</entry>
+    <entry key="SL_DSCPT_HITCROSS">Detects when the input signal reaches the Hit crossing offset parameter value in the direction specified by the Hit crossing direction parameter. You can configure the block to output a signal, a message, or a function-call event. If the input signal crosses the offset value in the specified direction, the block outputs 1 for the Signal Output type, a message for the Message Output type, or a single function call for the Function-Call Output type. The message contains the crossing type, index, time and offset of the hit crossing event.</entry>
+    <entry key="SL_DSCPT_HITSCHEDULER">Schedule a major time step for a variable-step solver during simulation. When the input to the enable port is logical true, the block schedules a time step. The block calculates the time step to schedule as the sum of the &#x394;t input value, in seconds, and the current simulation time. \n\nThe block output can be a Boolean signal where the value is true for a scheduled time step and false otherwise or a function call event.</entry>
+    <entry key="SL_DSCPT_BITLOGIC" note="stringDatatypeUpdate">Perform a bitwise operation on uint8, uint16, or uint32 input port data with values from the second operand parameter.  Hex values can be entered as character vectors, e.g., ''FF00''.</entry>
+    <entry key="SL_DSCPT_LOOK_UP">Perform 1-D linear interpolation of input values using the specified table.  Extrapolation is performed outside the table boundaries.</entry>
+    <entry key="SL_DSCPT_LOOKUPND">Perform n-dimensional interpolated table lookup including index searches. The table is a sampled representation of a function in N variables. Breakpoint sets relate the input values to positions in the table. The first dimension corresponds to the top (or left) input port.</entry>
+    <entry key="SL_DSCPT_PRE_LOOKUP">Locate the position of input u on the set of intervals defined by \"Breakpoint data\". Outputs an index k and a fraction f where k specifies the interval containing the input and f is the input''s normalized position on the interval.</entry>
+    <entry key="SL_DSCPT_POLYVAL">Polynomial evaluation.  Calculates P(u) given by the polynomial coefficient array P. P is sorted highest order to lowest order, the form accepted by MATLAB''s polyval function.</entry>
+    <entry key="SL_DSCPT_MATH">Mathematical functions including logarithmic, exponential, power, and modulus functions.  When the function has more than one argument, the first argument corresponds to the top (or left) input port.</entry>
+    <entry key="SL_DSCPT_SQRT">Square root functions including square root, signed square root, and reciprocal square root functions.</entry>
+    <entry key="SL_DSCPT_RECIP">Reciprocal function: Implemented using Newton-Raphson approximation method.</entry>
+    <entry key="SL_DSCPT_MINMAX">Output min or max of input.  For a single input, operators are applied across the input vector.  For multiple inputs, operators are applied across the inputs.</entry>
+    <entry key="SL_DSCPT_PERMUTE_DIMENSIONS">Rearrange the elements of the input signal by permuting its dimensions, for example, by exchanging its first and third dimensions. Use the ''Order'' parameter to specify the permutation to be applied to the dimensions of the input signal. The value of this parameter must be an N-element vector where N is the number of dimensions of the input signal. The elements of the permutation vector must be a rearrangement of the values 1 to N. For example, the permutation vector [2 1] applied to a 5x3 input signal results in a 3 x 5 output signal, i.e., the transpose of the input signal.</entry>
+    <entry key="SL_DSCPT_QUANTIZE">Discretize input at given interval.</entry>
+    <entry key="SL_DSCPT_RATELIM">Limit rising and falling rates of signal.</entry>
+    <entry key="SL_DSCPT_RELOP">Applies the selected relational operator to the inputs and outputs the result. The top (or left) input corresponds to the first operand.</entry>
+    <entry key="SL_DSCPT_FIND">Find the linear indices or the subscripts of the nonzero values of the input. (Conversion of linear indices is done along the first dimension.) Select ''Show output port for nonzero input values'' to show the nonzero input  values on an additional output port.</entry>
+    <entry key="SL_DSCPT_RELAY">Output the specified ''on'' or ''off'' value by comparing the input to the specified thresholds.  The on/off state of the relay is not affected by input between the upper and lower limits.</entry>
+    <entry key="SL_DSCPT_ROUNDING">Rounding operations.</entry>
+    <entry key="SL_DSCPT_SATURATE">Limit input signal to the upper and lower saturation values.</entry>
+    <entry key="SL_DSCPT_UDELAY">Delay input signal by a specified number of samples.</entry>
+    <entry key="SL_DSCPT_SIGNUM">For real inputs, output 1 for positive input, -1 for negative input, and 0 for 0 input.  For complex floating point inputs, the outputs follow sign(u) = u ./ abs(u)  </entry>
+    <entry key="SL_DSCPT_TRIGONOMETRY">Trigonometric and hyperbolic functions. When the function has more than one argument, the first argument corresponds to the top (or left) input port. For sin, cos, sincos, cos +j sin, atan2 functions, CORDIC approximation can also be used to compute the output.</entry>
+    <entry key="SL_DSCPT_TDELAY">Apply specified delay to the input signal.  Best accuracy is achieved when the delay is larger than the simulation step size.</entry>
+    <entry key="SL_DSCPT_VTDELAY">Apply a delay to the first input signal.  If the delay type is variable time delay, the second input specifies the delay time To. The block implements the function y=u(t-To(t)). If the delay type is variable transport delay, the second input specifies the instantaneous delay time Ti at the input. The block can be used to simulate the variable transport delay phenomenon such as incompressible liquid flow in a pipe. Best accuracy is achieved when the delay is larger than the simulation step size.</entry>
+    <entry key="SL_DSCPT_MSGDELAY">Apply a transport delay to entities at the first input. The second input specifies the instantaneous delay time ti.</entry>
+    <entry key="SL_DSCPT_SCOPE" translate="false">N/A</entry>
+    <entry key="SL_DSCPT_XYGRAPH">Plot first input (X) vs. second input (Y) using the specified axes ranges.  Increase the sample time to speed up your simulation.</entry>
+    <entry key="SL_DSCPT_BANDLIMNOISE">Simulate white noise of a specified power.  Signal amplitude is increased with sample period in order to compensate for losses in energy due to reduced bandwidth.  For use with continuous systems.</entry>
+    <entry key="SL_DSCPT_CHIRP">Sine wave with increasing or decreasing frequency.</entry>
+    <entry key="SL_DSCPT_CONSTANT">Output the constant specified by the ''Constant value'' parameter. If ''Constant value'' is a vector and ''Interpret vector parameters as 1-D'' is on, treat the constant value as a 1-D array. Otherwise, output a matrix with the same dimensions as the constant value.</entry>
+    <entry key="SL_DSCPT_PULSEGEN">Output a pulse train.</entry>
+    <entry key="SL_DSCPT_RAMP">Output a ramp.</entry>
+    <entry key="SL_DSCPT_RANDNUM">Output a normally (Gaussian) distributed random signal.  Output is repeatable for a given seed.</entry>
+    <entry key="SL_DSCPT_URANDNUM">Output a uniformly distributed random signal.  Output is repeatable for a given seed.</entry>
+    <entry key="SL_DSCPT_REPEATSEQ">Output repeating signal.  The period equals the last value in the time vector.  Interpolates between data points.</entry>
+    <entry key="SL_DSCPT_SIGGEN">Output various wave forms:\n   Y(t) = Amp*Waveform(Freq, t)</entry>
+    <entry key="SL_DSCPT_SIN_WAVE">Output a sine wave:\n\n   O(t) = Amp*Sin(Freq*t+Phase) + Bias\n\nSine type determines the computational technique used. The parameters in the two types are related through:\n\nSamples per period = 2*pi / (Frequency * Sample time)\n\nNumber of offset samples = Phase * Samples per period / (2*pi)\n\nUse the sample-based sine type if numerical problems due to running for large times (e.g. overflow in absolute time) occur.</entry>
+    <entry key="SL_DSCPT_STEP">Output a step.</entry>
+    <entry key="SL_DSCPT_CCVR">Read a custom code variable.</entry>
+    <entry key="SL_DSCPT_CCVW">Write to a custom code variable.</entry>
+    <entry key="SL_DSCPT_CCFCN">Call a custom code function.</entry>
+    <entry key="SL_DSCPT_CFCN_BLK">Integrate C Code.</entry>
+    <entry key="SL_DSCPT_PYFCN_BLK">Integrate Python Code.</entry>
+    <entry key="SL_DSCPT_SWITCH">Pass through input 1 when input 2 satisfies the selected criterion; otherwise, pass through input 3. The inputs are numbered top to bottom (or left to right). The first and third input ports are data ports, and the second input port is the control port. The criteria for control port 2 are u2 >= Threshold, u2 > Threshold or u2 ~= 0.</entry>
+    <entry key="SL_DSCPT_MANUALSWITCH">Output toggles between two inputs by double-clicking on the block.\n</entry>
+    <entry key="SL_DSCPT_ALGCONSTRAINT">Constrain input signal f(z) to zero and output an algebraic state z. This block outputs the value necessary to produce a zero at the input. The output must affect the input through some feedback path. Provide an Initial Guess of the output to improve algebraic loop solver efficiency.</entry>
+    <entry key="SL_DSCPT_REAL_IMAG_TO_COMPLEX">Construct a complex output from real and/or imaginary input.</entry>
+    <entry key="SL_DSCPT_COMPLEX_TO_REAL_IMAG">Output the real and/or imaginary components of the input.</entry>
+    <entry key="SL_DSCPT_MAGNITUDE_ANGLE_TO_COMPLEX">Construct a complex output from magnitude and/or radian phase angle input. CORDIC approximation can also be used to compute the output.</entry>
+    <entry key="SL_DSCPT_COMPLEX_TO_MAGNITUDE_ANGLE">Compute magnitude and/or radian phase angle of the input.</entry>
+    <entry key="SL_DSCPT_PROBE">Probe a line for its width, sample time, and dimensions. Detect if it is a complex signal.</entry>
+    <entry key="SL_DSCPT_MATIX_CONCATENATION">Perform horizontal or vertical concatenation.  1-D vector input signals are treated as column vectors, i.e., [Mx1] matrices. The output is always a matrix.</entry>
+    <entry key="SL_DSCPT_POST">Post model events.</entry>
+    <entry key="SL_DSCPT_INTERPND">Perform interpolation (or extrapolation) on an n-dimensional table using pre-calculated indices and fraction values.\n\nUse ''Number of table dimensions'' and ''Table data'' to specify an n-dimensional table that represents a function of ''n'' variables.\n\n''Number of subtable selection dimensions'' lets you specify that the block interpolates only a subset of table data. If you specify ''k'' as its value, the block displays ''n-k'' pairs of index and fraction inputs and ''k'' subtable selection inputs. Its default value is 0, i.e., interpolate the entire table. Use the selection inputs to specify the indices of the subtable to be interpolated.\n\nYou may use Prelookup blocks to compute the index, fraction, and selection inputs.</entry>
+    <entry key="SL_DSCPT_WSTIME">Add, subtract, multiply or divide the input signal by weighted sample time or just output weighted sample time or weighted sample rate.</entry>
+    <entry key="SL_DSCPT_UMINUS">Unary Minus of a Signal.</entry>
+    <entry key="SL_DSCPT_ALGCONSTRAINTBLOCK">Constrain input signal f(z) and output an algebraic state z.\nThis block outputs the value z which satisfies the selected constraint. The output must affect the input through some feedback path.\nSelect a solver, change a tolerance and provide an ''Initial guess'' of the output to improve algebraic loop solver efficiency.</entry>
+    <entry key="SL_DSCPT_STR2NUM">Convert a string Signal to a numerical Signal.</entry>
+    <entry key="SL_DSCPT_SPRINTF">Write formatted data to string.</entry>
+    <entry key="SL_DSCPT_DTYPE_DUPLICATE">Force all inputs to have the exact same data type.</entry>
+    <entry key="SL_DSCPT_DLOOKUPND">Select an element, vector, or 2-D matrix from Table data. If a vector is selected from a 2-D table, the output vector can be a column or a row depending on the model configuration setting.\n\nThe block inputs are zero-based indices, e.g., an input of 3 returns the fourth element in that dimension. The first selection index corresponds to the top (or left) input port.</entry>
+    <entry key="SL_DSCPT_SECOND_ORDER_INTEGRATOR">Second-order continuous-time integration of the input signal.</entry>
+    <entry key="SL_DSCPT_FIR">Independently filter each channel of the input over time using an FIR filter. You can specify filter coefficients using either tunable dialog parameters or separate input ports, which are useful for time-varying coefficients. \n\nA DSP System Toolbox license is required to use a filter structure other than Direct Form.</entry>
+    <entry key="SL_DSCPT_IIR">Independently filter each channel of the input over time using a discrete IIR filter. Specify the numerator and denominator coefficients in ascending order of powers of 1/z. \n\nA DSP System Toolbox license is required to use a filter structure other than Direct form II.</entry>
+    <entry key="SL_DSCPT_TRANSFERFCN">Implement a z-transform transfer function. Specify the numerator and denominator coefficients in descending powers of z. The order of the denominator must be greater than or equal to the order of the numerator.</entry>
+    <entry key="SL_DSCPT_ALLPOLE">Independently filter each channel of the input over time using an Allpole filter. You can specify filter coefficients using either tunable dialog parameters or separate input ports, which are useful for time-varying coefficients.\n\nWhen you use the Direct form or Direct form transposed filter structure, the leading denominator coefficient must be equal to 1.</entry>
+    <entry key="SL_DSCPT_DTC">Convert the input to the data type and scaling of the output. \n\nThe conversion has two possible goals. One goal is to have the Real World Values of the input and the output be equal.  The other goal is to have the Stored Integer Values of the input and the output be equal.  Overflows and quantization errors can prevent the goal from being fully achieved.</entry>
+    <entry key="SL_DSCPT_MPSWITCH">Pass through the input signals corresponding to the truncated value of the first input. The inputs are numbered top to bottom (or left to right). The first input port is the control port. The other input ports are data ports.</entry>
+    <entry key="Magnitude_CB">Magnitude</entry>
+    <entry key="Angle_CB">Angle</entry>
+    <entry key="Magnitudeandangle_CB">Magnitude and angle</entry>
+    <entry key="MagnitudeAndAngle_CB" translate="false">MagnitudeAndAngle</entry>
+    <entry key="CReal_CB">Real</entry>
+    <entry key="CImag_CB">Imag</entry>
+    <entry key="Realandimag_CB">Real and imag</entry>
+    <entry key="RealAndImag_CB" translate="false">RealAndImag</entry>
+    <entry key="None_CB">None</entry>
+    <entry key="Linear_CB">Linear</entry>
+    <entry key="Linear_PointSlope_CB">Linear point-slope</entry>
+    <entry key="Linear_Lagrange_CB">Linear Lagrange</entry>
+    <entry key="SPEED_CB">Speed</entry>
+    <entry key="PRECISION_CB">Precision</entry>
+    <entry key="Warning_CB">Warning</entry>
+    <entry key="Error_CB">Error</entry>
+    <entry key="int8_CB" translate="false">int8</entry>
+    <entry key="uint8_CB" translate="false">uint8</entry>
+    <entry key="int16_CB" translate="false">int16</entry>
+    <entry key="uint16_CB" translate="false">uint16</entry>
+    <entry key="int32_CB" translate="false">int32</entry>
+    <entry key="uint32_CB" translate="false">uint32</entry>
+    <entry key="Time_based_CB">Time based</entry>
+    <entry key="Sample_based_CB">Sample based</entry>
+    <entry key="Timebased_CB">Time-based</entry>
+    <entry key="Samplebased_CB">Sample-based</entry>
+    <entry key="double_CB" translate="false">double</entry>
+    <entry key="single_CB" translate="false">single</entry>
+    <entry key="square_CB" translate="false">square</entry>
+    <entry key="sqrt_CB" translate="false">sqrt</entry>
+    <entry key="Exact_CB">Exact</entry>
+    <entry key="Newton_Raphson_CB">Newton-Raphson</entry>
+    <entry key="auto_CB">auto</entry>
+    <entry key="real_CB">real</entry>
+    <entry key="complex_CB">complex</entry>
+    <entry key="boolean_CB" translate="false">boolean</entry>
+    <entry key="One_CB" translate="false">1</entry>
+    <entry key="Two_CB" translate="false">2</entry>
+    <entry key="Three_CB" translate="false">3</entry>
+    <entry key="Four_CB" translate="false">4</entry>
+    <entry key="OneSpace_CB" translate="false">   1   </entry>
+    <entry key="TwoSpace_CB" translate="false">   2   </entry>
+    <entry key="ThreeSpace_CB" translate="false">   3   </entry>
+    <entry key="FourSpace_CB" translate="false">   4   </entry>
+    <entry key="Explicit_CB">Explicit values</entry>
+    <entry key="EvenSpacing_CB">Even spacing</entry>
+    <entry key="BreakpointObject_CB">Breakpoint object</entry>
+    <entry key="TableAndBreakpoints_CB">Table and breakpoints</entry>
+    <entry key="LookupTableObject_CB">Lookup table object</entry>
+    <entry key="OutputIndexAndFrac_CB">Index and fraction</entry>
+    <entry key="OutputIndFracAsBus_CB">Index and fraction as bus</entry>
+    <entry key="OutputIndexOnly_CB">Index only</entry>
+    <entry key="Flat_CB">Flat</entry>
+    <entry key="None_Flat_CB">None - Flat</entry>
+    <entry key="Nearest_CB">Nearest</entry>
+    <entry key="Clip_CB">Clip</entry>
+    <entry key="None_Clip_CB">None - Clip</entry>
+    <entry key="Akima_CB">Akima spline</entry>
+    <entry key="CORDIC_CB" translate="false">CORDIC</entry>
+    <entry key="LUT_CB" translate="false">Lookup</entry>
+    <entry key="TrigAngleRadian" translate="false">radian</entry>
+    <entry key="TrigAngleRevolution" translate="false">revolution</entry>
+    <entry key="TrigLutInheritViaInput">Inherit: Inherit via input</entry>
+    <entry key="Linear_indices_CB">Linear indices</entry>
+    <entry key="Subscripts_CB">Subscripts</entry>
+    <entry key="Same_as_input_CB">Same as input</entry>
+    <entry key="internal_CB">internal</entry>
+    <entry key="external_CB">external</entry>
+    <entry key="none_CB">none</entry>
+    <entry key="rising_CB">rising</entry>
+    <entry key="falling_CB">falling</entry>
+    <entry key="either_CB">either</entry>
+    <entry key="both_CB">both</entry>
+    <entry key="x_CB" translate="false">x</entry>
+    <entry key="Variable_time_delay_CB">Variable time delay</entry>
+    <entry key="Variable_transport_delay_CB">Variable transport delay</entry>
+    <entry key="MsgDelay_time_CB">Time delay</entry>
+    <entry key="MsgDelay_transport_CB">Transport delay</entry>
+    <entry key="Ceiling_CB">Ceiling</entry>
+    <entry key="Convergent_CB">Convergent</entry>
+    <entry key="Floor_CB">Floor</entry>
+    <entry key="Round_CB">Round</entry>
+    <entry key="Simplest_CB">Simplest</entry>
+    <entry key="Zero_CB">Zero</entry>
+    <entry key="Frame_based_CB">Frame based</entry>
+    <entry key="Use_data_type_of_Constant_value_CB">Use data type of 'Constant value'</entry>
+    <entry key="More_dot_CB">More...</entry>
+    <entry key="Evenly_spaced_points_CB">Evenly spaced points</entry>
+    <entry key="Linear_search_CB">Linear search</entry>
+    <entry key="Binary_search_CB">Binary search</entry>
+    <entry key="Clip_to_range_CB">Clip to range</entry>
+    <entry key="Linear_extrapolation_CB">Linear extrapolation</entry>
+    <entry key="dx_dt_CB" translate="false">dxdt</entry>
+    <entry key="dx_div_dt_CB" translate="false">dx/dt</entry>
+    <entry key="Zero_based_CB">Zero-based</entry>
+    <entry key="One_based_CB">One-based</entry>
+    <entry key="Use_simulation_time_CB">Use simulation time</entry>
+    <entry key="Use_external_signal_CB">Use external signal</entry>
+    <entry key="Rising_CB">Rising</entry>
+    <entry key="Falling_CB">Falling</entry>
+    <entry key="Either_CB">Either</entry>
+    <entry key="Level_CB">Level</entry>
+    <entry key="Level_hold_CB">Level hold</entry>
+    <entry key="ZeroCross_CB" translate="false">ZeroCross</entry>
+    <entry key="ZeroCrossTol_CB" translate="false">ZeroCrossTolerance</entry>
+    <entry key="DialogParameters_CB">Dialog parameters</entry>
+    <entry key="InputPort_CB">Input port</entry>
+    <entry key="DirectForm_CB">Direct form</entry>
+    <entry key="DirectFormSym_CB">Direct form symmetric</entry>
+    <entry key="DirectFormAsym_CB">Direct form antisymmetric</entry>
+    <entry key="DirectFormTransposed_CB">Direct form transposed</entry>
+    <entry key="LatticeMA_CB">Lattice MA</entry>
+    <entry key="LatticeAR_CB">Lattice AR</entry>
+    <entry key="DF1_CB">Direct form I</entry>
+    <entry key="DF1T_CB">Direct form I transposed</entry>
+    <entry key="DF2_CB">Direct form II</entry>
+    <entry key="DF2T_CB">Direct form II transposed</entry>
+    <entry key="SL_DSCPT_UnitConversion">Performs valid unit conversions.</entry>
+    <entry key="Auto_CB">auto</entry>
+    <entry key="Line_Search_CB">Line search</entry>
+    <entry key="Trust_Region_CB">Trust region</entry>
+    <entry key="Func_Eq_0_CB" translate="false">f(z) = 0</entry>
+    <entry key="Func_Eq_Z_CB" translate="false">f(z) = z</entry>
+    <entry key="SL_DSCPT_FirstOrderHold">Output a continuous piece-wise linear approximation of the input signal.</entry>
+    <entry key="num_CB">Signal</entry>
+    <entry key="msg_CB">Message</entry>
+    <entry key="fcn_CB">Function-Call</entry>
+
+    <entry key="SL_DSCPT_VPG">
+      Output a repeating pulse signal with the input duty cycle (D) and period (P).\n\nOutput pulse
+      is given by:\n\n y(t) = 1 if t(k)               &lt;= t &lt; t(k) + pw(k)\n        = 0 if t(k) + pw(k) &lt;= t &lt; t(k) +
+      P(k)\n\nwhere, t(k) is the time after 'k-1' pulses and pw(k) is the pulse width which is the product
+      of the D(k) and P(k) input values at t(k): pw(k) = P(k) * D(k)\n\nTypically, pulse width should be
+      greater than 0 and less than P(k).\n\nSelecting the 'Allow zero pulse width' checkbox
+      configures the block to allow pulse width to become zero during simulation. However, this would
+      require the block to have direct feedthrough and may cause algebraic loops.\n\nSelect the 'Run at
+      fixed time intervals' checkbox to produce the output signal values at a fixed sample time interval.
+    </entry>
+    <entry key="ContinuousLinearBlocksParameterTunabilityAuto">Auto</entry>
+    <entry key="ContinuousLinearBlocksParameterTunabilityOptimized">Optimized</entry>
+    <entry key="ContinuousLinearBlocksParameterTunabilityUnconstrained">Unconstrained</entry>
+    <entry key="SL_DSCPT_CTF">
+      The numerator coefficient can be a vector or matrix expression. The denominator coefficient must be a vector. The output width equals the number of rows in the numerator coefficient. You should specify the coefficients in descending order of powers of s.
+      \n\n'Parameter tunability' controls the runtime tunability level for numerator and denominator coefficients.
+      \n'Auto': Allow Simulink to choose the most appropriate tunability level.
+      \n'Optimized': Tunability is optimized for performance.
+      \n'Unconstrained': Tunability is unconstrained across the simulation targets.
+    </entry>
+    <entry key="SL_DSCPT_CSS">
+      State-space model:\n   dx/dt = Ax + Bu\n       y = Cx + Du
+      \n\n'Parameter tunability' controls the runtime tunability level for A, B, C, D.
+      \n'Auto': Allow Simulink to choose the most appropriate tunability level.
+      \n'Optimized': Tunability is optimized for performance.
+      \n'Unconstrained': Tunability is unconstrained across the simulation targets.
+      \n\nSelecting the 'Allow non-zero values for D matrix initially specified as zero' checkbox requires the block to have direct feedthrough and may cause algebraic loops.
+    </entry>
+    <entry key="SL_DSCPT_CZP">
+      Matrix expression for zeros.  Vector expression for poles and gain.  Output width equals the number of columns in zeros matrix, or one if zeros is a vector.
+      \n\n'Parameter tunability' controls the runtime tunability level for zeros, poles and gain.
+      \n'Auto': Allow Simulink to choose the most appropriate tunability level.
+      \n'Optimized': Tunability is optimized for performance.
+      \n'Unconstrained': Tunability is unconstrained across the simulation targets.
+    </entry>
+  </message>
+</rsccat>

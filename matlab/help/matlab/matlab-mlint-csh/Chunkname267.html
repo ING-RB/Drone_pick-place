@@ -1,0 +1,38 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Suggested Action</strong><br/><p>For any given of modulation scheme, you can provide decimal values when
+                    calling the modulation and demodulation functions. When calling the modulation
+                    and demodulation functions, specify symbol order as <code>'bin'</code> for
+                    natural binary encoding or <code>'gray'</code> for Gray encoding.</p><p>
+                    </p>
+<div class="table-responsive"><table class="table table-condensed" width="100%"><colgroup><col class="tcol1" width="33%"><col class="tcol2" width="33%"><col class="tcol3" width="33%"></colgroup><thead><tr><th>Modulation Scheme</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>QAM</td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>y&nbsp;=&nbsp;bin2gray(x,'qam',64);<br/>z&nbsp;=&nbsp;qammod(y,64,'bin');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>y&nbsp;=&nbsp;qamdemod(x,64,'bin');<br/>z&nbsp;=&nbsp;gray2bin(y,'qam',64);</code>
+                                    </td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>z&nbsp;=&nbsp;qammod(x,64,'gray');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>z&nbsp;=&nbsp;qamdemod(x,64,'gray')</code>
+                                    </td></tr><tr><td>PAM</td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>y&nbsp;=&nbsp;gray2bin(x,'pam',64);<br/>z&nbsp;=&nbsp;pammod(y,64,'bin');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>y&nbsp;=&nbsp;pamdemod(x,64,pi/4,'bin');<br/>z&nbsp;=&nbsp;bin2gray(y,'pam',64);</code>
+                                    </td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>z&nbsp;=&nbsp;pammod(x,64,pi/4,'gray');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>z&nbsp;=&nbsp;pamdemod(x,64,pi/4,'gray')</code>
+                                    </td></tr><tr><td>FSK</td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>y&nbsp;=&nbsp;gray2bin(x,'fsk',64);<br/>z&nbsp;=&nbsp;fskmod(y,64,1,256,256,'cont','bin')</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(512,1)+1j*randn(512,1));<br/>y&nbsp;=&nbsp;fskdemod(x,64,1,256,256,'bin');<br/>z&nbsp;=&nbsp;bin2gray(y,'fsk',64)</code>
+                                    </td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>z&nbsp;=&nbsp;fskmod(x,64,1,256,256,'cont','gray')</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(512,1)+1j*randn(512,1));<br/>z&nbsp;=&nbsp;fskdemod(x,64,1,256,256,'gray');</code>
+                                    </td></tr><tr><td>DPSK</td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>y&nbsp;=&nbsp;gray2bin(x,'dpsk',64);<br/>z&nbsp;=&nbsp;dpskmod(y,64,pi/4,'bin');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>y&nbsp;=&nbsp;dpskdemod(x,64,pi/4,'bin');<br/>z&nbsp;=&nbsp;bin2gray(y,'dpsk',64);<br/></code>
+                                    </td><td>
+                                        <code>x&nbsp;=&nbsp;randi([0&nbsp;63],1,100);<br/>z&nbsp;=&nbsp;dpskmod(x,64,pi/4,'gray');</code>
+                                        <code>x=2*(randn(100,1)+1j*randn(100,1));<br/>z&nbsp;=&nbsp;dpskdemod(x,64,pi/4,'gray');</code>
+                                    </td></tr><tr><td>PSK</td><td>
+                                        <code>x=randi([0&nbsp;63],1,100);<br/>y=gray2bin(x,'psk',64);<br/>z=pskmod(y,64,0,'bin');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>y&nbsp;=&nbsp;pskdemod(x,64,0,'bin');<br/>z&nbsp;=&nbsp;bin2gray(y,'psk',64);</code>
+                                    </td><td>
+                                        <code>x=randi([0&nbsp;63],1,100);<br/>z=pskmod(x,64,0,'gray');</code>
+                                        <code>x&nbsp;=&nbsp;2*(randn(100,1)+1j*randn(100,1));<br/>z&nbsp;=&nbsp;pskdemod(x,64,0,'gray');</code>
+                                    </td></tr></tbody></table></div><p>
+
+                </p><br/></body></html>

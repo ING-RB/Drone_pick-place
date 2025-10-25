@@ -1,0 +1,60 @@
+function varargout = lazyValidate(varargin)
+%lazyValidate Deferred argument validation using predicate.
+%   [TX1,TX2,...] = lazyValidate(TX1,TX2,...,{PREDICATE,ERR}) checks that
+%   PREDICATE(X1,X2) returns TRUE, otherwise error ERR is thrown.
+%
+%   ERR can be:
+%     * A fully constructed error nessage, e.g. message(ERRID,ARG1,...)
+%     * An error ID string "ERRID"
+%     * A cell array of arguments to pass to message {"ERRID", ARG1, ...}
+%     * A nullary function that will throw on call
+
+% Copyright 2016-2023 The MathWorks, Inc.
+
+% This prevents this frame and anything below it being added to the gather
+% error stack.
+internalFrame = matlab.bigdata.internal.InternalStackFrame(); %#ok<NASGU>
+
+dataArgs = varargin(1:end-1);
+
+% It's a mistake not to capture all the outputs
+nargoutchk(numel(dataArgs), numel(dataArgs));
+
+predicateAndArgs = varargin{end};
+
+% Ensure that lazyValidate does not appear in the error stack.
+fh = @(varargin) iLazyValidate(varargin, predicateAndArgs{:});
+
+[varargout{1:nargout}] = elementfun(fh, dataArgs{:});
+% Since we know the elementfun didn't change anything about the values, we can
+% simply copy the adaptors across for tall inputs
+isInputTall = cellfun(@istall, dataArgs);
+varargout(isInputTall) = cellfun(@iCopyAdaptor, varargout(isInputTall), dataArgs(isInputTall), ...
+                                 'UniformOutput', false);
+
+% Non-tall inputs we should hand back unmodified.
+varargout(~isInputTall) = dataArgs(~isInputTall);
+
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function x = iCopyAdaptor(x, arg)
+x.Adaptor = arg.Adaptor;
+% Since the operation never modifies any values, we can safely copy all
+% metadata.
+hSetMetadata(x.ValueImpl, hGetMetadata(arg.ValueImpl));
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function varargout = iLazyValidate(xCell, pred, varargin)
+if isscalar(varargin)
+    errFcn = matlab.bigdata.internal.util.getErrorFunction(varargin{1});
+else
+    errFcn = matlab.bigdata.internal.util.getErrorFunction(varargin);
+end
+
+if ~pred(xCell{:})
+    errFcn();
+end
+varargout = xCell;
+end

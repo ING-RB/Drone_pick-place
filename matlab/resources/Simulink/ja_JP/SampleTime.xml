@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="AbsTimeNotSuppForTsDepAsyncBlk">Model ブロック ''{0}'' は、非同期関数呼び出しイニシエーターによってトリガーされています。モデル ''{1}'' が絶対時間を必要とする場合、この設定はサポートされていません。</entry>
+    <entry key="InportFCPortNotAllowAsyncRootOutportDrivenByRTB">モデルに非同期関数呼び出しの入力端子がある場合、''{0}'' は非同期レートをもつ Rate Transition ブロックによって駆動できません。</entry>
+    <entry key="InportFCPortNotAllowAsyncSfcnBlk">''{0}'' は非同期関数呼び出し開始プログラムです。このようなブロックは、非同期関数呼び出しの入力端子があるモデルでは許可されていません。</entry>
+    <entry key="InportFCPortMustUseBuildInRTB">''{0}'' は Simulink の Rate Transitionブロックではありません。モデルに非同期関数呼び出しの入力端子がある場合は、Simulink ライブラリ内の Rate Transition ブロックを使用して非同期関数呼び出しブロックとの間のレート変換を処理してください。</entry>
+    <entry key="AsyncFCSSCannotBePeriodic">''{0}'' は非同期レートを使用しているため、周期的な関数呼び出しブロックになるように定義できません。</entry>
+    <entry key="ConstSampleTimeAtAsyncInitiator">非同期の関数呼び出し開始プログラム ''{0}'' は、定数 (inf) サンプル時間を指定しています。定数 (inf) サンプル時間は、シミュレーションでの非同期の関数呼び出し開始プログラムにはサポートされていません。このサンプル時間は、継承 (-1) に変更されます。この警告メッセージを表示しないようにするには、このブロックが定数 (inf) 以外のサンプル時間を指定することを確認してください。これを実行するには、ブロックに [モード] オプションがある場合はシミュレーション モードを選択します。</entry>
+    <entry key="AsyncSfcnInvalidDtype">S-function ''{0}'' で定義された非同期のタスクは、この非同期のタスクに関連したタイマーに対して無効なデータ型が指定されています。</entry>
+    <entry key="AsyncTsPriorityMustHigherThanBaseRate">ルートレベルの入力端子 ''{0}'' に接続している Asynchronous Task Specification ブロックは優先順位 {1,number, integer} を指定していますが、基本レートの優先順位は {2, number, integer} です。非同期タスクでは、周期的な基本レートより高い優先順位を指定しなければなりません。</entry>
+    <entry key="AsyncTIDSamePriorityAsSyncTID">非同期のタスクは S-function ''{0}'' に関連し、サンプル時間 {1} の周期的なタスクは同じ優先順位を共有します: {2,number,integer}。同じ優先順位のタスクがターゲット システムで相互にプリエンプトできない場合、異なる優先順位を指定するか、[コンフィギュレーション パラメーター] の [診断] ページにある同じ優先順位を持つタスクを "なし" に設定するかのいずれかです。</entry>
+    <entry key="AsyncTriggerInActionSys">非同期サブシステム ''{0}'' を、Action または Iterator サブシステム内に挿入してはなりません。</entry>
+    <entry key="BlkFastestTsNotGCDOfInTs">ブロック ''{0}'' に対するサンプル時間を特定できません。このブロックのサンプル時間を指定するか (推奨されるレートは、この入力レートの最大公約数の {1} です)、あるいはこのブロックの入力に駆動するブロックに対するサンプル時間を指定してください。</entry>
+    <entry key="BlkInputSampleTimeMismatch">サンプル時間が一致しません。''{2}'' の&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;入力端子 {1,number,integer}&lt;/sldiag&gt; を駆動する信号のサンプル時間 ({0}) は、このブロックのサンプル時間 ({3}) と一致しません。</entry>
+    <entry key="BlkWithUnsetTsInhSupLevel">ブロック ''{0}'' にはモデル参照のサンプル時間の継承ルールが設定されていません。また、モデルはサンプル時間に依存しません。このブロックから生成されたコードは、Model ブロックによって参照されると、不適切な結果を生成する可能性があります。S-Function には、ssSetModelReferenceSampleTimeInheritanceRule マクロを使用してモデル参照のサンプル時間の継承ルールを指定してください。&lt;sldiag objui="configset" objparam="UnknownTsInhSupMsg"&gt;[指定のないサンプル時間の継承]&lt;/sldiag&gt; を [なし] に設定すると、診断を抑制できます。</entry>
+    <entry key="BlockTsNotAMultipleOfFixedStep">''{2}'' のサンプル時間 {0} ({1}) は、モデルで指定された固定ステップ サイズ ({3}) の整数倍ではありません。</entry>
+    <entry key="CompileNeededForBlockSampleTimes">ブロック ''{0}'' に対する [サンプル時間] 情報にアクセスするには、モデルを更新しなければなりません。</entry>
+    <entry key="ComputedStepSizeIsTooSmall">計算された固定ステップ サイズ ({0}) は、モデル ''{2}'' のすべての離散サンプル時間よりも {1} 倍小さいです。この固定ステップ サイズは、モデル内の次の指定した離散サンプル時間:{3} と、次の伝播されたサンプル時間:{4} をベースに計算されました。可変ステップ ソルバーに切り替える、または離散サンプル時間 (周期とオフセットの両方) が固定ステップ サイズの整数の倍数となるように、固定ステップ サイズを指定することのいずれかでこのエラーを修正できます。</entry>
+    <entry key="ComputedStepSizeMayBeTooSmall">計算された固定ステップ サイズ ({0}) は、モデル ''{2}'' のすべての離散サンプル時間よりも {1} 倍小さいです。この固定ステップ サイズは、モデル内の次の指定した離散サンプル時間:{3} と、次の伝播されたサンプル時間:{4} をベースに計算されました。離散サンプル時間 (周期とオフセットの両方) が固定ステップ サイズの整数の倍数となるように、固定ステップ サイズを指定する、または [コンフィギュレーション パラメーター] ダイアログの [診断] タブで、[自動ソルバー パラメーターの選択] の設定を ''なし'' にすることのいずれかで、この診断を無効にできます。</entry>
+    <entry key="ConstantSampleTimeDescription">定数</entry>
+    <entry key="ConstantSampleTimeDescription_Advanced">不変</entry>
+    <entry key="ParameterSampleTimeDescription">定数</entry>
+    <entry key="InvPrmSampleTimeDescription_Advanced">不変</entry>
+    <entry key="ContinuousSTBlkHasFrames">ブロック ''{0}'' のいくつかの端子は、このブロックが連続のサンプル時間を持つにもかかわらずフレームベースに設定されています。フレームベースの信号は離散サンプル時間を持つ必要があります。</entry>
+    <entry key="ContSTOutPortIsFrameBased">''{1}'' の&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;出力端子 {0,number,integer}&lt;/sldiag&gt; は、この端子が連続サンプル時間をもつにもかかわらずフレームベースに設定されています。フレームベースの信号は離散サンプル時間をもつ必要があります。</entry>
+    <entry key="SFcnNeedsContTsOrInhTsForCStates">''{1}'' 内のシングル レートの S-Function ''{0}'' は連続状態をもつため、連続サンプル時間または継承したサンプル時間を指定しなければなりません。</entry>
+    <entry key="SFcnNeedsContTs">''{1}'' の S-Function {0} は連続状態をもつため、連続的なサンプル時間をもたなければなりません。</entry>
+    <entry key="BlockNeedsContTs">ブロック {0} は連続状態をもつため、連続サンプル時間をもたなければなりません。</entry>
+    <entry key="DefaultFixedStepSizeMsg">モデル ''{0}'' は、開始と終了時間をベースに ({1}) の固定ステップ サイズを使用します。[コンフィギュレーション パラメーター] ダイアログ ボックスの [診断] ペインで [自動ソルバー パラメーターの選択] を ''なし'' に設定することでこの診断を無効にできます。\n</entry>
+    <entry key="DiscreteBecomingInf">ブロック ''{1}'' で使用されている周期的なサンプル時間 {0} は、{2} の基本レートを持つモデルで使用するには大きすぎます。inf としてこのサンプル時間を明示的に指定するか、このサンプル時間を固定ステップ サイズで除算した値が数値精度の制限内で inf にならないほど十分大きい値に固定ステップ サイズを指定してください。</entry>
+    <entry key="ErrorInParamInit">パラメーターの初期化中にエラーが発生しました。</entry>
+    <entry key="ParamUpgradeNotification">このモデルが以前のリリースで作成されたものである場合、アップグレードの問題が発生してパラメーターの初期化問題が起こる可能性があります。</entry>
+    <entry key="FasterTaskMustHaveHigherPriority">同期のタスクに対して、早い方のタスクは高い優先順位でなければなりません。サンプル時間 {0} の早い方の同期のタスクは優先順位 {1,number,integer} になります。この優先順位は、サンプル時間 が {2} であるより遅い方のタスクの優先順位よりも遅くなります。より遅いタスクの優先順位は {3,number,integer} です。</entry>
+    <entry key="FixedInMinorStepDescription">マイナー ステップに固定</entry>
+    <entry key="FixedStepNEFundStep">モデル ''{1}'' の固定ステップ サイズ ({0}) の設定が無効です。モデル内のサンプル時間はすべて、固定ステップ サイズの整数倍でなければなりません。</entry>
+    <entry key="FixedStepSizeHeuristicErr">モデルがいずれの離散サンプル時間を持たないため、モデル ''{0}'' 内のサンプル時間をベースに固定ステップ サイズを定義できません。[コンフィギュレーション パラメーター] ダイアログ ボックスの [ソルバー] ペインにある固定ステップ サイズを明示的に指定するか、[コンフィギュレーション パラメーター] ダイアログ ボックスの [診断] ペインの [ソルバー] グループにある [自動ソルバー パラメーターの選択] の診断を ''なし'' に設定することで、この診断を無効にできます。</entry>
+    <entry key="FixedStepSizeHeuristicWarn">モデルがいずれの離散サンプル時間を持たないため、モデル ''{0}'' 内のサンプル時間をベースに固定ステップ サイズを定義できません。シミュレーション開始と終了時間をベースに ({1}) の固定ステップ サイズを選んでください。[コンフィギュレーション パラメーター] ダイアログ ボックスの [ソルバー] ペインにある固定ステップ サイズを明示的に指定するか、[コンフィギュレーション パラメーター] ダイアログ ボックスの [診断] ペインの [ソルバー] グループにある [自動ソルバー パラメーターの選択] の診断を ''なし'' に設定することで、この診断を無効にできます。</entry>
+    <entry key="FunctionalSampleTimesNotMatchSFcn">ブロック ''{0}'' に指定された関数のサンプル時間の数は、このブロックのサンプル時間の数と一致しません。これは、可変ステップ モデルから S-function ブロックをビルドし、固定ステップ モデルで S-function ブロックを使用した場合に起こります。可変ステップ ソルバーに切り替えるか、固定ステップ ソルバーで S-function ブロックを再生成することで、このエラーを修正できます。</entry>
+    <entry key="FunctionalSampleTimesNotMatchMdlRef">ブロック ''{0}'' に指定された関数のサンプル時間の数は、このブロックのサンプル時間の数と一致しません。同じ非同期関数呼び出し開始プログラムを使用して Model ブロックの 2 つの異なる関数呼び出し入力を駆動する場合に、このような現象が発生する可能性があります。このエラーを修正するには、2 つの異なる Function-Call Generator を使用するか、参照モデル内の 1 つの関数呼び出し入力のみを使用します。</entry>
+    <entry key="IgnoringAsyncFlag">S-function ''{0}'' に対する SS_OPTION_ASYNCHRONOUS、SS_OPTION_ASYNCHRONOUS_INTERRUPT、または SS_OPTION_ASYNCHRONOUS_CUSTOM フラグは、S-function が以下のすべての基準を満たさないために無視されています:サンプル時間の数が 1、サンプル時間が継承されている (-1)、1 つの出力端子、出力端子のすべての要素が関数呼び出しを実行するように設定されている。</entry>
+    <entry key="IllegalUnsupportedMultiRWRateTransWarn">{1} の ''{0}'' と出力端子 {3,number,integer} の ''{2}'' との間で、複数の読み取りおよび書き込みの遷移が検出されました。Rate Transition ブロックはデータ転送の保護を確保できません。
+</entry>
+    <entry key="IllegalUnsupportedMultiRWRateTransErr">Multiple read and write transition detected ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}. Rate Transition block cannot ensure data transfer protection.
+    
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" id="MultiTaskRateTransMsgWarn"&gt;
+            &lt;cmd&gt;set_param(''{4}'', ''MultiTaskRateTransMsg'', ''warning'');&lt;/cmd&gt;
+            &lt;txt&gt;Set the ''Diagnostics &gt; Sample Time &gt; Multitask data transfer'' diagnostic to ''warning''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InconsistentPortBasedTs" context="diagnostic">Data integrity issue between &lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{0}"&gt;input port {1,number,integer}&lt;/sldiag&gt; of ''{0}'' and the signal driving this input port.
+      &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="suggestion"&gt;
+          &lt;txt&gt;Insert a rate transition block to protect the data transfer.&lt;/txt&gt;
+        &lt;/action&gt;
+      &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InconsistentBlockBasedTs">サンプル時間が矛盾しています。''{1}'' のサンプル時間 ({0}) は入力端子 {3,number,integer} でのサンプル時間 ({2}) よりも遅くなっています。原因はおそらく、サンプル時間を指定しない （すべてが （-1）を継承） ''{4}'' を含むブロックのループがあるためです。このブロックのサンプル時間を指定するか、あるいはこのブロックの入力に駆動するブロックに対するサンプル時間を指定してください。</entry>
+    <entry key="InconsistentAsyncPriority">ブロック ''{0}'' が、競合する優先順位を指定する非同期 S-function によって呼び出されています:''{1}'' は {2,number,integer} を指定していますが、''{3}'' は {4,number,integer} を指定しています。</entry>
+    <entry key="InconsistentAsyncClockTickSize">関数呼び出しブロック ''{0}'' が、競合する時間刻みサイズを指定する非同期 S-function によってトリガーされています:''{1}'' は {2} を指定していますが、''{3}'' は {4} を指定しています。</entry>
+    <entry key="InconsistentAsyncClockTickDType">関数呼び出しブロック ''{0}'' が、競合する時間刻みデータ型を指定する非同期 S-function によってトリガーされています:''{1}'' は {2} を指定していますが、''{3}'' は {4} を指定しています。</entry>
+    <entry key="JmaabbCannotCombineFunctionCalls" context="diagnostic">関数呼び出しブロック ''{0}'' を複数の関数呼び出し入力端子からトリガーすることは、レートベース モデルではサポートされません。</entry>
+    <entry key="AsyncCustomCannotCombineWithOtherAsyc">関数呼び出しブロック ''{0}'' が、競合する SS_OPTION を指定する非同期 S-function によってトリガーされています:''{1}'' または ''{2}'' のいずれかが SS_OPTION_ASYNCHRONOUS_CUSTOM を指定し、もう一方が SS_OPTION_ASYNCHRONOUS または SS_OPTION_ASYNCHRONOUS_INTERRUPT を指定しています。}</entry>
+    <entry key="InputPortSampleTimeMismatch">サンプル時間が一致しません。''{2}'' の&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;入力端子 {1,number,integer}&lt;/sldiag&gt; を駆動する信号のサンプル時間 ({0}) は、この入力端子の要求されたサンプル時間 ({3}) と異なります。</entry>
+    <entry key="InvAsynSFuncLocation">非同期 S-function ''{0}'' のすべての接続先は、ルート システムになければなりません (すなわち、接続先は条件付き実行サブシステムに含まれません)。</entry>
+    <entry key="InvAsyncInterruptSFcnLoc">接続先の関数呼び出しブロックをハードウェア割り込みによって非同期に実行するように指定しているため、S-function ''{0}'' とその関数呼び出しの接続先ブロックはルート システムまたは Atomic Subsystem 内になければなりません。</entry>
+    <entry key="InvalidAsyncTimeSourceCaller">関数呼び出しブロック ''{0}'' が、その時間を呼び出し側から取得するように指定する非同期の S-function ''{1}'' によってトリガーされます。ただし、複数のトリガーをもつ関数呼び出しブロックをトリガーする非同期の S-function は、その時間を呼び出し側から取得するように指定してはいけません。</entry>
+    <entry key="InvBlkInPeriodicFCSS">''{0}'' のサンプル時間は無効です。周期的な関数呼び出しブロック ''{2}'' では、定数 (inf)、継承 (-1)、周期的 ({1}) サンプル時間のみが許可されます。</entry>
+    <entry key="InvBlkInPeriodicAtomic">
+ブロック ''{0}'' には {1} の無効なサンプル時間があります。周期的な Atomic Subsystem ''{2}'' には、定数 (inf)、継承 (-1)、または周期的 ({3}) のサンプル時間をもつブロックのみが含まれている可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''__ARG1__'');&lt;/cmd&gt; &lt;cargs&gt; &lt;carg translate="false" name="__ARG1__" type="menu"&gt; &lt;txt_prompt&gt;新規サンプル時間&lt;/txt_prompt&gt; &lt;enum&gt;{3}&lt;/enum&gt; &lt;enum&gt;inf&lt;/enum&gt; &lt;enum&gt;-1&lt;/enum&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;ブロック ''{0}'' の [サンプル時間] を周期的 ({3})、継承 (-1)、または定数 (inf) に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'', 'SystemSampleTime', '-1');&lt;/cmd&gt; &lt;txt&gt;サンプル時間を継承するようにサブシステム ''{2}'' を設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+ </entry>
+    <entry key="InvBlkWithNoSTPrmInPeriodicAtomic">
+  
+           ブロック ''{0}'' には {1} の無効なサンプル時間があります。周期的な Atomic Subsystem ''{2}'' には、定数 (inf)、継承 (-1)、または周期的 ({3}) のサンプル時間をもつブロックのみが含まれている可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'', 'SystemSampleTime', '-1');&lt;/cmd&gt; &lt;txt&gt;サンプル時間を継承するようにサブシステム ''{2}'' を設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="InvSubsysInPeriodicAtomic">
+サブシステム ''{0}'' には {1} の無効なサンプル時間があります。周期的な Atomic Subsystem ''{2}'' には、継承 (-1) または周期的 ({3}) のサンプル時間をもつサブシステムのみが含まれている可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'', 'SystemSampleTime', ''__ARG1__'');&lt;/cmd&gt; &lt;cargs&gt; &lt;carg translate="false" name="__ARG1__" type="menu"&gt; &lt;txt_prompt&gt;新規サンプル時間&lt;/txt_prompt&gt; &lt;enum&gt;{3}&lt;/enum&gt; &lt;enum&gt;-1&lt;/enum&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;サブシステム ''{0}'' の [サンプル時間] を周期的 ({3}) または継承 (-1) に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'', 'SystemSampleTime', '-1');&lt;/cmd&gt; &lt;txt&gt;サンプル時間を継承するようにサブシステム ''{2}'' を設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+ </entry>
+    <entry key="InvTs">''{1}'' のサンプル時間 {0} は無効です。</entry>
+    <entry key="InvPeriodOffsetPairFromSFcn">S-Function ブロック ''{2}'' で指定されたサンプル時間 [{0} {1}] が無効です。サンプル時間は、実数の double スカラー (period) または長さが 2 の実数の double ベクトル (period, offset) でなければなりません。ここで、period、offset は有限で非負、offset は period より小さくなくてはなりません。</entry>
+    <entry key="InvTsInCaseSS">''{1}'' のサンプル時間 {0} が、実行を制御する SwitchCase ブロック ''{3}'' のサンプル時間 {2} と一致しません。</entry>
+    <entry key="InvTsInIfActionSS">''{1}'' のサンプル時間 {0} が、実行を制御する If ブロック ''{3}'' のサンプル時間 {2} と一致しません。</entry>
+    <entry key="InvDiscreteTsInCaseSS">ブロック ''{0}'' が、実行を制御する SwitchCase ブロック ''{2}'' のサンプル時間 {1} と一致しない離散サンプル時間をもっています。</entry>
+    <entry key="InvDiscreteTsInIfActionSS">ブロック ''{0}'' が、実行を制御する If ブロック ''{2}'' のサンプル時間 {1} と一致しない離散サンプル時間をもっています。</entry>
+    <entry key="InvTsInDiscreteCaseSS">''{1}'' のサンプル時間 {0} が、実行を制御する SwitchCase ブロック ''{2}'' の離散サンプル時間と一致しません。</entry>
+    <entry key="InvTsInDiscreteIfActionSS">''{1}'' のサンプル時間 {0} が、実行を制御する If ブロック ''{2}'' の離散サンプル時間と一致しません。</entry>
+    <entry key="InvTsParamSettingWithCause">''{0}'' では、付記した原因のため、パラメーター ''{1}'' が有効なサンプル時間ではありません。</entry>
+    <entry key="InvTsParamSetting_Constant">''{0}'' において、パラメーター ''{1}'' は実数の有限でなければなりません。定数 (inf) サンプル時間は許可されません。</entry>
+    <entry key="InvTsParamSetting_First_Element">''{0}'' において、パラメーター ''{1}'' の最初の要素は {2} です。この値は許可されません。</entry>
+    <entry key="InvTsParamSetting_No_Continuous">ブロック ''{0}'' は、パラメーター ''{1}'' に対する連続サンプル時間 (0 または [0,0]) を許可しません。</entry>
+    <entry key="InvTsParamSetting_No_ZOHContinuous">ブロック ''{0}'' は、パラメーター ''{1}'' に対する固定のマイナーステップのサンプル時間 ([0,1]) を許可しません。</entry>
+    <entry key="InvTsParamSetting_Inf">''{0}'' の場合、パラメーター ''{1}'' の最初の要素が inf のため、2 番目の要素はゼロにしなければなりません。</entry>
+    <entry key="InvTsParamSetting_Vector">
+  ''{0}'' において、パラメーター ''{1}'' は実数の double スカラー (周期) または長さ 2 の実数の double ベクトル (周期、オフセット) でなければなりません。周期とオフセットは有限で非負でなければなりません。オフセットは周期より小さくなければなりません。
+</entry>
+    <entry key="InvHybridIfactionSS">ブロック ''{0}'' には複数のサンプル時間があるため、Action Subsystem では利用できません。</entry>
+    <entry key="InvalidInputPortTsInTrigSS">ブロック ''{1}'' の&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;入力端子 {0,number,integer}&lt;/sldiag&gt; には、{2} のサブシステム ''{3}'' 内に配置されたときに不適切なサンプル時間が定義されています。定数のサンプル時間 (inf) または継承されたサンプル時間 (-1) のみが許可されます。</entry>
+    <entry key="InvalidOutputPortTsInTrigSS">ブロック ''{1}'' の&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;出力端子 {0,number,integer}&lt;/sldiag&gt; には、{2} のサブシステム ''{3}'' 内に配置されたときに不適切なサンプル時間が定義されています。定数のサンプル時間 (inf) または継承されたサンプル時間 (-1) のみが許可されます。</entry>
+    <entry key="AsyncDatasetLoggingForSimulinkFunctionInMdlRef">モデル ブロック ''{1}'' 内の Simulink Function ''{0}'' は非同期で実行されるため Dataset 形式での出力信号のログ記録はサポートされていません。この問題を解決するには、[形式] コンフィギュレーション パラメーターを [配列]、[構造体]、または [時間付き構造体] に変更し、信号のログ記録を無効にしてください。</entry>
+    <entry key="InvMRateBlkInPeriodicFCSS">''{0}'' には複数のサンプル時間があります。周期的な関数呼び出しブロック ''{2}'' では、定数 (inf)、継承 (-1)、周期的 ({1}) サンプル時間のみが許可されます。</entry>
+    <entry key="InvNonFiniteFundamentalStepSize">モデル ''{0}'' の基本サンプル時間が有限ではありません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''FixedStep'',''__finiteStepSize__'');&lt;/cmd&gt; &lt;cargs&gt; &lt;carg name = "__finiteStepSize__" type="text"&gt; &lt;txt_prompt&gt;モデルの [固定ステップ サイズ (基本サンプル時間)] パラメーターに対して有限値を入力する: &lt;/txt_prompt&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;モデルの [固定ステップ サイズ (基本サンプル時間)] パラメーターに対して有限値を指定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="InvMRateBlkInPeriodicAtomic">''{0}'' には複数のサンプル時間があります。定数 (inf)、継承 (-1)、周期的な ({1}) サンプル時間のみ、周期的な Atomic Subsystem ''{2}'' で許可されます。</entry>
+    <entry key="InvMRateBlkInTrigSubsys">''{0}'' には複数のサンプル時間があります。一定 (inf) か継承されたサンプル時間 (-1) のみ {1} のサブシステム ''{2}'' で許可されます。</entry>
+    <entry key="InvalidNegativeTsPeriod">指定された周期 ({0}) とオフセット ({1}) は、サンプル時間の仕様に有効ではありません。INHERITED_SAMPLE_TIME (-1) の場合を除き、周期を負の値にすることはできません。</entry>
+    <entry key="InvalidNegativeTsPeriodAllowVariableTs">指定された周期 ({0}) とオフセット ({1}) は、サンプル時間の仕様に有効ではありません。INHERITED_SAMPLE_TIME (-1) または VARIABLE_SAMPLE_TIME (-2) の場合を除き、周期を負の値にすることはできません。</entry>
+    <entry key="InvBlkInAsyncFCSS">''{0}'' のサンプル時間は無効です。一定 (inf) か継承されたサンプル時間 (-1) のみ非同期サブシステム ''{1}'' で許可されます。</entry>
+    <entry key="InvBlkInTrigSubsys" context="error">
+  
+           ''{0}'' にはサンプル時間 {1} があります。Triggered Subsystem 内のブロックは Triggered Subsystem の実行時にのみ実行されなければならないため、ブロックのサンプル時間は継承 (-1) でなければなりません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;ブロックにサンプル時間パラメーターがある場合は、ブロック ''{0}'' のサンプル時間を継承 (-1) に設定することを検討する &lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''{2}'' のブロック ''{0}'' を置き換える&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="InvSigLogTSInTrigSubsys">データ ログは、ブロック ''{1}'' の出力信号の [信号プロパティ] ダイアログで指定したサンプル時間 ''{0}'' には適用されません。{2} のサブシステム ''{3}'' では、定数 (inf) か継承されたサンプル時間 (-1) のみが許可されます。</entry>
+    <entry key="InvBlkInTrigModel">''{0}'' にはサンプル時間 {1} があります。{2} のモデル ''{3}'' では、定数 (inf) か継承されたサンプル時間 (-1) のみが許可されます。</entry>
+    <entry key="InvPortBasedModelBlkInTrigSubsys">モデル ''{1}'' を参照している Model ブロック ''{0}'' は、{2} のサブシステム ''{3}'' に不適切に置かれています。参照されるモデルは、サンプル時間を継承しなければなりません。モデル ''{4}'' の [コンフィギュレーション パラメーター] の [ソルバー] ページで [周期的なサンプル時間の制約] パラメーターを [サンプル時間に依存しない] に設定し、サンプル時間をなぜ継承しないのかを確かめるために、ブロック線図を更新してください。</entry>
+    <entry key="InvCallerTsForPeriodicFCSS">サンプル時間 {2} を持つ関数呼び出しサブシステム ''{1}'' を呼び出す ''{0}'' が、関数呼び出しサブシステムの周期的なサンプル時間 {3} と一致しません。</entry>
+    <entry key="InvConstCompTs">''{0}'' には無効な定数 (inf) サンプル時間があります。離散状態、連続状態、調整可能なパラメーターは、定数サンプル時間を受け入れません。</entry>
+    <entry key="InvSFcnCallInitiatorTs">S-Function ブロック ''{1}'' の&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;入力端子 {0,number,integer}&lt;/sldiag&gt; での設定が無効です。ブロックは、その関数呼び出しイニシエーター ''{3}'' のサンプル時間と異なるサンプル時間 {2} を指定しています</entry>
+    <entry key="InvConstOffset">指定された周期 ({0}) とオフセット ({1}) は、有効なサンプル時間の指定ではありません。周期が CONSTANT_SAMPLE_TIME (inf) の場合、オフセットは 0 でなければなりません。</entry>
+    <entry key="InvDiscOffsetTooBig">指定された周期 ({0}) とオフセット ({1}) は、有効なサンプル時間の指定ではありません。オフセットの値は周期より小さくなければなりません。</entry>
+    <entry key="InvNumTsForAsyncBlock">非同期の ''{0}'' で登録されたサンプル時間数が無効です。</entry>
+    <entry key="InvPortBasedSFcnBlkInTrigSubsys">''{0}'' は、端子ベースのサンプル時間をもっていますが、{1} のサブシステム ''{2}'' に不適切に置かれています。オプション SS_OPTION_ALLOW_PORT_SAMPLE_TIME_IN_TRIGSS を指定した場合、端子ベースのサンプル時間をもつ S-Function は、{3} のサブシステムでのみ使われます。</entry>
+    <entry key="InvPortBasedBlkInTrigSubsys">''{0}'' は {1} サブシステム ''{2}'' に配置されていますが、この構成をサポートしていません。ブロックを {3} サブシステムの外に移動してください。</entry>
+    <entry key="InvInputPortTsInPeriodicFCSS">端子ベースのサンプル時間ブロック ''{0}'' は、入力端子 {2,number,integer} で関数呼び出しブロック ''{3}'' の周期的なサンプル時間と一致しないサンプル時間 {1} を使用しています。このブロックでは定数 (inf)、継承 (-1)、周期的 ({4}) サンプル時間のみが許可されます。</entry>
+    <entry key="InvInputPortTsInPeriodicAtomic">端子ベースのサンプル時間ブロック ''{0}'' には、Atomic サブシステム ''{3}'' の周期的なサンプル時間と一致していない&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{0}"&gt;入力端子 {2,number,integer}&lt;/sldiag&gt; にサンプル時間 {1} があります。定数 (inf)、継承 (-1)、周期的な ({4}) サンプル時間のみサブシステムで許可されます。</entry>
+    <entry key="InvOutputPortTsInPeriodicFCSS">端子ベースのサンプル時間ブロック ''{0}'' は、出力端子 {2,number,integer} で関数呼び出しブロック ''{3}'' の周期的なサンプル時間と一致していないサンプル時間 {1} を使用しています。このブロックでは定数 (inf)、継承 (-1)、周期的 ({4}) サンプル時間のみが許可されます。</entry>
+    <entry key="InvOutputPortTsInPeriodicAtomic">端子ベースのサンプル時間ブロック ''{0}'' には、Atomic サブシステム ''{3}'' の周期的なサンプル時間と一致していない&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{0}"&gt;出力端子 {2,number,integer}&lt;/sldiag&gt; にサンプル時間 {1} があります。定数 (inf)、継承 (-1)、周期的な ({4}) サンプル時間のみサブシステムで許可されます。</entry>
+    <entry key="InvMRateBlkInContinuousAtomic" context="diagnostic">''{0}'' には複数のサンプル時間があります。連続した Atomic サブシステム ''{2}'' では、定数 (inf)、継承 (-1)、連続した ({1}) サンプル時間のみが許可されます。</entry>
+    <entry key="InvInputPortTsInContinuousAtomic" context="diagnostic">端子ベースのサンプル時間ブロック ''{0}'' には、Atomic サブシステム ''{3}'' の連続サンプル時間と一致していない&lt;sldiag objui="inport" objparam="{2,number,integer}" objname="{0}"&gt;入力端子 {2,number,integer}&lt;/sldiag&gt; にサンプル時間 {1} があります。サブシステムでは、定数 (inf)、継承 (-1)、連続した ({4}) サンプル時間のみが許可されます。</entry>
+    <entry key="InvOutputPortTsInContinuousAtomic" context="diagnostic">端子ベースのサンプル時間ブロック ''{0}'' には、Atomic サブシステム ''{3}'' の連続サンプル時間と一致していない&lt;sldiag objui="outport" objparam="{2,number,integer}" objname="{0}"&gt;出力端子 {2,number,integer}&lt;/sldiag&gt; にサンプル時間 {1} があります。サブシステムでは、定数 (inf)、継承 (-1)、連続した ({4}) サンプル時間のみが許可されます。</entry>
+    <entry key="MultiTaskDSM" context="diagnostic">
+    ブロック ''{0}'' およびブロック ''{1}'' が、モデル ''{3}'' のデータ ストア メモリ ''{2}'' にアクセスしています。これらの 2 つのブロックは異なるタスクで実行されるので、マルチタスクでリアルタイムな環境においてデータの整合性が維持されなくなる可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt; &lt;arg&gt;{3}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AutosarMultiTaskDSM" context="diagnostic">ブロック ''{0}'' と ''{1}'' はデータ ストア メモリ ''{2}'' にアクセスし、異なるランナブルで実行されるので、リアルタイム環境でのデータの整合性が維持されなくなります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;ブロック ''{0}'' と ''{1}'' のサンプル時間を調整する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{3}'', ''SolverMode'', ''SingleTasking'');&lt;/cmd&gt; &lt;txt&gt;または、[コンフィギュレーション パラメーター] &gt; [ソルバー] &gt; [各離散レートを別個のタスクとして扱う] オプションの選択を解除する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MultiTaskDSMSingleBlock">
+    ブロック ''{0}'' はデータ ストア メモリ ''{1}'' にアクセスして、複数のタスクを実行します。これにより、マルチタスクでリアルタイムな環境においてデータの整合性が維持されなくなる可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="AutosarMultiTaskDSMSingleBlock" context="diagnostic">ブロック ''{1}'' はデータ ストア メモリ ''{0}'' にアクセスして、複数のタスクで実行されます。マルチタスクのリアルタイム環境においてデータの整合性が維持されなくなる可能性があるため、これは AUTOSAR ではサポートされていません。</entry>
+    <entry key="MultiTsGlobalDSM">
+モデル ''{0}'' では、ブロック ''{1}'' および ''{2}'' は、グローバル Simulink.Signal オブジェクト ''{3}'' によって定義されたグローバル データ ストアにアクセスしています。これらの 2 つのブロックは異なるタスクで実行されるので、マルチタスクでリアルタイムな環境においてデータの整合性が維持されなくなる可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+</entry>
+    <entry key="AutosarMultiTsGlobalDSM" context="diagnostic">モデル ''{0}'' で、ブロック ''{1}'' および ''{2}'' が、グローバルな Simulink.Signal オブジェクト ''{3}'' によって定義されているグローバル データ ストアにアクセスしていますが、これは AUTOSAR ではサポートされていません。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;ローカルの Data Store Memory ブロックの使用を検討する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MultiTsGlobalDSMSingleBlock">
+Model ブロック ''{1}'' はマルチタスク用に構成され、Simulink.Signal ''{2}'' で定義されたグローバル データストアを共有する Data Store Read ブロックと Data Store Write ブロックを含んでいます。マルチタスクでリアルタイムな環境で生成コードを展開すると、データの整合性の問題が発生する可能性があります。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="AdjustSampleTimes"&gt; &lt;arg&gt;{2}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;action_catalog id="Simulink:SampleTime:DSMErrMsgFixits" ids="MultiTaskDSMMsgSetToNone"&gt; &lt;arg&gt;{0}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+</entry>
+    <entry key="AutosarMultiTsGlobalDSMSingleBlock" context="diagnostic">モデル ''{0}'' で、ブロック ''{1}'' が、グローバルな Simulink.Signal オブジェクト ''{2}'' によって定義されているグローバル データ ストアにアクセスしていますが、これは AUTOSAR ではサポートされていません。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt;ローカルの Data Store Memory ブロックの使用を検討する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DSMErrMsgFixits">
+      
+               &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="AdjustSampleTimes"&gt; &lt;txt&gt; データ ストア ''{0}'' にアクセスするブロックのサンプル時間とタスクに一貫性をもたせることを検討する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="MultiTaskDSMMsgSetToNone"&gt; &lt;cmd&gt;set_param(''{0}'',''MultiTaskDSMMsg'',''none'');&lt;/cmd&gt; &lt;txt&gt; または、データ ストアがアトミック操作によってアクセスされているか、関係するタスクがターゲット システムで相互にプリエンプトできない場合、''[コンフィギュレーション パラメーター] &gt; [診断] &gt; [データ有効性] &gt; [マルチタスク データ ストア]'' パラメーターを [なし] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="MustUseVariableStepSolver">固定ステップ ソルバー ''{0}'' は、可変サンプル時間の S-function を含むため、ハイブリッドのブロック線図 ''{1}'' に対して使用できません。</entry>
+    <entry key="MultirateSfcnWritesToGlobalDSM">S-function ブロック ''{0}'' は複数のレートを持ち、グローバルなデータ ストア ''{1}'' にアクセスしています。グローバルなデータ ストアにアクセスする S-function は、シングル レートでなければなりません。</entry>
+    <entry key="MultiTrigWithoutPriority">関数呼び出しブロック ''{0}'' に、優先順位が指定されていない非同期のトリガーが複数あります。これらのトリガーが互いにプリエンプト可能な場合、データの整合性を維持できません。</entry>
+    <entry key="MuxedSyncAndAsyncTriggers">''{0}'' は、非同期関数呼び出しをデータまたは同期関数呼び出しと結合するために使用できません。</entry>
+    <entry key="NoTsInhDueToPreSetBlkTs">サンプル時間がブロック ''{0}'' で明示的に設定されているため、このモデルはサンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="InvalidExportPerodicConnection">出力端子の要素 {1,number,integer} に関数呼び出しを作成する S-Function ''{0}'' から無効な接続が開始します。関数呼び出しジェネレーターによってサブシステムまたは Model ブロックの関数呼び出し端子を駆動しなければなりません。 </entry>
+    <entry key="NoTsBlockReduced">ブロック ''{0}'' がモデルのコンパイルされたバージョンから削除されたので、Simulink はそのサンプル時間情報にアクセスすることができません。このブロックのサンプル時間情報を得るには、[コンフィギュレーション パラメーター] ダイアログ ボックスで ''ブロック削減'' を検索し、チェック ボックスをオフにします。</entry>
+    <entry key="NoMoreSampleTimeColors">モデルに利用可能な {1,number,integer} の離散サンプル時間の色よりも大きい {0,number,integer} の離散状態があります。{2,number,integer} 番目で、遅いレートは、サンプル時間がオレンジ色でマークされました。</entry>
+    <entry key="NoMultiTasking">モデル ''{0}'' には複数のサンプル時間が含まれていません。ソルバー モードを Auto または SingleTasking として指定しなければなりません。</entry>
+    <entry key="NoMultiTaskingTid01eq">モデル ''{0}'' には複数のサンプル時間が含まれていません。このモデルは、同じレートの連続および離散サンプル時間を含みます。ソルバー モードを Auto または SingleTasking として指定しなければなりません。</entry>
+    <entry key="NoMultiTaskingWithIntegerRates">モデル ''{0}'' は離散レートをスケーリングするよう設定されています。ソルバー モードは SingleTasking として指定しなければなりません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="MultiTaskingOff"&gt; &lt;cmd&gt;set_param( ''{0}'', 'EnableMultiTasking', 'off');&lt;/cmd&gt; &lt;txt&gt;[各離散レートを個別のタスクとして扱う] オプションをオフにすることを検討する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="ScaleDiscreteRatesOff"&gt; &lt;cmd&gt;set_param( ''{0}'', 'ScaleDiscreteRates', 'off');&lt;/cmd&gt; &lt;txt&gt;[モデルのすべての離散レートをスケーリング] オプションをオフにすることを検討する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="IntegerRatesDoesNotSupportCustomCode">離散レートのスケーリングに際し、カスタム コード ブロック ''{0}'' はサポートされません。</entry>
+    <entry key="NoRateCheckForMultiRateSFcn">複数の基本サンプル時間を持ち、端子のサンプル時間を持たないため、''{1}'' の S-function {0} での有効なレート遷移に対してチェックできません。端子のサンプル時間を指定するために S-function を更新してください。</entry>
+    <entry key="NotCombinableAsyncPeriodicTsAtBlk">''{0}'' の端子は非同期のレートまたは周期的なレートで呼び出されています。非同期のレートは他のタイプのサンプル時間と組み合わせることはできません。 </entry>
+    <entry key="NotCombinableAsyncPeriodicTsInBlk">''{1}'' 内の Simulink 関数 ''{0}'' が非同期レートおよび周期的レートで呼び出されています。非同期のレートを他のタイプのサンプル時間と組み合わせることはできません。 </entry>
+    <entry key="NotCombinableSignalAndMessagesRelatedTsAtBlk">''{0}'' ブロックは Simulink メッセージ ペイロード型の 1 つ以上の入力と周期的なレートの信号を受け入れます。このブロックはそれらのいずれかのみを受け入れることができます。 </entry>
+    <entry key="NotCombinableForAsyncSfcnNotSpecifyPrioirty">S-function ''{0}'' で継承される非同期の関数呼び出し信号は、S-function が非同期のレートに対して優先順位が設定されていないため、他の非同期のレートと結合することはできません。</entry>
+    <entry key="NotCombinableForAsyncSfcnNotUsingBaseRateTimer">S-function ''{0}'' で継承される非同期の関数呼び出し信号は、S-function が基本レートのタイマーを使うために非同期のレートが設定されていないため、他の非同期のレートと結合することはできません。</entry>
+    <entry key="UnionRateMergingNotAllowedWithoutBIMO" context="error">
+  
+           union サンプル時間 {1} と {2} の最大公約数 (GCD) は、入力端子 ''{0}'' に関しては計算できません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="AllowMultipleTaskToAccessIOParamON" retvalue="false"&gt; &lt;cmd&gt;set_param(bdroot(''{0}''), 'AllowMultiTaskInputOutput','on');&lt;/cmd&gt; &lt;txt&gt;union サンプル時間の組み合わせを許可するには、コンフィギュレーション設定 [入出力への複数のタスクのアクセスを許可] を 'on' に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="SetDiscreteSpecOnBlock" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''__ARG1__'');&lt;/cmd&gt; &lt;cargs&gt; &lt;carg translate="false" name="__ARG1__" type="text"&gt; &lt;txt_prompt&gt;サンプル時間を入力する&lt;/txt_prompt&gt; &lt;/carg&gt; &lt;/cargs&gt; &lt;txt&gt;ブロック {0} で離散サンプル時間を指定する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="NotCombinableContinuousAndOtherRates">
+    
+        ''{0}'' ブロックは、連続サンプル時間から union サンプル時間を形成できません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;ブロックを適切な離散ブロックに置き換える。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+</entry>
+    <entry key="NotCombinableZOHContinuousAndOtherRates">
+
+    ''{0}'' ブロックは、固定マイナー ステップのサンプル時間から union サンプル時間を形成できません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;ブロックを適切な離散ブロックに置き換える。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;固定ステップ ソルバーで実行する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+
+</entry>
+    <entry key="NotCombinableLegacyAsyncRates" context="error">
+  Combining asynchronous sample time {0} with another asynchronous sample time {1} is not supported for block {2}.
+</entry>
+    <entry key="NoTsInhDueToAbsTimeUnknownSource">少なくとも 1 つのブロックで絶対時間が必要であるか、モデル内の少なくとも 1 つの信号が信号ログを使用しているため、このモデルはサンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] の [ソルバー] で [周期的なサンプル時間の制約] パラメーターを [サンプル時間に依存しない] 以外のオプションに変更してください。</entry>
+    <entry key="NoTsInhDueToBlock">ブロック ''{0}'' がサンプル時間の継承を許可していないため、このモデルはサンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="NoTsInhDueToBlkNeedsAbsTime">''{0}'' は絶対時間を使用しているため、このモデルはサンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="NoTsInhDueToSpecifiedFixedStepSize">固定ステップ サイズがモデルに対して明示的に設定されているため、このモデルはサンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="NoTsInhDueToNoInsAndOnlyConstOuts">入力端子がなく、すべての出力端子が定数 (inf) サンプル時間をもつため、このモデルはサンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="NoTsInhDueToResetEventInterface" context="diagnostic">
+      
+            このモデルでは、サンプル時間の継承はサポートされません。すべての入力端子と出力端子がリセット イベントまたは再初期化イベントのサンプル時間をもつためです。 \n \n このモデルでサンプル時間を継承する必要がない場合は、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで、[周期的なサンプル時間の制約] パラメーターを [サンプル時間に依存しない] 以外に変更してください。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="SetTsConstraintToUnconstrained" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'',''SampleTimeConstraint'',''unconstrained'')&lt;/cmd&gt; &lt;txt&gt;[コンフィギュレーション パラメーター] &gt; [ソルバー] &gt; [周期的なサンプル時間の制約] を [制約なし] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NoTsInhDueToMultiTs">このモデルには複数のサンプル時間があるため、サンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="NoTsInhDueToContinuousTs">このモデルには連続サンプル時間があるため、サンプル時間を継承しません。\n \n このモデルがサンプル時間を継承する必要がない場合、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで [周期的なサンプル時間の制約] を [サンプル時間に依存しない] 以外のものに変更してください。</entry>
+    <entry key="NvBusBlkInputSampleTimeMismatch">サンプル時間が一致しません。Bus Creator または Bus Assignment ブロックの出力が非バーチャル バスを出力する場合、入力端子に接続される信号のすべては同じサンプル時間でなければなりません。この制限は、バスを定義するオブジェクトの要素に、継承される (-1) サンプル時間が指定されている場合でも適用されます。''{2}'' の&lt;sldiag objui="inport" objparam="{1,number,integer}" objname="{2}"&gt;入力端子 {1,number,integer}&lt;/sldiag&gt; を駆動する信号のサンプル時間 ({0}) は、このブロックのサンプル時間 ({3}) と一致しません。</entry>
+    <entry key="SfcnTimerOverFlow">S-Function ''{0}'' で定義されている非同期タイマーは、{1} 日で オーバーフローします。S-Function 内のタイマーのデータ型サイズを大きくするか、タイマーのクロック刻みのステップ サイズを大きくするかを選択する、または、[コンフィギュレーション パラメーター] ダイアログの [最適化] ページにある [アプリケーションのライフスパン (日)] オプションでより小さな値を選択することを検討してください。[コンフィギュレーション パラメーター] ダイアログの [診断] &gt; [データ有効性] &gt; [信号] &gt; の [オーバーフロー時にラップ] オプションで [なし] を選択することによって、メッセージを無効にすることも検討できます。&lt;actions exclusiveFixIts="yes"&gt;&lt;action type="fixit"&gt;&lt;cmd&gt;set_param_action(''{2}'',''IntegerOverflowMsg'',''None'');&lt;/cmd&gt;&lt;txt&gt;[診断] の [オーバーフロー時にラップ] を [なし] に変更する。&lt;/txt&gt;&lt;/action&gt;&lt;/actions&gt;</entry>
+    <entry key="SfcnSpecifyTooLongTimerForIntegerOnlyCode">非同期の S-function ブロック ''{0}'' は、64 ビット タイマーを指定します。コード生成は、64 ビット タイマーの値を維持するために浮動小数点数をサポートしなければなりません。非同期の S-function で小さいタイマーを指定するか、[コード生成] -&gt; [インターフェイス] ペインで、[浮動小数点数] サポート オプションを有効にすることを検討してください</entry>
+    <entry key="SharedAsyncPriority">関数呼び出しブロック ''{0}'' に、同じ優先順位が指定されている非同期のトリガーが複数あります。同じ優先順位のタスクがターゲット システムで相互にプリエンプトできない場合、[コンフィギュレーション パラメーター] ダイアログの [診断] ページにある同じ優先順位をもつタスクを "なし" に設定してください。</entry>
+    <entry key="SigspecFixitsAndSuggestions">
+  
+    &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="ManuallyAddRTBInputPort"&gt; &lt;txt&gt;サンプル時間の不一致を処理するには、''{1}'' の&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;入力端子 ''{0}''&lt;/sldiag&gt; で Rate Transition ブロックを挿入する。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="ManuallyAddRTBOutputPort"&gt; &lt;txt&gt;サンプル時間の不一致を処理するには、''{1}'' の&lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;出力端子 ''{0}''&lt;/sldiag&gt; で Rate Transition ブロックを挿入する。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="SetSigSpecEnsureSampleTimeMsgNoneFixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{2}'', 'SigSpecEnsureSampleTimeMsg', 'None');&lt;/cmd&gt; &lt;txt&gt;診断メッセージを無効にするには、コンフィギュレーション パラメーター [Signal Specification ブロックで指定されたサンプル時間にする] を [なし] に設定する。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="SignalObjectSuggestion"&gt; &lt;txt&gt;この矛盾を解決するには、信号オブジェクトのプロパティまたは一致しないブロックの設定を変更する。 &lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion" id="BusObjectSuggestion"&gt; &lt;txt&gt;この矛盾を解決するには、バス要素のプロパティまたは一致しないブロックの設定を変更する。 &lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="SigspecInputSampleTimeMismatch">
+      
+          Sample time of ''{1}'' &lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;output port ''{0}''&lt;/sldiag&gt; 
+          and the sample time specified for this signal by ''{2}'' must match.
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort" enabled="true"&gt;
+                  &lt;arg&gt;{0}&lt;/arg&gt;
+                  &lt;arg&gt;{1}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,SetSigSpecEnsureSampleTimeMsgNoneFixit" enabled="true"&gt;
+                  &lt;arg&gt;{3}&lt;/arg&gt;
+                  &lt;arg&gt;{4}&lt;/arg&gt;
+                  &lt;arg&gt;{5}&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecOutputSampleTimeMismatch">
+      
+          Sample time of ''{1}'' &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;input port ''{0}''&lt;/sldiag&gt; 
+          and the sample time specified for this signal by ''{2}'' must match.
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort" enabled="true"&gt;
+                  &lt;arg&gt;{0}&lt;/arg&gt;
+                  &lt;arg&gt;{1}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort,SetSigSpecEnsureSampleTimeMsgNoneFixit" enabled="true"&gt;
+                  &lt;arg&gt;{3}&lt;/arg&gt;
+                  &lt;arg&gt;{4}&lt;/arg&gt;
+                  &lt;arg&gt;{5}&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecSignalObjectOutputPortCause">
+  
+      信号オブジェクトは、''{1}'' の&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;出力端子 ''{0,number,integer}''&lt;/sldiag&gt; に解決されます。
+  
+</entry>
+    <entry key="SigspecSignalObjectInputPortCause">
+  
+      信号オブジェクトは、''{1}'' の&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;入力端子 ''{0,number,integer}''&lt;/sldiag&gt; に解決されます。
+  
+</entry>
+    <entry key="ErrorCauseSignalObjectSampletime">
+  信号オブジェクト ''{0}'' にはサンプル時間 {1} があります。
+</entry>
+    <entry key="ErrorCauseBusObjectSampleTime">
+      The bus element in the bus object ''{0}'' has a sample time of {1}.
+    </entry>
+    <entry key="SigspecSignalObjectOutportCause">
+  信号オブジェクトは Outport ブロック ''{0}'' に解決されます。
+</entry>
+    <entry key="SigspecBusObjectCause">
+      The bus object is resolved to the output port of ''{0}''.
+    </entry>
+    <entry key="SigspecSignalObjectInputSampleTimeMismatch">
+  
+      &lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;出力端子 ''{0}''&lt;/sldiag&gt; のサンプル時間 ''{1}'' と、信号オブジェクト ''{2}'' によってこの信号に指定されているサンプル時間は一致しなければなりません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="SignalObjectSuggestion" enabled="true"&gt; &lt;arg&gt;&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;arg&gt;&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="SigspecSignalObjectOutputSampleTimeMismatch">
+      
+          Sample time of ''{1}'' &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;input port ''{0}''&lt;/sldiag&gt;
+          and the sample time specified for this signal by signal object ''{2}'' must match.
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,SignalObjectSuggestion" enabled="true"&gt;
+                  &lt;arg&gt;{3}&lt;/arg&gt;
+                  &lt;arg&gt;{4}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecBusObjectInputSampleTimeMismatch">
+      
+          Sample time of ''{1}'' &lt;sldiag objui="outport" objparam="{0}" objname="{1}"&gt;output port ''{0}''&lt;/sldiag&gt;
+          and the sample time specified for this signal by the bus element in the bus object ''{2}'' must match.
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort"  enabled="true"&gt;
+                  &lt;arg&gt;{0}&lt;/arg&gt;
+                  &lt;arg&gt;{1}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort,BusObjectSuggestion" enabled="true"&gt;
+                  &lt;arg&gt;{3}&lt;/arg&gt;
+                  &lt;arg&gt;{4}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SigspecBusObjectOutputSampleTimeMismatch">
+      
+          Sample time of ''{1}'' &lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;input port ''{0}''&lt;/sldiag&gt;
+          and the sample time specified for this signal by the bus element in the bus object ''{2}'' must match.
+          &lt;actions exclusiveFixIts="yes"&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBInputPort"  enabled="true"&gt;
+                  &lt;arg&gt;{0}&lt;/arg&gt;
+                  &lt;arg&gt;{1}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+              &lt;action_catalog id="Simulink:SampleTime:SigspecFixitsAndSuggestions" ids="ManuallyAddRTBOutputPort,BusObjectSuggestion" enabled="true"&gt;
+                  &lt;arg&gt;{3}&lt;/arg&gt;
+                  &lt;arg&gt;{4}&lt;/arg&gt;
+                  &lt;arg&gt;&lt;/arg&gt;
+              &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SlowEnableToFastSubsys">イネーブル信号を供給しているサブシステム ''{0}'' のサンプル時間は Enabled Subsystem より遅くなります。このシステムは、マルチタスク リアルタイム システムで確定性のない動作を引き起こします。Signal Specification の後に Rate Transition を追加してイネーブル信号のレートをサンプル時間と同じにしてください。</entry>
+    <entry key="SourceInheritedTS">ソース ''{0}'' は、そのサンプル時間 (-1) が接続するブロックから逆に継承されることを指定します。ソースのサンプル時間を明示的に指定する必要があります。[コンフィギュレーション パラメーター] ダイアログの [診断] ペインのサンプル時間グループにある [-1 のサンプル時間が指定されたソース ブロック] の診断を ''なし'' に設定することでこの診断を無効にできます。</entry>
+    <entry key="OutlinedRTBRequiresProtectedForAll">モデル ''{0}'' のコンフィギュレーション パラメーター [Rate Transition ブロック コード] が [関数] に設定されているため、モデル内のすべての Rate Transition ブロックで [データ転送中の整合性を確保] パラメーターがオンになっていなければなりませんが、ブロック ''{1}'' ではこのパラメーターがオンになっていません。</entry>
+    <entry key="InheritedIndexedRateAfterProp">サンプル時間が伝播された後、ブロック ''{0}'' には継承されたインデックス付きサンプル時間が一切含まれません。</entry>
+    <entry key="SpecifyTsPriorityForModelRef">Simulink では、モデル参照ターゲット ''{0}'' に対してサンプル時間の優先順位を明示的に指定できません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{0}'',''SampleTimeConstraint'',''Unconstrained'');&lt;/cmd&gt; &lt;txt&gt;ソルバー パラメーター [周期的なサンプル時間の制約] を [制約なし] に変更する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="TmpModelDisallowTsInheritInRightClickBuild">右クリックでビルドしたサブシステムは、元のモデル内の Triggered または関数呼び出しサブシステムにあるため、生成した S-function ブロックは、その動作と一致するようサンプル時間を継承しなければなりません。しかし、次のエラー メッセージに報告された理由により、サブシステムはサンプル時間の継承が許可されません。次の方法を検討してください:\n - サンプル時間の継承が許可されていないブロックを削除する。\n - 元のモデル内のトリガーされたサブシステムの外にそのサブシステムを移動する。</entry>
+    <entry key="OutputPortMixedSampleTime">サブシステム ''{1}'' の出力端子 {0,number,integer} は、混合したサンプル時間をもつ信号に接続されているため、サブシステムに基づいたコード生成ではサポートされません。</entry>
+    <entry key="TooLargeRatioBaseRateSubRate">周期的なサンプル時間 {0} は、このサンプル時間の基本レート ({1}) に対する比が uint32 の最大値よりも大きいため、許可されません。</entry>
+    <entry key="TooLongTimerForIntegerOnlyCode">生成コードは、浮動小数点数をサポートしません。TID {0,number,integer} の Integer timer は、モデル [アプリケーションのライフ スパン (日)] でオーバーフローします。[コンフィギュレーション パラメーター] ダイアログの [最適化] ページで指定する [アプリケーションのライフ スパン (日)] パラメーターに小さい値を選択するか、[コード生成] &gt; [インターフェイス] ペインで、[浮動小数点数] サポート オプションを有効にすることを検討してください。</entry>
+    <entry key="TsMismatchForTsDepModelBlk">Model ブロック ''{0}'' は、サンプル時間 {1} を使用してトリガーされます。この値は、[コンフィギュレーション パラメーター] ダイアログの [ソルバー] タブで参照先モデル ''{3}'' によって指定されたサンプル時間 {2} と一致していません。これらの 2 つのサンプル時間は同一でなければなりません。</entry>
+    <entry key="TsPropEnabOutputsChangeNotAligned">無効の場合にリセットするための設定である出力 ''{0}'' からの信号は、より早いレートで実行するイネーブル信号のサンプル時間と同期しない時刻で変更できます。</entry>
+    <entry key="TsRepeatedErr">繰り返された (重複) サンプル時間は、''{0}'' で登録されました。</entry>
+    <entry key="TooManyContTs">More than one continuous sample time specified for ''{0}''.</entry>
+    <entry key="TsPropTsNotSet">''{0}'' の出力 {1,number,integer} に対するサンプル時間は設定されていません。</entry>
+    <entry key="TSSpecifiedMisMatchPropTS" context="error">
+  
+           モデル内の少なくとも 1 つのサンプル時間が、[ソルバー] ページで指定されたサンプル時間のプロパティで見つかりませんでした。指定された周期的なサンプル時間の制約は {0} ですが、モデル内の周期的なサンプル時間は {1} です。
+  
+</entry>
+    <entry key="TSSpecifiesInWrongOrder">少なくとも 1 つのサンプル時間が、[ソルバー] ページの [サンプル時間のプロパティ] で正しくない順序で指定されています。周期的なサンプル時間 {0} はサンプル時間 {1} より遅くなっています。すべてのサンプル時間は早いものから遅い順番でなけれなければなりません。</entry>
+    <entry key="TwoAsyncTIDsAssignedSamePriority" context="diagnostic">
+  
+           S-Function ''{0}'' と ''{1}'' に関連付けられた非同期のタスクは、同じ優先順位 {2,number,integer} が割り当てられているため、相互にプリエンプトする可能性があります。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type = "suggestion"&gt; &lt;txt&gt;別々の優先順位を指定するため、これらの S-Function の変更を検討する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{3}'',''TasksWithSamePriorityMsg'',''none'')&lt;/cmd&gt; &lt;txt&gt;同じ優先順位のタスクがターゲット システムで相互にプリエンプトできない場合は、[コンフィギュレーション パラメーター] ダイアログの [診断] ページでパラメーター [同じ優先順位をもつタスク] を [なし] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="TwoAsyncTaskSpecTIDsAssignedSamePriority">
+  
+           Asynchronous Task Specification ブロック ''{0}'' と ''{1}'' に関連付けられた非同期のタスクは、同じ優先順位 {2,number,integer} が割り当てられているため、相互にプリエンプトする可能性があります。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type = "suggestion"&gt; &lt;txt&gt;別々の優先順位を指定するため、これらのブロックの変更を検討する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{3}'',''TasksWithSamePriorityMsg'',''none'')&lt;/cmd&gt; &lt;txt&gt;同じ優先順位のタスクがターゲット システムで相互にプリエンプトできない場合は、[コンフィギュレーション パラメーター] ダイアログの [診断] ページでパラメーター [同じ優先順位をもつタスク] を [なし] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="TwoSyncTIDsAssignedSamePriority">2 つの周期的なタスクは同じ優先順位を共有しません。サンプル時間 {0} とサンプル時間 {1} のタスクは同じ優先順位が割り当てられます: {2,number,integer}。</entry>
+    <entry key="VarSTOutPortIsFrameBased">''{1}'' の&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;出力端子 {0,number,integer}&lt;/sldiag&gt; は、この端子が可変サンプル時間をもつにもかかわらずフレームベースに設定されています。フレームベースの信号は離散サンプル時間をもつ必要があります。</entry>
+    <entry key="VariableSTBlkHasFrames">ブロック ''{0}'' のいくつかの端子は、このブロックが可変サンプル時間を持つにもかかわらずフレームベースに設定されています。フレームベースの信号は離散サンプル時間を持つ必要があります。</entry>
+    <entry key="VariableTsWithSFunctionTarget">''{0}'' は、可変サンプル時間です。可変サンプル時間は、S-function ターゲットではサポートされていません。</entry>
+    <entry key="VariableStepTsNotAllowed">可変サンプル時間または S-function を含み、固定ステップ ソルバーを利用しているため、ブロック線図 ''{0}'' をコンパイルできません。</entry>
+    <entry key="VariableSampleTimeDescription">変数 {0,number,integer}</entry>
+    <entry key="ControllableRateDescription">制御可能 {0,number,integer}</entry>
+    <entry key="TriggeredSampleTimeDescription">トリガー</entry>
+    <entry key="HybridSampleTimeDescription">複合系</entry>
+    <entry key="MultipleSampleTimeDescription">マルチレート</entry>
+    <entry key="UnionSampleTimeDescription">結合 {0,number,integer}</entry>
+    <entry key="AsyncSampleTimeDescription">非同期 {0,number,integer}</entry>
+    <entry key="MessageSampleTimeDescription">メッセージがトリガーされました {0,number,integer}</entry>
+    <entry key="EventSampleTimeDescription">イベント</entry>
+    <entry key="PowerUpSampleTimeDescription">初期化</entry>
+    <entry key="ResetSampleTimeDescription">リセット</entry>
+    <entry key="ResetWithInitSampleTimeDescription">再初期化</entry>
+    <entry key="PowerDownSampleTimeDescription">終了</entry>
+    <entry key="GenericAsyncSampleTimeDescription">非同期の複合系</entry>
+    <entry key="PeriodicSampleTimeDescription">離散 {0,number,integer}</entry>
+    <entry key="ContinuousDescription">連続</entry>
+    <entry key="ExportInheritSampleTimeDescription"> エクスポートした継承 </entry>
+    <entry key="AperiodicExplicitPartitionSampleTimeDescription"> 明示的な {0} </entry>
+    <entry key="AperiodicExplicitPartitionSampleTimeValue"> 継承 </entry>
+    <entry key="MessageSampleTimeValue"> 継承 </entry>
+    <entry key="ExportPeriodicSampleTimeDescription"> エクスポートした離散 </entry>
+    <entry key="ExportPeriodicPartitionSampleTimeDescription"> 明示的な {0} </entry>
+    <entry key="DataDrivenSampleTimeDescription">データ駆動</entry>
+    <entry key="DataDrivenSampleTimeValue">N/A</entry>
+    <entry key="ReCompileSFcn"> 参照モデルでブロック ''{0}'' を使用するには、Simulink の現在のバージョンで S-Function を再コンパイルします。</entry>
+    <entry key="ModelWideEventWithUpdateFcn"> ブロック ''{0}'' には更新関数があり、同じ時間 {1} が割り当てられています。このような設定は互換性がありません。更新関数は呼び出されません。</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasInherited"> ''{0}'' では、パラメーター ''{1}'' でサンプル時間タイプが [周期的] と指定されましたが、評価されたサンプル時間タイプは [継承] でした。サンプル時間のタイプまたは値を更新して、一貫性を維持するようにしてください。</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasParameter"> ''{0}'' では、パラメーター ''{1}'' でサンプル時間タイプが [周期的] と指定されましたが、評価されたサンプル時間タイプは [パラメーター] でした。サンプル時間のタイプまたは値を更新して、一貫性を維持するようにしてください。</entry>
+    <entry key="SampleTimeTypeSpecificationMismatchPeriodicWasContinuous"> ''{0}'' では、パラメーター ''{1}'' でサンプル時間タイプが [周期的] と指定されましたが、評価されたサンプル時間タイプは [連続] でした。サンプル時間のタイプまたは値を更新して、一貫性を維持するようにしてください。</entry>
+    <entry key="SampleTimeTypePeriodicWithoutValidSampleTime"> ''{0}'' では ''{1}'' は正の有限数でなければなりませんが、''{2}'' が指定されました。有効な数値を指定するか、''{3}'' を ''{4}'' に変更してください。</entry>
+    <entry key="SampleTimeTypeDisallowed"> ''{0}'' ではパラメーター ''{1}'' はサンプル時間タイプ {2} を許可しません。</entry>
+    <entry key="SampleTimeWidgetTypeParameter">パラメーター</entry>
+    <entry key="SampleTimeWidgetTypeConstant">定数</entry>
+    <entry key="SampleTimeWidgetTypeUnresolved">&lt;開始値&gt;</entry>
+    <entry key="SampleTimeWidgetTypeInherited">継承</entry>
+    <entry key="SampleTimeWidgetTypeContinuous">連続</entry>
+    <entry key="SampleTimeWidgetTypePeriodic">周期的</entry>
+    <entry key="SampleTimeWidgetTooltipCombobox">サンプル時間タイプを選択します。不明なサンプル時間を変数から指定するには、''{0}'' を選択します。</entry>
+    <entry key="SampleTimeWidgetTooltipPeriodic">周期的なサンプル時間を入力します。値は、正の有限 double として表現される周期か、周期およびオフセットを含む 2 要素のベクトルのいずれかです。</entry>
+    <entry key="SampleTimeWidgetTooltipUnresolved">サンプル時間を入力します。値は、double または double の 2 要素のベクトルのいずれかです。</entry>
+    <entry key="SampleTimeWidgetTooltipOther">サンプル時間の現在の整数値です。</entry>
+    <entry key="GenericError">一般的なエラー {0} です。バグとして報告してください。</entry>
+    <entry key="InvalidBlockConnectToIRTInport">ブロック ''{0}''の出力端子が Initialize Function ブロック ''{1}'' の入力端子 {2,number,integer} に接続されています。Initialize Function ブロックの入力端子に接続できるのは、Inport ブロック、From ブロックなどのバーチャル ブロックのみです。</entry>
+    <entry key="InvalidBlockConnectToIRTInportMdlRef">Block ''{0}'' output port is connected to an Initialize Function block inside Model block ''{1}'' via input port ''{2}''. Only virtual blocks such as Inport, From blocks, etc., are allowed to connect to the input ports of an Initialize Function block. If the Model block resides in the topmost model hierarchy and is referencing an export function model saved in R2016b or later, you can select the option ''{3}'' for the Model block to remove this restriction.</entry>
+    <entry key="InvalidBlockConnectToIRTOutport">ブロック ''{0}'' の入力端子 {1,number,integer} が、Terminate Function ブロック ''{2}'' の出力端子 {3,number,integer} に接続されています。Outport ブロック、Goto ブロックなどのバーチャル ブロックのみを、Terminate Function ブロックの出力端子に接続できます。Merge ブロックへの接続はエクスポート関数モデル内で可能です。</entry>
+    <entry key="InvalidBlockConnectToIRTOutportMdlRef">ブロック ''{0}'' の入力端子 {1,number,integer} が、出力端子 {3,number,integer} 経由で Model ブロック ''{2}'' 内の Terminate Function ブロックに接続されています。Outport ブロック、Goto ブロックなどのバーチャル ブロックのみを、Terminate Function ブロックの出力端子に接続できます。Merge ブロックへの接続はエクスポート関数モデル内で可能です。Model ブロックがモデルの階層構造の最上位にあり、R2016b 以降で保存されたエクスポート関数モデルを参照している場合は、関数タイプが一致している Model ブロックのオプション ''{4}''、''{5}'' または ''{6}'' を選択し、この制限を解除できます。</entry>
+    <entry key="InValidInterconnectionBetweenIRT">ブロック ''{0}'' が Initialize Function、Reinitialize Function、Reset Function または Terminate Function ブロック ''{1}'' に接続されています。レートベース モデルで Initialize Function、Reinitialize Function、Reset Function、または Terminate Function ブロックの出力端子に接続できるのは、Outport ブロックのみです。</entry>
+    <entry key="InValidInterconnectionBetweenIRTMdlRef">ブロック ''{0}'' が、Model ブロック ''{1}'' 内の Initialize Function、Reinitialize Function、Reset Function または Terminate Function ブロックに接続されています。Initialize Function、Reinitialize Function、Reset Function または Terminate Function ブロックの出力端子に接続できるのは、Outport ブロックのみです。Merge ブロックへの接続はエクスポート関数モデル内で可能です。Model ブロックがモデルの階層構造の最上位にあり、R2016b 以降で保存されたエクスポート関数モデルを参照している場合は、関数タイプが一致している Model ブロックのオプション ''{2}''、''{3}''、''{4}'' または ''{5}'' を選択し、この制限を解除できます。</entry>
+    <entry key="InvalidIRTPropForProtectedModelBefore20bOrNeedVirtualBusExp"> Model ブロック ''{0}'' は、バーチャル バス信号を含む入力端子または出力端子をもち、R2020b より前に作成された、Initialize Function、Reset Function または Terminate Function ブロックを含む保護モデルを参照します。これはサポートされていません。</entry>
+    <entry key="InValidMdlRefInitResetInportBranching">Model ブロック ''{0}'' は、複数の接続先があるルート Inport ブロックをもつモデルを参照しており、これらの接続先のいずれかが Initialize Function、Reinitialize Function、または Reset Function ブロックです。このような Model ブロックは、適切な [モデル イベントのシミュレーション] オプションを選択せずに、レートベース モデルで使用することはできません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'', ''ShowModelReinitializePort'',''on'', ''ShowModelResetPorts'',''on'',''ShowModelTerminatePort'',''on'');&lt;/cmd&gt; &lt;txt&gt;Model ブロックで [モデル初期化端子を表示]、[モデル再初期化端子を表示]、[モデル リセット端子を表示]、および [モデル終了端子を表示] を選択する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InValidMdlRefInitInportBranching">Model ブロック ''{0}'' は、複数の接続先があるルート Inport ブロックをもつモデルを参照しており、これらの接続先のいずれかが Initialize Function ブロックです。このような Model ブロックは、適切な [モデル イベントのシミュレーション] オプションを選択せずに、レートベース モデルで使用することはできません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'');&lt;/cmd&gt; &lt;txt&gt;Model ブロックで [モデル初期化端子を表示] および [モデル終了端子を表示] を選択する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InValidMdlRefResetInportBranching">The Model block ''{0}'' is referencing a model with a root Inport block that is connected to multiple destinations, one of which is a Reinitialize Function block or a Reset Function block. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' option.
+&lt;actions exclusiveFixIts="yes"&gt;
+         &lt;action type="fixit"&gt;
+           &lt;cmd&gt;set_param(''{0}'',''ShowModelReinitializePorts'',''on'', ''ShowModelResetPorts'',''on'');&lt;/cmd&gt;
+           &lt;txt&gt;Select ''Show model reinitialize ports'' and ''Show model reset ports'' for the Model block.&lt;/txt&gt;
+         &lt;/action&gt;
+         &lt;/actions&gt;
+</entry>
+    <entry key="InvalidMdlRefUnionIRTInput" context="diagnostic">
+    
+    Input port ''{1}'' of Model block ''{0}'' is connected to multiple Initialize, Reset, or Terminate functions ''{2}'' and ''{3}'' inside the referenced model. Such a Model block cannot be used in a rate-based model without selecting the appropriate 'Model events simulation' options.
+       &lt;actions exclusiveFixIts="yes"&gt;
+             &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'',''ShowModelResetPorts'',''on'');&lt;/cmd&gt;
+               &lt;txt&gt;Select ''Show model initialize port'', ''Show model reset ports'', and ''Show model terminate port'' for the Model block.&lt;/txt&gt;
+             &lt;/action&gt;
+            &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt;
+                &lt;arg&gt;{4}&lt;/arg&gt;
+            &lt;/action_catalog&gt;
+         &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidMdlRefUnionIRTOutput" context="diagnostic">
+        
+        参照モデル内にあり、出力端子 ''{1}'' が複数の初期化関数、リセット関数または終了関数 ''{2}'' と ''{3}'' に接続する Model ブロック ''{0}'' はサポートされません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'',''ShowModelInitializePort'',''on'',''ShowModelTerminatePort'',''on'',''ShowModelResetPorts'',''on'');&lt;/cmd&gt; &lt;txt&gt;Model ブロックの [モデル初期化端子を表示]、[モデル リセット端子を表示]、および [モデル終了端子を表示] を選択する。&lt;/txt&gt; &lt;/action&gt; &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt; &lt;arg&gt;{4}&lt;/arg&gt; &lt;/action_catalog&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="InvalidInitResetTermInportBranchingWithSimulinkFunction">ルート Inport ブロック ''{0}'' は、複数の接続先に接続しており、これらの接続先のいずれかが Initialize Function、Reinitialize Function、Reset Function、Terminate Function です。このような Inport ブロックは Simulink Function ブロック ''{1}'' に接続できません。</entry>
+    <entry key="InValidIRTConnection1">ブロック ''{0}'' からブロック ''{1}'' への接続が無効です。</entry>
+    <entry key="InValidIRTConnection2">ブロック ''{0}'' からブロック ''{1}'' の入力端子 {2,number,integer} への接続が無効です。</entry>
+    <entry key="InValidIRTConnection3">ブロック ''{0}'' の&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;出力端子 {1,number,integer}&lt;/sldiag&gt; からブロック ''{2}'' への接続が無効です。</entry>
+    <entry key="InValidIRTConnection4">ブロック ''{0}'' の&lt;sldiag objui="outport" objparam="{1,number,integer}" objname="{2}"&gt;出力端子 {1,number,integer}&lt;/sldiag&gt; からブロック ''{2}'' の入力端子 {3,number,integer} への接続が無効です。</entry>
+    <entry key="InvalidInitializeFunctionConnection">複数の Initialize Function ブロックを相互に接続することはできません。</entry>
+    <entry key="InvalidTerminateFunctionConnection">複数の Terminate Function ブロックを相互に接続することはできません。</entry>
+    <entry key="InvalidResetFunctionConnection">識別子の同じ Reset Function ブロックを相互に接続することはできません。</entry>
+    <entry key="InvalidInitializeFunctionAsDst">Initialize Function ブロックの入力端子を、Reinitialize Function、Reset Function または Terminate Function の出力端子に接続することはできません。</entry>
+    <entry key="InvalidTerminateFunctionAsSrc">Terminate Function ブロックの出力端子を、Initialize Function、Reinitialize Function または Reset Function の入力端子に接続することはできません。</entry>
+    <entry key="InitResetTermEventMustMergeWithOtherRate">Merge ブロック ''{0}'' のすべてのソースが、初期化関数、再初期化関数、リセット関数または終了関数からのものです。これは許可されません。</entry>
+    <entry key="InitTermFunctionDoesNotSupportCPPCodeGen">Initialize Function、Reinitialize Function、Reset Function または Terminate Function ブロックを含むモデルでは、C++ インターフェイスを使用するコード生成はサポートされていません。</entry>
+    <entry key="InitTermFunctionDoesNotSupportRsimAndAsap2Targets">Initialize Function、Reinitialize Function、Reset Function または Terminate Function ブロックを含む ''{0}'' などのモデルでは、rsim、asap2 または RTW S-Function ターゲットを使用するコード生成はサポートされていません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;configset.internal.open(''{0}'',''SystemTargetFile'')&lt;/cmd&gt; &lt;txt&gt;[システムターゲットファイル] を rsim.tlc、rtwsfcn.tlc、asap2.tlc 以外のファイルに設定する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="PeriodicEventPortTsMismatch">Model ブロック ''{1}'' の周期的なイベントの&lt;sldiag objui="inport" objparam="{0}" objname="{1}"&gt;入力端子 ''{0}''&lt;/sldiag&gt; では、離散サンプル時間 {2} が指定されています。このため、十分な関連付けを提供できる離散サンプル時間をもつ信号により駆動されなければなりません。しかし、これはサンプル時間 {3} で駆動されており、指定されたサンプル時間はその整数倍ではありません。
+</entry>
+    <entry key="InvRateBlkInIRTSubsys">ブロック ''{0}'' には ''{1}'' で許可されないサンプル時間があります。</entry>
+    <entry key="InvalidBlockRateinIRTSubsys">The block ''{0}'' has a sample time of ''{1}''. Only constant (inf) or inherited (-1) sample times are allowed in Initialize, Reinitialize, Reset or Terminate Functions.</entry>
+    <entry key="InitTermFunctionDoesNotSupportCustomCode">Addition of custom initialization and custom termination code using the 'Configuration Parameters &gt; Code Generation &gt; Custom Code' dialog is not supported in models containing the Initialize, Reinitialize, Reset or Terminate Function blocks.</entry>
+    <entry key="ModelBlockNoTerminatePortForTermInput">&lt;sldiag objui="inport" objparam="{3,number,integer}" objname="{2}"&gt;入力端子 {3,number,integer}&lt;/sldiag&gt; が参照モデル内の Terminate Function ブロックに接続されているため、Model ブロック ''{2}'' では、オプション ''{1}'' だけでなくオプション ''{0}'' も選択しなければなりません。</entry>
+    <entry key="ModelBlockNoTerminatePortForTermOutput">&lt;sldiag objui="outport" objparam="{3,number,integer}" objname="{2}"&gt;出力端子 {3,number,integer}&lt;/sldiag&gt; が参照モデル内の Terminate Function ブロックに接続されているため、Model ブロック ''{2}'' では、オプション ''{1}'' だけでなくオプション ''{0}'' も選択しなければなりません。</entry>
+    <entry key="BIMO" context="error">
+        
+          &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="EnableBIMOSetting" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', ''AllowMultiTaskInputOutput'', ''on'');&lt;/cmd&gt; &lt;txt&gt;モデル ''{0}'' のコンフィギュレーション パラメーター [入出力への複数のタスクのアクセスを許可] を有効にする。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="IRTInportBranching" context="diagnostic">
+        
+          Branching the output port of block ''{0}'' that is connected to Initialize Function ''{1}'' is not supported.
+          &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt;
+              &lt;arg&gt;{2}&lt;/arg&gt;
+            &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+        
+    </entry>
+    <entry key="RootInportBranchingToDifferentInitResetTermEvents" context="diagnostic">
+        Simultaneously connecting the root Inport block ''{0}'' to more than one Initialize, Reset or Terminate Function blocks that correspond to different events is not supported.
+          &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action_catalog id="Simulink:SampleTime:BIMO" ids="EnableBIMOSetting" enabled="true"&gt;
+              &lt;arg&gt;{1}&lt;/arg&gt;
+            &lt;/action_catalog&gt;
+          &lt;/actions&gt;
+        
+    </entry>
+    <entry key="InvalidResolutionForControllableSampleTime">制御可能なサンプル時間の分解能は正の有限数でなければなりませんが、''{0}'' では ''{1}'' が指定されていました。</entry>
+    <entry key="IRTInportMustInheritSampleTime">Block ''{0}'' connecting to Initialize, Reinitialize, Reset or Terminate Functions ''{1}'' must have an inherited (-1) sample time.</entry>
+    <entry key="IRTRootOutportMustInheritSampleTime">Root Outport ブロック ''{0}'' は、Initialize ブロック、Reset ブロック、または Terminate Function ブロックの出力に接続されているため、継承 (-1) のサンプル時間をもたなければなりません。</entry>
+    <entry key="DisallowControllableSampleTimeOwnerInsideCondExecSubsys">条件付き実行サブシステム ''{1}'' 内で、ブロック ''{0}'' が制御可能なサンプル時間をもっています。制御可能なサンプル時間をもつブロックは、条件付き実行サブシステム内ではサポートされません。</entry>
+    <entry key="DisallowControllableSampleTimeInheritedInsideCondExecSubsys">条件付き実行サブシステム ''{1}'' のブロック ''{0}'' が制御可能なサンプル時間を継承しています。制御可能なサンプル時間は、条件付き実行サブシステム内の駆動ブロックではサポートされません。</entry>
+    <entry key="ControllableSampleTimeOnlySupportSingleTaskingMode">ブロック ''{0}'' は制御可能なサンプル時間をもちますが、モデル ''{1}'' はシングル タスク モードを使用していません。現在、制御可能なサンプル時間はシングル タスク モードでのみ使用できます。</entry>
+    <entry key="InvMergeConnMultAyncSrcTs">Merge ブロック ''{0}'' を駆動する信号に対して検出されたサンプル時間が一致しません。このモデルでは、Merge ブロックを複数の非同期レートで実行することはできません。</entry>
+    <entry key="ControllableSampleTimeOnlySupportSingleRateSFcn">S-Function ''{0}'' は制御可能なサンプル時間を指定します。現在、制御可能なサンプル時間はシングル レートの S-Function でのみ使用できます。</entry>
+    <entry key="ControllableSampleTimeOnlySupportFixedStepSolver">ブロック ''{0}'' は制御可能なサンプル時間をもちますが、モデル ''{1}'' は可変ステップ ソルバーを使用しています。現在、制御可能なサンプル時間は固定ステップ ソルバーでのみ使用できます。</entry>
+    <entry key="ControllableSampleTimeNotSupportCPPCodeGen">ブロック ''{0}'' が制御可能なサンプル時間を指定しました。現在、C++ インターフェイスを使用するコード生成は、制御可能なサンプル時間を含むモデルではサポートされていません。</entry>
+    <entry key="ControllableSampleTimeNotSupportTopXILSimulation">ブロック ''{0}'' が制御可能なサンプル時間を指定しました。現在、最上位モデルの SIL または PIL シミュレーション モードは制御可能なサンプル時間をサポートしていません。</entry>
+    <entry key="ControllableSampleTimeNotSupportMdlRefXILSimulation">Model ブロック ''{0}'' には制御可能な離散サンプル時間が含まれています。現在、Model ブロックがソフトウェアインザループ (SIL) またはプロセッサインザループ (PIL) シミュレーション モードである場合、制御可能なサンプル時間はサポートされていません。</entry>
+    <entry key="ControllableSampleTimeCannotDriveSFcnInputPort">S-Function ''{1}'' の&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;入力端子 {0,number,integer}&lt;/sldiag&gt; は制御可能なサンプル時間で駆動されています。現在、制御可能なサンプル時間は、複数のサンプル時間をもつ S-Function、または PORT_BASED_SAMPLE_TIMES を使用する S-Function によって継承されません。</entry>
+    <entry key="ControllableSampleTimeCannotBeInheritedBySFcnOutputPort">S-Function ''{1}'' の&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;出力端子 {0,number,integer}&lt;/sldiag&gt; は制御可能なサンプル時間を継承しています。現在、制御可能なサンプル時間は、複数のサンプル時間をもつ S-Function、または PORT_BASED_SAMPLE_TIMES を使用する S-Function によって継承されません。</entry>
+    <entry key="UnionSampleTimeCannotDriveSFcnInputPort">S-Function ''{1}'' の&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;入力端子 {0,number,integer}&lt;/sldiag&gt; におけるハイブリッドのサンプル時間が無効です。ハイブリッドのサンプル時間は、マルチレートであるか、端子ベースのサンプル時間を使用する S-Function ではサポートされていません。</entry>
+    <entry key="UnionSampleTimeCannotBeInheritedBySFcnOutputPort">S-Function ''{1}'' の&lt;sldiag objui="outport" objparam="{0,number,integer}" objname="{1}"&gt;出力端子 {0,number,integer}&lt;/sldiag&gt; におけるハイブリッドのサンプル時間が無効です。ハイブリッドのサンプル時間は、マルチレートであるか、端子ベースのサンプル時間を使用する S-Function ではサポートされていません。</entry>
+    <entry key="InvalidPeriodicSampletimeConstraintForControllableSampleTime">
+      
+               Block ''{0}'' has a controllable sample time, but the parameter "Periodic sample time
+               constraint" in model ''{1}'' is configured to "Ensure sample time independent" or "Specified", which
+               is not allowed.
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{1}'',''SampleTimeConstraint'',''unconstrained'')&lt;/cmd&gt;
+               &lt;txt&gt;Set ''Configuration Parameters &gt; Solver &gt; Periodic sample time constraint'' to "Unconstrained".&lt;/txt&gt;
+               &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="CtrlRateErrorStatus">制御可能なサンプル時間でブロック ''{0}'' を実行中にエラーが報告されました:\n{1}</entry>
+    <entry key="InvExecutionDomainContentsGeneric">時間領域 ''{0}'' に、無効な内容 ''{1}'' が含まれています。</entry>
+    <entry key="InvContinuousExecutionTypeInPeriodicAtomic">システム ''{0}'' の連続時間領域が無効です。連続時間領域は、周期的な Atomic Subsystem ''{1}'' 内では無効です。</entry>
+    <entry key="InvContinuousExecutionTypeInExplicitPartition">システム ''{0}'' は連続実行領域に指定されています。連続実行領域は、分割されたサブシステム ''{1}'' の内部では許可されていません。</entry>
+    <entry key="InvExecutionTypeInSubsystemWithTriggerPort">サブシステム ''{1}'' にトリガー端子が含まれているため、''{0}'' の連続時間領域指定が無効です。</entry>
+    <entry key="InvVariableRateInsideContinuousDomainFixedStep">固定ステップ ソルバーが使用されている場合、可変サンプル時間をもつブロック ''{0}'' は連続領域 ''{1}'' 内ではサポートされません。</entry>
+    <entry key="InvBlkInsideContinuousDomainFixedStep">固定ステップ ソルバーが使用されている場合、ブロック ''{0}'' は連続時間領域 ''{1}'' 内ではサポートされません。</entry>
+    <entry key="IgnoreSpecifiedPriorityForSTModes">モデル ''{0}'' は現在シングル タスク モードです。モデル コンフィギュレーション パラメーターの 'SampleTimeProperty' パラメーターで指定されたすべてのレートのうち、最初のレートで指定された優先順位が使用されます。他のレートからの優先順位は無視されます。</entry>
+    <entry key="CtrlRateFeatureDisabled">ブロック ''{0}'' の初期化中にエラーが発生しました。''ControllableRate'' 機能が無効になっています</entry>
+    <entry key="InvContinuousStateInsideDiscreteDomain">ブロック ''{0}'' には連続状態があります。''{1}'' の離散領域内では、離散状態をもつブロックのみが有効です。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'',''ExecutionDomainType'',''Deduce'');&lt;/cmd&gt; &lt;txt&gt;''{2}'' の実行領域 [タイプ] パラメーターを [内容から推定] に設定する。&lt;/txt&gt;&lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{2}'',''SetExecutionDomain'',''Off'');&lt;/cmd&gt; &lt;txt&gt;''{2}'' の [領域の仕様の設定] パラメーターをオフにする&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;ブロック ''{3}'' を適切な離散ブロックと置き換える。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;</entry>
+    <entry key="InvContinuousRateInsideDiscreteDomain" context="diagnostic">Block ''{0}'' has an invalid sample time setting for discrete time domain ''{1}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{1}'',''ExecutionDomainType'',''Deduce'');&lt;/cmd&gt;
+    &lt;txt&gt;Set the execution domain 'Type' parameter for ''{1}'' to 'Deduce from contents.'&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="fixit"&gt;
+    &lt;cmd&gt;set_param(''{1}'',''SetExecutionDomain'',''Off'');&lt;/cmd&gt;
+    &lt;txt&gt;Clear the 'Set Domain Specification' parameter for ''{1}''&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;action type="suggestion"&gt;
+    &lt;txt&gt;Set the sample time for  ''{0}'' to a valid discrete sample time, if possible.&lt;/txt&gt;
+    &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="InvContinuousRateInsideExplicitlyPartitionedDiscreteDomain" context="diagnostic">ブロック ''{0}'' に、離散分割 ''{1}'' に対し無効なサンプル時間設定があります。</entry>
+    <entry key="InvContinuousDomainInsideDiscreteDomain">''{0}'' は離散領域をもつ ''{1}'' 内にあります。''{2}'' の連続時間領域は、離散時間領域内では許可されません。このエラーを回避するには、''{3}'' の [領域] パラメーターを [内容から推定] または [離散] に設定してください。</entry>
+    <entry key="InvContinuousMdlRefInsideDiscreteDomain">ブロック ''{0}'' は連続領域として構成されているモデルを参照しており、離散時間領域 ''{1}'' 内では許可されません。</entry>
+    <entry key="InvZOHBlkInsideDiscreteDomain">Zero Order Hold ブロック ''{0}'' は [離散] に指定された領域 ''{1}'' 内でサポートされません。このエラーを回避するには、''{2}'' の [領域] パラメーターを [内容から推定] に変更するか、[実行領域の設定] パラメーターを無効にしてください。</entry>
+    <entry key="InvBlkInsideDiscreteDomain">ブロック ''{0}'' は [離散] に指定された領域 ''{1}'' 内でサポートされません。このエラーを回避するには、''{2}'' の [領域] パラメーターを [内容から推定] に変更するか、[実行領域の設定] パラメーターを無効にしてください。</entry>
+    <entry key="InvDiscreteStateInsideContinuousDomain">ブロック ''{0}'' には離散状態があります。''{1}'' の連続領域内では連続状態をもつブロックのみ有効です。</entry>
+    <entry key="InvDiscreteRateInsideContinuousDomain">ブロック ''{0}'' に、連続時間領域 ''{1}'' に対し無効なサンプル時間があります。</entry>
+    <entry key="InvDiscreteRateInsideExplicitlyPartitionedContinuousDomain" context="diagnostic">ブロック ''{0}'' に、連続分割 ''{1}'' に対し無効なサンプル時間があります。</entry>
+    <entry key="InvBlkDisallowContinuousInsideContinuousDomain">ブロック ''{0}'' は連続サンプル時間を許可するように構成されておらず、連続時間領域 ''{1}'' 内ではサポートされません。</entry>
+    <entry key="InvDiscreteDomainInsideContinuousDomain">''{0}'' の離散時間領域は、連続時間領域をもつ ''{1}'' 内では許可されません。</entry>
+    <entry key="InvDiscreteMdlRefInsideContinuousDomain">ブロック ''{0}'' は離散時間領域として構成されているモデルを参照しており、連続領域 ''{1}'' 内では許可されません。</entry>
+    <entry key="InvExpFcnModelBlockInContinuousDomain">ブロック ''{0}'' は、エクスポート関数モデルを参照しており、連続時間領域 ''{1}'' 内でサポートされません。</entry>
+    <entry key="InvSampleTimeIndependentModelBlockInContinuousDomain">ブロック ''{0}'' はサンプル時間に依存しないモデルを参照しており、連続時間領域 ''{1}'' 内では許可されません。</entry>
+    <entry key="InvBlkInsideContinuousDomain">ブロック ''{0}'' は [連続] に指定された領域 ''{1}'' 内でサポートされません。このエラーを回避するには、''{2}'' の [領域] パラメーターを [内容から推定] に変更するか、[実行領域の設定] パラメーターを無効にしてください。</entry>
+    <entry key="DomainSpecificationReadOnlyBadge">''{0}'' の領域は指定できないため、領域指定バッジは読み取り専用です。詳細については、&lt;a href="matlab:helpview(fullfile(docroot,''simulink'',''ug'',''subsystem-domain-specification.html#read_only_badge''))"&gt;ドキュメンテーション&lt;/a&gt;を参照してください。</entry>
+    <entry key="ContinuousDomainNotSupported">''{0}'' の連続時間領域はサポートされていません。</entry>
+    <entry key="InvOffsetWhenScalingDiscreteRates">ブロック ''{0}'' がオフセット {1} を指定しています。コンフィギュレーション ペインで "離散レートのスケーリング" が有効になっている場合、モデルでオフセットはサポートされません。"離散レートのスケーリング" オプションを無効にするか、モデルの周期的なサンプル時間を変更し、オフセットが発生しないようにしてください。</entry>
+    <entry key="ScalingDiscreteRatesNotSupportedInExpFcnMdl"> 速度のスケーリングは、エクスポート関数モデル {0} ではサポートされていません。</entry>
+    <entry key="InvRootDataflowDomain">データフロー領域は、ブロック線図のルート レベルではサポートされません。</entry>
+    <entry key="NoDataflowDomainAndControlBlocks">サブシステム ''{0}'' の領域の仕様が無効です。制御ブロックがあるサブシステムでは、データフロー領域はサポートされません。</entry>
+    <entry key="NoDataflowDomainForObserver">サブシステム ''{0}'' の領域の仕様が無効です。Observer サブシステムでは、データフロー領域はサポートされません。</entry>
+    <entry key="InvDataflowDomainForStateflow">サブシステム ''{0}'' の領域の仕様が無効です。MATLAB Function ブロック、Stateflow チャート、および真理値表では、データフロー領域はサポートされません。</entry>
+    <entry key="InvDataflowDomainForIRT">サブシステム ''{0}'' の領域の仕様が無効です。Initialize Function ブロック、Reset Function ブロック、または Terminate Function ブロックでは、データフロー領域はサポートされません。</entry>
+    <entry key="InvDataflowDomainInsideContinuousDomain">''{0}'' のデータフロー領域は、連続時間領域をもつ ''{1}'' 内では許可されません。</entry>
+    <entry key="InvDiscreteDomainInsideDataflowDomain">''{0}'' はデータフロー領域をもつ ''{1}'' 内にあります。''{2}'' の離散時間領域は、データフロー領域内では許可されません。このエラーを回避するには、''{3}'' の [領域] パラメーターを [内容から推定] または [データフロー] に設定してください。</entry>
+    <entry key="InvContinuousDomainInsideDataflowDomain">''{0}'' の連続時間領域は、データフロー領域をもつ ''{1}'' 内では許可されません。</entry>
+    <entry key="InsertedSISOBlockAtInport">{0} ブロック ''{1}'' が、ブロック ''{2}'' の前に挿入されました。</entry>
+    <entry key="NotInsertedSISOBlockAtInport">{0} ブロックは以前にブロック ''{1}'' の前に挿入されていたため、操作は行われませんでした。</entry>
+    <entry key="SignalConversionBlockInsertionNeededForIR"> ブロック ''{1}'' の&lt;sldiag objui="inport" objparam="{0,number,integer}" objname="{1}"&gt;入力端子 {0,number,integer}&lt;/sldiag&gt; は、Initialize Function、Reinitialize Function または Reset Function の複数の出力によって駆動されており、信号の変換が必要です。この入力端子の前に Signal Conversion ブロックを挿入してください。</entry>
+    <entry key="UnableToPropagateSampleTimeForContinuousExecutionDomain">
+ブロック ''{2}'' と Outport ブロック ''{3}'' 間のパスにはバーチャル ブロックしか存在しないため、実行領域の仕様がある Subsystem ブロック ''{1}'' の出力端子 {0,number,integer} から連続サンプル時間を伝播できません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''insertSISOBlockAtInport'',''built-in/signalconversion'',''SC'',1,''{3}'');&lt;/cmd&gt; &lt;txt&gt;Subsystem ブロック ''{1}'' 内の Signal Conversion ブロックを Outport ブロック ''{3}'' の前に挿入する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;Subsystem ブロック ''{1}'' の実行領域の設定を解除する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;ブロック ''{2}'' と Outport ブロック ''{3}'' 間のパスをサブシステム ''{2}'' の外側に再配線する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="UnableToPropagateSampleTimeForDiscreteExecutionDomain">
+ブロック ''{2}'' と Outport ブロック ''{3}'' 間のパスにはバーチャル ブロックしか存在しないため、実行領域の仕様がある Subsystem ブロック ''{1}'' の出力端子 {0,number,integer} から離散サンプル時間を伝播できません。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''insertSISOBlockAtInport'',''built-in/signalconversion'',''SC'',1,''{3}'');&lt;/cmd&gt; &lt;txt&gt;Subsystem ブロック ''{1}'' 内の Signal Conversion ブロックを Outport ブロック ''{3}'' の前に挿入する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''SetExecutionDomain'', ''off'');&lt;/cmd&gt; &lt;txt&gt;Subsystem ''{1}'' の実行ドメインの設定を解除する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;ブロック ''{2}'' と Outport ブロック ''{3}'' 間のパスをサブシステム ''{2}'' の外側に再配線する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="AdditionalEntryPointInCodegenForKnownBlock">
+Simulink は、モデル ''{1}'' の調整可能なパラメーターのコード生成中に、ブロック ''{0}'' のパラメーター変更イベントのサンプル時間を、シミュレーション中に存在するサンプル時間によって置換できませんでした。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'', ''SampleTime'', ''[-1,0]'');&lt;/cmd&gt; &lt;txt&gt;ブロック ''{0}'' のサンプル時間を [継承] ([-1,0]) に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''DefaultParameterBehavior'', ''Inlined'');&lt;/cmd&gt; &lt;txt&gt;モデル ''{1}'' の ''[コード生成] &gt; [最適化] &gt; [既定のパラメーター動作]'' を [インライン] に設定する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="AdditionalEntryPointInCodegenForBlockInReferencedModel">
+Simulink は、モデル ''{2}'' の調整可能なパラメーターのコード生成中に、参照モデル ''{1}'' のブロック ''{0}'' のパラメーター変更イベントのサンプル時間を、シミュレーション中に存在するサンプル時間によって置換できませんでした。これは、参照モデルの固定ステップのサンプル時間が最上位モデルに存在しないためです。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{0}'', ''SampleTime'', ''[-1,0]'');&lt;/cmd&gt; &lt;txt&gt;ブロック ''{0}'' のサンプル時間を [継承] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''FixedStep'', get_param(''{2}'', ''FixedStep''));&lt;/cmd&gt; &lt;txt&gt;参照モデル ''{1}'' の固定ステップ サイズを最上位モデル ''{2}'' と同じ値に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;txt&gt;''[ソルバー] &gt; [ソルバーの詳細] &gt; [タスクとサンプル時間オプション] &gt; [周期的なサンプル時間の制約]'' を [制約なし] に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param(''{1}'', ''DefaultParameterBehavior'', ''Inlined'');set_param(''{2}'', ''DefaultParameterBehavior'', ''Inlined'');&lt;/cmd&gt; &lt;txt&gt;参照モデル ''{0}'' と最上位モデル ''{1}'' の ''[コード生成] &gt; [最適化] &gt; [既定のパラメーター動作]'' を [インライン] に設定する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="InvSampleTimeScopeInExpFcnMdl">
+      
+               Scope block ''{0}'' has an invalid sample time. Scopes in an export function model should have inherited(-1) sample time.
+               &lt;actions exclusiveFixIts="yes"&gt;
+               &lt;action type="fixit"&gt;
+               &lt;cmd&gt;set_param(''{0}'',''SampleTime'',''[-1]'')&lt;/cmd&gt;
+               &lt;txt&gt;Set sample time for block ''{0}'' to '-1'&lt;/txt&gt;
+               &lt;/action&gt;
+               &lt;/actions&gt;
+      
+    </entry>
+    <entry key="InvalidFcnCallNameReservedImplicitSampleTime" context="error">ルートレベルの関数呼び出し Inport ブロック ''{1}'' は、''{0}'' 以外の関数呼び出し名を使用しなければなりません。_task で始まり数字が続く名前は、サンプル時間の分割用に予約されています。 </entry>
+    <entry key="InvalidOutputPortInPST" context="diagnostic">
+      
+        ルートの Outport ブロック ''{0}'' には定数サンプル時間があり、調整可能パラメーターによるコード生成ではサポートされません。&lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit" id="InlineParams" retvalue="false"&gt; &lt;cmd&gt;set_param(bdroot, 'InlineParams', 'on');&lt;/cmd&gt; &lt;txt&gt;既定のパラメーター動作をインラインに設定する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="DiscreteSampleTime" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''{1}'');&lt;/cmd&gt; &lt;txt&gt;ブロック ''{0}'' のサンプル時間を、離散サンプル時間 ''{1}'' に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="InvalidCoefficientSampleTime" context="diagnostic">Inconsistent sample times propagated to the input ports of block ''{0}''. Sample time {2} propagated to input port {1,number,integer} is less than the sample time {3} propagated to input port 1. Specify the sample time on the source blocks for input port {1,number,integer} to a value that is greater than or equal to sample time {3} propagated to input port 1. </entry>
+    <entry key="InvalidStorageClassWithTunableParameterRate" context="diagnostic">
+  
+        Simulink ブロック ''{0}'' は、最適化不可のストレージ クラスをもつ信号によって複数の接続先ブロックに接続されています。この構成は、調整可能なパラメーターを使用したコード生成でサポートされていません。 &lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit" id="DiscreteSampleTime" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''{1}'');&lt;/cmd&gt; &lt;txt&gt;ブロック ''{0}'' のサンプル時間を離散サンプル時間 ''{1}'' に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="InvalidStorageClassWithParameterOrContRateDst" context="diagnostic">
+  
+        Simulink ブロック ''{0}'' は、最適化不可のストレージ クラスをもつ信号によって、連続レートまたはパラメーターによるレートをもつ接続先ブロックに接続されています。この構成は、調整可能なパラメーターを使用したコード生成でサポートされていません。 &lt;actions exclusiveFixIts = "yes"&gt; &lt;action type="fixit" id="DiscreteSampleTime" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'SampleTime', ''{1}'');&lt;/cmd&gt; &lt;txt&gt;ブロック ''{0}'' のサンプル時間を離散サンプル時間 ''{1}'' に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+  </entry>
+    <entry key="SampleTimeValueNA" context="uistring">N/A</entry>
+    <entry key="SampleTimeValueInf" context="uistring">Inf</entry>
+  </message>
+</rsccat>

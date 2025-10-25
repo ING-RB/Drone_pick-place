@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019-2023 The MathWorks, Inc. -->
+<!-- Definitions of properties for concurrency purposes -->
+<!-- For example the definition: -->
+  <!-- <tag id="pthread_t" kind="type" user_name="pthread_t" > -->
+  <!--   <properties> -->
+  <!--     <property kind="concurrency">pthread_t</property> -->
+  <!--   </properties> -->
+  <!-- </tag> -->
+<!-- means that the typedef pthread_t will be flagged with the property "concurrency" "pthread_t" -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+
+  <!-- C11 (threads.h) -->
+
+  <tag id="tss_t" kind="type" user_name="tss_t" >
+    <properties>
+      <property kind="concurrency">tss_t</property>
+    </properties>
+  </tag>
+
+  <tag id="c_mtx_lock" kind="function" user_name="mtx_lock" nb_args="1">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="c_mtx_unlock" kind="function" user_name="mtx_unlock" nb_args="1">
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="mtx_destroy" kind="function" user_name="mtx_destroy" nb_args="1" >
+    <properties>
+      <property kind="predef_concurrency">protected_destroy</property>
+      <property kind="rule">PS_INTERNAL_THREADS_H_FACILITY</property>
+    </properties>
+  </tag>
+
+  <tag id="c_mtx_init" kind="function" user_name="mtx_init" nb_args="2">
+    <properties>
+      <property kind="predef_concurrency">mutex_init</property>
+    </properties>
+  </tag>
+
+  <tag id="thrd_create" kind="function" user_name="thrd_create" decl_header="threads.h" >
+    <properties>
+      <property kind="rule">PS_INTERNAL_THREADS_H_FACILITY</property>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">thrd_create</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency">1</property> <!-- nbArg of called function -->
+   </properties>
+  </tag>
+
+  <tag id="thrd_exit" kind="function" user_name="thrd_exit" decl_header="threads.h">
+    <properties>
+      <property kind="predef_concurrency">end_task</property>
+      <property kind="rule">PS_INTERNAL_THREADS_H_FACILITY</property>
+    </properties>
+
+  </tag>
+  <tag id="thrd_join" kind="function" user_name="thrd_join" decl_header="threads.h">
+    <properties>
+      <property kind="predef_concurrency">join</property>
+     <property kind="rule">PS_INTERNAL_THREADS_H_FACILITY</property>
+    </properties>
+  </tag>
+
+  <tag id="thrd_detach" kind="function" user_name="thrd_detach" decl_header="threads.h">
+    <properties>
+      <property kind="predef_concurrency">join</property>
+     <property kind="rule">PS_INTERNAL_THREADS_H_FACILITY</property>
+    </properties>
+  </tag>
+
+  <!-- POSIX (pthread.h) -->
+
+  <tag id="pthread_t" kind="type" user_name="pthread_t" >
+    <properties>
+      <property kind="concurrency">pthread_t</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_attr_t" kind="type" user_name="pthread_attr_t" >
+    <properties>
+      <property kind="concurrency">pthread_attr_t</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_key_t" kind="type" user_name="pthread_key_t" >
+    <properties>
+      <property kind="concurrency">pthread_key_t</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_create" kind="function" user_name="pthread_create" nb_args="4">
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">pthread_create</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency">1</property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+  <tag id="pthread_exit" kind="function" user_name="pthread_exit" nb_args="1">
+    <properties>
+      <property kind="predef_concurrency">end_task</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_join" kind="function" user_name="pthread_join" nb_args="2">
+    <properties>
+      <property kind="predef_concurrency">join</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_detach" kind="function" user_name="pthread_detach" nb_args="1">
+    <properties>
+      <property kind="predef_concurrency">detach</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_attr_init" kind="function" user_name="pthread_attr_init" >
+    <properties>
+      <property kind="predef_concurrency">attribute_init</property>
+    </properties>
+  </tag>
+
+  <tag id="signal" kind="function" user_name="signal" nb_args="2">
+    <properties>
+      <property kind="predef_concurrency">signal_handler</property>
+    </properties>
+  </tag>
+
+  <!-- POSIX (mutex) -->
+
+  <tag id="pthread_mutex_lock" kind="function" user_name="pthread_mutex_lock" nb_args="1" >
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_mutex_unlock" kind="function" user_name="pthread_mutex_unlock" nb_args="1" >
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_mutex_destroy" kind="function" user_name="pthread_mutex_destroy" nb_args="1" >
+    <properties>
+      <property kind="predef_concurrency">protected_destroy</property>
+    </properties>
+  </tag>
+
+  <tag id="pthread_cond_wait" kind="function" user_name="pthread_cond_wait" nb_args="2">
+    <properties>
+      <property kind="predef_concurrency">cnd_wait</property>
+      <property kind="predef_concurrency">1</property>
+   </properties>
+  </tag>
+
+  <tag id="pthread_cond_timedwait" kind="function" user_name="pthread_cond_timedwait" nb_args="3" >
+    <properties>
+     <property kind="predef_concurrency">cnd_wait</property>
+     <property kind="predef_concurrency">1</property>
+   </properties>
+  </tag>
+
+  <!-- C++11 <mutex> -->
+
+  <tag id="std::lock_guard::lock_guard" kind="function" user_name="std::lock_guard::lock_guard" >
+    <properties>
+      <property kind="predef_concurrency">lock_guard_constructor</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::lock_guard::~lock_guard" kind="function" user_name="std::lock_guard::~lock_guard" >
+    <properties>
+      <property kind="predef_concurrency">lock_guard_destructor</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::mutex::lock" kind="function" user_name="std::mutex::lock" other_names="std::_Mutex_base::lock">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::recursive_mutex::lock" kind="function" user_name="std::recursive_mutex::lock">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::mutex::unlock" kind="function" user_name="std::mutex::unlock" other_names="std::_Mutex_base::unlock">
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::mutex::~mutex" kind="function" user_name="std::mutex::~mutex" other_names="std::_Mutex_base::~mutex">
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::mutex::try_lock" kind="function" user_name="std::mutex::try_lock" other_names="std::_Mutex_base::try_lock">
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::timed_mutex::try_lock" kind="function" user_name="std::timed_mutex::try_lock" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::timed_mutex::try_lock_for" kind="function" user_name="std::timed_mutex::try_lock_for" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::timed_mutex::try_lock_until" kind="function" user_name="std::timed_mutex::try_lock_until" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <!-- C++11 <thread> -->
+
+  <tag id="std_thread_ctor" kind="function" user_name="std::thread::thread" >
+    <properties>
+      <property kind="thread_entry_point_param">1</property>
+    </properties>
+  </tag>
+
+  <tag id="std::thread" kind="function" user_name="std::thread::thread" >
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">std_thread</property>
+      <property kind="predef_concurrency">1</property> <!-- need derf -->
+      <property kind="predef_concurrency"></property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+  <tag id="std::thread::operator=" kind="function" user_name="std::thread::operator=" >
+    <properties>
+      <property kind="predef_concurrency">thread_copy</property>
+    </properties>
+  </tag>
+
+  <tag id="std::signal" kind="function" user_name="std::signal" nb_args="2">
+    <properties>
+      <property kind="predef_concurrency">signal_handler</property>
+    </properties>
+  </tag>
+
+  <!-- the stdlib_builtin property is used to avoid the inlining of stubbed function that prevents
+       the concurrency module to detect the API functions -->
+  <tag id="no_stubbed_inlining" kind="function" user_name="std::mutex::lock" other_names="CreateThread,EnterCriticalSection,ExitThread,LeaveCriticalSection,mtx_destroy,mtx_lock,mtx_unlock,OSMutexPend,OSMutexPost,OSTaskCreate,OSTaskCreateExt,pthread_attr_init,pthread_create,pthread_detach,pthread_exit,pthread_join,pthread_mutex_destroy,pthread_mutex_lock,pthread_mutex_lock,pthread_mutex_unlock,pthread_mutex_unlock,semGive,semGive,semTake,semTake,std::mutex::~mutex,std::mutex::unlock,std::thread::operator,std::thread::thread,taskSpawn,taskSpawn,thrd_create,thrd_detach,thrd_exit,thrd_join">
+    <properties>
+      <property kind="stdlib_builtin"></property>
+    </properties>
+  </tag>
+
+  <!-- C++14 <mutex> -->
+
+  <tag id="std::shared_timed_mutex::try_lock" kind="function" user_name="std::shared_timed_mutex::try_lock" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::shared_timed_mutex::lock" kind="function" user_name="std::shared_timed_mutex::lock" >
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::shared_timed_mutex::unlock" kind="function" user_name="std::shared_timed_mutex::unlock" >
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::shared_timed_mutex::try_lock_for" kind="function" user_name="std::shared_timed_mutex::try_lock_for" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::shared_timed_mutex::try_lock_until" kind="function" user_name="std::shared_timed_mutex::try_lock_until" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <!-- C++17 <mutex> -->
+
+  <tag id="std::shared_timed_mutex::try_lock_shared" kind="function" user_name="std::shared_timed_mutex::try_lock_shared" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::shared_timed_mutex::try_lock_shared_for" kind="function" user_name="std::shared_timed_mutex::try_lock_shared_for" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="std::shared_timed_mutex::try_lock_shared_until" kind="function" user_name="std::shared_timed_mutex::try_lock_shared_until" >
+    <properties>
+      <property kind="predef_concurrency">try_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <!-- C VXWORKS -->
+
+  <tag id="semTake" kind="function" user_name="semTake" nb_args="2">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="semGive" kind="function" user_name="semGive" nb_args="1" >
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="taskSpawn" kind="function" user_name="taskSpawn">
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">taskSpawn</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency"></property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+  <!-- C Windows -->
+
+  <tag id="EnterCriticalSection" kind="function" user_name="EnterCriticalSection" nb_args="1">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="LeaveCriticalSection" kind="function" user_name="LeaveCriticalSection" nb_args="1" >
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="CreateThread" kind="function" user_name="CreateThread">
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">CreateThread</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency">1</property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+  <tag id="ExitThread" kind="function" user_name="ExitThread" >
+    <properties>
+      <property kind="predef_concurrency">end_task</property>
+    </properties>
+  </tag>
+
+  <!-- C Micro-C OS -->
+  <!-- uCos-II -->
+
+  <tag id="OSMutexPend" kind="function" user_name="OSMutexPend" nb_args="3">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="OSMutexPost" kind="function" user_name="OSMutexPost" nb_args="1">
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="OSTaskCreateExt" kind="function" user_name="OSTaskCreateExt" nb_args="9">
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">OSTaskCreateExt</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency">1</property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+  <tag id="OSTaskCreate" kind="function" user_name="OSTaskCreate" nb_args="4">
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">OSTaskCreate_uCosII</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency">1</property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+  <!-- uCos-III -->
+
+  <tag id="OSMutexPend_III" kind="function" user_name="OSMutexPend" nb_args="5">
+    <properties>
+      <property kind="predef_concurrency">protected_lock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="OSMutexPost_III" kind="function" user_name="OSMutexPost" nb_args="3">
+    <properties>
+      <property kind="predef_concurrency">protected_unlock</property>
+      <property kind="predef_concurrency">0</property>
+    </properties>
+  </tag>
+
+  <tag id="OSTaskCreate_III" kind="function" user_name="OSTaskCreate" nb_args="13">
+    <properties>
+      <property kind="predef_concurrency">start_task</property>
+      <property kind="predef_concurrency">OSTaskCreate_uCosIII</property>
+      <property kind="predef_concurrency">0</property> <!-- need derf -->
+      <property kind="predef_concurrency">1</property> <!-- nbArg of called function -->
+    </properties>
+  </tag>
+
+</tags>

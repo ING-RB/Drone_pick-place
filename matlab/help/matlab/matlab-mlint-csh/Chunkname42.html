@@ -1,0 +1,7 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>It appears that the index value of a <code>for</code> loop changes
+                    within a nested function. In some cases, nested functions can be called by
+                    callbacks or other function calls leading to the loop index changing. This kind
+                    of bug is exceptionally hard to find, so Code Analyzer signals this situation
+                    even though in many cases the usage is benign.</p><br/><strong>Suggested Action</strong><br/><p>Change the name of the <code><a href="matlab:doc for" target="_blank">for</a></code> loop index or the variable of the same name in the
+                    nested function. If you must keep them as is, add a comment indicating the need
+                    and suppress the message as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>.</p></body></html>

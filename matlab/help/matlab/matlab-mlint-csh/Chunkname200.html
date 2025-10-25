@@ -1,0 +1,14 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>In the absence of an explicit assignment to an identifier, MATLAB interprets
+                    an identifier as a variable if you index into it with a colon, curly braces, or
+                    the <code>end</code> keyword. If you use the identifier in a function
+                    handle or in command syntax, MATLAB interprets it as a function.</p><br/><strong>Suggested Action</strong><br/><p>To ensure MATLAB correctly interprets identifiers as variables, explicitly
+                    declare or assign to variables. For example, consider the following
+                    function.</p><code>function&nbsp;myFun&nbsp;()<br/>&nbsp;&nbsp;&nbsp;&nbsp;load&nbsp;data.mat;&nbsp;%&nbsp;Loads&nbsp;all&nbsp;variables,&nbsp;including&nbsp;x.<br/>&nbsp;&nbsp;&nbsp;&nbsp;disp(x(:))&nbsp;<br/>end<br/></code><p>In <code>myFun</code>, MATLAB interprets <code>x</code> as a
+                    variable because it is indexed with a colon in the <code>disp</code> call.
+                    However, that might change in a future release. To ensure <code>x</code>
+                    is used as a variable, explicitly define it. For example, load the specific
+                    variable <code>x</code> or initialize it.</p><div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="50%"><col class="tcol2" width="50%"></colgroup><tbody><tr><td>
+                                    <code>function&nbsp;myFun&nbsp;()<br/>&nbsp;&nbsp;&nbsp;&nbsp;load&nbsp;data.mat&nbsp;x;&nbsp;%&nbsp;Loads&nbsp;x.<br/>&nbsp;&nbsp;&nbsp;&nbsp;disp(x(:))<br/>end<br/></code>
+                                </td><td>
+                                    <code>function&nbsp;myFun&nbsp;()<br/>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;[];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;Initializes&nbsp;x.<br/>&nbsp;&nbsp;&nbsp;&nbsp;load&nbsp;data.mat;&nbsp;%&nbsp;Loads&nbsp;all&nbsp;variables.<br/>&nbsp;&nbsp;&nbsp;&nbsp;disp(x(:))<br/>end<br/></code>
+                                </td></tr></tbody></table></div></body></html>

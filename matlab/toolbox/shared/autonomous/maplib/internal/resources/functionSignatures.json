@@ -1,0 +1,89 @@
+{
+"matlabshared.autonomous.internal.MapInterface.grid2local":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"name":"ij", "kind":"required", "type":["numeric","ncols=2","positive","integer"]}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.grid2world":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"name":"ij", "kind":"required", "type":["numeric","ncols=2","positive","integer"]}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.local2grid":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.local2world":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.world2grid":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.world2local":
+{
+    "inputs":
+    [
+        {"name":"map", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"name":"xy", "kind":"required", "type":["numeric","ncols=2","real"]}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.getMapData":
+{
+    "inputs":
+    [
+        {"name":"obj", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"XY", "kind":"required", "type":["numeric","ncols=2","real"]}
+                ],
+                [
+                    {"name":"botLeft", "kind":"required", "type":["numeric","row","numel=2","real"]},
+                    {"name":"matSize", "kind":"required", "type":["numeric","positive"]}
+                ]
+            ]
+        },
+        {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+    ]
+},
+"matlabshared.autonomous.internal.MapInterface.setMapData":
+{
+    "inputs":
+    [
+        {"name":"obj", "kind":"required", "type":"matlabshared.autonomous.internal.MapInterface"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"XY",     "kind":"required", "type":["numeric","ncols=2","real"]},
+                    {"name":"values", "kind":"required", "type":[["logical","numeric","scalar"],["logical","numeric","@(val,XY,obj)isequal(size(val), [size(XY,1) 1 obj.DataSize(3:end)])"]]}
+                ],
+                [
+                    {"name":"botLeft",     "kind":"required", "type":["numeric","row","numel=2","real"]},
+                    {"name":"inputMatrix", "kind":"required", "type":[["logical","numeric","scalar"],["logical","numeric","@(val,obj)isequal(size(val,3:numel(size(val))),obj.DataSize(3:end))"]]}
+                ]
+            ]
+        },
+        {"name":"Frame", "kind":"ordered", "type":"choices={'world','local','grid'}"}
+    ]
+}
+}

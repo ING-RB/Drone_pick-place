@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!-- Copyright 2019-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="ros">
+  <message>
+    <entry key="SupportOnlyCPP">Only C++ codegen is supported. Change ''Model Settings: Code Generation > Target selection > Language'' to C++.</entry>
+    
+    <!--- codertargetui: -->
+    <entry key="ui_hwboard" translate="false">Robot Operating System 2 (ROS 2)</entry>
+    <!--- Package information -->   
+    <entry key="ui_pkginfo_group" translate="false">Package information</entry>
+    <entry key="ui_pkginfo_maintainername_label" translate="false">Maintainer name:</entry>
+    <entry key="ui_pkginfo_maintaineremail_label" translate="false">Maintainer e-mail:</entry>
+    <entry key="ui_pkginfo_license_label" translate="false">License:</entry>
+    <entry key="ui_pkginfo_version_label" translate="false">Version:</entry>
+    <!--- Build options -->   
+    <entry key="ui_buildopts_group" translate="false">Build options</entry>
+    <entry key="ui_buildopts_buildaction" translate="false">Build action:</entry>
+    <entry key="ui_buildopts_buildaction_build" translate="false">Build</entry>
+    <entry key="ui_buildopts_buildaction_buildandload" translate="false">Build and load</entry>
+    <entry key="ui_buildopts_buildaction_buildandrun" translate="false">Build and run</entry>
+    <entry key="ui_buildopts_ros2installdir_label" translate="false">ROS 2 install folder:</entry>
+    <entry key="ui_buildopts_ros2workspace_label" translate="false">ROS 2 workspace:</entry>
+    <!--- External Mode options -->   
+    <entry key="ui_extmode_group" translate="false">External mode</entry>
+    <entry key="ui_extmode_runinbkgnd_label" translate="false">Run external mode in a background thread</entry>
+    <entry key="ui_extmode_commintf_label" translate="false">Communication interface:</entry>
+    <entry key="ui_extmode_buffersize_label" translate="false">Logging buffer size (bytes)</entry>
+    <entry key="ui_extmode_pollingtime_label" translate="false">Polling time (in seconds)</entry>
+    <entry key="ui_extmode_port_label" translate="false">Port:</entry>
+    <entry key="ui_extmode_verbose_label" translate="false">Verbose</entry>
+    <!--- Deployment type -->
+    <entry key="ui_deploymenttype" translate="false">Deployment type:</entry>
+	<entry key="ui_deploymenttype_standardnode" translate="false">Standard Node</entry>
+	<entry key="ui_deploymenttype_componentnode" translate="false">Component Node</entry>
+	<entry key="ui_deploymenttype_controlplugin" translate="false">ROS Control Plugin</entry>
+    <!--- ROS 2 Time options -->   
+    <entry key="ui_ros2time_group" translate="false">ROS 2 Time</entry>
+    <entry key="ui_ros2time_stepenable_label" translate="false">Enable ROS 2 time model stepping</entry>
+    <entry key="ui_ros2time_stepnotify_label" translate="false">Enable notification after step</entry>
+    <entry key="ui_ros2time_notifytopic_label" translate="false">Notification topic:</entry>
+    <!--- Error messages -->
+    <entry key="PackagingNotCPP">The ''Code Interface Packaging'' for the model is set to {0}, which is not supported for ROS 2 code generation.
+        <![CDATA[
+             <actions exclusiveFixIts="yes">
+             <action type="fixit">
+             <cmd>configset.internal.open(''{1}'',''CodeInterfacePackaging'')</cmd>
+             <txt>Set the code interface packaging to ''C++ class''.</txt>
+             </action>
+             </actions>
+    ]]></entry>
+    <entry key="LocalSetupNotFound">Cannot find ''local_setup'' scripts in the install folder, ''{0}''.\nThese scripts are required to configure ROS 2 environment and run the application.</entry>    
+    <entry key="InvalidWorkspaceFolder">Cannot find the specified workspace folder, ''{0}''.</entry>    
+    <entry key="RapidAccelNotSupported">{0} block does not support Rapid Accelerator mode.</entry>
+    <entry key="NodeAlreadyRunningError"><![CDATA[Unable to generate code for model, ''{0}'', when an application with the same name as model is already running.\nStop the application, ''{1}'', before generating code.]]></entry>    
+    <entry key="ROSControlUnconfigured">
+        <![CDATA[Deployment type was set to "ROS Control Plugin". However, configurations for ROS Control has not been set.
+        <actions exclusiveFixIts="yes">
+            <action type="suggestion" retvalue="false">
+                <cmd>ros.slros.internal.dlg.ROSControlSpecifier(bdroot(gcs));</cmd>
+                <txt>Open ROS Control App to customize ROS Control settings</txt>
+            </action>
+        </actions>
+        ]]>
+     </entry>
+     <entry key="CannotGenerateDwarfSymbols">Unable to generate debug symbol files due to this reason: {0}.</entry>
+  </message>
+</rsccat>

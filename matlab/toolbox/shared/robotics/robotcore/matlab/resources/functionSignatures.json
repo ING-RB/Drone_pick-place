@@ -1,0 +1,136 @@
+{
+    "plotTransforms":
+    {
+        "inputs":
+        [
+            {"name":"translations", "kind":"required", "type":[["numeric", "2d", "ncols=3"], ["numeric", "2d", "ncols=2"], ["se3"], ["se2"]]},
+            {"name":"rotations", "kind":"optional", "type":[["quaternion", "column"], ["numeric", "2d", "ncols=4"], ["so2"], ["so3"]]},
+            {"name":"MeshFilePath", "kind":"namevalue", "type":[["file=*.stl"], ["matlabpathfile=*.stl"]]},
+            {"name":"FrameSize", "kind":"namevalue", "type":["double", "scalar", "positive"]},
+            {"name":"MeshColor", "kind":"namevalue", "type":[["double", "vector", "numel=3"], ["string"]]},
+            {"name":"Parent", "kind":"namevalue", "type":["matlab.graphics.axis.Axes"]},
+            {"name":"InertialZDirection", "kind":"namevalue", "type":["choices={'Up', 'Down'}"]},
+            {"name":"View", "kind":"namevalue", "type":[["double", "vector", "numel=2"], ["choices={'2D', '3D'}"]]},
+            {"name":"FrameColor", "kind":"namevalue", "type":[["double", "vector", "numel=3"], ["string"], ["char"], ["choices={'rgb'}"]]},
+            {"name":"FrameAxisLabels", "kind":"namevalue", "type":["choices={'on', 'off'}"]},
+            {"name":"FrameLabel", "kind":"namevalue", "type":[["string"], ["char"], ["cell"]]},
+            {"name":"AxisLabels", "kind":"namevalue", "type":["choices={'on', 'off'}"]}
+        ]
+    },
+    "trapveltraj":
+    {
+        "inputs":
+        [
+            {"name":"wayPoints", "kind":"required", "type":["numeric", "2d"]},
+            {"name":"numSamples", "kind":"required", "type":["numeric", "scalar"]},
+            {"name":"PeakVelocity", "kind":"namevalue", "type":["numeric", "2d"]},
+            {"name":"EndTime", "kind":"namevalue", "type":["numeric", "2d"]},
+            {"name":"AccelTime", "kind":"namevalue", "type":["numeric", "2d"]},
+            {"name":"Acceleration", "kind":"namevalue", "type":["numeric", "2d"]}
+        ]
+    },
+    "rottraj":
+    {
+        "inputs":
+        [
+            {"name":"R0", "kind":"required", "type":[["numeric", "2d"], ["quaternion"], ["so3"]]},
+            {"name":"RF", "kind":"required", "type":[["numeric", "2d"], ["quaternion"], ["so3"]]},
+            {"name":"t", "kind":"required", "type":["numeric", "row"]},
+            {"name":"TimeScaling", "kind":"namevalue", "type":["numeric", "2d", "nrows=3"]}
+        ]
+    },
+    "collisionBox":
+    {
+            "inputs":
+            [
+                {"name":"X", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Y", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Z", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Pose", "kind":"namevalue", "type":[["numeric",
+                    "ncols=4", "nrows=4"], ["se3"]]}
+            ]
+    },
+    "collisionCylinder":
+    {
+            "inputs":
+            [
+                {"name":"Radius", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Length", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Pose", "kind":"namevalue", "type":[["numeric",
+                    "ncols=4", "nrows=4"], ["se3"]]}
+            ]
+    },
+    "collisionSphere":
+    {
+            "inputs":
+            [
+                {"name":"Radius", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Pose", "kind":"namevalue", "type":[["numeric",
+                    "ncols=4", "nrows=4"], ["se3"]]}
+            ]
+    },
+    "collisionMesh":
+    {
+            "inputs":
+            [
+                {"name":"Vertices", "kind":"required", "type":["double", "2d", "ncols=3"]},
+                {"name":"Pose", "kind":"namevalue", "type":[["numeric",
+                    "ncols=4", "nrows=4"], ["se3"]]}
+            ]
+    },
+    "collisionCapsule":
+    {
+            "inputs":
+            [
+                {"name":"Radius", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Length", "kind":"required", "type":["double", "scalar"]},
+                {"name":"Pose", "kind":"namevalue", "type":[["numeric",
+                    "ncols=4", "nrows=4"], ["se3"]]}
+            ]
+    },
+    "robotics.core.internal.CollisionGeometryBase.show":
+    {
+            "inputs":
+            [
+                {"name":"geom", "kind":"required",
+                    "type":"robotics.core.internal.CollisionGeometryBase"},
+                {"name":"Parent", "kind":"namevalue",
+                    "type":["double","scalar"]}
+            ]
+    },
+    "fitCollisionCapsule":
+    {
+            "inputs":
+            [
+                {"name":"geom", "kind":"required",
+                    "type":[["collisionBox"],["collisionCylinder"],["collisionMesh"],["collisionSphere"]]}
+            ]
+    },
+    "convertToCollisionMesh":
+    {
+            "inputs":
+            [
+                {"name":"collisionObj", "kind":"required",
+                    "type":[["collisionBox"],["collisionCylinder"],["collisionCapsule"],["collisionSphere"]]}
+            ]
+    },
+    "transformtraj":
+    {
+        "inputs":
+        [
+            {"name":"T0", "kind":"required", "type":[["numeric", "ncols=4", "nrows=4"], ["se3"]]},
+            {"name":"TF", "kind":"required", "type":[["numeric", "ncols=4", "nrows=4"], ["se3"]]},
+            {"name":"t", "kind":"required", "type":["numeric", "row"]},
+            {"name":"TimeScaling", "kind":"namevalue", "type":["numeric", "2d", "nrows=3"]}
+        ]
+    },
+    "geom2struct":
+    {
+        "inputs":
+        [
+            {"name":"geom", "kind":"required", "type":[["cell","@(x)all(cellfun(@(g)isa(g,'robotics.core.internal.CollisionGeometryBase'),x))"],["scalar","robotics.core.internal.CollisionGeometryBase"]]},
+            {"name":"id", "kind":"ordered", "type":["numeric","@(x,geom)numel(x)==numel(geom)","integer","positive","real"]},
+            {"name":"LocalOffsetPose", "kind":"namevalue", "type":[["se3","@(x,geom)numel(x)==numel(geom)"],["numeric", "@(x,geom)all(size(x)==[4 4 numel(geom)])"]]}
+        ]
+    }
+}

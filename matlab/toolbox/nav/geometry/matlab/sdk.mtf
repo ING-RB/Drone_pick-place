@@ -1,0 +1,13 @@
+# Package deployment files in MCR package for component images
+# Copyright 2023 The MathWorks, Inc.
+
+# Please see the Automatic Packaging of Derived Content Developer’s guide here:
+# https://confluence.mathworks.com/display/CppMicroServices/Automatic+Packaging+of+Derived+Content+Developer%27s+Guide
+# for information about items that are automatically managed by the build system.
+
+@IFDEF common
+  include derived/share/deploy/nav/geometry/matlab/mcr_sdk.mtf
+@ENDIF common
+@IFDEF arch
+  include derived/<ARCH>/deploy/nav/geometry/matlab/mcr_sdk.mtf
+@ENDIF arch

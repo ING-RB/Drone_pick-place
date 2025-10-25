@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!-- Copyright 2015 The MathWorks, Inc. -->
+
+<!-- Allows to validate annotations rules
+ Can be done on linux with:
+ xmllint \-\-noout \-\-schema annotations_xml_schema.xsd file.xml
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
+
+  <xs:element name="Annotations">
+    <xs:complexType>
+      <xs:sequence>
+        
+        <xs:element name="Expressions" minOccurs="1" maxOccurs="1">
+          <!-- One block describing expressions -->
+          <xs:complexType>  
+            <xs:sequence>
+              
+              <xs:element name="Expression" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Mode" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="SAME_LINE"/>
+                        <!-- SAME_LINE mode applies the rule on the line of the comment -->
+                        <!-- mandatory attributes: Rules_Position -->
+                        
+                        <xs:enumeration value="NEXT_CODE_LINE"/>
+                        <!-- NEXT_CODE_LINE mode applies the rule on the next line of
+                             code (skipping multi-line comments and empty lines) -->
+                        <!-- mandatory attributes: Rules_Position -->
+                        
+                        <xs:enumeration value="BEGIN"/>
+                        <!-- BEGIN mode starts to apply the rule until END is found -->
+                        <!-- mandatory attributes: Rules_Position -->
+                        
+                        <xs:enumeration value="END"/>
+                        <!-- END mode stops what has been started with the corresponding BEGIN -->
+                        <!-- mandatory attributes: Rules_Position -->
+                        
+                        <xs:enumeration value="END_ALL"/>
+                        <!-- END_ALL mode stops all rules started with a BEGIN -->
+                        <!-- no attributes -->
+                        
+                        <xs:enumeration value="GOTO_INCREMENT"/>
+                        <!-- GOTO_INCREMENT mode applies the rule on n next lines -->
+                        <!-- mandatory attributes: Rules_Position, Increment_Position -->
+                        
+                        <xs:enumeration value="GOTO_LABEL"/>
+                        <!-- GOTO_LABEL mode applies the rule until the LABEL is found -->
+                        <!-- mandatory attributes: Rules_Position, Label_Position -->
+                        
+                        <xs:enumeration value="LABEL"/>
+                        <!-- LABEL mode closes the section started with GOTO_LABEL -->
+                        <!-- mandatory attributes: Label_Position -->
+                        
+                        <xs:enumeration value="XML_START"/>
+                        <!-- XML_START mode starts an XML -->
+                        <!-- no attributes -->
+                        
+                        <xs:enumeration value="XML_CONTENT"/>
+                        <!-- XML_CONTENT mode defines (in an XML section) the rule to apply
+                             on the next line of code (line NEXT_CODE_LINE) -->
+                        <!-- mandatory attributes: Rules_Position -->
+                        
+                        <xs:enumeration value="XML_END"/>
+                        <!-- XML_END mode closes an XML -->
+                        <!-- no attributes -->
+                        
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  
+                  <xs:attribute name="Regex" type="xs:string" use="required"/>
+                  <!-- The regex -->
+
+                  <xs:attribute name="Applies_Also_On_Same_Line" type="xs:boolean"/>
+                  <!-- Applies_Also_On_Same_Line=true tells that the annotation applies (also) on the line of the comment
+                       Applies_Also_On_Same_Line=false tells that it applies on the next line
+                       Default value is 'true' -->
+                  
+                  <xs:attribute name="Is_Pragma" type="xs:boolean"/>
+                  <!-- Is_Pragma=true tells that the annotation is given by a pragma
+                       Is_Pragma=false tells that the annotation is not given by a pragma (so is inside a comment)
+                       Default value is 'false' -->
+                  
+                  <xs:attribute name="Case_Insensitive" type="xs:boolean"/>
+                  <!-- Case_Insensitive=true tells that the Regex must be considered case-insensitive
+                       Default value is 'false' -->
+
+                  <!-- Positions = the position in the Regex. 1 = the first () -->
+                  
+                  <xs:attribute name="Rule_Identifier_Position" type="xs:integer"/>
+                  <xs:attribute name="Status_Position" type="xs:integer"/>
+                  <xs:attribute name="Severity_Position" type="xs:integer"/>
+                  <xs:attribute name="Comment_Position" type="xs:integer"/>
+                  
+                  <xs:attribute name="Label_Position" type="xs:integer"/>
+                  <!-- Label_Position is valid only with GOTO_LABEL and LABEL -->
+                  
+                  <xs:attribute name="Increment_Position" type="xs:integer"/>
+                  <!-- Increment_Position is valid only with GOTO_INCREMENT -->
+
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+
+            <!-- The attribute declarations must always declared last -->
+            <xs:attribute name="Separator_Family" type="xs:string"/>
+            <xs:attribute name="Separator_Family_And_Result_Name" type="xs:string"/>
+            <xs:attribute name="Separator_Result_Name" type="xs:string" use="required"/>
+
+            <xs:attribute name="Search_For_Keywords" type="xs:string" use="required"/>
+            <!-- Gives a small list of (comma-separated) keywords to search
+                 This allows to avoid searching for the regular expressions
+                 if those keywords are not on the code line -->
+            
+          </xs:complexType>
+        </xs:element> <!-- end of Expressions -->
+
+        <xs:element name="Mapping" minOccurs="0" maxOccurs="1">
+          <!-- One block describing the mapping with Polyspace acronyms -->
+          <xs:complexType>  
+            <xs:sequence>
+
+              <xs:element name="Result_Name_Mapping" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="Rule_Identifier" type="xs:string" use="required"/>
+                  <xs:attribute name="Family" type="xs:string" use="required"/>
+                  <xs:attribute name="Result_Name" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element> <!-- end of Mapping -->
+      </xs:sequence>
+
+      <!-- The attribute declarations must always declared last -->
+      <xs:attribute name="Group" type="xs:string" use="required"/>
+    
+    </xs:complexType>
+  </xs:element> <!-- end of Annotations -->
+</xs:schema>

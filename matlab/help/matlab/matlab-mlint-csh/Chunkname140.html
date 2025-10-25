@@ -1,0 +1,13 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>A nested function cannot be defined inside a control statement
+                        (<code>if</code>, <code>while</code>, <code>for</code>,
+                        <code>switch</code> or <code>try/catch</code>). </p><p>Be aware that in addition to this message, other messages might appear in the
+                    file. Such as, <span class="emphasis"><em><code>&lt;control statement&gt;</code></em></span>
+                    <code>might not be aligned with its matching END</code> and <code>Parse
+                        error at END: usage might be invalid MATLAB syntax</code>. When you
+                    remove the nested function definition from the control statement, these other
+                    messages might disappear.</p><br/><strong>Suggested Action</strong><br/><p>Rewrite the code so that a function is not defined within a control statement.
+                    For example, rewrite code such as this:</p><p>
+                    <code>function&nbsp;foo(n)<br/>while&nbsp;n&nbsp;&gt;&nbsp;10<br/>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;fs<br/>&nbsp;&nbsp;&nbsp;&nbsp;disp('n&nbsp;is&nbsp;greater&nbsp;than&nbsp;10')<br/>&nbsp;&nbsp;&nbsp;&nbsp;end<br/>&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;=&nbsp;n-1;<br/>end<br/>end</code>
+                </p><p>like this:</p><p>
+                    <code>function&nbsp;foo(n)<br/>while&nbsp;n&nbsp;&gt;&nbsp;10<br/>&nbsp;&nbsp;&nbsp;&nbsp;fs<br/>&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;=&nbsp;n-1;<br/>end<br/>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;fs<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disp('n&nbsp;is&nbsp;greater&nbsp;than&nbsp;10')<br/>&nbsp;&nbsp;&nbsp;&nbsp;end<br/>end</code>
+                </p><p>For more information, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'nested_functions')" target="_blank">Nested Functions</a>.</p></body></html>

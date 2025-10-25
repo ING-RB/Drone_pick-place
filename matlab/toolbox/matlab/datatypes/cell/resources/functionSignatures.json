@@ -1,0 +1,104 @@
+{
+    "_comment": "Copyright 2021 MathWorks, Inc.",
+
+    "cell":
+    {
+        "inputs": [
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"n", "kind":"required", "type":["numeric", "scalar" ,"integer"]}
+                ],
+                [
+                    {"name":"sz", "kind":"required", "type":["numeric", "row" ,"integer"]}
+                ],
+                [
+                    {"name":"sz", "kind":"required", "multiplicity":"append", "type":["numeric", "scalar" ,"integer"]}
+                ]
+            ]}
+        ],
+        "outputs": [
+            {"name":"C","type":"cell"}
+        ]
+    },
+    "cell":
+    {
+        "inputs": [
+            {"name":"obj", "kind":"required"}
+        ],
+        "outputs": [
+            {"name":"D","type":"cell"}
+        ]
+    },
+    "cell2mat":
+    {
+        "inputs": [
+            {"name":"C", "kind":"required", "type":"cell"}
+        ],
+        "outputs": [
+            {"name":"A"}
+        ]
+    },
+    "cell2struct":
+    {
+        "inputs": [
+            {"name":"cellArray", "kind":"required", "type":"cell"},
+            {"name":"fields", "kind":"required", "type":"cellstr"},
+            {"name":"dim", "kind":"required", "type":["numeric","scalar","integer"]}
+        ],
+        "outputs": [
+            {"name":"structArray","type":"struct"}
+        ]
+    },
+    "iscell":
+    {
+        "inputs": [
+            {"name":"A","kind":"required"}
+        ]
+        ,
+        "outputs": [
+            {"name":"tf","type":["logical","scalar"]}
+        ]
+    },
+    "mat2cell":
+    {
+        "inputs": [
+            {"name":"A", "kind":"required"},
+            {"name":"dimDist", "kind":"required", "type":["double","vector"],"multiplicity":"append"}
+
+        ],
+        "outputs": [
+            {"name":"C", "type":"cell"}
+        ]
+    },
+    "mat2cell":
+    {
+        "inputs": [
+            {"name":"A", "kind":"required"},
+            {"name":"rowDist", "kind":"required", "type":["double","vector"]}
+
+        ],
+        "outputs": [
+            {"name":"C", "type":"cell"}
+        ]
+    },
+    "num2cell":
+    {
+        "inputs": [
+            {"name":"A", "kind":"required"},
+            {"name":"dim", "kind":"optional", "type":["double","vector"]}
+
+        ],
+        "outputs": [
+            {"name":"C", "type":"cell"}
+        ]
+    },
+    "namedargs2cell":
+    {
+        "inputs": [
+            {"name":"s","kind":"required", "type":["struct", "scalar"]}
+        ],
+        "outputs": [
+            {"name":"c", "type":"cell"}
+        ]
+    }
+}

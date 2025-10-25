@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="TargetNotAllowedForFcnCall">モデル ''{0}'' は、Simulink 関数または関数呼び出しのルート入力端子をもつモデルであり、マルチインスタンス コード生成用に構成されています。このモデル化パターンおよび構成では、ERT システム ターゲット ファイルを使用する必要があります。</entry>
+    <entry key="TargetNotAllowedForFPC">モデル ''{0}'' は、カスタマイズされた関数インターフェイスでマルチインスタンス コード生成用に構成されたモデルであるか、またはこれに該当するモデルを参照します。このモデル コンフィギュレーションでは、ERT システム ターゲット ファイルを使用する必要があります。</entry>
+    <entry key="RootIOAsPartOfModelDataStructure">
+    
+        Model ''{0}'' is set up as a multi-instance Export Function model, which requires model configuration parameter ''Pass root-level I/O as:'' be set to ''Part of model data structure''
+        &lt;actions exclusiveFixIts="yes"&gt;
+          &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''RootIOFormat'', ''Part of model data structure'')&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Pass root-level I/O as:' to 'Part of model data structure'.&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+    <entry key="RootIOIndividualArguments">
+    
+        Model ''{0}'' is configured with a customized function interface and for multi-instance code generation. This configuration requires model configuration parameter ''Pass root-level I/O as:'' to be set to ''Individual arguments''
+        &lt;actions exclusiveFixIts="yes"&gt;
+          &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''RootIOFormat'', ''Individual arguments'')&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Pass root-level I/O as:' to 'Individual arguments'.&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+    <entry key="SLCIForFcnCall">
+
+    Simulink Code Inspector を使用するようにモデル ''{0}'' を構成できません。モデル ''{0}'' は、Simulink 関数または関数呼び出しのルート入力端子をもつモデルであり、マルチインスタンス コード生成用に構成されています。モデル コンフィギュレーション パラメーター [互換性のない最適化を無効にする] を [空] に設定してください &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''AdvancedOptControl'', '''')&lt;/cmd&gt; &lt;txt&gt;モデル コンフィギュレーション パラメーター [互換性のない最適化を無効にする] を [空] に設定することを検討する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="SLCIForFPC">
+    
+        Cannot configure Model ''{0}'' to use Simulink Code Inspector. Model ''{0}'' is or refers to a model configured with a customized function interface and for multi-instance code generation. Set model configuration parameter ''Disable incompatible optimizations'' to ''empty''
+        &lt;actions exclusiveFixIts="yes"&gt;
+          &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''AdvancedOptControl'', '''')&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Disable incompatible optimizations' to 'empty'.&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+    <entry key="FCModelHasModelBlockInAtomicSubSys">コード ジェネレーターは、再利用可能なサブシステム ''{2}'' 内に Model ブロック ''{1}'' を含むマルチインスタンスのエクスポート関数モデル ''{0}'' をサポートしません。 </entry>
+    <entry key="FunctionCallerBlockCallingICMMethodsFromNonExpFcnModel">
+
+    モデル ''{0}'' (エクスポート関数モデルではない) は、スコープ内の Simulink 関数を呼び出す Function Caller ブロック ''{1}'' を含むため、再利用可能なコードを生成しない場合があります。モデル コンフィギュレーション パラメーター [コード インターフェイスのパッケージ化] を [再利用できない関数] に、[最上位モデルごとに可能なインスタンスの総数] を [1] に設定することを検討するか、モデル ''{0}'' がエクスポート関数モデルであることを確認してください。 &lt;actions exclusiveFixIts="no"&gt; &lt;action type="fixit" id="CodeInterfacePackagingNonreusableFix" retvalue="false"&gt; &lt;cmd&gt;load_system(''{2}''); set_param_action(''{2}'', ''CodeInterfacePackaging'', ''Nonreusable function'');&lt;/cmd&gt; &lt;txt&gt;モデル コンフィギュレーション パラメーター [コード インターフェイスのパッケージ化] を [再利用できない関数] に設定することを検討する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit" id="ModelReferenceNumInstancesAllowedSingleFix" retvalue="false"&gt; &lt;cmd&gt;load_system(''{2}''); set_param_action(''{2}'',''ModelReferenceNumInstancesAllowed'',''Single'');&lt;/cmd&gt; &lt;txt&gt;モデル コンフィギュレーション パラメーター [最上位モデルごとに可能なインスタンスの総数] を [1] に設定することを検討する&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+  
+</entry>
+    <entry key="ForEachSSInClassModel">The model ''{0}'' is a multi-instance Export Function model. In this case, ForEach Subsystem ''{1}'' is not allowed. </entry>
+    <entry key="ModelOrSubSysVariant">モデル ''{0}'' はマルチインスタンスのエクスポート関数モデルとして設定されています。この場合、Variants ブロック ''{1}'' はサポートされません。 </entry>
+    <entry key="InvalidStateFlowCallToICM">
+    
+        Cannot generate code for call to Simulink function ''{1}'' from ''{2}'' block.
+        Model ''{0}'', which is not an Export Function model, may not generate reusable code because it contains scoped Simulink function ''{1}'' which generates reusable code. 
+        Ensure that the model ''{0}'' is an Export Function model to generate reusable code or 
+        Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function' and 
+        'Total number of instances allowed per top model' to 'One'.
+        &lt;actions exclusiveFixIts="no"&gt;
+          &lt;action type="fixit" id="CodeInterfacePackagingNonreusableFix" retvalue="false"&gt;
+            &lt;cmd&gt;load_system(''{0}''); set_param_action(''{0}'', ''CodeInterfacePackaging'', ''Nonreusable function'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function'.&lt;/txt&gt;
+          &lt;/action&gt;
+          &lt;action type="fixit" id="ModelReferenceNumInstancesAllowedSingleFix" retvalue="false"&gt;
+            &lt;cmd&gt;load_system(''{0}''); set_param_action(''{0}'',''ModelReferenceNumInstancesAllowed'',''Single'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Total number of instances allowed per top model' to 'One'&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+    <entry key="NonExpFcnModelWithICM">
+    
+        Model ''{0}'', which is not an Export Function model, may not generate reusable code because it contains scoped Simulink function ''{1}'' which generates reusable code. 
+        Ensure that the model ''{0}'' is an Export Function model to generate reusable code or 
+        Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function' and 'Total number of instances allowed per top model' to 'One'.
+        &lt;actions exclusiveFixIts="no"&gt;
+          &lt;action type="fixit" id="CodeInterfacePackagingNonreusableFix" retvalue="false"&gt;
+            &lt;cmd&gt;load_system(''{0}''); set_param_action(''{0}'', ''CodeInterfacePackaging'', ''Nonreusable function'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Code interface packaging' to 'Nonreusable function'.&lt;/txt&gt;
+          &lt;/action&gt;
+          &lt;action type="fixit" id="ModelReferenceNumInstancesAllowedSingleFix" retvalue="false"&gt;
+            &lt;cmd&gt;load_system(''{0}''); set_param_action(''{0}'',''ModelReferenceNumInstancesAllowed'',''Single'');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the model configuration parameter 'Total number of instances allowed per top model' to 'One'&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+    <entry key="MultiInstExpFcnInNonExpFcn">Model ''{0}'', which is not an Export Function model, may not generate code because it contains a reference model ''{1}'' that is set up as a multi-instance Export Function. Consider setting the 'Total number of instances allowed per top model' model configuration parameter from ''{1}'' to 'One' or ensure that the model ''{0}'' is an Export Function model.</entry>
+    <entry key="MultiInstFcnCallInNonFcnCall">Model ''{0}'' contains a reference model ''{1}'' which has a Simulink Function or a function-call root inport and is configured for multi-instance code generation. This modeling pattern and configuration requires model ''{0}'' to use function-call root inport as well.</entry>
+    <entry key="CPPClassNotAllowedForFPC">モデル ''{0}'' は、カスタマイズされた関数インターフェイスでマルチインスタンス コード生成用に構成されたモデルを参照します。このモデル設定では、モデル コンフィギュレーション パラメーター [コード インターフェイスのパッケージ化] を [再利用できない関数] または [再利用可能な関数] に設定する必要があります。</entry>
+    <entry key="ModelBlockInReusableVSSFcnCall">モデル ブロック ''{0}'' は、Simulink 関数または関数呼び出しのルート入力端子をもつモデルを参照し、マルチインスタンス コード生成用に構成されています。このモデル ブロックは、再利用可能なバリアント サブシステム ''{1}'' 内には配置できません。</entry>
+    <entry key="ModelBlockInReusableVSSFPC">モデル ブロック ''{0}'' は、カスタマイズされた関数インターフェイスでマルチインスタンス コード生成用に構成されたモデルを参照します。このモデル ブロックは、再利用可能なバリアント サブシステム ''{1}'' 内には配置できません。</entry>
+    <entry key="LibrarySubsystemWithFcnCall">Simulink 関数または関数呼び出しのルート入力端子をもち、マルチインスタンス コード生成用に構成されているモデル ブロック ''{0}'' をライブラリ サブシステム内に配置することは、コード ジェネレーターではサポートされていません。</entry>
+    <entry key="LibrarySubsystemWithFPC">カスタマイズされた関数インターフェイスでマルチインスタンス コード生成用に構成されているモデル ブロック ''{0}'' をライブラリ サブシステム内に配置することは、コード ジェネレーターではサポートされていません。</entry>
+    <entry key="FunctionCallerCrossSubsysBoundary">モデル ''{0}'' はマルチインスタンスのエクスポート関数モデルとして設定されています。この場合、Atomic サブシステム ''{2}'' 内の Function Caller ブロック ''{1}'' は、このサブシステム外部にある Simulink 関数を呼び出すことができません。</entry>
+    <entry key="ContinuousStatesForFcnCall">
+    
+        Model ''{0}'' is a model with a Simulink Function or a function-call root inport and is configured for continuous time and multi-instance code generation. Clear the model configuration parameter ''Support continuous time''
+        &lt;actions exclusiveFixIts="yes"&gt;
+          &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''SupportContinuousTime'', ''off'')&lt;/cmd&gt;
+            &lt;txt&gt;Clear the model configuration parameter 'Support continuous time'.&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+    <entry key="ContinuousStatesForFPC">
+    
+        Model ''{0}'' is or refers to a model configured with a customized function interface and for continuous time and multi-instance code generation. Clear the model configuration parameter ''Support continuous time''
+        &lt;actions exclusiveFixIts="yes"&gt;
+          &lt;action type="fixit"&gt;
+            &lt;cmd&gt;configset.internal.fixIt(''{0}'', ''SupportContinuousTime'', ''off'')&lt;/cmd&gt;
+            &lt;txt&gt;Clear the model configuration parameter 'Support continuous time'.&lt;/txt&gt;
+          &lt;/action&gt;
+        &lt;/actions&gt;
+      
+    </entry>
+  </message>
+</rsccat>

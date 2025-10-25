@@ -1,0 +1,2617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018-2019 The MathWorks, Inc. -->
+<!-- Mapping of math builtin to a Polyspace Backend semantic -->
+<!-- For example the definition: -->
+<!-- <tag id="cosf" kind="function" user_name="cosf" type="double (float)" > -->
+<!--   <properties> -->
+<!--     <property kind="predef">cos</property> -->
+<!--     <property kind="predef">f</property> -->
+<!--   </properties> -->
+<!-- </tag> -->
+<!-- means that the user function double cosf(float) will be flagged as a polyspace builtin and gets the -->
+<!-- attribute "cos" as property1 and "f' as property2 in the IL (in its definition). If the type is not compatible, -->
+<!-- then the user function is not flagged as a polyspace builtin  -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <!--
+    standard function "acos" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_acos" kind="function" user_name="__builtin_mw_acos" type="double (double)">
+    <properties>
+      <property kind="predef">acos</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acos" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_acosf" kind="function" user_name="__builtin_mw_acosf" type="float (float)">
+    <properties>
+      <property kind="predef">acos</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acosh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_acosh" kind="function" user_name="__builtin_mw_acosh" type="double (double)">
+    <properties>
+      <property kind="predef">acosh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acosh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_acoshf" kind="function" user_name="__builtin_mw_acoshf" type="float (float)">
+    <properties>
+      <property kind="predef">acosh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acosh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_acoshl" kind="function" user_name="__builtin_mw_acoshl" type="long double (long double)">
+    <properties>
+      <property kind="predef">acosh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acos" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_acosl" kind="function" user_name="__builtin_mw_acosl" type="long double (long double)">
+    <properties>
+      <property kind="predef">acos</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asin" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_asin" kind="function" user_name="__builtin_mw_asin" type="double (double)">
+    <properties>
+      <property kind="predef">asin</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asin" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_asinf" kind="function" user_name="__builtin_mw_asinf" type="float (float)">
+    <properties>
+      <property kind="predef">asin</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asinh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_asinh" kind="function" user_name="__builtin_mw_asinh" type="double (double)">
+    <properties>
+      <property kind="predef">asinh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asinh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_asinhf" kind="function" user_name="__builtin_mw_asinhf" type="float (float)">
+    <properties>
+      <property kind="predef">asinh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asinh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_asinhl" kind="function" user_name="__builtin_mw_asinhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">asinh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asin" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_asinl" kind="function" user_name="__builtin_mw_asinl" type="long double (long double)">
+    <properties>
+      <property kind="predef">asin</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_atan" kind="function" user_name="__builtin_mw_atan" type="double (double)">
+    <properties>
+      <property kind="predef">atan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan2" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="__builtin_mw_atan2" kind="function" user_name="__builtin_mw_atan2" type="double (double, double)">
+    <properties>
+      <property kind="predef">atan2</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan2" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="__builtin_mw_atan2f" kind="function" user_name="__builtin_mw_atan2f" type="float (float, float)">
+    <properties>
+      <property kind="predef">atan2</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan2" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="__builtin_mw_atan2l" kind="function" user_name="__builtin_mw_atan2l" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">atan2</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_atanf" kind="function" user_name="__builtin_mw_atanf" type="float (float)">
+    <properties>
+      <property kind="predef">atan</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atanh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_atanh" kind="function" user_name="__builtin_mw_atanh" type="double (double)">
+    <properties>
+      <property kind="predef">atanh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atanh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_atanhf" kind="function" user_name="__builtin_mw_atanhf" type="float (float)">
+    <properties>
+      <property kind="predef">atanh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atanh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_atanhl" kind="function" user_name="__builtin_mw_atanhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">atanh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_atanl" kind="function" user_name="__builtin_mw_atanl" type="long double (long double)">
+    <properties>
+      <property kind="predef">atan</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "ceil" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_ceil" kind="function" user_name="__builtin_mw_ceil" type="double (double)">
+    <properties>
+      <property kind="predef">ceil</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "ceil" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_ceilf" kind="function" user_name="__builtin_mw_ceilf" type="float (float)">
+    <properties>
+      <property kind="predef">ceil</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "ceil" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_ceill" kind="function" user_name="__builtin_mw_ceill" type="long double (long double)">
+    <properties>
+      <property kind="predef">ceil</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cos" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_cos" kind="function" user_name="__builtin_mw_cos" type="double (double)">
+    <properties>
+      <property kind="predef">cos</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cos" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_cosf" kind="function" user_name="__builtin_mw_cosf" type="float (float)">
+    <properties>
+      <property kind="predef">cos</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cosh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_cosh" kind="function" user_name="__builtin_mw_cosh" type="double (double)">
+    <properties>
+      <property kind="predef">cosh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cosh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_coshf" kind="function" user_name="__builtin_mw_coshf" type="float (float)">
+    <properties>
+      <property kind="predef">cosh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cosh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_coshl" kind="function" user_name="__builtin_mw_coshl" type="long double (long double)">
+    <properties>
+      <property kind="predef">cosh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cos" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_cosl" kind="function" user_name="__builtin_mw_cosl" type="long double (long double)">
+    <properties>
+      <property kind="predef">cos</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_exp" kind="function" user_name="__builtin_mw_exp" type="double (double)">
+    <properties>
+      <property kind="predef">exp</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_expf" kind="function" user_name="__builtin_mw_expf" type="float (float)">
+    <properties>
+      <property kind="predef">exp</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_expl" kind="function" user_name="__builtin_mw_expl" type="long double (long double)">
+    <properties>
+      <property kind="predef">exp</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "expm1" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_expm1" kind="function" user_name="__builtin_mw_expm1" type="double (double)">
+    <properties>
+      <property kind="predef">expm1</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "expm1" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_expm1f" kind="function" user_name="__builtin_mw_expm1f" type="float (float)">
+    <properties>
+      <property kind="predef">expm1</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "expm1" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_expm1l" kind="function" user_name="__builtin_mw_expm1l" type="long double (long double)">
+    <properties>
+      <property kind="predef">expm1</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fabs" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_fabs" kind="function" user_name="__builtin_mw_fabs" type="double (double)">
+    <properties>
+      <property kind="predef">fabs</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fabs" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_fabsf" kind="function" user_name="__builtin_mw_fabsf" type="float (float)">
+    <properties>
+      <property kind="predef">fabs</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fabs" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_fabsl" kind="function" user_name="__builtin_mw_fabsl" type="long double (long double)">
+    <properties>
+      <property kind="predef">fabs</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "floor" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_floor" kind="function" user_name="__builtin_mw_floor" type="double (double)">
+    <properties>
+      <property kind="predef">floor</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "floor" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_floorf" kind="function" user_name="__builtin_mw_floorf" type="float (float)">
+    <properties>
+      <property kind="predef">floor</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "floor" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_floorl" kind="function" user_name="__builtin_mw_floorl" type="long double (long double)">
+    <properties>
+      <property kind="predef">floor</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmax" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="__builtin_mw_fmax" kind="function" user_name="__builtin_mw_fmax" type="double (double, double)">
+    <properties>
+      <property kind="predef">fmax</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmax" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="__builtin_mw_fmaxf" kind="function" user_name="__builtin_mw_fmaxf" type="float (float, float)">
+    <properties>
+      <property kind="predef">fmax</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmax" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="__builtin_mw_fmaxl" kind="function" user_name="__builtin_mw_fmaxl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">fmax</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmin" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="__builtin_mw_fmin" kind="function" user_name="__builtin_mw_fmin" type="double (double, double)">
+    <properties>
+      <property kind="predef">fmin</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmin" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="__builtin_mw_fminf" kind="function" user_name="__builtin_mw_fminf" type="float (float, float)">
+    <properties>
+      <property kind="predef">fmin</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmin" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="__builtin_mw_fminl" kind="function" user_name="__builtin_mw_fminl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">fmin</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmod" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="__builtin_mw_fmod" kind="function" user_name="__builtin_mw_fmod" type="double (double, double)">
+    <properties>
+      <property kind="predef">fmod</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmod" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="__builtin_mw_fmodf" kind="function" user_name="__builtin_mw_fmodf" type="float (float, float)">
+    <properties>
+      <property kind="predef">fmod</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmod" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="__builtin_mw_fmodl" kind="function" user_name="__builtin_mw_fmodl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">fmod</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "hypot" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="__builtin_mw_hypot" kind="function" user_name="__builtin_mw_hypot" type="double (double, double)">
+    <properties>
+      <property kind="predef">hypot</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "hypot" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="__builtin_mw_hypotf" kind="function" user_name="__builtin_mw_hypotf" type="float (float, float)">
+    <properties>
+      <property kind="predef">hypot</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "hypot" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="__builtin_mw_hypotl" kind="function" user_name="__builtin_mw_hypotl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">hypot</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isfinite" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_isfinite" kind="function" user_name="__builtin_mw_isfinite" type="int (double)">
+    <properties>
+      <property kind="predef">isfinite</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isfinite" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_isfinitef" kind="function" user_name="__builtin_mw_isfinitef" type="int (float)">
+    <properties>
+      <property kind="predef">isfinite</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isfinite" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_isfinitel" kind="function" user_name="__builtin_mw_isfinitel" type="int (long double)">
+    <properties>
+      <property kind="predef">isfinite</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isinf" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_isinf" kind="function" user_name="__builtin_mw_isinf" type="int (double)">
+    <properties>
+      <property kind="predef">isinf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isinf" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_isinff" kind="function" user_name="__builtin_mw_isinff" type="int (float)">
+    <properties>
+      <property kind="predef">isinf</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isinf" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_isinfl" kind="function" user_name="__builtin_mw_isinfl" type="int (long double)">
+    <properties>
+      <property kind="predef">isinf</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnan" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_isnan" kind="function" user_name="__builtin_mw_isnan" type="int (double)">
+    <properties>
+      <property kind="predef">isnan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnan" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_isnanf" kind="function" user_name="__builtin_mw_isnanf" type="int (float)">
+    <properties>
+      <property kind="predef">isnan</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnan" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_isnanl" kind="function" user_name="__builtin_mw_isnanl" type="int (long double)">
+    <properties>
+      <property kind="predef">isnan</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnormal" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_isnormal" kind="function" user_name="__builtin_mw_isnormal" type="int (double)">
+    <properties>
+      <property kind="predef">isnormal</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnormal" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_isnormalf" kind="function" user_name="__builtin_mw_isnormalf" type="int (float)">
+    <properties>
+      <property kind="predef">isnormal</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnormal" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_isnormall" kind="function" user_name="__builtin_mw_isnormall" type="int (long double)">
+    <properties>
+      <property kind="predef">isnormal</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_log" kind="function" user_name="__builtin_mw_log" type="double (double)">
+    <properties>
+      <property kind="predef">log</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log10" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_log10" kind="function" user_name="__builtin_mw_log10" type="double (double)">
+    <properties>
+      <property kind="predef">log10</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log10" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_log10f" kind="function" user_name="__builtin_mw_log10f" type="float (float)">
+    <properties>
+      <property kind="predef">log10</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log10" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_log10l" kind="function" user_name="__builtin_mw_log10l" type="long double (long double)">
+    <properties>
+      <property kind="predef">log10</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log1p" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_log1p" kind="function" user_name="__builtin_mw_log1p" type="double (double)">
+    <properties>
+      <property kind="predef">log1p</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log1p" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_log1pf" kind="function" user_name="__builtin_mw_log1pf" type="float (float)">
+    <properties>
+      <property kind="predef">log1p</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log1p" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_log1pl" kind="function" user_name="__builtin_mw_log1pl" type="long double (long double)">
+    <properties>
+      <property kind="predef">log1p</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log2" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_log2" kind="function" user_name="__builtin_mw_log2" type="double (double)">
+    <properties>
+      <property kind="predef">log2</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log2" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_log2f" kind="function" user_name="__builtin_mw_log2f" type="float (float)">
+    <properties>
+      <property kind="predef">log2</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log2" from <math.h>
+    expected return: long double
+    expected arguments:  long double
+  -->
+  <tag id="__builtin_mw_log2l" kind="function" user_name="__builtin_mw_log2l" type="long double ( long double)">
+    <properties>
+      <property kind="predef">log2</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "logb" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_logb" kind="function" user_name="__builtin_mw_logb" type="double (double)">
+    <properties>
+      <property kind="predef">logb</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "logb" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_logbf" kind="function" user_name="__builtin_mw_logbf" type="float (float)">
+    <properties>
+      <property kind="predef">logb</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "logb" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_logbl" kind="function" user_name="__builtin_mw_logbl" type="long double (long double)">
+    <properties>
+      <property kind="predef">logb</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_logf" kind="function" user_name="__builtin_mw_logf" type="float (float)">
+    <properties>
+      <property kind="predef">log</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_logl" kind="function" user_name="__builtin_mw_logl" type="long double (long double)">
+    <properties>
+      <property kind="predef">log</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "modf" from <math.h>
+    expected return: double
+    expected arguments: double, double*
+  -->
+  <tag id="__builtin_mw_modf" kind="function" user_name="__builtin_mw_modf" type="double (double, double*)">
+    <properties>
+      <property kind="predef">modf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "modf" from <math.h>
+    expected return: float
+    expected arguments: float, float*
+  -->
+  <tag id="__builtin_mw_modff" kind="function" user_name="__builtin_mw_modff" type="float (float, float*)">
+    <properties>
+      <property kind="predef">modf</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "modf" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double*
+  -->
+  <tag id="__builtin_mw_modfl" kind="function" user_name="__builtin_mw_modfl" type="long double (long double, long double*)">
+    <properties>
+      <property kind="predef">modf</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "pow" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="__builtin_mw_pow" kind="function" user_name="__builtin_mw_pow" type="double (double, double)">
+    <properties>
+      <property kind="predef">pow</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "pow" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="__builtin_mw_powf" kind="function" user_name="__builtin_mw_powf" type="float (float, float)">
+    <properties>
+      <property kind="predef">pow</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "pow" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="__builtin_mw_powl" kind="function" user_name="__builtin_mw_powl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">pow</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "signbit" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_signbit" kind="function" user_name="__builtin_mw_signbit" type="int (double)">
+    <properties>
+      <property kind="predef">signbit</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "signbit" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_signbitf" kind="function" user_name="__builtin_mw_signbitf" type="int (float)">
+    <properties>
+      <property kind="predef">signbit</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "signbit" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_signbitl" kind="function" user_name="__builtin_mw_signbitl" type="int (long double)">
+    <properties>
+      <property kind="predef">signbit</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sin" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_sin" kind="function" user_name="__builtin_mw_sin" type="double (double)">
+    <properties>
+      <property kind="predef">sin</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sin" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_sinf" kind="function" user_name="__builtin_mw_sinf" type="float (float)">
+    <properties>
+      <property kind="predef">sin</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sinh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_sinh" kind="function" user_name="__builtin_mw_sinh" type="double (double)">
+    <properties>
+      <property kind="predef">sinh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sinh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_sinhf" kind="function" user_name="__builtin_mw_sinhf" type="float (float)">
+    <properties>
+      <property kind="predef">sinh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sinh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_sinhl" kind="function" user_name="__builtin_mw_sinhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">sinh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sin" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_sinl" kind="function" user_name="__builtin_mw_sinl" type="long double (long double)">
+    <properties>
+      <property kind="predef">sin</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sqrt" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_sqrt" kind="function" user_name="__builtin_mw_sqrt" type="double (double)">
+    <properties>
+      <property kind="predef">sqrt</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sqrt" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_sqrtf" kind="function" user_name="__builtin_mw_sqrtf" type="float (float)">
+    <properties>
+      <property kind="predef">sqrt</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sqrt" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_sqrtl" kind="function" user_name="__builtin_mw_sqrtl" type="long double (long double)">
+    <properties>
+      <property kind="predef">sqrt</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tan" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_tan" kind="function" user_name="__builtin_mw_tan" type="double (double)">
+    <properties>
+      <property kind="predef">tan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tan" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_tanf" kind="function" user_name="__builtin_mw_tanf" type="float (float)">
+    <properties>
+      <property kind="predef">tan</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tanh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="__builtin_mw_tanh" kind="function" user_name="__builtin_mw_tanh" type="double (double)">
+    <properties>
+      <property kind="predef">tanh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tanh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="__builtin_mw_tanhf" kind="function" user_name="__builtin_mw_tanhf" type="float (float)">
+    <properties>
+      <property kind="predef">tanh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tanh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_tanhl" kind="function" user_name="__builtin_mw_tanhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">tanh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tan" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="__builtin_mw_tanl" kind="function" user_name="__builtin_mw_tanl" type="long double (long double)">
+    <properties>
+      <property kind="predef">tan</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acos" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="acos" kind="function" user_name="acos" type="double (double)">
+    <properties>
+      <property kind="predef">acos</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acos" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="acosf" kind="function" user_name="acosf" type="float (float)">
+    <properties>
+      <property kind="predef">acos</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acosh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="acosh" kind="function" user_name="acosh" type="double (double)">
+    <properties>
+      <property kind="predef">acosh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acosh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="acoshf" kind="function" user_name="acoshf" type="float (float)">
+    <properties>
+      <property kind="predef">acosh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acosh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="acoshl" kind="function" user_name="acoshl" type="long double (long double)">
+    <properties>
+      <property kind="predef">acosh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "acos" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="acosl" kind="function" user_name="acosl" type="long double (long double)">
+    <properties>
+      <property kind="predef">acos</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asin" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="asin" kind="function" user_name="asin" type="double (double)">
+    <properties>
+      <property kind="predef">asin</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asin" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="asinf" kind="function" user_name="asinf" type="float (float)">
+    <properties>
+      <property kind="predef">asin</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asinh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="asinh" kind="function" user_name="asinh" type="double (double)">
+    <properties>
+      <property kind="predef">asinh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asinh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="asinhf" kind="function" user_name="asinhf" type="float (float)">
+    <properties>
+      <property kind="predef">asinh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asinh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="asinhl" kind="function" user_name="asinhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">asinh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "asin" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="asinl" kind="function" user_name="asinl" type="long double (long double)">
+    <properties>
+      <property kind="predef">asin</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="atan" kind="function" user_name="atan" type="double (double)">
+    <properties>
+      <property kind="predef">atan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan2" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="atan2" kind="function" user_name="atan2" type="double (double, double)">
+    <properties>
+      <property kind="predef">atan2</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan2" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="atan2f" kind="function" user_name="atan2f" type="float (float, float)">
+    <properties>
+      <property kind="predef">atan2</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan2" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="atan2l" kind="function" user_name="atan2l" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">atan2</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="atanf" kind="function" user_name="atanf" type="float (float)">
+    <properties>
+      <property kind="predef">atan</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atanh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="atanh" kind="function" user_name="atanh" type="double (double)">
+    <properties>
+      <property kind="predef">atanh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atanh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="atanhf" kind="function" user_name="atanhf" type="float (float)">
+    <properties>
+      <property kind="predef">atanh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atanh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="atanhl" kind="function" user_name="atanhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">atanh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "atan" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="atanl" kind="function" user_name="atanl" type="long double (long double)">
+    <properties>
+      <property kind="predef">atan</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cbrt" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="cbrt" kind="function" user_name="cbrt" type="double (double)">
+    <properties>
+      <property kind="predef">cbrt</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cbrt" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="cbrtf" kind="function" user_name="cbrtf" type="float (float)">
+    <properties>
+      <property kind="predef">cbrt</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cbrt" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="cbrtl" kind="function" user_name="cbrtl" type="long double (long double)">
+    <properties>
+      <property kind="predef">cbrt</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "ceil" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="ceil" kind="function" user_name="ceil" type="double (double)">
+    <properties>
+      <property kind="predef">ceil</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "ceil" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="ceilf" kind="function" user_name="ceilf" type="float (float)">
+    <properties>
+      <property kind="predef">ceil</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "ceil" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="ceill" kind="function" user_name="ceill" type="long double (long double)">
+    <properties>
+      <property kind="predef">ceil</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cos" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="cos" kind="function" user_name="cos" type="double (double)">
+    <properties>
+      <property kind="predef">cos</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cos" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="cosf" kind="function" user_name="cosf" type="float (float)">
+    <properties>
+      <property kind="predef">cos</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cosh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="cosh" kind="function" user_name="cosh" type="double (double)">
+    <properties>
+      <property kind="predef">cosh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cosh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="coshf" kind="function" user_name="coshf" type="float (float)">
+    <properties>
+      <property kind="predef">cosh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cosh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="coshl" kind="function" user_name="coshl" type="long double (long double)">
+    <properties>
+      <property kind="predef">cosh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "cos" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="cosl" kind="function" user_name="cosl" type="long double (long double)">
+    <properties>
+      <property kind="predef">cos</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="exp" kind="function" user_name="exp" type="double (double)">
+    <properties>
+      <property kind="predef">exp</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp2" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="exp2" kind="function" user_name="exp2" type="double (double)">
+    <properties>
+      <property kind="predef">exp2</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp2" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="exp2f" kind="function" user_name="exp2f" type="float (float)">
+    <properties>
+      <property kind="predef">exp2</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp2" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="exp2l" kind="function" user_name="exp2l" type="long double (long double)">
+    <properties>
+      <property kind="predef">exp2</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="expf" kind="function" user_name="expf" type="float (float)">
+    <properties>
+      <property kind="predef">exp</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "exp" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="expl" kind="function" user_name="expl" type="long double (long double)">
+    <properties>
+      <property kind="predef">exp</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "expm1" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="expm1" kind="function" user_name="expm1" type="double (double)">
+    <properties>
+      <property kind="predef">expm1</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "expm1" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="expm1f" kind="function" user_name="expm1f" type="float (float)">
+    <properties>
+      <property kind="predef">expm1</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "expm1" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="expm1l" kind="function" user_name="expm1l" type="long double (long double)">
+    <properties>
+      <property kind="predef">expm1</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fabs" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="fabs" kind="function" user_name="fabs" type="double (double)">
+    <properties>
+      <property kind="predef">fabs</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fabs" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="fabsf" kind="function" user_name="fabsf" type="float (float)">
+    <properties>
+      <property kind="predef">fabs</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fabs" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="fabsl" kind="function" user_name="fabsl" type="long double (long double)">
+    <properties>
+      <property kind="predef">fabs</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "floor" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="floor" kind="function" user_name="floor" type="double (double)">
+    <properties>
+      <property kind="predef">floor</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "floor" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="floorf" kind="function" user_name="floorf" type="float (float)">
+    <properties>
+      <property kind="predef">floor</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "floor" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="floorl" kind="function" user_name="floorl" type="long double (long double)">
+    <properties>
+      <property kind="predef">floor</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmax" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="fmax" kind="function" user_name="fmax" type="double (double, double)">
+    <properties>
+      <property kind="predef">fmax</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmax" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="fmaxf" kind="function" user_name="fmaxf" type="float (float, float)">
+    <properties>
+      <property kind="predef">fmax</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmax" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="fmaxl" kind="function" user_name="fmaxl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">fmax</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmin" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="fmin" kind="function" user_name="fmin" type="double (double, double)">
+    <properties>
+      <property kind="predef">fmin</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmin" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="fminf" kind="function" user_name="fminf" type="float (float, float)">
+    <properties>
+      <property kind="predef">fmin</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmin" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="fminl" kind="function" user_name="fminl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">fmin</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmod" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="fmod" kind="function" user_name="fmod" type="double (double, double)">
+    <properties>
+      <property kind="predef">fmod</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmod" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="fmodf" kind="function" user_name="fmodf" type="float (float, float)">
+    <properties>
+      <property kind="predef">fmod</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "fmod" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="fmodl" kind="function" user_name="fmodl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">fmod</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "hypot" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="hypot" kind="function" user_name="hypot" type="double (double, double)">
+    <properties>
+      <property kind="predef">hypot</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "hypot" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="hypotf" kind="function" user_name="hypotf" type="float (float, float)">
+    <properties>
+      <property kind="predef">hypot</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "hypot" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="hypotl" kind="function" user_name="hypotl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">hypot</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isfinite" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="isfinite" kind="function" user_name="isfinite" type="int (double)">
+    <properties>
+      <property kind="predef">isfinite</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isfinite" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="isfinitef" kind="function" user_name="isfinitef" type="int (float)">
+    <properties>
+      <property kind="predef">isfinite</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isfinite" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="isfinitel" kind="function" user_name="isfinitel" type="int (long double)">
+    <properties>
+      <property kind="predef">isfinite</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isinf" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="isinf" kind="function" user_name="isinf" type="int (double)">
+    <properties>
+      <property kind="predef">isinf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isinf" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="isinff" kind="function" user_name="isinff" type="int (float)">
+    <properties>
+      <property kind="predef">isinf</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isinf" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="isinfl" kind="function" user_name="isinfl" type="int (long double)">
+    <properties>
+      <property kind="predef">isinf</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnan" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="isnan" kind="function" user_name="isnan" type="int (double)">
+    <properties>
+      <property kind="predef">isnan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnan" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="isnanf" kind="function" user_name="isnanf" type="int (float)">
+    <properties>
+      <property kind="predef">isnan</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnan" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="isnanl" kind="function" user_name="isnanl" type="int (long double)">
+    <properties>
+      <property kind="predef">isnan</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnormal" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="isnormal" kind="function" user_name="isnormal" type="int (double)">
+    <properties>
+      <property kind="predef">isnormal</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnormal" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="isnormalf" kind="function" user_name="isnormalf" type="int (float)">
+    <properties>
+      <property kind="predef">isnormal</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "isnormal" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="isnormall" kind="function" user_name="isnormall" type="int (long double)">
+    <properties>
+      <property kind="predef">isnormal</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="log" kind="function" user_name="log" type="double (double)">
+    <properties>
+      <property kind="predef">log</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log10" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="log10" kind="function" user_name="log10" type="double (double)">
+    <properties>
+      <property kind="predef">log10</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log10" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="log10f" kind="function" user_name="log10f" type="float (float)">
+    <properties>
+      <property kind="predef">log10</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log10" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="log10l" kind="function" user_name="log10l" type="long double (long double)">
+    <properties>
+      <property kind="predef">log10</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log1p" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="log1p" kind="function" user_name="log1p" type="double (double)">
+    <properties>
+      <property kind="predef">log1p</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log1p" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="log1pf" kind="function" user_name="log1pf" type="float (float)">
+    <properties>
+      <property kind="predef">log1p</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log1p" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="log1pl" kind="function" user_name="log1pl" type="long double (long double)">
+    <properties>
+      <property kind="predef">log1p</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log2" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="log2" kind="function" user_name="log2" type="double (double)">
+    <properties>
+      <property kind="predef">log2</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log2" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="log2f" kind="function" user_name="log2f" type="float (float)">
+    <properties>
+      <property kind="predef">log2</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log2" from <math.h>
+    expected return: long double
+    expected arguments:  long double
+  -->
+  <tag id="log2l" kind="function" user_name="log2l" type="long double ( long double)">
+    <properties>
+      <property kind="predef">log2</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "logb" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="logb" kind="function" user_name="logb" type="double (double)">
+    <properties>
+      <property kind="predef">logb</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "logb" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="logbf" kind="function" user_name="logbf" type="float (float)">
+    <properties>
+      <property kind="predef">logb</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "logb" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="logbl" kind="function" user_name="logbl" type="long double (long double)">
+    <properties>
+      <property kind="predef">logb</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="logf" kind="function" user_name="logf" type="float (float)">
+    <properties>
+      <property kind="predef">log</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "log" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="logl" kind="function" user_name="logl" type="long double (long double)">
+    <properties>
+      <property kind="predef">log</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "modf" from <math.h>
+    expected return: double
+    expected arguments: double, double*
+  -->
+  <tag id="modf" kind="function" user_name="modf" type="double (double, double*)">
+    <properties>
+      <property kind="predef">modf</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "modf" from <math.h>
+    expected return: float
+    expected arguments: float, float*
+  -->
+  <tag id="modff" kind="function" user_name="modff" type="float (float, float*)">
+    <properties>
+      <property kind="predef">modf</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "modf" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double*
+  -->
+  <tag id="modfl" kind="function" user_name="modfl" type="long double (long double, long double*)">
+    <properties>
+      <property kind="predef">modf</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "pow" from <math.h>
+    expected return: double
+    expected arguments: double, double
+  -->
+  <tag id="pow" kind="function" user_name="pow" type="double (double, double)">
+    <properties>
+      <property kind="predef">pow</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "pow" from <math.h>
+    expected return: float
+    expected arguments: float, float
+  -->
+  <tag id="powf" kind="function" user_name="powf" type="float (float, float)">
+    <properties>
+      <property kind="predef">pow</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "pow" from <math.h>
+    expected return: long double
+    expected arguments: long double, long double
+  -->
+  <tag id="powl" kind="function" user_name="powl" type="long double (long double, long double)">
+    <properties>
+      <property kind="predef">pow</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "round" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="round" kind="function" user_name="round" type="double (double)">
+    <properties>
+      <property kind="predef">round</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "round" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="roundf" kind="function" user_name="roundf" type="float (float)">
+    <properties>
+      <property kind="predef">round</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "round" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="roundl" kind="function" user_name="roundl" type="long double (long double)">
+    <properties>
+      <property kind="predef">round</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "signbit" from <math.h>
+    expected return: int
+    expected arguments: double
+  -->
+  <tag id="signbit" kind="function" user_name="signbit" type="int (double)">
+    <properties>
+      <property kind="predef">signbit</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "signbit" from <math.h>
+    expected return: int
+    expected arguments: float
+  -->
+  <tag id="signbitf" kind="function" user_name="signbitf" type="int (float)">
+    <properties>
+      <property kind="predef">signbit</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "signbit" from <math.h>
+    expected return: int
+    expected arguments: long double
+  -->
+  <tag id="signbitl" kind="function" user_name="signbitl" type="int (long double)">
+    <properties>
+      <property kind="predef">signbit</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sin" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="sin" kind="function" user_name="sin" type="double (double)">
+    <properties>
+      <property kind="predef">sin</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sin" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="sinf" kind="function" user_name="sinf" type="float (float)">
+    <properties>
+      <property kind="predef">sin</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sinh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="sinh" kind="function" user_name="sinh" type="double (double)">
+    <properties>
+      <property kind="predef">sinh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sinh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="sinhf" kind="function" user_name="sinhf" type="float (float)">
+    <properties>
+      <property kind="predef">sinh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sinh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="sinhl" kind="function" user_name="sinhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">sinh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sin" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="sinl" kind="function" user_name="sinl" type="long double (long double)">
+    <properties>
+      <property kind="predef">sin</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sqrt" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="sqrt" kind="function" user_name="sqrt" type="double (double)">
+    <properties>
+      <property kind="predef">sqrt</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sqrt" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="sqrtf" kind="function" user_name="sqrtf" type="float (float)">
+    <properties>
+      <property kind="predef">sqrt</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "sqrt" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="sqrtl" kind="function" user_name="sqrtl" type="long double (long double)">
+    <properties>
+      <property kind="predef">sqrt</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tan" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="tan" kind="function" user_name="tan" type="double (double)">
+    <properties>
+      <property kind="predef">tan</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tan" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="tanf" kind="function" user_name="tanf" type="float (float)">
+    <properties>
+      <property kind="predef">tan</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tanh" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="tanh" kind="function" user_name="tanh" type="double (double)">
+    <properties>
+      <property kind="predef">tanh</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tanh" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="tanhf" kind="function" user_name="tanhf" type="float (float)">
+    <properties>
+      <property kind="predef">tanh</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tanh" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="tanhl" kind="function" user_name="tanhl" type="long double (long double)">
+    <properties>
+      <property kind="predef">tanh</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "tan" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="tanl" kind="function" user_name="tanl" type="long double (long double)">
+    <properties>
+      <property kind="predef">tan</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "trunc" from <math.h>
+    expected return: double
+    expected arguments: double
+  -->
+  <tag id="trunc" kind="function" user_name="trunc" type="double (double)">
+    <properties>
+      <property kind="predef">trunc</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "trunc" from <math.h>
+    expected return: float
+    expected arguments: float
+  -->
+  <tag id="truncf" kind="function" user_name="truncf" type="float (float)">
+    <properties>
+      <property kind="predef">trunc</property>
+      <property kind="predef">f</property>
+    </properties>
+  </tag>
+
+  <!--
+    standard function "trunc" from <math.h>
+    expected return: long double
+    expected arguments: long double
+  -->
+  <tag id="truncl" kind="function" user_name="truncl" type="long double (long double)">
+    <properties>
+      <property kind="predef">trunc</property>
+      <property kind="predef">l</property>
+    </properties>
+  </tag>
+
+
+  <!--
+      Force __builtin_nanf not to be translated as a backing expression. Use the NAN value
+      instead. To be sure that expression like double result = NAN are refused by CGIR backend. See
+      runtests(fullfile(matlabroot,'test/toolbox/shared/sldv_cc/sfcn/tMathLib.m'),'Name','tMathLib/nan')
+  -->
+  <tag id="__builtin_nanf" kind="function" user_name="__builtin_nanf">
+    <properties>
+      <property kind="predef_fe">__builtin_nanf</property>
+    </properties>
+  </tag>
+
+</tags>

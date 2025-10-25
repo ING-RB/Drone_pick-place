@@ -1,0 +1,15 @@
+{% if (false) %}
+# Copyright 2024 The MathWorks, Inc.
+{% endif %}
+
+#  Code generated for Simulink model '{%ModelName%}'.
+#  Generated on : {% datestr(now,'ddd mmm dd HH:MM:SS YYYY') %}
+
+{%ProjectName%}:
+{% for k=numel(DynamicParams) %}
+  {%DynamicParams(k).Name%}: {
+    type: {%DynamicParams(k).DataType.yaml%},
+    default_value: {%DynamicParams(k).DefaultValue%},
+    description: "{%DynamicParams(k).Description%}",
+  }
+{% endfor %}

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- Copyright 2019-2022 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="vision">
+    <message>
+
+        <!-- For anchorBoxLayer -->
+        <entry key="anchorBoxDescription">Anchor Box Layer.</entry>
+        <entry key="anchorBoxType">Anchor Box Layer.</entry>
+        <entry key="achorBoxLayerToBeRemoved">anchorBoxLayer will be removed in a future release. Use the ssdObjectDetector function to create a SSD object detection network, instead.</entry>
+
+        <!-- For focalLossLayer -->
+        <entry key="focalLossDescription">Focal Loss Layer.</entry>
+        <entry key="focalLossType">Focal Loss Layer.</entry>
+
+        <!-- For l2NormalizationLayer -->
+        <entry key="l2NormDescription">L2 Normalization Layer.</entry>
+        <entry key="l2NormType">L2 Normalization Layer.</entry>
+
+        <!-- For SSDMergeLayer -->
+        <entry key="ssdMergeDescription">SSD Merge Layer.</entry>
+        <entry key="ssdMergeType">SSD Merge Layer.</entry>
+
+        <!-- For anchorBoxSoftmaxLayer -->
+        <entry key="anchorBoxSoftmaxDescription">Anchor Box Softmax Layer.</entry>
+        <entry key="anchorBoxSoftmaxType">Anchor Box Softmax Layer.</entry>
+
+
+        <!-- For ssdLayers -->
+        <entry key="InvalidLayerSize">The number of input channels must match the number of channels in the network's first convolution layer.</entry>
+        <entry key="InvalidLayerName">Layer {0} does not exist in the network. Specify a layer name that is part of the network.</entry>
+        <entry key="InvalidPredictorLayerNames">The predictor layer names must be specified as an M-element string vector or an M-element cell array of character vectors, where M is the number of elements in the anchorBoxes input.</entry>
+        <entry key="InvalidAnchorBoxes">The anchor boxes must be specified as an 1-by-M cell array, where M is the number of predictor layers.</entry>
+        <entry key="ssdLayersToBeRemoved">ssdLayers function will be removed in a future release. Use the ssdObjectDetector function to create a SSD object detection network, instead.</entry>
+
+
+        <!-- For ssdObjectDetector -->
+
+        <entry key="modelMinSizeGTROISize">Expected MinSize to be less than [{0} {1}], which is the ROI size.</entry>
+        <entry key="modelMaxSizeGTROISize">Expected MaxSize to be less than [{0} {1}], which is the ROI size.</entry>
+        <entry key="modelMinSizeGTImgSize">Expected MinSize to be less than [{0} {1}], which is the image size.</entry>
+        <entry key="modelMaxSizeGTImgSize">Expected MaxSize to be less than [{0} {1}], which is the image size.</entry>
+        <entry key="noTrainingSamplesAvailable">No training samples are available. Consider using different anchor boxes, or, a larger dataset.</entry>
+        <entry key="unableToDetect">Unable to use a detector with batch normalization layers before training is complete. Use trainYOLOv2ObjectDetector to train the detector for one epoch to complete training.</entry>
+        <entry key="invalidCompleteSSDNetwork">Input network must be a SSD deep learning network. Use the 'DetectionNetworkSource' name-value argument to add a detection subnetwork and create a SSD deep learning object detector.</entry>
+        <entry key="imageInputLayerRequired">Input network must have an image input layer.</entry>
+        <entry key="InvalidAnchorBoxesCount"> Number of layers in DetectionNetworkSource must be equal to the number of anchorBoxes specified at the input.</entry>
+        <entry key="invalidLayersInSSDNetwork">The input network must not have an ssdMergeLayer, softmaxLayer, or loss layer.</entry>
+
+
+
+        <!-- For classNames -->
+        <entry key="invalidClasses">Classes must be specified as a string vector, a cell array of character vectors, or a categorical vector.</entry>
+        <entry key="duplicateClasses">Classes must be unique.</entry>
+
+        <!-- For ssdNetworkCreation -->
+        <entry key="invalidSSDNetwork">Number of detection subnetwork sources specified at the input must be greater than or equal to the number of output layers in the base network.</entry>
+        <entry key="invalidChannelSizeForRegressionPredictionLayer">Detection subnetwork added to the {0} layer must have a regression prediction layer.</entry>
+        <entry key="invalidChannelSizeForClassificationPredictionLayer">Classification prediction Layer {0} connected to the  detection network source {1} must have channel size equal to {2}, but it is {3}.</entry>
+        <entry key="networkMustHaveConvLayers"> Input network must have convolutional layers.</entry>
+
+        <!-- For trainSSDObjectDetector -->
+        <entry key="trainingBanner">Training an SSD Object Detector for the following object classes:</entry>
+        <entry key="trainingFooter">Detector training complete.</entry>
+        <entry key="invalidOutputLayers">The lgraph input must be a layerGraph containing two output layers: a focalLossLayer, and an rcnnBoxRegressionLayer.</entry>
+        <entry key="invalidNumClassesForTraining">The NumChannels property of the classification ssdMergeLayer,{0} must be equal to the number of classes in the trainingData, {1} + 1 (for the background class).</entry>
+        <entry key="invalidNumChannelsInRegressionMergeLayer">The lgraph input must contain a ssdMergeLayer for regression with NumChannels property equal to 4.</entry>
+        <entry key="invalidNumSSDMergeLayers">The lgraph input must contain two ssdMergeLayers.</entry>
+        <entry key="invalidNumInputsForSSDMergeLayers">All ssdMergeLayers must have the same number of inputs.</entry>
+        <entry key="invalidNumAnchorBoxLayers">The lgraph input must contain two ssdMergeLayers each with number of inputs equal to the number of anchorBoxLayers.</entry>
+        <entry key="invalidInputSizeForSSDMergeLayer">The lgraph input must contain the classification ssdMergeLayer, {0}, with input size equal to {1}. Instead its input size is {2}. For the classification branch, the third dimension of the input size to the ssdMergeLayer must be equal to the number of classes + 1 (for the background class).</entry>
+        <entry key="replaceFocalLossLayerToSSDHardNegativeMiningLayer">To support multi-class object detection and fast convergence, the trainssdObjectDetector function replaced the focal loss layer with binary cross entropy layer. The binary cross entropy layer uses the hard negative mining method.</entry>
+        <entry key="invalidInputImageChannelSize">The number of channels in the training input image must match the number of channels in the image input layer of the network.</entry>
+        <entry key="invalidClassificationSpatialDimension">Spatial dimension of classification predictive layer {0} must match the spatial dimension of anchorBoxLayer {1}.</entry>
+        <entry key="invalidRegressionSpatialDimension">Spatial dimension of regression predictive layer {0} must match the spatial dimension of anchorBoxLayer {1}.</entry>
+    </message>
+</rsccat>

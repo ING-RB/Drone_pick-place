@@ -1,0 +1,14 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>Code Analyzer has found a call of <code>regionprops</code> with a
+                    first argument that is a call to <code>bwlabel</code>. In many cases,
+                    the argument of <code>bwlabel</code> is a logical matrix, or you can
+                    convert it to one. Beginning in MATLAB Version 7.8 (release R2009a), you can
+                    pass this logical matrix directly to <code>regionprops</code> without
+                    the call to <code>bwlabel</code>. This is faster and uses less space
+                    than the previous method.</p><br/><strong>Suggested Action</strong><br/><p>If <code>bw</code> is a logical matrix, make the indicated change. If
+                        <code>bw</code> is not a logical matrix, convert it to a logical
+                    matrix, and then pass the converted matrix as the first argument to
+                        <code>regionprops</code>.</p><p>For example, if <code>bw</code> is a logical matrix, replace:</p><p>
+                    <code>regionprops(bwlabel(bw),&nbsp;...)&nbsp;<br/></code>
+                </p><p>with: </p><p>
+                    <code>regionprops(bw,&nbsp;....)<br/></code>
+                </p></body></html>

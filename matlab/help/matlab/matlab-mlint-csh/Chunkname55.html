@@ -1,0 +1,24 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The size of the indicated variable or array appears to be changing with each
+                    loop iteration. Commonly, this message appears because an array is growing by
+                    assignment or concatenation. Growing an array by assignment or concatenation can
+                    be expensive. For large arrays, MATLAB must allocate a new block of memory and
+                    copy the older array contents to the new array as it makes each assignment.
+                    Programs that change a variable's size in this way can spend most of their run
+                    time in this inefficient activity.</p><p>For the same reasons, there is significant overhead in shrinking an array or
+                    in changing the size of a variable on each iteration.</p><br/><strong>Suggested Action</strong><br/><p>Consider preallocating a variable or array before entering the loop by using
+                            <code><a href="matlab:doc zeros" target="_blank">zeros</a></code>,
+                            <code><a href="matlab:doc ones" target="_blank">ones</a></code>,
+                            <code><a href="matlab:doc cell" target="_blank">cell</a></code>, or
+                    a similar function. Preallocating avoids the need for MATLAB to copy the data
+                    from one array to another inside the loop. For examples of code that do and do
+                    not preallocate an array, see <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'prog_prealloc_arrays')" target="_blank">“Preallocating Arrays”</a>. </p><p>When an array grows by assigning past the end of the array or by using
+                    concatenation, preallocation alone does not improve the performance. The code
+                    must also use explicit indices.</p><p>If you do not know the size of an array before the loop begins, preallocate
+                    it, and then if necessary, shrink it after the loop completes.</p><p>If any of the following conditions are true, it might be appropriate to
+                    suppress this message, as described in <a href="matlab:helpview([docroot '/techdoc/matlab_prog/matlab_prog.map'],'matlab_suppressing_mlint')" target="_blank">Adjust Code Analyzer Message Indicators and Messages</a>:</p><ul><li><p>The loop code contains a conditional block where the array grows. (In
+                            this case, it can be reasonable to grow the array only as the loop finds
+                            such conditions.) </p></li><li><p>For each iteration in the loop, the length of the concatenation varies
+                            (such as character vectors with variable length). The total size of the
+                            array is not calculable before entering the loop. </p></li><li><p>The array is small and will remain small; therefore, the impact of
+                            recopying is also small.</p></li><li><p>The code preallocates the array, but in a way that Code Analyzer does
+                            not recognize.</p></li></ul></body></html>

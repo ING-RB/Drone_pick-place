@@ -1,0 +1,68 @@
+{
+    "_schemaVersion": "1.0.0",
+    
+    "chirp":
+        {
+            "inputs":
+            [
+                {"name":"t", "kind":"required", "type":[["double","2d"],["single","2d"]]},
+                {"name":"f0", "kind":"positional", "type":[["double","scalar"],["single","scalar"],["@(x)isempty(x)"]]},
+                {"name":"t1", "kind":"positional", "type":[["double","scalar","positive"],["single","scalar","positive"],["@(x)isempty(x)"]]},
+                {"name":"f1", "kind":"positional", "type":[["double","scalar"],["single","scalar"],["@(x)isempty(x)"]]},
+                {"mutuallyExclusiveGroup":
+                    [
+                        [
+                            {"name":"method", "kind":"positional", "type":"choices={'linear','logarithmic'}"},
+                            {"name":"phi", "kind":"positional", "type":[["double","scalar"],["single","scalar"],["@(x)isempty(x)"]]}
+                        ],
+                        [
+                            {"name":"method", "kind":"positional", "type":"choices={'quadratic'}"},
+                            {"name":"phi", "kind":"positional", "type":[["double","scalar"],["single","scalar"],["@(x)isempty(x)"]]},
+                            {"name":"shape", "kind":"ordered", "type":"choices={'convex','concave'}"}
+                        ]
+                    ]
+                },
+                {"name":"cplx", "kind":"positional", "type":"choices={'real','complex'}"}
+            ],  
+            "outputs":
+            [
+                {"name":"y", "type":[["double","2d"],["single","2d"]]}
+            ]   
+        },
+
+    "ellipap":
+        {
+            "inputs":
+            [
+                {"name":"n", "kind":"required", "type":["integer", "scalar"]},
+                {"name":"Rp", "kind":"required", "type":["positive", "scalar"]},
+                {"name":"Rs", "kind":"required", "type":["positive", "scalar"]}
+            ],
+            "outputs":
+            [
+                {"name":"z", "type":"column"},
+                {"name":"p", "type":"column"},
+                {"name":"k", "type":"scalar"}
+            ]
+        },
+
+    "polarpattern":
+        {
+            "inputs":
+            [
+                {"mutuallyExclusiveGroup":
+                  [
+                    [
+                        {"name":"angle","kind":"required", "type":["numeric","real","vector"]},
+                        {"name":"magnitude","kind":"required", "type":["numeric","2d"]},
+                        {"kind":"properties","type":["internal.polari"]}
+                    ],
+                    [
+                        {"name":"data","kind":"required", "type":["numeric"]},
+                        {"kind":"properties","type":["internal.polari"]}
+                    ]
+                   ]
+                }
+            ]
+        }
+}

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsccat version="1.0"
+        locale="en_US"
+        product="SimulinkExecution"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../schema/.xsd">
+
+  <message>
+
+    <entry key="JacobianFunctionEvaluationFailure">
+      An error occurred while evaluating the function for Jacobian evaluation.
+    </entry>
+
+    <entry key="DerivativeIsNonFinite">
+      Derivative of continuous state {0,number,integer} is non-finite
+    </entry>
+
+    <entry key="StateIsNonFinite">
+      Continuous state {0,number,integer} is non-finite
+    </entry>
+
+    <entry key="ProjectedStateIsNonFinite">
+      Continuous state {0,number,integer} is non-finite after projection.
+    </entry>
+
+    <entry key="DerivativeConsistencyCheckFailure">
+      The evaluated derivative and the derivative cached in the
+      solver are inconsistent at time {0_Double}. This implies a discontinuity in the derivative.\n {1}
+    </entry>
+
+    <entry key="StateConsistencyCheckFailure"> 
+      Equation and solver states are not consistent with each other at time {0_Double}. This means
+      that equation states were likely changed without a solver reset. \n {1}
+    </entry>
+
+
+    <entry key="IntegrationAbortedDueToInterrupt"> 
+      Solver aborted integration due to an interrupt.
+    </entry>
+
+    <entry key="InternalSolverResetRequestWasDenied">
+      Nonlinear iteration is not converging with step size reduced to hmin. An
+      attempt to reset the solver and compute new consistent initial conditions
+      was not successful.  
+    </entry>
+
+    <entry key="MaxConsecutiveMinStepsViolated"><![CDATA[
+      Solver was unable to reduce the step size without violating the minimum 
+      step size value of {0_Double} for {1,number,integer} consecutive times at time 
+      {2_Double}. This usually may be caused by the high stiffness of the system. 
+      Please check the system or increase the solver <sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep">Number of consecutive min steps</sldiag> 
+      violation parameter. 
+      ]]></entry>
+
+    <entry key="MaxConsecutiveMinStepsViolatedForDAE"><![CDATA[
+      Solver was unable to reduce the step size without violating the minimum
+      step size value of {0_Double} for {1,number,integer} consecutive times at time
+      {2_Double}. This usually may be caused by violating algebraic constraints in the
+      differential-algebraic system or by the high stiffness of the system. Try
+      tightening the error tolerances, and/or the tolerances for computing
+      consistent conditions. If the problem persists, please check the system or
+      increase the solver <sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep">Number of consecutive min steps</sldiag> 
+      violation parameter. 
+      <actions exclusiveFixIts="yes">
+        <action type="suggestion">
+            <cmd>solverprofiler.launchSolverProfiler</cmd>
+            <txt>Open Solver Profiler to explore such issues</txt>
+        </action>
+     </actions>
+      ]]></entry>
+
+    <entry key="MaxNumMinStepsViolated"><![CDATA[
+      Number of steps with the minimum step size ({0_Double}) reached specified maximum at 
+      time ({1_Double}). Specifying a maximum number of steps with the minimum step size 
+      for the entire simulation is not recommended. Instead, specify a maximum number of 
+      consecutive steps with the minimum step size using the Number of consecutive min 
+      steps parameter.
+      <actions exclusiveFixIts="no">
+        <action type="fixit" id="RemoveLimitOfMaxNumMinSteps">
+            <cmd>set_param(bdroot, ''MaxNumMinSteps'', ''-1'');</cmd>
+            <txt>Remove limit on the total number of steps with the minimum step size\n</txt>
+        </action>
+        <action type="suggestion" id="OpenMaxConsecutiveMinStepInConfig">
+            <cmd>configset.internal.open(bdroot, ''MaxConsecutiveMinStep'');</cmd>
+            <txt>Specify limit on the number of consecutive steps with the minimum step size</txt>
+        </action>
+      </actions>
+     ]]></entry>
+
+    <entry key="MinStepError">
+      Solver was unable to reduce the step size without violating a minimum step
+      size of {0_Double} at time {1_Double}.
+    </entry>
+
+    <entry key="MinStepCausedByShapePreservationError">
+      Solver was unable to reduce the step size to satisfy the state shape
+      preservation Constraint without violating minimum step size value of {0_Double} at
+      time {1_Double}.
+    </entry>
+
+    <entry key="MinStepCausedByShapePreservationWarning">
+      Solver was unable to reduce the step size to satisfy the state shape
+      preservation Constraint without violating minimum step size value of {0_Double} at
+      time {1_Double}. Solver will continue the simulation with the step size restricted
+      to {2_Double} and using 1st order Euler integration method to satisfy the state
+      shape preservation constraint.
+    </entry>
+
+    <entry key="MinStepSizeWarning"><![CDATA[       
+      Solver was unable to reduce the step size without violating minimum step
+      size of {0_Double} for {1,number,integer} consecutive times at time {2_Double}.  Solver
+      will continue simulation with the step size restricted to {3_Double} and using an
+      effective relative error tolerance of {4_Double}, which is greater than the
+      specified relative error tolerance of {5_Double}. This usually may be caused by the
+      high stiffness of the system. Please check the system or increase the solver 
+      <sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep">Number of consecutive min steps</sldiag> violation 
+      parameter.
+      ]]></entry>
+
+    <entry key="MinStepSizeForDAEWarning"><![CDATA[  
+      Solver was unable to reduce the step size without violating minimum step
+      size of {0_Double} for {1,number,integer} consecutive times at time {2_Double}.  Solver
+      will continue the simulation with the step size restricted to {3_Double} and using
+      an effective relative error tolerance of {4_Double}, which is greater than the
+      specified relative error tolerance of {5_Double}. This usually may be caused by
+      violating algebraic constraints in the differential-algebraic system or by
+      the high stiffness of the system. Try tightening the error tolerances,
+      and/or the tolerances for computing consistent conditions. If the problem
+      persists, please check the system or increase the solver <sldiag objui="configset" 
+      objparam="MaxConsecutiveMinStep">Number of consecutive min steps</sldiag> violation 
+      parameter.
+      <actions exclusiveFixIts="yes">
+        <action type="suggestion">
+            <cmd>solverprofiler.launchSolverProfiler</cmd>
+            <txt>Open Solver Profiler to explore such issues</txt>
+        </action>
+      </actions>
+      ]]></entry>
+
+    <entry key="NewtonIterationFailure">
+      Nonlinear iteration is not converging with step size reduced to hmin ({0_Double})
+      at time {1_Double}.  Try reducing the minimum step size and/or relax the relative
+      error tolerance.
+    </entry>
+
+    <entry key="SolverSolvesOnlyLinearlyImplicitForm">
+      Solver ''{0}'' only solves linearly implicit form of differential
+      equation. Hence, mass matrix and Jacobian functions need to be specified.
+    </entry>
+
+    <entry key="SolverDoesNotSolveDAE">
+      A system of differential-algebraic equations was detected. Solver ''{0}''
+      is not intended for differential-algebraic systems. Consider using ODE15s
+      or ODE23t for variable-step simulation and ODE14x for fixed step
+      simulation.
+    </entry>
+
+    <entry key="SolverRequiresJacobian">
+      Solver ''{0}'' requires Jacobian. Equation as configured does
+      not have a Jacobian specification.
+    </entry>
+
+    <entry key="SolverDoesNotSupportInterpolation">
+      Solver ''{0}'' does not support interpolation of states between the time
+      steps.
+    </entry>
+
+    <entry key="SolverDoesNotSupportHigherOrderInterpolation">
+      Solver does not support {0, number, integer} order interpolation between
+      the time steps.
+    </entry>
+
+    <entry key="SolverInterpolantNotAvailable">
+      Solver interpolant is not available before reset and during integration.
+    </entry>
+
+    <entry key="SolverInterpolantIncorrectVectorSize">
+      The size of vector passed in into the solver interpolant was {0_Double}. The vector
+      passed in to the interpolant should be the same as the number of states: {1_Double}.
+    </entry>
+
+    <entry key="SolverRegisteredWithExistingName">
+      There is already a solver registered with name {0}. Use a different name
+    </entry>
+
+    <entry key="SolverImplementationRegisteredWithExistingName">
+      There is already a solver implementation registered with name {0}. Use a different name
+    </entry>
+
+    <entry key="UnknownSolver">
+      There is no solver registered as {0}.
+    </entry>
+
+    <entry key="CreateSolverFailed">
+      Solver name {0} is either invalid, abstract or external to solver registry, hence cannot be created.
+    </entry>
+
+    <entry key="ExternalSolverNotFound">
+      Solver {0} creation failure: library {1} wasn't loaded successfully.  Error: {2}
+    </entry>
+
+    <entry key="AutoSolverHighNx">
+        The stiffness check in auto solver is not supported for this model because the 
+        number of continuous states ''{0}'' is  greater than the threshold value ''{1}''. 
+        To change the threshold value, set the ''NumStatesForStiffnessChecking'' model 
+        parameter at the MATLAB command line.
+    </entry>
+
+    <entry key="ShapePreservationNotSupported">
+        Ignoring shape preservation setting because solver {0} does not support this option 
+        for implicit systems.
+    </entry>
+
+    <entry key="ShapePreservationNotSupportedForSolver">
+        Ignoring shape preservation setting because solver {0} does not support this option.
+    </entry>
+    
+    <entry key="SolverNotAvailable">
+      <![CDATA[Solver ''{0}'' is not available. Select one of available
+      <sldiag objui="configset" objparam="Solver">solvers</sldiag>]]>
+    </entry>
+    
+    <entry key="ODENInvalidIntegrationMethodForImplicitSystem">
+      Integration method for odeN is set to incorrect value ''{0}'' for implicit system of equations. Valid methods are ''ode14x'', and ''ode1be''.
+    </entry>
+
+    <entry key="ODENCannotSwitchExplicitToImplicit">
+      Changing odeN integration method from explicit method ''{0}'' to implicit method ''{1}'' is not supported while the model is running or fast restart is enabled. Use one of the following explicit odeN integration methods: \n
+      "ode1"    \n
+      "ode2"    \n
+      "ode3"    \n
+      "ode4"    \n
+      "ode5"    \n
+      "ode8"    \n
+    </entry>
+
+    <entry key="ODENCannotSwitchImplicitToExplicit">
+      Changing odeN integration method from implicit method ''{0}'' to explicit method ''{1}'' is not supported while the model is running or fast restart is enabled. Use one of the following implicit odeN integration methods: \n
+      "ode14x"    \n
+      "ode1be"    \n 
+    </entry>
+
+    <entry key="InvalidPerturbationBound">
+      There is no valid perturbation bound to be selected between numjac setting and block setting.
+    </entry>
+
+</message>
+
+</rsccat>

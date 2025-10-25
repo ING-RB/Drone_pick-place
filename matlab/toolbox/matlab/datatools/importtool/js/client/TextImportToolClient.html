@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Text Import Tool Client Only Showcase Page</title>
+    <!-- Load css -->
+    <link rel="stylesheet" href="release/index-css.css"/>
+    <style>
+        #openButton,
+        #closeButton,
+        #deleteLogs{
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:30px;
+            display:inline-block
+        }
+        #rowCount,
+        #colCount,
+        #datatype {
+            margin-top:5px;
+            margin-bottom:5px;
+            margin-left:5px;
+            margin-right:10px;
+            display:inline-block
+        }
+
+        #filetype {
+            margin-bottom:10px;
+            margin-left:5px;
+            display:inline-block
+        }
+
+        #createSheet {
+            margin-left:25px;
+        }
+
+        .pageControls,
+        .count{
+            display:block
+        }
+        #Logs{
+            width: 500px;
+            height: 200px;
+            border: 1px solid black;
+            margin-left: 30px;
+            overflow: auto;
+        }
+        .importToolWrapper{
+            margin-left: 50px;
+            margin-top: 25px;
+            width: 500px;
+            height:500px;
+        }
+        .SingleTableImportWidget {
+            position: relative;
+            border-top: solid gray 1px;
+            width: 800px;
+            height: 300px;
+        }
+        .multiHeaderCheckbox {
+            margin-left: 50px;
+            margin-bottom: 15px;
+        }
+
+        .mw-table-top-left-affordance {
+            width: 27px !important;
+            min-width: 27px !important;
+        }
+    </style>
+</head>
+<body class="tundra">
+
+<!-- Load dojo -->
+<script src="release/importtool_client/dojoConfig-release-global.js"></script>
+<script src="release/bundle.index.js"></script>
+
+<div class="pageControls">
+    <input type="button" id="openButton" value="Launch Import Tool" onclick="launchImportTool();"/>
+    <input type="button" id="closeButton" value="Close Import Tool" onclick="closeVariable();"/>
+    <input type="button" id="deleteLogs" value="Clear logs" onclick="deleteLog();"/>
+</div>
+
+<!--<div class = "multiHeaderCheckbox">
+    <input type="checkbox" id="SetHeaderRenderer" value="SetHeaderRenderer" onclick="updateHeaders();"/>
+    <label for="SetHeaderRenderer">Turn on Multi Headers</label>
+</div>-->
+
+<div class = "count">
+    RowCount:<input type="text" id="rowCount"/>
+    ColCount:<input type="text" id="colCount"/>
+
+    type:<select id="datatype">
+    <option value="double">Double</option>
+    <option value="datetime">Datetime</option>
+    <option value="string">String</option>
+    </select>
+
+    <input type="checkbox" id="filetype" name="filetype"> Fixed Width
+    <input type="button" id="createSheet" value="Create Sheet" onclick=""/>
+
+</div>
+
+<div class="logContainer" id="Logs">
+</div>
+
+<div class="renderer" id="rendererDom">
+</div>
+
+
+<script type="text/javascript">
+
+var showHeaders = true;
+/*
+var updateHeaders = function (event) {
+    showHeaders = document.getElementById('SetHeaderRenderer').checked;
+}
+*/
+
+var textWidget = null;
+var dataSource = null;
+var varWidths = [];
+var logChildren = [];
+var createSheet = function () {
+    // Do this on page load, else in debug versions the dataSource will be null at the time of widget creation
+    require([
+        "importtool_client/InMemoryTabularDataImportSource"
+    ], function(InMemoryTabularDataImportSource) {
+        var rows = document.getElementById("rowCount").value || 4;
+        var columns = document.getElementById("colCount").value || 10;
+        var datatype = document.getElementById("datatype").value || "double";
+
+        dataSource = createTabularDataSource(rows, columns, datatype);
+
+        var message = " created with " + rows + " rows and " + columns + " columns";
+        createLog(message);
+    });
+}
+
+var createLog = function (message) {
+    var logContainer = document.getElementById("Logs");
+    var newLog = document.createElement("div");
+    newLog.className = "SheetEntry";
+    newLog.innerText = message;
+    logChildren.push(newLog);
+    logContainer.appendChild(newLog);
+}
+
+var deleteLog = function () {
+    var logContainer = document.getElementById("Logs");
+    logChildren.forEach(function(child){
+        logContainer.removeChild(child);
+    });
+    logChildren = [];
+}
+
+var closeVariable = function () {
+    destroyWidget();
+
+    dataSource = null;
+    deleteLog();
+}
+
+var destroyWidget = function () {
+    if (textWidget) {
+        textWidget.destroy();
+    }
+    //need to change here
+    var importToolDocument = document.getElementsByClassName("importToolWrapper");
+    if (importToolDocument && importToolDocument[0]) {
+        document.body.removeChild(importToolDocument[0]);
+    }
+}
+
+var launchImportTool = function () {
+    // Require browser compatability check lib
+    require([
+            "importtool_client/TabularImportDataSource",
+            "importtool_client/SingleTableImportWidget",
+            "importtool_client/FixedWidthImportTool/FixedWidthImportTool",
+            "dojo/dom-construct",
+            "dojo/on"
+    ], function(TabularImportDataSource, SingleTableImportWidget, FixedWidthImportTool, domConstruct, on) {
+        createSheet();
+        var textDataSource = new TabularImportDataSource(dataSource, {}, false);
+        if (textWidget && textWidget.domNode) {
+            destroyWidget();
+        }
+
+        var isFixedWidth = document.getElementById("filetype").checked;
+        textWidget = new SingleTableImportWidget({dataSource: textDataSource,
+            context: isFixedWidth ? "FixedWidth" : ""});
+
+        if (isFixedWidth) {
+            var varDoc = textWidget._focusedSheet._document;
+            var columns = document.getElementById("colCount").value || 10;
+            var data = {
+                variableWidths: varWidths //[40, 20, 30]
+            }
+            var vm = varDoc.getViewByType("TextTableView");
+            vm._setColumnWidth = function (args) {
+                var columnWidth = null;
+                if (args.columnWidth) {
+                    columnWidth = args.columnWidth
+                    this._table.setColumnWidth(columnWidth);
+                    this.resize();
+                }
+            };
+            vm._dispatchActionToServer = function (action, actionData) {
+                var message = action + ": " + actionData.variableWidths;
+                createLog(message);
+            }
+            setTimeout(function(){ vm.resize(); }, 500);
+
+            FixedWidthImportTool.initFixedWidthUI(data, 500, varDoc);
+            //
+        }
+        var outerWrapper = domConstruct.toDom("<div class='importToolWrapper'></div>");
+        domConstruct.place(textWidget.domNode,outerWrapper);
+        document.body.appendChild(outerWrapper);
+        on.emit(textWidget.domNode, "startup", {
+            bubbles: false,
+            cancelable: true
+        });
+
+        document.getElementById("rowCount").value = "" ;
+        document.getElementById("colCount").value = "";
+    });
+};
+
+
+function createTabularDataSource(rows, columns, datatype) {
+    var tabularDataSource = null;
+    require([
+        "importtool_client/InMemoryTabularDataImportSource"
+    ], function(InMemoryTabularDataImportSource) {
+
+        var data = makeTableData(rows, columns, datatype);
+        var config = {
+            headerRow: createHeaderRow(columns),
+            selection: {},
+            columnData: createColumnData(columns, datatype)
+        };
+        tabularDataSource = new InMemoryTabularDataImportSource(data, config)
+    });
+    return tabularDataSource;
+};
+
+
+// create mock data
+function makeTableData(rows, cols, type) {
+    var tableData = [];
+    SEED = cols * cols;
+    for (var r = 0; r < rows; r++) {
+        var row = [];
+        for (var c = 0; c < cols; c++) {
+            var cellVal = {};
+            if (type === "double"){
+                var randomValue = random(cols * cols);
+                cellVal.value = randomValue.toFixed(3);
+                cellVal.editValue = randomValue.toString();
+                cellVal.valueType = "replacedBy";
+
+            } else if (type === "datetime") {
+                cellVal.value = "15-Apr-2007 08:02:29";
+                cellVal.valueType = "replacedBy";
+            } else {
+                cellVal.value = "a" + r +":" +c+ ";";
+                cellVal.valueType = "None";
+            }
+            cellVal.isMetaData = "0";
+            cellVal.tooltipValue = cellVal.value + " Converted to [type: Text, value: ?]";
+            row.push(cellVal);
+
+            varWidths[c] = cellVal.value.length;
+        }
+        tableData.push(row);
+    }
+    return tableData;
+}
+
+function random(maxNum) {
+    var m = 1048577;
+    SEED = (131071 * SEED + 1013) % m;
+    return SEED * maxNum / m;
+}
+
+var startCol = "A";
+function createColumnData(columns, datatype) {
+    var columnHeaderName = 'Table Column ';
+    var columnModel = [];
+    require(["importtool_client/main"], function () {
+        for (var i=0; i<columns; i++) {
+            var colConfig = {label: columnHeaderName + i, dataIndex: i, "class": datatype, ColumnNumber: i + 1};
+            if (showHeaders) {
+                var excelHeaderName = String.fromCharCode(startCol.charCodeAt(0) + i);
+                var headerName = columnHeaderName;
+                var columnVarType =  datatype === "string" ? "text" : (datatype === "double" ? "Number" : datatype);
+
+                colConfig.excelHeader = excelHeaderName;
+                colConfig.HeaderName = headerName;
+                colConfig.columnVariableType = columnVarType;
+                colConfig.FilteredColumnWidth = varWidths[i] * 8;
+            }
+            columnModel.push(colConfig);
+        }
+    });
+
+    return columnModel;
+}
+
+function createHeaderRow(columns) {
+    return [];
+}
+
+</script>
+</body>
+</html>

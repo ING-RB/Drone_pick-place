@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2010-2024 The MathWorks, Inc. -->
+<rsccat version="1.0"
+        locale="en_US"
+        product="SimulinkExecution"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../schema/.xsd">
+
+  <message>
+    <entry key="InvalidAsyncTimeSourceCaller">The function-call block ''{0}'' is triggered by the asynchronous S-function ''{1}'', which specifies that it obtains its time from its caller.  However, any asynchronous S-function triggering a function-call block that has multiple triggers may not specify that it obtains its time from its caller.</entry>
+    <entry key="AsyncCustomCannotCombineWithOtherAsyc">The function-call block ''{0}'' is triggered by asynchronous S-functions specifying conflicting SS_OPTION: either ''{1}'' or ''{2}'' specifies SS_OPTION_ASYNCHRONOUS_CUSTOM while the other specifies SS_OPTION_ASYNCHRONOUS or SS_OPTION_ASYNCHRONOUS_INTERRUPT.}</entry>
+    <entry key="NotCombinableForAsyncSfcnNotSpecifyPrioirty">The asynchronous function-call signal initiated by S-Function ''{0}'' cannot be combined with other asynchronous rates because the S-function has not set a priority for the asynchronous rate.</entry>
+    <entry key="InconsistentAsyncPriority">The block ''{0}'' is invoked by asynchronous S-functions specifying conflicting priorities: ''{1}'' specifies {2,number,integer}, while ''{3}'' specifies {4,number,integer}.</entry>
+    <entry key="InconsistentAsyncTimeSource">The function-call block ''{0}'' is triggered by asynchronous S-functions specifying conflicting time sources: ''{1}'' specifies ''{2}'', while ''{3}'' specifies ''{4}''.</entry>
+    <entry key="VariableStepSolverNotSupportedInMultiTasking">Variable step solver must be using a single-tasking mode</entry>
+    <entry key="InvalidClockId">The clock identifier {0} is not valid</entry>
+    <entry key="InvalidTaskId">The task identifier {0} is not valid</entry>
+    <entry key="NoSampleTimeExist" translate="false" note="TranslateFalseBatch;">\n\tnone</entry>
+    <entry key="OnlyPeriodicSampleTime" translate="false">\n\t{0}</entry>
+    <entry key="TaskDescription"> Task{0,number,integer} </entry>
+    <entry key="ContinuousClockDescription">Continuous Clock</entry>
+    <entry key="DiscretePeriodicClockDescription">Discrete Periodic Clock {0,number,integer}</entry>
+    <entry key="DiscreteDerivedClockDescription">Derived Clock {0,number,integer}</entry>
+    <entry key="DiscreteEventClockDescription">Event Driven Clock {0,number,integer}</entry>
+    <entry key="DependencyInvalidTaskPriority">A dependency of partition {0} on {1} was defined that conflicts with partition priorities. This should never happen, please report the issue.</entry>
+    <entry key="DependencyInvalidCircular">A circular set of partition dependencies was defined involving the partitions below. Please break the dependency loop by changing a dependency to a unit delay, or by combining the partitions.</entry>
+    <entry key="DependencyInvalidSelf">Self connections cannot be added. This is an internal error in Task {0}.</entry>
+    <entry key="InvalidPartitions">Circular dependent partitions: {0}</entry>
+    <entry key="InvalidSchedulingClockForTask">The clock {0} is not a valid scheduling clock for the task {1}. Only independent clocks can schedule tasks.</entry>
+    <entry key="InvalidSchedulingClockForTaskGroup">The clock {0} is not a valid scheduling clock for the task group {1}. Only independent clocks can schedule task groups.</entry>
+    <entry key="OffsetNotSupportedForIntegerRates">Offsets are not supported when computing discrete rate multipliers.</entry>
+    <entry key="TimerResolutionNotSet">The discrete Timer {0} does not have a resolution specified and schedules no discrete rates. Timer keeper clocks must have a resolution specified. </entry>
+    <entry key="InvalidSpecifiedTimerResolution">The discrete Timer {0} has an invalid resolution specified. The computed fundamental discrete period {1} must be an integer multiple of the resolution {2}. </entry>
+    <entry key="TimerCannotScheduleHierarchy">The Timer {0} has a resolution that is not the greatest common divisor of its children's resolutions. </entry>
+    <entry key="CannotSetResOnDependentTimer">The specified resolution for dependent Timer {0} is not valid. The resolution {1} must be a multiple of the parent resolution {2}. </entry>
+    <entry key="CannotConstrainClockTicks">The ticks of dependent Timer {0} are must be periodic with a fixed resolution. </entry>
+    <!-- These are for the matlab interface for slexec STO graph in slexec_mi component-->
+    <entry key="InvalidRegistry" context="error"> Registry is invalid. Try doing an Update Diagram (Ctrl-D) on the model and retry. </entry>
+    <entry key="NonExistentConnection" context="error"> No connection found between the tasks </entry>
+  </message>
+
+</rsccat>

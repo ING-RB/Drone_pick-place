@@ -1,0 +1,11 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The indicated statement creates a
+                            <code>numel(&lt;arg&gt;)</code> by
+                            <code>numel(&lt;arg&gt;)</code> array.
+                    This is not a common use case and can lead to more memory usage than
+                    intended.</p><br/><strong>Suggested Action</strong><br/><p>Rewrite the code to generate an array of data of the intended size and shape.
+                    For example, if the original call is <code>ones(numel(x))</code>,
+                    write:</p><ol><li><p><code>ones(numel(x), 1)</code> to create a vector of ones with
+                            the same number of elements as <code>x</code>.</p></li><li><p><code>ones(size(x))</code> to create an array of ones that is
+                            the same size as <code>x</code>.</p></li><li><p><code>ones(numel(x), numel(x))</code> to create an array of ones
+                            that is <code>numel(x)</code> by
+                            <code>numel(x)</code>.</p></li></ol></body></html>

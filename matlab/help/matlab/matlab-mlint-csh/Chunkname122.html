@@ -1,0 +1,16 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The code uses <code>cholinc</code>to perform an incomplete Cholesky
+                    factorization. MathWorks recommends that you use <code>ichol</code>
+                    instead. The <code>ichol</code> function uses less memory, executes much
+                    faster, and provides more features than <code>cholinc</code>. </p><br/><strong>Suggested Action</strong><br/><p>Use <code><a href="matlab:doc ichol" target="_blank">ichol</a></code>
+                    instead of <code><a href="matlab:doc cholinc" target="_blank">cholinc</a></code>. </p><p>Suppose your original code creates a preconditioner, <code>R</code>, for
+                    use with <code><a href="matlab:doc pcg" target="_blank">pcg</a></code>, as
+                    follows:</p><p>
+                    <code>R&nbsp;=&nbsp;cholinc(A,&nbsp;'0');<br/>x&nbsp;=&nbsp;pcg(A,&nbsp;b,&nbsp;tol,&nbsp;maxit,&nbsp;R',&nbsp;R);</code>
+                </p><p>For better performance, and to maintain the shape of <code>R</code>,
+                    replace the original code with this:</p><p>
+                    <code>R&nbsp;=&nbsp;ichol(A,&nbsp;struct('shape',&nbsp;'upper'));<br/>x&nbsp;=&nbsp;pcg(A,&nbsp;b,&nbsp;tol,&nbsp;maxit,&nbsp;R',&nbsp;R);</code>
+                </p><p>For best performance and memory usage, replace the original code with the
+                    following. However, note that <code>ichol</code>, by default, generates
+                    lower triangular factors.</p><p>
+                    <code>L&nbsp;=&nbsp;ichol(A);<br/>x&nbsp;=&nbsp;pcg(A,&nbsp;b,&nbsp;tol,&nbsp;maxit,&nbsp;L,&nbsp;L');</code>
+                </p></body></html>

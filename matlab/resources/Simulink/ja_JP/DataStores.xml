@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ja_JP" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="DSReadBlockDescription">指定したデータ ストアから値を読み取ります。読み取る特定の要素を選択するには、[要素の選択] タブを使用します。要素を選択しない場合は、データ ストア全体を読み取ります。</entry>
+    <entry key="DSWriteBlockDescription">指定したデータ ストアに値を書き込みます。特定の要素に値を代入するには、[要素の代入] タブを使用します。要素を選択しない場合は、データ ストア全体に書き込み操作が実行されます。</entry>
+    <entry key="DSMDynamicIndexingBlockDescription">動的なインデックス付けでは、要素の選択式で idx1 や idx2 などのインデックス端子ラベルをインデックス変数として使用します。</entry>
+    <entry key="busSupportForDSMIsUnavailable"> Data Store Memory ブロック ''{0}'' のデータ型はバス型です。厳密なバス モデリングが ON である場合にのみ、Data Store Memory ブロックはバス型をサポートします。この診断を有効にするには、[コンフィギュレーション パラメーター] ダイアログの [診断] ページの [接続性] ペインで [Mux ブロックをバス信号の作成に使用] オプションを ''エラー'' に設定します。</entry>
+    <entry key="hiddenGlobalDSMBlockMessage">上記のメッセージは非表示の Data Store Memory ブロックと関連します。このブロックは、Simulink.Signal オブジェクト ''{0}'' に対応するグローバルなデータ ストアをサポートするために挿入されます。</entry>
+    <entry key="hiddenModelDSMBlockMessage"> 上記のメッセージは非表示の Data Store Memory ブロックと関連します。このブロックは、モデル ワークスペース内の Simulink.Signal オブジェクト ''{0}'' に対応するローカルなデータ ストアをサポートするために挿入されます。</entry>
+    <entry key="hiddenDSMRefBlockMessage">上記のメッセージは、サブモデルからのデータ ストア ''{0}'' の参照に関連しています。</entry>
+    <entry key="dsmLoggingNotSupportedWithBusesInBlocks">Data Store Memory ブロック ''{0}'' は Data Store Memory ログ用に設定されており、ブロックのデータ型はバス型です。Data Store Memory ログは非バス型に対してのみサポートされます。この警告を回避するために、ブロックのパラメーター ダイアログの [ログ] ペインの [信号データのログ] のチェックを外してください。</entry>
+    <entry key="dsmLoggingNotSupportedWithBusesInObjects">Simulink.Signal オブジェクト ''{0}'' は Data Store Memory ログ用に設定されており、このオブジェクトのデータ型はバス型です。Data Store Memory ログは非バス型に対してのみサポートされます。この警告を回避するために、この Simulink.Signal オブジェクトの DataLogging をオフにしてください。</entry>
+    <entry key="dsmLoggingNotSupportedInsideForEachSS">Data Store Memory ブロック ''{0}'' は Data Store Memory ログ用に設定されています。ただし、Data Store Memory のログは For Each ブロックを含む Subsystem 内のブロックをサポートしません。この警告を回避するために、ブロックのパラメーター ダイアログの [ログ] ペインの [信号データのログ] のチェックを外してください。</entry>
+    <entry key="dsmLoggingNotSupportedInsideMLSystemBlk">アクセラレータ モードとラピッド アクセラレータ モードのシミュレーション中に MATLAB System ブロック ''{0}'' 内でデータ ストアのログ作成を行うことはサポートされません。このデータのログを作成するには、シミュレーションをノーマル モードで実行してください。</entry>
+    <entry key="dsmLoggingNotSupportedForDynamicArray">データが制限のない可変サイズ信号であるため、アクセラレータおよびラピッド アクセラレータ モード シミュレーションで Data Store Memory ブロック ''{0}'' の変数をログに記録できません。</entry>
+    <entry key="busDSMCannotBeComplex"> Data Store Memory ブロック ''{0}'' のデータ型はバス型であり、実数/複素数は ''complex'' として設定されています。このブロックまたは関連する Simulink.Signal object の実数/複素数を ''real'' に変更してください。</entry>
+    <entry key="InvDSMSettingWithStringType">Data Store Memory ブロック ''{0}'' に、string データ型の無効なパラメーター設定があります:</entry>
+    <entry key="busDSMCannotHaveVarDims">バス オブジェクトが Data Store Memory ブロックで使用されている場合、バス オブジェクトの階層にあるすべての信号は固定サイズでなければなりません。Data Store Memory ブロック ''{0}'' はそのデータ型のバス オブジェクト ''{1}'' を指定するため、このバス オブジェクトの階層には 1 つまたは複数の可変サイズの信号があります。</entry>
+    <entry key="DSMemoryICDimsMismatch"> Data Store Memory ブロック ''{0}'' の ''InitialValue'' パラメーターの次元が、このブロックの ''次元'' パラメーターで指定した値と不整合です。''InitialValue'' から次元を推定するには、''次元'' パラメーターに ''-1'' を指定します。</entry>
+    <entry key="DSMemoryBlockNotFound">ブロック ''{1}'' 用の ''{0}'' という名前のデータ ストア メモリは見つかりませんでした &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''createMissingDataStore_cb'', ''missingDataStoreCompileTime'', ''{0}'', ''{1}'')&lt;/cmd&gt; &lt;txt&gt;データ ストアを作成する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="DSMemoryBlockNotFoundForDataStoreReference">Unable to find data store ''{0}'' for Data Store Memory block ''{1}'' placed inside the model referenced by Model block ''{2}'' with parameter &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;''Data store reference''&lt;/sldiag&gt; selected.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;add_block(''simulink/Signal Routing/Data Store Memory'', ''{3}'', ''MakeNameUnique'', ''on'', ''DataStoreName'', ''{0}'');&lt;/cmd&gt;
+            &lt;txt&gt;Add a Data Store Memory block with &lt;sldiag objui="blockdlg" objparam="DataStoreName"&gt;''Data store name''&lt;/sldiag&gt; ''{0}''.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+    </entry>
+    <entry key="DSMemoryBlockNotFoundForDataStoreReferenceNonDSM">&lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; パラメーターが選択され、Model ブロック ''{2}'' によって参照されているモデル内に配置されている、タイプ ''{3}'' の Data Store ブロック ''{1}'' のデータ ストア ''{0}'' が見つかりません。</entry>
+    <entry key="DSMemoryRenamed">
+      ブロック ''{4}'' 用の ''{0}'' という名前のデータ ストア メモリは {2} において ''{1}'' に名前が変更されています &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''robustVarRefHotlink_cb'', ''renameRef'', ''{6}'', ''{2}'', ''{1}'', ''{0}'', ''{3}'', ''{4}'', ''{5}'')&lt;/cmd&gt; &lt;txt&gt;''{1}'' を使用するための参照を更新する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''robustVarRefHotlink_cb'', ''copyEntry'', ''{6}'', ''{2}'', ''{1}'', ''{0}'', ''{5}'')&lt;/cmd&gt; &lt;txt&gt;''{1}'' のコピーとして ''{0}'' という名前の新しい変数を作成する。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''createMissingDataStore_cb'', ''missingDataStoreCompileTime'', ''{0}'', ''{4}'')&lt;/cmd&gt; &lt;txt&gt;データ ストアを作成する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="DSMemoryDeleted">
+      ブロック ''{5}'' の ''{0}'' という名前のデータ ストア メモリは {4} から削除されています &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''robustVarRefHotlink_cb'', ''revertCache'', ''{2}'', ''{1}'', ''{0}'', ''{3}'')&lt;/cmd&gt; &lt;txt&gt;削除を元に戻す。&lt;/txt&gt; &lt;/action&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;slprivate(''createMissingDataStore_cb'', ''missingDataStoreCompileTime'', ''{0}'', ''{5}'')&lt;/cmd&gt; &lt;txt&gt;データ ストアを作成する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    
+    </entry>
+    <entry key="DSMemoryBlockNotFound3">名前 ''{0}'' を持つ Data Store Memory が見つかりません</entry>
+    <entry key="DupDSMemoryBlockFound0">Duplicate data store blocks of block type ''{1}'' named ''{0}'' found.</entry>
+    <entry key="DupDSMemoryBlockFound1">1 番目のリファレンスは ''{0}'' にあります</entry>
+    <entry key="DupDSMemoryBlockFound2">2番目のリファレンスは ''{0}'' にあります</entry>
+    <entry key="InvDataStoreName">''{0}'' で指定されたデータ ストア名の識別子が無効です。有効な指定子は、文字から始まり、空白や特殊文字を含まず、最大で {1,number,integer} の文字長です</entry>
+    <entry key="UniqueDataStoreMemory"> Data store memory name ''{0}'' is used for block ''{1}'' and block ''{2}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit"&gt;
+            &lt;cmd&gt;set_param_action(''{3}'', 'UniqueDataStoreMsg', 'none');&lt;/cmd&gt;
+            &lt;txt&gt;Consider setting the configuration parameter &lt;sldiag objui="configset" objparam="UniqueDataStoreMsg" objname="{0}"&gt;''Duplicate data store names''&lt;/sldiag&gt; to ''none''.&lt;/txt&gt;
+        &lt;/action&gt;
+        &lt;action type="suggestion"&gt;
+            &lt;txt&gt;Alternatively, make &lt;sldiag objui="blockdlg" objparam="DataStoreName"&gt;''Data store name''&lt;/sldiag&gt; parameters of these two blocks different.&lt;/txt&gt;
+        &lt;/action&gt;
+     &lt;/actions&gt;
+</entry>
+    <entry key="DSReadDiagnosticsNotReported">ブロック ''{0}'' はデータ ストア ''{1}'' からバス要素を読み取っています。このブロックは、アクセラレータ モードで実行しているモデル内か、シミュレーション モードがアクセラレータに設定されている参照モデル内にあるため、データ ストアの読み取り/書き込み診断が報告されません。この警告をオフにするには、warning(''off'',''Simulink:DataStores:DSReadDiagnosticsNotReported'') を使用してください。</entry>
+    <entry key="DSWriteDiagnosticsNotReported">ブロック ''{0}'' がデータ ストア ''{1}'' にバス要素を書き込んでいます。このブロックは、アクセラレータ モードで実行しているモデル内か、シミュレーション モードがアクセラレータに設定されている参照モデル内にあるため、データ ストアの読み取り/書き込み診断が報告されません。この警告をオフにするには、warning(''off'',''Simulink:DataStores:DSWriteDiagnosticsNotReported'') を使用してください。</entry>
+    <entry key="DSDiagnosticsNotReported">ブロック ''{0}'' はブロック ''{1}'' によって定義されるデータ ストアにアクセスしています。データ ストアの次元が 2 以上であり、このブロックはアクセラレータ モードで実行しているモデル内か、シミュレーション モードがアクセラレータに設定されている参照モデル内にあるため、データ ストアの読み取り/書き込み診断が報告されません。この警告をオフにするには、warning(''off'',''Simulink:DataStores:DSDiagnosticsNotReported'') を使用してください</entry>
+    <entry key="DSReadBeforeWrite">ブロック ''{0}'' はデータ ストア ''{1}'' から読み取りを行いますが、{2} の時点で、このメモリ領域全体への書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteInMinor">ブロック ''{0}'' はデータ ストア ''{1}'' から読み取りを行いますが、{2} の時点で、このメモリ領域全体への書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteInMWE">ブロック ''{0}'' はデータ ストア ''{1}'' からの読み取りを実行していますが、イベント ''{3}'' 中の {2} の時点で、いずれのブロックもこのメモリ領域全体への書き込みを行っていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteOfElement">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} から読み取りを行いますが、{3} の時点で、このメモリへの書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteOfElementInMinor">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} から読み取りを行いますが、{3} の時点で、このメモリへの書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteOfElementInMWE">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} からの読み取りを実行していますが、イベント ''{4}'' 中の {3} の時点で、いずれのブロックもこのメモリへの書き込みを行っていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteOfRegionExpr">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' から読み取りを行いますが、{3} の時点で、いずれのブロックでもこの領域への書き込みが完了していません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteOfRegionExprInMinor">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' から読み取りを行いますが、{3} の時点で、いずれのブロックでもこの領域への書き込みが完了していません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSReadBeforeWriteOfRegionExprInMWE">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' からの読み取りを実行していますが、イベント ''{4}'' 中の {3} の時点で、いずれのブロックもこの領域への書き込みを完了していません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterRead">ブロック ''{0}'' はデータ ストア ''{1}'' に書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadInMinor">ブロック ''{0}'' はデータ ストア ''{1}'' に書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadInMWE">ブロック ''{0}'' はデータ ストア ''{1}'' への書き込みを実行していますが、イベント ''{4}'' 中の {3} の時点で、ブロック ''{2}'' がこのメモリ領域の一部または全体の読み取りを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadOfElement">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリからの読み取りがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadOfElementInMinor">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリからの読み取りがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadOfElementInMWE">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこのメモリからの読み取りを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadOfRegionExpr">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全部がブロック ''{3}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadOfRegionExprInMinor">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全部がブロック ''{3}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterReadOfRegionExprInMWE">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこの領域の一部または全体の読み取りを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWrite">ブロック ''{0}'' はデータ ストア ''{1}'' に書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に書き込まれています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteInMinor">ブロック ''{0}'' はデータ ストア ''{1}'' に書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に書き込まれています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteInMWE">ブロック ''{0}'' はデータ ストア ''{1}'' への書き込みを実行していますが、イベント ''{4}'' 中の {3} の時点で、ブロック ''{2}'' がこのメモリ領域の一部または全体への書き込みを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteOfElement">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリへの書き込みがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteOfElementInMinor">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリへの書き込みがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteOfElementInMWE">ブロック ''{0}'' はデータ ストア ''{2}'' の要素 {1,number,integer} への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこのメモリへの書き込みを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteOfRegionExpr">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全部がブロック ''{3}'' で既に書き込まれています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteOfRegionExprInMinor">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全部がブロック ''{3}'' で既に書き込まれています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="DSWriteAfterWriteOfRegionExprInMWE">ブロック ''{0}'' はデータ ストア メモリ ''{2}'' の領域 ''{1}'' への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこの領域の一部または全体への書き込みを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWrite">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアから読み取りを行いますが、{2} の時点で、このメモリ領域全体への書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアから読み取りを行いますが、{2} の時点で、このメモリ領域全体への書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアからの読み取りを実行していますが、イベント ''{3}'' 中の {2} の時点で、いずれのブロックもこのメモリ領域全体への書き込みを行っていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteOfElement">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} から読み取りを行いますが、{3} の時点で、このメモリへの書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteOfElementInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} から読み取りを行いますが、{3} の時点で、このメモリへの書き込みがいずれのブロックでも行われていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteOfElementInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} からの読み取りを実行していますが、イベント ''{4}'' 中の {3} の時点で、いずれのブロックもこのメモリへの書き込みを行っていません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteOfRegionExpr">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' から読み取りを行いますが、{3} の時点で、いずれのブロックでもこの領域への書き込みが完了していません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteOfRegionExprInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' から読み取りを行いますが、{3} の時点で、いずれのブロックでもこの領域への書き込みが完了していません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSReadBeforeWriteOfRegionExprInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' からの読み取りを実行していますが、イベント ''{4}'' 中の {3} の時点で、いずれのブロックもこの領域への書き込みを完了していません。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterRead">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアに書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアに書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアへの書き込みを実行していますが、イベント ''{4}'' 中の {3} の時点で、ブロック ''{2}'' がこのメモリ領域の一部または全体からの読み取りを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadOfElement">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリからの読み取りがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadOfElementInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリからの読み取りがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadOfElementInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこのメモリからの読み取りを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadOfRegionExpr">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全体がブロック ''{3}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadOfRegionExprInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全体がブロック ''{3}'' で既に読み取られています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterReadOfRegionExprInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこの領域の一部または全体の読み取りを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWrite">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアに書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に書き込まれています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアに書き込みを行いますが、{3} の時点で、このメモリ領域の一部または全体がブロック ''{2}'' で既に書き込まれています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{1}'' に対応するデータ ストアに書き込みを実行していますが、イベント ''{4}'' 中の {3} の時点で、ブロック ''{2}'' がこのメモリ領域の一部または全体への書き込みを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteOfElement">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリへの書き込みがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteOfElementInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} に書き込みを行いますが、{4} の時点で、このメモリへの書き込みがブロック ''{3}'' で既に行われています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteOfElementInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストアの要素 {1,number,integer} への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこのメモリへの書き込みを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteOfRegionExpr">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全体がブロック ''{3}'' によって既に書き込みされています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteOfRegionExprInMinor">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' に書き込みを行いますが、{4} の時点で、この領域の一部または全体がブロック ''{3}'' によって既に書き込みされています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="GlobalDSWriteAfterWriteOfRegionExprInMWE">ブロック ''{0}'' は Simulink.Signal オブジェクト ''{2}'' に対応するデータ ストア メモリの領域 ''{1}'' への書き込みを実行していますが、イベント ''{5}'' 中の {4} の時点で、ブロック ''{3}'' がこの領域の一部または全体への書き込みを既に行っています。パフォーマンス上の理由から、他のシミュレーション タイム ステップでは、このメモリについての診断の発生は省略されます。</entry>
+    <entry key="RegionValidationDimsMismatch">ブロック ''{2}'' に関連するメモリ ''{1}'' の領域の次元数が ''{0,number,integer}'' と指定されています。これはこのメモリに関連する実際の次元数 ''{3,number,integer}'' と一致しません</entry>
+    <entry key="RegionValidationInvalidBusElementIdx">バス要素のインデックスが ''{0,number,integer}'' と指定されています。この値はブロック ''{2}'' に関連するメモリ ''{1}'' の領域に有効な値ではありません</entry>
+    <entry key="RegionValidationIndexSpecifiedWhenSelectingAll">オプション MEM_REGION_SELECT_ALL を使用する場合は、インデックスを指定しないでください。これはブロック ''{1}'' に関連するメモリ ''{0}'' の領域に対して指定されました</entry>
+    <entry key="RegionValidationDiscontiguousAtNonLeaf">非連続のメモリ領域へのアクセスは、非バス ノードでのみサポートされています。これはブロック ''{1}'' に関連するメモリ ''{0}'' の領域に対して指定されました</entry>
+    <entry key="RegionValidationInvalidStartIncrEnd">インデックス オプション MEM_REGION_STARTIDX_INCR_ENDIDX に対して無効なインデックスが指定されました。これはブロック ''{1}'' に関連するメモリ ''{0}'' の領域に対して指定されました</entry>
+    <entry key="RegionValidationIndexOutOfBounds">ブロック ''{1}'' に関連するメモリ ''{0}'' の領域に対して指定されたインデックスは範囲外にあります</entry>
+    <entry key="RegionValidationInvalidIndexingMode">ブロック ''{1}'' に関連するメモリ ''{0}'' の領域に対して指定されたインデックス モードは有効ではありません</entry>
+    <entry key="ExpressionValidationMissingField">式 ''{1}'' の ''{5}'' タブで指定され、ブロック ''{3}'' の端子 {2} に関連付けられたフィールド ''{0}'' は、関連付けられたバス オブジェクト ''{4}'' 内の同じ名前のバス要素に対応していません。式内のフィールド名を同じバス要素名に変更するか、この名前の新しいバス要素を追加してバス オブジェクトを更新してください。</entry>
+    <entry key="ExpressionValidationFieldSpecifiedForNonBus">式 ''{1}'' の ''{4}'' タブで指定され、ブロック ''{3}'' の端子 {2} に関連付けられたフィールド ''{0}'' に、関連付けられたデータ ストア メモリと同じデータ型のバス要素がありません。このフィールドを式から削除するか、関連付けけられたデータ ストア メモリのデータ型を、このフィールド名をもつバス要素が含まれているバス オブジェクトに更新してください。</entry>
+    <entry key="ExpressionValidationParseError">''{4}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' に、無効な MATLAB 構文があります: ''{3}''</entry>
+    <entry key="ExpressionValidationUnsupportedOps">''{3}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' は、このブロックがサポートしていない演算子、変数、または関数を使用しています:詳細については、このブロックのドキュメンテーションを参照してください。</entry>
+    <entry key="ExpressionValidationInvalidRootName">''{4}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' は、関連付けられたデータ ストア メモリ名 ''{3}'' で始まらないか、これを参照していません。</entry>
+    <entry key="ExpressionValidationDisContiguous">''{4}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' が不連続要素に関連付けられています。不連続要素へのアクセスは端末ノードでのみサポートされています。この式の ''{3}'' は端末ノードではありません。</entry>
+    <entry key="ExpressionValidationDimsMismatch">''{5}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' は、ノード ''{3}'' で無効な次元数を指定しています。このノードに期待される次元数は {4} です。</entry>
+    <entry key="ExpressionValidationDimsMismatchWithDetail">''{5}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' は、ノード ''{3}'' で無効な次元数 {6} を指定しています。このノードに期待される次元数は {4} です。</entry>
+    <entry key="ExpressionValidationIndexOutOfBounds">''{5}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' は、ノード ''{3}'' で範囲外のインデックスを 1 つまたは複数指定しています。インデックスは 1 ベースで、各次元でゼロより大きくなければなりません。このノードの (各次元での) インデックスの最大許容値は ''{4}'' です。</entry>
+    <entry key="ExpressionValidationIndexRepeats">''{4}'' タブで指定され、ブロック ''{2}'' の端子 {1} に関連付けられた式 ''{0}'' は、ノード ''{3}'' で繰り返すインデックスを 1 つまたは複数指定しています。インデックスは、各次元で固有でなければなりません。</entry>
+    <entry key="IndexLabelsNotMatching">ブロック ''{2}'' と関連付けられた ''{1}'' タブ内の式 ''{0}'' には、インデックス端子ラベルと一致しないインデックス変数が 1 つ以上含まれています。</entry>
+    <entry key="ElementsNotSupportedForDynamicArrays">データ ストアのメモリが、非有界の可変サイズ信号か、非有界の可変サイズ要素を含むバスのいずれかに関連付けられているため、ブロック ''{0}'' を要素選択用に構成できません。</entry>
+    <entry key="ScopedDSMSignalAttribMismatch1">ブロック タイプ ''{3}'' のデータ ストア ブロック ''{0}'' と ''{1}'' は同じ信号属性を指定しなければなりません。それらのブロックが同じデータ ストア名 ''{2}'' を指定し、''{1}'' で &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[参照]&lt;/sldiag&gt; パラメーターが選択されているためです。</entry>
+    <entry key="ScopedDSMSignalAttribMismatch2">ブロック タイプ ''{3}'' のデータ ストア ブロック ''{0}'' と ''{1}'' は同じ信号属性を指定しなければなりません。それらのブロックが同じデータ ストア名 ''{2}'' を指定し、両方のブロックで &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[参照]&lt;/sldiag&gt; パラメーターが選択されているためです。</entry>
+    <entry key="ScopedDSMSignalAttribMismatch3">モデル ''{2}'' のモデル ワークスペース内の Simulink.Signal オブジェクト ''{0}'' とブロック タイプ ''{2}'' のデータ ストア ブロック ''{1}'' は同じ信号属性を指定しなければなりません。これは、それらが同じデータ ストア名を使用し、''{1}'' で &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[参照]&lt;/sldiag&gt; パラメーターが選択されているためです。</entry>
+    <entry key="ScopedDSMBusSignalPropNotSupported">Unable to set &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''Data type''&lt;/sldiag&gt; of Data Store Memory block ''{0}'' with data store name ''{1}'' to ''Inherit: auto'' when the corresponding data store reference ''{2}'' inside the model referenced by Model block ''{3}'' specifies a bus data type ''{4}''.
+    &lt;actions exclusiveFixIts="yes"&gt;
+        &lt;action type="fixit" retvalue="false"&gt;
+            &lt;cmd&gt;set_param(''{0}'', 'OutDataTypeStr', ''{4}'');&lt;/cmd&gt;
+            &lt;txt&gt;Set &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;''Data type''&lt;/sldiag&gt; of ''{0}'' to ''{4}''.&lt;/txt&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+    </entry>
+    <entry key="ScopedDSMImageTypePropNotSupported">Model ブロック ''{3}'' で参照されるモデル内の対応するデータ ストア参照 ''{2}'' がイメージ タイプ ''{4}'' を指定している場合、データ ストア名 ''{1}'' をもつ Data Store Memory ブロック ''{0}'' の &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;[データ型]&lt;/sldiag&gt; を [継承: 自動] に設定できません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{0}'', 'OutDataTypeStr', ''{4}'');&lt;/cmd&gt; &lt;txt&gt;''{0}'' の &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;[データ型]&lt;/sldiag&gt; を ''{4}'' に設定する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ScopedDSMDataTypeMismatch">''{0}'' と ''{1}'' は、それぞれデータ型を ''{2}'' と ''{3}'' に設定しています。</entry>
+    <entry key="ScopedDSMComplexityMismatch">''{0}'' と ''{1}'' は &lt;sldiag objui="blockdlg" objparam="SignalType"&gt;[信号タイプ]&lt;/sldiag&gt; を、それぞれ ''{2}'' と ''{3}'' に設定します。</entry>
+    <entry key="ScopedDSMOneDVectorMismatch">''{0}'' と ''{1}'' は &lt;sldiag objui="blockdlg" objparam="VectorParams1D"&gt;[ベクトル パラメーターを 1 次元として解釈]&lt;/sldiag&gt; を、それぞれ ''{2}'' と ''{3}'' に設定します。</entry>
+    <entry key="ScopedDSMDimensionMismatch">''{0}'' と ''{1}'' は &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;[次元]&lt;/sldiag&gt; を、それぞれ ''{2}'' と ''{3}'' に設定します。</entry>
+    <entry key="DupDataStoreReferences1">Data Store Memory ブロック ''{0}'' がデータ ストア参照として構成されている場合は、このモデル内にある他の Data Store Memory ブロックを同じデータ ストア名 ''{2}'' のデータ参照として構成することは許可されていません。しかし、''{1}'' はこの規則に違反しています。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;add_block(''{0}'', ''{3}'', ''MakeNameUnique'', ''on''); delete_block(''{0}''); delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;データ ストア参照 ''{2}'' を上位レベルのグラフで定義し、''{0}'' と ''{1}'' を削除する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DupDataStoreReferences2">Data Store Memory ブロック ''{0}'' がデータ ストア参照として構成されている場合は、このモデル内にある他の Data Store Memory ブロックを同じデータ ストア名 ''{2}'' のデータ参照として構成することは許可されていません。しかし、''{1}'' はこの規則に違反しています。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;delete_block(''{1}'');&lt;/cmd&gt; &lt;txt&gt;''{1}'' を削除する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DupDataStoreReferences3">Data Store Memory ブロック ''{0}'' がデータ ストア参照として構成されている場合は、このモデル内にある他の Data Store Memory ブロックを同じデータ ストア名 ''{2}'' のデータ参照として構成することは許可されていません。しかし、Model ブロック ''{1}'' の参照モデルの階層構造内には同名のデータ ストア参照が含まれており、データ ストア参照を定義する必要のあるブロックはこの規則に違反しています。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;add_block(''{0}'', ''{3}'', ''MakeNameUnique'', ''on''); delete_block(''{0}'');&lt;/cmd&gt; &lt;txt&gt;''{0}'' をより上位のグラフに移動する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+</entry>
+    <entry key="ScopedDSMNameShadowing">タイプ ''{3}'' のデータ ストア ブロック ''{0}'' がデータ ストア参照として構成されている場合、タイプ ''{3}'' のその他のデータ ストア ブロックが、上位レベルのサブシステムで同じデータ ストア名 ''{2}'' を指定することはサポートされていません。''{1}'' はこのルールに違反しています。</entry>
+    <entry key="ScopedDSMNameShadowing_HiddenLocalDSM">Data Store Memory ブロック ''{1}'' がデータ ストア参照として構成されている場合、その他すべての Data Store Memory ブロックがその上位レベルのサブシステムで同じデータ ストア名 ''{0}'' を指定することはサポートされません。しかし、モデル ''{2}'' のモデル ワークスペースには、ブロック ''{3}'' がデータ ストアとしてアクセスし、同じ名前 ''{0}'' をもつ Simulink.Signal オブジェクトがあるため、Data Store Memory ブロックが暗黙的にこのモデルのルート グラフに配置されることになり、このルールに違反します。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" retvalue="false"&gt; &lt;cmd&gt;h=add_block(''{6}'', ''{5}'', ''MakeNameUnique'', ''on''); set_param(h,''DataStoreName'', ''{0}'');&lt;/cmd&gt; &lt;txt&gt;明示的に Data Store Memory ブロックを ''{4}'' 内に追加する。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DSMRefStdStringUnsupported">データ ストア参照 ''{0}'' は std::string として実装されており、これはサポートされていません。</entry>
+    <entry key="DataStoreRefShadowedByGlobalDSM">Data Store Memory ブロック ''{0}'' がサブシステム内に配置され、パラメーター &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; が選択されているため、[データ ストア名] が同じ別の Data Store Memory ブロックをモデルのより上位のサブシステム階層に配置することは許可されません。しかしながら、グローバル データ ストアとして動作する Simulink.Signal オブジェクト ''{1}'' はこのルールに違反しています。</entry>
+    <entry key="DataStoreRefFromChildMdlShadowedByGlobalDSM">Data Store Memory ブロック ''{0}'' が Model ブロック ''{2}'' によって参照されるモデル内に配置され、パラメーター &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; が選択されているため、[データ ストア名] が同じ別の Data Store Memory ブロックをより上位のモデル階層のサブシステム内に配置することは許可されません。しかしながら、グローバル データ ストアとして動作する Simulink.Signal オブジェクト ''{1}'' はこのルールに違反しています。</entry>
+    <entry key="InvalidSharedDSMDefMemForDataStoreRef">Data Store Memory ブロック ''{1}'' で &lt;sldiag objui="blockdlg" objparam="ShareAcrossModelInstances"&gt;[モデル インスタンス間で共有する]&lt;/sldiag&gt; が選択されているため、&lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; パラメーターが選択されている Data Store Memory ブロック ''{0}'' でデータ ストアを定義することはサポートされません。 &lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit"&gt; &lt;cmd&gt;set_param_action(''{1}'', ''ShareAcrossModelInstances'', ''off'');&lt;/cmd&gt; &lt;txt&gt;&lt;sldiag objui="blockdlg" objparam="ShareAcrossModelInstances"&gt;[モデル インスタンス間で共有する]&lt;/sldiag&gt; をオフにする。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="DataTypeNotSpecifiedForDataStoreRef">パラメーター &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; が選択されたブロック ''{0}'' のパラメーター &lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;[データ型]&lt;/sldiag&gt; を [継承: 自動] に設定することは無効です。&lt;sldiag objui="blockdlg" objparam="OutDataTypeStr"&gt;[データ型]&lt;/sldiag&gt; をドロップダウン オプションから明示的に選択してください。</entry>
+    <entry key="DimensionNotSpecifiedForDataStoreRef">パラメーター &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; が選択されたブロック ''{0}'' の &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;[次元]&lt;/sldiag&gt; を ''-1'' に設定することは無効です。&lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;[次元]&lt;/sldiag&gt; を明示的に指定してください。</entry>
+    <entry key="ComplexityNotSpecifiedForDataStoreRef">パラメーター &lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; が選択されたブロック ''{0}'' のパラメーター &lt;sldiag objui="blockdlg" objparam="SignalType"&gt;[信号タイプ]&lt;/sldiag&gt; を [自動] に設定することは無効です。&lt;sldiag objui="blockdlg" objparam="SignalType"&gt;[信号タイプ]&lt;/sldiag&gt; をドロップダウン オプションから明示的に選択してください。</entry>
+    <entry key="UnableToRenameDataStoreRefInProtectedMdl">Model ブロック ''{2}'' によって参照されるモデル内に配置され、&lt;sldiag objui="blockdlg" objparam="DataStoreReference"&gt;[データ ストア参照]&lt;/sldiag&gt; パラメーターが選択された Data Store Memory ブロックの &lt;sldiag objui="blockdlg" objparam="DataStoreName"&gt;[データ ストア名]&lt;/sldiag&gt; パラメーターを ''{0}'' から ''{1}'' に変更できません。参照モデル ''{3}'' が保護モデルとして保存されているためです。</entry>
+    <entry key="UnableToRenameLibLinkedStateflowDataStoreName">''{2}'' のデータ ストアの名前を ''{0}'' から ''{1}'' に変更できません。これは ''{2}'' が Stateflow チャート、またはライブラリからリンクされている MATLAB 関数であるためです。</entry>
+    <entry key="RefdDSMIndMapToNonAddr">アドレス指定不可能なストレージ クラス ''{1}'' を参照してデータ ストア メモリ ''{0}'' を設定することはできません</entry>
+    <entry key="RefdDSMDefMapToNonAddr">内部データの既定のストレージ クラスがアドレス指定不可能なストレージ クラス ''{1}'' に設定されているため、''Model default'' を参照してデータ ストア メモリ ''{0}'' を設定することはできません。</entry>
+    <entry key="DSMRefIndMapToLegacy">Cannot set the storage class of data store reference ''{0}'' to ''{1}'' because that storage class is a built-in storage class, or a storage class that is defined in a package. The storage class of a data store reference must be configured as Auto or a storage class defined in the Embedded Coder dictionary</entry>
+    <entry key="DSMRefDefMapToLegacy">Cannot set the storage class of data store reference ''{0}'' to 'Model default' because the default storage class for internal data, ''{1}'', is a built-in storage class or a storage class that is defined in a package. The storage class of a data store reference must be Auto or a storage class defined in the Embedded Coder dictionary</entry>
+    <entry key="RefdDSMIndPreserveND">[配列の次元を保持] が選択されているため、''{1}'' を参照してデータ ストア メモリ ''{0}'' のストレージ クラスを設定することはできません </entry>
+    <entry key="RefdDSMDefPreserveND">内部データの既定のストレージ クラスが [配列の次元を保持] を選択しているストレージ クラス ''{1}'' に設定されているため、''Model default'' を参照してデータ ストア メモリ ''{0}'' のストレージ クラスを設定することはできません。</entry>
+    <entry key="DSMRefIndPreserveND">[配列の次元を保持] が選択されているため、データ ストア参照 ''{0}'' のストレージ クラスを ''{1}'' に設定することはできません</entry>
+    <entry key="DSMRefDefPreserveND">内部データの既定のストレージ クラス ''{1}'' が [配列の次元を保持] を選択しているため、データ ストア参照 ''{0}'' のストレージ クラスを 'Model default' に設定することはできません</entry>
+    <entry key="DynamicallySizedDataStoreReference">データ ストア参照 ''{0}'' は有限次元をもたなければなりません</entry>
+    <entry key="DataStoreReferenceRequiresPublic">The data store reference accessed by ''{0}'' requires the ''Data Visibility'' of ''Signals, states, and internal data'' to be set to ''public''</entry>
+    <entry key="DSMDataTypeAuto">データ型 'auto' は、{1} で使用されるデータ ストア メモリ {0} ではサポートされていません。Simulink の [データ ストア メモリ] ダイアログ ボックスでデータ型を指定してください。</entry>
+    <entry key="DSMSignalTypeAuto">信号タイプ 'auto' は、{1} で使用されるデータ ストア メモリ {0} ではサポートされていません。Simulink の [データ ストア メモリ] ダイアログ ボックスで信号タイプを指定してください。</entry>
+    <entry key="ScopedDSMICDimensionMismatch">''{0}'' set the dimensions of &lt;sldiag objui="blockdlg" objparam="InitialValue"&gt;'Initial value'&lt;/sldiag&gt; to ''{2}''. But ''{1}'' set &lt;sldiag objui="blockdlg" objparam="Dimensions"&gt;'Dimensions'&lt;/sldiag&gt; to ''{3}''.</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,9 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p>The <code>drange</code> function has either no arguments or more than
+                    three. Neither of these scenarios is valid. This is most likely the result of
+                    incorrectly converting <code>parfor</code> loops specified prior to
+                    MATLAB Version 7.5 (R2007b) to <code>for-drange</code> loops.</p><br/><strong>Suggested Action</strong><br/><p>If you specified these <code><a href="matlab: doc parfor" target="_blank">parfor</a></code> loops prior to MATLAB Version 7.5 (R2007b),
+                    make the following changes:</p><table border="0"><tr><td>Change <code>parfor i=v</code> to <code>for
+                            i=drange(v)</code></td></tr><tr><td>Change <code>parfor i=a:b</code> to <code>for
+                            i=drange(a,b)</code></td></tr><tr><td>Change <code>parfor i=a:5:c</code> to <code>for
+                            i=drange(a,5,b)</code></td></tr></table><p>For more information, see <a href="matlab:helpview('parallel-computing','FOR_DRANGE')" target="_blank">Looping Over
+                        a Distributed Range (for-drange)</a>.</p></body></html>

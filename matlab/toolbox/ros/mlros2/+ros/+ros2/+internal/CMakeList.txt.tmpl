@@ -1,0 +1,386 @@
+cmake_minimum_required(VERSION 3.5)
+project({%PackageName%})
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+# Set CMAKE_BUILD_TYPE
+set(CMAKE_BUILD_TYPE {%BuildType%})
+
+{% if ~isempty(TopLevelProjectName) %}
+set(MW_TOP_LEVEL_PROJECT_NAME ${PROJECT_NAME})
+{% endif %}
+
+# Default to C99
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 99)
+endif()
+
+# Default to C++17
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
+if(ALIAS_ROS2_TF2)
+  add_definitions(-Dtf2=ros2_tf2)
+  add_definitions(-Dtf2_ros=ros2_tf2_ros)
+  add_definitions(-Dmessage_filters=ros2_message_filters)
+endif()
+
+# Check the ROS 2 distribution and define a macro
+if("$ENV{ROS_DISTRO}" STREQUAL "humble")
+    message(STATUS "Building for ROS 2 Humble")
+    add_definitions(-DROS2_DISTRO_HUMBLE)
+elseif("$ENV{ROS_DISTRO}" STREQUAL "jazzy")
+    message(STATUS "Building for ROS 2 Jazzy")
+    add_definitions(-DROS2_DISTRO_JAZZY)
+else()
+    message(WARNING "ROS 2 distribution $ENV{ROS_DISTRO} is not recommended for this MATLAB version. Use 'ROS 2 Jazzy' for this MATLAB version.")
+    message(WARNING "Building for ROS 2 Jazzy")
+    add_definitions(-DROS2_DISTRO_JAZZY)
+endif()
+
+{% if ~isempty(PkgConfigModules) %}
+find_package(PkgConfig REQUIRED)
+{% for i=numel(PkgConfigModules) %}
+pkg_check_modules({% upper(matlab.lang.makeValidName(PkgConfigModules{i})) %} REQUIRED {% PkgConfigModules{i} %})
+{% endfor %}
+{% endif %}
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_ros REQUIRED)
+{% if ~isempty(MessageFiles) || ~isempty(ServiceFiles) || ~isempty(ActionFiles) %}
+find_package(rosidl_typesupport_c REQUIRED)
+find_package(rosidl_typesupport_cpp REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+{% endif %}
+
+{% if ~isempty(ActionFiles) %}
+find_package(rclcpp_action REQUIRED)
+{% endif %}
+
+{% for i = numel(Dependencies) %}
+find_package( {% Dependencies{i} %} REQUIRED)
+{% endfor %}
+
+{% if ros.codertarget.internal.Util.isROSControlEnabled(CppLibraryName) %}
+find_package(generate_parameter_library REQUIRED)
+
+generate_parameter_library(${PROJECT_NAME}_parameters
+  src/${PROJECT_NAME}_parameter.yaml
+)
+{% endif %}
+
+{% if ~isempty(TopLevelProjectName) %}
+    {% for i=numel(SubDirectories) %} 
+add_subdirectory("{% SubDirectories{i} %}")
+    {% endfor %}
+{% endif %}
+
+# Add package include directories
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include/{%PackageName%}")
+
+{% if ~isempty(IncludeDirectories) %}
+{% for i = numel(IncludeDirectories) %}
+{% if ispc %}
+include_directories("{% strrep(IncludeDirectories{i},'\','/') %}")
+{% endif %}
+{% if ~ispc %}
+include_directories("{% IncludeDirectories{i} %}")
+{% endif %}
+{% endfor %}
+{% endif %}
+
+set (CMAKE_SKIP_BUILD_RPATH false)
+set (CMAKE_BUILD_WITH_INSTALL_RPATH true)
+set (CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+
+{% for k = numel(ImportedLibraries) %}
+add_library(coder_custom_lib_{% num2str(k) %} UNKNOWN IMPORTED)
+set_property(TARGET coder_custom_lib_{% num2str(k) %} PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/{%ImportedLibraries{k}%}")
+{% endfor %}
+
+{% if ~isempty(MessageFiles) || ~isempty(ServiceFiles) || ~isempty(ActionFiles) %}
+set(msg_files
+  {% for i = numel(MessageFiles) %}
+  "{%MessageFiles{i}%}"
+  {% endfor %}
+)
+set(srv_files
+  {% for i = numel(ServiceFiles) %}
+  "{%ServiceFiles{i}%}"
+  {% endfor %}
+)
+set(action_files
+  {% for i = numel(ActionFiles) %}
+  "{%ActionFiles{i}%}"
+  {% endfor %}
+)
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+  ${srv_files}
+  ${action_files}
+  {% if ~isempty(MsgDependencies) %}
+  DEPENDENCIES 
+  {% for i = numel(MsgDependencies) %}
+  {% MsgDependencies{i} %}
+  {% endfor %}
+  {% endif %}
+)
+{% endif %}
+
+{% if ~isempty(LibraryDirectories) %}
+{% for i = numel(LibraryDirectories) %}
+{% if ispc %}
+link_directories("{% strrep(LibraryDirectories{i},'\','/') %}")
+{% endif %}
+{% if ~ispc %}
+link_directories("{% LibraryDirectories{i} %}")
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if ~isempty(CppLibraryName) %}
+# Library
+add_library(
+    {% CppLibraryName %} 
+    {% if ~isempty(CppLibraryName) %}
+    {% LibFormat %}
+    {% endif %}
+    {% for j = numel(LibSourceFiles) %}
+    {% LibSourceFiles{j} %}
+    {% endfor %}
+)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+target_compile_options({%CppLibraryName%} PUBLIC 
+  $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:
+  -Wall -Wextra -Wpedantic
+  >)
+endif()
+
+{% if ~isempty(CppFlags) %}
+target_compile_options({%CppLibraryName%} PRIVATE 
+  $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:
+  {% CppFlags %}>
+{%if any(contains(LibSourceFiles,'.cu')) %}
+  $<$<COMPILE_LANGUAGE:CUDA>:
+  -Xcompiler=
+  {% CppFlags %}
+  -Wno-dev -Wno-deprecated-gpu-targets
+  >
+{% endif %}
+)
+{% endif %}
+
+target_include_directories({%CppLibraryName%} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/{%PackageName%}>
+  $<INSTALL_INTERFACE:include>)
+
+{% if ( ~isempty(Libraries) || ~isempty(ImportedLibraries) ) %}
+target_link_libraries( {%CppLibraryName%}
+{% for i = numel(Libraries) %}
+{% if ispc %}
+	"{% strrep(Libraries{i},'\','/') %}"
+{% endif %}
+{% if ~ispc %}
+	"{% Libraries{i} %}"
+{% endif %}
+{% endfor %}
+{% for k = numel(ImportedLibraries) %}
+    coder_custom_lib_{% num2str(k) %}
+{% endfor %}
+{% if ~isempty(LinkerFlags) %}
+    {% LinkerFlags %}
+{% endfor %}
+	${CMAKE_DL_LIBS}
+	)
+{% endif %}
+
+
+ament_target_dependencies(
+  {%CppLibraryName%}
+  {% for i = numel(Dependencies) %}
+  "{% Dependencies{i} %}"
+  {% endfor %}
+{% if ~isempty(ActionFiles) %}
+rclcpp_action
+{% endif %}
+)
+
+{% if ~isempty(MessageFiles) || ~isempty(ServiceFiles) || ~isempty(ActionFiles) %if we have message or service files in this project %}
+rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
+target_link_libraries({%CppLibraryName%} "${cpp_typesupport_target}")
+{% endif %}
+
+{% if ros.codertarget.internal.Util.isROSControlEnabled(CppLibraryName) %}
+target_link_libraries({%CppLibraryName%} ${PROJECT_NAME}_parameters)
+pluginlib_export_plugin_description_file(controller_interface controllers.xml)
+{% endif %}
+
+# Causes the visibility macros to use dllexport rather than dllimport,
+# which is appropriate when building the dll but not consuming it.
+target_compile_definitions({%CppLibraryName%} PRIVATE "{%upper(PackageName)%}_BUILDING_LIBRARY")
+
+install(
+  DIRECTORY include/
+  DESTINATION include
+)
+
+{% if isempty(MessageFiles) && isempty(ServiceFiles) || ~isempty(ActionFiles) %Export library dependencies for non-msg project only %}
+
+{% if isempty(ExportedLibraryName) %} 
+ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
+{% endif %}
+{% if ~isempty(ExportedLibraryName) %} 
+ament_export_targets(export_{% ExportedLibraryName %} HAS_LIBRARY_TARGET)
+{% endif %}
+
+ament_export_dependencies(
+{% for i = numel(Dependencies) %}
+  {% Dependencies{i} %}
+{% endfor %}
+)
+
+{% endif %}
+
+{% if ros.codertarget.internal.Util.isComponentLibProject(ModelName) %}
+rclcpp_components_register_nodes({%CppLibraryName%} "SLROS2::SLROSComponent")
+{% endif %}
+
+
+install(
+  TARGETS {%CppLibraryName%}{% if ros.codertarget.internal.Util.isROSControlEnabled(CppLibraryName) %} ${PROJECT_NAME}_parameters{% endif %}
+{% if isempty(ExportedLibraryName) %} 
+  EXPORT export_${PROJECT_NAME}
+{% endif %}
+{% if ~isempty(ExportedLibraryName) %} 
+  EXPORT export_{% ExportedLibraryName %}
+{% endif %}
+
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+{% endif %}
+
+{% if ~isempty(CppNodeName) %}
+# Node
+add_executable({%CppNodeName%} 
+{% for j = numel(SourceFiles) %}
+{% SourceFiles{j} %}
+{% endfor %}
+)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+target_compile_options({%CppNodeName%} PUBLIC 
+  $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:
+  -Wall -Wextra -Wpedantic
+  >)
+endif()
+
+{% if ~isempty(CppFlags) %}
+target_compile_options({%CppNodeName%} PRIVATE
+  $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:
+  {% CppFlags %}>
+{%if any(contains(SourceFiles,'.cu')) %}
+  $<$<COMPILE_LANGUAGE:CUDA>:
+  -Xcompiler=
+  {% CppFlags %}
+  -Wno-dev -Wno-deprecated-gpu-targets
+  >
+{% endif %}
+  )
+{% endif %}
+
+{%if ~isempty(SourceFiles) %}
+{%if any(contains(SourceFiles,'.cu')) %}
+  # Declare CUDA Bins
+  {% if ~isempty(OtherFiles) %}
+  set(CUDA_BINS 
+  {% for j = numel(OtherFiles) %}
+  {% OtherFiles{j} %}
+  {% endfor %}
+  )
+  {% endif %}
+
+{% ros.internal.gpucoder.getCMakeListOptions(CppNodeName, 'ROS2', CUDAFlags) %}
+{% endif %}
+{% endif %}
+
+ament_target_dependencies(
+  {%CppNodeName%}
+  {% for i = numel(Dependencies) %}
+  "{% Dependencies{i} %}"
+  {% endfor %}
+)
+
+
+target_include_directories({%CppNodeName%} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_link_libraries({%CppNodeName%} 
+{% if ~isempty(CppLibraryName) || ~isempty(Libraries) %}
+{% if ~isempty(CppLibraryName) %}
+    {%CppLibraryName%}
+{% endif %}
+{% for i = numel(Libraries) %}
+	{% Libraries{i} %}
+{% endfor %}
+{% endif %}
+{% for k = numel(ImportedLibraries) %}
+    coder_custom_lib_{% num2str(k) %}
+{% endfor %}
+{% if ~isempty(LinkerFlags) %}
+    {% LinkerFlags %}
+{% endfor %}
+	${CMAKE_DL_LIBS}
+    )
+
+{% if ~isempty(MessageFiles) || ~isempty(ServiceFiles) || ~isempty(ActionFiles) %if we have message or service files in this project %}
+rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
+target_link_libraries({%CppNodeName%} "${cpp_typesupport_target}")
+{% endif %}
+
+install(TARGETS {%CppNodeName%}
+  EXPORT export_${PROJECT_NAME}
+  DESTINATION lib/${PROJECT_NAME})
+{% endif %}
+
+{% if ~isempty(MATLABFiles) %}
+install (DIRECTORY m/ DESTINATION m/ FILES_MATCHING PATTERN "*.m")
+{% endif %}
+
+ament_export_include_directories(
+  include
+)
+
+{% if ~isempty(CppLibraryName) %Export lib's interfaces  %}
+ament_export_libraries(
+  {% CppLibraryName %}
+)
+{% endif %}
+
+foreach(file_i ${CUDA_BINS})
+add_custom_command(
+                   TARGET {%CppNodeName%}
+                   POST_BUILD
+                   COMMAND ${CMAKE_COMMAND}
+                   ARGS -E copy ${PROJECT_SOURCE_DIR}/src/${file_i} ${CMAKE_INSTALL_PREFIX}/{%CppNodeName%}_ert_rtw/${file_i}
+				   )
+add_custom_command(
+                   TARGET {%CppNodeName%}
+                   POST_BUILD
+                   COMMAND ${CMAKE_COMMAND}
+                   ARGS -E copy ${PROJECT_SOURCE_DIR}/src/${file_i} ${CMAKE_INSTALL_PREFIX}/codegen/exe/{%CppNodeName%}/${file_i}
+				   )				   
+endforeach(file_i)
+
+ament_package()
+
+# Generated on {% datestr(now,'ddd mmm dd HH:MM:SS YYYY') %}
+
+{% if (false) %}
+# Copyright 2019-2024 The MathWorks, Inc.
+{% endif %}
+

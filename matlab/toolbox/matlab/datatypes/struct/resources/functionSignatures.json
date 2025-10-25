@@ -1,0 +1,167 @@
+{
+    "_comment": "Copyright 2021 MathWorks, Inc.",
+
+    "fieldnames":
+    {
+        "inputs": [
+            {"name":"S", "kind":"required", "type":"struct"}
+        ],
+        "outputs": [
+            {"name":"fields","type":"cellstr"}
+        ]
+    },
+    "getfield":
+    {
+        "inputs": [
+            {"name":"s", "kind":"required", "type":["struct","scalar"]},
+            {"name":"field", "kind":"required", "type":"choices=fieldnames(s)"}
+        ],
+        "outputs": [
+            {"name":"value"}
+        ]
+    },
+    "getfield":
+    {
+        "inputs": [
+            {"name":"s", "kind":"required", "type":["struct"]},
+            {"name":"{sIndx1,...,sIndxM}", "kind":"required", "type":"cell"},
+            {"name":"field", "kind":"required","type":"choices=fieldnames(s)"},
+            {"name":"{fIndx1,...,fIndxN}", "kind":"required", "type":"cell"}
+
+        ],
+        "outputs": [
+            {"name":"value"}
+        ]
+    },
+    "isfield":
+    {
+        "inputs": [
+            {"name":"S","kind":"required","type":"struct"},
+            {"name":"fieldName","kind":"required","type":"char"}
+        ]
+        ,
+        "outputs": [
+            {"name":"tf","type":"logical"}
+        ]
+    },
+    "isfield":
+    {
+        "inputs": [
+            {"name":"S","kind":"required","type":"struct"},
+            {"name":"C","kind":"required","type":"cellstr"}
+        ]
+        ,
+        "outputs": [
+            {"name":"tf","type":["logical","vector"]}
+        ]
+    },
+    "isstruct":
+    {
+        "inputs": [
+            {"name":"A","kind":"required"}
+        ]
+        ,
+        "outputs": [
+            {"name":"tf","type":["logical","scalar"]}
+        ]
+    },
+    "orderfields":
+    {
+        "inputs": [
+            {"name":"s1 ", "kind":"required", "type":"struct"},
+            {"name":"s2", "kind":"optional", "type":"struct"}
+
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"},
+            {"name":"perm", "type":["numeric","vector"]}
+        ]
+    },
+    "orderfields":
+    {
+        "inputs": [
+            {"name":"s1 ", "kind":"required", "type":"struct"},
+            {"name":"c", "kind":"optional", "type":"cell"}
+
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"},
+            {"name":"perm", "type":["numeric","vector"]}
+        ]
+    },
+    "orderfields":
+    {
+        "inputs": [
+            {"name":"s1 ", "kind":"required", "type":"struct"},
+            {"name":"perm", "kind":"optional", "type":["numeric","vector"]}
+
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"},
+            {"name":"perm", "type":["numeric","vector"]}
+        ]
+    },
+    "rmfield":
+    {
+        "inputs": [
+            {"name":"s", "kind":"required", "type":"struct"},
+            {"name":"field", "kind":"required", "type":"choices=fieldnames(s)"}
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"}
+        ]
+    },
+    "setfield":
+    {
+        "inputs": [
+            {"name":"s", "kind":"required", "type":"struct"},
+            {"name":"{sIndx1,...,sIndxM}", "kind":"optional", "type":"cell"},
+            {"name":"field", "kind":"required", "type":"choices=fieldnames(s)"},
+            {"name":"{fIndx1,...,fIndxN}", "kind":"optional", "type":"cell"},
+            {"name":"value","kind":"required"}
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"}
+        ]
+    },
+    "struct":
+    {
+        "inputs": [
+            {"name":"[]"}
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"}
+        ]
+    },
+    "struct":
+    {
+        "inputs": [
+            {"name":"obj"}
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"}
+        ]
+    },
+    "struct":
+    {
+        "inputs": [
+            {"multiplicity":"append", "tuple":
+             [
+                 {"name":"field", "type":"char"},
+                 {"name":"value"}
+             ]}
+        ],
+        "outputs": [
+            {"name":"s", "type":"struct"}
+        ]
+    },
+    "struct2cell":
+    {
+        "inputs": [
+            {"name":"s","kind":"required", "type":"struct"}
+        ],
+        "outputs": [
+            {"name":"c", "type":"cell"}
+        ]
+    }
+}

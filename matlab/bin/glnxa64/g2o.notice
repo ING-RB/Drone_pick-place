@@ -1,0 +1,49 @@
+1) Add buildinfo.sh and makefile_3p.mk files (required for build g2o in our 3p harness)
+
+2) Touch the following vanilla sources for doing Mathworks specific modification and attach the following header for reference.
+   " Copyright (C) 2020 The MathWorks, Inc.
+     MathWorks-specific modifications have been made to the original source."
+	 
+	 a) CMakeLists.txt
+		- modified to not depend on or build other 3p libraries except eigen (openmp, csparse, qt5, opengl, blas, cholmod, lapack)
+		- turned off building g2o examples and apps
+		- disabled compiler flags that cause isssues while using the pre-built library (-march native)
+		- modified to use gmock from our 3p repository for unit testing
+	 b) cmake_modules/FindEigen3.cmake
+		- modified to only search in ROOT_INSTALL path for eigen.
+	 c) g2o/core/sparse_optimizer_terminate_action.cpp
+		- modified to set gainThresholdLimitReached flag in case of the termination gain threshold termination condition	
+	 d) g2o/core/sparse_optimizer.cpp
+		 - modified verbose output format to match MATLAB output format
+		 - modified to include an addtional termination criteria time
+		 - removed verbose which are not required
+		 -  Added methods to set termination condition flags, GainThresholdLimitReached, MaxIterationLimitReached, MaxTimeLimitReached which are useful for filling output structure solutionInfo.  The solution info is an option output for the optimizePoseGraph function.
+	 e) g2o/core/sparse_optimizer.h
+		- added getters for optimization information number of iterations, chi error, exit flag 
+	 f) g2o/solvers/dense/solver_dense.cpp
+		- removed print statement
+	 g) g2o/solvers/eigen/CMakeLists.txt
+		- disabled building solver_eigen library due to incompatible licenses.
+	 h) g2o/solvers/eigen/linear_solver_eigen.h
+		- removed print statement
+	 i) g2o/solvers/pcg/solver_pcg.cpp
+		- removed print statement
+	 j) created g2o/solve/g2o_solve_api.h, solve.cpp for implementing g2oSolve function 
+		- wrapper around g2o sources for exposing otimization to our MCOS interface
+	 k) g2o/types/slam3d/CMakeLists.txt
+		- modified to not build types_slam3d.h and types_slam3d.cpp because their different license
+	 l) g2o/types/CMakeLists.txt
+		-  Skipped building type icp, sclam2d, slam3d_addons due to incompatible licenses.
+	 m) g2o/CMakeLists.txt
+		- modified to build g2oSolve mathworks wrapper shared library
+	 n) unit_test/slam2d/jacobians_slam2d.cpp
+		- use a workaround method for drand function as drand is not available on MSVC.
+	 o) unit_test/CMakeLists.txt
+		- modified to solve gtest linking path issue on Windows.
+		- modified to use gtest on 3p depot for building tests.
+	 p) unit_test/slam3d/CMakeLists.txt
+		- modified to not build jacobians_slam3d.cpp because of its 3rdparty dependency on CERES
+	 q) unit_test/general/graph_operations.cpp
+		- removed depedency on types_slam3d.h by directly including vertex_se3.h and edge_se3.h due to incompatible license of types_slam3d.h.
+	 r) unit_test/general/clear_redo.cpp
+		- removed depedency on types_slam3d.h by directly including vertex_se3.h and edge_se3.h due to incompatible license of types_slam3d.h.

@@ -1,0 +1,85 @@
+{
+    "InputResources": [
+        {
+            "Name": "VelocityJointInterface",
+            "Classname": "JointHandle",
+            "CppVarname": "vel_joint_if",
+            "Header": "joint_command_interface.h"
+        },
+        {
+            "Name": "EffortJointInterface",
+            "Classname": "JointHandle",
+            "CppVarname": "eff_joint_if",
+            "Header": "joint_command_interface.h"
+        },
+        {
+            "Name": "PositionJointInterface",
+            "Classname": "JointHandle",
+            "CppVarname": "pos_joint_if",
+            "Header": "joint_command_interface.h"
+        }
+
+    ],
+    "OutputResources": [
+        {
+            "Name": "EffortJointInterface",
+            "Classname": "JointHandle",            
+            "CppVarname": "eff_joint_h",
+            "Header": "joint_command_interface.h"
+        },
+        {
+            "Name": "VelocityJointInterface",
+            "Classname": "JointHandle",            
+            "CppVarname": "vel_joint_h",
+            "Header": "joint_command_interface.h"
+        },
+        {
+            "Name": "PositionJointInterface",
+            "Classname": "JointHandle",            
+            "CppVarname": "pos_joint_h",
+            "Header": "joint_command_interface.h"
+        }
+    ],
+    "DynamicReconfigurableBlocks": [
+        {
+            "FindSysParam": "BlockType",
+            "FindSysVal": "Gain",
+            "Parameters": ["gain"]
+        },
+        {
+            "FindSysParam": "MaskType",
+            "FindSysVal": "Slider Gain",
+            "Parameters": ["gain"]
+        },
+        {
+            "FindSysParam": "BlockType",
+            "FindSysVal": "Constant",
+            "Parameters": ["Value"]
+        },
+        {
+            "FindSysParam": "MaskType",
+            "FindSysVal": "Compare To Constant",
+            "Parameters": ["const"]
+        },
+        {
+            "FindSysParam": "BlockType",
+            "FindSysVal": "Saturate",
+            "Parameters": ["UpperLimit","LowerLimit"]
+        },
+        {
+            "FindSysParam": "BlockType",
+            "FindSysVal": "StringConstant",
+            "Parameters": ["String"]
+        },
+        {
+            "FindSysParam": "MaskType",
+            "FindSysVal": "PID 1dof",
+            "Parameters": ["P","I","D","N"]
+        },
+        {
+            "FindSysParam": "MaskType",
+            "FindSysVal": "PID 2dof",
+            "Parameters": ["P","I","D","N","b","c"]
+        }
+    ]    
+}

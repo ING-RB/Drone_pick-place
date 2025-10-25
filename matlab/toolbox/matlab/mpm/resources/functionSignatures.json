@@ -1,0 +1,268 @@
+{
+    "matlab.mpm.internal.create":
+    {
+        "inputs":[
+            {"name":"packageName", "kind":"required", "type":["string"]},
+            {"name":"packageRoot", "kind":"ordered", "type":["folder"]}
+        ]
+    },
+    "matlab.mpm.internal.install":
+    {
+        "inputs":[
+            {"name":"yesflag", "kind":"flag", "type":"choices={'-yes'}"},
+            {"name":"packageSpecifier", "repeating":true, "kind":"required",
+             "type":"choices=[matlab.mpm.internal.search().Package]"}
+        ]
+    },
+    "matlab.mpm.internal.uninstall":
+    {
+        "inputs":[
+            {"name":"removeUnusedDependencies", "kind":"flag", "type":"choices={'-noDeps'}"},
+            {"name":"yesflag", "kind":"flag", "type":"choices={'-yes'}"},
+            {"name":"packageSpecifier", "repeating":true, "kind":"positional",
+             "type":"choices=[matlab.mpm.internal.list().Package]"}
+        ]
+    },
+    "matlab.mpm.internal.info":
+    {
+        "inputs":[
+            {"name":"packageSpecifier", "kind":"positional",
+             "type":"choices=[matlab.mpm.internal.list().Package]"}
+        ]
+    },
+    "matlab.mpm.internal.repo":
+    {
+        "inputs":[
+            {"name":"subcommand", "kind":"positional", "type":"choices={'add', 'list', 'remove'}"}
+        ]
+    },
+    "matlab.mpm.internal.repo":
+    {
+        "inputs":[
+            {"name":"subcommand", "kind":"positional", "type":"@(x) isequal('add',x)"},
+            {"name":"repoLocation", "repeating":true, "kind":"positional", "type":"folder"}
+        ]
+    },
+    "matlab.mpm.internal.repo":
+    {
+        "inputs":[
+            {"name":"subcommand", "kind":"positional", "type":"@(x) isequal('remove',x)"},
+            {"name":"repoLocation", "repeating":true, "kind":"positional",
+             "type":"choices=[matlab.mpm.internal.repo('list')]"}
+        ]
+    },
+    "matlab.mpm.internal.register":
+    {
+        "inputs":[
+            {"name":"frozenflag", "kind":"flag", "type":"choices={'-frozen'}"},
+            {"name":"temporaryflag", "kind":"flag", "type":"choices={'-temporary'}"},
+            {"name":"packageLocation", "repeating":true, "kind":"positional", "type":"folder"}
+        ]
+    },
+    "matlab.mpm.internal.unregister":
+    {
+        "inputs":[
+            {"name":"packageSpecifier", "repeating":true, "kind":"positional",
+             "type":"choices=[matlab.mpm.internal.list().Package]"}
+        ]
+    },
+    "mpmRemoveRepository":
+    {
+        "inputs":[
+            {"name":"repository", "kind":"required", 
+             "type":[["matlab.mpm.Repository"],["folder"],["string"],
+                     ["choices=matlab.mpm.internal.listRepositoryStringChoices()"]]}
+        ]
+    },
+    "mpmAddRepository":
+    {
+        "inputs":[
+            {"name":"name", "kind":"required", "type":"string"},
+            {"name":"location", "kind":"required", 
+             "type":[["folder"], ["string"]]},
+            {"name":"Position", "kind":"namevalue", "type":["choices = matlab.mpm.internal.PositionChoices.Flags"]}
+        ]
+    },
+    "mpmAddRepository":
+    {
+        "inputs":[
+            {"name":"repository", "kind":"required", 
+             "type":["matlab.mpm.Repository"]},
+            {"name":"Position", "kind":"namevalue", "type":["choices = matlab.mpm.internal.PositionChoices.Flags"]}
+        ]
+    },
+    "mpminstall": {
+        "inputs": [
+            {"name": "packageSpec", "kind": "required",
+                "type": [["matlab.mpm.Package"], ["matlab.mpm.PackageSpecifier"], ["folder"], ["string"]]
+            },
+            {"name": "Prompt", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "Verbosity", "kind": "namevalue", "type":[["scalar", "matlab.mpm.Verbosity"], ["choices = [\"quiet\", \"normal\", \"detailed\"]"]]},
+            {"name": "InstallDependencies", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "Force", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "AllowVersionReplacement", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "Temporary", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "Authoring", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "InPlace", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "Editable", "kind": "namevalue", "type":["logical", "scalar"]},
+            {"name": "PathPosition", "kind": "namevalue", "type":["choices = matlab.mpm.internal.PositionChoices.Flags"]}
+		]
+	},
+
+    "mpmuninstall": {
+        "inputs": [
+            {"name": "packageSpec", "kind": "required",
+                "type": [["matlab.mpm.Package"], ["matlab.mpm.PackageSpecifier"],
+                    ["choices=matlab.mpm.internal.mpmListStringChoices()"], ["string"]]
+            },
+            {"name": "Prompt", "kind": "namevalue", "type":["scalar", "logical"]},
+            {"name": "Verbosity", "kind": "namevalue", "type":[["scalar", "matlab.mpm.Verbosity"], ["choices = [\"quiet\", \"normal\", \"detailed\"]"]]},
+            {"name": "KeepUnusedDependencies", "kind": "namevalue", "type":["scalar", "logical"]},
+            {"name": "Force", "kind": "namevalue", "type":["scalar", "logical"]}
+		]
+	},
+    
+    "mpmlist": {
+        "inputs": [
+            {"name": "keyword", "kind": "positional", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "Name", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "pattern"]]},
+            {"name": "DisplayName", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "pattern"]]},
+            {"name": "VersionRange", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "ID", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "PackageSpecifier", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"], ["scalar", "matlab.mpm.PackageSpecifier"]]},
+            {"name": "Provider", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "matlab.mpm.Provider"]]},
+            {"name": "CompatibleWithRelease", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "matlabRelease"]]},
+            {"name": "Location", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "folder"]]}
+        ]
+    },
+    
+    "mpmsearch": {
+        "inputs": [
+            {"name": "keyword", "kind": "positional", "type": [["scalar", "string"], ["char", "row"]]},
+            {"name": "Name", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "pattern"]]},
+            {"name": "DisplayName", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "pattern"]]},
+            {"name": "VersionRange", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "VersionSelectionPolicy", "kind": "namevalue", "type":[["scalar", "matlab.mpm.VersionSelectionPolicy"], ["choices = [\"highestbyrepo\", \"all\"]"]]},
+            {"name": "ID", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "PackageSpecifier", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"], ["scalar", "matlab.mpm.PackageSpecifier"]]},
+            {"name": "Provider", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "matlab.mpm.Provider"]]},
+            {"name": "CompatibleWithRelease", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "matlabRelease"]]},
+            {"name": "Repository", "kind": "namevalue", "type": [["string"], ["matlab.mpm.Repository"]]}            
+        ]
+    },
+    
+    "matlab.mpm.Package.addDependency":
+    {
+        "inputs":
+        [
+            {"name" : "package", "kind":"required", "type":"matlab.mpm.Package"},
+            {"name" : "dependencies", "kind":"required", "type": [["matlab.mpm.Package"], ["matlab.mpm.PackageSpecifier"], ["matlab.mpm.Dependency"], ["choices=matlab.mpm.internal.dependenciesToAddChoices(package)"]]}
+        ]
+    },
+    "matlab.mpm.Package.removeDependency":
+    {
+        "inputs":
+        [
+            {"name" : "package", "kind":"required", "type":"matlab.mpm.Package"},
+            {"name" : "dependencies", "kind":"required", "type": [["matlab.mpm.Package"], ["matlab.mpm.PackageSpecifier"], ["matlab.mpm.Dependency"], ["choices=matlab.mpm.internal.dependenciesToRemoveChoices(package)"]]}
+        ]
+    },
+
+    "matlab.mpm.Package.updateDependency":
+    {
+        "inputs":
+        [
+            {"name" : "package", "kind":"required", "type":"matlab.mpm.Package"},
+            {"name" : "dependencies", "kind":"required", "type": [["choices=matlab.mpm.internal.dependenciesToRemoveChoices(package)"]]},
+            {"name" : "versionRange", "kind":"required", "type": "string"}
+        ]
+    },
+
+    "matlab.mpm.Package.addFolder":
+    {
+        "inputs":
+        [
+            {"name" : "package", "kind":"required", "type":"matlab.mpm.Package"},
+            {"name" : "folders", "kind":"required", "type": [["string"], ["matlab.mpm.PackageFolder"], ["choices=matlab.mpm.internal.foldersToAddUnderPackageRoot(package)"]]},
+            {"name": "Languages", "kind": "namevalue", "type":["choices=string(enumeration('matlab.mpm.PackageFolderLanguage'))"]}
+        ]
+    },
+
+    "matlab.mpm.Package.removeFolder":
+    {
+        "inputs":
+        [
+            {"name" : "package", "kind":"required", "type":"matlab.mpm.Package"},
+            {"name" : "folders", "kind":"required", "type": [["string"], ["matlab.mpm.PackageFolder"], ["choices=[package.Folders.Path]"]]}
+        ]
+    },
+
+    "matlab.mpm.Package":
+    {
+        "inputs":
+        [
+            {"name" : "packageLocation", "kind":"required", "type":["folder"]}            
+        ]
+    },
+
+    "matlab.mpm.Version":
+    {
+        "inputs":
+        [
+            {"name" : "versionString", "kind":"required", "type":[["string"],["char","row"]]},
+            {"name" : "Prerelease", "kind":"namevalue", "type":[["string"],["char","row"]]},
+            {"name" : "Build", "kind":"namevalue", "type":[["string"],["char","row"]]}
+        ]
+    },
+
+    "matlab.mpm.Version":
+    {
+        "inputs":
+        [
+            {"name" : "Major", "kind":"required", "type":["numeric"]},
+            {"name" : "Minor", "kind":"optional", "type":["numeric"]},
+            {"name" : "Patch", "kind":"optional", "type":["numeric"]},
+            {"name" : "Prerelease", "kind":"namevalue", "type":[["string"],["char","row"]]},
+            {"name" : "Build", "kind":"namevalue", "type":[["string"],["char","row"]]}
+        ]
+    },
+
+    "matlab.mpm.Provider":
+    {
+        "inputs":
+        [
+            {"name" : "Name", "kind":"namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name" : "Organization", "kind":"namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name" : "Email", "kind":"namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name" : "URL", "kind":"namevalue", "type":[["scalar", "string"], ["char", "row"]]}
+        ]
+    },
+
+    "matlab.mpm.PackageFolder":
+    {
+        "inputs":
+        [
+            {"name": "pathArray", "kind": "required", "type":["string"]},
+            {"name": "Languages", "kind": "namevalue", "type":["choices=string(enumeration('matlab.mpm.PackageFolderLanguage'))"]}
+        ]
+    },
+
+    "mpmcreate":
+    {
+        "inputs":
+        [
+            {"name": "name", "kind": "required", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "location", "kind": "required", "type": [["scalar", "string"], ["char", "row"], ["scalar", "folder"]]},
+            {"name": "DisplayName", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "Version", "kind": "namevalue", "type": [["scalar", "string"], ["char", "row"], ["scalar", "matlab.mpm.Version"]]},
+            {"name": "Provider", "kind": "namevalue", "type": ["scalar", "matlab.mpm.Provider"]},
+            {"name": "Summary", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "Description", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "ReleaseCompatibility", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]},
+            {"name": "IncludeSubFolders", "kind": "namevalue", "type": ["scalar", "logical"]},
+            {"name": "Install", "kind": "namevalue", "type": ["scalar", "logical"]},
+            {"name": "ID", "kind": "namevalue", "type":[["scalar", "string"], ["char", "row"]]}
+
+        ]
+    }
+}

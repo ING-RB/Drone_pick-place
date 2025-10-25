@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!-- Copyright 2013-2024 The MathWorks, Inc. -->
+<rsccat locale="en_US" product="vision" version="1.0">
+  <message>
+    <!-- detectCheckerboardPoints -->
+    <entry key="boardShouldBeAsymmetric">The checkerboard must be asymmetric: one side should be even, and the other should be odd. Otherwise, the orientation of the board may be detected incorrectly.</entry>
+    <entry key="detectCheckerboardWaitbar">Detecting checkerboard in image {0, number, integer} of {1, number, integer}.</entry>
+    <entry key="stereoImagesMustBeSameClass">images1 and images2 must be of the same class.</entry>
+    <entry key="stereoImagesMustBeSameSize">images1 and images2 must be of the same size.</entry>
+    <entry key="codegenFileNamesNotSupported">Specifying images as file names is not supported for code generation.</entry>
+    <entry key="codegenMultipleImagesNotSupported">Detecting checkerboards in a set of images is not supported for code generation.</entry>
+    <entry key="AnalyzingImagesTitle">Analyzing Images</entry>
+    
+    <!-- estimateCameraParameters -->
+    <entry key="minNumWorldPoints">The number of worldPoints must be greater than {0, number, integer}.</entry>
+    <entry key="minNumImagePoints">The number of imagePoints per image must be greater than {0, number, integer}.</entry>
+    <entry key="imagePoints3Dor4D">imagePoints must be a 3-D or a 4-D array.</entry>
+    <entry key="minNumPatterns">Number of images containing the calibration pattern must be greater than or equal to 2.</entry>
+    <entry key="numberOfPointsMustMatch">Expected imagePoints and worldPoints to have the same number of rows.</entry>
+    <entry key="complexCameraMatrix">Unable to estimate camera parameters. Images may contain severe lens distortion or the 3-D orientations of the calibration pattern are too similar across images. If calibration pattern orientations are too similar, try removing very similar images or adding additional images with the pattern in varied orientations.</entry>
+    <entry key="invalidHomographies">Could not compute homography for {0, number, integer} out {1, number, integer} images. The most likely reason is that these images contain fewer than 4 non-collinear points. The indices of the images for which homography was successfully computed are returned in validImageIndices, the second output of estimateCameraParameters.</entry>
+    <entry key="notEnoughValidHomographies">Homographies must be successfully computed for at least 2 images to estimate camera parameters.</entry>
+    <entry key="numRadialCoeffsDoesntMatch">The number of elements in {0} must be equal to {1}.</entry>
+    <entry key="bothIntrinsicFormatsProvided">Both InitialK and InitialIntrinsicMatrix have been defined as name-value arguments. Only one is to be defined at a time.</entry>
+    <entry key="convergedToNegativePrincipalPoint">Unable to estimate camera parameters. The 3-D orientations of the calibration pattern might be too similar across images. Remove any similar images and recalibrate the cameras again.</entry>
+    
+    <!-- estimateMultiCameraParameters -->
+    <entry key="numberOfCamerasMustMatch">Expected intrinsics to be a {0}-element array.</entry>
+    <entry key="noCovisibleView">Unable to estimate camera parameters. Cameras with the following indices do not have any view covisible with another camera:\n{0}.\nInclude additional image points for these cameras and recalibrate the cameras again.</entry>
+
+    <!-- estimateCameraParameters progress bar -->
+    <entry key="initialGuess">Computing initial guess...</entry>
+    <entry key="jointOptimization">Computing joint optimization...</entry>
+    <entry key="calibratingCamera1">Calibrating camera 1...</entry>
+    <entry key="calibratingCamera2">Calibrating camera 2...</entry>
+    <entry key="calibrationComplete">Calibration complete!</entry>
+
+    <!-- cameraParameters --> 
+    <entry key="rotationAndTranslationVectorsNotSameSize">RotationVectors and TranslationVectors must be the same size.</entry>
+    <entry key="rotationAndTranslationVectorsMustBeSetTogether">Both RotationVectors and TranslationVectors must be set.</entry>
+    <entry key="reprojectionErrorsSizeMismatch">ReprojectionErrors must have the size of M-by-2-by-P, where P is the number of TranslationVectors and RotationVectors</entry>
+    <entry key="assignedBothIntrinsicMatrices">Specifying values for both K and IntrinsicMatrix is not supported.</entry>
+    <entry key="intrinsicMatrixNonZeroElements">The values of the (row,col) elements (1,2), (1,3), and (2,3) in the matrix IntrinsicMatrix must be 0.</entry>
+    <entry key="kIntrinsicMatrixNonZeroElements">The values of the (row,col) elements (2,1), (3,1), and (3,2) in the matrix K must be 0.</entry>
+  
+    <!-- stereoParameters -->
+    <entry key="sameNumPatterns">cameraParameters1.NumPatterns and cameraParameters2.NumPatterns must be equal.</entry>
+    <entry key="sameWorldUnits">cameraParameters1.WorldUnits and cameraParameters2.WorldUnits must be the same.</entry>
+    <entry key="missingRectificationParams">RectificationParameters field is missing from paramStruct.</entry>
+    <entry key="missingRectificationParamsField">{0} field is missing from paramStruct.RectificationParameters.</entry>
+
+    <!-- fisheyeIntrinsics -->
+    <entry key="invalidStretchMatrix">The stretch matrix should be of the form [c d; e 1].</entry>
+
+    <!-- extrinsics -->
+    <entry key="pointsClassMismatch">imagePoints and worldPoints must have the same class.</entry>
+ 
+    <!-- strings from showReprojectionErrors -->
+    <entry key="invalidHighlightIndex">The specified HighlightIndex contains values exceeding the maximum number of patterns.</entry>
+    <entry key="cannotShowEmptyErrors">ReprojectionErrors property is empty and cannot be visualized. To be able to use showReprojectionErrors function, use estimateCameraParameters function to create the cameraParameters object.</entry> 
+    <entry key="noStereoOrMultiScatterPlot">The ScatterPlot view is not available for stereoParameters or multiCameraParameters.</entry>
+    <entry key="highlightIndexNotSupported">The 'HighlightIndex' name-value argument is not supported for multiCameraParameters.</entry>
+    <entry key="barGraphTitle">Mean Reprojection Error per Image</entry>
+    <entry key="barGraphTitlePerView">Mean Reprojection Error per View</entry>
+    <entry key="barGraphTitlePerCamera">Mean Reprojection Error per Camera</entry>
+    <entry key="barGraphXLabel">Images</entry>
+    <entry key="barGraphXLabelStereo">Image Pairs</entry>
+    <entry key="barGraphXLabelCamera">Camera</entry>
+    <entry key="barGraphXLabelView">View</entry>
+    <entry key="barGraphYLabel">Mean Error in Pixels</entry>
+    <entry key="overallMeanError">Overall Mean Error: {0} pixels</entry>
+    <entry key="scatterPlotTitle">Reprojection Errors in Pixels</entry>
+    <entry key="scatterPlotXLabel" translate="false">X</entry>
+    <entry key="scatterPlotYLabel" translate="false">Y</entry>
+
+    <!-- strings from showExtrinsics -->
+    <entry key="showExtrinsicsTitle">Extrinsic Parameters Visualization</entry>
+    <entry key="cameraIndexNotSupported">'CameraIndex' is only supported for multiCameraParameters input</entry>
+
+    <!-- rectifyStereoImages -->
+    <entry key="scalarFillValueRequired">'FillValues' must be scalar when the images are grayscale.</entry>
+    <entry key="scalarOrTripletFillValueRequired">'FillValues' must be scalar or a 3-element vector when the images are RGB.</entry>
+    <entry key="switchValidViewToFullView">The rectified images do not have enough common rectangle region. Switch to 'full' output view instead.</entry>
+    <entry key="invalidBounds">The rectification failed because the two images do not have area of common overlap. This may indicate a problem with camera calibration. Try re-calibrating by using more images or moving the cameras closer to each other.</entry>
+
+    <!-- reconstructScene -->
+    <entry key="callRectifyFirst">You must call rectifyStereoImages on the {0} input before calling reconstructScene.</entry>
+    <entry key="disparitySizeMismatch">Expected {0} to have the size of [{1, number, integer}, {2, number, integer}]. Either pass in the correct {3}, or call rectifyStereoImages before calling reconstructScene.</entry>
+    <entry key="badValidUndistortBounds">The undistorted image may contain invalid pixels. This may be caused by inaccurate calibration. Try calibrating with more images, so that the calibration patterns cover most of the field of view.</entry>
+
+    <!-- cameraMatrix -->
+    <entry key="RandTClassMismatch">rotationMatrix and translationVector must be of the same class.</entry>
+  
+    <!-- undistortImage -->
+    <entry key="cannotComputeValidBounds">Cannot compute the output image bounds for the 'Valid' output view. Try setting the 'OutputView' parameter to 'Full'. This may indicate a problem with camera calibration. Try re-calibrating using more images, or try setting the number of radial distortion coefficients to 2.</entry>
+    
+    <!-- visionDistortPoints -->
+    <entry key="inconsistentDatatype">Datatype of the intrinsics properties does not match points datatype. Properties of intrinsics object must be of datatype {0}, for {0} precision computation.</entry>
+
+    <!-- undistortFisheyePoints -->
+    <entry key="emptyImageSize">The intrinsic parameter of image size cannot be empty.</entry>
+    <!-- undistortFisheyeImage -->
+    <entry key="inconsistentImageSize">Image size is not consistent with camera intrinsics. It is likely that the image is not generated by the specified camera.</entry>
+    <entry key="failToUndistortFullImage">Failed to undistort the image. Consider reducing the value of 'ScaleFactor' and/or set the 'OutputView' parameter to 'Same'.</entry>
+    <entry key="failToUndistortPoints">Some points are not undistorted properly and set to NaN. You may be able to improve the results by reducing 'ScaleFactor'.</entry>
+
+    <!-- estimateStereoBaseline -->
+    <entry key="sizeOfImageMustMatch">The intrinsic parameters of image size must be the same.</entry>
+    
+     <!-- estimateCameraMatrix -->
+    <entry key="coplanarPoints">World points are nearly coplanar. Use non-coplanar points instead.</entry>
+    <entry key="minNumPoints">The number of image points must be at least {0, number, integer}.</entry>
+    
+    <!-- detectCircleGridPoints -->
+    <entry key="unsupportedPatternDims">When the PatternType is asymmetric, one of the pattern dimension values must be odd.</entry>
+    <entry key="unsupportedPattern">Detecting symmetric circle grid pattern in images from a stereo pair is not supported.</entry>
+    <entry key="missingPatternDims">Missing required input argument, patternDims.</entry>
+    <entry key="detectCircleGridWaitbar">Detecting circle grid in image {0, number, integer} of {1, number, integer}.</entry>
+    
+     <!-- cameraIntrinsicsToOpenCV -->
+     <entry key="nonzeroSkewCoefficient"> The skew coefficient of the camera is non zero. Only intrinsics that were estimated without the skew can be exported to OpenCV.</entry>
+     
+     <!-- parseProjectionInputs -->
+     <entry key="cameraParametersUnsupported">cameraParameters is not supported. Use cameraIntrinsics.</entry>
+
+     <!-- detectCharucoBoardPoints -->
+     <entry key="detectCharucoBoardWaitbar">Detecting ChArUco board in image {0, number, integer} of {1, number, integer}.</entry>
+     <entry key="invalidCameraIntrinsics">Expected intrinsics to be a stereoParameters object or a 2-element vector of cameraIntrinsics objects to detect ChArUco board in stereo image pairs.</entry>
+     <entry key="elementsOfImageFileNames">elements of imageFileNames</entry>
+     <entry key="invalidImage"> Image must contain more than 2 pixels.</entry>
+
+     <!-- detectAprilGridPoints -->
+     <entry key="detectAprilGridWaitbar">Detecting AprilGrid in image {0, number, integer} of {1, number, integer}.</entry>
+
+     <!-- detectPatternPoints -->
+     <entry key="insufficientImages">imageFileNames must contain at least 2 rows and 3 columns.</entry> 
+     <entry key="detectPatternWaitbar">Detecting pattern in image {0, number, integer} of {1, number, integer}.</entry>
+     <entry key="detectingPatternHeader">Detecting pattern in {0, number, integer} images captured from {1, number, integer} cameras.</entry>
+     <entry key="customInvalidNargin">Expected the custom pattern detector function to accept 1 input.</entry>
+     <entry key="customInvalidNargout">Expected the custom pattern detector function to return 2 outputs.</entry>
+     <entry key="customDetectorMissingOnLoad">Undefined custom pattern detector function ''{0}''. Please check if ''{0}'' is on MATLAB's search path.</entry>
+     <entry key="notEnoughInputs">Not enough input arguments for {0} pattern detector.</entry>
+     <entry key="tooManyInputs">Too many input arguments for {0} pattern detector.</entry>
+
+     <!-- multiCameraParameters -->
+     <entry key="asymmetricCovisibility">Covisibility matrix must be symmetric.</entry>
+     <entry key="inconsistentNumCameras">NumCameras dimension in poses, cameraParams, covisibilityMat and imagesUsed inputs must be equal to construct a multiCameraParameters object.</entry>
+     <entry key="invalidNumCameras">The multi-camera system must contain at least 3 cameras.</entry>
+     <entry key="inconsistentWorldPointDetails">WorldPoints and WorldUnits properties must be equal across all elements of CameraParameters.</entry>
+     <entry key="noReferenceCamera">Unable to find any reference camera in the multi-camera system. Estimated poses does not contain any rigidtform3d object with identity transformation.</entry>
+     <entry key="multipleReferenceCameras">The multi-camera system must contain only one reference camera. Found multiple rigidtform3d objects with identity transformation in the estimated camera poses.</entry>
+     <entry key="invalidPatternExtrinsics">Pattern extrinsics cannot be computed for camera {0}. The most likely reason is that all the images of the camera contain fewer than 4 non-collinear points.</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2020-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+
+    <!-- Causes -->
+
+    <entry key="ErrorCauseDifferentSampletimes" context="error">
+      ''{0}'' has a sample time of {1}.
+    </entry>
+    <entry key="ErrorCauseImplicitTask" context="error">
+      ''{0}'' is in an implicit partition.
+    </entry>
+    <entry key="ErrorCauseExplicitTask" context="error">
+      ''{0}'' is in explicit partition {1}.
+    </entry>
+
+
+    <!-- Errors/Warnings -->
+
+    <entry key="IllegalInsertedRtb" context="error">
+      <![CDATA[
+               Data integrity issue between <sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag>
+               of block ''{1}'' and <sldiag objui="inport" objparam="{2,number,integer}"
+               objname="{3}">input port {2,number,integer}</sldiag> of block ''{3}''.  Simulink
+               cannot insert the rate transition block automatically because the model does not
+               currently have sample time {4} needed for the inserted rate transition block.
+               <actions> <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions"
+               ids="InsertRTBManuallyPorts"></action_catalog> </actions>
+      ]]>
+    </entry>
+
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkInput" context="error">
+       <![CDATA[
+                Data integrity issue was at <sldiag objui="inport"
+                objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of block
+                ''{1}''. However, Simulink cannot automatically insert a Rate Transition block because one of the
+                following scenarios exists:\n
+                - Fixing the unspecified rate transition requires rewiring of the blocks;\n
+                - Simulink cannot choose an insertion location for the Rate Transition block because
+                multiple possibilities exist; \n
+                - The unspecified rate transition requires the insertion of a Rate
+                Transition block on a virtual bus signal. \n
+                - The input signal of this block is being logged. \n
+                - Either the source or destination is a state port. \n
+                <actions exclusiveFixIts="yes">
+                   <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB">
+                   </action_catalog>
+                </actions>
+       ]]>
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkOutput" context="error">
+      <![CDATA[
+               Data integrity issue at <sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block
+               ''{1}''. However, Simulink cannot automatically insert a Rate Transition block because one of the
+               following scenarios exists: \n
+               - Fixing the unspecified rate transition requires rewiring of the blocks;\n
+               - Simulink cannot choose an insertion location for the Rate Transition block because
+               multiple possibilities exist; \n
+               - The unspecified rate transition requires the insertion of a Rate
+               Transition block on a virtual bus signal. \n
+               - The output signal of this block is being logged. \n
+               - Either the source or destination is a state port. \n
+               <actions exclusiveFixIts="yes">
+                   <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB">
+                   </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="NeedRewireOrManuallyInsertRateTransBlkEnablePort" context="error">
+      <![CDATA[
+               Simulink detected an unspecified rate transition at enable port block
+               ''{0}''. However, Simulink cannot automatically insert a Rate Transition block because one of the
+               following scenarios exists: \n
+               - Fixing the unspecified rate transition requires rewiring of the blocks;\n
+               - Simulink cannot choose an insertion location for the Rate Transition block because
+               multiple possibilities exist; \n
+               - The unspecified rate transition requires the insertion of a Rate Transition block on a virtual bus signal. \n
+               - The output signal of this block is being logged. \n
+               - Either the source or destination is a state port. \n
+               <actions exclusiveFixIts="yes">
+                   <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB">
+                   </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+    <entry key="NeedToRewireManuallyDueToBranchToOutportBEPExpFcn" context="error">
+      <![CDATA[
+               The model ''{3}'' is configured for export function and has modeling constraints due to the usage of Bus Element Port.
+               An unsupported signal branch detected at <sldiag objui="outport"
+               objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block
+               ''{1}''. Consider connect to root outport block ''{2}'' through an outport of block ''{1}''.
+      ]]>
+    </entry>
+    <entry key="IllegalIPortRateTransSingleTasking" context="error">
+      <![CDATA[
+               Data integrity issue between ''{0}'' and ''{1}''.
+               <actions exclusiveFixIts="yes">
+                   <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="RewireBlkDiagOrManuallyAddRTB,{2},SingleTaskRateTransMsgWarning">
+                       <arg>{0}</arg>
+                   </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalIPortRateTransViewer" context="error">
+      <![CDATA[
+               Data integrity issue between ''{0}'' at {1} and ''{2}'' at output port {3, number,integer}.
+               The data displayed on {0} may be off by a sample period.
+               <actions exclusiveFixIts="yes">
+               <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}, ChangeDiagnosticSettingToWarning">
+                 <arg>{0}</arg>
+               </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalIPortRateTransForFramedData" context="error">
+      <![CDATA[
+               Data transfer protection is not supported for frame-based signals.
+               <actions exclusiveFixIts="yes">
+               <action type = "suggestion">
+               <txt>Use the same sample time at {1} on ''{0}'' and output port {3,number,integer} on ''{2}''.
+               </txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalIPortRateTransVarDimsSignal" context="error">
+       <![CDATA[
+                Simulink does not support rate transitions for variable-size signals.
+                <actions exclusiveFixIts="yes">
+                <action type = "suggestion">
+                <txt>Consider making the sample time of ''{0}'' at input port {1,number,integer} and ''{2}'' at
+                     output port {3,number,integer} equal.
+                </txt>
+                </action>
+                </actions>
+       ]]>
+    </entry>
+
+    <entry key="IllegalRateTransSFcnBlockPortNumErr" context="diagnostic">
+      Illegal usage of SS_OPTION_RATE_TRANSITION by S-function ''{0}'' in ''{1}''. This option can
+      only be used by S-functions with one input and one output port.
+    </entry>
+
+    <entry key="IllegalRateTransSFcnBlockTsNumErr" context="diagnostic">
+      Illegal usage of SS_OPTION_RATE_TRANSITION by S-function ''{0}'' in ''{1}''. This option can
+      only be used by S-functions that specifies only one functional sample time.
+    </entry>
+    <entry key="IllegalRateTransSFcnBlockContTsErr" context="diagnostic">
+      Illegal usage of SS_OPTION_RATE_TRANSITION by S-function ''{0}'' in ''{1}''. This option can
+      only be used by S-functions with a discrete sample time.
+    </entry>
+    <entry key="IllegalFCSSPortRateTrans" context="diagnostic">
+      Function call initiator with different rates or partitions found at {0} of ''{1}''.
+      To prevent inconsistent and unpredictable simulation and code generation outcomes,
+      all function calls must operate at the same rate and within the same partition.
+    </entry>
+
+    <entry key="IllegalRateTransAtStatePort" context="diagnostic">
+      The sample time {0} of ''{1}'' at {2} is different from the sample time {3} of ''{4}'' at
+      output port {5,number,integer}. A rate transition is not allowed at a state port.
+    </entry>
+
+    <entry key="IllegalIPortRateTrans" context="error">
+      <![CDATA[
+               Data integrity issue between ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}.
+               <actions exclusiveFixIts="yes">
+                 <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}">
+                   <arg>{0}</arg>
+                 </action_catalog>
+                 <action type="fixit" id="MultiTaskingOff">
+                   <cmd>set_param( bdroot(''{0}''), 'EnableMultiTasking', 'off');</cmd>
+                   <txt>Consider clearing the "Treat each discrete rate as a separate task" option.</txt>
+                 </action>
+                 <action type="fixit" id="MultiTaskRTBMsgWarning" retvalue="false">
+                   <cmd>set_param( bdroot(''{0}''), 'MultiTaskRateTransMsg', 'warning');</cmd>
+                   <txt>Set the configuration parameter "Multitask data transfer" to warning to suppress the error message.</txt>
+                 </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalIPortRateTransNoAutoInsert" context="error">
+      <![CDATA[Data integrity issue between ''{0}'' at {1} and ''{2}'' at output port {3,number,integer}.
+      <actions exclusiveFixIts="yes">
+        <action type="suggestion">
+          <txt>Insert a rate transition block to protect the data transfer.</txt>
+        </action>
+      </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalIPortRateTransExplicitTask" context="error">
+      <![CDATA[
+               The sample time {0} of ''{1}'' at {2} belongs to a different partition than the sample time {3} of
+               ''{4}'' at <sldiag objui="outport" objparam="{5,number,integer}" objname="{4}">output port
+               {5,number,integer}</sldiag>.
+               <actions exclusiveFixIts="yes">
+                  <action type="fixit" id="CommentThrough" retvalue="false">
+                  <cmd>set_param_action(''{4}'','Commented','through');set_param_action(''{6}'','AutoInsertRateTranBlk','on');</cmd>
+                  <txt>Comment through the Rate Transition block ''{4}'' to allow Simulink
+                  automatically handle the data transfer by inserting proper rate transition blocks. This will enable
+                  "Automatically handle rate transition for data transfer" in the Configuration Parameters dialog box.
+                  </txt>
+                  </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalRateTransBlkInInputRegion" context="error">
+      <![CDATA[
+               Rate transition block ''{0}'' next to a root inport is not supported because multiple tasks are reading from the inport.
+               <actions exclusiveFixIts="yes">
+                  <action type="fixit" id="CommentThrough"  retvalue="false">
+                  <cmd>set_param_action(''{0}'','Commented','through');</cmd>
+                  <txt>Comment through the Rate Transition block ''{0}''</txt>
+                  </action>
+                  <action type="fixit" id="AllowMultipleTaskToAccessIOParamOFF"  retvalue="false">
+                  <cmd>set_param( bdroot(''{0}''), 'AllowMultiTaskInputOutput', 'off');</cmd>
+                  <txt>Set the configuration parameter "Allow multiple tasks to access inputs and outputs" to "off".</txt>
+                  </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalIPortRateTransForConcurrentExecution" context="error">
+      <![CDATA[
+               The sample time {0} of ''{1}'' at {2} is different from the sample time {3} of
+               ''{4}'' at output port {5,number,integer}.
+               <actions exclusiveFixIts="yes">
+                 <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{6}">
+                   <arg>{1}</arg>
+                 </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalRateTransAtMergeBlk" context="error">
+      <![CDATA[
+               The sample time {0} of the Merge block ''{1}'' at {2} is different from the sample
+               time {3} of its source, ''{4}'', at <sldiag objui="outport" objparam="{5,number,integer}"
+               objname="{1}">output port {5,number,integer}</sldiag>.
+               <actions exclusiveFixIts="yes">
+                 <action type="suggestion">
+                   <txt>Consider making two sample times equal.</txt>
+                 </action>
+                 <action type="suggestion">
+                   <txt>Insert a Rate Transition block and a Signal Conversion block between ''{6}'' and the Merge block.</txt>
+                 </action>
+                 <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="ChangeDiagnosticSettingToWarning">
+                   <arg>{1}</arg>
+                 </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="IllegalRateTransBlkInRightClickBuild" context="error">
+      The subsystem right-click build resulted in an improperly configured rate transition block,
+      {0}. Investigate this issue in the original model by verifying: \n
+      - The original model uses a fixed-step solver; \n
+      - The Sample Time parameters of the Inport and Outport blocks in the subsystem
+      are all set to -1; \n
+      - The subsystem input signals do not have a constant sample time.
+    </entry>
+
+    <entry key="IllegalRateTransInRightClickBuild" context="error">
+      The subsystem right-click build resulted in an unspecified rate transition between ({0}) and
+      ({1}). Investigate this issue in the original model, by verifying: \n
+      - The original model uses a fixed-step solver; \n
+      - The Sample Time parameters of the Inport and Outport blocks in the subsystem
+      are all set to -1; \n
+      - The subsystem input signals do not have a constant sample time.
+    </entry>
+
+    <entry key="IllegalRateTransDelay" context="error">
+      The configuration of the Delay ''{0}'' is incorrect for handling a rate transition. The sample
+      time {1} of its destination is not present on any blocks in the system containing the Delay
+      block. Consider using the Rate Transition block to handle the data transfer between rates.
+    </entry>
+
+    <entry key="IllegalRateTransUnitDelay" context="error">
+      The configuration of the Unit Delay ''{0}'' is incorrect for handling a rate transition. The
+      sample time {1} of its destination is not present on any blocks in the system containing the Unit
+      Delay block. Consider using the Rate Transition block to handle the data transfer between rates.
+    </entry>
+
+    <entry key="IllegalSampleTimeRateTransUnitDelay" context="diagnostic">
+      The sample time {0} is too small for the Unit Delay ''{1}'' to handle a rate
+      transition. Specify a value higher than 1e10 or choose 0 for continuous rate transition.
+    </entry>
+
+    <entry key="IllegalRateTransZOH" context="diagnostic">
+      <![CDATA[
+               The configuration of the Zero Order Hold ''{0}'' is incorrect for handling a rate
+               transition. The sample time {1} of its source is not present on any blocks in the system containing
+               the Zero Order Hold block.
+               <actions exclusiveFixIts="yes">
+               <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="InsertRTBManually"></action_catalog>
+               </actions>
+    ]]>
+    </entry>
+
+    <entry key="IllegalUnitDelayRateTrans" context="diagnostic">
+      <![CDATA[
+               The configuration of the Unit Delay ''{0}'' is incorrect for handling a rate transition.
+               <actions exclusiveFixIts="yes">
+               <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="InsertRTBManually"></action_catalog>
+               <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="ChangeDiagnosticSettingToWarning">
+                 <arg>{0}</arg>
+               </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="InvAsyncRateTrans" context="error">
+      <![CDATA[
+               Data integrity issue between ''{0}'' at <sldiag objui="outport"
+               objparam="{1,number,integer}" objname="{0}">output port {1,number,integer}</sldiag> and ''{2}'' at
+               <sldiag objui="inport" objparam="{3,number,integer}" objname="{0}">input port
+               {1,number,integer}</sldiag>.
+               <actions exclusiveFixIts="yes">
+                 <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{4}">
+                   <arg>{0}</arg>
+                 </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="InvAsyncRateTransOutHiddenToWksSigLog" context="diagnostic">
+      <![CDATA[
+               The signal cannot be logged at <sldiag objui="outport" objparam="{1,number,integer}"
+               objname="{0}">output port {1,number,integer}</sldiag> because the block ''{0}'' is asynchronously
+               executed.
+               <actions exclusiveFixIts="yes">
+                 <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{2}">
+                   <arg>{0}</arg>
+                 </action_catalog>
+                 <action type="fixit">
+                   <cmd>set_param(bdroot(''{0}''),'SignalLogging','off');</cmd>
+                   <txt>Disable signal logging.</txt>
+                 </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="InvAsyncRateTransOutHiddenToWksOutLog" context="diagnostic">
+      <![CDATA[
+               Because the block ''{0}'' is asynchronously executed, output cannot be logged at the
+               destination of <sldiag objui="outport" objparam="{1,number,integer}" objname="{0}">output port
+               {1,number,integer}</sldiag> in Dataset format.
+               <actions exclusiveFixIts="yes">
+                 <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="{2},ChangeSaveFormatConfig">
+                   <arg>{0}</arg>
+                 </action_catalog>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="InvAsyncRateTransBlkConn" context="diagnostic">
+      Invalid connection for asynchronous rate transition ''{0}''. It should only be used when the
+      source or destination is an asynchronously executed function-call block. In addition a direct
+      connection between the asynchronous rate transition and the function-call block must exist (i.e.,
+      the signal connecting them cannot be observed).
+    </entry>
+
+    <entry key="NoRateTransBlkInsertedForRateTransBlkInput" context="diagnostic">
+      <![CDATA[
+               Simulink did not automatically insert a Rate Transition block at <sldiag
+               objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of
+               block ''{1}'' because a Rate Transition block exists upstream of the insertion location.
+               <actions exclusiveFixIts="yes">
+               <action type="suggestion">
+               <txt>Set the 'Output port sample time' to '-1' at the upstream Rate Transition block.</txt>
+               </action>
+               <action type="suggestion">
+               <txt>Manually insert a Rate Transition block at
+               <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of ''{1}''.
+               </txt>
+               </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="NoRateTransBlkInsertedForRateTransBlkOutput" context="diagnostic">
+      <![CDATA[
+               Simulink did not automatically insert a Rate Transition block at <sldiag
+               objui="outport" objparam="{0,number,integer}" objname="{1}">output port
+               {0,number,integer}</sldiag> of block ''{1}'' because a rate transition block exists downstream
+               of the insertion location.
+      ]]>
+    </entry>
+
+    <entry key="InvalidRateTransForSimulinkFunctionInMdlRef" context="diagnostic">
+      <![CDATA[
+               The asynchronously executed Simulink Function ''{0}'' inside the model block ''{1}'' is not
+               allowed to connect to block ''{2}''.
+               <actions exclusiveFixIts="yes">
+                 <action type="suggestion">
+                   <txt>Change the caller of Simulink Function ''{0}'' to be a periodic rate.</txt>
+                 </action>
+               </actions>
+      ]]>
+    </entry>
+
+    <entry key="InvalidUnsupportedRootOutportMultiWriteDataTransfer" context="diagnostic">
+        <![CDATA[
+            Data transfer protections are not supported for the root Outport block ''{0}'' as multiple tasks are writing into the Outport block ''{0}''.
+            <actions exclusiveFixIts="yes">
+                <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="MultiTaskRateTransMsgWarning">
+                   <arg>{1}</arg>
+                </action_catalog>
+            </actions>
+        ]]>
+    </entry>
+
+    <entry key="AperiodicRateAbsoluteTimeDataTransferUnsupported" context="error">
+        <![CDATA[
+            Absolute or elapsed time for Block ''{0}'' with aperiodic partition is not supported as it may lead to corrupted data because it accesses the base task tick counter.
+            <actions exclusiveFixIts="yes">
+                <action_catalog id="Simulink:DataTransfer:RTBFixitsAndSuggestions" ids="MultiTaskRateTransMsgWarning">
+                   <arg>{1}</arg>
+                </action_catalog>
+            </actions>
+        ]]>
+    </entry>
+
+    <!-- Fixits and Suggestions -->
+
+    <entry key="RTBFixitsAndSuggestions" context="error">
+      <![CDATA[
+               <actions exclusiveFixIts="yes">
+                  <action type="suggestion" id="RewireBlkDiagOrManuallyAddRTB" retvalue="false">
+                    <txt> Rewire the block diagram or manually insert a Rate Transition block to
+                    resolve the data integrity issue.
+                    </txt>
+                  </action>
+                  <action type="fixit" id="AutoInsertRTBOn" retvalue="false">
+                    <cmd>set_param(bdroot(''{0}''), 'AutoInsertRateTranBlk', 'on');</cmd>
+                    <txt>Enable configuration parameter Automatically handle rate transition for data transfer.
+                    </txt>
+                  </action>
+                  <action type="fixit" id="SingleTaskRateTransMsgWarning" retvalue="false">
+                    <cmd>set_param( bdroot(''{0}''), 'SingleTaskRateTransMsg', 'warning');</cmd>
+                    <txt>Set configuration parameter Single task data transfer to warning.
+                    </txt>
+                  </action>
+                  <action type="fixit" id="MultiTaskRateTransMsgWarning" retvalue="false">
+                    <cmd>set_param( bdroot(''{0}''), 'MultiTaskRateTransMsg', 'warning');</cmd>
+                    <txt>Set configuration parameter Multi task data transfer to warning.
+                    </txt>
+                  </action>
+                  <action type="fixit" id="ChangeDiagnosticSettingToWarning" retvalue="false">
+                    <cmd>
+                    slprivate(''changeDataTransDiagSettingToWarning'',bdroot(''{0}''));
+                    </cmd>
+                    <txt>Set the Multitask data transfer or Single task data transfer configuration parameter to warning.
+                    </txt>
+                  </action>
+                  <action type="suggestion" id="InsertRTBManually" retvalue="false">
+                    <txt>Insert a Rate Transition block to handle the data transfer between rates.</txt>
+                  </action>
+                  <action type="suggestion" id="InsertRTBManuallyPorts" retvalue="false">
+                    <txt>Insert a Rate Transition block between these ports.</txt>
+                  </action>
+                  <action type="fixit" id="ChangeSaveFormatConfig" retvalue="false">
+                    <cmd>set_param(bdroot(''{0}''), 'SaveFormat', ''__ARG1__'');</cmd>
+                    <cargs>
+                      <carg translate="false" name="__ARG1__" type="menu">
+                      <txt_prompt>Format configuration</txt_prompt>
+                      <enum>Array</enum>
+                      <enum>Structure</enum>
+                      <enum>StructureWithTime</enum>
+                      </carg>
+                    </cargs>
+                    <txt>Log states and outputs using Array, Structure, or Structure with time format.</txt>
+                 </action>
+               </actions>
+      ]]>
+    </entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  Fixits
+-->

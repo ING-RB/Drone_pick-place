@@ -1,0 +1,10 @@
+function preid = predecessors(G, nodeid)
+%
+
+%   Copyright 2022 The MathWorks, Inc.
+%#codegen
+
+id = validateNodeID(G, nodeid);
+coder.internal.assert(isscalar(id), 'MATLAB:graphfun:graphbuiltin:InvalidNodeScalar', G.numnodes);
+preid = predecessors(G.Underlying, id);
+end

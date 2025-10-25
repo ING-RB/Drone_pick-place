@@ -1,0 +1,120 @@
+{
+    "bluetoothlist":
+    {
+        "inputs":
+        [
+            {"name":"Timeout", "kind":"namevalue", "type":["numeric", "scalar"]}
+        ],
+        "outputs":
+        [
+            {"name":"list", "type":"table"}
+        ]
+    },
+    "bluetooth": 
+    {
+        "inputs": 
+        [
+            {"name": "identifier", "kind": "required", "type": [["char"], ["choices=matlab.bluetooth.internal.TabCompletionHelper.getFoundSPPDevices"]]},
+            {"name": "channel", "kind": "required", "type": [["numeric"], ["choices=matlab.bluetooth.internal.TabCompletionHelper.getChannel(identifier)"]]},
+            {"name": "ByteOrder", "kind": "namevalue", "type": "choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedByteOrder"},
+            {"name": "Timeout", "kind": "namevalue", "type": "double"}
+        ],
+        "outputs": 
+        [
+            {"name": "obj", "type": "bluetooth"}
+        ]
+    },
+    "bluetooth.read": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "count", "kind": "required", "type": ["integer", "scalar"]},
+            {"name": "precision", "kind": "optional", "type": "choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedPrecisions"}
+        ],
+        "outputs": 
+        [
+            {"name": "data", "type": [["double"], ["char"]]}
+        ]
+    },
+    "bluetooth.write": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "data", "kind": "required", "type": [["double"], ["char"]]},
+            {"name": "precision", "kind": "optional", "type": "choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedPrecisions"}
+        ]
+    },
+    "bluetooth.readline": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"}
+        ],
+        "outputs": 
+        [
+            {"name": "data", "type": "string"}
+        ]
+    },
+    "bluetooth.writeline": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "data", "kind": "required", "type": "char"}
+        ]
+    },
+    "bluetooth.flush": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "buffer", "kind": "optional", "type": "choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedBuffers"}
+        ]
+    },
+    "bluetooth.configureCallback": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "mode", "kind": "required", "type": "choices={'terminator'}"},
+            {"name": "callbackfcn", "kind": "required", "type": ["function_handle", "scalar"]}
+        ]
+    },
+    "bluetooth.configureCallback": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "mode", "kind": "required", "type": "choices={'byte'}"},
+            {"name": "count", "kind": "required", "type": ["integer", "scalar"]},
+            {"name": "callbackfcn", "kind": "required", "type": [["function_handle", "scalar"]]}
+        ]
+    },
+    "bluetooth.configureCallback": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "mode", "kind": "required", "type": "choices={'off'}"}
+        ]
+    },
+    "bluetooth.configureTerminator": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "terminator", "kind": "required", "type": [["integer", "scalar"], ["choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedTerminators"]]}
+        ]
+    },
+    "bluetooth.configureTerminator": 
+    {
+        "inputs": 
+        [
+            {"name": "obj", "kind": "required", "type": "bluetooth"},
+            {"name": "rterminator", "kind": "required", "type": [["integer", "scalar"], ["choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedTerminators"]]},
+            {"name": "wterminator", "kind": "required", "type": [["integer", "scalar"], ["choices=matlab.bluetooth.internal.TabCompletionHelper.getSupportedTerminators"]]}
+        ]
+    }
+}

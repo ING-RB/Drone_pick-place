@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<rsccat version="1.0" locale="en_US" product="Compiler">
+  <message>
+    <entry key="genericFailure">Unable to complete successfully.\n{0}</entry>
+    <entry key="responseFileError">Error reading response file {0}</entry>
+    <entry key="OutputSwitchMisuse">The -output switch must be followed by a file name.</entry>
+    <entry key="OutdirSwitchMisuse">The -outdir switch must be followed by a directory name.</entry>
+    <entry key="RspFilePermissionOpen">Cannot open file "{0}" for writing: {1}.</entry>
+    <entry key="RspFilePermissionWrite">Cannot write to file "{0}": {1}.</entry>
+    <entry key="unableToDisplayHelp">Cannot display help for function MBUILD.</entry>
+    <entry key="mbuildHelp"><![CDATA[MBUILD\tCompile and link source files against MATLAB generated shared libraries\n\n
+   Usage:\n
+   \tmbuild [options ...] file [files ...]\n\n
+   Description:\n
+       \tMBUILD compiles and links customer written C or C++ code against \n
+       \tC or C++ shared libraries generated from MATLAB files. The result \n
+       \tis a standalone executable. \n\n       
+       \tMBUILD accepts any combinations of source files, object files, and \n
+       \tlibrary files as arguments. \n\n
+       \tThe command line options to MBUILD are defined in the "Command Line \n
+       \tOptions" section below. \n\n
+       \tYou can run MBUILD from the MATLAB Command Prompt, Windows Command \n
+       \tPrompt, or UNIX shell. MBUILD is a script named mbuild.bat on \n
+       \tWindows and mbuild on UNIX, and is located in the directory \n
+       \tspecified by [matlabroot '/bin']. \n\n
+       \tThe first file name given (less any file name extension) will be the \n
+       \tname of the resulting executable. Additional source, object, or \n
+       \tlibrary files can be given to satisfy external references. You can \n
+       \tspecify either C or C++ source files when building executables. \n\n
+       \tMBUILD uses an options file to specify variables and values that are \n
+       \tpassed as arguments to the compiler, linker, and other tools. \n
+       \tCommand line options to MBUILD may supplement or override contents \n
+       \tof the options file, or they may control other aspects of MBUILD's \n
+       \tbehavior. For more information, see the "Options File Details" \n
+       \tsection below.\n\n
+       \tThe "-setup" and "-setup -client mbuild_com" options cause MBUILD to \n
+       \tsearch for installed compilers and allow you to choose an options \n
+       \tfile as the default for future invocations of MBUILD. For more \n
+       \tinformation, see these options below. \n\n	   
+       \tFor a list of compilers supported with this release, refer to: \n
+       \thttps://www.mathworks.com/support/compilers/current_release/ \n\n
+   Command Line Options Available on All Platforms: \n
+       \t-c \n
+           \t    Compile only. Creates an object file but not an executable. \n
+       \t-D<name> \n
+           \t    Define a symbol name to the C preprocessor. Equivalent to a \n
+           \t    "#define <name>" directive in the source. Do not add a space after \n
+           \t    this switch. \n
+       \t-D<name>=<value> \n
+           \t    Define a symbol name and value to the C preprocessor. Equivalent \n
+           \t    to a "#define <name> <value>" directive in the source. Do not add a \n 
+           \t    space after this switch. \n
+       \t-f <optionsfile> \n
+           \t    Specify location and name of options file to use. Overrides \n
+           \t    MBUILD's default options file search mechanism. \n
+       \t-g \n
+           \t    Create an executable containing additional symbolic information \n
+           \t    for use in debugging. This option disables MBUILD's default \n
+           \t    behavior of optimizing built object code (see the -O option). \n
+       \t-h[elp] \n
+           \t    Print this message. \n
+       \t-I<pathname> \n
+           \t    Add <pathname> to the list of directories to search for #include \n
+           \t    files. Do not add a space after this switch. \n
+       \t-l<name> \n
+           \t    Link with object library. On Windows, <name> expands to \n
+           \t    "<name>.lib" or "lib<name>.lib" and on UNIX, to "lib<name>.so" \n 
+           \t    or "lib<name>.dylib". Do not add a space after this switch. \n
+       \t-L<directory> \n
+           \t    Add <directory> to the list of directories to search for \n
+           \t    libraries specified with the -l option. On UNIX systems, you \n 
+           \t    must also set the run-time library path. Do not add a space \n 
+           \t    after this switch. \n
+       \t-n \n
+           \t    No-execute mode. Print out any commands that MBUILD would \n
+           \t    otherwise have executed, but do not actually execute any of them. \n
+       \t-O \n
+           \t    Optimize the object code. Optimization is enabled by default and \n
+           \t    by including this option on the command line. If the -g option \n
+           \t    appears without the -O option, optimization is disabled. \n
+       \t-outdir <dirname> \n
+           \t    Place all output files in directory <dirname>. \n
+       \t-output <resultname> \n
+           \t    Create an executable named <resultname>. An appropriate executable \n
+           \t    extension is automatically appended. Overrides MBUILD's default \n
+           \t    executable-naming mechanism. \n
+       \t-setup \n
+           \t    Interactively specify the C/C++ compiler options file to use as \n
+           \t    the default for future invocations of MBUILD by placing it in \n
+           \t    the user profile folder (returned by the PREFDIR command). When \n 		   
+           \t    this option is specified, no other command line input is accepted. \n
+       \t-setup -client mbuild_com \n
+           \t    Interactively specify the COM compiler options file to use as \n
+           \t    the default for future invocations of MBUILD by placing it in \n
+           \t    the user profile folder (returned by the PREFDIR command). When \n 		   
+           \t    this option is specified, no other command line input is accepted. \n
+
+       \t-U<name> \n
+           \t    Remove any initial definition of the C preprocessor symbol \n
+           \t    <name>. (Inverse of the -D option.) Do not add a space after this \n
+           \t    switch. \n
+       \t-v \n
+           \t    Verbose mode. Print the values for important internal variables \n
+           \t    after the options file is processed and all command line \n
+           \t    arguments are considered. Prints each compile step and final link \n
+           \t    step fully evaluated. \n
+       \t<name>=<value> \n
+           \t    Override an options file variable for variable <name>. \n 
+           \t    This option is processed after the options file is processed \n 
+           \t    and all command line arguments are considered. See the \n
+           \t    "Override Option Details" section below for more details. \n\n
+   \tCommand Line Options Available Only on Windows Platforms: \n
+       \t    @<rspfile> \n
+           \t    Include contents of the text file <rspfile> as command line \n
+           \t    arguments to MBUILD. \n\n
+   \tOptions File Details: \n
+       \t    There are template options files for the compilers that are \n
+       \t    supported by MBUILD. These templates are located at \n
+       \t    [matlabroot '\\bin\\win64\\mexopts'] on Windows, or \n\n
+       \t    [matlabroot '/bin/glnxa64/mexopts'] on Linux, or \n\n
+       \t    [matlabroot '/bin/maci64/mexopts'] on Mac. \n\n
+       \t    These template options files are used by the "-setup" and \n
+       \t    "-setup -client mbuild_com" options to define the selected default \n
+       \t    options file. \n\n
+   \tOverride Option Details: \n
+       \t    Use the name=value command-line argument to override a variable \n 
+       \t    specified in the options file at the command line. When using this \n 
+       \t    option, you may need to use the shell's quoting syntax to protect \n 
+       \t    characters such as spaces, which have a meaning in the shell syntax. \n\n
+       \t    On Windows platforms, at either the MATLAB prompt or the Windows \n 
+       \t    Command Prompt, use double quotes ("): \n
+       \t    mbuild -v COMPFLAGS="$COMPFLAGS -Wall" ... \n
+       \t       LINKFLAGS="$LINKFLAGS /VERBOSE" filename.c \n\n
+       \t    At the MATLAB command line on UNIX platforms, use double quotes ("): \n 
+       \t    mbuild -v CFLAGS="$CFLAGS -Wall" LDFLAGS="$LDFLAGS -w" filename.c \n\n
+       \t    At the shell command line on UNIX platforms, use single quotes ('): \n
+       \t    mbuild -v CFLAGS='$CFLAGS -Wall' LDFLAGS='$LDFLAGS -w' filename.c \n\n
+       \t    For the MinGW-w64 compiler, which is based on gcc/g++, use single \n
+       \t    quotes ('). \n
+   \tExamples: \n\n
+       \t    To compile and link an external C program foo.c against libfoo,use \n
+       \t       mbuild foo.c -L. -lfoo (on UNIX) \n
+       \t       mbuild foo.c libfoo.lib (on Windows) \n\n
+       \t    This assumes that both foo.c and the library are in the current working folder. \n\n
+   \t    See also COMPUTER, MCC, PREFDIR \n       
+]]></entry>
+  </message>
+</rsccat>

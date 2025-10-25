@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2009-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>
+    <entry key="InheritStatesNotAllowedInRoot">Invalid setting specified for the "States when enabling" parameter of the trigger port block ''{0}''.  The block must not specify this parameter as ''inherit'' because the block is at the root level of the block diagram</entry>
+    <entry key="InheritStatesNotAllowedFromRoot">Invalid setting specified for the "States when enabling" parameter of the trigger port block ''{0}''. The block must not specify this parameter as ''inherit'' because the function-call subsystem ''{1}'' is not allowed to derive "States when enabling" parameter from root system (directly or indirectly) when the model contains a root Inport block that outputs a function-call signal.</entry>
+    <entry key="SfInheritStatesNotAllowedFromRoot">Invalid setting specified for the "States when enabling" parameter of the Stateflow block ''{0}''. The block must not specify this parameter as ''inherit'' because it is not allowed to derive "States when enabling" parameter from root system (directly or indirectly) when the model contains a root Inport block that outputs a function-call signal.</entry>
+    <entry key="InvICForOutportWithFC">''{0}'' cannot specify an initial output because one or more of its source elements is from a function-call output port</entry>
+    <entry key="InvInitialOutputForOutport">''{0}'' cannot specify a nonzero initial output for a grounded (0.0) or inactive variant signal, or an unconnected input port</entry>
+    <entry key="InvStaticConnToOutport">Outport ''{0}'' cannot be configured to have initial output when it is driven by a block with a static (unchangeable) output.  For this class of connections, the initial output of the outport must be specified as the empty matrix []</entry>
+    <entry key="UnsupportedCanPrmPassThrough">Function-call subsystem ''{0}'' has a mask parameter argument, yet is called from within the reusable subsystem ''{1}''.  This is not supported when the ''Default parameter behavior'' is set to ''Tunable''. Either set the ''Default parameter behavior'' to ''Inlined'', or move the caller out of ''{1}''.</entry>
+    <entry key="MixedStateResetSemantics">Function-call subsystem ''{0}'' inherits its state reset semantics, yet its ancestors specifying ambiguous semantics. ''{1}'' indicates ''held'' while ''{2}'' indicates ''reset''. These ancestors need to consistently indicate that states are either held or reset upon enable</entry>
+    <entry key="MixedStateResetSemantics1">Function-call subsystem ''{0}'' inherits its state reset semantics, yet its ancestors specifying ambiguous semantics. The root model indicates ''held'' while ''{1}'' indicates ''reset''.  These ancestors need to consistently indicate that states are either held or reset upon enable</entry>
+    <entry key="NoEnabWithReset">A reset port already exists in subsystem ''{0}''.  Addition of an enable port is not allowed.</entry>
+    <entry key="NoEnabWithStEnab">An state enable port already exists in subsystem ''{0}''.  Addition of an enable port is not allowed.</entry>
+    <entry key="NoEnabWithTrigFcnCall">Enable ports are not allowed with function-call triggered ''{0}'' subsystem.</entry>
+    <entry key="NoEnabWithMsgTrig">Enable block inside a message triggered subsystem is not supported. Consider changing parameter ''Trigger time'' of block ''{0}'' to ''on sample time hit''.</entry>
+    <entry key="NoResetWithEnab">An enable port already exists in subsystem ''{0}''.  Addition of a reset port is not allowed.</entry>
+    <entry key="NoResetWithTrig">A trigger port already exists in subsystem ''{0}''.  Addition of a reset port is not allowed.</entry>
+    <entry key="NoRootIfactPorts">The only control ports allowed at the root level of a block diagram are trigger and enable ports.</entry>
+    <entry key="NoStEnabWithEnab">An enable port already exists in subsystem ''{0}''.  Addition of a state enable port is not allowed.</entry>
+    <entry key="NoStEnabWithTrigFcnCall">An function-call trigger port already exists in subsystem ''{0}''.  Addition of a state enable port is not allowed.</entry>
+    <entry key="NoTrigFcnCallWithStEnab">State enable ports are not allowed in function-call triggered subsystem ''{0}''.</entry>
+    <entry key="NoTrigWithReset">A reset port already exists in subsystem ''{0}''.  Addition of a trigger port is not allowed.</entry>
+    <entry key="NoElapseTimeInNonAtomicCondSubsys">Block ''{0}'' uses elapsed time, which is not allowed in Non-atomic Conditional Subsystem ''{1}''.</entry>
+    <entry key="InitTermResetSSOutputsFunctionCall"><![CDATA[Invalid data type at <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}''. An Initialize, Reinitialize, Reset, or Terminate Function block cannot output a function-call signal.]]></entry>
+    <entry key="InitTermResetSSHasInvalidBlock"><![CDATA[The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' contains an invalid block below. Consult the documentation for more detail on <a href="matlab:helpview(fullfile(docroot,'toolbox','simulink','helptargets.map'),'irt_limitations')">Initialize, Reinitialize, Reset, and Terminate Function Limitations</a>.]]></entry>
+    <entry key="InitTermResetSSCallsInvalidSimFcn">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' directly or indirectly calls the Simulink Function block ''{1}'' which is invalid.</entry>
+    <entry key="InitTermResetSSCannotHaveInportBlock">The Initialize, Reinitialize, Reset, or Terminate Function block ''{0}'' cannot have an input port because it is inside Simulink Function ''{1}''.</entry>
+    <entry key="InitRootInportCodeGenMustNotZeroInternalWhenStructured">Root-level Inport block ''{0}'' is connected to an Initialize Function block. The storage class associated with ''{0}'' has the Storage Type specified as 'Structured', which might lead to a zero-initialization of ''{0}'' when the containing struct is initialized. The containing struct will be initialized, for example, when it contains internal data and 'ZeroInternalMemoryAtStartup' is set to 'on'. For the storage class associated with ''{0}'', change the Storage Type to 'Unstructured' or apply the following configuration setting.
+    <![CDATA[
+      <actions exclusiveFixIts="no">
+        <action type="fixit">
+          <cmd>configset.internal.fixIt(''{1}'',''ZeroInternalMemoryAtStartup'',''off'')</cmd>
+          <txt>To generate code, select model configuration parameter <sldiag objui="configset" objparam="ZeroInternalMemoryAtStartup">''Remove internal data zero initialization''</sldiag>.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InitTermResetSSCannotInVariantSSWithGpcOn">The Initialize, Reset, or Terminate Function block ''{0}'' is inside the variant subsystem ''{1}''. However, Initialize, Reset, or Terminate Function block with an input or output port does not support the generation of preprocessor conditionals. You can fix this problem by using the MATLAB
+      command: \n
+      set_param(''{2}'',''GeneratePreprocessorConditionals'',''off'');
+      \n\n
+    </entry>
+    <entry key="InitTermResetSSCannotInlineVariantWithGpcOn">The Initialize, Reset, or Terminate Function block ''{0}'' connects to a Variant Sink or Variant Source block ''{1}''. However, Initialize, Reset, or Terminate Function with an input or output port does not support the generation of preprocessor conditionals. You can fix this problem by using the MATLAB
+      command: \n
+      set_param(''{2}'',''GeneratePreprocessorConditionals'',''off'');
+      \n\n
+    </entry>
+    <entry key="InitTermResetSSWithSideIOCannotSupportVariant">The Initialize, Reset, or Terminate Function block ''{0}'' has an input or output port connected to variant blocks. This is not supported.</entry>
+    <entry key="SimFcnUninitializedWhenCalled">Simulink Function ''{0}'' is uninitialized when it is called at t = {1}. Make sure the Simulink Function is initialized before being called.</entry>
+    <entry key="SimFcnWithWidthUninitializedWhenCalled">Simulink Function ''{0}'' contains Width block and is uninitialized when it is called at t = {1}. Make sure the Simulink Function is initialized before being called.</entry>
+    <entry key="SimFcnAcessUninitializedDSMWhenCalled">Simulink Function ''{0}'' is accessing uninitialized Data Store Memory ''{1}'' when it is called at t = {2}. Make sure the Data Store Memory is initialized before Simulink Function is called.</entry>
+    <entry key="InitResetSSHasBlocksWithStates">Block ''{0}'' contains states. Such blocks are not supported within Initialize, Terminate, or Reinitialize Function block.</entry>
+    <entry key="InitFcnCallSLFcnWithWidthBlkFixable">Block ''{0}'' is a Width block. Such blocks are not supported within Simulink Function called by Initialize or Reinitialize Function block.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="showInitPort" retvalue="false">
+                  <cmd>set_param(''{1}'',''ShowModelInitializePort'',''on'')</cmd>
+                  <txt>If the Simulink Function is intended as external function for ''{1}'', this message can be suppressed by turning on the parameter ''Show model initialize port'' of block ''{1}''. Consult the <a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')">example model</a> and documentation on <a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');">Common Uses of the Initialize Function Block</a> to determine if this is your use case.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="InitFcnCallSLFcnWithOutOfScopeDataStoreFixable">Block ''{0}'' is in a Simulink Function and accessing Data Store Memory outside of the Simulink Function. Such blocks are not supported within Simulink Function called by Initialize or Reinitialize Function block.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="showInitPort" retvalue="false">
+                  <cmd>set_param(''{1}'',''ShowModelInitializePort'',''on'')</cmd>
+                  <txt>If the Simulink Function is intended as external function for ''{1}'', this message can be suppressed by turning on the parameter ''Show model initialize port'' of block ''{1}''. Consult the <a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')">example model</a> and documentation on <a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');">Common Uses of the Initialize Function Block</a> to determine if this is your use case.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+     <entry key="InitFcnCallSLFcnWithWidthBlk">Block ''{0}'' is a Width block. Such blocks are not supported within Simulink Function called by Initialize or Reinitialize Function block.
+    </entry>
+    <entry key="InitFcnCallSLFcnWithOutOfScopeDataStore">Block ''{0}'' is in a Simulink Function and accessing Data Store Memory outside of the Simulink Function. Such blocks are not supported within Simulink Function called by Initialize or Reinitialize Function block.
+    </entry>
+     <entry key="ReinitFcnCallSLFcnWithWidthBlkFixable">Block ''{0}'' is a Width block. Such blocks are not supported within Simulink Function called by Initialize or Reinitialize Function block.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="showInitAndReinitPort" retvalue="false">
+                  <cmd>set_param(''{1}'',''ShowModelInitializePort'',''on'',''ShowModelReinitializePorts'',''on'')</cmd>
+                  <txt>If the Simulink Function is intended as external function for ''{1}'', this message can be suppressed by turning on the parameter ''Show model initialize port'' and ''Show model reinitialize ports'' of block ''{1}''. Consult the <a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')">example model</a> and documentation on <a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');">Common Uses of the Initialize Function Block</a> to determine if this is your use case.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="ReinitFcnCallSLFcnWithOutOfScopeDataStoreFixable">Block ''{0}'' is in a Simulink Function and accessing Data Store Memory outside of the Simulink Function. Such blocks are not supported within Simulink Function called by Initialize or Reinitialize Function block.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="showInitAndReinitPort" retvalue="false">
+                  <cmd>set_param(''{1}'',''ShowModelInitializePort'',''on'',''ShowModelReinitializePorts'',''on'')</cmd>
+                  <txt>If the Simulink Function is intended as external function for ''{1}'', this message can be suppressed by turning on the parameter ''Show model initialize port'' and ''Show model reinitialize ports'' of block ''{1}''. Consult the <a href="matlab:openExample(''simulink/CommonUsesOfInitializeFunctionExample'')">example model</a> and documentation on <a href="matlab:helpview([docroot, ''/simulink/helptargets.map''], ''CommonUsesOfInitializeFunctionExample'');">Common Uses of the Initialize Function Block</a> to determine if this is your use case.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+    <entry key="InitResetSSHasSimFcnWithStates">Simulink Function ''{0}'' contains states. Such Functions can not get called within Initialize, Terminate, or Reinitialize Function block.</entry>
+    <entry key="InitResetSSHasSimFcnWithGeneralStates">Simulink Function ''{0}'' contains Width block or is accessing Data Store Memory outside of the Simulink Function. Such Simulink Functions can not get called within block ''{1}'', which is an Initialize or Reinitialize Function block.</entry>
+    <entry key="ModelRefBlockWithInitPortCannotSimulateRefMdlInILWithoutZeroInit">The parameter 'Remove internal data zero initialization' must be set to 'off' when simulating the referenced model "{0}" in SIL/PIL mode. Alternatively, the Model block "{1}" parameter 'Show model initialize port' can be set to 'off'. However, for deployment code generation, you can still turn the parameter 'Show model initialize port' to 'on' to get more efficient code.
+    <![CDATA[
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="zeroInternalMem">
+                  <cmd>set_param_action(''{0}'', ''ZeroInternalMemoryAtStartup'', ''on'');</cmd>
+                  <txt>Enable parameter ''ZeroInternalMemoryAtStartup'' for referenced model.</txt>
+            </action>
+            <action type="fixit" id="showInitPort">
+                  <cmd>set_param(''{1}'',''ShowModelInitializePort'',''off'')</cmd>
+                  <txt>Suppress this message by clearing the parameter ''Show model initialize port''.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>  
+    <entry key="ModelRefBlockWithInitPortCannotHaveMachineData">The parameter 'Show model initialize port' for the Model block ''{0}'' must be off since the referenced model contains a Stateflow chart that uses machine-parented data.
+      <![CDATA[<actions exclusiveFixIts="yes">
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''ShowModelInitializePort'',''off'')</cmd>
+          <txt>Suppress this message by clearing the parameter ''Show model initialize port''.</txt>
+        </action>
+      </actions>]]>
+    </entry> 
+    <entry key="InitResetSSHasBlocksWithAbsOrElapsedTime">Block ''{0}'' uses absolute or elapsed time. Such blocks are not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="ModelRefBlockWithInitPortCannotHaveAbsOrElapsedTime">The parameter 'Show model initialize port' for the Model block ''{0}'' must be off since the referenced model contains a block that uses absolute or elapsed time.
+      <![CDATA[<actions exclusiveFixIts="yes">
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''ShowModelInitializePort'',''off'')</cmd>
+          <txt>Suppress this message by clearing the parameter ''Show model initialize port''.</txt>
+        </action>
+      </actions>]]>
+    </entry> 
+    <entry key="InitResetSSHasCallerWhichCallsInvalidFcnWithSideIO">The Simulink Function block ''{0}'' called by the Initialize, Terminate, Reinitialize, or Reset Function contains an input port or output port. Such Simulink functions cannot be called from Initialize, Reinitialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InitResetSSHasCallerWhichCallsInvalidFcnWithIRT">The Simulink Function block ''{0}'' called by the Initialize, Terminate, Reinitialize, or Reset Function contains an Initialize, Reinitialize, Reset, or Terminate Function block within itself. Such Simulink functions cannot be called from Initialize, Terminate, Reinitialize, or Reset Functions.</entry>
+    <entry key="InitResetSSCannotContainConditionalSS">Conditionally executed subsystem ''{0}'' has {1,number,integer} output port(s). Only conditional subsystems with no output port are allowed within Initialize, Reset, or Terminate Function block.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportAlgebraicLoop">The block ''{0}'' is in an algebraic loop, which is not compatible with the Reinitialize Function ''{1}''.</entry>
+    <entry key="DefaultReinitializeFunctionDoesNotSupportAlgebraicLoop">The block ''{0}'' is in an algebraic loop, which is not compatible with the default reinitialize port.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportContPulseMode">The Pulse Generator block ''{0}'' has continuous sample time, which is not compatible with the Reinitialize Function ''{1}''.</entry>
+    <entry key="ReinitializeFunctionDoesNotSupportMachineData">The Stateflow chart ''{0}'' uses machine-parented data, which is not compatible with the Reinitialize Function ''{1}''.</entry>
+    <entry key="BlockNotCompatibleWithReinitializeFunction">The block ''{0}'' is not compatible with the Reinitialize Function ''{1}''. Please check documentation for more information. </entry>
+    <entry key="BlockNotCompatibleWithDefaultReinitializePort">The block ''{0}'' is not compatible with the default reinitialize port. Please check documentation for more information. </entry>
+    <entry key="ReinitializeFunctionDoesNotSupportResettableSubsys">Resettable Subsystem ''{0}'' is not compatible with reinitialize function.</entry>
+    <entry key="SimulinkFunctionDoesNotSupportScopedEventPort">The Simulink Function ''{0}'' can not have scoped event port.</entry>
+    <entry key="ResettableSubsystemDoesNotSupportScopedEventPort">The Resettable Subsystem ''{0}'' can not have scoped event port.</entry>
+    <entry key="VirtualSubsystemDoesNotSupportScopedEventPort">The virtual Subsystem ''{0}'' can not have scoped event port.</entry>
+    <entry key="StateflowSubsystemDoesNotSupportScopedEventPort">The Stateflow block ''{0}'' can not have scoped event port.</entry>
+    <entry key="IRTSubsystemDoesNotSupportScopedEventPort">The Initialize, Reinitialize, Reset, or Terminate Function ''{0}'' can not have scoped event port.</entry>
+    <entry key="VariantSubsystemDoesNotSupportScopedEventPort">The Variant Subsystem ''{0}'' can not have scoped event port.</entry>
+    <entry key="ChoiceSubsystemDoesNotSupportScopedEventPort">The Variant choice Subsystem ''{0}'' can not have scoped event port.</entry>
+    <entry key="ForEachSubsystemDoesNotSupportScopedEventPort">The For Each Subsystem ''{0}'' can not have scoped event port.</entry>
+    <entry key="ConfigurableSubsystemDoesNotSupportScopedEventPort">The Configurable Subsystem ''{0}'' can not have scoped event port.</entry>
+    <entry key="SpecifiedReinitializeFunctionIsNotDefined">Because subsystem ''{0}'' enables 'Show subsystem reinitialize ports', a Reinitialize Function ''{1}'' must be defined inside this subsystem.</entry>
+    <entry key="ReinitializeFunctionIsNotDefined">Because subsystem ''{0}'' enables 'Show subsystem reinitialize ports', a Reinitialize Function must be defined inside this subsystem.</entry>
+    <entry key="ReinitializeFunctionRequireAtomicSS">When subsystem ''{0}'' enables 'Show subsystem reinitialize ports', it should be atomic.
+    <![CDATA[
+             <actions>
+             <action type="fixit">
+             <cmd>set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+             <txt>Select ''Treat as atomic unit'' for subsystem ''{0}''.</txt>
+             </action>
+             </actions>
+    ]]>
+    </entry>
+    <entry key="EventFunctionRequireCommonInitiator">Subsystem ''{0}'' has event ports. Event port ''{1}'' is connected to ''{2}'', but event port ''{3}'' is connected to ''{4}''. This is not allowed. Event ports must connect to a common function call initiator.</entry>
+    <entry key="EventFunctionNotSupportAsyncSFcnBlk">Subsystem ''{0}'' has event ports, which are connected to Async Interrupt block ''{1}'', which is not compatible with subsystem reinitialize function.</entry>
+    <entry key="EventFunctionSupportInlinedCallerBlk">Subsystem ''{0}'' has event ports, which are called by subsystem block ''{1}''. The caller block whose function packaging has been set to 'Reusable' or 'Nonreusable' is not compatible with subsystem reinitialize function. Ensure that the function packaging, found in the Code Generation tab of the block dialog, is set to 'Inline'.</entry>
+    
+    <entry key="EventFunctionRequireSingleRate">Subsystem ''{0}'' has event ports. When event port is present, the subsystem must execute in a single task.</entry>
+    <entry key="EventFunctionRequireRunTimeRate">Subsystem ''{0}'' has event ports. When event port is present, the subsystem must have run time rate.</entry>
+    <entry key="ReinitializePortNotInsideForEachSS">Subsystem ''{0}'' enables 'Show subsystem reinitialize ports'. When subsystem has event port, it can not be inside For Each subsystem ''{1}''.</entry>
+    <entry key="InitResetSSCannotContainResettableSS">Resettable subsystem ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainReusableOrNonReusableSS">Subsystem ''{0}'' whose function packaging has been set to 'Reusable' or 'Nonreusable' is not supported within Initialize, Terminate, Reinitialize, or Reset Function blocks when the model is being simulated in Accelerator mode. Ensure that the function packaging, found in the Code Generation tab of the block dialog, is set to 'Inline' or 'Auto'.</entry>
+    <entry key="InitResetSSCannotContainSimulinkFunctions">Simulink Function block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotCallSimFcnsDefinedInStateflow">The Simulink Function ''{0}'' is defined in an S-Function or a Stateflow chart. Such Simulink Functions cannot be called from Initialize, Reset, or Terminate Functions.</entry>
+    <entry key="InitResetSSCannotContainModelBlock">Model block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainMergeBlock">Merge block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainBlocksWhichLogData">Block ''{0}'' is invalid. To Workspace blocks, To File blocks and other blocks which log data are not supported within Initialize, Terminate, Reinitialize or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainBlock">Block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InitResetSSCannotContainCustomCodeBlock">Custom code block ''{0}'' is not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="OutportMustHoldOutputWhenDisabledInIRTSS">Outport
+    block ''{0}'' cannot have the parameter ''Output when disabled'' set to ''reset''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''OutputWhenDisabled'',''held'')</cmd>
+          <txt>Set ''Output when disabled'' to ''held'' for Outport block ''{0}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="EnablePortMustHoldStatesWhenEnablingInIRTSS">Enable Port
+    block ''{0}'' must have the parameter ''States when enabling'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''StatesWhenEnabling'',''held'')</cmd>
+          <txt>Set ''States when enabling'' to ''held'' for Enable Port block ''{0}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="FcnCallPortMustHoldStatesWhenEnablingInIRTSS">Trigger Port
+    block ''{0}'' must have the parameter ''States when enabling'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''StatesWhenEnabling'',''held'')</cmd>
+          <txt>Set ''States when enabling'' to ''held'' for Trigger Port block ''{0}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="ActionPortMustHoldStatesWhenEnablingInIRTSS">Action Port
+    block ''{0}'' must have the parameter ''States when execution is resumed'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''InitializeStates'',''held'')</cmd>
+          <txt>Set ''States when execution is resumed'' to ''held'' for Action Port block ''{0}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="ForIterMustHoldStatesWhenEnablingInIRTSS">For Iterator
+    block ''{0}'' must have the parameter ''States when starting'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''ResetStates'',''held'')</cmd>
+          <txt>Set ''States when starting'' to ''held'' for For Iterator block ''{0}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="WhileIterMustHoldStatesWhenEnablingInIRTSS">While Iterator
+    block ''{0}'' must have the parameter ''States when starting'' set to ''held''
+    within Initialize, Terminate, Reinitialize, or Reset Function block.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param(''{0}'',''ResetStates'',''held'')</cmd>
+          <txt>Set ''States when starting'' to ''held'' for While Iterator block ''{0}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidSimulinkFunctionHavingSideIOBeingCalledFromIRT">The Simulink Function ''{0}'' within the model ''{1}'' or its sub-models is being called from within an Initialize, Reinitialize, Reset, or Terminate Function block. Ensure that ''{0}'' does not have input ports or output ports. Alternatively, ensure that none of the callers of ''{0}'' reside within Initialize, Reinitialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InvalidSimulinkFunctionContainingIRTBeingCalledFromIRT">The Simulink Function ''{0}'' within the model ''{1}'' or its sub-models is being called from within an Initialize, Reinitialize, Reset, or Terminate Function block. Ensure that ''{0}'' does not itself contain Initialize, Reinitialize, Reset, or Terminate Function blocks. Alternatively, ensure that none of the callers of ''{0}'' reside within Initialize, Reinitialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InvalidSimulinkFunctionBeingCalledFromIRT">The Simulink Function ''{0}'' within the model ''{1}'' or its sub-models is being called from within an Initialize, Reinitialize, Reset, or Terminate Function block. Ensure that ''{0}'' satisfies all the following conditions: \n\t1. It does not contain any block(s) with states. \n\t2. It does not contain any block(s) with absolute or elapsed time. \n\t3. It does not contain any Function Caller block(s) which call such invalid Simulink Functions.\nAlternatively, ensure that none of the callers of ''{0}'' reside within Initialize, Reinitialize, Reset, or Terminate Function blocks.</entry>
+    <entry key="InitResetSSDoesNotSupportVarDimSignals">Block ''{0}'' has a variable-size input. Such blocks are not supported within Initialize, Terminate, Reinitialize, or Reset Function block.</entry>
+    <entry key="InvalidTwoInitSubsysAtSameLevel">Two Initialize Function blocks ''{0}'' and ''{1}'' are at the same hierarchical level. Consider combining them into a single Initialize Function block.</entry>
+    <entry key="InvalidTwoInitSubsysAtSameNonVirtualLevel">Two Initialize Function blocks ''{0}'' and ''{1}'' are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoInitSubsysOneInVirtualSS">Initialize Function block ''{0}'' is in a virtual subsystem. Consider making the subsystem non-virtual.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{1}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidTwoInitSubsysBothInVirtualSS">Both Initialize Function blocks are in virtual subsystems. Consider making at least one of the subsystems non-virtual.
+    <![CDATA[
+       <actions exclusiveFixIts="no">
+        <action type="fixit">
+          <cmd>set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{0}''.</txt>
+        </action>
+        <action type="fixit">
+          <cmd>set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{1}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidTwoTermSubsysAtSameLevel">Two Terminate Function blocks ''{0}'' and ''{1}'' are at the same hierarchical level. Consider combining them into a single Terminate Function block.</entry>
+    <entry key="InvalidTwoTermSubsysAtSameNonVirtualLevel">Two Terminate Function blocks ''{0}'' and ''{1}'' are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoTermSubsysOneInVirtualSS">Terminate Function block ''{0}'' is in a virtual subsystem. Consider making the subsystem non-virtual.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{1}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidTwoTermSubsysBothInVirtualSS">Both Terminate Function blocks are in virtual subsystems. Consider making at least one of the subsystems non-virtual.
+    <![CDATA[
+       <actions exclusiveFixIts="no">
+        <action type="fixit">
+          <cmd>set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{0}''.</txt>
+        </action>
+        <action type="fixit">
+          <cmd>set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{1}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidTwoResetSubsysAtSameLevel">Two Event Function blocks ''{0}'' and ''{1}'' with the same identifier are at the same hierarchical level. Consider combining them into a single event Function block.</entry>
+    <entry key="InvalidTwoResetSubsysAtSameNonVirtualLevel">Two Event Function blocks ''{0}'' and ''{1}'' with the same identifier are at the same non-virtual hierarchical level.</entry>
+    <entry key="InvalidTwoResetSubsysOneInVirtualSS">Event Function block ''{0}'' is in a virtual subsystem. Consider making the subsystem non-virtual.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{1}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidTwoResetSubsysBothInVirtualSS">Both Event Function blocks are in virtual subsystems. Consider making at least one of the subsystems non-virtual.
+    <![CDATA[
+       <actions exclusiveFixIts="no">
+        <action type="fixit">
+          <cmd>set_param_action(''{0}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{0}''.</txt>
+        </action>
+        <action type="fixit">
+          <cmd>set_param_action(''{1}'', ''TreatAsAtomicUnit'', ''on'');</cmd>
+          <txt>Select ''Treat as atomic unit'' for subsystem ''{1}''.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry>
+    <entry key="InvalidRootOutportWithTermEventInAutosar">In model ''{0}'', root outport ''{1}'' is connected to a Terminate Function block. Code generator does not support this modeling pattern when using an AUTOSAR system target file.</entry>    
+    <entry key="NoNonVirtualBlocksAlongWithIRT">The system ''{0}'' does not contain any non-virtual blocks apart from Initialize, Terminate, Reinitialize, or Reset Function blocks. This is not allowed for simulation and code generation. Ensure that there is at least one other non-virtual block in this system.</entry>
+    <entry key="NoRunTimeRateAlongWithIRT">The subsystem ''{0}'' should contain at least one run time rate apart from constant sample time and Initialize, Terminate, Reinitialize, or Reset Functions when the system is not inlined.</entry>
+    <entry key="NoBlocksWithNonIRTSampleTime">The system ''{0}'' contains only blocks which are driven by, or called by, Initialize, Reinitialize, Reset or Terminate Function blocks. Ensure that there is at least one other block which is not driven by such Function blocks.</entry>
+    <entry key="InitTermResetSSWithinAnotherInitTermResetSS">The Initialize/Terminate/Reinitialize/Reset Function ''{0}'' is being placed within another Initialize/Terminate/Reinitialize/Reset Function ''{1}''. This is not allowed.</entry>
+    <entry key="ConflictingResetSpecificationsInTopAndSubModel">A Reinitialize/Reset Function with the Event name ''{0}'' exists in the system ''{1}'' and the model referenced by the block ''{2}'' with conflicting specifications. To fix this, ensure that the setting of the parameter 'Event type' is the same for all Reinitialize/Reset Functions with the Event name ''{0}'' in the model.</entry>
+    
+    <entry key="RunFirstLastSubsystemWithCState">Run First or Run Last Subsystem ''{0}'' does not support continuous state.</entry>
+    <entry key="SubsystemWithoutSchedulingConstraintsHasInvalidBlock">The unconstrained partitioned subsystem ''{0}'' contains invalid block(s) below.</entry>
+    <entry key="SubsystemWithoutSchedulingConstraintsCannotContainBlock">Block ''{0}'' is not supported within unconstrained partitioned subsystems.</entry>
+    <entry key="SchedulingConstraintsForBlockWithTime">Block ''{0}'' accesses time and hence is not supported with the scheduling constraints.</entry>
+    <entry key="RequireMdlTerminateFcn">Terminate function must be generated because the model ''{0}'' contains the Terminate Function ''{1}''.
+    <![CDATA[
+      <actions>
+        <action type="fixit">
+          <cmd>matlab:configset.internal.fixIt(''{0}'',''IncludeMdlTerminateFcn'',''on'')</cmd> 
+          <txt>To generate code, check configuration parameter <sldiag objui="configset" objparam="IncludeMdlTerminateFcn">IncludeMdlTerminateFcn</sldiag>.</txt>
+        </action>
+      </actions>
+    ]]>
+    </entry> 
+    <entry key="OutportConnConflict"><![CDATA[<sldiag objui="outport" objparam="{0}" objname="{1}">Outport {0}</sldiag> and ''{1}'' which are driven by the same signal must have the same setting for the "Output when disabled" parameter]]></entry>
+    <entry key="OutportConnConflictWithMdlRef"><![CDATA[<sldiag objui="outport" objparam="{0}" objname="{1}">Outport {0}</sldiag> inside the Model block ''{1}'' and ''{2}'' must have the same setting for the "Output when disabled" parameter because they connect to the same signal.]]></entry>
+    <entry key="OutportInitOutConflict"><![CDATA[<sldiag objui="outport" objparam="{0}" objname="{1}">Outport {0}</sldiag> and ''{1}'' which are driven by the same signal specify conflicting values for the "Initial output" parameter.  Only one should specify an initial output and the others should be the empty, [], matrix]]></entry>
+    <entry key="SfChartOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values.  To resolve this issue, make sure both blocks have the same initial output values  or ensure that the "Initial output" parameter of the Outport block is an empty matrix([]).</entry>
+    <entry key="SfChartDefaultICOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values. Because the 'Initial value' field of the output of the Stateflow chart has been left empty, a default initial value of zero is used. To resolve this conflict, specify a matching initial output value for the output of the Stateflow chart or specify the initial output value of the Outport Block to be '0' or the empty matrix([]). </entry>
+    <entry key="SfChartDefaultBusICOutportInitOutConflict">The Stateflow Chart ''{0}'' and Outport block ''{1}'' specify conflicting initial output values. Because the output of the Stateflow Chart is a bus, a default initial value of zero is used. To resolve this conflict, specify the initial output value of the Outport block to be '0' or the empty matrix ([]). </entry>
+    <entry key="PortBasedDrivingVirtualOutport"><![CDATA[''{0}'' may not be wired directly to the subsystem outport because it has a constant sample time on <sldiag objui="outport" objparam="{1,number,integer}" objname="{0}">output port {1,number,integer}</sldiag>]]></entry>
+    <entry key="TrigFcnCallNotAllowedInEnab">Trigger type function-call in ''{0}'' is not allowed in enabled systems.</entry>
+    <entry key="WarnDupOutportInitOutValues"><![CDATA[<sldiag objui="outport" objparam="{0}" objname="{1}">Outport {0}</sldiag> and ''{1}'' which are driven by the same signal are specifying the same value for the "Initial output" parameter. Only one should specify an initial output for the signal and the others should be the empty, [], matrix]]></entry>
+    <entry key="ResettableSSLevelLevelHoldInvalidWithContST">The 'ResetTriggerType' parameter of the Reset port block ''{0}'' within the Resettable subsystem ''{1}'' is set to 'level' or 'level-hold'. Continuous sample-times are not supported within such resettable subsystems. To resolve the issue, use a different trigger type or use discrete sample-time.</entry>
+     <entry key="DupRunFirstLastSubsystem">Two Run First Subsystems or two Run Last Subsystems ''{0}'' and ''{1}'' with the same priority cannot exist in the same hierarchy.</entry>
+    <entry key="ContinuousStateReaderWriterInRunFirstLastSubsystems">State
+    Reader or Writer block ''{0}'' is not allowed inside a Run First or Run Last
+    Subsystem because it is accessing a continuous state owned by block ''{1}''.
+    </entry>
+    <entry key="ContinuousStateWriterInRunLastSubsystem">State Writer block
+    ''{0}'' is not allowed to write to a continuous state inside the Run Last
+    Subsystem ''{1}'' because the Run Last Subsystem is associated with the
+    non-virtual parent subsystem of the continuous state owner block ''{2}''.
+    </entry>
+    <entry key="RunLastContinuousStateWriter">State Writer block ''{0}'' is not
+    allowed to write to a continuous state when the 'Execution Order' value is
+    set to 'Last' because the State Writer block and the continuous state owner
+    block ''{1}'' are contained in the same non-virtual parent subsystem.
+    </entry>
+
+    <entry key="messagePollingSubsysNotAllowedInAccelMode">
+    <![CDATA[Message Polling Subsystem ''{0}'' does not support Accelerator mode simulation.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(bdroot(''{0}''), ''SimulationMode'', ''normal'');</cmd>
+                <txt>Set simulation mode to Normal.</txt>
+            </action>
+            <action type="fixit" id="fix_2" retvalue="false">
+                <cmd>set_param_action(bdroot(''{0}''), ''SimulationMode'', ''rapid-accelerator'');</cmd>
+                <txt>Set simulation mode to Rapid Accelerator.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+
+    <entry key="MsgTrigSubsysAccelNotSupport">
+    <![CDATA[Message triggered subsystem ''{0}'' with ''Schedule as aperiodic partition'' selected does not support Accelerator mode simulation.
+        <actions exclusiveFixIts="yes">
+            <action type="fixit" id="fix_1" retvalue="false">
+                <cmd>set_param_action(''{1}'', ''ScheduleAsAperiodic'', ''off'');</cmd>
+                <txt>Clear <sldiag objui="blockdlg" objparam="ScheduleAsAperiodic" objname="{1}">''Schedule as aperiodic partition''</sldiag> for block ''{1}''.</txt>
+            </action>
+            <action type="fixit" id="fix_2" retvalue="false">
+                <cmd>set_param_action(bdroot(''{0}''), ''SimulationMode'', ''normal'');</cmd>
+                <txt>Set simulation mode to Normal.</txt>
+            </action>
+            <action type="fixit" id="fix_3" retvalue="false">
+                <cmd>set_param_action(bdroot(''{0}''), ''SimulationMode'', ''rapid-accelerator'');</cmd>
+                <txt>Set simulation mode to Rapid Accelerator.</txt>
+            </action>
+        </actions>
+    ]]>
+    </entry>
+	<entry key="ConvertToVSSDialogTitle">Convert Subsystem to Variant Subsystem</entry>
+	<entry key="ConvertToVariantSubsystemLE">Convert to single choice Variant Subsystem in label mode or in expression mode. Selected Subsystem will be added as choice to the newly created Variant Subsystem.</entry>
+  	<entry key="ConvertToVSSDialogTitleSystemComposer">Convert Component to Variant Component</entry>
+	<entry key="ConvertToVariantSubsystemLESystemComposer">Convert to  single choice Variant Component in label mode or in expression mode. Selected Component will be added as a choice to the newly created Variant Component.</entry>
+	<entry key="EmptyControlExpression">Variant control cannot be empty. Add a control expression and define variant control variables to proceed.</entry>
+	<entry key="OptionalSubsystemDesc">Make this Variant {0} optionally present</entry>
+	<entry key="ConversionOperationFailure">Due to this failure, {0} has been converted to Variant {0} with default settings.</entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  Nonreusable Alg
+-->

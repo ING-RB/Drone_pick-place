@@ -1,0 +1,1541 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2020-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="polyspace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/msgcat.xsd">
+  <message>
+    <!--
+      A message in this XML file is done like that:
+                  <entry key="NamedFunctionParameterUnused" translate="false">Function {0_symbol} has one or more unused parameters.</entry>
+      {0_symbol} is a hole. See more information about the different holes here: https://mathworks.atlassian.net/wiki/spaces/POLYSP/pages/18591815/Polyspace+and+i18n
+      A hole implies:
+        * HTML conversion of the message given in the hole. Ex: <stdio.h> -> &lt;stdio.h&gt;
+        * Formatting of the message for a specific print in the UIs. Ex: &lt;stdio.h&gt; -> <code class='symbol'>&lt;stdio.h&gt;</code>
+      HTML conversion cannot be done after the formatting (formatting adds '<').
+
+      In the Database ps_results_db.psbf, the message must be HTML-formatted for the UIs (PVE, Desktop UI, PaYC).
+
+      Due to these constraints, the message given in this XML file must be doubled-HTML.
+      So, if you want to use:
+        * <  ==> Write &amp;lt;       ==> &lt; in Database
+        * >  ==> Write &amp;gt;       ==> &gt; in Database
+        * &  ==> Write &amp;amp;      ==> &amp; in Database
+        * '  ==> Write ''             ==> ' in Database.          &apos; is not recognized by PVE in Database
+                                                                  Hole must be preferred to ''
+        * "  ==> Write &quot;         ==> &quot; in Database.     Hole or '' must be preferred to ""
+        * {  ==> Write '{             ==> { in Database           { alone is recognized as a hole by MW infrastructure
+    -->
+
+    <!-- All checkers messages -->
+    <entry key="WarnAboutOtherMacroExpansion" translate="false">Other instances of this macro (not shown).</entry>
+    <!-- RU Risk/Fix -->
+    <entry key="Risk" translate="false">Risk</entry>
+    <entry key="Fix" translate="false">Fix</entry>
+
+    <entry key="Implicitly" translate="false">implicitly</entry>
+    <entry key="Explicitly" translate="false">explicitly</entry>
+
+    <!-- checkers_functions.cpp -->
+    <entry key="AutoGenMsg295" translate="false">All functions shall have a cyclomatic complexity number of 20 or less.\n {0} has cyclomatic complexity number equal to {1,number,integer}.\n</entry>
+    <entry key="AutoGenMsg294" translate="false">The member function ''{0}'' shall be made {1}.</entry>
+    <entry key="AutoGenMsg287" translate="false">Argument of ''{0}'' is a stream with side effects, and ''{1}'' may be implemented as a macro.\n{2}.</entry>
+    <entry key="AutoGenMsg286" translate="false">Argument of ''{0}'' macro is a stream with side effects.\n{1}.</entry>
+    <entry key="AutoGenMsg289" translate="false">''{0_operation}'' returns a pointer to a function with unspecified parameters.\nNumber and type of arguments might not match the called function definition and lead to unexpected behavior.\nTo fix, declare a pointer to a properly prototyped function.</entry>
+    <entry key="AutoGenMsg296" translate="false">std::basic_string::length() is more efficient than {0}.</entry>
+    <entry key="AutoGenMsg288" translate="false">''{0_operation}'' is a pointer to a function with unspecified parameters.\nNumber and type of arguments might not match the called function definition and lead to unexpected behavior.\nTo fix, declare a pointer to a properly prototyped function.</entry>
+    <entry key="AutoGenMsg297" translate="false">Array of zero size should not be used.\n</entry>
+    <entry key="AutoGenMsg291" translate="false">Call to ''{0_operation}'' returns a temporary lifetime array.\nWriting to this array is undefined behavior.\nTo fix, assign return of ''{1_operation}'' to a local variable and replace call to ''{2_operation}'' with this variable.</entry>
+    <entry key="AutoGenMsg290" translate="false">Call to ''{0_operation}'' returns a temporary lifetime array.\nReading the content of this array is undefined behavior.\nTo fix, assign return of ''{1_operation}'' to a local variable and replace call to ''{2_operation}'' with this variable.</entry>
+    <entry key="ParameterUnused" translate="false">Parameter {0} is not used.</entry>
+    <entry key="UnnamedParameterUnused" translate="false">Parameter {0,number,integer} is not used.</entry>
+    <entry key="NamedFunctionParameterUnused" translate="false">Function {0_symbol} has one or more unused parameters.</entry>
+    <entry key="UnnamedFunctionParameterUnused" translate="false">Function has unused parameters.</entry>
+    <entry key="UserDefConversionOperator" translate="false">{0_symbol} is a user-specified conversion operator.</entry>
+    <entry key="OverloadsImplicitCtor" translate="false">Implicit constructor of this class overloaded.</entry>
+    <entry key="OverloadsCompilerGenerated" translate="false">Template overloads compiler generated function.</entry>
+    <entry key="OverloadsFunction" translate="false">Overloaded function.</entry>
+    <entry key="OverloadedFunction" translate="false">Template function {0_symbol} contains &quot;forwarding reference&quot; and is overloaded.</entry>
+    <entry key="Apart_std_initializer_list_ctor" translate="false">Constructor that does not take std::initializer_list parameter</entry>
+    <entry key="Destructor" translate="false">Destructor</entry>
+    <entry key="DeallocationFunction" translate="false">Deallocation function</entry>
+    <entry key="MoveConstructor" translate="false">Move constructor</entry>
+    <entry key="MoveAssignmentOperator" translate="false">Move assignment operator</entry>
+    <entry key="SwapFunction" translate="false">Swap function</entry>
+    <entry key="ExitsWithException" translate="false">{0} exits with an exception.</entry>
+    <entry key="MissingNoexcept" translate="false">A noexcept exception specification is missing.</entry>
+    <entry key="DestructorNoexceptFalse" translate="false">Destructor is noexcept(false). To prevent exceptions from escaping the destructor, declare it as noexcept(true).</entry>
+    <entry key="DeallocationFunctionNoexceptFalse" translate="false">Deallocation function is noexcept(false). To prevent exceptions from escaping the deallocation function, declare it as noexcept(true).</entry>
+    <entry key="FunctionNoexceptFalse" translate="false">Function is noexcept(false).</entry>
+    <entry key="Annex_K" translate="false">Other than defining __STDC_WANT_LIB_EXT1__ to '0', the facilities of Annex K (Bounds-checking interfaces) shall not be used</entry>
+    <entry key="Generic_operator" translate="false">The _Generic operator shall not be used</entry>
+    <entry key="assertOnConstant" translate="false">assert macro used with compile-time constant.</entry>
+    <entry key="DynamicMemoryFunctionUsed" translate="false">Function {0_symbol} uses dynamic memory.</entry>
+    <entry key="NonAutoManagedMemoryFunctionUsed" translate="false">Function {0_symbol} does not manage dynamic memory automatically.</entry>
+    <entry key="NonAutoManagedMemoryFunctionAddressTaken" translate="false">Function {0_symbol} does not manage dynamic memory automatically and shall not have its address taken.</entry>
+    <entry key="NonPlacementNewDeleteAddressTaken" translate="false">Address of non placement {0_symbol} shall not be taken.</entry>
+    <entry key="FieldInitialization" translate="false">Initializing field {0_symbol}.</entry>
+    <entry key="FieldTypeIsTypedef" translate="false">Type of field is {0_symbol}.</entry>
+    <entry key="UnusedFunctionStatic" translate="false">The static function {0_symbol} is not used.</entry>
+    <entry key="UnusedFunctionAnonymousNamespace" translate="false">The function {0_symbol} is defined in an anonymous namespace and is not used.</entry>
+    <entry key="WhenCompiling" translate="false">When compiling source file {0_filename}</entry>
+    <entry key="unreferencedNonVirtualPrivateMethod" translate="false">The non-virtual private member function {0_symbol} is not used.</entry>
+    <entry key="ConversionOperatorMissingExplicit" translate="false">Conversion operator not {0_symbol}.</entry>
+    <entry key="memory_order_Not_memory_order_seq_cst" translate="false">The only compliant memory order is memory_order_seq_cst.</entry>
+    <entry key="memory_order_Not_memory_order" translate="false">The only compliant memory order is memory_order_seq_cst from memory_order type.</entry>
+    <entry key="memory_order_ThruVariable" translate="false">{0_symbol} must be memory_order_seq_cst. No other memory_order value is compliant.</entry>
+
+    <entry key="DeprecatedCpp17D1" translate="false">Static constexpr data member is redeclared.</entry>
+    <entry key="DeprecatedCpp17D2A" translate="false">Copy constructor is implicit but copy assignment operator is explicitly declared. \nMake copy constructor declaration explicit.</entry>
+    <entry key="DeprecatedCpp17D2B" translate="false">Copy constructor is implicit but destructor is explicitly declared. \nMake copy constructor declaration explicit.</entry>
+    <entry key="DeprecatedCpp17D2C" translate="false">Copy assignment operator is implicit but copy constructor is explicitly declared. \nMake copy assignment operator declaration explicit.</entry>
+    <entry key="DeprecatedCpp17D2D" translate="false">Copy assignment operator is implicit but destructor is explicitly declared. \nMake copy assignment operator declaration explicit.</entry>
+    <entry key="DeprecatedCpp17D3" translate="false">Function uses deprecated specifier {0_symbol} for exception specification. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D4A" translate="false">File includes deprecated header {0_filename}. Use header {1_filename} instead.</entry>
+    <entry key="DeprecatedCpp17D4B" translate="false">File includes deprecated header {0_filename}. Use {1_symbol} and {2_symbol} directly without including the header.</entry>
+    <entry key="DeprecatedCpp17D4C" translate="false">File includes deprecated header {0_filename}. Use {1_symbol}, {2_symbol}, and {3_symbol} directly without including the header.</entry>
+    <entry key="DeprecatedCpp17D4D" translate="false">File includes deprecated header {0_filename}. Use headers {1_filename} and {2_filename} instead.</entry>
+    <entry key="DeprecatedCpp17D6" translate="false">File includes deprecated header {0_filename}. Use header {1_filename} instead.</entry>
+    <entry key="DeprecatedCpp17D7" translate="false">Deprecated function {0_symbol} is invoked. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D8A" translate="false">Deprecated type {0_symbol} is used. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D8B" translate="false">One of the deprecated types {0_symbol}, {1_symbol}, and {2_symbol} is used. \nUse the types directly instead.</entry>
+    <entry key="DeprecatedCpp17D8C" translate="false">One of the deprecated negators {0_symbol}, {1_symbol}, {2_symbol}, or {3_symbol} is used. \nUse {4_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D9A" translate="false">Deprecated template instantiation {0_symbol} is used. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D9B" translate="false">A deprecated member of {0_symbol} class is used. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D10" translate="false">Deprecated class {0_symbol} is used. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D11" translate="false">One of the deprecated functions {0_symbol} and {1_symbol} is used. \nUse {2_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D12A" translate="false">Deprecated type traits {0_symbol} and {1_symbol} are used.</entry>
+    <entry key="DeprecatedCpp17D12B" translate="false">Deprecated types {0_symbol} and {1_symbol} are used. \nUse {2_symbol} and {3_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D13" translate="false">{0_symbol} is used as a base class to provide typedefs. \nInstead of the type template instantiated with a data type, use the data type directly.</entry>
+    <entry key="DeprecatedCpp17D14" translate="false">Deprecated function {0_symbol} is used. Use {1_symbol} instead.</entry>
+    <entry key="DeprecatedCpp17D15" translate="false">File includes deprecated header {0_filename}.</entry>
+    <entry key="DeprecatedCpp17D16" translate="false">One of the deprecated conversion interfaces {0_symbol} and {1_symbol} is used.</entry>
+
+    <!-- PS_INTERNAL_USE_GETS_STDIO_H -->
+    <entry key="UseGetsStdioH" translate="false">Use of gets() function defined in stdio.h.</entry>
+
+    <entry key="Missing_static_assert_in_function_template" translate="false">static_assert is missing. Constraints of template function argument not checked.</entry>
+    <entry key="Missing_static_assert_in_class_template" translate="false">static_assert is missing. Constraints of template class argument not checked.</entry>
+    <entry key="InappropriateLocale" translate="false">The setlocale function has an implementation-defined effect when its second argument is not &quot;&quot; or &quot;C&quot;.</entry>
+
+    <entry key="swap_missing" translate="false">The user-defined no-throw swap function is missing</entry>
+    <entry key="swap_throwing" translate="false">The called swap function might throw an exception</entry>
+    <entry key="swap_notuser" translate="false">The called swap function is not user-defined</entry>
+    <entry key="swap_notclass" translate="false">The called swap function does not swap current class</entry>
+    <entry key="dlsym_dynamic_memory" translate="false">The dlsym function calls non-deterministic function malloc.</entry>
+
+    <entry key="DefaultLikeDefaultCtor" translate="false">Default constructor should be defined ''=default''</entry>
+    <entry key="PublicDefaultLikeDefaultCtor" translate="false">Default constructor should be defined ''=default'' or left undefined</entry>
+    <entry key="DefaultLikeDefaultDtor" translate="false">Destructor should be defined ''=default''</entry>
+    <entry key="PublicDefaultLikeDefaultDtor" translate="false">Destructor should be defined ''=default''</entry>
+
+    <entry key="DefaultLikeCopyCtor" translate="false">Copy constructor should be defined ''=default''</entry>
+    <entry key="DefaultLikeMoveCtor" translate="false">Move constructor should be defined ''=default''</entry>
+    <entry key="PublicDefaultLikeCopyCtor" translate="false">Copy constructor should be defined ''=default'' or left undefined</entry>
+    <entry key="PublicDefaultLikeMoveCtor" translate="false">Move constructor should be defined ''=default'' or left undefined</entry>
+
+    <entry key="DefaultLikeCopyOperator" translate="false">Copy assignment operator should be defined ''=default''</entry>
+    <entry key="DefaultLikeMoveOperator" translate="false">Move assignment operator should be defined ''=default''</entry>
+    <entry key="PublicDefaultLikeCopyOperator" translate="false">Copy assignment operator should be defined ''=default'' or left undefined</entry>
+    <entry key="PublicDefaultLikeMoveOperator" translate="false">Move assignment operator should be defined ''=default'' or left undefined</entry>
+
+    <entry key="CStdlibNotEncapsulatedCCall" translate="false">C Standard Library function {0_symbol}</entry>
+    <entry key="CStdlibNotEncapsulatedCPPStdUse" translate="false">Use of C++ Standard Library</entry>
+    <entry key="CStdlibNotEncapsulatedNewDelete" translate="false">C++ {0_symbol} operator</entry>
+    <entry key="CStdlibNotEncapsulatedTryBlock" translate="false">C++ {0_symbol} block</entry>
+    <entry key="CStdlibNotEncapsulatedRangeBasedForLoop" translate="false">C++ {0_symbol} statement</entry>
+    <entry key="CStdlibNotEncapsulatedGeneral" translate="false">This function mixes C Standard Library function and C++-specific syntax.</entry>
+
+    <entry key="DynAllocInExceptionMecanism" translate="false">Exception handling function uses dynamic memory allocation, which does not guarantee a deterministic worst-case execution time.</entry>
+    <entry key="LiteralOpVoid" translate="false">Operator returns void type and cannot convert parameters.</entry>
+    <entry key="LiteralOpSideEffect" translate="false">Operator has side effects or does something else other than converting parameters.</entry>
+    <entry key="LiteralOpParameter" translate="false">Operator does not use parameter at all.</entry>
+
+    <entry key="OppositeOperatorEvent" translate="false">Opposite operator</entry>
+    <entry key="OppositeOperatorRule" translate="false">Operator is not defined in terms of opposite operator.</entry>
+
+    <entry key="ForbiddenFunction" translate="false">{0_symbol} is a user-specified forbidden function.</entry>
+
+    <entry key="FunctionHasTry" translate="false">Function contains try block</entry>
+    <entry key="FunctionIsNotExternC" translate="false">Function does not have extern \"C\" linkage</entry>
+    <entry key="SignalHandlerNotSafe" translate="false">Signal handler is not signal safe</entry>
+    <entry key="SignalHandlerInstalled" translate="false">Signal handler installed</entry>
+
+    <entry key="AnotherDeclaration" translate="false">Declaration with parameter name mismatch</entry>
+
+    <entry key="HandlerBadAlloc" translate="false">The ''{0}'' replacement handler does not throw an std::bad_alloc</entry>
+    <entry key="HandlerReturnsToCaller" translate="false">The ''{0}'' replacement handler may return to the caller</entry>
+    <entry key="HandlerThrows" translate="false">The ''{0}'' replacement handler throws an exception</entry>
+    <entry key="ResourcesReclaimNotChecked" translate="false">Reclaiming memory bytes not verified</entry>
+
+    <entry key="InappropriateMemberBinaryOperator" translate="false">Because binary operator {0_operation} is implemented as a member, the implementation is inappropriate.</entry>
+
+    <entry key="ArrayDecayToPointer" translate="false">Modify the function to accept arrays of specific length by reference or implement the function as a template that accepts arrays of arbitrary size. Alternatively, use C++ standard template library containers instead of C-style arrays.</entry>
+    <entry key="ArrayVariableDeclaration" translate="false">Declaration of array variable {0_symbol}</entry>
+    <entry key="FunctionDecayingArrayToPointer" translate="false">Array decays to pointer parameter</entry>
+
+    <!-- checkers_classes.cpp -->
+    <entry key="AutoGenMsg230" translate="false">{0} inherits from another struct or class</entry>
+    <entry key="AutoGenMsg228" translate="false">Multiple inheritance on protected implementation shall not be allowed : {0} and {1} are not interfaces.\n</entry>
+    <entry key="AutoGenMsg232" translate="false">{0} provides protected or private data members</entry>
+    <entry key="AutoGenMsg233" translate="false">Non-explicit conversion {0}.</entry>
+    <entry key="AutoGenMsg229" translate="false">{0} is a base class of another struct or class</entry>
+    <entry key="AutoGenMsg227" translate="false">Multiple inheritance on public implementation shall not be allowed : {0} is not an interface.\n</entry>
+    <entry key="AutoGenMsg231" translate="false">{0} provides special member functions or methods</entry>
+    <entry key="OneVirtualSpecifier" translate="false">Missing specifier or incorrect combination of specifiers.</entry>
+    <entry key="OneVirtualSpecifierInBase" translate="false">Use only the {0_symbol} specifier.</entry>
+    <entry key="OneVirtualSpecifierInDerived" translate="false">To allow further overrides in subsequent derived classes, use {0_symbol}. To allow no further overrides, use {1_symbol}. Do not use both specifiers at the same time.</entry>
+    <entry key="NoVirtualSpecifier" translate="false">Unnecessary use of {0_symbol} specifier for overriding function in derived class. Use {1_symbol} or, to forbid further overrides, {2_symbol}. Do not use both specifiers at the same time.</entry>
+
+    <entry key="DanglingStringViewMemberInit" translate="false">An std::string_view member variable is initialized using std::string object that goes out of scope before the string_view object.</entry>
+
+    <entry key="HierarchyBaseNotInterface" translate="false">Base class of hierarchy is not an interface class.</entry>
+    <entry key="EmptyStringLiteralConstruction" translate="false">A std::string is constructed with unnecessary empty string literal.\nInstead, use the default std::string constructor.</entry>
+    <entry key="EmptyStringLiteralAssignment" translate="false">A std::string is assigned from an empty string literal.\nInstead, use the clear() method.</entry>
+    <entry key="EmptyStringLiteralComparison" translate="false">A std::string is compared against an empty string literal.\nInstead, use the empty() method.</entry>
+
+    <entry key="RepeatedCharactersCouldBeSingle" translate="false">Instead of repeating characters, use another overload with a single character.</entry>
+    <entry key="EmptyStringLiteralReplace" translate="false">Empty string literal passed to replace() for erasing substrings. Use erase() instead.</entry>
+    <entry key="EmptyStringLiteralResultsInNPOS" translate="false">Empty string literal used as search string. The method always returns string::npos.</entry>
+    <entry key="EmptyStringLiteralResultsInZero" translate="false">Empty string literal used as search string. The method always returns 0.</entry>
+    <entry key="EmptyStringLiteralResultsInLength" translate="false">Empty string literal used as search string. The method always returns string.length().</entry>
+    <entry key="EmptyStringLiteralResultsInLengthMinusOne" translate="false">Empty string literal used as search string. The method always returns string.length() - 1.</entry>
+
+    <entry key="StringCompareEmptiness" translate="false">{0_symbol} is used to determine string emptiness. Instead, compare first character to 0 for better efficiency.</entry>
+    <entry key="StringLengthEmptiness" translate="false">{0_symbol} is used to determine string emptiness. Instead, compare first character to 0 for better efficiency.</entry>
+    <entry key="StringCopyEmptyString" translate="false">{0_symbol} is used to clear a string. Instead, assign 0 to the first character of the string for better efficiency.</entry>
+
+    <entry key="ConstantStringConstruction" translate="false">A {0_symbol} is reconstructed from constant data every time this block of code executes, which is inefficient.</entry>
+
+    <entry key="ContainerCountResultUnused" translate="false">The return value of count() is unused. Remove the redundant call.</entry>
+
+    <entry key="AlgorithmCountingContainment" translate="false">Do not use std::count() or std::count_if() to check for containment. Use std::find() or std::find_if() instead.</entry>
+    <entry key="AlgorithmInvalidIsSortedOrdered" translate="false">std::is_sorted() was called on {0_symbol}, which is a sorted associative container. The output of this function is constant.</entry>
+    <entry key="AlgorithmInvalidIsSortedUnordered" translate="false">std::is_sorted was called on {0_symbol}, which is an unordered associative container. The output of this call is indeterminate.</entry>
+    <entry key="AlgorithmUniqueAdjacentFind" translate="false">std::adjacent_find() was called on {0_symbol}, a unique-value container. Result will always be end(). Call can be removed.</entry>
+    <entry key="AlgorithmDefaultMessage" translate="false">{0_symbol} was called with iterators from container {1_symbol} that has a more efficient method.</entry>
+    <entry key="AlgorithmExpensiveFunctor" translate="false">The functor passed to {0_symbol} is copied, which is inefficient. Wrap a reference to this functor into a new functor and pass the new functor to {0_symbol}.</entry>
+
+    <entry key="AlgorithmRemoveWithoutErase" translate="false">The return value of {0_symbol} is unused. To remove entries, pass the result to the container's erase() method. To partition the container, use std::partition().</entry>
+    <entry key="AlgorithmEraseRemoveMissingParam" translate="false">The call to the {1_symbol}.erase() is missing the second parameter. If {0_symbol} returns end(), the call leads to undefined behavior. The second parameter of erase() should match the second parameter of {0_symbol}.</entry>
+
+    <entry key="AlgorithmMismatchedIterators" translate="false">The input iterators do not point to the same container.</entry>
+    <entry key="AlgorithmEraseEnd" translate="false">Passing a container's end() iterator to its erase() method as its only parameter is undefined behavior.</entry>
+    <entry key="AlgorithmCompareMismatchedIterators" translate="false">The iterators being compared do not point to the same container.</entry>
+    <entry key="AlgorithmUninitializedIterator" translate="false">One or more iterators are uninitialized.</entry>
+
+    <entry key="ExpensiveContainerInsertion" translate="false">{1_symbol} will require an additional move or copy. Instead, use {0_symbol} for more efficient code.</entry>
+    <entry key="ExpensiveContainerInsertionWithMakePair" translate="false">{1_symbol} will require an additional move or copy. Instead, use {0_symbol} without the call to make_pair for more efficient code.</entry>
+
+    <entry key="VarCouldBeMovedInsteadOfCopied" translate="false">Moving variable {0_symbol} on last use is more efficient than copying.</entry>
+
+    <entry key="PaddedStructMember" translate="false">Member is padded to satisfy struct alignment requirements. Rearranging these padded members would save memory.</entry>
+    <entry key="PaddedStructMemberSizes" translate="false">Member of size {0} is padded to {1} bytes to satisfy struct alignment requirements. Rearranging these padded members would save memory.</entry>
+    <entry key="NSDMI_ShallBeUsed" translate="false">All user-defined constructors initialize {0} with the same value.</entry>
+    <entry key="NSDMI_ShallBeUsed_single" translate="false">The user-defined constructor initializes {0} with a constant value.</entry>
+    <entry key="NSDMI_UserInput" translate="false">Some constructors initialize {0} with user input.</entry>
+    <entry key="NSDMI_DifferentInit" translate="false">All user-defined constructors initialize {0} with a different values. NSDMI isn't needed.</entry>
+    <entry key="NSDMI_DataMemberInit_event" translate="false">This data member initialization can be removed.</entry>
+    <entry key="NSDMI_UserInput_event" translate="false">User input</entry>
+    <entry key="MissingBaseClassInit" translate="false">Base class {0} is not explicitly initialized.</entry>
+    <entry key="MissingDataMemberInit" translate="false">Data member {0} is not explicitly initialized.</entry>
+    <entry key="MissingAnonymousDataMemberInit" translate="false">Anonymous data member is not explicitly initialized.</entry>
+    <entry key="MissingDelegatingConstructor" translate="false">The flagged members are initialized repeatedly. Initialize the members by using delegating constructors to avoid repetition.</entry>
+    <entry key="MissingDelegatingConstructor_Initialization" translate="false">Initialization of {0_symbol}</entry>
+
+    <entry key="ExpensiveStdFunction" translate="false">Use pass-by-const-reference for the following parameters to the std::function object, instead of expensive pass-by-value semantics: {0}.</entry>
+
+    <entry key="MapValueContainsKey" translate="false">The key used for the insert is a member of value {0_symbol}</entry>
+
+    <entry key="ExpensiveStringOverload" translate="false">The output of {0_symbol} is passed to a function that has one or more overloads that take a std::string directly. Calling an overload of {1_symbol} that takes std::string directly might be more efficient.</entry>
+    <entry key="ExpensiveStringDefault" translate="false">The output of {0_symbol} is passed to a function when directly passing the string would have been more efficient.</entry>
+
+    <entry key="ExpensiveSprintf" translate="false">This use of {0_symbol} could be replaced with {1_symbol} which is more efficient.</entry>
+    <entry key="ExpensiveSprintfUseStrcat" translate="false">This use of {0_symbol} could be replaced by a combination of {1_symbol} and {2_symbol}, which are more efficient. Use {1_symbol} to copy the second argument into the first, and then use {2_symbol} to append subsequent arguments.</entry>
+
+    <entry key="StdStringCStrComparedToNull" translate="false">This comparison to NULL is unnecessary. To check if the string is empty, use std::string::empty(). Otherwise, remove the unnecessary comparison.</entry>
+
+    <entry key="Non_consistent_binary_arith_or_bitwise_operator" translate="false">Returned type is a pointer or reference or contains a type qualifier.\nThis type is inconsistent with the same operator in the C++ Standard Library.</entry>
+
+    <entry key="TypeUsedAsTemplArgMissingMember" translate="false">{2} template argument of {1} does not contain a member {0}</entry>
+
+    <entry key="CheapPassByReference" translate="false">Input parameter {0_symbol} is cheap to copy and can be passed by value.</entry>
+    <entry key="ImpossibleToCopyPassByReference" translate="false">Input parameter {0_symbol} is impossible to copy and can be passed by value.\nA pass by value will involve a move anyway.</entry>
+    <entry key="ExpensiveToMoveParam" translate="false">The output is expensive to move.\nInstead of returning by value, the output can be a parameter passed by pointer/reference.</entry>
+
+    <entry key="InvalidIterator" translate="false">Iterator {0_symbol} might not be valid anymore.</entry>
+    <entry key="InvalidReference" translate="false">Reference {0_symbol} might not be valid anymore.</entry>
+    <entry key="InvalidPointer" translate="false">Pointer {0_symbol} might not be valid anymore.</entry>
+    <entry key="Invalidator" translate="false">This action might invalidate the iterator, pointer, or reference.</entry>
+
+    <entry key="IteratorOverflow" translate="false">This operation might result in an invalid or out of range iterator.</entry>
+    <entry key="IncorrectContainerRange" translate="false">First and last iterator of range are not begin and end iterator of same container.</entry>
+
+    <entry key="SourceContainerDecl" translate="false">Source container declaration.</entry>
+    <entry key="DestinationContainerDecl" translate="false">Destination container declaration.</entry>
+    <entry key="UpdatingContainerWithLarger" translate="false">Size of the destination container is smaller than the source container, resulting in an overflow.</entry>
+    <entry key="UpdatingContainerSizeUnknown" translate="false">Size of the destination container is unknown and it might overflow.</entry>
+    <entry key="UpdatingContainerIncorrectSize" translate="false">Size of the container is insufficient for this operation, resulting in an overflow.</entry>
+
+    <entry key="BitfieldDeclaration" translate="false">Bit-field declaration</entry>
+
+    <entry key="MissingRefQualifier" translate="false">Member function might be called on temporary object.\nTo fix, lvalue-ref-qualify (&amp;amp;) the function.</entry>
+    <entry key="MissingRvalueRefQualifiedOverload" translate="false">const-lvalue-ref-qualified (const &amp;amp;) member function has no rvalue-ref-qualified (&amp;amp;&amp;amp;) overload with the same signature.</entry>
+    <entry key="IncorrectRvalueRefQualified" translate="false">An rvalue-ref-qualified member function binds only to rvalue (temporary) objects. Returning a pointer or reference to the function object or one of its sub-objects might result in an immediate dangling.</entry>
+    <entry key="PublicPrivateDataMembers" translate="false">Class uses mix of access specifiers for data member access.\nIf you intend all data members to be accessible by the users of the class, make all data members public. Otherwise, make all data members private to avoid issues such as inadvertent modification of a data member.</entry>
+    <entry key="ProtectedDataMembers" translate="false">Protected data member used, which needlessly allows direct manipulation of data member by derived class. Declare data member private and use protected member function instead.</entry>
+    <entry key="CopyConstructor" translate="false">Copy constructor</entry>
+    <entry key="CopyAssignmentOperator" translate="false">Copy assignment operator</entry>
+
+    <entry key="CopyCtorDeletedButClassCopyable" translate="false">Copy constructor defined as =delete but class might still be copyable through copy assignment.\nIf you intend the make the class move-only, define both the copy constructor and copy assignment operator as =delete.</entry>
+    <entry key="UnnecessaryDeletionofCopyMoveOperation" translate="false">Unnecessary definition of copy or move operation as =delete. Depending on your intent, declare only the copy operations as =delete or only the move assignment operator as =delete. \n Other declaration make your code less readable.</entry>
+    <entry key="UnnecessaryDeletionofCopyCtor" translate="false">Unnecessary definition of copy constructor as =delete.\n If you intend to make the class unmovable, define only the move assignment operator as =delete and do not declare any other move or copy operation.</entry>
+    <entry key="UnnecessaryDeletionofMoveCtor" translate="false">Unnecessary definition of move constructor as =delete.\n If you intend to make the class unmovable, define only the move assignment operator as =delete and do not declare any other move or copy operation.</entry>
+    <entry key="MoveOperatorDeletedButClassCopyable" translate="false">Move assignment operator defined as =delete class might still be copyable through copy operation.\nIf you intend to make the class unmovable, do not declare any other move or copy operation.</entry>
+    <entry key="CopyCtorandCopyOperatorDeletedbutClassMovable" translate="false">Copy constructor and copy assignment operator defined as =delete but class might still be movable.\n If you intend to make the class unmovable, do not declare any move operation. Otherwise, declare both the move constructor and the move assignment operator as not =delete to make the class move-only.</entry>
+    <entry key="UnnecessaryDeletionOfCopyOperator" translate="false">Unnecessary definition of copy assignment operator as =delete.\n If you intend to make the class unmovable, define only the move assignment operator as =delete and do not declare any other move or copy operation.</entry>
+    <entry key="MoveOperatorDelectedButClassMovable" translate="false">Move assignment operator defined as =delete class might still be movable through move constructor.\nIf you intend to make the class unmovable, define the move assignment operator as =delete and do not declare any other move or copy operation.</entry>
+    <entry key="MoveCtorDeletedButClassMovable" translate="false">Move constructor defined as =delete but class might still be movable through move assignment operator.\nIf you intend to make the class unmovable, define the move assignment operator as =delete and do not declare any other move or copy operation.</entry>
+    <entry key="CopyOperatorDeletedButClassCopyable" translate="false">Copy assignment operator defined as =delete but class might still be copyable through copy constructor.\nIf you intend the make the class move-only, define both the copy constructor and copy assignment operator as =delete.</entry>
+    <entry key="CopyCtorandCopyOperatorDelectedButClassMovable" translate="false">Copy constructor and copy assignment operator defined as =delete.\n If you intend to make the class unmovable, do not declare any move operation. Otherwise, declare both the move constructor and the move assignment operator as not =delete to make the class move-only.</entry>
+    <entry key="CopyCtorandMoveCtorDeletedButClassCopyableMovable" translate="false">Copy and Move constructors defined as =delete but class might still be copyable or movable through assignment.\nIf you intend the make the class move-only, define both the copy constructor and copy assignment operator as =delete. \nIf you intend to use the class neither movable nor copyable, either define the move assignment operator as =delete while keeping all other copy or move operation implicit, or define the copy constructor and copy assignment operator as =delete while keeping the move operators implicit.</entry>
+    <entry key="ConstantPointerToVirtual" translate="false">Compile-time constant points to a virtual member function.</entry>
+    <entry key="PointerToMemberOfIncompleteClass" translate="false">Pointer points to a member function of an incomplete class.</entry>
+    <entry key="IncompleteClassDeclaration" translate="false">Incomplete class declaration.</entry>
+    <entry key="VarPointingToVirtual" translate="false">Variable might point to a virtual member function with a matching type.</entry>
+    <entry key="Class" translate="false">Class has a virtual member with matching type</entry>
+    <entry key="InappropriateUnderlyingPlainCharType" translate="false">Underlying type of bit-field (plain char) has implementation defined signedness. Depending on signedness, bit-field might be too small to store assigned value.</entry>
+    <entry key="InappropriateUnderlyingEnumType" translate="false">Underlying type of bit-field is unscoped enum with unspecified type. Depending on signedness of enum type, bit-field might be too small to store some enum values.</entry>
+    <entry key="ConcealerFunction" translate="false">Function in derived class hides a function with the same name in its base class.</entry>
+    <entry key="ConcealedFunction" translate="false">Concealed function</entry>
+
+    <!-- checkers_declarations.cpp -->
+    <entry key="AutoGenMsg235" translate="false">Identifier ''{0}'' has same significant characters as identifier ''{1}'' ({2} line {3,number,integer} column {4,number,integer}).\n</entry>
+    <entry key="AutoGenMsg239" translate="false">{0} name ''{1}'' is hidden</entry>
+    <!-- PS_INTERNAL_USE_AVOIDABLE_DYNAMIC_ALLOCATION messages -->
+    <entry key="AllocationAvoidableUsingAutomatic" translate="false">Use of dynamic memory allocation is avoidable in the current context.\nTo avoid:\n* Slower memory access on the heap\n* Additional cost of deallocation operations\n* Potential exception handling issues\nUse an automatic storage duration object instead.</entry>
+    <entry key="AllocationAvoidableUsingStdString" translate="false">Use of dynamic memory allocation is avoidable in the current context.\nTo avoid:\n* Slower memory access on the heap\n* Additional cost of deallocation operations\n* Potential exception handling issues\nUse an automatic storage duration std::string instead.</entry>
+    <entry key="AllocationAvoidableUsingStdVector" translate="false">Use of dynamic memory allocation is avoidable in the current context.\nTo avoid:\n* Slower memory access on the heap\n* Additional cost of deallocation operations\n* Potential exception handling issues\nUse an automatic storage duration std::vector instead.</entry>
+    <entry key="AllocationAvoidableUsingStdStringOrArray" translate="false">Use of dynamic memory allocation is avoidable in the current context.\nTo avoid:\n* Slower memory access on the heap\n* Additional cost of deallocation operations\n* Potential exception handling issues\nUse an automatic storage duration std::string or std::array instead.</entry>
+    <entry key="AllocationAvoidableUsingStdVectorOrArray" translate="false">Use of dynamic memory allocation is avoidable in the current context.\nTo avoid:\n* Slower memory access on the heap\n* Additional cost of deallocation operations\n* Potential exception handling issues\nUse an automatic storage duration std::vector or std::array instead.</entry>
+    <!-- PS_INTERNAL_USE_AVOIDABLE_MEMORY_CONSUMING_CLASS messages -->
+    <entry key="ClassWrappingStackConsumingMembers" translate="false">Object class wraps data members that consume significant memory on the stack.\nTo avoid a potential stack overflow, replace wrapper object by local std::vector objects to store wrapped data.</entry>
+    <entry key="BasesWrappingStackConsumingMembers" translate="false">Object class through base classes wraps data members that consume significant memory on the stack.\nTo avoid a potential stack overflow, replace wrapper object by local std::vector objects to store wrapped data.</entry>
+    <entry key="ClassOrBasesWrappingStackConsumingMembers" translate="false">Object class or base classes wrap data members that consume significant memory on the stack.\nTo avoid a potential stack overflow, replace wrapper object by local std::vector objects to store wrapped data.</entry>
+    <entry key="ClassAndBasesWrappingStackConsumingMembers" translate="false">Object class and base classes wrap data members that consume significant memory on the stack.\nTo avoid a potential stack overflow, replace wrapper object by local std::vector objects to store wrapped data.</entry>
+    <!-- PS_INTERNAL_USE_AVOIDABLE_MEMORY_CONSUMING_CLASS events -->
+    <entry key="DefinitionOfObjectWithNameEvent" translate="false">Definition of object ''{0}''</entry>
+    <entry key="DefinitionOfClassWithNameEvent" translate="false">Definition of class ''{0}''</entry>
+    <entry key="DefinitionOfMemberWithNameEvent" translate="false">Definition of member ''{0}''</entry>
+    <entry key="DefinitionOfTypeWithNameAndSizeEvent" translate="false">Definition of type ''{0}'' ({1,number,integer} bytes)</entry>
+    <entry key="DerivationFromBaseClassWithNameEvent" translate="false">Derivation from base class ''{0}''</entry>
+    <entry key="IsOutOfEnum_number" translate="false">{0_smart_int} is not in enumerator list of enumeration.</entry>
+    <entry key="IsOutOfEnum_symbol" translate="false">{0_symbol} is not in enumerator list of enumeration.</entry>
+    <entry key="MightBeOutOfEnum" translate="false">{0_symbol} might not be in enumerator list of enumeration.</entry>
+    <!-- PS_INTERNAL_EXPENSIVE_MEMBER_INITIALIZATION messages -->
+    <entry key="MemberInitializedMultiple" translate="false">Member variable {0_symbol} is assigned in the constructor body, but was already initialized. The redundant assignment is expensive.</entry>
+    <entry key="MemberInitializedNone" translate="false">Member variable {0_symbol} is assigned in the constructor body, which is less efficient than initializing {0_symbol} in the initialization list.</entry>
+    <!-- PS_INTERNAL_LANGUAGE_LINKAGE_MISMATCH -->
+    <entry key="LanguageLinkageMismatch" translate="false">Function with {1_symbol} linkage expected, but the flagged function has {0_symbol} linkage.</entry>
+    <entry key="ExpectedType" translate="false">Expected type</entry>
+
+    <!-- PS_INTERNAL_ENUM_WITH_NO_APPROPRIATE_TYPE -->
+    <entry key="EnumWithNoExplicitBase" translate="false">Enumeration {0_symbol} defined without specifying explicit underlying type.</entry>
+    <entry key="AnonymousEnumWithNoExplicitBase" translate="false">Anonymous enumeration defined without specifying explicit underlying type.</entry>
+
+    <!-- PS_INTERNAL_INTERNAL_LINKAGE_SHOULD_BE_APPROPRIATE -->
+    <entry key="StaticGlobalShouldNotBeUsed" translate="false">Inappropriate use of internal linkage for object {0_symbol}. Consider declaring {0_symbol} within an anonymous namespace.</entry>
+    <entry key="StaticGlobalShouldNotBeUsedRoutine" translate="false">Inappropriate use of internal linkage for routine {0_symbol}. Consider declaring {0_symbol} within an anonymous namespace.</entry>
+
+    <!-- PS_INTERNAL_EXTERN_DECL_IN_ANONYMOUS -->
+    <entry key="ExternInAnon" translate="false">Because {0_symbol} is declared in anonymous namespace, 'extern' is ignored and {0_symbol} has internal linkage. Consider removing 'extern' or moving the declaration to a non-anonymous namespace.</entry>
+    <entry key="StaticInAnon" translate="false">Because {0_symbol} is declared in anonymous namespace, it has internal linkage and using the keyword 'static' can be confusing. Consider removing 'static'.</entry>
+
+    <!-- PS_INTERNAL_FUNCTION_WITH_EMPTY_PARAM -->
+    <entry key="FunctionWithEmptyParam" translate="false">Function declared with empty parenthesis.</entry>
+
+    <!-- PS_INTERNAL_INTERNAL_LINKAGE_WITHOUT_STATIC -->
+    <entry key="InternalLinkageWithoutStatic" translate="false">Identifier with internal linkage declared without static storage-class specifier.</entry>
+    <entry key="PriorDeclaration" translate="false">Prior declaration with the static keyword</entry>
+
+    <!-- PS_INTERNAL_FUNCTION_DEFINITION_K_AND_R -->
+    <entry key="OldStyleDefinition" translate="false">Function declaration specifies argument types in a separate list.</entry>
+
+    <!-- PS_INTERNAL_STORAGE_CLASS_NOT_AT_BEGINNING -->
+    <entry key="StorageClassNotAtBeginning" translate="false">Storage class specifier is not placed at the beginning of declaration.</entry>
+
+    <entry key="VolatileReturnType" translate="false">Function return type is volatile, which is not appropriate.</entry>
+    <entry key="VolatileLocalVar" translate="false">Local variable is declared as volatile, which is not appropriate.</entry>
+    <entry key="VolatileFunctionParam" translate="false">Function argument is specified as volatile, which is not appropriate.</entry>
+    <entry key="VolatileStructBinding" translate="false">Structured binding is declared as volatile, which is not appropriate.</entry>
+    <entry key="TypeDefWithVolatile" translate="false">Type definition that uses volatile qualification.</entry>
+
+    <entry key="HiddenVarOrFunc" translate="false">Declaration of hidden {0} ''{1_symbol}''.</entry>
+    <entry key="VarShadows" translate="false">Variable {0_symbol} hides another variable with the same name declared in an outer or at global scope.</entry>
+    <entry key="VarShadowsInForLoop" translate="false">
+    Variable {0_symbol} hides another variable with the same name declared in an outer or at global scope.\n
+    Despite declaration in for initializer, the first declaration of {1} ''{2_symbol}'' is visible outside for loop (see Target &amp;amp; Compiler options or pragmas in code).
+    </entry>
+    <entry key="MostVexingParse" translate="false">Parentheses around variable indicate a named variable but can also mean an unnamed object constructed with the variable as argument.\nFor an object declaration, use an explicit object name before '('.\n&amp;nbsp;&amp;bull;&amp;nbsp;For a named variable declaration, remove the superfluous ().</entry>
+    <entry key="NonBraceInit" translate="false">Parentheses are misinterpreted if you expect an unnamed variable constructed with the named variable as argument.\n"Introduce and explicit name before '(' and replace parentheses '()' with braces '{}'.\n</entry>
+
+    <!-- checkers_names.cpp -->
+    <entry key="ShouldNotBeReused" translate="false">{0} {1_symbol} is not a unique identifier.\nAlready used as {2} ({3_filename} line {4,number,integer} column {5,number,integer}).</entry>
+    <entry key="StaticShouldNotBeReused" translate="false">{0} {1_symbol} is reused.\n Already used as {2} in ({3_filename} line {4,number,integer} column {5,number,integer}).</entry>
+    <entry key="AutoGenMsg309" translate="false">The macro ''{0}'' shall not be used.\n</entry>
+    <entry key="AutoGenMsg312" translate="false">Identifier ''{0}'' shall not be reused.\n</entry>
+    <entry key="IdNotNFC" translate="false">The identifier must be in Normalization Form C (NFC).</entry>
+    <entry key="IdHasDoubleUnderscore" translate="false">The identifier cannot contain double underscore '__'.</entry>
+    <entry key="IdIsReservedName" translate="false">The identifier cannot be a reserved name.</entry>
+    <entry key="IdIsReservedNamespace" translate="false">The identifier cannot be defined in a reserved namespace {0_symbol}.</entry>
+    <entry key="IdIncorrectLiteral" translate="false">The identifier does not follow the required format for an operator\"\" with a single underscore.</entry>
+    <entry key="IdMustNotStartWithUnderscore" translate="false">The identifier must not start with a '_'.</entry>
+    <entry key="IdFirstCharNotXIDStart" translate="false">The first character must be within the character class XID_Start.</entry>
+    <entry key="IdNextNotXIDContinue" translate="false">A character used within the identifier must be within the character class XID_Continue.</entry>
+    <entry key="LiteralSuffixWithSpace" translate="false">A user-defined literal suffix shall start with a single '_' and shall not be preceded by a space.</entry>
+    <entry key="IdSimilarMsg" translate="false">Identifier {0_symbol} is visually similar to other identifiers.</entry>
+    <entry key="IdSimilarEvent" translate="false">{0_symbol} differ from the flagged identifier by {1}.</entry>
+    <entry key="ViolationSiteEvent" translate="false">Identifier already used.</entry>
+
+    <!-- checkers_new_delete.cpp -->
+    <entry key="AutoGenMsg318" translate="false">All resources acquired by a class shall be released by the class's destructor.\n'new' has been called in constructor of ''{0}'' for type ''{1}'', but the corresponding 'delete' has not been called in destructor.\n</entry>
+    <entry key="AdvancedMemoryFunctionUsed" translate="false">Function {0_symbol} performs advanced memory management.</entry>
+    <entry key="AdvancedMemoryNewDeleteUsed" translate="false">Overload of {0_symbol} performs advanced memory management.</entry>
+    <entry key="AdvancedMemoryFunctionAddressTaken" translate="false">Function {0_symbol} performs advanced memory management and should not have its address taken.</entry>
+    <entry key="AdvancedMemoryNewDeleteAddressTaken" translate="false">Overload of {0_symbol} performs advanced memory management and should not have its address taken.</entry>
+    <entry key="AdvancedMemoryNewDeleteOverload" translate="false">Overload of {0_symbol} performs advanced memory management and should not be declared.</entry>
+    <entry key="VacuousDestructorCall" translate="false">Explicitly calling a destructor is advanced memory management.</entry>
+    <entry key="DestructorCalledExplicitly" translate="false">Explicitly calling destructor {0_symbol} is advanced memory management.</entry>
+
+    <!-- checkers_smart_pointers.cpp -->
+    <entry key="MissingMakeSharedNewConstruction" translate="false">A shared_ptr was constructed with the result of a call to new. Use make_shared instead.</entry>
+    <entry key="MissingMakeSharedMakeUniqueConstruction" translate="false">A shared_ptr was constructed with the result of a call to make_unique. Use make_shared instead.</entry>
+    <entry key="MissingMakeSharedResetNew" translate="false">shared_ptr::reset() method was invoked with the result of a call to new. Use make_shared instead.</entry>
+    <entry key="MissingMakeSharedMakeUniqueAssignment" translate="false">A shared_ptr was assigned from the result of a call to make_unique. Use make_shared instead.</entry>
+    <!-- PS_INTERNAL_USE_AVOIDABLE_SMART_POINTER messages -->
+    <entry key="SmartPtrAvoidableUsingAutomatic" translate="false">Use of smart pointer is avoidable in the current context.\nTo avoid:\n* Unnecessary allocation operations\n* Potential costs of managing object ownership and use count for shared objects\nUse an automatic storage duration object instead.</entry>
+    <entry key="SmartPtrAvoidableUsingStdString" translate="false">Use of smart pointer is avoidable in the current context.\nTo avoid:\n* Unnecessary allocation operations\n* Potential costs of managing object ownership and use count for shared objects\nUse an automatic storage duration std::string instead.</entry>
+    <entry key="SmartPtrAvoidableUsingStdVector" translate="false">Use of smart pointer is avoidable in the current context.\nTo avoid:\n* Unnecessary allocation operations\n* Potential costs of managing object ownership and use count for shared objects\nUse an automatic storage duration std::vector instead.</entry>
+    <entry key="SmartPtrAvoidableUsingStdStringOrArray" translate="false">Use of smart pointer is avoidable in the current context.\nTo avoid:\n* Unnecessary allocation operations\n* Potential costs of managing object ownership and use count for shared objects\nUse an automatic storage duration std::string or std::array instead.</entry>
+    <entry key="SmartPtrAvoidableUsingStdVectorOrArray" translate="false">Use of smart pointer is avoidable in the current context.\nTo avoid:\n* Unnecessary allocation operations\n* Potential costs of managing object ownership and use count for shared objects\nUse an automatic storage duration std::vector or std::array instead.</entry>
+    <entry key="PotentialCycling" translate="false">Using std::shared_ptr to manage objects in a reference cycle might result in a memory leak. Use std::weak_ptr to break reference cycles.</entry>
+
+    <!-- checkers_special_functions.cpp -->
+    <entry key="AutoGenMsg335" translate="false">Move constructor ''{0}'' does not use move semantics when initializing at least one data member or base class.\nNot using move semantics in the move constructor may cause inefficiencies, resource leaks, or other unexpected behavior.Remove any existing 'const' qualifier for data members, if required, and use std::move explicitly.</entry>
+    <entry key="AutoGenMsg336" translate="false">Variable ''{0}'' is reused</entry>
+    <entry key="Consume_Parameter" translate="false">Parameter {0_symbol} is of type X{1_operation} (non-const) and must be moved with an explicit 'std::move', which is more efficient.</entry>
+    <entry key="Forward_Parameter" translate="false">Function parameter {0_symbol} is of type T{1_operation} (non-const) and must be forwarded with 'std::forward'.</entry>
+    <entry key="Used_Forward_Parameter" translate="false">Function parameter {0_symbol} is of type T{1_operation} (non-const) and must be 'std::forward'-ed only. No other operation is allowed.</entry>
+    <entry key="Unnamed_Consume_Parameter" translate="false">Unnamed parameter is of type X{0_operation} (non-const) and must be moved with an explicit 'std::move'.</entry>
+    <entry key="Unnamed_Forward_Parameter" translate="false">Unnamed parameter is of type T{0_operation} (non-const) and must be forwarded with 'std::forward'."</entry>
+    <entry key="MissingRefParam" translate="false">Copy assignment parameter passed by value might result in unnecessary copy, slicing, and inconsistency with copy constructor. Instead, pass parameter by reference.</entry>
+    <entry key="MissingConstParam" translate="false">Copy operation should have a const-qualified parameter for safer and more efficient code.</entry>
+    <entry key="ExtraConstParam" translate="false">const parameter cannot be moved-from.</entry>
+    <entry key="MoreThanOneParam" translate="false">Copy or move constructor has extra parameters with default values which might make you code harder to review. Instead, use separate constructors that support these extra parameters.</entry>
+    <entry key="ExtraVolatileParam" translate="false">Volatile parameter might be modified at anytime without a write operation, which might not be what you expect from a copy or move operation.</entry>
+    <entry key="Virtual" translate="false">Virtual member function might be overridden in a derived class, which might not be what you expect when you use the function for a copy or move operation. </entry>
+    <entry key="MissingNoexceptOperator" translate="false">Move operation not declared noexcept. If operation throws, state of moved-from object might be invalid.</entry>
+    <entry key="MissingRefQualif" translate="false">Assignment operation missing lvalue reference qualification (ref-qualifier &amp;) and might result in an assignment to a temporary object.</entry>
+    <entry key="ConstQualified" translate="false">A copy or move assignment operator with a const ref-qualifier results in an object that cannot be copied to or moved-from and might result in a compilation error. </entry>
+    <entry key="IncorrectRetType" translate="false">Return type of assignment operation is not a reference to the object being assigned and does not allow chaining of assignments.</entry>
+    <entry key="SelfAssignTest" translate="false">To avoid leaving the object in an unexpected or incorrect state, check that the source and target of the assignment operation are not the same before you operate on the object.</entry>
+    <entry key="typeidPolymorphicClass" translate="false">typeid called on object that might not be fully constructed or might be already destroyed.\nReturned type might not match expected object type.</entry>
+    <entry key="DynamicCastOnPolymorphicClass" translate="false">Use of dynamic_cast might cast object to a type that is incompatible with class hierarchy of object, which is undefined behavior.\nDynamic type of object is established once constructor completes.</entry>
+    <entry key="VirtualCallToVirtual" translate="false">Call to virtual function invokes a function that is not yet defined, which is undefined behavior.\nVirtual function is defined once constructor completes and dynamic type of object is established.</entry>
+    <entry key="DirectVirtualCall" translate="false">Direct call to virtual member function</entry>
+    <entry key="IndirectDynamicTypeUsage" translate="false">Indirect call to virtual member function.</entry>
+    <entry key="IndirectDynamicTypeUsageCallStack" translate="false">Call to object before dynamic type is fully established.</entry>
+    <entry key="BadForward" translate="false">Using std::forward with a non-forwarding reference.\nUse std::move instead.</entry>
+    <entry key="BadMove" translate="false">Using std::move with a forwarding reference.\nUse std::forward instead.</entry>
+    <entry key="Missing_std_forward" translate="false">Forwarding reference forwarded without using std::forward.</entry>
+    <entry key="std_forward_TypeMismatch" translate="false">std::forward forwarding non-forwarding reference.</entry>
+    <entry key="PossibleUseAfterDestruction" translate="false">Object {0_symbol} may be used after its lifetime.</entry>
+    <entry key="DestructionPosition" translate="false">Object destruction</entry>
+
+    <!-- checkers_expressions.cpp -->
+    <entry key="AutoGenMsg270" translate="false">{0} operand of operator ''{1_operation}'' is of enum type.\n</entry>
+    <entry key="AutoGenMsg278" translate="false">Return of a structure with a flexible array member.\nThe variable copy during return ignores the flexible array member.\nTo fix, change the function to return a pointer of the structure.\n</entry>
+    <entry key="AutoGenMsg271" translate="false">Operand of operator ''{0_operation}'' is of enum type.\n</entry>
+    <entry key="AutoGenMsg279" translate="false">Variable defined on the stack as a structure with a flexible array member.\nThe flexible array member is not allocated and can result in potential illegal dereference.\nTo fix, dynamically allocate memory for this variable.\n</entry>
+    <entry key="AutoGenMsg274" translate="false">Casting pointer to {0,number,integer} byte data to pointer to {1,number,integer} byte data</entry>
+    <entry key="MacroWithNoComplexSupport" translate="false">Macro {0_symbol} does not support complex values.\nThis call has undefined behavior.</entry>
+    <entry key="FuncWithNoComplexSupport" translate="false">Function {0_symbol} does not support complex values.\nThis call has undefined behavior.</entry>
+    <entry key="TargetFuncWithRealSupportOnly" translate="false">Function supporting only floating-point values</entry>
+    <entry key="StringFormatMismatch" translate="false">Mismatch between the argument of type {0_symbol} and the corresponding format specifier {1_symbol}.</entry>
+    <entry key="StringFormatMismatchIntegerPromotion" translate="false">Mismatch between the argument of type {0_symbol} (after implicit conversion from {1_symbol}) and the corresponding format specifier {2_symbol}.</entry>
+    <entry key="UnsafeTimeTComparison" translate="false">The type time_t is implementation-defined. Make sure that both operands are of type time_t before comparison.</entry>
+    <entry key="DoesNotCompile" translate="false">File {0} does not compile.</entry>
+    <entry key="NonPlacementNew" translate="false">Use of non-placement {0} is non-deterministic and might result in out of memory state.</entry>
+    <entry key="PlacementNew" translate="false">Placement {0} shall not be used.</entry>
+    <entry key="ReallocParamReturn" translate="false">Overwriting the original pointer by the return value of realloc() might cause data loss and result in a memory leak.</entry>
+    <entry key="IllegalPointerToMemberCast" translate="false">Pointer to member object obtained from class {1_symbol} cast to class {0_symbol} which does not contain pointed to member.</entry>
+    <entry key="sizeofArrayMisuse" translate="false">Applying the sizeof operator on {0_symbol} returns the size of a pointer instead of the length of {0_symbol}, resulting in unexpected behavior.</entry>
+    <entry key="DestroyedBackingObject" translate="false">Pointer points to temporary object that is destroyed at the end of the expression.\n To fix, store the temporary object in a variable and point to that variable instead.</entry>
+    <entry key="UnaryPlus" translate="false">Remove the unary + operator or replace the operator by using an explicit cast.</entry>
+    <entry key="ConversionFromBool" translate="false">Conversion from type bool can indicate code with unintended meaning. Check for issues such as use of operators not meant for boolean operands.</entry>
+    <entry key="ConversionToBool" translate="false">Conversion to type bool can indicate code with unintended results. Check for issues such as implicit conversion of a pointer on assignment to bool.</entry>
+    <entry key="typeidOnPolymorphicClass" translate="false">The operand {0_symbol} of the typeid operator is a polymorphic class.</entry>
+    <entry key="PolymorphicClass" translate="false">Polymorphic class definition.</entry>
+    <entry key="PolymorphicDerivedClass" translate="false">Polymorphic derived class definition.</entry>
+    <entry key="reinterpret_castUsage" translate="false">Conversion between types using reinterpret_cast can result in undefined behavior.</entry>
+    <entry key="reinterpret_castUsageEvent" translate="false">Type definition.</entry>
+    <entry key="IncorrectPointerIntegralCast" translate="false">Pointer is cast into an integral type that might not be able to represent all possible pointer values. In the cast expression, use std::uintptr_t or std::intptr_t as the type-id.</entry>
+    <entry key="IncorrectImplicitPointerIntegralCast" translate="false">Pointer is implicitly cast into an integral type that might not be able to represent all possible pointer values. Cast the pointer to std::uintptr_t or std::intptr_t type by using an explicit cast expression.</entry>
+    <entry key="InappropriateCastToPointerToFunction" translate="false">Object that is not function pointer is cast into a function pointer.</entry>
+    <entry key="InappropriatePointerToFunctionCast" translate="false">Function pointer is cast into an object that is not a function pointer.</entry>
+    <entry key="InappropriatePointerToFunctionCastToPointerToFunction" translate="false">Function pointer is cast to a different function pointer.</entry>
+    <entry key="InappropriateCastOfMemberOfDifferentClasses" translate="false">Cast of member from class {0_symbol} to class {1_symbol}.</entry>
+    <entry key="SignedLeftOperand" translate="false">Signed left operand.</entry>
+    <entry key="SignedRightOperand" translate="false">Signed right operand.</entry>
+    <entry key="ShiftingTooMuch" translate="false">Shifting more than the left operand size.</entry>
+    <entry key="ShiftingSignBit" translate="false">Shifting into or behind the most significant bit (sign bit).</entry>
+    <entry key="PermissibleOperatorsOnPlainCharC" translate="false">Only permissible operators on plain chars are '=', '==' or '!=' operators, explicit casts to integral types and '?' for the 2nd and 3rd operands.</entry>
+    <entry key="PermissibleOperatorsOnPlainCharCPP" translate="false">Only permissible operators on plain chars are '=', '==', '!=' or unary '&amp;amp;' operators.</entry>
+    <entry key="PlainCharConversion" translate="false">Value of type plain char is {0} converted to {1}.</entry>
+    <entry key="PlainCharEquality" translate="false">Operands of the equality operators must be both plain char.</entry>
+    <entry key="BadCastToPointerToFunction" translate="false">A static_cast should be used to cast an object of pointer-to-function type.</entry>
+    <entry key="BadAssignmentForPointerToFunction" translate="false">A value of pointer-to-function type should only be assigned to an object of pointer-to-function type.</entry>
+    <entry key="BadContextForPointerToFunction" translate="false">An object of pointer-to-function type should only be used in the following cases:\n* To call a function\n* As the operand of the &amp;amp; operator\n* As the operand of a static_cast\n* For assignment to another object of pointer-to-function type.</entry>
+    <entry key="TooNarrowDestinationInteger" translate="false">Destination integer is not large enough to accept all the values of {0_symbol}.</entry>
+    <entry key="NotEnumerator" translate="false">Not an enumerator of {0_symbol}.</entry>
+    <entry key="NotAllCasesFromEnum" translate="false">Cases are not all enumerators of {0_symbol}.</entry>
+    <entry key="BothOperandsNotUnscoped" translate="false">Both operands must have the same (unscoped enum) type.</entry>
+    <entry key="static_castTargetTypeUnscopedEnumWithoutFixedUnderlyingType" translate="false">static_cast target type unable to be an unscoped enum without fixing underlying type.</entry>
+    <entry key="UnscopedEnumWithoutUnderlyingTypeAsAssignmentSrc" translate="false">Unscoped enum as source of an assignment.</entry>
+    <entry key="UnscopedEnumWithoutUnderlyingTypeForbiddenUsage" translate="false">Unscoped enum type used on an illegal operation.</entry>
+    <entry key="UintConstantWraparound" translate="false">Unsigned arithmetic operation with constant operands wraps around.</entry>
+    <entry key="MissingParentheses" translate="false">The operand of the {0_operation} operator should be enclosed in parentheses.</entry>
+    <entry key="LeftOperandType" translate="false">Left type</entry>
+    <entry key="RightOperandType" translate="false">Right type</entry>
+    <entry key="errnoAssignment" translate="false">errno must only be assigned to the literal value zero.</entry>
+    <entry key="AddrOfAutoInGreaterLifetime" translate="false">Address of automatic storage duration object ''{0_symbol}'' is assigned to ''{1_symbol}'', which has a greater lifetime.</entry>
+    <entry key="ObjectDefinition" translate="false">Definition of object ''{0_symbol}''.</entry>
+    <entry key="InappropriateConstantSizes" translate="false">Constant value does not fit the target type of {0} {1}.</entry>
+    <entry key="InappropriateSizes" translate="false">Assignment source and target must be types of same size.\nSource is {1} bytes.\nTarget is {0} bytes.</entry>
+    <entry key="InappropriateSignednesses" translate="false">Assignment source and target must be types of same signedness.\nSource is of type {1_symbol}.\nTarget is of type {0_symbol}.</entry>
+    <entry key="InappropriateTypeCategories" translate="false">Assignment source and target must be types of same type category.\nSource is of type category {1_symbol}.\nTarget is of type category {0_symbol}.</entry>
+    <entry key="InappropriateTypes" translate="false">Assignment source and target must be types of the same type category, signedness, and size.\nSource type is {1_symbol}\nTarget type is {0_symbol}.</entry>
+    <entry key="CompoundLiteralAssignedToVar" translate="false">Address of temporary variable holding the value of compound literal is assigned to {0}.</entry>
+    <entry key="CompoundLiteralAssigned" translate="false">Address of temporary variable holding the value of compound literal is assigned to a variable.</entry>
+    <entry key="CompoundLiteralReturned" translate="false">Address of temporary variable holding the value of compound literal is returned from function.</entry>
+    <entry key="HardCodedValueInOperation" translate="false">Hard coded numerical value used in arithmetic expression.</entry>
+    <entry key="AddressOfBitfieldTaken" translate="false">Accessing the bitfields in struct type {0_symbol} using a pointer requires assuming how the bitfields are represented in memory, making the code implementation dependent.\nUse bitfields names instead of pointer variable {1_symbol} to modify or read their values.</entry>
+    <entry key="StructType" translate="false">struct type</entry>
+    <entry key="InvalidFloatEqNeq">Equality or inequality operation on floating-point types is implementation-defined and can result in unexpected behavior.</entry>
+    <entry key="PostIncrementOrDecrementOperationReturnIsExpensive" translate="false">This post increment or decrement operator returns {0_symbol}, which is expensive to construct.</entry>
+    <entry key="PreIncrementOrDecrementOperationReturnIsMoreEfficient" translate="false">This pre increment or decrement operator returns {0_symbol}, which is more efficient to construct.</entry>
+    <entry key="TypeCategoryChange" translate="false">Type category changed from {0_symbol} to {1_symbol}.</entry>
+
+    <!-- checkers_sizeof.cpp -->
+    <entry key="InvalidStructSizeOneSizeof" translate="false">The type used in the sizeof expression does not match the type of the target object.</entry>
+    <entry key="InvalidStructSizeSumOfSizeof" translate="false">The size of the target object is computed as sum of sizes of its individual components.</entry>
+
+    <!-- checkers_statements.cpp -->
+    <entry key="ExpensiveReturnConstObject_Declaration" translate="false">This local const object is later copied when returned.\nMaking it non-const will enable a more efficient move operation.</entry>
+    <entry key="ExpensiveReturnConstObject_Statement" translate="false">This return statement copies the object since it is const, and would move the object if it were non-const.</entry>
+    <entry key="ForCouldBeRangeFor" translate="false">Consider using a range-based for loop, which uses less code to maintain correct loop semantics.</entry>
+    <entry key="ExpensiveReturnStdMove_Var" translate="false">This std::move call might prevent named return value optimization (NRVO).\nRemoving this call might enable a more efficient NRVO operation.</entry>
+    <entry key="ExpensiveReturnStdMove_Temp" translate="false">This std::move call prevents return value optimization (RVO).\nRemove this call to enable a more efficient RVO operation.</entry>
+    <entry key="CallsInRangeForInit" translate="false">The range-based for loop initialization statement contains more than one function call, object creation, or data member access.</entry>
+
+    <entry key="IteratorUpdate" translate="false">Iterator modified.</entry>
+    <entry key="IncrementUpdate" translate="false">Increment modified.</entry>
+    <entry key="BoundUpdate" translate="false">Bound modified.</entry>
+    <entry key="LoopCounterDeclaredOutsideLoop" translate="false">Loop-counter {0_symbol} declared outside for loop statement.</entry>
+    <entry key="IteratorBoundTypeMismatch" translate="false">Loop-counter and loop-bound do not have the same type.</entry>
+    <entry key="IteratorNotLargeEnough" translate="false">Loop-counter does not have a range large enough to represent the loop-bound value.</entry>
+    <entry key="IteratorNotIntegral" translate="false">Loop-counter is not of integer type.</entry>
+    <entry key="IteratorBadIncrement" translate="false">Loop-counter can only be incremented or decremented.</entry>
+    <entry key="IteratorMissingIncrement" translate="false">Loop-counter increment is missing.</entry>
+    <entry key="MissingInitStmt" translate="false">Missing loop init-statement.</entry>
+    <entry key="IncorrectInitStmt" translate="false">The loop init-statement must declare and initialize only one loop-counter.</entry>
+    <entry key="BadCondition" translate="false">The condition must compare the loop-counter and the loop-bound with a relational operator.</entry>
+    <entry key="NonConstBound" translate="false">Loop-bound may not be constant.</entry>
+
+    <entry key="MissingReturnStmt" translate="false">Missing return statement in non-void function {0_symbol}.</entry>
+    <entry key="MissingExprOnReturnStmt" translate="false">Missing expression for return statement in non-void function {0_symbol}.</entry>
+
+    <entry key="Switch_InitStatementNotADeclaration" translate="false">Switch init-statement must be a simple declaration.</entry>
+    <entry key="Switch_DefaultNotFistNorLast" translate="false">The default label must be the first or the last one. </entry>
+    <entry key="Switch_OnlyOneCase" translate="false">Switch statement contains only one switch branch.</entry>
+    <entry key="Switch_CaseNotTopLevelStatment" translate="false">Case label is not on the top level statement.</entry>
+    <entry key="Switch_CaseIncorrectTermination" translate="false">Incorrect switch branch termination.</entry>
+    <entry key="Switch_MissingDefault" translate="false">Label default is missing.</entry>
+    <entry key="Switch_NotALabel" translate="false">First statement of a switch body must be a switch label.</entry>
+
+    <entry key="FuncReturnsPtrOrRefToLocal" translate="false">Function returns a pointer or reference to a local variable ''{0_symbol}''.</entry>
+    <entry key="FuncReturnsLambdaWithPtrOrRefToLocal" translate="false">Function returns a lambda which captures a local variable.</entry>
+    <entry key="FuncThrowsPtrOrRefToLocal" translate="false">Function throws a pointer or reference to a local variable ''{0_symbol}''.</entry>
+
+    <!-- checkers_lambdas.cpp -->
+    <entry key="AutoGenMsg304" translate="false">Local variables ''{0}'' are implicitly captured.\nFor better readability, specify variable names explicitly in capture list.</entry>
+    <entry key="AutoGenMsg300" translate="false">For better readability, avoid nesting lambda expressions.</entry>
+    <entry key="AutoGenMsg302" translate="false">Duplicate unnamed lambda expressions reduce the readability and maintainability of your code.</entry>
+    <entry key="AutoGenMsg303" translate="false">Local variable ''{0}'' is implicitly captured.\nFor better readability, specify variable name explicitly in capture list.</entry>
+    <entry key="AutoGenMsg299" translate="false">Current lambda expression omits parameter list.\nFor better readability, explicitly specify () to indicate no parameters.</entry>
+    <entry key="AutoGenMsg301" translate="false">Lambda expression return type ({0}) implicitly deduced by compiler.\nFor better readability, declare the return type of lambda expressions explicitly.</entry>
+    <entry key="Lambda_Type_Misuse" translate="false">Lambda {0_symbol} has a unique and unnamed class type.\nReusing the lambda type obtained from {1_symbol} can lead to errors.\nDo not use {2_symbol} with lambda operand.</entry>
+    <entry key="ImplicitThisCapture" translate="false">Implicit capture of 'this' pointer by lambda.</entry>
+
+    <entry key="UnusedCapturedVariable" translate="false">{0_symbol} is captured but unused inside the lambda.</entry>
+    <entry key="ExpensiveUnusedCapturedVariable" translate="false">Expensive variable {0_symbol} is captured-by-value but unused inside the lambda.</entry>
+    <entry key="CapturedConstexprVariable" translate="false">constexpr variable {0_symbol} is captured unnecessarily.</entry>
+    <entry key="UselessDefaultCapture" translate="false">Lambda specifies default capture but nothing is captured. The default capture can be removed.</entry>
+
+    <entry key="LambdaWithImplicitCaptureCalled" translate="false">Lambda with implicit capture called.</entry>
+    <entry key="LambdaCallLocation" translate="false">Lambda call</entry>
+    <entry key="LambdaToExternFunc" translate="false">Lambda passed to a function defined in another compilation unit.</entry>
+    <entry key="ExternFunctionCall" translate="false">Function call</entry>
+    <entry key="LambdaIsStored" translate="false">Lambda with implicit capture is stored.</entry>
+    <entry key="LambdaStorage" translate="false">Lambda storage</entry>
+    <entry key="LambdaReturned" translate="false">Implicit capture in the lambda returned by the function.</entry>
+    <entry key="LambdaReturnLocation" translate="false">Return location</entry>
+
+    <!-- coding_rule_checker.cpp -->
+    <entry key="UseDynamicAllocationOutOfGlobalInitialization" translate="false">Use of function {0_symbol} is non-deterministic and might result in out of memory state.</entry>
+    <entry key="ExpensiveDynamicCast_ConstCast" translate="false">This dynamic_cast only changes the const-ness of a variable, and could be replaced with a const_cast.</entry>
+    <entry key="ExpensiveDynamicCast_UpCast" translate="false">This dynamic_cast performs an upcast, and could be replaced with a static_cast.</entry>
+    <entry key="ExpensiveDynamicCast_DownCast" translate="false">This dynamic_cast performs a downcast, and could be replaced with a less expensive static_cast.</entry>
+    <entry key="ExpensiveDynamicCast_SideCast" translate="false">This dynamic_cast performs a side cast, and could be replaced with less expensive static_casts.</entry>
+
+    <entry key="ExpensiveReturnByValue" translate="false">This output can be returned by pointer/reference.\nThis change avoids a copy for each call.</entry>
+    <entry key="ExpensiveReturnByValueAuto" translate="false">Using decltype(auto) instead of auto as the return type removes a copy operation for each call, making the code more efficient.</entry>
+    <entry key="ExpensivePassByValue" translate="false">This input parameter can be passed by const pointer/reference.\nThis change avoids a copy for each call.</entry>
+    <entry key="ValueReturnedFunctionUnused" translate="false">Value returned by function {0_symbol} is not used.</entry>
+    <entry key="ValueReturnedStdFunctionUnused" translate="false">Value returned by std::function {0_symbol} is not used.</entry>
+    <entry key="ValueReturnedLambdaUnused" translate="false">Value returned by lambda {0_symbol} is not used.</entry>
+
+    <entry key="PointerToLocalVariable" translate="false">The returned pointer {0_symbol} points to the local variable {1_symbol}.</entry>
+    <entry key="LocalVariableAddress" translate="false">Returning the address of the local variable {0_symbol}.</entry>
+    <entry key="VirtualFunctionDefaultArgument" translate="false">Virtual function that is overridden later.</entry>
+
+    <entry key="ForLoop_Expectations" translate="false">Loop does not match one or more of these expectations:\n&amp;nbsp;&amp;bull;&amp;nbsp;First expression is either empty or only defines and initializes the loop counter without any other persistent side effect.\n&amp;nbsp;&amp;bull;&amp;nbsp;Second expression has no persistent side effects, uses only the loop counter, and does not use any object modified in the loop body.\n&amp;nbsp;&amp;bull;&amp;nbsp;Third expression modifies the loop counter, has no other persistent side effect, and does not use any object modified in the loop body.</entry>
+    <entry key="ForLoop_FloatLoopCounter" translate="false">Loop counter {0_symbol} is a float.</entry>
+    <entry key="ForLoop_1stExprAssignment" translate="false">First expression is not an assignment. </entry>
+    <entry key="ForLoop_1stExprSetLoopCounter" translate="false">First clause does not set the value of the loop counter.</entry>
+    <entry key="ForLoop_1stExprSideEffect" translate="false">First expression has side effects other than setting the value of the loop counter.</entry>
+    <entry key="ForLoop_2ndExprComparison" translate="false">The second expression does not contain a comparison with loop counter {0_symbol}.</entry>
+    <entry key="ForLoop_2ndExprSideEffect" translate="false">Second expression has persistent side effects.</entry>
+    <entry key="ForLoop_2ndExprModifiedObjectUse" translate="false">Second expression uses an object modified in the for loop body.</entry>
+    <entry key="ForLoop_2ndExprLoopCounterUpdate" translate="false">Loop counter {0_symbol} is modified in the condition of the loop.</entry>
+    <entry key="ForLoop_3rdExprSideEffect" translate="false">Third expression has persistent side effects other than modifying the loop counter {0_symbol}.</entry>
+    <entry key="ForLoop_3rdExprModifiedObjectUse" translate="false">Third expression uses objects modified in the for loop body.</entry>
+    <entry key="ForLoop_3rdExprAssignment" translate="false">The third expression is not an assignment of a loop counter.</entry>
+    <entry key="ForLoop_BodyLoopCounterUpdate" translate="false">Loop counter {0_symbol} is modified in the body of the loop.</entry>
+
+    <!-- in EDG sources -->
+    <entry key="Offsetof_Bitfield" translate="false">The macro 'offsetof' has undefined behavior for bit-fields.</entry>
+    <entry key="Offsetof_Wrongfield" translate="false">The macro 'offset' has undefined behavior when the second argument is not a field of the first argument.</entry>
+    <entry key="TemplateConstructorCalled" translate="false">Template constructor called</entry>
+    <entry key="ExplCtorNotUsed" translate="false">Explicit {0} constructor not called</entry>
+    <entry key="TemplCtorInstdExplCtor" translate="false">During a {0}, template constructor is called instead of explicit constructor, which might be unexpected.</entry>
+    <entry key="ImplCtorInstdTemplCtor" translate="false">During a {0}, implicit constructor is called instead of template constructor, which might be unexpected.</entry>
+    <entry key="ImplCtorCalled" translate="false">Implicit {0} constructor called</entry>
+    <entry key="FirstLocation" translate="false">First location</entry>
+    <entry key="SecondLocation" translate="false">Second location</entry>
+    <entry key="FnNameNotCompatibleWithPrevDecl" translate="false">Function {0_symbol} is not compatible with previous declaration.</entry>
+    <entry key="FnNotCompatibleWithPrevDecl" translate="false">Function is not compatible with previous declaration.</entry>
+    <entry key="VarNameNotCompatibleWithPrevDecl" translate="false">Variable {0_symbol} is not compatible with previous declaration.</entry>
+    <entry key="VarNotCompatibleWithPrevDecl" translate="false">Variable is not compatible with previous declaration.</entry>
+
+    <!-- PS_INTERNAL_NON_PTR_VARIANT_INTEGER_CAST_TO_PTR -->
+    <entry key="ConversionFromTo" translate="false">Conversion from {0_symbol} to {1_symbol}.</entry>
+
+    <!-- checkers_exception.cpp -->
+    <!-- PS_INTERNAL_BAD_CHECKED_EXCEPTION_DEFINITION -->
+    <entry key="DeclaredExnInCommentsNotFound" translate="false">Could not find {0_symbol} type definition declared as expected exception in comment.</entry>
+
+    <!-- PS_INTERNAL_COPYCTOR_MAY_THROW -->
+    <entry key="CopyCtorMayThrow" translate="false">At least one copy constructor of {0_symbol} may throw an exception.</entry>
+    <entry key="ThrownAt" translate="false">Exception object thrown</entry>
+    <entry key="CopyCtorLocation" translate="false">Copy constructor of the thrown object</entry>
+
+    <entry key="NonNoexceptVariableInitializer" translate="false">Variable initializer must be declared noexcept.</entry>
+    <entry key="InitializedVariable" translate="false">Initialized variable</entry>
+
+    <entry key="NonNoexceptHandlerExternC" translate="false">C++ functions passed as argument to C functions must be declared noexcept.</entry>
+    <entry key="MissingNoexceptHandler" translate="false">C++ function missing noexcept</entry>
+    <entry key="ExternCFunction" translate="false">Extern C function</entry>
+
+    <entry key="NonNoexceptExitHandler" translate="false">Exit handlers provided to std::atexit, std::at_quick_exit and std::terminate must be declared noexcept.</entry>
+
+    <entry key="NonNoexceptDestructor" translate="false">Destructor must be declared noexcept.</entry>
+
+    <entry key="NonNoexceptSwap" translate="false">A 'swap' function must be declared noexcept.</entry>
+
+    <!-- PS_INTERNAL_THROW_FOR_GENERIC_EXCEPTION -->
+    <entry key="OverlyBroadThrow" translate="false">Throwing overly broad exceptions might result in security vulnerabilities.</entry>
+
+    <!-- checkers_lexical.cpp -->
+    <entry key="AutoGenMsg305" translate="false">Use the C++ version of this include file.</entry>
+    <entry key="HeaderName" translate="false">The header file {0_filename} contains no declaration of a logical entity that matches the file name. To resolve this violation, change the file name to that of a logical entity declared in the file.</entry>
+    <entry key="ImplementationName" translate="false">The implementation file {0_filename} contains no definition of a logical entity that matches the file name. To resolve this violation, change the file name to that of a logical entity defined in the file.</entry>
+
+    <entry key="UselessPreprocCondition" translate="false">Useless conditional directive.</entry>
+    <entry key="UselessPreprocConditionEvent" translate="false">First conditional directive.</entry>
+    <entry key="HeaderNameNotUnique" translate="false">Non-unique header file {0_filename}: first eight characters of the name and the first character of the extension is not unique after ignoring case. Wrong file might be included.</entry>
+    <entry key="HeaderNameNotUniqueEvent" translate="false">Header file with same significant characters as {0_filename}</entry>
+    <entry key="RemoveOrConsiderMarkup" translate="false">Remove the commented out code or consider wrapping within ``` markup.</entry>
+    <entry key="StringLiteralArgument" translate="false">String literal used as argument for call to function {0_symbol}.</entry>
+    <entry key="StandardHeaderNameIsReused" translate="false">Standard header file name {0_filename} is reused.</entry>
+    <entry key="NonCompliantMacroExpand" translate="false">Macro {0_symbol} expands to a construct that is not compliant with the rule.</entry>
+    <entry key="NonCompliantMacroExpandFile" translate="false">Macro {0_symbol} expands to a construct that is not compliant with the rule.\nNoncompliant expansion in file {1_filename} at line {2, number, integer}.</entry>
+
+    <!-- checkers_preprocessing.cpp -->
+    <entry key="AutoGenMsg320" translate="false">A null statement shall appear on a line by itself.\n</entry>
+    <entry key="AutoGenMsg321" translate="false">Indentation is smaller than two spaces.\n</entry>
+    <entry key="AutoGenMsg323" translate="false">/* is used within a comment.\n</entry>
+    <entry key="AutoGenMsg322" translate="false">Indentation of the current line is not consistent with indentation of previous line.\n</entry>
+    <entry key="AutoGenMsg319" translate="false">// is used within a comment.\n</entry>
+    <entry key="AtLeastOneSpaceBeforeDotOrArrow" translate="false">There is at least one space before '.' or '->'.</entry>
+    <entry key="AtLeastOneSpaceAfterDotOrArrow" translate="false">There is at least one space after '.' or '->'.</entry>
+    <entry key="UndefNonDefinedMacro" translate="false">Undefining a non defined macro.</entry>
+    <entry key="UndefPredefinedMacro" translate="false">Undefining a predefined macro.</entry>
+    <entry key="MacroDefinition" translate="false">Macro definition.</entry>
+    <entry key="UnsafeMacroEvaluationMoreThanOnce" translate="false">Macro is unsafe because a parameter is evaluated more than once.</entry>
+    <entry key="UnsafeMacroNoEvaluationAtAll" translate="false">Macro is unsafe because a parameter is not evaluated at all.</entry>
+    <entry key="UnsafeMacro" translate="false">Macro is unsafe because a parameter is either evaluated more than once or not evaluated at all.</entry>
+    <entry key="UnsafeMacroParameterEvaluations" translate="false">Parameter {0_symbol} is evaluated {1, number, integer} times.</entry>
+    <entry key="MacroDefinesType" translate="false">Macros should not be used to define types.</entry>
+    <entry key="MacroIsOperandOfPaste" translate="false">Argument ''{0}'' is not expanded in macro {1_symbol} because it is the value of macro parameter {2_symbol}, which is an operand of the token pasting operator '##'.</entry>
+    <entry key="MacroIsOperandOfSharp" translate="false">Argument ''{0}'' is not expanded in macro {1_symbol} because it is the value of macro parameter {2_symbol}, which is an operand of the token stringification operator '#'.</entry>
+    <entry key="Sharp_DoubleSharp" translate="false">It is unlikely that pasting the result of the # operator to any other preprocessing token results in a valid token.</entry>
+
+    <!-- PS_INTERNAL_UNDEF_REDEF_BOOL_TRUE_FALSE -->
+    <entry key="UndefRedefBoolTrueFalse" translate="false">{0_symbol} already defined in stdbool.h. Do not undefine or redefine {0_symbol}.</entry>
+
+    <!-- checkers_library.cpp -->
+    <entry key="NoStrictWeakOrderingRelation" translate="false">The predicate does not have a strict weak ordering relation. Such predicates might result in unexpected and erratic code behaviors.</entry>
+    <entry key="AddressShallNotBeTaken" translate="false">Taking address of function {0_symbol} can lead to undefined behavior.</entry>
+
+    <!-- checkers_variables.cpp -->
+    <entry key="AutoGenMsg352" translate="false">Variable ''{0}'' is initialized and never used.</entry>
+    <entry key="LocalObjectIsStatic" translate="false">Local object {0_symbol} has static storage duration.</entry>
+    <entry key="AnonymousUnionIsStatic" translate="false">Anonymous union has static storage duration.</entry>
+    <entry key="GlobalObjectIsStatic" translate="false">Global object {0_symbol} is defined at namescape scope.</entry>
+    <entry key="StaticMember" translate="false">Class/struct member {0_symbol} has static storage duration.</entry>
+    <entry key="VariableNotInitialized" translate="false">Variable {0_symbol} is not initialized.</entry>
+    <entry key="PodNotInitialized" translate="false">POD struct/class {0_symbol} is not initialized. Provide initializer or default constructor.</entry>
+    <entry key="PointerArrayNotInitialized" translate="false">Pointer/Array {0_symbol} is not initialized.</entry>
+    <entry key="DanglingReference" translate="false">{0_symbol} is a dangling reference.</entry>
+    <entry key="DanglingPointer" translate="false">{0_symbol} is a dangling pointer.</entry>
+    <entry key="TemporaryObject" translate="false">Assignment to a temporary object that is destroyed at the end of the expression.</entry>
+    <entry key="NotAutomaticNorThreadLocal" translate="false">{0_symbol} cannot have automatic storage duration or thread storage duration.</entry>
+
+    <!-- PS_INTERNAL_PUBLIC_STATIC_FIELD_NOT_CONST -->
+    <entry key="PublicStaticFieldNotConst" translate="false">Missing const keyword before the public static field {0_symbol}</entry>
+
+    <!-- PS_INTERNAL_CRITICAL_DATA_MEMBER_DECLARED_PUBLIC -->
+    <entry key="PublicCriticalMember" translate="false">The critical data member {0_symbol} is public. Declare critical data members as private.</entry>
+    <entry key="PublicCriticalMemberNotConst" translate="false">The critical data member {0_symbol} is public and non const. Declare critical data members as private or const.</entry>
+    <!-- messages for stderr log -->
+    <entry key="CodeBehaviorXmlIssue" translate="false">The XML file provided for option -code-behavior-specifications has some issues.</entry>
+    <entry key="UnknownBehaviorMember" translate="false">The 'behavior name' specified for member {0} is invalid and the specification is ignored. Use CRITICAL_DATA as behavior name.</entry>
+    <entry key="UnknownKindMember" translate="false">The 'kind' specified for member {0} is invalid and the specification is ignored. Use 'variable' instead.</entry>
+    <entry key="UnknownTagMember" translate="false">Specification for member ''{0}'' is ignored because the 'member' tag contains an unknown tag. Only the 'behavior' tag is allowed within 'member'.</entry>
+    <entry key="MissingNameMember" translate="false">Specification for member missing the behavior name.</entry>
+    <entry key="MissingKindMember" translate="false">Specification for member missing a 'kind' field.</entry>
+
+    <!-- PS_INTERNAL_FORBIDDEN_* (* can be MACRO or KEYWORD) -->
+    <entry key="ForbiddenToken" translate="false">{0_symbol} is a user-specified forbidden {1}.</entry>
+    <!-- messages for stderr log -->
+    <entry key="UnknownKeyword" translate="false">FORBIDDEN_KEYWORD specification for token ''{0}'' is ignored because it is not a keyword for the specified compiler (regex is not supported for FORBIDDEN_KEYWORD specification).</entry>
+    <entry key="UnknownMacro" translate="false">FORBIDDEN_MACRO specification for macro ''{0}'' is ignored because it is not a macro for the current compilation.</entry>
+    <entry key="WhitespaceToken" translate="false">{1} specification for token ''{0}'' is ignored. Tokens with white space, wildcards, and so on cannot be forbidden this way.</entry>
+    <entry key="UnknownCheckerToken" translate="false">{1} specification for token ''{0}'' is ignored because its 'behavior' tag contains an unknown attribute.</entry>
+    <entry key="UnknownKindToken" translate="false">Specification for token ''{0}'' is ignored because the 'token' tag contains an unknown 'kind' value. Only the values 'keyword' or 'macro' are allowed.</entry>
+    <entry key="UnknownToken" translate="false">{1} specification for token ''{0}'' is ignored because the 'token' tag contains an unknown tag. Only the 'behavior' tag is allowed within 'token'.</entry>
+    <entry key="OptionWithoutCheckerToken" translate="false">The XML file for option -code-behavior-specification contains the {0} behavior, but the {0} checker is not enabled.</entry>
+    <!-- PS_INTERNAL_USELESS_INCLUDE -->
+    <!-- PS_INTERNAL_MISSING_INCLUDE -->
+    <entry key="IncludeNeverUsed" translate="false">Included file is never used.</entry>
+    <entry key="MissingInclude" translate="false">Missing include to file {0_filename}.</entry>
+    <entry key="MissingIncludeFor" translate="false">Missing include to file {0_filename} to resolve symbol {1_symbol}.</entry>
+    <entry key="MissingIncludeEvent" translate="false">Header to include.</entry>
+
+    <!-- misra_c_checker.cpp -->
+    <entry key="AutoGenMsg435" translate="false">Identifier ''{0}'' has the same first {1,number,integer} characters as other identifiers.</entry>
+    <entry key="AutoGenMsg430" translate="false">{0} ''{1}'' conflicts with the {2} name ''{3}'' ({4} line {5,number,integer} column {6,number,integer}).\n</entry>
+    <!-- PS_INTERNAL_INTEGER_CONSTANT_MACRO_NOT_APPROPRIATE -->
+    <entry key="MacroIntegerConstWithSuffix" translate="false">The argument must be an unsuffixed integer (decimal, octal or hexadecimal) literal.</entry>
+    <entry key="MacroIntegerConstOverflow" translate="false">The value of the argument exceeds the limits of the equivalent type.</entry>
+    <entry key="MacroIntegerConstNegative" translate="false">The value of the argument literal is negative. Remove unary operators from the macro.</entry>
+    <entry key="MacroIntegerConstNotInteger" translate="false">Macro expects an integer, but receives a float literal constant.</entry>
+
+    <!-- misra_cpp_checker.cpp -->
+    <entry key="AutoGenMsg417" translate="false">The elements of array ''{0}'' are not modified after initialization. The elements of array can be declared 'const'.</entry>
+    <entry key="AutoGenMsg418" translate="false">The pointer ''{0}'' does not point to a different location after initialization. The pointer can be declared as 'T* const'.</entry>
+    <entry key="EntityMultipleHierarchy" translate="false">Entity name {0_symbol} defined in {1_symbol}</entry>
+    <entry key="EntityMultipleHierarchyTempl" translate="false">Entity name {0_symbol} defined several times due to multiple inheritances from {1_symbol} instances</entry>
+    <entry key="FunctionCalledIndirectlyBy" translate="false">Function {0_symbol} is called indirectly by {1_symbol}.</entry>
+    <entry key="FunctionCalledItself" translate="false">Function {0_symbol} shall not call itself, either directly or indirectly.</entry>
+    <entry key="FunctionCalledItselfDirectly" translate="false">Function {0_symbol} shall not call itself directly.</entry>
+    <entry key="FunctionCallingItself" translate="false">Function {0} calls itself.</entry>
+    <entry key="FunctionCallOutsideCoreConstantExpr" translate="false">constexpr function {0_symbol} calls itself outside of a core constant expression.</entry>
+    <entry key="FunctionalCast" translate="false">The flagged cast is a functional cast, which is difficult to understand and debug.</entry>
+
+    <!-- checkers_types.cpp -->
+    <entry key="AutoGenMsg337" translate="false">Buffer size is hard coded instead of a symbolic constant.\nHard-coded buffer size increases maintenance costs and security risks.\n</entry>
+    <entry key="AutoGenMsg338" translate="false">Flexible array member declaration uses non-portable syntax for size.\nUse C99 compliant flexible array syntax ([] with unspecified array size).\n</entry>
+    <entry key="ConstantValues" translate="false">The{0_symbol} constant {1_symbol} has same value as the{2_symbol} constant {3_symbol}.</entry>
+    <entry key="PlusLeftUnSigned" translate="false">The left operand of the operator + must have essentially signed or unsigned type.</entry>
+    <entry key="PlusRightUnSigned" translate="false">The right operand of the operator + must have essentially signed or unsigned type.</entry>
+    <entry key="PlusLeftLong" translate="false">The left operand of the operator + must have rank lower than or equal to int.</entry>
+    <entry key="PlusRightLong" translate="false">The right operand of the operator + must have rank lower than or equal to int.</entry>
+    <entry key="MinusRightUnSigned" translate="false">The right operand of the operator - must have essentially signed or unsigned or character type.</entry>
+    <entry key="MinusRightLong" translate="false">The right operand of the operator - must have a rank lower than or equal to int.</entry>
+    <entry key="MinusLeftChar" translate="false">The left operand of the operator - must have essentially character type if the right operand has essentially character type.</entry>
+    <entry key="UnusedType" translate="false">Type {0_symbol} is unused.</entry>
+    <entry key="UnusedAnonymousUnion" translate="false">Unused anonymous union.</entry>
+    <entry key="VoidAtomicQualifier" translate="false">void type with _Atomic qualifier.</entry>
+    <entry key="UseC11AtomicFunctions" translate="false">Use {0_symbol}, {1_symbol}, {2_symbol}, {3_symbol} or {4_symbol} C11 functions instead.</entry>
+    <entry key="InconsistentDesignations" translate="false">The initializer uses chained designators and initializers without designators.</entry>
+    <entry key="NoDesignatorLocation" translate="false">An initializer with designator.</entry>
+
+    <entry key="ProhibitedInt24Type" translate="false">Type {0_symbol} is a language extension.</entry>
+    <entry key="AsmIsLanguageExtension" translate="false">Assembly support is a language extension.</entry>
+    <entry key="LocalLabelDeclarationIsLanguageExtension" translate="false">Local label declaration is a language extension.</entry>
+    <entry key="EmptyStructureOrUnionIsLanguageExtension" translate="false">Empty structures or unions are a language extension.</entry>
+    <entry key="TypeOfIsLanguageExtension" translate="false">typeof is a language extension.</entry>
+    <entry key="CastToUnionIsLanguageExtension" translate="false">Cast to union is a language extension.</entry>
+    <entry key="StatementsAndDeclarationsInExpressionIsLanguageExtension" translate="false">Statements and declarations in expression is a language extensions.</entry>
+    <entry key="AnonymousUnionsAreAnsiC9xLanguageExtension" translate="false">Anonymous unions are a language extension in ANSI C90/C99.</entry>
+    <entry key="AnsiC90LanguageExtension" translate="false">{0} is a language extension in ANSI C90.</entry>
+    <entry key="AnsiC90LanguageExtensionPlural" translate="false">{0} are a language extension in ANSI C90.</entry>
+
+    <entry key="TempLifetimeAccess" translate="false">Accessing struct/union containing temporary lifetime array.</entry>
+    <entry key="TempLifetimeAccessEventFromCall" translate="false">Returning struct/union containing temporary lifetime array.</entry>
+    <entry key="TempLifetimeAccessEventFromAny" translate="false">Create temporary lifetime array.</entry>
+
+    <entry key="TempLifetimeReadAccessFromCallDescription" translate="false">Call to {0_symbol} returns a temporary object that contains an array.</entry>
+    <entry key="TempLifetimeReadAccessFromCallRisk" translate="false">Reading the elements of this array is undefined behavior</entry>
+    <entry key="TempLifetimeReadAccessFromCallFix" translate="false">Assign return of {0_symbol} to a local variable and replace call to {1_symbol} with this variable.</entry>
+
+    <entry key="TempLifetimeWriteAccessFromCallDescription" translate="false">Call to {0_symbol} returns a temporary object that contains an array.</entry>
+    <entry key="TempLifetimeWriteAccessFromCallRisk" translate="false">Writing into the elements of this array is undefined behavior</entry>
+    <entry key="TempLifetimeWriteAccessFromCallFix" translate="false">Assign return of {0_symbol} to a local variable and replace call to {1_symbol} with this variable.</entry>
+
+    <entry key="TempLifetimeAnyAccessFromCallDescription" translate="false">Call to {0_symbol} returns a temporary object that contains an array.</entry>
+    <entry key="TempLifetimeAnyAccessFromCallRisk" translate="false">Reading or writing the elements of this array is undefined behavior</entry>
+    <entry key="TempLifetimeAnyAccessFromCallFix" translate="false">Assign return of {0_symbol} to a local variable and replace call to {1_symbol} with this variable.</entry>
+
+    <entry key="TempLifetimeReadAccessFromAnyRisk" translate="false">Reading the elements of this array is undefined behavior</entry>
+    <entry key="TempLifetimeReadAccessFromAnyFix" translate="false">Use an intermediate local variable.</entry>
+
+    <entry key="TempLifetimeWriteAccessFromAnyRisk" translate="false">Writing into the elements of this array is undefined behavior</entry>
+    <entry key="TempLifetimeWriteAccessFromAnyFix" translate="false">Use an intermediate local variable.</entry>
+
+    <entry key="TempLifetimeAnyAccessFromAnyRisk" translate="false">Reading or writing the elements of this array is undefined behavior</entry>
+    <entry key="TempLifetimeAnyAccessFromAnyFix" translate="false">Use an intermediate local variable.</entry>
+
+    <!-- PS_INTERNAL_TYPE_QUALIFIED_FUNCTION_TYPE -->
+    <entry key="TypeQualifierInFunctionTypeDescription" translate="false">Type qualifying functions types is undefined behavior.</entry>
+    <entry key="TypeQualifierInFunctionTypeDetails" translate="false">Specification of function type includes type qualifier {0_symbol}.</entry>
+
+    <!-- PS_INTERNAL_COMPLEX_MACRO_WITH_COMPLIANT_ESSENTIAL_TYPE -->
+    <entry key="CallToTgMathMacroWithInconsistentEssentialType" translate="false">Call to macro {0_symbol} with inappropriate essential type.</entry>
+    <entry key="CallToTgMathMacroWithInconsistentArgumentEssentialType" translate="false">Argument {0, number, integer} is essentially {1_symbol} type argument.</entry>
+    <!-- PS_INTERNAL_COMPLEX_MACRO_WITH_CONSISTENT_STANDARD_TYPE -->
+    <entry key="CallToTgMathMacro" translate="false">Call to macro {0_symbol}.</entry>
+    <entry key="CallToTgMathMacroWithFirstArgumentType" translate="false">First argument type is {0_symbol}.</entry>
+    <entry key="CallToTgMathMacroWithSecondArgumentType" translate="false">Second argument type is {0_symbol}.</entry>
+    <entry key="CallToTgMathMacroWithArgumentType" translate="false">Argument {1, number, integer} type is {0_symbol}.</entry>
+    <entry key="EarlierInitializer" translate="false">Previous initialization</entry>
+    <!-- PS_INTERNAL_MISRA_C3_10_1 -->
+    <entry key="OperandEssentialType" translate="false">Operand of operator {0_symbol} is of inappropriate essential {1_symbol} type.</entry>
+    <entry key="LeftOperandEssentialType" translate="false">Left operand of operator {0_symbol} is of inappropriate essential {1_symbol} type.</entry>
+    <entry key="RightOperandEssentialType" translate="false">Right operand of operator {0_symbol} is of inappropriate essential {1_symbol} type.</entry>
+    <!-- Less precise because it might be hard to gather the operation name and it should be already clear enough -->
+    <entry key="AnyOperandEssentialType" translate="false">Operand is of inappropriate essential {0_symbol} type.</entry>
+    <entry key="OperandPointerType" translate="false">Operand of operator {0_symbol} is of inappropriate pointer type.</entry>
+    <!-- PS_INTERNAL_MISRA_C3_10_3 -->
+    <entry key="ExpressionAssignedWithDifferentEssentialType" translate="false">Expression with essential {0_symbol} type is assigned to an object of essential {1_symbol} type.</entry>
+    <entry key="ExpressionAssignedWithNarrowerEssentialType" translate="false">Expression with {1, number, integer} bits essential {0_symbol} type is assigned to an object of narrower {3, number, integer} bits essential {2_symbol} type.</entry>
+    <entry key="ExpressionAssignedWithDifferentEnumEssentialType" translate="false">Expression with essential {0_symbol} type is assigned to a different object of essential {1_symbol} type.</entry>
+    <!-- PS_INTERNAL_MISRA_C3_10_4 -->
+    <entry key="ExpressionsWithDifferentEssentialTypes" translate="false">Left operand of operator {0_symbol} is essentially {1_symbol} type, right operand is essentially {2_symbol} type.</entry>
+    <entry key="ExpressionsWithDifferentEssentiallyEnumTypes" translate="false">Operands of operator {0_symbol} have different essentially enum types</entry>
+    <!-- PS_INTERNAL_MISRA_C3_10_5 -->
+    <entry key="CastFromEssentialTypeToEssentialType" translate="false">Cast from essential {0_symbol} type to essential {1_symbol} type.</entry>
+    <!-- PS_INTERNAL_MISRA_C3_10_6 -->
+    <entry key="CompositeExpressionAssignedWithWiderEssentialType" translate="false">Composite expression with {1, number, integer} bits essential {0_symbol} type is assigned to an object of wider {3, number, integer} bits essential {2_symbol} type.</entry>
+    <!-- PS_INTERNAL_MISRA_C3_10_8 -->
+    <entry key="CompositeExpressionCastedToDifferentEssentialType" translate="false">Composite expression of essential {0_symbol} type is cast to an object of essential {1_symbol} type.</entry>
+    <entry key="CompositeExpressionCastedToWiderType" translate="false">Composite expression of type {0_symbol} is cast to an object of wider type {1_symbol}.</entry>
+    <!-- PS_INTERNAL_MISRA_C3_21_16 -->
+    <entry key="FirstArgumentOfMemcpIsInvalid" translate="false">First argument type {0_symbol} is not a pointer type or a compliant essential type.</entry>
+    <entry key="SecondArgumentOfMemcpIsInvalid" translate="false">Second argument type {0_symbol} is not a pointer type or a compliant essential type.</entry>
+    <entry key="FirstArgumentOfMemcpIsEssentiallyInvalid" translate="false">First argument points to invalid type {0_symbol}, which is of essential {1_symbol} type.</entry>
+    <entry key="SecondArgumentOfMemcpIsEssentiallyInvalid" translate="false">Second argument points to invalid type {0_symbol}, which is of essential {1_symbol} type.</entry>
+    <!-- PS_INTERNAL_MISRA_C3_DIR_4_6 -->
+    <entry key="NamedTypeDoesNotProvideInformationAboutItsSize" translate="false">Type {0_symbol} does not indicate its size.</entry>
+    <entry key="AnonTypeDoesNotProvideInformationAboutItsSize" translate="false">Type does not indicate its size.</entry>
+    <entry key="NamedTypeDoesNotProvideInformationAboutKnownTargetSize" translate="false">Type {0_symbol} does not indicate a valid target type size.</entry>
+    <entry key="StdintTypesNotAllowed" translate="false">Type {0_symbol} defined in {1_filename} does not guarantee its size.</entry>
+
+    <!-- utils_types.cpp -->
+    <entry key="MostEfficientWayToRead_C_Void" translate="false">{0_symbol} cannot be copied, or pointed to.</entry>
+    <entry key="MostEfficientWayToRead_Cpp_Void" translate="false">{0_symbol} cannot be copied, pointed to, or referenced.</entry>
+    <entry key="MostEfficientWayToRead_C_Pointer" translate="false">{0_symbol} is a pointer type.</entry>
+    <entry key="MostEfficientWayToRead_Cpp_Pointer" translate="false">{0_symbol} is a pointer/reference type, which is trivially copy constructible.</entry>
+    <entry key="MostEfficientWayToRead_C_Small" translate="false">{0_symbol} has a size of {1} bytes, which is under or at the threshold of {2} bytes</entry>
+    <entry key="MostEfficientWayToRead_Cpp_SmallTrivial" translate="false">{0_symbol} is trivially copy constructible and has a size of {1} bytes, which is under or at the threshold of {2} bytes</entry>
+    <entry key="MostEfficientWayToRead_Cpp_SmallTrivial_Unnamed" translate="false">This unnamed class is trivially copy constructible and has a size of {0} bytes, which is under or at the threshold of {1} bytes</entry>
+    <entry key="MostEfficientWayToRead_C_Large" translate="false">{0_symbol} has a size of {1} bytes, which is over the threshold of {2} bytes.</entry>
+    <entry key="MostEfficientWayToRead_Cpp_LargeTrivial" translate="false">{0_symbol} is trivially copy constructible and has a size of {1} bytes, which is over the threshold of {2} bytes.</entry>
+    <entry key="MostEfficientWayToRead_Cpp_LargeTrivial_Unnamed" translate="false">This unnamed class is trivially copy constructible and has a size of {0} bytes, which is over the threshold of {1} bytes.</entry>
+    <entry key="MostEfficientWayToRead_Cpp_NotTrivial" translate="false">{0_symbol} is not trivially copy constructible.</entry>
+    <entry key="MostEfficientWayToRead_Cpp_NotTrivial_Unnamed" translate="false">This unnamed class is not trivially copy constructible.</entry>
+    <entry key="NoreturnFunctionReturnsNonVoid" translate="false">Function {0_symbol} return type is not void.</entry>
+
+    <!-- PS_INTERNAL_NORETURN_FUNC_RETURN -->
+    <entry key="NoreturnFunctionReturns" translate="false">Function {0_symbol} is specified as _Noreturn but returns to its calling context.</entry>
+    <entry key="FunctionDeclaration" translate="false">Function is declared here.</entry>
+    <!-- PS_INTERNAL_MISSING_NORETURN -->
+    <entry key="MissingNoreturn" translate="false">Function {0_symbol} can be specified as _Noreturn because it cannot return to its calling context.</entry>
+
+    <!-- PS_INTERNAL_INCOMPATIBLE_ALIGNMENT_DECLARATION -->
+    <entry key="IncompatibleAlignmentDeclaration" translate="false">{0_symbol} has conflicting alignment specifications on different declarations.</entry>
+    <entry key="OtherAlignmentDeclaration" translate="false">Declaration with conflicting alignment specification.</entry>
+    <!-- PS_INTERNAL_FORBIDDEN_ZERO_ALIGNMENT -->
+    <entry key="ForbiddenZeroAlignment" translate="false">Declaration with zero alignment specification.</entry>
+    <!-- PS_INTERNAL_FORBIDDEN_MULTIPLE_ALIGNMENT -->
+    <entry key="ForbiddenMultipleAligment" translate="false">Multiple explicit alignment specifiers in declaration.</entry>
+
+    <!-- PS_INTERNAL_GENERIC_SELECTION_OUTSIDE_OF_MACRO_EXPANSION -->
+    <entry key="GenericSelectionOutsideOfMacroExpansion" translate="false">Generic selection is not expanded from macro.</entry>
+    <entry key="GenericSelectorIsNotAMacroParameter" translate="false">Selector is not a parameter of the expanded macro.</entry>
+    <!-- PS_INTERNAL_GENERIC_SELECTION_WITH_INAPPROPRIATE_TYPE -->
+    <entry key="GenericAssociationListWithConstQualifiedType" translate="false">Generic association list contains association for const-qualified type.</entry>
+    <entry key="GenericAssociationListWithVolatileQualifiedType" translate="false">Generic association list contains association for volatile-qualified type.</entry>
+    <entry key="GenericAssociationListWithAtomicQualifiedType" translate="false">Generic association list contains association for atomic-qualified type.</entry>
+    <entry key="GenericAssociationListWithArrayType" translate="false">Generic association list contains association for array type.</entry>
+    <entry key="GenericAssociationListWithFunctionType" translate="false">Generic association list contains association for function type.</entry>
+    <entry key="GenericAssociationListWithAnonymousObjectType" translate="false">Generic association list contains association for unnamed type.</entry>
+    <!-- PS_INTERNAL_GENERIC_SELECTION_WITH_IMPLICIT_POINTER_CONVERSION -->
+    <entry key="SelectorImplicitConversion" translate="false">Default generic association selected, resulting in an implicit conversion from {0_symbol} to {1_symbol}.</entry>
+    <!-- PS_INTERNAL_APPROPRIATELY_TYPE_OF_GENERIC_SELECTION_EXPRESSION -->
+    <entry key="InappropriateTypeOfGenericSelectionExpression" translate="false">Controlling expression has essential type {0_symbol} but standard type {1_symbol}.</entry>
+    <!-- PS_INTERNAL_INAPPROPRIATE_EVALUATION_OF_GENERIC_SELECTOR -->
+    <entry key="InappropriateEvaluationOfGenericSelector" translate="false">Within the _Generic() statement, at least one expression in the association list does not evaluate the macro parameter.</entry>
+
+    <!-- PS_INTERNAL_BAD_SPECIAL_MEMBER_FUNCTIONS -->
+    <entry key="SpecialMemFunUnmovableOrMoveOnlyOrCopyEnabled" translate="false">Class can belong to only one of these categories: Unmovable, move-only, or copy-enabled.</entry>
+    <entry key="SpecialMemFunPartialAssignOp" translate="false">Assignment operators are only partially defined.</entry>
+    <entry key="SpecialMemFunCopyButNotMove" translate="false">Class is copy-constructible but not move-constructible, which is not a valid combination.</entry>
+
+    <entry key="SpecialMemFunMoveAssignableOnly" translate="false">Class is move-assignable but not move-constructible, which is not a valid combination.</entry>
+    <entry key="SpecialMemFunCopyAssignableOnly" translate="false">Class is copy-assignable but not copy-constructible, which is not a valid combination.</entry>
+    <entry key="SpecialMemFunAssignableOnly" translate="false">Class is copy-assignable and move-assignable but not copy-constructible nor move-constructible, which is not a valid combination.</entry>
+    <entry key="SpecialMemFunCopyAssignableMoveConstructible" translate="false">Class is copy-assignable and move-constructible, which is not a valid combination.</entry>
+    <entry key="SpecialMemFunNotCopyConstructible" translate="false">Class should also be copy-constructible.</entry>
+
+    <entry key="SpecialMemFunCustomizeOptionNoDtorCustom" translate="false">A class with customized copy or move operations should also have a customized destructor.</entry>
+
+    <entry key="SpecialMemFunCustomDtorShallContainStatements" translate="false">A customized destructor should contain at least one statement that is not null nor a compound statement.</entry>
+
+    <entry key="SpecialMemFunMoveOnlyCustomDtor" translate="false">Move-only class with customized destructor should have:</entry>
+    <entry key="SpecialMemFunHaveCustomMoveCtor" translate="false">A customized move constructor.</entry>
+    <entry key="SpecialMemFunHaveCustomMoveAssign" translate="false">A customized move assignment operator or no move assignment operator.</entry>
+
+    <entry key="SpecialMemFunCopyEnabledCustomDtor" translate="false">Copy-enabled class with customized destructor should have:</entry>
+    <entry key="SpecialMemFunHaveCustomMoveCtorOrNo" translate="false">A customized move constructor or no move constructor.</entry>
+    <entry key="SpecialMemFunHaveCustomMoveAssignOrNo" translate="false">A customized move assignment operator or no move assignment operator.</entry>
+    <entry key="SpecialMemFunHaveCustomCopyCtor" translate="false">A customized copy constructor.</entry>
+    <entry key="SpecialMemFunIfCopyAssingBeCustom" translate="false">If it is copy-assignable, a customized copy assignment operator.</entry>
+
+    <entry key="SpecialMemFunUnmovableNonAggregateBase" translate="false">A non-aggregate public base class that is unmovable should have a public virtual destructor.</entry>
+    <entry key="SpecialMemFunMoveOnlyNonAggregateBase" translate="false">A non-aggregate public base class that is move-only or copy-enabled should have a protected non-virtual destructor.</entry>
+    <entry key="SpecialMemFunOutOfClassInDifferentFiles" translate="false">All out of class definitions of constructors and assignment operators should be placed in the same file.</entry>
+
+    <entry key="SpecialMemFunCopyCtorHere" translate="false">Copy constructor is declared here.</entry>
+    <entry key="SpecialMemFunMoveCtorHere" translate="false">Move constructor is declared here.</entry>
+    <entry key="SpecialMemFunCopyOptorHere" translate="false">Copy assignment operator is declared here.</entry>
+    <entry key="SpecialMemFunMoveOptorHere" translate="false">Move assignment operator is declared here.</entry>
+    <entry key="SpecialMemFunDtorHere" translate="false">Destructor is declared here.</entry>
+
+    <!-- PS_INTERNAL_MISSING_BASE_CLASS_INITIALIZATION -->
+    <entry key="MissingBaseClassInitList" translate="false">Constructor does not initialize virtual or immediate base classes in member initialization list and does not delegate to a compliant constructor.</entry>
+    <entry key="MissingBaseClassInitListEvent" translate="false">Immediate base class {0_symbol} not initialized</entry>
+    <entry key="MissingBaseClassInitListVirtualEvent" translate="false">Virtual base class {0_symbol} not initialized</entry>
+
+    <!-- PS_INTERNAL_INAPPROPRIATE_ELLIPSIS_CALL -->
+    <entry key="InapropriateElipsisCall" translate="false">Parameter type is inappropriate for use with ellipsis:  {0}.</entry>
+    <entry key="InapropriateElipsisCallHasVirtual" translate="false">it has virtual member functions</entry>
+    <entry key="InapropriateElipsisCallHasNonTrivialCopyMove" translate="false">it has non-trivial copy or move operations</entry>
+    <entry key="InapropriateElipsisCallHasNonTrivialDtor" translate="false">it has non-trivial destructor</entry>
+    <entry key="InapropriateElipsisCallEvent" translate="false">Type of the parameter is declared here.</entry>
+
+    <!-- PS_INTERNAL_CONTAINER_OPERATION_RESULT_NOT_USED -->
+    <entry key="ContainerOperationResultNotUsed">Result of this operation is not used.</entry>
+    <entry key="ContainerOperationResultDiscarded">Result of this operation is discarded.</entry>
+    <entry key="ContainerOperationResultNotUsedSmart">Result of {0_symbol} is not used.</entry>
+    <entry key="ContainerOperationResultDiscardedSmart">Result of {0_symbol} is discarded.</entry>
+
+    <!-- PS_INTERNAL_MISSING_NON_STATIC_DATA_MEMBER_INIT -->
+    <entry key="MissingDataInit" translate="false">Class object is accessible before all of its non-static data members are initialized</entry>
+    <entry key="MissingDataInitField" translate="false">Missing initialization of data member {0_symbol}</entry>
+    <entry key="MissingDataInitAggregate" translate="false">Missing initialization of aggregate data member</entry>
+    <entry key="MissingDataInitAnonUnion" translate="false">Missing initialization of anonymous union</entry>
+
+    <!-- PS_INTERNAL_PREDICATE_HAS_PERSISTENT_SIDE_EFFECT -->
+    <entry key="LambdaWithNonConstCapture" translate="false">Lambda closure captures {0_symbol} by non-const reference.</entry>
+    <entry key="HasPersistentSideEffects" translate="false">{0_symbol} has persistent side effects.</entry>
+    <entry key="CallOpNonConst" translate="false">Class/Struct {0_symbol} has non-const call operator.</entry>
+    <entry key="PredicateUse" translate="false">Predicate use.</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_14_6_1 -->
+    <entry key="AutoGenMsg127" translate="false">Name from template base class is {0_operation}</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_94 -->
+    <entry key="AutoGenMsg102" translate="false">Inherited nonvirtual function {0_operation} shall not be redefined in a derived class.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_8_5 -->
+    <entry key="AutoGenMsg115" translate="false">Object ''{0}'' should not be defined in a header file.\n</entry>
+    <entry key="AutoGenMsg108" translate="false">Function ''{0}'' should not be defined in a header file.\n</entry>
+    <entry key="AutoGenMsg109" translate="false">Function should not be defined in a header file.\n</entry>
+    <entry key="AutoGenMsg116" translate="false">Object should not be defined in a header file.\n</entry>
+    <entry key="AutoGenMsg157" translate="false">Fragment of function should not be defined in a header file.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_20_3 -->
+    <entry key="AutoGenMsg156" translate="false">'#{0}' does not expect string concatenation.\n</entry>
+
+    <!-- decls.c -->
+    <entry key="AutoGenMsg118" translate="false">Global declaration of a function has incompatible type with its definition.\n</entry>
+    <entry key="AutoGenMsg117" translate="false">Global declaration of ''{0}'' function has incompatible type with its definition.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_1_1 -->
+    <entry key="AutoGenMsg244" translate="false">Integer constant does not fit within unsigned long int.\n</entry>
+    <entry key="AutoGenMsg280" translate="false">Keyword 'inline' should not be used.\n</entry>
+    <entry key="AutoGenMsg243" translate="false">Integer constant does not fit within long int.\n</entry>
+    <entry key="AutoGenMsg400" translate="false">ANSI C90 forbids {0}.\n</entry>
+    <entry key="AutoGenMsg387" translate="false">Assembly language should not be used.\n</entry>
+    <entry key="AutoGenMsg152" translate="false">Text following preprocessing directive violates ANSI standard.\n</entry>
+    <entry key="AutoGenMsg103" translate="false">ANSI C90 forbids qualifiers in parameter array declarators.\n</entry>
+    <entry key="AutoGenMsg165" translate="false">ANSI C90 forbids local label declaration.\n</entry>
+    <entry key="AutoGenMsg126" translate="false">Integer constant is too large.\n</entry>
+    <entry key="AutoGenMsg121" translate="false">ANSI C90 forbids 'restrict' qualifier.\n</entry>
+    <entry key="AutoGenMsg141" translate="false">ANSI C90 does not allow macros with variable arguments list.\n</entry>
+    <entry key="AutoGenMsg123" translate="false">ANSI C90/C99 forbids 'short long int' type.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_16_6 -->
+    <entry key="AutoGenMsg147" translate="false">Too many arguments to ''{0}''.\n</entry>
+    <entry key="AutoGenMsg148" translate="false">Too few arguments to ''{0}''.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_8_12 -->
+    <entry key="AutoGenMsg112" translate="false">Size of array ''{0}'' should be explicitly stated.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_2_2 -->
+    <entry key="AutoGenMsg124" translate="false">C++ comments shall not be used.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_19_5 -->
+    <entry key="AutoGenMsg159" translate="false">Macros shall not be #undef'd within a block.\n</entry>
+    <entry key="AutoGenMsg158" translate="false">Macros shall not be #define'd within a block.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_8_8 -->
+    <entry key="AutoGenMsg110" translate="false">Function ''{0}'' that has external linkage should be declared in a header file.\n</entry>
+    <entry key="AutoGenMsg113" translate="false">A variable that has external linkage should be declared in a header file.\n</entry>
+    <entry key="AutoGenMsg114" translate="false">Variable ''{0}'' that has external linkage should be declared in a header file.\n</entry>
+    <entry key="AutoGenMsg111" translate="false">Functions with external linkage should be declared in a header file.\n</entry>
+
+    <!-- PS_INTERNAL_PREPROC_IF_USE_OUT_OF_COND_INCLUSION -->
+    <entry key="AutoGenMsg149" translate="false">Preprocessor directive is used for more than conditional file inclusion or include guards.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_5_4 -->
+    <entry key="AutoGenMsg167" translate="false">tag name ''{0}'' should not be reused.</entry>
+    <entry key="AutoGenMsg120" translate="false">tag name ''{0}'' should not be reused.\nalready used as tag name ({1} line {2,number,integer} column {3,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_14_9 -->
+    <entry key="AutoGenMsg162" translate="false">An if (expression) construct shall be followed by a compound statement.\n</entry>
+    <entry key="AutoGenMsg161" translate="false">The else keyword shall be followed by either a compound statement, or another if statement.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_1_0_1 -->
+    <entry key="AutoGenMsg101" translate="false">Language extension violates ISO/IEC 14882 standard.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_15_6 -->
+    <entry key="AutoGenMsg163" translate="false">The statement forming the body of {0} statement shall be a compound statement.\n</entry>
+
+    <!-- PS_INTERNAL_PREPROC_PROHIBITED_DIRECTIVE_USE -->
+    <entry key="AutoGenMsg151" translate="false">prohibited preproc directive.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_19_16 -->
+    <entry key="AutoGenMsg150" translate="false">Directive is not syntactically meaningful.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_19_10 -->
+    <entry key="AutoGenMsg138" translate="false">Parameter instance shall be enclosed in parentheses.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_8_1 -->
+    <entry key="AutoGenMsg363" translate="false">Function ''{0}'' does not have complete prototype when called (argument list is missing).\n</entry>
+    <entry key="AutoGenMsg362" translate="false">Function ''{0}'' has no visible prototype when called.\n</entry>
+    <entry key="AutoGenMsg106" translate="false">Function ''{0}'' has no visible prototype at definition.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_8_4 -->
+    <entry key="AutoGenMsg104" translate="false">Global declaration of ''{0}'' variable has incompatible type with its definition.\n</entry>
+
+    <!-- PS_INTERNAL_PREPROC_BLOCK_SPLITTED -->
+    <entry key="PreprocBlockSplitted_elif" translate="false">'#elif' not within a conditional block in current file.\n</entry>
+    <entry key="PreprocBlockSplitted_unterminated" translate="false">Unterminated conditional directive in current file.\n</entry>
+    <entry key="PreprocBlockSplitted_else" translate="false">'#else' not within a conditional block in current file.\n</entry>
+    <entry key="PreprocBlockSplitted_endif" translate="false">'#endif' not within a conditional block in current file.\n</entry>
+
+    <!-- macro.c -->
+    <entry key="AutoGenMsg142" translate="false">Argument to ''{0}'' has side effects. The macro argument is not evaluated in non-debug mode (with -D NDEBUG).\nIf you want the side effects, use a separate statement for the evaluation.</entry>
+    <entry key="AutoGenMsg143" translate="false">Argument for {0} parameter (''{1}'') of ''{2}'' has {3}. The macro argument is not used.\nIf you want the side effects, use a separate statement for the evaluation.</entry>
+    <entry key="AutoGenMsg144" translate="false">Argument for {0} parameter (''{1}'') of ''{2}'' has {3}. The macro argument is evaluated multiple times.\nIf you want the side effects only once:\n Replace ''{4}'' macro with an inline function, or\n Use a separate statement for the evaluation.</entry>
+    <entry key="AutoGenMsg145" translate="false">macro ''{0}'' used with too few arguments\n</entry>
+    <entry key="AutoGenMsg146" translate="false">macro ''{0}'' used with too many arguments\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_20_12 -->
+    <entry key="AutoGenMsg133" translate="false">Expanded macro parameter ''{0}'' is also an operand of ''{1}'' operator.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_20_7 -->
+    <entry key="AutoGenMsg132" translate="false">Expanded macro parameter ''{0}'' shall be enclosed in parentheses.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_8_3 -->
+    <entry key="AutoGenMsg107" translate="false">Function ''{0}'' has no visible compatible prototype at definition.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_19_13 -->
+    <entry key="SharpOperator" translate="false">The # preprocessor operator is used.</entry>
+    <entry key="SharpSharpOperator" translate="false">The ## preprocessor operator is used.</entry>
+    <entry key="MoreThanOneSharpOperators" translate="false">More than one occurrence of the # or ## preprocessor operators.</entry>
+
+    <!-- PS_INTERNAL_PRE_DIRECTIVE_MACRO_ARG -->
+    <entry key="PreprocDirInMacroArg" translate="false">Function-like macro is invoked with preprocessor directives in arguments.\nThe directives can cause undefined behavior.</entry>
+
+    <!-- PS_INTERNAL_MACRO_IDENTIFIER_LOWERCASE -->
+    <entry key="AutoGenMsg134" translate="false">Identifier for macro shall be uppercase.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_1_2 -->
+    <entry key="AutoGenMsg342" translate="false">ANSI C does not allow empty structures or unions.</entry>
+    <entry key="AutoGenMsg341" translate="false">ANSI C90/C99 does not allow anonymous unions.</entry>
+    <entry key="AutoGenMsg166" translate="false">ANSI C90/C99 forbids local label declaration.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_9_3 -->
+    <entry key="AutoGenMsg119" translate="false">Easier</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_13 -->
+    <entry key="AutoGenMsg125" translate="false">Wide string literals will not be used.\n</entry>
+    <entry key="AutoGenMsg122" translate="false">Multi-byte characters will not be used.\n</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_59 -->
+    <entry key="AutoGenMsg164" translate="false">The statement forming the body of {0} statement shall always be enclosed in braces.\n</entry>
+
+    <!-- PS_INTERNAL_PRE_UCNAME_JOIN_TOKENS -->
+    <entry key="AutoGenMsg131" translate="false">Universal character name is formed by joining two tokens with preprocessor ## operator.\nThe concatenation can cause undefined behavior.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_8_4 -->
+    <entry key="AutoGenMsg392" translate="false">Global definition of ''{0}'' variable has no previous declaration.\n</entry>
+    <entry key="AutoGenMsg105" translate="false">Global definition of ''{0}'' variable has no previous declaration.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_5_7 -->
+    <entry key="AutoGenMsg140" translate="false">macro name ''{0}'' should not be reused.\nalready used as macro name ({1} line {2,number,integer} column {3,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_PREPROC_DEFINE_USE_OUT_OF_GUARD -->
+    <entry key="AutoGenMsg139" translate="false">#define should only be used for include guards.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_20_11 -->
+    <entry key="AutoGenMsg137" translate="false">The ## preprocessor operator shall not follow a macro parameter following a # preprocessor operator.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_19_14 -->
+    <entry key="DefinedWitoutIdentifier" translate="false">Use of 'defined' without an identifier.</entry>
+    <entry key="DefinedFromMacroExpansion" translate="false">Operator 'defined' used as part of macro expansion.</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_10_7 -->
+    <entry key="AutoGenMsg431" translate="false">The right operand of the {0_operation} operator shall not have wider essential type ({1} on {2,number,integer} bits) than the left operand ({3} on {4,number,integer} bits) which is a composite expression</entry>
+    <entry key="AutoGenMsg432" translate="false">The left operand of the {0_operation} operator shall not have wider essential type ({1} on {2,number,integer} bits) than the right operand ({3} on {4,number,integer} bits) which is a composite expression</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_6_2 -->
+    <entry key="AutoGenMsg245" translate="false">Value of type signed char is implicitly converted to plain char.\n</entry>
+    <entry key="AutoGenMsg246" translate="false">Value of type unsigned char is implicitly converted to plain char.\n</entry>
+
+    <!-- PS_INTERNAL_STR_FORMAT_BUFFER_OVERFLOW -->
+    <entry key="AutoGenMsg179" translate="false">Format specifier ''{0_operation}'' causes overflow in string buffer of {1,number,integer} characters.\n</entry>
+    <entry key="AutoGenMsg180" translate="false">Format specifier ''{0}'' leaves no space for null terminator in string buffer of {1,number,integer} characters.\n</entry>
+    <entry key="AutoGenMsg178" translate="false">Format specifier ''{0}'' causes overflow in buffer of {1,number,integer} characters.\n</entry>
+    <entry key="AutoGenMsg177" translate="false">Buffer underflow with negative index {0,number,integer}.\n</entry>
+
+    <!-- checkers_prng.cpp -->
+    <entry key="AutoGenMsg324" translate="false">Default settings use a constant seed, which makes the output deterministic.</entry>
+
+    <!-- PS_INTERNAL_SPURIOUS_WAKEUP_NOT_WRAPPED_IN_LOOP -->
+    <entry key="AutoGenMsg293" translate="false">''{0}'' can spuriously wake up even if expected condition is not meet.\nTo fix, check for expected condition by wrapping function call in a loop.</entry>
+
+    <!-- PS_INTERNAL_OFFSETOF_MISUSE -->
+    <entry key="AutoGenMsg209" translate="false">Second argument of 'offsetof' is a static data member.\n'offsetof' has undefined behavior.</entry>
+    <entry key="AutoGenMsg208" translate="false">First argument of 'offsetof' is a class with nonstandard layout.\n'offsetof' has undefined behavior.</entry>
+    <entry key="AutoGenMsg210" translate="false">Second argument of 'offsetof' is a {0}function member.\n'offsetof' has undefined behavior.</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_3_1_1 -->
+    <entry key="AutoGenMsg285" translate="false">Function should not be defined in a header file.\n</entry>
+
+    <!-- PS_INTERNAL_BAD_INT_PTR_CAST -->
+    <entry key="AutoGenMsg183" translate="false">Conversion from enumerator to ''{0}''.\n{1}.\n</entry>
+    <entry key="AutoGenMsg181" translate="false">Conversion from enum ''{0}'' to ''{1}''.\n{2}.\n</entry>
+    <entry key="AutoGenMsg186" translate="false">Conversion from ''{0}'' to intptr_t/uintptr_t.\n{1}.\n</entry>
+    <entry key="AutoGenMsg190" translate="false">Conversion from ''{0}'' to ''{1}''.\n{2}{3}.\n</entry>
+    <entry key="AutoGenMsg189" translate="false">Conversion from ''{0}'' to enum ''{1}''.\nSize of enum is implementation-defined, it{2}.\n</entry>
+    <entry key="AutoGenMsg185" translate="false">Conversion from enum ''{0}'' to intptr_t/uintptr_t.\n{1}.\n</entry>
+    <entry key="AutoGenMsg182" translate="false">Conversion from ''{0}'' to ''{1}''.\n{2}.\n</entry>
+    <entry key="AutoGenMsg191" translate="false">Conversion from ''{0}'' ({1,number,integer} bytes) to ''{2}'' ({3,number,integer} bytes) loses bits.\n{4}{5}.\n</entry>
+    <entry key="AutoGenMsg184" translate="false">Conversion from ptrdiff_t (offset between two pointers) to {0}.\n{1}.\n</entry>
+    <entry key="AutoGenMsg187" translate="false">Conversion from enumerator to intptr_t/uintptr_t.\n{0}.\n</entry>
+    <entry key="AutoGenMsg188" translate="false">Conversion from ptrdiff_t (offset between two pointers) to intptr_t/uintptr_t.\n{0}.\n</entry>
+
+    <!-- coding_rule_util.cpp -->
+    <entry key="AutoGenMsg407" translate="false">ANSI C90 forbids mixed declarations and code.\n</entry>
+    <entry key="AutoGenMsg406" translate="false">Too many nesting levels of #includes: {0,number,integer}. The limit is {1,number,integer}.</entry>
+    <entry key="AutoGenMsg405" translate="false">Too many nesting level in {0}: {1,number,integer}. The limit is {2,number,integer}.</entry>
+    <entry key="AutoGenMsg401" translate="false">Too many nesting levels for control flow: {0,number,integer}. The limit is {1,number,integer}.</entry>
+    <entry key="AutoGenMsg408" translate="false">ANSI C90 forbids case ranges.\n</entry>
+    <entry key="AutoGenMsg404" translate="false">Too many members in {0}: {1,number,integer}. The limit is {2,number,integer}.</entry>
+    <entry key="AutoGenMsg403" translate="false">Too many macro definitions have been found in this translation unit: {0,number,integer}. The limit is {1,number,integer}.</entry>
+    <entry key="AutoGenMsg402" translate="false">Too many enumeration constants: {0,number,integer}. The limit is {1,number,integer}.</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_10_1 -->
+    <entry key="AutoGenMsg252" translate="false">Implicit conversion of the expression of underlying type ''{0}'' to the type ''{1}'' that is not a wider integer type of the same signedness.\n</entry>
+    <entry key="AutoGenMsg250" translate="false">Implicit conversion of the binary {0_operation} {1} hand operand of underlying type ''{2}'' to ''{3}'' that is not an integer type.\n</entry>
+    <entry key="AutoGenMsg251" translate="false">Implicit conversion of one of the binary {0_operation} operands whose underlying types are ''{1}'' and ''{2}''.\n</entry>
+    <entry key="AutoGenMsg253" translate="false">Implicit conversion of the binary {0_operation} {1} hand operand of underlying type ''{2}'' to ''{3}'' that is not a wider integer type of the same signedness\n\tor\nImplicit conversion of the binary {4_operation} {5} hand operand of underlying type ''{6}'' to ''{7}'', but it is a complex expression.\n</entry>
+    <entry key="AutoGenMsg254" translate="false">Implicit conversion of complex integer expression of underlying type ''{0}'' to ''{1}''.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_0_1_3 -->
+    <entry key="AutoGenMsg412" translate="false">Field ''{0}'' is never used or used only in unreachable code.</entry>
+    <entry key="AutoGenMsg411" translate="false">Variable ''{0}'' is never used or used only in unreachable code.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_63 -->
+    <entry key="AutoGenMsg389" translate="false">Operator ''{0}'' and its operand are not on the same line.\n</entry>
+    <entry key="AutoGenMsg390" translate="false">There is at least one space between ''{0}'' and variable ''{1}''.\n</entry>
+    <entry key="AutoGenMsg391" translate="false">There is at least one space between operator ''{0}'' and its operand.\n</entry>
+    <entry key="AutoGenMsg388" translate="false">''{0}'' and variable ''{1}'' are not on the same line.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_13_5 -->
+    <entry key="AutoGenMsg386" translate="false">Bad type for loop counter ({0}) \n</entry>
+
+    <!-- bug_finder.cpp -->
+    <entry key="AutoGenMsg222" translate="false">Missing calls to base copy constructor</entry>
+    <entry key="AutoGenMsg223" translate="false">Missing member copies</entry>
+    <entry key="AutoGenMsg213" translate="false">''{0}'' is reference to const-qualified type.\nSubsequent write to ''{1}'' can cause a compilation error or undefined behavior if it is not caught by compiler diagnostics.\nDo not write to ''{2}'', or remove 'const' to allow writes.</entry>
+    <entry key="AutoGenMsg217" translate="false">Inline function ''{0}'' refers to file scope static modifiable variable ''{1}''.\nTo fix, do one of these:\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{2}'' as static.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{3}'' as nonstatic.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{4}'' as const if not modified in current file.\n</entry>
+    <entry key="AutoGenMsg226" translate="false">''{0}'' is defined in a base class with {1,number,integer} bytes alignment.\nThe operator might not satisfy stricter alignment requirements ({2,number,integer} bytes) for this class.\nTo fix, overload ''{3}'' in the derived class and handle the stricter alignment.</entry>
+    <entry key="AutoGenMsg215" translate="false">Deleting incomplete array of type ''{0}''.\nThe deletion can cause undefined behavior.\nDefine the size of ''{1}''.</entry>
+    <entry key="AutoGenMsg220" translate="false">Statement appears incorrectly as part of previous {0} block.\n If the indentation is correct, put statement in braces associated with block (or add braces if missing).\n Otherwise, {1}change indentation so that it does not appear as part of the block.\n</entry>
+    <entry key="AutoGenMsg216" translate="false">Inline function ''{0}'' refers to static modifiable variable ''{1}''.\nTo fix, do one of these:\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{2}'' as static.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{3}'' as nonstatic.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{4}'' as const if not modified in current function.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{5}'' at file scope (outside ''{6}'').\n</entry>
+    <entry key="AutoGenMsg224" translate="false">{0}</entry>
+    <entry key="AutoGenMsg219" translate="false">{0} member function ''{1}'' refers to file scope static modifiable variable ''{2}''.\nTo fix, do one of these:\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{3}'' as nonstatic.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{4}'' as const if not modified in current file.\n</entry>
+    <entry key="AutoGenMsg214" translate="false">Deleting {0} incomplete type ''{1}''.\nThe deletion can cause undefined behavior if ''{2}'' has a non-trivial destructor.\nInclude the definition of ''{3}'' before the deletion.</entry>
+    <entry key="AutoGenMsg218" translate="false">{0} member function ''{1}'' refers to static modifiable variable ''{2}''.\nTo fix, do one of these:\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{3}'' as nonstatic.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{4}'' as const if not modified in current function.\n&amp;nbsp;&amp;bull;&amp;nbsp;declare ''{5}'' as static member data of class.\n</entry>
+    <entry key="AutoGenMsg225" translate="false">Compiler may ignore {0} of reference type alias (type declared with typedef or using) without warning.\nRemove {1}.</entry>
+    <entry key="AutoGenMsg221" translate="false">Missing calls to base copy constructor as well as member copies</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_16_1 -->
+    <entry key="AutoGenMsg383" translate="false">Every switch statement shall have a default label.</entry>
+    <entry key="AutoGenMsg379" translate="false">An unconditional break statement shall terminate every switch-clause.</entry>
+    <entry key="AutoGenMsg385" translate="false">A default label shall appear as either the first or the last switch label of a switch statement.</entry>
+    <entry key="AutoGenMsg381" translate="false">Every switch statement shall have at least two switch-clauses.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_12 -->
+    <entry key="AutoGenMsg355" translate="false">The following digraph will not be used: ''{0}''.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_DIR_1_1 -->
+    <entry key="AutoGenMsg397" translate="false">Unknown STDC #pragma arguments are implementation-defined.\n</entry>
+    <entry key="AutoGenMsg394" translate="false">Default state of #pragma STDC {0} is implementation-defined.\n</entry>
+    <entry key="AutoGenMsg395" translate="false">Non-STDC #pragma directives are implementation-defined.\n</entry>
+    <entry key="AutoGenMsg396" translate="false">Default state of #pragma {0} is implementation-defined.\n</entry>
+    <entry key="AutoGenMsg276" translate="false">Conversion of floating-point number to a narrower floating-point number uses an implementation-defined direction of rounding.\n</entry>
+    <entry key="AutoGenMsg234" translate="false">Other types than _Bool, signed and unsigned int may be allowed by the implementation</entry>
+    <entry key="AutoGenMsg275" translate="false">Conversion of integer to floating-point number uses an implementation-defined direction of rounding in some cases.\n</entry>
+    <entry key="AutoGenMsg398" translate="false">Unknown STDC #pragma directives are implementation-defined.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_5_4 -->
+    <entry key="AutoGenMsg424" translate="false">Macro {0}{1} has same significant characters as macro {2}{3} ({4} line {5,number,integer} column {6,number,integer}).\n</entry>
+    <entry key="AutoGenMsg426" translate="false">Macro parameter ''{0}'' has same significant characters as macro parameter ''{1}'' in macro ''{2}''.\n</entry>
+    <entry key="AutoGenMsg427" translate="false">Macro parameter ''{0}'' has same significant characters as macro ''{1}''.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_12_7 -->
+    <entry key="AutoGenMsg264" translate="false">Bitwise {0_operation} on the left hand operand of signed underlying type ''{1}''.\n</entry>
+    <entry key="AutoGenMsg263" translate="false">Bitwise {0_operation} on two operands of signed underlying types ''{1}'' and ''{2}''.\n</entry>
+    <entry key="AutoGenMsg265" translate="false">Bitwise {0_operation} on the right operand of signed underlying type ''{1}''.\n</entry>
+    <entry key="AutoGenMsg262" translate="false">Bitwise {0_operation} on operand of signed underlying type ''{1}''.\n</entry>
+    <entry key="AutoGenMsg364" translate="false">{0_operation} operator applied to an expression whose underlying type is signed.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_20_1 -->
+    <entry key="AutoGenMsg310" translate="false">The macro ''{0_operation}'' shall not be {1}.\n</entry>
+
+    <!-- PS_INTERNAL_SEMICOLON_TERMINATED_MACRO -->
+    <entry key="AutoGenMsg200" translate="false">Macro ''{0}'' is terminated with a semicolon.\nThe macro expansion can lead to unintended code.\nRemove the semicolon from the macro definition and place a semicolon if necessary when using the macro.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_0_1_5 -->
+    <entry key="AutoGenMsg413" translate="false">Type ''{0}'' is not used.</entry>
+    <entry key="AutoGenMsg357" translate="false">Type ''{0}'' is not used.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_10_4 -->
+    <entry key="AutoGenMsg260" translate="false">Complex expression of ''{0}'' type may only be cast to narrower floating type, however the destination type is ''{1}''.\n</entry>
+
+    <!-- checkers_side_effect.cpp -->
+    <entry key="AutoGenMsg328" translate="false">'typeid' evaluates side effects only when the evaluation results in a polymorphic type.\nSide effects are evaluated in this instance.\nFor better readability and maintainability, avoid side effects in 'typeid' that occur only in specific circumstances.</entry>
+    <entry key="AutoGenMsg329" translate="false">Argument to ''{0}'' has side effects. The macro argument is not evaluated in non-debug mode (with -D NDEBUG).\nIf you want the side effects, use a separate statement for the evaluation.</entry>
+    <entry key="AutoGenMsg326" translate="false">''{0}'' evaluates side effects only when the evaluation results in a polymorphic type.\nSide effects are {1} in this instance.\nFor better readability and maintainability, avoid side effects in ''{2}'' that occur only in specific circumstances.</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_16_6 -->
+    <entry key="AutoGenMsg382" translate="false">Switch is redundant</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_12_5 -->
+    <entry key="AutoGenMsg368" translate="false">Operand of logical {0} is not a primary expression.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_21_2 -->
+    <entry key="AutoGenMsg311" translate="false">Reserved identifier ''{0}'' shall not be declared.\n</entry>
+    <entry key="AutoGenMsg313" translate="false">The identifier ''{0}'' shall not be declared.\n</entry>
+
+    <!-- PS_INTERNAL_OBJECT_SLICING -->
+    <entry key="AutoGenMsg203" translate="false">Type of actual parameter is ''{0}'', whereas formal parameter type is ''{1}''.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_51 -->
+    <entry key="AutoGenMsg307" translate="false">All letters contained in {0} names will be composed entirely of lowercase letters.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_8_12 -->
+    <entry key="AutoGenMsg340" translate="false">The{0} constant {1} has same value as the{2} constant {3}.</entry>
+
+    <!-- PS_INTERNAL_LITERAL_OP_SUFFIX_MISSING_UNDERSCORE -->
+    <entry key="AutoGenMsg281" translate="false">Literal suffix identifiers that do not start with an underscore (such as ''{0}'') are reserved for future standardization.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_82 -->
+    <entry key="AutoGenMsg356" translate="false">A non-member assignment operator shall return a reference to its first arg.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_2_6 -->
+    <entry key="AutoGenMsg422" translate="false">Label ''{0}'' is not used.</entry>
+
+    <!-- PS_INTERNAL_VIRTUAL_FUNC_HIDING -->
+    <entry key="AutoGenMsg206" translate="false">Function does not override virtual function ''{0_operation}'' in base class but hides it</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_76 -->
+    <entry key="AutoGenMsg346" translate="false">An assignment operator shall be declared for classes that contain pointers to data items or nontrivial destructors.\n</entry>
+    <entry key="AutoGenMsg344" translate="false">A copy constructor and an assignment operator shall be declared for classes that contain pointers to data items or nontrivial destructors.\n</entry>
+    <entry key="AutoGenMsg345" translate="false">A copy constructor shall be declared for classes that contain pointers to data items or nontrivial destructors.\n</entry>
+
+    <!-- PS_INTERNAL_FLEXIBLE_ARRAY_MEMBER_STRUCT_MISUSE -->
+    <entry key="AutoGenMsg242" translate="false">Assignment of a structure with a flexible array member.\nThe assignment ignores the flexible array member.\nTo fix, use 'memcpy' or a related function to copy the entire structure.\n</entry>
+    <entry key="AutoGenMsg241" translate="false">Structure with a flexible array member passed by value to a function.\nThe pass-by-value ignores the flexible array member.\nTo fix, change the called function to accept a pointer of the structure as argument.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_2_4 -->
+    <entry key="AutoGenMsg420" translate="false">Tag ''{0}'' is not used.\n</entry>
+
+    <!-- PS_INTERNAL_INIT_NOT_MEMBER_INITIALIZER_LIST -->
+    <entry key="AutoGenMsg236" translate="false">''{0}'' is not initialized in the initialization list.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_10_2 -->
+    <entry key="AutoGenMsg255" translate="false">Implicit conversion of the expression from ''{0}'' to ''{1}'' that is not a wider floating type.\n</entry>
+    <entry key="AutoGenMsg256" translate="false">Implicit conversion of the binary {0_operation} {1} hand operand from ''{2}'' to ''{3}'' that is not a wider floating type\n\tor\nImplicit conversion of the binary {4_operation} {5} hand operand from ''{6}'' to ''{7}'', but it is a complex expression.\n</entry>
+    <entry key="AutoGenMsg257" translate="false">Implicit conversion of complex floating expression from ''{0}'' to ''{1}''.\n</entry>
+
+    <!-- PS_INTERNAL_FUNC_PTR_ABSOLUTE_ADDR -->
+    <entry key="AutoGenMsg172" translate="false">Constant expression is used as function address.\nA constant address is easy to discover and vulnerable to code injection.\n</entry>
+
+    <!-- PS_INTERNAL_POD_VAR_USED_ONCE -->
+    <entry key="AutoGenMsg353" translate="false">Variable ''{0}'' is used only once, that is, during initialization.</entry>
+    <entry key="AutoGenMsg354" translate="false">New variable ''{0}'' is introduced for only one use.</entry>
+
+    <!-- PS_INTERNAL_MACRO_USED_AS_OBJECT -->
+    <entry key="AutoGenMsg198" translate="false">''{0}'' can be implemented only as a function-like macro.\nThe current operation attempts to suppress the macro expansion and causes undefined behavior.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_17_8 -->
+    <entry key="AutoGenMsg277" translate="false">Parameter ''{0}'' is changed.</entry>
+
+    <!-- PS_INTERNAL_UNMODIFIED_PARAM_NOT_CONST -->
+    <entry key="AutoGenMsg415" translate="false">The pointer parameter ''{0}'' points to the same address during its lifetime. The pointer can be declared as 'T* const'.</entry>
+    <entry key="AutoGenMsg414" translate="false">The parameter ''{0}'' is not modified during its lifetime and can be declared 'const'.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_159 -->
+    <entry key="AutoGenMsg282" translate="false">Operator || shall not be overloaded.\n</entry>
+
+    <!-- PS_INTERNAL_PTR_SIZEOF_MISMATCH_MEMCPY_LIKE -->
+    <entry key="AutoGenMsg333" translate="false">The type ''{0}'' used for the second argument is not a pointer to the type ''{1}'' used in sizeof.\n</entry>
+    <entry key="AutoGenMsg332" translate="false">The type ''{0}'' used for the first argument is not a pointer to the type ''{1}'' used in sizeof.\n</entry>
+    <entry key="AutoGenMsg331" translate="false">None of the types ''{0}'' and ''{1}'' used for the arguments are pointers to the type ''{2}'' used in sizeof.\n</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_52 -->
+    <entry key="AutoGenMsg308" translate="false">Identifier for {0} shall be lowercase.\n</entry>
+
+    <!-- PS_INTERNAL_PTR_SIZEOF_MISMATCH_MALLOC_LIKE -->
+    <entry key="AutoGenMsg330" translate="false">The type ''{0}'' used for the block of memory is not a pointer to the type ''{1}'' used in sizeof.\n</entry>
+
+    <!-- PS_INTERNAL_DTOR_MAY_THROW -->
+    <entry key="AutoGenMsg347" translate="false">Destructor of member {0} may throw</entry>
+    <entry key="AutoGenMsg343" translate="false">Destructor of base class {0} may throw</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_39 -->
+    <entry key="AutoGenMsg393" translate="false">Header files (*.h) will not contain non-const variable definitions.\n</entry>
+    <entry key="AutoGenMsg284" translate="false">Header files (*.h) will not contain function definitions.\n</entry>
+
+    <!-- PS_INTERNAL_INITIALIZATION_WITHOUT_BRACE -->
+    <entry key="AutoGenMsg207" translate="false">{0}\n</entry>
+
+    <!-- PS_INTERNAL_ATOMIC_VAR_ACCESS_TWICE -->
+    <entry key="AutoGenMsg361" translate="false">Atomic variable ''{0}'' can be modified by another thread between two accesses.\nTo prevent a data race, avoid multiple references to an atomic variable in an expression.</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_5_2_1 -->
+    <entry key="AutoGenMsg369" translate="false">Operand of logical {0} is not a postfix expression.\n</entry>
+
+    <!-- PS_INTERNAL_MISSING_FREED_PTR_RESET -->
+    <entry key="AutoGenMsg195" translate="false">After free(), {0} ''{1_operation}'' still holds an address.\n{2}.\n</entry>
+    <entry key="AutoGenMsg193" translate="false">After free(), local static variable ''{0_operation}'' still holds an address accessible when the block is executed for the next time.\n{1}.\n</entry>
+    <entry key="AutoGenMsg194" translate="false">After free(), {0} ''{1_operation}'' still holds an address accessible from {2}.\n{3}.\n</entry>
+    <entry key="AutoGenMsg192" translate="false">After free(), global variable ''{0_operation}'' still holds an address.\n{1}.\n</entry>
+
+    <!-- PS_INTERNAL_VA_ARG_INCORRECT_TYPE -->
+    <entry key="AutoGenMsg334" translate="false">'va_arg' uses ''{0}'' as argument but argument type passed to variadic function ''{1}'' is ''{2}'' (because of argument promotion from ''{3}'').\n'va_arg' with ''{4}'' argument can return an unexpected value.\nTo fix, use ''{5}'' as 'va_arg' argument and cast the return value to ''{6}''.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_12_9 -->
+    <entry key="AutoGenMsg365" translate="false">Minus operator applied to an expression whose underlying type is unsigned.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_5_0_3 -->
+    <entry key="AutoGenMsg248" translate="false">Implicit conversion of expression of ''{0}'' type as argument of function whose corresponding parameter type is ''{1}''.\n</entry>
+    <entry key="AutoGenMsg273" translate="false">Implicit conversion of complex expression of underlying type ''{0}'' to ''{1}''.\n</entry>
+    <entry key="AutoGenMsg272" translate="false">Implicit conversion of the binary {0_operation} {1} hand operand of underlying type ''{2}'' which is a complex expression to ''{3}''.\n</entry>
+    <entry key="AutoGenMsg249" translate="false">Implicit conversion of expression of ''{0}'' type in function return whose expected type is ''{1}''.\n</entry>
+
+    <!-- PS_INTERNAL_IMPROPER_ARRAY_INIT -->
+    <entry key="AutoGenMsg175" translate="false">All elements other than element at index 0 are explicitly initialized.\n</entry>
+    <entry key="AutoGenMsg173" translate="false">Element at index {0,number,integer} of the array ''{1}'' has possibly incorrect initialization.\n</entry>
+    <entry key="AutoGenMsg174" translate="false">Element at index {0,number,integer} is initialized earlier.\n</entry>
+    <entry key="AutoGenMsg176" translate="false">Mixing designated and non-designated initializers makes it difficult to determine array size by inspection.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_12_8 -->
+    <entry key="ShiftAmountNegative" translate="false">Shift amount is negative.</entry>
+    <entry key="ShitAmountBiggerOrEqual" translate="false">Shift amount is bigger than or equal to {0,number,integer}.</entry>
+    <entry key="ShitAmountOutOfUnderlyingTypeSize" translate="false">Bitwise {0} count out of range [0 ..{1,number,integer}] (width of the underlying type ''{2}'' of the left hand operand - 1).</entry>
+
+    <!-- PS_INTERNAL_LOCAL_VAR_NOT_CONST_MODIFIED_AS_DECL -->
+    <entry key="AutoGenMsg416" translate="false">The value of variable ''{0}'' does not change after initialization. The variable can be declared 'const'.</entry>
+
+    <!-- PS_INTERNAL_BITWISE_ARITH_MIX -->
+    <entry key="AutoGenMsg168" translate="false">{0_operation}.\n</entry>
+    <entry key="AutoGenMsg169" translate="false">Bitwise and arithmetic operation on ''{0_operation}''.\n{1}.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_5_2_11 -->
+    <entry key="AutoGenMsg283" translate="false">Operator , shall not be overloaded.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_5_6 -->
+    <entry key="AutoGenMsg428" translate="false">{0} ''{1}'' conflicts with the typedef name ''{2}'' ({3} line {4,number,integer} column {5,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_50 -->
+    <entry key="AutoGenMsg306" translate="false">The first word of the name of a {0} will begin with an uppercase letter.\nAll others letters will be lowercase.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_16_4 -->
+    <entry key="AutoGenMsg384" translate="false">Default clause shall contain statements or comments.</entry>
+
+    <!-- PS_INTERNAL_MISSING_SWITCH_BREAK -->
+    <entry key="AutoGenMsg380" translate="false">Switch case terminates without a break statement or comment about the intentional fall through.\n</entry>
+
+    <!-- PS_INTERNAL_OVERLAPPING_ASSIGN -->
+    <entry key="AutoGenMsg268" translate="false">{0,number,integer} {1} of the left and right-hand sides overlap.\n''{2}'' and ''{3}'' belong to the same union.\n</entry>
+    <entry key="AutoGenMsg269" translate="false">{0,number,integer} {1} of the left and right-hand sides overlap.\nThe assignment is redundant.\n</entry>
+
+    <!-- custom_rule_checker.cpp -->
+    <entry key="AutoGenMsg409" translate="false">{0}\nThe {1} ''{2}'' does not match the specified pattern.</entry>
+    <entry key="AutoGenMsg410" translate="false">The {0} ''{1}'' does not match the specified pattern.</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_10_3 -->
+    <entry key="AutoGenMsg259" translate="false">Complex expression of underlying type ''{0}'' may only be cast to narrower integer type of same signedness, however the destination type is ''{1}''.\n</entry>
+
+    <!-- PS_INTERNAL_INCORRECT_INDENTATION -->
+    <entry key="AutoGenMsg202" translate="false">else-statement appears to be associated with incorrect if statement (line {0,number,integer}).\nChange indentation to associate the else with the correct if statement (line {1,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_68 -->
+    <entry key="AutoGenMsg351" translate="false">No user-defined {0}, {1}, {2} and {3} have been found.\n</entry>
+    <entry key="AutoGenMsg348" translate="false">No user-defined {0} has been found.\n</entry>
+    <entry key="AutoGenMsg349" translate="false">No user-defined {0}, and {1} have been found.\n</entry>
+    <entry key="AutoGenMsg350" translate="false">No user-defined {0}, {1}, and {2} have been found.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_17_5 -->
+    <entry key="AutoGenMsg433" translate="false">The argument type has {0,number,integer} elements whereas the parameter type expects {1,number,integer} elements.</entry>
+    <entry key="AutoGenMsg434" translate="false">The argument points to 1 element whereas the parameter type expects {0,number,integer} elements.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_206 -->
+    <entry key="AutoGenMsg314" translate="false">The function {0} shall not be used.</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_1_3 -->
+    <entry key="AutoGenMsg339" translate="false">An array of incomplete type causes an undefined behavior.\n</entry>
+
+    <!-- PS_INTERNAL_MISSING_NULL_CHAR -->
+    <entry key="AutoGenMsg197" translate="false">The array ''{0}'' has been declared with only {1,number,integer} elements.\nIt has been initialized with {2,number,integer} characters (including the terminating null char).\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_5_7 -->
+    <entry key="AutoGenMsg429" translate="false">{0} ''{1}'' conflicts with the tag name ''{2}'' ({3} line {4,number,integer} column {5,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_5_1 -->
+    <entry key="AutoGenMsg423" translate="false">External {0} ''{1}'' conflicts with the external identifier ''{2}'' ({3} line {4,number,integer} column {5,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_HARD_CODED_LOOP_BOUNDARY -->
+    <entry key="AutoGenMsg171" translate="false">Loop boundary is hard coded instead of a symbolic constant.\nHard-coded loop boundary increases maintenance costs and security risks.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_2_5 -->
+    <entry key="AutoGenMsg421" translate="false">Macro ''{0}'' is not used.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_6_5_1 -->
+    <entry key="AutoGenMsg360" translate="false">The loop-counter ''{0}'' shall not have floating type.\n</entry>
+    <entry key="AutoGenMsg359" translate="false">A for loop shall contain a single loop-counter.\n</entry>
+
+    <!-- PS_INTERNAL_MISSING_OVERLOAD_SIZED_UNSIZED_DELETE -->
+    <entry key="AutoGenMsg317" translate="false">{0} version of operator 'delete()' is overloaded at {1} scope without overload of corresponding {2} version.\nTo fix, define a overload {3} operator 'delete()' at the same scope: {4}.\n</entry>
+
+    <!-- PS_INTERNAL_RETURN_NOT_REF_TO_THIS -->
+    <entry key="AutoGenMsg205" translate="false">The return type is different</entry>
+    <entry key="AutoGenMsg204" translate="false">The return type is different from this class type: {0}</entry>
+
+    <!-- PS_INTERNAL_USELESS_STATEMENT -->
+    <entry key="AutoGenMsg419" translate="false">The call to function ''{0}'' has no effect.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_18_2 -->
+    <entry key="AutoGenMsg266" translate="false">Overlap between source and destination of ''{0}'' causes undefined behavior.\n</entry>
+
+    <!-- PS_INTERNAL_BAD_EQUAL_EQUAL_USE -->
+    <entry key="AutoGenMsg196" translate="false">Use of '==' instead of '=' in a statement or missing parentheses.</entry>
+
+    <!-- PS_INTERNAL_OVERLAPPING_COPY -->
+    <entry key="AutoGenMsg267" translate="false">{0,number,integer} {1} of the source and destination overlap, causing undefined behavior.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_0_1_2 -->
+    <entry key="AutoGenMsg298" translate="false">Expression is always {0}.</entry>
+
+    <!-- PS_INTERNAL_INIT_NOT_MEMBER_INITIALIZER -->
+    <entry key="AutoGenMsg237" translate="false">''{0}'' is not initialized with member initializer.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C3_5_5 -->
+    <entry key="AutoGenMsg425" translate="false">Identifier ''{0}'' has same significant characters as macro ''{1}'' ({2} line {3,number,integer} column {4,number,integer}).\n</entry>
+
+    <!-- PS_INTERNAL_SIDE_EFFECT_IGNORED -->
+    <entry key="AutoGenMsg327" translate="false">''{0}'' {1}.\n{2}.\n</entry>
+
+    <!-- PS_INTERNAL_SPURIOUS_FAILURE_NOT_WRAPPED_IN_LOOP -->
+    <entry key="AutoGenMsg292" translate="false">''{0}'' can spuriously fail even if failure condition is not meet.\nTo fix, check for expected condition by wrapping function call in a loop.</entry>
+
+    <!-- PS_INTERNAL_COPY_MODIFYING_SOURCE -->
+    <entry key="AutoGenMsg170" translate="false">{0} modifies source object. Subsequent use of the object can have unexpected results.\nIf you want to modify source object, define {1} instead of {2}.</entry>
+
+    <!-- PS_INTERNAL_MISSING_OVERLOAD_NEW_DELETE_PAIR -->
+    <entry key="AutoGenMsg316" translate="false">Operator ''{0}'' is overloaded at {1} scope without overload of corresponding operator ''{2}''.\nTo fix, define and overload operator ''{3}'' at the same scope: {4}.\n</entry>
+
+    <!-- PS_INTERNAL_CV_QUALIFIED_REFERENCE_TYPE -->
+    <entry key="AutoGenMsg211" translate="false">{0} qualified reference type may cause a compilation error or undefined behavior if it is not caught by compiler diagnostics.\n{1}.</entry>
+
+    <!-- PS_INTERNAL_JSF_CPP_1 -->
+    <entry key="AutoGenMsg358" translate="false">{0} has {1,number,integer} logical source lines of code.</entry>
+
+    <!-- PS_INTERNAL_BITWISE_ON_BOOLEAN -->
+    <entry key="AutoGenMsg199" translate="false">{0} of operator ''{1_operation}'' {2} Boolean.\n</entry>
+
+    <!-- PS_INTERNAL_MULTI_STMT_MACRO -->
+    <entry key="AutoGenMsg201" translate="false">Macro ''{0}'' contains multiple statements.\nIn a loop or if statement, the macro expansion can lead to unintended code.\nIf possible, wrap multiple statements in a do ... while(0) loop.\n</entry>
+
+    <!-- PS_INTERNAL_MISRA_C2_10_5 -->
+    <entry key="AutoGenMsg261" translate="false">Bitwise {0_operation} is applied to the operand of underlying type ''{1}'', the result shall be immediately cast to the underlying type.\n</entry>
+
+    <!-- PS_INTERNAL_MISSING_OVERLOAD_NEW_FOR_ALIGNED_OBJ -->
+    <entry key="AutoGenMsg212" translate="false">Default ''{0}'' might not satisfy specific alignment requirements ({1,number,integer} bytes) for this class.\nTo fix, overload ''{2}'' and handle the required alignment.</entry>
+
+    <!-- PS_INTERNAL_MISRA_CPP_5_0_11 -->
+    <entry key="AutoGenMsg247" translate="false">Value of type signed integer is implicitly converted to plain char.\n</entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  noexcept STDC stdatomic Alignas Alignof stdalign Noreturn stdnoreturn dlsym npos
+     LocalWords:  NSDMI rvalue DECL realloc uintptr intptr NRVO RVO EDG offsetof COPYCTOR Undefining
+     LocalWords:  REDEF stdbool utils FUNC unscoped atexit errno constexpr XID pragmas
+-->

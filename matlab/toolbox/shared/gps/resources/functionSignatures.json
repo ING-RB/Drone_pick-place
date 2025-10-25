@@ -1,0 +1,29 @@
+{
+"gpsdev":
+{
+    "inputs":
+    [
+        {"name":"hardwareobject", "kind":"required", "type":[["char","choices = seriallist"],"internal.Serialport"]},
+        {"name":"SamplesPerRead", "kind":"namevalue", "type":"numeric"},
+        {"name":"ReadMode", "kind":"namevalue", "type":"choices={'latest','oldest'}"},
+        {"name":"OutputFormat", "kind":"namevalue", "type":"choices={'timetable','matrix'}"},
+        {"name":"TimeFormat", "kind":"namevalue", "type":"choices={'datetime','duration'}"}
+    ],
+    "outputs":
+    [
+        {"name":"obj", "type":"gpsdev"}
+    ]
+},
+"nmeaParser":
+{
+    "inputs":
+    [
+        {"name":"MessageIDs", "kind":"namevalue", "type":"choices=matlabshared.gps.internal.getSupportedMessageIDs()"},
+        {"name":"CustomSentence", "kind":"namevalue"}    
+    ],
+    "outputs":
+    [
+        {"name":"obj", "type":"nmeaParser"}
+    ]
+}
+}

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2013-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../schema/.xsd">
+  <message>
+    <entry key="SL_DSCPT_DATETIMECLOCKREADER">Output the simulation calendar date and time of the selected DateTime Clock block.</entry> 
+    <entry key="SL_DSCPT_DATETIMECLOCK">Compute current calendar date and time as DateTime data type. Specify characteristics such as time point and storage data type.</entry> 
+    <entry key="SL_DSCPT_DATETIMETYPECONVERTER">Convert the time point and/or storage data type of a DateTime signal.\n\nTo convert between time standards, use the DateTime Time Standard Converter block.</entry> 
+    <entry key="SL_DSCPT_DATETIMEFORMATTER"> Convert a calendar time or DateTime signal to a string, formatted as specified by the ''Format'' parameter.</entry> 
+    <entry key="SL_DSCPT_DATETIMETOEPOCHTIME">Extract the value of the signal line and output it in the storage data type of the DateTime signal.</entry> 
+    <entry key="SL_DSCPT_DATETIMETOCALENDAR">Output the year (y), month (M), day (d), hour (H), minute (m), and second (s) of a DateTime signal.</entry> 
+    <entry key="SL_DSCPT_EPOCHTIMETODATETIME">Extract the value of the signal line and output it in the DateTime data type specified in the ''Output data type'' parameter.</entry> 
+    <entry key="SL_DSCPT_TIMESTANDARDCONVERTER"> Convert the time standard of a DateTime signal.\n\nTo convert between time point and/or storage data type, use the DateTime Data Type Converter block.</entry> 
+    <entry key="InvalidTimeEpoch">The supported range for ''{0}'' is between ''{1}'' and ''{2}'', but the specified epoch is ''{3}'', which is invalid.</entry> 
+    <entry key="InvalidTimeRange">The supported range for time system ''{0}'' is between ''{1}'' and ''{2}'', but the specified range is between ''{3}'' and ''{4}'', which is invalid.</entry> 
+    <entry key="InvalidRange">The minimum value must be less than the maximum value for the time range.</entry> 
+    <entry key="OutOfRangeTimeConversion">Conversion of the date ''{0}'' from time system ''{1}'' to ''{2}'' is not supported because the valid range of the destination time system is between ''{3}'' and ''{4}''.</entry> 
+    <entry key="InvalidTimeValue">The time value must be a double vector with six elements, [year, month, day, hour, minute, second]. Year, month, day, hour, minute must be integer numbers. Seconds must be a decimal number.</entry> 
+    <entry key="InvalidStartDateTimeValue">The start date time value in the block {0} must be a double vector with six elements, i.e., [year, month, day, hour, minute, second]. Year, month, day, hour, minute must be integer numbers. Seconds must be a decimal number.</entry> 
+    <entry key="BlockDoesNotSupportBusInputContainingDateTime"><![CDATA[A bus signal containing DateTime type is not supported on <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of block ''{1}''. For a list of supported data types, see the block documentation page.]]></entry> 
+    <entry key="BlockDoesNotSupportDateTimeInput"><![CDATA[A signal of data type DataTime is not supported on <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of block ''{1}''. For a list of supported data types, see the block documentation page.]]></entry> 
+    <entry key="BlockDoesNotSupportDateTimeOutput"><![CDATA[A signal of data type DateTime is not supported on <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}''. For a list of supported data types, see the block documentation page.]]></entry> 
+    <entry key="DateTimeClockInternalErrorReferencedBlockNotFound">In ''{0}'' block, specified block ''{1}'' was not found. ''{1}'' must be a valid block path relative to block ''{0}''. Use ''/'' to traverse down the hierarchy.</entry> 
+    <entry key="DateTimeFeatureTurnOn_Internal" translate="false">Turn on ''DateTime in Simulink'' feature to use ''{0}''.</entry> 
+    <entry key="ModelConfigIncorrectFormat">Invalid date and time specified for model configuration parameter ''DateTime at simulation time zero''. Enter a real double array of size six: [YYYY MM DD HH MM SS].</entry> 
+    <entry key="DateTimeClockModelConfigIncorrectFormat">Invalid date and time specified for model configuration parameter ''DateTime at simulation time zero'' when using DateTimeClock block ''{0}''. Enter a real double array of size six: [YYYY MM DD HH MM SS].</entry> 
+    <entry key="ModelConfigIncorrectValue">Invalid date and time specified for model configuration parameter ''DateTime at simulation time zero''.</entry> 
+    <entry key="BadTAIModelConfig">Invalid TAI timestamp. The earliest permitted timestamp is 1972-01-01T00:00:10.</entry> 
+    <entry key="BadYearModelConfig">Invalid year. Value must be an integer between 1972 and 9999.</entry> 
+    <entry key="BadYear">Invalid year. Value must be an integer between 1400 and 9999.</entry> 
+    <entry key="BadMonth">Invalid month. Value must be an integer between 1 and 12.</entry> 
+    <entry key="BadDayOfMonth">Invalid day of month. Value must be an integer between 1 and (28,29,30,31), depending on the month and year.</entry> 
+    <entry key="BadHour">Invalid hour. Value must be an integer between 0 and 23.</entry> 
+    <entry key="BadMinute">Invalid minute. Value must be an integer between 0 and 59.</entry> 
+    <entry key="BadSecond">Invalid second. Value must be a real number that is at least 0 and less than 60.</entry> 
+    <entry key="BadSecondUTC">Invalid second. Value must be a real number that is at least 0 and less than 61.</entry> 
+    <entry key="BadLeapSecond">Invalid leap second timestamp. If second is in the range [60, 61), then the time must be 23:59 on June 30 or December 31.</entry> 
+    <entry key="BadLeapSecondBoolTimeStandard">Invalid leap second flag. DateTime signal can only be packaged with a leap second boolean if time standard is ''UTC''.</entry> 
+    <entry key="BadLeapSecondBoolTimestamp">Invalid leap second flag. If DateTime signal is marked as a leap second, then time must be in the range [23:59:60, 23:59:61) on June 30 or December 31.</entry> 
+    <entry key="BlockSignalInvalidDateTime"><![CDATA[Invalid DateTime signal at input port {0,number,integer} of block ''{1}''.]]></entry> 
+    <entry key="DateTimeClockStorageDataTypeTooSmall">The storage data type selected in block ''{0}'' is too small to represent the DateTime specified for model configuration parameter ''DateTime at simulation time zero''.</entry> 
+    <entry key="DateTimeClockRollOver">Clock rollover occurred due to DateTime value exceeding storage data type in block ''{0}''.</entry> 
+    <entry key="DateTimeStorageRollOver"> DateTime stored value saturated, and rollover occurred in block ''{0}''.</entry> 
+    <entry key="MultipleFractionalSecondTokens">The format ''{0}'' contains multiple fractional second specifiers (''S''). A DateTime format can have only one fractional second specifier.</entry> 
+    <entry key="InvalidDayOfWeekToken">The format ''{0}'' contains an invalid day of week specifier (''e''). Day of week specifier must be ''e'', ''ee'', ''eee'', ''eeee'', or ''eeeee''.</entry> 
+    <entry key="InvalidFormatChar">The format ''{0}'' contains an unsupported symbol: ''{1}''. To print the letters A-Z or a-z in a format, enclose them in single quotes.</entry> 
+    <entry key="BlockInvalidFormat">Invalid custom format ''{1}'' in block ''{0}''.</entry> 
+    <entry key="DateTimeObjectInvalidFormat">Invalid format ''{0}''.</entry> 
+    <entry key="NoTimeStandardAvailable">The format ''{1}'' in block ''{0}'' requires a time standard. Either change the input mode to ''DateTime'' or choose a format with no ''t'' format specifiers.</entry> 
+    <entry key="InputMustBeDateTime"><![CDATA[Signal at <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of block ''{1}'' must be of data type DateTime.]]></entry> 
+    <entry key="OutputMustBeDateTime"><![CDATA[Signal at <sldiag objui="outport" objparam="{0,number,integer}" objname="{1}">output port {0,number,integer}</sldiag> of block ''{1}'' must be of data type DateTime.]]></entry> 
+    <entry key="PortValidityDateTimeFieldDataTypeErrorMessage">Data type for the port must be double, single, int8, uint8, int16, uint16, int32, uint32, int64 or uint64. However, the port data type is {0}.</entry> 
+    <entry key="DoesNotSupportTimeStandardConversion"> In block ''{0}'', conversion between different time standards is not supported. The block only supports conversions from one time point to another time point or one storage data type to another storage data type.</entry> 
+    <entry key="IncorrectInputTimeStandard"><![CDATA[Block ''{0}'' expects an input DateTime signal with time standard ''{1}'' and an output DateTime signal with time standard ''{2}''. Instead, the signal at <sldiag objui="inport" objparam="{3,number,integer}" objname="{0}">input port {3,number,integer}</sldiag> has time standard ''{4}''.]]></entry> 
+    <entry key="IncorrectOutputTimeStandard"><![CDATA[Block ''{0}'' expects an input DateTime signal with time standard ''{1}'' and an output DateTime signal with time standard ''{2}''. Instead, the signal at <sldiag objui="outport" objparam="{3,number,integer}" objname="{0}">output port {3,number,integer}</sldiag> has time standard ''{4}''.]]></entry> 
+    <entry key="TimestampIsNegativeLeapSecond">Timestamp is invalid because it represents a negative leap second.</entry> 
+    <entry key="BlockInvalidTimeStandardConversion">Invalid time standard conversion in block ''{0}''.</entry> 
+    <entry key="BlockInputNonUTCWithBusSignal">In block ''{0}'', the input must be a nonbus signal if its time standard is not ''UTC''.</entry> 
+    <entry key="BlockInputUTCWithNonBusSignal">In block ''{0}'', the input must be a virtual bus with two elements if its time standard is ''UTC''.</entry> 
+    <entry key="BlockOutputNonUTCWithBusSignal">In block ''{0}'', the output must be a nonbus signal if its time standard is not ''UTC''.</entry> 
+    <entry key="BlockOutputUTCWithNonBusSignal">In block ''{0}'', the output must be a virtual bus with two elements if its time standard is ''UTC''.</entry> 
+    <entry key="DateTimeInputPort2Boolean"> Data type on input port 2 of block ''{0}'' must be boolean.</entry> 
+    <entry key="DateTimeOutputPort2Boolean"> Data type on output port 2 of block ''{0}'' must be boolean.</entry> 
+    <entry key="EpochTimeToDateTimeStorageDtMismatch">The input signal data type must match the ''StorageDataType'' specified in the ''Output data type'' in block ''{0}''.</entry> 
+    <entry key="EpochTimeToDateTimeNonUTCWithBusSignal">In block ''{0}'', the input must be a nonbus signal if the time standard of the output is not ''UTC''.</entry> 
+    <entry key="EpochTimeToDateTimeUTCWithNonBusSignal">In block ''{0}'', the input must be a virtual bus with two elements if the time standard of the output is ''UTC''.</entry> 
+    <entry key="TimePointMode">Time point:</entry> 
+    <entry key="TimePointModeUNIX">Seconds since Unix epoch</entry> 
+    <entry key="TimePointModeNTP">Seconds since NTP epoch</entry> 
+    <entry key="TimePointModeTAI">Seconds since TAI epoch</entry> 
+    <entry key="TimePointModeJulian">Julian date</entry> 
+    <entry key="TimePointModeMJD">Modified Julian date</entry> 
+    <entry key="TimePointModeJ2000">J2000.0 date</entry> 
+    <entry key="Epoch">Epoch:</entry> 
+    <entry key="TimeStandard">Time standard:</entry> 
+    <entry key="TimeStandardTAI" translate="false">TAI</entry> 
+    <entry key="TimeStandardUTC" translate="false">UTC</entry> 
+    <entry key="TimeStandardTT" translate="false">TT</entry> 
+    <entry key="TimeStandardConversion">Time standard conversion:</entry> 
+    <entry key="TimeStandardConversionTAI2UTC" translate="false">TAI to UTC</entry> 
+    <entry key="TimeStandardConversionTAI2TT" translate="false">TAI to TT</entry> 
+    <entry key="TimeStandardConversionTAI2TDB" translate="false">TAI to TDB</entry> 
+    <entry key="TimeStandardConversionUTC2TDB" translate="false">UTC to TDB</entry> 
+    <entry key="TimeStandardConversionUTC2TAI" translate="false">UTC to TAI</entry> 
+    <entry key="TimeStandardConversionUTC2TT" translate="false">UTC to TT</entry> 
+    <entry key="TimeStandardConversionTT2TAI" translate="false">TT to TAI</entry> 
+    <entry key="TimeStandardConversionTT2UTC" translate="false">TT to UTC</entry> 
+    <entry key="TimeStandardConversionTT2TDB" translate="false">TT to TDB</entry> 
+    <entry key="StorageDataType">Storage data type:</entry> 
+    <entry key="DiagnosticForClockRollOver">Diagnostic for clock rollover:</entry> 
+    <entry key="ClockName">DateTime clock name:</entry> 
+    <entry key="StartDateTimeSource">Start date and time source:</entry> 
+    <entry key="StartTimeFromConfigParam">Inherit from model</entry> 
+    <entry key="StartTimeFromEditBox">Specify start value</entry> 
+    <entry key="DTCBlockStartDateTime">Start value:</entry> 
+    <entry key="DateTimeClockReference">DateTime clock reference</entry> 
+    <entry key="DateTimeClockBlockName">DateTime clock name:</entry> 
+    <entry key="ShowLeapSecondPort">Show leap second port</entry> 
+    <entry key="ShowLeapSecondPorts">Show leap second ports</entry> 
+    <entry key="DateTimeClockDouble" translate="false">double</entry> 
+    <entry key="DateTimeClockSint32" translate="false">int32</entry> 
+    <entry key="DateTimeClockUint32" translate="false">uint32</entry> 
+    <entry key="DateTimeClockSfix128En64" translate="false">fixdt(1,128,64)</entry> 
+    <entry key="DateTimeClockUfix128En64" translate="false">fixdt(0,128,64)</entry> 
+    <entry key="DateTimeClockSfix64En32" translate="false">fixdt(1,64,32)</entry> 
+    <entry key="DateTimeClockUfix64En32" translate="false">fixdt(0,64,32)</entry> 
+    <entry key="UseLeapSecondTable">Use leap second table</entry> 
+    <entry key="LeapSecondTable">Leap second table</entry> 
+    <entry key="AccumulatedLeapSeconds">Accumulated leap seconds:</entry> 
+    <entry key="DateTimeClockSpecificationTab">Specification</entry> 
+    <entry key="DateTimeClockTimeStandardTab">Time Standard</entry> 
+    <entry key="DateTimeFormatterFormat">Format:</entry> 
+    <entry key="DateTimeFormatterInputMode">Input mode:</entry> 
+    <entry key="FormatMATLABDefault" translate="false">dd-MMM-uuuu HH:mm:ss</entry> 
+    <entry key="FormatISO8601WholeSec" translate="false">yyyy-MM-dd''T''HH:mm:ss</entry> 
+    <entry key="FormatISO8601TimeStandard" translate="false">yyyy-MM-dd''T''HH:mm:ss t</entry> 
+    <entry key="FormatISO8601FracSec" translate="false">yyyy-MM-dd''T''HH:mm:ss.SSS</entry> 
+    <entry key="FormatAsctime" translate="false">eee MMM dd HH:mm:ss yyyy\n</entry> 
+    <entry key="FormatClockTime" translate="false">h:mm:ss a</entry> 
+    <entry key="FormatCalDate" translate="false">MMMM d, yyyy</entry> 
+    <entry key="FormatCustom">Custom</entry> 
+    <entry key="InputModeDateTime">DateTime</entry> 
+    <entry key="InputModeCalendar">Calendar time</entry> 
+    <entry key="OutputDayOfWeek">Output day of week</entry> 
+    <entry key="OutputYearTypePrompt">Year data type:</entry> 
+    <entry key="OutputMonthTypePrompt">Month data type:</entry> 
+    <entry key="OutputDayTypePrompt">Day data type:</entry> 
+    <entry key="OutputHourTypePrompt">Hour data type:</entry> 
+    <entry key="OutputMinuteTypePrompt">Minute data type:</entry> 
+    <entry key="OutputSecondTypePrompt">Second data type:</entry> 
+    <entry key="OutputDayOfWeekTypePrompt">Day of week data type:</entry> 
+    <entry key="DTClockBlockNotFound">Unable to find DateTime Clock block with name ''{0}''.</entry> 
+    <entry key="DTClockBlockNameInvalidName">Invalid DateTime Clock name specified in ''{0}''. Valid identifiers start with a letter, contain no spaces or special characters, and are at most {1,number,integer} characters long.</entry> 
+    <entry key="ScopedDTAttribMismatch1"><![CDATA[DateTime Clock blocks ''{0}'' and ''{1}'' must specify the same signal attributes because they specify the same clock name ''{2}'', and ''{1}'' has the DateTime Clock reference parameter selected.]]></entry> 
+    <entry key="ScopedDTRTW">Code generation is not supported for DateTime Clock references.</entry> 
+    <entry key="ScopedDTAttribMismatch2"><![CDATA[DateTime Clock blocks ''{0}'' and ''{1}'' must specify the same signal attributes because they specify the same clock name ''{2}'', and both blocks have the DateTime Clock reference parameter selected.]]></entry> 
+    <entry key="ScopedDTDataTypeMismatch"><![CDATA[''{0}'' and ''{1}'' set the data type to ''{2}'' and ''{3}'', respectively.]]></entry> 
+    <entry key="BlockInputVirtBusNotTwoElements"><![CDATA[Bus connected to <sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">input port {0,number,integer}</sldiag> of block ''{1}'' must contain two signals.]]></entry> 
+    <entry key="BlockInputVirtBusHasBusElements"><![CDATA[<sldiag objui="inport" objparam="{0,number,integer}" objname="{1}">Input port {0,number,integer}</sldiag> of block ''{1}''  must have a bus composed of two nonbus signals.]]></entry> 
+    <entry key="TimeUnitEpochMismatch">''{0}'' and ''{1}'' is an invalid time unit-epoch pair. The time unit ''s'' (Seconds since epoch) requires an epoch of ''u'' (Unix), ''n'' (NTP), or ''t'' (TAI), and the time unit ''j'' (Julian days since epoch) requires an epoch of ''j'' (Julian), ''m'' (Modified Julian), or ''2'' (J2000.0).</entry> 
+    <entry key="JulianDayTUOnlySupportDoubleSDT">Invalid storage data type: ''{1}''. When time point is ''{0}'', set storage data type to ''double''.</entry> 
+    <entry key="TDBTSOnlySupportJulianDayTU">Invalid time point: ''{0}''. When time standard is ''TDB'', set time point to ''Julian date'', ''Modified Julian date'', or ''J2000.0 date''.</entry> 
+    <entry key="TDBTSOnlySupportDoubleSDT">Invalid storage data type: ''{0}''. When time standard is ''TDB'', set storage data type to ''double''.</entry> 
+    <entry key="TTTSOnlySupportNonIntegerSDT">Invalid storage data type: ''{0}''. When time standard is ''TT'', set storage data type to ''double'' or a fixed-point type.</entry> 
+    <entry key="InvalidDateTimeTypeNumConstructorArgs">{0,number,integer} is an invalid number of arguments for the DateTimeType constructor. Supported constructors are Simulink.DateTimeType() and Simulink.DateTimeType(''TimePoint'', ModeOption, ''StorageDataType'', ModeOption, ''TimeStandard'', ModeOption) with the name-value pairs in any order.</entry> 
+    <entry key="InconsistentObjectTimePointMode">A mismatch occurs for ''TimePoint'' property at array index ''{0}''. All objects to be concatenated must have the same ''TimePoint'', ''StorageDataType'', ''TimeStandard'', and ''Format'' properties.</entry> 
+    <entry key="InconsistentObjectStorageDataType">A mismatch occurs for ''StorageDataType'' property at array index ''{0}''. All objects to be concatenated must have the same ''TimePoint'', ''StorageDataType'', ''TimeStandard'', and ''Format'' properties.</entry> 
+    <entry key="InconsistentObjectTimeStandard">A mismatch occurs for ''TimeStandard'' property at array index ''{0}''. All objects to be concatenated must have the same ''TimePoint'', ''StorageDataType'', ''TimeStandard'', and ''Format'' properties.</entry> 
+    <entry key="InconsistentObjectFormat">A mismatch occurs for ''Format'' property at array index ''{0}''. All objects to be concatenated must have the same ''TimePoint'', ''StorageDataType'', ''TimeStandard'', and ''Format'' properties.</entry> 
+    <entry key="InvalidDateTimeTypeName">Invalid DateTime data type name. Names must be of the form ''datetime_[TIMEUNIT][EPOCH][TIMESTANDARD]_[STORAGEDATATYPE]'', where TIMEUNIT must be one of ''s'', or ''j''; EPOCH must be one of ''u'', ''n'', ''t'', ''j'', ''m'', or ''2''; TIMESTANDARD must be one of ''t'', ''u'', ''d'', or ''b''; and STORAGEDATATYPE must be one of ''double'', ''int32'', ''uint32'', ''sfix64_En32'', ''ufix64_En32'', ''sfix128_En64'', or ''ufix128_En64''.</entry> 
+    <entry key="InvalidDateTimeNumConstructorArgs">{0,number,integer} is an invalid number of arguments for the Simulink.DateTime constructor. Supported constructors are Simulink.DateTime(), Simulink.DateTime(Value), and Simulink.DateTime(Value, ''TimePoint'',  ModeOption, ''StorageDataType'', ModeOption, ''TimeStandard'', ModeOption) with the name-value pairs in any order.</entry> 
+    <entry key="InvalidDateTimeNumArgsFromStoredInteger">{0,number,integer} is an invalid number of arguments for the Simulink.DateTime.fromStoredInteger method. Supported formats are Simulink.DateTime.fromStoredInteger(value) and Simulink.DateTime.fromStoredInteger(Value, ''TimePoint'', ModeOption, ''StorageDataType'', ModeOption, ''TimeStandard'', ModeOption) with the name-value pairs in any order.</entry> 
+    <entry key="InvalidDateTimeValue">Invalid DateTime value. Value must be a real [1x6] double.</entry> 
+    <entry key="InvalidDateTimeFormatAttributes">Invalid Format. Value must be a real scalar string.</entry> 
+    <entry key="InvalidTimeSinceEpochAttributes">Invalid TimeSinceEpochValue attributes. Value must be a real scalar or real [2x1] vector of double, int32, uint32, int64, or uint64.</entry> 
+    <entry key="InvalidTimeSinceEpochDataType"> Data type of ''TimeSinceEpochValue'' must match the container type of  ''StorageDataType''.</entry> 
+    <entry key="InvalidTimeSinceEpochDimension">Invalid TimeSinceEpochValue value dimension for ''StorageDataType''. ''StorageDataType'' of fixdt(x,128,64) must be a 2-by-1 64-bit vector TimeSinceEpochValue, while all other ''StorageDataType'' data types must be a scalar TimeSinceEpochValue.</entry> 
+    <entry key="InvalidTimePointMode_Internal" translate="false">''{0}'' must be a valid time point such as ''Seconds since Unix epoch'', ''Seconds since NTP epoch'', ''Seconds since TAI epoch'', ''Julian date'', ''Modified Julian date'' or ''J2000.0 date''.</entry> 
+    <entry key="InvalidEpoch_Internal" translate="false">''{0}'' must be a valid epoch such as ''Unix'', ''NTP'', ''TAI'', ''Julian'', ''Modified Julian'' or ''J2000.0 date''.</entry> 
+    <entry key="InvalidTimeStandard_Internal" translate="false">''{0}'' must be a valid time standard such as ''TAI'', ''UTC'', ''TT'', or ''TDB''.</entry> 
+    <entry key="LeapSecondTableIncorrectCols"> In block ''{0}'', the number of ''Leap second table'' parameter columns are {1,number,integer}. The number of columns of ''Leap second table'' parameter must be 3.</entry> 
+    <entry key="LeapSecondTableIncorrectRows">In block ''{0}'', the number of rows in the leap second table are {1,number,integer}. To account for the known leap seconds, the number of rows of ''Leap second table'' parameter must be 26 or greater.</entry> 
+    <entry key="LeapSecondTableIncorrectData">Block ''{0}'' has incorrect ''Leap second table'' parameter values. The values must match the known leap second table until 2016.</entry> 
+    <entry key="LeapSecondTableYearOutOfRange"> Invalid value ({1,number,integer}) on row {2,number,integer} of the leap second table. In block ''{0}'', ''Leap second table'' parameter ''year'' value must be between 2017 and 9999.</entry> 
+    <entry key="LeapSecondTableSecondInvalid"> Invalid value ({1,number,integer}) on row {2,number,integer} of leap second table. In block ''{0}'', ''Leap second table'' parameter ''second'' value must be -1, 0, or 1.</entry> 
+    <entry key="LeapSecondTableYearRepeated">In block ''{0}'', duplicate ''Leap second table'' parameter ''year'' values are not supported. The first repeated year specified is {1,number,integer}.</entry> 
+    <entry key="AccumulatedLeapSecondLimit">In block ''{0}'', the parameter value  {1,number,integer} is invalid. ''Accumulated leap seconds'' parameter value must be between 0 and 16,056.</entry> 
+    <entry key="LeapSecondTableYearNotSorted">In block ''{0}'', values in the ''Leap second table'' column ''year'' must be sorted in ascending order.</entry> 
+    <entry key="LeapSecondTableVarIncorrectCols">In block ''{0}'', the number of columns of ''{1}'' used in ''Leap second table'' parameter must be 3.</entry> 
+    <entry key="LeapSecondTableVarIncorrectRows">In block ''{0}'', the number of rows of ''{1}'' used in ''Leap second table'' parameter must be 26 or greater to account for the known leap seconds value until 2016.</entry> 
+    <entry key="LeapSecondTableVarIncorrectData">In block ''{0}'', the value of ''{1}'' used in ''Leap second table'' parameter is incorrect. The value must match the leap second table until 2016. For more information, see the documentation.</entry> 
+    <entry key="LeapSecondTableVarYearOutOfRange">In block ''{0}'', invalid value ({2,number,integer}) on row {3,number,integer} of ''{1}''. ''Leap second table'' parameter ''year'' value must be between 2017 and 9999.</entry> 
+    <entry key="LeapSecondTableVarSecondInvalid">In block ''{0}'', value ({2,number,integer}) on row {3,number,integer} of ''Leap second table'' parameter ''{1}'' column ''second'' value must be -1, 0, or 1.</entry> 
+    <entry key="LeapSecondTableVarYearRepeated">In block ''{0}'', repetition of the ''Leap second table'' parameter ''{1}'' column ''year'' value is not supported. The first repeated year is {2,number,integer}.</entry> 
+    <entry key="LeapSecondTableVarYearNotSorted">In block ''{0}'', values in the ''Leap second table'' parameter ''{1}'' column ''year'' must be sorted in ascending order.</entry>
+    <entry key="DateTimeClockOrClockReaderInExpFcnMdl">Using DateTime Clock or DateTime Clock Reader ''{0}'' block inside an export function model is not supported.</entry>
+    <entry key="DateTimeClockInsideNonVirtualSS">Using DateTime Clock ''{0}'' block inside subsystem ''{1}'' is not supported. Do not use DateTime Clock blocks inside Enabled, Triggered, Function call, Action, Iterator, Reusable, Resettable, Variant, or Function subsystems.</entry>
+    <entry key="DateTimeClockInsideSFChart">Using DateTime Clock ''{0}'' block inside a Stateflow chart ''{1}'' is not supported.</entry>
+    <entry key="DateTimeClockReaderInsideReusableSubsys">Using DateTime Clock Reader ''{0}'' block inside reusable subsystem ''{1}'' is not supported. Instead, change the 'Code generation function packaging' option of the subsystem ''{1}'' to ''Inlined'', ''Auto'' or ''Nonreusable function''.</entry>
+    <entry key="DateTimeClockOrClockReaderInCondExecMdl">Using DateTime Clock or DateTime Clock Reader ''{0}'' block inside a conditionally executed model block is not supported.</entry>
+    <entry key="DateTimeClockOrClockReaderInRunFirstLastSS">Using DateTime Clock or DateTime Clock Reader ''{0}'' blocks inside subsystem ''{1}'' with block property ''Execution Order'' value of 'First' or 'Last' is not supported. Instead, change the ''Execution Order'' property of subsystem ''{1}'' to ''Based on priority''.</entry>
+  </message> 
+</rsccat>

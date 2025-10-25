@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 The MathWorks, Inc. -->
+<!--
+ Hook system management functions with custom rules.
+ -->
+<tags xmlns="http://www.mathworks.com/PolyspaceInternalProperties">
+  <file_scope>
+    <parameter name="force_polyspace_semantics_for_this_file" value="1"/>
+    <parameter name="only_if_library" value="i2c_smbus"/>
+  </file_scope>
+  <named_properties>
+    <!-- the body of i2c_smbus_access is removed from analysis -->
+    <properties name="skip_body">
+      <property kind="skip_body"/>
+    </properties>
+    <properties name="i2c_smbus_access_properties" ><!-- Check first argument is non-null, allocated, initialized -->
+      <property kind="check">ARGUMENT_MAY_BE_READ_OR_WRITE_BUFFER</property>
+      <property kind="check">name@ARGUMENT_MAY_BE_READ_OR_WRITE_BUFFER@arg@5,2</property>
+    </properties>
+  </named_properties>
+  <!-- __s32 i2c_smbus_access(int file, char read_write, __u8 command, int size, union i2c_smbus_data *data)
+      * If read_write is equal to I2C_SMBUS_READ then data must be initialized
+      * Otherwise, data is filled by the function
+  -->
+  <tag id="i2c_smbus_access" kind="function" user_name="i2c_smbus_access" nb_args="5">
+    <use_properties name="skip_body"/>
+    <use_properties name="i2c_smbus_access_properties"/>
+  </tag>
+</tags>

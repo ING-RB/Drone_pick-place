@@ -1,0 +1,149 @@
+{
+    "rosActionServerExecuteGoalFcn":
+    {
+        "inputs":
+        [
+            {"name":"IsGoalReachedFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"StepExecutionFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"CreateFeedbackFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"CreatePreemptedResultFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"CreateSuccessfulResultFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"StepDelay", "kind":"namevalue", "type":"numeric"},
+            {"name":"UserData", "kind":"namevalue"}
+        ]
+    },
+    "rosApplyTransform":
+    {
+        "inputs":
+        [
+            {"name":"tfmsg", "kind":"required", "type":"struct"},
+            {"name":"msg", "kind":"required", "type":"struct"}
+        ]
+    },
+    "rosPlot":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"Parent", "kind":"namevalue", "type":[["matlab.ui.Figure"], ["matlab.graphics.axis.Axes"]]},
+            {"name":"MaximumRange", "kind":"namevalue", "type":[["numeric","scalar"]]}
+        ]
+    },
+    "rosReadBinaryOccupancyGrid":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"threshold", "kind":"ordered", "type":[["numeric","scalar"]]},
+            {"name":"value", "kind":"ordered", "type":[["numeric","scalar"]]}
+        ]
+    },
+    "rosReadCartesian":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"RangeLimits", "kind":"namevalue", "type":[["numeric","vector"]]}
+        ]
+    },
+    "rosReadField":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"fieldname", "kind":"required", "type":[["char"],["string"]]},
+            {"name":"PreserveStructureOnRead", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric", "scalar"]]},
+            {"name":"DataType", "kind":"namevalue", "type":[["char"], ["string"]]}
+        ]
+    },
+    "rosReadImage":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"Encoding", "kind":"namevalue", "type":[["char"],["string"]]}
+        ]
+    },
+    "rosReadRGB":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"PreserveStructureOnRead", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric", "scalar"]]},
+            {"name":"DataType", "kind":"namevalue", "type":[["char"], ["string"]]}
+        ]
+    },
+    "rosReadXYZ":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"PreserveStructureOnRead", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric", "scalar"]]},
+            {"name":"DataType", "kind":"namevalue", "type":[["char"], ["string"]]}
+        ]
+    },
+    "rosWriteBinaryOccupancyGrid":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"map", "kind":"required", "type":[["binaryOccupancyMap"]]}
+        ]
+    },
+    "rosWriteImage":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"image", "kind":"required", "type":[["numeric"]]},
+            {"name":"alpha", "kind":"ordered", "type":[["numeric"]]},
+            {"name":"Encoding", "kind":"namevalue", "type":[["char"],["string"]]}
+        ]
+    },
+    "rosWriteOccupancyGrid":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":"struct"},
+            {"name":"map", "kind":"required", "type":[["occupancyMap"]]}
+        ]
+    },
+    "rosWriteXYZ":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":["struct"]},
+            {"name":"xyzPoints", "kind":"required", "type":[["numeric","size=:,3"],["numeric","size=:,:,3"]]},
+            {"name":"PointStep", "kind":"namevalue", "type":[["nonnegative","scalar","nonnan"],["numeric","scalar"]]},
+            {"name":"FieldOffset", "kind":"namevalue", "type":[["nonnegative","scalar","nonnan"],["numeric","scalar"]]}
+        ]
+    },
+    "rosWriteRGB":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":["struct"]},
+            {"name":"rgb", "kind":"required", "type":[["numeric","size=:,3"],["numeric","size=:,:,3"]]},
+            {"name":"PointStep", "kind":"namevalue", "type":[["nonnegative","scalar","nonnan"],["numeric","scalar"]]},
+            {"name":"FieldOffset", "kind":"namevalue", "type":[["nonnegative","scalar","nonnan"],["numeric","scalar"]]}
+        ]
+    },
+    "rosWriteIntensity":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":["struct"]},
+            {"name":"intensity", "kind":"required", "type":[["numeric","size=:,1"],["numeric","2d"]]},
+            {"name":"PointStep", "kind":"namevalue", "type":[["nonnegative","scalar","nonnan"],["numeric","scalar"]]},
+            {"name":"FieldOffset", "kind":"namevalue", "type":[["nonnegative","scalar","nonnan"],["numeric","scalar"]]}
+        ]
+    },
+    "rosReadTransform":
+    {
+        "inputs":
+        [
+            {"name":"msg", "kind":"required", "type":["struct"]},
+            {"name":"OutputOption", "kind":"namevalue", "type":"choices={'se3','single','pair'}"}
+        ]
+    }
+}

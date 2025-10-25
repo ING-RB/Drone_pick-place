@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2024 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="ko_KR" product="fixed" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="BurstEulerDescr">이 블록은 공유된 CORDIC 회전 커널을 사용하여 오일러 회전을 수행합니다.</entry>
+    <entry key="DivByConstDescr">입력값을 상수로 나누고 정수로 반올림합니다.</entry>
+    <entry key="RealIdxCORDIC">이 블록은 다음 조건을 충족하는 실수 CORDIC 기븐스 회전을 수행합니다. \n\n
+    yOut(k) = 0\n\n여기서 좌표 [x(k), y(k)]는 우반면에 있다고 가정합니다.\n
+    </entry>
+    <entry key="IterCounter">이 블록은 반복 알고리즘을 구동하는 데 사용되는 HDL에 최적화된 카운터를 구현합니다. 카운터의 반복 횟수는 파라미터 "반복 횟수"를 사용하여 설정됩니다. "validIn"이 high가 되면 횟수 세기가 시작됩니다. 그런 다음 "count" 아웃포트의 출력값과 함께 0부터 횟수가 증가합니다. "count"의 값이 0보다 크면 아웃포트 "countIsPositive"가 high가 됩니다. 마지막 반복에서 포트 "last"가 high가 되어 루프의 다음 반복이 최종 반복임을 나타냅니다. 이는 "count"가 반복 횟수에서 1을 뺀 값과 같은 경우에 발생합니다. 마지막으로 모든 반복이 완료되면 "ready"가 high가 되고 블록은 "validIn"에서 다른 신호를 허용할 수 있습니다.
+    </entry>
+    <entry key="RealDivideFullDescription">실수 입력값 num 및 den이 주어진 경우 이 블록은 CORDIC 알고리즘을 사용하여 y = num/den을 충족하는 y를 계산합니다.</entry>
+    <entry key="ComplexDivideFullDescription">복소수 입력값 num 및 den이 주어진 경우 이 블록은 CORDIC 알고리즘을 사용하여 y = num/den을 충족하는 y를 계산합니다.</entry>
+    <entry key="RealReciprocalFullDescription">실수 입력값이 주어진 경우 이 블록은 CORDIC 알고리즘을 사용하여 y = 1/u를 충족하는 y를 계산합니다.</entry>
+    <entry key="NormalizedReciprocalFullDescription">실수형 스칼라(u ~= 0)가 주어진 경우 이 블록은 CORDIC 알고리즘을 사용하여 다음 조건을 충족하는 y 및 e를 계산합니다.\n 0.5 &lt; |y| &lt;= 1\n및\n (2^e)*y = 1/u.</entry>
+    <entry key="RealNormalizerFullDescription">실수형 스칼라(u ~= 0)가 주어진 경우 이 블록은 다음 조건을 충족하는 x와 e를 생성합니다.\n 1 &lt;= x &lt; 2\n및 \n x = (2^e)*|u|\n및 isNegative = u&lt;0.</entry>
+    <entry key="RealCORDICReciprocalKernelFullDescription">다음 범위의 실수형 스칼라 x가 주어진 경우\n   1 &lt;= x &lt; 2\n이 블록은 다음 조건을 충족하는 y를 생성합니다.\n   y = 1/x(isNegative = false)\n   y = -1/x(isNegative = true)\n및\n   0.5 &lt; |y| &lt;= 1.</entry>
+    <entry key="PositiveNormalizedReciprocalFullDescription">실수형 스칼라(u &gt; 0)가 주어진 경우 이 블록은 다음 조건을 충족하는 y와 e를 생성합니다.\n   0.5 &lt; y &lt;= 1\n및\n   (2^e)*y = 1/u.</entry>
+    <entry key="PositiveRealNormalizerFullDescription">실수형 스칼라(u &gt; 0)가 주어진 경우 이 블록은 다음 조건을 충족하는 x와 e를 생성합니다.\n   1 &lt;= x &lt; 2\n및\n   x = (2^e)*u.</entry>
+    <entry key="PositiveRealCORDICReciprocalKernelFullDescription">다음 범위의 실수형 스칼라 x가 주어진 경우\n   1 &lt;= x &lt; 2\n이 블록은 다음 조건을 충족하는 y를 생성합니다.\n   y = 1/x\n및\n   0.5 &lt; y &lt;= 1.</entry>
+    <entry key="validInToReady"> 이 블록은 이 블록을 사용하는 계산의 출력값이 유효한지 확인하기 위해 "validIn"이 ready와 동일한 순환에서 high가 아닌 경우를 검사합니다.
+    </entry>
+    <entry key="MemoryControllerDescription">이 블록은 QR 알고리즘에 대한 계산 및 I/O 리소스를 관리합니다.
+        이 블록은 계산 리소스에서의 데이터 흐름을 제어하며, 블록에 새 데이터를 사용할 수 있는
+        시점과 계산 결과가 유효한 경우를 모두 나타냅니다.
+    </entry>
+    <entry key="RowRotationsFullDescription">이 블록은 yOut(k) = 0을 충족하도록 입력값 x 및 y에 대해 CORDIC 기븐스 회전을
+        수행합니다. 동일한 기븐스 회전이 입력값 u 및 v에 적용됩니다.
+    </entry>
+    <entry key="InverseCORDICGainDescription">이 블록은 CORDIC 증가율 인자에 대한 하드웨어 효율적 수정을 수행합니다.</entry>
+    <entry key="ComplexIdxCORDIC">이 블록은 yOut(k) = 0을 충족하도록 복소수 값을 갖는 입력값 x 및 y에 대해 CORDIC 기븐스 회전을
+        수행합니다. 동일한 기븐스 회전이 입력값 u 및 v에 적용됩니다. </entry>
+    <entry key="ComplexRowRotationsFullDescription">이 블록은 x(k)에 대해 y(k)를 삭제하는 데 필요한 기븐스 회전을
+        수행합니다. 이는 두 단계를 거쳐 수행됩니다. 첫 번째 단계는 x(k) 및 y(k)를 실수축으로 회전합니다. 다음 단계에서는 yOut(k) = 0을 충족하도록 벡터 x 및 y에 기븐스 회전이 적용됩니다.
+    </entry>
+    <entry key="RotateFirstElementToRealDescription">이 블록은 xOut(k) = 실수를 충족하도록 x(k)에 대해 CORDIC 기븐스 회전을
+        수행합니다. 동일한 기븐스 회전이 u에도 적용됩니다.
+    </entry>
+    <entry key="FinalPivotActionDescription">필요한 경우 양수축에 맞춰 피벗 요소를 정렬합니다. 그렇지 않은 경우 데이터를 통과시킵니다.</entry>
+    <entry key="SetElementToZeroDescription">이 블록은 u(k) = 0을 설정합니다.</entry>
+    <entry key="TanhDescription">입력값 x에 대한 쌍곡탄젠트를 계산합니다. 여기서 x는 유한한 실수 숫자형 스칼라 값입니다.</entry>
+    <entry key="ModByConstHDLDescription"> HDL에 최적화된 아키텍처를 사용하여 상수 분모로 모듈로 연산을 수행합니다.
+    </entry>
+    <entry key="ModByConstDescription">상수 분모로 모듈로 연산을 수행합니다.</entry>
+    <entry key="DivByConstHDLDescription">HDL에 최적화된 아키텍처를 사용하여 입력값을 상수로 나누고 정수로 반올림합니다.</entry>
+    <entry key="CORDICSquareRootHDLFullDescription">실수 입력값(u &gt;= 0)이 주어진 경우 이 블록은 CORDIC 알고리즘을 사용하여 u의 제곱근을 계산합니다.</entry>
+    <entry key="CORDICSigmoidFullDescription">실수 입력값이 주어진 경우 이 블록은 CORDIC 알고리즘을 사용하여 u에 대해 시그모이드 활성화를 계산합니다.</entry>
+    <entry key="RowsInMatrices">행렬 A 및 B의 행 개수:</entry>
+    <entry key="RowsInA">행렬 A의 행 개수:</entry>
+    <entry key="ColumnsInARowsInB">행렬 A의 열 개수 및 행렬 B의 행 개수:</entry>
+    <entry key="ColumnsInA">행렬 A의 열 개수:</entry>
+    <entry key="ColumnsInB">행렬 B의 열 개수:</entry>
+    <entry key="Denominator">분모</entry>
+    <entry key="DenominatorMod">모듈로 연산의 분모: </entry>
+    <entry key="NumberOfCORDICIterations">CORDIC 반복 횟수:</entry>
+    <entry key="OutputPrototype">출력 데이터형:</entry>
+    <entry key="ForgettingFactor">망각 인자:</entry>
+    <entry key="RegularizationParameter">정규화 파라미터:</entry>
+    <entry key="DimensionOfA">행렬 A의 차원:</entry>
+    <entry key="NumberOfJacobiIterations">야코비 반복 횟수:</entry>
+    <entry key="RoundingMethodParam">반올림 방법: </entry>
+    <entry key="SelectOutputs">출력 선택:</entry>
+    <entry key="SignalType">신호 유형:</entry>
+    <entry key="NumberOfIterationsPerReg">파이프라인 레지스터당 반복 횟수:</entry>
+    <entry key="CORDICMaxShiftValue">CORDIC 최대 시프트 값:</entry>
+    <entry key="AutoCORDICMaxShiftValue">입력 워드 길이를 기반으로 자동으로 CORDIC 최대 시프트 값 선택</entry>
+    <entry key="DivideByZeroPort">0으로 나누기 포트 표시</entry>
+    <entry key="PipelineConfigurations">파이프라인 구성</entry>
+    <entry key="TabMain">기본</entry>
+    <entry key="ArgMustBeCompileTimeConst">{1}에서 {0}은(는) 컴파일타임 상수여야 합니다.</entry>
+    <entry key="HDLCodegenUnsupportedForFloat">이 함수의 부동소수점 데이터에 대해서는 {0}에 대한 HDL 코드 생성이 지원되지 않습니다.</entry>
+    <entry key="IncompatibleInterfaces">유형 {0}의 인터페이스를 유형 {1}의 부모에 추가할 수 없습니다.</entry>
+    <entry key="InvalidMatrices">Invalid matrices.</entry>
+    <entry key="InputsMustBeNumeric">Inputs to {0} must be numeric</entry>
+    <entry key="InputMustBeScalar">입력값 {0}은(는) 스칼라여야 합니다.</entry>
+    <entry key="InputMustBeNumeric">입력값 {0}은(는) 숫자형이어야 합니다.</entry>
+    <entry key="InputMustBeBinaryPointScaled">Fixed-point input {0} must be binary-point scaled.</entry>
+    <entry key="InputMustBeReal">입력값 {0}은(는) 실수 값이어야 합니다.</entry>
+    <entry key="InputMustBeLogicalOrNumeric">입력값 {0}은(는) 논리형이거나 숫자형이어야 합니다.</entry>
+    <entry key="InputMustBeFixedScaledDoubleOrFloat">입력값 {0}은(는) 고정소수점, 스케일링된 double형 또는 부동소수점이어야 합니다.</entry>
+    <entry key="InputMustBeZeroOrBetweenOneAndTwo">입력값 {0}은(는) 0이거나 1보다 크고 2보다 작아야 합니다.</entry>
+    <entry key="InputMustNotBePow2">입력값 {0}은(는) 정확히 2의 거듭제곱이어야 합니다.</entry>
+    <entry key="MatrixDimsPositiveInteger"> 입력값 {0}은(는) 양의 정수여야 합니다.</entry>
+    <entry key="MustBeTallAndSkinny">Number of rows of input {0} must be greater than or equal to the number of columns.</entry>
+    <entry key="MustBeTallAndSkinnySizes">행 개수 {0}은(는) 열 개수 {1}보다 크거나 같아야 합니다.</entry>
+    <entry key="MustHaveSameNumberOfSamples">Matrices {0} and {1} must have the same number of samples. This is given by the size of the third dimension of the matrix. If the matrix is two-dimensional, the number of samples is 1.</entry>
+    <entry key="NfpNotSupported">블록 {0}은(는) 네이티브 부동소수점 코드 생성을 지원하지 않습니다. 대신 고정소수점 데이터형을 사용해 보십시오.</entry>
+    <entry key="NumColsGEOne">행렬 {0}의 열 개수는 1보다 크거나 같은 정수여야 합니다.</entry>
+    <entry key="NumColsGTOne">The number of columns in matrix {0} must be an integer greater than 1.</entry>
+    <entry key="NumRowsGTOne">The number of rows in matrix {0} must be an integer greater than 1.</entry>
+    <entry key="MustBeVector">입력값 {0}은(는) 벡터여야 합니다</entry>
+    <entry key="InputMustMatchSizeParameter">입력값 {0}의 길이({1, number, integer})는 입력 파라미터 {2}의 길이({3, number, integer})와 일치해야 합니다.</entry>
+    <entry key="NumColsAShouldMatchNumRowsB">The number of columns in matrix {0} should be the same as the number of rows in matrix {1}.</entry>
+    <entry key="SameNumberOfRows">Matrices {0} and {1} must have the same number of rows.</entry>
+    <entry key="UnknownMatrixOperation">Operation {0} is not a valid operation for diagram construction.</entry>
+    <entry key="ValueDoesNotSatisfyConstraint">입력값 {0}의 값은 {1}이어야 합니다</entry>
+    <entry key="ValueNotRepresentableInInputType">{0}의 값은 입력 유형 ''{1}''에서 표현할 수 없습니다.</entry>
+    <entry key="XYSameDatatype">입력값 {0} 및 {1}은(는) 데이터형이 동일해야 합니다</entry>
+    <entry key="DivideDimensionsShouldMatch">분자 및 분모의 요소 개수는 블록 ''{0}''의 요소 개수와 동일해야 합니다.</entry>
+    <entry key="InputOutputMustBeAllFixedOrFloat">입력 데이터와 출력 데이터형은 모두 부동소수점 유형이거나 모두 고정소수점 데이터형이어야 합니다.</entry>
+    <entry key="NonSquareSVDInputMustBeTallAndSkinny">입력 행렬의 행 개수는 열 개수보다 커야 합니다. 정사각 행렬의 경우, Square Jacobi SVD HDL Optimized 블록을 사용하십시오.</entry>
+    <entry key="CORDICMaxShiftValMustBeSmallerThanWordlength">CORDIC 최대 시프트 값은 입력 wordlength보다 작아야 합니다.</entry>
+    <entry key="PipelineMustBeZero">HDL 파라미터 {0}은(는) 0이어야 합니다. 0으로 설정됩니다.</entry>
+    <entry key="nIterPerRegMustBeSmallerThanNTotalIter">파이프라인 레지스터당 반복 횟수가 계산된 총 반복 횟수 {0}을(를) 초과합니다. 클록당 반복 횟수를 총 반복 횟수로 설정합니다.</entry>
+    <entry key="ModByConstLatencyChanged24a">R2024a에서는 "Modulo by Constant HDL Optimized"의 대기 시간이 9에서 4로 감소되었습니다. 모델은 정확히 이 블록의 대기 시간에 따라 달라지기 때문에 이 변경으로 인해 모델 동작이 바뀔 수 있다는 점에 유의하십시오.</entry>
+    <entry key="SqrtOfNegativeNumber">음수의 제곱근이 발견되었습니다. 해당 값의 절댓값의 제곱근을 계산합니다.</entry>
+    <entry key="ReciprocalAndDivideLatencyChanged24b">R2024b에서는 "{0}"의 대기 시간이 파이프라인 구성에 의해 결정되도록 변경되었습니다. 모델 동작은 이 블록의 대기 시간에 정밀하게 의존하기 때문에 이 변경으로 인해 모델 동작이 바뀔 수 있다는 점에 유의하십시오.</entry>
+    <entry key="BurstEulerType">Burst Euler Transformation</entry>
+    <entry key="DivByConst">Divide by Constant and Round</entry>
+    <entry key="ModByConst">Modulo by Constant</entry>
+    <entry key="ModByConstHDL">Modulo by Constant HDL Optimized</entry>
+  </message>
+</rsccat>

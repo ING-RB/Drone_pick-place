@@ -1,0 +1,77 @@
+{
+    "fileDatastore":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file"],["cell"], ["char"], ["matlab.io.datastore.DsFileSet"], ["matlab.io.datastore.FileSet"]]},
+            {"name":"UniformRead", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]},
+            {"name":"ReadFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"PreviewFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'file','partialfile','bytes'}"},
+            {"name":"BlockSize", "kind":"namevalue", "type":["numeric"]}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":"matlab.io.datastore.FileDatastore"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileDatastore":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file"],["cell"], ["char"], ["matlab.io.datastore.DsFileSet"], ["matlab.io.datastore.FileSet"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]},
+            {"name":"ReadFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"PreviewFcn", "kind":"namevalue", "type":"function_handle"},
+            {"name":"ReadMode", "kind":"namevalue", "type":"choices={'file','partialfile','bytes'}"},
+            {"name":"BlockSize", "kind":"namevalue", "type":["numeric"]}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":"matlab.io.datastore.FileDatastore"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileDatastore.shuffle":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.FileDatastore"}
+        ],
+        "outputs":
+        [
+            {"name":"shufds", "type":"matlab.io.datastore.FileDatastore"}
+        ]
+    }
+	,
+    "matlab.io.datastore.FileDatastore.subset":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.FileDatastore"},
+			{"name":"indices", "kind":"required", "type":[["numeric", "vector", "integer", "positive"], ["logical", "vector"]]}
+        ],
+        "outputs":
+        [
+            {"name":"subds", "type":"matlab.io.datastore.FileDatastore"}
+        ]
+    }
+	,
+    "matlab.io.datastore.FileDatastore.numobservations":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.FileDatastore"}
+        ],
+        "outputs":
+        [
+            {"name":"n", "type":["numeric", "scalar", "integer"]}
+        ]
+    }
+}

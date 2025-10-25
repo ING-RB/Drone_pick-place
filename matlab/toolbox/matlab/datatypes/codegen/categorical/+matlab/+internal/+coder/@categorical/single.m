@@ -1,0 +1,18 @@
+%#codegen
+function b = single(a)
+%SINGLE Convert categorical array to SINGLE array.
+%   B = SINGLE(A) converts the categorical array A to a SINGLE array.  Each
+%   element of B contains the category index for the corresponding element of A.
+%
+%   Undefined elements of A are assigned the value NaN in B.
+%
+%   See also DOUBLE.
+
+%   Copyright 2018 The MathWorks, Inc.
+
+b = single(a.codes);
+for i = 1:numel(b)
+    if b(i) == 0
+        b(i) = NaN; %categorical.undefCode
+    end
+end

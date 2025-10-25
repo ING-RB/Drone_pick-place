@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2023-2024 The MathWorks, Inc. -->
+<rsccat version="1.0" locale="en_US" product="Simulink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../matlab/resources/schema/msgcat.xsd">
+  <message>       
+      <entry key="InvalidSteadyStateSolverName">Invalid input arguments for steady state solver. Input parameter ''{0}'' is not a valid solver name. Please choose from the following: 'ode1', 'ode2', 'ode3', 'ode4', 'ode5', 'ode8','ode14x', 'ode1be', 'ode113', 'ode23', 'ode23s', 'ode23t', 'ode23tb', 'ode45', 'ode15', 'odeN', 'daessc'.</entry>     
+      <entry key="InvalidBlockPath">Block ''{0}'' is invalid in the current model.</entry>      
+      <entry key="InvalidSteadyStateSpec">Cannot set parameter ''SteadyStateSpec'' on output port ''{0}'' of block ''{1}''</entry>
+      <entry key="InvalidSteadyStateOP">The operating point ''{0}'' specified for model ''{1}'' is invalid. It may not exist in the current workspace, or it is not a model operating point.</entry>
+      <entry key="MovedSteadyStateBlockPath">Cannot find block ''{0}'' within the steady state operating point in model ''{1}''. This block may be moved or deleted.</entry>     
+      <entry key="NoSteadyStateSpecPort">Steady state simulation cannot proceed because no valid output port is provided. Specify a target output port using \nset_param(oPort, 'SteadyStateSpec', spec); \nand re-enable steady state simulation.</entry>
+      <entry key="SolverTypeShouldBeFixedStep">Invalid input arguments for steady state solver. Steady state solver must have the same solver type as model original solver. However input solver ''{0}'' is not a fixed step solver.</entry>      
+      <entry key="SolverTypeShouldBeVariableStep">Invalid input arguments for steady state solver. Steady state solver must have the same solver type as model original solver. However input solver ''{0}'' is not a variable step solver.</entry>    
+      <entry key="SteadyStateMdlOPNotExist">Unable to load model operating point, ''{0}'' from the workspace. Make sure the operating point exists in the workspace and the name is correct.</entry>
+      <entry key="SteadyStateSimstateNameConflict">Steady state operating point save name ''{0}'' conflicts with the names of existing logging items. Please change the steady state operating point save name.</entry>
+      <entry key="SteadyStateSimstateNameInvalid">Steady state operating point save name ''{0}'' is not valid. Change the steady state operating point save name.</entry>
+      <entry key="SteadyStateSpecOnBusPort">Cannot set parameter ''SteadyStateSpec'' on a bus signal port, block ''{0}'' output port ''{1}''.</entry>
+      <entry key="SteadyStateConstantOnVirtualBlk">Cannot set parameter ''SteadyStateConstant'' on compile time virtual block ''{0}''. It can only be set on non-virtual block outports.</entry>
+      <entry key="SteadyStateConstantOnBusPort">Cannot set parameter ''SteadyStateConstant'' on a bus signal port, block ''{0}'' output port ''{1}''.</entry>
+      <entry key="SteadyStateMdlRefWrongOPSpecSequence">Wrong specification for reference model operating point save and restore, the first field should be 'path' which is a cell array specifying the path to the target reference model block, the second field should be ''name'' which specifies the operating point name.</entry>
+      <entry key="SteadyStateMdlRefWrongOPSpec">Wrong specification for {0} referenced model operating point. The specification should be a struct with ''path'' field and ''name'' field. ''path'' field specify the path to the target referenced model block, ''name'' field specifies the operating point name.</entry>
+      <entry key="SteadyStateConverged">Model ''{3}'' is converged to the steady state target {0} within tolerance of {1} at simulation time {2}.</entry>
+      <entry key="SteadyStateNotConverged">No steady state operating point saved for model ''{0}'' because the model did not converge to specified steady state target {1} within the tolerance {2} before the simulation stop time {3}.</entry>
+      <entry key="MdlRefReset">Model reference {0} request has been reset.</entry>
+      
+      <!--Partial Loading Model Block OP API -->
+      <entry key="InvalidBlockOPName">Invalid operating point name ''{0}'' specified for block ''{1}''. The operating point name must be a valid MATLAB identifier.</entry>
+      <entry key="BlockOPNameNotExist">Error evaluating expression ''{0}'' for 'InitialState' specified for model block ''{1}''. Variable ''{0}'' does not exist in the workspace.</entry>
+      <entry key="BlockOPNotFound">Unable to load model block operating point ''{0}'' from the workspace. Make sure the operating point exists in the workspace and the name is correct.</entry>
+      <entry key="ModelRefNotInNormalModeForSave">Operating point not saved for Model block "{0}" because saving and loading model reference operating points is supported only for Model blocks that simulate in normal mode and are not part of a variant subsystem.</entry>
+      <entry key="ModelRefNotInNormalModeForLoad">Initial state specified on Model block "{0}" not loaded because saving and loading model reference operating points is supported only for Model blocks that simulate in normal mode and are not part of a variant subsystem.</entry>
+      <entry key="InvalidModelRefOP">The operating point ''{0}'' specified for model ''{1}'' is invalid. It may not exist in the current workspace, or it is not a model operating point.</entry>
+      <entry key="MdlRefOPNotMatchMdlRefBlock">The name of the target referenced model, {0}, that is to be restored does not match the referenced model name, ''{1}'', saved in the  operating point ''{2}''. The states of referenced model {0} can not be restored.</entry>
+       <entry key="SteadyStateMdlRefOPNotExist">Unable to load referenced model operating point, ''{0}'' from the workspace. Make sure the operating point exists in the workspace and the name is correct. Or reset the loading settings with \n\nset_param(''{1}'', 'ModelBlockLoadSpec', []);</entry>
+       <entry key="DuplicateOPName">Operating point of Model block "{1}" saved using the name "{3}" because the name "{0}" is already used to save the operating point of Model block "{2}".</entry>
+       <entry key="RapidAccelNotSupport">Saving and loading model reference operating points is not supported in rapid accelerator simulations.</entry>
+       
+      <!-- Steady State Command-line API -->
+      <entry key="FeaturedOffOption">Steady state solver command-line API is featured off at this moment.</entry>
+      <entry key="InvalidPortObject">The specified port handle, {0}, is invalid or does not exist.</entry>     
+      <entry key="NotValidMATLABName">The parameter {0} is not a valid MATLAB name.</entry>
+      <entry key="TooManyOutputArguments">Too many output arguments.</entry>                           
+      <entry key="NotEnoughInputArguments">Not enough input arguments. </entry>
+      <entry key="InvalidSSObject">Invalid type of the first input argument. An valid steady state simulation object should either be 'port' or 'model'.</entry>      
+      <entry key="InvalidModelToClear"> ''{0}'' is not a block diagram.</entry>             
+      <entry key="SSTypeNotSupport">''{0}'' is not a supported type for steady state simulation. The supported types include 'Model' or 'Port'.</entry>
+      <entry key="InvalidStringExpr">Parameter value of ''{0}'' must be character vector or string.</entry>
+  </message>
+</rsccat>
+
+<!-- LocalWords:  daessc
+-->

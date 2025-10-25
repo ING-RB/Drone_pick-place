@@ -1,0 +1,3 @@
+function mustBeValidFrequencyUnitWithAuto(value)
+controllib.chart.internal.utils.mustBeValidFrequencyUnit(value,AllowAuto=true)
+end

@@ -1,0 +1,329 @@
+<!--Copyright 2013-2023 The MathWorks, Inc. -->
+<compiler_configuration>
+  <compiler_names>
+    <!--
+      The driver (cctc) calls the C (ctc) or C++ (cptc) compiler.  Tasking
+      documents the latters so end-users may call them directly and consequently
+      we must register them here.
+
+      We do not register the cctc driver here because there is a conflict on the
+      -c option.  For the driver it must be specified in <compile_options_list>
+      (or there will be link error when polyspace-configure re-invokes it)
+      but the compilers do not support it.  See g2074811 for details.
+    -->
+    <name>ctc</name>
+    <name>cptc</name>
+    <alias>cctc</alias>
+    <name>carm</name>
+    <name>cparm</name>
+    <name>c850</name>
+    <name>cp166</name>
+  </compiler_names>
+  <include_options>
+    <opt>-I</opt>
+    <opt>--include-directory</opt>
+  </include_options>
+  <system_include_options>
+    <opt>--sys-include</opt>
+  </system_include_options>
+  <preinclude_options>
+    <opt>-H</opt>
+    <opt>--include-file</opt>
+    <opt>--include-macros-file</opt>
+  </preinclude_options>
+  <define_options>
+    <opt>-D</opt>
+    <opt>--define</opt>
+  </define_options>
+  <undefine_options>
+    <opt>-U</opt>
+    <opt>--undefine</opt>
+  </undefine_options>
+  <options_file_options>
+    <opt>-f</opt>
+    <opt>--option-file</opt>
+  </options_file_options>
+  <output_options>
+    <opt>-o</opt>
+    <opt>--output</opt>
+  </output_options>
+  <standard_options>
+    <std version="c90">--iso=90</std>
+    <std version="c99">--iso=99</std>
+    <std version="c11" c_default="1">--iso=11</std>
+    <std version="c++03">--c++=03</std>
+    <std version="c++11">--c++=11</std>
+    <std version="c++14" cpp_default="1">--c++=14</std>
+  </standard_options>
+  <semantic_options>
+    <opt isIgnored="1">-?</opt>
+    <opt numArgs="1">-A</opt>
+    <opt isPrefix="1">--align</opt>
+    <opt>--alternative-sfr-file</opt>
+    <opt>--alternative-tokens</opt>
+    <opt>--anachronisms</opt>
+    <opt>--auto-type</opt>
+    <opt>--base-assign-op-is-default</opt>
+    <opt>--building-runtime</opt>
+    <opt isPrefix="true">-C</opt>
+    <opt isIgnored="true" removePhases="build_config">-c</opt>
+    <opt>-c90</opt>
+    <opt>-c99</opt>
+    <opt isPrefix="true">--c++</opt>
+    <opt isPrefix="1" isIgnored="1">--cache</opt>
+    <opt isPrefix="1" isIgnored="1">--cert</opt>
+    <opt isIgnored="1">--check</opt>
+    <opt isPrefix="1">--code-core-association</opt>
+    <opt isPrefix="1">--code-section-alignment</opt>
+    <opt isPrefix="1">--compact-max-size</opt>
+    <opt>--control-flow-info</opt>
+    <opt>--compound-literals</opt>
+    <opt isPrefix="1">--context-limit</opt>
+    <opt isPrefix="1">--core</opt>
+    <opt numArgs="1">--cpu</opt>
+    <opt isPrefix="1" isIgnored="1">--create-pch</opt>
+    <opt isPrefix="1">--data-core-association</opt>
+    <opt isPrefix="1">--data-section-alignment</opt>
+    <opt isPrefix="1">--default-near-size</opt>
+    <opt>--default-nocommon-tentative-definitions</opt>
+    <opt isPrefix="1">--debug-info</opt>
+    <opt isPrefix="1">--default-a0-size</opt>
+    <opt isPrefix="1">--default-a1-size</opt>
+    <opt>--defer-parse-function-templates</opt>
+    <opt>--delegating-constructors</opt>
+    <opt isPrefix="1" isIgnored="1">--dep-file</opt>
+    <opt>--deprecated-string-conv</opt>
+    <opt isPrefix="1" isIgnored="1">--diag</opt>
+    <opt>--dollar</opt>
+    <opt isPrefix="1">--eabi</opt>
+    <opt>--embedded-c++</opt>
+    <opt numArgs="1">--endianness</opt>
+    <opt isPrefix="1" isIgnored="1">--error-file</opt>
+    <opt isPrefix="1" isIgnored="1">--error-limit</opt>
+    <opt>--exceptions</opt>
+    <opt>--extended-variadic-macros</opt>
+    <opt>-F</opt>
+    <opt isPrefix="1">--fp-model</opt>
+    <opt>--friend-injection</opt>
+    <opt>--force-c</opt>
+    <opt>--force-c++</opt>
+    <opt>--force-vtbl</opt>
+    <opt numArgs="1">--fpu</opt>
+    <opt>--friend-injection</opt>
+    <opt isPrefix="1">-g</opt>
+    <opt>--g++</opt>
+    <opt>--generate-move-operations</opt>
+    <opt>--global-type-checking</opt>
+    <opt isPrefix="1">--gnu_version</opt>
+    <opt>--guiding-decls</opt>
+    <opt isPrefix="1" isIgnored="1">--help</opt>
+    <opt>--ignore-memory-type-for-automatics</opt>
+    <opt>--ignore-std</opt>
+    <opt>--immediate-in-code</opt>
+    <opt>--implicit-extern-c-type-conversion</opt>
+    <opt>--implicit-include</opt>
+    <opt>--implicit-noexcept</opt>
+    <opt numArgs="1">--incl-suffixes</opt>
+    <opt>--indirect</opt>
+    <opt>--indirect-runtime</opt>
+    <opt>--inline</opt>
+    <opt isPrefix="1">--inline-max-incr</opt>
+    <opt isPrefix="1">--inline-max-size</opt>
+    <opt>--integer-enumeration</opt>
+    <opt isPrefix="1">--io-streams</opt>
+    <opt numArgs="1">--iso</opt>
+    <opt isIgnored="1">-k</opt>
+    <opt isIgnored="1">--keep-output-files</opt>
+    <opt>--lambdas</opt>
+    <opt numArgs="1" isIgnored="1">-L</opt>
+    <opt isPrefix="1">--language</opt>
+    <opt>--late-tiebreaker</opt>
+    <opt isPrefix="1" isIgnored="1">--list-file</opt>
+    <opt>--long-long</opt>
+    <opt isPrefix="1">--loop</opt>
+    <opt isPrefix="1">-M</opt>
+    <opt isPrefix="1" isIgnored="1">--make-target</opt>
+    <opt isPrefix="1">--max-call-depth</opt>
+    <opt isPrefix="1" isIgnored="1">--mil</opt>
+    <opt isPrefix="1" isIgnored="1">--misrac</opt>
+    <opt>--mmu-on</opt>
+    <opt>--mmu-present</opt>
+    <opt>--multibyte-chars</opt>
+    <opt numArgs="1">-N</opt>
+    <opt isIgnored="1">-n</opt>
+    <opt>--namespaces</opt>
+    <opt>--nonconst-ref-anachronism</opt>
+    <opt>--no-arg-dep-lookup</opt>
+    <opt>--no-array-new-and-delete</opt>
+    <opt>--no-auto-storage</opt>
+    <opt>--no-auto-type</opt>
+    <opt>--no-bool</opt>
+    <opt>--no-c++11-sfinae</opt>
+    <opt>--no-c++11-sfinae-ignore-access</opt>
+    <opt>--no-clear</opt>
+    <opt>--no-class-name-injection</opt>
+    <opt>--no-const-string-literals</opt>
+    <opt>--no-defer-parse-function-templates</opt>
+    <opt>--no-dep-name</opt>
+    <opt>--no-distinct-template-signatures</opt>
+    <opt>--no-double</opt>
+    <opt>--no-enum-overloading</opt>
+    <opt>--no-exceptions</opt>
+    <opt>--no-explicit</opt>
+    <opt>--no-extended-variadic-macros</opt>
+    <opt>--no-extern-inline</opt>
+    <opt>--no-fpu</opt>
+    <opt>--no-implicit-typename</opt>
+    <opt>--no-inlining</opt>
+    <opt>--no-lambdas</opt>
+    <opt>--no-namespaces</opt>
+    <opt>--no-nonconst-ref-anachronism</opt>
+    <opt>--no-parse-templates</opt>
+    <opt>--no-preprocessing-only</opt>
+    <opt>--no-rvalue-refs</opt>
+    <opt>--no-stdarg-builtin</opt>
+    <opt>--no-stdinc</opt>
+    <opt>--no-stdstlinc</opt>
+    <opt>--no-tasking-sfr</opt>
+    <opt>--no-type-traits-helpers</opt>
+    <opt>--no-typename</opt>
+    <opt>--no-nullptr</opt>
+    <opt>--no-variadic-macros</opt>
+    <opt isPrefix="1" isIgnored="1">--no-warnings</opt>
+    <opt>--nonconst-ref-anachronism</opt>
+    <opt>--nonstd-anonymous-unions</opt>
+    <opt>--nonstd-default-arg-deduction</opt>
+    <opt>--nonstd-instantiation-lookup</opt>
+    <opt>--nonstd-qualifier-deduction</opt>
+    <opt>--nonstd-using-decl</opt>
+    <opt>--nullptr</opt>
+    <opt isPrefix="1">-O</opt>
+    <opt numArgs="1" isIgnored="1">--object-comment</opt>
+    <opt>--old-for-init</opt>
+    <opt>--old-specializations</opt>
+    <opt isPrefix="1">--optimize</opt>
+    <opt>-p</opt>
+    <opt isIgnored="1">--pch</opt>
+    <opt isPrefix="1" isIgnored="1">--pch-dir</opt>
+    <opt isIgnored="1">--pch-verbose</opt>
+    <opt isPrefix="1">--pending-instantiations</opt>
+    <opt>--preserve-lvalues-with-same-type-casts</opt>
+    <opt isPrefix="1">--profile</opt>
+    <opt>-R</opt>
+    <opt>-r</opt>
+    <opt>--relax-compact-name-check</opt>
+    <opt>--relax-overlay-name-check</opt>
+    <opt isprefix="1">--rename-sections</opt>
+    <opt>--rtti</opt>
+    <opt isprefix="1">--runtime</opt>
+    <opt>--rvalue-ctor-is-not-copy-ctor</opt>
+    <opt>--rvalue-refs</opt>
+    <opt>-s</opt>
+    <opt>--schar</opt>
+    <opt>--section-name-with-symbol</opt>
+    <opt>--signed-bitfields</opt>
+    <opt isPrefix="1">--silicon-bug</opt>
+    <opt>--software-partitioning-info</opt>
+    <opt>--source</opt>
+    <opt>--special-subscript-cost</opt>
+    <opt>--spram</opt>
+    <opt>--static</opt>
+    <opt isIgnored="1">--stdout</opt>
+    <opt>--strict</opt>
+    <opt isPrefix="1">--switch</opt>
+    <opt isPrefix="1">-t</opt>
+    <opt>--tasking-sfr</opt>
+    <opt>--template-typedefs-in-diagnostics</opt>
+    <opt isPrefix="1">--tradeoff</opt>
+    <opt>--type-traits-helpers</opt>
+    <opt>-u</opt>
+    <opt>--uchar</opt>
+    <opt>--uliterals</opt>
+    <opt>--unrestricted-unions</opt>
+    <opt isPrefix="1">--unroll-factor</opt>
+    <opt>--unsigned-bitfields</opt>
+    <opt>--user-defined-literals</opt>
+    <opt isPrefix="1">--user-mode</opt>
+    <opt>--using-std</opt>
+    <opt isIgnored="1">-V</opt>
+    <opt>--variadic-macros</opt>
+    <opt>--variadic-templates</opt>
+    <opt>--vla</opt>
+    <opt isIgnored="1">-w</opt>
+    <opt isPrefix="1" isIgnored="1">--warnings-as-errors</opt>
+    <opt>--wchar_t-keyword</opt>
+    <opt>-x</opt>
+    <opt isPrefix="1" isIgnored="1">--xref-file</opt>
+    <opt numArgs="1" isIgnored="1">-X</opt>
+    <opt numArgs="1">-Y</opt>
+    <opt numArgs="1">-Z</opt>
+  </semantic_options>
+  <switch>
+    <case>
+      <condition>
+        <or>
+          <macro_defined name="__CARM__"/>
+          <macro_defined name="__CPARM__"/>
+        </or>
+      </condition>
+      <actions>
+        <target_name>arm</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <or>
+          <macro_defined name="__C166__"/>
+          <macro_defined name="__CP166__"/>
+        </or>
+      </condition>
+      <actions>
+        <target_name>c166</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <macro_defined name="__C850__"/>
+      </condition>
+      <actions>
+        <target_name>rh850</target_name>
+      </actions>
+    </case>
+    <case>
+      <condition>
+        <or>
+          <macro_defined name="__CTC__"/>
+          <macro_defined name="__CPTC__"/>
+        </or>
+      </condition>
+      <actions>
+        <target_name>tricore</target_name>
+      </actions>
+    </case>
+  </switch>
+  <preprocess_options_list>
+    <opt>-E</opt>
+  </preprocess_options_list>
+  <preprocess_dollar_macros>yes</preprocess_dollar_macros>
+  <strict_option_names>yes</strict_option_names>
+  <forbidden_macros_list></forbidden_macros_list>
+  <compile_options_list>
+  </compile_options_list>
+  <compiler>tasking</compiler>
+  <src_extensions>
+    <ext>c</ext>
+    <ext>cc</ext>
+    <ext>cp</ext>
+    <ext>cxx</ext>
+    <ext>cpp</ext>
+    <ext>c++</ext>
+  </src_extensions>
+  <obj_extensions>
+    <ext>o</ext>
+  </obj_extensions>
+  <precompiled_header_extensions>
+    <ext>pch</ext>
+  </precompiled_header_extensions>
+  <include_strategy>sniff</include_strategy>
+  <sources_to_ignore>cstart.*\.c.*</sources_to_ignore>
+</compiler_configuration>

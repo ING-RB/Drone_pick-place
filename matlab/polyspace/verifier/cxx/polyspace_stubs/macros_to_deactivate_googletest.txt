@@ -1,0 +1,21 @@
+# Copyright 2022 The MathWorks, Inc.
+#
+# Simplified versions of some Google Test blocking assertions that improve precision.
+# Automagically used alongside companion __polyspace__googletest.h when
+# "-library googletest" passed to Polyspace.
+#
+
+# Redefining GTEST_ASSERT_FOO also covers ASSERT_FOO.
+GTEST_ASSERT_TRUE def_otf:GTEST_ASSERT_TRUE(c)=__POLYSPACE_GTEST_ASSERT_HELPER(c) header:gtest.h
+GTEST_ASSERT_FALSE def_otf:GTEST_ASSERT_FALSE(c)=__POLYSPACE_GTEST_ASSERT_HELPER(!(c)) header:gtest.h
+GTEST_ASSERT_EQ def_otf:GTEST_ASSERT_EQ(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER((l) == (r)) header:gtest.h
+GTEST_ASSERT_NE def_otf:GTEST_ASSERT_NE(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER((l) != (r)) header:gtest.h
+GTEST_ASSERT_LT def_otf:GTEST_ASSERT_LT(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER((l) < (r)) header:gtest.h
+GTEST_ASSERT_LE def_otf:GTEST_ASSERT_LE(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER((l) <= (r)) header:gtest.h
+GTEST_ASSERT_GT def_otf:GTEST_ASSERT_GT(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER((l) > (r)) header:gtest.h
+GTEST_ASSERT_GE def_otf:GTEST_ASSERT_GE(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER((l) >= (r)) header:gtest.h
+
+# The following macros have no GTEST_ counterparts.
+ASSERT_STREQ def_otf:ASSERT_STREQ(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER(std::strcmp((l), (r)) == 0) header:gtest.h
+ASSERT_STRNE def_otf:ASSERT_STRNE(l,r)=__POLYSPACE_GTEST_ASSERT_HELPER(std::strcmp((l), (r)) != 0) header:gtest.h
+ASSERT_NEAR def_otf:ASSERT_NEAR(x,y,epsilon)=__POLYSPACE_GTEST_ASSERT_HELPER(std::fabs((x) - (y)) <= (epsilon)) header:gtest.h

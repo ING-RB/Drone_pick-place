@@ -1,0 +1,64 @@
+# Copyright 2011-2023 The MathWorks, Inc.
+errno def:errno=errno
+assert def:assert=assert
+HUGE_VAL def_otf:HUGE_VAL=HUGE_VAL
+HUGE_VALF def_otf:HUGE_VALF=HUGE_VALF
+HUGE_VALL def_otf:HUGE_VALL=HUGE_VALL
+FD_SET def_otf:FD_SET(fd,fdset)=__polyspace_macro_FD_SET(fd,fdset)
+FD_CLR def_otf:FD_CLR(fd,fdset)=__polyspace_macro_FD_CLR(fd,fdset)
+FD_ISSET def_otf:FD_ISSET(fd,fdset)=__polyspace_macro_FD_ISSET(fd,fdset)
+FD_ZERO def_otf:FD_ZERO(fdset)=__polyspace_macro_FD_ZERO(fdset)
+isalnum header:ctype.h
+isalpha header:ctype.h
+iscntrl header:ctype.h
+isdigit header:ctype.h
+islower header:ctype.h
+isblank header:ctype.h
+isgraph header:ctype.h
+isprint header:ctype.h
+ispunct header:ctype.h
+isspace header:ctype.h
+isupper header:ctype.h
+isxdigit header:ctype.h
+SIG_ERR def_otf:SIG_ERR=&__polyspace_macro_SIG_ERR
+#Define if __int128 is supported on this host => Will be defined in EDG
+_GLIBCXX_USE_INT128
+alloca header:alloca.h
+sscanf header:stdio.h
+fscanf header:stdio.h
+scanf header:stdio.h
+vfscanf header:stdio.h
+vscanf header:stdio.h
+vsscanf header:stdio.h
+vfwscanf header:wchar.h
+vwscanf header:wchar.h
+vswscanf header:wchar.h
+fwscanf header:wchar.h
+wscanf header:wchar.h
+swscanf header:wchar.h
+isfinite header:math.h def_otf:isfinite(x)=(sizeof(x)==sizeof(float)?__builtin_mw_isfinitef(x):sizeof(x)==sizeof(double)?__builtin_mw_isfinite(x):__builtin_mw_isfinitel(x))
+isinf header:math.h def_otf:isinf(x)=(sizeof(x)==sizeof(float)?__builtin_mw_isinff(x):sizeof(x)==sizeof(double)?__builtin_mw_isinf(x):__builtin_mw_isinfl(x))
+isnan header:math.h def_otf:isnan(x)=(sizeof(x)==sizeof(float)?__builtin_mw_isnanf(x):sizeof(x)==sizeof(double)?__builtin_mw_isnan(x):__builtin_mw_isnanl(x))
+isgreater header:math.h def_otf:isgreater(x, y)=((x) > (y))
+isgreaterequal header:math.h def_otf:isgreaterequal(x, y)=((x) >= (y))
+isless header:math.h def_otf:isless(x, y)=((x) < (y))
+islessequal header:math.h def_otf:islessequal(x, y)=((x) <= (y))
+signbit header:math.h def_otf:signbit(x)=__builtin_mw_signbit(x)
+atomic_load_explicit  header:stdatomic.h
+atomic_store_explicit header:stdatomic.h
+fpclassify header:math.h def_otf:fpclassify(x)=(sizeof(x)==sizeof(float)?__builtin_mw_fpclassifyf(x):sizeof(x)==sizeof(double)?__builtin_mw_fpclassify(x):__builtin_mw_fpclassifyl(x))
+isnormal header:math.h def_otf:isnormal(x)=(fpclassify(x)==FP_NORMAL)
+#INFINITY and NAN has to be a function-like macro to avoid macro to constant transformation by security_lib.sml:load_macro_values_from_db()
+__MW_INFINITY  def:__MW_INFINITY()=__INFINITY__
+INFINITY header:math.h def_otf:INFINITY=__MW_INFINITY()
+__MW_NAN  def:__MW_NAN()=__NAN__
+NAN header:math.h def_otf:NAN=__MW_NAN()
+PTHREAD_CREATE_JOINABLE def_otf:PTHREAD_CREATE_JOINABLE=0 header:pthread.h
+PTHREAD_CREATE_DETACHED def_otf:PTHREAD_CREATE_DETACHED=1 header:pthread.h
+BOOST_FALLTHROUGH def_otf:BOOST_FALLTHROUGH=((void)0)
+FP_NAN def_otf:FP_NAN=0
+FP_INFINITE def_otf:FP_INFINITE=1
+FP_ZERO def_otf:FP_ZERO=2
+FP_SUBNORMAL def_otf:FP_SUBNORMAL=3
+FP_NORMAL def_otf:FP_NORMAL=4
+

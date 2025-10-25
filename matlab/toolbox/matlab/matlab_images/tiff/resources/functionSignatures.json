@@ -1,0 +1,248 @@
+{
+"Tiff":
+{
+	"inputs":
+	[
+		{"name":"filename", "kind":"required", "type":[["file"], ["matlabpathfile=*.tif,*.tiff"], ["char"]]},
+		{"name":"mode", "kind":"ordered", "type":"choices={'r','w','w8','a','r+'}"}
+	]
+},
+"Tiff.close":
+{
+},
+"Tiff.computeStrip":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"row", "kind":"required", "type":["numeric"]},
+		{"name":"plane", "kind":"ordered", "type":["numeric"]}
+	]
+},
+"Tiff.computeTile":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"rowcol", "kind":"required", "type":["numeric"]},
+		{"name":"plane", "kind":"ordered", "type":["numeric", "numel=2"]}
+	]
+},
+"Tiff.currentDirectory":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"rowcol", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.getTag":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"tagId", "kind":"required", "type":[["numeric"],["char", "choices=Tiff.getTagNames"]]}
+	]
+},
+"Tiff.getTagNames":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.getVersion":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.isTiled":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.lastDirectory":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.nextDirectory":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.numberOfStrips":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.numberOfTiles":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.read":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.readEncodedStrip":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"stripNumber", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.readEncodedTile":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"tileNumber", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.readRGBAImage":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.readRGBAStrip":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"row", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.readRGBATile":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"row", "kind":"required", "type":["numeric"]},
+        {"name":"col", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.rewriteDirectory":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.setDirectory":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"dirNum", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.setSubDirectory":
+{
+	"inputs":
+	[   
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"offset", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.setTag":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"tagId", "kind":"required", "type":[["numeric"],["char", "choices=Tiff.getTagNames"]]},
+        {"name":"tagValue", "kind":"required"}
+	]
+},
+"Tiff.setTag":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"tagStruct", "kind":"required", "type":["struct"]}
+	]
+},
+"Tiff.write":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"imageData", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.write":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"Y", "kind":"required", "type":["numeric"]},
+        {"name":"Cb", "kind":"required", "type":["numeric"]},
+        {"name":"Cr", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.writeDirectory":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]}
+	]
+},
+"Tiff.writeEncodedStrip":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"stripNumber", "kind":"required", "type":["numeric"]},
+        {"name":"imageData", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.writeEncodedStrip":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"stripNumber", "kind":"required", "type":["numeric"]},
+        {"name":"Y", "kind":"required", "type":["numeric"]},
+        {"name":"Cb", "kind":"required", "type":["numeric"]},
+        {"name":"Cr", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.writeEncodedTile":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"tileNumber", "kind":"required", "type":["numeric"]},
+        {"name":"imageData", "kind":"required", "type":["numeric"]}
+	]
+},
+"Tiff.writeEncodedTile":
+{
+	"inputs":
+	[
+        {"name":"tiffobj", "kind":"required", "type":["Tiff"]},
+        {"name":"tileNumber", "kind":"required", "type":["numeric"]},
+        {"name":"Y", "kind":"required", "type":["numeric"]},
+        {"name":"Cb", "kind":"required", "type":["numeric"]},
+        {"name":"Cr", "kind":"required", "type":["numeric"]}
+	]
+}
+}

@@ -1,0 +1,51 @@
+{
+    "_comment": "Copyright 2022-2023 The MathWorks, Inc.",
+
+    "setSecret":{
+        "inputs":[
+            {"name":"secretname","kind":"required","type":[["string"],["choices=matlab.authnz.internal.utils.listSecretNames"]]},
+            {"name":"Overwrite","kind":"namevalue", "type":["logical","scalar"],"default":"true"}
+        ]
+    },
+    "getSecret":{
+        "inputs":[
+            {"name":"secretname","kind":"required","type":[["string"],["choices=matlab.authnz.internal.utils.listSecretNames"]]}
+        ],
+        "outputs":[
+            { "name": "out", "type": "string"}
+        ]
+    },
+    "removeSecret":{
+        "inputs":[
+            {"name":"secretname","kind":"required","type":[["string"],["choices=matlab.authnz.internal.utils.listSecretNames"]]}
+        ]
+    },
+    "isSecret":{
+        "inputs":[
+            {"name":"secretname","kind":"required","type":[["string"],["choices=matlab.authnz.internal.utils.listSecretNames"]]}
+        ],
+        "outputs":[
+            { "name": "out", "type": "logical"}
+        ]
+    },
+    "listSecrets":{
+        "outputs":[
+            { "name": "t", "type": "table"}
+        ]
+    },
+    "getSecretMetadata":{
+        "inputs":[
+            {"name":"secretname","kind":"required","type":[["string"],["choices=matlab.authnz.internal.utils.listSecretNames"]]}
+        ],
+        "outputs":[
+            { "name": "d", "type": "dictionary"}
+        ]
+    },
+    "setSecretMetadata":{
+        "inputs":[
+            {"name":"secretname","kind":"required","type":[["string"],["choices=matlab.authnz.internal.utils.listSecretNames"]]},
+            {"name":"metadataDict","kind":"required", "type":"dictionary"},
+            {"name":"WriteMode","kind":"namevalue", "type":"choices={'add', 'merge', 'replace'}","default":"'add'"}
+        ]
+    }
+}

@@ -1,0 +1,79 @@
+.mwProgressBar {
+    white-space: normal;
+    --progress-color-info: #0099FF;
+    --progress-color-warning: #F1B51C;
+    --progress-color-error: #E23D2D;
+    --progress-color-success: #22AC3C;
+    /* default progress color */
+    --progress-color: #0099FF;
+}
+
+.mwProgressBar .mwProgressBarGutter {
+    overflow: hidden;
+    width: 100px;
+    height: 5px;
+    background-color: var(--mw-backgroundColor-selected);
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+@keyframes mwProgressBarWaveAnimation {
+    0% {
+        background-position: -30px 100%;
+    }
+    100% {
+        background-position: 150px 100%;
+    }
+}
+
+.mwProgressBar .mwProgressBarProgress {
+    width: 100px;
+    height: 100%;
+    transform-origin: left;
+    transform: translateX(-100px);
+    transition: transform .15s linear;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .3) 40%, rgba(255, 255, 255, .3) 60%, rgba(255, 255, 255, 0));
+    background-size: 30px 100%;
+    background-position: -30px 100%;
+    background-repeat: no-repeat;
+    animation: mwProgressBarWaveAnimation 2s linear 1.5s infinite;
+}
+
+.mwProgressBar.mwProgressBarNoWave .mwProgressBarProgress,
+.mwProgressBar:not(.mwProgressBarIndeterminate)[data-value="100"] .mwProgressBarProgress {
+    animation: none;
+}
+
+@keyframes mwProgressBarIndeterminateAnimation {
+    0% {
+        transform: translateX(-25px);
+    }
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+.mwProgressBar.mwProgressBarIndeterminate .mwProgressBarProgress {
+    width: 25px;
+    animation: mwProgressBarIndeterminateAnimation 1.5s cubic-bezier(0.3, 0.0, .9, 0.6) 0s infinite;
+    transition: none;
+    background-image: none;
+}
+
+.mwProgressBar .mwProgressBarInvisible,
+.mwProgressBarIndeterminate .mwProgressBarText {
+    display: none;
+}
+
+.mwProgressBarText {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: var(--mw-color-primary);
+    line-height: 20px;
+}
+
+.mwProgressBar .mwProgressBarProgress {
+    /* progress color */
+    background-color: var(--progress-color);
+}

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copyright 2025 The MathWorks, Inc.-->
+
+<rsccat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" locale="zh_CN" product="Simulink" xsi:noNamespaceSchemaLocation="../../resources/schema/msgcat.xsd">
+  <message>
+    <entry key="CustomCodeParsingFailed">无法解析自定义代码。如果您的自定义代码使用 C++ 语言语法，请确保 "语言" 设置为 "C++"。解析器错误消息: {0}</entry>
+    <entry key="NonwritableFolder">Unable to write to current working directory ''{0}''.  Change your current working directory to a directory that is not write-protected.</entry>
+    <entry key="CustomCodeInstrumBuildFailed">Failed to build custom code. Specified custom code is not compatible with the coverage.</entry>
+    <entry key="CustomCodeParsingError">解析模型 ''{0}'' 的自定义代码时出错。请修复自定义代码中的错误，如果自定义代码不兼容，请禁用 ''{1}''。如果您的自定义代码使用 C++ 语言语法，请确保在 "模型配置参数 &gt; 仿真目标" 中将 ''语言'' 设置为 ''C++''。</entry>
+    <entry key="CustomCodeParsingDiagnostic">在 {0}{1} 中，\n{2}:\n{3}</entry>
+    <entry key="CustomCodeSnippet">自定义代码</entry>
+    <entry key="CustomCodeParsingUnknownException">未知异常。</entry>
+    <entry key="BlockCustomCodeParsingError">解析模块 ''{0}'' 的自定义代码时出错。请修复自定义代码中的错误。如果您的自定义代码使用 C++ 语言语法，请确保在 "模型配置参数 &gt; 仿真目标" 中将 ''语言'' 设置为 ''C++''。</entry>
+    <entry key="CallTheFunction">调用函数: {0}。</entry>
+    <entry key="CustomCodeLibBuildError">为模型 ''{0}'' 编译自定义代码仿真目标时遇到错误。请修复自定义代码中的错误，如果自定义代码不兼容，请禁用 ''{1}''。</entry>
+    <entry key="CustomCodeLibLoadFailed">Failed to load custom code simulation library:{0}</entry>
+    <entry key="CustomCudeParseSuccessful">解析模型 ''{0}'' 中的自定义代码成功。</entry>
+    <entry key="CustomCodeBuildSuccessful">已成功为模型 ''{0}'' 编译自定义代码。</entry>
+    <entry key="CustomCudeParseSuccessfulWithImport">模型 ''{0}'' 中的自定义代码解析成功。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" btn="apply"&gt; &lt;cmd&gt;Simulink.importExternalCTypes(''{0}'',''Names'',{3});&lt;/cmd&gt; &lt;txt&gt;函数 ''{1}'' 在其接口处具有以下自定义数据类型: \n\n{2}\n要将它们作为 Simulink.AliasType、Simulink.Bus 或 Simulink 枚举类对象手动导入基础工作区中，请使用以下命令:\n&lt;a href="matlab:doc('Simulink.importExternalCTypes')"&gt;Simulink.importExternalCTypes&lt;/a&gt;(''{0}'',''Names'',{3});\n要自动导入，请点击 "应用"。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="CustomCodeUndefinedFcnMsg">下列函数未在指定的自定义代码源文件或库文件中定义。\n{0}</entry>
+    <entry key="CustomCodeUndefinedVarMsg">下列变量未在指定的自定义代码源文件或库文件中定义。\n{0}</entry>
+    <entry key="CustomCodeUndefinedFcnFilteredOut">The specified function ''{1}'' in C Caller block ''{0}'' is filtered out because it is undefined in custom code source files or library files.</entry>
+    <entry key="UnsupportedCustomCodeVarAccess">
+    无法访问自定义代码变量 ''{0}''。在以下情况下不支持自定义代码变量访问: &lt;ul&gt; &lt;li&gt;自定义代码源文件或库文件未定义变量。请通过调整 ''未定义函数的处理'' 参数，指定 Simulink 如何处理未定义的函数和变量。&lt;/li&gt; &lt;li&gt;不支持变量数据类型。不支持引用、联合、匿名结构体或枚举以及类作为值类型&lt;/li&gt; &lt;/ul&gt;</entry>
+    <entry key="AmbiguousCustomType">Simulink type ''{0}'' must be imported into the Architectural Data section of the Simulink Data Dictionary with the ''C++ Namespace'' parameter value set explicitly because Simulink type ''{0}'' matches names of multiple types in the custom code associated with model ''{1}''. Otherwise, the generated code may be incorrect because of unintentional use of namespace.</entry>
+    <entry key="SLCCBlockDoesNotSupportMultiExecInstances">子系统中的模块 ''{0}'' 是不受支持的 ''{1}''，因为子系统包含 For Each 模块 ''{2}''，并且该模块调用了可能没有确定性输出的自定义代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;load_system(''{3}'');configset.highlightParameter(''{3}'','DefaultCustomCodeDeterministicFunctions');&lt;/cmd&gt; &lt;txt&gt;通过选择假定输出是无状态和确定性的，启用对自定义代码的多个执行实例的支持。''{3}'' \n如果该模块是依赖模块自定义代码的 C Function 模块，则将 ''CustomCodeIsMultiInstantiable'' 设置为 ''on''。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+         </entry>
+    <entry key="NoAvailableFunctionsInFilterOutMode">No available functions to have in C Caller block ''{0}''. Undefined functions are filtered out by default. See ''{1}'' for details. </entry>
+    <entry key="CustCodeSrcFiles">自定义源文件字符串</entry>
+    <entry key="CustCodeLibFiles">自定义库文件字符串</entry>
+    <entry key="CustCodeIncludeDirs">自定义包含目录路径字符串</entry>
+    <entry key="TokenizeError">解析自定义代码时出错。</entry>
+    <entry key="MismatchedDollars">不匹配的 $ 字符。无法在 {0} 中继续代换。</entry>
+    <entry key="CustCodeFileNotFoundInSRootDir">在 {1} 中指定的 ''{0}'' 相对于模型目录 {2} 不存在</entry>
+    <entry key="InvalidDollarString">'$' 封装的标记 ''{0}'' 的计算结果不是表达式 ''{1}'' 中用于代换的基础工作区中的字符串。</entry>
+    <entry key="CustCodeFileNotFoundInSearchDirs">在 {1} 中指定的 {0} 不存在于以下任一搜索目录中:\n{2}</entry>
+    <entry key="ErrorInDollarString">Unable to evaluate ''$'' encapsulated token ''{0}'' in base workspace for substitution in {1}.</entry>
+    <entry key="SizeFcnInInputArgDims">Unable to determine the dimension for argument ''{0}''. A size() expression can only be used in an output argument dimension specification.</entry>
+    <entry key="SizeFcnIncorrectInputs">无法确定参数 ''{0}'' 的维度。size() 表达式只能接受一个或两个参数。</entry>
+    <entry key="SizeFcnInvalidSymbolName">无法确定参数 ''{0}'' 的维度。size() 表达式的第一个参数必须指向一个输入。</entry>
+    <entry key="SizeFcnOnlyInputInOutputOrParameter">无法使用 ''{0}'' 指定 ''{1}'' 的维度。请指定参数的值或输出的维度。</entry>
+    <entry key="DataMustBeInSizeFcn">无法确定参数 ''{0}'' 的维度。必须在 size() 表达式中使用 ''{1}''。</entry>
+    <entry key="SizeFcnInvalidDimension">无法确定参数 ''{0}'' 的维度。size() 表达式的第二个输入必须为维度。</entry>
+    <entry key="SizeComputationFailedGeneric">无法计算维度。使用 "size()" 表达式检查维度设定中的语法错误。</entry>
+    <entry key="SizeComputationFailed">无法计算维度。请检查 ''{0}'' 的维度设定中的语法错误。</entry>
+    <entry key="SizeComputationFailedInCBlock">无法解析 ''{0}'' 的端口维度。检查维度设定中的语法错误。输入和 InputOutput 端口仅支持继承大小。输出端口支持 size() 表达式。 </entry>
+    <entry key="SizeComputationFailedInPyBlock">无法解析 ''{0}'' 的端口维度。检查维度设定中的语法错误。输入端口仅支持继承大小。输出端口支持 size() 表达式。 </entry>
+    <entry key="SizeComputationInvalidDimensionShapeOrValue">无法计算参数 ''{0}'' 的维度。维度设定的计算结果必须为标量或整数值向量。每个维度的长度必须介于 1 和 {1, number, integer} 之间。</entry>
+    <entry key="SizeExpressionMustBeBuiltInNumeric"> A size() expression must be built-in numeric type. Unable to resolve the type specified ''{0}''.</entry>
+    <entry key="TypeImporterModelHeaderFieldEmpty">无法解析模型 ''{0}'' 中的指定自定义代码。</entry>
+    <entry key="TypeImporterParamValueOutputDirInvalid">找不到指定的输出目录 ''{0}''。</entry>
+    <entry key="TypeImporterModelHasNoConfigurationParameters">模型 ''{0}'' 中的配置参数无效。</entry>
+    <entry key="TypeImporterArgumentShadowed">无法设置属性 ''{0}''，因为它被模型的配置参数遮蔽。</entry>
+    <entry key="TypeImporterParamValueIsNotString">''{0}'' value must be a nonempty string or character vector.</entry>
+    <entry key="TypeImporterParamValueIsNotStringOrStringArray">''{0}'' 值必须为非空字符串或字符串数组。</entry>
+    <entry key="TypeImporterParamValueIsNotHardwareImplementation">''{0}'' value must be an instance of "coder.HardwareImplementation" or "Simulink.ConfigSet".</entry>
+    <entry key="TypeImporterParamNotSupportSimultaneously">无法同时使用属性 ''{0}'' 和 ''{1}''。</entry>
+    <entry key="TypeImporterParamDataDictionaryAndEnumClassConflict">使用 "DataDictionary" 时，无法将属性 "EnumClass" 设置为 "MATLAB 文件"。</entry>
+    <entry key="TypeImporterBusTypeImported">文件 ''{1}'' 中的 ''{0}'' 作为 Simulink.Bus 对象导入。</entry>
+    <entry key="TypeImporterEnumTypeImported">文件 ''{1}'' 中的 ''{0}'' 作为枚举类导入。</entry>
+    <entry key="TypeImporterAliasTypeImported">文件 ''{1}'' 中的 ''{0}'' 作为 Simulink.AliasType 对象导入。</entry>
+    <entry key="TypeImporterExistingBusType">无法从文件 ''{1}'' 重新导入 ''{0}''。存在同名的一致 Simulink.Bus 对象。</entry>
+    <entry key="TypeImporterExistingEnumType">无法从文件 ''{1}'' 重新导入 ''{0}''。存在同名的一致枚举类。</entry>
+    <entry key="TypeImporterExistingAliasType">无法从文件 ''{1}'' 重新导入 ''{0}''。存在同名的一致 Simulink.AliasType 对象。</entry>
+    <entry key="TypeImporterInconsistentBusType">无法从文件 ''{1}'' 重新导入 ''{0}''。它与现有 Simulink.Bus 对象不一致。</entry>
+    <entry key="TypeImporterInconsistentAliasType">无法从文件 ''{1}'' 重新导入 ''{0}''。它与现有 Simulink.AliasType 对象不一致。</entry>
+    <entry key="TypeImporterInconsistentEnumTypeEnumNames">无法从文件 ''{1}'' 导入 ''{0}''。枚举名称与现有枚举类不一致。</entry>
+    <entry key="TypeImporterInconsistentEnumTypeEnumValues">未从文件 ''{1}'' 导入 ''{0}''。枚举值与现有枚举类不一致。</entry>
+    <entry key="TypeImporterInconsistentNotValidBusType">无法从文件 ''{1}'' 导入 ''{0}''。存在具有相同变量名称的无效 Simulink.Bus 对象。</entry>
+    <entry key="TypeImporterInconsistentNotValidAliasType">无法从文件 ''{1}'' 导入 ''{0}''。存在具有相同变量名称的无效 Simulink.AliasType 对象。</entry>
+    <entry key="TypeImporterInconsistentBusTypeElementField">来自文件 ''{1}'' 的 ''{0}'' 在 {0}.Elements({2, number, integer}).{3} 上与现有 Simulink.Bus 对象不一致。</entry>
+    <entry key="TypeImporterInconsistentBusTypeNewElement">与现有 Simulink.Bus 对象相比，文件 ''{1}'' 中的 ''{0}'' 具有新的 Elements({2, number, integer})。</entry>
+    <entry key="TypeImporterNonImportableBusType">无法从文件 ''{1}'' 导入 ''{0}''。它为空，或者包含类型不受 Simulink 支持的字段。</entry>
+    <entry key="TypeImporterInvalidVariableName">无法从文件 ''{1}'' 导入 ''{0}''。它不是有效的 MATLAB 变量名称。</entry>
+    <entry key="TypeImporterInvalidFieldName">由于字段名称无效，无法从文件 ''{1}'' 导入 ''{0}''。</entry>
+    <entry key="TypeImporterAmbiguousType">无法从文件 ''{1}'' 导入 ''{0}''，因为在不同命名空间下有多个同名类型。请使用具有命名空间限定类型名称的 "名称" 选项仅指定一个类型。</entry>
+    <entry key="TypeImporterEnumStorageType64Bits">无法从文件 ''{1}'' 导入 ''{0}''，因为枚举存储类型为 64 位。</entry>
+    <entry key="TypeImporterFailToCreateEnumTypeFile">Unable to open enum file for enum type ''{0}''. \n{1}</entry>
+    <entry key="TypeImporterDataDictionaryNeededForDataDictioanrySection">A valid value of ''DataDictionary'' option is required when specifying a value for ''DataDictionarySection'' option.</entry>
+    <entry key="TypeImporterInconsistentTypeNamespace">无法从文件 ''{1}'' 重新导入 ''{0}''。类型 ''{0}'' 存在于 Simulink 数据字典中，其 C++ 命名空间不同于现有类型的代码生成 C++ 命名空间。</entry>
+    <entry key="TypeImporterInconsistentTargetDataSection">无法从文件 ''{1}'' 重新导入 ''{0}''。类型 ''{0}'' 存在于 Simulink 数据字典中，并且指定的 ''DataDictionarySection'' 不同于现有类型的数据分区。</entry>
+    <entry key="TypeImporterFailToCreateEnumTypeBecauseOfConflict">Failed to create enumeration type ''{0}'' because an enumeration with the same name already exists in the path or has been loaded in another data dictionary.</entry>
+    <entry key="CFcnCallerBlkFcnNotExist">无法从 C Caller 模块 ''{0}'' 中调用函数 ''{1}''。函数未在自定义代码中定义，或是 C Caller 模块不支持的类型。</entry>
+    <entry key="CFcnCallerSyncToolTip">刷新自定义代码。</entry>
+    <entry key="CFcnCallerGotoFcnDefNoFcnDlgErrTitle">自定义代码错误</entry>
+    <entry key="CustomCodeGenericError">自定义代码错误</entry>
+    <entry key="CFcnCallerGotoFcnDefNoFcn">找不到所选函数 ''{0}''。点击刷新按钮。</entry>
+    <entry key="CFcnCallerGotoFcnDefToolTip">转至函数。</entry>
+    <entry key="CFcnCallerConfigSetToolTip">配置自定义代码设置。</entry>
+    <entry key="InvalidTypeForInport">无法将 ''{0}'' 解析为 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1, number, integer}" objname="{2}"&gt;输入端口 {1, number, integer}&lt;/sldiag&gt; 的有效类型。</entry>
+    <entry key="InvalidTypeForOutport">无法将 ''{0}'' 解析为 ''{2}'' 的&lt;sldiag objui="outport" objparam="{1, number, integer}" objname="{2}"&gt;输出端口 {1, number, integer}&lt;/sldiag&gt; 的有效类型。</entry>
+    <entry key="InvalidTypeForParam">Unable to resolve ''{0}'' to a valid type for block parameter or constant ''{1}'' of ''{2}''.</entry>
+    <entry key="ParsingTypeFailed">Failed to parse type string ''{0}'' for argument ''{1}''.</entry>
+    <entry key="CCallerParameterRegisterError">Unable to register parameters for C Caller block ''{0}''.</entry>
+    <entry key="ParameterCFcnDimensionMismatch">Parameter data size mismatch. Block parameter ''{0}'' of specified dimension ''{1}'' does not match size of evaluated parameter ''{2}''.</entry>
+    <entry key="ParameterValueCannotBeEmptyMatrix">The value of block parameter ''{0}'' is set to be an empty matrix. Parameter value that is an input to a C Function cannot be an empty matrix.</entry>
+    <entry key="PortSpec_Prompt">端口设定:</entry>
+    <entry key="CFunctionPortSpec_Prompt">端口和参数</entry>
+    <entry key="PortSpec_ArgName">名称</entry>
+    <entry key="PortSpec_Scope">作用域</entry>
+    <entry key="PortSpec_Index">端口</entry>
+    <entry key="PortSpec_Label">标签</entry>
+    <entry key="PortSpec_Type">类型</entry>
+    <entry key="PortSpec_Size">维度</entry>
+    <entry key="CSPortSpec_Size">维度</entry>
+    <entry key="NameColumnForClassTooltip">用名称实例化类的对象。例如，"obj" 或 "obj()"。\n要将参量传递给类构造函数，您可以使用常量\n以及具有下表中定义的常量和参数符号的表达式。\n例如，"obj(10)" 或 "obj(aParam[0])"。</entry>
+    <entry key="NameColumnTooltip">端口或参数变量名称</entry>
+    <entry key="LabelColumnTooltipInputOutput">端口标签字符串</entry>
+    <entry key="LabelColumnTooltipParam">参数对话框提示</entry>
+    <entry key="LabelColumnTooltipConstant">要计算为常量符号值的表达式</entry>
+    <entry key="FailToRegisterCustomType">Failed to register custom type ''{0}''.</entry>
+    <entry key="CustomTypeNameCollision">Failed to register custom type with name ''{0}'' as another type with the same name has been registered already.</entry>
+    <entry key="ContinuousSampleTimeNotAllowed">Continuous sample time is not supported by C Caller block "{0}" because the block calls custom code that may have nondeterministic outputs. 
+        
+        &lt;actions exclusiveFixIts="yes"&gt;
+            &lt;action type="suggestion"&gt;
+                &lt;cmd&gt;load_system(''{1}'');configset.highlightParameter(''{1}'','DefaultCustomCodeDeterministicFunctions');&lt;/cmd&gt;
+                &lt;txt&gt;Enable continuous sample time support for custom code by specifying functions that are deterministic.&lt;/txt&gt;
+            &lt;/action&gt;
+        &lt;/actions&gt;
+     </entry>
+    <entry key="ContinuousTimeNotAllowedForNonDeterministic">C 函数模块 ''{0}'' 不支持连续采样时间，因为该模块使用了可能具有不确定输出的自定义代码。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;load_system(''{1}'');configset.highlightParameter(''{1}'','DefaultCustomCodeDeterministicFunctions');&lt;/cmd&gt; &lt;txt&gt;通过指定确定性函数，可使自定义代码支持连续采样时间。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+     </entry>
+    <entry key="EmptyCustomCodeSetting">C Caller 模块 ''{0}'' 要求模型具有关联的可导入自定义代码。未指定自定义代码，或 ''{1}'' 被禁用。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;load_system(''{2}'');configset.highlightParameter(''{2}'','SimCustomHeaderCode');&lt;/cmd&gt; &lt;txt&gt;您可以将自定义代码依赖关系添加到模型 ''{2}''&lt;/txt&gt; &lt;/action&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;load_system(''{2}'');configset.highlightParameter(''{2}'',''SimParseCustomCode'');&lt;/cmd&gt; &lt;txt&gt;对模型 ''{2}'' 启用 ''{1}''&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="CFcnCallerBlockFcnOutputArgSizeNotSpecified">Specify size of output argument ''{0}'' for C Caller block ''{1}'' or select "Simulate custom code in a separate process" in Configuration Parameters &gt; Simulation Target pane.</entry>
+    <entry key="CCallerParseTypeError">Unable to parse argument types for C Caller block ''{0}''.</entry>
+    <entry key="UnexpectedExtension">遇到非预期的自定义代码源/头文件扩展名: ''{0}''</entry>
+    <entry key="NonConstCPointerInputNotGoodAsInputOrParameter">In C Caller block ''{0}'', function argument ''{1}'' is passed in as a pointer without the ''const'' qualifier. However it is specified as block ''{2}'' in the port specification table, which is meant for read-only arguments. Verify that function ''{3}'' does not write to argument ''{1}'' through pointer.</entry>
+    <entry key="AddDeleteGIOErrorWithAutoInfer"> Error using ''addGlobalArg'' or ''deleteGlobalArg'' function with ''Automatically infer global variables as function interfaces'' parameter selected. To use those functions, in the model Configuration Parameters dialog box, deselect 'Simulation Target &gt; Import settings &gt; Automatically infer global variables as function interfaces'.</entry>
+    <entry key="CCallerName">C Caller 模块</entry>
+    <entry key="CCallerPort">参数</entry>
+    <entry key="CFunctionName">C Function 模块</entry>
+    <entry key="CFunctionPort">符号</entry>
+    <entry key="SimulinkTypeIncompatibleWithCustomCodeType">Simulink data type specified for argument ''{0}'' for C Caller block ''{1}'' is incompatible with the argument's type in the custom code. Ensure that a compatible Simulink data type is specified for argument ''{0}''.</entry>
+    <entry key="BusTypeNameMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 指定的总线类型与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的结构体定义。</entry>
+    <entry key="BusTypeFieldNameMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 指定的总线类型字段名称与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的结构体定义。</entry>
+    <entry key="BusTypeFieldTypeMismatch">在 {4} ''{1}'' 的 {3} ''{0}'' 的总线中指定的字段类型与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的结构体定义。</entry>
+    <entry key="BusTypeElementEnumNameMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 的总线字段类型指定的枚举名称与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的枚举定义。</entry>
+    <entry key="BusTypeElementEnumFieldValueMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 总线字段类型指定的枚举元素值与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的枚举定义。</entry>
+    <entry key="BusTypeFieldNumMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 的总线类型指定的字段数与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的结构体定义。</entry>
+    <entry key="BusTypeElementEnumFieldNumMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 的总线字段类型指定的枚举元素数与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的枚举定义。</entry>
+    <entry key="BusTypeElementCPPEnumStorageTypeMismatch">为 {4} ''{1}'' 的总线字段类型 {3} ''{0}'' 指定的 Simulink 枚举存储类型与自定义代码中 C++ 枚举类型 {2} 的基础类型不匹配。</entry>
+    <entry key="EnumTypeNameMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 指定的枚举类型与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的枚举定义。</entry>
+    <entry key="EnumTypeFieldNumMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 指定的枚举元素数与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的枚举定义。</entry>
+    <entry key="EnumTypeFieldValueMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 指定的枚举元素的值与自定义代码中 {3} 的类型不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 {2} 的枚举定义。</entry>
+    <entry key="CPPEnumStorageTypeMismatch">为 {4} ''{1}'' 的 {3} ''{0}'' 指定的 Simulink 枚举存储类型与自定义代码中 C++ 枚举类型 {2} 的基础类型不匹配。</entry>
+    <entry key="MultiWordFixptNotSupported">Simulink data type specified for argument ''{0}'' for C Caller block ''{1}'' is a multiword fixed-point type on the current target. Using multiword fixed-point types is not supported for C Caller block. Only fixed-point types with maximum word length of {2,number,integer} can be used on the current target.</entry>
+    <entry key="PortSpecConsistencyError"> {0} of argument ''{1}'' for function ''{2}'' is specified as ''{4}'' in C Caller block {3} and ''{5}'' in C Caller block {6}. C Caller blocks that call the same function must specify the same argument {0}. </entry>
+    <entry key="PortSpecInconsistencyTopError">在调用相同自定义代码函数的两个 C Caller 模块之间检测到不一致的端口设定。</entry>
+    <entry key="CCallerInvalidArgumentType">参数 ''{1}'' 的类型 ''{0}'' 无效。</entry>
+    <entry key="UnableToCallFunctionWithNDArrayCPP">无法调用模块 ''{1}'' 中的自定义代码函数 ''{0}''，因为其中一个函数参数是多维数组，并且仿真目标或代码生成语言设置为 ''C++''。</entry>
+    <entry key="UnableToCallFunctionWithNDArrayCPP_SF">无法调用自定义代码函数 ''{0}''，因为其中一个函数参数是多维数组，并且仿真目标或代码生成语言设置为 ''C++''。</entry>
+    <entry key="InputArgumentSizeMismatchWarning">传递给模块 ''{2}'' 中参量 ''{0}'' 的自定义代码函数 ''{1}'' 的输入参数的大小与自定义代码函数预期的大小不匹配。</entry>
+    <entry key="GIOWriteOnlyAsInputWarning">模块 ''{2}'' 中全局参量 ''{0}'' 的作用域设置无效。该参量在模块中设置为 ''输入'' 作用域，但全局变量仅写入自定义代码函数 ''{1}''，表明它是 ''输出''。</entry>
+    <entry key="InputArgumentSizeMismatchWarningCFunctionBlk">传递给模块 ''{2}'' 中参量 [{0, number, integer}] 的自定义代码函数 ''{1}'' 的输入参数的大小与自定义代码函数预期的大小不匹配。</entry>
+    <entry key="CCallerRowMajorFunctionWithStructInColumnMajorCodegen">C Caller 模块 ''{0}'' 调用行优先自定义代码函数 ''{1}''，该函数具有以非标量字段作为输入或输出的结构体，这在列优先代码生成中不受支持。</entry>
+    <entry key="DynamicSLStringAsOutput">为参量 ''{0}'' 指定的 Simulink 字符串类型必须为 C Caller 模块 ''{1}'' 指定最大字符串长度。请使用 "stringtype" 指定 Output 和 InputOutput 端口的最大字符串长度。</entry>
+    <entry key="StdStringToNonConstFcnArg">无法为调用自定义代码函数 ''{1}'' 的 C Caller 模块 ''{0}'' 生成 C++ 代码，因为该模型已配置为对输入 ''{2}'' 生成 ''std::string''。非 const 限定函数参量 ''{2}'' 不支持 std::string。请考虑将 const 限定符添加到函数参量 ''{2}''。</entry>
+    <entry key="ParameterScopeNotSupportedForSLString">对于参量 ''{0}''，参数作用域不支持 Simulink 字符串。</entry>
+    <entry key="GlobalSLStringVar">C Caller 模块 ''{1}'' 不支持全局变量 ''{0}'' 的 Simulink 字符串。</entry>
+    <entry key="CFunctionBlockParsingFailed">解析 C Function 模块 ''{2}'' 中的 ''{0}'' 代码失败，并显示以下消息:\n{1}</entry>
+    <entry key="CFunctionBlockParsingFailedAddOn">请考虑在代码生成选项卡下打开 &lt;a href="matlab:doc('c function')"&gt;''按原样生成代码''&lt;/a&gt;。</entry>
+    <entry key="CFunctionBlockParsingFailedWithImportCustomCodeOff">解析 C Function 模块 ''{3}'' 失败。如果 C Function 模块使用外部代码，则必须启用 ''{0}''。解析 {1} 失败，并显示以下消息:\n{2}</entry>
+    <entry key="SymbolTableBlockParameterCannotBeEmpty">模块参数 ''{0}'' 的值设置为空矩阵。作为 {2} ''{1}'' 中某个输入的参数值不能为空矩阵。</entry>
+    <entry key="SymbolTableBlockParameterDimensionMismatch">{3} ''{2}'' 中的参数数据大小不匹配。指定维度 ''{1}'' 的模块参数 ''{0}'' 与计算的参数 ''{0}'' 的大小不匹配。</entry>
+    <entry key="SymbolTableBlockInvalidTypeForInputPort">无法将 ''{0}'' 解析为 ''{2}'' 的&lt;sldiag objui="inport" objparam="{1, number, integer}" objname="{2}"&gt;输入端口 {1, number, integer}&lt;/sldiag&gt; 的有效类型。</entry>
+    <entry key="SymbolTableBlockInvalidTypeForOutputPort">无法将 ''{0}'' 解析为 ''{2}'' 的&lt;sldiag objui="outport" objparam="{1, number, integer}" objname="{2}"&gt;输出端口 {1, number, integer}&lt;/sldiag&gt; 的有效类型。</entry>
+    <entry key="CFunctionFunctionPointerError">不支持 C Function 模块 ''{1}'' 中的函数指针 ''{0}''。</entry>
+    <entry key="StaticDeclaration"> 不允许在 C Function 模块 ''{1}'' 中声明静态变量 {0}。在模块的端口设定中将其声明为 'Persistent' 作用域。</entry>
+    <entry key="DuplicateDeclaration"> 变量 {0} 在多个位置声明。请在 C Function 模块 ''{1}'' 或 C 代码中删除或重命名它。</entry>
+    <entry key="WritingToInputVar"> 正在向 C Function 模块 ''{1}'' 中的只读输入或参数符号 ''{0}'' 写入内容。</entry>
+    <entry key="ArgumentNameConflict"> Another symbol with name ''{0}'' already exists in the {2} ''{1}''. Select a different name for your new symbol. </entry>
+    <entry key="CFunctionInvalidAccessToArraySymbol"> 对 C Function 模块 ''{1}'' 中数组类型符号 ''{0}'' 的访问无效。 </entry>
+    <entry key="CFunctionReadOnlyAddressEscaping"> 在 C Function 模块 ''{1}'' 中，不推荐将只读输入或参数符号 ''{0}'' 地址分配给非 "const" 限定的指针目标类型，这可能导致代码生成过程中的编译失败。</entry>
+    <entry key="CFunctionProhibitedConstantAddress"> 在 C Function 模块 ''{1}'' 中，不允许写入或获取常量符号 ''{0}'' 的地址。 </entry>
+    <entry key="SymbolTableBlockInvalidArgumentName"> 模块 ''{1}'' 中的符号 ''{0}'' 不是有效的变量名称。 </entry>
+    <entry key="CFunctionBlockModelColumnMajorityMismatch"> C Function 模块 ''{0}'' 具有行优先配置，不支持列优先代码生成。 </entry>
+    <entry key="CFunctionBlockModelRowMajorityMismatch"> C Function 模块 ''{0}'' 具有列优先配置，不支持行优先代码生成。 </entry>
+    <entry key="CFunctionBlockInvalidArgumentType"> 数据类型 ''{0}'' 无效。 </entry>
+    <entry key="SymbolTableBlockOutputArgSizeNotSpecified"> 输出符号不支持继承大小 "-1"。请为 {2} ''{1}'' 指定输出符号 ''{0}'' 的确切大小 </entry>
+    <entry key="SymbolTableBlockCodeParsingTypeFailed">在 {3} ''{2}'' 中解析符号 ''{1}'' 的类型字符串 ''{0}'' 失败。</entry>
+    <entry key="CFunctionIntrinsicMismatchedInputs">C Function 模块 ''{1}'' 中 ''{0}'' 的输入不匹配。函数 ''{0}'' 接受 [{2, number, integer}] 个输入，但找到 [{3, number, integer}] 个输入。</entry>
+    <entry key="CFunctionUnsupportedLibraryFunctionCall">Error with unsupported call to function ''{0}'' in C Function block ''{1}''. Calling C library functions directly in C Function block is not supported. To see a list of supported Simulink library functions in C Function block, view the &lt;a href="matlab:doc('c function')"&gt;documentation&lt;/a&gt;.</entry>
+    <entry key="CFunctionFunctionNotFound">在 C Function 模块 ''{1}'' 中指定了未声明的函数 ''{0}''。函数 ''{0}'' 可能已滤除，因为它未在自定义代码源文件或库文件中定义。</entry>
+    <entry key="CFunctionVariableNotFound">在 C Function 模块 ''{1}'' 中指定了未声明的变量 ''{0}''。变量 ''{0}'' 可能已滤除，因为它未在自定义代码源文件或库文件中定义。</entry>
+    <entry key="CFunctionBlockPassByRefOutputDirectPass">无法调用 C Function 模块 ''{1}'' 中的函数 ''{0}''。不支持将函数的输出用作引用。</entry>
+    <entry key="CFunctionBlockUnsupportedFcnCalled">无法从 C Function 模块 ''{1}'' 中调用函数 ''{0}''，因为 C Function 模块不支持该函数的类型。 </entry>
+    <entry key="CFunctionBlockOverloadedFcnCalled">无法从 C Function 模块 ''{1}'' 中调用重载的函数 ''{0}''。 </entry>
+    <entry key="CFunctionIntrinsicTypeVariantUnsupported">不支持调用在 C Function 模块 ''{2}'' 中指定的 ''{0}''。请改用 ''{1}''。</entry>
+    <entry key="CFunctionInvalidAdditionalType">无法将 ''{0}'' 解析为 C Function 模块 ''{2}'' 中 ''{1}'' 的有效类型。</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInInputDims">确定 {2} ''{1}'' 中符号 ''{0}'' 的大小时出错。输入或 inputoutput 符号维度设定只能是继承大小 "-1" 或确切大小。</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInOutputDims">确定 {2} ''{1}'' 中符号 ''{0}'' 的大小时出错。输出符号维度设定只能是确切大小或 size() 表达式。</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInParameterDims">确定 {2} ''{1}'' 中符号 ''{0}'' 的大小时出错。参数符号维度设定只能是继承大小 "-1" 或确切大小。</entry>
+    <entry key="SymbolTableBlockInvalidDimensionInPersistentDims">确定 {2} ''{1}'' 中符号 ''{0}'' 的大小时出错。持久符号维度设定只能是正整数。</entry>
+    <entry key="SymbolTableBlockEmptySizeFcnInArgDims">{2} ''{1}'' 中符号 ''{0}'' 的大小设定不能为空。</entry>
+    <entry key="CFunctionBlockMatrixSymbol">Symbol ''{0}'' in C Function block ''{1}'' cannot be a matrix or contain matrices. Only scalar and vector symbols are supported with a C Function block.</entry>
+    <entry key="CFunctionBlockMatrixVar">C Function 模块 ''{1}'' 中的局部变量 ''{0}'' 不能为矩阵，也不能包含矩阵。C Function 模块仅支持向量变量。</entry>
+    <entry key="CFunctionMemcpyNDUnsupported">C Function 模块 ''{0}'' 中不支持将矩阵或多维数组传递给 memcpy 或 memset。</entry>
+    <entry key="CFunctionAliasTypeMismatch">符号表中指定的符号 ''{0}'' 的别名类型与 C Function 模块 ''{1}'' 中解析的别名 typedef 不匹配。请在 "配置参数 &gt; 仿真目标" 窗格中检查 ''{2}'' 的类型定义。</entry>
+    <entry key="CFunctionBlockMatrixCustomCodeVar">Custom code variable ''{0}'' used in the C Function block ''{1}'' cannot be a matrix or contain matrices. Only vector custom code variables are supported with a C Function block.</entry>
+    <entry key="SymbolTableBlockMatrixPersistent">{2} ''{1}'' 中的符号 ''{0}'' 不能为矩阵。{2} 的 'Persistent' 作用域仅支持标量或向量。</entry>
+    <entry key="SymbolTableBlockOpaquePtrMustBeScalar">{3} ''{1}'' 中的符号 ''{0}'' 的大小必须为 '1'。类型为 ''{2}'' 的 'Persistent' 作用域符号仅支持标量。</entry>
+    <entry key="SymbolTableBlockOpaquePtrNotAllowed">{3} ''{1}'' 中的符号 ''{0}'' 不能为 ''{2}'' 类型。只有具有 'Persistent' 作用域的符号才能具有类型 ''{2}''。</entry>
+    <entry key="SymbolTableBlockStringTypeNotAllowed">{2} ''{1}'' 中的符号 ''{0}'' 不能为 Simulink 字符串类型。'参数' 作用域不支持 Simulink 字符串。</entry>
+    <entry key="CFunctionBlockMatrixIndexOutOfRange">C Function 模块 ''{4}'' 中的下标 [{0, number, integer}] 超出了矩阵 ''{1}'' 的范围。有效下标范围是 {2, number, integer}...{3, number, integer}。</entry>
+    <entry key="CFunctionBlockMatrixElementAddressEscape">C Function 模块 ''{0}'' 中不支持获取矩阵元素的地址。请修改模块代码以避免获取矩阵元素的地址。</entry>
+    <entry key="CFunctionBlockMatrixElementAddressEscapeToCustomCodeCall">C Function 模块 ''{0}'' 中不支持将矩阵中第一个元素之外的元素地址传递给外部函数。请修改模块代码，以只将矩阵第一个元素的地址传递给外部函数。</entry>
+    <entry key="CFunctionBlockMatrixPartialAccess">C Function 模块 ''{0}'' 中不允许对矩阵进行部分访问。C Function 模块中仅支持对矩阵进行元素访问。</entry>
+    <entry key="CFunctionBlockUnionFieldAccess">在 C Function 模块 ''{0}'' 中不允许访问联合体的字段。</entry>
+    <entry key="CFunctionBlockFunctionMajorityNotSpecifiedInRowMajorCodegen">C Function 模块 ''{0}'' 调用自定义代码函数 ''{1}''，该函数的函数数组布局为 '未指定'。在 "配置参数 &gt; 仿真目标" 窗格中为 ''{1}'' 指定函数数组布局。</entry>
+    <entry key="CFunctionBlockRowMajorFunctionWithStructInColumnMajorCodegen">C Function 模块 ''{0}'' 调用行优先自定义代码函数 ''{1}''，该函数具有以非标量字段作为输入或输出的结构体。在列优先代码生成中，不支持调用具有以非标量字段作为输入或输出的结构体的行优先自定义代码函数。</entry>
+    <entry key="CFunctionBlockUninitializedlocalVarUsage">C Function 模块 ''{1}'' 中的局部变量 ''{0}'' 尚未初始化即被使用。 </entry>
+    <entry key="FixedPointNumBitMismatch">传递给 C Function 模块 ''{2}'' 中的函数 ''{1}'' 的参数 ''{0, number, integer}'' 中的定点数据类型不匹配。</entry>
+    <entry key="CFunctionBlockDiagSourceLocation">出现在以下行:\n\t{0}</entry>
+    <entry key="CFunctionIncompatiblePointerArgument">正从不兼容的指针类型传递 C Function 模块 ''{2}'' 中外部 C 函数 ''{1}'' 的参数 {0, number, integer}。请确保指针参数与外部 C 函数的参数类型兼容。</entry>
+    <entry key="CFunctionBlockPointerConversionNotSupported">C Function 模块 ''{0}'' 中不支持指针类型和非指针类型之间的转换。请修改模块代码以避免指针类型和非指针类型之间的隐式或显式转换。</entry>
+    <entry key="CFunctionVariadicFunctionNotSupported">C Function 模块 ''{1}'' 中的外部函数 ''{0}'' 是变参函数。C Function 模块中不支持调用变参函数。</entry>
+    <entry key="SymbolTableBlockScaledDoubleNotSupported">为 {2} ''{1}'' 中的符号 ''{0}'' 指定的类型无效。{2} 不支持定标双精度类型。</entry>
+    <entry key="IncludeFoundInScript"> '#include' directive found in C Function block ''{0}''. Includes can only be added in the Configuration Parameters. \n{1} </entry>
+    <entry key="InputVarUsedInMethod"> 在 C Function 模块 ''{1}'' 的开始、InitializeConditions 或终止代码中使用 Input 或 InputOutput 符号 ''{0}'' 时出错。只能从 ''输出代码'' 内部访问 Input 和 InputOutput 符号。 </entry>
+    <entry key="CFunctionBlockUnsupportedVarTypes">C Function 模块 ''{1}'' 中不支持局部或全局变量 ''{0}'' 的数据类型。</entry>
+    <entry key="CFunctionBlockLocalVarOfStructWithNDTypeNotSupported">局部变量 ''{0}'' 的结构体包含矩阵字段类型。如果变量的类型是在自定义代码中定义的，则 C Function 模块 ''{1}'' 中不支持具有矩阵类型的结构体的局部变量。</entry>
+    <entry key="ClassDefinitionInScript">不支持在 C Function 模块 ''{1}'' 中定义类类型 ''{0}''。</entry>
+    <entry key="SymbolTableBlockUnsupportedParameterComplex">{2} ''{1}'' 中的参数符号 ''{0}'' 的计算结果为复数。{2} 中不支持复数值。</entry>
+    <entry key="SymbolTableBlockMultiWordNotSupported">{3} ''{1}'' 中的符号 ''{0}'' 在当前目标上是多字类型。对于 {3}，只有最大字长为 {2,number,integer} 的整数类型才能在当前目标上使用。</entry>
+    <entry key="ConstantEvalFailed">计算 ''{2}'' 中的符号 ''{1}'' 的 '常量' 表达式 ''{0}'' 时出错。请检查 ''{0}'' 的 '常量' 设定中是否有语法错误或未定义的变量名称。'常量' 表达式的计算结果必须为内置数值标量。</entry>
+    <entry key="SizeComputationConstantNotScalar">计算表达式 ''{1}'' 中的符号 ''{0}'' 时出错。常量作用域的大小表达式值的计算结果必须为内置的数值标量。</entry>
+    <entry key="SizeComputationConstantOutOfRange">计算表达式 ''{1}'' 中的符号 ''{0}'' 时出错。常量作用域的大小表达式值的计算结果必须为介于 {2, number, integer} 和 {3, number, integer} 之间的整数。</entry>
+    <entry key="SizeComputationConstantEvalFailedInBlock">计算 ''{0}'' 中的 '常量' 值时出错。请检查 '常量' 表达式中的语法错误。对于大小表达式，只允许输入的大小。 </entry>
+    <entry key="SizeComputationConstantEvalFailed">'常量' 表达式计算失败。请检查 ''{0}'' 的 '常量' 设定中是否有语法错误。</entry>
+    <entry key="SizeComputationConstantEvalFailedGeneric">'常量' 表达式计算失败。请检查 '常量' 设定中是否有语法错误或类型不匹配。</entry>
+    <entry key="ConstantSizeFcnIncorrectInputs">计算参数 ''{0}'' 的 'Constant' 值时出错。size() 表达式只能接受一个或两个参数。</entry>
+    <entry key="ConstantSizeFcnInvalidSymbolName">计算参数 ''{0}'' 的 'Constant' 值时出错。size() 表达式的第一个参数必须指向一个输入。</entry>
+    <entry key="ConstantSizeFcnOnlyInputInOutputOrParameter">''{0}'' 不能用于指定 ''{1}'' 的 'Constant' 值。请指定参数的值或输入的大小表达式。Constant 作用域值的计算结果必须为内置的数值标量。</entry>
+    <entry key="DataMustBeInConstantSizeFcn">计算参数 ''{0}'' 的 'Constant' 值时出错。必须在 size() 表达式中使用 ''{1}''。</entry>
+    <entry key="ConstantSizeFcnInvalidExpression">计算参数 ''{0}'' 的 'Constant' 值时出错。size() 表达式的第二个输入必须为维度。</entry>
+    <entry key="CFunctionUseCustomCodeFunctionWithImportCustomCodeOff">C Function 模块 ''{0}'' 调用了自定义代码函数。这需要启用 ''{1}''。</entry>
+    <entry key="ContinuousSampleTimeNotAllowedSymbolTable">{1} "{0}" 不支持连续采样时间，因为它具有持久变量。请将 '采样时间' 模块参数设置为离散或子步中不变值。</entry>
+    <entry key="CFunctionBlockCodeParsingWarnings">在解析 C Function 模块 ''{1}'' 的 {0} 时，生成以下警告消息:\n</entry>
+    <entry key="CFunctionBlockUnsupportBusOfSymbolicDimsInitCodegen">C Function 模块 ''{0}'' 中的永久符号或输出符号 ''{1}'' 的总线类型包含具有符号维度的元素，这在使用嵌入式实时目标进行代码生成的 C Function 模块中不受支持。要禁用符号维度，请在 "配置参数" 对话框中搜索 ''允许符号维度设定''，并清除该复选框。</entry>
+    <entry key="InCompatiableSimulinkAndCustomCodeTypes"> C Function 模块 ''{2}'' 中符号 ''{1}'' 的 Simulink 数据类型 ''{0}'' 与自定义代码类型 ''{3}'' 不一致。自定义代码数据类型必须与等效的 Simulink 数据类型匹配。</entry>
+    <entry key="PortVarAddressEscaping">C Function 模块 ''{1}'' 中不允许使用结构体类型的符号 ''{0}'' 的地址。</entry>
+    <entry key="AddressEscapeForTypeContainingND">C Function 模块 ''{0}'' 内不支持将多维数组的地址赋给变量。</entry>
+    <entry key="CFcnBlkBusWithSLString">C Function 模块 ''{1}'' 中的符号 ''{0}'' 不支持包含 Simulink 字符串的总线。</entry>
+    <entry key="NonExtendedASCIIString">字符串包含不受支持的字符。仅支持扩展 ASCII 字符(ISO-8859-1)。</entry>
+    <entry key="ClassTypeNotSupported">为 C Function 模块 ''{2}'' 的符号表中的符号 ''{1}'' 指定了无效的类型 ''{0}''。C Function 模块不支持 C++ 类类型。</entry>
+    <entry key="ClassTypeNotFound">为 C Function 模块 ''{2}'' 的符号表中的符号 ''{1}'' 指定了未声明的类类型 ''{0}''，或不支持类类型。请在 "配置参数 &gt; 仿真目标" 窗格中检查包含的自定义代码。</entry>
+    <entry key="ClassTypeNotInPersistentScope">为 C Function 模块 ''{2}'' 的符号表中的符号 ''{1}'' 指定了无效的类类型 ''{0}''。只有持久符号可以具有类类型。</entry>
+    <entry key="AccessingNonPublicClassData">访问 C Function 模块 ''{2}'' 中类 ''{1}'' 的字段 ''{0}'' 时出错。只有公共类成员是可访问的。</entry>
+    <entry key="AccessingClassDataOfPrivateType">访问 C Function 模块 ''{2}'' 中类 ''{1}'' 的字段 ''{0}'' 时出错。私有或受保护类型的类成员不可访问。</entry>
+    <entry key="OpOverloadDisallowed">C Function 模块 ''{1}'' 不支持调用重载运算符 ''{0}''。</entry>
+    <entry key="ExplicitDestructorCallError"> 不支持显式调用 C Function 模块 ''{1}'' 中类 ''{0}'' 的析构函数。 </entry>
+    <entry key="CFunctionBlockClassPassedByValueOrReturnByRef"> C Function 模块 ''{0}'' 调用自定义代码方法 ''{1}''，该方法接受按值传递的类或返回按值或引用传递的类。C Function 模块不支持按值传递类实例或者返回按值或引用传递类实例。</entry>
+    <entry key="CFunctionBlockFcnReturnsPtr2ND"> C Function 模块 ''{0}'' 调用自定义代码函数 ''{1}''，该函数返回指向多维数组的指针。C Function 模块不支持返回指向多维数组的指针。</entry>
+    <entry key="CFunctionBlockUnsupportedArg"> C Function 模块 ''{0}'' 调用自定义代码方法 ''{1}''，该方法可接受不支持的参数。 </entry>
+    <entry key="NoMatchingConstructor">在 C Function 模块 ''{3}'' 中，对于类型为 ''Class: {1}'' 的符号 ''{0}''，找不到输入参数 ''{2}'' 的匹配公共构造函数</entry>
+    <entry key="ConstructorResolutionMessage">构造函数解析失败，并返回以下消息:\n {0}</entry>
+    <entry key="AbstractClassError">无法实例化在 C Function 模块 ''{2}'' 中使用的抽象类类型 ''{1}'' 的符号 ''{0}''。 </entry>
+    <entry key="StaticMemberAccessUnsupported">访问 C Function 模块 ''{1}'' 中静态类数据成员 ''{0}'' 无效。不支持访问静态类数据成员。</entry>
+    <entry key="CFunctionUnsupportedClassAccess">不支持在 C Function 模块 ''{1}'' 中访问的类 ''{0}''。</entry>
+    <entry key="TemplateClassSymbolError">无法实例化具有在 C Function 模块 ''{2}'' 中使用的模板参数 ''{1}'' 的类类型的符号 ''{0}''。 </entry>
+    <entry key="PrivateConstructorError">无法实例化在 C Function 模块 ''{1}'' 中使用的符号 ''{0}''，因为类类型 ''{2}'' 没有有效的公共构造函数。</entry>
+    <entry key="PrivateDestructorError"> 无法销毁在 C Function 模块 ''{1}'' 中使用的符号 ''{0}''，因为类类型 ''{2}'' 没有有效的公共析构函数。 </entry>
+    <entry key="InvalidVariableInConstructorArgs">在类构造函数参数中为 C Function 模块 ''{2}'' 中的符号 ''{1}'' 指定的变量 ''{0}'' 无效。类构造函数参数必须有参数或常量作用域。</entry>
+    <entry key="FcnCalledInConstructorArgs">在类构造函数参数中为 C Function 模块 ''{2}'' 中的符号 ''{1}'' 指定的函数调用 ''{0}'' 无效。构造函数参数无法调用其他函数。</entry>
+    <entry key="IllegalConstructorArgument">在类构造函数参数中为 C Function 模块 ''{2}'' 中的符号 ''{1}'' 指定的表达式 ''{0}'' 无效。</entry>
+    <entry key="CFunctionBlockIncorrectRTWLangForCPP">使用在 C Function 模块 ''{0}'' 中指定的自定义代码进行代码生成时的设置无效，因为代码是使用 C++ 解析的。请在模型配置参数中，将 ''代码生成 &gt; 语言'' 设置为 ''C++''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;load_system(''{1}'');configset.highlightParameter(''{1}'','TargetLang');&lt;/cmd&gt; &lt;txt&gt;将代码生成语言设置更改为 ''C++''。&lt;/txt&gt; &lt;/action&gt;&lt;/actions&gt;
+    </entry>
+    <entry key="CFunctionBlockIncorrectSimLangForCPP">使用在 C Function 模块 ''{0}'' 中指定的自定义代码进行仿真时的设置无效，因为代码是使用 C++ 解析的。请在模型配置参数中，将 ''仿真目标 &gt; 语言'' 设置为 ''C++''。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;load_system(''{1}'');configset.highlightParameter(''{1}'','SimTargetLang');&lt;/cmd&gt; &lt;txt&gt;将仿真目标语言设置更改为 ''C++''。&lt;/txt&gt; &lt;/action&gt;&lt;/actions&gt;
+    </entry>
+    <entry key="CFcnLocalVarOfClassType">C Function 模块 ''{1}'' 中不支持类类型的局部变量 ''{0}''。</entry>
+    <entry key="CopyAssignmentDisallowed">C Function 模块 ''{0}'' 不支持对类符号赋值。</entry>
+    <entry key="NDDataMemberAccessDisallowed">访问 C Function 模块 ''{2}'' 中类 ''{1}'' 的字段 ''{0}'' 时出错。不支持访问矩阵类成员。</entry>
+    <entry key="DisallowPointerToClassArrayDataMemberAccess">无法访问 C Function 模块 ''{2}'' 中类 ''{1}'' 的字段 ''{0}''。不支持访问指向类数组的指针类型变量的数据成员。</entry>
+    <entry key="DisallowDirectClassArrayDataMemberAccess">无法直接访问 C Function 模块 ''{2}'' 中类 ''{1}'' 的字段 ''{0}''。不支持在没有索引的情况下访问类类型数组的数据成员。</entry>
+    <entry key="CFunctionBlockGlobalClassTypeUnsupported">C Function 模块 ''{1}'' 不支持访问 C++ 类类型的自定义代码全局变量 {0}。</entry>
+    <entry key="CFunctionBlockInvalidInitialization">无法初始化 C Function 模块 ''{1}'' 中的符号 "{0}"。只有 C++ 类类型的持久符号才支持符号表中的初始化。</entry>
+    <entry key="ColMajorMethodConst">''{0}'' 的函数数组布局设置无效。类方法和构造函数的函数数组布局设置必须为 '行优先' 或 '任意'。</entry>
+    <entry key="ClassArgumentToColMajorFcn">不支持将类对象传递给列优先函数 ''{0}''。</entry>
+    <entry key="MatchingMethodNotFoundInCustomCode">C Function 模块 ''{0}'' 中出现内部错误: 在函数调用 ''{1}'' 的自定义代码中找不到匹配的重载函数。向 MathWorks 技术支持部门报告此 Bug。</entry>
+    <entry key="CFunctionBlockUnsupportedLocalNestedClassType">C Function 模块 ''{1}'' 中不支持嵌套类类型 ''{0}''。</entry>
+    <entry key="CFunctionBlockSlError">C Function 模块 ''{2}'' 的仿真 ''{1}'' 代码中第 {0, number, integer} 行出现错误:\n{3}\n\n''{4}''</entry>
+    <entry key="CFunctionBlockSlWarning">C Function 模块 ''{2}'' 的仿真 ''{1}'' 代码中第 {0, number, integer} 行出现警告:\n{3}\n\n''{4}''</entry>
+    <entry key="OOPUnsupportedClassDataMemberAccess">无法访问类 ''{1}'' 的数据成员 ''{0}''。在单独进程中仿真自定义代码时，不支持访问除类类型和类向量类型之外的数据成员。 </entry>
+    <entry key="OOPUnsupportedClassMemberFunctionAccess">
+    无法调用类 ''{1}'' 的成员函数 ''{0}''。在单独进程中仿真自定义代码时，不支持访问具有以下返回类型和函数参数类型的成员函数: &lt;ul&gt; &lt;li&gt;返回类型: 非类指针和指向类的多级指针&lt;/li&gt; &lt;li&gt;函数参数类型: Void 指针类型、指针数组、指向类类型的多级指针、复数类型和联合体类型&lt;/li&gt; &lt;/ul&gt;</entry>
+    <entry key="CFunctionBlockUINoSelectionForRemove">Select a row on the table to remove symbol.</entry>
+    <entry key="CFunctionBlockDialogText">输入您的代码以集成自定义 C/C++ 算法</entry>
+    <entry key="CFunctionBlockDialogStatementDesc"> 输入要执行的 {0}。 </entry>
+    <entry key="CFunctionBlockDialogSimTabTitle">仿真</entry>
+    <entry key="CFunctionBlockUseSameCodeAsSimPrompt">使用与仿真相同的代码</entry>
+    <entry key="CFunctionBlockDialogWidgetCodegenCodeChkBoxToolTip">指定是否使用与仿真相同的代码和自定义代码设置</entry>
+    <entry key="CFunctionBlockGenCodeAsIsPrompt">按原样生成代码</entry>
+    <entry key="CFunctionBlockArrayLayout">数组布局:</entry>
+    <entry key="CFunctionBlockLanguageLevel">语言支持级别:</entry>
+    <entry key="CFunctionLanguageLevelManaged">C/C++ 的子集(启用分析)</entry>
+    <entry key="CFunctionLanguageLevelFull">完整(按原样使用代码)</entry>
+    <entry key="CFunctionBlockDialogWidgetGenCodeAsIsChkBox">按原样生成代码(优化关闭)</entry>
+    <entry key="CFunctionBlockDialogWidgetGenCodeAsIsToolTip">指定是否按原样内联代码，而不进行任何基于解析器的优化，如宏扩展。</entry>
+    <entry key="CFunctionBlockDialogCodegenCodeTabTitle">代码生成</entry>
+    <entry key="CFunctionBlockDialogcScriptName">输出</entry>
+    <entry key="CFunctionBlockDialogstartScriptName">开始</entry>
+    <entry key="CFunctionBlockDialogtermScriptName">终止</entry>
+    <entry key="CFunctionBlockDialogAddButtonName">添加</entry>
+    <entry key="CFunctionBlockDialogDeleteButtonName">删除</entry>
+    <entry key="CFunctionBlockDialoginitScriptName">初始化条件</entry>
+    <entry key="SimulinkInterfaceDialogOutputCodeDesc">输入仿真期间每个时间步要执行的 C 代码。\n例如，"y = classObject.process(u);"\ny、classObject 和 u 在符号表中定义。</entry>
+    <entry key="SimulinkInterfaceDialogInitCodeDesc">输入仿真开始时要执行的 C 代码。\n例如，"classObject.initialize(param);"\nclassObject 和 param 在符号表中定义。</entry>
+    <entry key="SimulinkInterfaceDialogTermCodeDesc">输入仿真结束时要执行的 C 代码。\n例如，"classObject.cleanup();"\nclassObject 在符号表中定义。</entry>
+    <entry key="DeterministicFunctionsDlgDescriptionTitle">描述</entry>
+    <entry key="DeterministicFunctionsDlgDescription">使用添加和删除按钮指定确定性自定义代码函数。</entry>
+    <entry key="DeterministicFunctionsDlgTitle">自定义代码确定性函数列表</entry>
+    <entry key="DeterministicFunctionsDlgSSFcnNameColHeader">函数名称</entry>
+    <entry key="DeterministicFunctionsDlgAddButtonTooltip">添加确定性的自定义代码函数。</entry>
+    <entry key="DeterministicFunctionsDlgDeleteButtonTooltip">从确定性自定义代码函数列表中删除所选函数。</entry>
+    <entry key="DeterministicFunctionsInvalidCharacterNames">函数名称 ''{0}'' 中存在无效字符。函数名称必须为有效的 C 标识符</entry>
+    <entry key="SymbolTableBlockAPIIncorrectPortIndex"> {4} ''{3}'' 中符号 ''{0}'' 的端口号必须为介于 ''{1}'' 和 ''{2}'' 之间的整数值。 </entry>
+    <entry key="SymbolTableBlockAPIMethodInputIsNotString"> {2} ''{1}'' 中方法 ''{0}'' 的输入必须为字符数组/字符串。 </entry>
+    <entry key="SymbolTableBlockAPIMethodUnexpectedInputArgument"> ''{0}'' 方法不需要输入。 </entry>
+    <entry key="SymbolTableBlockAPIMethodUnexpectedOutputArgument"> ''{0}'' 方法不需要输出。 </entry>
+    <entry key="SymbolTableBlockAPIMethodLessThanTwoInputOnly"> ''{0}'' 方法最多支持一个符号名称作为输入。 </entry>
+    <entry key="SymbolTableBlockAPIMethodInputNotFound"> {2} ''{1}'' 中的符号 ''{0}'' 不存在。 </entry>
+    <entry key="SymbolTableBlockAPIMethodInputNumInvalid"> ''{0}'' 方法只需要一个符号名称作为输入。 </entry>
+    <entry key="LockedSymbolTableBlock">无法修改 SymbolSpec 对象，因为包含 {1} ''{0}'' 的库已锁定。请解锁该库以对模块进行更改。</entry>
+    <entry key="LinkedSymbolTableBlock">无法修改 SymbolSpec 对象，因为 {1} ''{0}'' 当前链接到库。请修改库中的模块或断开链接以修改此模块。</entry>
+    <entry key="ModelIsExecutingSymbolTableBlock">当模型正在运行时，无法修改 {1} ''{0}'' 的 SymbolSpec 对象。</entry>
+    <entry key="DeletedSymbolTableBlock">无法检索 SymbolSpec 对象，因为该模块已删除。</entry>
+    <entry key="CFunctionBlockIndexReadOnly">The Port Number of the 'Persistent' and 'Constant' scopes in the C Function block ''{0}'' are read-only.</entry>
+    <entry key="PythonFunctionBlockIndexReadOnly">Python Code 模块 ''{0}'' 中 'Persistent' 作用域的端口号为只读。</entry>
+    <entry key="CFunctionBlockAPIArrayLayoutReadOnly">当 C Function 模块 ''{1}'' 的 'LanguageLevel' 是 'subset' 时，无法修改模块参数 ''{0}'' 的值。</entry>
+    <entry key="CFunctionBlockAPILangLevelReadOnly">当 C Function 模块 ''{1}'' 的 'CustomCodeSettingsLocation' 为 'Model Configuration Parameters' 时，无法修改模块参数 ''{0}'' 的值。</entry>
+    <entry key="CFunctionBlockAPISizeReadOnly">The Size of the 'Constant' symbol and the 'Persistent' VoidPointer symbol in the C Function block ''{0}'' are read-only.</entry>
+    <entry key="PythonFunctionBlockAPISizeReadOnly">Python Function 模块 ''{0}'' 中 'Persistent' PythonObject 符号的大小为只读。</entry>
+    <entry key="CFunctionBlockAPIGenCodeAsIsReadOnly">Cannot modify the value for block parameter ''{0}'' when 'Use same code as Simulation' is off for C Function block ''{1}''.</entry>
+    <entry key="CFunctionBlockAPICodegenCodeReadOnly">Cannot modify the value for block parameter ''{0}'' when 'Use same code as Simulation' is on for C Function block ''{1}''.</entry>
+    <entry key="MajorityDlgDescriptionTitle">描述</entry>
+    <entry key="MajorityDlgDescription">使用添加和删除按钮为自定义代码函数指定例外数组布局。</entry>
+    <entry key="MajorityDlgTitle">自定义代码函数的数组布局</entry>
+    <entry key="MajorityDlgSSFcnNameColHeader">函数名称</entry>
+    <entry key="MajorityDlgSSSettingColHeader">数组布局</entry>
+    <entry key="MajorityDlgAddButtonTooltip">添加具有例外函数数组布局的自定义代码函数。</entry>
+    <entry key="MajorityDlgDeleteButtonTooltip">删除所选函数数组布局设置。</entry>
+    <entry key="FunctionArrayLayoutWrongFormat">
+      Invalid data type. Parameter 'CustomCodeFunctionArrayLayout' must be a 1-by-n structure with 'FunctionName' and 'ArrayLayout' fields.
+    </entry>
+    <entry key="FunctionArrayLayoutEmptyNames">Invalid function names. Function names must be nonempty.</entry>
+    <entry key="FunctionArrayLayoutNamesWithWhitespace">Invalid function names {0}. Function names must not contain whitespace characters.</entry>
+    <entry key="FunctionArrayLayoutDuplicateNames">Invalid function names {0}. Duplicate function names not supported.</entry>
+    <entry key="FunctionArrayLayoutInvalidSetting">
+      Invalid function array layout setting. Function array layout setting must be 'Column-major', 'Row-major' or 'Any'.
+    </entry>
+    <entry key="FunctionMajorityNotSpecifiedInRowMajorCodegen">C Caller block ''{0}'' calls custom code function ''{1}'' that has 'Not specified' as the function array layout. Specify a function array layout for ''{1}'' on Configuration Parameters &gt; Simulation Target pane.</entry>
+    <entry key="FunctionArrayLayoutIgnored">自定义代码函数 ''{0}'' 具有所有标量输入/输出参数。自定义代码函数 ''{0}'' 的数组布局设置被忽略。要删除此警告消息，请从 "配置参数 &gt; 仿真目标 &gt; 例例外函数..." 中删除 ''{0}'' 的数组布局设置</entry>
+    <entry key="FunctionArrayLayoutOverrideForSNDF">包含以矩阵字段作为输入/输出参数的结构体的自定义代码函数 ''{0}'' 必须具有 '行优先' 数组布局。自定义代码函数 ''{0}'' 的 ''{1}'' 的数组布局设置被忽略。要删除此警告消息，请从 "配置参数 &gt; 仿真目标 &gt; 例外函数..." 中将 ''{0}'' 的数组布局设置指定为 '行优先'</entry>
+    <entry key="FunctionArrayLayoutOverrideForPtrToArr">包含指向矩阵的指针作为输入参数的自定义代码函数 ''{0}'' 必须具有 '行优先' 数组布局。自定义代码函数 ''{0}'' 的 ''{1}'' 的数组布局设置被忽略。要删除此警告消息，请从 "配置参数 &gt; 仿真目标 &gt; 例外函数..." 中将 ''{0}'' 的数组布局设置指定为 '行优先'</entry>
+    <entry key="BlockUsedInModelReferenceSimTargetCustomCodeUnchecked">{3} ''{0}'' 用在了引用模型中，该引用模型不能在禁用 ''{1}'' 的情况下以加速模式进行仿真。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion"&gt; &lt;cmd&gt;open_system(''{2}'');configset.highlightParameter(''{2}'','SupportModelReferenceSimTargetCustomCode');&lt;/cmd&gt; &lt;txt&gt;您可以在模型 ''{2}'' 中启用 ''{1}''，然后重新保存该模型。&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+        
+    </entry>
+    <entry key="UnrecognizedFileFormat">Only config sets in .slx file format can be read via the SLXConfigSetAdapter</entry>
+    <entry key="FileNotFound">There is no file located in the provided location</entry>
+    <entry key="NoWriteForFunctions">Write operation is not supported for functions in config sets.</entry>
+    <entry key="SegVOccurredInOOP">Segmentation fault occurred when simulating custom code in separate process with ID ''{0}''.</entry>
+    <entry key="ErrorCauseSegVInOOP">\n出现分段错误。当程序尝试在为其分配的内存之外读取或写入，或在只能读取的内存写入时，就会发生这种情况。</entry>
+    <entry key="ErrorCauseAbortInOOP">\n发生中止。当程序调用中止时，可能会发生这种情况。</entry>
+    <entry key="ErrorCauseIllegalInstructionInOOP">\n检测到非法指令。当程序尝试执行垃圾或特权指令时，可能会发生这种情况。</entry>
+    <entry key="ErrorCauseArithmeticErrorInOOP">\n出现严重的算术错误。典型的算术错误包括除以零和溢出。</entry>
+    <entry key="ProcessCrashedInOOP">Process with ID ''{0}'' crashed during simulating custom code in a separate process. {1}</entry>
+    <entry key="SegVStackTraceInfo">Process with ID ''{0}'' crashed. Stack trace information at the time of crash:\n{1}</entry>
+    <entry key="ComplexParamNotSupportedInOOP">The parameter ''{0}'' of C Caller block ''{1}'' evaluates to a complex number. Out-of-process execution for C Caller blocks supports only real parameters.</entry>
+    <entry key="CustomTypeUnsupportedInOOP">Custom function ''{0}'' contains arguments with custom data type. Custom data types are not supported when simulating custom code in a separate process.</entry>
+    <entry key="ComplexTypeUnsupportedInOOP">Custom function ''{0}'' contains complex arguments. Complex arguments are not supported when simulating custom code in a separate process.</entry>
+    <entry key="OOPExeBuildFailure">Error occurred when generating separate executable for custom code associated with model ''{0}''.</entry>
+    <entry key="FcnNotFoundInCustomCode">''{0}'' is not found in custom code executable ''{1}''.</entry>
+    <entry key="LoadLibFailure">无法加载库 ''{0}''。</entry>
+    <entry key="MemoryInconsistentBetweenSimulinkAndOOP">Inconsistent data detected when calling custom function ''{0}'' in process with ID ''{1}''. This could be caused by indexing out of bounds in custom code.</entry>
+    <entry key="UnKnownResponseFromSeparateProcess">Unknown response received from the process when simulating custom code in a separate process.</entry>
+    <entry key="LibNotRegisteredWithOOPForModel">Custom code library associated with model ''{0}'' is not registered with simulating custom code in a separate process.</entry>
+    <entry key="LibNotRegisteredWithOOPForBlock">Custom code library associated with block ''{0}'' is not registered with simulating custom code in a separate process.</entry>
+    <entry key="LibNotRegisteredWithOOP">Custom code library with ID ''{0}'' is not registered with simulating custom code in a separate process.</entry>
+    <entry key="ProcessNotRunning">Process with ID ''{0}'' is not running.</entry>
+    <entry key="CrashOccurredInOOP">Process with ID ''{0}'' crashed during simulating custom code in a separate process.</entry>
+    <entry key="IncompatibleEnumTypeInOOP">Enum type ''{0}'' is not supported with simulating custom code in a separate process. It requires that all enum types be capable of converting to ''int32'' without loss of precision.</entry>
+    <entry key="UnsupportedDataTypeError">Data type ''{0}'' is not supported with simulating custom code in a separate process.</entry>
+    <entry key="BlockRunningInOOPModeMsg">模块 ''{0}'' 正在使用 ID 为 ''{1}'' 的单独进程在调试模式下运行。</entry>
+    <entry key="InitTermCodeNotSupportedInOOP">The custom code setting associated with model ''{0}'' contains initialize and/or terminate functions. Out-of-process execution does not support this scenario.</entry>
+    <entry key="LibMustBeLoaded">The library ''{0}'' must be loaded to import custom code in model ''{1}''. </entry>
+    <entry key="AtLeastOneLibraryMustBeLinked">The model ''{0}'' should link to at least one Simulink library containing imported custom code.</entry>
+    <entry key="MultipleLibrariesAreLinked">The model ''{0}'' links to multiple Simulink libraries ''{1}'' for imported custom code which is not allowed.</entry>
+    <entry key="EditDisabledProperty">The property ''{0}'' of argument ''{1}'' cannot be edited. </entry>
+    <entry key="IncorrectScopeForArgument">''{0}'' is not a valid scope value for argument ''{1}''.</entry>
+    <entry key="InvalidFunctionName">''{0}'' is not a recognized function. Use get_param(gcb,''AvailableFunctions'') to display a list of valid function name(s) to which the C Caller block can be mapped.</entry>
+    <entry key="LockedCCaller">The FunctionPortSpecification object cannot be modified because the library containing the C Caller block is locked. Unlock the library to make changes to the block.</entry>
+    <entry key="LinkedCCaller">The FunctionPortSpecification object cannot be modified because the C Caller block is currently linked to a library. Modify the block from the library or break the link to modify this block.</entry>
+    <entry key="ModelIsExecuting">The FunctionPortSpecification object cannot be modified while the model is executing.</entry>
+    <entry key="IndexExceedsDimsLinear">索引超过数组元素的数量。</entry>
+    <entry key="LinkedCCallerFcnName">Function Name cannot be modified because the C Caller block is currently linked to a library. Modify the block from the library or break the link to modify this block.</entry>
+    <entry key="NonexistentGlobalArgument">''{0}'' is not a valid global argument.</entry>
+    <entry key="AddNonexistentGlobalArgument">''{0}'' is not a valid global argument to add.</entry>
+    <entry key="RemoveNonexistentGlobalArgument">''{0}'' is not a valid global argument to remove.</entry>
+    <entry key="InvalidNumberOfInputsForAPIMethod"> The ''{0}'' method requires one global argument name as an input. </entry>
+    <entry key="CCallerGlobalIOAPIMethodInvalidInput"> Input of the method ''{0}'' must be a character vector or scalar string. </entry>
+    <entry key="AddDuplicateGlobalArgument"> Global argument ''{0}'' already exists. </entry>
+    <entry key="GlobalIOParsingError"> Error(s) encountered while performing global variable analysis for model ''{0}''. Fix the errors in your custom code or disable ''{1}'' if global variables are not used as function interface. </entry>
+    <entry key="GlobalInputTooltip"> 全局变量作为输入 </entry>
+    <entry key="GlobalOutputTooltip"> 全局变量作为输出 </entry>
+    <entry key="GlobalInputOutputTooltip"> 全局变量作为输入和输出 </entry>
+    <entry key="GlobalNonInterfaceTooltip"> 全局变量不是模块接口。</entry>
+    <entry key="GlobalVariableUsageWarning"> Global variable {0} is read in {1} and written in {2}. If the execution order is not defined properly, changes made in {0} could cause unexpected results in another block.</entry>
+    <entry key="InvalidOrDeletedObject">'FunctionPortSpecification' 对象无效或已删除。</entry>
+    <entry key="GlobalArgsTotalCountMismatchError">The total number of global arguments for function ''{0}'' is {1} in C Caller block ''{2}'' and {3} in C Caller block ''{4}''. These C Caller blocks that call the same function don't have the same number of global arguments. </entry>
+    <entry key="GlobalArgNotFoundError">Global argument ''{0}'' for function ''{1}'' is in C Caller block ''{2}'' but is not in C Caller block ''{3}''. These C Caller blocks that call the same function don't use the same arguments.</entry>
+    <entry key="IncompatibleArgument">Passing incompatible type for argument {0, number, integer} of external C function ''{1}'' with coder.ceval.</entry>
+    <entry key="IncompatiblePointerArgument">在 coder.ceval 中为外部 C 函数 ''{1}'' 的参数 {0, number, integer} 传递了不兼容的指针类型。</entry>
+    <entry key="MatrixArgumentDifferentElements">在 coder.ceval 中为外部 C 函数 ''{1}'' 的参数 {0, number, integer} 传递了具有不同元素数的矩阵。</entry>
+    <entry key="CustomCodeUndefinedCevalFcn">External C function ''{0}'' with coder.ceval is filtered out because it is undefined in custom code source files or library files.</entry>
+    <entry key="CppReferenceNotSupportedCeval">coder.ceval 不支持将 C++ 引用作为自定义代码参数或返回值。请修改自定义代码以接受或返回指针。</entry>
+    <entry key="GlobalVarPointerTypeUnsupportedForOOP">自定义代码全局变量 ''{0}'' 是指针类型。在单独的进程中仿真自定义代码时，不支持指针类型的全局变量。</entry>
+    <entry key="GlobalVarUnsupportedTypeForOOP">不支持自定义代码全局变量 ''{0}'' 的类型。在单独的进程中仿真自定义代码时，不支持以下 C/C++ 类型: void 指针、指针数组、复数类型和联合体类型。</entry>
+    <entry key="CustomCodeFcnCallParamTypeUnsupportedForOOP">在自定义函数 ''{0}'' 中，不支持参数 ''{1}'' 的类型。在单独的进程中仿真自定义代码时，不支持以下 C/C++ 类型: void 指针类型、指针数组、复数类型和联合体类型。</entry>
+    <entry key="GlobalVarAddressEscapeOOP">在单独进程中仿真自定义代码时，C Function 模块不支持将全局变量 ''{0}'' 的地址分配给非常量指针。</entry>
+    <entry key="CustomCodeFcnCallUnsupportedForOOP">无法调用自定义代码函数 ''{0}''。在单独进程中仿真自定义代码时，不支持访问具有以下返回类型和函数参数类型的函数: &lt;ul&gt; &lt;li&gt;返回类型: 指针类型、复数类型、类类型和联合体类型&lt;/li&gt; &lt;li&gt;函数参数类型: void 指针类型、指针数组、多级指针、类类型、复数类型和联合体类型&lt;/li&gt; &lt;/ul&gt;</entry>
+    <entry key="CustomCodeFcnCallPassingNullptrForOOP">在自定义函数 ''{0}'' 中，在单独的进程中仿真自定义代码时，不支持为参数 ''{1}'' 传递空数组或矩阵。</entry>
+    <entry key="CustomCodeVariadicFcnUnsupportedForOOP">在单独的进程中仿真自定义代码时不支持变参函数 ''{0}''。</entry>
+    <entry key="CustomCodeDebugExecutionError">在单独的进程中仿真自定义代码时，''{0}'' 中出错。</entry>
+    <entry key="CustomCodeDebugExecutionErrorWithDebugger">在单独的进程中仿真自定义代码时，''{0}'' 中出错。
+        
+            &lt;actions exclusiveFixIts="yes"&gt;
+                &lt;action type="suggestion" id="launchDebuggerFromDV" retvalue="false"&gt;
+                    &lt;cmd&gt;SLCC.OOP.LaunchDebuggerForOOP(''{0}'');&lt;/cmd&gt;
+                    &lt;txt&gt;请启动外部调试器来调试您的外部自定义代码。&lt;/txt&gt;
+                &lt;/action&gt;
+            &lt;/actions&gt;
+        
+    </entry>
+    <entry key="CustomCodeDebugExecutionErrorInInit">在模型 ''{0}'' 的单独进程中仿真自定义代码时，初始化函数出错。</entry>
+    <entry key="CustomCodeDebugExecutionErrorInTerm">在模型 ''{0}'' 的单独进程中仿真自定义代码时，终止函数出错。</entry>
+    <entry key="CustomCodeDebugExecutionDebuggerLaunchingStatusTip">启动外部调试器。这通常在一分钟内完成。请不要多次点击 ''打开'' 按钮。</entry>
+    <entry key="OOPExeDebuggingFailure">调试与模型 ''{0}'' 关联的自定义代码时出错。</entry>
+    <entry key="MatrixElementAddressEscapeToCustomCodeFcnCallForOOP">在单独的进程中仿真自定义代码时，不支持将矩阵中第一个元素之外的元素地址传递给外部自定义函数 ''{0}''。</entry>
+    <entry key="OOPExeDebuggerLaunchFailure">无法为与模型 ''{0}'' 关联的自定义代码启动调试器。找不到调试信息。</entry>
+    <entry key="OOPExeDebuggerLaunchMissingExecutable">无法定位 ''{0}''。</entry>
+    <entry key="MacroFunctionUnsupportedForOOP">在单独的进程中仿真自定义代码时，不支持扩展为函数调用的 C 宏 ''{0}''。</entry>
+    <entry key="OOPExeLaunchFailure">无法启动 ''{0}'' 中的可执行文件。</entry>
+    <entry key="OOPExeDebuggerNoCustomCodeWithModel">模型 ''{0}'' 没有任何用于调试的自定义代码。</entry>
+    <entry key="OOPExeDebuggerNonExistSrcFile">自定义函数 ''{1}'' 的源文件 ''{0}'' 不存在。</entry>
+    <entry key="ExternalDebuggerLaunchFailure">启动外部调试器时出错。</entry>
+    <entry key="ExternalDebuggerUnsupported">为外部代码选择的当前编译器是 ''{0}''，外部代码调试不支持该编译器。请使用 ''mex -setup'' 选择一个兼容的编译器。</entry>
+    <entry key="ExternalDebuggerUnsupportedOnMacWithOOP">Mac OS 平台不支持在单独进程中进行自定义代码调试。</entry>
+    <entry key="ExternalDebuggerVSCodeNotSupportedInProcess">仅在单独进程中进行仿真时，才支持对自定义代码进行 VSCode 调试。</entry>
+    <entry key="ExternalDebuggerVSCodeNotSupportedInProcess_FixIt">针对模型或库 ''{0}''，在单独的进程中启用仿真自定义代码。</entry>
+    <entry key="ExternalDebuggerNoCustomCode">无法启动外部调试器。模型 ''{0}'' 没有可调试的自定义代码。请检查模型 ''{0}'' 是否指定了任何用于调试的自定义代码，以及模型配置参数中是否启用了 ''{1}'' 选项。</entry>
+    <entry key="ExternalDebuggerNotLaunchForOOP">如果自定义代码函数与 ''{0}'' 不兼容，则可能已被滤除。</entry>
+    <entry key="ExternalDebuggerLaunchedMSVC">外部调试器已准备就绪。要启动调试会话，请在外部调试器中设置断点并仿真模型。</entry>
+    <entry key="ExternalDebuggerLaunchedUnix">外部调试器已准备就绪。所有自定义代码函数的入口点处的断点都已在外部调试器中设置。要启动调试会话，请仿真模型。要结束调试会话，请在关闭外部调试器之前分离该进程。</entry>
+    <entry key="ExternalDebuggerAlreadyLaunched">外部调试器已启动。外部调试器窗口可能已最小化或在其他应用程序窗口后面。</entry>
+    <entry key="ExternalDebuggerStatusBarInfo">调试自定义代码: 调用函数 ''{0}''</entry>
+    <entry key="ExternalDebuggerMSVCDLLLimit">Visual Studio 调试器中加载的最大模块数当前为 ''{0}''。如果有超出此限制之外的未加载的自定义代码模块，则系统可能不会到达某些断点。要在 Simulink 中调试自定义代码，建议您将加载的最大模块数限制设置为 4096 或更高。相关文档。</entry>
+    <entry key="ExternalDebuggerSessionEnd">自定义代码调试会话已结束。要启动新调试会话，请从 Simulink 工具条启动调试器。</entry>
+    <entry key="ExternalDebuggerLaunchingStatusTip">启动外部调试器</entry>
+    <entry key="ExternalDebuggerLaunchingWarnDlgMsgUnix">\\bf 警告: \\rm 不要在外部调试器中执行 ''kill'' 命令。这样做会在没有任何通知的情况下终止 MATLAB。要结束调试会话，请使用 ''detach'' 命令。</entry>
+    <entry key="ExternalDebuggerDebuggingWithMinGW">要使用 MinGW 进行自定义代码调试，请安装 {0} 支持包。</entry>
+    <entry key="MexDebuggingWithVSCodeError">MEX 调试不支持 VSCode 调试。 </entry>
+    <entry key="PrebuildFailed">无法为模型 ''{0}'' 编译自定义代码仿真可执行文件。</entry>
+    <entry key="PrebuildInterfaceHeaderUnsuccessful">无法从指定的自定义代码生成接口头文件。</entry>
+    <entry key="InferringHeadersFailed">无法自动填充头信息。</entry>
+    <entry key="InferredHeadersEmpty">头信息为空。请检查源文件并包括目录设定或显式指定头文件。</entry>
+    <entry key="EmptyCustomCodeHeader">没有为模型 ''{0}'' 指定头文件。请在解析前指定&lt;sldiag objui="configset" objparam="SimCustomHeaderCode"&gt;头文件&lt;/sldiag&gt;。</entry>
+    <entry key="EmptyCustomCodeSource">没有为模型 ''{0}'' 指定源文件。解析前，请指定&lt;sldiag objui="configset" objparam="SimUserSources"&gt;源文件&lt;/sldiag&gt;。</entry>
+    <entry key="ValidateCustomCode">正在为以下模型验证自定义代码: {0}</entry>
+    <entry key="InferHdrConfirmationDlgTitle">自动填充头文件</entry>
+    <entry key="InferHdrConfirmationDlgMsg">是否用自动填充的头替换 ''{0}'' 中以前的值?</entry>
+    <entry key="InferHdrConfirmationDlgYesLabel">是</entry>
+    <entry key="InferHdrConfirmationDlgNoLabel">否</entry>
+    <entry key="InferHdrUnappliedChanges">自动填充头文件要求模型 ''{0}'' 的 "配置参数" 对话框中没有未应用的更改。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="apply" btn="apply"&gt; &lt;cmd&gt;configset.internal.util.applyChanges(''{0}'');&lt;/cmd&gt; &lt;txt&gt;应用更改&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="ValidateCCUnappliedChanges">验证自定义代码要求模型 ''{0}'' 的 "配置参数" 对话框中没有未应用的更改。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="suggestion" id="apply" btn="apply"&gt; &lt;cmd&gt;configset.internal.util.applyChanges(''{0}'');&lt;/cmd&gt; &lt;txt&gt;应用更改&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+    </entry>
+    <entry key="PythonBlockInferenceFail">无法推断 Python 函数的输入和输出类型 ''{0}''</entry>
+    <entry key="UnsupportedPythonTypeToMATLABTypeConversionError">不支持从 ''{1}'' 到 ''{0}'' 的转换。</entry>
+    <entry key="OutputDictionaryKeysDoNotContainBusField">在输出字典键中找不到 ''{0}''。输出字典键必须包含输出 Simulink.Bus 对象的所有字段。</entry>
+    <entry key="UnsupportedPythonTypeToSimulinkTypeConversion">无法从 Python 函数输出类型转换为指定的 Simulink 类型。</entry>
+    <entry key="PythonRuntimeError">Python 错误:\n{0}</entry>
+    <entry key="PythonBufferWrongNDims">从 python 返回的数组或矩阵的维数必须与在 Simulink 中指定的维数匹配。</entry>
+    <entry key="PythonBufferWrongType">从 python 返回的数组或矩阵的类型必须与 Simulink 预期的类型匹配。</entry>
+    <entry key="PythonBufferWrongShape">从 Python 返回的数组或矩阵的维度必须与在 Simulink 中指定的维度匹配。</entry>
+    <entry key="PythonBusElementNameNotDictKey">python 返回的字典中没有总线元素 ''{0}'' 的名称是字符串类型的键。</entry>
+    <entry key="PythonDictBusMismatch">python 返回的字典中的元素数必须大于或等于总线中的元素数</entry>
+    <entry key="PythonAccessNonTupleAsTuple">python 返回的对象应为元组。</entry>
+    <entry key="PythonBoolMarshaling">python 返回的对象必须为布尔值。</entry>
+    <entry key="PythonIdxOutOfRange">索引超出序列元素的数量。</entry>
+    <entry key="PythonListToNdArray">不支持从 Python 列表转换为多维 Simulink 数组。</entry>
+    <entry key="PythonUnsupportedTypeEnum">枚举类型与 Python 不兼容，无法实现基于代码生成的执行。枚举名称: ''{0}'' </entry>
+    <entry key="PythonUnsupportedTypeComplex">复数类型与 Python 不兼容，无法实现基于代码生成的执行。</entry>
+    <entry key="PythonFloatToIntMayLosePrecision">将 Python 浮点数转换为 Simulink 整数可能会损失精度。</entry>
+    <entry key="PythonOOPExecutionMLSB">Code generation based execution of Python is not supported for ''{0}'' when the Python environment in MATLAB is set to Out-of-Process. Change the MATLAB Python environment to In-Process or change the block simulation mode to interpreted execution.</entry>
+    <entry key="PythonOOPExecutionPyCode">Code generation based execution of Python is not supported for ''{0}'' when the Python environment in MATLAB is set to Out-of-Process. Change the MATLAB Python environment to In-Process.</entry>
+    <entry key="PythonNotConfigured">Python Function 模块要求对 MATLAB 进行配置以使用 Python。</entry>
+    <entry key="PythonCodeBlockInDataflow">Python Code 模块 ''{0}'' 不能位于数据流子系统内。 </entry>
+    <entry key="PythonCodeBlockArrayOfBusInput">使用基于代码生成的方式执行 Python 代码的模块不支持包含总线类型的输入数组。</entry>
+    <entry key="PythonCodeBlockArrayOfBusOutput">使用基于代码生成的 Python 代码执行的模块不支持包含总线类型的输出数组。</entry>
+    <entry key="PythonStringCppCodegen">在使用 Simulink 字符串数据类型时，Python Code 模块 ''{0}'' 无法生成 C++ 代码</entry>
+    <entry key="PythonRapidAccelForEach">Python Code 模块 ''{0}'' 无法在 For Each 子系统的内部使用快速加速执行</entry>
+    <entry key="PythonHeaderNotFound">找不到 Python.h 头文件。请确保随同 MATLAB 使用的 Python 版本一起安装了相应的 Python 开发头文件。</entry>
+    <entry key="PythonFunctionMaskDialogText">输入您的 Python 代码以集成自定义 Python 算法</entry>
+    <entry key="PythonFunctionName">Python Code 模块</entry>
+    <entry key="MultiWordBusFieldRequiresLongLong">从自定义代码导入的总线对象 ''{0}'' 包含多字字段。请在 "硬件实现" 窗格中启用 '支持 long long' 选项。&lt;actions exclusiveFixIts="yes"&gt; &lt;action type="fixit" id="rtw_fixit" retvalue="false"&gt; &lt;cmd&gt;set_param(''{1}'',''ProdLongLongMode'',''on'');&lt;/cmd&gt; &lt;txt&gt;将&lt;sldiag objui="configset" objparam="ProdLongLongMode"&gt;支持 long long&lt;/sldiag&gt; 设置为 ''on''&lt;/txt&gt; &lt;/action&gt; &lt;/actions&gt;
+	</entry>
+    <entry key="StructWithNDInGRTCodegen">不支持模块图 ''{1}'' 的代码生成目标，因为从自定义代码导入的总线对象 ''{0}'' 包含矩阵类型的元素。当模型已导入包含矩阵字段的总线对象时，仅支持基于 ERT 的目标。</entry>
+    <entry key="NdIndexingMismatchCustomCodeExpectsUnflattenedType">模块图 ''{1}'' 在自定义代码中导入了包含矩阵字段的总线，这需要启用元素维度保留。请为模块图 ''{1}'' 更改 ''{0}'' 的 PreserveElementDimensions 属性。</entry>
+    <entry key="NdIndexingMismatchCustomCodeExpectsFlattenedType">模块图 ''{1}'' 在自定义代码中导入了包含向量字段的总线，这需要禁用总线元素维度保留。请为模块图 ''{1}'' 更改 ''{0}'' 的 PreserveElementDimensions 属性。</entry>
+    <entry key="IncorrectUseOfMajorityFunction">数组布局设定函数 ''{0}'' 的用法不正确。完全限定自定义代码函数名称必须作为数组布局设定函数的字符串输入传递。</entry>
+    <entry key="CannotFindMajorityFunction">找不到在数组布局设定函数 ''{1}'' 中指定的自定义代码函数 ''{0}''。可以为以下函数设置数组布局: ''{2}''。</entry>
+    <entry key="NoFcnInCCCanTakeMajority">{0} 自定义代码设定中的函数无法采用数组布局。要删除此警告消息，请从模块代码中删除数组布局设定函数调用。</entry>
+    <entry key="FunctionArrayLayoutOverrideForSNDF_BlockCC">包含以矩阵字段作为输入/输出参量的结构体的自定义代码函数 ''{0}'' 必须具有 '行优先' 数组布局。自定义代码函数 ''{0}'' 的 ''{1}'' 的数组布局设置被忽略。要消除此警告消息，请在模块代码中使用 ''slSetRowMajor'' 函数将 ''{0}'' 的数组布局设置指定为 '行优先'。</entry>
+    <entry key="FunctionArrayLayoutOverrideForPtrToArr_BlockCC">包含指向矩阵的指针作为输入参量的自定义代码函数 ''{0}'' 必须具有 '行优先' 数组布局。自定义代码函数 ''{0}'' 的 ''{1}'' 的数组布局设置被忽略。要消除此警告消息，请在模块代码中使用 ''slSetRowMajor'' 函数将 ''{0}'' 的数组布局设置指定为 '行优先'。</entry>
+    <entry key="CFunctionBlockLibMultiInstanceError">Generating code from the model, simulating the model in rapid accelerator mode, or simulating the model using model reference in accelerator mode is not supported since multiple instances of library block ''{0}'' are used and ''CustomCodeIsMultiInstantiable'' is set to ''off''.</entry>
+    <entry key="CFunctionBlockMultiInstanceError">因为模块 ''{0}'' 和 ''{1}'' 具有相同的模块自定义代码并且 ''CustomCodeIsMultiInstantiable'' 设置为 ''off''，所以不支持从该模型生成代码、在快速加速模式下仿真该模型或在加速模式下仿真具有模型引用的该模型。</entry>
+    <entry key="ContinuousSampleTimeNotAllowForNonDeterministicBlockCC">C Function 模块 ''{0}'' 不支持连续采样时间，因为该模块使用的自定义代码可能具有非确定性输出。如果要为该模块启用连续采样时间支持，在包含的自定义代码行为确定的情况下，请将 ''CustomCodeIsMultiInstantiable'' 设置为 ''on''。</entry>
+    <entry key="CFcnHeaderFiles">头文件</entry>
+    <entry key="CFcnSourceFiles">源</entry>
+    <entry key="CFcnSearchDirs">搜索目录</entry>
+    <entry key="CFcnLibraries">库</entry>
+    <entry key="CFcnDefines">定义</entry>
+    <entry key="CFcnCompilerFlags">编译器标志</entry>
+    <entry key="CFcnLinkerFlags">链接器标志</entry>
+    <entry key="CFcnAdvancedSettings">高级</entry>
+    <entry key="CFcnMultiInstance">模块指定的自定义代码支持多个实例</entry>
+    <entry key="CFcnLocalCustomCode">使用模块自定义代码</entry>
+    <entry key="CFcnConfigSetCustomCode">使用配置参数自定义代码</entry>
+    <entry key="CFcnSimulationCC">仿真自定义代码 </entry>
+    <entry key="CFcnCodeGenCC">代码生成自定义代码</entry>
+    <entry key="CFcnDependencyPromp">指定模块自定义代码依赖关系</entry>
+    <entry key="CFunctionBlockLocalCCInDataflow">C Function 模块 ''{0}'' 使用本地自定义代码，不能置于数据流子系统中。 </entry>
+    <entry key="OOPExeBuildFailureBlockCC">编译与模块 ''{0}'' 相关联的自定义代码时出错。</entry>
+    <entry key="ExportingTargetCodegenToPrvsRelease">C Function 模块 ''{0}'' 使用模块的新添加的代码生成部分为仿真和代码生成指定不同代码。由于此功能是在 R2024a 中引入的，因此代码生成代码将在导出过程中被删除。</entry>
+    <entry key="ExportingLocalCCToPrvsRelease">C Function 模块 ''{0}'' 具有可指定的自定义代码设置。此功能是为 R2024a 及更高版本添加的，与旧版本不兼容。模块将在导出过程中被删除。</entry>
+    <entry key="ExportingFullLangToPrvsRelease">C Function 模块 ''{0}'' 在该模块上将 'LanguageLevel' 设置为 'full'。此功能是为 R2025b 及更高版本添加的，与旧版本不兼容。</entry>
+    <entry key="CustomCodeLibBuildErrorCause">{0}</entry>
+    <entry key="CFcnCallerDefaultFunctionName">&lt;FunctionName&gt;</entry>
+    <entry key="ParsingTypeFailedDetail">{0}</entry>
+    <entry key="DeterministicFunctionsDlgSSFcnNameEditHint">functionName</entry>
+    <entry key="MajorityDlgSSFcnNameEditHint">functionName</entry>
+    <entry key="GlobalIOParsingErrorCause">{0}</entry>
+  </message>
+</rsccat>

@@ -1,0 +1,11 @@
+<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml"><body><strong>Explanation</strong><br/><p><code>genvarname</code> will be removed in a future release. To
+                    replace this functionality, use <code>matlab.lang.makeValidName</code>
+                    to return valid MATLAB identifiers from input character vectors, and use
+                        <code>matlab.lang.makeUniquetexts</code> to ensure the character
+                    vectors are unique.</p><br/><strong>Suggested Action</strong><br/><p>Replace all instances of <code>genvarname</code> with
+                        <code>matlab.lang.makeValidName</code> and
+                        <code>matlab.lang.makeUniqueStrings</code>.&nbsp;For example,
+                    if</p><code>S&nbsp;=&nbsp;{'A',&nbsp;'A',&nbsp;'A',&nbsp;'A'};</code><p>Instead of</p><code>V&nbsp;=&nbsp;genvarname(S);</code><p>Use</p><code>N&nbsp;=&nbsp;matlab.lang.makeValidName(S);<br/>U&nbsp;=&nbsp;matlab.lang.makeUniqueStrings(N,{},namelengthmax)</code><p>To exclude variables in the current workspace, use</p><code>N&nbsp;=&nbsp;matlab.lang.makeValidName(S);<br/>U&nbsp;=&nbsp;matlab.lang.makeUniqueStrings(N,who,namelengthmax)</code><p>Unlike <code>genvarname</code>, the
+                        <code>matlab.lang.makeUniqueStrings</code> function adds an
+                    underscore before appending a number to duplicate character vectors. For more
+                    information, see <code><a href="matlab:doc matlab.lang.makeValidName" target="_blank">matlab.lang.makeValidName</a></code> and <code><a href="matlab:doc matlab.lang.makeUniqueStrings" target="_blank">matlab.lang.makeUniqueStrings</a></code>.</p></body></html>

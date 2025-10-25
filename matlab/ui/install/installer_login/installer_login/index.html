@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Installer Login</title>
+
+    <script type="text/javascript">
+
+        var headID = document.getElementsByTagName("head")[0];
+
+        var dojoConfigScript = document.createElement("script");
+        dojoConfigScript.src = "dojoConfig-release-global.js";
+        dojoConfigScript.onload = onDojoConfigLoad;
+        dojoConfigScript.type = "text/javascript";
+
+        var dojoScript = document.createElement("script");
+        dojoScript.src = "../dojo/dojo.js";
+        dojoScript.onload = onDojoLoad;
+        dojoScript.type = "text/javascript";
+
+        // load css files
+        loadCssAndJsFile("css", "css/errorpage.css");
+        loadCssAndJsFile("css", "css/installer_login.css");
+        loadCssAndJsFile("css", "../css/overrides_ie9.css");
+
+        headID.appendChild(dojoConfigScript);
+
+        function loadCssAndJsFile(fileType, filePath) {
+            if (fileType === "js") {
+                var fileref = document.createElement('script');
+                fileref.setAttribute("type", "text/javascript");
+                fileref.setAttribute("src", filePath);
+            }
+
+            else if (fileType === "css") {
+                var fileref = document.createElement("link");
+                fileref.setAttribute("rel", "stylesheet");
+                fileref.setAttribute("type", "text/css");
+                fileref.setAttribute("href", filePath);
+            }
+
+            if (typeof fileref != "undefined")
+                document.getElementsByTagName("head")[0].appendChild(fileref);
+        }
+
+        function onDojoConfigLoad() {
+            headID.appendChild(dojoScript);
+        }
+
+        function onDojoLoad() {
+            require(["installer_login/browsercheck"], function () {
+                require(["mw-browser-utils/BrowserCheck!"], function () {
+                    require(["installer_login/installer_login"], function () {
+                        require([
+                            "installer_login/installer_login",
+                            "dojo/dom",
+                            "dojo/on",
+                            "dojo/_base/lang",
+                            "dojo/dom-style",
+                            "installer_login/PostMessageChannel",
+                            "mw-overlay-utils/BusyOverlay",
+                            "dojo/i18n!installer_login/l10n/nls/installer_login",
+                            "dojo/domReady!"
+                        ], function (InstallerLogin, dom, on, lang, domStyle, PostMessageChannel, BusyOverlay) {
+
+                            // Get an instance of Installer Login
+                            var isMainFrameLoaded = false;
+                            var installerLogin = InstallerLogin.getInstance();
+
+                            // dom reference to the iFrame containing embedded login app
+                            var mainFrame = dom.byId("embeddedLoginApp");
+
+                            /*
+                             * All nodes related to error handling and error messages
+                             * */
+
+                            var errorContainer = dom.byId("errorContainer");
+                            var spinnerNode = document.getElementsByClassName("spinnerNode")[0];
+                            var retryBtn = dom.byId("retryBtn");
+                            var cancelBtn = dom.byId("cancelBtn");
+                            var errorMsg = dom.byId("errorMsg");
+                            var errorHeading = dom.byId("errorHeading");
+                            var busyIndicator = new BusyOverlay(BusyOverlay.SIZE.MEDIUM); // create a new spinner when creating the new login panel
+                            /*
+                             * Holds the data object containing the initial data that is
+                             * passed on to Embedded Login App.
+                             * Properties are endpoint, locale, platform, release, transactionid
+                             * */
+                            var _embeddedLoginInfo;
+
+                            on(mainFrame, "load", lang.hitch(this, function () {
+                                // Do not notify InstallerLogin to send nonce when the frameLink is empty or doesn't match the src. The latter case
+                                // is when frameLink is set using the setter.
+                                // This ensures that "init" nonce postMessage does not get fired before the iframe content is loaded
+                                if (mainFrame.src && mainFrame.src !== "" && mainFrame.src === _embeddedLoginInfo.endpoint) {
+                                    isMainFrameLoaded = true;
+                                    console.log("in main frame loaded, loaded is True" + isMainFrameLoaded);
+                                    initialHandshake(_embeddedLoginInfo);
+                                }
+                            }));
+
+                            /*
+                             * listener for initData event emitted by InstallerLogin when the call to
+                             * getInfoToCallEmbeddedLogin returns with data.
+                             * */
+                            on(installerLogin, "initData", lang.hitch(this, function (e) {
+                                _embeddedLoginInfo = JSON.parse(e);
+                                _embeddedLoginInfo.endpoint += (installerLogin._options && installerLogin._options.locale) || "en-US";
+                                mainFrame.src = _embeddedLoginInfo.endpoint;
+                                console.log("_embeddedLoginInfo is set by initData");
+                                console.log("mainFrame.src is set to: " + _embeddedLoginInfo.endpoint + "it should trigger mainFrame onLoad event and set isMainFrameLoaded to True");
+                                console.log(_embeddedLoginInfo);
+                                console.log(mainFrame.src);
+                            }));
+
+                            /*
+                             * listener for mwHandleError event emitted by MLF to
+                             * handle errors and bring up the error container
+                             * */
+                            on(installerLogin, "mwHandleError", function (errorObj) {
+                                var postData = {
+                                    formHeight: 450
+                                };
+
+                                channel.send("mwWillShowPanel", postData);
+                                mainFrame.style.display = "none"; // hide the iframe
+                                errorHeading.innerHTML = errorObj.error;
+                                errorMsg.innerHTML = errorObj.errorMsg;
+                                retryBtn.innerHTML = errorObj.tryAgain;
+                                cancelBtn.innerHTML = errorObj.cancel;
+                                errorContainer.style.display = "block"; // show the error container
+                                _hideSpinner(); // hide the spinner if any
+                                console.log("inside on mwHandleError");
+
+                                /*
+                                 * Set up onClick event on the errorMsg anchor node to open it in the system browser
+                                 * */
+                                var anchorNode = errorMsg.querySelector("a[target]");
+                                if(anchorNode) {
+                                    anchorNode.onclick = function() {
+                                        console.log( anchorNode["href"] + ": is clicked");
+                                        installerLogin._openHyperlink(this["href"]);
+                                        return false;
+                                    };
+                                }
+
+                            });
+
+                            /*
+                             * listener for _retryLoginAfterResolve which is emitted by MLF
+                             * after resolving _isEmbeddedLoginInfoSet boolean so that
+                             * "requestLogin" requests can be made from the wrapper.
+                             * */
+                            on(installerLogin, "_retryLoginAfterResolve", lang.hitch(this, function () {
+                                console.log("retrrying after resolve");
+                                _handleRequestLogin({body: {}});
+                                console.log("inside _retryLoginAfterResolve");
+                            }));
+
+                            /*
+                             * listener for onclick of retryBtn node in the wrapper page
+                             * */
+                            on(retryBtn, "click", lang.hitch(function () {
+                                console.log("on click on retryButton");
+                                _showSpinner(); // show the spinner
+                                errorContainer.style.display = "none"; //hide the error container
+                                mainFrame.style.display = "block"; // show the iframe
+
+                                /*
+                                 * The following code checks if _isEmbeddedLoginInfoSet on InstallerLogin instance is set,
+                                 * in which case it'll go ahead and try to sent "requestLogin" again.
+                                 *
+                                 * Otherwise, it means that the error occured even before _isEmbeddedLoginInfoSet
+                                 * and "requestLogin" will not work. To handle this edge case, the work if delegated
+                                 * to InstallerLogin instance by calling _handleIFrameRetry method which essentially makes sure
+                                 * _isEmbeddedLoginInfoSet is resolved.
+                                 *
+                                 * NOTE: _retryLoginAfterResolve is emitted by InstallerLogin which after
+                                 * resolving _isEmbeddedLoginInfoSet.
+                                 * */
+                                if (installerLogin._isEmbeddedLoginInfoSet === true) {
+                                    _handleRequestLogin({body: {}}); // call request login again with default parameters
+                                } else {
+                                    installerLogin._handleIFrameRetry();
+                                }
+                            }));
+
+                            /*
+                             * listener for onclick of "cancel" button node in the wrapper page
+                             * */
+                            on(cancelBtn, "click", lang.hitch(function () {
+                                console.log("inside cancel button click, mwWillHidePanel");
+                                var postData = {
+                                    isCancelled: true
+                                };
+                                channel.send("mwWillHidePanel", postData);
+                            }));
+
+                            var channel = new PostMessageChannel(window, "__mlfpmc__");
+                            channel.connect(window.parent);
+
+                            channel.on("configProperties", _handleConfigProperties);
+                            channel.on("requestLogin", _handleRequestLogin);
+
+                            function _handleConfigProperties(message) {
+                                console.log("received configProperties message, now go and set the properties");
+                                var _properties = {
+                                    clientString: message.body.clientString
+                                };
+
+                                var _options = {};
+                                if (message.body.options) { // assign optional properties from the message
+                                    _options = message.body.options;
+                                }
+
+                                _properties.options = _options;
+                                installerLogin.configProperties(_properties);
+                            }
+
+                            function _handleRequestLogin() {
+                                console.log("received message: requestLogin");
+                                installerLogin._getInfoToCallEmbeddedLogin(lang.hitch(installerLogin,
+                                        "_init"), lang.hitch(installerLogin, "_handleUnexpectedError"));
+                            }
+
+                            function initialHandshake(embeddedLoginInfomation) {
+                                console.log("inside initialHandshake");
+
+                                var _embeddedLoginInfo = embeddedLoginInfomation;
+                                var noncedata;
+                                // set the source of the frame to embedded login if it has not been set already
+                                if (dom.byId("embeddedLoginApp").src !== _embeddedLoginInfo.endpoint) {
+                                    isMainFrameLoaded = false;
+                                    dom.byId("embeddedLoginApp").src = _embeddedLoginInfo.endpoint;
+                                }
+
+                                noncedata = {
+                                    "event": "init",
+                                    "transactionId": _embeddedLoginInfo.transactionId,
+                                    "clientTransactionId": "",
+                                    "release": _embeddedLoginInfo.release,
+                                    "platform": _embeddedLoginInfo.platform,
+                                    "clientString": installerLogin._getFormattedClientString(),
+                                    "clientID": "",
+                                    "locale": "",
+                                    "profileTier": "",
+                                    "showCreateAccount": installerLogin._options.showCreateAccount || true,
+                                    "showRememberMe": false,
+                                    "legalText": installerLogin._options.legalText || "",
+                                    "contextualProfileText": installerLogin._options.contextualProfileText || ""
+
+                                };
+                                noncedata = JSON.stringify(noncedata);
+                                console.log("_handleRequestLogin noncedata is " + noncedata);
+                                if (isMainFrameLoaded === true) {
+                                    setTimeout(function () {
+                                        mainFrame.contentWindow.postMessage(noncedata, "*");
+                                    }, 0);
+                                } else {
+                                    _handleRequestLogin();
+                                }
+                            }
+
+                            function _showSpinner() {
+                                console.log("inside _showSpinner");
+                                domStyle.set(spinnerNode, "display", "block"); // show the spinnerNode before setting the target for busyOverlay
+                                busyIndicator.set("target", spinnerNode);
+                                if (navigator.userAgent.toLowerCase().indexOf('firefox') < 0) {
+                                    setTimeout(function () {
+                                        busyIndicator.show();
+                                    }, 200);
+                                }
+                            }
+
+                            function _hideSpinner() {
+                                console.log("inside _hideSpinner");
+                                busyIndicator.hide();
+                                domStyle.set(spinnerNode, "display", "none"); //hide the spinner node after hiding the busyOverlay see g1421281
+                            }
+
+                            /*
+                             * Listener for message event which is responsible for most of the
+                             * processing based on the incoming postMessages.
+                             * */
+
+                            on(window, "message", lang.hitch(this, function (e) {
+
+                                console.log("Listener for message event which is responsible for most of the processing based on the incoming postMessages");
+                                var data;
+
+                                try {
+                                    data = JSON.parse(e.data);
+                                } catch (error) {
+                                    return;
+                                }
+
+                                if (data.event && data.event === "nonce") {
+
+                                    var serverNonce = data.transactionId;
+                                    var noncedata = {
+                                        "event": "load",
+                                        "transactionId": serverNonce,
+                                        "clientTransactionId": _embeddedLoginInfo.transactionId,
+                                        "release": installerLogin._options && installerLogin._options.release || "",
+                                        "platform": installerLogin._options && installerLogin._options.platform || "",
+                                        "clientString": installerLogin._getFormattedClientString(),
+                                        "clientID": "",
+                                        "locale": installerLogin._options && installerLogin._options.locale || "en-US",
+                                        "profileTier": "extended",
+                                        "showCreateAccount":  installerLogin._options.showCreateAccount || true,
+                                        "showRememberMe": false,
+                                        "legalText": installerLogin._options.legalText || "",
+                                        "contextualProfileText": installerLogin._options.contextualProfileText || "",
+                                        "showTrust": installerLogin._options.showTrust
+                                    };
+
+                                    noncedata = JSON.stringify(noncedata);
+                                    console.log("Final noncedata is " + noncedata);
+                                    mainFrame.contentWindow.postMessage(noncedata, "*");
+                                    mainFrame.height = data.formHeight;
+
+                                    var postData = {
+                                        formHeight: data.formHeight
+                                    };
+                                    channel.send("mwWillShowPanel", postData);
+
+                                    _hideSpinner(); // hide the spinner when the login goes through successfully
+                                }
+
+                                if (data.event === "login") {
+                                    delete data["event"];
+
+                                    var loginInfo = installerLogin._handleMwLogin(data);
+
+                                    _showSpinner(); // show spinner
+
+                                    channel.send("mwLoginResponse", loginInfo);
+                                    console.log("login response received: " + JSON.stringify(loginInfo));
+                                    console.log("sending mwLoginResponse to client");
+
+                                    console.log("Login Successful: sending mwWillHidePanel");
+                                    channel.send("mwWillHidePanel");
+
+                                    _hideSpinner(); // hide spinner
+
+                                }
+                            }));
+                        });
+                    });
+                });
+            });
+        }
+    </script>
+
+    <link href="../css/overrides_ie9.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body class="tundra">
+
+<iframe width="100%" id="embeddedLoginApp" src="" frameborder="0"></iframe>
+<div id="errorContainer" class="errorContainer">
+    <div class="alert">
+        <div id="errorHeading" class="error-heading"></div>
+        <div id="errorMsg" class="error-msg"></div>
+    </div>
+    <div class="actionBtnsContainer">
+        <div id="cancelBtn" class="btn cancel-btn"></div>
+        <div id="retryBtn" class="btn retry-btn"></div>
+    </div>
+</div>
+<div id="spinner" class="spinnerNode"></div>
+</body>
+</html>

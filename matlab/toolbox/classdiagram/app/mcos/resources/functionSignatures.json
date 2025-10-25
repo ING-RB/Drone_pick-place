@@ -1,0 +1,112 @@
+{
+    "matlab.diagram.ClassViewer":
+    {
+      "inputs":
+      [
+        {"name": "Visible", "kind": "namevalue", "type": "choices={'on', 'off'}" },
+        {"name": "Load", "kind": "namevalue", "type":"file=*.mldatx"},
+        {"name": "Classes", "kind": "namevalue", "type":[["string"],["meta.class"]]},
+        {"name": "Folders", "kind": "namevalue", "type":"folder"},
+        {"name": "Namespaces", "kind": "namevalue", "type":"string"},
+        {"name": "Packages", "kind": "namevalue", "type":"string"},
+        {"name": "IncludeSubfolders", "kind": "namevalue", "type": "choices={'on', 'off'}" },
+        {"name": "IncludeInnerNamespaces", "kind": "namevalue", "type": "choices={'on', 'off'}" }
+      ]
+    },
+    "matlab.diagram.ClassViewer.addClass":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "classNames", "kind": "required", "type":[["string"],["meta.class"]] }
+      ]
+    },
+    "matlab.diagram.ClassViewer.expandAll":
+    {
+      "inputs":
+      [
+         {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+         {"name": "expanded", "kind": "ordered", "type":["logical", "scalar"], "display": "expanded"}
+      ]
+    },
+    "matlab.diagram.ClassViewer.expandClass":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "className", "kind": "required","type":[["string"],["meta.class"]]},
+        {"name": "status", "kind": "ordered", "type": ["logical", "scalar"]}
+      ]
+    },
+    "matlab.diagram.ClassViewer.expandSection":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "className", "kind": "required","type":[["string"],["meta.class"]]},
+        {"name": "sectionName", "kind": "required","type":["string", "choices={'Properties', 'Methods', 'Events'}"] },
+        {"name": "status", "kind": "ordered", "type": ["logical", "scalar"]}
+      ]
+    },
+    "matlab.diagram.ClassViewer.export":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "fileName", "kind": "ordered", "type":"file"},
+        {"name": "Format", "kind": "namevalue", "type":"choices={'JPG','PDF','PNG'}"},
+        {"name": "Size", "kind": "namevalue", "type":"numeric"}
+      ]
+    },
+    "matlab.diagram.ClassViewer.importClassesFrom":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "Classes", "kind":"namevalue", "type":[["string"],["meta.class"]] },
+        {"name": "Folders", "kind":"namevalue", "type":"string" },
+        {"name": "Namespaces", "kind":"namevalue", "type":"string" },
+        {"name": "Packages", "kind": "namevalue", "type":"string"},
+        {"name": "IncludeSubfolders", "kind":"namevalue", "type": ["logical", "scalar"] },
+        {"name": "IncludeInnerNamespaces", "kind":"namevalue", "type": ["logical", "scalar"] }
+      ]
+    },
+    "matlab.diagram.ClassViewer.importCurrentProject":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" }
+      ]
+    },
+    "matlab.diagram.ClassViewer.load":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "filePath", "kind": "required", "type":"file=*.mldatx"}
+      ]
+    },
+    "matlab.diagram.ClassViewer.removeClass":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "classNames", "kind": "required", "type":[["string"],["meta.class"]] }
+      ]
+    },
+    "matlab.diagram.ClassViewer.removeAllClasses":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" }
+      ]
+    },
+    "matlab.diagram.ClassViewer.save":
+    {
+      "inputs":
+      [
+        {"name": "viewer", "kind": "required", "type":"matlab.diagram.ClassViewer" },
+        {"name": "filePath", "kind": "ordered", "type":"file=*.mldatx"}
+      ]
+    }
+}

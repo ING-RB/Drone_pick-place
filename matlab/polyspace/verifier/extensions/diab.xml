@@ -1,0 +1,1576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015-2024 The MathWorks, Inc.
+
+     All definitions for the Diab compiler, dcc/dplus.
+     Diab provides one C compiler (dcc) and one C++ compiler (dplus), which handle
+     all targets. Here, we use the 'target' attribute to indicate architecture.
+     Architectures described in this file (Diab 5.9.4 docs in parentheses):
+       - PowerPC                    (wr_diab_compiler_users_guide_ppc_5.9.4.pdf)
+       - PowerPC64                  (wr_diab_compiler_users_guide_ppc_5.9.6.pdf)
+       - ARM/XScale                 (wr_diab_compiler_users_guide_arm_xscale_5.9.4.pdf)
+       - ColdFire                   (wr_diab_compiler_users_guide_cf_5.9.4.pdf)
+       - X86 (i386)                 (wr_diab_compiler_users_guide_x86_5.9.4.pdf)
+       - MIPS                       (wr_diab_compiler_users_guide_mips_5.9.4.pdf)
+       - MCore (M*Core)             (wr_diab_compiler_users_guide_mcor_5.9.4.pdf)
+       - v850, rh850 (Renesas v850) (wr_diab_compiler_users_guide_rh850_5.9.4.pdf)
+       - SH (SuperH)                (wr_diab_compiler_users_guide_sh_5.9.4.pdf)
+       - TriCore                    (wr_diab_compiler_users_guide_tc_5.9.4.pdf)
+
+     Diab's options are described in a separate file:
+       - wr_diab_compiler_options_reference_5.9.4.pdf
+
+     This file is intended for inclusion in a <compilers> node.
+-->
+
+<compiler name="diab" default="powerpc"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="extensions.xsd">
+
+  <clients>
+    <client name="polyspace"/>
+    <client name="matlab"/>
+  </clients>
+
+  <target_options>
+    <!-- Normalize -t option forms. -->
+    <target_option pattern="-t(.+)" option="-t" value="\1"/>
+
+    <!-- Default -t option when not given. -->
+    <!-- We use a fake PowerPC processor 'PPCALL' that lets us enable all PowerPC features. -->
+    <!-- The default specifies: processor 'PPCALL', object format 'E' (Elf EABI), floating-point support 'H' (hardware), execution environment 'simple'. -->
+    <!-- The concatenation of these is PPCALLEH:simple -->
+    <target_option pattern="-t" notmatched="true" option="-t" value="PPCALLEH:simple"/>
+  </target_options>
+
+  <!--
+       Diab uses a single driver for all C targets (dcc), and one for all C++ targets (dplus).
+       The sniffer gives the executable name, i.e. dcc or dplus, but we must determine the 'target'
+       from Diab's -t option.
+  -->
+
+  <!-- -t tof:environ specifies the target processor as part of 'tof'. -->
+  <switch option="-t">
+    <case op="like" value="PPC(?!LP64).*|MPC.*|SPC.*|MGT.*|P\d+.*|PA6T.*|PX.*">
+      <set target="powerpc"/>
+    </case>
+    <case op="like" value="PPC.*LP64.*">
+      <set target="powerpc64"/>
+    </case>
+    <case op="like" value="ARM.*">
+      <set target="arm"/>
+    </case>
+    <case op="like" value="MCORE.*|CK.*"> <!-- M*CORE and CKCORE are the same architecture, it seems. -->
+      <set target="mcore"/>
+    </case>
+    <case op="like" value="MCF.*">
+      <set target="coldfire"/>
+    </case>
+    <case op="like" value="BCM.*|MIPS.*|R\d+.*|RM9K.*">
+      <set target="mips"/>
+    </case>
+    <case op="like" value="SH.*">
+      <set target="superh"/>
+    </case>
+    <case op="like" value="TC.*">
+      <set target="tricore"/>
+    </case>
+    <case op="like" value="RH850.*|V850.*">
+      <set target="rh850"/>
+    </case>
+    <case op="like" value="X86.*">
+      <set target="i386"/>
+    </case>
+    <case op="like" value="(.*)">
+      <!-- Option -t is given but does not specify a supported architecture. -->
+      <error message="Diab -t option: target \1 not supported"/>
+    </case>
+    <default>
+      <!-- This should not happen since we set a default -t when none is given! -->
+      <error message="Diab: no -t option found"/>
+    </default>
+  </switch>
+
+
+  <!--
+       Options and definitions for all Diab targets
+       ============================================
+  -->
+
+  <target_options>
+    <!-- Diab -X options often have numerical equivalents (-X1 etc.), and often aliases.
+         Map them to a single option to simplify conditionals. Only options that affect
+         parsing and analysis are considered here.
+    -->
+
+    <target_option pattern="-X230=0" option="-Xdialect-c89"/>
+    <target_option pattern="-X230=1" option="-Xdialect-c99"/>
+
+    <target_option pattern="-Xstrict-ansi|-Xdialect-strict-ansi|-Xc" option="-Xstrict-ansi"/>
+    <target_option pattern="-X7=2" option="-Xstrict-ansi"/>
+
+    <target_option pattern="-X23=0|-Xchar-signed|-Xsigned-char" option="-Xchar-signed"/>
+    <target_option pattern="-X23|-X23=1|-Xchar-unsigned|-Xunsigned-char" option="-Xchar-unsigned"/>
+
+    <target_option pattern="-X67|-X67=1|-Xdollar-in-ident" option="-Xdollar-in-ident"/>
+
+    <target_option pattern="-X70|-X70=1|-Xfp-long-double-off|-Xno-long-double" option="-Xfp-long-double-off"/>
+    <target_option pattern="-X70=2|-Xfp-float-only|-Xno-double" option="-Xfp-float-only"/>
+
+    <!-- -X75: treat all #includes as #import; Not yet supported by front-end. -->
+    <target_option pattern="-X75|-X75=1|-Ximport" option="-Ximport"/>
+
+    <target_option pattern="-X76=(.*)|-Xstruct-min-align=(.*)" option="-Xstruct-min-align" value="\1"/>
+
+    <!-- -X78, -X418 Not yet supported. -->
+    <target_option pattern="-X78=(.*)|-Xkeywords=(.*)" option="-Xkeywords" value="\1"/>
+    <target_option pattern="-X418=(.*)|-Xdisable-keywords=(.*)" option="-Xdisable-keywords" value="\1"/>
+
+    <target_option pattern="-X86=(.*)|-Xwchar=(.*)" option="-Xwchar" value="\1"/>
+    <target_option pattern="-X94|-X94=1|-Xendian-little" option="-Xendian-little"/>
+
+    <!-- -X154, -X456 Not yet supported. -->
+    <target_option pattern="-X154=(.*)|-Xintrinsic-mask=(.*)" option="-Xintrinsic-mask" value="\1"/>
+    <target_option pattern="-X456=(.*)|-Xdisable-intrinsic-mask=(.*)" option="-Xdisable-intrinsic-mask" value="\1"/>
+
+    <target_option pattern="-X155|-X155=1|-Xpreprocessor-old" option="-Xpreprocessor-old"/>
+    <target_option pattern="-X157|-X157=1|-Xmacro-in-pragma" option="-Xmacro-in-pragma" value="1"/>
+    <target_option pattern="-X167|-X167=1|-Xvoid-ptr-arith-ok" option="-Xvoid-ptr-arith-ok"/>
+
+    <!-- -X194 Not yet supported by front-end. -->
+    <target_option pattern="-X194=0|-Xgcc-options-on" option="-Xgcc-options-on"/>
+    <target_option pattern="-X194=1|-Xgcc-options-off" option="-Xgcc-options-off"/>
+
+    <target_option pattern="-X200=0|-Xexceptions-off|-Xno-exception" option="-Xexceptions-off"/>
+    <target_option pattern="-X200|-X200=1|-Xexceptions|-Xexception" option="-Xexceptions"/>
+
+    <target_option pattern="-X202=0|-Xdigraphs-on" option="-Xdigraphs-on"/>
+    <target_option pattern="-X202|-X202=1|-Xdigraphs-off" option="-Xdigraphs-off"/>
+
+    <target_option pattern="-X205=1|-Xrtti-on" option="-Xrtti-on"/>
+    <target_option pattern="-X205|-Xrtti-off|-Xno-rtti" option="-Xrtti-off"/>
+
+    <target_option pattern="-X213=0|-Xbool-on" option="-Xbool-on"/>
+    <target_option pattern="-X213|-Xbool-off|-Xno-bool" option="-Xbool-off"/>
+
+    <target_option pattern="-X207=0|-Ximplicit-templates" option="-Ximplicit-templates"/>
+    <target_option pattern="-X207|-X207=1|-Ximplicit-templates-off|-Xno-implicit-template" option="-Ximplicit-templates-off"/>
+
+    <target_option pattern="-X214|-X214=1|-Xwchar_t-off|-Xno-wchar_t" option="-Xwchar_t-off"/>
+    <target_option pattern="-X214=0|-Xwchar_t-on" option="-Xwchar_t-on"/>
+
+    <target_option pattern="-X217=0|-Xfor-init-scope-for" option="-Xfor-init-scope-for"/>
+    <target_option pattern="-X217|-X217=1|-Xfor-init-scope-outer|-Xold-scoping" option="-Xfor-init-scope-outer"/>
+
+    <target_option pattern="-X219=0|-Xnamespace-on" option="-Xnamespace-on"/>
+    <target_option pattern="-X219|-X219=1|-Xnamespace-off" option="-Xnamespace-off"/>
+
+    <!-- -X457 Dangerous and not supported. -->
+    <target_option pattern="-X457|-X457=1|-Xmacro-patterns" option="-Xmacro-patterns"/>
+
+    <!-- Finally, split options like '-foo=bar' into '-foo' and 'bar'. -->
+    <target_option pattern="(-[^=]+)=(.*)" option="\1" value="\2"/>
+  </target_options>
+
+  <options>
+    <!-- Error out on options that are not supported by the front-end. -->
+    <if option="-Xpreprocessor-old">
+      <error message="Diab option not supported: -Xpreprocessor-old"/>
+    </if>
+    <if option="-Xmacro-in-pragma">
+      <error message="Diab option not supported: -Xmacro-in-pragma"/>
+    </if>
+    <if option="-Xmacro-patterns">
+      <error message="Diab option not supported: -Xmacro-patterns"/>
+    </if>
+    <if option="-Xgcc-options-on">
+      <error message="Diab option not supported: -Xgcc-options-on"/>
+    </if>
+    <if option="-Xvoid-ptr-arith-ok">
+      <error message="Diab option not supported: -Xvoid-ptr-arith-ok"/>
+    </if>
+    <if option="-Xdisable-keywords">
+      <error message="Diab option not supported: -Xdisable-keywords"/>
+    </if>
+    <if option="-Xdisable-intrinsic-mask">
+      <error message="Diab option not supported: -Xdisable-intrinsic-mask"/>
+    </if>
+
+    <option name="--import_is_include_once"/>
+    <option name="--allow_two_operand_sizeof"/>
+    <option name="--allow_non_int_bitfield"/>
+    <option name="--diab_pragma_pack"/>
+    
+    <option name="--stdc_zero_in_nonstrict_mode"/>
+    <option name="--lean_gnu_mode"/>
+    <option name="--gnu_version" value="40800"/>
+    <option name="--enable_function_post_attributes"/>
+    <if feoption="--c\+\+">
+      <option name="--export"/>
+    </if>
+
+    <if option="-Ximport">
+      <option name="--include_is_include_once"/>
+    </if>
+
+    <if option="-Xdollar-in-ident">
+      <option name="--dollar"/>
+    </if>
+
+    <if option="-Xdigraphs-on">
+      <option name="--alternative_tokens"/>
+    </if>
+
+    <if option="-Xwchar_t-off">
+      <option name="--no_wchar_t_keyword"/>
+    </if>
+    <!-- -Xwchar: set wchar (wchar_t) to a type such that n=sizeof(type,2).
+         The front-end only allows (signed|unsigned)(short|int|long).
+    -->
+    <switch option="-Xwchar">
+      <case value="2">
+        <option name="--wchar_t_is_signed_short"/>
+      </case>
+      <case value="3">
+        <option name="--wchar_t_is_unsigned_short"/>
+      </case>
+      <case value="4">
+        <option name="--wchar_t_is_signed_int"/>
+      </case>
+      <case value="5">
+        <option name="--wchar_t_is_unsigned_int"/>
+      </case>
+      <case value="6">
+        <option name="--wchar_t_is_signed_long"/>
+      </case>
+      <case value="7">
+        <option name="--wchar_t_is_unsigned_long"/>
+      </case>
+      <case>
+        <!-- Option is given but the value is not recognized. -->
+        <error message="Diab option -Xwchar: Cannot set type for wchar_t; argument must be one of 2, 3, 4, 5, 6, 7"/>
+      </case>
+      <default>
+        <option name="--wchar_t_is_unsigned_short"/>
+      </default>
+    </switch>
+
+    <if option="-Xstruct-min-align" op="like" value="(\d+)">
+      <option name="--struct_align" value="\1"/>
+    </if>
+
+    <!-- The -t option may imply little-endian, default is big-endian. -->
+    <switch option="-t">
+      <case op="like" value=".*[FLMVZ]\w:.*">
+        <option name="--little_endian"/>
+      </case>
+      <default>
+        <option name="--big_endian"/>
+      </default>
+    </switch>
+
+    <if feoption="--c">
+      <!-- Signedness of bit-fields
+           Bit-fields that are not explicitly signed or unsigned are unsigned by default on
+           all architectures except X86 (i386). In C, the default can be changed. Note that in C++
+           the default signedness is also implementation defined (until C++14 where it is signed).
+      -->
+      <switch option="-Xbit-fields-(signed|unsigned)">
+        <case value="signed">
+          <option name="--signed_bit_fields"/>
+        </case>
+        <case value="unsigned">
+          <option name="--unsigned_bit_fields"/>
+        </case>
+        <default>
+          <switch option="-t">
+            <case op="like" value="X86.*">
+              <option name="--signed_bit_fields"/>
+            </case>
+            <default>
+              <option name="--unsigned_bit_fields"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+
+      <!-- In C mode, allow #if #name besides the usual form #if #name(value). -->
+      <option name="--allow_simple_assert_predicate_ref"/>
+      <option name="--preserve_lvalues_with_same_type_casts"/>
+    </if>
+
+    <!-- Keyword bool is on in C++ by default in the front-end. -->
+    <if option="-Xbool-off">
+      <option name="--no_bool"/>
+    </if>
+
+    <if option="-Ximplicit-templates">
+    </if>
+
+    <if option="-Ximplicit-templates-off">
+    </if>
+
+    <if option="-Xfor-init-scope-outer">
+      <option name="--old_for_init"/>
+    </if>
+
+    <if option="-Xnamespace-off">
+      <option name="--no_namespaces"/>
+    </if>
+
+    <!-- Exceptions are on by default in the front-end. -->
+    <if option="-Xexceptions-off">
+      <option name="--no_exceptions"/>
+    </if>
+
+    <!-- RTTI is on by default in the front-end. -->
+    <if option="-Xrtti-off">
+      <option name="--no_rtti"/>
+    </if>
+    <if feoption="--preprocess">
+      <option name="--ignore_macro_definition_file" value="$matlabroot/polyspace/verifier/extensions/diab/tmw_builtins/macros_to_deactivate.txt"/>
+    </if>
+    <if feoption="--c\+\+">
+      <option name="--using_std"/>
+    </if>
+  </options>
+
+  <defines>
+    <define name="__DCC__" value="1"/>
+    <define name="_DIAB_TOOL" value="1"/>
+
+    <if option="-t" op="like" value=".*[CEFLM]\w:.*">
+      <!-- EABI is selected by object module format codes C, E, F, L, and M. -->
+      <define name="__EABI__" value="1"/>
+    </if>
+
+    <ifnot option="-Xfp-float-only">
+      <ifnot option="-Xfp-long-double-off">
+        <define name="__LDBL__" value="1"/>
+      </ifnot>
+    </ifnot>
+
+    <define name="__VERSION__" value="&quot;5.9.4.8&quot;"/>
+    <define name="__VERSION_NUMBER__" value="5948"/>
+    <!-- Defines to allow parsing with generic header files. -->
+    <define name="__MW_GNU__" value="1"/>
+    <define name="PST_GNU" value="1"/>
+    <define name="_GNU_SOURCE" value="1"/>
+    <define name="POLYSPACE_LIBC_NO_THROW" value="1"/>
+
+    <if feoption="--c\+\+">
+      <ifnot option="-Xbool-off">
+        <define name="__bool" value="1"/>
+      </ifnot>
+
+      <define name="__DCPLUSPLUS__" value="1"/>
+      <!-- The libcpp needs _cplusplus macro to get the right value when in
+           c++11 -->
+      <ifnot feoption="--c\+\+11">
+        <ifnot feoption="--c\+\+14">
+          <define name="__cplusplus" value="1"/>
+        </ifnot>
+      </ifnot>
+      <define name="__ETOA__" value="1"/>
+      <define name="__ETOA_IMPLICIT_USING_STD" value="1"/>
+      <define name="__ETOA_NAMESPACES" value="1"/>
+
+      <ifnot option="-Xexceptions-off">
+        <!-- When -Xexceptions-off is not given, Diab defines __EXCEPTIONS.
+             However, the front-end already sets this symbol so we do not define it here.
+        -->
+      </ifnot>
+
+      <ifnot option="-Xrtti-off">
+        <!-- When -Xrtti-off is not given, Diab defines __RTTI.
+             However, the front-end already sets this symbol so we do not define it here.
+        -->
+      </ifnot>
+
+      <ifnot option="-Xwchar_t-off">
+        <define name="__wchar_t" value="1"/>
+      </ifnot>
+    </if>
+
+    <!--
+         The 'f' in -t tof:environ is N for 'no floating point', and S/F/G for 'software floating-point'.
+         All others are hardware. Let us choose hardware as the default.
+    -->
+    <switch option="-t">
+      <case op="like" value=".*N:.*">
+        <define name="__nofp" value="1"/>
+      </case>
+      <case op="like" value=".*[SFG]:.*">
+        <define name="__softfp" value="1"/>
+      </case>
+      <default>
+        <define name="__hardfp" value="1"/>
+      </default>
+    </switch>
+  </defines>
+
+  <asms>
+    <asm name="asm"/>
+    <asm name="__asm"/>
+  </asms>
+
+  <ppdirects>
+    <ppdirect name="info"/>
+    <ppdirect name="inform"/>
+    <ppdirect name="informing"/>
+    <ppdirect name="warn" alias="warning"/>
+  </ppdirects>
+
+  <types>
+    <!-- C++ (dplus), or C (dcc) with -Xc-new -->
+    <type name="__bit" type_kind="bit" decl_specs="bit"/>
+
+    <if feoption="--c">
+      <if option="-Xkeywords" op="and" value="0x1">
+        <type name="extended" type_kind="double" decl_specs="long"/>
+      </if>
+    </if>
+  </types>
+
+  <attributes kind="data">
+    <attribute name="__packed__" sig="?(*)"/>
+    <if option="-Xkeywords" op="and" value="0x8">
+      <attribute name="packed" sig="?(*)"/>
+    </if>
+  </attributes>
+
+  <attributes kind="function">
+    <ifnot feoption="--c99">
+      <if option="-Xkeywords" op="and" value="0x4">
+        <attribute name="inline" token="tok_inline"/>
+      </if>
+    </ifnot>
+    <attribute name="__inline"   token="tok_inline"/>
+    <attribute name="__inline__" token="tok_inline"/>
+
+    <attribute name="__interrupt__"/>
+    <attribute name="__interrupt" sig="(*)"/>
+    <attribute name="__interrupt_fast" sig="(*)"/>
+    <if feoption="--c">
+      <if option="-Xkeywords" op="and" value="0x10">
+        <attribute name="interrupt"/>
+      </if>
+      <if option="-Xkeywords" op="and" value="0x2">
+        <attribute name="pascal"/>
+      </if>
+    </if>
+    <attribute name="__trap" sig="(*)"/>
+    <attribute name="__vector_table" sig="(*)"/>
+    <attribute name="__thread__"/>
+  </attributes>
+
+  <storage_classes>
+    <storage_class name="__thread" token="tok_thread"/>
+  </storage_classes>
+
+  <!--
+       Options and definitions specific for each target
+       ================================================
+  -->
+
+  <!--
+       PowerPC
+       =======
+  -->
+
+  <target name="powerpc" title="PowerPC">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="PPCALLEH:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+
+      <switch feoption="--signed_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--unsigned_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is unsigned on PowerPC. -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <switch option="-t">
+        <case op="like" value=".*[LM]\w:.*">
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+      <define name="__ppc" value="1"/>
+
+      <!-- VLE processors
+           ==============
+           According to Diab's PPC.conf configuration file the following are VLE processors:
+             PPCVLE
+             PPC5510, PPC5516, PPC5534, PPC5561, PPC5565, PPC5566, PPC5567, PPC5568
+             PPC55xx, SPC56xx
+             PPC200Z*V
+             PXN20, PXN21, PXD10, PXD20, PXS20, PXR40, PXS30
+           We add our fake target PPCALL.
+      -->
+      <if option="-t" op="like"
+          value="PPCALL.*|PPCVLE.*|PPC55(10|16|34|61|65|66|67|68).*|PPC56\d\d.*|SPC56.*|PPCE200.*V\w\w:.*|PX.*">
+        <define name="__PPC_VLE__" value="1"/> <!-- Target uses VLE instruction set. -->
+      </if>
+    </defines>
+
+    <!-- e500/SPE support
+         ================
+         A large number of PowerPC CPUs support 64-bit words that can be used as vectors
+         of smaller types, and the Diab compiler provides types and operations for these
+         vectors.
+    -->
+    <!-- The Diab docs do not say which processor names (as per the -t option) are e500
+         targets. We match those CPUs for which Diab's PPC.conf adds option -Xkeywords=0xff0000,
+         as that mask enables the keywords __ev64_*__. In more human-readable form, the
+         list is
+
+           PPCE500 (when no -Xapu-lsp option given; we don't test this)
+           PPCE500V2
+           PPCVLE (when no -Xapu-lsp option given; we don't test this)
+           PPCE200Z0HN2PV
+           PPCE200Z3N, PPCE200Z3V
+           PPCE200Z4V, PPCE200Z4DV
+           PPCE200Z4N, PPCE200Z4DN
+           PPCE200Z6N, PPCE200Z6V
+           PPCE200Z7N, PPCE200Z7V
+           PPCE200Z210N3V
+           PPCE200Z335N, PPCE200Z335V
+           PPCE200Z759N3V
+           PPCE200Z760N3V
+           PPCE200Z7260N3V
+           PPC5500, PPC5534, PPC5534N, PPC5553, PPC5554, MPC55*
+           PPC563[2-4]M, SPC563M
+           PPC85*, MPC85*
+           P1010, P1011, P1012, P1013, P1014, P1017, P1020, P1021, P1022, P1023, P2020
+           PXD20, PXN20, PXN21, PXR40, PXS20, PXS30
+        We add our fake target PPCALL.
+
+        Note btw, that Diab's PPC.conf maps two CPUs from '"V"le to equivalent' without
+        handling the CPUs they are mapped to: PPC5566V and PPC5567V. Thus, Diab's dcc accepts
+        the __ev64_*__ types with -tPPC5566EV:windiss but not with -tPC5566VEV:windiss!
+    -->
+    <if option="-t" op="like"
+        value="(PPCALL|PPCE500|PPCVLE|PPC55\d\d|MPC55.*|PPC85.*|MPC85.*|PPC563\dM|SPC563M|PPC200Z(0|3|4|6|7|210|335|759|760|7260)[DNV]|P10(10|11|12|13|14|17|20|21|22|23)|P2020|PXD20|PXN20|PXN21|PXR40|PXS20|PXS30).*">
+      <!-- Exclude 'non-e500's that make it through the pattern above. -->
+      <ifnot option="-t" op="like" value="(PPC(5510|5516|560)|SPC560|PPC5645S|PPC200Z0(V|HV)).*">
+
+        <!--
+             For documentation on __ev64_*__ types, see SPE Programming Interface Manual:
+             http://cache.nxp.com/files/32bit/doc/ref_manual/SPE2PIM.pdf
+        -->
+        <types>
+          <type name="__ev64_u16__"    type_kind="int"    decl_specs="vector8,short,unsigned"/>
+          <type name="__ev64_s16__"    type_kind="int"    decl_specs="vector8,short"/>
+          <type name="__ev64_u32__"    type_kind="int"    decl_specs="vector8,unsigned"/>
+          <type name="__ev64_s32__"    type_kind="int"    decl_specs="vector8"/>
+          <type name="__ev64_u64__"    type_kind="int"    decl_specs="vector8,long_long,unsigned"/>
+          <type name="__ev64_s64__"    type_kind="int"    decl_specs="vector8,long_long"/>
+          <type name="__ev64_opaque__" type_kind="opaque" decl_specs="vector8"/>
+          <type name="__ev64_fs__"     type_kind="float"  decl_specs="vector8"/>
+        </types>
+
+        <options>
+          <option name="--gnu_vector_types"/> <!-- Requires that sizeof(short)==2, sizeof(int)==4, sizeof(long long)==8 -->
+          <if option="-Xc-new">
+            <!-- dcc -Xc-new allows implicit conversions between SPE vectors where neither is __ev64_opaque__. -->
+            <option name="--allow_implicit_vector_conversions"/>
+          </if>
+          <if feoption="--c">
+            <option name="--compound_literals"/>
+          </if>
+        </options>
+        <defines>
+          <!-- Set __softfp_abi and __SPE__ for CPUs that have a version 2 SPE unit. -->
+          <switch option="-t">
+            <case op="like" value="(PPCE500|PPC55|PPC563|SPC563|PPC564[0-9x][AL]|PPC5643|PPC85|MPC85|P10|P20|PPCE200Z(3|4|6|335)[DNV]|PXN20|PXN21|PXD20|PXS20).*">
+              <!-- PPC.conf: CPUs with USE_SPE_APU=1:
+                     PPCE500 (when no -Xapu-lsp option given)
+                     PPCE500V2
+                     PPCE200Z3[NV], -4[NV], -4D[NV], -6[NV], -335[NV]
+                     PPC5534, PPC5534[NV], PPC5553, PPC5554, PPC5561, PPC5565, PPC5566, PPC5566N, PPC5567, PPC5567N, MPC55*
+                     PPC563*, SPC563*, PPC564[0-9x][AL], PPC5643, PPC5668G
+                     PPC85*, MPC85*
+                     PXN20, PXN21, PXD20, PXS20
+                     P10*, P20*
+                     except: PPC5500, PPC5510
+              -->
+              <ifnot option="-t" op="like" value="(PPC5500|PPC5510).*">
+                <define name="__softfp_abi" value="1"/>
+                <define name="__SPE__" value="1"/>
+              </ifnot>
+            </case>
+            <case op="like" value="(PPCALL|PPCVLE|PPCE200Z(7|759|760|7260)[NV]|PPC564[0-9x]F|PPC567[34]F|PXR40|PXS30).*">
+              <!-- PPC.conf: CPUs with USE_SPE_APU=2:
+                     PPCVLE (when no -Xapu-lsp option given)
+                     PPCE200Z7[NV], -759N3V, -760N3V, -7260N3V
+                     PPC564[0-9x]F, PPC567[34]F, PXR40, PXS30
+              -->
+              <define name="__softfp_abi" value="1"/>
+              <define name="__SPE__" value="2"/>
+            </case>
+          </switch>
+          <!-- Symbol __EVEC__ is set for a smaller subset of CPUs. -->
+          <if option="-t" op="like" value="(PPCE500|PPCVLE|PPC5534|PPC85|MPC85|P10|P20).*">
+            <!-- PPC.conf:
+                   PPCE500, PPCVLE: when no -Xapu-lsp given
+                   PPCE500V2
+                   PPC5534, PPC5534V, PPC85*, P10*, P20*
+            -->
+            <define name="__EVEC__" value="1"/>
+          </if>
+        </defines>
+      </ifnot>
+    </if>
+
+    <!-- AltiVec support
+         ===============
+         AltiVec PIM: http://www.nxp.com/files/32bit/doc/ref_manual/ALTIVECPIM.pdf
+
+         The AltiVec PIM claims that 'vector' and 'pixel' can be provided as
+         predefined macros that can be #undef-ed (Sec. 2.2.1). In Sec. 2.2.2 it claims
+         that 'the new uses of vector, pixel, and bool are keywords only in the context
+         of a type'. To me this sounds rather at odds with providing vector and pixel
+         as predefined macros. It's going be rather messy.
+    -->
+    <!-- AltiVec is active on the following CPUs when the floating-point support
+         flag is 'V':
+           PA6T
+           PPC (generic target, maps to PPC7400)
+           PPCE6500
+           PPC74xx series
+           PPC86xx series
+           PPC970, PPC970FX, PPC970MP
+         We add our fake target PPCALL, but only if the floating-point support flag is 'V'.
+
+         Note that the 'V' flag causes Diab's configuration scripts to add -Xkeywords=0x1e0,
+         which turns on the keywords 'vector', 'pixel', 'bool', and 'vec_step'.
+    -->
+    <if option="-t" op="like" value="PPCALL\wV:.*|PA6T\wV:.*|PPC\wV:.*|PPCE6500\wV:.*|PPC74.*V:.*|PPC86.*V:.*|PPC970.*V:.*">
+      <options>
+        <option name="--altivec"/>
+        <option name="--gnu_vector_types"/>     <!-- Requires that sizeof(short)==2, sizeof(int)==4, sizeof(long long)==8 -->
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+
+      <defines>
+        <define name="__VEC__" value="1"/>
+      </defines>
+
+      <types>
+        <!-- bool -->
+        <ifnot feoption="--c\+\+"> <!-- 'bool' is already a keyword by default in C++. -->
+          <type name="bool" type_kind="bool"/>
+        </ifnot>
+      </types>
+    </if>
+
+    <!-- Intrinsic functions
+         ===================
+         Some processors in <diab>/conf/PPC.conf use intrinsic-masks with undocumented bits:
+           PPC405, PPC440*, PPC460S, PPC464*, PPC470*, PPC476*: 0xc0002f: mask 0x20 not in doc.
+           PPCE500V2: 0xc000c1: masks 0x80, 0x20 not listed in doc.
+         We set the 'or' of all masks used in PPC.conf.
+         Note also that <diab>/conf/PPC.conf leaves many processors without intrinsic functions;
+         taking a shortcut here.
+    -->
+    <defines>
+      <define name="__TMW_DIAB_POWERPC_INTRINSIC_MASK__" value="0xc000cf"/>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/powerpc.h"/>
+    </options>
+  </target>
+
+  <!--
+       PowerPC64
+       =========
+  -->
+
+  <target name="powerpc64" title="PowerPC64">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="PPCLP64FH:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+      
+      <switch feoption="--signed_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--unsigned_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="8"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="8"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--sizeof_double"      value="8"/>
+      <option name="--sizeof_long_double" value="8"/>
+      <option name="--size_t_is_unsigned_long"/>
+      <option name="--ptr_diff_is_long"/>
+    </options>
+
+    <defines>
+
+      <define name="__64__" value="1"/>
+      <define name="__LP64__" value="1"/>
+      <define name="_LP64" value="1"/>
+      <define name="__SIZEOF_POINTER__" value="8"/>
+      <define name="_DIAB_TOOL" value="1"/>
+
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <define name="__BIG_ENDIAN__" value="1"/>
+      <define name="__ppc" value="1"/>
+
+    </defines>
+
+    <!-- e500/SPE support
+         ================
+         A large number of PowerPC CPUs support 64-bit words that can be used as vectors
+         of smaller types, and the Diab compiler provides types and operations for these
+         vectors.
+    -->
+    <!-- The Diab docs do not say which processor names (as per the -t option) are e500
+         targets. We match those CPUs for which Diab's PPC.conf adds option -Xkeywords=0xff0000,
+         as that mask enables the keywords __ev64_*__. In more human-readable form, the
+         list is
+           PPCLP64
+           PPCE6500LP64
+    -->
+    <if option="-t" op="like" value="(PPC.*LP64).*">
+        <!--
+            For documentation on __ev64_*__ types, see SPE Programming Interface Manual:
+            http://cache.nxp.com/files/32bit/doc/ref_manual/SPE2PIM.pdf
+        -->
+        <types>
+          <type name="__ev64_u16__"    type_kind="int"    decl_specs="vector8,short,unsigned"/>
+          <type name="__ev64_s16__"    type_kind="int"    decl_specs="vector8,short"/>
+          <type name="__ev64_u32__"    type_kind="int"    decl_specs="vector8,unsigned"/>
+          <type name="__ev64_s32__"    type_kind="int"    decl_specs="vector8"/>
+          <type name="__ev64_u64__"    type_kind="int"    decl_specs="vector8,long_long,unsigned"/>
+          <type name="__ev64_s64__"    type_kind="int"    decl_specs="vector8,long_long"/>
+          <type name="__ev64_opaque__" type_kind="opaque" decl_specs="vector8"/>
+          <type name="__ev64_fs__"     type_kind="float"  decl_specs="vector8"/>
+        </types>
+
+        <options>
+          <option name="--gnu_vector_types"/> <!-- Requires that sizeof(short)==2, sizeof(int)==4, sizeof(long long)==8 -->
+          <if option="-Xc-new">
+            <!-- dcc -Xc-new allows implicit conversions between SPE vectors where neither is __ev64_opaque__. -->
+            <option name="--allow_implicit_vector_conversions"/>
+          </if>
+          <if feoption="--c">
+            <option name="--compound_literals"/>
+          </if>
+      </options>
+    </if>
+
+    <!-- AltiVec support
+         ===============
+    -->
+    <if option="-t" op="like" value="PPC.*LP64.*:.*">
+      <options>
+        <option name="--altivec"/>
+        <option name="--gnu_vector_types"/>     <!-- Requires that sizeof(short)==2, sizeof(int)==4, sizeof(long long)==8 -->
+        <if feoption="--c">
+          <option name="--compound_literals"/>
+        </if>
+      </options>
+
+      <defines>
+        <define name="__VEC__" value="1"/>
+      </defines>
+
+      <types>
+        <!-- bool -->
+        <ifnot feoption="--c\+\+"> <!-- 'bool' is already a keyword by default in C++. -->
+          <type name="bool" type_kind="bool"/>
+        </ifnot>
+      </types>
+    </if>
+
+    <!-- Intrinsic functions
+         ===================
+    -->
+    <defines>
+      <define name="__TMW_DIAB_POWERPC64_INTRINSIC_MASK__" value="0xc000cf"/>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/powerpc64.h"/>
+    </options>
+  </target>
+
+  <!--
+       ARM/XScale
+       ==========
+  -->
+  <target name="arm" title="ARM">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="ARMEX:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+      
+      <switch feoption="--signed_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--unsigned_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--pack_alignment"     value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+      <!-- By default, char is unsigned on ARM. -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <switch option="-t">
+        <case op="like" value=".*[FLMVZ]\w:.*">
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+      <define name="__arm" value="1"/>
+      <define name="__THUMB__" value="1"/> <!-- Diab's ARM module formats (E/L) are 'thumb' formats. Doc seems to say __THUMB__ is always defined for ARM. -->
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+         Note that <diab>/conf/ARM.conf leaves many processors without intrinsic functions.
+    -->
+    <defines>
+      <switch option="-t">
+        <case op="like" value="ARM(V5|V5E|968E-S|V6|V6K|V7|V7A|CORTEXA[578]|CORTEXA9|CORTEXA15|VR|CORTEXR[457]).*">
+          <define name="__TMW_DIAB_ARM_INTRINSIC_MASK__" value="0xc00010"/>
+        </case>
+        <case op="like" value="ARMX.*">
+          <define name="__TMW_DIAB_ARM_INTRINSIC_MASK__" value="0xc00011"/>
+        </case>
+        <case>
+          <!-- No intrinsic functions -->
+        </case>
+      </switch>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/arm.h"/>
+    </options>
+  </target>
+
+  <!--
+       ColdFire
+       ========
+  -->
+  <target name="coldfire" title="ColdFire">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="MCFV4EFH:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+      
+      <switch feoption="--unsigned_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--signed_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is signed on ColdFire. -->
+      <if feoption="--c\+\+">
+        <switch feoption="--unsigned_chars">
+          <case>
+            <define name="__CHAR_UNSIGNED__" value="1"/>
+          </case>
+          <default>
+            <define name="__SIGNED_CHARS__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__ace" value="1"/>
+      <define name="__BIG_ENDIAN__" value="1"/>
+      <define name="__coldfire" value="1"/>
+      <define name="m68k" value="1"/>
+      <define name="mc68k" value="1"/>
+      <define name="__m68k" value="1"/>
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+         Note that <diab>/conf/ACE.conf does not provide intrinsic functions for any processor.
+    -->
+    <defines>
+      <define name="__TMW_DIAB_COLDFIRE_INTRINSIC_MASK__" value="0x0"/>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/coldfire.h"/>
+    </options>
+  </target>
+
+  <!--
+       X86 (i386)
+       ==========
+  -->
+  <target name="i386" title="i386">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="X86LH:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+      
+      <switch feoption="--unsigned_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--signed_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"          value="4"/>
+          <option name="--sizeof_long_double"     value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"          value="8"/>
+          <switch option="-Xfp-long-double-off">
+            <case>
+              <option name="--sizeof_long_double" value="8"/>
+            </case>
+            <default>
+              <option name="--sizeof_long_double" value="12"/>
+              <option name="--bits_for_long_double" value="80"/>
+            </default>
+          </switch>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is signed on i386. -->
+      <if feoption="--c\+\+">
+        <switch feoption="--unsigned_chars">
+          <case>
+            <define name="__CHAR_UNSIGNED__" value="1"/>
+          </case>
+          <default>
+            <define name="__SIGNED_CHARS__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__LITTLE_ENDIAN__" value="1"/> <!-- Diab X86 only has little-endian object format ('L') -->
+      <define name="__386" value="1"/>
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+         Note that <diab>/conf/X86.conf does not provide intrinsic functions for any processor.
+    -->
+    <defines>
+      <define name="__TMW_DIAB_I386_INTRINSIC_MASK__" value="0x0"/>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/i386.h"/>
+    </options>
+  </target>
+
+  <!--
+       MIPS
+       ====
+  -->
+  <target name="mips" title="MIPS">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="MIPS64EH:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+
+      <switch feoption="--unsigned_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--signed_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is signed on MIPS. -->
+      <if feoption="--c\+\+">
+        <switch feoption="--unsigned_chars">
+          <case>
+            <define name="__CHAR_UNSIGNED__" value="1"/>
+          </case>
+          <default>
+            <define name="__SIGNED_CHARS__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <switch option="-t">
+        <case op="like" value=".*[FLMVZ]\w:.*">
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+      <define name="__mips" value="1"/>
+      <define name="__mips__" value="1"/>
+      <define name="__mips16" value="1"/>
+      <define name="__mips16__" value="1"/>
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+         Note that <diab>/conf/MIPS.conf, <diab>/conf/MIPS16.conf do not provide intrinsic
+         functions for any processor.
+    -->
+    <defines>
+      <define name="__TMW_DIAB_MIPS_INTRINSIC_MASK__" value="0x0"/>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/mips.h"/>
+    </options>
+  </target>
+
+  <!--
+       MCore
+       =====
+  -->
+  <target name="mcore" title="M*Core">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="MCORE340EF:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+      
+      <switch feoption="--signed_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--unsigned_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+      <!-- By default, char is unsigned on M*Core. -->
+      <switch feoption="--signed_chars">
+        <case>
+          <define name="__SIGNED_CHARS__" value="1"/>
+        </case>
+        <default>
+          <define name="__CHAR_UNSIGNED__" value="1"/>
+        </default>
+      </switch>
+
+      <switch option="-t">
+        <case op="like" value=".*[FLMVZ]\w:.*">
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+      <define name="__mcore" value="1"/>
+      <define name="__mcore__" value="1"/>
+      <define name="__rce" value="1"/>
+      <define name="__rce__" value="1"/>
+      <define name="__SINGLE_ONLY" value="1"/>
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+         Some processors in <diab>/conf/MCORE.conf use intrinsic-masks with undocumented bits:
+           CK510E: masks 0x200, 0x100 not listed in doc.
+           CK610:  mask 0x400 not listed in doc.
+           CK610E, CKCORE: masks 0x400, 0x200, 0x100 not listed in doc.
+         Note that <diab>/conf/MCORE.conf leaves several processors without intrinsic functions.
+    -->
+    <defines>
+      <switch option="-t">
+        <case op="like" value="CK510E.*">
+          <define name="__TMW_DIAB_MCORE_INTRINSIC_MASK__" value="0xc00307"/>
+        </case>
+        <case op="like" value="CK510.*">
+          <define name="__TMW_DIAB_MCORE_INTRINSIC_MASK__" value="0xc00007"/>
+        </case>
+        <case op="like" value="CK(610E|CORE).*">
+          <define name="__TMW_DIAB_MCORE_INTRINSIC_MASK__" value="0xc00707"/>
+        </case>
+        <case op="like" value="CK610">
+          <define name="__TMW_DIAB_MCORE_INTRINSIC_MASK__" value="0xc00407"/>
+        </case>
+        <case>
+          <!-- No intrinsic functions -->
+        </case>
+      </switch>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/mcore.h"/>
+    </options>
+  </target>
+
+  <!--
+       Renesas rh850
+       =============
+  -->
+  <target name="rh850" title="rh850">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="V850E3FH:simple"/>
+    </target_options>
+
+    <options>
+
+      <switch feoption="--unsigned_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--signed_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is signed on rh850. -->
+      <if feoption="--c\+\+">
+        <switch feoption="--unsigned_chars">
+          <case>
+            <define name="__CHAR_UNSIGNED__" value="1"/>
+          </case>
+          <default>
+            <define name="__SIGNED_CHARS__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__LITTLE_ENDIAN__" value="1"/>
+      <define name="__v850__" value="1"/>
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+         Note that <diab>/conf/NEC.conf leaves several processors without intrinsic functions.
+    -->
+    <defines>
+      <switch option="-t">
+        <case op="like" value="(NEC(850E2|850E3)|V(850E2|850E3)|RH850).*">
+          <define name="__TMW_DIAB_RH850_INTRINSIC_MASK__" value="0xc0001f"/>
+        </case>
+        <case>
+          <!-- No intrinsic functions -->
+        </case>
+      </switch>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/rh850.h"/>
+    </options>
+  </target>
+
+  <!--
+       SH (superh)
+       ===========
+  -->
+  <target name="superh" title="SuperH">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="SH4EH:simple"/>
+    </target_options>
+
+    <options>
+      <if feoption="--c">
+        <option name="--packed_wins_over_aligned"/>
+      </if>
+      
+      <switch feoption="--unsigned_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--signed_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="8"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <option name="--pack_alignment"     value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is signed on SuperH. -->
+      <if feoption="--c\+\+">
+        <switch feoption="--unsigned_chars">
+          <case>
+            <define name="__CHAR_UNSIGNED__" value="1"/>
+          </case>
+          <default>
+            <define name="__SIGNED_CHARS__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <switch option="-t">
+        <case op="like" value=".*[FLMVZ]\w:.*">
+          <define name="__LITTLE_ENDIAN__" value="1"/>
+        </case>
+        <default>
+          <define name="__BIG_ENDIAN__" value="1"/>
+        </default>
+      </switch>
+      <define name="__sh" value="1"/>
+    </defines>
+
+    <if feoption="--c">
+      <if option="-t" op="like" value="SH[23]DSP.*">
+        <!-- For these CPU types, Diab's configuration script SH.conf activates the
+             keywords related with fixed-point support: __fixed, __accum, __X, __Y
+             by adding option -Xkeywords=0x1e00.
+        -->
+        <options>
+          <option name="--fixed_point"/>
+        </options>
+
+        <types>
+          <type name="__fixed" type_kind="fract"/>
+          <type name="__accum" type_kind="accum"/>
+        </types>
+
+        <attributes>
+          <attribute name="__X"/>
+          <attribute name="__Y"/>
+        </attributes>
+      </if>
+    </if>
+
+    <!-- Intrinsic functions
+         ===================
+         Note that <diab>/conf/SH.conf does not provide intrinsic functions for any processor.
+    -->
+    <defines>
+      <define name="__TMW_DIAB_SUPERH_INTRINSIC_MASK__" value="0x0"/>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/superh.h"/>
+    </options>
+  </target>
+
+  <!--
+       TriCore
+       =======
+  -->
+  <target name="tricore" title="TriCore">
+    <target_options>
+      <target_option pattern="-t" notmatched="true" option="-t" value="TC1920LF:simple"/>
+    </target_options>
+
+    <target_options>
+      <target_option pattern="-X37|-X37=1|-Xalign-int-by2" option="-Xalign-int-by2"/>
+    </target_options>
+
+    <options>
+
+      <switch feoption="--unsigned_chars">
+        <case>
+        </case>
+        <default>
+          <option name="--signed_chars"/>
+        </default>
+      </switch>
+
+      <option name="--max_alignment"      value="4"/>
+      <option name="--char_bit"           value="8"/>
+      <option name="--sizeof_short"       value="2"/>
+      <option name="--sizeof_int"         value="4"/>
+      <option name="--sizeof_long"        value="4"/>
+      <option name="--sizeof_long_long"   value="8"/>
+      <option name="--sizeof_pointer"     value="4"/>
+      <option name="--sizeof_float"       value="4"/>
+      <switch option="-Xfp-float-only">
+        <case>
+          <option name="--sizeof_double"      value="4"/>
+          <option name="--sizeof_long_double" value="4"/>
+        </case>
+        <default>
+          <option name="--sizeof_double"      value="8"/>
+          <option name="--sizeof_long_double" value="8"/>
+        </default>
+      </switch>
+      <option name="--size_t_is_unsigned_int"/>
+      <option name="--ptr_diff_is_int"/>
+    </options>
+
+    <defines>
+
+      <!-- By default, char is signed on TriCore. -->
+      <if feoption="--c\+\+">
+        <switch feoption="--unsigned_chars">
+          <case>
+            <define name="__CHAR_UNSIGNED__" value="1"/>
+          </case>
+          <default>
+            <define name="__SIGNED_CHARS__" value="1"/>
+          </default>
+        </switch>
+      </if>
+
+      <define name="__LITTLE_ENDIAN__" value="1"/> <!-- Diab TriCore only has little-endian object formats ('L'/'M') -->
+      <define name="__tc" value="1"/>
+    </defines>
+
+    <!-- Intrinsic functions
+         ===================
+    -->
+    <defines>
+      <switch option="-t">
+        <case op="like" value="TCPCP.*">
+          <!-- No intrinsic functions -->
+        </case>
+        <case op="like" value="TC(|1798|16|161|.*16P|161E|.*16E)\w\w:.*">
+          <define name="__TMW_DIAB_TRICORE_INTRINSIC_MASK__" value="0xc00006"/>
+        </case>
+        <case>
+          <define name="__TMW_DIAB_TRICORE_INTRINSIC_MASK__" value="0xc00002"/>
+        </case>
+      </switch>
+    </defines>
+    <options>
+      <option name="--preinclude" value="__polyspace_common.h"/>
+      <option name="--preinclude" value="diab/tmw_builtins/tricore.h"/>
+    </options>
+  </target>
+
+</compiler>

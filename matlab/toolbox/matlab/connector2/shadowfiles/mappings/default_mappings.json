@@ -1,0 +1,139 @@
+[
+    {
+        "name": "jsd_rmt_tmw",
+        "description": "JavaScript desktop accessing remote MathWorks cloud",
+        "capabilities": [
+            "-ComplexSwing",
+            "-LocalClient"
+        ],
+        "shadows": [
+        ],
+        "auto_shadow": [
+            "jsd_rmt_tmw_group",
+            "motw_rmt_tmw_group"
+        ]
+    },
+    {
+        "name": "motw_rmt_tmw",
+        "description": "motw is the same as jsd_rmt_tmw, but with license and ver shadowed since we do some fancy license injection stuff",
+        "capabilities": [
+            "-ComplexSwing",
+            "-LocalClient"
+        ],
+        "shadows": [
+            "license",
+            "ver",
+            "shadowtest"
+        ],
+        "auto_shadow": [
+            "jsd_rmt_tmw_group"
+        ]
+    },
+    {
+        "name": "matlab-academy_rmt_tmw",
+        "description": "MATLAB Academy is the same as jsd_rmt_tmw",
+        "imports": ["motw_rmt_tmw"],
+        "shadows": [
+            "more"
+        ]
+    },
+    {
+        "name": "matlab-academy_rmt_nmw",
+        "description": "MATLAB Academy is the same as jsd_rmt_tmw",
+        "imports": ["motw_rmt_tmw"],
+        "shadows": [
+            "more"
+        ]
+    },
+    {
+        "name": "jsd_rmt_nmw",
+        "description": "JavaScript desktop accessing remote customer machine",
+         "capabilities": [
+            "-ComplexSwing",
+            "-LocalClient"
+        ],
+        "shadows": [
+        ]
+    },
+    {
+        "name": "motw_rmt_nmw",
+        "description": "motw is an alias for jsd",
+        "imports": ["jsd_rmt_nmw"]
+    },
+    {
+        "name": "jsd_lcl_nmw",
+        "description": "JavaScript desktop accessing local customer machine",
+        "shadows": [
+        ]
+    },
+    {
+        "name": "motw_lcl_nmw",
+        "description": "motw is an alias for jsd",
+        "imports": ["jsd_lcl_nmw"]
+    },
+    {
+        "name": "jsd_lcl_tmw",
+        "description": "dev mode where Worker.start is executed locally",
+        "imports": ["jsd_lcl_nmw"]
+    },
+    {
+         "name": "matlab-academy_lcl_nmw",
+        "description": "MATLAB Academy is the same as jsd_lcl_nmw",
+        "imports": ["jsd_lcl_nmw"]
+    },
+    {
+        "name": "mss_rmt_tmw",
+        "description": "MSS client accessing remote MathWorks cloud",
+        "capabilities": [
+            "-Swing",
+            "-ComplexSwing",
+            "-LocalClient",
+            "-WebWindow",
+            "-InteractiveCommandLine",
+            "-Debugging",
+            "-ModalDialogs"
+        ],
+        "shadows": [
+            "codegen",
+            "license",
+            "ver",
+            "shadowtest"
+        ]
+    },
+    {
+        "name": "mobile_rmt_tmw",
+        "description": "MATLAB Mobile accessing remote MathWorks cloud",
+        "capabilities": [
+            "-Swing",
+            "-ComplexSwing",
+            "-LocalClient",
+            "-WebWindow",
+            "-ModalDialogs"
+        ],
+        "shadows": [
+            "codegen",
+            "license",
+            "ver",
+            "shadowtest"
+        ]
+    },
+    {
+        "name": "upload_rmt_tmw",
+        "description": "Mobile upload is the same as mobile_rmt_tmw",
+        "imports": ["mobile_rmt_tmw"]
+    },
+    {
+        "name": "open-with_rmt_tmw",
+        "description": "OpenWith accessing a MO backend",
+        "capabilities": [
+            "-ComplexSwing",
+            "-LocalClient"
+        ],
+        "shadows": [
+            "codegen",
+            "license",
+            "ver",
+            "shadowtest"
+        ]
+    }
+]

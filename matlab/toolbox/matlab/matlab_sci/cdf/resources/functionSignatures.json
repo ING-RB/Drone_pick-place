@@ -1,0 +1,44 @@
+{
+"cdfinfo":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.cdf"], ["matlabpathfile=*.cdf"], ["char"]]}
+	],
+	"outputs":
+	[
+        {"name":"info", "type":[["struct", "scalar"]]}
+	]
+},
+"cdfread":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.cdf"], ["matlabpathfile=*.cdf"], ["char"]]},
+        {"name":"Records", "kind":"namevalue", "type":[["numeric", "row"], ["numeric", "column"]]},
+        {"name":"Variables", "kind":"namevalue", "type":[["cell", "row"], ["cell", "column"]]},
+        {"name":"Slices", "kind":"namevalue", "type":[["numeric", "2d", "@(x) size(x, 2) == 3"]]},
+        {"name":"ConvertEpochToDatenum", "kind":"namevalue", "type":[["logical", "scalar"]]},
+        {"name":"DatetimeType", "kind":"namevalue", "type":"choices={'datetime', 'native'}"}, 
+        {"name":"CombineRecords", "kind":"namevalue", "type":[["logical", "scalar"]]}
+	],
+	"outputs":
+	[
+        {"name":"data"},
+        {"name":"info", "type":[["struct", "scalar"]]}
+    ]
+},
+"cdfwrite":
+{
+	"inputs":
+	[
+        {"name":"filename", "kind":"required", "type":[["file=*.cdf"], ["char"]]},
+        {"name":"variablelist", "kind":"required", "type":[["cell", "2d", "@(x) size(x, 2) == 2"]]},
+        {"name":"PadValues", "kind":"namevalue", "type":[["cell", "2d", "@(x) size(x, 2) == 2"]]},
+        {"name":"GlobalAttributes", "kind":"namevalue", "type":[["scalar", "struct"]]},
+        {"name":"VariableAttributes", "kind":"namevalue", "type":[["scalar", "struct"]]},
+        {"name":"WriteMode", "kind":"namevalue", "type":"choices={'overwrite', 'append'}"},
+        {"name":"Format", "kind":"namevalue", "type":"choices={'multifile', 'singlefile'}"}
+	]
+}
+}

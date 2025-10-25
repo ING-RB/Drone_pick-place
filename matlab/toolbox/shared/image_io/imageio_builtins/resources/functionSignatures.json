@@ -1,0 +1,32 @@
+{
+"matlab.internal.imdecode":
+{
+	"inputs":
+	[
+       {"name":"bytesBuffer", "kind":"required"}                        
+    ]
+},
+
+"matlab.internal.imencode":
+{
+    "inputs":
+    [
+       {"name":"A", "kind":"required"},
+       {"mutuallyExclusiveGroup": 
+           [
+                [
+                    {"name":"fmt", "kind":"required", "type":["char", "choices={'png'}"]},
+                    {"name":"BitDepth", "kind":"namevalue", "type":["numeric", "choices={1,8,16}"]}
+                ],                
+                [
+                    {"name":"fmt", "kind":"required", "type":["char", "choices={'jpg','jpeg'}"]},
+                    {"name":"BitDepth", "kind":"namevalue", "type":["numeric", "choices={8,12,16}"]},
+                    {"name":"Comment", "kind":"namevalue", "type":[["char"], ["cell"]]},
+                    {"name":"Mode", "kind":"namevalue", "type":["char", "choices={'lossy','lossless'}"]},
+                    {"name":"Quality", "kind":"namevalue", "type":["numeric", "scalar"]}
+                ]
+           ]    
+       }
+    ]
+}
+}

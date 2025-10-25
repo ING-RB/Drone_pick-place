@@ -1,0 +1,73 @@
+// Copyright 2022-2024 The MathWorks, Inc.
+// Generated {% datestr(now) %}
+
+#include "slros2_initialize.h"
+{% if ~isRefModel %}
+const std::string SLROSNodeName("{%ModelName%}");
+{% endif %}
+{% if ros.codertarget.internal.Util.isROSControlEnabled(ModelName) %}
+rclcpp_lifecycle::LifecycleNode::SharedPtr SLROSNodePtr;
+{% endif %}
+
+{% var keys = Publishers.keys %}
+{% if ~ros.codertarget.internal.Util.isROSControlEnabled(ModelName) %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkPublisher<{%Publishers(keys{i}).msgInfo.msgCppClassName%},{%Publishers(keys{i}).BusName%}> {%Publishers(keys{i}).BlockID%};
+{% endfor %}
+{% endif %}
+{% if ros.codertarget.internal.Util.isROSControlEnabled(ModelName) %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkRTPublisher<{%Publishers(keys{i}).msgInfo.msgCppClassName%},{%Publishers(keys{i}).BusName%}> {%Publishers(keys{i}).BlockID%};
+{% endfor %}
+{% endif %}
+
+{% var keys = Subscribers.keys %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkSubscriber<{%Subscribers(keys{i}).msgInfo.msgCppClassName%},{%Subscribers(keys{i}).BusName%}> {%Subscribers(keys{i}).BlockID%};
+{% endfor %}
+
+{% var keys = ServiceCallers.keys %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkServiceCaller<{%ServiceCallers(keys{i}).msgInfo.msgBaseCppClassName%},{%ServiceCallers(keys{i}).InputBusName%},{%ServiceCallers(keys{i}).OutputBusName%}> {%ServiceCallers(keys{i}).BlockID%};
+{% endfor %}
+
+{% var keys = ServiceServers.keys %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkServiceServer<{%ServiceServers(keys{i}).msgInfo.msgBaseCppClassName%},{%ServiceServers(keys{i}).ReqBusName%},{%ServiceServers(keys{i}).RespBusName%}> {%ServiceServers(keys{i}).BlockID%};
+{% endfor %}
+
+{% var keys = ActionClients.keys %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkActionClient<{%ActionClients(keys{i}).msgInfo.msgBaseCppClassName%}> {%ActionClients(keys{i}).BlockID%};
+{% if ~isempty(ActionClients(keys{i}).CancelGoalBlockID) %}
+CancelActionGoal<{%ActionClients(keys{i}).msgInfo.msgBaseCppClassName%}> {%ActionClients(keys{i}).CancelGoalBlockID%};
+{% endif %}
+{% endfor %}
+
+{% var keys = ParamGetters.keys %}
+{% for i = numel(keys) %}
+// {% ParamGetters(keys{i}).Comment %}
+{% var cppParamType = ParamGetters(keys{i}).CppParamType %}
+{% var rosCppParamType = ParamGetters(keys{i}).ROSCppParamType %}
+{% var prmBlklabel = ParamGetters(keys{i}).Label %}
+
+{% if (ParamGetters(keys{i}).IsArray) %}
+SimulinkParameterArrayGetter<{%cppParamType%},{%rosCppParamType%}> {%prmBlklabel%};
+{% endif %}
+
+{% if ~(ParamGetters(keys{i}).IsArray) %}
+SimulinkParameterGetter<{%cppParamType%},{%rosCppParamType%}> {%prmBlklabel%};
+{% endif %}
+{% endfor %}
+
+{% var keys = TransformGetters.keys %}
+{% for i = numel(keys) %}
+// {% keys{i} %}
+SimulinkTransform {%TransformGetters(keys{i}).BlockID%};
+{% endfor %}

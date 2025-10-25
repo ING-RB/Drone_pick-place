@@ -1,0 +1,64 @@
+{
+    "_comment": "Copyright 2021 MathWorks, Inc.",
+
+    "arrayfun":
+    {
+        "inputs": [
+            {"name":"func", "kind":"required", "type":"function_handle"},
+            {"name":"A", "kind":"required", "multiplicity":"append"},
+            {"name":"UniformOutput", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"},
+            {"name":"ErrorHandler", "kind":"namevalue", "type":["function_handle"]}
+        ],
+        "outputs": [
+            {"name":"B", "multiplicity":"append"}
+        ]
+    },
+    "cellfun":
+    {
+        "inputs": [
+            {"name":"func", "kind":"required", "type":"function_handle"},
+            {"name":"C", "kind":"required", "type":"cell", "multiplicity":"append"},
+            {"name":"UniformOutput", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"},
+            {"name":"ErrorHandler", "kind":"namevalue", "type":["function_handle"]}
+        ],
+        "outputs": [
+            {"name":"A", "multiplicity":"append"}
+        ]
+    },
+    "cellfun":
+    {
+        "inputs": [
+            {"mutuallyExclusiveGroup": [
+                [
+                    {"name":"func", "kind":"required", "promotion":"secondary", "type":["char", "choices={'isempty','islogical','isreal','length','ndims','prodofsize'}"]},
+                    {"name":"C", "kind":"required", "type":"cell"}
+                ],
+                [
+                    {"name":"func", "kind":"required", "promotion":"secondary", "type":["char", "choices={'size'}"]},
+                    {"name":"C", "kind":"required", "type":"cell"},
+                    {"name":"k", "kind":"required", "type":["numeric", "scalar"]}
+                ],
+                [
+                    {"name":"func", "kind":"required", "promotion":"secondary", "type":["char", "choices={'isclass'}"]},
+                    {"name":"C", "kind":"required", "type":"cell"},
+                    {"name":"classname", "kind":"required", "type":"char"}
+                ]
+            ]}
+        ],
+        "outputs": [
+            {"name":"A", "multiplicity":"append"}
+        ]
+    },
+    "structfun":
+    {
+        "inputs": [
+            {"name":"func", "kind":"required", "type":"function_handle"},
+            {"name":"A", "kind":"required", "type":"struct"},
+            {"name":"UniformOutput", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"},
+            {"name":"ErrorHandler", "kind":"namevalue", "type":["function_handle"]}
+        ],
+        "outputs": [
+            {"name":"B", "multiplicity":"append"}
+        ]
+    }
+}

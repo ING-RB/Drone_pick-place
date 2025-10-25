@@ -1,0 +1,138 @@
+{
+"coder.loop.interchange":
+{
+    "inputs":
+    [
+        {"name":"loopA_ID", "kind":"required", "type":"char"},
+        {"name":"loopB_ID", "kind":"required", "type":"char"}
+    ]
+},
+"coder.loop.Control.interchange":
+{
+    "inputs":
+    [
+        {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+        {"name":"loopA_ID", "kind":"required", "type":"char"},
+        {"name":"loopB_ID", "kind":"required", "type":"char"}
+    ]
+},
+"coder.loop.parallelize":
+{
+    "inputs":
+    [
+        {
+            "mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"loopID", "kind":"ordered", "type":"char"}
+                ],
+                [
+                    {"name":"never", "kind":"ordered", "type":["choices='never'"]}
+                ]
+            ]
+        }
+    ]
+},
+"coder.parallelize":
+    {
+    "inputs":
+    [
+        {
+            "mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"loopID", "kind":"ordered", "type":"char"}
+                ],
+                [
+                    {"name":"never", "kind":"ordered", "type":["choices='never'"]}
+                ]
+            ]
+        }
+    ]
+},
+"coder.loop.Control.parallelize":
+{
+    "inputs":
+    [
+        {
+            "mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+                    {"name":"loopID", "kind":"ordered", "type":"char"}
+                ],
+                [
+                    {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+                    {"name":"never", "kind":"ordered", "type":["choices='never'"]}
+                ]
+            ]
+        }
+    ]
+},
+"coder.loop.reverse":
+{
+    "inputs":
+    [
+        {"name":"loopID", "kind":"ordered", "type":"char"}
+    ]
+},
+"coder.loop.Control.reverse":
+{
+    "inputs":
+    [
+        {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+        {"name":"loopID", "kind":"ordered", "type":"char"}
+    ]
+},
+"coder.loop.tile":
+{
+    "inputs":
+    [
+        {"name":"loopID", "kind":"positional", "type":"char"},
+        {"name":"tileSize", "kind":"positional", "type":["integer","positive"]},
+        {"name":"tiledLoopID", "kind":"positional", "type":"char"}
+    ]
+},
+"coder.loop.Control.tile":
+{
+    "inputs":
+    [
+        {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+        {"name":"loopID", "kind":"positional", "type":"char"},
+        {"name":"tileSize", "kind":"positional", "type":["integer","positive"]},
+        {"name":"tiledLoopID", "kind":"positional", "type":"char"}
+    ]
+},
+"coder.loop.unrollAndJam":
+{
+    "inputs":
+    [
+        {"name":"loopID", "kind":"positional", "type":"char"},
+        {"name":"unrollFactor", "kind":"positional", "type":["integer","positive"]}
+    ]
+},
+"coder.loop.Control.unrollAndJam":
+{
+    "inputs":
+    [
+        {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+        {"name":"loopID", "kind":"positional", "type":"char"},
+        {"name":"unrollFactor", "kind":"positional", "type":["integer","positive"]}
+    ]
+},
+"coder.loop.vectorize":
+{
+    "inputs":
+    [
+        {"name":"loopID", "kind":"ordered", "type":"char"}
+    ]
+},
+"coder.loop.Control.vectorize":
+{
+    "inputs":
+    [
+        {"name":"self", "kind":"required", "type":"coder.loop.Control"},
+        {"name":"loopID", "kind":"ordered", "type":"char"}
+    ]
+}
+}

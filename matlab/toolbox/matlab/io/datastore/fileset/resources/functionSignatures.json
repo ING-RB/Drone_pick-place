@@ -1,0 +1,198 @@
+{
+    "matlab.io.datastore.FileSet":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file"], ["matlabpathfile=*.csv,*.txt,*.jpg,*.png,*.tif,*.xls,*.xlsx"], ["cell"], ["char"], ["struct"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]}
+        ],
+        "outputs":
+        [
+            {"name":"fs", "type":"matlab.io.datastore.FileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.partition":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"},
+            {"name":"N", "kind":"required", "type":["scalar","integer"]},
+            {"name":"ii", "kind":"required", "type":["scalar","integer"]}
+        ],
+        "outputs":
+        [
+            {"name":"subfs", "type":"matlab.io.datastore.FileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.subset":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"},
+            {"name":"ii", "kind":"required", "type":["integer"]}
+        ],
+        "outputs":
+        [
+            {"name":"subfs", "type":"matlab.io.datastore.FileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.nextfile":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"fileInfo", "type":"matlab.io.datastore.FileInfo"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.previousfile":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"fileInfo", "type":"matlab.io.datastore.FileInfo"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.hasNextFile":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":"logical"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.hasPreviousFile":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":"logical"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.FileSet.reset":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.FileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file"], ["matlabpathfile=*.csv,*.txt,*.jpg,*.png,*.tif,*.xls,*.xlsx"], ["cell"], ["char"], ["struct"], ["matlab.io.datastore.DsFileSet"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]},
+            {"name":"BlockSize", "kind":"namevalue", "type":[["numeric"],["char"],["string"]]}
+        ],
+        "outputs":
+        [
+            {"name":"fs", "type":"matlab.io.datastore.BlockedFileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.partition":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"},
+            {"name":"N", "kind":"required", "type":["scalar","integer"]},
+            {"name":"ii", "kind":"required", "type":["scalar","integer"]}
+        ],
+        "outputs":
+        [
+            {"name":"subfs", "type":"matlab.io.datastore.BlockedFileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.subset":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"},
+            {"name":"ii", "kind":"required", "type":["integer"]}
+        ],
+        "outputs":
+        [
+            {"name":"subfs", "type":"matlab.io.datastore.BlockedFileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.nextblock":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"fileInfo", "type":"matlab.io.datastore.FileInfo"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.previousblock":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"fileInfo", "type":"matlab.io.datastore.FileInfo"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.hasNextBlock":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":"logical"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.hasPreviousBlock":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":"logical"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.BlockedFileSet.reset":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.BlockedFileSet"}
+        ]
+    }
+}

@@ -1,0 +1,139 @@
+{
+"line":
+{
+    "inputs":
+    [
+        {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"x", "kind":"required", "type":[["numeric"], ["datetime"], ["categorical"], ["duration"]]},
+                    {"name":"y", "kind":"required", "type":[["numeric"], ["datetime"], ["categorical"], ["duration"]]},
+                    {"name":"z", "kind":"ordered", "type":[["numeric"], ["datetime"], ["categorical"], ["duration"]]},
+                    {"name":"options", "kind":"properties", "type":"matlab.graphics.primitive.Line"}
+                ],
+                [
+                    {"name":"options", "kind":"properties", "type":"matlab.graphics.primitive.Line"}
+                ]
+            ]
+        }
+    ],
+    "outputs":
+    [
+        {"name":"pl", "type":"matlab.graphics.primitive.Line"}
+    ]
+},
+"makehgtform":
+{
+	"inputs":
+	[
+        {"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"'scale'", "kind":"required", "type":[["char"], ["choices={'scale'}"]]},
+                    {"name":"s", "kind":"required", "type":["numeric", "size=1,3"]}
+
+                ],
+                [
+                    {"mutuallyExclusiveGroup":
+                        [
+                            [{"name":"'xrotate'", "kind":"required", "type":[["char"], ["choices={'xrotate'}"]]}],
+                            [{"name":"'yrotate'", "kind":"required", "type":[["char"], ["choices={'yrotate'}"]]}],
+                            [{"name":"'zrotate'", "kind":"required", "type":[["char"], ["choices={'zrotate'}"]]}]
+                        ]
+                    },
+                    {"name":"r", "kind":"required", "type":["numeric", "scalar"]}
+                ],
+                [
+                    {"name":"'axisrotate'", "kind":"required", "type":[["char"], ["choices={'axisrotate'}"]]},
+                    {"name":"[rx ry rz]", "kind":"required", "type":["numeric", "size=1,3"]}
+                ],
+                [
+                    {"name":"'translate'", "kind":"required", "type":[["char"], ["choices={'translate'}"]]},
+                    {"mutuallyExclusiveGroup":
+                        [
+                            [
+                                {"name":"[tx ty tz]", "kind":"required", "type":["numeric", "size=1,3"]}
+                            ],
+                            [
+                                {"name":"tx", "kind":"required", "type":["numeric", "scalar"]},
+                                {"name":"ty", "kind":"required", "type":["numeric", "scalar"]},
+                                {"name":"tz", "kind":"required", "type":["numeric", "scalar"]}                               
+                            ]
+                        ]
+                    }
+                ]
+            ]
+        }
+	],
+    "outputs":
+    [
+        {"name":"M", "type":["double", "size=4,4"]}
+    ]
+},
+"rectangle":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"},
+		{"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Rectangle"}
+	],
+	"outputs":
+	[
+		{"name":"h", "type":"matlab.graphics.primitive.Rectangle"}
+	]
+},
+"surface":
+{
+	"inputs":
+	[
+		{"mutuallyExclusiveGroup":
+            [
+                [
+                    {"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.Axes"}
+                ],
+                [
+                    {"name":"pax", "kind":"ordered", "type":"matlab.graphics.axis.PolarAxes"}
+                ]
+            ]
+        },
+		{"name":"X", "kind":"ordered", "type":[["numeric"],["datetime"],["duration"],["categorical"]], "promotion":"primary"},
+		{"name":"Y", "kind":"ordered", "type":[["numeric"],["datetime"],["duration"],["categorical"]], "promotion":"primary"},
+		{"name":"Z", "kind":"required", "type":[["numeric"],["datetime"],["duration"],["categorical"]]},
+		{"name":"C", "kind":"ordered", "type":["double"]},
+		{"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Surface"}
+	],
+	"outputs":
+	[
+		{"name":"h", "type":"matlab.graphics.primitive.Surface"}
+	]
+},
+"text":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+		{"name":"x", "kind":"required", "type":[["numeric"], ["datetime"], ["categorical"], ["duration"]]},
+		{"name":"y", "kind":"required", "type":[["numeric"], ["datetime"], ["categorical"], ["duration"]]},
+		{"name":"z", "kind":"ordered", "type":[["numeric"], ["datetime"], ["categorical"], ["duration"]]},
+		{"name":"txt", "kind":"required", "type":[["char"], ["cellstr"]]},
+		{"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+	],
+	"outputs":
+	[
+		{"name":"h", "type":"matlab.graphics.primitive.Text"}
+	]
+},
+"text":
+{
+	"inputs":
+	[
+		{"name":"ax", "kind":"ordered", "type":"matlab.graphics.axis.AbstractAxes"},
+		{"name":"opts", "kind":"properties", "type":"matlab.graphics.primitive.Text"}
+	],
+	"outputs":
+	[
+		{"name":"h", "type":"matlab.graphics.primitive.Text"}
+	]
+}
+}

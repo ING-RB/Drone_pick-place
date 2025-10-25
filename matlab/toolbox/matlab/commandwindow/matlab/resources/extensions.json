@@ -1,0 +1,52 @@
+{
+    "mw.desktop.copilot": {
+      "definitions": [
+            "#mw.desktop.commandwindow.copilot"
+        ]
+    },
+    "mw.desktop.commandwindow.copilot": {
+       "actions": [
+            {
+                "name": "explainCommandWindowCode",
+                "text": "%rtc_addons:copilot:copilot:explainCode%",
+                "promptID": "matlab-copilot-actions-explain-code",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showEntryPointInChatPanel": true,
+                "chatPanelGlobalActionId": "aiChatPanel.explainSelection",
+                "showInEntryPoint": true,
+                "controllerID": "explaincode"
+            },
+            {
+                "name": "explainCommandWindowError",
+                "text": "%rtc_addons:copilot:copilot:explainError%",
+                "description": "%rtc_addons:copilot:copilot:explainErrorDescription%",
+                "promptID": "matlab-copilot-actions-explain-error",
+                "promptVersion": "v1",
+                "callback": "explainError",
+                "callbackType": "jsModule",
+                "controllerID": "explainerror"
+            },
+            {
+                "name": "improveCommandWindowCode",
+                "text": "%rtc_addons:copilot:copilot:improveCode%",
+                "promptID": "matlab-copilot-actions-improve-code",
+                "promptVersion": "v1",
+                "when": "codeSelection",
+                "showInEntryPoint": false,
+                "callback": "inlineActions",
+                "callbackType": "jsModule"
+            },
+            {
+                "name": "fixCommandWindowError",
+                "text": "%rtc_addons:copilot:copilot:fixError%",
+                "description": "%rtc_addons:copilot:copilot:fixErrorCommandWindowDescription%",
+                "promptID": "matlab-copilot-actions-fix-error",
+                "promptVersion": "v1",
+                "callback": "fixError",
+                "callbackType": "jsModule"
+            }
+        ],
+        "triggers": ["codeSelection"]
+    }
+}

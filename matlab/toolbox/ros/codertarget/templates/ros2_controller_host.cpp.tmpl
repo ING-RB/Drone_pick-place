@@ -1,0 +1,286 @@
+{% if (false) %}
+// Copyright 2024 The MathWorks, Inc.
+{% endif %}
+
+{% var slCoderVer = ver('simulinkcoder') %}
+//
+// Code generated for Simulink model '{%ModelName%}'.
+//
+// Model version                  : {% get_param(ModelName,'ModelVersion') %}
+// Simulink Coder version         : {% [slCoderVer.Version, ' ', slCoderVer.Release, ' ', slCoderVer.Date] %}
+// C/C++ source code generated on : {% datestr(now,'ddd mmm dd HH:MM:SS YYYY') %}
+//
+
+#include "{%ModelName%}_ctrlr_host.h"
+
+// Model Includes
+#include "{%ModelName%}.h"
+
+extern rclcpp_lifecycle::LifecycleNode::SharedPtr SLROSNodePtr;
+namespace {%ProjectName%} {
+
+{% var inportIndices = arrayfun(@(y)isequal(y.PortType,'Inport'), JointInterfaces) %}
+{% var outportIndices = arrayfun(@(y)isequal(y.PortType,'Outport'), JointInterfaces) %}
+{% var inportRes = JointInterfaces(inportIndices) %}
+{% var outportRes = JointInterfaces(outportIndices) %}
+{% var inportIndexNum = find(inportIndices) %}
+{% var outportIndexNum = find(outportIndices) %}
+
+{%ClassName%}::{%ClassName%}() : controller_interface::ControllerInterface() {}
+
+std::string {%ClassName%}::convertToInterfaceType(const std::string& input) const {
+  std::string res = input;
+  std::string suffix = "JointInterface";
+  try
+  {
+    // Remove suffix
+    res.erase(res.size() - suffix.size());
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << "Error: unexpected joint interface name: " << res << "\n\t" << e.what() << std::endl;
+  }
+  // Convert to lowercase
+  std::transform(res.begin(), res.end(), res.begin(),[](unsigned char c) {
+    return std::tolower(c);
+  });
+  return res;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_init()
+{
+  auto logger = get_node()->get_logger();
+  SLROSNodePtr = get_node();
+  try
+  {
+    // Create the parameter listener and get the parameters
+    param_listener_ = std::make_shared<ParamListener>(SLROSNodePtr);
+    params_ = param_listener_->get_params();
+    {% if ~isempty(DynamicParams) %}
+    updateDynamicParams();
+    {% endif %}
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << "Exception thrown during init stage with message:\n\t" << e.what() << std::endl;
+    return controller_interface::CallbackReturn::ERROR;
+  }
+
+  // done
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+controller_interface::InterfaceConfiguration {%ClassName%}::command_interface_configuration() const
+{
+  std::vector<std::string> conf_names;
+
+  {% for k = numel(outportRes) %}
+      {% if 1==k %}
+      // Get all command interfaces
+      {% endif %}
+    conf_names.push_back(std::string({%outportRes(k).JointName%}) + "/" + convertToInterfaceType({%outportRes(k).InterfaceType%}));
+  {% endfor %}
+  return {controller_interface::interface_configuration_type::INDIVIDUAL, conf_names};
+}
+
+controller_interface::InterfaceConfiguration {%ClassName%}::state_interface_configuration() const
+{
+  std::vector<std::string> conf_names;
+
+  {% for k = numel(inportRes) %}
+      {% if 1==k %}
+      // Get all state interfaces
+      {% endif %}
+    conf_names.push_back(std::string({%inportRes(k).JointName%}) + "/" + convertToInterfaceType({%inportRes(k).InterfaceType%}));
+  {% endfor %}
+  return {controller_interface::interface_configuration_type::INDIVIDUAL, conf_names};
+}
+
+controller_interface::return_type {%ClassName%}::update(
+  const rclcpp::Time &, const rclcpp::Duration &)
+{
+  // Update parameters if they have changed
+  if (param_listener_->is_old(params_))
+  {
+    params_ = param_listener_->get_params();
+    {% if ~isempty(DynamicParams) %}
+    updateDynamicParams();
+    {% endif %}
+  }
+  {% for k = numel(inportRes) %}
+      {% if 1==k %}
+  // Get model inputs from resources
+      {% endif %}
+  {%inportRes(k).FieldName%} = registered_state_joint_handles_[{% num2str(inportIndexNum(k)-1) %}].joint_handle.get().get_value();
+  {% endfor %}
+
+  // trigger Simulink tick/update
+  {% StepFcn %};
+
+  {% for k = numel(outportRes) %}
+      {% if 1==k %}
+  // Write model output to resources
+      {% endif %}
+  registered_command_joint_handles_[{% num2str(outportIndexNum(k)-numel(inportRes)-1) %}].joint_handle.get().set_value({%outportRes(k).FieldName%});
+  {% endfor %}
+
+  return controller_interface::return_type::OK;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_configure(
+  const rclcpp_lifecycle::State &)
+{
+  {% if ~isempty(DynamicParams) %}
+  // Update parameters if they have changed
+  if (param_listener_->is_old(params_))
+  {
+    params_ = param_listener_->get_params();
+    updateDynamicParams();
+  }
+  {% endif %}
+
+  if(!reset())
+  {
+    return controller_interface::CallbackReturn::ERROR;
+  }
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_activate(
+  const rclcpp_lifecycle::State &)
+{
+  auto logger = get_node()->get_logger();
+  {% if ~isempty(outportRes) %}
+  // Configure command interfaces
+  std::vector<std::pair<std::string, std::string>> outport_interface_nametypes;
+  {% for k = numel(outportRes) %}
+  outport_interface_nametypes.emplace_back({% outportRes(k).JointName %}, {% outportRes(k).InterfaceType %});
+  {% endfor %}
+  for (const auto & interface_name_type : outport_interface_nametypes)
+  {
+    const auto interface_name = interface_name_type.first;
+    const auto interface_type = convertToInterfaceType(interface_name_type.second);
+
+    const auto command_handle = std::find_if(
+      command_interfaces_.begin(), command_interfaces_.end(),
+      [&interface_name, &interface_type](const auto & interface)
+      {
+        return interface.get_prefix_name() == interface_name &&
+               interface.get_interface_name() == interface_type;
+      });
+    if (command_handle == command_interfaces_.end())
+    {
+      RCLCPP_ERROR(logger, "Unable to obtain joint command handle for %s", interface_name.c_str());
+      return controller_interface::CallbackReturn::ERROR;
+    }
+    registered_command_joint_handles_.emplace_back(
+      CommandJointHandle{std::ref(*command_handle)});
+  }
+  {% endif %}
+
+  {% if ~isempty(inportRes) %}
+  // Configure state interfaces
+  std::vector<std::pair<std::string, std::string>> inport_interface_nametypes;
+  {% for k = numel(inportRes) %}
+  inport_interface_nametypes.emplace_back({% inportRes(k).JointName %}, {% inportRes(k).InterfaceType %});
+  {% endfor %}
+  for (const auto & interface_name_type : inport_interface_nametypes)
+  {
+    const auto interface_name = interface_name_type.first;
+    const auto interface_type = convertToInterfaceType(interface_name_type.second);
+
+    const auto state_handle = std::find_if(
+      state_interfaces_.begin(), state_interfaces_.end(),
+      [&interface_name, &interface_type](const auto & interface)
+      {
+        return interface.get_prefix_name() == interface_name &&
+               interface.get_interface_name() == interface_type;
+      });
+    if (state_handle == state_interfaces_.end())
+    {
+      RCLCPP_ERROR(logger, "Unable to obtain joint state handle for %s", interface_name.c_str());
+      return controller_interface::CallbackReturn::ERROR;
+    }
+    registered_state_joint_handles_.emplace_back(
+      StateJointHandle{std::ref(*state_handle)});
+  }
+  {% endif %}
+
+  // Initialize Simulink controller
+  {% InitFcn %};
+
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_deactivate(
+  const rclcpp_lifecycle::State &)
+{
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_cleanup(
+  const rclcpp_lifecycle::State &)
+{
+  if (!reset())
+  {
+    return controller_interface::CallbackReturn::ERROR;
+  }
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_error(const rclcpp_lifecycle::State &)
+{
+  if (!reset())
+  {
+    return controller_interface::CallbackReturn::ERROR;
+  }
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+controller_interface::CallbackReturn {%ClassName%}::on_shutdown(
+  const rclcpp_lifecycle::State &)
+{
+  // Terminates Simulink controller
+  {% TermFcn %};
+
+  return controller_interface::CallbackReturn::SUCCESS;
+}
+
+bool {%ClassName%}::reset()
+{
+  // Set output velocity and effort interface commands to zero
+  // for other intefaces default output values depend on controller status
+  {% for k = numel(outportRes) %}
+      {% if isequal(outportRes(k).InterfaceType,'VelocityJointInterface') || isequal(outportRes(k).InterfaceType,'EffortJointInterface') %}
+  registered_command_joint_handles_[{% num2str(k-1) %}].joint_handle.get().set_value(0.0);
+      {% endif %}
+  {% endfor %}
+
+  {% if ros.codertarget.internal.ROS2ControlUtil.containsIRTBlks(ModelName,'Reset') %}
+
+  // Custom reset function
+  {%ModelName%}_reset();
+  {% endif %}
+
+  return true;
+}
+
+void {%ClassName%}::updateDynamicParams()
+{
+  {% for k=numel(DynamicParams)-1 %}
+  {%ModelParamName%}_P.{%DynamicParams(k).Name%} =  params_.{%DynamicParams(k).Name%};
+  {% endfor %}
+}
+
+
+} // ~namespace {%ProjectName%}
+
+
+#include "class_loader/register_macro.hpp"
+CLASS_LOADER_REGISTER_CLASS({%ProjectName%}::{%ClassName%}, controller_interface::ControllerInterface)
+
+//
+// File trailer for generated code.
+//
+// [EOF]
+//

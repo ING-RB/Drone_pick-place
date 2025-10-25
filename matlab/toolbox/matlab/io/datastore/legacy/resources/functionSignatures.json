@@ -1,0 +1,385 @@
+{
+    "matlab.io.datastore.DsFileReader":
+    {
+        "inputs":
+        [
+            {"name":"filename", "kind":"required", "type":[["file=*.csv,*.txt,*.jpg,*.png,*.tif,*.xls,*.xlsx"], ["matlabpathfile=*.csv,*.txt,*.jpg,*.png,*.tif,*.xls,*.xlsx"], ["cell"], ["char"]]},
+            {"name":"TextEncoding", "kind":"namevalue", "type":"char"}
+        ],
+        "outputs":
+        [
+            {"name":"fr", "type":"matlab.io.datastore.DsFileReader"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileReader.read":
+    {
+        "inputs":
+        [
+            {"name":"fr", "kind":"required", "type":"matlab.io.datastore.DsFileReader"},
+            {"name":"size", "kind":"required", "type":"numeric"},
+            {"name":"SizeMethod", "kind":"namevalue", "type":"choices={'NumBytes', 'OutputSize'}"},
+            {"name":"OutputType", "kind":"namevalue", "type":"choices={'uint8', 'uint16', 'uint32', 'uint64', 'int8', 'int16', 'int32', 'int64', 'single', 'double', 'char'}"}
+        ],
+        "outputs":
+        [
+            {"name":"A"},
+            {"name":"count", "type":"numeric"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileReader.seek":
+    {
+        "inputs":
+        [
+            {"name":"fr", "kind":"required", "type":"matlab.io.datastore.DsFileReader"},
+            {"name":"bytes", "kind":"required", "type":"numeric"},
+            {"name":"RespectTextEncoding", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"Origin", "kind":"namevalue", "type":"choices={'currentposition', 'start-of-file', 'end-of-file'}"}
+        ],
+        "outputs":
+        [
+            {"name":"numbytes", "type":"numeric"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileReader.hasdata":
+    {
+        "inputs":
+        [
+            {"name":"fr", "kind":"required", "type":"matlab.io.datastore.DsFileReader"}
+        ],
+        "outputs":
+        [
+            {"name":"status", "type":"logical"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileSet":
+    {
+        "inputs":
+        [
+            {"name":"location", "kind":"required", "type":[["file=*.csv,*.txt,*.jpg,*.png,*.tif,*.xls,*.xlsx"], ["matlabpathfile=*.csv,*.txt,*.jpg,*.png,*.tif,*.xls,*.xlsx"], ["cell"], ["char"], ["struct"]]},
+            {"name":"IncludeSubfolders", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]},
+            {"name":"FileExtensions", "kind":"namevalue", "type":[["cell"], ["char"], ["string"]]},
+            {"name":"AlternateFileSystemRoots", "kind":"namevalue", "type":[["cell"], ["string"]]},
+            {"name":"FileSplitSize", "kind":"namevalue", "type":[["numeric"],["char"],["string"]]}
+        ],
+        "outputs":
+        [
+            {"name":"fs", "type":"matlab.io.datastore.FileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileSet.partition":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.DsFileSet"},
+            {"name":"N", "kind":"required", "type":["scalar","integer"]},
+            {"name":"ii", "kind":"required", "type":["scalar","integer"]}
+        ],
+        "outputs":
+        [
+            {"name":"subfs", "type":"matlab.io.datastore.FileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileSet.resolve":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.DsFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"files", "type":"table"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileSet.nextfile":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.DsFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"filename", "type":"table"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileSet.hasfile":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.DsFileSet"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":"logical"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.DsFileSet.reset":
+    {
+        "inputs":
+        [
+            {"name":"fs", "kind":"required", "type":"matlab.io.datastore.DsFileSet"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.transform":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore", "multiplicity":"append"},
+			{"name":"transformFcn", "kind":"required", "type":"function_handle"},
+			{"name":"IncludeInfo", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":"matlab.io.datastore.TransformedDatastore"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.transform":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore", "multiplicity":"append"},
+            {"name":"ds", "kind":"required", "type":"matlab.io.Datastore", "multiplicity":"append"},
+			{"name":"transformFcn", "kind":"required", "type":"function_handle"},
+			{"name":"IncludeInfo", "kind":"namevalue", "type":[["logical", "scalar"], ["numeric"]]}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":"matlab.io.datastore.TransformedDatastore"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.combine":
+    {
+        "inputs":
+        [
+			{"name":"ds", "repeating":true, "kind":"required", "type":[["matlab.io.datastore.Datastore"], ["matlab.io.Datastore"]]},
+            {"name":"ReadOrder", "kind":"namevalue", "type":["string", "choices={'associated', 'sequential'}"], "default": "'associated'"}
+        ],
+        "outputs":
+        [
+            {"name":"ds", "type":["matlab.io.datastore.CombinedDatastore", "matlab.io.datastore.SequentialDatastore"]}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.hasdata":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":["logical", "scalar"]}
+        ]
+    }
+	,
+    "matlab.io.datastore.Datastore.read":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ],
+        "outputs":
+        [
+            {"name":"data"},
+            {"name":"info"}
+        ]
+    }
+	,
+    "matlab.io.datastore.Datastore.preview":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"ads", "kind":"required", "type":"audioDatastore"},
+            {"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"ads", "kind":"required", "type":"matlab.io.datastore.MDFDatastore"},
+            {"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"ttds", "kind":"required", "type":"matlab.io.datastore.TabularTextDatastore"},
+			{"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"ssds", "kind":"required", "type":"matlab.io.datastore.SpreadsheetDatastore"},
+			{"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"imds", "kind":"required", "type":"matlab.io.datastore.ImageDatastore"},
+			{"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"fds", "kind":"required", "type":"matlab.io.datastore.FileDatastore"},
+			{"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"kvds", "kind":"required", "type":"matlab.io.datastore.KeyValueDatastore"},
+			{"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+            {"name":"tallds", "kind":"required", "type":"matlab.io.datastore.TallDatastore"},
+			{"name":"UseParallel", "kind":"namevalue", "type":["logical", "scalar"], "default":"false"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+    ,
+    "matlab.io.datastore.Datastore.readall":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ],
+        "outputs":
+        [
+            {"name":"data"}
+        ]
+    }
+	,
+    "matlab.io.datastore.Datastore.reset":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ]
+    }
+	,
+    "matlab.io.datastore.Datastore.isPartitionable":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":["logical", "scalar"]}
+        ]
+    }
+	,
+    "matlab.io.datastore.Datastore.isShuffleable":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.Datastore"}
+        ],
+        "outputs":
+        [
+            {"name":"tf", "type":["logical", "scalar"]}
+        ]
+    }
+	,
+    "matlab.io.datastore.SplittableDatastore.partition":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.SplittableDatastore"},
+			{"name":"n", "kind":"required", "type":["numeric", "scalar", "integer", "positive"]},
+			{"name":"index", "kind":"required", "type":["numeric", "scalar", "integer", "positive"]}
+        ],
+        "outputs":
+        [
+            {"name":"subds", "type":"matlab.io.datastore.Datastore"}
+        ]
+    }
+	,
+    "matlab.io.datastore.SplittableDatastore.numpartitions":
+    {
+        "inputs":
+        [
+			{"name":"ds", "kind":"required", "type":"matlab.io.datastore.SplittableDatastore"},
+			{"name":"pool", "kind":"ordered", "type": "parallel.Pool"}
+        ],
+        "outputs":
+        [
+            {"name":"n", "type":["numeric", "scalar", "integer"]}
+        ]
+    }
+}
