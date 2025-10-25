@@ -8,3 +8,9 @@ cp ./4013_gz_x500_lidar_2d /home/ros_workspace/PX4-Autopilot/ROMFS/px4fmu_common
 
 cd /home/ros_workspace/PX4-Autopilot
 make px4_sitl
+
+cd /home/ros_workspace/LI-SLAM/build/graph_based_slam/CMakeFiles/graph_based_slam_component.dir/src
+unzip graph_based_slam_component.cpp.zip
+
+cd /home/ros_workspace/LI-SLAM/build/scanmatcher/CMakeFiles/scanmatcher_component.dir/src
+unzip scanmatcher_component.cpp.zip
