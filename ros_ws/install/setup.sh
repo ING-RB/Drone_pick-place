@@ -14,3 +14,7 @@ unzip graph_based_slam_component.cpp.zip
 
 cd /home/ros_workspace/LI-SLAM/build/scanmatcher/CMakeFiles/scanmatcher_component.dir/src
 unzip scanmatcher_component.cpp.zip
+
+cd /home/ros_workspace
+wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl-x86_64.AppImage
+chmod +x QGroundControl-x86_64.AppImage
