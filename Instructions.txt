@@ -1,9 +1,18 @@
------------
-ISTRUCTIONS
------------
-INSTALLATION (just the first time)
+---------------------------------------------------------
+INSTALLATION (just the first time, it takes about 1 hour)
+---------------------------------------------------------
 cd docker_ws
 sudo ./build.sh
+cd ..
+sudo ./run.sh
+cd install
+sudo ./setup.sh
+exit
+
+
+------------------
+AFTER INSTALLATION
+------------------
 
 
 TERMINAL 1:
@@ -23,6 +32,10 @@ TERMINAL 2:
 from the project folder:
 
 1) sudo ./exec.sh
+   cd /home/ros_workspace/Micro-XRCE-DDS-Agent/build
+   sudo make install
+   sudo ldconfig /usr/local/lib/
+   cd /home/ros_workspace
 
 2) source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
 
@@ -42,10 +55,8 @@ from the project folder:
 
 TROUBLESHOOTING:
 
-- the drone doesn't appear in gazebo -> ctrl + c and launch again the command ros2 launch scanmatcher lio.launch.py
-
-- "Ready for takeoff!" message doesn't appear -> ctrl + c and launch again the command ros2 launch scanmatcher lio.launch.py
+- the drone doesn't appear in gazebo OR  -> ctrl "Ready for takeoff!" message doesn't appear + c and launch again the command ros2 launch scanmatcher lio.launch.py
 
 - after offboard_control.py seems stuck after "Path request sent" message   -> make sure matlab is running Path_Planning_ss3dROS.m
-                                                                            -> ctrl + c and launch again the command ros2 run px4_ros_com offboard_control.py
+                                                                            -> ctrl + c, then click on matlab console window to wake up matlab and launch again the command ros2 run px4_ros_com offboard_control.py
 
