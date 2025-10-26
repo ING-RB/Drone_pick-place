@@ -17,9 +17,8 @@ colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 
 # Micro-XRCE-DDS-Agent
-cd /home/ros_workspace/Micro-XRCE-DDS-Agent
-mkdir build
-cd build
+mkdir /home/ros_workspace/Micro-XRCE-DDS-Agent/build
+cd /home/ros_workspace/Micro-XRCE-DDS-Agent/build
 cmake ..
 make
 make install 
@@ -27,6 +26,7 @@ ldconfig /usr/local/lib/
 
 
 # Attach_plugin
+mkdir /home/ros_workspace/Attach_plugin/build
 cd /home/ros_workspace/Attach_plugin/build
 cmake ..
 make

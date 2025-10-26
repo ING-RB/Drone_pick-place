@@ -1,25 +1,28 @@
 ---------------------------------------------------------
 INSTALLATION (just the first time, it takes about 1 hour)
 ---------------------------------------------------------
+From Drone_pick-place folder:
 cd docker_ws
 sudo ./build.sh
 cd ..
 sudo ./run.sh
+
+From the container terminal you just opened:
 cd install
-sudo ./setup.sh
+./setup.sh
 exit
 
 
 ------------------
 AFTER INSTALLATION
 ------------------
-
-
 TERMINAL 1:
-from the project folder:
-1) sudo ./run.sh
+1) From Drone_pick-place folder:
+   sudo ./run.sh
 
-2) Launch matlab (you need internet connection): /usr/local/MATLAB/R2025a/bin/matlab
+2) From the container terminal you just opened:
+   Launch matlab (you need internet connection)
+   /usr/local/MATLAB/R2025a/bin/matlab
 
 3) Log in
 
@@ -29,26 +32,27 @@ from the project folder:
 
 
 TERMINAL 2:
-from the project folder:
+1) From Drone_pick-place folder:
+   sudo ./exec.sh
 
-1) sudo ./exec.sh
+2) From the container terminal you just opened:
    cd /home/ros_workspace/Micro-XRCE-DDS-Agent/build
-   sudo make install
-   sudo ldconfig /usr/local/lib/
+   make install
+   ldconfig /usr/local/lib/
    cd /home/ros_workspace
-
-2) source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
+   source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
 
 3) ros2 launch scanmatcher lio.launch.py
+   NOTE 1: at the first launch the drone can have unexpected behaviour, it's raccomanded to wait until everything is initialized, stop (ctrl + c) and launch again ros2 launch scanmatcher lio.launch.py
+   NOTE 2: if your computer doesn't slow down the simulation too much you can enable the last PointCloud2 in the left panel in rviz2 to show map built by the SLAM module
 
 4) !!!Important: Wait until the "Ready for takeoff!" message appears on the terminal
 
 TERMINAL 3:
-from the project folder:
-
-1) sudo ./exec.sh
-
-2) source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
+1) From Drone_pick-place folder:
+   sudo ./exec.sh
+2) From the container terminal you just opened:
+   source /opt/ros/humble/setup.bash  && source /home/ros_workspace/LI-SLAM/install/setup.bash  && source /home/ros_workspace/drone/install/setup.bash && export GZ_PLUGIN_PATH=${GZ_PLUGIN_PATH}:/home/ros_workspace/Attach_plugin/build
 
 3) ros2 run px4_ros_com offboard_control.py
 
