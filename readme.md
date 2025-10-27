@@ -38,7 +38,10 @@ Stop it (Ctrl + C) and run:
     chmod +x QGroundControl-x86_64.AppImage
 
 ## Demo
-You will need 3 terminals.
+You can run the same simulation showed in DEMO.mp4
+
+You will need 3 terminals:
+
 ### TERMINAL 1:
 **From Drone_pick-place folder:**
 
