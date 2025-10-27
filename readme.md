@@ -8,7 +8,7 @@ Gazebo simulation of a x500 drone using ros2 and li_slam_ros2 and Matlab Navigat
  - Docker
  - Nvidia-toolkit
  - x11-server-utils
->If you don't want to use Nvidia-toolkit use sudo ./run_no_nvidia.sh instead of sudo ./run.sh
+>If you don't want to use Nvidia-toolkit use **sudo ./run_no_nvidia.sh** instead of **sudo ./run.sh**
 
 ## Installation
 **Clone the repository:**
