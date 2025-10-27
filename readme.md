@@ -65,7 +65,8 @@ Log in and run (in Matlab) the script /home/ros_workspace/MATLAB/Path_planning/P
     ros2 run px4_ros_com offboard_control.py
 
 ## TROUBLESHOOTING
-**The drone doesn't appear in gazebo OR "Ready for takeoff!" message doesn't appear:** Ctrl + C and launch again the command ros2 launch scanmatcher lio.launch.py
+**The drone doesn't appear in gazebo OR "Ready for takeoff!" message doesn't appear:**
+Ctrl + C and launch again the command ros2 launch scanmatcher lio.launch.py
 
 **After offboard_control.py seems stuck after "Path request sent" message:**
 - make sure matlab is running Path_Planning_ss3dROS.m
