@@ -1,4 +1,5 @@
 
+
 # Drone_pick-place
 Gazebo simulation of a x500 drone using ros2 and li_slam_ros2 and Matlab Navigation Toolbox.
 
@@ -27,6 +28,15 @@ Gazebo simulation of a x500 drone using ros2 and li_slam_ros2 and Matlab Navigat
     cd install
     ./setup.sh
     exit
+
+If installation looks stuck on:
+
+    Resolving d176tv9ibo4jno.cloudfront.net (d176tv9ibo4jno.cloudfront.net)... 2600:9000:20dd:e600:12:1870:2100:21, 2600:9000:20dd:4600:12:1870:2100:21, 2600:9000:20dd:4a00:12:1870:2100:21, ...
+Stop it (Ctrl + C) and run:
+
+    cd /home/ros_workspace
+    wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl-x86_64.AppImage
+    chmod +x QGroundControl-x86_64.AppImage
 
 ## Demo
 You will need 3 terminals.
@@ -62,6 +72,8 @@ Log in and run (in Matlab) the script /home/ros_workspace/MATLAB/Path_planning/P
 >**NOTE 1**: at the first launch the drone can have unexpected behaviour, it's raccomanded to wait until everything is initialized, stop (Ctrl + C) and launch again ros2 launch scanmatcher lio.launch.py
 
 >**NOTE 2**: if your computer doesn't slow down the simulation too much you can enable the last PointCloud2 in the left panel in rviz2 to show map built by the SLAM module
+
+>**NOTE 3**: you should see four windows (Matlab, Gazebo, Rviz2 and QGround Control) QGround Control doesn't start see troubleshooting section.
 
 >**!!!Important**: Wait until the "Ready for takeoff!" message appears on the terminal
 
