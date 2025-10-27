@@ -82,6 +82,7 @@ Change the row
         cmd=["runuser -l utente -c 'export DISPLAY=:1 && /home/ros_workspace/QGroundControl-x86_64.AppImage'"],
 
 with
-        cmd=["runuser -l utente -c 'export DISPLAY=:**<your $DISPLAY>** && /home/ros_workspace/QGroundControl-x86_64.AppImage'"],
+
+        cmd=["runuser -l utente -c 'export DISPLAY=:<your $DISPLAY> && /home/ros_workspace/QGroundControl-x86_64.AppImage'"],
 
 
