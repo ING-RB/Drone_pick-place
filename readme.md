@@ -97,7 +97,7 @@ With:
 
     cmd=["runuser -l utente -c 'export DISPLAY=:<your $DISPLAY> && /home/ros_workspace/QGroundControl-x86_64.AppImage'"],
 
-Then, from the container terminal run:
+Then, from the container terminal, run:
 
     cd /home/ros_workspace/LI-SLAM
     colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
