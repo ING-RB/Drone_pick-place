@@ -7,7 +7,7 @@ Gazebo simulation of a x500 drone using ros2 and li_slam_ros2 and Matlab Navigat
 ## Requirements
 
  - Docker
- - Nvidia-toolkit
+ - NVIDIA Container Toolkit
  - x11-server-utils
 
 ## Installation
